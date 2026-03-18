@@ -8429,7 +8429,7 @@
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
         "externalDocs": {
-          "description": "About creating an index from a",
+          "description": "Creating an index from source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
         },
         "operationId": "indices-create-from",
@@ -8464,7 +8464,7 @@
         "summary": "Create an index from a source index",
         "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
         "externalDocs": {
-          "description": "About creating an index from a",
+          "description": "Creating an index from source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
         },
         "operationId": "indices-create-from-1",
@@ -9136,7 +9136,7 @@
         "summary": "Get the status for a data stream lifecycle",
         "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
         "externalDocs": {
-          "description": "About data stream lifecycle in",
+          "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-explain-lifecycle.html"
         },
@@ -9301,7 +9301,7 @@
         "summary": "Get data stream lifecycles",
         "description": "Get the data stream lifecycle configuration of one or more data streams.",
         "externalDocs": {
-          "description": "About data stream lifecycle in",
+          "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle.html"
         },
@@ -9393,7 +9393,7 @@
         "summary": "Update data stream lifecycles",
         "description": "Update the data stream lifecycle of the specified data streams.",
         "externalDocs": {
-          "description": "About data stream lifecycle in",
+          "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-put-lifecycle.html"
         },
@@ -16035,7 +16035,7 @@
         "summary": "Get pipelines",
         "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
         "externalDocs": {
-          "description": "About Elasticsearch ingest",
+          "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-pipeline-api.html"
         },
@@ -16071,7 +16071,7 @@
         "summary": "Create or update a pipeline",
         "description": "Changes made using this API take effect immediately.",
         "externalDocs": {
-          "description": "About Elasticsearch ingest",
+          "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
         },
         "operationId": "ingest-put-pipeline",
@@ -16217,7 +16217,7 @@
         "summary": "Delete pipelines",
         "description": "Delete one or more ingest pipelines.",
         "externalDocs": {
-          "description": "About Elasticsearch ingest",
+          "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-pipeline-api.html"
         },
@@ -16284,7 +16284,7 @@
         "summary": "Get pipelines",
         "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
         "externalDocs": {
-          "description": "About Elasticsearch ingest",
+          "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-pipeline-api.html"
         },
@@ -16554,7 +16554,7 @@
         "summary": "Get Logstash pipelines",
         "description": "Get pipelines that are used for Logstash Central Management.\n\n## Required authorization\n\n* Cluster privileges: `manage_logstash_pipelines`\n",
         "externalDocs": {
-          "description": "About centralized pipeline",
+          "description": "Centralized pipeline management",
           "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/logstash-api-get-pipeline.html"
         },
@@ -16584,7 +16584,7 @@
         "summary": "Create or update a Logstash pipeline",
         "description": "Create a pipeline that is used for Logstash Central Management.\nIf the specified pipeline exists, it is replaced.\n\n## Required authorization\n\n* Cluster privileges: `manage_logstash_pipelines`\n",
         "externalDocs": {
-          "description": "About centralized pipeline",
+          "description": "Centralized pipeline management",
           "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/logstash-api-put-pipeline.html"
         },
@@ -16642,7 +16642,7 @@
         "summary": "Delete a Logstash pipeline",
         "description": "Delete a pipeline that is used for Logstash Central Management.\nIf the request succeeds, you receive an empty response with an appropriate status code.\n\n## Required authorization\n\n* Cluster privileges: `manage_logstash_pipelines`\n",
         "externalDocs": {
-          "description": "About centralized pipeline",
+          "description": "Centralized pipeline management",
           "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/logstash-api-delete-pipeline.html"
         },
@@ -16685,7 +16685,7 @@
         "summary": "Get Logstash pipelines",
         "description": "Get pipelines that are used for Logstash Central Management.\n\n## Required authorization\n\n* Cluster privileges: `manage_logstash_pipelines`\n",
         "externalDocs": {
-          "description": "About centralized pipeline",
+          "description": "Centralized pipeline management",
           "url": "https://www.elastic.co/docs/reference/logstash/logstash-centralized-pipeline-management",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/logstash-api-get-pipeline.html"
         },
@@ -24117,7 +24117,7 @@
         "summary": "Delete a query rule",
         "description": "Delete a query rule within a query ruleset.\nThis is a destructive action that is only recoverable by re-adding the same rule with the create or update query rule API.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "description": "About deleting a rule from the",
+          "description": "About deleting a query rule",
           "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-rule",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-query-rule.html"
         },
@@ -24317,7 +24317,7 @@
         "summary": "Delete a query ruleset",
         "description": "Remove a query ruleset and its associated data.\nThis is a destructive action that is not recoverable.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_query_rules`\n",
         "externalDocs": {
-          "description": "About deleting a ruleset from the",
+          "description": "About deleting a query ruleset",
           "url": "https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-query-ruleset.html"
         },
@@ -26988,7 +26988,7 @@
         "summary": "Create an API key",
         "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`\n",
         "externalDocs": {
-          "description": "About security settings in",
+          "description": "About API key service settings",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-api-key.html"
         },
@@ -27021,7 +27021,7 @@
         "summary": "Create an API key",
         "description": "Create an API key for access without requiring basic authentication.\n\nIMPORTANT: If the credential that is used to authenticate this request is an API key, the derived API key cannot have any privileges.\nIf you specify privileges, the API returns an error.\n\nA successful request returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nNOTE: By default, API keys never expire. You can specify expiration information when you create the API keys.\n\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\nTo configure or turn off the API key service, refer to API key service setting documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`\n",
         "externalDocs": {
-          "description": "About security settings in",
+          "description": "About API key service settings",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/security-settings#api-key-service-settings",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-api-key.html"
         },
@@ -28311,7 +28311,7 @@
         "summary": "Create or update a synonym set",
         "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
         "externalDocs": {
-          "description": "About creating or updating",
+          "description": "About synonym API examples",
           "url": "https://www.elastic.co/docs/solutions/search/full-text/create-update-synonyms-api-example",
           "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-synonyms-set.html"
         },
