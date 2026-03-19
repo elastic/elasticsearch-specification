@@ -15034,7 +15034,6 @@ export interface InferenceReasoning {
   effort?: InferenceReasoningEffort
   enabled?: boolean
   exclude?: boolean
-  max_tokens?: integer
   summary?: InferenceReasoningSummary
 }
 

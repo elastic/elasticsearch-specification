@@ -39,10 +39,9 @@ export class RequestChatCompletion {
   max_completion_tokens?: long
   /**
    * The reasoning configuration for the completion request.
-   * This controls the model's reasoning process in one of three ways:
+   * This controls the model's reasoning process in one of two ways:
    *
    * * By specifying the model’s reasoning effort level with the `effort` field.
-   * * By setting a maximum number of reasoning tokens with the `max_tokens` field.
    * * By enabling reasoning with default settings by setting `enabled` field to `true`.
    *
    * It also includes optional settings to control:
@@ -55,17 +54,6 @@ export class RequestChatCompletion {
    * {
    *    "reasoning": {
    *        "effort": "high",
-   *        "summary": "concise",
-   *        "exclude": false
-   *    }
-   * }
-   *
-   * ```
-   * Example (max_tokens):
-   * ```
-   * {
-   *    "reasoning": {
-   *        "max_tokens": 100,
    *        "summary": "concise",
    *        "exclude": false
    *    }
@@ -233,15 +221,14 @@ export interface Reasoning {
    * The level of effort the model should put into reasoning.
    * This is a hint that guides the model in how much effort to put into reasoning,
    * with `xhigh` being the most effort and `none` being no effort.
-   * It cannot be used together with `max_tokens`.
    */
   effort?: ReasoningEffort
   /**
    * Whether to enable reasoning with default settings.
    * This is a shortcut for enabling reasoning without having to specify the other parameters.
    * If `enabled` is set to `true`, then reasoning at the `medium` effort level is enabled.
-   * Ignored if either `effort` or `max_tokens` is specified,
-   * in which case those parameters will control the reasoning process instead.
+   * Ignored if `effort` is specified,
+   * in which case that parameter will control the reasoning process instead.
    */
   enabled?: boolean
   /**
@@ -249,11 +236,6 @@ export interface Reasoning {
    * If `true`, the response will not include any reasoning details.
    */
   exclude?: boolean
-  /**
-   * The maximum number of tokens the model can use for reasoning.
-   * It cannot be used together with `effort`.
-   */
-  max_tokens?: integer
   /**
    * The level of detail included in the reasoning summary returned in the response.
    * This is a hint on how much detail to include in the summary of the reasoning that is returned in the response,
