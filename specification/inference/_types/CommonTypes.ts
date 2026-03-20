@@ -1180,7 +1180,7 @@ export class AzureOpenAITaskSettings {
    * }
    * ```
    */
-    headers?: UserDefinedValue
+  headers?: UserDefinedValue
 }
 
 export enum AzureOpenAITaskType {

@@ -69017,8 +69017,12 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
+          },
+          "headers": {
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object"
           }
         }
       },
@@ -70797,7 +70801,7 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion`, `chat_completion`, or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           },
           "headers": {
