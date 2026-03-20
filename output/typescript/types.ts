@@ -14436,6 +14436,7 @@ export type InferenceAzureOpenAIServiceType = 'azureopenai'
 
 export interface InferenceAzureOpenAITaskSettings {
   user?: string
+  headers?: any
 }
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'

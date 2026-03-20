@@ -1166,10 +1166,21 @@ export class AzureOpenAIServiceSettings {
 
 export class AzureOpenAITaskSettings {
   /**
-   * For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers":{
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: UserDefinedValue
 }
 
 export enum AzureOpenAITaskType {
@@ -2416,7 +2427,7 @@ export enum OpenAISimilarityType {
 
 export class OpenAITaskSettings {
   /**
-   * For a `completion`, `chat_completion`, or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
