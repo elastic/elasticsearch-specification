@@ -406,27 +406,58 @@ export enum ClusterInfoTarget {
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
 
 export enum CommonStatsFlag {
+  /** Return all statistics. */
   _all,
+  /** Size of the index in byte units. */
   store,
+  /** Indexing statistics. */
   indexing,
+  /** Get statistics, including missing stats. */
   get,
+  /**
+   * Search statistics including suggest statistics.
+   * You can include statistics for custom groups by adding an extra `groups` parameter
+   * (search operations can be associated with one or more groups).
+   * The `groups` parameter accepts a comma-separated list of group names.
+   * Use `_all` to return statistics for all groups.
+   */
   search,
+  /** Merge statistics. */
   merge,
+  /** Flush statistics. */
   flush,
+  /** Refresh statistics. */
   refresh,
+  /** Query cache statistics. */
   query_cache,
+  /** Fielddata statistics. */
   fielddata,
+  /** Number of documents and deleted docs not yet merged out. Index refreshes can affect this statistic. */
   docs,
+  /** Index warming statistics. */
   warmer,
+  /** Completion suggester statistics. */
   completion,
+  /**
+   * Memory use of all open segments.
+   * If the `include_segment_file_sizes` parameter is `true`, this metric includes the aggregated disk usage of each Lucene index file.
+   */
   segments,
+  /** Translog statistics. */
   translog,
+  /** Shard request cache statistics. */
   request_cache,
+  /** Recovery statistics. */
   recovery,
+  /** Bulk operations statistics. */
   bulk,
+  /** Shard statistics, including the total number of shards. */
   shard_stats,
+  /** Mapping statistics, including the total count and estimated overhead. */
   mappings,
+  /** Total number of dense vectors indexed. Index refreshes can affect this statistic. */
   dense_vector,
+  /** Total number of sparse vectors indexed. Index refreshes can affect this statistic. */
   sparse_vector
 }
 
