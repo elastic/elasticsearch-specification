@@ -312,10 +312,15 @@ export enum SuggestMode {
 }
 
 export enum ThreadType {
+  /** Threads that consume the most CPU time. */
   cpu,
+  /** Threads that have been in a waiting state the longest. */
   wait,
+  /** Threads that have been blocked the longest. */
   block,
+  /** Threads that consume the most GPU time. */
   gpu,
+  /** Threads that allocate the most memory. */
   mem
 }
 
