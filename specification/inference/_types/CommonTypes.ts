@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@_types/common'
-import { float, integer, long } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -503,7 +503,7 @@ export interface CompletionToolFunction {
   /**
    * The parameters the functional accepts. This should be formatted as a JSON object.
    */
-  parameters?: UserDefinedValue
+  parameters?: Dictionary<string, UserDefinedValue>
   /**
    * Whether to enable schema adherence when generating the function call.
    */
@@ -1175,13 +1175,13 @@ export class AzureOpenAITaskSettings {
    * Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export enum AzureOpenAITaskType {
@@ -1306,6 +1306,15 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
+export enum CustomServiceInputType {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export type CustomServiceQueryParameter = string[]
+
 export class CustomServiceSettings {
   /**
    * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
@@ -1318,13 +1327,13 @@ export class CustomServiceSettings {
    * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Authorization": "Bearer ${api_key}",
    *   "Content-Type": "application/json;charset=utf-8"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
   /**
    * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
    * For example:
@@ -1345,7 +1354,7 @@ export class CustomServiceSettings {
    * * `ingest`
    * * `search`
    */
-  input_type?: UserDefinedValue
+  input_type?: Dictionary<string, CustomServiceInputType>
   /**
    * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
    * For example:
@@ -1358,7 +1367,7 @@ export class CustomServiceSettings {
    * ```
    * If the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.
    */
-  query_parameters?: UserDefinedValue
+  query_parameters?: Array<CustomServiceQueryParameter>
   /**
    * The request configuration object.
    */
@@ -1376,7 +1385,7 @@ export class CustomServiceSettings {
    * }
    * ```
    */
-  secret_parameters: UserDefinedValue
+  secret_parameters: Dictionary<string, string>
   /**
    * The URL endpoint to use for the requests.
    */
@@ -1549,7 +1558,7 @@ export class CustomResponseParams {
    *   }
    * }
    */
-  json_parser: UserDefinedValue
+  json_parser: Dictionary<string, string>
 }
 
 export enum CustomTaskType {
@@ -1562,6 +1571,8 @@ export enum CustomTaskType {
 export enum CustomServiceType {
   custom
 }
+
+export type CustomTaskParameter = string | integer | double | float | boolean
 
 export class CustomTaskSettings {
   /**
@@ -1576,7 +1587,7 @@ export class CustomTaskSettings {
    * }
    * ```
    */
-  parameters?: UserDefinedValue
+  parameters?: Dictionary<string, CustomTaskParameter>
 }
 
 export enum ContextualAIServiceType {
