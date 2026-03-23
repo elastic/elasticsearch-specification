@@ -1354,7 +1354,7 @@ export class CustomServiceSettings {
    * * `ingest`
    * * `search`
    */
-  input_type?: Dictionary<string, CustomServiceInputType>
+  input_type?: Dictionary<CustomServiceInputType, string>
   /**
    * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
    * For example:
