@@ -67751,10 +67751,7 @@
           },
           "parameters": {
             "description": "The parameters the functional accepts. This should be formatted as a JSON object.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
+            "type": "object"
           },
           "strict": {
             "description": "Whether to enable schema adherence when generating the function call.",

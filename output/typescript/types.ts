@@ -14499,7 +14499,7 @@ export interface InferenceCompletionToolChoiceFunction {
 export interface InferenceCompletionToolFunction {
   description?: string
   name: string
-  parameters?: Record<string, any>
+  parameters?: any
   strict?: boolean
 }
 

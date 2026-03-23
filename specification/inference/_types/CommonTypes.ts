@@ -503,7 +503,7 @@ export interface CompletionToolFunction {
   /**
    * The parameters the functional accepts. This should be formatted as a JSON object.
    */
-  parameters?: Dictionary<string, UserDefinedValue>
+  parameters?: UserDefinedValue
   /**
    * Whether to enable schema adherence when generating the function call.
    */
