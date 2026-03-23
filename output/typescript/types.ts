@@ -14658,7 +14658,7 @@ export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_
 
 export interface InferenceFireworksAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14996,7 +14996,7 @@ export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'

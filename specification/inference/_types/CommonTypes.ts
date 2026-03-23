@@ -20,6 +20,7 @@
 import { Id } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RequestChatCompletion {
@@ -2364,13 +2365,13 @@ export class FireworksAITaskSettings {
    * For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export class OpenAIServiceSettings {
@@ -2435,13 +2436,13 @@ export class OpenAITaskSettings {
    * Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export enum OpenAITaskType {
