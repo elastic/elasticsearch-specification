@@ -14543,7 +14543,7 @@ export type InferenceCustomServiceQueryParameter = string[]
 export interface InferenceCustomServiceSettings {
   batch_size?: integer
   headers?: Record<string, string>
-  input_type?: Record<string, InferenceCustomServiceInputType>
+  input_type?: Partial<Record<InferenceCustomServiceInputType, string>>
   query_parameters?: InferenceCustomServiceQueryParameter[]
   request: InferenceCustomRequestParams
   response: InferenceCustomResponseParams

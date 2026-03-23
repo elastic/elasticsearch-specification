@@ -69349,7 +69349,7 @@
             "description": "Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.\nFor example:\n```\n\"input_type\": {\n  \"translation\": {\n    \"ingest\": \"do_ingest\",\n    \"search\": \"do_search\"\n  },\n  \"default\": \"a_default\"\n},\n```\nIf the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.\nIf it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.\n`translation` can be:\n* `classification`\n* `clustering`\n* `ingest`\n* `search`",
             "type": "object",
             "additionalProperties": {
-              "$ref": "#/components/schemas/inference._types.CustomServiceInputType"
+              "type": "string"
             }
           },
           "query_parameters": {
@@ -69391,15 +69391,6 @@
           "request",
           "response",
           "secret_parameters"
-        ]
-      },
-      "inference._types.CustomServiceInputType": {
-        "type": "string",
-        "enum": [
-          "classification",
-          "clustering",
-          "ingest",
-          "search"
         ]
       },
       "inference._types.CustomServiceQueryParameter": {
