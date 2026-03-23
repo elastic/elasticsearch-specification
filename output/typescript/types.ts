@@ -11539,7 +11539,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     filter?: QueryDslQueryContainer
     time_zone?: string
     locale?: string
-    params?: FieldValue[]
+    params?: EsqlESQLParams
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
