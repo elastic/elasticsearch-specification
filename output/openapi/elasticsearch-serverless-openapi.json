@@ -72918,6 +72918,7 @@
         "type": "object",
         "properties": {
           "expiry_date": {
+            "description": "The date and time the license expires in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -72925,6 +72926,7 @@
             ]
           },
           "expiry_date_in_millis": {
+            "description": "The date and time the license expires in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -72932,6 +72934,7 @@
             ]
           },
           "issue_date": {
+            "description": "The date and time the license was issued in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -72939,6 +72942,7 @@
             ]
           },
           "issue_date_in_millis": {
+            "description": "The date and time the license was issued in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -72946,12 +72950,15 @@
             ]
           },
           "issued_to": {
+            "description": "The name of the customer or organization that received the license.",
             "type": "string"
           },
           "issuer": {
+            "description": "The name of the organization that issued the license.",
             "type": "string"
           },
           "max_nodes": {
+            "description": "The maximum number of nodes the license allows.",
             "oneOf": [
               {
                 "type": "number"
@@ -72963,6 +72970,7 @@
             ]
           },
           "max_resource_units": {
+            "description": "The maximum number of resource units the license allows (for enterprise licenses only).",
             "oneOf": [
               {
                 "type": "number"
@@ -72974,6 +72982,7 @@
             ]
           },
           "status": {
+            "description": "The status of the license. For example,active, valid, invalid, or expired.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseStatus"
@@ -72981,6 +72990,7 @@
             ]
           },
           "type": {
+            "description": "The type of the license. For example, trial, basic, gold, platinum, or enterprise.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseType"
@@ -72988,6 +72998,7 @@
             ]
           },
           "uid": {
+            "description": "The unique identifier of the license.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Uuid"
@@ -72995,6 +73006,7 @@
             ]
           },
           "start_date_in_millis": {
+            "description": "The date and time the license was started in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
