@@ -69017,8 +69017,15 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
+          },
+          "headers": {
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         }
       },
@@ -69329,16 +69336,25 @@
             "type": "number"
           },
           "headers": {
-            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
-            "type": "object"
+            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "input_type": {
             "description": "Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.\nFor example:\n```\n\"input_type\": {\n  \"translation\": {\n    \"ingest\": \"do_ingest\",\n    \"search\": \"do_search\"\n  },\n  \"default\": \"a_default\"\n},\n```\nIf the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.\nIf it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.\n`translation` can be:\n* `classification`\n* `clustering`\n* `ingest`\n* `search`",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "query_parameters": {
             "description": "Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.\nFor example:\n```\n\"query_parameters\":[\n  [\"param_key\", \"some_value\"],\n  [\"param_key\", \"another_value\"],\n  [\"other_key\", \"other_value\"]\n]\n```\nIf the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.",
-            "type": "object"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.CustomServiceQueryParameter"
+            }
           },
           "request": {
             "description": "The request configuration object.",
@@ -69358,7 +69374,10 @@
           },
           "secret_parameters": {
             "description": "Specifies secret parameters, like `api_key` or `api_token`, that are required to access the custom service.\nFor example:\n```\n\"secret_parameters\":{\n  \"api_key\":\"<api_key>\"\n}\n```",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "url": {
             "description": "The URL endpoint to use for the requests.",
@@ -69370,6 +69389,12 @@
           "response",
           "secret_parameters"
         ]
+      },
+      "inference._types.CustomServiceQueryParameter": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
       },
       "inference._types.CustomRequestParams": {
         "type": "object",
@@ -69388,7 +69413,10 @@
         "properties": {
           "json_parser": {
             "description": "Specifies the JSON parser that is used to parse the response from the custom service.\nDifferent task types require different json_parser parameters.\nFor example:\n```\n# text_embedding\n# For a response like this:\n\n{\n \"object\": \"list\",\n \"data\": [\n     {\n       \"object\": \"embedding\",\n       \"index\": 0,\n       \"embedding\": [\n           0.014539449,\n           -0.015288644\n       ]\n     }\n ],\n \"model\": \"text-embedding-ada-002-v2\",\n \"usage\": {\n     \"prompt_tokens\": 8,\n     \"total_tokens\": 8\n }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\"\n  }\n}\n\n# Elasticsearch supports the following embedding types:\n* float\n* byte\n* bit (or binary)\n\nTo specify the embedding type for the response, the `embedding_type`\nfield should be added in the `json_parser` object. Here's an example:\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\",\n    \"embedding_type\":\"bit\"\n  }\n}\n\nIf `embedding_type` is not specified, it defaults to `float`.\n\n# sparse_embedding\n# For a response like this:\n\n{\n  \"request_id\": \"75C50B5B-E79E-4930-****-F48DBB392231\",\n  \"latency\": 22,\n  \"usage\": {\n     \"token_count\": 11\n  },\n  \"result\": {\n     \"sparse_embeddings\": [\n        {\n          \"index\": 0,\n          \"embedding\": [\n            {\n              \"token_id\": 6,\n              \"weight\": 0.101\n            },\n            {\n              \"token_id\": 163040,\n              \"weight\": 0.28417\n            }\n          ]\n        }\n     ]\n  }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"token_path\":\"$.result.sparse_embeddings[*].embedding[*].token_id\",\n    \"weight_path\":\"$.result.sparse_embeddings[*].embedding[*].weight\"\n  }\n}\n\n# rerank\n# For a response like this:\n\n{\n  \"results\": [\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.999071,\n      \"document\": \"abc\"\n    },\n    {\n      \"index\": 4,\n      \"relevance_score\": 0.7867867,\n      \"document\": \"123\"\n    },\n    {\n      \"index\": 0,\n      \"relevance_score\": 0.32713068,\n      \"document\": \"super\"\n    }\n  ],\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"reranked_index\":\"$.result.scores[*].index\",    // optional\n    \"relevance_score\":\"$.result.scores[*].score\",\n    \"document_text\":\"xxx\"    // optional\n  }\n}\n\n# completion\n# For a response like this:\n\n{\n \"id\": \"chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT\",\n \"object\": \"chat.completion\",\n \"created\": 1741569952,\n \"model\": \"gpt-4.1-2025-04-14\",\n \"choices\": [\n   {\n    \"index\": 0,\n    \"message\": {\n      \"role\": \"assistant\",\n      \"content\": \"Hello! How can I assist you today?\",\n      \"refusal\": null,\n      \"annotations\": []\n    },\n    \"logprobs\": null,\n    \"finish_reason\": \"stop\"\n  }\n ]\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"completion_result\":\"$.choices[*].message.content\"\n  }\n}",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -69400,9 +69428,31 @@
         "properties": {
           "parameters": {
             "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference._types.CustomTaskParameter"
+            }
           }
         }
+      },
+      "inference._types.CustomTaskParameter": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
       },
       "inference._types.InferenceEndpointInfoCustom": {
         "allOf": [
@@ -69785,8 +69835,11 @@
             "type": "string"
           },
           "headers": {
-            "description": "For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
-            "type": "object"
+            "description": "For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         }
       },
@@ -70797,12 +70850,15 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion`, `chat_completion`, or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           },
           "headers": {
-            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
-            "type": "object"
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         }
       },

@@ -14436,6 +14436,7 @@ export type InferenceAzureOpenAIServiceType = 'azureopenai'
 
 export interface InferenceAzureOpenAITaskSettings {
   user?: string
+  headers?: Record<string, string>
 }
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
@@ -14532,24 +14533,30 @@ export interface InferenceCustomRequestParams {
 }
 
 export interface InferenceCustomResponseParams {
-  json_parser: any
+  json_parser: Record<string, string>
 }
+
+export type InferenceCustomServiceInputType = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export type InferenceCustomServiceQueryParameter = string[]
 
 export interface InferenceCustomServiceSettings {
   batch_size?: integer
-  headers?: any
-  input_type?: any
-  query_parameters?: any
+  headers?: Record<string, string>
+  input_type?: Partial<Record<InferenceCustomServiceInputType, string>>
+  query_parameters?: InferenceCustomServiceQueryParameter[]
   request: InferenceCustomRequestParams
   response: InferenceCustomResponseParams
-  secret_parameters: any
+  secret_parameters: Record<string, string>
   url?: string
 }
 
 export type InferenceCustomServiceType = 'custom'
 
+export type InferenceCustomTaskParameter = string | integer | double | float | boolean
+
 export interface InferenceCustomTaskSettings {
-  parameters?: any
+  parameters?: Record<string, InferenceCustomTaskParameter>
 }
 
 export type InferenceCustomTaskType = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
@@ -14657,7 +14664,7 @@ export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_
 
 export interface InferenceFireworksAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14995,7 +15002,7 @@ export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
