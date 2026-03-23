@@ -40459,7 +40459,7 @@
             "type": "number"
           },
           "result": {
-            "description": "The result of the operation.\nSuccessful values are `created`, `deleted`, and `updated`.",
+            "description": "The result of the operation.\nPossible values are `created`, `updated`, `deleted`, `noop`, and `not_found`.",
             "type": "string"
           },
           "_seq_no": {
