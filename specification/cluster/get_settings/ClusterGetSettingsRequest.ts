@@ -47,12 +47,13 @@ export interface Request extends RequestBase {
      */
     flat_settings?: boolean
     /**
-     * If `true`, also returns default values for all other cluster settings, reflecting the values
-     * in the `elasticsearch.yml` file of one of the nodes in the cluster. If the nodes in your
-     * cluster do not all have the same values in their `elasticsearch.yml` config files then the
-     * values returned by this API may vary from invocation to invocation and may not reflect the
-     * values that Elasticsearch uses in all situations. Use the `GET _nodes/settings` API to
-     * fetch the settings for each individual node in your cluster.
+     * If `true`, also returns the values of all other cluster settings set in the
+     * `elasticsearch.yml` file on one of the nodes in your cluster, together with the default
+     * values of all other cluster settings on that node. The default value of each setting may
+     * depend on the values of other settings on that node. If the nodes in your cluster do not all
+     * have the same configuration then the values returned by this API may vary from invocation to
+     * invocation and may not reflect the values that Elasticsearch uses in all situations. Use the
+     * `GET _nodes/settings` API to fetch the settings for each individual node in your cluster.
      * @server_default false
      */
     include_defaults?: boolean
