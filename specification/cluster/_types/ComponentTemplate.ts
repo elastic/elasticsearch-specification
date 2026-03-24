@@ -21,14 +21,18 @@ import { IndexName, Metadata, Name, VersionNumber } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AliasDefinition } from '@indices/_types/AliasDefinition'
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import {
+  DataStreamLifecycle,
+  DataStreamLifecycleWithRollover
+} from '@indices/_types/DataStreamLifecycle'
 import { DataStreamOptions } from '@indices/_types/DataStreamOptions'
 import { IndexSettings } from '@indices/_types/IndexSettings'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ComponentTemplate {
   name: Name
-  component_template: ComponentTemplateNode
+  component_template: ComponentTemplateNodeWithRollover
 }
 
 export class ComponentTemplateNode {
@@ -77,10 +81,22 @@ export class ComponentTemplateSummary {
    * @availability stack since=8.11.0 stability=stable
    * @availability serverless stability=stable
    */
-  lifecycle?: DataStreamLifecycleWithRollover
+  lifecycle?: DataStreamLifecycle
   /**
    * @availability stack since=8.19.0 stability=stable
    * @availability serverless stability=stable
    */
   data_stream_options?: DataStreamOptions
+}
+
+export class ComponentTemplateNodeWithRollover
+  implements OverloadOf<ComponentTemplateNode>
+{
+  template: ComponentTemplateSummaryRes
+}
+
+export class ComponentTemplateSummaryRes
+  implements OverloadOf<ComponentTemplateSummary>
+{
+  lifecycle?: DataStreamLifecycleWithRollover
 }

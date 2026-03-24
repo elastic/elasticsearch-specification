@@ -18,8 +18,9 @@
  */
 
 import { Id } from '@_types/common'
-import { float, integer, long } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RequestChatCompletion {
@@ -37,6 +38,41 @@ export class RequestChatCompletion {
    * The upper bound limit for the number of tokens that can be generated for a completion request.
    */
   max_completion_tokens?: long
+  /**
+   * The reasoning configuration for the completion request.
+   * This controls the model's reasoning process in one of two ways:
+   *
+   * * By specifying the model’s reasoning effort level with the `effort` field.
+   * * By enabling reasoning with default settings by setting `enabled` field to `true`.
+   *
+   * It also includes optional settings to control:
+   *
+   * * The level of detail in the summary returned in the response with the `summary` field.
+   * * Whether reasoning details are included in the response at all with the `exclude` field.
+   *
+   * Example (effort):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "effort": "high",
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Example (enabled):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "enabled": true,
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: Reasoning
   /**
    * A sequence of strings to control when the model should stop generating additional tokens.
    */
@@ -125,13 +161,103 @@ export type CompletionToolType = string | CompletionToolChoice
  */
 export interface ContentObject {
   /**
-   * The text content.
+   * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
+   * types other than "text"
+   */
+  type: ContentType
+  /**
+   * The text content. Only applicable for the `text` type
    */
   text: string
   /**
-   * The type of content.
+   * The image content. Only applicable for the `image_url` type
    */
-  type: string
+  image_url: ImageUrl
+  /**
+   * The file content. Only applicable for the `file` type
+   */
+  file: FileContent
+}
+
+export enum ContentType {
+  text,
+  image_url,
+  file
+}
+
+export interface ImageUrl {
+  /**
+   * The base64 encoded image data as a data URI
+   */
+  url: string
+  /**
+   * Specifies the detail level of the image
+   */
+  detail?: ImageUrlDetail
+}
+
+export enum ImageUrlDetail {
+  auto,
+  low,
+  high
+}
+
+export interface FileContent {
+  /**
+   * The base64 encoded file data
+   */
+  file_data: string
+  /**
+   * The name of the file
+   */
+  filename: string
+}
+
+/**
+ * The reasoning configuration to use for the completion request.
+ * Currently supported only for `elastic` provider.
+ */
+export interface Reasoning {
+  /**
+   * The level of effort the model should put into reasoning.
+   * This is a hint that guides the model in how much effort to put into reasoning,
+   * with `xhigh` being the most effort and `none` being no effort.
+   */
+  effort?: ReasoningEffort
+  /**
+   * Whether to enable reasoning with default settings.
+   * This is a shortcut for enabling reasoning without having to specify the other parameters.
+   * If `enabled` is set to `true`, then reasoning at the `medium` effort level is enabled.
+   * Ignored if `effort` is specified,
+   * in which case that parameter will control the reasoning process instead.
+   */
+  enabled?: boolean
+  /**
+   * Whether to exclude reasoning information from the response.
+   * If `true`, the response will not include any reasoning details.
+   */
+  exclude?: boolean
+  /**
+   * The level of detail included in the reasoning summary returned in the response.
+   * This is a hint on how much detail to include in the summary of the reasoning that is returned in the response,
+   * with `auto` being the default level of detail, `concise` being less detail, and `detailed` being more detail.
+   */
+  summary?: ReasoningSummary
+}
+
+export enum ReasoningEffort {
+  xhigh,
+  high,
+  medium,
+  low,
+  minimal,
+  none
+}
+
+export enum ReasoningSummary {
+  auto,
+  concise,
+  detailed
 }
 
 /**
@@ -185,13 +311,42 @@ export interface Message {
    * }
    * ```
    *
-   * Object example:
+   * Text example:
    * ```
    * {
    *   "content": [
    *       {
    *        "text": "Some text",
    *        "type": "text"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * Image example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "image_url": {
+   *          "url": "data:image/jpg;base64,..."
+   *        },
+   *        "type": "image_url"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * File example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "file": {
+   *          "file_data": "data:application/pdf;base64,...",
+   *          "filename": "somePDF"
+   *        },
+   *        "type": "file"
    *       }
    *    ]
    * }
@@ -225,6 +380,86 @@ export interface Message {
    * ```
    */
   tool_calls?: Array<ToolCall>
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as plaintext.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: string
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as structured data.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning_details?: Array<ReasoningDetail>
+}
+
+/**
+ * Type representing the different types of reasoning details that can be included in the response from the model.
+ * Currently supported only for `elastic` provider.
+ * @variants internal tag='type'
+ */
+export type ReasoningDetail =
+  | EncryptedReasoningDetail
+  | SummaryReasoningDetail
+  | TextReasoningDetail
+
+/**
+ * The base reasoning detail that includes common fields across different types of reasoning details.
+ */
+export interface BaseReasoningDetail {
+  /**
+   * The format of the reasoning detail.
+   */
+  format?: string
+  /**
+   * The identifier of the reasoning detail.
+   */
+  id?: string
+  /**
+   * The index of the reasoning detail,
+   * which indicates its position in the sequence of reasoning details generated by the model.
+   */
+  index?: integer
+}
+
+/**
+ * The reasoning detail with encrypted reasoning data that may be redacted or protected.
+ */
+export interface EncryptedReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.encrypted'
+  /**
+   * The encrypted reasoning data generated by the model,
+   * which may be redacted or protected based on the model's configuration and the nature of the reasoning information.
+   */
+  data: string
+}
+
+/**
+ * The reasoning summary detail includes a high-level summary of the model's reasoning process.
+ */
+export interface SummaryReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.summary'
+  /**
+   * The summary of the reasoning process generated by the model,
+   * which provides an overview of the key points and conclusions reached during the reasoning process.
+   */
+  summary: string
+}
+
+/**
+ * The reasoning text detail includes plaintext reasoning with optional signature verification.
+ */
+export interface TextReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.text'
+  /**
+   * The signature of the reasoning text,
+   * which can be used to verify the authenticity and integrity of the reasoning information provided by the model.
+   */
+  signature?: string
+  /**
+   * The plaintext reasoning generated by the model,
+   * which provides a detailed explanation of the model's reasoning process in human-readable form.
+   */
+  text?: string
 }
 
 /**
@@ -932,10 +1167,21 @@ export class AzureOpenAIServiceSettings {
 
 export class AzureOpenAITaskSettings {
   /**
-   * For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
 }
 
 export enum AzureOpenAITaskType {
@@ -1060,6 +1306,15 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
+export enum CustomServiceInputType {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export type CustomServiceQueryParameter = string[]
+
 export class CustomServiceSettings {
   /**
    * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
@@ -1072,13 +1327,13 @@ export class CustomServiceSettings {
    * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Authorization": "Bearer ${api_key}",
    *   "Content-Type": "application/json;charset=utf-8"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
   /**
    * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
    * For example:
@@ -1099,7 +1354,7 @@ export class CustomServiceSettings {
    * * `ingest`
    * * `search`
    */
-  input_type?: UserDefinedValue
+  input_type?: Dictionary<CustomServiceInputType, string>
   /**
    * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
    * For example:
@@ -1112,7 +1367,7 @@ export class CustomServiceSettings {
    * ```
    * If the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.
    */
-  query_parameters?: UserDefinedValue
+  query_parameters?: Array<CustomServiceQueryParameter>
   /**
    * The request configuration object.
    */
@@ -1130,7 +1385,7 @@ export class CustomServiceSettings {
    * }
    * ```
    */
-  secret_parameters: UserDefinedValue
+  secret_parameters: Dictionary<string, string>
   /**
    * The URL endpoint to use for the requests.
    */
@@ -1303,7 +1558,7 @@ export class CustomResponseParams {
    *   }
    * }
    */
-  json_parser: UserDefinedValue
+  json_parser: Dictionary<string, string>
 }
 
 export enum CustomTaskType {
@@ -1316,6 +1571,8 @@ export enum CustomTaskType {
 export enum CustomServiceType {
   custom
 }
+
+export type CustomTaskParameter = string | integer | double | float | boolean
 
 export class CustomTaskSettings {
   /**
@@ -1330,7 +1587,7 @@ export class CustomTaskSettings {
    * }
    * ```
    */
-  parameters?: UserDefinedValue
+  parameters?: Dictionary<string, CustomTaskParameter>
 }
 
 export enum ContextualAIServiceType {
@@ -2119,13 +2376,13 @@ export class FireworksAITaskSettings {
    * For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export class OpenAIServiceSettings {
@@ -2182,7 +2439,7 @@ export enum OpenAISimilarityType {
 
 export class OpenAITaskSettings {
   /**
-   * For a `completion`, `chat_completion`, or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
@@ -2190,13 +2447,13 @@ export class OpenAITaskSettings {
    * Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export enum OpenAITaskType {

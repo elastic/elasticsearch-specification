@@ -41,3 +41,12 @@ export class ReindexTask {
   type: string
   headers: HttpHeaders
 }
+
+/**
+ * @codegen_names flat, grouped
+ */
+export type ReindexTasks = ReindexTask[] | Dictionary<string, ParentReindexTask>
+
+export class ParentReindexTask extends ReindexTask {
+  children?: ReindexTask[]
+}

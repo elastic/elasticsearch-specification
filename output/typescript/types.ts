@@ -1095,11 +1095,16 @@ export interface ReindexSource {
   index: Indices
   query?: QueryDslQueryContainer
   remote?: ReindexRemoteSource
+  project_routing?: ProjectRouting
   size?: integer
   slice?: SlicedScroll
   sort?: Sort
   _source?: SearchSourceConfig
   runtime_mappings?: MappingRuntimeFields
+}
+
+export interface ReindexRethrottleParentReindexTask extends ReindexRethrottleReindexTask {
+  children?: ReindexRethrottleReindexTask[]
 }
 
 export interface ReindexRethrottleReindexNode extends SpecUtilsBaseNode {
@@ -1120,13 +1125,19 @@ export interface ReindexRethrottleReindexTask {
   headers: HttpHeaders
 }
 
+export type ReindexRethrottleReindexTasks = ReindexRethrottleReindexTask[] | Record<string, ReindexRethrottleParentReindexTask>
+
 export interface ReindexRethrottleRequest extends RequestBase {
   task_id: Id
   requests_per_second: float
+  group_by?: TasksGroupBy
 }
 
 export interface ReindexRethrottleResponse {
-  nodes: Record<string, ReindexRethrottleReindexNode>
+  node_failures?: ErrorCause[]
+  task_failures?: TaskFailure[]
+  nodes?: Record<string, ReindexRethrottleReindexNode>
+  tasks?: ReindexRethrottleReindexTasks
 }
 
 export interface RenderSearchTemplateRequest extends RequestBase {
@@ -1675,7 +1686,6 @@ export interface SearchPhraseSuggester extends SearchSuggesterBase {
   separator?: string
   shard_size?: integer
   smoothing?: SearchSmoothingModelContainer
-  text?: string
   token_limit?: integer
 }
 
@@ -1878,7 +1888,6 @@ export interface SearchTermSuggester extends SearchSuggesterBase {
   sort?: SearchSuggestSort
   string_distance?: SearchStringDistance
   suggest_mode?: SuggestMode
-  text?: string
 }
 
 export interface SearchTotalHits {
@@ -5830,21 +5839,21 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 }
 
 export interface MappingChunkRescorerChunkingSettings {
-  strategy?: string
-  separator_group?: string
-  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group?: string
+  separators?: string[]
+  strategy?: string
 }
 
 export interface MappingChunkingSettings {
   strategy: string
-  separator_group?: string
-  separators?: string[]
   max_chunk_size: integer
   overlap?: integer
   sentence_overlap?: integer
+  separator_group?: string
+  separators?: string[]
 }
 
 export interface MappingCompletionProperty extends MappingDocValuesPropertyBase {
@@ -9710,11 +9719,22 @@ export type CcrUnfollowResponse = AcknowledgedResponseBase
 
 export interface ClusterComponentTemplate {
   name: Name
-  component_template: ClusterComponentTemplateNode
+  component_template: ClusterComponentTemplateNodeWithRollover
 }
 
 export interface ClusterComponentTemplateNode {
   template: ClusterComponentTemplateSummary
+  version?: VersionNumber
+  _meta?: Metadata
+  deprecated?: boolean
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
+}
+
+export interface ClusterComponentTemplateNodeWithRollover {
+  template: ClusterComponentTemplateSummaryRes
   version?: VersionNumber
   _meta?: Metadata
   deprecated?: boolean
@@ -9730,7 +9750,17 @@ export interface ClusterComponentTemplateSummary {
   settings?: Record<IndexName, IndicesIndexSettings>
   mappings?: MappingTypeMapping
   aliases?: Record<string, IndicesAliasDefinition>
+  lifecycle?: IndicesDataStreamLifecycle
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface ClusterComponentTemplateSummaryRes {
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  _meta?: Metadata
+  version?: VersionNumber
+  settings?: Record<IndexName, IndicesIndexSettings>
+  mappings?: MappingTypeMapping
+  aliases?: Record<string, IndicesAliasDefinition>
   data_stream_options?: IndicesDataStreamOptions
 }
 
@@ -11509,7 +11539,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     filter?: QueryDslQueryContainer
     time_zone?: string
     locale?: string
-    params?: FieldValue[]
+    params?: EsqlESQLParams
     profile?: boolean
     query: string
     tables?: Record<string, Record<string, EsqlTableValuesContainer>>
@@ -12192,6 +12222,7 @@ export interface IndicesDataStreamLifecycle {
   downsampling?: IndicesDownsamplingRound[]
   downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
+  frozen_after?: Duration
 }
 
 export interface IndicesDataStreamLifecycleRolloverConditions {
@@ -12226,6 +12257,7 @@ export interface IndicesDataStreamTimestampField {
 export interface IndicesDataStreamVisibility {
   hidden?: boolean
   allow_custom_routing?: boolean
+  failure_store?: boolean
 }
 
 export interface IndicesDownsampleConfig {
@@ -12435,8 +12467,33 @@ export interface IndicesIndexTemplateSummary {
   aliases?: Record<IndexName, IndicesAlias>
   mappings?: MappingTypeMapping
   settings?: IndicesIndexSettings
-  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  lifecycle?: IndicesDataStreamLifecycle
   data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateSummaryWithRollover {
+  lifecycle?: IndicesDataStreamLifecycleWithRollover
+  aliases?: Record<IndexName, IndicesAlias>
+  mappings?: MappingTypeMapping
+  settings?: IndicesIndexSettings
+  data_stream_options?: IndicesDataStreamOptions
+}
+
+export interface IndicesIndexTemplateWithRollover {
+  template?: IndicesIndexTemplateSummaryWithRollover
+  index_patterns: Names
+  composed_of: Name[]
+  version?: VersionNumber
+  priority?: long
+  _meta?: Metadata
+  allow_auto_create?: boolean
+  data_stream?: IndicesIndexTemplateDataStreamConfiguration
+  deprecated?: boolean
+  ignore_missing_component_templates?: Names
+  created_date?: DateTime
+  created_date_millis?: EpochTime<UnitMillis>
+  modified_date?: DateTime
+  modified_date_millis?: EpochTime<UnitMillis>
 }
 
 export interface IndicesIndexVersioning {
@@ -13257,7 +13314,7 @@ export interface IndicesGetFieldMappingTypeFieldMappings {
 
 export interface IndicesGetIndexTemplateIndexTemplateItem {
   name: Name
-  index_template: IndicesIndexTemplate
+  index_template: IndicesIndexTemplateWithRollover
 }
 
 export interface IndicesGetIndexTemplateRequest extends RequestBase {
@@ -14379,9 +14436,16 @@ export type InferenceAzureOpenAIServiceType = 'azureopenai'
 
 export interface InferenceAzureOpenAITaskSettings {
   user?: string
+  headers?: Record<string, string>
 }
 
 export type InferenceAzureOpenAITaskType = 'completion' | 'chat_completion' | 'text_embedding'
+
+export interface InferenceBaseReasoningDetail {
+  format?: string
+  id?: string
+  index?: integer
+}
 
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
@@ -14442,9 +14506,13 @@ export interface InferenceCompletionToolFunction {
 export type InferenceCompletionToolType = string | InferenceCompletionToolChoice
 
 export interface InferenceContentObject {
+  type: InferenceContentType
   text: string
-  type: string
+  image_url: InferenceImageUrl
+  file: InferenceFileContent
 }
+
+export type InferenceContentType = 'text' | 'image_url' | 'file'
 
 export interface InferenceContextualAIServiceSettings {
   api_key: string
@@ -14465,24 +14533,30 @@ export interface InferenceCustomRequestParams {
 }
 
 export interface InferenceCustomResponseParams {
-  json_parser: any
+  json_parser: Record<string, string>
 }
+
+export type InferenceCustomServiceInputType = 'classification' | 'clustering' | 'ingest' | 'search'
+
+export type InferenceCustomServiceQueryParameter = string[]
 
 export interface InferenceCustomServiceSettings {
   batch_size?: integer
-  headers?: any
-  input_type?: any
-  query_parameters?: any
+  headers?: Record<string, string>
+  input_type?: Partial<Record<InferenceCustomServiceInputType, string>>
+  query_parameters?: InferenceCustomServiceQueryParameter[]
   request: InferenceCustomRequestParams
   response: InferenceCustomResponseParams
-  secret_parameters: any
+  secret_parameters: Record<string, string>
   url?: string
 }
 
 export type InferenceCustomServiceType = 'custom'
 
+export type InferenceCustomTaskParameter = string | integer | double | float | boolean
+
 export interface InferenceCustomTaskSettings {
-  parameters?: any
+  parameters?: Record<string, InferenceCustomTaskParameter>
 }
 
 export type InferenceCustomTaskType = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
@@ -14565,6 +14639,16 @@ export type InferenceEmbeddingInput = InferenceEmbeddingStringInput | InferenceE
 
 export type InferenceEmbeddingStringInput = string | string[]
 
+export interface InferenceEncryptedReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.encrypted'
+  data: string
+}
+
+export interface InferenceFileContent {
+  file_data: string
+  filename: string
+}
+
 export interface InferenceFireworksAIServiceSettings {
   api_key: string
   model_id: string
@@ -14580,7 +14664,7 @@ export type InferenceFireworksAISimilarityType = 'cosine' | 'dot_product' | 'l2_
 
 export interface InferenceFireworksAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceFireworksAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14646,6 +14730,13 @@ export interface InferenceHuggingFaceTaskSettings {
 }
 
 export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
+
+export interface InferenceImageUrl {
+  url: string
+  detail?: InferenceImageUrlDetail
+}
+
+export type InferenceImageUrlDetail = 'auto' | 'low' | 'high'
 
 export interface InferenceInferenceChunkingSettings {
   max_chunk_size?: integer
@@ -14856,6 +14947,8 @@ export interface InferenceMessage {
   role: string
   tool_call_id?: Id
   tool_calls?: InferenceToolCall[]
+  reasoning?: string
+  reasoning_details?: InferenceReasoningDetail[]
 }
 
 export type InferenceMessageContent = string | InferenceContentObject[]
@@ -14909,7 +15002,7 @@ export type InferenceOpenAISimilarityType = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceOpenAITaskSettings {
   user?: string
-  headers?: any
+  headers?: Record<string, string>
 }
 
 export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
@@ -14944,10 +15037,24 @@ export interface InferenceRateLimitSetting {
   requests_per_minute?: integer
 }
 
+export interface InferenceReasoning {
+  effort?: InferenceReasoningEffort
+  enabled?: boolean
+  exclude?: boolean
+  summary?: InferenceReasoningSummary
+}
+
+export type InferenceReasoningDetail = InferenceEncryptedReasoningDetail | InferenceSummaryReasoningDetail | InferenceTextReasoningDetail
+
+export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'minimal' | 'none'
+
+export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
+
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
   max_completion_tokens?: long
+  reasoning?: InferenceReasoning
   stop?: string[]
   temperature?: float
   tool_choice?: InferenceCompletionToolType
@@ -14977,6 +15084,11 @@ export interface InferenceSparseEmbeddingResult {
 }
 
 export type InferenceSparseVector = Record<string, float>
+
+export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.summary'
+  summary: string
+}
 
 export type InferenceTaskSettings = any
 
@@ -15038,6 +15150,12 @@ export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
   text_embedding_bits?: InferenceDenseEmbeddingByteResult[]
   text_embedding?: InferenceDenseEmbeddingResult[]
+}
+
+export interface InferenceTextReasoningDetail extends InferenceBaseReasoningDetail {
+  type: 'reasoning.text'
+  signature?: string
+  text?: string
 }
 
 export interface InferenceThinkingConfig {
@@ -16491,13 +16609,13 @@ export interface MlAnalysisConfig {
 
 export interface MlAnalysisConfigRead {
   bucket_span: Duration
+  detectors: MlDetectorRead[]
+  influencers: Field[]
   categorization_analyzer?: MlCategorizationAnalyzer
   categorization_field_name?: Field
   categorization_filters?: string[]
-  detectors: MlDetectorRead[]
-  influencers: Field[]
-  model_prune_window?: Duration
   latency?: Duration
+  model_prune_window?: Duration
   multivariate_by_fields?: boolean
   per_partition_categorization?: MlPerPartitionCategorization
   summary_count_field_name?: Field
@@ -17050,13 +17168,13 @@ export interface MlDetector {
 }
 
 export interface MlDetectorRead {
+  function: string
   by_field_name?: Field
   custom_rules?: MlDetectionRule[]
   detector_description?: string
   detector_index?: integer
   exclude_frequent?: MlExcludeFrequent
   field_name?: Field
-  function: string
   over_field_name?: Field
   partition_field_name?: Field
   use_null?: boolean
@@ -20216,7 +20334,7 @@ export interface ProjectTagsProjectTags {
 
 export interface ProjectTagsRequest extends RequestBase {
   body?: {
-    project_routing?: string
+    project_routing?: ProjectRouting
   }
 }
 
@@ -20250,7 +20368,7 @@ export interface QueryRulesQueryRuleCriteria {
   values?: any[]
 }
 
-export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'exact_fuzzy' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
+export type QueryRulesQueryRuleCriteriaType = 'global' | 'exact' | 'fuzzy' | 'prefix' | 'suffix' | 'contains' | 'lt' | 'lte' | 'gt' | 'gte' | 'always'
 
 export type QueryRulesQueryRuleType = 'pinned' | 'exclude'
 
@@ -20655,7 +20773,6 @@ export interface SearchableSnapshotsCacheStatsNode {
 
 export interface SearchableSnapshotsCacheStatsRequest extends RequestBase {
   node_id?: NodeIds
-  master_timeout?: Duration
 }
 
 export interface SearchableSnapshotsCacheStatsResponse {
@@ -20783,9 +20900,17 @@ export interface SecurityGlobalPrivilege {
 
 export type SecurityGrantType = 'password' | 'access_token'
 
-export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'cross_cluster_replication' | 'cross_cluster_replication_internal' | 'delete' | 'delete_index' | 'index' | 'maintenance' | 'manage' | 'manage_data_stream_lifecycle' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'monitor' | 'none' | 'read' | 'read_cross_cluster' | 'view_index_metadata' | 'write'| string
+export type SecurityIndexPrivilege = 'all' | 'auto_configure' | 'create' | 'create_doc' | 'create_index' | 'create_view' | 'cross_cluster_replication' | 'cross_cluster_replication_internal' | 'delete' | 'delete_index' | 'delete_view' | 'index' | 'maintenance' | 'manage' | 'manage_data_stream_lifecycle' | 'manage_follow_index' | 'manage_ilm' | 'manage_leader_index' | 'manage_view' | 'monitor' | 'none' | 'read' | 'read_cross_cluster' | 'read_view_metadata' | 'view_index_metadata' | 'write'| string
 
 export interface SecurityIndicesPrivileges {
+  field_security?: SecurityFieldSecurity
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
+}
+
+export interface SecurityIndicesPrivilegesBase {
   field_security?: SecurityFieldSecurity
   names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
@@ -20825,12 +20950,12 @@ export interface SecurityRemoteIndicesPrivileges {
 }
 
 export interface SecurityRemoteUserIndicesPrivileges {
+  clusters: string[]
   field_security?: SecurityFieldSecurity[]
   names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
   query?: SecurityIndicesPrivilegesQuery[]
   allow_restricted_indices: boolean
-  clusters: string[]
 }
 
 export interface SecurityReplicationAccess {
@@ -20936,6 +21061,14 @@ export interface SecurityUser {
 }
 
 export interface SecurityUserIndicesPrivileges {
+  field_security?: SecurityFieldSecurity[]
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery[]
+  allow_restricted_indices: boolean
+}
+
+export interface SecurityUserIndicesPrivilegesBase {
   field_security?: SecurityFieldSecurity[]
   names: IndexName | IndexName[]
   privileges: SecurityIndexPrivilege[]
@@ -23298,6 +23431,7 @@ export interface TransformSource {
   index: Indices
   query?: QueryDslQueryContainer
   runtime_mappings?: MappingRuntimeFields
+  project_routing?: ProjectRouting
 }
 
 export interface TransformSyncContainer {

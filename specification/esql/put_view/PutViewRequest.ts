@@ -24,7 +24,7 @@ import { Id, MediaType } from '@_types/common'
  * Create or update an ES|QL view.
  *
  * @rest_spec_name esql.put_view
- * @cluster_privileges monitor_esql
+ * @index_privileges create_view
  * @availability stack since=9.3.0 stability=experimental visibility=feature_flag feature_flag=esql_views
  * @availability serverless stability=experimental visibility=feature_flag feature_flag=esql_views
  * @doc_id esql-put-view
