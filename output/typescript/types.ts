@@ -14426,10 +14426,14 @@ export type InferenceAzureAiStudioTaskType = 'completion' | 'rerank' | 'text_emb
 export interface InferenceAzureOpenAIServiceSettings {
   api_key?: string
   api_version: string
+  client_id?: string
+  client_secret?: string
   deployment_id: string
   entra_id?: string
   rate_limit?: InferenceRateLimitSetting
   resource_name: string
+  scopes?: string[]
+  tenant_id?: string
 }
 
 export type InferenceAzureOpenAIServiceType = 'azureopenai'

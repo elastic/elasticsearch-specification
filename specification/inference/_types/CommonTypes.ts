@@ -1137,7 +1137,7 @@ export class AzureOpenAIServiceSettings {
   /**
    * For OAuth 2.0 authentication using the client credentials grant flow.
    * The application ID that's assigned to your app.
-   * 
+   *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
@@ -1146,10 +1146,10 @@ export class AzureOpenAIServiceSettings {
   /**
    * For OAuth 2.0 authentication using the client credentials grant flow.
    * The application secret that you created in the Microsoft app registration portal for your app.
-   * 
+   *
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
    * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
-   * 
+   *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
@@ -1163,7 +1163,7 @@ export class AzureOpenAIServiceSettings {
   deployment_id: string
   /**
    * A valid Microsoft Entra token.
-   * 
+   *
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
    * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-auth
@@ -1192,7 +1192,7 @@ export class AzureOpenAIServiceSettings {
    *   "https://cognitiveservices.azure.com/.default"
    * ]
    * ```
-   * 
+   *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2-scopes
@@ -1201,7 +1201,7 @@ export class AzureOpenAIServiceSettings {
   /**
    * For OAuth 2.0 authentication using the client credentials grant flow.
    * The directory tenant the application plans to operate against.
-   * 
+   *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
