@@ -23291,7 +23291,6 @@ export interface TransformSettings {
   docs_per_second?: float
   max_page_search_size?: integer
   use_point_in_time?: boolean
-  num_failure_retries?: integer
   unattended?: boolean
 }
 
