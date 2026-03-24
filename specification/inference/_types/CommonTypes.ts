@@ -1125,7 +1125,7 @@ export class AzureOpenAIServiceSettings {
    * A valid API key for your Azure OpenAI account.
    *
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
-   * If you do not provide one or you provide all of them, you will receive an error when you try to create your model.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your model.
    * @ext_doc_id azureopenai-auth
    */
   api_key?: string
@@ -1139,7 +1139,7 @@ export class AzureOpenAIServiceSettings {
    * The application ID that's assigned to your app.
    * 
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
-   * If one of the fields is missing, you will receive an error when you try to create your model.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
    */
   client_id?: string
@@ -1148,10 +1148,10 @@ export class AzureOpenAIServiceSettings {
    * The application secret that you created in the Microsoft app registration portal for your app.
    * 
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
-   * If you do not provide one or you provide all of them, you will receive an error when you try to create your model.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * 
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
-   * If one of the fields is missing, you will receive an error when you try to create your model.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
    */
   client_secret?: string
@@ -1165,7 +1165,7 @@ export class AzureOpenAIServiceSettings {
    * A valid Microsoft Entra token.
    * 
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
-   * If you do not provide one or you provide all of them, you will receive an error when you try to create your model.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-auth
    */
   entra_id?: string
@@ -1194,7 +1194,7 @@ export class AzureOpenAIServiceSettings {
    * ```
    * 
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
-   * If one of the fields is missing, you will receive an error when you try to create your model.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2-scopes
    */
   scopes?: Array<string>
@@ -1203,7 +1203,7 @@ export class AzureOpenAIServiceSettings {
    * The directory tenant the application plans to operate against.
    * 
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
-   * If one of the fields is missing, you will receive an error when you try to create your model.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-oauth2
    */
   tenant_id?: string
