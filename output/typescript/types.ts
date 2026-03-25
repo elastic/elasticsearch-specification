@@ -13710,6 +13710,8 @@ export interface IndicesRecoveryRecoveryOrigin {
   index?: IndexName
 }
 
+export type IndicesRecoveryRecoveryStage = 'INIT' | 'INDEX' | 'VERIFY_INDEX' | 'TRANSLOG' | 'FINALIZE' | 'DONE'
+
 export interface IndicesRecoveryRecoveryStartStatus {
   check_index_time?: Duration
   check_index_time_in_millis: DurationValue<UnitMillis>
@@ -13720,6 +13722,8 @@ export interface IndicesRecoveryRecoveryStartStatus {
 export interface IndicesRecoveryRecoveryStatus {
   shards: IndicesRecoveryShardRecovery[]
 }
+
+export type IndicesRecoveryRecoveryType = 'EMPTY_STORE' | 'EXISTING_STORE' | 'LOCAL_SHARDS' | 'PEER' | 'SNAPSHOT'
 
 export interface IndicesRecoveryRequest extends RequestBase {
   index?: Indices
@@ -13737,7 +13741,7 @@ export interface IndicesRecoveryShardRecovery {
   index: IndicesRecoveryRecoveryIndexStatus
   primary: boolean
   source: IndicesRecoveryRecoveryOrigin
-  stage: string
+  stage: IndicesRecoveryRecoveryStage
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
@@ -13747,7 +13751,7 @@ export interface IndicesRecoveryShardRecovery {
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
   translog: IndicesRecoveryTranslogStatus
-  type: string
+  type: IndicesRecoveryRecoveryType
   verify_index: IndicesRecoveryVerifyIndex
 }
 

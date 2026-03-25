@@ -121,14 +121,23 @@ export interface Request extends RequestBase {
 }
 
 export enum ClusterStateMetric {
+  /** Shows all metrics. */
   _all,
+  /** Shows the cluster state version. */
   version,
+  /** Shows the elected `master_node` part of the response. */
   master_node,
+  /** Shows the `blocks` part of the response. */
   blocks,
+  /** Shows the `nodes` part of the response. */
   nodes,
+  /** Shows the `metadata` part of the response. If you supply a comma-separated list of indices, the returned output will only contain metadata for these indices. */
   metadata,
+  /** Shows the `routing_table` part of the response. If you supply a comma-separated list of indices, the returned output will only contain the routing table for these indices. */
   routing_table,
+  /** Shows the `routing_nodes` part of the response. */
   routing_nodes,
+  /** Shows the `customs` part of the response, which includes custom cluster state information. */
   customs
 }
 
