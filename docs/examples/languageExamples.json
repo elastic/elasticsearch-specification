@@ -19236,5 +19236,27 @@
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"effort\":\"high\",\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion/_stream\""
     }
+  ],
+  "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"azure_openai_embeddings\",\n    inference_config={\n        \"service\": \"azureopenai\",\n        \"service_settings\": {\n            \"api_version\": \"2023-05-15\",\n            \"client_id\": \"12345\",\n            \"client_secret\": \"secret\",\n            \"deployment_id\": \"Deployment-id\",\n            \"resource_name\": \"Resource-name\",\n            \"scopes\": [\n                \"Scope-1\",\n                \"Scope-2\"\n            ],\n            \"tenant_id\": \"tenant id\"\n        },\n        \"task_settings\": {\n            \"headers\": {\n                \"Custom-Header-Key\": \"Custom header value\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"azure_openai_embeddings\",\n  inference_config: {\n    service: \"azureopenai\",\n    service_settings: {\n      api_version: \"2023-05-15\",\n      client_id: \"12345\",\n      client_secret: \"secret\",\n      deployment_id: \"Deployment-id\",\n      resource_name: \"Resource-name\",\n      scopes: [\"Scope-1\", \"Scope-2\"],\n      tenant_id: \"tenant id\",\n    },\n    task_settings: {\n      headers: {\n        \"Custom-Header-Key\": \"Custom header value\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"azure_openai_embeddings\",\n  body: {\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n      \"api_version\": \"2023-05-15\",\n      \"client_id\": \"12345\",\n      \"client_secret\": \"secret\",\n      \"deployment_id\": \"Deployment-id\",\n      \"resource_name\": \"Resource-name\",\n      \"scopes\": [\n        \"Scope-1\",\n        \"Scope-2\"\n      ],\n      \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n      \"headers\": {\n        \"Custom-Header-Key\": \"Custom header value\"\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"azure_openai_embeddings\",\n    \"body\" => [\n        \"service\" => \"azureopenai\",\n        \"service_settings\" => [\n            \"api_version\" => \"2023-05-15\",\n            \"client_id\" => \"12345\",\n            \"client_secret\" => \"secret\",\n            \"deployment_id\" => \"Deployment-id\",\n            \"resource_name\" => \"Resource-name\",\n            \"scopes\" => array(\n                \"Scope-1\",\n                \"Scope-2\",\n            ),\n            \"tenant_id\" => \"tenant id\",\n        ],\n        \"task_settings\" => [\n            \"headers\" => [\n                \"Custom-Header-Key\" => \"Custom header value\",\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_version\":\"2023-05-15\",\"client_id\":\"12345\",\"client_secret\":\"secret\",\"deployment_id\":\"Deployment-id\",\"resource_name\":\"Resource-name\",\"scopes\":[\"Scope-1\",\"Scope-2\"],\"tenant_id\":\"tenant id\"},\"task_settings\":{\"headers\":{\"Custom-Header-Key\":\"Custom header value\"}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_openai_embeddings\""
+    }
   ]
 }

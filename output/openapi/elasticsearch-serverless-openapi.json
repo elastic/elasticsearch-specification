@@ -13094,7 +13094,7 @@
                 "PutAzureOpenAiRequestExample4": {
                   "summary": "A text embedding task with OAuth 2.0 authentication and custom headers",
                   "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
-                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345,\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345\",\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
                 }
               }
             }
@@ -68972,7 +68972,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid API key for your Azure OpenAI account.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your model.",
+            "description": "A valid API key for your Azure OpenAI account.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "api_version": {
