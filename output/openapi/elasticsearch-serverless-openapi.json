@@ -13090,6 +13090,11 @@
                   "summary": "A chat completion task",
                   "description": "Run `PUT _inference/chat_completion/azure_openai_chat_completion` to create an inference endpoint that performs a `chat_completion` task.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                },
+                "PutAzureOpenAiRequestExample4": {
+                  "summary": "A text embedding task with OAuth 2.0 authentication and custom headers",
+                  "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345\",\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
                 }
               }
             }
@@ -68967,11 +68972,25 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "description": "A valid API key for your Azure OpenAI account.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "api_version": {
             "description": "The Azure API version ID to use.\nIt is recommended to use the latest supported non-preview version.",
+            "type": "string"
+          },
+          "client_id": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_secret": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "deployment_id": {
@@ -68985,7 +69004,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid Microsoft Entra token.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.",
+            "description": "A valid Microsoft Entra token.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "rate_limit": {
@@ -69004,6 +69023,23 @@
               "url": "https://portal.azure.com/#view/HubsExtension/BrowseAll"
             },
             "description": "The name of your Azure OpenAI resource.\nYou can find this from the list of resources in the Azure Portal for your subscription.",
+            "type": "string"
+          },
+          "scopes": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/entra/identity-platform/scopes-oidc"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tenant_id": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           }
         },
