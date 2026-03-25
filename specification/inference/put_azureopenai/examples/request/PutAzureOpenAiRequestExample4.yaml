@@ -8,7 +8,7 @@ value: |-
       "service": "azureopenai",
       "service_settings": {
           "api_version": "2023-05-15",
-          "client_id": "12345,
+          "client_id": "12345",
           "client_secret": "secret",
           "deployment_id": "Deployment-id",
           "resource_name": "Resource-name",

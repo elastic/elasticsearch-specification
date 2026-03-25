@@ -1125,7 +1125,7 @@ export class AzureOpenAIServiceSettings {
    * A valid API key for your Azure OpenAI account.
    *
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
-   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your model.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-auth
    */
   api_key?: string
