@@ -1,0 +1,17 @@
+summary: Check ingest application privileges for a Managed Inputs pipeline
+method_request: GET /_security/user/_has_privileges
+description: >
+  Run `GET /_security/user/_has_privileges` to check whether the current user has write access to a specific
+  Managed Inputs pipeline. The Elastic Cloud Managed OTLP (mOTLP) endpoint performs this check to authorize
+  client API keys before accepting telemetry data.
+# type: request
+value: |-
+  {
+    "application": [
+      {
+        "application": "ingest",
+        "privileges": ["write"],
+        "resources": ["pipeline:.fleet_agent_policy_1"]
+      }
+    ]
+  }

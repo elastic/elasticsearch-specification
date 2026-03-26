@@ -1,0 +1,24 @@
+summary: Create an ingest API key for a Managed Inputs pipeline
+method_request: POST /_security/api_key
+description: >
+  Run `POST /_security/api_key` to create an API key for ingesting data into a specific Managed Inputs pipeline.
+  The `ingest` application privilege controls access to the Elastic Cloud Managed OTLP (mOTLP) endpoint.
+  The `pipeline:` resource prefix scopes the key to a named pipeline.
+  To allow access to all pipelines, use `"resources": ["*"]` or omit the `role_descriptors` field entirely.
+# type: request
+value: |-
+  {
+    "name": "fleet_agent_policy_123-api-key",
+    "expiration": "1d",
+    "role_descriptors": {
+      "motlp_pipeline_write_role": {
+        "applications": [
+          {
+            "application": "ingest",
+            "privileges": ["write"],
+            "resources": ["pipeline:.fleet_agent_policy_1"]
+          }
+        ]
+      }
+    }
+  }
