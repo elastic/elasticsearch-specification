@@ -626,20 +626,28 @@ export class EmbeddingContentObjectContents {
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this defaults to `text`. For the `image` type, this defaults to `base64`.
+   * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
+   * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
    */
   format?: EmbeddingContentFormat
   /**
-   * The value of the input to embed.
+   * The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. "data:content/type;base64,..."
    */
   value: string
 }
 
+/**
+ * The type of input to embed.
+ */
 export enum EmbeddingContentType {
   text,
   image
 }
 
+/**
+ * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
+ * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+ */
 export enum EmbeddingContentFormat {
   text,
   base64
