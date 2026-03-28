@@ -1114,7 +1114,7 @@
           "cat"
         ],
         "summary": "Get index information",
-        "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
+        "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices",
         "parameters": [
           {
@@ -1159,7 +1159,7 @@
           "cat"
         ],
         "summary": "Get index information",
-        "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
+        "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices-1",
         "parameters": [
           {
@@ -5097,7 +5097,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -5177,7 +5177,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7409,7 +7409,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7429,7 +7429,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7535,7 +7535,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7555,7 +7555,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7832,7 +7832,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only\nmissing or closed indices. This behavior applies even if the request targets other open indices. For example,\na request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -7862,7 +7862,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If false, requests that target a missing index return an error.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -8097,7 +8097,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -8117,7 +8117,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -8187,7 +8187,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -8217,7 +8217,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -11730,6 +11730,16 @@
                   "summary": "A chat completion task with tools and tool_calls",
                   "description": "Run `POST _inference/chat_completion/openai-completion/_stream` to perform a chat completion  using a User message with `tools` and `tool_choice`.",
                   "value": "{\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": [\n              {\n                  \"type\": \"text\",\n                  \"text\": \"What's the price of a scarf?\"\n              }\n          ]\n      }\n  ],\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_price\",\n              \"description\": \"Get the current price of a item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"123\"\n                      }\n                  }\n              }\n          }\n      }\n  ],\n  \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n          \"name\": \"get_current_price\"\n      }\n  }\n}"
+                },
+                "PostChatCompletionRequestExample4": {
+                  "summary": "A chat completion task with `effort` parameter defined reasoning",
+                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion/_stream` to perform a chat completion task, using both `effort` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
+                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"effort\": \"high\",\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
+                },
+                "PostChatCompletionRequestExample5": {
+                  "summary": "A chat completion task with `enabled` parameter defined reasoning",
+                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion/_stream` to perform a chat completion task, using both `enabled` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
+                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"enabled\": true,\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
                 }
               }
             }
@@ -11748,6 +11758,10 @@
                   "PostChatCompletionResponseExample1": {
                     "description": "A successful response when performing a chat completion task using a User message with `tools` and `tool_choice`.",
                     "value": "event: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":\"\",\"role\":\"assistant\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":Elastic\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[{\"delta\":{\"content\":\" is\"},\"index\":0}],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\"}}\n\n(...)\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\"choices\":[],\"model\":\"gpt-4o-2024-08-06\",\"object\":\"chat.completion.chunk\",\"usage\":{\"completion_tokens\":28,\"prompt_tokens\":16,\"total_tokens\":44}}} \n\nevent: message\ndata: [DONE]"
+                  },
+                  "PostChatCompletionResponseExample2": {
+                    "description": "A successful response when performing a chat completion task with response-level reasoning data.",
+                    "value": "event: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10\",\"choices\":[{\"delta\":{\"content\":\"With two barbers, the paradox disappears.\",\"role\":\"assistant\"},\"index\":0,\"reasoning\":\"The contradiction only occurs when a barber must determine whether to shave himself.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Two barbers can shave each other.\"},{\"type\":\"reasoning.text\",\"text\":\"The contradiction only occurs when a barber must determine whether to shave himself.\",\"signature\":\"sig_example\"}]}],\"model\":\"openai-gpt-oss-120b\",\"object\":\"chat.completion.chunk\"}}\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10\",\"choices\":[{\"delta\":{\"summary\":\"Each barber can shave the other, so neither needs to shave himself.\",\"role\":\"assistant\"},\"index\":0,\"reasoning\":\"With two barbers, they can shave each other.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"avoiding the self-reference paradox\"},{\"type\":\"reasoning.text\",\"format\":\"some_text_reasoning_detail_format\",\"text\":\"With two barbers, they can shave each other.\",\"signature\":\"sig_example\"}]}],\"model\":\"openai-gpt-oss-120b\",\"object\":\"chat.completion.chunk\"}}\n\n(...)\n\nevent: message\ndata: {\"chat_completion\":{\"id\":\"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10\",\"choices\":[],\"model\":\"openai-gpt-oss-120b\",\"object\":\"chat.completion.chunk\",\"usage\":{\"completion_tokens\":28,\"prompt_tokens\":16,\"total_tokens\":44,\"completion_tokens_details\":{\"reasoning_tokens\":10}}}}\n\nevent: message\ndata: [DONE]"
                   }
                 }
               }
@@ -11897,7 +11911,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -12020,7 +12034,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -13109,6 +13123,11 @@
                   "summary": "A chat completion task",
                   "description": "Run `PUT _inference/chat_completion/azure_openai_chat_completion` to create an inference endpoint that performs a `chat_completion` task.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
+                },
+                "PutAzureOpenAiRequestExample4": {
+                  "summary": "A text embedding task with OAuth 2.0 authentication and custom headers",
+                  "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
+                  "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345\",\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
                 }
               }
             }
@@ -13888,6 +13907,154 @@
           }
         },
         "deprecated": true,
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{fireworksai_inference_id}": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create a Fireworks AI inference endpoint",
+        "description": "Create an inference endpoint to perform an inference task with the `fireworksai` service.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-fireworksai",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_type",
+            "description": "The type of the inference task that the model will perform.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.FireworksAITaskType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "fireworksai_inference_id",
+            "description": "The unique identifier of the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "chunking_settings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#infer-chunking-config"
+                    },
+                    "description": "The chunking configuration object.\nApplies only to the `text_embedding` task type.\nNot applicable to the `completion` or `chat_completion` task types.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.InferenceChunkingSettings"
+                      }
+                    ]
+                  },
+                  "service": {
+                    "description": "The type of service supported for the specified task type. In this case, `fireworksai`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAIServiceType"
+                      }
+                    ]
+                  },
+                  "service_settings": {
+                    "description": "Settings used to install the inference model. These settings are specific to the `fireworksai` service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAIServiceSettings"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Settings to configure the inference task.\nApplies only to the `completion` or `chat_completion` task types.\nNot applicable to the `text_embedding` task type.\nThese settings are specific to the task type you specified.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.FireworksAITaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "service",
+                  "service_settings"
+                ]
+              },
+              "examples": {
+                "PutFireworksAiRequestExample1": {
+                  "summary": "Create an endpoint for text embedding tasks",
+                  "description": "Run `PUT _inference/text_embedding/my-fireworks-embeddings` to create an inference endpoint that performs a `text_embedding` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\"\n    }\n}"
+                },
+                "PutFireworksAiRequestExample2": {
+                  "summary": "Create an endpoint for text embedding tasks with optional settings",
+                  "description": "Create a Fireworks AI text embedding endpoint with custom dimensions, similarity, and rate limit.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"dimensions\": 1024,\n        \"similarity\": \"cosine\",\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    }\n}"
+                },
+                "PutFireworksAiRequestExample3": {
+                  "summary": "Create an endpoint for chat completion tasks",
+                  "description": "Run `PUT _inference/chat_completion/my-fireworks-chat` to create an inference endpoint that performs a `chat_completion` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
+                },
+                "PutFireworksAiRequestExample4": {
+                  "summary": "Create an endpoint for completion tasks",
+                  "description": "Run `PUT _inference/completion/my-fireworks-completion` to create an inference endpoint that performs a `completion` task.",
+                  "value": "{\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"api_key\": \"your-api-key\",\n        \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.InferenceEndpointInfoFireworksAI"
+                },
+                "examples": {
+                  "PutFireworksAiResponseExample1": {
+                    "summary": "Response for created text embedding endpoint",
+                    "description": "A successful response when creating a Fireworks AI `text_embedding` inference endpoint.",
+                    "value": "{\n    \"inference_id\": \"my-fireworks-embeddings\",\n    \"task_type\": \"text_embedding\",\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n        \"model_id\": \"fireworks/qwen3-embedding-8b\",\n        \"url\": \"https://api.fireworks.ai/inference/v1/embeddings\",\n        \"similarity\": \"cosine\",\n        \"dimensions\": 4096,\n        \"rate_limit\": {\n            \"requests_per_minute\": 6000\n        }\n    },\n    \"chunking_settings\": {\n        \"strategy\": \"sentence\",\n        \"max_chunk_size\": 250,\n        \"sentence_overlap\": 1\n    }\n}"
+                  },
+                  "PutFireworksAiResponseExample2": {
+                    "summary": "Response for created completion endpoint",
+                    "description": "A successful response when creating a Fireworks AI `chat_completion` inference endpoint.",
+                    "value": "{\n  \"inference_id\": \"my-fireworks-chat\",\n  \"task_type\": \"chat_completion\",\n  \"service\": \"fireworksai\",\n  \"service_settings\": {\n    \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\",\n    \"rate_limit\": {\n      \"requests_per_minute\": 6000\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
         "x-state": "Generally available",
         "x-metaTags": [
           {
@@ -17834,7 +18001,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If true, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the `_all`\nstring or when no indices are specified.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -17864,7 +18031,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If true, unavailable indices (missing or closed) are ignored.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -18401,7 +18568,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -18431,7 +18598,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `true`, unavailable indices (missing or closed) are ignored.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -21908,7 +22075,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the\n`_all` string or when no indices are specified.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -21938,7 +22105,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `true`, unavailable indices (missing or closed) are ignored.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -23419,7 +23586,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -25202,7 +25369,7 @@
           "search"
         ],
         "summary": "Run a search",
-        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "About adding remote clusters",
           "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs",
@@ -25364,7 +25531,7 @@
           "search"
         ],
         "summary": "Run a search",
-        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "About adding remote clusters",
           "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs",
@@ -25528,7 +25695,7 @@
           "search"
         ],
         "summary": "Run a search",
-        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "About adding remote clusters",
           "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs",
@@ -25693,7 +25860,7 @@
           "search"
         ],
         "summary": "Run a search",
-        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\nThe local splitting partitions the shard into contiguous ranges based on Lucene document IDs.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "description": "Get search hits that match the query defined in the request.\nYou can provide search queries using the `q` query string parameter or the request body.\nIf both are specified, only the query parameter is used.\n\nIf the Elasticsearch security features are enabled, you must have the read index privilege for the target data stream, index, or alias. For cross-cluster search, refer to the documentation about configuring CCS privileges.\nTo search a point in time (PIT) for an alias, you must have the `read` index privilege for the alias's data streams or indices.\n\n**Search slicing**\n\nWhen paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.\nBy default the splitting is done first on the shards, then locally on each shard.\n\nFor instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.\n\nIMPORTANT: The same point-in-time ID should be used for all slices.\nIf different PIT IDs are used, slices can overlap and miss documents.\nThis situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "About adding remote clusters",
           "url": "https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-cert#remote-clusters-privileges-ccs",
@@ -28309,7 +28476,7 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\nIf you need to manage more synonym rules, you can create multiple synonym sets.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
+        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
         "externalDocs": {
           "description": "About synonym API examples",
           "url": "https://www.elastic.co/docs/solutions/search/full-text/create-update-synonyms-api-example",
@@ -30610,7 +30777,7 @@
           {
             "in": "query",
             "name": "allow_no_indices",
-            "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -30690,7 +30857,7 @@
           {
             "in": "query",
             "name": "ignore_unavailable",
-            "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -41256,25 +41423,6 @@
       "_types.mapping.ChunkRescorerChunkingSettings": {
         "type": "object",
         "properties": {
-          "strategy": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
-            },
-            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
-            "default": "sentence",
-            "type": "string"
-          },
-          "separator_group": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
-            "type": "string"
-          },
-          "separators": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
@@ -41289,6 +41437,25 @@
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
             "default": 1.0,
             "type": "number"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "strategy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
+            "default": "sentence",
+            "type": "string"
           }
         },
         "required": [
@@ -49514,7 +49681,7 @@
             "type": "number"
           },
           "result": {
-            "description": "The result of the operation.\nSuccessful values are `created`, `deleted`, and `updated`.",
+            "description": "The result of the operation.\nPossible values are `created`, `updated`, `deleted`, `noop`, and `not_found`.",
             "type": "string"
           },
           "_seq_no": {
@@ -52031,7 +52198,7 @@
           "component_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNode"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateNodeWithRollover"
               }
             ]
           }
@@ -52041,13 +52208,13 @@
           "component_template"
         ]
       },
-      "cluster._types.ComponentTemplateNode": {
+      "cluster._types.ComponentTemplateNodeWithRollover": {
         "type": "object",
         "properties": {
           "template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummary"
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummaryRes"
               }
             ]
           },
@@ -52109,9 +52276,17 @@
           "template"
         ]
       },
-      "cluster._types.ComponentTemplateSummary": {
+      "cluster._types.ComponentTemplateSummaryRes": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "_meta": {
             "allOf": [
               {
@@ -52145,14 +52320,6 @@
               "$ref": "#/components/schemas/indices._types.AliasDefinition"
             }
           },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
-              }
-            ]
-          },
           "data_stream_options": {
             "x-state": "Generally available",
             "allOf": [
@@ -52162,6 +52329,156 @@
             ]
           }
         }
+      },
+      "indices._types.DataStreamLifecycleWithRollover": {
+        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rollover": {
+                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "indices._types.DataStreamLifecycleRolloverConditions": {
+        "type": "object",
+        "properties": {
+          "min_age": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "max_age": {
+            "type": "string"
+          },
+          "min_docs": {
+            "type": "number"
+          },
+          "max_docs": {
+            "type": "number"
+          },
+          "min_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "max_primary_shard_size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "min_primary_shard_docs": {
+            "type": "number"
+          },
+          "max_primary_shard_docs": {
+            "type": "number"
+          }
+        }
+      },
+      "indices._types.DataStreamLifecycle": {
+        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
+        "type": "object",
+        "properties": {
+          "data_retention": {
+            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "downsampling": {
+            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
+            }
+          },
+          "downsampling_method": {
+            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.SamplingMethod"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
+            "default": true,
+            "type": "boolean"
+          },
+          "frozen_after": {
+            "description": "Only available with feature flag dlm_searchable_snapshots.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.DownsamplingRound": {
+        "type": "object",
+        "properties": {
+          "after": {
+            "description": "The duration since rollover when this downsampling round should execute",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "fixed_interval": {
+            "description": "The downsample interval.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationLarge"
+              }
+            ]
+          }
+        },
+        "required": [
+          "after",
+          "fixed_interval"
+        ]
+      },
+      "indices._types.SamplingMethod": {
+        "type": "string",
+        "enum": [
+          "aggregate",
+          "last_value"
+        ]
       },
       "indices._types.IndexSettings": {
         "type": "object",
@@ -61126,17 +61443,6 @@
             "default": "sentence",
             "type": "string"
           },
-          "separator_group": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
-            "type": "string"
-          },
-          "separators": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
           "max_chunk_size": {
             "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
             "default": 250.0,
@@ -61151,6 +61457,17 @@
             "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
             "default": 1.0,
             "type": "number"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -62387,148 +62704,6 @@
             "type": "boolean"
           }
         }
-      },
-      "indices._types.DataStreamLifecycleWithRollover": {
-        "description": "Data stream lifecycle with rollover can be used to display the configuration including the default rollover conditions,\nif asked.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "rollover": {
-                "description": "The conditions which will trigger the rollover of a backing index as configured by the cluster setting `cluster.lifecycle.default.rollover`.\nThis property is an implementation detail and it will only be retrieved when the query param `include_defaults` is set to true.\nThe contents of this field are subject to change.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/indices._types.DataStreamLifecycleRolloverConditions"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "indices._types.DataStreamLifecycleRolloverConditions": {
-        "type": "object",
-        "properties": {
-          "min_age": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "max_age": {
-            "type": "string"
-          },
-          "min_docs": {
-            "type": "number"
-          },
-          "max_docs": {
-            "type": "number"
-          },
-          "min_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "max_primary_shard_size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "min_primary_shard_docs": {
-            "type": "number"
-          },
-          "max_primary_shard_docs": {
-            "type": "number"
-          }
-        }
-      },
-      "indices._types.DataStreamLifecycle": {
-        "description": "Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.",
-        "type": "object",
-        "properties": {
-          "data_retention": {
-            "description": "If defined, every document added to this data stream will be stored at least for this time frame.\nAny time after this duration the document could be deleted.\nWhen empty, every document in this data stream will be stored indefinitely.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "downsampling": {
-            "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/indices._types.DownsamplingRound"
-            }
-          },
-          "downsampling_method": {
-            "description": "The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires\n`downsampling` to be defined. Defaults to `aggregate`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.SamplingMethod"
-              }
-            ]
-          },
-          "enabled": {
-            "description": "If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle\nthat's disabled (enabled: `false`) will have no effect on the data stream.",
-            "default": true,
-            "type": "boolean"
-          }
-        }
-      },
-      "indices._types.DownsamplingRound": {
-        "type": "object",
-        "properties": {
-          "after": {
-            "description": "The duration since rollover when this downsampling round should execute",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "fixed_interval": {
-            "description": "The downsample interval.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DurationLarge"
-              }
-            ]
-          }
-        },
-        "required": [
-          "after",
-          "fixed_interval"
-        ]
-      },
-      "indices._types.SamplingMethod": {
-        "type": "string",
-        "enum": [
-          "aggregate",
-          "last_value"
-        ]
       },
       "indices._types.DataStreamOptions": {
         "description": "Data stream options contain the configuration of data stream level features for a given data stream, for example,\nthe failure store configuration.",
@@ -66065,7 +66240,7 @@
           "index_template": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/indices._types.IndexTemplate"
+                "$ref": "#/components/schemas/indices._types.IndexTemplateWithRollover"
               }
             ]
           }
@@ -66075,9 +66250,17 @@
           "index_template"
         ]
       },
-      "indices._types.IndexTemplate": {
+      "indices._types.IndexTemplateWithRollover": {
         "type": "object",
         "properties": {
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
+              }
+            ]
+          },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
             "allOf": [
@@ -66092,14 +66275,6 @@
             "items": {
               "$ref": "#/components/schemas/_types.Name"
             }
-          },
-          "template": {
-            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
-              }
-            ]
           },
           "version": {
             "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
@@ -66188,9 +66363,17 @@
           "composed_of"
         ]
       },
-      "indices._types.IndexTemplateSummary": {
+      "indices._types.IndexTemplateSummaryWithRollover": {
         "type": "object",
         "properties": {
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
+              }
+            ]
+          },
           "aliases": {
             "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
             "type": "object",
@@ -66211,14 +66394,6 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.IndexSettings"
-              }
-            ]
-          },
-          "lifecycle": {
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
           },
@@ -66501,6 +66676,9 @@
           },
           "allow_custom_routing": {
             "type": "boolean"
+          },
+          "failure_store": {
+            "type": "boolean"
           }
         }
       },
@@ -66717,6 +66895,163 @@
           },
           "min_primary_shard_docs": {
             "type": "number"
+          }
+        }
+      },
+      "indices._types.IndexTemplate": {
+        "type": "object",
+        "properties": {
+          "index_patterns": {
+            "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "composed_of": {
+            "description": "An ordered list of component template names.\nComponent templates are merged in the order specified, meaning that the last component template specified has the highest precedence.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Name"
+            }
+          },
+          "template": {
+            "description": "Template to be applied.\nIt may optionally include an `aliases`, `mappings`, or `settings` configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateSummary"
+              }
+            ]
+          },
+          "version": {
+            "description": "Version number used to manage index templates externally.\nThis number is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionNumber"
+              }
+            ]
+          },
+          "priority": {
+            "description": "Priority to determine index template precedence when a new data stream or index is created.\nThe index template with the highest priority is chosen.\nIf no priority is specified the template is treated as though it is of priority 0 (lowest priority).\nThis number is not automatically generated by Elasticsearch.",
+            "type": "number"
+          },
+          "_meta": {
+            "description": "Optional user metadata about the index template. May have any contents.\nThis map is not automatically generated by Elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "allow_auto_create": {
+            "type": "boolean"
+          },
+          "data_stream": {
+            "description": "If this object is included, the template is used to create data streams and their backing indices.\nSupports an empty object.\nData streams require a matching index template with a `data_stream` object.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexTemplateDataStreamConfiguration"
+              }
+            ]
+          },
+          "deprecated": {
+            "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "ignore_missing_component_templates": {
+            "description": "A list of component template names that are allowed to be absent.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Names"
+              }
+            ]
+          },
+          "created_date": {
+            "description": "Date and time when the index template was created. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_date_millis": {
+            "description": "Date and time when the index template was created, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "modified_date": {
+            "description": "Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "modified_date_millis": {
+            "description": "Date and time when the index template was last modified, in milliseconds since the epoch.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          }
+        },
+        "required": [
+          "index_patterns",
+          "composed_of"
+        ]
+      },
+      "indices._types.IndexTemplateSummary": {
+        "type": "object",
+        "properties": {
+          "aliases": {
+            "description": "Aliases to add.\nIf the index template includes a `data_stream` object, these are data stream aliases.\nOtherwise, these are index aliases.\nData stream aliases ignore the `index_routing`, `routing`, and `search_routing` options.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.Alias"
+            }
+          },
+          "mappings": {
+            "description": "Mapping for fields in the index.\nIf specified, this mapping can include field names, field data types, and mapping parameters.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "settings": {
+            "description": "Configuration options for the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettings"
+              }
+            ]
+          },
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+              }
+            ]
           }
         }
       },
@@ -66999,6 +67334,14 @@
             "description": "The upper bound limit for the number of tokens that can be generated for a completion request.",
             "type": "number"
           },
+          "reasoning": {
+            "description": "The reasoning configuration for the completion request.\nThis controls the model's reasoning process in one of two ways:\n\n* By specifying the model’s reasoning effort level with the `effort` field.\n* By enabling reasoning with default settings by setting `enabled` field to `true`.\n\nIt also includes optional settings to control:\n\n* The level of detail in the summary returned in the response with the `summary` field.\n* Whether reasoning details are included in the response at all with the `exclude` field.\n\nExample (effort):\n```\n{\n   \"reasoning\": {\n       \"effort\": \"high\",\n       \"summary\": \"concise\",\n       \"exclude\": false\n   }\n}\n```\nExample (enabled):\n```\n{\n   \"reasoning\": {\n       \"enabled\": true,\n       \"summary\": \"concise\",\n       \"exclude\": false\n   }\n}\n```\nCurrently supported only for `elastic` provider.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.Reasoning"
+              }
+            ]
+          },
           "stop": {
             "description": "A sequence of strings to control when the model should stop generating additional tokens.",
             "type": "array",
@@ -67039,7 +67382,7 @@
         "type": "object",
         "properties": {
           "content": {
-            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nObject example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```",
+            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nText example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```\n\nImage example:\n```\n{\n  \"content\": [\n      {\n       \"image_url\": {\n         \"url\": \"data:image/jpg;base64,...\"\n       },\n       \"type\": \"image_url\"\n      }\n   ]\n}\n```\n\nFile example:\n```\n{\n  \"content\": [\n      {\n       \"file\": {\n         \"file_data\": \"data:application/pdf;base64,...\",\n         \"filename\": \"somePDF\"\n       },\n       \"type\": \"file\"\n      }\n   ]\n}\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.MessageContent"
@@ -67064,6 +67407,17 @@
             "items": {
               "$ref": "#/components/schemas/inference._types.ToolCall"
             }
+          },
+          "reasoning": {
+            "description": "Only for `assistant` role messages. The reasoning details generated by the model as plaintext.\nCurrently supported only for `elastic` provider.",
+            "type": "string"
+          },
+          "reasoning_details": {
+            "description": "Only for `assistant` role messages. The reasoning details generated by the model as structured data.\nCurrently supported only for `elastic` provider.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ReasoningDetail"
+            }
           }
         },
         "required": [
@@ -67087,18 +67441,93 @@
         "description": "An object style representation of a single portion of a conversation.",
         "type": "object",
         "properties": {
+          "type": {
+            "description": "The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content\ntypes other than \"text\"",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ContentType"
+              }
+            ]
+          },
           "text": {
-            "description": "The text content.",
+            "description": "The text content. Only applicable for the `text` type",
             "type": "string"
           },
-          "type": {
-            "description": "The type of content.",
+          "image_url": {
+            "description": "The image content. Only applicable for the `image_url` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrl"
+              }
+            ]
+          },
+          "file": {
+            "description": "The file content. Only applicable for the `file` type",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FileContent"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image_url",
+          "file"
+        ]
+      },
+      "inference._types.ImageUrl": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "The base64 encoded image data as a data URI",
+            "type": "string"
+          },
+          "detail": {
+            "description": "Specifies the detail level of the image",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ImageUrlDetail"
+              }
+            ]
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "inference._types.ImageUrlDetail": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "low",
+          "high"
+        ]
+      },
+      "inference._types.FileContent": {
+        "type": "object",
+        "properties": {
+          "file_data": {
+            "description": "The base64 encoded file data",
+            "type": "string"
+          },
+          "filename": {
+            "description": "The name of the file",
             "type": "string"
           }
         },
         "required": [
-          "text",
-          "type"
+          "file_data",
+          "filename"
         ]
       },
       "inference._types.ToolCall": {
@@ -67148,6 +67577,179 @@
         "required": [
           "arguments",
           "name"
+        ]
+      },
+      "inference._types.ReasoningDetail": {
+        "description": "Type representing the different types of reasoning details that can be included in the response from the model.\nCurrently supported only for `elastic` provider.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "reasoning.encrypted": "#/components/schemas/inference._types.EncryptedReasoningDetail",
+            "reasoning.summary": "#/components/schemas/inference._types.SummaryReasoningDetail",
+            "reasoning.text": "#/components/schemas/inference._types.TextReasoningDetail"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.EncryptedReasoningDetail"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.SummaryReasoningDetail"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.TextReasoningDetail"
+          }
+        ]
+      },
+      "inference._types.EncryptedReasoningDetail": {
+        "description": "The reasoning detail with encrypted reasoning data that may be redacted or protected.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.BaseReasoningDetail"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "reasoning.encrypted"
+                ]
+              },
+              "data": {
+                "description": "The encrypted reasoning data generated by the model,\nwhich may be redacted or protected based on the model's configuration and the nature of the reasoning information.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "data"
+            ]
+          }
+        ]
+      },
+      "inference._types.BaseReasoningDetail": {
+        "description": "The base reasoning detail that includes common fields across different types of reasoning details.",
+        "type": "object",
+        "properties": {
+          "format": {
+            "description": "The format of the reasoning detail.",
+            "type": "string"
+          },
+          "id": {
+            "description": "The identifier of the reasoning detail.",
+            "type": "string"
+          },
+          "index": {
+            "description": "The index of the reasoning detail,\nwhich indicates its position in the sequence of reasoning details generated by the model.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.SummaryReasoningDetail": {
+        "description": "The reasoning summary detail includes a high-level summary of the model's reasoning process.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.BaseReasoningDetail"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "reasoning.summary"
+                ]
+              },
+              "summary": {
+                "description": "The summary of the reasoning process generated by the model,\nwhich provides an overview of the key points and conclusions reached during the reasoning process.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type",
+              "summary"
+            ]
+          }
+        ]
+      },
+      "inference._types.TextReasoningDetail": {
+        "description": "The reasoning text detail includes plaintext reasoning with optional signature verification.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.BaseReasoningDetail"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "reasoning.text"
+                ]
+              },
+              "signature": {
+                "description": "The signature of the reasoning text,\nwhich can be used to verify the authenticity and integrity of the reasoning information provided by the model.",
+                "type": "string"
+              },
+              "text": {
+                "description": "The plaintext reasoning generated by the model,\nwhich provides a detailed explanation of the model's reasoning process in human-readable form.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "inference._types.Reasoning": {
+        "description": "The reasoning configuration to use for the completion request.\nCurrently supported only for `elastic` provider.",
+        "type": "object",
+        "properties": {
+          "effort": {
+            "description": "The level of effort the model should put into reasoning.\nThis is a hint that guides the model in how much effort to put into reasoning,\nwith `xhigh` being the most effort and `none` being no effort.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+              }
+            ]
+          },
+          "enabled": {
+            "description": "Whether to enable reasoning with default settings.\nThis is a shortcut for enabling reasoning without having to specify the other parameters.\nIf `enabled` is set to `true`, then reasoning at the `medium` effort level is enabled.\nIgnored if `effort` is specified,\nin which case that parameter will control the reasoning process instead.",
+            "type": "boolean"
+          },
+          "exclude": {
+            "description": "Whether to exclude reasoning information from the response.\nIf `true`, the response will not include any reasoning details.",
+            "type": "boolean"
+          },
+          "summary": {
+            "description": "The level of detail included in the reasoning summary returned in the response.\nThis is a hint on how much detail to include in the summary of the reasoning that is returned in the response,\nwith `auto` being the default level of detail, `concise` being less detail, and `detailed` being more detail.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ReasoningSummary"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.ReasoningEffort": {
+        "type": "string",
+        "enum": [
+          "xhigh",
+          "high",
+          "medium",
+          "low",
+          "minimal",
+          "none"
+        ]
+      },
+      "inference._types.ReasoningSummary": {
+        "type": "string",
+        "enum": [
+          "auto",
+          "concise",
+          "detailed"
         ]
       },
       "inference._types.CompletionToolType": {
@@ -67405,7 +68007,7 @@
             ]
           },
           "format": {
-            "description": "The format of the input. For the `text` type this defaults to `text`. For the `image` type, this defaults to `base64`.",
+            "description": "The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.\nIf not specified, this will default to `text` for the `text` type and `base64` for the `image` type.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
@@ -67413,7 +68015,7 @@
             ]
           },
           "value": {
-            "description": "The value of the input to embed.",
+            "description": "The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\"",
             "type": "string"
           }
         },
@@ -67774,7 +68376,7 @@
         "type": "object",
         "properties": {
           "requests_per_minute": {
-            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `amazonbedrock` service: `240`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
+            "description": "The number of requests allowed per minute.\nBy default, the number of requests allowed per minute is set by each service as follows:\n\n* `alibabacloud-ai-search` service: `1000`\n* `amazonbedrock` service: `240`\n* `anthropic` service: `50`\n* `azureaistudio` service: `240`\n* `azureopenai` service and task type `text_embedding`: `1440`\n* `azureopenai` service and task types `completion` or `chat_completion`: `120`\n* `cohere` service: `10000`\n* `contextualai` service: `1000`\n* `elastic` service and task type `chat_completion`: `240`\n* `fireworksai` service: `6000`\n* `googleaistudio` service: `360`\n* `googlevertexai` service: `30000`\n* `hugging_face` service: `3000`\n* `jinaai` service: `2000`\n* `llama` service: `3000`\n* `mistral` service: `240`\n* `openai` service and task type `text_embedding`: `3000`\n* `openai` service and task type `completion`: `500`\n* `openshift_ai` service: `3000`\n* `voyageai` service: `2000`\n* `watsonxai` service: `120`",
             "type": "number"
           }
         }
@@ -68447,11 +69049,25 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid API key for your Azure OpenAI account.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "description": "A valid API key for your Azure OpenAI account.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "api_version": {
             "description": "The Azure API version ID to use.\nIt is recommended to use the latest supported non-preview version.",
+            "type": "string"
+          },
+          "client_id": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_secret": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "deployment_id": {
@@ -68465,7 +69081,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#authentication"
             },
-            "description": "A valid Microsoft Entra token.\nYou must specify either `api_key` or `entra_id`.\nIf you do not provide either or you provide both, you will receive an error when you try to create your model.",
+            "description": "A valid Microsoft Entra token.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "rate_limit": {
@@ -68485,6 +69101,23 @@
             },
             "description": "The name of your Azure OpenAI resource.\nYou can find this from the list of resources in the Azure Portal for your subscription.",
             "type": "string"
+          },
+          "scopes": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/entra/identity-platform/scopes-oidc"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tenant_id": {
+            "externalDocs": {
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
+            },
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
           }
         },
         "required": [
@@ -68497,8 +69130,15 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
+          },
+          "headers": {
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         }
       },
@@ -68809,16 +69449,25 @@
             "type": "number"
           },
           "headers": {
-            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\":{\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
-            "type": "object"
+            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "input_type": {
             "description": "Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.\nFor example:\n```\n\"input_type\": {\n  \"translation\": {\n    \"ingest\": \"do_ingest\",\n    \"search\": \"do_search\"\n  },\n  \"default\": \"a_default\"\n},\n```\nIf the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.\nIf it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.\n`translation` can be:\n* `classification`\n* `clustering`\n* `ingest`\n* `search`",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "query_parameters": {
             "description": "Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.\nFor example:\n```\n\"query_parameters\":[\n  [\"param_key\", \"some_value\"],\n  [\"param_key\", \"another_value\"],\n  [\"other_key\", \"other_value\"]\n]\n```\nIf the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.",
-            "type": "object"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.CustomServiceQueryParameter"
+            }
           },
           "request": {
             "description": "The request configuration object.",
@@ -68838,7 +69487,10 @@
           },
           "secret_parameters": {
             "description": "Specifies secret parameters, like `api_key` or `api_token`, that are required to access the custom service.\nFor example:\n```\n\"secret_parameters\":{\n  \"api_key\":\"<api_key>\"\n}\n```",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           },
           "url": {
             "description": "The URL endpoint to use for the requests.",
@@ -68850,6 +69502,12 @@
           "response",
           "secret_parameters"
         ]
+      },
+      "inference._types.CustomServiceQueryParameter": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
       },
       "inference._types.CustomRequestParams": {
         "type": "object",
@@ -68868,7 +69526,10 @@
         "properties": {
           "json_parser": {
             "description": "Specifies the JSON parser that is used to parse the response from the custom service.\nDifferent task types require different json_parser parameters.\nFor example:\n```\n# text_embedding\n# For a response like this:\n\n{\n \"object\": \"list\",\n \"data\": [\n     {\n       \"object\": \"embedding\",\n       \"index\": 0,\n       \"embedding\": [\n           0.014539449,\n           -0.015288644\n       ]\n     }\n ],\n \"model\": \"text-embedding-ada-002-v2\",\n \"usage\": {\n     \"prompt_tokens\": 8,\n     \"total_tokens\": 8\n }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\"\n  }\n}\n\n# Elasticsearch supports the following embedding types:\n* float\n* byte\n* bit (or binary)\n\nTo specify the embedding type for the response, the `embedding_type`\nfield should be added in the `json_parser` object. Here's an example:\n\"response\":{\n  \"json_parser\":{\n    \"text_embeddings\":\"$.data[*].embedding[*]\",\n    \"embedding_type\":\"bit\"\n  }\n}\n\nIf `embedding_type` is not specified, it defaults to `float`.\n\n# sparse_embedding\n# For a response like this:\n\n{\n  \"request_id\": \"75C50B5B-E79E-4930-****-F48DBB392231\",\n  \"latency\": 22,\n  \"usage\": {\n     \"token_count\": 11\n  },\n  \"result\": {\n     \"sparse_embeddings\": [\n        {\n          \"index\": 0,\n          \"embedding\": [\n            {\n              \"token_id\": 6,\n              \"weight\": 0.101\n            },\n            {\n              \"token_id\": 163040,\n              \"weight\": 0.28417\n            }\n          ]\n        }\n     ]\n  }\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"token_path\":\"$.result.sparse_embeddings[*].embedding[*].token_id\",\n    \"weight_path\":\"$.result.sparse_embeddings[*].embedding[*].weight\"\n  }\n}\n\n# rerank\n# For a response like this:\n\n{\n  \"results\": [\n    {\n      \"index\": 3,\n      \"relevance_score\": 0.999071,\n      \"document\": \"abc\"\n    },\n    {\n      \"index\": 4,\n      \"relevance_score\": 0.7867867,\n      \"document\": \"123\"\n    },\n    {\n      \"index\": 0,\n      \"relevance_score\": 0.32713068,\n      \"document\": \"super\"\n    }\n  ],\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"reranked_index\":\"$.result.scores[*].index\",    // optional\n    \"relevance_score\":\"$.result.scores[*].score\",\n    \"document_text\":\"xxx\"    // optional\n  }\n}\n\n# completion\n# For a response like this:\n\n{\n \"id\": \"chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT\",\n \"object\": \"chat.completion\",\n \"created\": 1741569952,\n \"model\": \"gpt-4.1-2025-04-14\",\n \"choices\": [\n   {\n    \"index\": 0,\n    \"message\": {\n      \"role\": \"assistant\",\n      \"content\": \"Hello! How can I assist you today?\",\n      \"refusal\": null,\n      \"annotations\": []\n    },\n    \"logprobs\": null,\n    \"finish_reason\": \"stop\"\n  }\n ]\n}\n\n# the json_parser definition should look like this:\n\n\"response\":{\n  \"json_parser\":{\n    \"completion_result\":\"$.choices[*].message.content\"\n  }\n}",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -68880,9 +69541,31 @@
         "properties": {
           "parameters": {
             "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```",
-            "type": "object"
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference._types.CustomTaskParameter"
+            }
           }
         }
+      },
+      "inference._types.CustomTaskParameter": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          }
+        ]
       },
       "inference._types.InferenceEndpointInfoCustom": {
         "allOf": [
@@ -69179,6 +69862,134 @@
         "type": "string",
         "enum": [
           "sparse_embedding"
+        ]
+      },
+      "inference._types.FireworksAITaskType": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "text_embedding"
+        ]
+      },
+      "inference._types.FireworksAIServiceType": {
+        "type": "string",
+        "enum": [
+          "fireworksai"
+        ]
+      },
+      "inference._types.FireworksAIServiceSettings": {
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/"
+            },
+            "description": "A valid API key for your Fireworks AI account.\nYou can find or create your API keys in the Fireworks AI dashboard.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "type": "string"
+          },
+          "model_id": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/recommended-models"
+            },
+            "description": "The name of the model to use for the inference task.\nRefer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.\nFor text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL endpoint to use for the requests.\nIf not provided, the default Fireworks AI API endpoint is used.",
+            "type": "string"
+          },
+          "dimensions": {
+            "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nVariable-length embeddings are supported via this parameter.",
+            "type": "number"
+          },
+          "similarity": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/querying-embeddings-models"
+            },
+            "description": "For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.",
+            "default": "cosine",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FireworksAISimilarityType"
+              }
+            ]
+          },
+          "rate_limit": {
+            "externalDocs": {
+              "url": "https://docs.fireworks.ai/guides/quotas_usage/rate-limits"
+            },
+            "description": "This setting helps to minimize the number of rate limit errors returned from the Fireworks AI API.\nRate limit grouping is per API key only.\nBy default, the `fireworksai` service sets the number of requests allowed per minute to 6000.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RateLimitSetting"
+              }
+            ]
+          }
+        },
+        "required": [
+          "api_key",
+          "model_id"
+        ]
+      },
+      "inference._types.FireworksAISimilarityType": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types.FireworksAITaskSettings": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "description": "For a `completion` or`chat_completion` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "type": "string"
+          },
+          "headers": {
+            "description": "For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "inference._types.InferenceEndpointInfoFireworksAI": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "inference_id": {
+                "description": "The inference Id",
+                "type": "string"
+              },
+              "task_type": {
+                "description": "The task type",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.TaskTypeFireworksAI"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "inference_id",
+              "task_type"
+            ]
+          }
+        ]
+      },
+      "inference._types.TaskTypeFireworksAI": {
+        "type": "string",
+        "enum": [
+          "chat_completion",
+          "completion",
+          "text_embedding"
         ]
       },
       "inference._types.GoogleAiStudioTaskType": {
@@ -70152,12 +70963,15 @@
         "type": "object",
         "properties": {
           "user": {
-            "description": "For a `completion` or `text_embedding` task, specify the user issuing the request.\nThis information can be used for abuse detection.",
+            "description": "Specifies the user issuing the request.\nThis information can be used for abuse detection.",
             "type": "string"
           },
           "headers": {
-            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\":{\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
-            "type": "object"
+            "description": "Specifies custom HTTP header parameters.\nFor example:\n```\n\"headers\": {\n  \"Custom-Header\": \"Some-Value\",\n  \"Another-Custom-Header\": \"Another-Value\"\n}\n```",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
           }
         }
       },
@@ -73704,6 +74518,7 @@
         "type": "object",
         "properties": {
           "expiry_date": {
+            "description": "The date and time the license expires in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -73711,6 +74526,7 @@
             ]
           },
           "expiry_date_in_millis": {
+            "description": "The date and time the license expires in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -73718,6 +74534,7 @@
             ]
           },
           "issue_date": {
+            "description": "The date and time the license was issued in ISO 8601 format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -73725,6 +74542,7 @@
             ]
           },
           "issue_date_in_millis": {
+            "description": "The date and time the license was issued in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -73732,12 +74550,15 @@
             ]
           },
           "issued_to": {
+            "description": "The name of the customer or organization that received the license.",
             "type": "string"
           },
           "issuer": {
+            "description": "The name of the organization that issued the license.",
             "type": "string"
           },
           "max_nodes": {
+            "description": "The maximum number of nodes the license allows.",
             "oneOf": [
               {
                 "type": "number"
@@ -73749,6 +74570,7 @@
             ]
           },
           "max_resource_units": {
+            "description": "The maximum number of resource units the license allows (for enterprise licenses only).",
             "oneOf": [
               {
                 "type": "number"
@@ -73760,6 +74582,7 @@
             ]
           },
           "status": {
+            "description": "The status of the license. For example,active, valid, invalid, or expired.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseStatus"
@@ -73767,6 +74590,7 @@
             ]
           },
           "type": {
+            "description": "The type of the license. For example, trial, basic, gold, platinum, or enterprise.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/license._types.LicenseType"
@@ -73774,6 +74598,7 @@
             ]
           },
           "uid": {
+            "description": "The unique identifier of the license.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Uuid"
@@ -73781,6 +74606,7 @@
             ]
           },
           "start_date_in_millis": {
+            "description": "The date and time the license was started in milliseconds since the Unix epoch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -76499,7 +77325,7 @@
         "type": "object",
         "properties": {
           "allow_no_indices": {
-            "description": "If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only\nmissing or closed indices. This behavior applies even if the request targets other open indices. For example,\na request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "type": "boolean"
           },
           "expand_wildcards": {
@@ -76511,7 +77337,7 @@
             ]
           },
           "ignore_unavailable": {
-            "description": "If true, missing or closed indices are not included in the response.",
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "default": false,
             "type": "boolean"
           },
@@ -79434,7 +80260,7 @@
         "type": "object",
         "properties": {
           "bucket_span": {
-            "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`.",
+            "description": "The size of the interval that the analysis is aggregated into, typically between `5m` and `1h`. This value should be either a whole number of days or equate to a\nwhole number of buckets in one day. If the anomaly detection job uses a datafeed with aggregations, this value must also be divisible by the interval of the date histogram aggregation.",
             "default": "5m",
             "allOf": [
               {
@@ -79442,8 +80268,22 @@
               }
             ]
           },
+          "detectors": {
+            "description": "Detector configuration objects specify which data fields a job analyzes. They also specify which analytical functions are used. You can specify multiple detectors for a job. If the detectors array does not contain at least one detector, no analysis can occur and an error is returned.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ml._types.DetectorRead"
+            }
+          },
+          "influencers": {
+            "description": "A comma separated list of influencer field names. Typically these can be the by, over, or partition fields that are used in the detector configuration. You might also want to use a field name that is not specifically named in a detector, but is available as part of the input data. When you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Field"
+            }
+          },
           "categorization_analyzer": {
-            "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field.\nThis property cannot be used at the same time as `categorization_filters`.\nThe categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process.",
+            "description": "If `categorization_field_name` is specified, you can also define the analyzer that is used to interpret the categorization field. This property cannot be used at the same time as `categorization_filters`. The categorization analyzer specifies how the `categorization_field` is interpreted by the categorization process. The `categorization_analyzer` field can be specified either as a string or as an object. If it is a string, it must refer to a built-in analyzer or one added by another plugin.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.CategorizationAnalyzer"
@@ -79451,7 +80291,7 @@
             ]
           },
           "categorization_field_name": {
-            "description": "If this property is specified, the values of the specified field will be categorized.\nThe resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
+            "description": "If this property is specified, the values of the specified field will be categorized. The resulting categories must be used in a detector by setting `by_field_name`, `over_field_name`, or `partition_field_name` to the keyword `mlcategory`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79459,36 +80299,14 @@
             ]
           },
           "categorization_filters": {
-            "description": "If `categorization_field_name` is specified, you can also define optional filters.\nThis property expects an array of regular expressions.\nThe expressions are used to filter out matching sequences from the categorization field values.",
+            "description": "If `categorization_field_name` is specified, you can also define optional filters. This property expects an array of regular expressions. The expressions are used to filter out matching sequences from the categorization field values. You can use this functionality to fine tune the categorization by excluding sequences from consideration when categories are defined. For example, you can exclude SQL statements that appear in your log files. This property cannot be used at the same time as `categorization_analyzer`. If you only want to define simple regular expression filters that are applied prior to tokenization, setting this property is the easiest method. If you also want to customize the tokenizer or post-tokenization filtering, use the `categorization_analyzer` property instead and include the filters as pattern_replace character filters. The effect is exactly the same.",
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "detectors": {
-            "description": "An array of detector configuration objects.\nDetector configuration objects specify which data fields a job analyzes.\nThey also specify which analytical functions are used.\nYou can specify multiple detectors for a job.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ml._types.DetectorRead"
-            }
-          },
-          "influencers": {
-            "description": "A comma separated list of influencer field names.\nTypically these can be the by, over, or partition fields that are used in the detector configuration.\nYou might also want to use a field name that is not specifically named in a detector, but is available as part of the input data.\nWhen you use multiple detectors, the use of influencers is recommended as it aggregates results for each influencer entity.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.Field"
-            }
-          },
-          "model_prune_window": {
-            "description": "Advanced configuration option.\nAffects the pruning of models that have not been updated for the given time duration.\nThe value must be set to a multiple of the `bucket_span`.\nIf set too low, important information may be removed from the model.\nTypically, set to `30d` or longer.\nIf not set, model pruning only occurs if the model memory status reaches the soft limit or the hard limit.\nFor jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
           "latency": {
-            "description": "The size of the window in which to expect data that is out of time order.\nDefaults to no latency.\nIf you specify a non-zero value, it must be greater than or equal to one second.",
+            "description": "The size of the window in which to expect data that is out of time order. If you specify a non-zero value, it must be greater than or equal to one second. NOTE: Latency is applicable only when you send data by using the post data API.",
             "default": "0",
             "allOf": [
               {
@@ -79496,8 +80314,16 @@
               }
             ]
           },
+          "model_prune_window": {
+            "description": "Advanced configuration option. Affects the pruning of models that have not been updated for the given time duration. The value must be set to a multiple of the `bucket_span`. If set too low, important information may be removed from the model. For jobs created in 8.1 and later, the default value is the greater of `30d` or 20 times `bucket_span`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
           "multivariate_by_fields": {
-            "description": "This functionality is reserved for internal use.\nIt is not supported for use in customer environments and is not subject to the support SLA of official GA features.\nIf set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold.",
+            "description": "This functionality is reserved for internal use. It is not supported for use in customer environments and is not subject to the support SLA of official GA features. If set to `true`, the analysis will automatically find correlations between metrics for a given by field value and report anomalies when those correlations cease to hold. For example, suppose CPU and memory usage on host A is usually highly correlated with the same metrics on host B. Perhaps this correlation occurs because they are running a load-balanced application. If you enable this property, anomalies will be reported when, for example, CPU usage on host A is high and the value of CPU usage on host B is low. That is to say, you’ll see an anomaly when the CPU of host A is unusual given the CPU of host B. To use the `multivariate_by_fields` property, you must also specify `by_field_name` in your detector.",
             "type": "boolean"
           },
           "per_partition_categorization": {
@@ -79509,7 +80335,7 @@
             ]
           },
           "summary_count_field_name": {
-            "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized.\nThis property value is the name of the field that contains the count of raw data points that have been summarized.\nThe same `summary_count_field_name` applies to all detectors in the job.",
+            "description": "If this property is specified, the data that is fed to the job is expected to be pre-summarized. This property value is the name of the field that contains the count of raw data points that have been summarized. The same `summary_count_field_name` applies to all detectors in the job. NOTE: The `summary_count_field_name` property cannot be used with the `metric` function.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79526,8 +80352,12 @@
       "ml._types.DetectorRead": {
         "type": "object",
         "properties": {
+          "function": {
+            "description": "The analysis function that is used. For example, `count`, `rare`, `mean`, `min`, `max`, or `sum`.",
+            "type": "string"
+          },
           "by_field_name": {
-            "description": "The field used to split the data.\nIn particular, this property is used for analyzing the splits with respect to their own history.\nIt is used for finding unusual values in the context of the split.",
+            "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to their own history. It is used for finding unusual values in the context of the split.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79535,7 +80365,7 @@
             ]
           },
           "custom_rules": {
-            "description": "An array of custom rule objects, which enable you to customize the way detectors operate.\nFor example, a rule may dictate to the detector conditions under which results should be skipped.\nKibana refers to custom rules as job rules.",
+            "description": "Custom rules enable you to customize the way detectors operate. For example, a rule may dictate conditions under which results should be skipped. Kibana refers to custom rules as job rules.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/ml._types.DetectionRule"
@@ -79546,11 +80376,11 @@
             "type": "string"
           },
           "detector_index": {
-            "description": "A unique identifier for the detector.\nThis identifier is based on the order of the detectors in the `analysis_config`, starting at zero.",
+            "description": "A unique identifier for the detector. This identifier is based on the order of the detectors in the `analysis_config`, starting at zero. If you specify a value for this property, it is ignored.",
             "type": "number"
           },
           "exclude_frequent": {
-            "description": "Contains one of the following values: `all`, `none`, `by`, or `over`.\nIf set, frequent entities are excluded from influencing the anomaly results.\nEntities can be considered frequent over time or frequent in a population.\nIf you are working with both over and by fields, then you can set `exclude_frequent` to all for both fields, or to `by` or `over` for those specific fields.",
+            "description": "If set, frequent entities are excluded from influencing the anomaly results. Entities can be considered frequent over time or frequent in a population. If you are working with both over and by fields, you can set `exclude_frequent` to `all` for both fields, or to `by` or `over` for those specific fields.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.ExcludeFrequent"
@@ -79558,19 +80388,15 @@
             ]
           },
           "field_name": {
-            "description": "The field that the detector uses in the function.\nIf you use an event rate function such as `count` or `rare`, do not specify this field.",
+            "description": "The field that the detector uses in the function. If you use an event rate function such as count or rare, do not specify this field. The `field_name` cannot contain double quotes or backslashes.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
               }
             ]
           },
-          "function": {
-            "description": "The analysis function that is used.\nFor example, `count`, `rare`, `mean`, `min`, `max`, and `sum`.",
-            "type": "string"
-          },
           "over_field_name": {
-            "description": "The field used to split the data.\nIn particular, this property is used for analyzing the splits with respect to the history of all splits.\nIt is used for finding unusual values in the population of all splits.",
+            "description": "The field used to split the data. In particular, this property is used for analyzing the splits with respect to the history of all splits. It is used for finding unusual values in the population of all splits.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -79578,7 +80404,7 @@
             ]
           },
           "partition_field_name": {
-            "description": "The field used to segment the analysis.\nWhen you use this property, you have completely independent baselines for each value of this field.",
+            "description": "The field used to segment the analysis. When you use this property, you have completely independent baselines for each value of this field.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -80134,6 +80960,7 @@
         "type": "object",
         "properties": {
           "allow_no_indices": {
+            "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
             "type": "boolean"
           },
           "expand_wildcards": {
@@ -80144,6 +80971,7 @@
             ]
           },
           "ignore_unavailable": {
+            "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
             "type": "boolean"
           },
           "index": {
@@ -80824,7 +81652,6 @@
         "enum": [
           "global",
           "exact",
-          "exact_fuzzy",
           "fuzzy",
           "prefix",
           "suffix",
@@ -81943,15 +82770,19 @@
               "create",
               "create_doc",
               "create_index",
+              "create_view",
               "delete",
               "delete_index",
+              "delete_view",
               "index",
               "maintenance",
               "manage",
               "manage_data_stream_lifecycle",
+              "manage_view",
               "monitor",
               "none",
               "read",
+              "read_view_metadata",
               "view_index_metadata",
               "write"
             ]
@@ -83048,7 +83879,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "description": "Synonym Rule identifier",
+            "description": "The identifier for the synonym rule.\nIf you do not specify a synonym rule ID when you create a rule, an identifier is created automatically by Elasticsearch.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Id"
@@ -83057,9 +83888,9 @@
           },
           "synonyms": {
             "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#_solr_format_2"
+              "url": "https://www.elastic.co/docs/reference/text-analysis/analysis-synonym-graph-tokenfilter#analysis-synonym-graph-define-synonyms"
             },
-            "description": "Synonyms, in Solr format, that conform the synonym rule.",
+            "description": "The synonyms that conform the synonym rule in Solr format.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/synonyms._types.SynonymString"
@@ -83543,6 +84374,11 @@
             "description": "Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.\nIn general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount\nof refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a\ngiven index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and\nthe amount of other consumers searching the same source index.",
             "default": true,
             "type": "boolean"
+          },
+          "num_failure_retries": {
+            "description": "Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.\nThe minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.\nIf unset, the cluster-level setting `num_transform_failure_retries` is used.\n\nThis setting cannot be specified when `unattended` is `true`, because unattended transforms always retry\nindefinitely.",
+            "x-state": "Generally available",
+            "type": "number"
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
@@ -86272,7 +87108,7 @@
       "async_search.submit-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -86392,7 +87228,7 @@
       "async_search.submit-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "Whether specified concrete indices should be ignored when unavailable (missing or closed)",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87421,7 +88257,7 @@
       "count-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87491,7 +88327,7 @@
       "count-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87715,7 +88551,7 @@
       "eql.search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "Whether to ignore if a wildcard indices expression resolves into no concrete indices.\n(This includes `_all` string or when no indices have been specified)",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87765,7 +88601,7 @@
       "eql.search-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If true, missing or closed indices are not included in the response.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87958,7 +88794,7 @@
       "field_caps-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If false, the request returns an error if any wildcard expression, index alias,\nor `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request\ntargeting `foo*,bar*` returns an error if an index starts with foo but no index starts with bar.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -87988,7 +88824,7 @@
       "field_caps-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `true`, missing or closed indices are not included in the response.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88313,7 +89149,7 @@
       "indices.exists_alias-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88333,7 +89169,7 @@
       "indices.exists_alias-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, requests that include a missing data stream or index in the target indices or data streams return an error.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88375,7 +89211,7 @@
       "indices.get_alias-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88395,7 +89231,7 @@
       "indices.get_alias-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88530,7 +89366,7 @@
       "indices.get_mapping-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88550,7 +89386,7 @@
       "indices.get_mapping-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88602,7 +89438,7 @@
       "indices.get_settings-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index\nalias, or `_all` value targets only missing or closed indices. This\nbehavior applies even if the request targets other open indices. For\nexample, a request targeting `foo*,bar*` returns an error if an index\nstarts with foo but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88632,7 +89468,7 @@
       "indices.get_settings-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88766,7 +89602,7 @@
       "indices.put_mapping-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88786,7 +89622,7 @@
       "indices.put_mapping-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88837,7 +89673,7 @@
       "indices.put_settings-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index\nalias, or `_all` value targets only missing or closed indices. This\nbehavior applies even if the request targets other open indices. For\nexample, a request targeting `foo*,bar*` returns an error if an index\nstarts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88867,7 +89703,7 @@
       "indices.put_settings-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `true`, returns settings in flat format.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88928,7 +89764,7 @@
       "indices.refresh-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88948,7 +89784,7 @@
       "indices.refresh-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88979,7 +89815,7 @@
       "indices.resolve_index-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -88989,7 +89825,7 @@
       "indices.resolve_index-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -89155,7 +89991,7 @@
       "indices.validate_query-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -89235,7 +90071,7 @@
       "indices.validate_query-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90091,7 +90927,7 @@
       "msearch-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If false, the request returns an error if any wildcard expression, index alias, or _all value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting foo*,bar* returns an error if an index starts with foo but no index starts with bar.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90131,7 +90967,7 @@
       "msearch-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If true, missing or closed indices are not included in the response.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90489,7 +91325,7 @@
       "rank_eval-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices. This behavior applies even if the request targets other open indices. For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90509,7 +91345,7 @@
       "rank_eval-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `true`, missing or closed indices are not included in the response.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90592,7 +91428,7 @@
       "search-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -90712,7 +91548,7 @@
       "search-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -91228,7 +92064,7 @@
       "search_template-allow_no_indices": {
         "in": "query",
         "name": "allow_no_indices",
-        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.\nFor example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.",
+        "description": "A setting that does two separate checks on the index expression.\nIf `false`, the request returns an error (1) if any wildcard expression\n(including `_all` and `*`) resolves to zero matching indices or (2) if the\ncomplete set of resolved indices, aliases or data streams is empty after all\nexpressions are evaluated. If `true`, index expressions that resolve to no\nindices are allowed and the request returns an empty result.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -91238,7 +92074,7 @@
       "search_template-ccs_minimize_roundtrips": {
         "in": "query",
         "name": "ccs_minimize_roundtrips",
-        "description": "If `true`, network round-trips are minimized for cross-cluster search requests.",
+        "description": "Indicates whether network round-trips should be minimized as part of cross-cluster search requests execution.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -91278,7 +92114,7 @@
       "search_template-ignore_unavailable": {
         "in": "query",
         "name": "ignore_unavailable",
-        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "description": "If `false`, the request returns an error if it targets a concrete (non-wildcarded)\nindex, alias, or data stream that is missing, closed, or otherwise unavailable.\nIf `true`, unavailable concrete targets are silently ignored.",
         "deprecated": false,
         "schema": {
           "type": "boolean"
@@ -93278,13 +94114,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "type": "object",
-              "properties": {
-                "project_routing": {
-                  "description": "A Lucene query using project metadata tags used to filter which projects are returned in the response, such as _alias:_origin or _alias:*pr*.",
-                  "type": "string"
-                }
-              }
+              "type": "object"
             }
           }
         }

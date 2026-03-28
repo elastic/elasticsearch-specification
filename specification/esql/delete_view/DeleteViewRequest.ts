@@ -26,7 +26,7 @@ import { Id, MediaType } from '@_types/common'
  * Deletes a stored ES|QL view.
  *
  * @rest_spec_name esql.delete_view
- * @cluster_privileges monitor_esql
+ * @index_privileges delete_view
  * @availability stack since=9.3.0 stability=experimental visibility=feature_flag feature_flag=esql_views
  * @availability serverless stability=experimental visibility=feature_flag feature_flag=esql_views
  * @doc_id esql-delete-view

@@ -24,7 +24,7 @@ import {
   HistogramAggregation,
   TermsAggregation
 } from '@_types/aggregations/bucket'
-import { Field, IndexName, Indices } from '@_types/common'
+import { Field, IndexName, Indices, ProjectRouting } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -142,6 +142,18 @@ export class Settings {
   use_point_in_time?: boolean
 
   /**
+   * Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.
+   * The minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.
+   * If unset, the cluster-level setting `num_transform_failure_retries` is used.
+   *
+   * This setting cannot be specified when `unattended` is `true`, because unattended transforms always retry
+   * indefinitely.
+   * @availability stack since=8.4.0
+   * @availability serverless
+   */
+  num_failure_retries?: integer
+
+  /**
    * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
    * of an error which means the transform never fails. Setting the number of retries other than infinite fails in
    * validation.
@@ -172,6 +184,18 @@ export class Source {
    * @availability serverless
    */
   runtime_mappings?: RuntimeFields
+  /**
+   * Specifies a subset of projects to target using project
+   * metadata tags in a subset of Lucene query syntax.
+   * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+   * Examples:
+   *  _alias:my-project
+   *  _alias:_origin
+   *  _alias:*pr*
+   * Supported in serverless only.
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+   */
+  project_routing?: ProjectRouting
 }
 
 export class Sync {}

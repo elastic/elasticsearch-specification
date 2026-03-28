@@ -83,53 +83,8 @@ export class RoleDescriptor {
 }
 
 export class RoleDescriptorRead implements OverloadOf<RoleDescriptor> {
-  /**
-   * A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.
-   */
   cluster: ClusterPrivilege[]
-  /**
-   * A list of indices permissions entries.
-   * @aliases index
-   */
   indices: IndicesPrivileges[]
-  /**
-   * A list of indices permissions for remote clusters.
-   * @availability stack since=8.14.0
-   */
-  remote_indices?: RemoteIndicesPrivileges[]
-  /**
-   * A list of cluster permissions for remote clusters.
-   * NOTE: This is limited a subset of the cluster permissions.
-   * @availability stack since=8.15.0
-   */
-  remote_cluster?: RemoteClusterPrivileges[]
-  /**
-   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
-   */
-  global?: GlobalPrivilege[] | GlobalPrivilege
-  /**
-   * A list of application privilege entries
-   */
-  applications?: ApplicationPrivileges[]
-  /**
-   * Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.
-   */
-  metadata?: Metadata
-  /**
-   * A list of users that the API keys can impersonate.
-   * @ext_doc_id run-as-privilege
-   */
-  run_as?: string[]
-  /**
-   * An optional description of the role descriptor.
-   */
-  description?: string
-  /**
-   * A restriction for when the role descriptor is allowed to be effective.
-   * @ext_doc_id role-restriction
-   */
-  restriction?: Restriction
-  transient_metadata?: Dictionary<string, UserDefinedValue>
 }
 
 export class Restriction {

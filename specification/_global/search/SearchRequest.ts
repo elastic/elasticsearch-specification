@@ -66,13 +66,12 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
  *
  * When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.
  * By default the splitting is done first on the shards, then locally on each shard.
- * The local splitting partitions the shard into contiguous ranges based on Lucene document IDs.
  *
  * For instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.
  *
  * IMPORTANT: The same point-in-time ID should be used for all slices.
  * If different PIT IDs are used, slices can overlap and miss documents.
- * This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
+ * This situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
  * @rest_spec_name search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -104,9 +103,12 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -176,7 +178,9 @@ export interface Request extends RequestBase {
      */
     ignore_throttled?: boolean
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean

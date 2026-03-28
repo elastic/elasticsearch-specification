@@ -118,9 +118,10 @@ export interface CommonCatQueryParameters {
 }
 
 /**
- * A class that implements `OverloadOf` should have the exact same properties with the same types.
- * It can change if a property is required or not. There is no need to port the descriptions
- * and js doc tags, the compiler will do that for you.
+ * A class that implements `OverloadOf` only needs to declare properties that differ from the parent.
+ * Unchanged properties are inherited automatically. For declared properties, you can change
+ * whether a property is required or not as well as its type. Same for the descriptions and js doc tags,
+ * if not specified, the parent ones will be used.
  * @behavior Defines a class that is the "read" version of a definition used when writing a property.
  */
 export interface OverloadOf<TDefinition> {}

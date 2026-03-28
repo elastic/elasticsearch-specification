@@ -18,8 +18,9 @@
  */
 
 import { Id } from '@_types/common'
-import { float, integer, long } from '@_types/Numeric'
+import { double, float, integer, long } from '@_types/Numeric'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class RequestChatCompletion {
@@ -37,6 +38,41 @@ export class RequestChatCompletion {
    * The upper bound limit for the number of tokens that can be generated for a completion request.
    */
   max_completion_tokens?: long
+  /**
+   * The reasoning configuration for the completion request.
+   * This controls the model's reasoning process in one of two ways:
+   *
+   * * By specifying the model’s reasoning effort level with the `effort` field.
+   * * By enabling reasoning with default settings by setting `enabled` field to `true`.
+   *
+   * It also includes optional settings to control:
+   *
+   * * The level of detail in the summary returned in the response with the `summary` field.
+   * * Whether reasoning details are included in the response at all with the `exclude` field.
+   *
+   * Example (effort):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "effort": "high",
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Example (enabled):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "enabled": true,
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: Reasoning
   /**
    * A sequence of strings to control when the model should stop generating additional tokens.
    */
@@ -125,13 +161,103 @@ export type CompletionToolType = string | CompletionToolChoice
  */
 export interface ContentObject {
   /**
-   * The text content.
+   * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
+   * types other than "text"
+   */
+  type: ContentType
+  /**
+   * The text content. Only applicable for the `text` type
    */
   text: string
   /**
-   * The type of content.
+   * The image content. Only applicable for the `image_url` type
    */
-  type: string
+  image_url: ImageUrl
+  /**
+   * The file content. Only applicable for the `file` type
+   */
+  file: FileContent
+}
+
+export enum ContentType {
+  text,
+  image_url,
+  file
+}
+
+export interface ImageUrl {
+  /**
+   * The base64 encoded image data as a data URI
+   */
+  url: string
+  /**
+   * Specifies the detail level of the image
+   */
+  detail?: ImageUrlDetail
+}
+
+export enum ImageUrlDetail {
+  auto,
+  low,
+  high
+}
+
+export interface FileContent {
+  /**
+   * The base64 encoded file data
+   */
+  file_data: string
+  /**
+   * The name of the file
+   */
+  filename: string
+}
+
+/**
+ * The reasoning configuration to use for the completion request.
+ * Currently supported only for `elastic` provider.
+ */
+export interface Reasoning {
+  /**
+   * The level of effort the model should put into reasoning.
+   * This is a hint that guides the model in how much effort to put into reasoning,
+   * with `xhigh` being the most effort and `none` being no effort.
+   */
+  effort?: ReasoningEffort
+  /**
+   * Whether to enable reasoning with default settings.
+   * This is a shortcut for enabling reasoning without having to specify the other parameters.
+   * If `enabled` is set to `true`, then reasoning at the `medium` effort level is enabled.
+   * Ignored if `effort` is specified,
+   * in which case that parameter will control the reasoning process instead.
+   */
+  enabled?: boolean
+  /**
+   * Whether to exclude reasoning information from the response.
+   * If `true`, the response will not include any reasoning details.
+   */
+  exclude?: boolean
+  /**
+   * The level of detail included in the reasoning summary returned in the response.
+   * This is a hint on how much detail to include in the summary of the reasoning that is returned in the response,
+   * with `auto` being the default level of detail, `concise` being less detail, and `detailed` being more detail.
+   */
+  summary?: ReasoningSummary
+}
+
+export enum ReasoningEffort {
+  xhigh,
+  high,
+  medium,
+  low,
+  minimal,
+  none
+}
+
+export enum ReasoningSummary {
+  auto,
+  concise,
+  detailed
 }
 
 /**
@@ -185,13 +311,42 @@ export interface Message {
    * }
    * ```
    *
-   * Object example:
+   * Text example:
    * ```
    * {
    *   "content": [
    *       {
    *        "text": "Some text",
    *        "type": "text"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * Image example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "image_url": {
+   *          "url": "data:image/jpg;base64,..."
+   *        },
+   *        "type": "image_url"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * File example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "file": {
+   *          "file_data": "data:application/pdf;base64,...",
+   *          "filename": "somePDF"
+   *        },
+   *        "type": "file"
    *       }
    *    ]
    * }
@@ -225,6 +380,86 @@ export interface Message {
    * ```
    */
   tool_calls?: Array<ToolCall>
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as plaintext.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: string
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as structured data.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning_details?: Array<ReasoningDetail>
+}
+
+/**
+ * Type representing the different types of reasoning details that can be included in the response from the model.
+ * Currently supported only for `elastic` provider.
+ * @variants internal tag='type'
+ */
+export type ReasoningDetail =
+  | EncryptedReasoningDetail
+  | SummaryReasoningDetail
+  | TextReasoningDetail
+
+/**
+ * The base reasoning detail that includes common fields across different types of reasoning details.
+ */
+export interface BaseReasoningDetail {
+  /**
+   * The format of the reasoning detail.
+   */
+  format?: string
+  /**
+   * The identifier of the reasoning detail.
+   */
+  id?: string
+  /**
+   * The index of the reasoning detail,
+   * which indicates its position in the sequence of reasoning details generated by the model.
+   */
+  index?: integer
+}
+
+/**
+ * The reasoning detail with encrypted reasoning data that may be redacted or protected.
+ */
+export interface EncryptedReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.encrypted'
+  /**
+   * The encrypted reasoning data generated by the model,
+   * which may be redacted or protected based on the model's configuration and the nature of the reasoning information.
+   */
+  data: string
+}
+
+/**
+ * The reasoning summary detail includes a high-level summary of the model's reasoning process.
+ */
+export interface SummaryReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.summary'
+  /**
+   * The summary of the reasoning process generated by the model,
+   * which provides an overview of the key points and conclusions reached during the reasoning process.
+   */
+  summary: string
+}
+
+/**
+ * The reasoning text detail includes plaintext reasoning with optional signature verification.
+ */
+export interface TextReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.text'
+  /**
+   * The signature of the reasoning text,
+   * which can be used to verify the authenticity and integrity of the reasoning information provided by the model.
+   */
+  signature?: string
+  /**
+   * The plaintext reasoning generated by the model,
+   * which provides a detailed explanation of the model's reasoning process in human-readable form.
+   */
+  text?: string
 }
 
 /**
@@ -391,20 +626,28 @@ export class EmbeddingContentObjectContents {
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this defaults to `text`. For the `image` type, this defaults to `base64`.
+   * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
+   * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
    */
   format?: EmbeddingContentFormat
   /**
-   * The value of the input to embed.
+   * The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. "data:content/type;base64,..."
    */
   value: string
 }
 
+/**
+ * The type of input to embed.
+ */
 export enum EmbeddingContentType {
   text,
   image
 }
 
+/**
+ * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
+ * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+ */
 export enum EmbeddingContentFormat {
   text,
   base64
@@ -888,11 +1131,9 @@ export enum AzureAiStudioServiceType {
 export class AzureOpenAIServiceSettings {
   /**
    * A valid API key for your Azure OpenAI account.
-   * You must specify either `api_key` or `entra_id`.
-   * If you do not provide either or you provide both, you will receive an error when you try to create your model.
    *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-auth
    */
   api_key?: string
@@ -902,6 +1143,27 @@ export class AzureOpenAIServiceSettings {
    */
   api_version: string
   /**
+   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * The application ID that's assigned to your app.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  client_id?: string
+  /**
+   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * The application secret that you created in the Microsoft app registration portal for your app.
+   *
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  client_secret?: string
+  /**
    * The deployment name of your deployed models.
    * Your Azure OpenAI deployments can be found though the Azure OpenAI Studio portal that is linked to your subscription.
    * @ext_doc_id azureopenai
@@ -909,8 +1171,9 @@ export class AzureOpenAIServiceSettings {
   deployment_id: string
   /**
    * A valid Microsoft Entra token.
-   * You must specify either `api_key` or `entra_id`.
-   * If you do not provide either or you provide both, you will receive an error when you try to create your model.
+   *
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    * @ext_doc_id azureopenai-auth
    */
   entra_id?: string
@@ -928,14 +1191,49 @@ export class AzureOpenAIServiceSettings {
    * @ext_doc_id azureopenai-portal
    */
   resource_name: string
+  /**
+   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * The resource identifier (application ID URI) of the resource you want, suffixed with .default
+   * For example:
+   * ```
+   * "scopes": [
+   *   "https://cognitiveservices.azure.com/.default"
+   * ]
+   * ```
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2-scopes
+   */
+  scopes?: Array<string>
+  /**
+   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * The directory tenant the application plans to operate against.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  tenant_id?: string
 }
 
 export class AzureOpenAITaskSettings {
   /**
-   * For a `completion`, `chat_completion` or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
 }
 
 export enum AzureOpenAITaskType {
@@ -1060,6 +1358,15 @@ export class CohereTaskSettings {
   truncate?: CohereTruncateType
 }
 
+export enum CustomServiceInputType {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export type CustomServiceQueryParameter = string[]
+
 export class CustomServiceSettings {
   /**
    * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
@@ -1072,13 +1379,13 @@ export class CustomServiceSettings {
    * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Authorization": "Bearer ${api_key}",
    *   "Content-Type": "application/json;charset=utf-8"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
   /**
    * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
    * For example:
@@ -1099,7 +1406,7 @@ export class CustomServiceSettings {
    * * `ingest`
    * * `search`
    */
-  input_type?: UserDefinedValue
+  input_type?: Dictionary<CustomServiceInputType, string>
   /**
    * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
    * For example:
@@ -1112,7 +1419,7 @@ export class CustomServiceSettings {
    * ```
    * If the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.
    */
-  query_parameters?: UserDefinedValue
+  query_parameters?: Array<CustomServiceQueryParameter>
   /**
    * The request configuration object.
    */
@@ -1130,7 +1437,7 @@ export class CustomServiceSettings {
    * }
    * ```
    */
-  secret_parameters: UserDefinedValue
+  secret_parameters: Dictionary<string, string>
   /**
    * The URL endpoint to use for the requests.
    */
@@ -1303,7 +1610,7 @@ export class CustomResponseParams {
    *   }
    * }
    */
-  json_parser: UserDefinedValue
+  json_parser: Dictionary<string, string>
 }
 
 export enum CustomTaskType {
@@ -1316,6 +1623,8 @@ export enum CustomTaskType {
 export enum CustomServiceType {
   custom
 }
+
+export type CustomTaskParameter = string | integer | double | float | boolean
 
 export class CustomTaskSettings {
   /**
@@ -1330,7 +1639,7 @@ export class CustomTaskSettings {
    * }
    * ```
    */
-  parameters?: UserDefinedValue
+  parameters?: Dictionary<string, CustomTaskParameter>
 }
 
 export enum ContextualAIServiceType {
@@ -2051,6 +2360,83 @@ export enum NvidiaInputType {
   search
 }
 
+export class FireworksAIServiceSettings {
+  /**
+   * A valid API key for your Fireworks AI account.
+   * You can find or create your API keys in the Fireworks AI dashboard.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id fireworksai-api-keys
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.
+   * For text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.
+   * @ext_doc_id fireworksai-recommended-models
+   */
+  model_id: string
+  /**
+   * The URL endpoint to use for the requests.
+   * If not provided, the default Fireworks AI API endpoint is used.
+   */
+  url?: string
+  /**
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * Variable-length embeddings are supported via this parameter.
+   */
+  dimensions?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * @server_default cosine
+   * @ext_doc_id fireworksai-embeddings
+   */
+  similarity?: FireworksAISimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Fireworks AI API.
+   * Rate limit grouping is per API key only.
+   * By default, the `fireworksai` service sets the number of requests allowed per minute to 6000.
+   * @ext_doc_id fireworksai-rate-limits
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum FireworksAITaskType {
+  chat_completion,
+  completion,
+  text_embedding
+}
+
+export enum FireworksAIServiceType {
+  fireworksai
+}
+
+export enum FireworksAISimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class FireworksAITaskSettings {
+  /**
+   * For a `completion` or`chat_completion` task, specify the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
+  /**
+   * For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
+}
+
 export class OpenAIServiceSettings {
   /**
    * A valid API key of your OpenAI account.
@@ -2105,7 +2491,7 @@ export enum OpenAISimilarityType {
 
 export class OpenAITaskSettings {
   /**
-   * For a `completion` or `text_embedding` task, specify the user issuing the request.
+   * Specifies the user issuing the request.
    * This information can be used for abuse detection.
    */
   user?: string
@@ -2113,13 +2499,13 @@ export class OpenAITaskSettings {
    * Specifies custom HTTP header parameters.
    * For example:
    * ```
-   * "headers":{
+   * "headers": {
    *   "Custom-Header": "Some-Value",
    *   "Another-Custom-Header": "Another-Value"
    * }
    * ```
    */
-  headers?: UserDefinedValue
+  headers?: Dictionary<string, string>
 }
 
 export enum OpenAITaskType {

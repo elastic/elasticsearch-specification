@@ -66,7 +66,7 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Limit the information returned the specific metrics */
+    /** Comma-separated list of metrics used to limit the request. */
     metric?: CommonStatsFlags
     /** A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices */
     index?: Indices
