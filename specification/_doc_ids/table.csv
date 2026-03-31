@@ -637,8 +637,7 @@ repository-gcs,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-rest
 repository-read-only,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/read-only-url-repository,[use-doc-url],,About read-only url repository
 repository-s3,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/s3-repository,[use-doc-url],,Learn more about s3 repository
 repository-s3-canned-acl,https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl,[use-doc-url],,About access control list (acl)
-repository-s3-delete-objects,https://docs.aws.amazon.com/AmazonS3/latest/API/API_deletingObjects.html,[use-doc-url],,More about deleting S3 objects
-repository-s3-list-multipart,https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html,[use-doc-url],,More about multipart uploads
+repository-s3-delete-objects,https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html,[use-doc-url],,More about deleting S3 objectsrepository-s3-list-multipart,https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html,[use-doc-url],,More about multipart uploads
 repository-s3-naming,https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules,[use-doc-url],,About general purpose bucket
 repository-s3-storage-classes,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/s3-repository#repository-s3-storage-classes,[use-doc-url],,Learn more about s3 repository
 repository-shared-fs,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/shared-file-system-repository,[use-doc-url],,About shared file system
