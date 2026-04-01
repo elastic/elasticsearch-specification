@@ -18,8 +18,8 @@
  */
 
 import { integer } from '@_types/Numeric'
-import { RateLimitSetting } from '@inference/_types/Services'
 import { CohereTruncateType } from '@inference/_types/CommonTypes'
+import { RateLimitSetting } from '@inference/_types/Services'
 
 export class NvidiaServiceSettings {
   /**
