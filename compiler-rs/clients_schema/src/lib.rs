@@ -1058,11 +1058,29 @@ pub struct License {
     pub url: String,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OpenApiFlavorSecurityBlock {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub security: Option<Vec<IndexMap<String, Vec<String>>>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub security_schemes: Option<serde_json::Value>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OpenApiMetadata {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub flavors: Option<IndexMap<String, OpenApiFlavorSecurityBlock>>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
 #[serde(rename_all = "camelCase")]
 pub struct Model {
     #[serde(rename = "_info", skip_serializing_if = "Option::is_none")]
     pub info: Option<ModelInfo>,
+    #[serde(rename = "_openapi", skip_serializing_if = "Option::is_none")]
+    pub openapi: Option<OpenApiMetadata>,
     pub endpoints: Vec<Endpoint>,
     pub types: Vec<TypeDefinition>,
 }
@@ -1082,6 +1100,9 @@ impl Model {
 pub struct IndexedModel {
     #[serde(rename = "_info", skip_serializing_if = "Option::is_none")]
     pub info: Option<ModelInfo>,
+
+    #[serde(rename = "_openapi", skip_serializing_if = "Option::is_none")]
+    pub openapi: Option<OpenApiMetadata>,
 
     pub endpoints: Vec<Endpoint>,
 
@@ -1199,6 +1220,7 @@ impl From<Model> for IndexedModel {
     fn from(value: Model) -> Self {
         IndexedModel {
             info: value.info,
+            openapi: value.openapi,
             endpoints: value.endpoints,
             types: value.types.into_iter().map(|t| (t.name().clone(), t)).collect(),
         }
@@ -1209,6 +1231,7 @@ impl From<IndexedModel> for Model {
     fn from(value: IndexedModel) -> Model {
         Model {
             info: value.info,
+            openapi: value.openapi,
             endpoints: value.endpoints,
             types: value.types.into_iter().map(|(_, t)| t).collect(),
         }

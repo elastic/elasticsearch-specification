@@ -24,7 +24,7 @@ pub mod cli;
 use indexmap::IndexMap;
 use itertools::Itertools;
 use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Privileges, Stability, UrlTemplate, Visibility};
-use openapiv3::{Components, OpenAPI};
+use openapiv3::{Components, OpenAPI, ReferenceOr};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
@@ -74,13 +74,15 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
 ///
 /// [generics in JSON Schema]: https://json-schema.org/blog/posts/dynamicref-and-generics
 pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, product_meta: &IndexMap<String,String>) -> anyhow::Result<OpenAPI> {
+    let (security, security_schemes) = extract_security_from_model(model, config);
+
     let mut openapi = OpenAPI {
         openapi: "3.0.3".into(),
         info: info(model, config),
         servers: vec![],
         paths: Default::default(),
         components: Some(Components {
-            security_schemes: Default::default(),
+            security_schemes,
             // Filled from endpoints
             responses: Default::default(),
             // Filled from endpoints
@@ -96,7 +98,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
             callbacks: Default::default(),
             extensions: Default::default(),
         }),
-        security: None,
+        security,
         tags: vec![],
         external_docs: None,
         extensions: Default::default(),
@@ -130,6 +132,44 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
     // }
 
     Ok(openapi)
+}
+
+fn extract_security_from_model(
+    model: &IndexedModel,
+    config: &Configuration,
+) -> (Option<Vec<IndexMap<String, Vec<String>>>>, IndexMap<String, ReferenceOr<openapiv3::SecurityScheme>>) {
+    let mut security_schemes = IndexMap::new();
+    let mut security = None;
+
+    if let Some(openapi_meta) = &model.openapi {
+        if let Some(flavors) = &openapi_meta.flavors {
+            let flavor_key = match config.flavor {
+                Some(Flavor::Stack) => "stack",
+                Some(Flavor::Serverless) => "serverless",
+                None => "stack", // Default to stack if not specified
+            };
+
+            if let Some(flavor_security) = flavors.get(flavor_key) {
+                // Convert security schemes from serde_json::Value to openapiv3::SecurityScheme
+                if let Some(schemes_value) = &flavor_security.security_schemes {
+                    if let Ok(schemes_map) = serde_json::from_value::<IndexMap<String, serde_json::Value>>(schemes_value.clone()) {
+                        for (name, scheme_value) in schemes_map {
+                            if let Ok(scheme) = serde_json::from_value::<openapiv3::SecurityScheme>(scheme_value) {
+                                security_schemes.insert(name, ReferenceOr::Item(scheme));
+                            }
+                        }
+                    }
+                }
+
+                // Extract security requirements
+                if let Some(security_req) = &flavor_security.security {
+                    security = Some(security_req.clone());
+                }
+            }
+        }
+    }
+
+    (security, security_schemes)
 }
 
 fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {
