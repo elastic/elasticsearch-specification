@@ -481,6 +481,18 @@ export class UrlTemplate {
   deprecation?: Deprecation
 }
 
+export interface OpenApiFlavorSecurityBlock {
+  security?: Array<Record<string, string[]>>
+  securitySchemes?: Record<string, unknown>
+}
+
+export interface OpenApiMetadata {
+  flavors?: {
+    stack?: OpenApiFlavorSecurityBlock
+    serverless?: OpenApiFlavorSecurityBlock
+  }
+}
+
 export class Model {
   _info?: {
     title: string
@@ -496,6 +508,8 @@ export class Model {
       }
     }
   }
+
+  _openapi?: OpenApiMetadata
 
   types: TypeDefinition[]
   endpoints: Endpoint[]
