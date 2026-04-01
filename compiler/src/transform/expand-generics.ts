@@ -467,6 +467,7 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
 
   return {
     _info: inputModel._info,
+    _openapi: inputModel._openapi,
     endpoints: inputModel.endpoints,
     types: types
   }
