@@ -1,6 +1,6 @@
 ---
 name: pre-commit-contrib
-description: Runs the Elasticsearch specification pre-commit pipeline (Node check, dependencies, compile, generate, license, format, OpenAPI, doc lint). Use before committing specification changes, when validating the full schema output, or when the user asks for contrib/setup validation.
+description: Runs the Elasticsearch specification contrib pre-commit pipeline (lint, generate, license, format, OpenAPI, doc lint). Use before committing specification changes, when validating the full schema output, or when the user asks for contrib/setup validation.
 ---
 
 # Pre-commit validation (elasticsearch-specification)
