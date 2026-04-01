@@ -1058,11 +1058,19 @@ pub struct License {
     pub url: String,
 }
 
+/// One OpenAPI 3 [Security Requirement Object](https://swagger.io/specification/#security-requirement-object):
+/// scheme name to optional OAuth2 scopes (empty vec when scopes do not apply).
+pub type OpenApiSecurityRequirement = IndexMap<String, Vec<String>>;
+
+/// Document-level `security` array: each element is an alternative set of requirements (OR); schemes
+/// within one [`OpenApiSecurityRequirement`] are ANDed.
+pub type OpenApiSecurityList = Vec<OpenApiSecurityRequirement>;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct OpenApiFlavorSecurityBlock {
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub security: Option<Vec<IndexMap<String, Vec<String>>>>,
+    pub security: Option<OpenApiSecurityList>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub security_schemes: Option<serde_json::Value>,
 }

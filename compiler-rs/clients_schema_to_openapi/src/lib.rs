@@ -23,11 +23,17 @@ pub mod cli;
 
 use indexmap::IndexMap;
 use itertools::Itertools;
-use clients_schema::{Availabilities, Availability, Flavor, IndexedModel, Privileges, Stability, UrlTemplate, Visibility};
+use clients_schema::{
+    Availabilities, Availability, Flavor, IndexedModel, OpenApiSecurityList, Privileges, Stability, UrlTemplate,
+    Visibility,
+};
 use openapiv3::{Components, OpenAPI, ReferenceOr};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
+
+/// Resolved `components.securitySchemes` for the OpenAPI document (name → scheme definition).
+type OpenApiResolvedSecuritySchemes = IndexMap<String, ReferenceOr<openapiv3::SecurityScheme>>;
 
 pub struct Configuration {
     pub flavor: Option<Flavor>,
@@ -137,7 +143,7 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
 fn extract_security_from_model(
     model: &IndexedModel,
     config: &Configuration,
-) -> (Option<Vec<IndexMap<String, Vec<String>>>>, IndexMap<String, ReferenceOr<openapiv3::SecurityScheme>>) {
+) -> (Option<OpenApiSecurityList>, OpenApiResolvedSecuritySchemes) {
     let mut security_schemes = IndexMap::new();
     let mut security = None;
 
