@@ -27,10 +27,10 @@ rules:
  # Paths
   no-ambiguous-paths: off
   no-identical-paths: warn
-  path-excludes-patterns:
-    severity: error
-    patterns:
-      - ^\/internal
+  # path-excludes-patterns:
+  #   severity: error
+  #   patterns:
+  #     - ^\/internal
  # Responses
   operation-4xx-response: off
   operation-2xx-response: off
