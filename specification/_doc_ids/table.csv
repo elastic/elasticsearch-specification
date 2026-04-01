@@ -10,9 +10,9 @@ aliases-update,https://www.elastic.co/docs/api/doc/elasticsearch/operation/opera
 alibabacloud-api-keys,https://opensearch.console.aliyun.com/cn-shanghai/rag/api-key,[use-doc-url],,More about Alibaba Cloud API keys
 analysis-analyzers,https://www.elastic.co/docs/reference/text-analysis/analyzer-reference,[use-doc-url],,Learn more about analyzers
 amazonbedrock-models,https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html,[use-doc-url],,More about Amazon Bedrock models
-amazonbedrock-secret-keys,https://docs.aws.amazon.com/IAM/latest/usingrGuide/id_credentials_access-keys.html,[use-doc-url],,About managing IAM access keys
+amazonbedrock-secret-keys,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html,[use-doc-url],,About managing IAM access keys
 amazonsagemaker-invoke,https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html,[use-doc-url],,More about InvokeEndpoint
-amazonsagemaker-secret-keys,https://docs.aws.amazon.com/IAM/latest/usingrGuide/id_credentials_access-keys.html,[use-doc-url],,About managing IAM access keys
+amazonsagemaker-secret-keys,https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html,[use-doc-url],,About managing IAM access keys
 analysis-charfilters,https://www.elastic.co/docs/reference/text-analysis/character-filter-reference,[use-doc-url],,About character filtering
 analysis-normalizers,https://www.elastic.co/docs/reference/text-analysis/normalizers,[use-doc-url],,Learn more about normalizers
 analysis-standard-analyzer,https://www.elastic.co/docs/reference/text-analysis/analysis-standard-analyzer,[use-doc-url],,More about the standard analyzer
@@ -623,7 +623,7 @@ query-dsl-span-first-query,https://www.elastic.co/docs/reference/query-languages
 query-dsl-span-multi-term-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-multi-term-query,[use-doc-url],,About the span multi-term query
 query-dsl-span-near-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-near-query,[use-doc-url],,More about the span near query
 query-dsl-span-not-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-not-query,[use-doc-url],,More about the span not query
-query-dsl-span-or-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-or-query,[use-doc-url],,More about the span or query
+query-dsl-span-or-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-query,[use-doc-url],,More about the span or query
 query-dsl-span-term-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-term-query,[use-doc-url],,More about the span term query
 query-dsl-span-within-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-within-query,[use-doc-url],,More about the span within query
 query-dsl-sparse-vector-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-sparse-vector-query,[use-doc-url],,About the sparse vector query
@@ -667,7 +667,7 @@ repository-gcs,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-rest
 repository-read-only,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/read-only-url-repository,[use-doc-url],,About read-only url repository
 repository-s3,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/s3-repository,[use-doc-url],,Learn more about s3 repository
 repository-s3-canned-acl,https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl,[use-doc-url],,About access control list (acl)
-repository-s3-delete-objects,https://docs.aws.amazon.com/AmazonS3/latest/API/API_deletingObjects.html,[use-doc-url],,More about deleting S3 objects
+repository-s3-delete-objects,https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html,[use-doc-url],,More about deleting S3 objects
 repository-s3-list-multipart,https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html,[use-doc-url],,More about multipart uploads
 repository-s3-naming,https://docs.aws.amazon.com/AmazonS3/latest/userguide/BucketRestrictions.html#bucketnamingrules,[use-doc-url],,About general purpose bucket
 repository-s3-storage-classes,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/s3-repository#repository-s3-storage-classes,[use-doc-url],,Learn more about s3 repository

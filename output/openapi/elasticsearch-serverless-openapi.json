@@ -38738,7 +38738,7 @@
           },
           "span_or": {
             "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-or-query"
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-span-query"
             },
             "description": "Matches the union of its span clauses.",
             "allOf": [
@@ -68568,7 +68568,7 @@
           },
           "secret_key": {
             "externalDocs": {
-              "url": "https://docs.aws.amazon.com/IAM/latest/usingrGuide/id_credentials_access-keys.html"
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
             },
             "description": "A valid AWS secret key that is paired with the `access_key`.\nFor informationg about creating and managing access and secret keys, refer to the AWS documentation.",
             "type": "string"
@@ -68686,7 +68686,7 @@
           },
           "secret_key": {
             "externalDocs": {
-              "url": "https://docs.aws.amazon.com/IAM/latest/usingrGuide/id_credentials_access-keys.html"
+              "url": "https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"
             },
             "description": "A valid AWS secret key that is paired with the `access_key`.\nFor information about creating and managing access and secret keys, refer to the AWS documentation.",
             "type": "string"
