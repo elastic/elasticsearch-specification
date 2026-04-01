@@ -1031,7 +1031,7 @@ export class GrokProcessor extends ProcessorBase {
   trace_match?: boolean
   /**
    * When `true`, the processor does matching but does not extract structured fields
-   * @availability stack since=9.4
+   * @availability stack since=9.4.0
    * @availability serverless
    * @server_default false
    */
