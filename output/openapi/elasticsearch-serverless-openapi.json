@@ -12172,7 +12172,7 @@
                 "EmbeddingRequestExample1": {
                   "summary": "Multimodal embedding task",
                   "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate embeddings from the example text and image",
-                  "value": "{\n  \"input\": [\n      {\n          \"content\": {\n              \"type\": \"image\",\n              \"format\": \"base64\",\n              \"value\": \"data:image/jpg;base64,...\"\n          }\n      },\n      {\n          \"content\": {\n              \"type\": \"text\",\n              \"value\": \"Some text to create an embedding\"\n          }\n      }\n  ]\n}"
+                  "value": "{\n  \"input\": [\n      {\n          \"content\": {\n              \"type\": \"image\",\n              \"format\": \"base64\",\n              \"value\": \"data:image/jpeg;base64,...\"\n          }\n      },\n      {\n          \"content\": {\n              \"type\": \"text\",\n              \"value\": \"Some text to create an embedding\"\n          }\n      }\n  ]\n}"
                 },
                 "EmbeddingRequestExample2": {
                   "summary": "Text-only embedding task",
@@ -67382,7 +67382,7 @@
         "type": "object",
         "properties": {
           "content": {
-            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nText example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```\n\nImage example:\n```\n{\n  \"content\": [\n      {\n       \"image_url\": {\n         \"url\": \"data:image/jpg;base64,...\"\n       },\n       \"type\": \"image_url\"\n      }\n   ]\n}\n```\n\nFile example:\n```\n{\n  \"content\": [\n      {\n       \"file\": {\n         \"file_data\": \"data:application/pdf;base64,...\",\n         \"filename\": \"somePDF\"\n       },\n       \"type\": \"file\"\n      }\n   ]\n}\n```",
+            "description": "The content of the message.\n\nString example:\n```\n{\n   \"content\": \"Some string\"\n}\n```\n\nText example:\n```\n{\n  \"content\": [\n      {\n       \"text\": \"Some text\",\n       \"type\": \"text\"\n      }\n   ]\n}\n```\n\nImage example:\n```\n{\n  \"content\": [\n      {\n       \"image_url\": {\n         \"url\": \"data:image/jpeg;base64,...\"\n       },\n       \"type\": \"image_url\"\n      }\n   ]\n}\n```\n\nFile example:\n```\n{\n  \"content\": [\n      {\n       \"file\": {\n         \"file_data\": \"data:application/pdf;base64,...\",\n         \"filename\": \"somePDF\"\n       },\n       \"type\": \"file\"\n      }\n   ]\n}\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.MessageContent"
@@ -67914,7 +67914,7 @@
         "type": "object",
         "properties": {
           "input": {
-            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpg;base64,...\"\n    }\n  }\n]\n```",
+            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingInput"
