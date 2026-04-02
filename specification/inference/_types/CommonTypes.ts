@@ -329,7 +329,7 @@ export interface Message {
    *   "content": [
    *       {
    *        "image_url": {
-   *          "url": "data:image/jpg;base64,..."
+   *          "url": "data:image/jpeg;base64,..."
    *        },
    *        "type": "image_url"
    *       }
@@ -543,7 +543,7 @@ export class RequestEmbedding {
    *     "content": {
    *       "type": "image",
    *       "format": "base64",
-   *       "value": "data:image/jpg;base64,..."
+   *       "value": "data:image/jpeg;base64,..."
    *     }
    *   }
    * ```
@@ -561,7 +561,7 @@ export class RequestEmbedding {
    *     "content": {
    *       "type": "image",
    *       "format": "base64",
-   *       "value": "data:image/jpg;base64,..."
+   *       "value": "data:image/jpeg;base64,..."
    *     }
    *   }
    * ]
