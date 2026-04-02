@@ -33,7 +33,9 @@ export class Response {
     name: Name
     tagline: string
     /**
-     * The running version of Elasticsearch.
+     * Version information for the Elasticsearch cluster.
+     * In Serverless, `version.number` reflects the next minor release rather than the currently released version.
+     * Use `build_flavor: serverless` to detect a Serverless environment instead of gating on the version number.
      */
     version: ElasticsearchVersionInfo
   }

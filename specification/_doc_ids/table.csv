@@ -899,6 +899,7 @@ security-settings-hashing,https://www.elastic.co/docs/reference/elasticsearch/co
 security-user-cache,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache,[use-doc-url],,About controlling the user cache
 sematic-text-chunking,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/semantic-text#auto-text-chunking,[use-doc-url],,About semantic text field type
 service-accounts,https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts,[use-doc-url],,More about service accounts
+serverless-differences,https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings,[use-doc-url],,Learn about Serverless differences
 set-processor,https://www.elastic.co/docs/reference/enrich-processor/set-processor,[use-doc-url],,More about the setting processor
 shape,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/shape,[use-doc-url],,More about the shape field type
 shard-request-cache,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/shard-request-cache,[use-doc-url],,About the shard request cache

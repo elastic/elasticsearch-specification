@@ -24,12 +24,13 @@ import { MediaType } from '@_types/common'
  * Get cluster info.
  *
  * Get basic build, version, and cluster information.
- * ::: In Serverless, this API is retained for backward compatibility only. Some response fields, such as the version number, should be ignored.
+ * ::: In Serverless, `version.number` reflects the next minor release of Elasticsearch. Serverless is versionless and continuously updated from the main branch, so this field approximates current feature parity rather than a discrete release. Use `build_flavor: serverless` to detect a Serverless environment instead of gating on the version number.
  * @rest_spec_name info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges monitor
  * @doc_id api-root
+ * @ext_doc_id serverless-differences
  * @doc_tag info
  */
 export interface Request extends RequestBase {
