@@ -25,7 +25,7 @@ import {
   NvidiaServiceType,
   NvidiaTaskSettings,
   NvidiaTaskType
-} from '@inference/_types/CommonTypes'
+} from '@inference/_types/NvidiaTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
