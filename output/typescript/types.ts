@@ -15893,6 +15893,7 @@ export interface IngestGrokProcessor extends IngestProcessorBase {
   pattern_definitions?: Record<string, string>
   patterns: GrokPattern[]
   trace_match?: boolean
+  validate_only?: boolean
 }
 
 export interface IngestGsubProcessor extends IngestProcessorBase {
