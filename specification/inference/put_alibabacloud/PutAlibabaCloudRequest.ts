@@ -25,7 +25,7 @@ import {
   AlibabaCloudServiceType,
   AlibabaCloudTaskSettings,
   AlibabaCloudTaskType
-} from '@inference/_types/CommonTypes'
+} from '@inference/_types/AlibabaCloudTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
