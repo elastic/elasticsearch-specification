@@ -18672,23 +18672,23 @@
   "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpeg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpeg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpg;base64,...\"\n        }\n      },\n      {\n        \"content\": {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      }\n    ]\n  }\n)"
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpeg;base64,...\"\n        }\n      },\n      {\n        \"content\": {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      }\n    ]\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => [\n                    \"type\" => \"image\",\n                    \"format\" => \"base64\",\n                    \"value\" => \"data:image/jpg;base64,...\",\n                ],\n            ],\n            [\n                \"content\" => [\n                    \"type\" => \"text\",\n                    \"value\" => \"Some text to create an embedding\",\n                ],\n            ],\n        ),\n    ],\n]);"
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => [\n                    \"type\" => \"image\",\n                    \"format\" => \"base64\",\n                    \"value\" => \"data:image/jpeg;base64,...\",\n                ],\n            ],\n            [\n                \"content\" => [\n                    \"type\" => \"text\",\n                    \"value\" => \"Some text to create an embedding\",\n                ],\n            ],\n        ),\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
     }
   ],
   "specification/inference/embedding/examples/request/EmbeddingRequestExample2.yaml": [
