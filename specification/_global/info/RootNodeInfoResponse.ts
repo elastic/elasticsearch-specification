@@ -33,9 +33,7 @@ export class Response {
     name: Name
     tagline: string
     /**
-     * Version information for the Elasticsearch cluster.
-     * In Serverless, `version.number` reflects the next minor release rather than the currently released version.
-     * Use `build_flavor: serverless` to detect a Serverless environment instead of gating on the version number.
+     * Version information for the Elasticsearch cluster. In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request, not an actual deployed version. The version number is provided to maintain client compatibility but is not meaningful for assessing feature availability. Use `build_flavor: serverless` to detect a Serverless environment.
      */
     version: ElasticsearchVersionInfo
   }

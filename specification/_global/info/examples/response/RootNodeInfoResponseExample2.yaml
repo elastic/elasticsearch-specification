@@ -1,5 +1,5 @@
 summary: Serverless response
-description: A successful response from `GET /` on Serverless. Note that `version.number` reflects the next minor release rather than the currently released version, because Serverless is continuously and automatically updated.
+description: A successful response from `GET /` on Serverless. The `version.number` shown here is illustrative; Serverless always reports the next target Elasticsearch release version at the time of the request, so the actual value will differ from this example.
 # type: response
 # response_code: 200
 value:

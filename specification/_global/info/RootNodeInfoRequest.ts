@@ -24,7 +24,7 @@ import { MediaType } from '@_types/common'
  * Get cluster info.
  *
  * Get basic build, version, and cluster information.
- * ::: In Serverless, `version.number` reflects the next minor release of Elasticsearch. Serverless is versionless and continuously updated from the main branch, so this field approximates current feature parity rather than a discrete release. Use `build_flavor: serverless` to detect a Serverless environment instead of gating on the version number.
+ * ::: In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request. Serverless does not track to a traditional release versioning model; it is continuously updated. The version number is provided to maintain compatibility with existing clients, but it is not meaningful for assessing feature availability. Clients should detect a Serverless environment by checking for `build_flavor: serverless`.
  * @rest_spec_name info
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
