@@ -6391,6 +6391,132 @@
         ]
       }
     },
+    "/_query/view/{name}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get an ES|QL view",
+        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "operationId": "esql-get-view-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/esql.get_view-name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_view-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Create or update an ES|QL view",
+        "description": "\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "operationId": "esql-put-view",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The view name to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": {
+                    "description": "The ES|QL query string from which to create a view.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete an ES|QL view",
+        "description": "Deletes a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "operationId": "esql-delete-view",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The view name to remove.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_query/queries/{id}": {
       "get": {
         "tags": [
@@ -6465,6 +6591,28 @@
                 }
               }
             }
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/view": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get an ES|QL view",
+        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "operationId": "esql-get-view",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_view-200"
           }
         },
         "x-state": "Technical preview",
@@ -64827,6 +64975,24 @@
           "head"
         ]
       },
+      "esql._types.ESQLView": {
+        "description": "A non-materialized ES|QL view.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the ES|QL view",
+            "type": "string"
+          },
+          "query": {
+            "description": "The ES|QL query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "query"
+        ]
+      },
       "esql.list_queries.Body": {
         "type": "object",
         "properties": {
@@ -85252,6 +85418,27 @@
           }
         }
       },
+      "esql.get_view-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "views": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/esql._types.ESQLView"
+                  }
+                }
+              },
+              "required": [
+                "views"
+              ]
+            }
+          }
+        }
+      },
       "explain-200": {
         "description": "",
         "content": {
@@ -88643,6 +88830,17 @@
           "$ref": "#/components/schemas/_types.Duration"
         },
         "style": "form"
+      },
+      "esql.get_view-name": {
+        "in": "path",
+        "name": "name",
+        "description": "The comma-separated view names to retrieve.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Id"
+        },
+        "style": "simple"
       },
       "explain-id": {
         "in": "path",
