@@ -27,8 +27,8 @@ import { Id, MediaType } from '@_types/common'
  *
  * @rest_spec_name esql.delete_view
  * @index_privileges delete_view
- * @availability stack since=9.3.0 stability=experimental visibility=feature_flag feature_flag=esql_views
- * @availability serverless stability=experimental visibility=feature_flag feature_flag=esql_views
+ * @availability stack since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id esql-delete-view
  */
 export interface Request extends RequestBase {
