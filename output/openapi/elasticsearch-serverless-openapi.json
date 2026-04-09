@@ -16241,7 +16241,12 @@
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Get basic build, version, and cluster information.\n::: In Serverless, this API is retained for backward compatibility only. Some response fields, such as the version number, should be ignored.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get basic build, version, and cluster information.\n::: In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request. Serverless does not track to a traditional release versioning model; it is continuously updated. The version number is provided to maintain compatibility with existing clients, but it is not meaningful for assessing feature availability. Clients should detect a Serverless environment by checking for `build_flavor: serverless`.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "externalDocs": {
+          "description": "Learn about Serverless differences",
+          "url": "https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-root.html"
+        },
         "operationId": "info",
         "responses": {
           "200": {
@@ -16278,7 +16283,7 @@
                       "type": "string"
                     },
                     "version": {
-                      "description": "The running version of Elasticsearch.",
+                      "description": "Version information for the Elasticsearch cluster. In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request, not an actual deployed version. The version number is provided to maintain client compatibility but is not meaningful for assessing feature availability. Use `build_flavor: serverless` to detect a Serverless environment.",
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/_types.ElasticsearchVersionInfo"
@@ -16302,8 +16307,8 @@
                   },
                   "RootNodeInfoResponseExample2": {
                     "summary": "Serverless response",
-                    "description": "A successful response from `GET /` on Serverless. This API is retained for backward compatibility only. Some fields, such as the version number, return static values and should be ignored.",
-                    "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"8.11.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2023-10-31T00:00:00.000Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"9.7.0\",\n    \"minimum_wire_compatibility_version\": \"8.11.0\",\n    \"minimum_index_compatibility_version\": \"8.11.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
+                    "description": "A successful response from `GET /` on Serverless. The `version.number` shown here is illustrative; Serverless always reports the next target Elasticsearch release version at the time of the request, so the actual value will differ from this example.",
+                    "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"9.4.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": \"6b73650b7c4192d4a7ef1d75a368dad7d28f1ae0\",\n    \"build_date\": \"2026-03-31T12:25:05.021Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"10.4.0\",\n    \"minimum_wire_compatibility_version\": \"9.4.0\",\n    \"minimum_index_compatibility_version\": \"9.4.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
                   }
                 }
               }
