@@ -329,7 +329,7 @@ export interface Message {
    *   "content": [
    *       {
    *        "image_url": {
-   *          "url": "data:image/jpg;base64,..."
+   *          "url": "data:image/jpeg;base64,..."
    *        },
    *        "type": "image_url"
    *       }
@@ -543,7 +543,7 @@ export class RequestEmbedding {
    *     "content": {
    *       "type": "image",
    *       "format": "base64",
-   *       "value": "data:image/jpg;base64,..."
+   *       "value": "data:image/jpeg;base64,..."
    *     }
    *   }
    * ```
@@ -561,7 +561,7 @@ export class RequestEmbedding {
    *     "content": {
    *       "type": "image",
    *       "format": "base64",
-   *       "value": "data:image/jpg;base64,..."
+   *       "value": "data:image/jpeg;base64,..."
    *     }
    *   }
    * ]
@@ -651,194 +651,6 @@ export enum EmbeddingContentType {
 export enum EmbeddingContentFormat {
   text,
   base64
-}
-
-export class Ai21ServiceSettings {
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the AI21 models documentation for the list of supported models and versions.
-   * Service has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:
-   * * `jamba-mini`
-   * * `jamba-large`
-   * @ext_doc_id ai21-api-models
-   */
-  model_id: string
-  /**
-   * A valid API key for accessing AI21 API.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   */
-  api_key?: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from the AI21 API.
-   * By default, the `ai21` service sets the number of requests allowed per minute to 200. Please refer to AI21 documentation for more details.
-   * @ext_doc_id ai21-rate-limit
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export enum Ai21TaskType {
-  completion,
-  chat_completion
-}
-
-export enum Ai21ServiceType {
-  ai21
-}
-
-export class AlibabaCloudServiceSettings {
-  /**
-   * A valid API key for the AlibabaCloud AI Search API.
-   */
-  api_key: string
-  /**
-   * The name of the host address used for the inference task.
-   * You can find the host address in the API keys section of the documentation.
-   * @ext_doc_id alibabacloud-api-keys
-   */
-  host: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from AlibabaCloud AI Search.
-   * By default, the `alibabacloud-ai-search` service sets the number of requests allowed per minute to `1000`.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * The name of the model service to use for the inference task.
-   * The following service IDs are available for the `completion` task:
-   *
-   * * `ops-qwen-turbo`
-   * * `qwen-turbo`
-   * * `qwen-plus`
-   * * `qwen-max ÷ qwen-max-longcontext`
-   *
-   * The following service ID is available for the `rerank` task:
-   *
-   * * `ops-bge-reranker-larger`
-   *
-   * The following service ID is available for the `sparse_embedding` task:
-   *
-   * * `ops-text-sparse-embedding-001`
-   *
-   * The following service IDs are available for the `text_embedding` task:
-   *
-   * `ops-text-embedding-001`
-   * `ops-text-embedding-zh-001`
-   * `ops-text-embedding-en-001`
-   * `ops-text-embedding-002`
-   */
-  service_id: string
-  /**
-   * The name of the workspace used for the inference task.
-   */
-  workspace: string
-}
-
-export class AlibabaCloudTaskSettings {
-  /**
-   * For a `sparse_embedding` or `text_embedding` task, specify the type of input passed to the model.
-   * Valid values are:
-   *
-   * * `ingest` for storing document embeddings in a vector database.
-   * * `search` for storing embeddings of search queries run against a vector database to find relevant documents.
-   */
-  input_type?: string
-  /**
-   * For a `sparse_embedding` task, it affects whether the token name will be returned in the response.
-   * It defaults to `false`, which means only the token ID will be returned in the response.
-   */
-  return_token?: boolean
-}
-
-export enum AlibabaCloudTaskType {
-  completion,
-  rerank,
-  sparse_embedding,
-  text_embedding
-}
-
-export enum AlibabaCloudServiceType {
-  'alibabacloud-ai-search'
-}
-
-export class AmazonBedrockServiceSettings {
-  /**
-   * A valid AWS access key that has permissions to use Amazon Bedrock and access to models for inference requests.
-   */
-  access_key: string
-  /**
-   * The base model ID or an ARN to a custom model based on a foundational model.
-   * The base model IDs can be found in the Amazon Bedrock documentation.
-   * Note that the model ID must be available for the provider chosen and your IAM user must have access to the model.
-   * @ext_doc_id amazonbedrock-models
-   */
-  model: string
-  /**
-   * The model provider for your deployment.
-   * Note that some providers may support only certain task types.
-   * Supported providers include:
-   *
-   * * `amazontitan` - available for `text_embedding` and `completion` task types
-   * * `anthropic` - available for `chat_completion` and `completion` task types
-   * * `ai21labs` - available for `chat_completion` and `completion` task types
-   * * `cohere` - available for `chat_completion`, `completion` and `text_embedding` task types
-   * * `meta` - available for `chat_completion` and `completion` task types
-   * * `mistral` - available for `chat_completion` and `completion` task types
-   */
-  provider?: string
-  /**
-   * The region that your model or ARN is deployed in.
-   * The list of available regions per model can be found in the Amazon Bedrock documentation.
-   * @ext_doc_id amazonbedrock-models
-   */
-  region: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from Amazon Bedrock.
-   * By default, the `amazonbedrock` service sets the number of requests allowed per minute to 240.
-   */
-  rate_limit?: RateLimitSetting
-  /**
-   * A valid AWS secret key that is paired with the `access_key`.
-   * For informationg about creating and managing access and secret keys, refer to the AWS documentation.
-   * @ext_doc_id amazonbedrock-secret-keys
-   */
-  secret_key: string
-}
-
-export class AmazonBedrockTaskSettings {
-  /**
-   * For `chat_completion` and `completion` tasks, it sets the maximum number for the output tokens to be generated.
-   * @server_default 64
-   */
-  max_new_tokens?: integer
-  /**
-   * For `chat_completion` and `completion` tasks, it is a number between 0.0 and 1.0 that controls the apparent creativity of the results.
-   * At temperature 0.0 the model is most deterministic, at temperature 1.0 most random.
-   * It should not be used if `top_p` or `top_k` is specified.
-   */
-  temperature?: float
-  /**
-   * For `chat_completion` and `completion` tasks, it limits samples to the top-K most likely words, balancing coherence and variability.
-   * It is only available for anthropic, cohere, and mistral providers.
-   * It is an alternative to `temperature`; it should not be used if `temperature` is specified.
-   */
-  top_k?: float
-  /**
-   * For `chat_completion` and `completion` tasks, it is a number in the range of 0.0 to 1.0, to eliminate low-probability tokens.
-   * Top-p uses nucleus sampling to select top tokens whose sum of likelihoods does not exceed a certain value, ensuring both variety and coherence.
-   * It is an alternative to `temperature`; it should not be used if `temperature` is specified.
-   */
-  top_p?: float
-}
-
-export enum AmazonBedrockTaskType {
-  chat_completion,
-  completion,
-  text_embedding
-}
-
-export enum AmazonBedrockServiceType {
-  amazonbedrock
 }
 
 export class AmazonSageMakerServiceSettings {
@@ -2237,127 +2049,6 @@ export enum LlamaSimilarityType {
   cosine,
   dot_product,
   l2_norm
-}
-
-export class MistralServiceSettings {
-  /**
-   * A valid API key of your Mistral account.
-   * You can find your Mistral API keys or you can create a new one on the API Keys page.
-   *
-   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
-   * The get inference endpoint API does not retrieve your API key.
-   * @ext_doc_id mistral-api-keys
-   */
-  api_key: string
-  /**
-   * The maximum number of tokens per input before chunking occurs.
-   */
-  max_input_tokens?: integer
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the Mistral models documentation for the list of available models.
-   * @ext_doc_id mistral-api-models
-   */
-  model: string
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from the Mistral API.
-   * By default, the `mistral` service sets the number of requests allowed per minute to 240.
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export enum MistralTaskType {
-  text_embedding,
-  completion,
-  chat_completion
-}
-
-export enum MistralServiceType {
-  mistral
-}
-
-export class NvidiaServiceSettings {
-  /**
-   * A valid API key for your Nvidia endpoint.
-   * Can be found in `API Keys` section of Nvidia account settings.
-   */
-  api_key: string
-  /**
-   * The URL of the Nvidia model endpoint. If not provided, the default endpoint URL is used depending on the task type:
-   *
-   * * For `text_embedding` task - `https://integrate.api.nvidia.com/v1/embeddings`.
-   * * For `completion` and `chat_completion` tasks - `https://integrate.api.nvidia.com/v1/chat/completions`.
-   * * For `rerank` task - `https://ai.api.nvidia.com/v1/retrieval/nvidia/reranking`.
-   */
-  url?: string
-  /**
-   * The name of the model to use for the inference task.
-   * Refer to the model's documentation for the name if needed.
-   * Service has been tested and confirmed to be working with the following models:
-   *
-   * * For `text_embedding` task - `nvidia/llama-3.2-nv-embedqa-1b-v2`.
-   * * For `completion` and `chat_completion` tasks - `microsoft/phi-3-mini-128k-instruct`.
-   * * For `rerank` task - `nv-rerank-qa-mistral-4b:1`.
-   * Service doesn't support `text_embedding` task `baai/bge-m3` and `nvidia/nvclip` models due to them not recognizing the `input_type` parameter.
-   */
-  model_id: string
-  /**
-   * For a `text_embedding` task, the maximum number of tokens per input. Inputs exceeding this value are truncated prior to sending to the Nvidia API.
-   */
-  max_input_tokens?: integer
-  /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
-   */
-  similarity?: NvidiaSimilarityType
-  /**
-   * This setting helps to minimize the number of rate limit errors returned from the Nvidia API.
-   * By default, the `nvidia` service sets the number of requests allowed per minute to 3000.
-   */
-  rate_limit?: RateLimitSetting
-}
-
-export enum NvidiaTaskType {
-  chat_completion,
-  completion,
-  rerank,
-  text_embedding
-}
-
-export enum NvidiaServiceType {
-  nvidia
-}
-
-export enum NvidiaSimilarityType {
-  cosine,
-  dot_product,
-  l2_norm
-}
-
-export class NvidiaTaskSettings {
-  /**
-   * For a `text_embedding` task, type of input sent to the Nvidia endpoint.
-   * Valid values are:
-   *
-   * * `ingest`: Mapped to Nvidia's `passage` value in request. Used when generating embeddings during indexing.
-   * * `search`: Mapped to Nvidia's `query` value in request. Used when generating embeddings during querying.
-   *
-   * IMPORTANT: For Nvidia endpoints, if the `input_type` field is not specified, it defaults to `query`.
-   */
-  input_type?: NvidiaInputType
-  /**
-   * For a `text_embedding` task, the method used by the Nvidia model to handle inputs longer than the maximum token length.
-   * Valid values are:
-   *
-   * * `END`: When the input exceeds the maximum input token length, the end of the input is discarded.
-   * * `NONE`: When the input exceeds the maximum input token length, an error is returned.
-   * * `START`: When the input exceeds the maximum input token length, the start of the input is discarded.
-   */
-  truncate?: CohereTruncateType
-}
-
-export enum NvidiaInputType {
-  ingest,
-  search
 }
 
 export class FireworksAIServiceSettings {

@@ -24,7 +24,7 @@ import {
   MistralServiceSettings,
   MistralServiceType,
   MistralTaskType
-} from '@inference/_types/CommonTypes'
+} from '@inference/_types/MistralTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**
