@@ -16129,6 +16129,102 @@
         ]
       }
     },
+    "/_inference/completion/{inference_id}/_stream": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform streaming completion inference on the service",
+        "description": "Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-stream-completion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\nNOTE: Inference endpoints for the completion task type currently only support a single string as input.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "StreamInferenceRequestExample1": {
+                  "summary": "Perform a completion task",
+                  "description": "Run `POST _inference/completion/openai-completion/_stream` to perform a completion on the example question with streaming.",
+                  "value": "{\n  \"input\": \"What is Elastic?\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.StreamResult"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/text_embedding/{inference_id}": {
       "post": {
         "tags": [
@@ -16224,6 +16320,69 @@
                 }
               }
             }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{inference_id}/_update": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update-inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{inference_id}/_update": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-update-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update-task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.update-inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update-200"
           }
         },
         "x-state": "Generally available",
@@ -85996,6 +86155,16 @@
           }
         }
       },
+      "inference.update-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+            }
+          }
+        }
+      },
       "ingest.get_pipeline-200": {
         "description": "",
         "content": {
@@ -90445,6 +90614,28 @@
         },
         "style": "form"
       },
+      "inference.update-inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The unique identifier of the inference endpoint.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Id"
+        },
+        "style": "simple"
+      },
+      "inference.update-task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The type of inference task that the model performs.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types.TaskType"
+        },
+        "style": "simple"
+      },
       "ingest.get_pipeline-id": {
         "in": "path",
         "name": "id",
@@ -94016,6 +94207,22 @@
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
                 "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "inference.update": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+            },
+            "examples": {
+              "InferenceUpdateExample1": {
+                "description": "An example body for a `PUT _inference/my-inference-endpoint/_update` request.",
+                "value": "{\n \"service_settings\": {\n   \"api_key\": \"<API_KEY>\"\n },\n\"service\": \"example-service\"\n}"
               }
             }
           }
