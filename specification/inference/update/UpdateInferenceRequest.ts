@@ -32,6 +32,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.update
  * @availability stack since=8.17.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-update
  */

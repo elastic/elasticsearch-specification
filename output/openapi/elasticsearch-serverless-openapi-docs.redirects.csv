@@ -41,6 +41,7 @@ inference-get-2,inference-get
 inference-get-3,inference-get
 inference-inference-1,inference-inference
 inference-put-1,inference-put
+inference-update-1,inference-update
 ingest-get-pipeline-1,ingest-get-pipeline
 ingest-simulate-1,ingest-simulate
 logstash-get-pipeline-1,logstash-get-pipeline
