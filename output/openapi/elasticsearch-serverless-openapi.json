@@ -27150,6 +27150,14 @@
                   "SecurityAuthenticateResponseExample1": {
                     "description": "A successful response from `GET /_security/_authenticate`.",
                     "value": "{\n  \"username\": \"rdeniro\",\n  \"roles\": [\n    \"admin\"\n  ],\n  \"full_name\": null,\n  \"email\":  null,\n  \"metadata\": { },\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"lookup_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"authentication_type\": \"realm\"\n}"
+                  },
+                  "SecurityAuthenticateResponseExample2": {
+                    "description": "A successful response from `GET /_security/_authenticate` for access token authentication.",
+                    "value": "{\n  \"username\": \"0000000001\",\n  \"roles\": [\n    \"admin\"\n  ],\n  \"full_name\": \"Peter Parker\",\n  \"email\": \"spider-man@marvel.com\",\n  \"metadata\": {},\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\": \"cloud-saml-kibana\",\n    \"type\": \"saml\"\n  },\n  \"lookup_realm\": {\n    \"name\": \"cloud-saml-kibana\",\n    \"type\": \"saml\"\n  },\n  \"authentication_type\": \"token\",\n  \"token\": {\n    \"managed_by\": \"cloud\"\n  }\n}"
+                  },
+                  "SecurityAuthenticateResponseExample3": {
+                    "description": "A successful response from `GET /_security/_authenticate` for service account token authentication.",
+                    "value": "{\n  \"username\": \"elastic/fleet-server\",\n  \"roles\": [ ],\n  \"full_name\": \"Service account - elastic/fleet-server\",\n  \"email\": null,\n  \"metadata\": {\n    \"_elastic_service_account\": true\n  },\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\": \"_service_account\",\n    \"type\": \"_service_account\"\n  },\n  \"lookup_realm\": {\n    \"name\": \"_service_account\",\n    \"type\": \"_service_account\"\n  },\n  \"authentication_type\": \"token\",\n  \"token\": {\n    \"type\": \"_service_account_index\",\n    \"name\": \"token_abcd1234\",\n    \"managed_by\": \"elasticsearch\"\n  }\n}"
                   }
                 }
               }
@@ -82706,7 +82714,7 @@
           "managed_by": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/security._types.ApiKeyManagedBy"
+                "$ref": "#/components/schemas/security._types.CredentialManagedBy"
               }
             ]
           },
@@ -82719,7 +82727,7 @@
           "managed_by"
         ]
       },
-      "security._types.ApiKeyManagedBy": {
+      "security._types.CredentialManagedBy": {
         "type": "string",
         "enum": [
           "cloud",
@@ -82758,11 +82766,16 @@
           "type": {
             "x-state": "Generally available",
             "type": "string"
+          },
+          "managed_by": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.CredentialManagedBy"
+              }
+            ]
           }
-        },
-        "required": [
-          "name"
-        ]
+        }
       },
       "security._types.RoleDescriptor": {
         "type": "object",

@@ -123,8 +123,3 @@ export enum ApiKeyType {
   rest,
   cross_cluster
 }
-
-export enum ApiKeyManagedBy {
-  cloud,
-  elasticsearch
-}
