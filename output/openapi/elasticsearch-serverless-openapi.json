@@ -69714,11 +69714,6 @@
             "description": "Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>\nOnly for the `rerank` task type.",
             "type": "string"
           },
-          "return_documents": {
-            "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
-            "default": false,
-            "type": "boolean"
-          },
           "top_k": {
             "description": "The number of most relevant documents to return.\nIf not specified, the reranking results of all documents will be returned.\nOnly for the `rerank` task type.",
             "type": "number"
