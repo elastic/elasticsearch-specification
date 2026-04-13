@@ -14531,7 +14531,6 @@ export type InferenceContextualAIServiceType = 'contextualai'
 
 export interface InferenceContextualAITaskSettings {
   instruction?: string
-  return_documents?: boolean
   top_k?: integer
 }
 
