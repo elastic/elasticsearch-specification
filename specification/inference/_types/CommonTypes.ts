@@ -1244,12 +1244,6 @@ export class ContextualAITaskSettings {
    */
   instruction?: string
   /**
-   * Whether to return the source documents in the response.
-   * Only for the `rerank` task type.
-   * @server_default false
-   */
-  return_documents?: boolean
-  /**
    * The number of most relevant documents to return.
    * If not specified, the reranking results of all documents will be returned.
    * Only for the `rerank` task type.
