@@ -20868,8 +20868,6 @@ export interface SecurityApiKey {
   _sort?: SortResults
 }
 
-export type SecurityApiKeyManagedBy = 'cloud' | 'elasticsearch'
-
 export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
@@ -20896,6 +20894,8 @@ export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot'
 export interface SecurityCreatedStatus {
   created: boolean
 }
+
+export type SecurityCredentialManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityFieldSecurity {
   except?: Fields
@@ -21127,7 +21127,7 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
-  managed_by: SecurityApiKeyManagedBy
+  managed_by: SecurityCredentialManagedBy
   internal?: boolean
 }
 
@@ -21149,8 +21149,9 @@ export interface SecurityAuthenticateResponse {
 }
 
 export interface SecurityAuthenticateToken {
-  name: Name
+  name?: Name
   type?: string
+  managed_by?: SecurityCredentialManagedBy
 }
 
 export interface SecurityBulkDeleteRoleRequest extends RequestBase {
