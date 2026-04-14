@@ -316,7 +316,7 @@ export class DateRangeAggregation extends BucketAggregationBase {
  * @codegen_names expr, value
  */
 // ES: DateRangeAggregationBuilder.innerBuild()
-export type FieldDateMath = DateMath | double
+export type FieldDateMath = DateMath | long
 
 export class DateRangeExpression {
   /**

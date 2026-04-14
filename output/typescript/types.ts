@@ -3794,7 +3794,7 @@ export interface AggregationsExtendedStatsBucketAggregation extends Aggregations
   sigma?: double
 }
 
-export type AggregationsFieldDateMath = DateMath | double
+export type AggregationsFieldDateMath = DateMath | long
 
 export interface AggregationsFilterAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
@@ -6760,6 +6760,9 @@ export interface QueryDslLikeDocument {
   version_type?: VersionType
 }
 
+export interface QueryDslLongNumberRangeQuery extends QueryDslRangeQueryBase<long> {
+}
+
 export interface QueryDslMatchAllQuery extends QueryDslQueryBase {
 }
 
@@ -7007,7 +7010,7 @@ export interface QueryDslRandomScoreFunction {
   seed?: long | string
 }
 
-export type QueryDslRangeQuery = QueryDslUntypedRangeQuery | QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslTermRangeQuery
+export type QueryDslRangeQuery = QueryDslUntypedRangeQuery | QueryDslDateRangeQuery | QueryDslNumberRangeQuery | QueryDslLongNumberRangeQuery | QueryDslTermRangeQuery
 
 export interface QueryDslRangeQueryBase<T = unknown> extends QueryDslQueryBase {
   relation?: QueryDslRangeRelation
@@ -14532,7 +14535,6 @@ export type InferenceContextualAIServiceType = 'contextualai'
 
 export interface InferenceContextualAITaskSettings {
   instruction?: string
-  return_documents?: boolean
   top_k?: integer
 }
 
@@ -20869,8 +20871,6 @@ export interface SecurityApiKey {
   _sort?: SortResults
 }
 
-export type SecurityApiKeyManagedBy = 'cloud' | 'elasticsearch'
-
 export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
@@ -20897,6 +20897,8 @@ export type SecurityClusterPrivilege = 'all' | 'cancel_task' | 'create_snapshot'
 export interface SecurityCreatedStatus {
   created: boolean
 }
+
+export type SecurityCredentialManagedBy = 'cloud' | 'elasticsearch'
 
 export interface SecurityFieldSecurity {
   except?: Fields
@@ -21128,7 +21130,7 @@ export type SecurityActivateUserProfileResponse = SecurityUserProfileWithMetadat
 export interface SecurityAuthenticateAuthenticateApiKey {
   id: Id
   name?: Name
-  managed_by: SecurityApiKeyManagedBy
+  managed_by: SecurityCredentialManagedBy
   internal?: boolean
 }
 
@@ -21150,8 +21152,9 @@ export interface SecurityAuthenticateResponse {
 }
 
 export interface SecurityAuthenticateToken {
-  name: Name
+  name?: Name
   type?: string
+  managed_by?: SecurityCredentialManagedBy
 }
 
 export interface SecurityBulkDeleteRoleRequest extends RequestBase {

@@ -16129,6 +16129,102 @@
         ]
       }
     },
+    "/_inference/completion/{inference_id}/_stream": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform streaming completion inference on the service",
+        "description": "Get real-time responses for completion tasks by delivering answers incrementally, reducing response times during computation.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege). You must use a client that supports streaming.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-stream-completion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The text on which you want to perform the inference task.\nIt can be a single string or an array.\n\nNOTE: Inference endpoints for the completion task type currently only support a single string as input.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "StreamInferenceRequestExample1": {
+                  "summary": "Perform a completion task",
+                  "description": "Run `POST _inference/completion/openai-completion/_stream` to perform a completion on the example question with streaming.",
+                  "value": "{\n  \"input\": \"What is Elastic?\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.StreamResult"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/text_embedding/{inference_id}": {
       "post": {
         "tags": [
@@ -16235,13 +16331,81 @@
         ]
       }
     },
+    "/_inference/{inference_id}/_update": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-update",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update-inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/{task_type}/{inference_id}/_update": {
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Update an inference endpoint",
+        "description": "Modify `task_settings`, secrets (within `service_settings`), or `num_allocations` for an inference endpoint, depending on the specific endpoint service and `task_type`.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-update-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/inference.update-task_type"
+          },
+          {
+            "$ref": "#/components/parameters/inference.update-inference_id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/inference.update"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/inference.update-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/": {
       "get": {
         "tags": [
           "info"
         ],
         "summary": "Get cluster info",
-        "description": "Get basic build, version, and cluster information.\n::: In Serverless, this API is retained for backward compatibility only. Some response fields, such as the version number, should be ignored.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get basic build, version, and cluster information.\n::: In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request. Serverless does not track to a traditional release versioning model; it is continuously updated. The version number is provided to maintain compatibility with existing clients, but it is not meaningful for assessing feature availability. Clients should detect a Serverless environment by checking for `build_flavor: serverless`.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "externalDocs": {
+          "description": "Learn about Serverless differences",
+          "url": "https://www.elastic.co/docs/deploy-manage/deploy/elastic-cloud/differences-from-other-elasticsearch-offerings",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/rest-api-root.html"
+        },
         "operationId": "info",
         "responses": {
           "200": {
@@ -16278,7 +16442,7 @@
                       "type": "string"
                     },
                     "version": {
-                      "description": "The running version of Elasticsearch.",
+                      "description": "Version information for the Elasticsearch cluster. In Serverless, `version.number` always reports the next target Elasticsearch release version at the time of the request, not an actual deployed version. The version number is provided to maintain client compatibility but is not meaningful for assessing feature availability. Use `build_flavor: serverless` to detect a Serverless environment.",
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/_types.ElasticsearchVersionInfo"
@@ -16302,8 +16466,8 @@
                   },
                   "RootNodeInfoResponseExample2": {
                     "summary": "Serverless response",
-                    "description": "A successful response from `GET /` on Serverless. This API is retained for backward compatibility only. Some fields, such as the version number, return static values and should be ignored.",
-                    "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"8.11.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": 0,\n    \"build_date\": \"2023-10-31T00:00:00.000Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"9.7.0\",\n    \"minimum_wire_compatibility_version\": \"8.11.0\",\n    \"minimum_index_compatibility_version\": \"8.11.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
+                    "description": "A successful response from `GET /` on Serverless. The `version.number` shown here is illustrative; Serverless always reports the next target Elasticsearch release version at the time of the request, so the actual value will differ from this example.",
+                    "value": "{\n  \"name\": \"serverless\",\n  \"cluster_name\": \"my_test_serverless_cluster\",\n  \"cluster_uuid\": \"8xx0pi24Squnf4PFDOAtwg\",\n  \"version\": {\n    \"number\": \"9.4.0\",\n    \"build_flavor\": \"serverless\",\n    \"build_type\": \"docker\",\n    \"build_hash\": \"6b73650b7c4192d4a7ef1d75a368dad7d28f1ae0\",\n    \"build_date\": \"2026-03-31T12:25:05.021Z\",\n    \"build_snapshot\": false,\n    \"lucene_version\": \"10.4.0\",\n    \"minimum_wire_compatibility_version\": \"9.4.0\",\n    \"minimum_index_compatibility_version\": \"9.4.0\"\n  },\n  \"tagline\": \"You Know, for Search\"\n}"
                   }
                 }
               }
@@ -25023,7 +25187,7 @@
           "document"
         ],
         "summary": "Reindex documents",
-        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.\nIf reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from Elastic Cloud Hosted are allowed.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.\nIf reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from [Elastic Cloud Hosted](https://cloud.elastic.co/registration?page=docs&placement=docs-body) are allowed.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
         "externalDocs": {
           "description": "About reindexing indices examples",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices",
@@ -27145,6 +27309,14 @@
                   "SecurityAuthenticateResponseExample1": {
                     "description": "A successful response from `GET /_security/_authenticate`.",
                     "value": "{\n  \"username\": \"rdeniro\",\n  \"roles\": [\n    \"admin\"\n  ],\n  \"full_name\": null,\n  \"email\":  null,\n  \"metadata\": { },\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"lookup_realm\": {\n    \"name\" : \"file\",\n    \"type\" : \"file\"\n  },\n  \"authentication_type\": \"realm\"\n}"
+                  },
+                  "SecurityAuthenticateResponseExample2": {
+                    "description": "A successful response from `GET /_security/_authenticate` for access token authentication.",
+                    "value": "{\n  \"username\": \"0000000001\",\n  \"roles\": [\n    \"admin\"\n  ],\n  \"full_name\": \"Peter Parker\",\n  \"email\": \"spider-man@marvel.com\",\n  \"metadata\": {},\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\": \"cloud-saml-kibana\",\n    \"type\": \"saml\"\n  },\n  \"lookup_realm\": {\n    \"name\": \"cloud-saml-kibana\",\n    \"type\": \"saml\"\n  },\n  \"authentication_type\": \"token\",\n  \"token\": {\n    \"managed_by\": \"cloud\"\n  }\n}"
+                  },
+                  "SecurityAuthenticateResponseExample3": {
+                    "description": "A successful response from `GET /_security/_authenticate` for service account token authentication.",
+                    "value": "{\n  \"username\": \"elastic/fleet-server\",\n  \"roles\": [ ],\n  \"full_name\": \"Service account - elastic/fleet-server\",\n  \"email\": null,\n  \"metadata\": {\n    \"_elastic_service_account\": true\n  },\n  \"enabled\": true,\n  \"authentication_realm\": {\n    \"name\": \"_service_account\",\n    \"type\": \"_service_account\"\n  },\n  \"lookup_realm\": {\n    \"name\": \"_service_account\",\n    \"type\": \"_service_account\"\n  },\n  \"authentication_type\": \"token\",\n  \"token\": {\n    \"type\": \"_service_account_index\",\n    \"name\": \"token_abcd1234\",\n    \"managed_by\": \"elasticsearch\"\n  }\n}"
                   }
                 }
               }
@@ -44193,6 +44365,9 @@
             "$ref": "#/components/schemas/_types.query_dsl.NumberRangeQuery"
           },
           {
+            "$ref": "#/components/schemas/_types.query_dsl.LongNumberRangeQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl.TermRangeQuery"
           }
         ]
@@ -44365,6 +44540,53 @@
         ]
       },
       "_types.query_dsl.RangeQueryBasedouble": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "description": "Indicates how the range query matches values for `range` fields.",
+                "default": "intersects",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.RangeRelation"
+                  }
+                ]
+              },
+              "gt": {
+                "description": "Greater than.",
+                "type": "number"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "number"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "number"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "number"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.LongNumberRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.RangeQueryBaselong"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl.RangeQueryBaselong": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
@@ -69550,11 +69772,6 @@
             "description": "Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>\nOnly for the `rerank` task type.",
             "type": "string"
           },
-          "return_documents": {
-            "description": "Whether to return the source documents in the response.\nOnly for the `rerank` task type.",
-            "default": false,
-            "type": "boolean"
-          },
           "top_k": {
             "description": "The number of most relevant documents to return.\nIf not specified, the reranking results of all documents will be returned.\nOnly for the `rerank` task type.",
             "type": "number"
@@ -82701,7 +82918,7 @@
           "managed_by": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/security._types.ApiKeyManagedBy"
+                "$ref": "#/components/schemas/security._types.CredentialManagedBy"
               }
             ]
           },
@@ -82714,7 +82931,7 @@
           "managed_by"
         ]
       },
-      "security._types.ApiKeyManagedBy": {
+      "security._types.CredentialManagedBy": {
         "type": "string",
         "enum": [
           "cloud",
@@ -82753,11 +82970,16 @@
           "type": {
             "x-state": "Generally available",
             "type": "string"
+          },
+          "managed_by": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.CredentialManagedBy"
+              }
+            ]
           }
-        },
-        "required": [
-          "name"
-        ]
+        }
       },
       "security._types.RoleDescriptor": {
         "type": "object",
@@ -85982,6 +86204,16 @@
         }
       },
       "inference.put-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.InferenceEndpointInfo"
+            }
+          }
+        }
+      },
+      "inference.update-200": {
         "description": "",
         "content": {
           "application/json": {
@@ -90440,6 +90672,28 @@
         },
         "style": "form"
       },
+      "inference.update-inference_id": {
+        "in": "path",
+        "name": "inference_id",
+        "description": "The unique identifier of the inference endpoint.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Id"
+        },
+        "style": "simple"
+      },
+      "inference.update-task_type": {
+        "in": "path",
+        "name": "task_type",
+        "description": "The type of inference task that the model performs.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/inference._types.TaskType"
+        },
+        "style": "simple"
+      },
       "ingest.get_pipeline-id": {
         "in": "path",
         "name": "id",
@@ -94011,6 +94265,22 @@
               "InferencePutExample1": {
                 "description": "An example body for a `PUT _inference/rerank/my-rerank-model` request.",
                 "value": "{\n \"service\": \"cohere\",\n \"service_settings\": {\n   \"model_id\": \"rerank-english-v3.0\",\n   \"api_key\": \"{{COHERE_API_KEY}}\"\n }\n}"
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "inference.update": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/inference._types.InferenceEndpoint"
+            },
+            "examples": {
+              "InferenceUpdateExample1": {
+                "description": "An example body for a `PUT _inference/my-inference-endpoint/_update` request.",
+                "value": "{\n \"service_settings\": {\n   \"api_key\": \"<API_KEY>\"\n },\n\"service\": \"example-service\"\n}"
               }
             }
           }
