@@ -126,6 +126,9 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
     // Generate tags from collected operations and model metadata
     openapi.tags = generate_tags_from_model(model, &openapi.paths);
 
+    // Generate x-tagGroups from model metadata, filtered by tags actually present
+    generate_tag_groups_extension(model, &openapi.tags, &mut openapi.extensions);
+
     // // Sort maps to ensure output stability
     // openapi.paths.extensions.sort_keys();
     // if let Some(ref mut comp) = openapi.components {
@@ -244,6 +247,74 @@ fn generate_tags_from_model(
     });
     
     tags
+}
+
+fn generate_tag_groups_extension(
+    model: &IndexedModel,
+    openapi_tags: &[openapiv3::Tag],
+    extensions: &mut IndexMap<String, serde_json::Value>,
+) {
+    use std::collections::HashSet;
+    
+    // Get tag groups from model metadata
+    let tag_groups = if let Some(openapi_meta) = &model.openapi {
+        openapi_meta.tag_groups.as_ref()
+    } else {
+        return; // No tag groups to generate
+    };
+    
+    let Some(tag_groups) = tag_groups else {
+        return; // No tag groups defined
+    };
+    
+    // Create a set of tag names that are actually present in the OpenAPI document
+    let used_tag_names: HashSet<String> = openapi_tags.iter()
+        .map(|tag| tag.name.clone())
+        .collect();
+    
+    // Filter tag groups to only include tags that are actually present
+    let mut filtered_groups = Vec::new();
+    let mut all_grouped_tags = HashSet::new();
+    
+    for group in tag_groups {
+        // Filter tags in this group to only those that exist in the document
+        let filtered_tags: Vec<String> = group.tags.iter()
+            .filter(|tag| used_tag_names.contains(*tag))
+            .cloned()
+            .collect();
+        
+        // Only include groups that have at least one tag after filtering
+        if !filtered_tags.is_empty() {
+            all_grouped_tags.extend(filtered_tags.iter().cloned());
+            filtered_groups.push(serde_json::json!({
+                "name": group.name,
+                "tags": filtered_tags
+            }));
+        }
+    }
+    
+    // Verify that every tag in the document appears in at least one group
+    // This is required by Redocly - tags not in groups are hidden
+    let ungrouped_tags: Vec<String> = used_tag_names.iter()
+        .filter(|tag| !all_grouped_tags.contains(*tag))
+        .cloned()
+        .collect();
+    
+    // If there are ungrouped tags, add them to an "Other APIs" group
+    if !ungrouped_tags.is_empty() {
+        filtered_groups.push(serde_json::json!({
+            "name": "Other APIs",
+            "tags": ungrouped_tags
+        }));
+    }
+    
+    // Only add x-tagGroups if we have groups to emit
+    if !filtered_groups.is_empty() {
+        extensions.insert(
+            "x-tagGroups".to_string(),
+            serde_json::Value::Array(filtered_groups)
+        );
+    }
 }
 
 fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {
