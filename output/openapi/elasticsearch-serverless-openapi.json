@@ -43463,6 +43463,9 @@
             "$ref": "#/components/schemas/_types.query_dsl.NumberRangeQuery"
           },
           {
+            "$ref": "#/components/schemas/_types.query_dsl.LongNumberRangeQuery"
+          },
+          {
             "$ref": "#/components/schemas/_types.query_dsl.TermRangeQuery"
           }
         ]
@@ -43635,6 +43638,53 @@
         ]
       },
       "_types.query_dsl.RangeQueryBasedouble": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "relation": {
+                "description": "Indicates how the range query matches values for `range` fields.",
+                "default": "intersects",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.RangeRelation"
+                  }
+                ]
+              },
+              "gt": {
+                "description": "Greater than.",
+                "type": "number"
+              },
+              "gte": {
+                "description": "Greater than or equal to.",
+                "type": "number"
+              },
+              "lt": {
+                "description": "Less than.",
+                "type": "number"
+              },
+              "lte": {
+                "description": "Less than or equal to.",
+                "type": "number"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.LongNumberRangeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.RangeQueryBaselong"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "_types.query_dsl.RangeQueryBaselong": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
