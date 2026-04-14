@@ -102,7 +102,7 @@ Usage:
   license-add      Add the license headers to the files
   spec-format-check  Check specification formatting rules
   spec-format-fix  Format/fix the specification according to the formatting rules
-  spec-dangling-types  Generate the dangling types rreport
+  spec-dangling-types  Generate the dangling types report
   setup            Install dependencies for contrib target
   clean-dep        Clean npm dependencies
   transform-expand-generics  Create a new schema with all generics expanded
