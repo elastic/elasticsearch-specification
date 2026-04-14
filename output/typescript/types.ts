@@ -3699,7 +3699,7 @@ export interface AggregationsExtendedStatsBucketAggregation extends Aggregations
   sigma?: double
 }
 
-export type AggregationsFieldDateMath = DateMath | double
+export type AggregationsFieldDateMath = DateMath | long
 
 export interface AggregationsFilterAggregateKeys extends AggregationsSingleBucketAggregateBase {
 }
