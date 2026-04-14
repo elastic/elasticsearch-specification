@@ -289,16 +289,16 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
   const tagClassifications = {
     common: ['sql', 'eql', 'esql', 'search', 'document'],
     management: [
-      'autoscaling', 'ccr', 'indices', 'data stream', 'ilm', 'slm', 'cluster', 
-      'rollup', 'searchable_snapshots', 'shutdown', 'snapshot', 'script', 
+      'autoscaling', 'ccr', 'indices', 'data stream', 'ilm', 'slm', 'cluster',
+      'rollup', 'searchable_snapshots', 'shutdown', 'snapshot', 'script',
       'search_application', 'connector'
     ],
     info: [
-      'cat', 'license', 'info', 'tasks', 'xpack', 'health_report', 
+      'cat', 'license', 'info', 'tasks', 'xpack', 'health_report',
       'features', 'migration', 'watcher'
     ],
     'ai/ml': [
-      'ml trained model', 'ml anomaly', 'ml data frame', 'ml', 'inference', 
+      'ml trained model', 'ml anomaly', 'ml data frame', 'ml', 'inference',
       'text_structure', 'query_rules', 'analytics', 'graph'
     ],
     ingest: ['ingest', 'enrich', 'transform', 'fleet', 'logstash', 'synonyms'],
@@ -307,14 +307,14 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
 
   const groupDisplayNames = {
     common: 'Search & Document APIs',
-    management: 'Cluster management',
-    info: 'Information & Monitoring', 
-    'ai/ml': 'AI & Machine learning',
-    ingest: 'Data processing',
+    management: 'Cluster Management',
+    info: 'Information & Monitoring',
+    'ai/ml': 'AI & Machine Learning',
+    ingest: 'Data Processing',
     security: 'Security'
   }
 
-  function classifyTag(tagName: string): string {
+  function classifyTag (tagName: string): string {
     for (const [group, tags] of Object.entries(tagClassifications)) {
       if (tags.includes(tagName)) return group
     }
@@ -322,14 +322,14 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
   }
 
   // Build tag groups from metadata
-  const tagGroups: Array<{ name: string; tags: string[] }> = []
+  const tagGroups: Array<{ name: string, tags: string[] }> = []
   const groupedTags: Record<string, string[]> = {}
-  
+
   // Group all tags that have metadata
-  if (model._openapi?.tagMetadata) {
+  if (model._openapi?.tagMetadata != null) {
     for (const tagName of Object.keys(model._openapi.tagMetadata)) {
       const classification = classifyTag(tagName)
-      if (!groupedTags[classification]) {
+      if (groupedTags[classification] == null) {
         groupedTags[classification] = []
       }
       groupedTags[classification].push(tagName)
@@ -341,8 +341,8 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     if (tags.length > 0) {
       // Sort tags alphabetically within each group
       tags.sort()
-      
-      const groupName = groupDisplayNames[groupId as keyof typeof groupDisplayNames] || 'Other APIs'
+
+      const groupName = groupDisplayNames[groupId as keyof typeof groupDisplayNames] ?? 'Other APIs'
       tagGroups.push({
         name: groupName,
         tags
