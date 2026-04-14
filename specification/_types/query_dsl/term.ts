@@ -28,7 +28,7 @@ import {
   MultiTermQueryRewrite,
   Routing
 } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
 import { AdditionalProperty } from '@spec_utils/behaviors'
@@ -171,10 +171,12 @@ export class DateRangeQuery extends RangeQueryBase<DateMath> {
 
 export class NumberRangeQuery extends RangeQueryBase<double> {}
 
+export class LongNumberRangeQuery extends RangeQueryBase<long> {}
+
 export class TermRangeQuery extends RangeQueryBase<string> {}
 
 /**
- * @codegen_names untyped, date, number, term
+ * @codegen_names untyped, date, number, long_number, term
  * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
  * @ext_doc_id query-dsl-range-query
  */
@@ -183,6 +185,7 @@ export type RangeQuery =
   | UntypedRangeQuery
   | DateRangeQuery
   | NumberRangeQuery
+  | LongNumberRangeQuery
   | TermRangeQuery
 
 export enum RangeRelation {
