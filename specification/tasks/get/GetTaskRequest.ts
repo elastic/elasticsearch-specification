@@ -62,5 +62,10 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     wait_for_completion?: boolean
+    /**
+     * Internal use only
+     * @server_default true
+     */
+    follow_relocations?: boolean
   }
 }
