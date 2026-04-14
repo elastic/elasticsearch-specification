@@ -307,10 +307,10 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
 
   const groupDisplayNames = {
     common: 'Search & Document APIs',
-    management: 'Cluster Management',
+    management: 'Cluster management',
     info: 'Information & Monitoring', 
-    'ai/ml': 'AI & Machine Learning',
-    ingest: 'Data Processing',
+    'ai/ml': 'AI & Machine learning',
+    ingest: 'Data processing',
     security: 'Security'
   }
 
