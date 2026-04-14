@@ -23,6 +23,7 @@ import { argv } from 'zx'
 import Compiler from './compiler'
 import addInfo from './steps/add-info'
 import addOpenApiSecurity from './steps/add-openapi-security'
+import addOpenApiTags from './steps/add-openapi-tags'
 import validateModel from './steps/validate-model'
 import readDefinitionValidation from './steps/read-definition-validation'
 import addDeprecation from './steps/add-deprecation'
@@ -71,6 +72,7 @@ compiler
   .generateModel()
   .step(addInfo)
   .step(addOpenApiSecurity)
+  .step(addOpenApiTags)
   .step(addDeprecation)
   .step(readDefinitionValidation)
   .step(validateModel)

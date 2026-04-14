@@ -27,7 +27,7 @@ use clients_schema::{
     Availabilities, Availability, Flavor, IndexedModel, OpenApiSecurityList, Privileges, Stability, UrlTemplate,
     Visibility,
 };
-use openapiv3::{Components, OpenAPI, ReferenceOr};
+use openapiv3::{Components, OpenAPI, Paths, ReferenceOr};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
@@ -122,6 +122,9 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
         paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, product_meta)?;
     }
 
+    // Generate tags from collected operations and model metadata
+    openapi.tags = generate_tags_from_model(model, &openapi.paths);
+
     // // Sort maps to ensure output stability
     // openapi.paths.extensions.sort_keys();
     // if let Some(ref mut comp) = openapi.components {
@@ -176,6 +179,94 @@ fn extract_security_from_model(
     }
 
     (security, security_schemes)
+}
+
+fn generate_tags_from_model(
+    model: &IndexedModel,
+    openapi_paths: &Paths,
+) -> Vec<openapiv3::Tag> {
+    use std::collections::BTreeSet;
+    
+    // Collect all unique tags from operations
+    let mut used_tags: BTreeSet<String> = BTreeSet::new();
+    for path_item_ref in openapi_paths.paths.values() {
+        if let ReferenceOr::Item(path_item) = path_item_ref {
+            let operations = [&path_item.get, &path_item.post, &path_item.put, &path_item.delete, &path_item.options, &path_item.head, &path_item.patch, &path_item.trace];
+            for operation_option in operations.iter() {
+                if let Some(operation) = operation_option {
+                    for tag in &operation.tags {
+                        used_tags.insert(tag.clone());
+                    }
+                }
+            }
+        }
+    }
+
+    let mut tags = Vec::new();
+    
+    // Get tag metadata if available
+    let tag_metadata = model.openapi
+        .as_ref()
+        .and_then(|openapi| openapi.tag_metadata.as_ref());
+    
+    // Build tags with metadata, sorted by display name
+    for tag_name in used_tags {
+        let tag = if let Some(metadata_map) = tag_metadata {
+            if let Some(metadata) = metadata_map.get(&tag_name) {
+                // Use metadata if available
+                let tag = openapiv3::Tag {
+                    name: tag_name.clone(),
+                    description: metadata.description.clone(),
+                    external_docs: metadata.external_docs.as_ref().map(|ext| openapiv3::ExternalDocumentation {
+                        url: ext.url.clone(),
+                        description: ext.description.clone(),
+                        extensions: Default::default(),
+                    }),
+                    extensions: {
+                        let mut extensions = IndexMap::new();
+                        extensions.insert("x-displayName".to_string(), serde_json::Value::String(metadata.display_name.clone()));
+                        extensions
+                    },
+                };
+                tag
+            } else {
+                // Fallback: use tag name as display name
+                let mut extensions = IndexMap::new();
+                extensions.insert("x-displayName".to_string(), serde_json::Value::String(tag_name.clone()));
+                openapiv3::Tag {
+                    name: tag_name.clone(),
+                    description: None,
+                    external_docs: None,
+                    extensions,
+                }
+            }
+        } else {
+            // No metadata available, use tag name as display name
+            let mut extensions = IndexMap::new();
+            extensions.insert("x-displayName".to_string(), serde_json::Value::String(tag_name.clone()));
+            openapiv3::Tag {
+                name: tag_name.clone(),
+                description: None,
+                external_docs: None,
+                extensions,
+            }
+        };
+        
+        tags.push(tag);
+    }
+    
+    // Sort by display name (case-insensitive)
+    tags.sort_by(|a, b| {
+        let display_name_a = a.extensions.get("x-displayName")
+            .and_then(|v| v.as_str())
+            .unwrap_or(&a.name);
+        let display_name_b = b.extensions.get("x-displayName")
+            .and_then(|v| v.as_str())
+            .unwrap_or(&b.name);
+        display_name_a.to_lowercase().cmp(&display_name_b.to_lowercase())
+    });
+    
+    tags
 }
 
 fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {

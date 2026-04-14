@@ -1077,9 +1077,29 @@ pub struct OpenApiFlavorSecurityBlock {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
+pub struct ExternalDocs {
+    pub url: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct TagMetadata {
+    pub display_name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub external_docs: Option<ExternalDocs>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct OpenApiMetadata {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub flavors: Option<IndexMap<String, OpenApiFlavorSecurityBlock>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub tag_metadata: Option<IndexMap<String, TagMetadata>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default)]
