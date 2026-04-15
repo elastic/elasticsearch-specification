@@ -54,7 +54,6 @@ export interface Request extends RequestBase {
     /**
      * The credentials of the API key to clone.
      * This is the secret value returned when the key was originally created.
-     * @secret
      */
     api_key: string
     /**
