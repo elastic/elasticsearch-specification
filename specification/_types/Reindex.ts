@@ -88,7 +88,6 @@ export class ReindexStatus {
 
 /**
  * Information about a single reindex task, as returned by the reindex management APIs.
- * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
  */
 export class ReindexTaskInfo {
   /**
