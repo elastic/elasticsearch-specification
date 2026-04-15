@@ -28,6 +28,7 @@ import { MediaType, TaskId } from '@_types/common'
  * If `wait_for_completion` is `false`, the response contains only `acknowledged: true`.
  * @rest_spec_name cancel_reindex
  * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ * @doc_id docs-cancel-reindex
  * @doc_tag reindex
  */
 export interface Request extends RequestBase {

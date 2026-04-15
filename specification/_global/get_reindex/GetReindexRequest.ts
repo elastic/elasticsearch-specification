@@ -27,6 +27,7 @@ import { Duration } from '@_types/Time'
  * Get the status and progress of a specific reindex task.
  * @rest_spec_name get_reindex
  * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ * @doc_id docs-get-reindex
  * @doc_tag reindex
  */
 export interface Request extends RequestBase {

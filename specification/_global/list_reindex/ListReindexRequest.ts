@@ -26,6 +26,7 @@ import { MediaType } from '@_types/common'
  * Get information about all currently running reindex tasks.
  * @rest_spec_name list_reindex
  * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ * @doc_id docs-list-reindex
  * @doc_tag reindex
  */
 export interface Request extends RequestBase {

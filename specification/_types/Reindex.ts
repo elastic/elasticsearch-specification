@@ -20,7 +20,13 @@
 import { TaskId } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import { Duration, DurationValue, EpochTime, UnitMillis, UnitNanos } from './Time'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from './Time'
 
 export class ReindexStatus {
   /**
