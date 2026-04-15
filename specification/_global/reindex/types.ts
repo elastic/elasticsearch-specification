@@ -22,6 +22,7 @@ import {
   Indices,
   OpType,
   Password,
+  ProjectRouting,
   Username,
   VersionType
 } from '@_types/common'
@@ -82,6 +83,18 @@ export class Source {
    * @availability serverless stability=experimental visibility=public
    */
   remote?: RemoteSource
+  /**
+   * Specifies a subset of projects to target for the search using project
+   * metadata tags in a subset of Lucene query syntax.
+   * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+   * Examples:
+   *  _alias:my-project
+   *  _alias:_origin
+   *  _alias:*pr*
+   * Supported in serverless only.
+   * @availability serverless stability=experimental visibility=feature_flag feature_flag=serverless.cross_project.enabled
+   */
+  project_routing?: ProjectRouting
   /**
    * The number of documents to index per batch.
    * Use it when you are indexing from remote to ensure that the batches fit within the on-heap buffer, which defaults to a maximum size of 100 MB.

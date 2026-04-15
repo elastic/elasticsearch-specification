@@ -28,7 +28,7 @@ spec-format-check:	## Check specification formatting rules
 spec-format-fix:	## Format/fix the specification according to the formatting rules
 	@npm run format:fix --prefix compiler
 
-spec-dangling-types:	## Generate the dangling types rreport
+spec-dangling-types:	## Generate the dangling types report
 	@npm run generate-dangling --prefix compiler
 
 spec-inspect:  ## Run the command line schema browser tool
@@ -50,6 +50,10 @@ clean-dep:	## Clean npm dependencies
 
 transform-expand-generics: ## Create a new schema with all generics expanded
 	@npm run transform-expand-generics --prefix compiler
+
+transform-to-rest-api-spec: ## Generate the REST API spec from the compiled schema
+	@rm -rf specification/_json_spec/*.json
+	@npm run transform-to-rest-api-spec --prefix compiler -- --schema output/schema/schema.json --output specification/_json_spec
 
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json

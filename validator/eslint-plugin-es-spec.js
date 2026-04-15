@@ -30,6 +30,7 @@ import noDuplicateTypeNames from './rules/no-duplicate-type-names.js'
 import noAllStringLiteralUnions from './rules/no-all-string-literal-unions.js'
 import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only.js'
+import noDeprecatedAvailabilityOnTypes from './rules/no-deprecated-availability-on-types.js'
 
 export default {
   rules: {
@@ -46,6 +47,7 @@ export default {
     'no-duplicate-type-names': noDuplicateTypeNames,
     'no-all-string-literal-unions': noAllStringLiteralUnions,
     'jsdoc-endpoint-check': jsdocEndpointCheck,
-    'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly
+    'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly,
+    'no-deprecated-availability-on-types': noDeprecatedAvailabilityOnTypes
   }
 }

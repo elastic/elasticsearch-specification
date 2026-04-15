@@ -670,9 +670,9 @@ export function hoistRequestAnnotations (
     } else if (tag === 'rest_spec_name') {
     } else if (tag === 'index_privileges') {
       const privileges = [
-        'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'delete', 'delete_index', 'index',
-        'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'monitor',
-        'read', 'read_cross_cluster', 'view_index_metadata', 'write'
+        'all', 'auto_configure', 'create', 'create_doc', 'create_index', 'create_view', 'delete', 'delete_index', 'delete_view', 'index',
+        'maintenance', 'manage', 'manage_follow_index', 'manage_ilm', 'manage_leader_index', 'manage_view', 'monitor',
+        'read', 'read_cross_cluster', 'read_view_metadata', 'view_index_metadata', 'write'
       ]
       const values = parseCommaSeparated(value)
       for (const v of values) {
@@ -684,10 +684,10 @@ export function hoistRequestAnnotations (
       const privileges = [
         'all', 'cancel_task', 'create_snapshot', 'grant_api_key', 'manage', 'manage_api_key', 'manage_ccr',
         'manage_enrich', 'manage_ilm', 'manage_index_templates', 'manage_inference', 'manage_ingest_pipelines', 'manage_logstash_pipelines',
-        'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_rollup', 'manage_saml', 'manage_search_application', 'manage_search_query_rules', 'manage_search_synonyms',
+        'manage_ml', 'manage_oidc', 'manage_own_api_key', 'manage_pipeline', 'manage_project_routing', 'manage_rollup', 'manage_saml', 'manage_search_application', 'manage_search_query_rules', 'manage_search_synonyms',
         'manage_security', 'manage_service_account', 'manage_slm', 'manage_token', 'manage_transform', 'manage_user_profile',
         'manage_watcher', 'monitor', 'monitor_esql', 'monitor_inference', 'monitor_ml', 'monitor_rollup', 'monitor_snapshot', 'monitor_text_structure',
-        'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_security', 'read_slm', 'transport_client'
+        'monitor_transform', 'monitor_watcher', 'read_ccr', 'read_ilm', 'read_pipeline', 'read_project_routing', 'read_security', 'read_slm', 'transport_client'
       ]
       const values = parseCommaSeparated(value)
       for (const v of values) {

@@ -18,7 +18,7 @@
  */
 
 import { Id, Metadata, Name, Username } from '@_types/common'
-import { ApiKeyManagedBy } from '@security/_types/ApiKey'
+import { CredentialManagedBy } from '@security/_types/CredentialManagedBy'
 import { RealmInfo } from '@security/_types/RealmInfo'
 import { Token } from './types'
 
@@ -45,6 +45,6 @@ export class Response {
 export class AuthenticateApiKey {
   id: Id
   name?: Name
-  managed_by: ApiKeyManagedBy
+  managed_by: CredentialManagedBy
   internal?: boolean
 }

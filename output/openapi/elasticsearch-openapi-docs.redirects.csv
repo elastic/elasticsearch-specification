@@ -28,6 +28,7 @@ cluster-stats-1,cluster-stats
 connector-put-1,connector-put
 count-1,count
 enrich-get-policy-1,enrich-get-policy
+esql-get-view-1,esql-get-view
 field-caps-1,field-caps
 fleet-msearch-1,fleet-msearch
 health-report-1,health-report
@@ -67,6 +68,7 @@ indices-validate-query-1,indices-validate-query
 inference-delete-1,inference-delete
 inference-get-1,inference-get
 inference-get-2,inference-get
+inference-get-3,inference-get
 inference-inference-1,inference-inference
 inference-put-1,inference-put
 inference-update-1,inference-update

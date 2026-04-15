@@ -48,7 +48,8 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Specifies whether you acknowledge the license changes.
+     * To update a license, you must accept the acknowledge messages and set this parameter to `true`.
+     * In particular, if you are upgrading or downgrading a license, you must acknowlege the feature changes.
      * @server_default false
      */
     acknowledge?: boolean

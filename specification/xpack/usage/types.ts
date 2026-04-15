@@ -506,3 +506,29 @@ export class WatcherWatchTriggerSchedule extends Counter {
   cron: Counter
   _all: Counter
 }
+
+/**
+ * Per-node GPU statistics for vector indexing.
+ */
+export class GpuNodeStats {
+  /** GPU device type (e.g., "NVIDIA L4", "NVIDIA A100"). */
+  type: string
+  /** GPU memory in bytes. */
+  memory_in_bytes: long
+  /** Whether GPU vector indexing is enabled on this node. */
+  enabled: boolean
+  /** Number of GPU index builds performed on this node. */
+  index_build_count: long
+}
+
+/**
+ * GPU vector indexing usage statistics.
+ */
+export class GpuVectorIndexing extends Base {
+  /** Total GPU index builds across the cluster. */
+  index_build_count: long
+  /** Count of data nodes with GPU support. */
+  nodes_with_gpu: integer
+  /** Per-node GPU details including type, memory, enabled status, and build count. */
+  nodes: GpuNodeStats[]
+}
