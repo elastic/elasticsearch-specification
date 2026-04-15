@@ -48,6 +48,10 @@ export class DataStreamLifecycle {
    * @server_default true
    */
   enabled?: boolean
+  /**
+   * Only available with feature flag dlm_searchable_snapshots.
+   */
+  frozen_after?: Duration
 }
 
 /**

@@ -30,8 +30,11 @@ export class IndicesShardStores {
  * @behavior_meta AdditionalProperty key=node_id value=node
  */
 export class ShardStore implements AdditionalProperty<NodeId, ShardStoreNode> {
+  /** The status of the store copy, whether it is used as a primary, replica, or not used at all. */
   allocation: ShardStoreAllocation
+  /** The allocation ID of the store copy. */
   allocation_id?: Id
+  /** Any exception encountered while opening the shard index or from an earlier engine failure. */
   store_exception?: ShardStoreException
 }
 
@@ -45,8 +48,11 @@ export class ShardStoreNode {
 }
 
 export enum ShardStoreAllocation {
+  /** The store copy is used as a primary shard. */
   primary,
+  /** The store copy is used as a replica shard. */
   replica,
+  /** The store copy is not used. */
   unused
 }
 

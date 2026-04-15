@@ -6,3 +6,8 @@ agents:
 steps:
   - label: "Run Kibana type checks"
     command: .buildkite/kibana.sh
+
+notify:
+  - slack:
+      channels:
+        - "#devtools-notify-javascript"

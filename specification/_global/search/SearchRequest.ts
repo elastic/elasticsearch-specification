@@ -66,13 +66,12 @@ import { SourceConfig, SourceConfigParam } from './_types/SourceFilter'
  *
  * When paging through a large number of documents, it can be helpful to split the search into multiple slices to consume them independently with the `slice` and `pit` properties.
  * By default the splitting is done first on the shards, then locally on each shard.
- * The local splitting partitions the shard into contiguous ranges based on Lucene document IDs.
  *
  * For instance if the number of shards is equal to 2 and you request 4 slices, the slices 0 and 2 are assigned to the first shard and the slices 1 and 3 are assigned to the second shard.
  *
  * IMPORTANT: The same point-in-time ID should be used for all slices.
  * If different PIT IDs are used, slices can overlap and miss documents.
- * This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
+ * This situation can occur because, by default, the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.
  * @rest_spec_name search
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -96,6 +95,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }
@@ -103,9 +103,12 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -175,7 +178,9 @@ export interface Request extends RequestBase {
      */
     ignore_throttled?: boolean
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -231,6 +236,7 @@ export interface Request extends RequestBase {
     request_cache?: boolean
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**
@@ -469,12 +475,14 @@ export interface Request extends RequestBase {
      * Use the `post_filter` parameter to filter search results.
      * The search hits are filtered after the aggregations are calculated.
      * A post filter has no impact on the aggregation results.
+     * @ext_doc_id filter-search-results
      */
     post_filter?: QueryContainer
     /**
      * Set to `true` to return detailed timing information about the execution of individual components in a search request.
      * NOTE: This is a debugging tool and adds significant overhead to search execution.
      * @server_default false
+     * @ext_doc_id search-profile
      */
     profile?: boolean
     /**
@@ -484,6 +492,7 @@ export interface Request extends RequestBase {
     query?: QueryContainer
     /**
      * Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.
+     * @ext_doc_id rescore-search-results
      */
     rescore?: Rescore | Rescore[]
     /**
@@ -500,6 +509,7 @@ export interface Request extends RequestBase {
     script_fields?: Dictionary<string, ScriptField>
     /**
      * Used to retrieve the next page of hits using a set of sort values from the previous page.
+     * @ext_doc_id search-after
      */
     search_after?: SortResults
     /**
@@ -511,6 +521,7 @@ export interface Request extends RequestBase {
     size?: integer
     /**
      * Split a scrolled search into multiple slices that can be consumed independently.
+     * @ext_doc_id slice-scroll
      */
     slice?: SlicedScroll
     /**
@@ -533,6 +544,7 @@ export interface Request extends RequestBase {
     fields?: Array<FieldAndFormat>
     /**
      * Defines a suggester that provides similar looking terms based on a provided text.
+     * @ext_doc_id suggester
      */
     suggest?: Suggester
     /**

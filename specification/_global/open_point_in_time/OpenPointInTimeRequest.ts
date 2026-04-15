@@ -96,7 +96,9 @@ export interface Request extends RequestBase {
      */
     keep_alive: Duration
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -107,6 +109,7 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**

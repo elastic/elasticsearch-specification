@@ -25,7 +25,7 @@ import {
   AmazonBedrockServiceType,
   AmazonBedrockTaskSettings,
   AmazonBedrockTaskType
-} from '@inference/_types/CommonTypes'
+} from '@inference/_types/AmazonBedrockTypes'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
 
 /**

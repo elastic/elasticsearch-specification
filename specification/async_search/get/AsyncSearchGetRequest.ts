@@ -63,5 +63,15 @@ export interface Request extends RequestBase {
      * By default no timeout is set meaning that the currently available results will be returned without any additional wait.
      */
     wait_for_completion_timeout?: Duration
+    /**
+     * Specifies whether the response should contain intermediate results if the query is still running when the wait_for_completion_timeout
+     * expires or if no wait_for_completion_timeout is specified.
+     * If true and the search is still running, the search response
+     * will include any hits and partial aggregations that are available.
+     * If false and the search is still running, the search response will not include any hits (but possibly include
+     * total hits) nor will include any partial aggregations.
+     * When not specified, the intermediate results are returned for running queries.
+     */
+    return_intermediate_results?: boolean
   }
 }

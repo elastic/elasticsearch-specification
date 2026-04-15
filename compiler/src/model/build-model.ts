@@ -154,6 +154,13 @@ export function compileSpecification (specsFolder: string, outputFolder: string)
     model.endpoints.push(endpointMappings[key])
   }
 
+  // Remove deprecation from everything other than request
+  for (const type of model.types) {
+    if (type.kind !== 'request') {
+      delete type.deprecation
+    }
+  }
+
   return model
 }
 

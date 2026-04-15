@@ -150,6 +150,7 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams or indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index: Indices
   }
@@ -157,9 +158,12 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -203,7 +207,9 @@ export interface Request extends RequestBase {
      */
     from?: long
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -216,7 +222,7 @@ export interface Request extends RequestBase {
     /**
      * The maximum number of documents to process.
      * It defaults to all documents.
-     * When set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.
+     * When set to a value less than or equal to `scroll_size` and `conflicts` is set to `abort`, a scroll will not be used to retrieve the results for the operation.
      */
     max_docs?: long
     /**
@@ -243,6 +249,7 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request cache is used for this request.
      * It defaults to the index-level setting.
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**

@@ -80,6 +80,14 @@ export interface Request extends RequestBase {
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     */
     allow_no_indices?: boolean
     analyzer?: string
     analyze_wildcard?: boolean
@@ -91,6 +99,11 @@ export interface Request extends RequestBase {
     expand_wildcards?: ExpandWildcards
     explain?: boolean
     ignore_throttled?: boolean
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     */
     ignore_unavailable?: boolean
     lenient?: boolean
     max_concurrent_shard_requests?: integer

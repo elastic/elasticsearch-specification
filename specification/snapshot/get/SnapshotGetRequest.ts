@@ -124,8 +124,8 @@ export interface Request extends RequestBase {
     offset?: integer
     /**
      * The maximum number of snapshots to return.
-     * The default is 0, which means to return all that match the request without limit.
-     * @server_default 0
+     * The default is -1, which means to return all that match the request without limit.
+     * @server_default -1
      * @availability stack since=7.14.0
      * @availability serverless
      */
