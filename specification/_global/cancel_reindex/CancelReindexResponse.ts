@@ -19,9 +19,8 @@
 
 import { TaskId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { ReindexStatus } from '@_types/Reindex'
+import { ReindexStatus, ReindexTaskResult } from '@_types/Reindex'
 import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * When `wait_for_completion=true` (the default), returns the final task state (same shape as the get reindex response).
@@ -72,6 +71,6 @@ export class Response {
     /**
      * The final result of the reindex operation, if it completed before being cancelled.
      */
-    response?: UserDefinedValue
+    response?: ReindexTaskResult
   }
 }

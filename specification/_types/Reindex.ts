@@ -18,6 +18,7 @@
  */
 
 import { TaskId } from '@_types/common'
+import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import {
@@ -84,6 +85,69 @@ export class ReindexStatus {
    * The reason for cancellation if the slice was canceled
    */
   cancelled?: string
+}
+
+/**
+ * The final result of a completed reindex operation, as stored in the task result.
+ * This is the serialized form of `BulkByScrollResponse`.
+ */
+export class ReindexTaskResult {
+  /**
+   * The number of scroll responses pulled back by the reindex.
+   */
+  batches?: long
+  /**
+   * The number of documents that were successfully created.
+   */
+  created?: long
+  /**
+   * The number of documents that were successfully deleted.
+   */
+  deleted?: long
+  /**
+   * Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.
+   */
+  failures?: BulkIndexByScrollFailure[]
+  /**
+   * The number of documents that were ignored because the script returned a `noop` value for `ctx.op`.
+   */
+  noops?: long
+  /**
+   * The number of requests per second effectively executed during the reindex.
+   */
+  requests_per_second?: float
+  /**
+   * The number of retries attempted by reindex.
+   */
+  retries?: Retries
+  /**
+   * Number of milliseconds the request slept to conform to `requests_per_second`.
+   */
+  throttled_millis?: EpochTime<UnitMillis>
+  /**
+   * This field should always be equal to zero in a completed reindex result.
+   */
+  throttled_until_millis?: EpochTime<UnitMillis>
+  /**
+   * Whether any of the requests executed during the reindex timed out.
+   */
+  timed_out?: boolean
+  /**
+   * The total milliseconds the entire operation took.
+   */
+  took?: DurationValue<UnitMillis>
+  /**
+   * The number of documents that were successfully processed.
+   */
+  total?: long
+  /**
+   * The number of documents that were successfully updated.
+   */
+  updated?: long
+  /**
+   * The number of version conflicts that occurred.
+   */
+  version_conflicts?: long
 }
 
 /**

@@ -19,9 +19,8 @@
 
 import { TaskId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { ReindexStatus } from '@_types/Reindex'
+import { ReindexStatus, ReindexTaskResult } from '@_types/Reindex'
 import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class Response {
   body: {
@@ -64,6 +63,6 @@ export class Response {
     /**
      * The final result of the completed reindex operation, if the task has finished successfully.
      */
-    response?: UserDefinedValue
+    response?: ReindexTaskResult
   }
 }
