@@ -30318,6 +30318,17 @@
               "$ref": "#/components/schemas/_types.Duration"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "defer",
+            "description": "When true, defers the scheduling by the transform's configured sync delay\ninstead of triggering immediately. The transform will process new data after\nthe delay elapses rather than right away.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "x-state": "Generally available",
+            "style": "form"
           }
         ],
         "responses": {

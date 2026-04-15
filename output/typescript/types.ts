@@ -23748,6 +23748,7 @@ export type TransformResetTransformResponse = AcknowledgedResponseBase
 export interface TransformScheduleNowTransformRequest extends RequestBase {
   transform_id: Id
   timeout?: Duration
+  defer?: boolean
 }
 
 export type TransformScheduleNowTransformResponse = AcknowledgedResponseBase
