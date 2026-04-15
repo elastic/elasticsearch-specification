@@ -17,9 +17,10 @@
  * under the License.
  */
 
+import { TaskId } from '@_types/common'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
-import { Duration, DurationValue, UnitMillis } from './Time'
+import { Duration, DurationValue, EpochTime, UnitMillis, UnitNanos } from './Time'
 
 export class ReindexStatus {
   /**
@@ -77,4 +78,39 @@ export class ReindexStatus {
    * The reason for cancellation if the slice was canceled
    */
   cancelled?: string
+}
+
+/**
+ * Information about a single reindex task, as returned by the reindex management APIs.
+ * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ */
+export class ReindexTaskInfo {
+  /**
+   * The ID of the reindex task, in `nodeId:taskNum` format.
+   */
+  id: TaskId
+  /**
+   * A sanitized description of the reindex operation (source and destination indices, and optionally remote host info).
+   */
+  description?: string
+  /**
+   * The time at which the reindex task started, in milliseconds since the Unix epoch.
+   */
+  start_time_in_millis: EpochTime<UnitMillis>
+  /**
+   * The time at which the reindex task started, as an ISO 8601 formatted string.
+   */
+  start_time: string
+  /**
+   * The elapsed running time of the reindex task, in nanoseconds.
+   */
+  running_time_in_nanos: DurationValue<UnitNanos>
+  /**
+   * Whether the reindex task has been cancelled.
+   */
+  cancelled: boolean
+  /**
+   * The current progress of the reindex operation.
+   */
+  status?: ReindexStatus
 }
