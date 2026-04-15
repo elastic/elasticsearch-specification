@@ -21264,6 +21264,24 @@ export interface SecurityClearCachedServiceTokensResponse {
   nodes: Record<string, SecurityClusterNode>
 }
 
+export interface SecurityCloneApiKeyRequest extends RequestBase {
+  refresh?: Refresh
+  body?: {
+    api_key: string
+    name?: Name
+    expiration?: Duration
+    metadata?: Metadata
+  }
+}
+
+export interface SecurityCloneApiKeyResponse {
+  api_key: string
+  expiration?: long
+  id: Id
+  name: Name
+  encoded: string
+}
+
 export interface SecurityCreateApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body?: {
