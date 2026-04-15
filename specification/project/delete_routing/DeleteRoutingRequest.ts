@@ -26,7 +26,7 @@ import { MediaType } from '@_types/common'
  * @doc_id project-delete-routing
  * @rest_spec_name project.delete_routing
  * @availability serverless stability=experimental visibility=public
- * @cluster_privileges manage
+ * @cluster_privileges manage_project_routing,manage
  * @doc_tag project
  */
 export interface Request extends RequestBase {

@@ -1,0 +1,23 @@
+summary: A text embedding task with OAuth 2.0 authentication and custom headers
+description:
+  Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a
+  `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.
+method_request: 'PUT _inference/text_embedding/azure_openai_embeddings'
+value: |-
+  {
+      "service": "azureopenai",
+      "service_settings": {
+          "api_version": "2023-05-15",
+          "client_id": "12345",
+          "client_secret": "secret",
+          "deployment_id": "Deployment-id",
+          "resource_name": "Resource-name",
+          "scopes": ["Scope-1", "Scope-2"],
+          "tenant_id": "tenant id"
+      },
+      "task_settings": {
+          "headers": {
+              "Custom-Header-Key": "Custom header value"
+          }
+      }
+  }

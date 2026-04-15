@@ -222,10 +222,6 @@ export class ShardStats {
   indices?: IndicesStats
 }
 
-/**
- * @availability stack since=8.1.0
- * @availability serverless
- */
 export enum IndexMetadataState {
   open,
   close

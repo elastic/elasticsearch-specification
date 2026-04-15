@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=9.1.0 stability=experimental visibility=public
  * @cluster_privileges monitor
  * @doc_id streams-status
+ * @doc_tag streams
  */
 export interface Request extends RequestBase {
   urls: [

@@ -14,6 +14,7 @@ cluster-get-component-template-1,cluster-get-component-template
 connector-put-1,connector-put
 count-1,count
 enrich-get-policy-1,enrich-get-policy
+esql-get-view-1,esql-get-view
 field-caps-1,field-caps
 index-1,index
 indices-analyze-1,indices-analyze
@@ -37,8 +38,10 @@ indices-validate-query-1,indices-validate-query
 inference-delete-1,inference-delete
 inference-get-1,inference-get
 inference-get-2,inference-get
+inference-get-3,inference-get
 inference-inference-1,inference-inference
 inference-put-1,inference-put
+inference-update-1,inference-update
 ingest-get-pipeline-1,ingest-get-pipeline
 ingest-simulate-1,ingest-simulate
 logstash-get-pipeline-1,logstash-get-pipeline

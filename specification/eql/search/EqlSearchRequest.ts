@@ -57,8 +57,12 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Whether to ignore if a wildcard indices expression resolves into no concrete indices.
-     * (This includes `_all` string or when no indices have been specified)
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -84,7 +88,9 @@ export interface Request extends RequestBase {
      */
     ccs_minimize_roundtrips?: boolean
     /**
-     * If true, missing or closed indices are not included in the response.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default true
      */
     ignore_unavailable?: boolean

@@ -24,7 +24,7 @@ import {
   Ai21ServiceSettings,
   Ai21ServiceType,
   Ai21TaskType
-} from '@inference/_types/CommonTypes'
+} from '@inference/_types/Ai21Types'
 
 /**
  * Create a AI21 inference endpoint.

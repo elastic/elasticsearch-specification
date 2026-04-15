@@ -17558,23 +17558,23 @@
   "specification/streams/logs_enable/examples/request/PostStreamsEnableRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.streams.logs_enable()"
+      "code": "resp = client.streams.logs_enable(\n    name=\"logs.otel\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.streams.logsEnable();"
+      "code": "const response = await client.streams.logsEnable({\n  name: \"logs.otel\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.streams.logs_enable"
+      "code": "response = client.streams.logs_enable(\n  name: \"logs.otel\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->streams()->logsEnable();"
+      "code": "$resp = $client->streams()->logsEnable([\n    \"name\" => \"logs.otel\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_enable\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs.otel/_enable\""
     },
     {
       "language": "Java",
@@ -17584,23 +17584,23 @@
   "specification/streams/logs_disable/examples/request/PostStreamsDisableRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.streams.logs_disable()"
+      "code": "resp = client.streams.logs_disable(\n    name=\"logs.otel\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.streams.logsDisable();"
+      "code": "const response = await client.streams.logsDisable({\n  name: \"logs.otel\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.streams.logs_disable"
+      "code": "response = client.streams.logs_disable(\n  name: \"logs.otel\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->streams()->logsDisable();"
+      "code": "$resp = $client->streams()->logsDisable([\n    \"name\" => \"logs.otel\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs/_disable\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_streams/logs.otel/_disable\""
     },
     {
       "language": "Java",
@@ -18672,23 +18672,23 @@
   "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": {\n                    \"type\": \"image\",\n                    \"format\": \"base64\",\n                    \"value\": \"data:image/jpeg;base64,...\"\n                }\n            },\n            {\n                \"content\": {\n                    \"type\": \"text\",\n                    \"value\": \"Some text to create an embedding\"\n                }\n            }\n        ]\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: {\n          type: \"image\",\n          format: \"base64\",\n          value: \"data:image/jpeg;base64,...\",\n        },\n      },\n      {\n        content: {\n          type: \"text\",\n          value: \"Some text to create an embedding\",\n        },\n      },\n    ],\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpg;base64,...\"\n        }\n      },\n      {\n        \"content\": {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      }\n    ]\n  }\n)"
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpeg;base64,...\"\n        }\n      },\n      {\n        \"content\": {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      }\n    ]\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => [\n                    \"type\" => \"image\",\n                    \"format\" => \"base64\",\n                    \"value\" => \"data:image/jpg;base64,...\",\n                ],\n            ],\n            [\n                \"content\" => [\n                    \"type\" => \"text\",\n                    \"value\" => \"Some text to create an embedding\",\n                ],\n            ],\n        ),\n    ],\n]);"
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => [\n                    \"type\" => \"image\",\n                    \"format\" => \"base64\",\n                    \"value\" => \"data:image/jpeg;base64,...\",\n                ],\n            ],\n            [\n                \"content\" => [\n                    \"type\" => \"text\",\n                    \"value\" => \"Some text to create an embedding\",\n                ],\n            ],\n        ),\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
     }
   ],
   "specification/inference/embedding/examples/request/EmbeddingRequestExample2.yaml": [
@@ -19103,6 +19103,160 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/amazon_bedrock_chat_completion\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"my-fireworks-embeddings\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"fireworks/qwen3-embedding-8b\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"fireworks/qwen3-embedding-8b\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"fireworks/qwen3-embedding-8b\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"my-fireworks-embeddings\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"fireworks/qwen3-embedding-8b\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"my-fireworks-chat\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"my-fireworks-chat\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"accounts/fireworks/models/deepseek-v3p1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"my-fireworks-chat\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"my-fireworks-chat\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"accounts/fireworks/models/deepseek-v3p1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/my-fireworks-chat\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"my-fireworks-embeddings\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"fireworks/qwen3-embedding-8b\",\n            \"dimensions\": 1024,\n            \"similarity\": \"cosine\",\n            \"rate_limit\": {\n                \"requests_per_minute\": 6000\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"fireworks/qwen3-embedding-8b\",\n      dimensions: 1024,\n      similarity: \"cosine\",\n      rate_limit: {\n        requests_per_minute: 6000,\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"my-fireworks-embeddings\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"fireworks/qwen3-embedding-8b\",\n      \"dimensions\": 1024,\n      \"similarity\": \"cosine\",\n      \"rate_limit\": {\n        \"requests_per_minute\": 6000\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"my-fireworks-embeddings\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"fireworks/qwen3-embedding-8b\",\n            \"dimensions\" => 1024,\n            \"similarity\" => \"cosine\",\n            \"rate_limit\" => [\n                \"requests_per_minute\" => 6000,\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\",\"dimensions\":1024,\"similarity\":\"cosine\",\"rate_limit\":{\"requests_per_minute\":6000}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    }
+  ],
+  "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"completion\",\n    inference_id=\"my-fireworks-completion\",\n    inference_config={\n        \"service\": \"fireworksai\",\n        \"service_settings\": {\n            \"api_key\": \"your-api-key\",\n            \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"completion\",\n  inference_id: \"my-fireworks-completion\",\n  inference_config: {\n    service: \"fireworksai\",\n    service_settings: {\n      api_key: \"your-api-key\",\n      model_id: \"accounts/fireworks/models/deepseek-v3p1\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"completion\",\n  inference_id: \"my-fireworks-completion\",\n  body: {\n    \"service\": \"fireworksai\",\n    \"service_settings\": {\n      \"api_key\": \"your-api-key\",\n      \"model_id\": \"accounts/fireworks/models/deepseek-v3p1\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"completion\",\n    \"inference_id\" => \"my-fireworks-completion\",\n    \"body\" => [\n        \"service\" => \"fireworksai\",\n        \"service_settings\" => [\n            \"api_key\" => \"your-api-key\",\n            \"model_id\" => \"accounts/fireworks/models/deepseek-v3p1\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/completion/my-fireworks-completion\""
+    }
+  ],
+  "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.chat_completion_unified(\n    inference_id=\"reasoning-chat-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"assistant\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n                    }\n                ],\n                \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\": [\n                    {\n                        \"type\": \"reasoning.encrypted\",\n                        \"data\": \"[REDACTED]\"\n                    },\n                    {\n                        \"type\": \"reasoning.summary\",\n                        \"summary\": \"Barber shaving himself creates contradiction\"\n                    },\n                    {\n                        \"type\": \"reasoning.text\",\n                        \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\": \"sig_123\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"What if there are 2 barbers?\"\n                    }\n                ]\n            }\n        ],\n        \"reasoning\": {\n            \"enabled\": True,\n            \"summary\": \"detailed\",\n            \"exclude\": False\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.chatCompletionUnified({\n  inference_id: \"reasoning-chat-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n          },\n        ],\n      },\n      {\n        role: \"assistant\",\n        content: [\n          {\n            type: \"text\",\n            text: \"This is the barber paradox. Such a barber cannot logically exist.\",\n          },\n        ],\n        reasoning:\n          \"If the barber shaves himself, he should not; if he does not, he should.\",\n        reasoning_details: [\n          {\n            type: \"reasoning.encrypted\",\n            data: \"[REDACTED]\",\n          },\n          {\n            type: \"reasoning.summary\",\n            summary: \"Barber shaving himself creates contradiction\",\n          },\n          {\n            type: \"reasoning.text\",\n            text: \"If the barber shaves himself, he should not; if he does not, he should.\",\n            signature: \"sig_123\",\n          },\n        ],\n      },\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"What if there are 2 barbers?\",\n          },\n        ],\n      },\n    ],\n    reasoning: {\n      enabled: true,\n      summary: \"detailed\",\n      exclude: false,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.chat_completion_unified(\n  inference_id: \"reasoning-chat-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n          }\n        ]\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n          }\n        ],\n        \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Barber shaving himself creates contradiction\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n            \"signature\": \"sig_123\"\n          }\n        ]\n      },\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What if there are 2 barbers?\"\n          }\n        ]\n      }\n    ],\n    \"reasoning\": {\n      \"enabled\": true,\n      \"summary\": \"detailed\",\n      \"exclude\": false\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->chatCompletionUnified([\n    \"inference_id\" => \"reasoning-chat-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"assistant\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"This is the barber paradox. Such a barber cannot logically exist.\",\n                    ],\n                ),\n                \"reasoning\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\" => array(\n                    [\n                        \"type\" => \"reasoning.encrypted\",\n                        \"data\" => \"[REDACTED]\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.summary\",\n                        \"summary\" => \"Barber shaving himself creates contradiction\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.text\",\n                        \"text\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\" => \"sig_123\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"What if there are 2 barbers?\",\n                    ],\n                ),\n            ],\n        ),\n        \"reasoning\" => [\n            \"enabled\" => true,\n            \"summary\" => \"detailed\",\n            \"exclude\" => false,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"enabled\":true,\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion/_stream\""
+    }
+  ],
+  "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.chat_completion_unified(\n    inference_id=\"reasoning-chat-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"assistant\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n                    }\n                ],\n                \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\": [\n                    {\n                        \"type\": \"reasoning.encrypted\",\n                        \"data\": \"[REDACTED]\"\n                    },\n                    {\n                        \"type\": \"reasoning.summary\",\n                        \"summary\": \"Barber shaving himself creates contradiction\"\n                    },\n                    {\n                        \"type\": \"reasoning.text\",\n                        \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\": \"sig_123\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"What if there are 2 barbers?\"\n                    }\n                ]\n            }\n        ],\n        \"reasoning\": {\n            \"effort\": \"high\",\n            \"summary\": \"detailed\",\n            \"exclude\": False\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.chatCompletionUnified({\n  inference_id: \"reasoning-chat-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n          },\n        ],\n      },\n      {\n        role: \"assistant\",\n        content: [\n          {\n            type: \"text\",\n            text: \"This is the barber paradox. Such a barber cannot logically exist.\",\n          },\n        ],\n        reasoning:\n          \"If the barber shaves himself, he should not; if he does not, he should.\",\n        reasoning_details: [\n          {\n            type: \"reasoning.encrypted\",\n            data: \"[REDACTED]\",\n          },\n          {\n            type: \"reasoning.summary\",\n            summary: \"Barber shaving himself creates contradiction\",\n          },\n          {\n            type: \"reasoning.text\",\n            text: \"If the barber shaves himself, he should not; if he does not, he should.\",\n            signature: \"sig_123\",\n          },\n        ],\n      },\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"What if there are 2 barbers?\",\n          },\n        ],\n      },\n    ],\n    reasoning: {\n      effort: \"high\",\n      summary: \"detailed\",\n      exclude: false,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.chat_completion_unified(\n  inference_id: \"reasoning-chat-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n          }\n        ]\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n          }\n        ],\n        \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Barber shaving himself creates contradiction\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n            \"signature\": \"sig_123\"\n          }\n        ]\n      },\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What if there are 2 barbers?\"\n          }\n        ]\n      }\n    ],\n    \"reasoning\": {\n      \"effort\": \"high\",\n      \"summary\": \"detailed\",\n      \"exclude\": false\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->chatCompletionUnified([\n    \"inference_id\" => \"reasoning-chat-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"assistant\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"This is the barber paradox. Such a barber cannot logically exist.\",\n                    ],\n                ),\n                \"reasoning\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\" => array(\n                    [\n                        \"type\" => \"reasoning.encrypted\",\n                        \"data\" => \"[REDACTED]\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.summary\",\n                        \"summary\" => \"Barber shaving himself creates contradiction\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.text\",\n                        \"text\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\" => \"sig_123\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"What if there are 2 barbers?\",\n                    ],\n                ),\n            ],\n        ),\n        \"reasoning\" => [\n            \"effort\" => \"high\",\n            \"summary\" => \"detailed\",\n            \"exclude\" => false,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"effort\":\"high\",\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion/_stream\""
+    }
+  ],
+  "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"azure_openai_embeddings\",\n    inference_config={\n        \"service\": \"azureopenai\",\n        \"service_settings\": {\n            \"api_version\": \"2023-05-15\",\n            \"client_id\": \"12345\",\n            \"client_secret\": \"secret\",\n            \"deployment_id\": \"Deployment-id\",\n            \"resource_name\": \"Resource-name\",\n            \"scopes\": [\n                \"Scope-1\",\n                \"Scope-2\"\n            ],\n            \"tenant_id\": \"tenant id\"\n        },\n        \"task_settings\": {\n            \"headers\": {\n                \"Custom-Header-Key\": \"Custom header value\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"azure_openai_embeddings\",\n  inference_config: {\n    service: \"azureopenai\",\n    service_settings: {\n      api_version: \"2023-05-15\",\n      client_id: \"12345\",\n      client_secret: \"secret\",\n      deployment_id: \"Deployment-id\",\n      resource_name: \"Resource-name\",\n      scopes: [\"Scope-1\", \"Scope-2\"],\n      tenant_id: \"tenant id\",\n    },\n    task_settings: {\n      headers: {\n        \"Custom-Header-Key\": \"Custom header value\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"azure_openai_embeddings\",\n  body: {\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n      \"api_version\": \"2023-05-15\",\n      \"client_id\": \"12345\",\n      \"client_secret\": \"secret\",\n      \"deployment_id\": \"Deployment-id\",\n      \"resource_name\": \"Resource-name\",\n      \"scopes\": [\n        \"Scope-1\",\n        \"Scope-2\"\n      ],\n      \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n      \"headers\": {\n        \"Custom-Header-Key\": \"Custom header value\"\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"azure_openai_embeddings\",\n    \"body\" => [\n        \"service\" => \"azureopenai\",\n        \"service_settings\" => [\n            \"api_version\" => \"2023-05-15\",\n            \"client_id\" => \"12345\",\n            \"client_secret\" => \"secret\",\n            \"deployment_id\" => \"Deployment-id\",\n            \"resource_name\" => \"Resource-name\",\n            \"scopes\" => array(\n                \"Scope-1\",\n                \"Scope-2\",\n            ),\n            \"tenant_id\" => \"tenant id\",\n        ],\n        \"task_settings\" => [\n            \"headers\" => [\n                \"Custom-Header-Key\" => \"Custom header value\",\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_version\":\"2023-05-15\",\"client_id\":\"12345\",\"client_secret\":\"secret\",\"deployment_id\":\"Deployment-id\",\"resource_name\":\"Resource-name\",\"scopes\":[\"Scope-1\",\"Scope-2\"],\"tenant_id\":\"tenant id\"},\"task_settings\":{\"headers\":{\"Custom-Header-Key\":\"Custom header value\"}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_openai_embeddings\""
     }
   ]
 }

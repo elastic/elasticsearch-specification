@@ -27,7 +27,7 @@ import { NamedProjectRoutingExpressions } from '../_types/RoutingExpression'
  * @doc_id project-create-many-routing
  * @rest_spec_name project.create_many_routing
  * @availability serverless stability=experimental visibility=public
- * @cluster_privileges manage
+ * @cluster_privileges manage_project_routing,manage
  * @doc_tag project
  */
 export interface Request extends RequestBase {
