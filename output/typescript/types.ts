@@ -107,6 +107,26 @@ export interface BulkWriteOperation extends BulkOperationBase {
   require_alias?: boolean
 }
 
+export interface CancelReindexRequest extends RequestBase {
+  task_id: TaskId
+  wait_for_completion?: boolean
+}
+
+export interface CancelReindexResponse {
+  acknowledged?: boolean
+  completed?: boolean
+  id?: TaskId
+  description?: string
+  start_time_in_millis?: EpochTime<UnitMillis>
+  start_time?: string
+  running_time?: Duration
+  running_time_in_nanos?: DurationValue<UnitNanos>
+  cancelled?: boolean
+  status?: ReindexStatus
+  error?: ErrorCause
+  response?: ReindexTaskResult
+}
+
 export interface CapabilitiesFailedNodeException {
   node_id: Id
 }
@@ -429,6 +449,26 @@ export interface GetRequest extends RequestBase {
 
 export type GetResponse<TDocument = unknown> = GetGetResult<TDocument>
 
+export interface GetReindexRequest extends RequestBase {
+  task_id: TaskId
+  wait_for_completion?: boolean
+  timeout?: Duration
+}
+
+export interface GetReindexResponse {
+  completed: boolean
+  id: TaskId
+  description?: string
+  start_time_in_millis: EpochTime<UnitMillis>
+  start_time?: string
+  running_time?: Duration
+  running_time_in_nanos: DurationValue<UnitNanos>
+  cancelled: boolean
+  status?: ReindexStatus
+  error?: ErrorCause
+  response?: ReindexTaskResult
+}
+
 export interface GetScriptRequest extends RequestBase {
   id: Id
   master_timeout?: Duration
@@ -740,6 +780,16 @@ export interface KnnSearchKnnSearchQuery {
   query_vector: QueryVector
   k: integer
   num_candidates: integer
+}
+
+export interface ListReindexRequest extends RequestBase {
+  detailed?: boolean
+}
+
+export interface ListReindexResponse {
+  reindex: ReindexTaskInfo[]
+  task_failures?: TaskFailure[]
+  node_failures?: ErrorCause[]
 }
 
 export interface MgetMultiGetError {
@@ -2901,6 +2951,34 @@ export interface ReindexStatus {
   updated?: long
   version_conflicts: long
   cancelled?: string
+}
+
+export interface ReindexTaskInfo {
+  id: TaskId
+  description?: string
+  start_time_in_millis: EpochTime<UnitMillis>
+  start_time?: string
+  running_time?: Duration
+  running_time_in_nanos: DurationValue<UnitNanos>
+  cancelled: boolean
+  status?: ReindexStatus
+}
+
+export interface ReindexTaskResult {
+  batches?: long
+  created?: long
+  deleted?: long
+  failures?: BulkIndexByScrollFailure[]
+  noops?: long
+  requests_per_second?: float
+  retries?: Retries
+  throttled_millis?: DurationValue<UnitMillis>
+  throttled_until_millis?: DurationValue<UnitMillis>
+  timed_out?: boolean
+  took?: DurationValue<UnitMillis>
+  total?: long
+  updated?: long
+  version_conflicts?: long
 }
 
 export type RelationName = string
