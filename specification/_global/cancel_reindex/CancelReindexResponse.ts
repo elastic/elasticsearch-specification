@@ -20,7 +20,13 @@
 import { TaskId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { ReindexStatus, ReindexTaskResult } from '@_types/Reindex'
-import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
 
 /**
  * When `wait_for_completion=true` (the default), returns the final task state (same shape as the get reindex response).
@@ -52,6 +58,11 @@ export class Response {
      * The time at which the reindex task started, as an ISO 8601 formatted string.
      */
     start_time?: string
+    /**
+     * The elapsed running time of the reindex task, in a human-readable format.
+     * Only present when the request includes the `?human=true` query parameter.
+     */
+    running_time?: Duration
     /**
      * The elapsed running time of the reindex task, in nanoseconds.
      */

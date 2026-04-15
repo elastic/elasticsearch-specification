@@ -123,11 +123,11 @@ export class ReindexTaskResult {
   /**
    * Number of milliseconds the request slept to conform to `requests_per_second`.
    */
-  throttled_millis?: EpochTime<UnitMillis>
+  throttled_millis?: DurationValue<UnitMillis>
   /**
    * This field should always be equal to zero in a completed reindex result.
    */
-  throttled_until_millis?: EpochTime<UnitMillis>
+  throttled_until_millis?: DurationValue<UnitMillis>
   /**
    * Whether any of the requests executed during the reindex timed out.
    */
@@ -168,8 +168,14 @@ export class ReindexTaskInfo {
   start_time_in_millis: EpochTime<UnitMillis>
   /**
    * The time at which the reindex task started, as an ISO 8601 formatted string.
+   * Only present when the request includes the `?human=true` query parameter.
    */
-  start_time: string
+  start_time?: string
+  /**
+   * The elapsed running time of the reindex task, in a human-readable format.
+   * Only present when the request includes the `?human=true` query parameter.
+   */
+  running_time?: Duration
   /**
    * The elapsed running time of the reindex task, in nanoseconds.
    */

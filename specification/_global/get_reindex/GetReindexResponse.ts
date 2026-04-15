@@ -20,7 +20,13 @@
 import { TaskId } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { ReindexStatus, ReindexTaskResult } from '@_types/Reindex'
-import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
 
 export class Response {
   body: {
@@ -42,8 +48,14 @@ export class Response {
     start_time_in_millis: EpochTime<UnitMillis>
     /**
      * The time at which the reindex task started, as an ISO 8601 formatted string.
+     * Only present when the request includes the `?human=true` query parameter.
      */
-    start_time: string
+    start_time?: string
+    /**
+     * The elapsed running time of the reindex task, in a human-readable format.
+     * Only present when the request includes the `?human=true` query parameter.
+     */
+    running_time?: Duration
     /**
      * The elapsed running time of the reindex task, in nanoseconds.
      */
