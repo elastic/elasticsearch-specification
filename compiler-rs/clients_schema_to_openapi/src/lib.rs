@@ -252,10 +252,8 @@ fn generate_tags_from_model(
 fn generate_tag_groups_extension(
     model: &IndexedModel,
     openapi_tags: &[openapiv3::Tag],
-    extensions: &mut IndexMap<String, serde_json::Value>,
+    extensions: &mut IndexMap<String, Value>,
 ) {
-    use std::collections::HashSet;
-    
     // Get tag groups from model metadata
     let tag_groups = if let Some(openapi_meta) = &model.openapi {
         openapi_meta.tag_groups.as_ref()
@@ -298,6 +296,7 @@ fn generate_tag_groups_extension(
     let ungrouped_tags: Vec<String> = used_tag_names.iter()
         .filter(|tag| !all_grouped_tags.contains(*tag))
         .cloned()
+        .sorted()
         .collect();
     
     // If there are ungrouped tags, add them to an "Other APIs" group
@@ -312,7 +311,7 @@ fn generate_tag_groups_extension(
     if !filtered_groups.is_empty() {
         extensions.insert(
             "x-tagGroups".to_string(),
-            serde_json::Value::Array(filtered_groups)
+            Value::Array(filtered_groups)
         );
     }
 }
