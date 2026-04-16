@@ -536,7 +536,7 @@ modules-gateway-dangling-indices,https://www.elastic.co/docs/reference/elasticse
 modules-node,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/node-settings,[use-doc-url],,
 modules-remote-clusters,https://www.elastic.co/docs/deploy-manage/remote-clusters/remote-clusters-self-managed,[use-doc-url],,
 modules-scripting,https://www.elastic.co/docs/explore-analyze/scripting,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/modules-scripting.html,Scripting
-modules-snapshots,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore,[use-doc-url],,
+modules-snapshots,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/snapshot-restore.html,Snapshot and restore
 monitor-elasticsearch-cluster,https://www.elastic.co/docs/deploy-manage/monitor/cloud-health-perf,[use-doc-url],,
 multi-fields,https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/multi-fields,[use-doc-url],,
 network-direction-processor,https://www.elastic.co/docs/reference/enrich-processor/network-direction-processor,[use-doc-url],,
@@ -911,7 +911,7 @@ slm-api-put-policy,https://www.elastic.co/docs/api/doc/elasticsearch/operation/o
 slm-api-start,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-start,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/slm-api-start.html,
 slm-api-stop,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-slm-stop,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/slm-api-stop.html,
 snapshot-clone,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-clone,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/clone-snapshot-api.html,
-snapshot-create,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots,[use-doc-url],,
+snapshot-create,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/snapshots-take-snapshot.html,"Create, monitor and delete snapshots"
 snapshot-create-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-create,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/create-snapshot-api.html,
 snapshot-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-delete,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-snapshot-api.html,
 snapshot-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-snapshot-get,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-snapshot-api.html,
@@ -930,6 +930,7 @@ sort-search-results,https://www.elastic.co/docs/reference/elasticsearch/rest-api
 sort-tiebreaker,https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql#eql-search-specify-a-sort-tiebreaker,[use-doc-url],,
 source-filtering,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#source-filtering,[use-doc-url],,
 split-processor,https://www.elastic.co/docs/reference/enrich-processor/split-processor,[use-doc-url],,
+sql,https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/xpack-sql.html,SQL overview
 sql-async-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-get-async,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-sql-get-async,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-sql-search-api.html,
 sql-async-status-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-get-async-status,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-sql-get-async-status,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-sql-search-status-api.html,
 sql-clear-cursor-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-sql-clear-cursor,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-sql-clear-cursor,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/clear-sql-cursor-api.html,
@@ -954,6 +955,7 @@ streams-status,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-u
 streams-logs-enable,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
 streams-logs-disable,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,
 subscriptions,https://www.elastic.co/subscriptions,,[use-doc-url],Elastic self-managed subscriptions
+synonyms,https://www.elastic.co/docs/solutions/search/full-text/search-with-synonyms,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-with-synonyms.html,Search with synonyms
 synonym-api-examples,https://www.elastic.co/docs/solutions/search/full-text/create-update-synonyms-api-example,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-synonyms-set.html,
 synonym-rule-create,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-put-synonym-rule,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-synonyms-put-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-synonym-rule.html,
 synonym-rule-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-synonyms-delete-synonym-rule,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-synonyms-delete-synonym-rule,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-synonym-rule.html,
@@ -974,6 +976,7 @@ test-grok-pattern,https://www.elastic.co/docs/api/doc/elasticsearch/operation/op
 time-units,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units,[use-doc-url],,Time units
 time-value,https://github.com/elastic/elasticsearch/blob/current/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java,[use-doc-url],,
 time-zone-id,https://docs.oracle.com/javase/8/docs/api/java/time/ZoneId.html,[use-doc-url],,
+transforms,https://www.elastic.co/docs/explore-analyze/transforms,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/transforms.html,Transforming data
 transform-set-upgrade-mode,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-set-upgrade-mode,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/transform-set-upgrade-mode.html,
 trim-processor,https://www.elastic.co/docs/reference/enrich-processor/trim-processor,[use-doc-url],,
 universal-profiling,https://www.elastic.co/guide/en/observability/current/universal-profiling.html,[use-doc-url],,
@@ -995,6 +998,7 @@ verify-repository,https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-r
 voting-config-exclusions,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-post-voting-config-exclusions,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/voting-config-exclusions.html,
 voyageai-embeddings,https://docs.voyageai.com/docs/embeddings,[use-doc-url],,
 voyageai-rerank,https://docs.voyageai.com/docs/reranker,[use-doc-url],,
+watcher,https://www.elastic.co/docs/explore-analyze/alerting/watcher,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/xpack-alerting.html,Watcher
 watcher-works,https://www.elastic.co/docs/explore-analyze/alerts-cases/watcher/how-watcher-works,[use-doc-url],,
 watcher-api-ack-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/watcher-api-ack-watch.html,
 watcher-api-activate-watch,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/watcher-api-activate-watch.html,

@@ -68,11 +68,6 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
 
   // Add tag metadata extracted from elasticsearch-shared-overlays.yaml
   model._openapi.tagMetadata = {
-    autoscaling: {
-      displayName: 'Autoscaling',
-      description: 'The autoscaling APIs enable you to create and manage autoscaling policies and retrieve information about autoscaling capacity. Autoscaling adjusts resources based on demand. A deployment can use autoscaling to scale resources as needed, ensuring sufficient capacity to meet workload requirements.',
-      externalDocs: createExternalDocs('autoscaling')
-    },
     analytics: {
       displayName: 'Behavioral analytics',
       description: 'The behavioral analytics APIs let you create and manage analytics collections and view their data. Use them to analyze users\' search and click behavior, improve result relevance, and identify content gaps.'
@@ -136,7 +131,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
       externalDocs: createExternalDocs('fleet')
     },
     graph: {
-      displayName: 'Graph',
+      displayName: 'Graph explore',
       description: 'The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch index.',
       externalDocs: createExternalDocs('graph')
     },
@@ -152,7 +147,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     },
     inference: {
       displayName: 'Inference',
-      description: 'The inference APIs enable you to use machine learning models for inference. The inference feature enables you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Mistral, or Hugging Face.',
+      description: 'Inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.',
       externalDocs: createExternalDocs('inference-api')
     },
     info: {
@@ -161,17 +156,17 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     },
     ingest: {
       displayName: 'Ingest',
-      description: 'The ingest APIs enable you to manage ingest pipelines. An ingest pipeline is a series of processors that are executed on documents before they are indexed.',
+      description: 'Ingest APIs enable you to manage tasks and resources related to ingest pipelines and processors.',
       externalDocs: createExternalDocs('ingest')
     },
     license: {
-      displayName: 'License',
-      description: 'You can use the license APIs to manage your Elasticsearch license.',
+      displayName: 'Licensing',
+      description: 'Licensing APIs enable you to manage your licenses.',
       externalDocs: createExternalDocs('subscriptions')
     },
     logstash: {
       displayName: 'Logstash',
-      description: 'The Logstash APIs enable you to manage pipelines used by Logstash Central Pipeline Management.',
+      description: 'Logstash APIs enable you to manage pipelines that are used by Logstash Central Management.',
       externalDocs: createExternalDocs('logstash-centralized-pipeline-management')
     },
     ml: {
@@ -180,32 +175,32 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
       externalDocs: createExternalDocs('ml')
     },
     'ml anomaly': {
-      displayName: 'Machine learning - Anomaly detection',
-      description: 'The anomaly detection APIs enable you to perform the following tasks: create and manage jobs, create and manage datafeeds, manage model snapshots, obtain bucket results, obtain overall bucket results, obtain anomaly records, and obtain influencer results.',
+      displayName: 'Machine learning anomaly detection',
+      description: 'The machine learning anomaly detection APIs enable you to perform anomaly detection activities.',
       externalDocs: createExternalDocs('ml-anomalies')
     },
     'ml data frame': {
-      displayName: 'Machine learning - Data frame analytics',
-      description: 'The data frame analytics APIs enable you to perform the following tasks: create, delete, start, stop, and update data frame analytics jobs and get information about data frame analytics jobs.',
+      displayName: 'Machine learning data frame analytics',
+      description: 'The machine learning data frame analytics APIs enable you to perform data frame analytics activities.',
       externalDocs: createExternalDocs('ml-dfa')
     },
     'ml trained model': {
-      displayName: 'Machine learning - Trained model',
-      description: 'The trained model APIs enable you to perform the following tasks: store and manage trained models, create inference processors that use these models, and use the models to infer against incoming data.',
+      displayName: 'Machine learning trained model',
+      description: 'The machine learning trained models APIs enable you to perform model management operations.',
       externalDocs: createExternalDocs('ml-nlp')
     },
     migration: {
       displayName: 'Migration',
-      description: 'The migration APIs simplify upgrading X-Pack indices from one version to another.',
+      description: 'The migration APIs power Kibana\'s Upgrade Assistant feature.',
       externalDocs: createExternalDocs('upgrade-assistant')
     },
     project: {
       displayName: 'Project',
-      description: 'Projects provide a way to organize related resources within a serverless instance.',
+      description: 'The project APIs enable you to get project tags and manage your project routing expressions.',
     },
     query_rules: {
       displayName: 'Query rules',
-      description: 'The query rules APIs manage query rules. Query rules are configurations that customize query behavior for specific queries, promoting or excluding specific documents at query time.\n\nThere are different types of query rules:\n\n- Pinned queries: Promote or exclude specific documents for a given query.\n- Organic results: Add additional queries to be executed along with the provided query.',
+      description: 'Query rules enable you to configure per-query rules that are applied at query time to queries that match the specific rule. Query rules are organized into rulesets, collections of query rules that are matched against incoming queries. Query rules are applied using the rule query. If a query matches one or more rules in the ruleset, the query is re-written to apply the rules before searching. This allows pinning documents for only queries that match a specific term. Alternatively, you can use the Query Rules UI to manage query rules.',
       externalDocs: createExternalDocs('query-rule')
     },
     random_sample: {
@@ -214,12 +209,12 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     },
     rollup: {
       displayName: 'Rollup',
-      description: 'The rollup APIs enable you to summarize historical data and store the summaries in a separate index. Once you have rolled up historical data, you can use the rollup search API to search both live, real-time data and the rolled-up data with a single query.',
+      description: 'The rollup APIs enable you to create, manage, and retrieve information about rollup jobs.',
       externalDocs: createExternalDocs('xpack-rollup')
     },
     script: {
       displayName: 'Scripting',
-      description: 'The script APIs enable you to manage stored scripts and script contexts.',
+      description: 'Use the script support APIs to get a list of supported script contexts and languages. Use the stored script APIs to manage stored scripts and search templates.',
       externalDocs: createExternalDocs('modules-scripting')
     },
     search: {
@@ -228,7 +223,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
       externalDocs: createExternalDocs('search-approach')
     },
     search_application: {
-      displayName: 'Search Application',
+      displayName: 'Search application',
       description: 'The search application APIs provide a convenient way to leverage the power of Elasticsearch for your search applications.',
       externalDocs: createExternalDocs('search-applications')
     },
@@ -245,34 +240,25 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     snapshot: {
       displayName: 'Snapshot and restore',
       description: 'The snapshot and restore APIs are used to take snapshots of running clusters. Snapshots are backups of individual indices or entire clusters.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/backup-restore/snapshot-restore',
-        description: 'Learn more about snapshot and restore.'
-      }
+      externalDocs: createExternalDocs('modules-snapshots')
     },
     slm: {
       displayName: 'Snapshot lifecycle management',
       description: 'Snapshot lifecycle management (SLM) enables you to automatically take snapshots and control how long they are kept.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/backup-restore/snapshot-lifecycle-management',
-        description: 'Learn more about SLM.'
-      }
+      externalDocs: createExternalDocs('snapshot-create')
     },
     sql: {
       displayName: 'SQL',
-      description: 'Elasticsearch SQL is an X-Pack component that allows SQL-like queries to be executed in real-time against Elasticsearch.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/explore-analyze/query-filter/languages/sql',
-        description: 'Learn more about Elasticsearch SQL.'
-      }
+      description: 'Elasticsearch\'s SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.',
+      externalDocs: createExternalDocs('sql')
+    },
+    streams:{
+      displayName: 'Streams',
     },
     synonyms: {
       displayName: 'Synonyms',
-      description: 'The synonyms APIs provide a convenient way to manage synonyms sets used with the synonym graph token filter.\n\nSynonyms are sets of words or phrases that are treated as equivalent during search. For example, a search for "great" also matches documents containing "excellent", "wonderful", "terrific", and so on.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/text-analysis/token-filters/synonym-token-filter',
-        description: 'Learn more about the synonym token filter.'
-      }
+      description: 'The synonyms management API provides a convenient way to define and manage synonyms in an internal system index. Related synonyms can be grouped in a "synonyms set". Create as many synonym sets as you need.',
+      externalDocs: createExternalDocs('synonyms')
     },
     tasks: {
       displayName: 'Task management',
@@ -281,27 +267,21 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     },
     text_structure: {
       displayName: 'Text structure',
-      description: 'The text structure APIs enable you to analyze the structure of text files. The structure that is found can then be used to create an ingest pipeline to index similar files into an Elasticsearch index.'
+      description: 'The text structure APIs enable you to find the structure of a text field in an Elasticsearch index.'
     },
     transform: {
       displayName: 'Transform',
-      description: 'Transforms enable you to retrieve information from source indices, process it, and store it in destination indices.\n\nFor example, you can use transforms to pivot your data into entity-centric indices that summarize the behavior of users or sessions or other entities in your data.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/ingest/transform-enrich/transforms',
-        description: 'Learn more about transforms.'
-      }
+      description: 'The transform APIs enable you to create and manage transforms.',
+      externalDocs: createExternalDocs('transforms')
     },
     xpack: {
       displayName: 'Usage',
-      description: 'The usage APIs enable you to get comprehensive information about the installed X-Pack features in your cluster and the usage of the features.'
+      description: 'The usage API provides usage information about the installed X-Pack features.'
     },
     watcher: {
       displayName: 'Watcher',
-      description: 'The watcher APIs provide an interface to manage watches and the Elasticsearch Watcher service.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/monitor-warnings-errors/watcher',
-        description: 'Learn more about Watcher.'
-      }
+      description: 'You can use Watcher to watch for changes or anomalies in your data and perform the necessary actions in response.',
+      externalDocs: createExternalDocs('watcher')
     }
   }
 
