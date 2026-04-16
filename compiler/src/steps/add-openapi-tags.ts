@@ -18,6 +18,44 @@
  */
 
 import * as model from '../model/metamodel'
+import { readFileSync } from 'fs'
+import { join } from 'path'
+
+/**
+ * Loads the doc IDs CSV file and returns the parsed data
+ */
+function loadDocIds(): string[][] {
+  return readFileSync(join(__dirname, '..', '..', '..', 'specification', '_doc_ids', 'table.csv'), 'utf8')
+    .split('\n')
+    .map(line => line.split(','))
+}
+
+/**
+ * Gets the documentation URL for a given doc ID from the CSV
+ */
+function getDocUrl(docId: string): string | null {
+  const docIds = loadDocIds()
+  const entry = docIds.find(row => row[0] === docId)
+  return entry ? entry[1].replace(/\r/g, '') : null
+}
+
+/**
+ * Creates external documentation object using CSV lookup only
+ * Emits warning if doc ID not found and returns undefined
+ */
+function createExternalDocs(docId: string): { url: string; description: string } | undefined {
+  const csvUrl = getDocUrl(docId)
+  
+  if (!csvUrl) {
+    console.warn(`Warning: Doc ID '${docId}' not found in _doc_ids/table.csv - omitting externalDocs`)
+    return undefined
+  }
+  
+  return { 
+    url: csvUrl, 
+    description: 'Learn more.' 
+  }
+}
 
 /**
  * Adds OpenAPI tag metadata to the model. This metadata includes display names,
@@ -33,10 +71,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     autoscaling: {
       displayName: 'Autoscaling',
       description: 'The autoscaling APIs enable you to create and manage autoscaling policies and retrieve information about autoscaling capacity. Autoscaling adjusts resources based on demand. A deployment can use autoscaling to scale resources as needed, ensuring sufficient capacity to meet workload requirements.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/autoscaling',
-        description: 'Learn more about autoscaling.'
-      }
+      externalDocs: createExternalDocs('autoscaling')
     },
     analytics: {
       displayName: 'Behavioral analytics',
@@ -49,10 +84,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     cluster: {
       displayName: 'Cluster',
       description: 'The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level. You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/distributed-architecture/discovery-cluster-formation/cluster-state-overview',
-        description: 'Learn more about the cluster state.'
-      }
+      externalDocs: createExternalDocs('cluster')
     },
     health_report: {
       displayName: 'Cluster - Health',
@@ -61,98 +93,67 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     connector: {
       displayName: 'Connector',
       description: 'The connector and sync jobs APIs provide a convenient way to create and manage Elastic connectors and sync jobs in an internal index.\n\nConnectors are Elasticsearch integrations for syncing content from third-party data sources, which can be deployed on Elastic Cloud or hosted on your own infrastructure.\n\nThis API provides an alternative to relying solely on Kibana UI for connector and sync job management. The API comes with a set of validations and assertions to ensure that the state representation in the internal index remains valid.\n\nThis API requires the `manage_connector` privilege or, for read-only endpoints, the `monitor_connector` privilege.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/reference/search-connectors/api-tutorial',
-        description: 'Check out the connector API tutorial.'
-      }
+      externalDocs: createExternalDocs('connector-api-tutorial')
     },
     ccr: {
       displayName: 'Cross-cluster replication',
       description: 'The cross-cluster replication (CCR) APIs let you run replication operations, such as creating and managing follower indices or auto-follow patterns. Use CCR to replicate indices across clusters to maintain search availability during outages, reduce indexing impact, and lower search latency by serving requests closer to users.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication',
-        description: 'Learn more about cross-cluster replication.'
-      }
+      externalDocs: createExternalDocs('ccr')
     },
     'data stream': {
       displayName: 'Data stream',
       description: 'The data stream APIs enable you to create and manage data streams and data stream lifecycles. A data stream lets you store append-only time series data across multiple indices while giving you a single named resource for requests. Data streams are well-suited for logs, events, metrics, and other continuously generated data.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/data-store/data-streams',
-        description: 'Learn more about data streams.'
-      }
+      externalDocs: createExternalDocs('data-streams')
     },
     document: {
       displayName: 'Document',
       description: 'The document APIs enable you to create and manage documents in an Elasticsearch index.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/distributed-architecture/reading-and-writing-documents',
-        description: 'Learn more about reading and writing documents.'
-      }
+      externalDocs: createExternalDocs('document-reading')
     },
     enrich: {
       displayName: 'Enrich',
       description: 'The enrich APIs enable you to manage enrich policies. An enrich policy is a set of configuration options used to add the right enrich data to the right incoming documents.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/ingest/transform-enrich/data-enrichment',
-        description: 'Learn more about data enrichment.'
-      }
+      externalDocs: createExternalDocs('enrich-data')
     },
     eql: {
       displayName: 'EQL',
       description: 'Event Query Language (EQL) is a query language for event-based time series data, such as logs, metrics, and traces.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql',
-        description: 'Learn more about EQL.'
-      }
+      externalDocs: createExternalDocs('eql')
     },
     esql: {
       displayName: 'ES|QL',
       description: 'The Elasticsearch Query Language (ES|QL) provides a powerful way to filter, transform, and analyze data stored in Elasticsearch, and in the future in other runtimes.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql',
-        description: 'Learn more about ES|QL.'
-      }
+      externalDocs: createExternalDocs('esql')
     },
     features: {
       displayName: 'Features',
       description: 'The features APIs retrieve information about the features that are currently enabled and available on the node.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/rest-api/common-parms#common-options',
-        description: 'Learn more about the response filtering parameters.'
-      }
+      externalDocs: createExternalDocs('snapshot-restore-feature-state')
     },
     fleet: {
       displayName: 'Fleet',
-      description: 'The fleet APIs provide a convenient way to manage global search applications and associated alias or indices.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/search/search-applications',
-        description: 'Learn more about search applications.'
-      }
+      description: 'The Fleet APIs support Fleet\'s use of Elasticsearch as a data store for internal agent and action data.',
+      externalDocs: createExternalDocs('fleet')
     },
     graph: {
       displayName: 'Graph',
-      description: 'The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch index.'
+      description: 'The graph explore API enables you to extract and summarize information about the documents and terms in an Elasticsearch index.',
+      externalDocs: createExternalDocs('graph')
     },
     indices: {
       displayName: 'Index',
-      description: 'Index APIs are used to manage individual indices, index settings, aliases, mappings, and index templates.'
+      description: 'Index APIs are used to manage individual indices, index settings, aliases, mappings, and index templates.',
+      externalDocs: createExternalDocs('index-basics')
     },
     ilm: {
       displayName: 'Index lifecycle management',
       description: 'You can use the index lifecycle management (ILM) APIs to create and manage policies to automatically manage the lifecycle of your Elasticsearch indices.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/indexed-data/index-lifecycle-automation',
-        description: 'Learn more about ILM.'
-      }
+      externalDocs: createExternalDocs('ilm-index-lifecycle')
     },
     inference: {
       displayName: 'Inference',
       description: 'The inference APIs enable you to use machine learning models for inference. The inference feature enables you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Mistral, or Hugging Face.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/machine-learning/machine-learning-apis/inference-apis',
-        description: 'Learn more about the inference APIs.'
-      }
+      externalDocs: createExternalDocs('inference-api')
     },
     info: {
       displayName: 'Info',
@@ -161,74 +162,51 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     ingest: {
       displayName: 'Ingest',
       description: 'The ingest APIs enable you to manage ingest pipelines. An ingest pipeline is a series of processors that are executed on documents before they are indexed.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/ingest/ingest-pipelines',
-        description: 'Learn more about ingest pipelines.'
-      }
+      externalDocs: createExternalDocs('ingest')
     },
     license: {
       displayName: 'License',
       description: 'You can use the license APIs to manage your Elasticsearch license.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/license-management',
-        description: 'Learn more about license management.'
-      }
+      externalDocs: createExternalDocs('subscriptions')
     },
     logstash: {
       displayName: 'Logstash',
       description: 'The Logstash APIs enable you to manage pipelines used by Logstash Central Pipeline Management.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/monitor/logstash-monitoring/configuring-logstash',
-        description: 'Learn more about Logstash monitoring.'
-      }
+      externalDocs: createExternalDocs('logstash-centralized-pipeline-management')
     },
     ml: {
       displayName: 'Machine learning',
-      description: 'Perform machine learning activities, such as anomaly detection, data frame analytics, and natural language processing tasks.'
+      description: 'Perform machine learning activities, such as anomaly detection, data frame analytics, and natural language processing tasks.',
+      externalDocs: createExternalDocs('ml')
     },
     'ml anomaly': {
       displayName: 'Machine learning - Anomaly detection',
-      description: 'The anomaly detection APIs enable you to perform the following tasks: create and manage jobs, create and manage datafeeds, manage model snapshots, obtain bucket results, obtain overall bucket results, obtain anomaly records, and obtain influencer results.'
+      description: 'The anomaly detection APIs enable you to perform the following tasks: create and manage jobs, create and manage datafeeds, manage model snapshots, obtain bucket results, obtain overall bucket results, obtain anomaly records, and obtain influencer results.',
+      externalDocs: createExternalDocs('ml-anomalies')
     },
     'ml data frame': {
       displayName: 'Machine learning - Data frame analytics',
-      description: 'The data frame analytics APIs enable you to perform the following tasks: create, delete, start, stop, and update data frame analytics jobs and get information about data frame analytics jobs.'
+      description: 'The data frame analytics APIs enable you to perform the following tasks: create, delete, start, stop, and update data frame analytics jobs and get information about data frame analytics jobs.',
+      externalDocs: createExternalDocs('ml-dfa')
     },
     'ml trained model': {
       displayName: 'Machine learning - Trained model',
-      description: 'The trained model APIs enable you to perform the following tasks: store and manage trained models, create inference processors that use these models, and use the models to infer against incoming data.'
+      description: 'The trained model APIs enable you to perform the following tasks: store and manage trained models, create inference processors that use these models, and use the models to infer against incoming data.',
+      externalDocs: createExternalDocs('ml-nlp')
     },
     migration: {
       displayName: 'Migration',
       description: 'The migration APIs simplify upgrading X-Pack indices from one version to another.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/upgrade',
-        description: 'Learn more about upgrading Elasticsearch.'
-      }
-    },
-    monitoring: {
-      displayName: 'Monitoring',
-      description: 'The monitoring APIs are used by the monitoring features to collect monitoring data.'
-    },
-    shutdown: {
-      displayName: 'Node shutdown',
-      description: 'The node shutdown APIs enable you to prepare nodes for temporary or permanent shutdown.'
+      externalDocs: createExternalDocs('upgrade-assistant')
     },
     project: {
       displayName: 'Project',
       description: 'Projects provide a way to organize related resources within a serverless instance.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/serverless/elasticsearch/get-started/projects',
-        description: 'Learn more about projects.'
-      }
     },
     query_rules: {
       displayName: 'Query rules',
       description: 'The query rules APIs manage query rules. Query rules are configurations that customize query behavior for specific queries, promoting or excluding specific documents at query time.\n\nThere are different types of query rules:\n\n- Pinned queries: Promote or exclude specific documents for a given query.\n- Organic results: Add additional queries to be executed along with the provided query.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/explore-analyze/search-relevance',
-        description: 'Learn more about search relevance.'
-      }
+      externalDocs: createExternalDocs('query-rule')
     },
     random_sample: {
       displayName: 'Random sampling',
@@ -237,50 +215,32 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     rollup: {
       displayName: 'Rollup',
       description: 'The rollup APIs enable you to summarize historical data and store the summaries in a separate index. Once you have rolled up historical data, you can use the rollup search API to search both live, real-time data and the rolled-up data with a single query.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/data-tiers/data-tier-rollups',
-        description: 'Learn more about rollup.'
-      }
+      externalDocs: createExternalDocs('xpack-rollup')
     },
     script: {
       displayName: 'Scripting',
       description: 'The script APIs enable you to manage stored scripts and script contexts.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/scripting',
-        description: 'Learn more about scripting.'
-      }
+      externalDocs: createExternalDocs('modules-scripting')
     },
     search: {
       displayName: 'Search',
       description: 'The search APIs are used to search and aggregate data stored in Elasticsearch indices and data streams.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/explore-analyze/search',
-        description: 'Learn more about search.'
-      }
+      externalDocs: createExternalDocs('search-approach')
     },
     search_application: {
       displayName: 'Search Application',
       description: 'The search application APIs provide a convenient way to leverage the power of Elasticsearch for your search applications.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/deploy-manage/search/search-applications',
-        description: 'Learn more about search applications.'
-      }
+      externalDocs: createExternalDocs('search-applications')
     },
     searchable_snapshots: {
       displayName: 'Searchable snapshots',
       description: 'The searchable snapshots APIs are used to mount snapshots as searchable indices.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/manage-data/data-tiers/searchable-snapshots',
-        description: 'Learn more about searchable snapshots.'
-      }
+      externalDocs: createExternalDocs('searchable-snapshots')
     },
     security: {
       displayName: 'Security',
       description: 'The security APIs enable you to manage users and their roles, manage and invalidate API keys, and manage application privileges.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/secure',
-        description: 'Learn more about securing Elasticsearch.'
-      }
+      externalDocs: createExternalDocs('security')
     },
     snapshot: {
       displayName: 'Snapshot and restore',
@@ -317,10 +277,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     tasks: {
       displayName: 'Task management',
       description: 'The task management APIs enable you to get information about the tasks currently running on one or more nodes in the cluster.',
-      externalDocs: {
-        url: 'https://www.elastic.co/docs/rest-api/common-parms#task-management',
-        description: 'Learn more about task management parameters.'
-      }
+      externalDocs: createExternalDocs('tasks-troubleshoot')
     },
     text_structure: {
       displayName: 'Text structure',
