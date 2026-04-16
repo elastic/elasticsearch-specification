@@ -24,7 +24,7 @@ import { join } from 'path'
 /**
  * Loads the doc IDs CSV file and returns the parsed data
  */
-function loadDocIds(): string[][] {
+function loadDocIds (): string[][] {
   return readFileSync(join(__dirname, '..', '..', '..', 'specification', '_doc_ids', 'table.csv'), 'utf8')
     .split('\n')
     .map(line => line.split(','))
@@ -33,27 +33,27 @@ function loadDocIds(): string[][] {
 /**
  * Gets the documentation URL for a given doc ID from the CSV
  */
-function getDocUrl(docId: string): string | null {
+function getDocUrl (docId: string): string | null {
   const docIds = loadDocIds()
   const entry = docIds.find(row => row[0] === docId)
-  return entry ? entry[1].replace(/\r/g, '') : null
+  return (entry != null) ? entry[1].replace(/\r/g, '') : null
 }
 
 /**
  * Creates external documentation object using CSV lookup only
  * Emits warning if doc ID not found and returns undefined
  */
-function createExternalDocs(docId: string): { url: string; description: string } | undefined {
+function createExternalDocs (docId: string): { url: string, description: string } | undefined {
   const csvUrl = getDocUrl(docId)
-  
-  if (!csvUrl) {
+
+  if (csvUrl === null) {
     console.warn(`Warning: Doc ID '${docId}' not found in _doc_ids/table.csv - omitting externalDocs`)
     return undefined
   }
-  
-  return { 
-    url: csvUrl, 
-    description: 'Learn more.' 
+
+  return {
+    url: csvUrl,
+    description: 'Learn more.'
   }
 }
 
@@ -196,7 +196,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     },
     project: {
       displayName: 'Project',
-      description: 'The project APIs enable you to get project tags and manage your project routing expressions.',
+      description: 'The project APIs enable you to get project tags and manage your project routing expressions.'
     },
     query_rules: {
       displayName: 'Query rules',
@@ -252,8 +252,8 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
       description: 'Elasticsearch\'s SQL APIs enable you to run SQL queries on Elasticsearch indices and data streams.',
       externalDocs: createExternalDocs('sql')
     },
-    streams:{
-      displayName: 'Streams',
+    streams: {
+      displayName: 'Streams'
     },
     synonyms: {
       displayName: 'Synonyms',

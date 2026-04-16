@@ -185,7 +185,7 @@ export default async function validateModel (apiModel: model.Model, errors: Vali
 
   // Validate @doc_tag completeness
   for (const endpoint of apiModel.endpoints) {
-    if (endpoint.docTag && !apiModel._openapi?.tagMetadata?.[endpoint.docTag]) {
+    if (endpoint.docTag != null && ((apiModel._openapi?.tagMetadata?.[endpoint.docTag]) == null)) {
       errors.addEndpointError(endpoint.name, 'request', `@doc_tag '${endpoint.docTag}' has no matching tagMetadata entry in add-openapi-tags.ts`)
     }
   }
