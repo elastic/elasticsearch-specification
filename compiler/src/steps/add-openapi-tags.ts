@@ -230,6 +230,10 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
         description: 'Learn more about search relevance.'
       }
     },
+    random_sample: {
+      displayName: 'Random sampling',
+      description: 'The random sampling APIs enable you to create, configure, and manage random samples of your data. Use these APIs to obtain representative subsets of your indices for analysis, testing, or data exploration purposes.'
+    },
     rollup: {
       displayName: 'Rollup',
       description: 'The rollup APIs enable you to summarize historical data and store the summaries in a separate index. Once you have rolled up historical data, you can use the rollup search API to search both live, real-time data and the rolled-up data with a single query.',

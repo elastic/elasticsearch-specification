@@ -183,6 +183,13 @@ export default async function validateModel (apiModel: model.Model, errors: Vali
   apiModel.endpoints.filter(ep => readyForValidation(ep)).forEach(validateEndpoint)
   apiModel.endpoints.filter(ep => !readyForValidation(ep)).forEach(validateEndpoint)
 
+  // Validate @doc_tag completeness
+  for (const endpoint of apiModel.endpoints) {
+    if (endpoint.docTag && !apiModel._openapi?.tagMetadata?.[endpoint.docTag]) {
+      errors.addEndpointError(endpoint.name, 'request', `@doc_tag '${endpoint.docTag}' has no matching tagMetadata entry in add-openapi-tags.ts`)
+    }
+  }
+
   // Check types are used
   for (const type of apiModel.types) {
     if (!typesSeen.has(fqn(type.name))) {
