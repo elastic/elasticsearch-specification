@@ -21,6 +21,7 @@ mod schemas;
 mod utils;
 pub mod cli;
 
+use std::collections::HashSet;
 use indexmap::IndexMap;
 use itertools::Itertools;
 use clients_schema::{
@@ -185,10 +186,9 @@ fn generate_tags_from_model(
     model: &IndexedModel,
     openapi_paths: &Paths,
 ) -> Vec<openapiv3::Tag> {
-    use std::collections::BTreeSet;
     
     // Collect all unique tags from operations
-    let mut used_tags: BTreeSet<String> = BTreeSet::new();
+    let mut used_tags =  HashSet::new();
     for path_item_ref in openapi_paths.paths.values() {
         if let ReferenceOr::Item(path_item) = path_item_ref {
             let operations = [&path_item.get, &path_item.post, &path_item.put, &path_item.delete, &path_item.options, &path_item.head, &path_item.patch, &path_item.trace];
@@ -201,59 +201,36 @@ fn generate_tags_from_model(
             }
         }
     }
-
-    let mut tags = Vec::new();
     
     // Get tag metadata if available
     let tag_metadata = model.openapi
         .as_ref()
         .and_then(|openapi| openapi.tag_metadata.as_ref());
     
-    // Build tags with metadata, sorted by display name
-    for tag_name in used_tags {
-        let tag = if let Some(metadata_map) = tag_metadata {
-            if let Some(metadata) = metadata_map.get(&tag_name) {
-                // Use metadata if available
-                let tag = openapiv3::Tag {
-                    name: tag_name.clone(),
-                    description: metadata.description.clone(),
-                    external_docs: metadata.external_docs.as_ref().map(|ext| openapiv3::ExternalDocumentation {
-                        url: ext.url.clone(),
-                        description: ext.description.clone(),
-                        extensions: Default::default(),
-                    }),
-                    extensions: {
-                        let mut extensions = IndexMap::new();
-                        extensions.insert("x-displayName".to_string(), serde_json::Value::String(metadata.display_name.clone()));
-                        extensions
-                    },
-                };
-                tag
-            } else {
-                // Fallback: use tag name as display name
-                let mut extensions = IndexMap::new();
-                extensions.insert("x-displayName".to_string(), serde_json::Value::String(tag_name.clone()));
-                openapiv3::Tag {
-                    name: tag_name.clone(),
-                    description: None,
-                    external_docs: None,
-                    extensions,
-                }
-            }
-        } else {
-            // No metadata available, use tag name as display name
-            let mut extensions = IndexMap::new();
-            extensions.insert("x-displayName".to_string(), serde_json::Value::String(tag_name.clone()));
-            openapiv3::Tag {
-                name: tag_name.clone(),
-                description: None,
-                external_docs: None,
-                extensions,
-            }
+    // Build tags with metadata
+    let mut tags: Vec<_> = used_tags.into_iter().map(|tag_name| {
+        let metadata = tag_metadata.and_then(|m| m.get(&tag_name));
+        let (description, external_docs, display_name) = match metadata {
+            Some(m) => (
+                m.description.clone(),
+                m.external_docs.as_ref().map(|ext| openapiv3::ExternalDocumentation {
+                    url: ext.url.clone(),
+                    description: ext.description.clone(),
+                    extensions: Default::default(),
+                }),
+                m.display_name.clone(),
+            ),
+            None => (None, None, tag_name.clone()),
         };
-        
-        tags.push(tag);
-    }
+        let mut extensions = IndexMap::new();
+        extensions.insert("x-displayName".to_string(), Value::String(display_name));
+        openapiv3::Tag {
+            name: tag_name,
+            description,
+            external_docs,
+            extensions,
+        }
+    }).collect();
     
     // Sort by display name (case-insensitive)
     tags.sort_by(|a, b| {
