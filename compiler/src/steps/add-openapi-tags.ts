@@ -79,7 +79,7 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     cluster: {
       displayName: 'Cluster',
       description: 'The cluster APIs enable you to retrieve information about your infrastructure on cluster, node, or shard level. You can manage cluster settings and voting configuration exceptions, collect node statistics and retrieve node information.',
-      externalDocs: createExternalDocs('cluster')
+      externalDocs: createExternalDocs('cluster-state-overview')
     },
     health_report: {
       displayName: 'Cluster - Health',
