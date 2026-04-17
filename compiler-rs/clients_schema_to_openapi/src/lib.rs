@@ -21,13 +21,14 @@ mod schemas;
 mod utils;
 pub mod cli;
 
+use std::collections::HashSet;
 use indexmap::IndexMap;
 use itertools::Itertools;
 use clients_schema::{
     Availabilities, Availability, Flavor, IndexedModel, OpenApiSecurityList, Privileges, Stability, UrlTemplate,
     Visibility,
 };
-use openapiv3::{Components, OpenAPI, ReferenceOr};
+use openapiv3::{Components, OpenAPI, Paths, ReferenceOr};
 use serde_json::{Map,Value};
 use clients_schema::transform::ExpandConfig;
 use crate::components::TypesAndComponents;
@@ -122,6 +123,12 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
         paths::add_endpoint(endpoint, &mut tac, &mut openapi.paths, product_meta)?;
     }
 
+    // Generate tags from collected operations and model metadata
+    openapi.tags = generate_tags_from_model(model, &openapi.paths);
+
+    // Generate x-tagGroups from model metadata, filtered by tags actually present
+    generate_tag_groups_extension(model, &openapi.tags, &mut openapi.extensions);
+
     // // Sort maps to ensure output stability
     // openapi.paths.extensions.sort_keys();
     // if let Some(ref mut comp) = openapi.components {
@@ -176,6 +183,137 @@ fn extract_security_from_model(
     }
 
     (security, security_schemes)
+}
+
+fn generate_tags_from_model(
+    model: &IndexedModel,
+    openapi_paths: &Paths,
+) -> Vec<openapiv3::Tag> {
+    
+    // Collect all unique tags from operations
+    let mut used_tags =  HashSet::new();
+    for path_item_ref in openapi_paths.paths.values() {
+        if let ReferenceOr::Item(path_item) = path_item_ref {
+            let operations = [&path_item.get, &path_item.post, &path_item.put, &path_item.delete, &path_item.options, &path_item.head, &path_item.patch, &path_item.trace];
+            for operation_option in operations.iter() {
+                if let Some(operation) = operation_option {
+                    for tag in &operation.tags {
+                        used_tags.insert(tag.clone());
+                    }
+                }
+            }
+        }
+    }
+    
+    // Get tag metadata if available
+    let tag_metadata = model.openapi
+        .as_ref()
+        .and_then(|openapi| openapi.tag_metadata.as_ref());
+    
+    // Build tags with metadata
+    let mut tags: Vec<_> = used_tags.into_iter().map(|tag_name| {
+        let metadata = tag_metadata.and_then(|m| m.get(&tag_name));
+        let (description, external_docs, display_name) = match metadata {
+            Some(m) => (
+                m.description.clone(),
+                m.external_docs.as_ref().map(|ext| openapiv3::ExternalDocumentation {
+                    url: ext.url.clone(),
+                    description: ext.description.clone(),
+                    extensions: Default::default(),
+                }),
+                m.display_name.clone(),
+            ),
+            None => (None, None, tag_name.clone()),
+        };
+        let mut extensions = IndexMap::new();
+        extensions.insert("x-displayName".to_string(), Value::String(display_name));
+        openapiv3::Tag {
+            name: tag_name,
+            description,
+            external_docs,
+            extensions,
+        }
+    }).collect();
+    
+    // Sort by display name (case-insensitive)
+    tags.sort_by(|a, b| {
+        let display_name_a = a.extensions.get("x-displayName")
+            .and_then(|v| v.as_str())
+            .unwrap_or(&a.name);
+        let display_name_b = b.extensions.get("x-displayName")
+            .and_then(|v| v.as_str())
+            .unwrap_or(&b.name);
+        display_name_a.to_lowercase().cmp(&display_name_b.to_lowercase())
+    });
+    
+    tags
+}
+
+fn generate_tag_groups_extension(
+    model: &IndexedModel,
+    openapi_tags: &[openapiv3::Tag],
+    extensions: &mut IndexMap<String, Value>,
+) {
+    // Get tag groups from model metadata
+    let tag_groups = if let Some(openapi_meta) = &model.openapi {
+        openapi_meta.tag_groups.as_ref()
+    } else {
+        return; // No tag groups to generate
+    };
+    
+    let Some(tag_groups) = tag_groups else {
+        return; // No tag groups defined
+    };
+    
+    // Create a set of tag names that are actually present in the OpenAPI document
+    let used_tag_names: HashSet<String> = openapi_tags.iter()
+        .map(|tag| tag.name.clone())
+        .collect();
+    
+    // Filter tag groups to only include tags that are actually present
+    let mut filtered_groups = Vec::new();
+    let mut all_grouped_tags = HashSet::new();
+    
+    for group in tag_groups {
+        // Filter tags in this group to only those that exist in the document
+        let filtered_tags: Vec<String> = group.tags.iter()
+            .filter(|tag| used_tag_names.contains(*tag))
+            .cloned()
+            .collect();
+        
+        // Only include groups that have at least one tag after filtering
+        if !filtered_tags.is_empty() {
+            all_grouped_tags.extend(filtered_tags.iter().cloned());
+            filtered_groups.push(serde_json::json!({
+                "name": group.name,
+                "tags": filtered_tags
+            }));
+        }
+    }
+    
+    // Verify that every tag in the document appears in at least one group
+    // This is required by Redocly - tags not in groups are hidden
+    let ungrouped_tags: Vec<String> = used_tag_names.iter()
+        .filter(|tag| !all_grouped_tags.contains(*tag))
+        .cloned()
+        .sorted()
+        .collect();
+    
+    // If there are ungrouped tags, add them to an "Other APIs" group
+    if !ungrouped_tags.is_empty() {
+        filtered_groups.push(serde_json::json!({
+            "name": "Other APIs",
+            "tags": ungrouped_tags
+        }));
+    }
+    
+    // Only add x-tagGroups if we have groups to emit
+    if !filtered_groups.is_empty() {
+        extensions.insert(
+            "x-tagGroups".to_string(),
+            Value::Array(filtered_groups)
+        );
+    }
 }
 
 fn info(model: &IndexedModel, config: &Configuration) -> openapiv3::Info {

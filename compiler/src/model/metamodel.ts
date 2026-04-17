@@ -486,11 +486,27 @@ export interface OpenApiFlavorSecurityBlock {
   securitySchemes?: Record<string, unknown>
 }
 
+export interface TagMetadata {
+  displayName: string
+  description?: string
+  externalDocs?: {
+    url: string
+    description?: string
+  }
+}
+
+export interface TagGroup {
+  name: string
+  tags: string[]
+}
+
 export interface OpenApiMetadata {
   flavors?: {
     stack?: OpenApiFlavorSecurityBlock
     serverless?: OpenApiFlavorSecurityBlock
   }
+  tagMetadata?: Record<string, TagMetadata>
+  tagGroups?: TagGroup[]
 }
 
 export class Model {
