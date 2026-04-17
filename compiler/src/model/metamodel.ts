@@ -495,12 +495,18 @@ export interface TagMetadata {
   }
 }
 
+export interface TagGroup {
+  name: string
+  tags: string[]
+}
+
 export interface OpenApiMetadata {
   flavors?: {
     stack?: OpenApiFlavorSecurityBlock
     serverless?: OpenApiFlavorSecurityBlock
   }
   tagMetadata?: Record<string, TagMetadata>
+  tagGroups?: TagGroup[]
 }
 
 export class Model {

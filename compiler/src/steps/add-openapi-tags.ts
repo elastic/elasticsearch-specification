@@ -285,5 +285,77 @@ export default async function addOpenApiTags (model: model.Model): Promise<model
     }
   }
 
+  // Generate tag groups for x-tagGroups extension
+  const tagClassifications = {
+    common: ['sql', 'eql', 'esql', 'search', 'document'],
+    management: [
+      'autoscaling', 'ccr', 'indices', 'data stream', 'ilm', 'slm', 'cluster',
+      'rollup', 'searchable_snapshots', 'shutdown', 'snapshot', 'script',
+      'search_application', 'connector'
+    ],
+    info: [
+      'cat', 'license', 'info', 'tasks', 'xpack', 'health_report',
+      'features', 'migration', 'watcher'
+    ],
+    'ai/ml': [
+      'ml trained model', 'ml anomaly', 'ml data frame', 'ml', 'inference',
+      'text_structure', 'query_rules', 'analytics', 'graph'
+    ],
+    ingest: ['ingest', 'enrich', 'transform', 'fleet', 'logstash', 'synonyms'],
+    security: ['security']
+  }
+
+  const groupDisplayNames = {
+    common: 'Search & Document APIs',
+    management: 'Cluster Management',
+    info: 'Information & Monitoring',
+    'ai/ml': 'AI & Machine Learning',
+    ingest: 'Data Processing',
+    security: 'Security'
+  }
+
+  function classifyTag (tagName: string): string {
+    for (const [group, tags] of Object.entries(tagClassifications)) {
+      if (tags.includes(tagName)) return group
+    }
+    return 'other'
+  }
+
+  // Build tag groups from metadata
+  const tagGroups: Array<{ name: string, tags: string[] }> = []
+  const groupedTags: Record<string, string[]> = {}
+
+  // Group all tags that have metadata
+  if (model._openapi?.tagMetadata != null) {
+    for (const tagName of Object.keys(model._openapi.tagMetadata)) {
+      const classification = classifyTag(tagName)
+      if (groupedTags[classification] == null) {
+        groupedTags[classification] = []
+      }
+      groupedTags[classification].push(tagName)
+    }
+  }
+
+  // Create tag groups with user-friendly names
+  for (const [groupId, tags] of Object.entries(groupedTags)) {
+    if (tags.length > 0) {
+      // Sort tags alphabetically within each group
+      tags.sort()
+
+      const groupName = groupDisplayNames[groupId as keyof typeof groupDisplayNames] ?? 'Other APIs'
+      tagGroups.push({
+        name: groupName,
+        tags
+      })
+    }
+  }
+
+  // Sort groups by name for deterministic output
+  tagGroups.sort((a, b) => a.name.localeCompare(b.name))
+
+  if (tagGroups.length > 0) {
+    model._openapi.tagGroups = tagGroups
+  }
+
   return model
 }
