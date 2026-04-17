@@ -23309,6 +23309,7 @@ export interface TasksGetRequest extends RequestBase {
   task_id: Id
   timeout?: Duration
   wait_for_completion?: boolean
+  follow_relocations?: boolean
 }
 
 export interface TasksGetResponse {
