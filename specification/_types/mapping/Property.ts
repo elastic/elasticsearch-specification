@@ -201,6 +201,7 @@ export enum FieldType {
   keyword,
   text,
   search_as_you_type,
+  wildcard,
   date,
   date_nanos,
   boolean,
