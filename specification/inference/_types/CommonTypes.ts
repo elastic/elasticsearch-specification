@@ -681,6 +681,18 @@ export class AmazonSageMakerServiceSettings {
    */
   secret_key: string
   /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The similarity measure used when invoking the
+   * `text_embedding` task type.
+   */
+  similarity: AmazonSageMakerSimilarity
+
+  /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The data type returned by the text embedding
+   * model.
+   * This value is used when parsing the response back to Elasticsearch data structures.
+   */
+  element_type: AmazonSageMakerElementType
+  /**
    * The model ID when calling a multi-model endpoint.
    * @ext_doc_id amazonsagemaker-invoke
    */
@@ -712,23 +724,6 @@ export class AmazonSageMakerServiceSettings {
 export enum AmazonSageMakerApi {
   openai,
   elastic
-}
-
-/**
- * Service settings specific to the Elastic API for the Amazon SageMaker service.
- */
-export class AmazonSageMakerElasticServiceSettings extends AmazonSageMakerServiceSettings {
-  /**
-   * Similarity measure used when invoking the `text_embedding` task type.
-   */
-  similarity?: AmazonSageMakerSimilarity
-
-  /**
-   * The data type returned by the text embedding model.
-   * This value must be set when `task_type` is `text_embedding` and is used when parsing the response
-   * back to Elasticsearch data structures.
-   */
-  element_type: AmazonSageMakerElementType
 }
 
 export enum AmazonSageMakerSimilarity {

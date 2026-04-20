@@ -14446,12 +14446,16 @@ export type InferenceAmazonBedrockTaskType = 'chat_completion' | 'completion' | 
 
 export type InferenceAmazonSageMakerApi = 'openai' | 'elastic'
 
+export type InferenceAmazonSageMakerElementType = 'byte' | 'float' | 'bit'
+
 export interface InferenceAmazonSageMakerServiceSettings {
   access_key: string
   endpoint_name: string
   api: InferenceAmazonSageMakerApi
   region: string
   secret_key: string
+  similarity: InferenceAmazonSageMakerSimilarity
+  element_type: InferenceAmazonSageMakerElementType
   target_model?: string
   target_container_hostname?: string
   inference_component_name?: string
@@ -14460,6 +14464,8 @@ export interface InferenceAmazonSageMakerServiceSettings {
 }
 
 export type InferenceAmazonSageMakerServiceType = 'amazon_sagemaker'
+
+export type InferenceAmazonSageMakerSimilarity = 'cosine' | 'dot_product' | 'l2_norm'
 
 export interface InferenceAmazonSageMakerTaskSettings {
   custom_attributes?: string
