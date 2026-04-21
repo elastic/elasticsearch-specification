@@ -1,5 +1,5 @@
 agents:
-  memory: "24G"
+  memory: "48G"
   cpu: "4"
   ephemeralStorage: 15Gi
 
