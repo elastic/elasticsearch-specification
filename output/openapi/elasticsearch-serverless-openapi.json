@@ -69142,9 +69142,7 @@
           "endpoint_name",
           "api",
           "region",
-          "secret_key",
-          "similarity",
-          "element_type"
+          "secret_key"
         ]
       },
       "inference._types.AmazonSageMakerApi": {

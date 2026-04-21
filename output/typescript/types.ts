@@ -14454,8 +14454,8 @@ export interface InferenceAmazonSageMakerServiceSettings {
   api: InferenceAmazonSageMakerApi
   region: string
   secret_key: string
-  similarity: InferenceAmazonSageMakerSimilarity
-  element_type: InferenceAmazonSageMakerElementType
+  similarity?: InferenceAmazonSageMakerSimilarity
+  element_type?: InferenceAmazonSageMakerElementType
   target_model?: string
   target_container_hostname?: string
   inference_component_name?: string
