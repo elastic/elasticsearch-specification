@@ -69366,7 +69366,6 @@
           },
           "max_new_tokens": {
             "description": "For a `completion` task, provide a hint for the maximum number of output tokens to be generated.",
-            "default": 64.0,
             "type": "number"
           },
           "temperature": {
