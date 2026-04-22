@@ -160,6 +160,13 @@ export interface Request extends RequestBase {
      */
     blob_count?: integer
     /**
+     * Whether to run the overwrite protection check.
+     * For realistic experiments, leave this parameter unset.
+     * @availability stack since=9.5.0
+     * @server_default true
+     */
+    check_overwrite_protection?: boolean
+    /**
      * The number of operations to run concurrently during the test.
      * For realistic experiments, leave this parameter unset.
      * @server_default 10
