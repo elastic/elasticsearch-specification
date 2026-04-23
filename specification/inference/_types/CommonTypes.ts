@@ -894,7 +894,6 @@ export class AzureAiStudioTaskSettings {
   do_sample?: float
   /**
    * For a `completion` task, provide a hint for the maximum number of output tokens to be generated.
-   * @server_default 64
    */
   max_new_tokens?: integer
   /**

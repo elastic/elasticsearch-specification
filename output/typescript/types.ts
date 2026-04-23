@@ -22892,6 +22892,7 @@ export interface SnapshotRepositoryAnalyzeReadSummaryInfo {
 export interface SnapshotRepositoryAnalyzeRequest extends RequestBase {
   name: Name
   blob_count?: integer
+  check_overwrite_protection?: boolean
   concurrency?: integer
   detailed?: boolean
   early_read_node_count?: integer
