@@ -23236,6 +23236,7 @@ export interface SynonymsPutSynonymRequest extends RequestBase {
   refresh?: boolean
   body?: {
     synonyms_set: SynonymsSynonymRule | SynonymsSynonymRule[]
+    replace_all?: boolean
   }
 }
 

@@ -56,6 +56,15 @@ export interface Request extends RequestBase {
      * The synonym rules definitions for the synonyms set.
      */
     synonyms_set: SynonymRule | SynonymRule[]
+    /**
+     * If `true`, the entire synonyms set is replaced with the new synonym rules definitions.
+     * If `false`, the provided synonym rules are appended to the existing set, with matching IDs overwriting existing rules.
+     * Defaults to `true`.
+     * @server_default true
+     * @availability stack since=9.5.0
+     * @availability serverless
+     */
+    replace_all?: boolean
   }
   query_parameters: {
     /**
