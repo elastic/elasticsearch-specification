@@ -5775,7 +5775,7 @@ export interface AnalysisSynonymTokenFilterBase extends AnalysisTokenFilterBase 
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
-  synonyms_set?: string
+  synonyms_set?: string | string[]
   tokenizer?: string
   updateable?: boolean
 }

@@ -57905,8 +57905,18 @@
                 "type": "string"
               },
               "synonyms_set": {
-                "description": "Provide a synonym set created via Synonyms Management APIs.",
-                "type": "string"
+                "description": "Provide one or more synonym sets created via Synonyms Management APIs.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
               },
               "tokenizer": {
                 "deprecated": true,
