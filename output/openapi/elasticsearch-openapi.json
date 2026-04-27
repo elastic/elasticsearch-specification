@@ -13051,7 +13051,7 @@
             }
           }
         },
-        "x-state": "Technical preview"
+        "x-state": "Added in 8.7.0"
       }
     },
     "/_alias/{name}": {
