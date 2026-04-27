@@ -126,8 +126,7 @@ export class Settings {
   /**
    * Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker
    * exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the
-   * maximum is `65,536`.
-   * @server_default 500
+   * maximum is `65,536`. The default value is `500` for `pivot` transforms and `5000` for `latest` transforms.
    */
   max_page_search_size?: integer
   /**
