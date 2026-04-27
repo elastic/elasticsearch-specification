@@ -33,8 +33,8 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
  * The source index must be read only (`index.blocks.write: true`).
  * @doc_id indices-downsample-data-stream
  * @rest_spec_name indices.downsample
- * @availability stack since=8.5.0 stability=experimental
- * @availability serverless stability=experimental visibility=private
+ * @availability stack since=8.7.0 stability=stable
+ * @availability serverless stability=stable visibility=private
  * @doc_tag data stream
  */
 export interface Request extends RequestBase {
