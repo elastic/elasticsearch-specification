@@ -84427,8 +84427,7 @@
             "type": "number"
           },
           "max_page_search_size": {
-            "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker\nexceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`.",
-            "default": 500.0,
+            "description": "Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker\nexceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the\nmaximum is `65,536`. The default value is `500` for `pivot` transforms and `5000` for `latest` transforms.",
             "type": "number"
           },
           "use_point_in_time": {
