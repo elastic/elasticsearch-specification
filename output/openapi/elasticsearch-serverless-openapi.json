@@ -69090,6 +69090,22 @@
             "description": "A valid AWS secret key that is paired with the `access_key`.\nFor information about creating and managing access and secret keys, refer to the AWS documentation.",
             "type": "string"
           },
+          "similarity": {
+            "description": "Required when `api` is `elastic` and task type is `text_embedding`. The similarity measure used when invoking the\n`text_embedding` task type.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.AmazonSageMakerSimilarity"
+              }
+            ]
+          },
+          "element_type": {
+            "description": "Required when `api` is `elastic` and task type is `text_embedding`. The data type returned by the text embedding\nmodel.\nThis value is used when parsing the response back to Elasticsearch data structures.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.AmazonSageMakerElementType"
+              }
+            ]
+          },
           "target_model": {
             "externalDocs": {
               "url": "https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html"
@@ -69134,6 +69150,22 @@
         "enum": [
           "openai",
           "elastic"
+        ]
+      },
+      "inference._types.AmazonSageMakerSimilarity": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm"
+        ]
+      },
+      "inference._types.AmazonSageMakerElementType": {
+        "type": "string",
+        "enum": [
+          "byte",
+          "float",
+          "bit"
         ]
       },
       "inference._types.AmazonSageMakerTaskSettings": {
