@@ -36258,14 +36258,6 @@
             "items": {
               "$ref": "#/components/schemas/_global.search._types.ShardProfile"
             }
-          },
-          "request": {
-            "description": "When profiling is enabled, the original query source and target indices from the coordinating request.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.SearchRequestCoordinatorMetadata"
-              }
-            ]
           }
         },
         "required": [
@@ -37147,329 +37139,464 @@
           "set_min_competitive_score_count"
         ]
       },
-      "_global.search._types.SearchRequestCoordinatorMetadata": {
-        "description": "Coordinator snapshot of the original search request, serialized under `profile.request` when profiling is enabled.\nIntroduced in Elasticsearch 9.5; omitted when the cluster contains mixed-version nodes that do not serialize this metadata.",
-        "type": "object",
-        "properties": {
-          "source": {
-            "description": "Original query source from the search request (`SearchSourceBuilder` as JSON).",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.SearchRequestBody"
-              }
-            ]
-          },
-          "indices": {
-            "description": "Target index expressions from the request (before index resolution).",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.IndexName"
-            }
-          }
-        }
+      "_types.ScrollId": {
+        "type": "string"
       },
-      "_global.search._types.SearchRequestBody": {
+      "_global.search._types.Suggest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.CompletionSuggest"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.PhraseSuggest"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.TermSuggest"
+          }
+        ]
+      },
+      "_global.search._types.CompletionSuggest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "options": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.CompletionSuggestOption"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.CompletionSuggestOption"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "options"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.CompletionSuggestOption": {
         "type": "object",
         "properties": {
-          "aggregations": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/aggregations"
-            },
-            "description": "Defines the aggregations that are run as part of the search request.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.aggregations.AggregationContainer"
-            }
-          },
-          "collapse": {
-            "description": "Collapses search results the values of the specified field.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
-          },
-          "explain": {
-            "description": "If `true`, the request returns detailed information about score computation as part of a hit.",
-            "default": false,
+          "collate_match": {
             "type": "boolean"
           },
-          "ext": {
-            "description": "Configuration of search extensions defined by Elasticsearch plugins.",
+          "contexts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/_global.search._types.Context"
+              }
+            }
+          },
+          "fields": {
             "type": "object",
             "additionalProperties": {
               "type": "object"
             }
           },
-          "from": {
-            "description": "The starting document offset, which must be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
-            "default": 0.0,
-            "type": "number"
-          },
-          "highlight": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting"
-            },
-            "description": "Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.Highlight"
-              }
-            ]
-          },
-          "track_total_hits": {
-            "description": "Number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the  response does not include the total number of hits matching the query.",
-            "default": "10000",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.TrackHits"
-              }
-            ]
-          },
-          "indices_boost": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores"
-            },
-            "description": "Boost the `_score` of documents from specified indices.\nThe boost value is the factor by which scores are multiplied.\nA boost value greater than `1.0` increases the score.\nA boost value between `0` and `1.0` decreases the score.",
-            "type": "array",
-            "items": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "number"
-              },
-              "minProperties": 1,
-              "maxProperties": 1
-            }
-          },
-          "docvalue_fields": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#docvalue-fields"
-            },
-            "description": "An array of wildcard (`*`) field patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
-            }
-          },
-          "knn": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
-            },
-            "description": "The approximate kNN search to run.",
-            "x-state": "Generally available",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.KnnSearch"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.KnnSearch"
-                }
-              }
-            ]
-          },
-          "min_score": {
-            "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in search results or results collected by aggregations.",
-            "type": "number"
-          },
-          "post_filter": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results"
-            },
-            "description": "Use the `post_filter` parameter to filter search results.\nThe search hits are filtered after the aggregations are calculated.\nA post filter has no impact on the aggregation results.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              }
-            ]
-          },
-          "profile": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile"
-            },
-            "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
-            "default": false,
-            "type": "boolean"
-          },
-          "query": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl"
-            },
-            "description": "The search definition using the Query DSL.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              }
-            ]
-          },
-          "rescore": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results"
-            },
-            "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.Rescore"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_global.search._types.Rescore"
-                }
-              }
-            ]
-          },
-          "retriever": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrievers"
-            },
-            "description": "A retriever is a specification to describe top documents returned from a search.\nA retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              }
-            ]
-          },
-          "script_fields": {
-            "description": "Retrieve a script evaluation (based on different fields) for each hit.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.ScriptField"
-            }
-          },
-          "search_after": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
-            },
-            "description": "Used to retrieve the next page of hits using a set of sort values from the previous page.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.SortResults"
-              }
-            ]
-          },
-          "size": {
-            "description": "The number of hits to return, which must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` property.",
-            "default": 10.0,
-            "type": "number"
-          },
-          "slice": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#slice-scroll"
-            },
-            "description": "Split a scrolled search into multiple slices that can be consumed independently.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.SlicedScroll"
-              }
-            ]
-          },
-          "sort": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/sort-search-results"
-            },
-            "description": "A comma-separated list of <field>:<direction> pairs.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Sort"
-              }
-            ]
-          },
-          "_source": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#source-filtering"
-            },
-            "description": "The source fields that are returned for matching documents.\nThese fields are returned in the `hits._source` property of the search response.\nIf the `stored_fields` property is specified, the `_source` property defaults to `false`.\nOtherwise, it defaults to `true`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.SourceConfig"
-              }
-            ]
-          },
-          "fields": {
-            "description": "An array of wildcard (`*`) field patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
-            }
-          },
-          "suggest": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters"
-            },
-            "description": "Defines a suggester that provides similar looking terms based on a provided text.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.Suggester"
-              }
-            ]
-          },
-          "terminate_after": {
-            "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this property to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this property for requests that target data streams with backing indices across multiple data tiers.\n\nIf set to `0` (default), the query does not terminate early.",
-            "default": 0.0,
-            "type": "number"
-          },
-          "timeout": {
-            "description": "The period of time to wait for a response from each shard.\nIf no response is received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
+          "_id": {
             "type": "string"
           },
-          "track_scores": {
-            "description": "If `true`, calculate and return document scores, even if the scores are not used for sorting.",
-            "default": false,
-            "type": "boolean"
-          },
-          "version": {
-            "description": "If `true`, the request returns the document version as part of a hit.",
-            "default": false,
-            "type": "boolean"
-          },
-          "seq_no_primary_term": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
-            },
-            "description": "If `true`, the request returns sequence number and primary term of the last modification of each hit.",
-            "type": "boolean"
-          },
-          "stored_fields": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#stored-fields"
-            },
-            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` property defaults to `false`.\nYou can pass `_source: true` to return both source fields and stored fields in the search response.",
+          "_index": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.Fields"
+                "$ref": "#/components/schemas/_types.IndexName"
               }
             ]
           },
-          "pit": {
-            "description": "Limit the search to a point in time (PIT).\nIf you provide a PIT, you cannot specify an `<index>` in the request path.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.PointInTimeReference"
-              }
-            ]
+          "_routing": {
+            "type": "string"
           },
-          "runtime_mappings": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+          "_score": {
+            "type": "number"
+          },
+          "_source": {
+            "type": "object"
+          },
+          "text": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "_global.search._types.Context": {
+        "description": "Text or location that we want similar documents for or a lookup to a document's field for the text.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.GeoLocation"
+          }
+        ]
+      },
+      "_global.search._types.SuggestBase": {
+        "type": "object",
+        "properties": {
+          "length": {
+            "type": "number"
+          },
+          "offset": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "length",
+          "offset",
+          "text"
+        ]
+      },
+      "_global.search._types.PhraseSuggest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "options": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.PhraseSuggestOption"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.PhraseSuggestOption"
+                    }
+                  }
+                ]
+              }
             },
-            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "required": [
+              "options"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.PhraseSuggestOption": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "highlighted": {
+            "type": "string"
+          },
+          "collate_match": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "text",
+          "score"
+        ]
+      },
+      "_global.search._types.TermSuggest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "options": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.TermSuggestOption"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.TermSuggestOption"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "options"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.TermSuggestOption": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "score": {
+            "type": "number"
+          },
+          "freq": {
+            "type": "number"
+          },
+          "highlighted": {
+            "type": "string"
+          },
+          "collate_match": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "text",
+          "score",
+          "freq"
+        ]
+      },
+      "async_search._types.AsyncSearchResponseBase": {
+        "type": "object",
+        "properties": {
+          "id": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                "$ref": "#/components/schemas/_types.Id"
               }
             ]
           },
-          "stats": {
-            "description": "The stats groups to associate with the search.\nEach group maintains a statistics aggregation for its associated searches.\nYou can retrieve these stats using the indices stats API.",
+          "is_partial": {
+            "description": "When the query is no longer running, this property indicates whether the search failed or was successfully completed on all shards.\nWhile the query is running, `is_partial` is always set to `true`.",
+            "type": "boolean"
+          },
+          "is_running": {
+            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
+            "type": "boolean"
+          },
+          "expiration_time": {
+            "description": "Indicates when the async search will expire.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "expiration_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "start_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "start_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "completion_time": {
+            "description": "Indicates when the async search completed.\nIt is present only when the search has completed.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "completion_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "is_partial",
+          "is_running",
+          "expiration_time_in_millis",
+          "start_time_in_millis"
+        ]
+      },
+      "_types.DateTime": {
+        "description": "A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a\nnumber of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string\nrepresentation.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+          }
+        ]
+      },
+      "async_search.status.StatusResponseBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_shards": {
+                "description": "The number of shards that have run the query so far.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ShardStatistics"
+                  }
+                ]
+              },
+              "_clusters": {
+                "description": "Metadata about clusters involved in the cross-cluster search.\nIt is not shown for local-only searches.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ClusterStatistics"
+                  }
+                ]
+              },
+              "completion_status": {
+                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "_shards"
+            ]
+          }
+        ]
+      },
+      "_types.Indices": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.IndexName"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.IndexName"
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.Operator": {
+        "type": "string",
+        "enum": [
+          "and",
+          "AND",
+          "or",
+          "OR"
+        ]
+      },
+      "_types.Fields": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.Field"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.Field"
+            }
+          }
+        ]
+      },
+      "_types.ExpandWildcards": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.ExpandWildcard"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.ExpandWildcard"
+            }
+          }
+        ]
+      },
+      "_types.ExpandWildcard": {
+        "type": "string",
+        "enum": [
+          "all",
+          "open",
+          "closed",
+          "hidden",
+          "none"
+        ]
+      },
+      "_types.Routing": {
+        "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
             "type": "array",
             "items": {
               "type": "string"
             }
           }
-        }
+        ]
+      },
+      "_types.SearchType": {
+        "type": "string",
+        "enum": [
+          "query_then_fetch",
+          "dfs_query_then_fetch"
+        ]
+      },
+      "_types.SuggestMode": {
+        "type": "string",
+        "enum": [
+          "missing",
+          "popular",
+          "always"
+        ]
+      },
+      "_global.search._types.TrackHits": {
+        "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      },
+      "_global.search._types.SourceConfigParam": {
+        "description": "Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.\nUsed as a query parameter along with the `_source_includes` and `_source_excludes` parameters.",
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/_types.Fields"
+          }
+        ]
       },
       "_types.aggregations.AggregationContainer": {
         "allOf": [
@@ -39266,15 +39393,6 @@
           }
         ]
       },
-      "_types.query_dsl.Operator": {
-        "type": "string",
-        "enum": [
-          "and",
-          "AND",
-          "or",
-          "OR"
-        ]
-      },
       "_types.query_dsl.CombinedFieldsQuery": {
         "allOf": [
           {
@@ -39988,347 +40106,348 @@
           }
         ]
       },
-      "_types.ScriptLanguage": {
-        "anyOf": [
-          {
-            "type": "string",
-            "enum": [
-              "painless",
-              "expression",
-              "mustache",
-              "java"
-            ]
-          },
-          {
-            "type": "string"
-          }
-        ]
-      },
-      "_types.query_dsl.FunctionScoreMode": {
-        "type": "string",
-        "enum": [
-          "multiply",
-          "sum",
-          "avg",
-          "first",
-          "max",
-          "min"
-        ]
-      },
-      "_types.query_dsl.FuzzyQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "max_expansions": {
-                "description": "Maximum number of variations created.",
-                "default": 50.0,
-                "type": "number"
-              },
-              "prefix_length": {
-                "description": "Number of beginning characters left unchanged when creating expansions.",
-                "default": 0.0,
-                "type": "number"
-              },
-              "rewrite": {
-                "description": "Number of beginning characters left unchanged when creating expansions.",
-                "default": "constant_score",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.MultiTermQueryRewrite"
-                  }
-                ]
-              },
-              "transpositions": {
-                "description": "Indicates whether edits include transpositions of two adjacent characters (for example `ab` to `ba`).",
-                "default": true,
-                "type": "boolean"
-              },
-              "fuzziness": {
-                "description": "Maximum edit distance allowed for matching.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Fuzziness"
-                  }
-                ]
-              },
-              "value": {
-                "description": "Term you wish to find in the provided field.",
-                "oneOf": [
-                  {
-                    "type": "string"
-                  },
-                  {
-                    "type": "number"
-                  },
-                  {
-                    "type": "boolean"
-                  }
-                ]
-              }
+      "_global.search._types.SearchRequestBody": {
+        "type": "object",
+        "properties": {
+          "aggregations": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/aggregations"
             },
-            "required": [
-              "value"
-            ]
-          }
-        ]
-      },
-      "_types.MultiTermQueryRewrite": {
-        "type": "string"
-      },
-      "_types.Fuzziness": {
-        "oneOf": [
-          {
-            "type": "string"
+            "description": "Defines the aggregations that are run as part of the search request.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.aggregations.AggregationContainer"
+            }
           },
-          {
+          "collapse": {
+            "description": "Collapses search results the values of the specified field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
+              }
+            ]
+          },
+          "explain": {
+            "description": "If `true`, the request returns detailed information about score computation as part of a hit.",
+            "default": false,
+            "type": "boolean"
+          },
+          "ext": {
+            "description": "Configuration of search extensions defined by Elasticsearch plugins.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "from": {
+            "description": "The starting document offset, which must be non-negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "default": 0.0,
             "type": "number"
-          }
-        ]
-      },
-      "_types.query_dsl.GeoBoundingBoxQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
           },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "deprecated": true,
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.GeoExecution"
-                  }
-                ]
-              },
-              "validation_method": {
-                "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
-                "default": "'strict'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
-                  }
-                ]
-              },
-              "ignore_unmapped": {
-                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
-                "default": false,
-                "type": "boolean"
-              }
-            }
-          }
-        ]
-      },
-      "_types.query_dsl.GeoExecution": {
-        "type": "string",
-        "enum": [
-          "memory",
-          "indexed"
-        ]
-      },
-      "_types.query_dsl.GeoValidationMethod": {
-        "type": "string",
-        "enum": [
-          "coerce",
-          "ignore_malformed",
-          "strict"
-        ]
-      },
-      "_types.query_dsl.GeoDistanceQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "distance": {
-                "description": "The radius of the circle centred on the specified location.\nPoints which fall into this circle are considered to be matches.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Distance"
-                  }
-                ]
-              },
-              "distance_type": {
-                "description": "How to compute the distance.\nSet to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.",
-                "default": "'arc'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.GeoDistanceType"
-                  }
-                ]
-              },
-              "validation_method": {
-                "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
-                "default": "'strict'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
-                  }
-                ]
-              },
-              "ignore_unmapped": {
-                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
-                "default": false,
-                "type": "boolean"
-              }
+          "highlight": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/highlighting"
             },
-            "required": [
-              "distance"
+            "description": "Specifies the highlighter to use for retrieving highlighted snippets from one or more fields in your search results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.Highlight"
+              }
             ]
-          }
-        ]
-      },
-      "_types.GeoDistanceType": {
-        "type": "string",
-        "enum": [
-          "arc",
-          "plane"
-        ]
-      },
-      "_types.query_dsl.GeoGridQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
           },
-          {
-            "type": "object",
-            "properties": {
-              "geotile": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.GeoTile"
-                  }
-                ]
-              },
-              "geohash": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.GeoHash"
-                  }
-                ]
-              },
-              "geohex": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.GeoHexCell"
-                  }
-                ]
+          "track_total_hits": {
+            "description": "Number of hits matching the query to count accurately.\nIf `true`, the exact number of hits is returned at the cost of some performance.\nIf `false`, the  response does not include the total number of hits matching the query.",
+            "default": "10000",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.TrackHits"
               }
+            ]
+          },
+          "indices_boost": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl#relevance-scores"
             },
-            "minProperties": 1,
-            "maxProperties": 1
-          }
-        ]
-      },
-      "_types.query_dsl.GeoPolygonQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "validation_method": {
-                "default": "'strict'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
-                  }
-                ]
-              },
-              "ignore_unmapped": {
-                "type": "boolean"
-              }
-            }
-          }
-        ]
-      },
-      "_types.query_dsl.GeoShapeQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "ignore_unmapped": {
-                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
-                "default": false,
-                "type": "boolean"
-              }
-            }
-          }
-        ]
-      },
-      "_types.query_dsl.HasChildQuery": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "ignore_unmapped": {
-                "description": "Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.",
-                "default": false,
-                "type": "boolean"
-              },
-              "inner_hits": {
-                "externalDocs": {
-                  "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
-                },
-                "description": "If defined, each search hit will contain inner hits.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.InnerHits"
-                  }
-                ]
-              },
-              "max_children": {
-                "description": "Maximum number of child documents that match the query allowed for a returned parent document.\nIf the parent document exceeds this limit, it is excluded from the search results.",
+            "description": "Boost the `_score` of documents from specified indices.\nThe boost value is the factor by which scores are multiplied.\nA boost value greater than `1.0` increases the score.\nA boost value between `0` and `1.0` decreases the score.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
                 "type": "number"
               },
-              "min_children": {
-                "description": "Minimum number of child documents that match the query required to match the query for a returned parent document.\nIf the parent document does not meet this limit, it is excluded from the search results.",
-                "type": "number"
-              },
-              "query": {
-                "description": "Query you wish to run on child documents of the `type` field.\nIf a child document matches the search, the query returns the parent document.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                  }
-                ]
-              },
-              "score_mode": {
-                "description": "Indicates how scores for matching child documents affect the root parent document’s relevance score.",
-                "default": "'none'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.ChildScoreMode"
-                  }
-                ]
-              },
-              "type": {
-                "description": "Name of the child relationship mapped for the `join` field.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RelationName"
-                  }
-                ]
-              }
+              "minProperties": 1,
+              "maxProperties": 1
+            }
+          },
+          "docvalue_fields": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#docvalue-fields"
             },
-            "required": [
-              "query",
-              "type"
+            "description": "An array of wildcard (`*`) field patterns.\nThe request returns doc values for field names matching these patterns in the `hits.fields` property of the response.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
+            }
+          },
+          "knn": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
+            },
+            "description": "The approximate kNN search to run.",
+            "x-state": "Generally available",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnSearch"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.KnnSearch"
+                }
+              }
+            ]
+          },
+          "min_score": {
+            "description": "The minimum `_score` for matching documents.\nDocuments with a lower `_score` are not included in search results or results collected by aggregations.",
+            "type": "number"
+          },
+          "post_filter": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/filter-search-results"
+            },
+            "description": "Use the `post_filter` parameter to filter search results.\nThe search hits are filtered after the aggregations are calculated.\nA post filter has no impact on the aggregation results.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              }
+            ]
+          },
+          "profile": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-profile"
+            },
+            "description": "Set to `true` to return detailed timing information about the execution of individual components in a search request.\nNOTE: This is a debugging tool and adds significant overhead to search execution.",
+            "default": false,
+            "type": "boolean"
+          },
+          "query": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl"
+            },
+            "description": "The search definition using the Query DSL.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              }
+            ]
+          },
+          "rescore": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/rescore-search-results"
+            },
+            "description": "Can be used to improve precision by reordering just the top (for example 100 - 500) documents returned by the `query` and `post_filter` phases.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.Rescore"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_global.search._types.Rescore"
+                }
+              }
+            ]
+          },
+          "retriever": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrievers"
+            },
+            "description": "A retriever is a specification to describe top documents returned from a search.\nA retriever replaces other elements of the search API that also return top documents such as `query` and `knn`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "script_fields": {
+            "description": "Retrieve a script evaluation (based on different fields) for each hit.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.ScriptField"
+            }
+          },
+          "search_after": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
+            },
+            "description": "Used to retrieve the next page of hits using a set of sort values from the previous page.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.SortResults"
+              }
+            ]
+          },
+          "size": {
+            "description": "The number of hits to return, which must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` property.",
+            "default": 10.0,
+            "type": "number"
+          },
+          "slice": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#slice-scroll"
+            },
+            "description": "Split a scrolled search into multiple slices that can be consumed independently.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.SlicedScroll"
+              }
+            ]
+          },
+          "sort": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/sort-search-results"
+            },
+            "description": "A comma-separated list of <field>:<direction> pairs.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Sort"
+              }
+            ]
+          },
+          "_source": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#source-filtering"
+            },
+            "description": "The source fields that are returned for matching documents.\nThese fields are returned in the `hits._source` property of the search response.\nIf the `stored_fields` property is specified, the `_source` property defaults to `false`.\nOtherwise, it defaults to `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.SourceConfig"
+              }
+            ]
+          },
+          "fields": {
+            "description": "An array of wildcard (`*`) field patterns.\nThe request returns values for field names matching these patterns in the `hits.fields` property of the response.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
+            }
+          },
+          "suggest": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-suggesters"
+            },
+            "description": "Defines a suggester that provides similar looking terms based on a provided text.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.Suggester"
+              }
+            ]
+          },
+          "terminate_after": {
+            "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this property to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this property for requests that target data streams with backing indices across multiple data tiers.\n\nIf set to `0` (default), the query does not terminate early.",
+            "default": 0.0,
+            "type": "number"
+          },
+          "timeout": {
+            "description": "The period of time to wait for a response from each shard.\nIf no response is received before the timeout expires, the request fails and returns an error.\nDefaults to no timeout.",
+            "type": "string"
+          },
+          "track_scores": {
+            "description": "If `true`, calculate and return document scores, even if the scores are not used for sorting.",
+            "default": false,
+            "type": "boolean"
+          },
+          "version": {
+            "description": "If `true`, the request returns the document version as part of a hit.",
+            "default": false,
+            "type": "boolean"
+          },
+          "seq_no_primary_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
+            },
+            "description": "If `true`, the request returns sequence number and primary term of the last modification of each hit.",
+            "type": "boolean"
+          },
+          "stored_fields": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-selected-fields#stored-fields"
+            },
+            "description": "A comma-separated list of stored fields to return as part of a hit.\nIf no fields are specified, no stored fields are included in the response.\nIf this field is specified, the `_source` property defaults to `false`.\nYou can pass `_source: true` to return both source fields and stored fields in the search response.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Fields"
+              }
+            ]
+          },
+          "pit": {
+            "description": "Limit the search to a point in time (PIT).\nIf you provide a PIT, you cannot specify an `<index>` in the request path.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.PointInTimeReference"
+              }
+            ]
+          },
+          "runtime_mappings": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+            },
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+              }
+            ]
+          },
+          "stats": {
+            "description": "The stats groups to associate with the search.\nEach group maintains a statistics aggregation for its associated searches.\nYou can retrieve these stats using the indices stats API.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "_global.search._types.FieldCollapse": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The field to collapse the result set on",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "inner_hits": {
+            "description": "The number of inner hits and their sort order",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.InnerHits"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_global.search._types.InnerHits"
+                }
+              }
+            ]
+          },
+          "max_concurrent_group_searches": {
+            "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
+            "type": "number"
+          },
+          "collapse": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
+              }
             ]
           }
+        },
+        "required": [
+          "field"
         ]
       },
       "_global.search._types.InnerHits": {
@@ -40427,47 +40546,6 @@
       "_types.Name": {
         "type": "string"
       },
-      "_global.search._types.FieldCollapse": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "description": "The field to collapse the result set on",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "inner_hits": {
-            "description": "The number of inner hits and their sort order",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.InnerHits"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_global.search._types.InnerHits"
-                }
-              }
-            ]
-          },
-          "max_concurrent_group_searches": {
-            "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
-            "type": "number"
-          },
-          "collapse": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
       "_types.query_dsl.FieldAndFormat": {
         "description": "A reference to a field with formatting instructions on how to return the value",
         "type": "object",
@@ -40562,19 +40640,6 @@
                   }
                 ]
               }
-            }
-          }
-        ]
-      },
-      "_types.Fields": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.Field"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.Field"
             }
           }
         ]
@@ -40897,6 +40962,13 @@
           "median"
         ]
       },
+      "_types.GeoDistanceType": {
+        "type": "string",
+        "enum": [
+          "arc",
+          "plane"
+        ]
+      },
       "_types.DistanceUnit": {
         "type": "string",
         "enum": [
@@ -41029,6 +41101,1498 @@
             ]
           }
         }
+      },
+      "_types.KnnSearch": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The name of the vector field to search against",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "query_vector": {
+            "description": "The query vector",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.QueryVector"
+              }
+            ]
+          },
+          "query_vector_builder": {
+            "description": "The query vector builder. You must provide a query_vector_builder or query_vector, but not both.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+              }
+            ]
+          },
+          "k": {
+            "description": "The final number of nearest neighbors to return as top hits",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard",
+            "type": "number"
+          },
+          "visit_percentage": {
+            "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
+            "x-state": "Generally available",
+            "type": "number"
+          },
+          "boost": {
+            "description": "Boost value to apply to kNN scores",
+            "type": "number"
+          },
+          "filter": {
+            "description": "Filters for the kNN search query",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                }
+              }
+            ]
+          },
+          "similarity": {
+            "description": "The minimum similarity for a vector to be considered a match",
+            "type": "number"
+          },
+          "inner_hits": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+            },
+            "description": "If defined, each search hit will contain inner hits.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.InnerHits"
+              }
+            ]
+          },
+          "rescore_vector": {
+            "description": "Apply oversampling and rescoring to quantized vectors",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RescoreVector"
+              }
+            ]
+          },
+          "_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field"
+        ]
+      },
+      "_types.QueryVector": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        }
+      },
+      "_types.QueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "text_embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TextEmbedding"
+              }
+            ]
+          },
+          "lookup": {
+            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.TextEmbedding": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "x-state": "Generally available",
+            "type": "string"
+          },
+          "model_text": {
+            "description": "The text to be converted into a vector by the specified model",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_text"
+        ]
+      },
+      "_types.LookupQueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the document to fetch the vector from",
+            "type": "string"
+          },
+          "index": {
+            "description": "The name of the index to fetch the document from",
+            "type": "string"
+          },
+          "path": {
+            "description": "The name of the field containing the vector",
+            "type": "string"
+          },
+          "routing": {
+            "description": "The routing value to use when fetching the document",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "index",
+          "path"
+        ]
+      },
+      "_types.RescoreVector": {
+        "type": "object",
+        "properties": {
+          "oversample": {
+            "description": "Applies the specified oversample factor to k on the approximate kNN search",
+            "type": "number"
+          }
+        },
+        "required": [
+          "oversample"
+        ]
+      },
+      "_global.search._types.Rescore": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "window_size": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.RescoreQuery"
+                  }
+                ]
+              },
+              "learning_to_rank": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRank"
+                  }
+                ]
+              },
+              "script": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.ScriptRescore"
+                  }
+                ]
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        ]
+      },
+      "_global.search._types.RescoreQuery": {
+        "type": "object",
+        "properties": {
+          "rescore_query": {
+            "description": "The query to use for rescoring.\nThis query is only run on the Top-K results returned by the `query` and `post_filter` phases.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              }
+            ]
+          },
+          "query_weight": {
+            "description": "Relative importance of the original query versus the rescore query.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "rescore_query_weight": {
+            "description": "Relative importance of the rescore query versus the original query.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "score_mode": {
+            "description": "Determines how scores are combined.",
+            "default": "total",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.search._types.ScoreMode"
+              }
+            ]
+          }
+        },
+        "required": [
+          "rescore_query"
+        ]
+      },
+      "_global.search._types.ScoreMode": {
+        "type": "string",
+        "enum": [
+          "avg",
+          "max",
+          "min",
+          "multiply",
+          "total"
+        ]
+      },
+      "_global.search._types.LearningToRank": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "The unique identifier of the trained model uploaded to Elasticsearch",
+            "type": "string"
+          },
+          "params": {
+            "description": "Named parameters to be passed to the query templates used for feature",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "model_id"
+        ]
+      },
+      "_global.search._types.ScriptRescore": {
+        "type": "object",
+        "properties": {
+          "script": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          }
+        },
+        "required": [
+          "script"
+        ]
+      },
+      "_types.RetrieverContainer": {
+        "type": "object",
+        "properties": {
+          "standard": {
+            "description": "A retriever that replaces the functionality of a traditional query.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.StandardRetriever"
+              }
+            ]
+          },
+          "knn": {
+            "description": "A retriever that replaces the functionality  of a knn search.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnRetriever"
+              }
+            ]
+          },
+          "rrf": {
+            "description": "A retriever that produces top documents from reciprocal rank fusion (RRF).",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RRFRetriever"
+              }
+            ]
+          },
+          "text_similarity_reranker": {
+            "description": "A retriever that reranks the top documents based on a reranking model using the InferenceAPI",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TextSimilarityReranker"
+              }
+            ]
+          },
+          "rule": {
+            "description": "A retriever that replaces the functionality of a rule query.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RuleRetriever"
+              }
+            ]
+          },
+          "rescorer": {
+            "description": "A retriever that re-scores only the results produced by its child retriever.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RescorerRetriever"
+              }
+            ]
+          },
+          "linear": {
+            "description": "A retriever that supports the combination of different retrievers through a weighted linear combination.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LinearRetriever"
+              }
+            ]
+          },
+          "pinned": {
+            "description": "A pinned retriever applies pinned documents to the underlying retriever.\nThis retriever will rewrite to a PinnedQueryBuilder.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.PinnedRetriever"
+              }
+            ]
+          },
+          "diversify": {
+            "description": "A retriever that diversifies the results from its child retriever.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DiversifyRetriever"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.StandardRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "query": {
+                "description": "Defines a query to retrieve a set of top documents.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                  }
+                ]
+              },
+              "search_after": {
+                "description": "Defines a search after object parameter used for pagination.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.SortResults"
+                  }
+                ]
+              },
+              "terminate_after": {
+                "description": "Maximum number of documents to collect for each shard.",
+                "type": "number"
+              },
+              "sort": {
+                "description": "A sort object that that specifies the order of matching documents.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Sort"
+                  }
+                ]
+              },
+              "collapse": {
+                "description": "Collapses the top documents by a specified key into a single top document per key.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.RetrieverBase": {
+        "type": "object",
+        "properties": {
+          "filter": {
+            "description": "Query to filter the documents that can match.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                }
+              }
+            ]
+          },
+          "min_score": {
+            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
+            "type": "number"
+          },
+          "_name": {
+            "description": "Retriever name.",
+            "type": "string"
+          }
+        }
+      },
+      "_types.KnnRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the vector field to search against.",
+                "type": "string"
+              },
+              "query_vector": {
+                "description": "Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "query_vector_builder": {
+                "description": "Defines a model to build a query vector.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+                  }
+                ]
+              },
+              "k": {
+                "description": "Number of nearest neighbors to return as top hits.",
+                "type": "number"
+              },
+              "num_candidates": {
+                "description": "Number of nearest neighbor candidates to consider per shard.",
+                "type": "number"
+              },
+              "visit_percentage": {
+                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
+                "x-state": "Generally available",
+                "type": "number"
+              },
+              "similarity": {
+                "description": "The minimum similarity required for a document to be considered a match.",
+                "type": "number"
+              },
+              "rescore_vector": {
+                "description": "Apply oversampling and rescoring to quantized vectors",
+                "x-state": "Generally available",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RescoreVector"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "field",
+              "k",
+              "num_candidates"
+            ]
+          }
+        ]
+      },
+      "_types.RRFRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.RRFRetrieverEntry"
+                }
+              },
+              "rank_constant": {
+                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result sets per query.",
+                "type": "number"
+              },
+              "query": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "retrievers"
+            ]
+          }
+        ]
+      },
+      "_types.RRFRetrieverEntry": {
+        "description": "Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverContainer"
+          },
+          {
+            "$ref": "#/components/schemas/_types.RRFRetrieverComponent"
+          }
+        ]
+      },
+      "_types.RRFRetrieverComponent": {
+        "description": "Wraps a retriever with an optional weight for RRF scoring.",
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "description": "The nested retriever configuration.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.",
+            "default": 1.0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "retriever"
+        ]
+      },
+      "_types.TextSimilarityReranker": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "description": "The nested retriever which will produce the first-level results, that will later be used for reranking.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "rank_window_size": {
+                "description": "This value determines how many documents we will consider from the nested retriever.",
+                "type": "number"
+              },
+              "inference_id": {
+                "description": "Unique identifier of the inference endpoint created using the inference API.",
+                "type": "string"
+              },
+              "inference_text": {
+                "description": "The text snippet used as the basis for similarity comparison.",
+                "type": "string"
+              },
+              "field": {
+                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
+                "type": "string"
+              },
+              "chunk_rescorer": {
+                "description": "Whether to rescore on only the best matching chunks.",
+                "x-state": "Generally available",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ChunkRescorer"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "retriever",
+              "inference_text",
+              "field"
+            ]
+          }
+        ]
+      },
+      "_types.ChunkRescorer": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "description": "The number of chunks per document to evaluate for reranking.",
+            "type": "number"
+          },
+          "chunking_settings": {
+            "description": "Chunking settings to apply",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.ChunkRescorerChunkingSettings"
+              }
+            ]
+          }
+        }
+      },
+      "_types.mapping.ChunkRescorerChunkingSettings": {
+        "type": "object",
+        "properties": {
+          "max_chunk_size": {
+            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "default": 250.0,
+            "type": "number"
+          },
+          "overlap": {
+            "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
+            "default": 100.0,
+            "type": "number"
+          },
+          "sentence_overlap": {
+            "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "separator_group": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
+            "type": "string"
+          },
+          "separators": {
+            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "strategy": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
+            },
+            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
+            "default": "sentence",
+            "type": "string"
+          }
+        },
+        "required": [
+          "max_chunk_size"
+        ]
+      },
+      "_types.RuleRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ruleset_ids": {
+                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Id"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_types.Id"
+                    }
+                  }
+                ]
+              },
+              "match_criteria": {
+                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
+                "type": "object"
+              },
+              "retriever": {
+                "description": "The retriever whose results rules should be applied to.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "rank_window_size": {
+                "description": "This value determines the size of the individual result set.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "ruleset_ids",
+              "match_criteria",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.RescorerRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "description": "Inner retriever.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "rescore": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.Rescore"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/_global.search._types.Rescore"
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "retriever",
+              "rescore"
+            ]
+          }
+        ]
+      },
+      "_types.LinearRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retrievers": {
+                "description": "Inner retrievers.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.InnerRetriever"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              },
+              "query": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "normalizer": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ScoreNormalizer"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_types.InnerRetriever": {
+        "type": "object",
+        "properties": {
+          "retriever": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RetrieverContainer"
+              }
+            ]
+          },
+          "weight": {
+            "type": "number"
+          },
+          "normalizer": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ScoreNormalizer"
+              }
+            ]
+          }
+        },
+        "required": [
+          "retriever",
+          "weight",
+          "normalizer"
+        ]
+      },
+      "_types.ScoreNormalizer": {
+        "type": "string",
+        "enum": [
+          "none",
+          "minmax",
+          "l2_norm"
+        ]
+      },
+      "_types.PinnedRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "retriever": {
+                "description": "Inner retriever.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "docs": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.SpecifiedDocument"
+                }
+              },
+              "rank_window_size": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.SpecifiedDocument": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "_types.DiversifyRetriever": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.RetrieverBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "description": "The diversification strategy to apply.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.DiversifyRetrieverTypes"
+                  }
+                ]
+              },
+              "field": {
+                "description": "The document field on which to diversify results on.",
+                "type": "string"
+              },
+              "retriever": {
+                "description": "The nested retriever whose results will be diversified.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RetrieverContainer"
+                  }
+                ]
+              },
+              "size": {
+                "description": "The number of top documents to return after diversification.",
+                "type": "number"
+              },
+              "rank_window_size": {
+                "description": "The number of top documents from the nested retriever to consider for diversification.",
+                "type": "number"
+              },
+              "query_vector": {
+                "description": "The query vector used for diversification.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "query_vector_builder": {
+                "description": "a dense vector query vector builder to use instead of a static query_vector",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+                  }
+                ]
+              },
+              "lambda": {
+                "description": "Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR",
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "field",
+              "retriever"
+            ]
+          }
+        ]
+      },
+      "_types.DiversifyRetrieverTypes": {
+        "type": "string",
+        "enum": [
+          "mmr"
+        ]
+      },
+      "_types.SlicedScroll": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "max": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "max"
+        ]
+      },
+      "_global.search._types.Suggester": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "Global suggest text, to avoid repetition when the same text is used in several suggesters",
+            "type": "string"
+          }
+        }
+      },
+      "_global.search._types.PointInTimeReference": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "keep_alive": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "_types.mapping.RuntimeFields": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/_types.mapping.RuntimeField"
+        }
+      },
+      "_types.mapping.RuntimeField": {
+        "type": "object",
+        "properties": {
+          "fields": {
+            "description": "For type `composite`",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.mapping.CompositeSubField"
+            }
+          },
+          "fetch_fields": {
+            "description": "For type `lookup`",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.mapping.RuntimeFieldFetchFields"
+            }
+          },
+          "format": {
+            "description": "A custom format for `date` type runtime fields.",
+            "type": "string"
+          },
+          "input_field": {
+            "description": "For type `lookup`",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "target_field": {
+            "description": "For type `lookup`",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "target_index": {
+            "description": "For type `lookup`",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "script": {
+            "description": "Painless script executed at query time.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          },
+          "type": {
+            "description": "Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.mapping.CompositeSubField": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "_types.mapping.RuntimeFieldType": {
+        "type": "string",
+        "enum": [
+          "boolean",
+          "composite",
+          "date",
+          "double",
+          "geo_point",
+          "geo_shape",
+          "ip",
+          "keyword",
+          "long",
+          "lookup"
+        ]
+      },
+      "_types.mapping.RuntimeFieldFetchFields": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "format": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "field"
+        ]
+      },
+      "_types.ScriptLanguage": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "painless",
+              "expression",
+              "mustache",
+              "java"
+            ]
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "_types.query_dsl.FunctionScoreMode": {
+        "type": "string",
+        "enum": [
+          "multiply",
+          "sum",
+          "avg",
+          "first",
+          "max",
+          "min"
+        ]
+      },
+      "_types.query_dsl.FuzzyQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "max_expansions": {
+                "description": "Maximum number of variations created.",
+                "default": 50.0,
+                "type": "number"
+              },
+              "prefix_length": {
+                "description": "Number of beginning characters left unchanged when creating expansions.",
+                "default": 0.0,
+                "type": "number"
+              },
+              "rewrite": {
+                "description": "Number of beginning characters left unchanged when creating expansions.",
+                "default": "constant_score",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.MultiTermQueryRewrite"
+                  }
+                ]
+              },
+              "transpositions": {
+                "description": "Indicates whether edits include transpositions of two adjacent characters (for example `ab` to `ba`).",
+                "default": true,
+                "type": "boolean"
+              },
+              "fuzziness": {
+                "description": "Maximum edit distance allowed for matching.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Fuzziness"
+                  }
+                ]
+              },
+              "value": {
+                "description": "Term you wish to find in the provided field.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      },
+      "_types.MultiTermQueryRewrite": {
+        "type": "string"
+      },
+      "_types.Fuzziness": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          }
+        ]
+      },
+      "_types.query_dsl.GeoBoundingBoxQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "deprecated": true,
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.GeoExecution"
+                  }
+                ]
+              },
+              "validation_method": {
+                "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
+                "default": "'strict'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
+                  }
+                ]
+              },
+              "ignore_unmapped": {
+                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.GeoExecution": {
+        "type": "string",
+        "enum": [
+          "memory",
+          "indexed"
+        ]
+      },
+      "_types.query_dsl.GeoValidationMethod": {
+        "type": "string",
+        "enum": [
+          "coerce",
+          "ignore_malformed",
+          "strict"
+        ]
+      },
+      "_types.query_dsl.GeoDistanceQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "distance": {
+                "description": "The radius of the circle centred on the specified location.\nPoints which fall into this circle are considered to be matches.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Distance"
+                  }
+                ]
+              },
+              "distance_type": {
+                "description": "How to compute the distance.\nSet to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.",
+                "default": "'arc'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoDistanceType"
+                  }
+                ]
+              },
+              "validation_method": {
+                "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
+                "default": "'strict'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
+                  }
+                ]
+              },
+              "ignore_unmapped": {
+                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "distance"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl.GeoGridQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "geotile": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoTile"
+                  }
+                ]
+              },
+              "geohash": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoHash"
+                  }
+                ]
+              },
+              "geohex": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.GeoHexCell"
+                  }
+                ]
+              }
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        ]
+      },
+      "_types.query_dsl.GeoPolygonQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "validation_method": {
+                "default": "'strict'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
+                  }
+                ]
+              },
+              "ignore_unmapped": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.GeoShapeQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ignore_unmapped": {
+                "description": "Set to `true` to ignore an unmapped field and not match any documents for this query.\nSet to `false` to throw an exception if the field is not mapped.",
+                "default": false,
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_types.query_dsl.HasChildQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "ignore_unmapped": {
+                "description": "Indicates whether to ignore an unmapped `type` and not return any documents instead of an error.",
+                "default": false,
+                "type": "boolean"
+              },
+              "inner_hits": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
+                },
+                "description": "If defined, each search hit will contain inner hits.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.InnerHits"
+                  }
+                ]
+              },
+              "max_children": {
+                "description": "Maximum number of child documents that match the query allowed for a returned parent document.\nIf the parent document exceeds this limit, it is excluded from the search results.",
+                "type": "number"
+              },
+              "min_children": {
+                "description": "Minimum number of child documents that match the query required to match the query for a returned parent document.\nIf the parent document does not meet this limit, it is excluded from the search results.",
+                "type": "number"
+              },
+              "query": {
+                "description": "Query you wish to run on child documents of the `type` field.\nIf a child document matches the search, the query returns the parent document.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                  }
+                ]
+              },
+              "score_mode": {
+                "description": "Indicates how scores for matching child documents affect the root parent document’s relevance score.",
+                "default": "'none'",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.query_dsl.ChildScoreMode"
+                  }
+                ]
+              },
+              "type": {
+                "description": "Name of the child relationship mapped for the `join` field.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.RelationName"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "query",
+              "type"
+            ]
+          }
+        ]
       },
       "_types.query_dsl.ChildScoreMode": {
         "type": "string",
@@ -41681,90 +43245,6 @@
           }
         ]
       },
-      "_types.QueryVector": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
-      "_types.QueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "text_embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TextEmbedding"
-              }
-            ]
-          },
-          "lookup": {
-            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.TextEmbedding": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
-            "x-state": "Generally available",
-            "type": "string"
-          },
-          "model_text": {
-            "description": "The text to be converted into a vector by the specified model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "model_text"
-        ]
-      },
-      "_types.LookupQueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The ID of the document to fetch the vector from",
-            "type": "string"
-          },
-          "index": {
-            "description": "The name of the index to fetch the document from",
-            "type": "string"
-          },
-          "path": {
-            "description": "The name of the field containing the vector",
-            "type": "string"
-          },
-          "routing": {
-            "description": "The routing value to use when fetching the document",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "index",
-          "path"
-        ]
-      },
-      "_types.RescoreVector": {
-        "type": "object",
-        "properties": {
-          "oversample": {
-            "description": "Applies the specified oversample factor to k on the approximate kNN search",
-            "type": "number"
-          }
-        },
-        "required": [
-          "oversample"
-        ]
-      },
       "_types.query_dsl.MatchQuery": {
         "allOf": [
           {
@@ -42251,20 +43731,6 @@
             ]
           }
         }
-      },
-      "_types.Routing": {
-        "description": "Only to be used in query and path parameters, as the array form is actually a csv",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ]
       },
       "_types.VersionType": {
         "type": "string",
@@ -44427,17 +45893,6 @@
           "day",
           "month",
           "year"
-        ]
-      },
-      "_types.DateTime": {
-        "description": "A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a\nnumber of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string\nrepresentation.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-          }
         ]
       },
       "_types.aggregations.AverageAggregation": {
@@ -48326,1490 +49781,6 @@
             ]
           }
         }
-      },
-      "_global.search._types.TrackHits": {
-        "description": "Number of hits matching the query to count accurately. If true, the exact\nnumber of hits is returned at the cost of some performance. If false, the\nresponse does not include the total number of hits matching the query.\nDefaults to 10,000 hits.",
-        "oneOf": [
-          {
-            "type": "boolean"
-          },
-          {
-            "type": "number"
-          }
-        ]
-      },
-      "_types.KnnSearch": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "description": "The name of the vector field to search against",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "query_vector": {
-            "description": "The query vector",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.QueryVector"
-              }
-            ]
-          },
-          "query_vector_builder": {
-            "description": "The query vector builder. You must provide a query_vector_builder or query_vector, but not both.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.QueryVectorBuilder"
-              }
-            ]
-          },
-          "k": {
-            "description": "The final number of nearest neighbors to return as top hits",
-            "type": "number"
-          },
-          "num_candidates": {
-            "description": "The number of nearest neighbor candidates to consider per shard",
-            "type": "number"
-          },
-          "visit_percentage": {
-            "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-            "x-state": "Generally available",
-            "type": "number"
-          },
-          "boost": {
-            "description": "Boost value to apply to kNN scores",
-            "type": "number"
-          },
-          "filter": {
-            "description": "Filters for the kNN search query",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                }
-              }
-            ]
-          },
-          "similarity": {
-            "description": "The minimum similarity for a vector to be considered a match",
-            "type": "number"
-          },
-          "inner_hits": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/retrieve-inner-hits"
-            },
-            "description": "If defined, each search hit will contain inner hits.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.InnerHits"
-              }
-            ]
-          },
-          "rescore_vector": {
-            "description": "Apply oversampling and rescoring to quantized vectors",
-            "x-state": "Generally available",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RescoreVector"
-              }
-            ]
-          },
-          "_name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
-      "_global.search._types.Rescore": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "window_size": {
-                "type": "number"
-              }
-            }
-          },
-          {
-            "type": "object",
-            "properties": {
-              "query": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.RescoreQuery"
-                  }
-                ]
-              },
-              "learning_to_rank": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.LearningToRank"
-                  }
-                ]
-              },
-              "script": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.ScriptRescore"
-                  }
-                ]
-              }
-            },
-            "minProperties": 1,
-            "maxProperties": 1
-          }
-        ]
-      },
-      "_global.search._types.RescoreQuery": {
-        "type": "object",
-        "properties": {
-          "rescore_query": {
-            "description": "The query to use for rescoring.\nThis query is only run on the Top-K results returned by the `query` and `post_filter` phases.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              }
-            ]
-          },
-          "query_weight": {
-            "description": "Relative importance of the original query versus the rescore query.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "rescore_query_weight": {
-            "description": "Relative importance of the rescore query versus the original query.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "score_mode": {
-            "description": "Determines how scores are combined.",
-            "default": "total",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.ScoreMode"
-              }
-            ]
-          }
-        },
-        "required": [
-          "rescore_query"
-        ]
-      },
-      "_global.search._types.ScoreMode": {
-        "type": "string",
-        "enum": [
-          "avg",
-          "max",
-          "min",
-          "multiply",
-          "total"
-        ]
-      },
-      "_global.search._types.LearningToRank": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "description": "The unique identifier of the trained model uploaded to Elasticsearch",
-            "type": "string"
-          },
-          "params": {
-            "description": "Named parameters to be passed to the query templates used for feature",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        },
-        "required": [
-          "model_id"
-        ]
-      },
-      "_global.search._types.ScriptRescore": {
-        "type": "object",
-        "properties": {
-          "script": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Script"
-              }
-            ]
-          }
-        },
-        "required": [
-          "script"
-        ]
-      },
-      "_types.RetrieverContainer": {
-        "type": "object",
-        "properties": {
-          "standard": {
-            "description": "A retriever that replaces the functionality of a traditional query.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.StandardRetriever"
-              }
-            ]
-          },
-          "knn": {
-            "description": "A retriever that replaces the functionality  of a knn search.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.KnnRetriever"
-              }
-            ]
-          },
-          "rrf": {
-            "description": "A retriever that produces top documents from reciprocal rank fusion (RRF).",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RRFRetriever"
-              }
-            ]
-          },
-          "text_similarity_reranker": {
-            "description": "A retriever that reranks the top documents based on a reranking model using the InferenceAPI",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TextSimilarityReranker"
-              }
-            ]
-          },
-          "rule": {
-            "description": "A retriever that replaces the functionality of a rule query.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RuleRetriever"
-              }
-            ]
-          },
-          "rescorer": {
-            "description": "A retriever that re-scores only the results produced by its child retriever.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RescorerRetriever"
-              }
-            ]
-          },
-          "linear": {
-            "description": "A retriever that supports the combination of different retrievers through a weighted linear combination.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.LinearRetriever"
-              }
-            ]
-          },
-          "pinned": {
-            "description": "A pinned retriever applies pinned documents to the underlying retriever.\nThis retriever will rewrite to a PinnedQueryBuilder.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.PinnedRetriever"
-              }
-            ]
-          },
-          "diversify": {
-            "description": "A retriever that diversifies the results from its child retriever.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DiversifyRetriever"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.StandardRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "query": {
-                "description": "Defines a query to retrieve a set of top documents.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                  }
-                ]
-              },
-              "search_after": {
-                "description": "Defines a search after object parameter used for pagination.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.SortResults"
-                  }
-                ]
-              },
-              "terminate_after": {
-                "description": "Maximum number of documents to collect for each shard.",
-                "type": "number"
-              },
-              "sort": {
-                "description": "A sort object that that specifies the order of matching documents.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Sort"
-                  }
-                ]
-              },
-              "collapse": {
-                "description": "Collapses the top documents by a specified key into a single top document per key.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "_types.RetrieverBase": {
-        "type": "object",
-        "properties": {
-          "filter": {
-            "description": "Query to filter the documents that can match.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
-                }
-              }
-            ]
-          },
-          "min_score": {
-            "description": "Minimum _score for matching documents. Documents with a lower _score are not included in the top documents.",
-            "type": "number"
-          },
-          "_name": {
-            "description": "Retriever name.",
-            "type": "string"
-          }
-        }
-      },
-      "_types.KnnRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "field": {
-                "description": "The name of the vector field to search against.",
-                "type": "string"
-              },
-              "query_vector": {
-                "description": "Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.QueryVector"
-                  }
-                ]
-              },
-              "query_vector_builder": {
-                "description": "Defines a model to build a query vector.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
-                  }
-                ]
-              },
-              "k": {
-                "description": "Number of nearest neighbors to return as top hits.",
-                "type": "number"
-              },
-              "num_candidates": {
-                "description": "Number of nearest neighbor candidates to consider per shard.",
-                "type": "number"
-              },
-              "visit_percentage": {
-                "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-                "x-state": "Generally available",
-                "type": "number"
-              },
-              "similarity": {
-                "description": "The minimum similarity required for a document to be considered a match.",
-                "type": "number"
-              },
-              "rescore_vector": {
-                "description": "Apply oversampling and rescoring to quantized vectors",
-                "x-state": "Generally available",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RescoreVector"
-                  }
-                ]
-              }
-            },
-            "required": [
-              "field",
-              "k",
-              "num_candidates"
-            ]
-          }
-        ]
-      },
-      "_types.RRFRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retrievers": {
-                "description": "A list of child retrievers to specify which sets of returned top documents will have the RRF formula applied to them. Each retriever can optionally include a weight parameter.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.RRFRetrieverEntry"
-                }
-              },
-              "rank_constant": {
-                "description": "This value determines how much influence documents in individual result sets per query have over the final ranked result set.",
-                "type": "number"
-              },
-              "rank_window_size": {
-                "description": "This value determines the size of the individual result sets per query.",
-                "type": "number"
-              },
-              "query": {
-                "type": "string"
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            },
-            "required": [
-              "retrievers"
-            ]
-          }
-        ]
-      },
-      "_types.RRFRetrieverEntry": {
-        "description": "Either a direct RetrieverContainer (backward compatible) or an RRFRetrieverComponent with weight.",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverContainer"
-          },
-          {
-            "$ref": "#/components/schemas/_types.RRFRetrieverComponent"
-          }
-        ]
-      },
-      "_types.RRFRetrieverComponent": {
-        "description": "Wraps a retriever with an optional weight for RRF scoring.",
-        "type": "object",
-        "properties": {
-          "retriever": {
-            "description": "The nested retriever configuration.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              }
-            ]
-          },
-          "weight": {
-            "description": "Weight multiplier for this retriever's contribution to the RRF score. Higher values increase influence. Defaults to 1.0 if not specified. Must be non-negative.",
-            "default": 1.0,
-            "type": "number"
-          }
-        },
-        "required": [
-          "retriever"
-        ]
-      },
-      "_types.TextSimilarityReranker": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "description": "The nested retriever which will produce the first-level results, that will later be used for reranking.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RetrieverContainer"
-                  }
-                ]
-              },
-              "rank_window_size": {
-                "description": "This value determines how many documents we will consider from the nested retriever.",
-                "type": "number"
-              },
-              "inference_id": {
-                "description": "Unique identifier of the inference endpoint created using the inference API.",
-                "type": "string"
-              },
-              "inference_text": {
-                "description": "The text snippet used as the basis for similarity comparison.",
-                "type": "string"
-              },
-              "field": {
-                "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
-                "type": "string"
-              },
-              "chunk_rescorer": {
-                "description": "Whether to rescore on only the best matching chunks.",
-                "x-state": "Generally available",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.ChunkRescorer"
-                  }
-                ]
-              }
-            },
-            "required": [
-              "retriever",
-              "inference_text",
-              "field"
-            ]
-          }
-        ]
-      },
-      "_types.ChunkRescorer": {
-        "type": "object",
-        "properties": {
-          "size": {
-            "description": "The number of chunks per document to evaluate for reranking.",
-            "type": "number"
-          },
-          "chunking_settings": {
-            "description": "Chunking settings to apply",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.ChunkRescorerChunkingSettings"
-              }
-            ]
-          }
-        }
-      },
-      "_types.mapping.ChunkRescorerChunkingSettings": {
-        "type": "object",
-        "properties": {
-          "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
-            "default": 250.0,
-            "type": "number"
-          },
-          "overlap": {
-            "description": "The number of overlapping words for chunks.\nIt is applicable only to a `word` chunking strategy.\nThis value cannot be higher than half the `max_chunk_size` value.",
-            "default": 100.0,
-            "type": "number"
-          },
-          "sentence_overlap": {
-            "description": "The number of overlapping sentences for chunks.\nIt is applicable only for a `sentence` chunking strategy.\nIt can be either `1` or `0`.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "separator_group": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nSets a predefined list of separators in the saved chunking settings based on the selected text type.\nValues can be `markdown` or `plaintext`.\n\nUsing this parameter is an alternative to manually specifying a custom `separators` list.",
-            "type": "string"
-          },
-          "separators": {
-            "description": "Only applicable to the `recursive` strategy and required when using it.\n\nA list of strings used as possible split points when chunking text.\n\nEach string can be a plain string or a regular expression (regex) pattern.\nThe system tries each separator in order to split the text, starting from the first item in the list.\n\nAfter splitting, it attempts to recombine smaller pieces into larger chunks that stay within\nthe `max_chunk_size` limit, to reduce the total number of chunks generated.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "strategy": {
-            "externalDocs": {
-              "url": "https://www.elastic.co/docs/explore-analyze/elastic-inference/inference-api#chunking-strategies"
-            },
-            "description": "The chunking strategy: `sentence`, `word`, `none` or `recursive`.\n\n * If `strategy` is set to `recursive`, you must also specify:\n\n- `max_chunk_size`\n- either `separators` or`separator_group`\n\nLearn more about different chunking strategies in the linked documentation.",
-            "default": "sentence",
-            "type": "string"
-          }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
-      },
-      "_types.RuleRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "ruleset_ids": {
-                "description": "The ruleset IDs containing the rules this retriever is evaluating against.",
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.Id"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_types.Id"
-                    }
-                  }
-                ]
-              },
-              "match_criteria": {
-                "description": "The match criteria that will determine if a rule in the provided rulesets should be applied.",
-                "type": "object"
-              },
-              "retriever": {
-                "description": "The retriever whose results rules should be applied to.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RetrieverContainer"
-                  }
-                ]
-              },
-              "rank_window_size": {
-                "description": "This value determines the size of the individual result set.",
-                "type": "number"
-              }
-            },
-            "required": [
-              "ruleset_ids",
-              "match_criteria",
-              "retriever"
-            ]
-          }
-        ]
-      },
-      "_types.RescorerRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "description": "Inner retriever.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RetrieverContainer"
-                  }
-                ]
-              },
-              "rescore": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.Rescore"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_global.search._types.Rescore"
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "retriever",
-              "rescore"
-            ]
-          }
-        ]
-      },
-      "_types.LinearRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retrievers": {
-                "description": "Inner retrievers.",
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.InnerRetriever"
-                }
-              },
-              "rank_window_size": {
-                "type": "number"
-              },
-              "query": {
-                "type": "string"
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "normalizer": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.ScoreNormalizer"
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      },
-      "_types.InnerRetriever": {
-        "type": "object",
-        "properties": {
-          "retriever": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.RetrieverContainer"
-              }
-            ]
-          },
-          "weight": {
-            "type": "number"
-          },
-          "normalizer": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ScoreNormalizer"
-              }
-            ]
-          }
-        },
-        "required": [
-          "retriever",
-          "weight",
-          "normalizer"
-        ]
-      },
-      "_types.ScoreNormalizer": {
-        "type": "string",
-        "enum": [
-          "none",
-          "minmax",
-          "l2_norm"
-        ]
-      },
-      "_types.PinnedRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "retriever": {
-                "description": "Inner retriever.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RetrieverContainer"
-                  }
-                ]
-              },
-              "ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "docs": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/_types.SpecifiedDocument"
-                }
-              },
-              "rank_window_size": {
-                "type": "number"
-              }
-            },
-            "required": [
-              "retriever"
-            ]
-          }
-        ]
-      },
-      "_types.SpecifiedDocument": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.IndexName"
-              }
-            ]
-          },
-          "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Id"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "_types.DiversifyRetriever": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_types.RetrieverBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "type": {
-                "description": "The diversification strategy to apply.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.DiversifyRetrieverTypes"
-                  }
-                ]
-              },
-              "field": {
-                "description": "The document field on which to diversify results on.",
-                "type": "string"
-              },
-              "retriever": {
-                "description": "The nested retriever whose results will be diversified.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.RetrieverContainer"
-                  }
-                ]
-              },
-              "size": {
-                "description": "The number of top documents to return after diversification.",
-                "type": "number"
-              },
-              "rank_window_size": {
-                "description": "The number of top documents from the nested retriever to consider for diversification.",
-                "type": "number"
-              },
-              "query_vector": {
-                "description": "The query vector used for diversification.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.QueryVector"
-                  }
-                ]
-              },
-              "query_vector_builder": {
-                "description": "a dense vector query vector builder to use instead of a static query_vector",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
-                  }
-                ]
-              },
-              "lambda": {
-                "description": "Controls the trade-off between relevance and diversity for MMR. A value of 0.0 focuses solely on diversity, while a value of 1.0 focuses solely on relevance. Required for MMR",
-                "type": "number"
-              }
-            },
-            "required": [
-              "type",
-              "field",
-              "retriever"
-            ]
-          }
-        ]
-      },
-      "_types.DiversifyRetrieverTypes": {
-        "type": "string",
-        "enum": [
-          "mmr"
-        ]
-      },
-      "_types.SlicedScroll": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Id"
-              }
-            ]
-          },
-          "max": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "id",
-          "max"
-        ]
-      },
-      "_global.search._types.Suggester": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "description": "Global suggest text, to avoid repetition when the same text is used in several suggesters",
-            "type": "string"
-          }
-        }
-      },
-      "_global.search._types.PointInTimeReference": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Id"
-              }
-            ]
-          },
-          "keep_alive": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id"
-        ]
-      },
-      "_types.mapping.RuntimeFields": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/_types.mapping.RuntimeField"
-        }
-      },
-      "_types.mapping.RuntimeField": {
-        "type": "object",
-        "properties": {
-          "fields": {
-            "description": "For type `composite`",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_types.mapping.CompositeSubField"
-            }
-          },
-          "fetch_fields": {
-            "description": "For type `lookup`",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.mapping.RuntimeFieldFetchFields"
-            }
-          },
-          "format": {
-            "description": "A custom format for `date` type runtime fields.",
-            "type": "string"
-          },
-          "input_field": {
-            "description": "For type `lookup`",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "target_field": {
-            "description": "For type `lookup`",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "target_index": {
-            "description": "For type `lookup`",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.IndexName"
-              }
-            ]
-          },
-          "script": {
-            "description": "Painless script executed at query time.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Script"
-              }
-            ]
-          },
-          "type": {
-            "description": "Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
-              }
-            ]
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.mapping.CompositeSubField": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.mapping.RuntimeFieldType"
-              }
-            ]
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "_types.mapping.RuntimeFieldType": {
-        "type": "string",
-        "enum": [
-          "boolean",
-          "composite",
-          "date",
-          "double",
-          "geo_point",
-          "geo_shape",
-          "ip",
-          "keyword",
-          "long",
-          "lookup"
-        ]
-      },
-      "_types.mapping.RuntimeFieldFetchFields": {
-        "type": "object",
-        "properties": {
-          "field": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Field"
-              }
-            ]
-          },
-          "format": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "field"
-        ]
-      },
-      "_types.ScrollId": {
-        "type": "string"
-      },
-      "_global.search._types.Suggest": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_global.search._types.CompletionSuggest"
-          },
-          {
-            "$ref": "#/components/schemas/_global.search._types.PhraseSuggest"
-          },
-          {
-            "$ref": "#/components/schemas/_global.search._types.TermSuggest"
-          }
-        ]
-      },
-      "_global.search._types.CompletionSuggest": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "options": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.CompletionSuggestOption"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_global.search._types.CompletionSuggestOption"
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "options"
-            ]
-          }
-        ]
-      },
-      "_global.search._types.CompletionSuggestOption": {
-        "type": "object",
-        "properties": {
-          "collate_match": {
-            "type": "boolean"
-          },
-          "contexts": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/_global.search._types.Context"
-              }
-            }
-          },
-          "fields": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          },
-          "_id": {
-            "type": "string"
-          },
-          "_index": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.IndexName"
-              }
-            ]
-          },
-          "_routing": {
-            "type": "string"
-          },
-          "_score": {
-            "type": "number"
-          },
-          "_source": {
-            "type": "object"
-          },
-          "text": {
-            "type": "string"
-          },
-          "score": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "text"
-        ]
-      },
-      "_global.search._types.Context": {
-        "description": "Text or location that we want similar documents for or a lookup to a document's field for the text.",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_types.GeoLocation"
-          }
-        ]
-      },
-      "_global.search._types.SuggestBase": {
-        "type": "object",
-        "properties": {
-          "length": {
-            "type": "number"
-          },
-          "offset": {
-            "type": "number"
-          },
-          "text": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "length",
-          "offset",
-          "text"
-        ]
-      },
-      "_global.search._types.PhraseSuggest": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "options": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.PhraseSuggestOption"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_global.search._types.PhraseSuggestOption"
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "options"
-            ]
-          }
-        ]
-      },
-      "_global.search._types.PhraseSuggestOption": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "score": {
-            "type": "number"
-          },
-          "highlighted": {
-            "type": "string"
-          },
-          "collate_match": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "text",
-          "score"
-        ]
-      },
-      "_global.search._types.TermSuggest": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/_global.search._types.SuggestBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "options": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/_global.search._types.TermSuggestOption"
-                  },
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/_global.search._types.TermSuggestOption"
-                    }
-                  }
-                ]
-              }
-            },
-            "required": [
-              "options"
-            ]
-          }
-        ]
-      },
-      "_global.search._types.TermSuggestOption": {
-        "type": "object",
-        "properties": {
-          "text": {
-            "type": "string"
-          },
-          "score": {
-            "type": "number"
-          },
-          "freq": {
-            "type": "number"
-          },
-          "highlighted": {
-            "type": "string"
-          },
-          "collate_match": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "text",
-          "score",
-          "freq"
-        ]
-      },
-      "async_search._types.AsyncSearchResponseBase": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Id"
-              }
-            ]
-          },
-          "is_partial": {
-            "description": "When the query is no longer running, this property indicates whether the search failed or was successfully completed on all shards.\nWhile the query is running, `is_partial` is always set to `true`.",
-            "type": "boolean"
-          },
-          "is_running": {
-            "description": "Indicates whether the search is still running or has completed.\n\n> info\n> If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.",
-            "type": "boolean"
-          },
-          "expiration_time": {
-            "description": "Indicates when the async search will expire.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DateTime"
-              }
-            ]
-          },
-          "expiration_time_in_millis": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-              }
-            ]
-          },
-          "start_time": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DateTime"
-              }
-            ]
-          },
-          "start_time_in_millis": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-              }
-            ]
-          },
-          "completion_time": {
-            "description": "Indicates when the async search completed.\nIt is present only when the search has completed.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DateTime"
-              }
-            ]
-          },
-          "completion_time_in_millis": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-              }
-            ]
-          },
-          "error": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ErrorCause"
-              }
-            ]
-          }
-        },
-        "required": [
-          "is_partial",
-          "is_running",
-          "expiration_time_in_millis",
-          "start_time_in_millis"
-        ]
-      },
-      "async_search.status.StatusResponseBase": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseBase"
-          },
-          {
-            "type": "object",
-            "properties": {
-              "_shards": {
-                "description": "The number of shards that have run the query so far.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.ShardStatistics"
-                  }
-                ]
-              },
-              "_clusters": {
-                "description": "Metadata about clusters involved in the cross-cluster search.\nIt is not shown for local-only searches.",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.ClusterStatistics"
-                  }
-                ]
-              },
-              "completion_status": {
-                "description": "If the async search completed, this field shows the status code of the search.\nFor example, `200` indicates that the async search was successfully completed.\n`503` indicates that the async search was completed with an error.",
-                "type": "number"
-              }
-            },
-            "required": [
-              "_shards"
-            ]
-          }
-        ]
-      },
-      "_types.Indices": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.IndexName"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.IndexName"
-            }
-          }
-        ]
-      },
-      "_types.ExpandWildcards": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.ExpandWildcard"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.ExpandWildcard"
-            }
-          }
-        ]
-      },
-      "_types.ExpandWildcard": {
-        "type": "string",
-        "enum": [
-          "all",
-          "open",
-          "closed",
-          "hidden",
-          "none"
-        ]
-      },
-      "_types.SearchType": {
-        "type": "string",
-        "enum": [
-          "query_then_fetch",
-          "dfs_query_then_fetch"
-        ]
-      },
-      "_types.SuggestMode": {
-        "type": "string",
-        "enum": [
-          "missing",
-          "popular",
-          "always"
-        ]
-      },
-      "_global.search._types.SourceConfigParam": {
-        "description": "Defines how to fetch a source. Fetching can be disabled entirely, or the source can be filtered.\nUsed as a query parameter along with the `_source_includes` and `_source_excludes` parameters.",
-        "oneOf": [
-          {
-            "type": "boolean"
-          },
-          {
-            "$ref": "#/components/schemas/_types.Fields"
-          }
-        ]
       },
       "_types.Refresh": {
         "type": "string",
