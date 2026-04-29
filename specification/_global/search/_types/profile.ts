@@ -20,7 +20,6 @@
 import { IndexName, NodeId } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitNanos } from '@_types/Time'
-import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -99,27 +98,8 @@ export class Collector {
   children?: Collector[]
 }
 
-/**
- * Coordinator snapshot of the original search request, serialized under `profile.request` when profiling is enabled.
- * Introduced in Elasticsearch 9.5; omitted when the cluster contains mixed-version nodes that do not serialize this metadata.
- */
-export class SearchRequestCoordinatorMetadata {
-  /**
-   * Original query source from the search request (`SearchSourceBuilder` as JSON).
-   */
-  source?: SearchRequestBody
-  /**
-   * Target index expressions from the request (before index resolution).
-   */
-  indices?: IndexName[]
-}
-
 export class Profile {
   shards: ShardProfile[]
-  /**
-   * When profiling is enabled, the original query source and target indices from the coordinating request.
-   */
-  request?: SearchRequestCoordinatorMetadata
 }
 
 export class QueryBreakdown {

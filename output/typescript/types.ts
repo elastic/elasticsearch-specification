@@ -1746,7 +1746,6 @@ export interface SearchPointInTimeReference {
 
 export interface SearchProfile {
   shards: SearchShardProfile[]
-  request?: SearchSearchRequestCoordinatorMetadata
 }
 
 export interface SearchQueryBreakdown {
@@ -1847,11 +1846,6 @@ export interface SearchSearchRequestBody {
   pit?: SearchPointInTimeReference
   runtime_mappings?: MappingRuntimeFields
   stats?: string[]
-}
-
-export interface SearchSearchRequestCoordinatorMetadata {
-  source?: SearchSearchRequestBody
-  indices?: IndexName[]
 }
 
 export interface SearchShardProfile {
