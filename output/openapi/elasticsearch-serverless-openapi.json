@@ -27694,6 +27694,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/security.get_role-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_role-include_implicit"
           }
         ],
         "responses": {
@@ -27915,6 +27918,11 @@
         "summary": "Get roles",
         "description": "Get roles in the native realm.\nThe role management APIs are generally the preferred way to manage roles, rather than using file-based role management.\nThe get roles API cannot retrieve roles that are defined in roles files.\n\n## Required authorization\n\n* Cluster privileges: `read_security`\n",
         "operationId": "security-get-role-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.get_role-include_implicit"
+          }
+        ],
         "responses": {
           "200": {
             "$ref": "#/components/responses/security.get_role-200"
@@ -83636,7 +83644,7 @@
           "indices": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/security._types.IndicesPrivileges"
+              "$ref": "#/components/schemas/security.get_role.IndicesPrivilegesRead"
             }
           },
           "metadata": {
@@ -83695,6 +83703,61 @@
           "indices",
           "metadata",
           "applications"
+        ]
+      },
+      "security.get_role.IndicesPrivilegesRead": {
+        "description": "Read-side variant of `IndicesPrivileges` returned by the get role API.\nCarries the `implicitly_granted` marker that is set on entries contributed by\na registered `ImplicitPrivilegesProvider` when `include_implicit` is `true`.",
+        "type": "object",
+        "properties": {
+          "implicitly_granted": {
+            "description": "Set to `true` on entries that were contributed by a registered `ImplicitPrivilegesProvider`\nrather than explicitly stored on the role. Only present when the get role API is called with\n`include_implicit=true`. The put role API rejects this field, so clients must not echo it back\non a GET-then-PUT round-trip.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "field_security": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level"
+            },
+            "description": "The document fields that the owners of the role have read access to.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.FieldSecurity"
+              }
+            ]
+          },
+          "names": {
+            "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/_types.IndexName"
+                }
+              }
+            ]
+          },
+          "privileges": {
+            "description": "The index level privileges that owners of the role have on the specified indices.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types.IndexPrivilege"
+            }
+          },
+          "query": {
+            "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.IndicesPrivilegesQuery"
+              }
+            ]
+          }
+        },
+        "required": [
+          "names",
+          "privileges"
         ]
       },
       "security._types.RoleTemplate": {
@@ -92740,6 +92803,17 @@
           "$ref": "#/components/schemas/_types.Names"
         },
         "style": "simple"
+      },
+      "security.get_role-include_implicit": {
+        "in": "query",
+        "name": "include_implicit",
+        "description": "If `true`, include privileges that are implicitly granted by registered `ImplicitPrivilegesProviders` alongside the explicitly configured privileges.\nEach implicit entry in the response is annotated with `implicitly_granted: true`.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "x-state": "Generally available",
+        "style": "form"
       },
       "security.has_privileges-user": {
         "in": "path",

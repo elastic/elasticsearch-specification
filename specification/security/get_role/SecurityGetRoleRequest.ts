@@ -51,5 +51,15 @@ export interface Request extends RequestBase {
      */
     name?: Names
   }
+  query_parameters: {
+    /**
+     * If `true`, include privileges that are implicitly granted by registered `ImplicitPrivilegesProviders` alongside the explicitly configured privileges.
+     * Each implicit entry in the response is annotated with `implicitly_granted: true`.
+     * @server_default false
+     * @availability stack since=9.5.0
+     * @availability serverless
+     */
+    include_implicit?: boolean
+  }
   response_media_type: MediaType.Json
 }
