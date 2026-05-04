@@ -21594,15 +21594,25 @@ export interface SecurityGetPrivilegesRequest extends RequestBase {
 
 export type SecurityGetPrivilegesResponse = Record<string, Record<string, SecurityPutPrivilegesActions>>
 
+export interface SecurityGetRoleIndicesPrivilegesRead {
+  implicitly_granted?: boolean
+  field_security?: SecurityFieldSecurity
+  names: IndexName | IndexName[]
+  privileges: SecurityIndexPrivilege[]
+  query?: SecurityIndicesPrivilegesQuery
+  allow_restricted_indices?: boolean
+}
+
 export interface SecurityGetRoleRequest extends RequestBase {
   name?: Names
+  include_implicit?: boolean
 }
 
 export type SecurityGetRoleResponse = Record<string, SecurityGetRoleRole>
 
 export interface SecurityGetRoleRole {
   cluster: SecurityClusterPrivilege[]
-  indices: SecurityIndicesPrivileges[]
+  indices: SecurityGetRoleIndicesPrivilegesRead[]
   remote_indices?: SecurityRemoteIndicesPrivileges[]
   remote_cluster?: SecurityRemoteClusterPrivileges[]
   metadata: Metadata
