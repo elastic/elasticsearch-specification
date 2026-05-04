@@ -19103,6 +19103,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"amazonbedrock\",\"service_settings\":{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/amazon_bedrock_chat_completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"provider\\\":\\\"amazontitan\\\",\\\"model\\\":\\\"amazon.titan-text-premier-v1:0\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample1.yaml": [
@@ -19125,6 +19129,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"fireworks/qwen3-embedding-8b\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample3.yaml": [
@@ -19147,6 +19155,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/my-fireworks-chat\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-chat\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"accounts/fireworks/models/deepseek-v3p1\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample2.yaml": [
@@ -19169,6 +19181,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\",\"dimensions\":1024,\"similarity\":\"cosine\",\"rate_limit\":{\"requests_per_minute\":6000}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/my-fireworks-embeddings\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"fireworks/qwen3-embedding-8b\\\",\\\"dimensions\\\":1024,\\\"similarity\\\":\\\"cosine\\\",\\\"rate_limit\\\":{\\\"requests_per_minute\\\":6000}}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample4.yaml": [
@@ -19191,6 +19207,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"fireworksai\",\"service_settings\":{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}}' \"$ELASTICSEARCH_URL/_inference/completion/my-fireworks-completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"accounts/fireworks/models/deepseek-v3p1\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample5.yaml": [
@@ -19213,6 +19233,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"enabled\":true,\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion/_stream\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().chatCompletionUnified(c -> c\n    .inferenceId(\"reasoning-chat-completion\")\n    .chatCompletionRequest(ch -> ch\n        .messages(List.of(Message.of(m -> m\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"user\")\n            ),Message.of(me -> me\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"This is the barber paradox. Such a barber cannot logically exist.\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"assistant\")\n            ),Message.of(mes -> mes\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"What if there are 2 barbers?\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"user\")\n            )))\n    )\n);\n"
     }
   ],
   "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample4.yaml": [
@@ -19235,6 +19259,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"effort\":\"high\",\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion/_stream\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().chatCompletionUnified(c -> c\n    .inferenceId(\"reasoning-chat-completion\")\n    .chatCompletionRequest(ch -> ch\n        .messages(List.of(Message.of(m -> m\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"user\")\n            ),Message.of(me -> me\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"This is the barber paradox. Such a barber cannot logically exist.\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"assistant\")\n            ),Message.of(mes -> mes\n                .content(co -> co\n                    .object(o -> o\n                        .text(\"What if there are 2 barbers?\")\n                        .type(\"text\")\n                    )\n                )\n                .role(\"user\")\n            )))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample4.yaml": [
@@ -19257,6 +19285,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"azureopenai\",\"service_settings\":{\"api_version\":\"2023-05-15\",\"client_id\":\"12345\",\"client_secret\":\"secret\",\"deployment_id\":\"Deployment-id\",\"resource_name\":\"Resource-name\",\"scopes\":[\"Scope-1\",\"Scope-2\"],\"tenant_id\":\"tenant id\"},\"task_settings\":{\"headers\":{\"Custom-Header-Key\":\"Custom header value\"}}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/azure_openai_embeddings\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_version\\\":\\\"2023-05-15\\\",\\\"client_id\\\":\\\"12345\\\",\\\"client_secret\\\":\\\"secret\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"scopes\\\":[\\\"Scope-1\\\",\\\"Scope-2\\\"],\\\"tenant_id\\\":\\\"tenant id\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"headers\\\":{\\\"Custom-Header-Key\\\":\\\"Custom header value\\\"}}\"))\n    )\n);\n"
     }
   ]
 }
