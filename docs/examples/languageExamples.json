@@ -1010,7 +1010,7 @@
     },
     {
       "language": "Java",
-      "code": "client.snapshot().delete(d -> d\n    .repository(\"my_repository\")\n    .snapshot(\"snapshot_2,snapshot_3\")\n);\n"
+      "code": "client.snapshot().delete(d -> d\n    .repository(\"my_repository\")\n    .snapshot(List.of(\"snapshot_2\",\"snapshot_3\"))\n);\n"
     }
   ],
   "specification/snapshot/verify_repository/examples/request/SnapshotVerifyRepositoryExample1.yaml": [
@@ -2154,7 +2154,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().createFrom(c -> c\n    .dest(\"my-new-index\")\n    .source(\"my-index\")\n    .createFrom(cr -> cr)\n);\n"
+      "code": "client.indices().createFrom(c -> c\n    .dest(\"my-new-index\")\n    .source(\"my-index\")\n);\n"
     }
   ],
   "specification/indices/close/examples/request/CloseIndexRequestExample1.yaml": [
@@ -2979,6 +2979,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"downsampling\":[{\"after\":\"1d\",\"fixed_interval\":\"10m\"},{\"after\":\"7d\",\"fixed_interval\":\"1d\"}]}' \"$ELASTICSEARCH_URL/_data_stream/my-weather-sensor-data-stream/_lifecycle\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().putDataLifecycle(p -> p\n    .downsampling(List.of(DownsamplingRound.of(d -> d\n            .after(a -> a\n                .time(\"1d\")\n            )\n            .fixedInterval(f -> f\n                .time(\"10m\")\n            )\n        ),DownsamplingRound.of(do -> do\n            .after(af -> af\n                .time(\"7d\")\n            )\n            .fixedInterval(f -> f\n                .time(\"1d\")\n            )\n        )))\n    .name(\"my-weather-sensor-data-stream\")\n);\n"
     }
   ],
   "specification/indices/exists_template/examples/request/IndicesExistsTemplateExample1.yaml": [
@@ -14274,7 +14278,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"star wars main character\")\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"star wars main character\")\n    .returnDocuments(false)\n    .topN(2)\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample3.yaml": [
@@ -14300,7 +14304,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"star wars main character\")\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"star wars main character\")\n    .returnDocuments(true)\n    .topN(3)\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample4.yaml": [
@@ -17630,7 +17634,7 @@
     },
     {
       "language": "Java",
-      "code": "client.project().tags();\n"
+      "code": "client.project().tags(t -> t);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample4.yaml": [
@@ -18645,6 +18649,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"jinaai\",\"service_settings\":{\"model_id\":\"jina-embeddings-v4\",\"api_key\":\"JinaAi-Api-key\"}}' \"$ELASTICSEARCH_URL/_inference/embedding/jinaai-embeddings-multimodal\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-multimodal\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"jina-embeddings-v4\\\",\\\"api_key\\\":\\\"JinaAi-Api-key\\\"}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample4.yaml": [
@@ -18667,6 +18675,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"jinaai\",\"service_settings\":{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\",\"multimodal_model\":false}}' \"$ELASTICSEARCH_URL/_inference/embedding/jinaai-embeddings-text-only\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-text-only\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"jina-embeddings-v3\\\",\\\"api_key\\\":\\\"JinaAi-Api-key\\\",\\\"multimodal_model\\\":false}\"))\n    )\n);\n"
     }
   ],
   "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
@@ -18689,6 +18701,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"}},{\"content\":{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().embedding(e -> e\n    .inferenceId(\"my-multimodal-endpoint\")\n    .embedding(em -> em\n        .input(i -> i\n            .content(List.of(EmbeddingContentObject.of(emb -> emb\n                    .content(c -> c\n                        .type(EmbeddingContentType.Image)\n                        .format(EmbeddingContentFormat.Base64)\n                        .value(\"data:image/jpeg;base64,...\")\n                    )\n                ),EmbeddingContentObject.of(emb -> emb\n                    .content(c -> c\n                        .type(EmbeddingContentType.Text)\n                        .value(\"Some text to create an embedding\")\n                    )\n                )))\n        )\n    )\n);\n"
     }
   ],
   "specification/inference/embedding/examples/request/EmbeddingRequestExample2.yaml": [
@@ -18993,6 +19009,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    },
+    {
+      "language": "Java",
+      "code": "client.project().getRouting(g -> g\n    .name(\"aws-us-only\")\n);\n"
     }
   ],
   "specification/project/delete_routing/examples/request/DeleteProjectRoutingRequestExample1.yaml": [
@@ -19015,6 +19035,10 @@
     {
       "language": "curl",
       "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    },
+    {
+      "language": "Java",
+      "code": "client.project().deleteRouting(d -> d\n    .name(\"aws-us-only\")\n);\n"
     }
   ],
   "specification/project/create_many_routing/examples/request/CreateProjectRoutingRequestExample1.yaml": [
@@ -19037,6 +19061,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"aws-us-only\":{\"expression\":\"_csp:aws AND _region:us*\"},\"aws-eu-only\":{\"expression\":\"_csp:aws AND _region:eu*\"}}' \"$ELASTICSEARCH_URL/_project_routing/\""
+    },
+    {
+      "language": "Java",
+      "code": "client.project().createManyRouting(c -> c\n    .expressions(Map.of(\"aws-eu-only\", ProjectRoutingExpression.of(p -> p\n            .expression(\"_csp:aws AND _region:eu*\")\n        ),\"aws-us-only\", ProjectRoutingExpression.of(p -> p\n            .expression(\"_csp:aws AND _region:us*\")\n        )))\n);\n"
     }
   ],
   "specification/project/get_many_routing/examples/request/GetProjectRoutingRequestExample1.yaml": [
@@ -19059,6 +19087,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_project_routing/\""
+    },
+    {
+      "language": "Java",
+      "code": "client.project().getManyRouting();\n"
     }
   ],
   "specification/project/create_routing/examples/request/CreateProjectRoutingRequestExample1.yaml": [
@@ -19081,6 +19113,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"expression\":\"_csp:aws AND _region:us*\"}' \"$ELASTICSEARCH_URL/_project_routing/aws-us-only\""
+    },
+    {
+      "language": "Java",
+      "code": "client.project().createRouting(c -> c\n    .name(\"aws-us-only\")\n    .expressions(e -> e\n        .expression(\"_csp:aws AND _region:us*\")\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonbedrock/examples/request/PutAmazonBedrockRequestExample3.yaml": [
