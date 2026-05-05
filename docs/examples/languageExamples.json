@@ -1088,7 +1088,7 @@
     },
     {
       "language": "Java",
-      "code": "client.snapshot().repositoryAnalyze(r -> r\n    .blobCount(10)\n    .maxBlobSize(\"1mb\")\n    .name(\"my_repository\")\n    .timeout(t -> t\n        .offset(120)\n    )\n);\n"
+      "code": "client.snapshot().repositoryAnalyze(r -> r\n    .blobCount(10)\n    .maxBlobSize(\"1mb\")\n    .name(\"my_repository\")\n    .timeout(t -> t\n        .time(\"120s\")\n    )\n);\n"
     }
   ],
   "specification/snapshot/status/examples/request/SnapshotStatusRequestExample1.yaml": [
@@ -3866,7 +3866,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().resolveCluster(r -> r\n    .ignoreUnavailable(false)\n    .name(List.of(\"not-present\",\"clust*:my-index*\",\"oldcluster:*\"))\n    .timeout(t -> t\n        .offset(5)\n    )\n);\n"
+      "code": "client.indices().resolveCluster(r -> r\n    .ignoreUnavailable(false)\n    .name(List.of(\"not-present\",\"clust*:my-index*\",\"oldcluster:*\"))\n    .timeout(t -> t\n        .time(\"5s\")\n    )\n);\n"
     }
   ],
   "specification/_global/get_source/examples/request/GetSourceRequestExample1.yaml": [
@@ -5090,7 +5090,7 @@
     },
     {
       "language": "Java",
-      "code": "client.openPointInTime(o -> o\n    .allowPartialSearchResults(true)\n    .index(\"my-index-000001\")\n    .keepAlive(k -> k\n        .offset(1)\n    )\n);\n"
+      "code": "client.openPointInTime(o -> o\n    .allowPartialSearchResults(true)\n    .index(\"my-index-000001\")\n    .keepAlive(k -> k\n        .time(\"1m\")\n    )\n);\n"
     }
   ],
   "specification/_global/search_shards/examples/request/SearchShardsRequestExample1.yaml": [
@@ -10802,7 +10802,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ml().upgradeJobSnapshot(u -> u\n    .jobId(\"low_request_rate\")\n    .snapshotId(\"1828371\")\n    .timeout(t -> t\n        .offset(45)\n    )\n    .waitForCompletion(true)\n);\n"
+      "code": "client.ml().upgradeJobSnapshot(u -> u\n    .jobId(\"low_request_rate\")\n    .snapshotId(\"1828371\")\n    .timeout(t -> t\n        .time(\"45m\")\n    )\n    .waitForCompletion(true)\n);\n"
     }
   ],
   "specification/ml/get_jobs/examples/request/MlGetJobsExample1.yaml": [
@@ -11426,7 +11426,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ml().deleteExpiredData(d -> d\n    .timeout(t -> t\n        .offset(1)\n    )\n);\n"
+      "code": "client.ml().deleteExpiredData(d -> d\n    .timeout(t -> t\n        .time(\"1h\")\n    )\n);\n"
     }
   ],
   "specification/ml/clear_trained_model_deployment_cache/examples/request/MlClearTrainedModelDeploymentCacheExample1.yaml": [
@@ -11660,7 +11660,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ml().startTrainedModelDeployment(s -> s\n    .modelId(\"elastic__distilbert-base-uncased-finetuned-conll03-english\")\n    .timeout(t -> t\n        .offset(1)\n    )\n    .waitFor(DeploymentAllocationState.Started)\n);\n"
+      "code": "client.ml().startTrainedModelDeployment(s -> s\n    .modelId(\"elastic__distilbert-base-uncased-finetuned-conll03-english\")\n    .timeout(t -> t\n        .time(\"1m\")\n    )\n    .waitFor(DeploymentAllocationState.Started)\n);\n"
     }
   ],
   "specification/ml/delete_calendar_event/examples/request/MlDeleteCalendarEventExample1.yaml": [
@@ -12514,7 +12514,7 @@
     },
     {
       "language": "Java",
-      "code": "client.rollup().stopJob(s -> s\n    .id(\"sensor\")\n    .timeout(t -> t\n        .offset(10)\n    )\n    .waitForCompletion(true)\n);\n"
+      "code": "client.rollup().stopJob(s -> s\n    .id(\"sensor\")\n    .timeout(t -> t\n        .time(\"10s\")\n    )\n    .waitForCompletion(true)\n);\n"
     }
   ],
   "specification/rollup/get_rollup_caps/examples/request/GetRollupCapabilitiesRequestExample1.yaml": [
@@ -15214,7 +15214,7 @@
     },
     {
       "language": "Java",
-      "code": "client.eql().get(g -> g\n    .id(\"FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\")\n    .waitForCompletionTimeout(w -> w\n        .offset(2)\n    )\n);\n"
+      "code": "client.eql().get(g -> g\n    .id(\"FmNJRUZ1YWZCU3dHY1BIOUhaenVSRkEaaXFlZ3h4c1RTWFNocDdnY2FSaERnUTozNDE=\")\n    .waitForCompletionTimeout(w -> w\n        .time(\"2s\")\n    )\n);\n"
     }
   ],
   "specification/eql/search/examples/request/EqlSearchRequestExample1.yaml": [
@@ -16914,7 +16914,7 @@
     },
     {
       "language": "Java",
-      "code": "client.sql().getAsync(g -> g\n    .format(\"json\")\n    .id(\"FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=\")\n    .waitForCompletionTimeout(w -> w\n        .offset(2)\n    )\n);\n"
+      "code": "client.sql().getAsync(g -> g\n    .format(\"json\")\n    .id(\"FnR0TDhyWUVmUmVtWXRWZER4MXZiNFEad2F5UDk2ZVdTVHV1S0xDUy00SklUdzozMTU=\")\n    .waitForCompletionTimeout(w -> w\n        .time(\"2s\")\n    )\n);\n"
     }
   ],
   "specification/sql/get_async_status/examples/request/SqlGetAsyncStatusExample1.yaml": [
