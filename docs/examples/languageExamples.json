@@ -74,7 +74,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().shards();\n"
+      "code": "client.cat().shards(s -> s\n    .h(List.of())\n    .index(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/component_templates/examples/request/CatComponentTemplatesRequestExample1.yaml": [
@@ -100,7 +100,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().componentTemplates();\n"
+      "code": "client.cat().componentTemplates(c -> c\n    .h(List.of())\n    .name(\"my-template-*\")\n    .s(\"name\")\n);\n"
     }
   ],
   "specification/cat/tasks/examples/request/CatTasksRequestExample1.yaml": [
@@ -126,7 +126,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().tasks();\n"
+      "code": "client.cat().tasks(t -> t\n    .actions(List.of())\n    .h(List.of())\n    .nodes(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/indices/examples/request/CatIndicesRequestExample1.yaml": [
@@ -152,7 +152,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().indices();\n"
+      "code": "client.cat().indices(i -> i\n    .expandWildcards(List.of())\n    .h(List.of())\n    .index(\"my-index-*\")\n    .s(\"index\")\n);\n"
     }
   ],
   "specification/cat/thread_pool/examples/request/CatThreadPoolRequestExample1.yaml": [
@@ -178,7 +178,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().threadPool();\n"
+      "code": "client.cat().threadPool(t -> t\n    .h(List.of())\n    .s(List.of())\n    .threadPoolPatterns(List.of())\n);\n"
     }
   ],
   "specification/cat/pending_tasks/examples/request/CatPendingTasksRequestExample1.yaml": [
@@ -204,7 +204,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().pendingTasks();\n"
+      "code": "client.cat().pendingTasks(p -> p\n    .h(List.of(\"insertOrder\",\"timeInQueue\",\"priority\",\"source\"))\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/nodeattrs/examples/request/CatNodeAttributesRequestExample1.yaml": [
@@ -230,7 +230,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().nodeattrs();\n"
+      "code": "client.cat().nodeattrs(n -> n\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/snapshots/examples/request/CatSnapshotsRequestExample1.yaml": [
@@ -256,7 +256,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().snapshots();\n"
+      "code": "client.cat().snapshots(s -> s\n    .h(List.of())\n    .repository(\"repo1\")\n    .s(\"id\")\n);\n"
     }
   ],
   "specification/cat/nodes/examples/request/CatNodesRequestExample2.yaml": [
@@ -282,7 +282,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().nodes();\n"
+      "code": "client.cat().nodes(n -> n\n    .h(List.of(\"id\",\"ip\",\"port\",\"v\",\"m\"))\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/ml_datafeeds/examples/request/CatDatafeedsRequestExample1.yaml": [
@@ -308,7 +308,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().mlDatafeeds();\n"
+      "code": "client.cat().mlDatafeeds(m -> m\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/plugins/examples/request/CatPluginsRequestExample1.yaml": [
@@ -334,7 +334,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().plugins();\n"
+      "code": "client.cat().plugins(p -> p\n    .h(List.of(\"name\",\"component\",\"version\",\"description\"))\n    .s(\"component\")\n);\n"
     }
   ],
   "specification/cat/recovery/examples/request/CatRecoveryRequestExample1.yaml": [
@@ -360,7 +360,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().recovery();\n"
+      "code": "client.cat().recovery(r -> r\n    .h(List.of())\n    .index(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/health/examples/request/CatHealthRequestExample1.yaml": [
@@ -386,7 +386,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().health();\n"
+      "code": "client.cat().health(h -> h\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/ml_jobs/examples/request/CatJobsRequestExample1.yaml": [
@@ -412,7 +412,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().mlJobs();\n"
+      "code": "client.cat().mlJobs(m -> m\n    .h(List.of(\"id\",\"s\",\"dpr\",\"mb\"))\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/count/examples/request/CatCountRequestExample1.yaml": [
@@ -438,7 +438,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().count();\n"
+      "code": "client.cat().count(c -> c\n    .h(List.of())\n    .index(\"my-index-000001\")\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/repositories/examples/request/CatRepositoriesRequestExample1.yaml": [
@@ -464,7 +464,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().repositories();\n"
+      "code": "client.cat().repositories(r -> r\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/ml_data_frame_analytics/examples/request/CatDataframeanalyticsRequestExample1.yaml": [
@@ -490,7 +490,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().mlDataFrameAnalytics();\n"
+      "code": "client.cat().mlDataFrameAnalytics(m -> m\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/transforms/examples/request/CatTransformsRequestExample1.yaml": [
@@ -516,7 +516,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().transforms();\n"
+      "code": "client.cat().transforms(t -> t\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/master/examples/request/CatMasterRequestExample1.yaml": [
@@ -542,7 +542,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().master();\n"
+      "code": "client.cat().master(m -> m\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/templates/examples/request/CatTemplatesRequestExample1.yaml": [
@@ -568,7 +568,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().templates();\n"
+      "code": "client.cat().templates(t -> t\n    .h(List.of())\n    .name(\"my-template-*\")\n    .s(\"name\")\n);\n"
     }
   ],
   "specification/cat/ml_trained_models/examples/request/CatTrainedModelsRequestExample1.yaml": [
@@ -594,7 +594,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().mlTrainedModels();\n"
+      "code": "client.cat().mlTrainedModels(m -> m\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/aliases/examples/request/CatAliasesRequestExample1.yaml": [
@@ -620,7 +620,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().aliases();\n"
+      "code": "client.cat().aliases(a -> a\n    .expandWildcards(List.of())\n    .h(List.of())\n    .name(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/fielddata/examples/request/CatFielddataRequestExample1.yaml": [
@@ -646,7 +646,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().fielddata();\n"
+      "code": "client.cat().fielddata(f -> f\n    .fields(\"body\")\n    .h(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/segments/examples/request/CatSegmentsRequestExample1.yaml": [
@@ -672,7 +672,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().segments();\n"
+      "code": "client.cat().segments(s -> s\n    .expandWildcards(List.of())\n    .h(List.of())\n    .index(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/cat/allocation/examples/request/CatAllocationRequestExample1.yaml": [
@@ -698,7 +698,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cat().allocation();\n"
+      "code": "client.cat().allocation(a -> a\n    .h(List.of())\n    .nodeId(List.of())\n    .s(List.of())\n);\n"
     }
   ],
   "specification/searchable_snapshots/cache_stats/examples/request/CacheStatsRequestExample1.yaml": [
