@@ -1608,7 +1608,7 @@
     },
     {
       "language": "Java",
-      "code": "client.cluster().info(i -> i\n    .target(\"_all\")\n);\n"
+      "code": "client.cluster().info(i -> i\n    .target(ClusterInfoTarget.All)\n);\n"
     }
   ],
   "specification/cluster/remote_info/examples/request/ClusterRemoteInfoExample1.yaml": [
@@ -3788,7 +3788,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().stats(s -> s\n    .completionFields(List.of())\n    .expandWildcards(List.of())\n    .fielddataFields(List.of())\n    .fields(\"my_join_field\")\n    .groups(List.of())\n    .index(List.of())\n    .metric(\"fielddata\")\n);\n"
+      "code": "client.indices().stats(s -> s\n    .completionFields(List.of())\n    .expandWildcards(List.of())\n    .fielddataFields(List.of())\n    .fields(\"my_join_field\")\n    .groups(List.of())\n    .index(List.of())\n    .metric(CommonStatsFlag.Fielddata)\n);\n"
     }
   ],
   "specification/indices/segments/examples/request/IndicesSegmentsExample1.yaml": [
@@ -9424,7 +9424,7 @@
     },
     {
       "language": "Java",
-      "code": "client.nodes().info(i -> i\n    .metric(\"jvm\")\n    .nodeId(\"_all\")\n);\n"
+      "code": "client.nodes().info(i -> i\n    .metric(NodesInfoMetric.Jvm)\n    .nodeId(\"_all\")\n);\n"
     }
   ],
   "specification/nodes/hot_threads/examples/request/NodesHotThreadsExample1.yaml": [
@@ -9502,7 +9502,7 @@
     },
     {
       "language": "Java",
-      "code": "client.nodes().stats(s -> s\n    .completionFields(List.of())\n    .fielddataFields(List.of())\n    .fields(List.of())\n    .indexMetric(List.of())\n    .metric(\"process\")\n    .nodeId(List.of())\n    .types(List.of())\n);\n"
+      "code": "client.nodes().stats(s -> s\n    .completionFields(List.of())\n    .fielddataFields(List.of())\n    .fields(List.of())\n    .indexMetric(List.of())\n    .metric(NodeStatsMetric.Process)\n    .nodeId(List.of())\n    .types(List.of())\n);\n"
     }
   ],
   "specification/ingest/get_pipeline/examples/request/IngestGetPipelineExample1.yaml": [
