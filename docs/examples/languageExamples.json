@@ -3970,7 +3970,7 @@
     },
     {
       "language": "Java",
-      "code": "client.scriptsPainlessExecute(s -> s\n    .context(PainlessContext.Filter)\n    .contextSetup(c -> c\n        .document(JsonData.fromJson(\"{\\\"field\\\":\\\"four\\\"}\"))\n        .index(\"my-index-000001\")\n    )\n    .script(sc -> sc\n        .source(so -> so\n            .scriptString(\"doc['field'].value.length() <= params.max_length\")\n        )\n        .params(\"max_length\", JsonData.fromJson(\"4\"))\n        .options(Map.of())\n    )\n);\n"
+      "code": "client.scriptsPainlessExecute(s -> s\n    .context(PainlessContext.Filter)\n    .contextSetup(c -> c\n        .document(JsonData.fromJson(\"\"\"\n{\"field\":\"four\"}\n\"\"\"))\n        .index(\"my-index-000001\")\n    )\n    .script(sc -> sc\n        .source(so -> so\n            .scriptString(\"doc['field'].value.length() <= params.max_length\")\n        )\n        .params(\"max_length\", JsonData.fromJson(\"4\"))\n        .options(Map.of())\n    )\n);\n"
     }
   ],
   "specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample3.yaml": [
@@ -3996,7 +3996,7 @@
     },
     {
       "language": "Java",
-      "code": "client.scriptsPainlessExecute(s -> s\n    .context(PainlessContext.Score)\n    .contextSetup(c -> c\n        .document(JsonData.fromJson(\"{\\\"rank\\\":4}\"))\n        .index(\"my-index-000001\")\n    )\n    .script(sc -> sc\n        .source(so -> so\n            .scriptString(\"doc['rank'].value / params.max_rank\")\n        )\n        .params(\"max_rank\", JsonData.fromJson(\"5\"))\n        .options(Map.of())\n    )\n);\n"
+      "code": "client.scriptsPainlessExecute(s -> s\n    .context(PainlessContext.Score)\n    .contextSetup(c -> c\n        .document(JsonData.fromJson(\"\"\"\n{\"rank\":4}\n\"\"\"))\n        .index(\"my-index-000001\")\n    )\n    .script(sc -> sc\n        .source(so -> so\n            .scriptString(\"doc['rank'].value / params.max_rank\")\n        )\n        .params(\"max_rank\", JsonData.fromJson(\"5\"))\n        .options(Map.of())\n    )\n);\n"
     }
   ],
   "specification/_global/scripts_painless_execute/examples/request/ExecutePainlessScriptRequestExample1.yaml": [
@@ -4496,7 +4496,7 @@
     },
     {
       "language": "Java",
-      "code": "client.update(u -> u\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n    .script(s -> s\n        .source(so -> so\n            .scriptString(\"ctx._source.counter += params.count\")\n        )\n        .params(\"count\", JsonData.fromJson(\"4\"))\n        .lang(\"painless\")\n        .options(Map.of())\n    )\n    .upsert(JsonData.fromJson(\"{\\\"counter\\\":1}\"))\n,Void.class);\n"
+      "code": "client.update(u -> u\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n    .script(s -> s\n        .source(so -> so\n            .scriptString(\"ctx._source.counter += params.count\")\n        )\n        .params(\"count\", JsonData.fromJson(\"4\"))\n        .lang(\"painless\")\n        .options(Map.of())\n    )\n    .upsert(JsonData.fromJson(\"\"\"\n{\"counter\":1}\n\"\"\"))\n,Void.class);\n"
     }
   ],
   "specification/_global/update/examples/request/UpdateRequestExample8.yaml": [
@@ -4522,7 +4522,7 @@
     },
     {
       "language": "Java",
-      "code": "client.update(u -> u\n    .doc(JsonData.fromJson(\"{\\\"name\\\":\\\"new_name\\\"}\"))\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n,Void.class);\n"
+      "code": "client.update(u -> u\n    .doc(JsonData.fromJson(\"\"\"\n{\"name\":\"new_name\"}\n\"\"\"))\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n,Void.class);\n"
     }
   ],
   "specification/_global/update/examples/request/UpdateRequestExample11.yaml": [
@@ -4548,7 +4548,7 @@
     },
     {
       "language": "Java",
-      "code": "client.update(u -> u\n    .doc(JsonData.fromJson(\"{\\\"name\\\":\\\"new_name\\\"}\"))\n    .docAsUpsert(true)\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n,Void.class);\n"
+      "code": "client.update(u -> u\n    .doc(JsonData.fromJson(\"\"\"\n{\"name\":\"new_name\"}\n\"\"\"))\n    .docAsUpsert(true)\n    .id(\"1\")\n    .index(\"test\")\n    .routing(List.of())\n,Void.class);\n"
     }
   ],
   "specification/_global/update/examples/request/UpdateRequestExample4.yaml": [
@@ -4856,7 +4856,7 @@
     },
     {
       "language": "Java",
-      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"{\\\"plot\\\":\\\"When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil.\\\"}\"))\n    .fieldStatistics(true)\n    .fields(List.of())\n    .filter(f -> f\n        .maxNumTerms(3)\n        .minDocFreq(1)\n        .minTermFreq(1)\n    )\n    .index(\"imdb\")\n    .offsets(false)\n    .perFieldAnalyzer(Map.of())\n    .positions(false)\n    .routing(List.of())\n    .termStatistics(true)\n);\n"
+      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"\"\"\n{\"plot\":\"When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil.\"}\n\"\"\"))\n    .fieldStatistics(true)\n    .fields(List.of())\n    .filter(f -> f\n        .maxNumTerms(3)\n        .minDocFreq(1)\n        .minTermFreq(1)\n    )\n    .index(\"imdb\")\n    .offsets(false)\n    .perFieldAnalyzer(Map.of())\n    .positions(false)\n    .routing(List.of())\n    .termStatistics(true)\n);\n"
     }
   ],
   "specification/_global/termvectors/examples/request/TermVectorsRequestExample2.yaml": [
@@ -4882,7 +4882,7 @@
     },
     {
       "language": "Java",
-      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"{\\\"fullname\\\":\\\"John Doe\\\",\\\"text\\\":\\\"test test test\\\"}\"))\n    .fields(\"fullname\")\n    .index(\"my-index-000001\")\n    .perFieldAnalyzer(\"fullname\", \"keyword\")\n    .routing(List.of())\n);\n"
+      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"\"\"\n{\"fullname\":\"John Doe\",\"text\":\"test test test\"}\n\"\"\"))\n    .fields(\"fullname\")\n    .index(\"my-index-000001\")\n    .perFieldAnalyzer(\"fullname\", \"keyword\")\n    .routing(List.of())\n);\n"
     }
   ],
   "specification/_global/termvectors/examples/request/TermVectorsRequestExample5.yaml": [
@@ -4908,7 +4908,7 @@
     },
     {
       "language": "Java",
-      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"{\\\"fullname\\\":\\\"John Doe\\\",\\\"text\\\":\\\"test test test\\\"}\"))\n    .fields(List.of())\n    .index(\"my-index-000001\")\n    .perFieldAnalyzer(Map.of())\n    .routing(List.of())\n);\n"
+      "code": "client.termvectors(t -> t\n    .doc(JsonData.fromJson(\"\"\"\n{\"fullname\":\"John Doe\",\"text\":\"test test test\"}\n\"\"\"))\n    .fields(List.of())\n    .index(\"my-index-000001\")\n    .perFieldAnalyzer(Map.of())\n    .routing(List.of())\n);\n"
     }
   ],
   "specification/_global/termvectors/examples/request/TermVectorsRequestExample4.yaml": [
@@ -5428,7 +5428,7 @@
     },
     {
       "language": "Java",
-      "code": "client.mtermvectors(m -> m\n    .docs(List.of(MultiTermVectorsOperation.of(mu -> mu\n            .index(\"my-index-000001\")\n            .doc(JsonData.fromJson(\"{\\\"message\\\":\\\"test test test\\\"}\"))\n            .fields(List.of())\n            .routing(List.of())\n        ),MultiTermVectorsOperation.of(mu -> mu\n            .index(\"my-index-000001\")\n            .doc(JsonData.fromJson(\"{\\\"message\\\":\\\"Another test ...\\\"}\"))\n            .fields(List.of())\n            .routing(List.of())\n        )))\n    .fields(List.of())\n    .ids(List.of())\n    .routing(List.of())\n);\n"
+      "code": "client.mtermvectors(m -> m\n    .docs(List.of(MultiTermVectorsOperation.of(mu -> mu\n            .index(\"my-index-000001\")\n            .doc(JsonData.fromJson(\"\"\"\n{\"message\":\"test test test\"}\n\"\"\"))\n            .fields(List.of())\n            .routing(List.of())\n        ),MultiTermVectorsOperation.of(mu -> mu\n            .index(\"my-index-000001\")\n            .doc(JsonData.fromJson(\"\"\"\n{\"message\":\"Another test ...\"}\n\"\"\"))\n            .fields(List.of())\n            .routing(List.of())\n        )))\n    .fields(List.of())\n    .ids(List.of())\n    .routing(List.of())\n);\n"
     }
   ],
   "specification/_global/info/examples/request/RootNodeInfoRequestExample1.yaml": [
@@ -5844,7 +5844,7 @@
     },
     {
       "language": "Java",
-      "code": "client.index(i -> i\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"{\\\"@timestamp\\\":\\\"2099-11-15T13:12:00\\\",\\\"message\\\":\\\"GET /search HTTP/1.1 200 1070000\\\",\\\"user\\\":{\\\"id\\\":\\\"kimchy\\\"}}\"))\n);\n"
+      "code": "client.index(i -> i\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"\"\"\n{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}\n\"\"\"))\n);\n"
     }
   ],
   "specification/_global/index/examples/request/IndexRequestExample2.yaml": [
@@ -5870,7 +5870,7 @@
     },
     {
       "language": "Java",
-      "code": "client.index(i -> i\n    .id(\"1\")\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"{\\\"@timestamp\\\":\\\"2099-11-15T13:12:00\\\",\\\"message\\\":\\\"GET /search HTTP/1.1 200 1070000\\\",\\\"user\\\":{\\\"id\\\":\\\"kimchy\\\"}}\"))\n);\n"
+      "code": "client.index(i -> i\n    .id(\"1\")\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"\"\"\n{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}\n\"\"\"))\n);\n"
     }
   ],
   "specification/_global/msearch/examples/request/MsearchRequestExample1.yaml": [
@@ -6044,7 +6044,7 @@
     },
     {
       "language": "Java",
-      "code": "client.create(c -> c\n    .id(\"1\")\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"{\\\"@timestamp\\\":\\\"2099-11-15T13:12:00\\\",\\\"message\\\":\\\"GET /search HTTP/1.1 200 1070000\\\",\\\"user\\\":{\\\"id\\\":\\\"kimchy\\\"}}\"))\n);\n"
+      "code": "client.create(c -> c\n    .id(\"1\")\n    .index(\"my-index-000001\")\n    .routing(List.of())\n    .document(JsonData.fromJson(\"\"\"\n{\"@timestamp\":\"2099-11-15T13:12:00\",\"message\":\"GET /search HTTP/1.1 200 1070000\",\"user\":{\"id\":\"kimchy\"}}\n\"\"\"))\n);\n"
     }
   ],
   "specification/_global/rank_eval/examples/request/RankEvalRequestExample1.yaml": [
@@ -7006,7 +7006,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().createApiKey(c -> c\n    .expiration(e -> e\n        .time(\"1d\")\n    )\n    .metadata(Map.of(\"environment\", JsonData.fromJson(\"{\\\"level\\\":1,\\\"trusted\\\":true,\\\"tags\\\":[\\\"dev\\\",\\\"staging\\\"]}\"),\"application\", JsonData.fromJson(\"\\\"my-application\\\"\")))\n    .name(\"my-api-key\")\n    .roleDescriptors(Map.of(\"role-b\", RoleDescriptor.of(r -> r\n            .cluster(\"all\")\n            .indices(i -> i\n                .names(\"index-b*\")\n                .privileges(\"all\")\n            )\n            .remoteIndices(List.of())\n            .remoteCluster(List.of())\n            .global(List.of())\n            .applications(List.of())\n            .metadata(Map.of())\n            .runAs(List.of())\n            .transientMetadata(Map.of())\n        ),\"role-a\", RoleDescriptor.of(r -> r\n            .cluster(\"all\")\n            .indices(i -> i\n                .names(\"index-a*\")\n                .privileges(\"read\")\n            )\n            .remoteIndices(List.of())\n            .remoteCluster(List.of())\n            .global(List.of())\n            .applications(List.of())\n            .metadata(Map.of())\n            .runAs(List.of())\n            .transientMetadata(Map.of())\n        )))\n);\n"
+      "code": "client.security().createApiKey(c -> c\n    .expiration(e -> e\n        .time(\"1d\")\n    )\n    .metadata(Map.of(\"environment\", JsonData.fromJson(\"\"\"\n{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}\n\"\"\"),\"application\", JsonData.fromJson(\"\\\"my-application\\\"\")))\n    .name(\"my-api-key\")\n    .roleDescriptors(Map.of(\"role-b\", RoleDescriptor.of(r -> r\n            .cluster(\"all\")\n            .indices(i -> i\n                .names(\"index-b*\")\n                .privileges(\"all\")\n            )\n            .remoteIndices(List.of())\n            .remoteCluster(List.of())\n            .global(List.of())\n            .applications(List.of())\n            .metadata(Map.of())\n            .runAs(List.of())\n            .transientMetadata(Map.of())\n        ),\"role-a\", RoleDescriptor.of(r -> r\n            .cluster(\"all\")\n            .indices(i -> i\n                .names(\"index-a*\")\n                .privileges(\"read\")\n            )\n            .remoteIndices(List.of())\n            .remoteCluster(List.of())\n            .global(List.of())\n            .applications(List.of())\n            .metadata(Map.of())\n            .runAs(List.of())\n            .transientMetadata(Map.of())\n        )))\n);\n"
     }
   ],
   "specification/security/get_privileges/examples/request/SecurityGetPrivilegesRequestExample1.yaml": [
@@ -7526,7 +7526,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().bulkUpdateApiKeys(b -> b\n    .expiration(e -> e\n        .time(\"30d\")\n    )\n    .ids(List.of(\"VuaCfGcBCdbkQm-e5aOx\",\"H3_AhoIBA9hmeQJdg7ij\"))\n    .metadata(\"environment\", JsonData.fromJson(\"{\\\"level\\\":2,\\\"trusted\\\":true,\\\"tags\\\":[\\\"production\\\"]}\"))\n    .roleDescriptors(\"role-a\", r -> r\n        .cluster(List.of())\n        .indices(i -> i\n            .names(\"*\")\n            .privileges(\"write\")\n        )\n        .remoteIndices(List.of())\n        .remoteCluster(List.of())\n        .global(List.of())\n        .applications(List.of())\n        .metadata(Map.of())\n        .runAs(List.of())\n        .transientMetadata(Map.of())\n    )\n);\n"
+      "code": "client.security().bulkUpdateApiKeys(b -> b\n    .expiration(e -> e\n        .time(\"30d\")\n    )\n    .ids(List.of(\"VuaCfGcBCdbkQm-e5aOx\",\"H3_AhoIBA9hmeQJdg7ij\"))\n    .metadata(\"environment\", JsonData.fromJson(\"\"\"\n{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}\n\"\"\"))\n    .roleDescriptors(\"role-a\", r -> r\n        .cluster(List.of())\n        .indices(i -> i\n            .names(\"*\")\n            .privileges(\"write\")\n        )\n        .remoteIndices(List.of())\n        .remoteCluster(List.of())\n        .global(List.of())\n        .applications(List.of())\n        .metadata(Map.of())\n        .runAs(List.of())\n        .transientMetadata(Map.of())\n    )\n);\n"
     }
   ],
   "specification/security/bulk_update_api_keys/examples/request/SecurityBulkUpdateApiKeysRequestExample2.yaml": [
@@ -7682,7 +7682,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().createCrossClusterApiKey(c -> c\n    .access(a -> a\n        .replication(r -> r\n            .names(\"archive*\")\n        )\n        .search(s -> s\n            .names(\"logs*\")\n        )\n    )\n    .expiration(e -> e\n        .time(\"1d\")\n    )\n    .metadata(Map.of(\"environment\", JsonData.fromJson(\"{\\\"level\\\":1,\\\"trusted\\\":true,\\\"tags\\\":[\\\"dev\\\",\\\"staging\\\"]}\"),\"description\", JsonData.fromJson(\"\\\"phase one\\\"\")))\n    .name(\"my-cross-cluster-api-key\")\n);\n"
+      "code": "client.security().createCrossClusterApiKey(c -> c\n    .access(a -> a\n        .replication(r -> r\n            .names(\"archive*\")\n        )\n        .search(s -> s\n            .names(\"logs*\")\n        )\n    )\n    .expiration(e -> e\n        .time(\"1d\")\n    )\n    .metadata(Map.of(\"environment\", JsonData.fromJson(\"\"\"\n{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}\n\"\"\"),\"description\", JsonData.fromJson(\"\\\"phase one\\\"\")))\n    .name(\"my-cross-cluster-api-key\")\n);\n"
     }
   ],
   "specification/security/saml_authenticate/examples/request/SamlAuthenticateRequestExample1.yaml": [
@@ -8072,7 +8072,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().updateUserProfileData(u -> u\n    .data(\"app1\", JsonData.fromJson(\"{\\\"theme\\\":\\\"default\\\"}\"))\n    .labels(\"direction\", JsonData.fromJson(\"\\\"east\\\"\"))\n    .uid(\"u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0\")\n);\n"
+      "code": "client.security().updateUserProfileData(u -> u\n    .data(\"app1\", JsonData.fromJson(\"\"\"\n{\"theme\":\"default\"}\n\"\"\"))\n    .labels(\"direction\", JsonData.fromJson(\"\\\"east\\\"\"))\n    .uid(\"u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0\")\n);\n"
     }
   ],
   "specification/security/delegate_pki/examples/request/SecurityDelegatePkiRequestExample1.yaml": [
@@ -8982,7 +8982,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().updateApiKey(u -> u\n    .id(\"VuaCfGcBCdbkQm-e5aOx\")\n    .metadata(\"environment\", JsonData.fromJson(\"{\\\"level\\\":2,\\\"trusted\\\":true,\\\"tags\\\":[\\\"production\\\"]}\"))\n    .roleDescriptors(\"role-a\", r -> r\n        .cluster(List.of())\n        .indices(i -> i\n            .names(\"*\")\n            .privileges(\"write\")\n        )\n        .remoteIndices(List.of())\n        .remoteCluster(List.of())\n        .global(List.of())\n        .applications(List.of())\n        .metadata(Map.of())\n        .runAs(List.of())\n        .transientMetadata(Map.of())\n    )\n);\n"
+      "code": "client.security().updateApiKey(u -> u\n    .id(\"VuaCfGcBCdbkQm-e5aOx\")\n    .metadata(\"environment\", JsonData.fromJson(\"\"\"\n{\"level\":2,\"trusted\":true,\"tags\":[\"production\"]}\n\"\"\"))\n    .roleDescriptors(\"role-a\", r -> r\n        .cluster(List.of())\n        .indices(i -> i\n            .names(\"*\")\n            .privileges(\"write\")\n        )\n        .remoteIndices(List.of())\n        .remoteCluster(List.of())\n        .global(List.of())\n        .applications(List.of())\n        .metadata(Map.of())\n        .runAs(List.of())\n        .transientMetadata(Map.of())\n    )\n);\n"
     }
   ],
   "specification/security/update_api_key/examples/request/UpdateApiKeyRequestExample2.yaml": [
@@ -9138,7 +9138,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().grantApiKey(g -> g\n    .apiKey(a -> a\n        .name(\"my-api-key\")\n        .expiration(e -> e\n            .time(\"1d\")\n        )\n        .roleDescriptors(Map.of(\"role-b\", RoleDescriptor.of(r -> r\n                .cluster(\"all\")\n                .indices(i -> i\n                    .names(\"index-b*\")\n                    .privileges(\"all\")\n                )\n                .remoteIndices(List.of())\n                .remoteCluster(List.of())\n                .global(List.of())\n                .applications(List.of())\n                .metadata(Map.of())\n                .runAs(List.of())\n                .transientMetadata(Map.of())\n            ),\"role-a\", RoleDescriptor.of(r -> r\n                .cluster(\"all\")\n                .indices(i -> i\n                    .names(\"index-a*\")\n                    .privileges(\"read\")\n                )\n                .remoteIndices(List.of())\n                .remoteCluster(List.of())\n                .global(List.of())\n                .applications(List.of())\n                .metadata(Map.of())\n                .runAs(List.of())\n                .transientMetadata(Map.of())\n            )))\n        .metadata(Map.of(\"environment\", JsonData.fromJson(\"{\\\"level\\\":1,\\\"trusted\\\":true,\\\"tags\\\":[\\\"dev\\\",\\\"staging\\\"]}\"),\"application\", JsonData.fromJson(\"\\\"my-application\\\"\")))\n    )\n    .grantType(ApiKeyGrantType.Password)\n    .password(\"x-pack-test-password\")\n    .username(\"test_admin\")\n);\n"
+      "code": "client.security().grantApiKey(g -> g\n    .apiKey(a -> a\n        .name(\"my-api-key\")\n        .expiration(e -> e\n            .time(\"1d\")\n        )\n        .roleDescriptors(Map.of(\"role-b\", RoleDescriptor.of(r -> r\n                .cluster(\"all\")\n                .indices(i -> i\n                    .names(\"index-b*\")\n                    .privileges(\"all\")\n                )\n                .remoteIndices(List.of())\n                .remoteCluster(List.of())\n                .global(List.of())\n                .applications(List.of())\n                .metadata(Map.of())\n                .runAs(List.of())\n                .transientMetadata(Map.of())\n            ),\"role-a\", RoleDescriptor.of(r -> r\n                .cluster(\"all\")\n                .indices(i -> i\n                    .names(\"index-a*\")\n                    .privileges(\"read\")\n                )\n                .remoteIndices(List.of())\n                .remoteCluster(List.of())\n                .global(List.of())\n                .applications(List.of())\n                .metadata(Map.of())\n                .runAs(List.of())\n                .transientMetadata(Map.of())\n            )))\n        .metadata(Map.of(\"environment\", JsonData.fromJson(\"\"\"\n{\"level\":1,\"trusted\":true,\"tags\":[\"dev\",\"staging\"]}\n\"\"\"),\"application\", JsonData.fromJson(\"\\\"my-application\\\"\")))\n    )\n    .grantType(ApiKeyGrantType.Password)\n    .password(\"x-pack-test-password\")\n    .username(\"test_admin\")\n);\n"
     }
   ],
   "specification/security/get_service_accounts/examples/request/GetServiceAccountsRequestExample1.yaml": [
@@ -9580,7 +9580,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ingest().putPipeline(p -> p\n    .meta(Map.of(\"serialization\", JsonData.fromJson(\"{\\\"class\\\":\\\"MyPipeline\\\",\\\"id\\\":10}\"),\"reason\", JsonData.fromJson(\"\\\"set my-keyword-field to foo\\\"\")))\n    .description(\"My optional pipeline description\")\n    .id(\"my-pipeline-id\")\n    .onFailure(List.of())\n    .processors(pr -> pr\n        .set(s -> s\n            .field(\"my-keyword-field\")\n            .value(JsonData.fromJson(\"\\\"foo\\\"\"))\n            .description(\"My optional processor description\")\n            .onFailure(List.of())\n        )\n    )\n);\n"
+      "code": "client.ingest().putPipeline(p -> p\n    .meta(Map.of(\"serialization\", JsonData.fromJson(\"\"\"\n{\"class\":\"MyPipeline\",\"id\":10}\n\"\"\"),\"reason\", JsonData.fromJson(\"\\\"set my-keyword-field to foo\\\"\")))\n    .description(\"My optional pipeline description\")\n    .id(\"my-pipeline-id\")\n    .onFailure(List.of())\n    .processors(pr -> pr\n        .set(s -> s\n            .field(\"my-keyword-field\")\n            .value(JsonData.fromJson(\"\\\"foo\\\"\"))\n            .description(\"My optional processor description\")\n            .onFailure(List.of())\n        )\n    )\n);\n"
     }
   ],
   "specification/ingest/simulate/examples/request/SimulatePipelineRequestExample1.yaml": [
@@ -9606,7 +9606,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ingest().simulate(s -> s\n    .docs(List.of(Document.of(d -> d\n            .id(\"id\")\n            .index(\"index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"bar\\\"}\"))\n        ),Document.of(d -> d\n            .id(\"id\")\n            .index(\"index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"rab\\\"}\"))\n        )))\n    .pipeline(p -> p\n        .description(\"_description\")\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .set(se -> se\n                .field(\"field2\")\n                .value(JsonData.fromJson(\"\\\"_value\\\"\"))\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
+      "code": "client.ingest().simulate(s -> s\n    .docs(List.of(Document.of(d -> d\n            .id(\"id\")\n            .index(\"index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"bar\"}\n\"\"\"))\n        ),Document.of(d -> d\n            .id(\"id\")\n            .index(\"index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"rab\"}\n\"\"\"))\n        )))\n    .pipeline(p -> p\n        .description(\"_description\")\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .set(se -> se\n                .field(\"field2\")\n                .value(JsonData.fromJson(\"\\\"_value\\\"\"))\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
     }
   ],
   "specification/ingest/delete_pipeline/examples/request/IngestDeletePipelineExample1.yaml": [
@@ -9788,7 +9788,7 @@
     },
     {
       "language": "Java",
-      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(Map.of())\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"bar\\\"}\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"rab\\\"}\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(\"my-pipeline\", p -> p\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .uppercase(u -> u\n                .field(\"foo\")\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
+      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(Map.of())\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"bar\"}\n\"\"\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"rab\"}\n\"\"\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(\"my-pipeline\", p -> p\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .uppercase(u -> u\n                .field(\"foo\")\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
     }
   ],
   "specification/simulate/ingest/examples/request/SimulateIngestRequestExample3.yaml": [
@@ -9814,7 +9814,7 @@
     },
     {
       "language": "Java",
-      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(\"my-mappings_template\", c -> c\n        .template(t -> t\n            .meta(Map.of())\n            .settings(Map.of())\n            .mappings(m -> m\n                .dynamic(DynamicMapping.Strict)\n                .dynamicDateFormats(List.of())\n                .dynamicTemplates(List.of())\n                .meta(Map.of())\n                .properties(Map.of(\"bar\", Property.of(p -> p\n                        .keyword(k -> k\n                            .copyTo(List.of())\n                            .meta(Map.of())\n                            .properties(Map.of())\n                            .fields(Map.of())\n                        )\n                    ),\"foo\", Property.of(pr -> pr\n                        .keyword(k -> k\n                            .copyTo(List.of())\n                            .meta(Map.of())\n                            .properties(Map.of())\n                            .fields(Map.of())\n                        )\n                    )))\n                .runtime(Map.of())\n            )\n            .aliases(Map.of())\n        )\n        .meta(Map.of())\n    )\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"foo\\\"}\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"bar\\\":\\\"rab\\\"}\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(Map.of())\n);\n"
+      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(\"my-mappings_template\", c -> c\n        .template(t -> t\n            .meta(Map.of())\n            .settings(Map.of())\n            .mappings(m -> m\n                .dynamic(DynamicMapping.Strict)\n                .dynamicDateFormats(List.of())\n                .dynamicTemplates(List.of())\n                .meta(Map.of())\n                .properties(Map.of(\"bar\", Property.of(p -> p\n                        .keyword(k -> k\n                            .copyTo(List.of())\n                            .meta(Map.of())\n                            .properties(Map.of())\n                            .fields(Map.of())\n                        )\n                    ),\"foo\", Property.of(pr -> pr\n                        .keyword(k -> k\n                            .copyTo(List.of())\n                            .meta(Map.of())\n                            .properties(Map.of())\n                            .fields(Map.of())\n                        )\n                    )))\n                .runtime(Map.of())\n            )\n            .aliases(Map.of())\n        )\n        .meta(Map.of())\n    )\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"foo\"}\n\"\"\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"bar\":\"rab\"}\n\"\"\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(Map.of())\n);\n"
     }
   ],
   "specification/simulate/ingest/examples/request/SimulateIngestRequestExample4.yaml": [
@@ -9840,7 +9840,7 @@
     },
     {
       "language": "Java",
-      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(\"my-component-template\", c -> c\n        .template(t -> t\n            .meta(Map.of())\n            .settings(\"index\", s -> s\n                .otherSettings(Map.of())\n                .routingPath(List.of())\n                .defaultPipeline(\"my-pipeline\")\n                .similarity(Map.of())\n            )\n            .mappings(m -> m\n                .dynamic(DynamicMapping.True)\n                .dynamicDateFormats(List.of())\n                .dynamicTemplates(List.of())\n                .meta(Map.of())\n                .properties(\"field3\", p -> p\n                    .keyword(k -> k\n                        .copyTo(List.of())\n                        .meta(Map.of())\n                        .properties(Map.of())\n                        .fields(Map.of())\n                    )\n                )\n                .runtime(Map.of())\n            )\n            .aliases(Map.of())\n        )\n        .meta(Map.of())\n    )\n    .docs(List.of(Document.of(d -> d\n            .id(\"id\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"bar\\\"}\"))\n        ),Document.of(d -> d\n            .id(\"id\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"rab\\\"}\"))\n        )))\n    .indexTemplateSubstitutions(\"my-index-template\", in -> in\n        .indexPatterns(\"my-index-*\")\n        .composedOf(List.of(\"component_template_1\",\"component_template_2\"))\n        .meta(Map.of())\n        .ignoreMissingComponentTemplates(List.of())\n    )\n    .mappingAddition(m -> m\n        .dynamic(DynamicMapping.Strict)\n        .dynamicDateFormats(List.of())\n        .dynamicTemplates(List.of())\n        .meta(Map.of())\n        .properties(\"foo\", p -> p\n            .keyword(k -> k\n                .copyTo(List.of())\n                .meta(Map.of())\n                .properties(Map.of())\n                .fields(Map.of())\n            )\n        )\n        .runtime(Map.of())\n    )\n    .pipelineSubstitutions(\"my-pipeline\", p -> p\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .set(s -> s\n                .field(\"field3\")\n                .value(JsonData.fromJson(\"\\\"value3\\\"\"))\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
+      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(\"my-component-template\", c -> c\n        .template(t -> t\n            .meta(Map.of())\n            .settings(\"index\", s -> s\n                .otherSettings(Map.of())\n                .routingPath(List.of())\n                .defaultPipeline(\"my-pipeline\")\n                .similarity(Map.of())\n            )\n            .mappings(m -> m\n                .dynamic(DynamicMapping.True)\n                .dynamicDateFormats(List.of())\n                .dynamicTemplates(List.of())\n                .meta(Map.of())\n                .properties(\"field3\", p -> p\n                    .keyword(k -> k\n                        .copyTo(List.of())\n                        .meta(Map.of())\n                        .properties(Map.of())\n                        .fields(Map.of())\n                    )\n                )\n                .runtime(Map.of())\n            )\n            .aliases(Map.of())\n        )\n        .meta(Map.of())\n    )\n    .docs(List.of(Document.of(d -> d\n            .id(\"id\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"bar\"}\n\"\"\"))\n        ),Document.of(d -> d\n            .id(\"id\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"rab\"}\n\"\"\"))\n        )))\n    .indexTemplateSubstitutions(\"my-index-template\", in -> in\n        .indexPatterns(\"my-index-*\")\n        .composedOf(List.of(\"component_template_1\",\"component_template_2\"))\n        .meta(Map.of())\n        .ignoreMissingComponentTemplates(List.of())\n    )\n    .mappingAddition(m -> m\n        .dynamic(DynamicMapping.Strict)\n        .dynamicDateFormats(List.of())\n        .dynamicTemplates(List.of())\n        .meta(Map.of())\n        .properties(\"foo\", p -> p\n            .keyword(k -> k\n                .copyTo(List.of())\n                .meta(Map.of())\n                .properties(Map.of())\n                .fields(Map.of())\n            )\n        )\n        .runtime(Map.of())\n    )\n    .pipelineSubstitutions(\"my-pipeline\", p -> p\n        .onFailure(List.of())\n        .processors(pr -> pr\n            .set(s -> s\n                .field(\"field3\")\n                .value(JsonData.fromJson(\"\\\"value3\\\"\"))\n                .onFailure(List.of())\n            )\n        )\n        .meta(Map.of())\n    )\n);\n"
     }
   ],
   "specification/simulate/ingest/examples/request/SimulateIngestRequestExample1.yaml": [
@@ -9866,7 +9866,7 @@
     },
     {
       "language": "Java",
-      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(Map.of())\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"bar\\\"}\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"{\\\"foo\\\":\\\"rab\\\"}\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(Map.of())\n);\n"
+      "code": "client.simulate().ingest(i -> i\n    .componentTemplateSubstitutions(Map.of())\n    .docs(List.of(Document.of(d -> d\n            .id(\"123\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"bar\"}\n\"\"\"))\n        ),Document.of(d -> d\n            .id(\"456\")\n            .index(\"my-index\")\n            .source(JsonData.fromJson(\"\"\"\n{\"foo\":\"rab\"}\n\"\"\"))\n        )))\n    .indexTemplateSubstitutions(Map.of())\n    .pipelineSubstitutions(Map.of())\n);\n"
     }
   ],
   "specification/slm/get_stats/examples/request/GetSnapshotLifecycleManagementStatsRequestExample1.yaml": [
@@ -13420,7 +13420,7 @@
     },
     {
       "language": "Java",
-      "code": "client.connector().updateFiltering(u -> u\n    .advancedSnippet(a -> a\n        .value(JsonData.fromJson(\"[{\\\"tables\\\":[\\\"users\\\",\\\"orders\\\"],\\\"query\\\":\\\"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\\\"}]\"))\n    )\n    .connectorId(\"my-sql-connector\")\n    .filtering(List.of())\n    .rules(List.of())\n);\n"
+      "code": "client.connector().updateFiltering(u -> u\n    .advancedSnippet(a -> a\n        .value(JsonData.fromJson(\"\"\"\n[{\"tables\":[\"users\",\"orders\"],\"query\":\"SELECT users.id AS id, orders.order_id AS order_id FROM users JOIN orders ON users.id = orders.user_id\"}]\n\"\"\"))\n    )\n    .connectorId(\"my-sql-connector\")\n    .filtering(List.of())\n    .rules(List.of())\n);\n"
     }
   ],
   "specification/connector/update_filtering/examples/request/ConnectorUpdateFilteringRequestExample1.yaml": [
@@ -13472,7 +13472,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"mistral-embeddings-test\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"mistral\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Mistral-API-Key\\\",\\\"model\\\":\\\"mistral-embed\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"mistral-embeddings-test\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"mistral\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Mistral-API-Key\",\"model\":\"mistral-embed\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample1.yaml": [
@@ -13602,7 +13602,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"jina-embeddings-v3\\\",\\\"api_key\\\":\\\"JinaAi-Api-key\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample2.yaml": [
@@ -13628,7 +13628,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"JinaAI-Api-key\\\",\\\"model_id\\\":\\\"jina-reranker-v2-base-multilingual\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"top_n\\\":10,\\\"return_documents\\\":true}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"JinaAI-Api-key\",\"model_id\":\"jina-reranker-v2-base-multilingual\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"top_n\":10,\"return_documents\":true}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/update/examples/request/InferenceUpdateExample1.yaml": [
@@ -13654,7 +13654,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().update(u -> u\n    .inferenceId(\"my-inference-endpoint\")\n    .inferenceConfig(i -> i\n        .service(\"example-service\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"<API_KEY>\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().update(u -> u\n    .inferenceId(\"my-inference-endpoint\")\n    .inferenceConfig(i -> i\n        .service(\"example-service\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"<API_KEY>\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elser/examples/request/PutElserRequestExample1.yaml": [
@@ -13680,7 +13680,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elser\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"num_allocations\\\":1,\\\"num_threads\\\":1}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elser\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"num_allocations\":1,\"num_threads\":1}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elser/examples/request/PutElserRequestExample2.yaml": [
@@ -13706,7 +13706,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elser\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"adaptive_allocations\\\":{\\\"enabled\\\":true,\\\"min_number_of_allocations\\\":3,\\\"max_number_of_allocations\\\":10},\\\"num_threads\\\":1}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elser\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":3,\"max_number_of_allocations\":10},\"num_threads\":1}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/delete/examples/request/InferenceDeleteExample1.yaml": [
@@ -13758,7 +13758,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Cohere-Api-key\\\",\\\"model_id\\\":\\\"embed-english-light-v3.0\\\",\\\"embedding_type\\\":\\\"byte\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Cohere-Api-key\",\"model_id\":\"embed-english-light-v3.0\",\"embedding_type\":\"byte\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_cohere/examples/request/PutCohereRequestExample2.yaml": [
@@ -13784,7 +13784,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Cohere-API-key\\\",\\\"model_id\\\":\\\"rerank-english-v3.0\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"top_n\\\":10,\\\"return_documents\\\":true}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Cohere-API-key\",\"model_id\":\"rerank-english-v3.0\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"top_n\":10,\"return_documents\":true}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googleaistudio/examples/request/PutGoogleAiStudioRequestExample1.yaml": [
@@ -13810,7 +13810,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_ai_studio_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googleaistudio\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"api-key\\\",\\\"model_id\\\":\\\"model-id\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_ai_studio_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googleaistudio\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"api-key\",\"model_id\":\"model-id\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put/examples/request/InferencePutExample1.yaml": [
@@ -13836,7 +13836,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-rerank-model\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"rerank-english-v3.0\\\",\\\"api_key\\\":\\\"{{COHERE_API_KEY}}\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-rerank-model\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"rerank-english-v3.0\",\"api_key\":\"{{COHERE_API_KEY}}\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_voyageai/examples/request/PutVoyageAIRequestExample2.yaml": [
@@ -13862,7 +13862,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"voyageai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"voyageai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"rerank-2\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"voyageai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"voyageai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"rerank-2\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_voyageai/examples/request/PutVoyageAIRequestExample1.yaml": [
@@ -13888,7 +13888,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"voyageai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"voyage-3-large\\\",\\\"dimensions\\\":512}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"voyageai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"voyage-3-large\",\"dimensions\":512}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_watsonx/examples/request/PutWatsonxRequestExample1.yaml": [
@@ -13914,7 +13914,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"watsonx-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"watsonxai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Watsonx-API-Key\\\",\\\"url\\\":\\\"Wastonx-URL\\\",\\\"model_id\\\":\\\"ibm/slate-30m-english-rtrvr\\\",\\\"project_id\\\":\\\"IBM-Cloud-ID\\\",\\\"api_version\\\":\\\"2024-03-14\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"watsonx-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"watsonxai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Watsonx-API-Key\",\"url\":\"Wastonx-URL\",\"model_id\":\"ibm/slate-30m-english-rtrvr\",\"project_id\":\"IBM-Cloud-ID\",\"api_version\":\"2024-03-14\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/completion/examples/request/CompletionRequestExample1.yaml": [
@@ -13992,7 +13992,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"anthropic_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"anthropic\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Anthropic-Api-Key\\\",\\\"model_id\\\":\\\"Model-ID\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"max_tokens\\\":1024}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"anthropic_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"anthropic\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"Model-ID\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"max_tokens\":1024}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/sparse_embedding/examples/request/SparseEmbeddingRequestExample1.yaml": [
@@ -14044,7 +14044,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_vertex_ai_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"project_id\\\":\\\"project-id\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_vertex_ai_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"service_account_json\":\"service-account-json\",\"project_id\":\"project-id\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample1.yaml": [
@@ -14070,7 +14070,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_vertex_ai_embeddingss\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"model_id\\\":\\\"model-id\\\",\\\"location\\\":\\\"location\\\",\\\"project_id\\\":\\\"project-id\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_vertex_ai_embeddingss\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"location\":\"location\",\"project_id\":\"project-id\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_hugging_face/examples/request/PutHuggingFaceRequestExample1.yaml": [
@@ -14096,7 +14096,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"hugging-face-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"hugging_face\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"hugging-face-access-token\\\",\\\"url\\\":\\\"url-endpoint\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"hugging-face-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"hugging_face\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_hugging_face/examples/request/PutHuggingFaceRequestExample2.yaml": [
@@ -14122,7 +14122,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"hugging-face-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"hugging_face\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"hugging-face-access-token\\\",\\\"url\\\":\\\"url-endpoint\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"return_documents\\\":true,\\\"top_n\\\":3}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"hugging-face-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"hugging_face\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"hugging-face-access-token\",\"url\":\"url-endpoint\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"return_documents\":true,\"top_n\":3}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonbedrock/examples/request/PutAmazonBedrockRequestExample1.yaml": [
@@ -14148,7 +14148,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"provider\\\":\\\"amazontitan\\\",\\\"model\\\":\\\"amazon.titan-embed-text-v2:0\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-embed-text-v2:0\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonbedrock/examples/request/PutAmazonBedrockRequestExample2.yaml": [
@@ -14174,7 +14174,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"provider\\\":\\\"amazontitan\\\",\\\"model\\\":\\\"amazon.titan-text-premier-v1:0\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openai/examples/request/PutOpenAiRequestExample2.yaml": [
@@ -14200,7 +14200,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"openai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"OpenAI-API-Key\\\",\\\"model_id\\\":\\\"gpt-3.5-turbo\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"openai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"gpt-3.5-turbo\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openai/examples/request/PutOpenAiRequestExample1.yaml": [
@@ -14226,7 +14226,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"openai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"OpenAI-API-Key\\\",\\\"model_id\\\":\\\"text-embedding-3-small\\\",\\\"dimensions\\\":128}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"openai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"OpenAI-API-Key\",\"model_id\":\"text-embedding-3-small\",\"dimensions\":128}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample1.yaml": [
@@ -14330,7 +14330,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"AlibabaCloud-API-Key\\\",\\\"service_id\\\":\\\"ops-text-embedding-001\\\",\\\"host\\\":\\\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\\\",\\\"workspace\\\":\\\"default\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample3.yaml": [
@@ -14356,7 +14356,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_sparse\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"AlibabaCloud-API-Key\\\",\\\"service_id\\\":\\\"ops-text-sparse-embedding-001\\\",\\\"host\\\":\\\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\\\",\\\"workspace\\\":\\\"default\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_sparse\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-text-sparse-embedding-001\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample2.yaml": [
@@ -14382,7 +14382,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"AlibabaCloud-API-Key\\\",\\\"service_id\\\":\\\"ops-bge-reranker-larger\\\",\\\"host\\\":\\\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\\\",\\\"workspace\\\":\\\"default\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-bge-reranker-larger\",\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"workspace\":\"default\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample1.yaml": [
@@ -14408,7 +14408,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"host\\\":\\\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\\\",\\\"api_key\\\":\\\"AlibabaCloud-API-Key\\\",\\\"service_id\\\":\\\"ops-qwen-turbo\\\",\\\"workspace\\\":\\\"default\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"alibabacloud_ai_search_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"alibabacloud-ai-search\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"host\":\"default-j01.platform-cn-shanghai.opensearch.aliyuncs.com\",\"api_key\":\"AlibabaCloud-API-Key\",\"service_id\":\"ops-qwen-turbo\",\"workspace\":\"default\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample1.yaml": [
@@ -14434,7 +14434,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample2.yaml": [
@@ -14460,7 +14460,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/stream_completion/examples/request/StreamInferenceRequestExample1.yaml": [
@@ -14512,7 +14512,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-e5-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"adaptive_allocations\\\":{\\\"enabled\\\":true,\\\"min_number_of_allocations\\\":3,\\\"max_number_of_allocations\\\":10},\\\"num_threads\\\":1,\\\"model_id\\\":\\\".multilingual-e5-small\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-e5-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":3,\"max_number_of_allocations\":10},\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elasticsearch/examples/request/PutElasticsearchRequestExample4.yaml": [
@@ -14538,7 +14538,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-msmarco-minilm-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"num_allocations\\\":1,\\\"num_threads\\\":1,\\\"model_id\\\":\\\"msmarco-MiniLM-L12-cos-v5\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-msmarco-minilm-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\"msmarco-MiniLM-L12-cos-v5\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elasticsearch/examples/request/PutElasticsearchRequestExample3.yaml": [
@@ -14564,7 +14564,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-e5-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"num_allocations\\\":1,\\\"num_threads\\\":1,\\\"model_id\\\":\\\".multilingual-e5-small\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-e5-model\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"num_allocations\":1,\"num_threads\":1,\"model_id\":\".multilingual-e5-small\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elasticsearch/examples/request/PutElasticsearchRequestExample2.yaml": [
@@ -14590,7 +14590,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elastic-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\".rerank-v1\\\",\\\"num_threads\\\":1,\\\"adaptive_allocations\\\":{\\\"enabled\\\":true,\\\"min_number_of_allocations\\\":1,\\\"max_number_of_allocations\\\":4}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elastic-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\".rerank-v1\",\"num_threads\":1,\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elasticsearch/examples/request/PutElasticsearchRequestExample1.yaml": [
@@ -14616,7 +14616,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"adaptive_allocations\\\":{\\\"enabled\\\":true,\\\"min_number_of_allocations\\\":1,\\\"max_number_of_allocations\\\":4},\\\"num_threads\\\":1,\\\"model_id\\\":\\\".elser_model_2\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-elser-model\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"adaptive_allocations\":{\"enabled\":true,\"min_number_of_allocations\":1,\"max_number_of_allocations\":4},\"num_threads\":1,\"model_id\":\".elser_model_2\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_elasticsearch/examples/request/PutElasticsearchRequestExample6.yaml": [
@@ -14642,7 +14642,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"use_existing_deployment\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"deployment_id\\\":\\\".elser_model_2\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"use_existing_deployment\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"elasticsearch\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"deployment_id\":\".elser_model_2\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureaistudio/examples/request/PutAzureAiStudioRequestExample2.yaml": [
@@ -14668,7 +14668,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Azure-AI-Studio-API-key\\\",\\\"target\\\":\\\"Target-URI\\\",\\\"provider\\\":\\\"databricks\\\",\\\"endpoint_type\\\":\\\"realtime\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-URI\",\"provider\":\"databricks\",\"endpoint_type\":\"realtime\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureaistudio/examples/request/PutAzureAiStudioRequestExample1.yaml": [
@@ -14694,7 +14694,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Azure-AI-Studio-API-key\\\",\\\"target\\\":\\\"Target-Uri\\\",\\\"provider\\\":\\\"openai\\\",\\\"endpoint_type\\\":\\\"token\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-Uri\",\"provider\":\"openai\",\"endpoint_type\":\"token\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/query_rules/list_rulesets/examples/request/QueryRulesetListRequestExample1.yaml": [
@@ -15536,7 +15536,7 @@
     },
     {
       "language": "Java",
-      "code": "client.searchApplication().renderQuery(r -> r\n    .name(\"my-app\")\n    .params(Map.of(\"text_fields\", JsonData.fromJson(\"[{\\\"name\\\":\\\"title\\\",\\\"boost\\\":5},{\\\"name\\\":\\\"description\\\",\\\"boost\\\":1}]\"),\"query_string\", JsonData.fromJson(\"\\\"my first query\\\"\")))\n);\n"
+      "code": "client.searchApplication().renderQuery(r -> r\n    .name(\"my-app\")\n    .params(Map.of(\"text_fields\", JsonData.fromJson(\"\"\"\n[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]\n\"\"\"),\"query_string\", JsonData.fromJson(\"\\\"my first query\\\"\")))\n);\n"
     }
   ],
   "specification/search_application/delete/examples/request/SearchApplicationDeleteExample1.yaml": [
@@ -15640,7 +15640,7 @@
     },
     {
       "language": "Java",
-      "code": "client.searchApplication().postBehavioralAnalyticsEvent(p -> p\n    .collectionName(\"my_analytics_collection\")\n    .eventType(EventType.SearchClick)\n    .payload(JsonData.fromJson(\"{\\\"session\\\":{\\\"id\\\":\\\"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\\\"},\\\"user\\\":{\\\"id\\\":\\\"5f26f01a-bbee-4202-9298-81261067abbd\\\"},\\\"search\\\":{\\\"query\\\":\\\"search term\\\",\\\"results\\\":{\\\"items\\\":[{\\\"document\\\":{\\\"id\\\":\\\"123\\\",\\\"index\\\":\\\"products\\\"}}],\\\"total_results\\\":10},\\\"sort\\\":{\\\"name\\\":\\\"relevance\\\"},\\\"search_application\\\":\\\"website\\\"},\\\"document\\\":{\\\"id\\\":\\\"123\\\",\\\"index\\\":\\\"products\\\"}}\"))\n);\n"
+      "code": "client.searchApplication().postBehavioralAnalyticsEvent(p -> p\n    .collectionName(\"my_analytics_collection\")\n    .eventType(EventType.SearchClick)\n    .payload(JsonData.fromJson(\"\"\"\n{\"session\":{\"id\":\"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"},\"user\":{\"id\":\"5f26f01a-bbee-4202-9298-81261067abbd\"},\"search\":{\"query\":\"search term\",\"results\":{\"items\":[{\"document\":{\"id\":\"123\",\"index\":\"products\"}}],\"total_results\":10},\"sort\":{\"name\":\"relevance\"},\"search_application\":\"website\"},\"document\":{\"id\":\"123\",\"index\":\"products\"}}\n\"\"\"))\n);\n"
     }
   ],
   "specification/search_application/get_behavioral_analytics/examples/request/BehavioralAnalyticsGetRequestExample1.yaml": [
@@ -15744,7 +15744,7 @@
     },
     {
       "language": "Java",
-      "code": "client.searchApplication().search(s -> s\n    .name(\"my-app\")\n    .params(Map.of(\"text_fields\", JsonData.fromJson(\"[{\\\"name\\\":\\\"title\\\",\\\"boost\\\":5},{\\\"name\\\":\\\"description\\\",\\\"boost\\\":1}]\"),\"query_string\", JsonData.fromJson(\"\\\"my first query\\\"\")))\n);\n"
+      "code": "client.searchApplication().search(s -> s\n    .name(\"my-app\")\n    .params(Map.of(\"text_fields\", JsonData.fromJson(\"\"\"\n[{\"name\":\"title\",\"boost\":5},{\"name\":\"description\",\"boost\":1}]\n\"\"\"),\"query_string\", JsonData.fromJson(\"\\\"my first query\\\"\")))\n);\n"
     }
   ],
   "specification/search_application/list/examples/request/SearchApplicationsListRequestExample1.yaml": [
@@ -16810,7 +16810,7 @@
     },
     {
       "language": "Java",
-      "code": "client.ilm().putLifecycle(p -> p\n    .name(\"my_policy\")\n    .policy(po -> po\n        .phases(ph -> ph\n            .delete(d -> d\n                .actions(a -> a\n                    .delete(de -> de)\n                )\n                .minAge(m -> m\n                    .time(\"30d\")\n                )\n            )\n            .warm(w -> w\n                .actions(a -> a\n                    .forcemerge(f -> f\n                        .maxNumSegments(1)\n                    )\n                )\n                .minAge(m -> m\n                    .time(\"10d\")\n                )\n            )\n        )\n        .meta(Map.of(\"description\", JsonData.fromJson(\"\\\"used for nginx log\\\"\"),\"project\", JsonData.fromJson(\"{\\\"name\\\":\\\"myProject\\\",\\\"department\\\":\\\"myDepartment\\\"}\")))\n    )\n);\n"
+      "code": "client.ilm().putLifecycle(p -> p\n    .name(\"my_policy\")\n    .policy(po -> po\n        .phases(ph -> ph\n            .delete(d -> d\n                .actions(a -> a\n                    .delete(de -> de)\n                )\n                .minAge(m -> m\n                    .time(\"30d\")\n                )\n            )\n            .warm(w -> w\n                .actions(a -> a\n                    .forcemerge(f -> f\n                        .maxNumSegments(1)\n                    )\n                )\n                .minAge(m -> m\n                    .time(\"10d\")\n                )\n            )\n        )\n        .meta(Map.of(\"description\", JsonData.fromJson(\"\\\"used for nginx log\\\"\"),\"project\", JsonData.fromJson(\"\"\"\n{\"name\":\"myProject\",\"department\":\"myDepartment\"}\n\"\"\")))\n    )\n);\n"
     }
   ],
   "specification/sql/delete_async/examples/request/SqlDeleteAsyncExample1.yaml": [
@@ -17018,7 +17018,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Cohere-API-key\\\",\\\"model_id\\\":\\\"command-a-03-2025\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"cohere-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"cohere\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Cohere-API-key\",\"model_id\":\"command-a-03-2025\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample1.yaml": [
@@ -17044,7 +17044,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"api\\\":\\\"elastic\\\",\\\"endpoint_name\\\":\\\"my-endpoint\\\",\\\"dimensions\\\":384,\\\"element_type\\\":\\\"float\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\",\"dimensions\":384,\"element_type\":\"float\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample2.yaml": [
@@ -17070,7 +17070,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"api\\\":\\\"elastic\\\",\\\"endpoint_name\\\":\\\"my-endpoint\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample3.yaml": [
@@ -17096,7 +17096,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"api\\\":\\\"elastic\\\",\\\"endpoint_name\\\":\\\"my-endpoint\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample4.yaml": [
@@ -17122,7 +17122,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_sparse_embedding\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"api\\\":\\\"elastic\\\",\\\"endpoint_name\\\":\\\"my-endpoint\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_sparse_embedding\")\n    .taskType(TaskType.SparseEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_amazonsagemaker/examples/request/PutAmazonSageMakerRequestExample5.yaml": [
@@ -17148,7 +17148,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"api\\\":\\\"elastic\\\",\\\"endpoint_name\\\":\\\"my-endpoint\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_sagemaker_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"amazon_sagemaker\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"api\":\"elastic\",\"endpoint_name\":\"my-endpoint\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_ai21/examples/request/PutAi21RequestExample1.yaml": [
@@ -17174,7 +17174,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"ai21-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"ai21\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"ai21-api-key\\\",\\\"model_id\\\":\\\"jamba-large\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"ai21-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"ai21\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-large\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_ai21/examples/request/PutAi21RequestExample2.yaml": [
@@ -17200,7 +17200,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"ai21-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"ai21\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"ai21-api-key\\\",\\\"model_id\\\":\\\"jamba-mini\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"ai21-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"ai21\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"ai21-api-key\",\"model_id\":\"jamba-mini\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample1.yaml": [
@@ -17226,7 +17226,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"secret_parameters\\\":{\\\"api_key\\\":\\\"<api key>\\\"},\\\"url\\\":\\\"https://api.openai.com/v1/embeddings\\\",\\\"headers\\\":{\\\"Authorization\\\":\\\"Bearer ${api_key}\\\",\\\"Content-Type\\\":\\\"application/json;charset=utf-8\\\"},\\\"request\\\":\\\"{\\\\\"input\\\\\": ${input}, \\\\\"model\\\\\": \\\\\"text-embedding-3-small\\\\\"}\\\",\\\"response\\\":{\\\"json_parser\\\":{\\\"text_embeddings\\\":\\\"$.data[*].embedding[*]\\\"}}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.openai.com/v1/embeddings\",\"headers\":{\"Authorization\":\"Bearer ${api_key}\",\"Content-Type\":\"application/json;charset=utf-8\"},\"request\":\"{\\\"input\\\": ${input}, \\\"model\\\": \\\"text-embedding-3-small\\\"}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.data[*].embedding[*]\"}}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample3.yaml": [
@@ -17252,7 +17252,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"secret_parameters\\\":{\\\"api_key\\\":\\\"<api key>\\\"},\\\"url\\\":\\\"https://api.cohere.com/v2/embed\\\",\\\"headers\\\":{\\\"Authorization\\\":\\\"bearer ${api_key}\\\",\\\"Content-Type\\\":\\\"application/json\\\"},\\\"request\\\":\\\"{\\\\\"texts\\\\\": ${input}, \\\\\"model\\\\\": \\\\\"embed-v4.0\\\\\", \\\\\"input_type\\\\\": ${input_type}}\\\",\\\"response\\\":{\\\"json_parser\\\":{\\\"text_embeddings\\\":\\\"$.embeddings.float[*]\\\"}},\\\"input_type\\\":{\\\"translation\\\":{\\\"ingest\\\":\\\"search_document\\\",\\\"search\\\":\\\"search_query\\\"},\\\"default\\\":\\\"search_document\\\"}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.cohere.com/v2/embed\",\"headers\":{\"Authorization\":\"bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"texts\\\": ${input}, \\\"model\\\": \\\"embed-v4.0\\\", \\\"input_type\\\": ${input_type}}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.embeddings.float[*]\"}},\"input_type\":{\"translation\":{\"ingest\":\"search_document\",\"search\":\"search_query\"},\"default\":\"search_document\"}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample2.yaml": [
@@ -17278,7 +17278,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"secret_parameters\\\":{\\\"api_key\\\":\\\"<api key>\\\"},\\\"url\\\":\\\"https://api.cohere.com/v2/rerank\\\",\\\"headers\\\":{\\\"Authorization\\\":\\\"bearer ${api_key}\\\",\\\"Content-Type\\\":\\\"application/json\\\"},\\\"request\\\":\\\"{\\\\\"documents\\\\\": ${input}, \\\\\"query\\\\\": ${query}, \\\\\"model\\\\\": \\\\\"rerank-v3.5\\\\\"}\\\",\\\"response\\\":{\\\"json_parser\\\":{\\\"reranked_index\\\":\\\"$.results[*].index\\\",\\\"relevance_score\\\":\\\"$.results[*].relevance_score\\\"}}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.cohere.com/v2/rerank\",\"headers\":{\"Authorization\":\"bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"documents\\\": ${input}, \\\"query\\\": ${query}, \\\"model\\\": \\\"rerank-v3.5\\\"}\",\"response\":{\"json_parser\":{\"reranked_index\":\"$.results[*].index\",\"relevance_score\":\"$.results[*].relevance_score\"}}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample5.yaml": [
@@ -17304,7 +17304,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-text-embedding-hf\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"secret_parameters\\\":{\\\"api_key\\\":\\\"<api key>\\\"},\\\"url\\\":\\\"<dedicated inference endpoint on HF>/v1/embeddings\\\",\\\"headers\\\":{\\\"Authorization\\\":\\\"Bearer ${api_key}\\\",\\\"Content-Type\\\":\\\"application/json\\\"},\\\"request\\\":\\\"{\\\\\"input\\\\\": ${input}}\\\",\\\"response\\\":{\\\"json_parser\\\":{\\\"text_embeddings\\\":\\\"$.data[*].embedding[*]\\\"}}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-text-embedding-hf\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"<dedicated inference endpoint on HF>/v1/embeddings\",\"headers\":{\"Authorization\":\"Bearer ${api_key}\",\"Content-Type\":\"application/json\"},\"request\":\"{\\\"input\\\": ${input}}\",\"response\":{\"json_parser\":{\"text_embeddings\":\"$.data[*].embedding[*]\"}}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_custom/examples/request/PutCustomRequestExample4.yaml": [
@@ -17330,7 +17330,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-rerank-jina\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"secret_parameters\\\":{\\\"api_key\\\":\\\"<api key>\\\"},\\\"url\\\":\\\"https://api.jina.ai/v1/rerank\\\",\\\"headers\\\":{\\\"Content-Type\\\":\\\"application/json\\\",\\\"Authorization\\\":\\\"Bearer ${api_key}\\\"},\\\"request\\\":\\\"{\\\\\"model\\\\\": \\\\\"jina-reranker-v2-base-multilingual\\\\\",\\\\\"query\\\\\": ${query},\\\\\"documents\\\\\":${input}}\\\",\\\"response\\\":{\\\"json_parser\\\":{\\\"relevance_score\\\":\\\"$.results[*].relevance_score\\\",\\\"reranked_index\\\":\\\"$.results[*].index\\\"}}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"custom-rerank-jina\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"custom\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"secret_parameters\":{\"api_key\":\"<api key>\"},\"url\":\"https://api.jina.ai/v1/rerank\",\"headers\":{\"Content-Type\":\"application/json\",\"Authorization\":\"Bearer ${api_key}\"},\"request\":\"{\\\"model\\\": \\\"jina-reranker-v2-base-multilingual\\\",\\\"query\\\": ${query},\\\"documents\\\":${input}}\",\"response\":{\"json_parser\":{\"relevance_score\":\"$.results[*].relevance_score\",\"reranked_index\":\"$.results[*].index\"}}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureaistudio/examples/request/PutAzureAiStudioRequestExample3.yaml": [
@@ -17356,7 +17356,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Azure-AI-Studio-API-key\\\",\\\"target\\\":\\\"Target-URI\\\",\\\"provider\\\":\\\"cohere\\\",\\\"endpoint_type\\\":\\\"token\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_ai_studio_rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"azureaistudio\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Azure-AI-Studio-API-key\",\"target\":\"Target-URI\",\"provider\":\"cohere\",\"endpoint_type\":\"token\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/indices/disk_usage/examples/request/indicesDiskUsageRequestExample1.yaml": [
@@ -17452,7 +17452,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"llama-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"llama\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"http://localhost:8321/v1/openai/v1/chat/completions\\\",\\\"model_id\\\":\\\"llama3.2:3b\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"llama-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"llama\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"http://localhost:8321/v1/openai/v1/chat/completions\",\"model_id\":\"llama3.2:3b\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_llama/examples/request/PutLlamaRequestExample1.yaml": [
@@ -17478,7 +17478,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"llama-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"llama\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"http://localhost:8321/v1/inference/embeddings\\\",\\\"dimensions\\\":384,\\\"model_id\\\":\\\"all-MiniLM-L6-v2\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"llama-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"llama\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"http://localhost:8321/v1/inference/embeddings\",\"dimensions\":384,\"model_id\":\"all-MiniLM-L6-v2\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/transform/set_upgrade_mode/examples/request/TransformSetUpgradeModeExample1.yaml": [
@@ -17660,7 +17660,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_anthropic_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"anthropic\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"max_tokens\\\":128}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_anthropic_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"max_tokens\":128}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample3.yaml": [
@@ -17686,7 +17686,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_anthropic_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"anthropic\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"max_tokens\\\":128}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_anthropic_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"anthropic\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/anthropic/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"max_tokens\":128}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_contextualai/examples/request/PutContextualAiRequestExample1.yaml": [
@@ -17712,7 +17712,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"contextualai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"contextualai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"ContextualAI-Api-key\\\",\\\"model_id\\\":\\\"ctxl-rerank-v2-instruct-multilingual-mini\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"instruction\\\":\\\"Rerank the following documents based on their relevance to the query.\\\",\\\"top_k\\\":3}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"contextualai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"contextualai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"ContextualAI-Api-key\",\"model_id\":\"ctxl-rerank-v2-instruct-multilingual-mini\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"instruction\":\"Rerank the following documents based on their relevance to the query.\",\"top_k\":3}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/indices/get_sample/examples/request/GetRandomSampleRequest1.yaml": [
@@ -17834,7 +17834,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"openshift-ai-embeddings-url\\\",\\\"api_key\\\":\\\"openshift-ai-embeddings-token\\\",\\\"model_id\\\":\\\"gritlm-7b\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"openshift-ai-embeddings-url\",\"api_key\":\"openshift-ai-embeddings-token\",\"model_id\":\"gritlm-7b\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample5.yaml": [
@@ -17860,7 +17860,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"openshift-ai-rerank-url\\\",\\\"api_key\\\":\\\"openshift-ai-rerank-token\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"return_documents\\\":true,\\\"top_n\\\":2}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"openshift-ai-rerank-url\",\"api_key\":\"openshift-ai-rerank-token\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"return_documents\":true,\"top_n\":2}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample3.yaml": [
@@ -17886,7 +17886,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"openshift-ai-chat-completion-url\\\",\\\"api_key\\\":\\\"openshift-ai-chat-completion-token\\\",\\\"model_id\\\":\\\"llama-31-8b-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"openshift-ai-chat-completion-url\",\"api_key\":\"openshift-ai-chat-completion-token\",\"model_id\":\"llama-31-8b-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample2.yaml": [
@@ -17912,7 +17912,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"openshift-ai-completion-url\\\",\\\"api_key\\\":\\\"openshift-ai-completion-token\\\",\\\"model_id\\\":\\\"llama-31-8b-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"openshift-ai-completion-url\",\"api_key\":\"openshift-ai-completion-token\",\"model_id\":\"llama-31-8b-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openshift_ai/examples/request/PutOpenShiftAiRequestExample4.yaml": [
@@ -17938,7 +17938,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"openshift-ai-rerank-url\\\",\\\"api_key\\\":\\\"openshift-ai-rerank-token\\\",\\\"model_id\\\":\\\"bge-reranker-v2-m3\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openshift-ai-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"openshift_ai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"openshift-ai-rerank-url\",\"api_key\":\"openshift-ai-rerank-token\",\"model_id\":\"bge-reranker-v2-m3\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample17.yaml": [
@@ -17964,7 +17964,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample7.yaml": [
@@ -17990,7 +17990,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample18.yaml": [
@@ -18016,7 +18016,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample19.yaml": [
@@ -18042,7 +18042,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample14.yaml": [
@@ -18068,7 +18068,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"hugging_face\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample22.yaml": [
@@ -18094,7 +18094,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_ai21_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"ai21\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_ai21_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"ai21\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample6.yaml": [
@@ -18120,7 +18120,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"model_id\\\":\\\"meta/llama-3.3-70b-instruct-maas\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"model_id\":\"meta/llama-3.3-70b-instruct-maas\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample9.yaml": [
@@ -18146,7 +18146,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample13.yaml": [
@@ -18172,7 +18172,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"hugging_face\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample5.yaml": [
@@ -18198,7 +18198,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"model_id\\\":\\\"meta/llama-3.3-70b-instruct-maas\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"model_id\":\"meta/llama-3.3-70b-instruct-maas\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/openapi/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample8.yaml": [
@@ -18224,7 +18224,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-fasttryout.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample10.yaml": [
@@ -18250,7 +18250,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"meta\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_meta_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"meta\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample11.yaml": [
@@ -18276,7 +18276,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"hugging_face\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample12.yaml": [
@@ -18302,7 +18302,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"hugging_face\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_hugging_face_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"hugging_face\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%ENDPOINT_ID%.%LOCATION_ID%-%PROJECT_ID%.prediction.vertexai.goog/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample21.yaml": [
@@ -18328,7 +18328,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_ai21_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"ai21\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_ai21_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"ai21\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample20.yaml": [
@@ -18354,7 +18354,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/endpoints/%ENDPOINT_ID%/chat/completions\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample15.yaml": [
@@ -18380,7 +18380,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"model_id\\\":\\\"mistral-small-2503\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"model_id\":\"mistral-small-2503\",\"service_account_json\":\"service-account-json\",\"url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:rawPredict\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample16.yaml": [
@@ -18406,7 +18406,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"provider\\\":\\\"mistral\\\",\\\"model_id\\\":\\\"mistral-small-2503\\\",\\\"service_account_json\\\":\\\"service-account-json\\\",\\\"streaming_url\\\":\\\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_model_garden_mistral_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"provider\":\"mistral\",\"model_id\":\"mistral-small-2503\",\"service_account_json\":\"service-account-json\",\"streaming_url\":\"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/mistralai/models/%MODEL_ID%:streamRawPredict\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/indices/get_all_sample_configuration/examples/request/IndicesGetAllSampleConfigurationRequest1.yaml": [
@@ -18652,7 +18652,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-multimodal\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"jina-embeddings-v4\\\",\\\"api_key\\\":\\\"JinaAi-Api-key\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-multimodal\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"jina-embeddings-v4\",\"api_key\":\"JinaAi-Api-key\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_jinaai/examples/request/PutJinaAiRequestExample4.yaml": [
@@ -18678,7 +18678,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-text-only\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"jina-embeddings-v3\\\",\\\"api_key\\\":\\\"JinaAi-Api-key\\\",\\\"multimodal_model\\\":false}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"jinaai-embeddings-text-only\")\n    .taskType(TaskType.Embedding)\n    .inferenceConfig(i -> i\n        .service(\"jinaai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"jina-embeddings-v3\",\"api_key\":\"JinaAi-Api-key\",\"multimodal_model\":false}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/embedding/examples/request/EmbeddingRequestExample1.yaml": [
@@ -18752,7 +18752,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-completion-url\\\",\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"nvidia-completion-url\",\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample2.yaml": [
@@ -18778,7 +18778,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\",\\\"api_key\\\":\\\"nvidia-text-embeddings-token\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"input_type\\\":\\\"ingest\\\",\\\"truncate\\\":\\\"start\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\",\"api_key\":\"nvidia-text-embeddings-token\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"input_type\":\"ingest\",\"truncate\":\"start\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample5.yaml": [
@@ -18804,7 +18804,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-chat-completion-url\\\",\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"nvidia-chat-completion-url\",\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample4.yaml": [
@@ -18830,7 +18830,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"nvidia-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample8.yaml": [
@@ -18856,7 +18856,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample7.yaml": [
@@ -18882,7 +18882,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-rerank-url\\\",\\\"api_key\\\":\\\"nvidia-rerank-token\\\",\\\"model_id\\\":\\\"nv-rerank-qa-mistral-4b:1\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-rerank\")\n    .taskType(TaskType.Rerank)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"nvidia-rerank-url\",\"api_key\":\"nvidia-rerank-token\",\"model_id\":\"nv-rerank-qa-mistral-4b:1\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample6.yaml": [
@@ -18908,7 +18908,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"nvidia-chat-completion-token\\\",\\\"model_id\\\":\\\"microsoft/phi-3-mini-128k-instruct\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"nvidia-chat-completion-token\",\"model_id\":\"microsoft/phi-3-mini-128k-instruct\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_nvidia/examples/request/PutNvidiaRequestExample1.yaml": [
@@ -18934,7 +18934,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"url\\\":\\\"nvidia-embeddings-url\\\",\\\"api_key\\\":\\\"nvidia-embeddings-token\\\",\\\"model_id\\\":\\\"nvidia/llama-3.2-nv-embedqa-1b-v2\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"nvidia-text-embedding\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"nvidia\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"url\":\"nvidia-embeddings-url\",\"api_key\":\"nvidia-embeddings-token\",\"model_id\":\"nvidia/llama-3.2-nv-embedqa-1b-v2\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_groq/examples/request/PutGroqRequestExample1.yaml": [
@@ -18960,7 +18960,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"groq-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"groq\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"groq-api-key\\\",\\\"model_id\\\":\\\"llama-3.3-70b-versatile\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"groq-chat-completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"groq\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"groq-api-key\",\"model_id\":\"llama-3.3-70b-versatile\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_azureopenai/examples/request/PutAzureOpenAiRequestExample3.yaml": [
@@ -18986,7 +18986,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"Api-Key\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"api_version\\\":\\\"2024-02-01\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Api-Key\",\"resource_name\":\"Resource-name\",\"deployment_id\":\"Deployment-id\",\"api_version\":\"2024-02-01\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/project/get_routing/examples/request/GetProjectRoutingRequestExample1.yaml": [
@@ -19142,7 +19142,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"access_key\\\":\\\"AWS-access-key\\\",\\\"secret_key\\\":\\\"AWS-secret-key\\\",\\\"region\\\":\\\"us-east-1\\\",\\\"provider\\\":\\\"amazontitan\\\",\\\"model\\\":\\\"amazon.titan-text-premier-v1:0\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"amazon_bedrock_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"amazonbedrock\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"access_key\":\"AWS-access-key\",\"secret_key\":\"AWS-secret-key\",\"region\":\"us-east-1\",\"provider\":\"amazontitan\",\"model\":\"amazon.titan-text-premier-v1:0\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample1.yaml": [
@@ -19168,7 +19168,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"fireworks/qwen3-embedding-8b\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample3.yaml": [
@@ -19194,7 +19194,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-chat\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"accounts/fireworks/models/deepseek-v3p1\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-chat\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample2.yaml": [
@@ -19220,7 +19220,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"fireworks/qwen3-embedding-8b\\\",\\\"dimensions\\\":1024,\\\"similarity\\\":\\\"cosine\\\",\\\"rate_limit\\\":{\\\"requests_per_minute\\\":6000}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"your-api-key\",\"model_id\":\"fireworks/qwen3-embedding-8b\",\"dimensions\":1024,\"similarity\":\"cosine\",\"rate_limit\":{\"requests_per_minute\":6000}}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_fireworksai/examples/request/PutFireworksAiRequestExample4.yaml": [
@@ -19246,7 +19246,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_key\\\":\\\"your-api-key\\\",\\\"model_id\\\":\\\"accounts/fireworks/models/deepseek-v3p1\\\"}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"my-fireworks-completion\")\n    .taskType(TaskType.Completion)\n    .inferenceConfig(i -> i\n        .service(\"fireworksai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"your-api-key\",\"model_id\":\"accounts/fireworks/models/deepseek-v3p1\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/chat_completion_unified/examples/request/PostChatCompletionRequestExample5.yaml": [
@@ -19324,7 +19324,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"{\\\"api_version\\\":\\\"2023-05-15\\\",\\\"client_id\\\":\\\"12345\\\",\\\"client_secret\\\":\\\"secret\\\",\\\"deployment_id\\\":\\\"Deployment-id\\\",\\\"resource_name\\\":\\\"Resource-name\\\",\\\"scopes\\\":[\\\"Scope-1\\\",\\\"Scope-2\\\"],\\\"tenant_id\\\":\\\"tenant id\\\"}\"))\n        .taskSettings(JsonData.fromJson(\"{\\\"headers\\\":{\\\"Custom-Header-Key\\\":\\\"Custom header value\\\"}}\"))\n    )\n);\n"
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_version\":\"2023-05-15\",\"client_id\":\"12345\",\"client_secret\":\"secret\",\"deployment_id\":\"Deployment-id\",\"resource_name\":\"Resource-name\",\"scopes\":[\"Scope-1\",\"Scope-2\"],\"tenant_id\":\"tenant id\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"headers\":{\"Custom-Header-Key\":\"Custom header value\"}}\n\"\"\"))\n    )\n);\n"
     }
   ]
 }
