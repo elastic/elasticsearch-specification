@@ -2232,7 +2232,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().getSettings(g -> g\n    .expandWildcards(\"all\")\n    .index(\"_all\")\n    .name(List.of())\n);\n"
+      "code": "client.indices().getSettings(g -> g\n    .expandWildcards(ExpandWildcard.All)\n    .index(\"_all\")\n    .name(List.of())\n);\n"
     }
   ],
   "specification/indices/promote_data_stream/examples/request/IndicesPromoteDataStreamExample1.yaml": [
@@ -2362,7 +2362,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().resolveIndex(r -> r\n    .expandWildcards(\"all\")\n    .mode(List.of())\n    .name(List.of(\"f*\",\"remoteCluster1:bar*\"))\n);\n"
+      "code": "client.indices().resolveIndex(r -> r\n    .expandWildcards(ExpandWildcard.All)\n    .mode(List.of())\n    .name(List.of(\"f*\",\"remoteCluster1:bar*\"))\n);\n"
     }
   ],
   "specification/indices/exists/examples/request/IndicesExistsExample1.yaml": [
@@ -3424,7 +3424,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().shardStores(s -> s\n    .expandWildcards(List.of())\n    .index(List.of())\n    .status(\"green\")\n);\n"
+      "code": "client.indices().shardStores(s -> s\n    .expandWildcards(List.of())\n    .index(List.of())\n    .status(ShardStoreStatus.Green)\n);\n"
     }
   ],
   "specification/indices/get_data_stream_settings/examples/request/IndicesGetDataStreamSettingsRequestExample1.yaml": [
