@@ -11250,27 +11250,27 @@
   "specification/ml/get_influencers/examples/request/MlGetInfluencersExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.ml.get_influencers(\n    job_id=\"high_sum_total_sales\",\n    sort=\"influencer_score\",\n    desc=True,\n)"
+      "code": "resp = client.ml.get_influencers(\n    job_id=\"high_sum_total_sales\",\n    desc=True,\n    sort=\"\\\"influencer_score\\\"\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.ml.getInfluencers({\n  job_id: \"high_sum_total_sales\",\n  sort: \"influencer_score\",\n  desc: true,\n});"
+      "code": "const response = await client.ml.getInfluencers({\n  job_id: \"high_sum_total_sales\",\n  desc: \"true\",\n  sort: '\"influencer_score\"',\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.ml.get_influencers(\n  job_id: \"high_sum_total_sales\",\n  body: {\n    \"sort\": \"influencer_score\",\n    \"desc\": true\n  }\n)"
+      "code": "response = client.ml.get_influencers(\n  job_id: \"high_sum_total_sales\",\n  desc: \"true\",\n  sort: \"\\\"influencer_score\\\"\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->ml()->getInfluencers([\n    \"job_id\" => \"high_sum_total_sales\",\n    \"body\" => [\n        \"sort\" => \"influencer_score\",\n        \"desc\" => true,\n    ],\n]);"
+      "code": "$resp = $client->ml()->getInfluencers([\n    \"job_id\" => \"high_sum_total_sales\",\n    \"desc\" => \"true\",\n    \"sort\" => \"\\\"influencer_score\\\"\",\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"sort\":\"influencer_score\",\"desc\":true}' \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/results/influencers\""
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_ml/anomaly_detectors/high_sum_total_sales/results/influencers?desc=true&sort=\"influencer_score\"\""
     },
     {
       "language": "Java",
-      "code": "client.ml().getInfluencers(g -> g\n    .jobId(\"high_sum_total_sales\")\n);\n"
+      "code": "client.ml().getInfluencers(g -> g\n    .desc(true)\n    .jobId(\"high_sum_total_sales\")\n    .sort(\"\"influencer_score\"\")\n);\n"
     }
   ],
   "specification/ml/reset_job/examples/request/MlResetJobExample1.yaml": [
