@@ -13550,7 +13550,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().chatCompletionUnified(c -> c\n    .inferenceId(\"openai-completion\")\n    .chatCompletionRequest(ch -> ch\n        .messages(List.of(Message.of(m -> m\n                .content(co -> co\n                    .string(\"Let's find out what the weather is\")\n                )\n                .role(\"assistant\")\n                .toolCalls(t -> t\n                    .id(\"call_KcAjWtAww20AihPHphUh46Gd\")\n                    .function(f -> f\n                        .arguments(\"\"\"\n{\"location\":\"Boston, MA\"}\n\"\"\")\n                        .name(\"get_current_weather\")\n                    )\n                    .type(\"function\")\n                )\n                .reasoningDetails(List.of())\n            ),Message.of(me -> me\n                .content(co -> co\n                    .string(\"The weather is cold\")\n                )\n                .role(\"tool\")\n                .toolCallId(\"call_KcAjWtAww20AihPHphUh46Gd\")\n                .toolCalls(List.of())\n                .reasoningDetails(List.of())\n            )))\n        .stop(List.of())\n        .tools(List.of())\n    )\n);\n"
+      "code": "client.inference().chatCompletionUnified(c -> c\n    .inferenceId(\"openai-completion\")\n    .chatCompletionRequest(ch -> ch\n        .messages(List.of(Message.of(m -> m\n                .content(co -> co\n                    .string(\"Let's find out what the weather is\")\n                )\n                .role(\"assistant\")\n                .toolCalls(t -> t\n                    .id(\"call_KcAjWtAww20AihPHphUh46Gd\")\n                    .function(f -> f\n                        .arguments(\"\"\"\n                            {\"location\":\"Boston, MA\"}\n                            \"\"\")\n                        .name(\"get_current_weather\")\n                    )\n                    .type(\"function\")\n                )\n                .reasoningDetails(List.of())\n            ),Message.of(me -> me\n                .content(co -> co\n                    .string(\"The weather is cold\")\n                )\n                .role(\"tool\")\n                .toolCallId(\"call_KcAjWtAww20AihPHphUh46Gd\")\n                .toolCalls(List.of())\n                .reasoningDetails(List.of())\n            )))\n        .stop(List.of())\n        .tools(List.of())\n    )\n);\n"
     }
   ],
   "specification/inference/text_embedding/examples/request/TextEmbeddingRequestExample1.yaml": [
@@ -14252,7 +14252,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"cohere_rerank\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\nstar wars main character\n\"\"\")\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"cohere_rerank\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample2.yaml": [
@@ -14278,7 +14278,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\nstar wars main character\n\"\"\")\n    .returnDocuments(false)\n    .topN(2)\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n    .returnDocuments(false)\n    .topN(2)\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample3.yaml": [
@@ -14304,7 +14304,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\nstar wars main character\n\"\"\")\n    .returnDocuments(true)\n    .topN(3)\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n    .returnDocuments(true)\n    .topN(3)\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample4.yaml": [
@@ -15240,7 +15240,7 @@
     },
     {
       "language": "Java",
-      "code": "client.eql().search(s -> s\n    .expandWildcards(List.of())\n    .fields(List.of())\n    .filter(List.of())\n    .index(\"my-data-stream\")\n    .query(\"\"\"\n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \n\"\"\")\n    .runtimeMappings(Map.of())\n);\n"
+      "code": "client.eql().search(s -> s\n    .expandWildcards(List.of())\n    .fields(List.of())\n    .filter(List.of())\n    .index(\"my-data-stream\")\n    .query(\"\"\"\n        \n    process where (process.name == \"cmd.exe\" and process.pid != 2013)\n  \n        \"\"\")\n    .runtimeMappings(Map.of())\n);\n"
     }
   ],
   "specification/eql/search/examples/request/EqlSearchRequestExample2.yaml": [
@@ -15266,7 +15266,7 @@
     },
     {
       "language": "Java",
-      "code": "client.eql().search(s -> s\n    .expandWildcards(List.of())\n    .fields(List.of())\n    .filter(List.of())\n    .index(\"my-data-stream\")\n    .query(\"\"\"\n    sequence by process.pid\n      [ file where file.name == \"cmd.exe\" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, \"regsvr32\") ]\n  \n\"\"\")\n    .runtimeMappings(Map.of())\n);\n"
+      "code": "client.eql().search(s -> s\n    .expandWildcards(List.of())\n    .fields(List.of())\n    .filter(List.of())\n    .index(\"my-data-stream\")\n    .query(\"\"\"\n        \n    sequence by process.pid\n      [ file where file.name == \"cmd.exe\" and process.pid != 2013 ]\n      [ process where stringContains(process.executable, \"regsvr32\") ]\n  \n        \"\"\")\n    .runtimeMappings(Map.of())\n);\n"
     }
   ],
   "specification/esql/async_query_stop/examples/request/EsqlAsyncQueryStopExample1.yaml": [
@@ -15358,7 +15358,7 @@
     },
     {
       "language": "Java",
-      "code": "client.esql().query(q -> q\n    .includeCcsMetadata(true)\n    .params(List.of())\n    .query(\"\"\"\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \n\"\"\")\n    .tables(Map.of())\n);\n"
+      "code": "client.esql().query(q -> q\n    .includeCcsMetadata(true)\n    .params(List.of())\n    .query(\"\"\"\n        \n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \n        \"\"\")\n    .tables(Map.of())\n);\n"
     }
   ],
   "specification/esql/async_query_delete/examples/request/EsqlAsyncQueryDeleteExample1.yaml": [
@@ -15588,7 +15588,7 @@
     },
     {
       "language": "Java",
-      "code": "client.searchApplication().put(p -> p\n    .name(\"my-app\")\n    .searchApplication(s -> s\n        .indices(List.of(\"index1\",\"index2\"))\n        .template(t -> t\n            .script(sc -> sc\n                .source(so -> so\n                    .scriptTemplate(scr -> scr\n                        .aggregations(Map.of())\n                        .ext(Map.of())\n                        .indicesBoost(List.of())\n                        .docvalueFields(List.of())\n                        .knn(List.of())\n                        .query(q -> q\n                            .queryString(qu -> qu\n                                .defaultField(\"{{default_field}}\")\n                                .fields(List.of())\n                                .query(\"\"\"\n{{query_string}}\n\"\"\")\n                            )\n                        )\n                        .rescore(List.of())\n                        .scriptFields(Map.of())\n                        .searchAfter(List.of())\n                        .sort(List.of())\n                        .fields(List.of())\n                        .storedFields(List.of())\n                        .runtimeMappings(Map.of())\n                        .stats(List.of())\n                    )\n                )\n                .params(Map.of(\"default_field\", JsonData.fromJson(\"\\\"*\\\"\"),\"query_string\", JsonData.fromJson(\"\\\"*\\\"\")))\n                .options(Map.of())\n            )\n        )\n    )\n);\n"
+      "code": "client.searchApplication().put(p -> p\n    .name(\"my-app\")\n    .searchApplication(s -> s\n        .indices(List.of(\"index1\",\"index2\"))\n        .template(t -> t\n            .script(sc -> sc\n                .source(so -> so\n                    .scriptTemplate(scr -> scr\n                        .aggregations(Map.of())\n                        .ext(Map.of())\n                        .indicesBoost(List.of())\n                        .docvalueFields(List.of())\n                        .knn(List.of())\n                        .query(q -> q\n                            .queryString(qu -> qu\n                                .defaultField(\"{{default_field}}\")\n                                .fields(List.of())\n                                .query(\"\"\"\n                                    {{query_string}}\n                                    \"\"\")\n                            )\n                        )\n                        .rescore(List.of())\n                        .scriptFields(Map.of())\n                        .searchAfter(List.of())\n                        .sort(List.of())\n                        .fields(List.of())\n                        .storedFields(List.of())\n                        .runtimeMappings(Map.of())\n                        .stats(List.of())\n                    )\n                )\n                .params(Map.of(\"default_field\", JsonData.fromJson(\"\\\"*\\\"\"),\"query_string\", JsonData.fromJson(\"\\\"*\\\"\")))\n                .options(Map.of())\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/search_application/get/examples/request/SearchApplicationGetRequestExample1.yaml": [
@@ -16862,7 +16862,7 @@
     },
     {
       "language": "Java",
-      "code": "client.sql().translate(t -> t\n    .fetchSize(10)\n    .query(\"\"\"\nSELECT * FROM library ORDER BY page_count DESC\n\"\"\")\n);\n"
+      "code": "client.sql().translate(t -> t\n    .fetchSize(10)\n    .query(\"\"\"\n        SELECT * FROM library ORDER BY page_count DESC\n        \"\"\")\n);\n"
     }
   ],
   "specification/sql/clear_cursor/examples/request/ClearSqlCursorRequestExample1.yaml": [
@@ -16966,7 +16966,7 @@
     },
     {
       "language": "Java",
-      "code": "client.sql().query(q -> q\n    .format(SqlFormat.Txt)\n    .params(List.of())\n    .query(\"\"\"\nSELECT * FROM library ORDER BY page_count DESC LIMIT 5\n\"\"\")\n    .runtimeMappings(Map.of())\n);\n"
+      "code": "client.sql().query(q -> q\n    .format(SqlFormat.Txt)\n    .params(List.of())\n    .query(\"\"\"\n        SELECT * FROM library ORDER BY page_count DESC LIMIT 5\n        \"\"\")\n    .runtimeMappings(Map.of())\n);\n"
     }
   ],
   "specification/cluster/allocation_explain/examples/request/ClusterAllocationExplainRequestExample2.yaml": [
