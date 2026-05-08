@@ -1,0 +1,36 @@
+summary: One running task with detailed status
+description: >
+  A successful response from `GET /_reindex?detailed=true&human=true`, including the per-task
+  `status` block.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "reindex": [
+      {
+        "id": "r1A2WoRbTwKZ516z6NEs5A:36619",
+        "description": "reindex from [my-source-index] to [my-dest-index]",
+        "start_time_in_millis": 1762190000000,
+        "start_time": "2025-11-03T17:13:20.000Z",
+        "running_time_in_nanos": 4200000000,
+        "running_time": "4.2s",
+        "cancelled": false,
+        "status": {
+          "batches": 4,
+          "deleted": 0,
+          "noops": 0,
+          "requests_per_second": -1.0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 0,
+          "throttled_until_millis": 0,
+          "total": 11500,
+          "updated": 0,
+          "version_conflicts": 0,
+          "created": 4000
+        }
+      }
+    ]
+  }

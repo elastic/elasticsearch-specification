@@ -22,11 +22,27 @@ import { MediaType, TaskId } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Get a reindex task.
- *
  * Get the status and progress of a specific reindex task.
+ *
+ * This API follows reindex tasks across node-shutdown relocations, so callers can
+ * keep using the original task ID throughout the lifetime of the operation.
+ * Returned task IDs and timings reflect the original task, not its relocated successor.
+ * Relocated task IDs are also supported, and will also be followed transparently, and have the taskID and timings of the original task.
+ *
+ * When the task ID cannot be resolved, the API the response below with a 404 status code.
+ * This response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).
+ * ```
+ * {
+ *   "error": {
+ *     "type": "resource_not_found_exception",
+ *     "reason": "Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found"
+ *   },
+ *   "status": 404
+ * }
+ * ```
  * @rest_spec_name get_reindex
- * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ * @availability stack since=9.5.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id docs-get-reindex
  * @doc_tag reindex
  */

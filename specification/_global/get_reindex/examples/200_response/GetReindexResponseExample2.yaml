@@ -1,0 +1,128 @@
+summary: Completed task
+description: >
+  A successful response for a completed reindex task. The final outcome is in the
+  `response` block.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "completed": true,
+    "id": "r1A2WoRbTwKZ516z6NEs5A:36619",
+    "description": "reindex from [reindex_src] to [reindex_dst]",
+    "start_time_in_millis": 1778265266199,
+    "running_time_in_nanos": 35457187167,
+    "cancelled": false,
+    "status": {
+      "total": 240,
+      "updated": 0,
+      "created": 240,
+      "deleted": 0,
+      "batches": 120,
+      "version_conflicts": 0,
+      "noops": 0,
+      "retries": {
+        "bulk": 0,
+        "search": 0
+      },
+      "throttled_millis": 2999,
+      "requests_per_second": -1.0,
+      "throttled_until_millis": 0,
+      "slices": [
+        {
+          "slice_id": 0,
+          "total": 174,
+          "updated": 0,
+          "created": 174,
+          "deleted": 0,
+          "batches": 87,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 999,
+          "requests_per_second": -1.0,
+          "throttled_until_millis": 0
+        },
+        {
+          "slice_id": 1,
+          "total": 66,
+          "updated": 0,
+          "created": 66,
+          "deleted": 0,
+          "batches": 33,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 1999,
+          "requests_per_second": -1.0,
+          "throttled_until_millis": 0
+        }
+      ]
+    },
+    "response": {
+      "took": 35434,
+      "timed_out": false,
+      "total": 240,
+      "updated": 0,
+      "created": 240,
+      "deleted": 0,
+      "batches": 120,
+      "version_conflicts": 0,
+      "noops": 0,
+      "retries": {
+        "bulk": 0,
+        "search": 0
+      },
+      "throttled": "2.9s",
+      "throttled_millis": 2999,
+      "requests_per_second": -1.0,
+      "throttled_until": "0s",
+      "throttled_until_millis": 0,
+      "slices": [
+        {
+          "slice_id": 0,
+          "total": 174,
+          "updated": 0,
+          "created": 174,
+          "deleted": 0,
+          "batches": 87,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled": "999.9ms",
+          "throttled_millis": 999,
+          "requests_per_second": -1.0,
+          "throttled_until": "0s",
+          "throttled_until_millis": 0
+        },
+        {
+          "slice_id": 1,
+          "total": 66,
+          "updated": 0,
+          "created": 66,
+          "deleted": 0,
+          "batches": 33,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled": "1.9s",
+          "throttled_millis": 1999,
+          "requests_per_second": -1.0,
+          "throttled_until": "0s",
+          "throttled_until_millis": 0
+        }
+      ],
+      "failures": []
+    }
+  }

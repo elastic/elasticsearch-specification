@@ -1,0 +1,7 @@
+summary: Cancel without waiting for completion
+method_request: POST /_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel?wait_for_completion=false
+description: >
+  Run `POST /_reindex/{task_id}/_cancel?wait_for_completion=false` to acknowledge the
+  cancellation immediately without waiting for the task to fully cancel.
+
+# type: request

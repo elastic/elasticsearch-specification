@@ -1,0 +1,39 @@
+summary: Successful rethrottle
+description: >
+  A successful response from `POST /_reindex/{task_id}/_rethrottle?requests_per_second=10`.
+  This is the response shape returned in serverless and in stateful when `group_by=none`.
+  Task IDs and timings reflect the original task across node-shutdown relocations.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "tasks": [
+      {
+        "node": "r1A2WoRbTwKZ516z6NEs5A",
+        "id": 36619,
+        "type": "transport",
+        "action": "indices:data/write/reindex",
+        "status": {
+          "total": 11500,
+          "updated": 0,
+          "created": 4000,
+          "deleted": 0,
+          "batches": 4,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 0,
+          "requests_per_second": 10.0,
+          "throttled_until_millis": 0
+        },
+        "description": "reindex from [my-source-index] to [my-dest-index]",
+        "start_time_in_millis": 1762190000000,
+        "running_time_in_nanos": 4200000000,
+        "cancellable": true,
+        "headers": {}
+      }
+    ]
+  }

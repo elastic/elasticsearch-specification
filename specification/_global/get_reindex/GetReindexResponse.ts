@@ -35,7 +35,7 @@ export class Response {
      */
     completed: boolean
     /**
-     * The ID of the reindex task, in `nodeId:taskNum` format.
+     * The ID of the reindex task. The value is the ID assigned when the task was first created and remains stable across node-shutdown relocations.
      */
     id: TaskId
     /**

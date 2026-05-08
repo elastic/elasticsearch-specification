@@ -1,0 +1,11 @@
+summary: Cancellation acknowledged
+description: >
+  A successful response from `POST /_reindex/{task_id}/_cancel?wait_for_completion=false`.
+  The cancellation has been acknowledged but may not yet have taken effect; use the get
+  reindex API to observe progress.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged": true
+  }

@@ -1,0 +1,15 @@
+summary: One running task
+description: A successful response from `GET /_reindex` listing a single currently running reindex task.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "reindex": [
+      {
+        "id": "r1A2WoRbTwKZ516z6NEs5A:36619",
+        "start_time_in_millis": 1762190000000,
+        "running_time_in_nanos": 4200000000,
+        "cancelled": false
+      }
+    ]
+  }

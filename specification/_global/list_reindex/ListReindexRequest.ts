@@ -21,11 +21,16 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 
 /**
- * List active reindex tasks.
- *
  * Get information about all currently running reindex tasks.
+ *
+ * Reindex tasks that are mid-relocation between nodes are reported once,
+ * under their original task ID, so callers do not see duplicates across the relocation chain.
+ *
+ * The API only returns `200 OK` (outside of network errors or responses returned by integrations sitting between the client and Elasticsearch).
+ * If `node_failures` or `task_failures` are non-empty in the body, the listing is not a complete authoritative listing and may be missing tasks.
  * @rest_spec_name list_reindex
- * @availability stack since=9.4.0 stability=experimental visibility=feature_flag feature_flag=reindex_management_api
+ * @availability stack since=9.5.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id docs-list-reindex
  * @doc_tag reindex
  */

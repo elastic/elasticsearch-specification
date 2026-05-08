@@ -787,7 +787,7 @@ export interface ListReindexRequest extends RequestBase {
 }
 
 export interface ListReindexResponse {
-  reindex: ReindexTaskInfo[]
+  reindex: RelocatableReindexTaskInfo[]
   task_failures?: TaskFailure[]
   node_failures?: ErrorCause[]
 }
@@ -2959,17 +2959,6 @@ export interface ReindexStatus {
   cancelled?: string
 }
 
-export interface ReindexTaskInfo {
-  id: TaskId
-  description?: string
-  start_time_in_millis: EpochTime<UnitMillis>
-  start_time?: string
-  running_time?: Duration
-  running_time_in_nanos: DurationValue<UnitNanos>
-  cancelled: boolean
-  status?: ReindexStatus
-}
-
 export interface ReindexTaskResult {
   batches?: long
   created?: long
@@ -2988,6 +2977,17 @@ export interface ReindexTaskResult {
 }
 
 export type RelationName = string
+
+export interface RelocatableReindexTaskInfo {
+  id: TaskId
+  description?: string
+  start_time_in_millis: EpochTime<UnitMillis>
+  start_time?: string
+  running_time?: Duration
+  running_time_in_nanos: DurationValue<UnitNanos>
+  cancelled: boolean
+  status?: ReindexStatus
+}
 
 export interface RelocationFailureInfo {
   failed_attempts: integer
@@ -23307,6 +23307,9 @@ export interface TasksTaskInfo {
   status?: any
   type: string
   parent_task_id?: TaskId
+  original_task_id?: TaskId
+  original_start_time_in_millis?: EpochTime<UnitMillis>
+  original_start_time?: string
 }
 
 export type TasksTaskInfos = TasksTaskInfo[] | Record<string, TasksParentTaskInfo>

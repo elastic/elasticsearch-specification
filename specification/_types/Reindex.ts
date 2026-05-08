@@ -151,11 +151,11 @@ export class ReindexTaskResult {
 }
 
 /**
- * Information about a single reindex task, as returned by the reindex management APIs.
+ * Information about a single parent reindex task, as returned by the reindex management APIs.
  */
-export class ReindexTaskInfo {
+export class RelocatableReindexTaskInfo {
   /**
-   * The ID of the reindex task, in `nodeId:taskNum` format.
+   * The ID of the reindex task. The ID is assigned when the task was first created and remains the same across graceful shutdown relocations.
    */
   id: TaskId
   /**
@@ -163,21 +163,21 @@ export class ReindexTaskInfo {
    */
   description?: string
   /**
-   * The time at which the reindex task started, in milliseconds since the Unix epoch.
+   * The time at which the reindex task started, in milliseconds since the Unix epoch. Remains the same across graceful shutdown relocations.
    */
   start_time_in_millis: EpochTime<UnitMillis>
   /**
-   * The time at which the reindex task started, as an ISO 8601 formatted string.
+   * The time at which the reindex task started, as an ISO-8601 formatted string. Remains the same across graceful shutdown relocations.
    * Only present when the request includes the `?human=true` query parameter.
    */
   start_time?: string
   /**
-   * The elapsed running time of the reindex task, in a human-readable format.
+   * The elapsed running time of the reindex task, including relocations, in a human-readable format.
    * Only present when the request includes the `?human=true` query parameter.
    */
   running_time?: Duration
   /**
-   * The elapsed running time of the reindex task, in nanoseconds.
+   * The elapsed running time of the reindex task, including relocations, in nanoseconds.
    */
   running_time_in_nanos: DurationValue<UnitNanos>
   /**

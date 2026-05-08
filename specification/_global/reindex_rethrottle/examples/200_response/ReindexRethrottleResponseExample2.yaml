@@ -1,0 +1,24 @@
+summary: Task ID's node is not in the cluster
+description: >
+  A successful response from `POST /_reindex/{task_id}/_rethrottle` when the task ID's
+  node is not in the cluster (for example, the node was shut down without relocation,
+  or the task ID was never valid). The empty `tasks` array and `failed_node_exception`
+  wrapping a `no_such_node_exception` indicate the task is gone.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "node_failures": [
+      {
+        "type": "failed_node_exception",
+        "reason": "Failed node [non_existing_node]",
+        "node_id": "non_existing_node",
+        "caused_by": {
+          "type": "no_such_node_exception",
+          "reason": "No such node [non_existing_node]",
+          "node_id": "non_existing_node"
+        }
+      }
+    ],
+    "tasks": []
+  }

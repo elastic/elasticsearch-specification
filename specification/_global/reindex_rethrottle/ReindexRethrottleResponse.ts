@@ -23,9 +23,32 @@ import { ReindexNode, ReindexTasks } from './types'
 
 export class Response {
   body: {
+    /**
+     * Node-level failures encountered while applying the rethrottle request.
+     * Will return a `failed_node_exception` wrapping a `no_such_node_exception`,
+     * if a node handling the task either never existed, or has left the cluster, and one of the following is true:
+     * 1. The task has completed.
+     * 2. The task cannot be found.
+     *
+     * Note: Rethrottle handles relocations, so as long as the task is not completed or cannot be found or isn't relocating, it should succeed.
+     */
     node_failures?: ErrorCause[]
+    /**
+     * Per-task failures encountered while applying the rethrottle.
+     * If a rethrottle is attempted during a relocation handoff, the failure object reports `status: SERVICE_UNAVAILABLE` (the HTTP response itself is still `200 OK`).
+     * In this case, the request can be retried until success.
+     */
     task_failures?: TaskFailure[]
+    /**
+     * Tasks grouped by node, returned only when `group_by=nodes` (the default).
+     * @availability stack
+     */
     nodes?: Dictionary<string, ReindexNode>
+    /**
+     * The tasks that were successfully rethrottled.
+     * Always returned in serverless.
+     * Returned with `group_by=none` or `group_by=parents` in stateful.
+     */
     tasks?: ReindexTasks
   }
 }
