@@ -6934,27 +6934,27 @@
   "specification/security/update_settings/examples/request/SecurityUpdateSettingsRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.security.update_settings(\n    security={\n        \"index.auto_expand_replicas\": \"0-all\"\n    },\n    security-tokens={\n        \"index.auto_expand_replicas\": \"0-all\"\n    },\n    security-profile={\n        \"index.auto_expand_replicas\": \"0-all\"\n    },\n)"
+      "code": "resp = client.security.update_settings(\n    security={\n        \"index\": {\n            \"auto_expand_replicas\": \"0-all\"\n        }\n    },\n    security-tokens={\n        \"index\": {\n            \"auto_expand_replicas\": \"0-all\"\n        }\n    },\n    security-profile={\n        \"index\": {\n            \"auto_expand_replicas\": \"0-all\"\n        }\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.security.updateSettings({\n  security: {\n    \"index.auto_expand_replicas\": \"0-all\",\n  },\n  \"security-tokens\": {\n    \"index.auto_expand_replicas\": \"0-all\",\n  },\n  \"security-profile\": {\n    \"index.auto_expand_replicas\": \"0-all\",\n  },\n});"
+      "code": "const response = await client.security.updateSettings({\n  security: {\n    index: {\n      auto_expand_replicas: \"0-all\",\n    },\n  },\n  \"security-tokens\": {\n    index: {\n      auto_expand_replicas: \"0-all\",\n    },\n  },\n  \"security-profile\": {\n    index: {\n      auto_expand_replicas: \"0-all\",\n    },\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.security.update_settings(\n  body: {\n    \"security\": {\n      \"index.auto_expand_replicas\": \"0-all\"\n    },\n    \"security-tokens\": {\n      \"index.auto_expand_replicas\": \"0-all\"\n    },\n    \"security-profile\": {\n      \"index.auto_expand_replicas\": \"0-all\"\n    }\n  }\n)"
+      "code": "response = client.security.update_settings(\n  body: {\n    \"security\": {\n      \"index\": {\n        \"auto_expand_replicas\": \"0-all\"\n      }\n    },\n    \"security-tokens\": {\n      \"index\": {\n        \"auto_expand_replicas\": \"0-all\"\n      }\n    },\n    \"security-profile\": {\n      \"index\": {\n        \"auto_expand_replicas\": \"0-all\"\n      }\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->security()->updateSettings([\n    \"body\" => [\n        \"security\" => [\n            \"index.auto_expand_replicas\" => \"0-all\",\n        ],\n        \"security-tokens\" => [\n            \"index.auto_expand_replicas\" => \"0-all\",\n        ],\n        \"security-profile\" => [\n            \"index.auto_expand_replicas\" => \"0-all\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->security()->updateSettings([\n    \"body\" => [\n        \"security\" => [\n            \"index\" => [\n                \"auto_expand_replicas\" => \"0-all\",\n            ],\n        ],\n        \"security-tokens\" => [\n            \"index\" => [\n                \"auto_expand_replicas\" => \"0-all\",\n            ],\n        ],\n        \"security-profile\" => [\n            \"index\" => [\n                \"auto_expand_replicas\" => \"0-all\",\n            ],\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"security\":{\"index.auto_expand_replicas\":\"0-all\"},\"security-tokens\":{\"index.auto_expand_replicas\":\"0-all\"},\"security-profile\":{\"index.auto_expand_replicas\":\"0-all\"}}' \"$ELASTICSEARCH_URL/_security/settings\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"security\":{\"index\":{\"auto_expand_replicas\":\"0-all\"}},\"security-tokens\":{\"index\":{\"auto_expand_replicas\":\"0-all\"}},\"security-profile\":{\"index\":{\"auto_expand_replicas\":\"0-all\"}}}' \"$ELASTICSEARCH_URL/_security/settings\""
     },
     {
       "language": "Java",
-      "code": "client.security().updateSettings(u -> u\n    .security(s -> s)\n    .securityProfile(s -> s)\n    .securityTokens(s -> s)\n);\n"
+      "code": "client.security().updateSettings(u -> u\n    .security(s -> s\n        .index(i -> i\n            .otherSettings(Map.of())\n            .routingPath(List.of())\n            .autoExpandReplicas(\"0-all\")\n            .similarity(Map.of())\n        )\n    )\n    .securityProfile(s -> s\n        .index(i -> i\n            .otherSettings(Map.of())\n            .routingPath(List.of())\n            .autoExpandReplicas(\"0-all\")\n            .similarity(Map.of())\n        )\n    )\n    .securityTokens(s -> s\n        .index(i -> i\n            .otherSettings(Map.of())\n            .routingPath(List.of())\n            .autoExpandReplicas(\"0-all\")\n            .similarity(Map.of())\n        )\n    )\n);\n"
     }
   ],
   "specification/security/get_user_profile/examples/request/GetUserProfileRequestExample1.yaml": [
