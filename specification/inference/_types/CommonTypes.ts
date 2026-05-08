@@ -528,6 +528,8 @@ export class RequestEmbedding {
   /**
    * Inference input.
    * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+   * `content` objects may contain a single item or an array of items. Models that support multiple items per `content`
+   * object will return a single embedding for each `content` object, regardless of how many items it contains.
    *
    * string example:
    * ```
@@ -563,6 +565,24 @@ export class RequestEmbedding {
    *       "format": "base64",
    *       "value": "data:image/jpeg;base64,..."
    *     }
+   *   }
+   * ]
+   * ```
+   * Multiple items in one `content` object example:
+   * ```
+   * "input": [
+   *   {
+   *     "content": [
+   *       {
+   *         "type": "image",
+   *         "format": "base64",
+   *         "value": "data:image/jpeg;base64,..."
+   *       },
+   *       {
+   *         "type": "text",
+   *         "value": "Some text to create an embedding"
+   *       }
+   *     ]
    *   }
    * ]
    * ```
@@ -612,22 +632,29 @@ type EmbeddingContentInput =
  */
 export class EmbeddingContentObject {
   /**
-   * An object containing the input data for the model to embed
+   * An object or an array of objects containing the input data for the model to embed
    */
-  content: EmbeddingContentObjectContents
+  content: EmbeddingContentObjectGroup
 }
 
 /**
- *  An object containing the input data for the model to embed.
+ * Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.
  */
-export class EmbeddingContentObjectContents {
+type EmbeddingContentObjectGroup =
+  | EmbeddingContentObjectItem
+  | Array<EmbeddingContentObjectItem>
+
+/**
+ *  An object containing the input data for a single item for the model to embed.
+ */
+export class EmbeddingContentObjectItem {
   /**
-   * The type of input to embed.
+   * The type of input to embed. Not all models support all input types.
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
-   * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+   * The format of the input. For the `text` type this must be `text`. For tall other types, this must be `base64`.
+   * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
    */
   format?: EmbeddingContentFormat
   /**
@@ -641,7 +668,10 @@ export class EmbeddingContentObjectContents {
  */
 export enum EmbeddingContentType {
   text,
-  image
+  image,
+  audio,
+  video,
+  pdf
 }
 
 /**
@@ -2127,7 +2157,7 @@ export class OpenAIServiceSettings {
    */
   api_key: string
   /**
-   * The number of dimensions the resulting output embeddings should have.
+   * For a `text_embedding` or `embedding` task, the number of dimensions the resulting output embeddings should have.
    * It is supported only in `text-embedding-3` and later models.
    * If it is not set, the OpenAI defined default for the model is used.
    */
@@ -2146,18 +2176,19 @@ export class OpenAIServiceSettings {
   /**
    * This setting helps to minimize the number of rate limit errors returned from OpenAI.
    * The `openai` service sets a default number of requests allowed per minute depending on the task type.
-   * For `text_embedding`, it is set to `3000`.
-   * For `completion`, it is set to `500`.
+   * For `text_embedding` and `embedding`, it is set to `3000`.
+   * For `completion` and `chat_completion`, it is set to `500`.
    */
   rate_limit?: RateLimitSetting
   /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.
+   * For a `text_embedding` or `embedding` task, the similarity measure. One of `cosine`, `dot_product`, `l2_norm`. Defaults to `dot_product`.
    */
   similarity?: OpenAISimilarityType
   /**
    * The URL endpoint to use for the requests.
    * It can be changed for testing purposes.
-   * @server_default https://api.openai.com/v1/embeddings.
+   * Default value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,
+   * `https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.
    */
   url?: string
 }
@@ -2190,7 +2221,8 @@ export class OpenAITaskSettings {
 export enum OpenAITaskType {
   chat_completion,
   completion,
-  text_embedding
+  text_embedding,
+  embedding
 }
 
 export enum OpenAIServiceType {

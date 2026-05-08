@@ -14718,16 +14718,18 @@ export type InferenceEmbeddingContentFormat = 'text' | 'base64'
 export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
 
 export interface InferenceEmbeddingContentObject {
-  content: InferenceEmbeddingContentObjectContents
+  content: InferenceEmbeddingContentObjectGroup
 }
 
-export interface InferenceEmbeddingContentObjectContents {
+export type InferenceEmbeddingContentObjectGroup = InferenceEmbeddingContentObjectItem | InferenceEmbeddingContentObjectItem[]
+
+export interface InferenceEmbeddingContentObjectItem {
   type: InferenceEmbeddingContentType
   format?: InferenceEmbeddingContentFormat
   value: string
 }
 
-export type InferenceEmbeddingContentType = 'text' | 'image'
+export type InferenceEmbeddingContentType = 'text' | 'image' | 'audio' | 'video' | 'pdf'
 
 export interface InferenceEmbeddingInferenceResult {
   embeddings_bytes?: InferenceDenseEmbeddingByteResult[]
@@ -15105,7 +15107,7 @@ export interface InferenceOpenAITaskSettings {
   headers?: Record<string, string>
 }
 
-export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding'
+export type InferenceOpenAITaskType = 'chat_completion' | 'completion' | 'text_embedding' | 'embedding'
 
 export interface InferenceOpenShiftAiServiceSettings {
   api_key: string
@@ -15238,7 +15240,7 @@ export type InferenceTaskTypeMistral = 'text_embedding' | 'chat_completion' | 'c
 
 export type InferenceTaskTypeNvidia = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
-export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion'
+export type InferenceTaskTypeOpenAI = 'text_embedding' | 'chat_completion' | 'completion' | 'embedding'
 
 export type InferenceTaskTypeOpenShiftAi = 'text_embedding' | 'chat_completion' | 'completion' | 'rerank'
 
