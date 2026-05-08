@@ -9346,7 +9346,7 @@
     },
     {
       "language": "Java",
-      "code": "client.security().putPrivileges(p -> p\n    .privileges(Map.of(\"app02\", \"all\", pr -> pr\n        .actions(\"*\")\n        .metadata(Map.of()),\"app01\", Map.of(\"read\", Actions.of(a -> a\n            .actions(List.of(\"action:login\",\"data:read/*\"))\n            .metadata(Map.of())\n        ),\"write\", Actions.of(a -> a\n            .actions(List.of(\"action:login\",\"data:write/*\"))\n            .metadata(Map.of())\n        ))))\n);\n"
+      "code": "client.security().putPrivileges(p -> p\n    .privileges(Map.of(\"app02\", Map.of(\"all\", Actions.of(a -> a\n            .actions(\"*\")\n            .metadata(Map.of())\n        )),\"app01\", Map.of(\"read\", Actions.of(a -> a\n            .actions(List.of(\"action:login\",\"data:read/*\"))\n            .metadata(Map.of())\n        ),\"write\", Actions.of(a -> a\n            .actions(List.of(\"action:login\",\"data:write/*\"))\n            .metadata(Map.of())\n        ))))\n);\n"
     }
   ],
   "specification/security/enroll_kibana/examples/request/EnrollKibanaRequestExample1.yaml": [
