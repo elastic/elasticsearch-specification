@@ -30,7 +30,7 @@ export class Response {
      * 1. The task has completed.
      * 2. The task cannot be found.
      *
-     * Note: Rethrottle handles relocations, so as long as the task is not completed or cannot be found or isn't relocating, it should succeed.
+     * Note: Rethrottle handles relocations, so it should succeed if the task can be found and has not completed.
      */
     node_failures?: ErrorCause[]
     /**

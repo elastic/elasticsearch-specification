@@ -787,7 +787,7 @@ export interface ListReindexRequest extends RequestBase {
 }
 
 export interface ListReindexResponse {
-  reindex: RelocatableReindexTaskInfo[]
+  reindex: ReindexTaskInfo[]
   task_failures?: TaskFailure[]
   node_failures?: ErrorCause[]
 }
@@ -2959,6 +2959,17 @@ export interface ReindexStatus {
   cancelled?: string
 }
 
+export interface ReindexTaskInfo {
+  id: TaskId
+  description?: string
+  start_time_in_millis: EpochTime<UnitMillis>
+  start_time?: string
+  running_time?: Duration
+  running_time_in_nanos: DurationValue<UnitNanos>
+  cancelled: boolean
+  status?: ReindexStatus
+}
+
 export interface ReindexTaskResult {
   batches?: long
   created?: long
@@ -2977,17 +2988,6 @@ export interface ReindexTaskResult {
 }
 
 export type RelationName = string
-
-export interface RelocatableReindexTaskInfo {
-  id: TaskId
-  description?: string
-  start_time_in_millis: EpochTime<UnitMillis>
-  start_time?: string
-  running_time?: Duration
-  running_time_in_nanos: DurationValue<UnitNanos>
-  cancelled: boolean
-  status?: ReindexStatus
-}
 
 export interface RelocationFailureInfo {
   failed_attempts: integer

@@ -17354,7 +17354,7 @@
                       "description": "The list of currently running reindex tasks.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.RelocatableReindexTaskInfo"
+                        "$ref": "#/components/schemas/_types.ReindexTaskInfo"
                       }
                     },
                     "task_failures": {
@@ -25941,7 +25941,7 @@
                   "type": "object",
                   "properties": {
                     "node_failures": {
-                      "description": "Node-level failures encountered while applying the rethrottle request.\nWill return a `failed_node_exception` wrapping a `no_such_node_exception`,\nif a node handling the task either never existed, or has left the cluster, and one of the following is true:\n1. The task has completed.\n2. The task cannot be found.\n\nNote: Rethrottle handles relocations, so as long as the task is not completed or cannot be found or isn't relocating, it should succeed.",
+                      "description": "Node-level failures encountered while applying the rethrottle request.\nWill return a `failed_node_exception` wrapping a `no_such_node_exception`,\nif a node handling the task either never existed, or has left the cluster, and one of the following is true:\n1. The task has completed.\n2. The task cannot be found.\n\nNote: Rethrottle handles relocations, so it should succeed if the task can be found and has not completed.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types.ErrorCause"
@@ -75671,7 +75671,7 @@
           "enterprise"
         ]
       },
-      "_types.RelocatableReindexTaskInfo": {
+      "_types.ReindexTaskInfo": {
         "description": "Information about a single parent reindex task, as returned by the reindex management APIs.",
         "type": "object",
         "properties": {

@@ -153,7 +153,7 @@ export class ReindexTaskResult {
 /**
  * Information about a single parent reindex task, as returned by the reindex management APIs.
  */
-export class RelocatableReindexTaskInfo {
+export class ReindexTaskInfo {
   /**
    * The ID of the reindex task. The ID is assigned when the task was first created and remains the same across graceful shutdown relocations.
    */

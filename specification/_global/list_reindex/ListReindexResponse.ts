@@ -18,14 +18,14 @@
  */
 
 import { ErrorCause, TaskFailure } from '@_types/Errors'
-import { RelocatableReindexTaskInfo } from '@_types/Reindex'
+import { ReindexTaskInfo } from '@_types/Reindex'
 
 export class Response {
   body: {
     /**
      * The list of currently running reindex tasks.
      */
-    reindex: RelocatableReindexTaskInfo[]
+    reindex: ReindexTaskInfo[]
     /**
      * Per-task failures encountered while listing reindex tasks. Tasks that failed are not included in the `reindex` array.
      */
