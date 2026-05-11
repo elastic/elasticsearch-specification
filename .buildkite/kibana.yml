@@ -10,4 +10,5 @@ steps:
 notify:
   - slack:
       channels:
-        - "#devtools-notify-javascript"
+        - "#kibana-spec-type-check"
+      if: build.state == "failed"
