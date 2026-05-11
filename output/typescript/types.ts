@@ -7668,7 +7668,7 @@ export type CatCatTrainedModelsColumn = 'create_time' | 'ct' | 'created_by' | 'c
 
 export type CatCatTrainedModelsColumns = CatCatTrainedModelsColumn | CatCatTrainedModelsColumn[]
 
-export type CatCatTransformColumn = 'changes_last_detection_time' | 'cldt' | 'checkpoint' | 'cp' | 'checkpoint_duration_time_exp_avg' | 'cdtea' | 'checkpointTimeExpAvg' | 'checkpoint_progress' | 'c' | 'checkpointProgress' | 'create_time' | 'ct' | 'createTime' | 'delete_time' | 'dtime' | 'description' | 'd' | 'dest_index' | 'di' | 'destIndex' | 'documents_deleted' | 'docd' | 'documents_indexed' | 'doci' | 'docs_per_second' | 'dps' | 'documents_processed' | 'docp' | 'frequency' | 'f' | 'id' | 'index_failure' | 'if' | 'index_time' | 'itime' | 'index_total' | 'it' | 'indexed_documents_exp_avg' | 'idea' | 'last_search_time' | 'lst' | 'lastSearchTime' | 'max_page_search_size' | 'mpsz' | 'pages_processed' | 'pp' | 'pipeline' | 'p' | 'processed_documents_exp_avg' | 'pdea' | 'processing_time' | 'pt' | 'reason' | 'r' | 'search_failure' | 'sf' | 'search_time' | 'stime' | 'search_total' | 'st' | 'source_index' | 'si' | 'sourceIndex' | 'state' | 's' | 'transform_type' | 'tt' | 'trigger_count' | 'tc' | 'version' | 'v'
+export type CatCatTransformColumn = 'changes_last_detection_time' | 'cldt' | 'checkpoint' | 'cp' | 'checkpoint_duration_time_exp_avg' | 'cdtea' | 'checkpointTimeExpAvg' | 'checkpoint_progress' | 'c' | 'checkpointProgress' | 'create_time' | 'ct' | 'createTime' | 'delete_time' | 'dtime' | 'description' | 'd' | 'dest_index' | 'di' | 'destIndex' | 'documents_deleted' | 'docd' | 'documents_indexed' | 'doci' | 'docs_per_second' | 'dps' | 'documents_processed' | 'docp' | 'frequency' | 'f' | 'id' | 'index_failure' | 'if' | 'index_time' | 'itime' | 'index_total' | 'it' | 'indexed_documents_exp_avg' | 'idea' | 'last_search_time' | 'lst' | 'lastSearchTime' | 'max_page_search_size' | 'mpsz' | 'pages_processed' | 'pp' | 'pipeline' | 'p' | 'processed_documents_exp_avg' | 'pdea' | 'processing_time' | 'pt' | 'project_routing' | 'pr' | 'projectRouting' | 'reason' | 'r' | 'search_failure' | 'sf' | 'search_time' | 'stime' | 'search_total' | 'st' | 'source_index' | 'si' | 'sourceIndex' | 'state' | 's' | 'transform_type' | 'tt' | 'trigger_count' | 'tc' | 'version' | 'v'
 
 export type CatCatTransformColumns = CatCatTransformColumn | CatCatTransformColumn[]
 
@@ -9499,6 +9499,9 @@ export interface CatTransformsTransformsRecord {
   destIndex?: string
   pipeline?: string
   p?: string
+  project_routing?: string
+  pr?: string
+  projectRouting?: string
   description?: string
   d?: string
   transform_type?: string
