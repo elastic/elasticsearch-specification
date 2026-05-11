@@ -653,7 +653,7 @@ export class EmbeddingContentObjectItem {
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this must be `text`. For tall other types, this must be `base64`.
+   * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.
    * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
    */
   format?: EmbeddingContentFormat
