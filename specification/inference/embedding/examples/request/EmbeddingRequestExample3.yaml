@@ -1,0 +1,21 @@
+summary: Embedding task using multiple items grouped under a single content object
+description: Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image
+method_request: 'POST _inference/embedding/my-multimodal-endpoint'
+value: |-
+  {
+    "input": [
+      {
+        "content": [
+          {
+            "type": "image",
+            "format": "base64",
+            "value": "data:image/jpeg;base64,..."
+          },
+          {
+            "type": "text",
+            "value": "Some text to create an embedding"
+          }
+        ]
+      }
+    ]
+  }
