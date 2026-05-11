@@ -1,5 +1,6 @@
-method_request: GET /_reindex/r1A2WoRbTwKZ516z6NEs5A:36619
+summary: In-progress task
+method_request: GET _reindex/r1A2WoRbTwKZ516z6NEs5A:36619
 description: >
-  Run `GET /_reindex/{task_id}` to retrieve the status and progress of a reindex task.
+  Run `GET _reindex/{task_id}` to retrieve the status and progress of a reindex task.
 
 # type: request

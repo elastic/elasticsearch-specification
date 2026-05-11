@@ -800,8 +800,8 @@
         "tags": [
           "reindex"
         ],
-        "summary": "Cancel a reindex task",
-        "description": "Cancel an ongoing reindex task. If `wait_for_completion` is `true` (the default),\nthe response contains the final task state after cancellation.\nIf `wait_for_completion` is `false`, the response contains only `acknowledged: true`.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported, and will also be followed transparently, and have the taskID and timings of the original task.\n\nWhen the task ID cannot be cancelled (unknown ID, non-reindex task, sliced child, finished task, or node left with no stored result), the API returns the following response with a 404 status code:\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"reindex task [r1A2WoRbTwKZ516z6NEs5A:36619] either not found or completed\"\n  },\n  \"status\": 404\n}\n```\n\nDuring a brief handoff window of a node-shutdown relocation, you may receive the response below with a 503 status code.\nRetry with the same task ID; the retry follows the relocated task transparently.\n```\n{\n  \"error\": {\n    \"type\": \"status_exception\",\n    \"reason\": \"cannot cancel task [r1A2WoRbTwKZ516z6NEs5A:36619] because it is being relocated\"\n  },\n  \"status\": 503\n}\n```",
+        "summary": "Cancel an ongoing reindex task",
+        "description": "If `wait_for_completion` is `true` (the default), the response contains the final task state after cancellation.\nIf `wait_for_completion` is `false`, the response contains only `acknowledged: true`.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be cancelled (unknown ID, non-reindex task, sliced child, finished task, or node left with no stored result), the API returns the following response with a 404 status code:\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"reindex task [r1A2WoRbTwKZ516z6NEs5A:36619] either not found or completed\"\n  },\n  \"status\": 404\n}\n```\n\nDuring a brief handoff window of a node-shutdown relocation, you may receive the response below with a 503 status code.\nRetry with the same task ID; the retry follows the relocated task transparently.\n```\n{\n  \"error\": {\n    \"type\": \"status_exception\",\n    \"reason\": \"cannot cancel task [36619] because it is being relocated\"\n  },\n  \"status\": 503\n}\n```",
         "operationId": "cancel-reindex",
         "parameters": [
           {
@@ -915,12 +915,12 @@
                 "examples": {
                   "CancelReindexResponseExample1": {
                     "summary": "Cancellation completed",
-                    "description": "A successful response from `POST /_reindex/{task_id}/_cancel` (the default `wait_for_completion=true`). The response includes the final task state with `cancelled: true` and the `response` block summarising work done before cancellation.\n",
+                    "description": "A successful response from `POST _reindex/{task_id}/_cancel` (the default `wait_for_completion=true`). The response includes the final task state with `cancelled: true` and the `response` block summarising work done before cancellation.\n",
                     "value": "{\n  \"completed\": true,\n  \"id\": \"iXIKIbk_T4aF05n5iTA0nA:876\",\n  \"description\": \"reindex from [cancel_reindex_src] to [cancel_reindex_dst]\",\n  \"start_time_in_millis\": 1778265634844,\n  \"running_time_in_nanos\": 1096397958,\n  \"cancelled\": true,\n  \"status\": {\n    \"total\": 170,\n    \"updated\": 0,\n    \"created\": 16,\n    \"deleted\": 0,\n    \"batches\": 8,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled_millis\": 941,\n    \"requests_per_second\": 17.0,\n    \"canceled\": \"by user request\",\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 75,\n        \"updated\": 0,\n        \"created\": 6,\n        \"deleted\": 0,\n        \"batches\": 3,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 235,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 95,\n        \"updated\": 0,\n        \"created\": 10,\n        \"deleted\": 0,\n        \"batches\": 5,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 705,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until_millis\": 0\n      }\n    ]\n  },\n  \"response\": {\n    \"took\": 1074,\n    \"timed_out\": false,\n    \"total\": 170,\n    \"updated\": 0,\n    \"created\": 16,\n    \"deleted\": 0,\n    \"batches\": 8,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled\": \"941.1ms\",\n    \"throttled_millis\": 941,\n    \"requests_per_second\": 17.0,\n    \"canceled\": \"by user request\",\n    \"throttled_until\": \"0s\",\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 75,\n        \"updated\": 0,\n        \"created\": 6,\n        \"deleted\": 0,\n        \"batches\": 3,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"235.2ms\",\n        \"throttled_millis\": 235,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 95,\n        \"updated\": 0,\n        \"created\": 10,\n        \"deleted\": 0,\n        \"batches\": 5,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"705.8ms\",\n        \"throttled_millis\": 705,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      }\n    ],\n    \"failures\": []\n  }\n}"
                   },
                   "CancelReindexResponseExample2": {
                     "summary": "Cancellation acknowledged",
-                    "description": "A successful response from `POST /_reindex/{task_id}/_cancel?wait_for_completion=false`. The cancellation has been acknowledged but may not yet have taken effect; use the get reindex API to observe progress.\n",
+                    "description": "A successful response from `POST _reindex/{task_id}/_cancel?wait_for_completion=false`. The cancellation has been acknowledged but may not yet have taken effect; use the get reindex API to observe progress.\n",
                     "value": "{\n  \"acknowledged\": true\n}"
                   }
                 }
@@ -5379,7 +5379,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.",
+            "description": "The maximum number of documents to delete per second, across the entire delete-by-query operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -7597,7 +7597,7 @@
           "reindex"
         ],
         "summary": "Get the status and progress of a specific reindex task",
-        "description": "This API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported, and will also be followed transparently, and have the taskID and timings of the original task.\n\nWhen the task ID cannot be resolved, the API the response below with a 404 status code.\nThis response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found\"\n  },\n  \"status\": 404\n}\n```",
+        "description": "This API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be resolved, the API returns the response below with a 404 status code.\nThis response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found\"\n  },\n  \"status\": 404\n}\n```",
         "operationId": "get-reindex",
         "parameters": [
           {
@@ -17379,17 +17379,17 @@
                 "examples": {
                   "ListReindexResponseExample1": {
                     "summary": "One running task",
-                    "description": "A successful response from `GET /_reindex` listing a single currently running reindex task.",
+                    "description": "A successful response from `GET _reindex` listing a single currently running reindex task.",
                     "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancelled\": false\n    }\n  ]\n}"
                   },
                   "ListReindexResponseExample2": {
                     "summary": "One running task with detailed status",
-                    "description": "A successful response from `GET /_reindex?detailed=true&human=true`, including the per-task `status` block.\n",
+                    "description": "A successful response from `GET _reindex?detailed=true&human=true`, including the per-task `status` block.\n",
                     "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"description\": \"reindex from [my-source-index] to [my-dest-index]\",\n      \"start_time_in_millis\": 1762190000000,\n      \"start_time\": \"2025-11-03T17:13:20.000Z\",\n      \"running_time_in_nanos\": 4200000000,\n      \"running_time\": \"4.2s\",\n      \"cancelled\": false,\n      \"status\": {\n        \"batches\": 4,\n        \"deleted\": 0,\n        \"noops\": 0,\n        \"requests_per_second\": -1.0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 0,\n        \"throttled_until_millis\": 0,\n        \"total\": 11500,\n        \"updated\": 0,\n        \"version_conflicts\": 0,\n        \"created\": 4000\n      }\n    }\n  ]\n}"
                   },
                   "ListReindexResponseNodeFailureExample1": {
                     "summary": "Partial list with node failure (HTTP 200)",
-                    "description": "`GET /_reindex` always returns `200 OK`. If a node stops responding during the listing call, `node_failures` may be populated and tasks that were running on that node can be missing from `reindex` for that response; retry or reconcile with `GET /_reindex/{task_id}`.\n",
+                    "description": "`GET _reindex` always returns `200 OK`. If a node stops responding during the listing call, `node_failures` may be populated and tasks that were running on that node can be missing from `reindex` for that response. You may retry.\n",
                     "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancelled\": false\n    }\n  ],\n  \"node_failures\": [\n    {\n      \"type\": \"failed_node_exception\",\n      \"reason\": \"Failed node [xNqz7mM2RkqY8vP1nL0wQ]\",\n      \"node_id\": \"xNqz7mM2RkqY8vP1nL0wQ\",\n      \"caused_by\": {\n        \"type\": \"node_not_connected_exception\",\n        \"reason\": \"Node not connected\",\n        \"node_id\": \"xNqz7mM2RkqY8vP1nL0wQ\"\n      }\n    }\n  ]\n}"
                   }
                 }
@@ -17431,7 +17431,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.\nBy default, there is no throttle.",
+            "description": "The maximum number of documents to ingest per second, across the entire reindex operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -25906,13 +25906,13 @@
           "document"
         ],
         "summary": "Throttle a reindex operation",
-        "description": "Change the number of maximum number of documents to ingest per second for a particular reindex operation.\nFor example, to unthrottle to unlimited documents per second:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch of documents.\nThis behavior prevents scroll timeouts.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported, and will also be followed transparently, and have the taskID and timings of the original task.\n\nThe API only returns `200 OK` (outside of network errors or responses returned by integrations sitting between the client and Elasticsearch).\nIf `tasks` response array is empty, or `node_failures` or `task_failures` are non-empty in the body, the rethrottle might not have been applied to any tasks.",
+        "description": "Change the maximum number of documents to ingest per second for a particular reindex operation.\nFor example, to unthrottle to unlimited documents per second:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch of documents.\nThis behavior prevents scroll timeouts.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can keep using\nthe original task ID throughout the lifetime of the operation.\nThe relocated task ID is also accepted and is followed transparently.\nIn either case, returned task IDs and timings reflect the original task, not its relocated successor.\n\nThe API only returns `200 OK` (outside of network errors or responses returned by integrations\nsitting between the client and Elasticsearch). The rethrottle may not have been applied to any\ntasks if either `node_failures` or `task_failures` is non-empty, or if the response contains\nno successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default\n`group_by=nodes` in stateful) or under `tasks` (returned in serverless, or in stateful with\n`group_by=none` or `group_by=parents`).",
         "operationId": "reindex-rethrottle",
         "parameters": [
           {
             "in": "path",
             "name": "task_id",
-            "description": "The task identifier.\nWhich is returned when creating a reindex task, or getting the taskID from `_reindex` or `_tasks` APIs.\nIn stateful, can be either the original taskID, or the taskID of the relocated task.",
+            "description": "The task identifier, returned when creating a reindex task, or by listing tasks via\n`GET /_reindex` or `GET /_tasks`.\nIn stateful, can be either the original task ID or the task ID of the relocated task.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -25967,12 +25967,12 @@
                 "examples": {
                   "ReindexRethrottleResponseExample1": {
                     "summary": "Successful rethrottle",
-                    "description": "A successful response from `POST /_reindex/{task_id}/_rethrottle?requests_per_second=10`. This is the response shape returned in serverless and in stateful when `group_by=none`. Task IDs and timings reflect the original task across node-shutdown relocations.\n",
+                    "description": "A successful response from `POST _reindex/{task_id}/_rethrottle?requests_per_second=10`. This is the response shape returned in serverless and in stateful when `group_by=none`. Task IDs and timings reflect the original task across node-shutdown relocations.\n",
                     "value": "{\n  \"tasks\": [\n    {\n      \"node\": \"r1A2WoRbTwKZ516z6NEs5A\",\n      \"id\": 36619,\n      \"type\": \"transport\",\n      \"action\": \"indices:data/write/reindex\",\n      \"status\": {\n        \"total\": 11500,\n        \"updated\": 0,\n        \"created\": 4000,\n        \"deleted\": 0,\n        \"batches\": 4,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 0,\n        \"requests_per_second\": 10.0,\n        \"throttled_until_millis\": 0\n      },\n      \"description\": \"reindex from [my-source-index] to [my-dest-index]\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancellable\": true,\n      \"headers\": {}\n    }\n  ]\n}"
                   },
                   "ReindexRethrottleResponseExample2": {
                     "summary": "Task ID's node is not in the cluster",
-                    "description": "A successful response from `POST /_reindex/{task_id}/_rethrottle` when the task ID's node is not in the cluster (for example, the node was shut down without relocation, or the task ID was never valid). The empty `tasks` array and `failed_node_exception` wrapping a `no_such_node_exception` indicate the task is gone.\n",
+                    "description": "A successful response from `POST _reindex/{task_id}/_rethrottle` when the task ID's node is not in the cluster (for example, the node was shut down without relocation, or the task ID was never valid). The empty `tasks` array and `failed_node_exception` wrapping a `no_such_node_exception` indicate the task is gone.\n",
                     "value": "{\n  \"node_failures\": [\n    {\n      \"type\": \"failed_node_exception\",\n      \"reason\": \"Failed node [non_existing_node]\",\n      \"node_id\": \"non_existing_node\",\n      \"caused_by\": {\n        \"type\": \"no_such_node_exception\",\n        \"reason\": \"No such node [non_existing_node]\",\n        \"node_id\": \"non_existing_node\"\n      }\n    }\n  ],\n  \"tasks\": []\n}"
                   },
                   "ReindexRethrottleResponseRelocationExample1": {
@@ -31749,7 +31749,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.",
+            "description": "The maximum number of documents to update per second, across the entire update_by_query operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "deprecated": false,
             "schema": {
               "type": "number"

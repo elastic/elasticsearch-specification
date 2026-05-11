@@ -1,6 +1,6 @@
 summary: One running task with detailed status
 description: >
-  A successful response from `GET /_reindex?detailed=true&human=true`, including the per-task
+  A successful response from `GET _reindex?detailed=true&human=true`, including the per-task
   `status` block.
 # type: response
 # response_code: 200

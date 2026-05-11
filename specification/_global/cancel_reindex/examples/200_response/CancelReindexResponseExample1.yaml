@@ -1,6 +1,6 @@
 summary: Cancellation completed
 description: >
-  A successful response from `POST /_reindex/{task_id}/_cancel` (the default
+  A successful response from `POST _reindex/{task_id}/_cancel` (the default
   `wait_for_completion=true`). The response includes the final task state with
   `cancelled: true` and the `response` block summarising work done before
   cancellation.

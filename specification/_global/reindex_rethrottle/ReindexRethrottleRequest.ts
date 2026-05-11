@@ -25,7 +25,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
 /**
  * Throttle a reindex operation.
  *
- * Change the number of maximum number of documents to ingest per second for a particular reindex operation.
+ * Change the maximum number of documents to ingest per second for a particular reindex operation.
  * For example, to unthrottle to unlimited documents per second:
  *
  * ```
@@ -36,13 +36,17 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * Rethrottling that slows down the query will take effect after completing the current batch of documents.
  * This behavior prevents scroll timeouts.
  *
- * This API follows reindex tasks across node-shutdown relocations, so callers can
- * keep using the original task ID throughout the lifetime of the operation.
- * Returned task IDs and timings reflect the original task, not its relocated successor.
- * Relocated task IDs are also supported, and will also be followed transparently, and have the taskID and timings of the original task.
+ * This API follows reindex tasks across node-shutdown relocations, so callers can keep using
+ * the original task ID throughout the lifetime of the operation.
+ * The relocated task ID is also accepted and is followed transparently.
+ * In either case, returned task IDs and timings reflect the original task, not its relocated successor.
  *
- * The API only returns `200 OK` (outside of network errors or responses returned by integrations sitting between the client and Elasticsearch).
- * If `tasks` response array is empty, or `node_failures` or `task_failures` are non-empty in the body, the rethrottle might not have been applied to any tasks.
+ * The API only returns `200 OK` (outside of network errors or responses returned by integrations
+ * sitting between the client and Elasticsearch). The rethrottle may not have been applied to any
+ * tasks if either `node_failures` or `task_failures` is non-empty, or if the response contains
+ * no successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default
+ * `group_by=nodes` in stateful) or under `tasks` (returned in serverless, or in stateful with
+ * `group_by=none` or `group_by=parents`).
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -58,9 +62,9 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task identifier.
-     * Which is returned when creating a reindex task, or getting the taskID from `_reindex` or `_tasks` APIs.
-     * In stateful, can be either the original taskID, or the taskID of the relocated task.
+     * The task identifier, returned when creating a reindex task, or by listing tasks via
+     * `GET /_reindex` or `GET /_tasks`.
+     * In stateful, can be either the original task ID or the task ID of the relocated task.
      */
     task_id: Id
   }

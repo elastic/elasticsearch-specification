@@ -103,8 +103,8 @@ export interface Request extends RequestBase {
      */
     refresh?: boolean
     /**
-     * The throttle for this request in sub-requests per second.
-     * By default, there is no throttle.
+     * The maximum number of documents to ingest per second, across the entire reindex operation (including slices).
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      * @server_default -1
      */
     requests_per_second?: float

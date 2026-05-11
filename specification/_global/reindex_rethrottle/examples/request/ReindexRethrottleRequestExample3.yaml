@@ -1,7 +1,7 @@
 summary: Task ID for a node not in the cluster
-method_request: POST /_reindex/non_existing_node:123/_rethrottle?requests_per_second=10
+method_request: POST _reindex/non_existing_node:123/_rethrottle?requests_per_second=10
 description: >
-  Run `POST /_reindex/{task_id}/_rethrottle?requests_per_second=10` against a task
+  Run `POST _reindex/{task_id}/_rethrottle?requests_per_second=10` against a task
   ID whose node ID does not exist in the cluster. Response reports the missing node in `node_failures` with an empty `tasks` array.
 
 # type: request

@@ -1,4 +1,4 @@
 summary: Disable throttling
 method_request: POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1
-description: Run `POST /_reindex/{task_id}/_rethrottle?requests_per_second=-1` to disable throttling for a running reindex task.
+description: Run `POST _reindex/{task_id}/_rethrottle?requests_per_second=-1` to disable throttling for a running reindex task.
 # type: request

@@ -1,8 +1,8 @@
 summary: Partial list with node failure (HTTP 200)
 description: >
-  `GET /_reindex` always returns `200 OK`. If a node stops responding during the listing call,
+  `GET _reindex` always returns `200 OK`. If a node stops responding during the listing call,
   `node_failures` may be populated and tasks that were running on that node can be missing from
-  `reindex` for that response; retry or reconcile with `GET /_reindex/{task_id}`.
+  `reindex` for that response. You may retry.
 # type: response
 # response_code: 200
 value: |-
