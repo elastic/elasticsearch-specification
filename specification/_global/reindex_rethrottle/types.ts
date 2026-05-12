@@ -22,6 +22,7 @@ import { long } from '@_types/Numeric'
 import { ReindexStatus } from '@_types/Reindex'
 import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
 import { BaseNode } from '@spec_utils/BaseNode'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ReindexNode extends BaseNode {
@@ -37,9 +38,13 @@ export class ReindexTask {
   node: Name
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status: ReindexStatus
+  status: ParentReindexStatus
   type: string
   headers: HttpHeaders
+}
+
+export class ParentReindexStatus implements OverloadOf<ReindexStatus> {
+  slices?: ReindexStatus[]
 }
 
 /**
