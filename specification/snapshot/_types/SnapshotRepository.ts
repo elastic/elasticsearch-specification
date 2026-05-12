@@ -20,6 +20,7 @@
 import { ByteSize, Uuid } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { OverloadOf } from '@spec_utils/behaviors'
 
 /**
  * @variants internal tag='type'
@@ -411,31 +412,42 @@ export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {
   url: string
 }
 
-export class SourceOnlyRepositorySettings extends RepositorySettingsBase {
-  /**
-   * The delegated repository type. For valid values, refer to the `type` parameter.
-   * Source repositories can use `settings` properties for its delegated repository type.
-   */
-  delegate_type?: string
-  /**
-   * The maximum number of snapshots the repository can contain.
-   * The default is `Integer.MAX_VALUE`, which is 2^31-1 or `2147483647`.
-   * @server_default 2147483647
-   */
-  max_number_of_snapshots?: integer
-  /**
-   * If `true`, the repository is read-only.
-   * The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
-   *
-   * Only a cluster with write access can create snapshots in the repository.
-   * All other clusters connected to the repository should have the `readonly` parameter set to `true`.
-   *
-   * If `false`, the cluster can write to the repository and create snapshots in it.
-   *
-   * IMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.
-   * Having multiple clusters write to the repository at the same time risks corrupting the contents of the repository.
-   * @aliases readonly
-   * @server_default false
-   */
-  read_only?: boolean
+/**
+ * @variants internal tag='delegate_type'
+ */
+export type SourceOnlyRepositorySettings =
+  | SourceOnlyRepositorySettingsForSharedFileSystem
+  | SourceOnlyRepositorySettingsForReadOnlyUrl
+  | SourceOnlyRepositorySettingsForAzure
+  | SourceOnlyRepositorySettingsForGcs
+  | SourceOnlyRepositorySettingsForS3
+
+export class SourceOnlyRepositorySettingsForSharedFileSystem
+  implements OverloadOf<SharedFileSystemRepositorySettings>
+{
+  delegate_type: 'fs'
+}
+
+export class SourceOnlyRepositorySettingsForReadOnlyUrl
+  implements OverloadOf<ReadOnlyUrlRepositorySettings>
+{
+  delegate_type: 'url'
+}
+
+export class SourceOnlyRepositorySettingsForAzure
+  implements OverloadOf<AzureRepositorySettings>
+{
+  delegate_type: 'azure'
+}
+
+export class SourceOnlyRepositorySettingsForGcs
+  implements OverloadOf<GcsRepositorySettings>
+{
+  delegate_type: 'gcs'
+}
+
+export class SourceOnlyRepositorySettingsForS3
+  implements OverloadOf<S3RepositorySettings>
+{
+  delegate_type: 's3'
 }
