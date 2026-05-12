@@ -413,6 +413,9 @@ export class ReadOnlyUrlRepositorySettings extends RepositorySettingsBase {
 }
 
 /**
+ * The delegated repository type.
+ * Source repositories can use `settings` properties for its delegated repository type.
+ *
  * @variants internal tag='delegate_type'
  */
 export type SourceOnlyRepositorySettings =
