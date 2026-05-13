@@ -17,18 +17,9 @@
  * under the License.
  */
 
-import { DataStreamName } from '@_types/common'
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { GlobalRetention } from '@indices/get_data_lifecycle/_types/response'
+import { Duration } from '@_types/Time'
 
-export class Response {
-  body: {
-    data_streams: DataStreamWithLifecycle[]
-    global_retention: GlobalRetention
-  }
-}
-
-class DataStreamWithLifecycle {
-  name: DataStreamName
-  lifecycle?: DataStreamLifecycleWithRollover
+export class GlobalRetention {
+  max_retention?: Duration
+  default_retention?: Duration
 }
