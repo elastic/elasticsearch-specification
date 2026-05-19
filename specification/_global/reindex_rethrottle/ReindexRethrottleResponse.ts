@@ -47,7 +47,7 @@ export class Response {
     /**
      * The tasks that were successfully rethrottled.
      * Always returned in serverless.
-     * Returned with `group_by=none` or `group_by=parents` in stateful.
+     * Returned with `group_by=none` or `group_by=parents` in stack.
      */
     tasks?: ReindexTasks
   }

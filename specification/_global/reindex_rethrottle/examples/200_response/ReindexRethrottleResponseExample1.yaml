@@ -1,7 +1,7 @@
 summary: Successful rethrottle
 description: >
   A successful response from `POST _reindex/{task_id}/_rethrottle?requests_per_second=10`.
-  This is the response shape returned in serverless and in stateful when `group_by=none`.
+  This is the response shape always returned in serverless, and in stack only when `group_by=none`.
   Task IDs and timings reflect the original task across node-shutdown relocations.
 # type: response
 # response_code: 200

@@ -25,7 +25,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
 /**
  * Throttle a reindex operation.
  *
- * Change the maximum number of documents to ingest per second for a particular reindex operation.
+ * Change the maximum number of documents to index per second for a particular reindex operation.
  * For example, to unthrottle to unlimited documents per second:
  *
  * ```
@@ -41,11 +41,9 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * The relocated task ID is also accepted and is followed transparently.
  * In either case, returned task IDs and timings reflect the original task, not its relocated successor.
  *
- * The API only returns `200 OK` (outside of network errors or responses returned by integrations
- * sitting between the client and Elasticsearch). The rethrottle may not have been applied to any
- * tasks if either `node_failures` or `task_failures` is non-empty, or if the response contains
+ * The rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains
  * no successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default
- * `group_by=nodes` in stateful) or under `tasks` (returned in serverless, or in stateful with
+ * `group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with
  * `group_by=none` or `group_by=parents`).
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
@@ -64,19 +62,20 @@ export interface Request extends RequestBase {
     /**
      * The task identifier, returned when creating a reindex task, or by listing tasks via
      * `GET /_reindex` or `GET /_tasks`.
-     * In stateful, can be either the original task ID or the task ID of the relocated task.
+     * In stack, can be either the original task ID or the task ID of the relocated task.
      */
     task_id: Id
   }
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * The maximum number of documents to ingest per second, across the entire reindex operation (including slices).
+     * The maximum number of documents to index per second, across the entire reindex operation (including slices).
      * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
     requests_per_second: float
     /**
      * The way to group the tasks in the response.
+     * We recommend setting this to `none`, which provides the cleanest response format.
      * @server_default nodes
      * @availability stack stability=stable
      */

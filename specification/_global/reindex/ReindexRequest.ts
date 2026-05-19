@@ -103,13 +103,16 @@ export interface Request extends RequestBase {
      */
     refresh?: boolean
     /**
-     * The maximum number of documents to ingest per second, across the entire reindex operation (including slices).
+     * The maximum number of documents to index per second, across the entire reindex operation (including slices).
      * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      * @server_default -1
      */
     requests_per_second?: float
     /**
      * The period of time that a consistent view of the index should be maintained for scrolled search.
+     * In serverless, and stack versions >= v9.5.0, we use PIT rather than scroll for pagination.
+     * We only use scroll for reindexing from remote clusters that are older than v7.10.0.
+     * Therefore, this parameter is ignored unless you are reindexing from a remote cluster that is older than v7.10.0.
      * @server_default 5m
      */
     scroll?: Duration
