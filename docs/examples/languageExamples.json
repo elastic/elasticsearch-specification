@@ -19326,5 +19326,27 @@
       "language": "Java",
       "code": "client.inference().put(p -> p\n    .inferenceId(\"azure_openai_embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"azureopenai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_version\":\"2023-05-15\",\"client_id\":\"12345\",\"client_secret\":\"secret\",\"deployment_id\":\"Deployment-id\",\"resource_name\":\"Resource-name\",\"scopes\":[\"Scope-1\",\"Scope-2\"],\"tenant_id\":\"tenant id\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"headers\":{\"Custom-Header-Key\":\"Custom header value\"}}\n\"\"\"))\n    )\n);\n"
     }
+  ],
+  "specification/inference/embedding/examples/request/EmbeddingRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": [\n            {\n                \"content\": [\n                    {\n                        \"type\": \"image\",\n                        \"format\": \"base64\",\n                        \"value\": \"data:image/jpeg;base64,...\"\n                    },\n                    {\n                        \"type\": \"text\",\n                        \"value\": \"Some text to create an embedding\"\n                    }\n                ]\n            }\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: [\n      {\n        content: [\n          {\n            type: \"image\",\n            format: \"base64\",\n            value: \"data:image/jpeg;base64,...\",\n          },\n          {\n            type: \"text\",\n            value: \"Some text to create an embedding\",\n          },\n        ],\n      },\n    ],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": [\n      {\n        \"content\": [\n          {\n            \"type\": \"image\",\n            \"format\": \"base64\",\n            \"value\": \"data:image/jpeg;base64,...\"\n          },\n          {\n            \"type\": \"text\",\n            \"value\": \"Some text to create an embedding\"\n          }\n        ]\n      }\n    ]\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => array(\n            [\n                \"content\" => array(\n                    [\n                        \"type\" => \"image\",\n                        \"format\" => \"base64\",\n                        \"value\" => \"data:image/jpeg;base64,...\",\n                    ],\n                    [\n                        \"type\" => \"text\",\n                        \"value\" => \"Some text to create an embedding\",\n                    ],\n                ),\n            ],\n        ),\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":[{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"},{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}]}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+    }
   ]
 }
