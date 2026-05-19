@@ -57,7 +57,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * * The target index must not exist.
  * * The source index must have fewer primary shards than the target index.
- * * The number of primary shards in the target index must be a multiple of the number of primary shards in the source index and must also be a divisor of the source index's index.number_of_routing_shards.
+ * * The number of primary shards in the target index must be a multiple of the number of primary shards in the source index.
+ * *  The number of primary shards in the target index must be a divisor of the source index's `index.number_of_routing_shards`.
  * * The node handling the split process must have sufficient free disk space to accommodate a second copy of the existing index.
  * @doc_id indices-split-index
  * @rest_spec_name indices.split
