@@ -22728,10 +22728,59 @@ export interface SnapshotSourceOnlyRepository extends SnapshotRepositoryBase {
   settings: SnapshotSourceOnlyRepositorySettings
 }
 
-export interface SnapshotSourceOnlyRepositorySettings extends SnapshotRepositorySettingsBase {
-  delegate_type?: string
+export type SnapshotSourceOnlyRepositorySettings = SnapshotSourceOnlyRepositorySettingsForSharedFileSystem | SnapshotSourceOnlyRepositorySettingsForReadOnlyUrl | SnapshotSourceOnlyRepositorySettingsForAzure | SnapshotSourceOnlyRepositorySettingsForGcs | SnapshotSourceOnlyRepositorySettingsForS3
+
+export interface SnapshotSourceOnlyRepositorySettingsForAzure {
+  delegate_type: 'azure'
+  base_path?: string
+  client?: string
+  container?: string
+  delete_objects_max_size?: integer
+  location_mode?: string
+  max_concurrent_batch_deletes?: integer
+  readonly?: boolean
+}
+
+export interface SnapshotSourceOnlyRepositorySettingsForGcs {
+  delegate_type: 'gcs'
+  bucket: string
+  application_name?: string
+  base_path?: string
+  client?: string
+  readonly?: boolean
+}
+
+export interface SnapshotSourceOnlyRepositorySettingsForReadOnlyUrl {
+  delegate_type: 'url'
+  http_max_retries?: integer
+  http_socket_timeout?: Duration
   max_number_of_snapshots?: integer
-  read_only?: boolean
+  url: string
+}
+
+export interface SnapshotSourceOnlyRepositorySettingsForS3 {
+  delegate_type: 's3'
+  bucket: string
+  base_path?: string
+  buffer_size?: ByteSize
+  canned_acl?: string
+  client?: string
+  delete_objects_max_size?: integer
+  get_register_retry_delay?: Duration
+  max_multipart_parts?: integer
+  max_multipart_upload_cleanup_size?: integer
+  readonly?: boolean
+  server_side_encryption?: boolean
+  storage_class?: string
+  'throttled_delete_retry.delay_increment'?: Duration
+  'throttled_delete_retry.maximum_delay'?: Duration
+  'throttled_delete_retry.maximum_number_of_retries'?: integer
+}
+
+export interface SnapshotSourceOnlyRepositorySettingsForSharedFileSystem {
+  delegate_type: 'fs'
+  location: string
+  max_number_of_snapshots?: integer
   readonly?: boolean
 }
 
