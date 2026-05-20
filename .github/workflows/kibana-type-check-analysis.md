@@ -12,6 +12,7 @@ engine:
     COPILOT_MODEL: llm-gateway/claude-sonnet-4-6
     COPILOT_PROVIDER_API_KEY: ${{ secrets.LITELLM_API_KEY }}
     COPILOT_PROVIDER_TYPE: openai
+    COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 jobs:
   analyze:
     runs-on: ubuntu-latest
@@ -51,6 +52,7 @@ network:
   allowed:
     - api.buildkite.com
     - api.github.com
+    - elastic.litellm-prod.ai
 ---
 
 # Kibana type check analysis
