@@ -17,12 +17,10 @@
  * under the License.
  */
 
-import { PropertyName } from '@_types/common'
 import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 import { double, integer } from '@_types/Numeric'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { CorePropertyBase, IndexOptions } from './core'
-import { Property, PropertyBase } from './Property'
+import { PropertyBase } from './Property'
 import { Subobjects } from './TypeMapping'
 
 export class FlattenedProperty extends PropertyBase {
@@ -43,12 +41,6 @@ export class FlattenedProperty extends PropertyBase {
    * @availability stack since=9.4.0 stability=stable
    */
   preserve_leaf_arrays?: FlattenedPropertyPreserveLeafArrays
-  /**
-   * Maps specific keys within the flattened object as typed sub-fields. Mapped keys are indexed through their
-   * sub-field type and excluded from the root flattened representation.
-   * @availability stack since=9.4.0 stability=stable
-   */
-  properties?: Dictionary<PropertyName, Property>
   /**
    * When set, typed sub-fields defined in `properties` become queryable at root level without the flattened field
    * prefix. `priority` (non-negative integer) resolves conflicts when multiple passthrough sources expose the same
