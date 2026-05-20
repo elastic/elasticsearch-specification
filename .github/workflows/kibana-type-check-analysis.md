@@ -5,6 +5,11 @@ on:
   schedule:
     - cron: daily
   workflow_dispatch:
+    inputs:
+      branch:
+        description: "Buildkite branch to check (default: main)"
+        required: false
+        default: "main"
 engine:
   id: claude
   model: "llm-gateway/claude-sonnet-4-6"
@@ -19,8 +24,9 @@ jobs:
         env:
           BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
         run: |
+          BRANCH="${{ github.event.inputs.branch || 'main' }}"
           BUILD=$(curl -sf \
-            "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=main" \
+            "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
             -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
 
           STATE=$(echo "$BUILD" | jq -r '.[0].state')
