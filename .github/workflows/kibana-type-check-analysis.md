@@ -25,6 +25,8 @@ jobs:
           BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
           BRANCH: ${{ github.event.inputs.branch || 'main' }}
         run: |
+          mkdir -p /tmp/gh-aw/agent
+
           BUILD=$(curl -sf \
             "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
             -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
@@ -33,8 +35,8 @@ jobs:
           BUILD_NUMBER=$(echo "$BUILD" | jq -r '.[0].number')
           BUILD_URL=$(echo "$BUILD" | jq -r '.[0].web_url')
 
-          echo "$STATE" > /tmp/build-state.txt
-          echo "$BUILD_URL" > /tmp/build-url.txt
+          echo "$STATE" > /tmp/gh-aw/agent/build-state.txt
+          echo "$BUILD_URL" > /tmp/gh-aw/agent/build-url.txt
 
           if [ "$STATE" != "failed" ]; then
             echo "Build passed or not finished, nothing to do."
@@ -48,7 +50,7 @@ jobs:
             -H "Authorization: Bearer $BUILDKITE_API_TOKEN" \
             | jq -r '.content' \
             | sed 's/\x1b\[[0-9;]*m//g' \
-            | grep -E "error TS[0-9]+" | head -100 > /tmp/tsc-errors.txt || true
+            | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
 safe-outputs:
   env:
     GITHUB_TOKEN: ${{ secrets.GENERATOR_JS_PAT }}
@@ -63,9 +65,9 @@ network:
 
 A daily Buildkite pipeline generates a fresh Elasticsearch JS client from the main branch of the Elasticsearch specification (using `elastic-client-generator-js`), installs it into Kibana's main branch, and runs Kibana's TypeScript type check.
 
-The pre-step has already fetched the latest build. Check `/tmp/build-state.txt` — if the state is not `failed`, stop immediately.
+The pre-step has already fetched the latest build. Check `/tmp/gh-aw/agent/build-state.txt` — if the state is not `failed`, stop immediately.
 
-Otherwise, read the tsc errors from `/tmp/tsc-errors.txt` and `/tmp/build-url.txt`.
+Otherwise, read the tsc errors from `/tmp/gh-aw/agent/tsc-errors.txt` and `/tmp/gh-aw/agent/build-url.txt`.
 
 Classify each error as one of:
 - **GENERATOR**: fixable in `elastic-client-generator-js` (wrong type inference, missing types, incorrect codegen output)
@@ -78,4 +80,4 @@ Group errors by classification. For GENERATOR errors, describe a concrete fix wi
 If there are any GENERATOR errors, ensure the label `kibana-spec-check` exists in `elastic/elastic-client-generator-js` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open an issue in `elastic/elastic-client-generator-js` with:
 - Label: `kibana-spec-check`
 - Title: `Kibana type check: generator fixes needed - <today's date>`
-- Body: the Buildkite build URL (from `/tmp/build-url.txt`) followed by the full analysis
+- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis
