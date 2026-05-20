@@ -72,9 +72,16 @@ Classify each error as one of:
 - **KIBANA**: Kibana code needs to be updated to match the improved types (e.g. removing stale `@ts-expect-error` comments)
 - **UNKNOWN**: cannot determine from the error alone
 
-Group errors by classification. For GENERATOR errors, describe a concrete fix with enough detail for a developer to act on it.
+Group errors by classification. For each group, provide a concrete description of the root cause and the required fix.
 
-If there are any GENERATOR errors, ensure the label `kibana-spec-check` exists in `elastic/elastic-client-generator-js` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open an issue in `elastic/elastic-client-generator-js` with:
+**If there are SPEC errors:** ensure the label `kibana-spec-check` exists in `elastic/elasticsearch-specification` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue in `elastic/elasticsearch-specification` with:
+- Label: `kibana-spec-check`
+- Title: `Kibana type check: spec fixes needed - <today's date>`
+- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
+
+**If there are GENERATOR errors:** ensure the label `kibana-spec-check` exists in `elastic/elastic-client-generator-js` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue in `elastic/elastic-client-generator-js` with:
 - Label: `kibana-spec-check`
 - Title: `Kibana type check: generator fixes needed - <today's date>`
-- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis
+- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all GENERATOR errors
+
+**If there are no SPEC or GENERATOR errors** (only KIBANA or UNKNOWN), call `noop` with a brief explanation.
