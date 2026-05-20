@@ -841,23 +841,23 @@ export class AnthropicServiceSettings {
 
 export class AnthropicTaskSettings {
   /**
-   * For a `completion` task, it is the maximum number of tokens to generate before stopping.
+   * For a `completion` or `chat_completion` task, it is the maximum number of tokens to generate before stopping.
    */
   max_tokens: integer
   /**
-   * For a `completion` task, it is the amount of randomness injected into the response.
+   * For a `completion` or `chat_completion` task, it is the amount of randomness injected into the response.
    * For more details about the supported range, refer to Anthropic documentation.
    * @ext_doc_id anthropic-messages
    */
   temperature?: float
   /**
-   * For a `completion` task, it specifies to only sample from the top K options for each subsequent token.
+   * For a `completion` or `chat_completion` task, it specifies to only sample from the top K options for each subsequent token.
    * It is recommended for advanced use cases only.
    * You usually only need to use `temperature`.
    */
   top_k?: integer
   /**
-   * For a `completion` task, it specifies to use Anthropic's nucleus sampling.
+   * For a `completion` or `chat_completion` task, it specifies to use Anthropic's nucleus sampling.
    * In nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.
    * You should either alter `temperature` or `top_p`, but not both.
    * It is recommended for advanced use cases only.
@@ -867,7 +867,8 @@ export class AnthropicTaskSettings {
 }
 
 export enum AnthropicTaskType {
-  completion
+  completion,
+  chat_completion
 }
 
 export enum AnthropicServiceType {
