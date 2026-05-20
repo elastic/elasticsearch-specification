@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 engine:
   id: claude
-  model: claude-sonnet-4-6
+  model: "llm-gateway/claude-sonnet-4-6"
   env:
-    ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai"
+    ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai/"
     ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 jobs:
   analyze:
@@ -48,8 +48,8 @@ safe-outputs:
     GITHUB_TOKEN: ${{ secrets.GENERATOR_JS_PAT }}
 network:
   allowed:
+    - defaults
     - api.buildkite.com
-    - api.github.com
     - elastic.litellm-prod.ai
 ---
 
