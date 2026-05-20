@@ -8,11 +8,10 @@ on:
 engine:
   id: copilot
   env:
-    COPILOT_PROVIDER_BASE_URL: "https://elastic.litellm-prod.ai/v1"
+    COPILOT_PROVIDER_BASE_URL: ${{ secrets.LITELLM_BASE_URL }}
     COPILOT_MODEL: llm-gateway/claude-sonnet-4-6
     COPILOT_PROVIDER_API_KEY: ${{ secrets.LITELLM_API_KEY }}
     COPILOT_PROVIDER_TYPE: openai
-    COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN }}
 jobs:
   analyze:
     runs-on: ubuntu-latest
