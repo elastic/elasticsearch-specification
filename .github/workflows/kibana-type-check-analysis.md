@@ -49,7 +49,7 @@ jobs:
             | grep -E "error TS[0-9]+" | head -100 > /tmp/tsc-errors.txt || true
 safe-outputs:
   env:
-    GITHUB_TOKEN: ${{ secrets.PAT }}
+    GITHUB_TOKEN: ${{ secrets.GENERATOR_JS_PAT }}
 network:
   allowed:
     - api.buildkite.com
