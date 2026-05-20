@@ -16,41 +16,38 @@ engine:
   env:
     ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai/"
     ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
-jobs:
-  analyze:
-    runs-on: ubuntu-latest
-    pre-steps:
-      - name: Fetch Buildkite errors
-        env:
-          BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
-          BRANCH: ${{ github.event.inputs.branch || 'main' }}
-        run: |
-          mkdir -p /tmp/gh-aw/agent
+steps:
+  - name: Fetch Buildkite errors
+    env:
+      BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
+      BRANCH: ${{ github.event.inputs.branch || 'main' }}
+    run: |
+      mkdir -p /tmp/gh-aw/agent
 
-          BUILD=$(curl -sf \
-            "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
-            -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
+      BUILD=$(curl -sf \
+        "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
+        -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
 
-          STATE=$(echo "$BUILD" | jq -r '.[0].state')
-          BUILD_NUMBER=$(echo "$BUILD" | jq -r '.[0].number')
-          BUILD_URL=$(echo "$BUILD" | jq -r '.[0].web_url')
+      STATE=$(echo "$BUILD" | jq -r '.[0].state')
+      BUILD_NUMBER=$(echo "$BUILD" | jq -r '.[0].number')
+      BUILD_URL=$(echo "$BUILD" | jq -r '.[0].web_url')
 
-          echo "$STATE" > /tmp/gh-aw/agent/build-state.txt
-          echo "$BUILD_URL" > /tmp/gh-aw/agent/build-url.txt
+      echo "$STATE" > /tmp/gh-aw/agent/build-state.txt
+      echo "$BUILD_URL" > /tmp/gh-aw/agent/build-url.txt
 
-          if [ "$STATE" != "failed" ]; then
-            echo "Build passed or not finished, nothing to do."
-            exit 0
-          fi
+      if [ "$STATE" != "failed" ]; then
+        echo "Build passed or not finished, nothing to do."
+        exit 0
+      fi
 
-          JOB_ID=$(echo "$BUILD" | jq -r '.[0].jobs[] | select(.state == "failed") | .id' | head -1)
+      JOB_ID=$(echo "$BUILD" | jq -r '.[0].jobs[] | select(.state == "failed") | .id' | head -1)
 
-          curl -sf \
-            "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds/$BUILD_NUMBER/jobs/$JOB_ID/log" \
-            -H "Authorization: Bearer $BUILDKITE_API_TOKEN" \
-            | jq -r '.content' \
-            | sed 's/\x1b\[[0-9;]*m//g' \
-            | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
+      curl -sf \
+        "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds/$BUILD_NUMBER/jobs/$JOB_ID/log" \
+        -H "Authorization: Bearer $BUILDKITE_API_TOKEN" \
+        | jq -r '.content' \
+        | sed 's/\x1b\[[0-9;]*m//g' \
+        | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
 safe-outputs:
   env:
     GITHUB_TOKEN: ${{ secrets.GENERATOR_JS_PAT }}
