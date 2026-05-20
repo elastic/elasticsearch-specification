@@ -91,7 +91,7 @@ export class AutoDateHistogramAggregation extends BucketAggregationBase {
    * The minimum rounding interval.
    * This can make the collection process more efficient, as the aggregation will not attempt to round at any interval lower than `minimum_interval`.
    */
-  minimum_interval?: MinimumInterval
+  minimum_interval?: MinimumInterval | null
   /**
    * The value to apply to documents that do not have a value.
    * By default, documents without a value are ignored.
