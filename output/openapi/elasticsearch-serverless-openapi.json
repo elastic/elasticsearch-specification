@@ -9346,10 +9346,18 @@
                       "items": {
                         "$ref": "#/components/schemas/indices.get_data_lifecycle.DataStreamWithLifecycle"
                       }
+                    },
+                    "global_retention": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/indices.get_data_lifecycle._types.GlobalRetention"
+                        }
+                      ]
                     }
                   },
                   "required": [
-                    "data_streams"
+                    "data_streams",
+                    "global_retention"
                   ]
                 },
                 "examples": {
@@ -39629,10 +39637,16 @@
           "seq_no_primary_term": {
             "type": "boolean"
           },
-          "fields": {
+          "field": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.Field"
+            }
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
             }
           },
           "sort": {
@@ -44928,9 +44942,13 @@
               },
               "minimum_interval": {
                 "description": "The minimum rounding interval.\nThis can make the collection process more efficient, as the aggregation will not attempt to round at any interval lower than `minimum_interval`.",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.MinimumInterval"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
                   }
                 ]
               },
@@ -62111,6 +62129,22 @@
               }
             ]
           },
+          "effective_retention": {
+            "description": "The least amount of time data should be kept by elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "retention_determined_by": {
+            "description": "Configuration source that can influence the retention of a data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.RetentionSource"
+              }
+            ]
+          },
           "downsampling": {
             "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
             "type": "array",
@@ -62132,6 +62166,15 @@
             "type": "boolean"
           }
         }
+      },
+      "indices._types.RetentionSource": {
+        "type": "string",
+        "enum": [
+          "data_stream_configuration",
+          "default_global_retention",
+          "max_global_retention",
+          "default_failures_retention"
+        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -65345,6 +65388,25 @@
         "required": [
           "name"
         ]
+      },
+      "indices.get_data_lifecycle._types.GlobalRetention": {
+        "type": "object",
+        "properties": {
+          "max_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "default_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "indices._types.DataStream": {
         "type": "object",

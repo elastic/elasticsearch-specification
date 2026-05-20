@@ -1562,7 +1562,8 @@ export interface SearchInnerHits {
   ignore_unmapped?: boolean
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Field[]
+  field?: Field[]
+  fields?: (QueryDslFieldAndFormat | Field)[]
   sort?: Sort
   _source?: SearchSourceConfig
   stored_fields?: Fields
@@ -3408,7 +3409,7 @@ export interface AggregationsAutoDateHistogramAggregation extends AggregationsBu
   buckets?: integer
   field?: Field
   format?: string
-  minimum_interval?: AggregationsMinimumInterval
+  minimum_interval?: AggregationsMinimumInterval | null
   missing?: DateTime
   offset?: string
   params?: Record<string, any>
@@ -12171,6 +12172,8 @@ export interface IndicesDataStreamIndex {
 
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
+  effective_retention?: Duration
+  retention_determined_by?: IndicesRetentionSource
   downsampling?: IndicesDownsamplingRound[]
   downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
@@ -12512,6 +12515,8 @@ export interface IndicesQueries {
 export interface IndicesRetentionLease {
   period: Duration
 }
+
+export type IndicesRetentionSource = 'data_stream_configuration' | 'default_global_retention' | 'max_global_retention' | 'default_failures_retention'
 
 export interface IndicesSamplingConfiguration {
   rate: double
@@ -13180,6 +13185,12 @@ export interface IndicesGetDataLifecycleRequest extends RequestBase {
 
 export interface IndicesGetDataLifecycleResponse {
   data_streams: IndicesGetDataLifecycleDataStreamWithLifecycle[]
+  global_retention: IndicesGetDataLifecycleGlobalRetention
+}
+
+export interface IndicesGetDataLifecycleGlobalRetention {
+  max_retention?: Duration
+  default_retention?: Duration
 }
 
 export interface IndicesGetDataLifecycleStatsDataStreamStats {
