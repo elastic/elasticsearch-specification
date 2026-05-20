@@ -26,12 +26,30 @@ import {
   RemoteIndicesPrivileges
 } from '@security/_types/Privileges'
 import { RoleTemplate } from '@security/_types/RoleTemplate'
+import { OverloadOf } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
+/**
+ * Read-side variant of `IndicesPrivileges` returned by the get role API.
+ * Carries the `implicitly_granted` marker that is set on entries contributed by
+ * a registered `ImplicitPrivilegesProvider` when `include_implicit` is `true`.
+ */
+export class IndicesPrivilegesRead implements OverloadOf<IndicesPrivileges> {
+  /**
+   * Set to `true` on entries that were contributed by a registered `ImplicitPrivilegesProvider`
+   * rather than explicitly stored on the role. Only present when the get role API is called with
+   * `include_implicit=true`. The put role API rejects this field, so clients must not echo it back
+   * on a GET-then-PUT round-trip.
+   * @availability stack since=9.5.0
+   * @availability serverless
+   */
+  implicitly_granted?: boolean
+}
+
 export class Role {
   cluster: ClusterPrivilege[]
-  indices: IndicesPrivileges[]
+  indices: IndicesPrivilegesRead[]
   /**
    * @availability stack since=8.14.0
    */

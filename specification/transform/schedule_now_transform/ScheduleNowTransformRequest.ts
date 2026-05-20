@@ -55,5 +55,14 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     timeout?: Duration
+    /**
+     * When true, defers the scheduling by the transform's configured sync delay
+     * instead of triggering immediately. The transform will process new data after
+     * the delay elapses rather than right away.
+     * @server_default false
+     * @availability stack since=9.4.0
+     * @availability serverless
+     */
+    defer?: boolean
   }
 }

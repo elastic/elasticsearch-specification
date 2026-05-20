@@ -154,7 +154,8 @@ export enum TaskTypeNvidia {
 export enum TaskTypeOpenAI {
   text_embedding,
   chat_completion,
-  completion
+  completion,
+  embedding
 }
 
 export enum TaskTypeOpenShiftAi {

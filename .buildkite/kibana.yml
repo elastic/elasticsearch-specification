@@ -1,7 +1,7 @@
 agents:
-  memory: "24G"
+  memory: "48G"
   cpu: "4"
-  ephemeralStorage: 15Gi
+  ephemeralStorage: 25Gi
 
 steps:
   - label: "Run Kibana type checks"
@@ -10,4 +10,5 @@ steps:
 notify:
   - slack:
       channels:
-        - "#devtools-notify-javascript"
+        - "#kibana-spec-type-check"
+      if: build.state == "failed"

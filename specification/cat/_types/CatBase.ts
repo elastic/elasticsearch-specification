@@ -2765,6 +2765,12 @@ export enum CatTransformColumn {
    */
   processing_time,
   /**
+   * The project routing filter for cross-project search from the source configuration.
+   * @aliases pr, projectRouting
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+   */
+  project_routing,
+  /**
    * If a transform has a `failed` state, this property provides details about
    * the reason for the failure.
    * @aliases r
