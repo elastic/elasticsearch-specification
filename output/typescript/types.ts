@@ -1153,6 +1153,25 @@ export interface ReindexSource {
   runtime_mappings?: MappingRuntimeFields
 }
 
+export interface ReindexRethrottleParentReindexStatus {
+  slices?: ReindexStatus[]
+  slice_id?: integer
+  batches: long
+  created?: long
+  deleted: long
+  noops: long
+  requests_per_second: float
+  retries: Retries
+  throttled?: Duration
+  throttled_millis: DurationValue<UnitMillis>
+  throttled_until?: Duration
+  throttled_until_millis: DurationValue<UnitMillis>
+  total: long
+  updated?: long
+  version_conflicts: long
+  cancelled?: string
+}
+
 export interface ReindexRethrottleParentReindexTask extends ReindexRethrottleReindexTask {
   children?: ReindexRethrottleReindexTask[]
 }
@@ -1170,7 +1189,7 @@ export interface ReindexRethrottleReindexTask {
   node: Name
   running_time_in_nanos: DurationValue<UnitNanos>
   start_time_in_millis: EpochTime<UnitMillis>
-  status: ReindexStatus
+  status: ReindexRethrottleParentReindexStatus
   type: string
   headers: HttpHeaders
 }
@@ -1623,7 +1642,8 @@ export interface SearchInnerHits {
   ignore_unmapped?: boolean
   script_fields?: Record<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Field[]
+  field?: Field[]
+  fields?: (QueryDslFieldAndFormat | Field)[]
   sort?: Sort
   _source?: SearchSourceConfig
   stored_fields?: Fields
@@ -2496,6 +2516,12 @@ export interface ElasticsearchVersionMinInfo {
   number: string
 }
 
+export interface Embedding {
+  inference_id?: string
+  input: KnnEmbeddingInput
+  timeout?: Duration
+}
+
 export interface EmptyObject {
   [key: string]: never
 }
@@ -2689,6 +2715,14 @@ export interface IndicesResponseBase extends AcknowledgedResponseBase {
   _shards?: ShardStatistics
 }
 
+export interface InferenceString {
+  type: InferenceEmbeddingContentType
+  format?: InferenceEmbeddingContentFormat | null
+  value: string
+}
+
+export type InferenceStringGroup = InferenceString | InferenceString[]
+
 export interface InlineGetKeys<TDocument = unknown> {
   fields?: Record<string, any>
   found: boolean
@@ -2707,6 +2741,8 @@ export interface InnerRetriever {
 }
 
 export type Ip = string
+
+export type KnnEmbeddingInput = string | InferenceStringGroup
 
 export interface KnnQuery extends QueryDslQueryBase {
   field: Field
@@ -2897,6 +2933,7 @@ export interface QueryCacheStats {
 export type QueryVector = float[]
 
 export interface QueryVectorBuilder {
+  embedding?: Embedding
   text_embedding?: TextEmbedding
   lookup?: LookupQueryVectorBuilder
 }
@@ -3511,7 +3548,7 @@ export interface AggregationsAutoDateHistogramAggregation extends AggregationsBu
   buckets?: integer
   field?: Field
   format?: string
-  minimum_interval?: AggregationsMinimumInterval
+  minimum_interval?: AggregationsMinimumInterval | null
   missing?: DateTime
   offset?: string
   params?: Record<string, any>
@@ -10325,6 +10362,7 @@ export interface ClusterStatsCharFilterTypes {
   built_in_filters: ClusterStatsFieldTypes[]
   built_in_tokenizers: ClusterStatsFieldTypes[]
   char_filter_types: ClusterStatsFieldTypes[]
+  multiple_synonym_graph_filters?: ClusterStatsMultipleSynonymGraphFilter
   filter_types: ClusterStatsFieldTypes[]
   tokenizer_types: ClusterStatsFieldTypes[]
   synonyms: Record<Name, ClusterStatsSynonymsStats>
@@ -10580,6 +10618,11 @@ export interface ClusterStatsIndicesVersions {
   total_primary_bytes: long
   total_primary_size?: ByteSize
   version: VersionString
+}
+
+export interface ClusterStatsMultipleSynonymGraphFilter {
+  analyzer_count?: integer
+  index_count?: integer
 }
 
 export interface ClusterStatsNodePackagingType {
@@ -25145,6 +25188,10 @@ export interface XpackUsageWatcherWatchTriggerSchedule extends XpackUsageCounter
   _all: XpackUsageCounter
 }
 
+export interface SpecUtilsOverloadOf<TDefinition = unknown> {
+  [key: string]: never
+}
+
 export interface SpecUtilsAdditionalProperties<TKey = unknown, TValue = unknown> {
   [key: string]: never
 }
@@ -25158,10 +25205,6 @@ export interface SpecUtilsCommonQueryParameters {
   filter_path?: string | string[]
   human?: boolean
   pretty?: boolean
-}
-
-export interface SpecUtilsOverloadOf<TDefinition = unknown> {
-  [key: string]: never
 }
 
 export interface SpecUtilsCommonCatQueryParameters {
