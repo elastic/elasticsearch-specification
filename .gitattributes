@@ -237,3 +237,5 @@ output/schema/validation-errors.json linguist-generated=false
 compiler-rs/compiler-wasm-lib/pkg/* linguist-generated=true
 
 ####################################################################################################
+
+.github/workflows/*.lock.yml linguist-generated=true merge=ours
