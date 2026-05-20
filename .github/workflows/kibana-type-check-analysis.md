@@ -6,12 +6,11 @@ on:
     - cron: daily
   workflow_dispatch:
 engine:
-  id: copilot
+  id: codex
+  model: llm-gateway/claude-sonnet-4-6
   env:
-    COPILOT_PROVIDER_BASE_URL: ${{ secrets.LITELLM_BASE_URL }}
-    COPILOT_MODEL: llm-gateway/claude-sonnet-4-6
-    COPILOT_PROVIDER_API_KEY: ${{ secrets.LITELLM_API_KEY }}
-    COPILOT_PROVIDER_TYPE: openai
+    OPENAI_BASE_URL: "https://elastic.litellm-prod.ai/v1"
+    OPENAI_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 jobs:
   analyze:
     runs-on: ubuntu-latest
