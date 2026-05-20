@@ -78,14 +78,27 @@ jobs:
             echo EOF
           } >> $GITHUB_ENV
 
-      - name: Open GitHub issue
+      - name: Open issue in generator for GENERATOR errors
         if: steps.build.outputs.state == 'failed' && steps.errors.outputs.count != '0'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
-          gh issue create \
-            --repo elastic/elasticsearch-specification \
-            --title "Kibana type check failures - $(date +%Y-%m-%d)" \
-            --body "Buildkite build: ${{ steps.build.outputs.build_url }}
+          if grep -q "GENERATOR" /tmp/analysis.txt; then
+            gh issue create \
+              --repo elastic/elastic-client-generator-js \
+              --title "Kibana type check: generator fixes needed - $(date +%Y-%m-%d)" \
+              --body "Buildkite build: ${{ steps.build.outputs.build_url }}
 
           $ANALYSIS"
+          fi
+
+      - name: Post analysis to Slack
+        if: steps.build.outputs.state == 'failed' && steps.errors.outputs.count != '0'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -sf -X POST "$SLACK_WEBHOOK_URL" \
+            -H "content-type: application/json" \
+            -d "$(jq -n \
+              --arg text "Kibana type check failed - $(date +%Y-%m-%d)\n\n$ANALYSIS\n\nBuildkite: ${{ steps.build.outputs.build_url }}" \
+              '{text: $text}')"
