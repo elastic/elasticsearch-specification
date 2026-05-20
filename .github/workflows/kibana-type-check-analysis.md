@@ -23,8 +23,8 @@ jobs:
       - name: Fetch Buildkite errors
         env:
           BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
+          BRANCH: ${{ github.event.inputs.branch || 'main' }}
         run: |
-          BRANCH="${{ github.event.inputs.branch || 'main' }}"
           BUILD=$(curl -sf \
             "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
             -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
