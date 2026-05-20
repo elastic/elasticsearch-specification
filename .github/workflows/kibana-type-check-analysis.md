@@ -11,6 +11,7 @@ engine:
     COPILOT_PROVIDER_BASE_URL: ${{ secrets.LITELLM_BASE_URL }}
     COPILOT_MODEL: llm-gateway/claude-sonnet-4-6
     COPILOT_PROVIDER_API_KEY: ${{ secrets.LITELLM_API_KEY }}
+    COPILOT_PROVIDER_TYPE: openai
 jobs:
   analyze:
     runs-on: ubuntu-latest
