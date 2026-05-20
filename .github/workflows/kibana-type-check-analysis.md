@@ -35,11 +35,7 @@ jobs:
             exit 0
           fi
 
-          JOBS=$(curl -sf \
-            "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds/$BUILD_NUMBER/jobs" \
-            -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
-
-          JOB_ID=$(echo "$JOBS" | jq -r '.[] | select(.state == "failed") | .id' | head -1)
+          JOB_ID=$(echo "$BUILD" | jq -r '.[0].jobs[] | select(.state == "failed") | .id' | head -1)
 
           curl -sf \
             "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds/$BUILD_NUMBER/jobs/$JOB_ID/log" \
