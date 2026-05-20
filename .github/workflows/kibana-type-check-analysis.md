@@ -6,11 +6,11 @@ on:
     - cron: daily
   workflow_dispatch:
 engine:
-  id: codex
-  model: llm-gateway/claude-sonnet-4-6
+  id: claude
+  model: claude-sonnet-4-6
   env:
-    OPENAI_BASE_URL: "https://elastic.litellm-prod.ai/v1"
-    OPENAI_API_KEY: ${{ secrets.LITELLM_API_KEY }}
+    ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai"
+    ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 jobs:
   analyze:
     runs-on: ubuntu-latest
