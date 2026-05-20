@@ -13,6 +13,7 @@ engine:
     COPILOT_PROVIDER_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 jobs:
   analyze:
+    runs-on: ubuntu-latest
     pre-steps:
       - name: Fetch Buildkite errors
         env:
