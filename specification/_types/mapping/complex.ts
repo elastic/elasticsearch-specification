@@ -42,7 +42,7 @@ export class FlattenedProperty extends PropertyBase {
    * @server_default lossy
    * @availability stack since=9.4.0 stability=stable
    */
-  preserve_leaf_arrays?: 'lossy' | 'exact'
+  preserve_leaf_arrays?: FlattenedPropertyPreserveLeafArrays
   /**
    * Maps specific keys within the flattened object as typed sub-fields. Mapped keys are indexed through their
    * sub-field type and excluded from the root flattened representation.
@@ -89,4 +89,11 @@ export class AggregateMetricDoubleProperty extends PropertyBase {
 
 export class FlattenedPropertyPassthrough {
   priority: integer
+}
+
+export enum FlattenedPropertyPreserveLeafArrays {
+  /** Sorts, deduplicates, and omits nulls. */
+  lossy,
+  /** Preserves order, duplicates, and nulls. */
+  exact
 }
