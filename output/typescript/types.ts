@@ -11711,7 +11711,7 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
 export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
 export interface EsqlDeleteViewRequest extends RequestBase {
-  name: Id
+  name: Ids
 }
 
 export type EsqlDeleteViewResponse = AcknowledgedResponseBase
@@ -12352,6 +12352,8 @@ export interface IndicesDataStreamIndex {
 
 export interface IndicesDataStreamLifecycle {
   data_retention?: Duration
+  effective_retention?: Duration
+  retention_determined_by?: IndicesRetentionSource
   downsampling?: IndicesDownsamplingRound[]
   downsampling_method?: IndicesSamplingMethod
   enabled?: boolean
@@ -12720,6 +12722,8 @@ export interface IndicesQueries {
 export interface IndicesRetentionLease {
   period: Duration
 }
+
+export type IndicesRetentionSource = 'data_stream_configuration' | 'default_global_retention' | 'max_global_retention' | 'default_failures_retention'
 
 export type IndicesSamplingMethod = 'aggregate' | 'last_value'
 
@@ -13355,6 +13359,12 @@ export interface IndicesGetDataLifecycleRequest extends RequestBase {
 
 export interface IndicesGetDataLifecycleResponse {
   data_streams: IndicesGetDataLifecycleDataStreamWithLifecycle[]
+  global_retention: IndicesGetDataLifecycleGlobalRetention
+}
+
+export interface IndicesGetDataLifecycleGlobalRetention {
+  max_retention?: Duration
+  default_retention?: Duration
 }
 
 export interface IndicesGetDataLifecycleStatsDataStreamStats {
@@ -17928,6 +17938,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   average_inference_time_ms?: DurationValue<UnitFloatMillis>
   average_inference_time_ms_last_minute?: DurationValue<UnitFloatMillis>
   average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
+  average_inference_process_memory_rss_bytes?: ByteSize
   error_count?: integer
   inference_count?: long
   inference_cache_hit_count?: long
