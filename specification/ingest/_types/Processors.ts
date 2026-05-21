@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
+import { ByteSize, Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
@@ -395,7 +395,7 @@ export class AttachmentProcessor extends ProcessorBase {
    * @availability stack since=9.5.0
    * @availability serverless
    */
-  max_field_bytes?: integer
+  max_field_bytes?: ByteSize
   /**
    * Array of properties to select to be stored.
    * Can be `content`, `title`, `name`, `author`, `keywords`, `date`, `content_type`, `content_length`, `language`.
