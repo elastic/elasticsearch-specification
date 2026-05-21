@@ -100,7 +100,16 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value used to route operations to a specific shard.
+     * Cannot be used together with `_slice`.
      */
     routing?: Routing
+    /**
+     * The slice identifier for routing the search to a specific slice.
+     * When provided, the request is limited to shards that match the given slice value.
+     * Use the special value `_all` to query all slices without restricting to a routing value.
+     * Cannot be used together with `routing`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     */
+    _slice?: string
   }
 }
