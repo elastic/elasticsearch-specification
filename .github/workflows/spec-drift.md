@@ -45,7 +45,7 @@ network:
     - elastic.litellm-prod.ai
 
 safe-outputs:
-  staged: true
+  staged: false
   create-pull-request:
     max: 10
     reviewers:
