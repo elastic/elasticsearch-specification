@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
  * Return the list of time series that match a certain set of selectors.
  * @rest_spec_name prometheus.series
  * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id prometheus-series
  */
 export interface Request extends RequestBase {

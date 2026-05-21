@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
  * Evaluate a PromQL expression at a single point in time.
  * @rest_spec_name prometheus.query
  * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id prometheus-query
  */
 export interface Request extends RequestBase {

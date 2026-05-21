@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
  * Evaluate a PromQL expression over a time range.
  * @rest_spec_name prometheus.query_range
  * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id prometheus-query-range
  */
 export interface Request extends RequestBase {

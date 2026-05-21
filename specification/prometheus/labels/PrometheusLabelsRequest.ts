@@ -27,7 +27,7 @@ import { integer } from '@_types/Numeric'
  * Return a list of label names that match a certain set of selectors.
  * @rest_spec_name prometheus.labels
  * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id prometheus-labels
  */
 export interface Request extends RequestBase {

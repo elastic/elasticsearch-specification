@@ -26,7 +26,7 @@ import { RequestBase } from '@_types/Base'
  * time series data into Elasticsearch.
  * @rest_spec_name prometheus.remote_write
  * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id prometheus-remote-write
  */
 export interface Request extends RequestBase {
