@@ -51,6 +51,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Repeated series selector arguments that select the series to return.
+     * @codegen_name match
      */
     'match[]': string[]
     /**

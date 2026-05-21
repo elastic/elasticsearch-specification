@@ -51,6 +51,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Series selectors used to filter the returned label names.
+     * @codegen_name match
      */
     'match[]'?: string[]
     /**
