@@ -28,6 +28,7 @@ import { integer } from '@_types/Numeric'
  * @rest_spec_name prometheus.labels
  * @availability stack since=9.4.0 stability=experimental visibility=public
  * @availability serverless since=9.4.0 stability=experimental visibility=public
+ * @doc_id prometheus-labels
  */
 export interface Request extends RequestBase {
   urls: [
