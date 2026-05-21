@@ -388,7 +388,7 @@ export class AttachmentProcessor extends ProcessorBase {
   indexed_chars_field?: Field
   /**
    * Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,
-   * checked before base64 decoding) or `byte[]` length for binary (for example, CBOR).
+   * checked before base64 decoding) or byte array length for binary (for example, CBOR).
    * If set to `-1`, there is no per-processor limit.
    * The node setting `ingest.attachment.max_field_size` also applies.
    * @server_default -1
