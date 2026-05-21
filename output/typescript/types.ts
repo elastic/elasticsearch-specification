@@ -15851,6 +15851,7 @@ export interface IngestAttachmentProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
   indexed_chars?: long
   indexed_chars_field?: Field
+  max_field_bytes?: ByteSize
   properties?: string[]
   target_field?: Field
   remove_binary?: boolean

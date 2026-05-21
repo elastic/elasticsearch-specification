@@ -72685,6 +72685,16 @@
                   }
                 ]
               },
+              "max_field_bytes": {
+                "description": "Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,\nchecked before base64 decoding) or byte array length for binary (for example, CBOR).\nIf set to `-1`, there is no per-processor limit.\nThe node setting `ingest.attachment.max_field_size` also applies.",
+                "default": "-1",
+                "x-state": "Generally available",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ByteSize"
+                  }
+                ]
+              },
               "properties": {
                 "description": "Array of properties to select to be stored.\nCan be `content`, `title`, `name`, `author`, `keywords`, `date`, `content_type`, `content_length`, `language`.",
                 "type": "array",

@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
+import { ByteSize, Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
@@ -386,6 +386,16 @@ export class AttachmentProcessor extends ProcessorBase {
    * @server_default null
    */
   indexed_chars_field?: Field
+  /**
+   * Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,
+   * checked before base64 decoding) or byte array length for binary (for example, CBOR).
+   * If set to `-1`, there is no per-processor limit.
+   * The node setting `ingest.attachment.max_field_size` also applies.
+   * @server_default -1
+   * @availability stack since=9.5.0
+   * @availability serverless
+   */
+  max_field_bytes?: ByteSize
   /**
    * Array of properties to select to be stored.
    * Can be `content`, `title`, `name`, `author`, `keywords`, `date`, `content_type`, `content_length`, `language`.
