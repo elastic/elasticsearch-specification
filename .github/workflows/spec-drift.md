@@ -24,12 +24,11 @@ strict: true
 timeout-minutes: 45
 
 engine:
-  id: copilot
+  id: claude
+  model: "llm-gateway/claude-sonnet-4-6"
   env:
-    COPILOT_PROVIDER_BASE_URL: "https://elastic.litellm-prod.ai/v1"
-    COPILOT_MODEL: "llm-gateway/claude-sonnet-4-6"
-    COPILOT_PROVIDER_API_KEY: "${{ secrets.LITELLM_API_KEY }}"
-    COPILOT_PROVIDER_TYPE: "openai"
+    ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai/"
+    ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 
 tools:
   github:
@@ -46,6 +45,7 @@ network:
     - elastic.litellm-prod.ai
 
 safe-outputs:
+  staged: false
   create-pull-request:
     max: 10
     reviewers:
