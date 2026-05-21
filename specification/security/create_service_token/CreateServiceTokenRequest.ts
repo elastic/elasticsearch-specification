@@ -29,7 +29,7 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  * You must actively delete them if they are no longer needed.
  * @rest_spec_name security.create_service_token
  * @availability stack stability=stable
- * @availability serverless since=9.4.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_service_account
  * @doc_id security-api-create-service-token
  * @ext_doc_id service-accounts
