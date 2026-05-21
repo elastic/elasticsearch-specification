@@ -368,6 +368,8 @@ export class CharFilterTypes {
    * Contains statistics about character filter types used in selected nodes.
    */
   char_filter_types: FieldTypes[]
+
+  multiple_synonym_graph_filters?: MultipleSynonymGraphFilter
   /**
    * Contains statistics about token filter types used in selected nodes.
    */
@@ -380,6 +382,19 @@ export class CharFilterTypes {
    * Contains statistics about synonyms types used in selected nodes.
    */
   synonyms: Dictionary<Name, SynonymsStats>
+}
+
+export class MultipleSynonymGraphFilter {
+  /**
+   * Number of analyzers across the cluster whose filter chain contains more than one synonym_graph filter.
+   * @server_default 0
+   */
+  analyzer_count?: integer
+  /**
+   * Number of indices that contain at least one analyzer with more than one synonym_graph filter.
+   * @server_default 0
+   */
+  index_count?: integer
 }
 
 export class SynonymsStats {

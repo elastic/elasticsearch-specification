@@ -6491,7 +6491,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.Id"
+              "$ref": "#/components/schemas/_types.Ids"
             },
             "style": "simple"
           }
@@ -9510,10 +9510,18 @@
                       "items": {
                         "$ref": "#/components/schemas/indices.get_data_lifecycle.DataStreamWithLifecycle"
                       }
+                    },
+                    "global_retention": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/indices.get_data_lifecycle._types.GlobalRetention"
+                        }
+                      ]
                     }
                   },
                   "required": [
-                    "data_streams"
+                    "data_streams",
+                    "global_retention"
                   ]
                 },
                 "examples": {
@@ -40400,10 +40408,16 @@
           "seq_no_primary_term": {
             "type": "boolean"
           },
-          "fields": {
+          "field": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.Field"
+            }
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
             }
           },
           "sort": {
@@ -41703,6 +41717,13 @@
       "_types.QueryVectorBuilder": {
         "type": "object",
         "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Embedding"
+              }
+            ]
+          },
           "text_embedding": {
             "allOf": [
               {
@@ -41722,6 +41743,105 @@
         },
         "minProperties": 1,
         "maxProperties": 1
+      },
+      "_types.Embedding": {
+        "type": "object",
+        "properties": {
+          "inference_id": {
+            "type": "string"
+          },
+          "input": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
+              }
+            ]
+          },
+          "timeout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "_types.KnnEmbeddingInput": {
+        "description": "Knn embedding input.\nEither a string, an object or array of objects",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.InferenceStringGroup"
+          }
+        ]
+      },
+      "_types.InferenceStringGroup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.InferenceString"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.InferenceString"
+            }
+          }
+        ]
+      },
+      "_types.InferenceString": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of data that the value represents.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the data. If null, the default data format for the given type is used.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "value": {
+            "description": "String which may be raw text, or the string representation of some other data such as an image in base64.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference._types.EmbeddingContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ]
+      },
+      "inference._types.EmbeddingContentFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64"
+        ]
       },
       "_types.TextEmbedding": {
         "type": "object",
@@ -44388,9 +44508,13 @@
               },
               "minimum_interval": {
                 "description": "The minimum rounding interval.\nThis can make the collection process more efficient, as the aggregation will not attempt to round at any interval lower than `minimum_interval`.",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.MinimumInterval"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
                   }
                 ]
               },
@@ -52841,6 +52965,22 @@
               }
             ]
           },
+          "effective_retention": {
+            "description": "The least amount of time data should be kept by elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "retention_determined_by": {
+            "description": "Configuration source that can influence the retention of a data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.RetentionSource"
+              }
+            ]
+          },
           "downsampling": {
             "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
             "type": "array",
@@ -52870,6 +53010,15 @@
             ]
           }
         }
+      },
+      "indices._types.RetentionSource": {
+        "type": "string",
+        "enum": [
+          "data_stream_configuration",
+          "default_global_retention",
+          "max_global_retention",
+          "default_failures_retention"
+        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -66327,6 +66476,25 @@
           "name"
         ]
       },
+      "indices.get_data_lifecycle._types.GlobalRetention": {
+        "type": "object",
+        "properties": {
+          "max_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "default_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
+      },
       "indices._types.DataStream": {
         "type": "object",
         "properties": {
@@ -68477,23 +68645,6 @@
         "required": [
           "type",
           "value"
-        ]
-      },
-      "inference._types.EmbeddingContentType": {
-        "type": "string",
-        "enum": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ]
-      },
-      "inference._types.EmbeddingContentFormat": {
-        "type": "string",
-        "enum": [
-          "text",
-          "base64"
         ]
       },
       "inference._types.EmbeddingInferenceResult": {
@@ -79855,6 +80006,13 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DurationValueUnitFloatMillis"
+              }
+            ]
+          },
+          "average_inference_process_memory_rss_bytes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
               }
             ]
           },
