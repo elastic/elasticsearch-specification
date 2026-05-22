@@ -17,6 +17,11 @@ engine:
     ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai/"
     ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
 steps:
+  - name: Fetch ephemeral GitHub token
+    id: fetch-token
+    uses: elastic/ci-gh-actions/fetch-github-token@622f9dc1eecdd4af2e81dfb38028aacb1dae03e8 # v1.5.0
+    with:
+      vault-instance: "ci-prod"
   - name: Fetch Buildkite errors
     env:
       BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
@@ -50,7 +55,7 @@ steps:
         | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
 safe-outputs:
   env:
-    GITHUB_TOKEN: ${{ secrets.GENERATOR_JS_PAT }}
+    GITHUB_TOKEN: ${{ steps.fetch-token.outputs.token }}
 network:
   allowed:
     - defaults
