@@ -10,6 +10,8 @@ on:
         description: "Buildkite branch to check (default: main)"
         required: false
         default: "main"
+permissions:
+  id-token: write
 engine:
   id: claude
   model: "llm-gateway/claude-sonnet-4-6"
