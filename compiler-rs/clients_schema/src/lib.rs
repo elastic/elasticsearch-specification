@@ -232,6 +232,7 @@ pub enum Stability {
     Stable,
     Beta,
     Experimental,
+    TechPreview,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
