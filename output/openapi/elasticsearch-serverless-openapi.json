@@ -23146,7 +23146,7 @@
             }
           }
         },
-        "x-state": "Beta",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
