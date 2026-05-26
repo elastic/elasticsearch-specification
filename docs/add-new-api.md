@@ -65,7 +65,7 @@ Furthermore, every request definition **must** contain these JS Doc tags:
 
 - `@rest_spec_name`: the API name (eg: `search`, `indices.create`...).
 - `@availability` Which flavor of Elasticsearch is this API available for? (eg `stack` or `serverless`)
-  - `stability`: the API stability, one of `experimental`, `beta`, `stable`
+  - `stability`: the API stability, one of `experimental`, `beta`, `stable`, `tech_preview`
   - `visibility`: the API stability, one of `public` or `private`.
   - `since`: the version of Elasticsearch when the API has been introduced (eg: `7.7.0`).
     This field is only available for `stack`. If the API is introduced in multiple major versions (eg: `8.19.0` and `9.1.0`), use the appropriate value in each branch.
@@ -77,7 +77,7 @@ Following, you can find a template valid for any request definition.
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @availability stack since=1.2.3 stability=stable|beta|experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental|tech_preview
  */
 interface Request extends RequestBase {
   urls: [
@@ -102,7 +102,7 @@ In some cases, the request could take one or more generics, in such case the def
 ```ts
  /*
  * @rest_spec_name endpoint.name
- * @availability stack since=1.2.3 stability=stable|beta|experimental
+ * @availability stack since=1.2.3 stability=stable|beta|experimental|tech_preview
  */
 interface Request<Generic> extends RequestBase {
   urls: [
