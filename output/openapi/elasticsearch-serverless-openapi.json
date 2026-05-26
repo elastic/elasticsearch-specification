@@ -27696,6 +27696,216 @@
         ]
       }
     },
+    "/_security/service/{namespace}/{service}/credential/token/{name}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Delete service account tokens",
+        "description": "Delete service account tokens for a service in a specified namespace.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-delete-service-token.html"
+        },
+        "operationId": "security-delete-service-token",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "description": "The namespace, which is a top-level grouping of service accounts.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Namespace"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "service",
+            "description": "The service name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Service"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of the service account token.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "description": "If the service account token is successfully deleted, the request returns `{\"found\": true}`.\nOtherwise, the response will have status code 404 and `found` is set to `false`.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "found"
+                  ]
+                },
+                "examples": {
+                  "DeleteServiceTokenResponseExample1": {
+                    "description": "A successful response from `DELETE /_security/service/elastic/fleet-server/credential/token/token42`.\n",
+                    "value": "{\n  \"found\" : true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/service/{namespace}/{service}/credential/token": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_security/role/{name}": {
       "get": {
         "tags": [
@@ -83594,6 +83804,31 @@
           }
         ]
       },
+      "_types.Namespace": {
+        "type": "string"
+      },
+      "_types.Service": {
+        "type": "string"
+      },
+      "security.create_service_token.Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ]
+      },
       "security._types.ApiKey": {
         "type": "object",
         "properties": {
@@ -87326,6 +87561,38 @@
               "SecurityCreateApiKeyResponseExample1": {
                 "description": "A successful response from `POST /_security/api_key`.",
                 "value": "{\n  \"id\": \"VuaCfGcBCdbkQm-e5aOx\",        \n  \"name\": \"my-api-key\",\n  \"expiration\": 1544068612110,         \n  \"api_key\": \"ui2lp2axTNmsyakw9tvNnw\", \n  \"encoded\": \"VnVhQ2ZHY0JDZGJrUW0tZTVhT3g6dWkybHAyYXhUTm1zeWFrdzl0dk5udw==\"  \n}"
+              }
+            }
+          }
+        }
+      },
+      "security.create_service_token-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "created": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/security.create_service_token.Token"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "created",
+                "token"
+              ]
+            },
+            "examples": {
+              "CreateServiceTokenRequestExample1": {
+                "description": "A successful response from `POST /_security/service/elastic/fleet-server/credential/token/token1`. The response includes the service account token, its name, and its secret value as a bearer token.\n",
+                "value": "{\n  \"created\": true,\n  \"token\": {\n    \"name\": \"token1\",\n    \"value\": \"AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ\" \n  }\n}"
               }
             }
           }
@@ -92975,6 +93242,49 @@
         "style": "form"
       },
       "security.create_api_key-refresh": {
+        "in": "query",
+        "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Refresh"
+        },
+        "style": "form"
+      },
+      "security.create_service_token-namespace": {
+        "in": "path",
+        "name": "namespace",
+        "description": "The name of the namespace, which is a top-level grouping of service accounts.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Namespace"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-service": {
+        "in": "path",
+        "name": "service",
+        "description": "The name of the service.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Service"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name for the service account token.\nIf omitted, a random name will be generated.\n\nToken names must be at least one and no more than 256 characters.\nThey can contain alphanumeric characters (a-z, A-Z, 0-9), dashes (`-`), and underscores (`_`), but cannot begin with an underscore.\n\nNOTE: Token names must be unique in the context of the associated service account.\nThey must also be globally unique with their fully qualified names, which are comprised of the service account principal and token name, such as `<namespace>/<service>/<token-name>`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Name"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-refresh": {
         "in": "query",
         "name": "refresh",
         "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
