@@ -98,8 +98,8 @@ Group errors by classification. For each group, provide a concrete description o
 
 **If there are SPEC errors:**
 - Read `/tmp/gh-aw/agent/open-spec-issues.json`. If there is already an open issue (array is non-empty), add a comment to the existing issue (use the first one's `number`) with the new Buildkite build URL and the updated analysis. Do **not** open a new issue.
-- If there are no open issues, ensure the labels `kibana-spec-check` (color `0075ca`) and `agent: kibana type check` (color `e4e669`) exist in `elastic/elasticsearch-specification` (create them if not), then use `safe-outputs.create-issue` to open one issue with:
-  - Labels: `kibana-spec-check`, `agent: kibana type check`
+- If there are no open issues, ensure the labels `kibana-spec-check` (color `0075ca`) and `auto-pr: kibana type check` (color `e4e669`) exist in `elastic/elasticsearch-specification` (create them if not), then use `safe-outputs.create-issue` to open one issue with:
+  - Labels: `kibana-spec-check`, `auto-pr: kibana type check`
   - Title: `Kibana type check: spec fixes needed`
   - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
 

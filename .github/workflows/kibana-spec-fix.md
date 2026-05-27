@@ -1,6 +1,6 @@
 ---
 name: Fix Kibana spec type check issues
-description: 'When an issue is labeled "agent: kibana type check", analyze the SPEC errors and open a fix PR'
+description: 'When an issue is labeled "auto-pr: kibana type check" (or any auto-pr label), analyze the SPEC errors and open a fix PR'
 on:
   issues:
     types: [labeled]
@@ -31,7 +31,7 @@ safe-outputs:
 
 # Fix Kibana spec type check issues
 
-First, check if the label that was just added is exactly `agent: kibana type check`. If it is not, stop immediately with no action.
+First, check if the label that was just added starts with `auto-pr`. If it does not, stop immediately with no action.
 
 ## Context
 
