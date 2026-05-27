@@ -10,15 +10,17 @@ It is compiled by `gh aw compile` into a generated GitHub Actions lockfile.
 
 Every week, inspect pull requests merged in `elastic/elasticsearch`. For each merged PR that has
 an observable REST API surface impact and is not already represented in this repository, open one
-pull request against `main` in `elastic/elasticsearch-specification`.
+issue in `elastic/elasticsearch-specification` describing the drift. The team triages the issue and
+assigns the original Elasticsearch PR author (or another owner) for the follow-up specification
+change.
 
-The workflow must not batch multiple Elasticsearch PRs into one specification PR. One relevant
-Elasticsearch PR should produce at most one specification PR per run.
+The workflow must not batch multiple Elasticsearch PRs into one issue. One relevant Elasticsearch
+PR should produce at most one specification issue per run.
 
-Before opening a PR, the workflow searches existing `elastic/elasticsearch-specification` pull
-requests. It skips PR creation when an open or already-merged specification PR appears to cover the
-same Elasticsearch PR, endpoint, API, changed spec files, or feature terms. This avoids duplicate
-PRs when a human or an earlier workflow run already handled the drift.
+Before opening an issue, the workflow searches existing `elastic/elasticsearch-specification`
+issues and pull requests. It skips issue creation when an open or already-resolved issue or PR
+appears to cover the same Elasticsearch PR, endpoint, API, changed spec files, or feature terms.
+This avoids duplicates when a human or an earlier workflow run already handled the drift.
 
 ## Repository Scope And Input Integrity
 
@@ -37,8 +39,8 @@ tools:
     min-integrity: approved
 ```
 
-`min-integrity: approved` is used because the workflow can create pull requests. The agent should
-act only on trusted repository content from owners, members, collaborators, non-fork PRs on public
+`min-integrity: approved` is used because the workflow can create issues. The agent should act only
+on trusted repository content from owners, members, collaborators, non-fork PRs on public
 repositories, and recognized automation rather than arbitrary untrusted comments or issues.
 `mode: gh-proxy` uses the pre-authenticated GitHub CLI path and avoids starting a GitHub MCP server
 for this scheduled repository task.
@@ -61,20 +63,15 @@ transport-only behavior, and docs that do not affect generated API references.
 ## Version And Backports
 
 Elasticsearch PR target versions are usually discoverable from PR labels such as `v8.19.0` or
-`v9.4.0`. The workflow maps those labels to specification minor branches and PR labels:
+`v9.4.0`. The workflow records those labels in the issue body and notes the implied specification
+minor branches that will eventually need backports:
 
-- `v8.19.0` -> `backport 8.19`
-- `v9.0.0` -> `backport 9.0`
-- `v9.4.0` -> `backport 9.4`
+- `v8.19.0` -> backport to `8.19`
+- `v9.0.0` -> backport to `9.0`
+- `v9.4.0` -> backport to `9.4`
 
-The initial PR always targets `main`. Backporting is delegated to this repository's existing
-backport workflow through `backport X.Y` labels. If a change applies only to `main`, the workflow
-uses `skip-backport` and explains why in the PR body.
-
-Specification PRs request review from `@elastic/devtools-team`.
-
-When a new specification branch is introduced, add the corresponding `backport X.Y` label to the
-agentic workflow allow-list before expecting automated PRs for that branch.
+The workflow does not apply `backport X.Y` or `skip-backport` labels itself. Those labels are
+applied by the team to the follow-up pull request when the specification fix is opened.
 
 ## Copilot BYOK Through LiteLLM
 
