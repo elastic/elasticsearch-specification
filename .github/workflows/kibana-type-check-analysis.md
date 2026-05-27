@@ -28,6 +28,7 @@ steps:
     env:
       BUILDKITE_API_TOKEN: ${{ secrets.BUILDKITE_API_TOKEN }}
       BRANCH: ${{ github.event.inputs.branch || 'main' }}
+      GH_TOKEN: ${{ steps.fetch-token.outputs.token }}
     run: |
       mkdir -p /tmp/gh-aw/agent
 
@@ -55,8 +56,6 @@ steps:
         | jq -r '.content' \
         | sed 's/\x1b\[[0-9;]*m//g' \
         | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
-
-      GH_TOKEN="${{ steps.fetch-token.outputs.token }}"
 
       curl -sf \
         "https://api.github.com/repos/elastic/elasticsearch-specification/issues?labels=kibana-spec-check&state=open&per_page=10" \
