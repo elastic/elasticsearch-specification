@@ -24,6 +24,9 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  * Delete service account tokens.
  *
  * Delete service account tokens for a service in a specified namespace.
+ *
+ * IMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.
+ * Deleting tokens for any other service account requires operator privileges.
  * @rest_spec_name security.delete_service_token
  * @availability stack since=5.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
