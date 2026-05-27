@@ -27702,7 +27702,7 @@
           "security"
         ],
         "summary": "Create a service account token",
-        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
         "externalDocs": {
           "description": "More about service accounts",
           "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
@@ -27741,7 +27741,7 @@
           "security"
         ],
         "summary": "Create a service account token",
-        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
         "externalDocs": {
           "description": "More about service accounts",
           "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
@@ -27780,7 +27780,7 @@
           "security"
         ],
         "summary": "Delete service account tokens",
-        "description": "Delete service account tokens for a service in a specified namespace.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "description": "Delete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
         "externalDocs": {
           "description": "More about service accounts",
           "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
@@ -27874,7 +27874,7 @@
           "security"
         ],
         "summary": "Create a service account token",
-        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
         "externalDocs": {
           "description": "More about service accounts",
           "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
