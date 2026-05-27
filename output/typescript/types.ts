@@ -971,6 +971,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
 export interface OpenPointInTimeResponse {
   _shards: ShardStatistics
   id: Id
+  _clusters?: ClusterStatistics
 }
 
 export interface PingRequest extends RequestBase {
