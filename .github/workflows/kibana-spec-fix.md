@@ -1,6 +1,6 @@
 ---
 name: Fix Kibana spec type check issues
-description: When an issue labeled kibana-spec-check is opened, analyze the SPEC errors and open a fix PR
+description: 'When an issue is labeled "agent: kibana type check", analyze the SPEC errors and open a fix PR'
 on:
   issues:
     types: [labeled]
@@ -31,7 +31,7 @@ safe-outputs:
 
 # Fix Kibana spec type check issues
 
-First, fetch issue `${{ github.event.issue.number }}` via the GitHub API and check its labels. Only continue if the label that was just added is `kibana-spec-check`. If it is not, stop immediately with no action.
+First, check if the label that was just added is exactly `agent: kibana type check`. If it is not, stop immediately with no action.
 
 ## Context
 
