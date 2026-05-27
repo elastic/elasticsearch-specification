@@ -55,6 +55,22 @@ steps:
         | jq -r '.content' \
         | sed 's/\x1b\[[0-9;]*m//g' \
         | grep -E "error TS[0-9]+" | head -100 > /tmp/gh-aw/agent/tsc-errors.txt || true
+
+      GH_TOKEN="${{ steps.fetch-token.outputs.token }}"
+
+      curl -sf \
+        "https://api.github.com/repos/elastic/elasticsearch-specification/issues?labels=kibana-spec-check&state=open&per_page=10" \
+        -H "Authorization: Bearer $GH_TOKEN" \
+        -H "Accept: application/vnd.github+json" \
+        | jq '[.[] | {number, title, html_url}]' \
+        > /tmp/gh-aw/agent/open-spec-issues.json || echo "[]" > /tmp/gh-aw/agent/open-spec-issues.json
+
+      curl -sf \
+        "https://api.github.com/repos/elastic/elastic-client-generator-js/issues?labels=kibana-spec-check&state=open&per_page=10" \
+        -H "Authorization: Bearer $GH_TOKEN" \
+        -H "Accept: application/vnd.github+json" \
+        | jq '[.[] | {number, title, html_url}]' \
+        > /tmp/gh-aw/agent/open-generator-issues.json || echo "[]" > /tmp/gh-aw/agent/open-generator-issues.json
 safe-outputs:
   env:
     GITHUB_TOKEN: ${{ steps.fetch-token.outputs.token }}
@@ -81,14 +97,18 @@ Classify each error as one of:
 
 Group errors by classification. For each group, provide a concrete description of the root cause and the required fix.
 
-**If there are SPEC errors:** ensure the label `kibana-spec-check` exists in `elastic/elasticsearch-specification` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue in `elastic/elasticsearch-specification` with:
-- Label: `kibana-spec-check`
-- Title: `Kibana type check: spec fixes needed - <today's date>`
-- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
+**If there are SPEC errors:**
+- Read `/tmp/gh-aw/agent/open-spec-issues.json`. If there is already an open issue (array is non-empty), add a comment to the existing issue (use the first one's `number`) with the new Buildkite build URL and the updated analysis. Do **not** open a new issue.
+- If there are no open issues, ensure the label `kibana-spec-check` exists in `elastic/elasticsearch-specification` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue with:
+  - Label: `kibana-spec-check`
+  - Title: `Kibana type check: spec fixes needed`
+  - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
 
-**If there are GENERATOR errors:** ensure the label `kibana-spec-check` exists in `elastic/elastic-client-generator-js` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue in `elastic/elastic-client-generator-js` with:
-- Label: `kibana-spec-check`
-- Title: `Kibana type check: generator fixes needed - <today's date>`
-- Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all GENERATOR errors
+**If there are GENERATOR errors:**
+- Read `/tmp/gh-aw/agent/open-generator-issues.json`. If there is already an open issue, add a comment to it with the new build URL and updated analysis. Do **not** open a new issue.
+- If there are no open issues, ensure the label `kibana-spec-check` exists in `elastic/elastic-client-generator-js` (create it with color `0075ca` if not), then use `safe-outputs.create-issue` to open one issue with:
+  - Label: `kibana-spec-check`
+  - Title: `Kibana type check: generator fixes needed`
+  - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all GENERATOR errors
 
 **If there are no SPEC or GENERATOR errors** (only KIBANA or UNKNOWN), call `noop` with a brief explanation.
