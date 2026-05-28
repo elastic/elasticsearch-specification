@@ -2277,7 +2277,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3020,7 +3020,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3283,7 +3283,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3457,7 +3457,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -4038,7 +4038,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6409,7 +6409,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6468,7 +6468,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6508,7 +6508,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6593,7 +6593,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6615,7 +6615,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6655,7 +6655,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12369,7 +12369,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -24062,7 +24062,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24111,7 +24111,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24159,7 +24159,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24221,7 +24221,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24266,7 +24266,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24291,7 +24291,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24314,7 +24314,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25656,7 +25656,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25679,7 +25679,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26530,7 +26530,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26570,7 +26570,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26611,7 +26611,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26633,7 +26633,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -29535,7 +29535,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -37819,7 +37819,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-count-ks-test-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a two sample Kolmogorov–Smirnov test (\"K-S test\") against a provided distribution and the distribution implied by the documents counts in the configured sibling aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketKsAggregation"
@@ -37831,7 +37831,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-correlation-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a correlation function on the configured sibling multi-bucket aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketCorrelationAggregation"
@@ -37876,7 +37876,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-categorize-text-aggregation"
                 },
                 "description": "A multi-bucket aggregation that groups semi-structured text into buckets.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
@@ -38526,7 +38526,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-time-series-aggregation"
                 },
                 "description": "The time series aggregation queries data created using a time series index.\nThis is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.TimeSeriesAggregation"
@@ -44549,7 +44549,7 @@
               },
               "pruning_config": {
                 "description": "Token pruning configurations",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.TokenPruningConfig"
@@ -60963,7 +60963,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -61276,7 +61276,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -62539,7 +62539,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -62881,7 +62881,7 @@
               },
               "time_series_metric": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -62891,7 +62891,7 @@
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
                 "default": false,
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               }
             }
@@ -66092,12 +66092,12 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "boolean"
           },
           "time_series_metric": {
             "description": "Contains metric type if this fields is used as a time series\nmetrics, absent if the field is not used as metric.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -66106,7 +66106,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -66114,7 +66114,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -70560,12 +70560,12 @@
           },
           "long_document_strategy": {
             "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "string"
           },
           "max_chunks_per_doc": {
             "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "number"
           }
         },
@@ -83055,7 +83055,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"
