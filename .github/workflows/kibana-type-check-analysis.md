@@ -32,9 +32,17 @@ steps:
     run: |
       mkdir -p /tmp/gh-aw/agent
 
-      BUILD=$(curl -sf \
+      BK_RESPONSE=$(curl -s -w "\n__HTTP_STATUS__%{http_code}" \
         "https://api.buildkite.com/v2/organizations/elastic/pipelines/kibana-type-checks/builds?per_page=1&branch=${BRANCH}" \
         -H "Authorization: Bearer $BUILDKITE_API_TOKEN")
+
+      HTTP_STATUS=$(echo "$BK_RESPONSE" | tail -1 | sed 's/__HTTP_STATUS__//')
+      BUILD=$(echo "$BK_RESPONSE" | sed '$d')
+
+      if [ "$HTTP_STATUS" -ge 400 ]; then
+        echo "Buildkite API error (HTTP $HTTP_STATUS): $BUILD"
+        exit 1
+      fi
 
       STATE=$(echo "$BUILD" | jq -r '.[0].state')
       BUILD_NUMBER=$(echo "$BUILD" | jq -r '.[0].number')
