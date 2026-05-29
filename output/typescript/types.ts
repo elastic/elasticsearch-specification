@@ -23421,6 +23421,9 @@ export interface TasksTaskInfo {
   status?: any
   type: string
   parent_task_id?: TaskId
+  original_task_id?: TaskId
+  original_start_time_in_millis?: EpochTime<UnitMillis>
+  original_start_time?: string
 }
 
 export type TasksTaskInfos = TasksTaskInfo[] | Record<string, TasksParentTaskInfo>

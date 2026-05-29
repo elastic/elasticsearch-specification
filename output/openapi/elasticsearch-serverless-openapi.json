@@ -795,6 +795,148 @@
         ]
       }
     },
+    "/_reindex/{task_id}/_cancel": {
+      "post": {
+        "tags": [
+          "reindex"
+        ],
+        "summary": "Cancel an ongoing reindex task",
+        "description": "If `wait_for_completion` is `true` (the default), the response contains the final task state after cancellation.\nIf `wait_for_completion` is `false`, the response contains only `acknowledged: true`.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be cancelled (unknown ID, non-reindex task, sliced child, finished task, or node left with no stored result), the API returns the following response with a 404 status code:\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"reindex task [r1A2WoRbTwKZ516z6NEs5A:36619] either not found or completed\"\n  },\n  \"status\": 404\n}\n```\n\nDuring a brief handoff window of a node-shutdown relocation, you may receive the response below with a 503 status code.\nRetry with the same task ID; the retry follows the relocated task transparently.\n```\n{\n  \"error\": {\n    \"type\": \"status_exception\",\n    \"reason\": \"cannot cancel task [36619] because it is being relocated\"\n  },\n  \"status\": 503\n}\n```",
+        "operationId": "cancel-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_id",
+            "description": "The ID of the reindex task to cancel.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.TaskId"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true` (the default), the request blocks until the cancellation is complete and returns the final task state.\nIf `false`, the request returns immediately with `acknowledged: true`.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "description": "Present and `true` when `wait_for_completion=false`.",
+                      "type": "boolean"
+                    },
+                    "completed": {
+                      "description": "Whether the reindex task has completed. Present when `wait_for_completion=true`.",
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "description": "The ID of the reindex task. The value is the ID assigned when the task was first created and remains stable across node-shutdown relocations. Present when `wait_for_completion=true`.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.TaskId"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "description": "A sanitized description of the reindex operation.",
+                      "type": "string"
+                    },
+                    "start_time_in_millis": {
+                      "description": "The time at which the reindex task started, in milliseconds since the Unix epoch.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "start_time": {
+                      "description": "The time at which the reindex task started, as an ISO 8601 formatted string.",
+                      "type": "string"
+                    },
+                    "running_time": {
+                      "description": "The elapsed running time of the reindex task, in a human-readable format.\nOnly present when the request includes the `?human=true` query parameter.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Duration"
+                        }
+                      ]
+                    },
+                    "running_time_in_nanos": {
+                      "description": "The elapsed running time of the reindex task, in nanoseconds.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+                        }
+                      ]
+                    },
+                    "cancelled": {
+                      "description": "Whether the reindex task has been cancelled.",
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "description": "The status of the reindex operation at the time of cancellation.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ReindexStatus"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "The error that caused the reindex task to fail, if any.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ErrorCause"
+                        }
+                      ]
+                    },
+                    "response": {
+                      "description": "The final result of the reindex operation, if it completed before being cancelled.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ReindexTaskResult"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "CancelReindexResponseExample1": {
+                    "summary": "Cancellation completed",
+                    "description": "A successful response from `POST _reindex/{task_id}/_cancel` (the default `wait_for_completion=true`). The response includes the final task state with `cancelled: true` and the `response` block summarising work done before cancellation.\n",
+                    "value": "{\n  \"completed\": true,\n  \"id\": \"iXIKIbk_T4aF05n5iTA0nA:876\",\n  \"description\": \"reindex from [cancel_reindex_src] to [cancel_reindex_dst]\",\n  \"start_time_in_millis\": 1778265634844,\n  \"running_time_in_nanos\": 1096397958,\n  \"cancelled\": true,\n  \"status\": {\n    \"total\": 170,\n    \"updated\": 0,\n    \"created\": 16,\n    \"deleted\": 0,\n    \"batches\": 8,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled_millis\": 941,\n    \"requests_per_second\": 17.0,\n    \"canceled\": \"by user request\",\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 75,\n        \"updated\": 0,\n        \"created\": 6,\n        \"deleted\": 0,\n        \"batches\": 3,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 235,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 95,\n        \"updated\": 0,\n        \"created\": 10,\n        \"deleted\": 0,\n        \"batches\": 5,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 705,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until_millis\": 0\n      }\n    ]\n  },\n  \"response\": {\n    \"took\": 1074,\n    \"timed_out\": false,\n    \"total\": 170,\n    \"updated\": 0,\n    \"created\": 16,\n    \"deleted\": 0,\n    \"batches\": 8,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled\": \"941.1ms\",\n    \"throttled_millis\": 941,\n    \"requests_per_second\": 17.0,\n    \"canceled\": \"by user request\",\n    \"throttled_until\": \"0s\",\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 75,\n        \"updated\": 0,\n        \"created\": 6,\n        \"deleted\": 0,\n        \"batches\": 3,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"235.2ms\",\n        \"throttled_millis\": 235,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 95,\n        \"updated\": 0,\n        \"created\": 10,\n        \"deleted\": 0,\n        \"batches\": 5,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"705.8ms\",\n        \"throttled_millis\": 705,\n        \"requests_per_second\": -1.0,\n        \"canceled\": \"by user request\",\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      }\n    ],\n    \"failures\": []\n  }\n}"
+                  },
+                  "CancelReindexResponseExample2": {
+                    "summary": "Cancellation acknowledged",
+                    "description": "A successful response from `POST _reindex/{task_id}/_cancel?wait_for_completion=false`. The cancellation has been acknowledged but may not yet have taken effect; use the get reindex API to observe progress.\n",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_cat/aliases": {
       "get": {
         "tags": [
@@ -5237,7 +5379,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.",
+            "description": "The maximum number of documents to delete per second, across the entire delete-by-query operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -7438,6 +7580,161 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/field_caps-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_reindex/{task_id}": {
+      "get": {
+        "tags": [
+          "reindex"
+        ],
+        "summary": "Get the status and progress of a specific reindex task",
+        "description": "This API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be resolved, the API returns the response below with a 404 status code.\nThis response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found\"\n  },\n  \"status\": 404\n}\n```",
+        "operationId": "get-reindex",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_id",
+            "description": "The ID of the reindex task to retrieve.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.TaskId"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true`, the request blocks until the reindex task completes, then returns the result.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for the reindex task to complete when `wait_for_completion` is `true`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "completed": {
+                      "description": "Whether the reindex task has completed.",
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "description": "The ID of the reindex task. The value is the ID assigned when the task was first created and remains stable across node-shutdown relocations.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.TaskId"
+                        }
+                      ]
+                    },
+                    "description": {
+                      "description": "A sanitized description of the reindex operation (source and destination indices, and optionally remote host info).",
+                      "type": "string"
+                    },
+                    "start_time_in_millis": {
+                      "description": "The time at which the reindex task started, in milliseconds since the Unix epoch.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "start_time": {
+                      "description": "The time at which the reindex task started, as an ISO 8601 formatted string.\nOnly present when the request includes the `?human=true` query parameter.",
+                      "type": "string"
+                    },
+                    "running_time": {
+                      "description": "The elapsed running time of the reindex task, in a human-readable format.\nOnly present when the request includes the `?human=true` query parameter.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Duration"
+                        }
+                      ]
+                    },
+                    "running_time_in_nanos": {
+                      "description": "The elapsed running time of the reindex task, in nanoseconds.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+                        }
+                      ]
+                    },
+                    "cancelled": {
+                      "description": "Whether the reindex task has been cancelled.",
+                      "type": "boolean"
+                    },
+                    "status": {
+                      "description": "The current progress of the reindex operation.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ReindexStatus"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "The error that caused the reindex task to fail, if any.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ErrorCause"
+                        }
+                      ]
+                    },
+                    "response": {
+                      "description": "The final result of the completed reindex operation, if the task has finished successfully.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.ReindexTaskResult"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "completed",
+                    "id",
+                    "start_time_in_millis",
+                    "running_time_in_nanos",
+                    "cancelled"
+                  ]
+                },
+                "examples": {
+                  "GetReindexResponseExample1": {
+                    "summary": "In-progress task",
+                    "description": "A successful response for an in-progress reindex task. The `status` block reports current progress; the `response` block is absent until the task completes.\n",
+                    "value": "{\n  \"completed\": false,\n  \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  \"description\": \"reindex from [reindex_src] to [reindex_dst]\",\n  \"start_time_in_millis\": 1778265266199,\n  \"running_time_in_nanos\": 1588606084,\n  \"cancelled\": false,\n  \"status\": {\n    \"total\": 0,\n    \"updated\": 0,\n    \"created\": 0,\n    \"deleted\": 0,\n    \"batches\": 0,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled_millis\": 0,\n    \"requests_per_second\": 4.0,\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      null,\n      null\n    ]\n  }\n}"
+                  },
+                  "GetReindexResponseExample2": {
+                    "summary": "Completed task",
+                    "description": "A successful response for a completed reindex task. The final outcome is in the `response` block.\n",
+                    "value": "{\n  \"completed\": true,\n  \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  \"description\": \"reindex from [reindex_src] to [reindex_dst]\",\n  \"start_time_in_millis\": 1778265266199,\n  \"running_time_in_nanos\": 35457187167,\n  \"cancelled\": false,\n  \"status\": {\n    \"total\": 240,\n    \"updated\": 0,\n    \"created\": 240,\n    \"deleted\": 0,\n    \"batches\": 120,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled_millis\": 2999,\n    \"requests_per_second\": -1.0,\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 174,\n        \"updated\": 0,\n        \"created\": 174,\n        \"deleted\": 0,\n        \"batches\": 87,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 999,\n        \"requests_per_second\": -1.0,\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 66,\n        \"updated\": 0,\n        \"created\": 66,\n        \"deleted\": 0,\n        \"batches\": 33,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 1999,\n        \"requests_per_second\": -1.0,\n        \"throttled_until_millis\": 0\n      }\n    ]\n  },\n  \"response\": {\n    \"took\": 35434,\n    \"timed_out\": false,\n    \"total\": 240,\n    \"updated\": 0,\n    \"created\": 240,\n    \"deleted\": 0,\n    \"batches\": 120,\n    \"version_conflicts\": 0,\n    \"noops\": 0,\n    \"retries\": {\n      \"bulk\": 0,\n      \"search\": 0\n    },\n    \"throttled\": \"2.9s\",\n    \"throttled_millis\": 2999,\n    \"requests_per_second\": -1.0,\n    \"throttled_until\": \"0s\",\n    \"throttled_until_millis\": 0,\n    \"slices\": [\n      {\n        \"slice_id\": 0,\n        \"total\": 174,\n        \"updated\": 0,\n        \"created\": 174,\n        \"deleted\": 0,\n        \"batches\": 87,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"999.9ms\",\n        \"throttled_millis\": 999,\n        \"requests_per_second\": -1.0,\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      },\n      {\n        \"slice_id\": 1,\n        \"total\": 66,\n        \"updated\": 0,\n        \"created\": 66,\n        \"deleted\": 0,\n        \"batches\": 33,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled\": \"1.9s\",\n        \"throttled_millis\": 1999,\n        \"requests_per_second\": -1.0,\n        \"throttled_until\": \"0s\",\n        \"throttled_until_millis\": 0\n      }\n    ],\n    \"failures\": []\n  }\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -17042,6 +17339,428 @@
         ]
       }
     },
+    "/_reindex": {
+      "get": {
+        "tags": [
+          "reindex"
+        ],
+        "summary": "Get information about all currently running reindex tasks",
+        "description": "Reindex tasks that are mid-relocation between nodes are reported once,\nunder their original task ID, so callers do not see duplicates across the relocation chain.\n\nIf the API returns a HTTP status of `200 OK`, but `node_failures` or `task_failures` are non-empty in the body, the listing is not a complete authoritative listing and may be missing tasks.",
+        "operationId": "list-reindex",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "detailed",
+            "description": "If `true`, include detailed task status information in the response.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "reindex": {
+                      "description": "The list of currently running reindex tasks.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ReindexTaskInfo"
+                      }
+                    },
+                    "task_failures": {
+                      "description": "Per-task failures encountered while listing reindex tasks. Tasks that failed are not included in the `reindex` array.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.TaskFailure"
+                      }
+                    },
+                    "node_failures": {
+                      "description": "Node-level failures encountered while listing reindex tasks.\nTypically populated when a node disconnects or stops responding mid-request,\nreindex tasks running on such nodes will be missing from the `reindex` array for the duration of the disruption.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ErrorCause"
+                      }
+                    }
+                  },
+                  "required": [
+                    "reindex"
+                  ]
+                },
+                "examples": {
+                  "ListReindexResponseExample1": {
+                    "summary": "One running task",
+                    "description": "A successful response from `GET _reindex` listing a single currently running reindex task.",
+                    "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancelled\": false\n    }\n  ]\n}"
+                  },
+                  "ListReindexResponseExample2": {
+                    "summary": "One running task with detailed status",
+                    "description": "A successful response from `GET _reindex?detailed=true&human=true`, including the per-task `status` block.\n",
+                    "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"description\": \"reindex from [my-source-index] to [my-dest-index]\",\n      \"start_time_in_millis\": 1762190000000,\n      \"start_time\": \"2025-11-03T17:13:20.000Z\",\n      \"running_time_in_nanos\": 4200000000,\n      \"running_time\": \"4.2s\",\n      \"cancelled\": false,\n      \"status\": {\n        \"batches\": 4,\n        \"deleted\": 0,\n        \"noops\": 0,\n        \"requests_per_second\": -1.0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 0,\n        \"throttled_until_millis\": 0,\n        \"total\": 11500,\n        \"updated\": 0,\n        \"version_conflicts\": 0,\n        \"created\": 4000\n      }\n    }\n  ]\n}"
+                  },
+                  "ListReindexResponseNodeFailureExample1": {
+                    "summary": "Partial list with node failure (HTTP 200)",
+                    "description": "`GET _reindex` always returns `200 OK`. If a node stops responding during the listing call, `node_failures` may be populated and tasks that were running on that node can be missing from `reindex` for that response. You may retry.\n",
+                    "value": "{\n  \"reindex\": [\n    {\n      \"id\": \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancelled\": false\n    }\n  ],\n  \"node_failures\": [\n    {\n      \"type\": \"failed_node_exception\",\n      \"reason\": \"Failed node [xNqz7mM2RkqY8vP1nL0wQ]\",\n      \"node_id\": \"xNqz7mM2RkqY8vP1nL0wQ\",\n      \"caused_by\": {\n        \"type\": \"node_not_connected_exception\",\n        \"reason\": \"Node not connected\",\n        \"node_id\": \"xNqz7mM2RkqY8vP1nL0wQ\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Reindex documents",
+        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.\nIf reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from [Elastic Cloud Hosted and Elastic Cloud Serverless](https://cloud.elastic.co/registration?page=docs&placement=docs-body) are allowed.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
+        "externalDocs": {
+          "description": "About reindexing indices examples",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-reindex.html"
+        },
+        "operationId": "reindex",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true`, the request refreshes affected shards to make this operation visible to search.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "requests_per_second",
+            "description": "The maximum number of documents to index per second, across the entire reindex operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "scroll",
+            "description": "The period of time that a consistent view of the index should be maintained for scrolled search.\nIn serverless, and stack versions >= v9.5.0, we use PIT rather than scroll for pagination.\nWe only use scroll for reindexing from remote clusters that are older than v7.10.0.\nTherefore, this parameter is ignored unless you are reindexing from a remote cluster that is older than v7.10.0.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "slices",
+            "description": "The number of slices this task should be divided into.\nIt defaults to one slice, which means the task isn't sliced into subtasks.\n\nReindex supports sliced scroll to parallelize the reindexing process.\nThis parallelization can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nNOTE: Reindexing from remote clusters does not support manual or automatic slicing.\n\nIf set to `auto`, Elasticsearch chooses the number of slices to use.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple sources, it will choose the number of slices based on the index or backing index with the smallest number of shards.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Slices"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_docs",
+            "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period each indexing waits for automatic index creation, dynamic mapping updates, and waiting for active shards.\nBy default, Elasticsearch waits for at least one minute before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_active_shards",
+            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).\nThe default value is one, which means it waits for each primary shard to be active.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.WaitForActiveShards"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion",
+            "description": "If `true`, the request blocks until the operation is complete.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "require_alias",
+            "description": "If `true`, the destination must be an index alias.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conflicts": {
+                    "description": "Indicates whether to continue reindexing even when there are conflicts.",
+                    "default": "abort",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Conflicts"
+                      }
+                    ]
+                  },
+                  "dest": {
+                    "description": "The destination you are copying to.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_global.reindex.Destination"
+                      }
+                    ]
+                  },
+                  "max_docs": {
+                    "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
+                    "type": "number"
+                  },
+                  "script": {
+                    "description": "The script to run to update the document source or metadata when reindexing.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Script"
+                      }
+                    ]
+                  },
+                  "source": {
+                    "description": "The source you are copying from.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_global.reindex.Source"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "dest",
+                  "source"
+                ]
+              },
+              "examples": {
+                "ReindexRequestExample1": {
+                  "summary": "Reindex multiple sources",
+                  "description": "Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
+                },
+                "ReindexRequestExample10": {
+                  "summary": "Reindex with Painless",
+                  "description": "You can use Painless to reindex daily indices to apply a new template to the existing documents. The script extracts the date from the index name and creates a new index with `-1` appended. For example, all data from `metricbeat-2016.05.31` will be reindexed into `metricbeat-2016.05.31-1`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"metricbeat-*\"\n  },\n  \"dest\": {\n    \"index\": \"metricbeat\"\n  },\n  \"script\": {\n    \"lang\": \"painless\",\n    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\"\n  }\n}"
+                },
+                "ReindexRequestExample11": {
+                  "summary": "Reindex a random subset",
+                  "description": "Run `POST _reindex` to extract a random subset of the source for testing. You might need to adjust the `min_score` value depending on the relative amount of data extracted from source.\n",
+                  "value": "{\n  \"max_docs\": 10,\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"function_score\" : {\n        \"random_score\" : {},\n        \"min_score\" : 0.9\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample12": {
+                  "summary": "Reindex modified documents",
+                  "description": "Run `POST _reindex` to modify documents during reindexing. This example bumps the version of the source document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\",\n    \"version_type\": \"external\"\n  },\n  \"script\": {\n    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\",\n    \"lang\": \"painless\"\n  }\n}"
+                },
+                "ReindexRequestExample13": {
+                  "summary": "Reindex from remote on Elastic Cloud",
+                  "description": "When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.\n",
+                  "value": "{\n  \"source\": {\n    \"remote\": {\n      \"host\": \"http://otherhost:9200\",\n      \"username\": \"user\",\n      \"password\": \"pass\"\n    },\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"match\": {\n        \"test\": \"data\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample2": {
+                  "summary": "Manual slicing",
+                  "description": "Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"slice\": {\n      \"id\": 0,\n      \"max\": 2\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample3": {
+                  "summary": "Automatic slicing",
+                  "description": "Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter specifies the number of slices to use.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample4": {
+                  "summary": "Routing",
+                  "description": "By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script. You can set `routing` on the `dest` request to change this behavior. In this example, run `POST _reindex` to copy all documents from the `source` with the company name `cat` into the `dest` with routing set to `cat`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\",\n    \"query\": {\n      \"match\": {\n        \"company\": \"cat\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"routing\": \"=cat\"\n  }\n}"
+                },
+                "ReindexRequestExample5": {
+                  "summary": "Ingest pipelines",
+                  "description": "Run `POST _reindex` and use the ingest pipelines feature.",
+                  "value": "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
+                },
+                "ReindexRequestExample6": {
+                  "summary": "Reindex with a query",
+                  "description": "Run `POST _reindex` and add a query to the `source` to limit the documents to reindex. For example, this request copies documents into `my-new-index-000001` only if they have a `user.id` of `kimchy`.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"term\": {\n        \"user.id\": \"kimchy\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample7": {
+                  "summary": "Reindex with max_docs",
+                  "description": "You can limit the number of processed documents by setting `max_docs`. For example, run `POST _reindex` to copy a single document from `my-index-000001` to `my-new-index-000001`.\n",
+                  "value": "{\n  \"max_docs\": 1,\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample8": {
+                  "summary": "Reindex selected fields",
+                  "description": "You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the reindex only the `user.id` and `_doc` fields of each document.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"_source\": [\"user.id\", \"_doc\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
+                },
+                "ReindexRequestExample9": {
+                  "summary": "Reindex new field names",
+                  "description": "A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "batches": {
+                      "description": "The number of scroll responses that were pulled back by the reindex.",
+                      "type": "number"
+                    },
+                    "created": {
+                      "description": "The number of documents that were successfully created.",
+                      "type": "number"
+                    },
+                    "deleted": {
+                      "description": "The number of documents that were successfully deleted.",
+                      "type": "number"
+                    },
+                    "failures": {
+                      "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                      }
+                    },
+                    "noops": {
+                      "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
+                      "type": "number"
+                    },
+                    "retries": {
+                      "description": "The number of retries attempted by reindex.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Retries"
+                        }
+                      ]
+                    },
+                    "requests_per_second": {
+                      "description": "The number of requests per second effectively run during the reindex.",
+                      "type": "number"
+                    },
+                    "slice_id": {
+                      "type": "number"
+                    },
+                    "slices": {
+                      "description": "Status of each slice if the reindex was sliced",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ReindexStatus"
+                      }
+                    },
+                    "task": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.TaskId"
+                        }
+                      ]
+                    },
+                    "throttled_millis": {
+                      "description": "The number of milliseconds the request slept to conform to `requests_per_second`.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "throttled_until_millis": {
+                      "description": "This field should always be equal to zero in a reindex response.\nIt has meaning only when using the task API, where it indicates the next time (in milliseconds since epoch) that a throttled request will be run again in order to conform to `requests_per_second`.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+                        }
+                      ]
+                    },
+                    "timed_out": {
+                      "description": "If any of the requests that ran during the reindex timed out, it is `true`.",
+                      "type": "boolean"
+                    },
+                    "took": {
+                      "description": "The total milliseconds the entire operation took.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+                        }
+                      ]
+                    },
+                    "total": {
+                      "description": "The number of documents that were successfully processed.",
+                      "type": "number"
+                    },
+                    "updated": {
+                      "description": "The number of documents that were successfully updated.\nThat is to say, a document with the same ID already existed before the reindex updated it.",
+                      "type": "number"
+                    },
+                    "version_conflicts": {
+                      "description": "The number of version conflicts that occurred.",
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_logstash/pipeline/{id}": {
       "get": {
         "tags": [
@@ -25198,359 +25917,19 @@
         ]
       }
     },
-    "/_reindex": {
-      "post": {
-        "tags": [
-          "document"
-        ],
-        "summary": "Reindex documents",
-        "description": "Copy documents from a source to a destination.\nYou can copy all documents to the destination index or reindex a subset of the documents.\nThe source can be any existing index, alias, or data stream.\nThe destination must differ from the source.\nFor example, you cannot reindex a data stream into itself.\n\nIMPORTANT: Reindex requires `_source` to be enabled for all documents in the source.\nThe destination should be configured as wanted before calling the reindex API.\nReindex does not copy the settings from the source or its associated template.\nMappings, shard counts, and replicas, for example, must be configured ahead of time.\n\nIf the Elasticsearch security features are enabled, you must have the following security privileges:\n\n* The `read` index privilege for the source data stream, index, or alias.\n* The `write` index privilege for the destination data stream, index, or index alias.\n* To automatically create a data stream or index with a reindex API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege for the destination data stream, index, or alias.\n* If reindexing from a remote cluster, the `source.remote.user` must have the `monitor` cluster privilege and the `read` index privilege for the source data stream, index, or alias.\n\nIf reindexing from a remote cluster into a cluster using Elastic Stack, you must explicitly allow the remote host using the `reindex.remote.whitelist` node setting on the destination cluster.\nIf reindexing from a remote cluster into an Elastic Cloud Serverless project, only remote hosts from [Elastic Cloud Hosted and Elastic Cloud Serverless](https://cloud.elastic.co/registration?page=docs&placement=docs-body) are allowed.\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe `dest` element can be configured like the index API to control optimistic concurrency control.\nOmitting `version_type` or setting it to `internal` causes Elasticsearch to blindly dump documents into the destination, overwriting any that happen to have the same ID.\n\nSetting `version_type` to `external` causes Elasticsearch to preserve the `version` from the source, create any documents that are missing, and update any documents that have an older version in the destination than they do in the source.\n\nSetting `op_type` to `create` causes the reindex API to create only missing documents in the destination.\nAll existing documents will cause a version conflict.\n\nIMPORTANT: Because data streams are append-only, any reindex request to a destination data stream must have an `op_type` of `create`.\nA reindex can only add new documents to a destination data stream.\nIt cannot update existing documents in a destination data stream.\n\nBy default, version conflicts abort the reindex process.\nTo continue reindexing if there are conflicts, set the `conflicts` request body property to `proceed`.\nIn this case, the response includes a count of the version conflicts that were encountered.\nNote that the handling of other error types is unaffected by the `conflicts` property.\nAdditionally, if you opt to count version conflicts, the operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIt's recommended to reindex on indices with a green status. Reindexing can fail when a node shuts down or crashes.\n* When requested with `wait_for_completion=true` (default), the request fails if the node shuts down.\n* When requested with `wait_for_completion=false`, a task id is returned, for use with the task management APIs. The task may disappear or fail if the node shuts down.\nWhen retrying a failed reindex operation, it might be necessary to set `conflicts=proceed` or to first delete the partial destination index.\nAdditionally, dry runs, checking disk space, and fetching index recovery information can help address the root cause.\n\nRefer to the linked documentation for examples of how to reindex documents.\n\n## Required authorization\n\n* Index privileges: `read`,`write`\n",
-        "externalDocs": {
-          "description": "About reindexing indices examples",
-          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-indices",
-          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-reindex.html"
-        },
-        "operationId": "reindex",
-        "parameters": [
-          {
-            "in": "query",
-            "name": "refresh",
-            "description": "If `true`, the request refreshes affected shards to make this operation visible to search.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.\nBy default, there is no throttle.",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "scroll",
-            "description": "The period of time that a consistent view of the index should be maintained for scrolled search.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "slices",
-            "description": "The number of slices this task should be divided into.\nIt defaults to one slice, which means the task isn't sliced into subtasks.\n\nReindex supports sliced scroll to parallelize the reindexing process.\nThis parallelization can improve efficiency and provide a convenient way to break the request down into smaller parts.\n\nNOTE: Reindexing from remote clusters does not support manual or automatic slicing.\n\nIf set to `auto`, Elasticsearch chooses the number of slices to use.\nThis setting will use one slice per shard, up to a certain limit.\nIf there are multiple sources, it will choose the number of slices based on the index or backing index with the smallest number of shards.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Slices"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "max_docs",
-            "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
-            "deprecated": false,
-            "schema": {
-              "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "The period each indexing waits for automatic index creation, dynamic mapping updates, and waiting for active shards.\nBy default, Elasticsearch waits for at least one minute before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Duration"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "wait_for_active_shards",
-            "description": "The number of shard copies that must be active before proceeding with the operation.\nSet it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).\nThe default value is one, which means it waits for each primary shard to be active.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.WaitForActiveShards"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "wait_for_completion",
-            "description": "If `true`, the request blocks until the operation is complete.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "require_alias",
-            "description": "If `true`, the destination must be an index alias.",
-            "deprecated": false,
-            "schema": {
-              "type": "boolean"
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "conflicts": {
-                    "description": "Indicates whether to continue reindexing even when there are conflicts.",
-                    "default": "abort",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/_types.Conflicts"
-                      }
-                    ]
-                  },
-                  "dest": {
-                    "description": "The destination you are copying to.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/_global.reindex.Destination"
-                      }
-                    ]
-                  },
-                  "max_docs": {
-                    "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
-                    "type": "number"
-                  },
-                  "script": {
-                    "description": "The script to run to update the document source or metadata when reindexing.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/_types.Script"
-                      }
-                    ]
-                  },
-                  "source": {
-                    "description": "The source you are copying from.",
-                    "allOf": [
-                      {
-                        "$ref": "#/components/schemas/_global.reindex.Source"
-                      }
-                    ]
-                  }
-                },
-                "required": [
-                  "dest",
-                  "source"
-                ]
-              },
-              "examples": {
-                "ReindexRequestExample1": {
-                  "summary": "Reindex multiple sources",
-                  "description": "Run `POST _reindex` to reindex from multiple sources. The `index` attribute in source can be a list, which enables you to copy from lots of sources in one request. This example copies documents from the `my-index-000001` and `my-index-000002` indices.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": [\"my-index-000001\", \"my-index-000002\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000002\"\n  }\n}"
-                },
-                "ReindexRequestExample10": {
-                  "summary": "Reindex with Painless",
-                  "description": "You can use Painless to reindex daily indices to apply a new template to the existing documents. The script extracts the date from the index name and creates a new index with `-1` appended. For example, all data from `metricbeat-2016.05.31` will be reindexed into `metricbeat-2016.05.31-1`.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"metricbeat-*\"\n  },\n  \"dest\": {\n    \"index\": \"metricbeat\"\n  },\n  \"script\": {\n    \"lang\": \"painless\",\n    \"source\": \"ctx._index = 'metricbeat-' + (ctx._index.substring('metricbeat-'.length(), ctx._index.length())) + '-1'\"\n  }\n}"
-                },
-                "ReindexRequestExample11": {
-                  "summary": "Reindex a random subset",
-                  "description": "Run `POST _reindex` to extract a random subset of the source for testing. You might need to adjust the `min_score` value depending on the relative amount of data extracted from source.\n",
-                  "value": "{\n  \"max_docs\": 10,\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"function_score\" : {\n        \"random_score\" : {},\n        \"min_score\" : 0.9\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample12": {
-                  "summary": "Reindex modified documents",
-                  "description": "Run `POST _reindex` to modify documents during reindexing. This example bumps the version of the source document.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\",\n    \"version_type\": \"external\"\n  },\n  \"script\": {\n    \"source\": \"if (ctx._source.foo == 'bar') {ctx._version++; ctx._source.remove('foo')}\",\n    \"lang\": \"painless\"\n  }\n}"
-                },
-                "ReindexRequestExample13": {
-                  "summary": "Reindex from remote on Elastic Cloud",
-                  "description": "When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.\n",
-                  "value": "{\n  \"source\": {\n    \"remote\": {\n      \"host\": \"http://otherhost:9200\",\n      \"username\": \"user\",\n      \"password\": \"pass\"\n    },\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"match\": {\n        \"test\": \"data\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample2": {
-                  "summary": "Manual slicing",
-                  "description": "Run `POST _reindex` to slice a reindex request manually. Provide a slice ID and total number of slices to each request.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"slice\": {\n      \"id\": 0,\n      \"max\": 2\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample3": {
-                  "summary": "Automatic slicing",
-                  "description": "Run `POST _reindex?slices=5&refresh` to automatically parallelize using sliced scroll to slice on `_id`. The `slices` parameter specifies the number of slices to use.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample4": {
-                  "summary": "Routing",
-                  "description": "By default if reindex sees a document with routing then the routing is preserved unless it's changed by the script. You can set `routing` on the `dest` request to change this behavior. In this example, run `POST _reindex` to copy all documents from the `source` with the company name `cat` into the `dest` with routing set to `cat`.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"source\",\n    \"query\": {\n      \"match\": {\n        \"company\": \"cat\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"routing\": \"=cat\"\n  }\n}"
-                },
-                "ReindexRequestExample5": {
-                  "summary": "Ingest pipelines",
-                  "description": "Run `POST _reindex` and use the ingest pipelines feature.",
-                  "value": "{\n  \"source\": {\n    \"index\": \"source\"\n  },\n  \"dest\": {\n    \"index\": \"dest\",\n    \"pipeline\": \"some_ingest_pipeline\"\n  }\n}"
-                },
-                "ReindexRequestExample6": {
-                  "summary": "Reindex with a query",
-                  "description": "Run `POST _reindex` and add a query to the `source` to limit the documents to reindex. For example, this request copies documents into `my-new-index-000001` only if they have a `user.id` of `kimchy`.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"query\": {\n      \"term\": {\n        \"user.id\": \"kimchy\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample7": {
-                  "summary": "Reindex with max_docs",
-                  "description": "You can limit the number of processed documents by setting `max_docs`. For example, run `POST _reindex` to copy a single document from `my-index-000001` to `my-new-index-000001`.\n",
-                  "value": "{\n  \"max_docs\": 1,\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample8": {
-                  "summary": "Reindex selected fields",
-                  "description": "You can use source filtering to reindex a subset of the fields in the original documents. For example, run `POST _reindex` the reindex only the `user.id` and `_doc` fields of each document.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\",\n    \"_source\": [\"user.id\", \"_doc\"]\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  }\n}"
-                },
-                "ReindexRequestExample9": {
-                  "summary": "Reindex new field names",
-                  "description": "A reindex operation can build a copy of an index with renamed fields. If your index has documents with `text` and `flag` fields, you can change the latter field name to `tag` during the reindex.\n",
-                  "value": "{\n  \"source\": {\n    \"index\": \"my-index-000001\"\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\n  },\n  \"script\": {\n    \"source\": \"ctx._source.tag = ctx._source.remove(\\\"flag\\\")\"\n  }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "batches": {
-                      "description": "The number of scroll responses that were pulled back by the reindex.",
-                      "type": "number"
-                    },
-                    "created": {
-                      "description": "The number of documents that were successfully created.",
-                      "type": "number"
-                    },
-                    "deleted": {
-                      "description": "The number of documents that were successfully deleted.",
-                      "type": "number"
-                    },
-                    "failures": {
-                      "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
-                      }
-                    },
-                    "noops": {
-                      "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
-                      "type": "number"
-                    },
-                    "retries": {
-                      "description": "The number of retries attempted by reindex.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/_types.Retries"
-                        }
-                      ]
-                    },
-                    "requests_per_second": {
-                      "description": "The number of requests per second effectively run during the reindex.",
-                      "type": "number"
-                    },
-                    "slice_id": {
-                      "type": "number"
-                    },
-                    "slices": {
-                      "description": "Status of each slice if the reindex was sliced",
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/_types.ReindexStatus"
-                      }
-                    },
-                    "task": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/_types.TaskId"
-                        }
-                      ]
-                    },
-                    "throttled_millis": {
-                      "description": "The number of milliseconds the request slept to conform to `requests_per_second`.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-                        }
-                      ]
-                    },
-                    "throttled_until_millis": {
-                      "description": "This field should always be equal to zero in a reindex response.\nIt has meaning only when using the task API, where it indicates the next time (in milliseconds since epoch) that a throttled request will be run again in order to conform to `requests_per_second`.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
-                        }
-                      ]
-                    },
-                    "timed_out": {
-                      "description": "If any of the requests that ran during the reindex timed out, it is `true`.",
-                      "type": "boolean"
-                    },
-                    "took": {
-                      "description": "The total milliseconds the entire operation took.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
-                        }
-                      ]
-                    },
-                    "total": {
-                      "description": "The number of documents that were successfully processed.",
-                      "type": "number"
-                    },
-                    "updated": {
-                      "description": "The number of documents that were successfully updated.\nThat is to say, a document with the same ID already existed before the reindex updated it.",
-                      "type": "number"
-                    },
-                    "version_conflicts": {
-                      "description": "The number of version conflicts that occurred.",
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Generally available",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
     "/_reindex/{task_id}/_rethrottle": {
       "post": {
         "tags": [
           "document"
         ],
         "summary": "Throttle a reindex operation",
-        "description": "Change the number of requests per second for a particular reindex operation.\nFor example:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch.\nThis behavior prevents scroll timeouts.",
+        "description": "Change the maximum number of documents to index per second for a particular reindex operation.\nFor example, to unthrottle to unlimited documents per second:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch of documents.\nThis behavior prevents scroll timeouts.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can keep using\nthe original task ID throughout the lifetime of the operation.\nThe relocated task ID is also accepted and is followed transparently.\nIn either case, returned task IDs and timings reflect the original task, not its relocated successor.\n\nThe rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains\nno successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default\n`group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with\n`group_by=none` or `group_by=parents`).",
         "operationId": "reindex-rethrottle",
         "parameters": [
           {
             "in": "path",
             "name": "task_id",
-            "description": "The task identifier, which can be found by using the tasks API.",
+            "description": "The task identifier, returned when creating a reindex task, or by listing tasks via\n`GET /_reindex` or `GET /_tasks`.\nIn stack, can be either the original task ID or the task ID of the relocated task.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -25561,7 +25940,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
+            "description": "The maximum number of documents to index per second, across the entire reindex operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -25579,30 +25958,44 @@
                   "type": "object",
                   "properties": {
                     "node_failures": {
+                      "description": "Node-level failures encountered while applying the rethrottle request.\nWill return a `failed_node_exception` wrapping a `no_such_node_exception`,\nif a node handling the task either never existed, or has left the cluster, and one of the following is true:\n1. The task has completed.\n2. The task cannot be found.\n\nNote: Rethrottle handles relocations, so it should succeed if the task can be found and has not completed.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types.ErrorCause"
                       }
                     },
                     "task_failures": {
+                      "description": "Per-task failures encountered while applying the rethrottle.\nIf a rethrottle is attempted during a relocation handoff, the failure object reports `status: SERVICE_UNAVAILABLE` (the HTTP response itself is still `200 OK`).\nIn this case, the request can be retried until success.",
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/_types.TaskFailure"
                       }
                     },
-                    "nodes": {
-                      "type": "object",
-                      "additionalProperties": {
-                        "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexNode"
-                      }
-                    },
                     "tasks": {
+                      "description": "The tasks that were successfully rethrottled.\nAlways returned in serverless.\nReturned with `group_by=none` or `group_by=parents` in stack.",
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTasks"
                         }
                       ]
                     }
+                  }
+                },
+                "examples": {
+                  "ReindexRethrottleResponseExample1": {
+                    "summary": "Successful rethrottle",
+                    "description": "A successful response from `POST _reindex/{task_id}/_rethrottle?requests_per_second=10`. This is the response shape always returned in serverless, and in stack only when `group_by=none`. Task IDs and timings reflect the original task across node-shutdown relocations.\n",
+                    "value": "{\n  \"tasks\": [\n    {\n      \"node\": \"r1A2WoRbTwKZ516z6NEs5A\",\n      \"id\": 36619,\n      \"type\": \"transport\",\n      \"action\": \"indices:data/write/reindex\",\n      \"status\": {\n        \"total\": 11500,\n        \"updated\": 0,\n        \"created\": 4000,\n        \"deleted\": 0,\n        \"batches\": 4,\n        \"version_conflicts\": 0,\n        \"noops\": 0,\n        \"retries\": {\n          \"bulk\": 0,\n          \"search\": 0\n        },\n        \"throttled_millis\": 0,\n        \"requests_per_second\": 10.0,\n        \"throttled_until_millis\": 0\n      },\n      \"description\": \"reindex from [my-source-index] to [my-dest-index]\",\n      \"start_time_in_millis\": 1762190000000,\n      \"running_time_in_nanos\": 4200000000,\n      \"cancellable\": true,\n      \"headers\": {}\n    }\n  ]\n}"
+                  },
+                  "ReindexRethrottleResponseExample2": {
+                    "summary": "Task ID's node is not in the cluster",
+                    "description": "A successful response from `POST _reindex/{task_id}/_rethrottle` when the task ID's node is not in the cluster (for example, the node was shut down without relocation, or the task ID was never valid). The empty `tasks` array and `failed_node_exception` wrapping a `no_such_node_exception` indicate the task is gone.\n",
+                    "value": "{\n  \"node_failures\": [\n    {\n      \"type\": \"failed_node_exception\",\n      \"reason\": \"Failed node [non_existing_node]\",\n      \"node_id\": \"non_existing_node\",\n      \"caused_by\": {\n        \"type\": \"no_such_node_exception\",\n        \"reason\": \"No such node [non_existing_node]\",\n        \"node_id\": \"non_existing_node\"\n      }\n    }\n  ],\n  \"tasks\": []\n}"
+                  },
+                  "ReindexRethrottleResponseRelocationExample1": {
+                    "summary": "Rethrottle during relocation (HTTP 200)",
+                    "description": "While the HTTP status remains `200 OK`, a rethrottle sent during a node-shutdown relocation handoff can return `task_failures` with `status: SERVICE_UNAVAILABLE` and a `status_exception` cause. Retry with the same task ID; the retry follows the relocated task until it succeeds.\n",
+                    "value": "{\n  \"task_failures\": [\n    {\n      \"task_id\": 36619,\n      \"node_id\": \"r1A2WoRbTwKZ516z6NEs5A\",\n      \"status\": \"SERVICE_UNAVAILABLE\",\n      \"reason\": {\n        \"type\": \"status_exception\",\n        \"reason\": \"cannot rethrottle, task is being relocated\"\n      }\n    }\n  ],\n  \"tasks\": {}\n}"
                   }
                 }
               }
@@ -29534,7 +29927,7 @@
           "tasks"
         ],
         "summary": "Get task information",
-        "description": "Get information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "description": "Get information about a task currently running in the cluster.\n\nWARNING: The task management API is new and should still be considered a beta feature.\nThe API may change in ways that are not backwards compatible.\n\nIf the task identifier is not found, a 404 response code indicates that there are no resources that match the request.\n\nFor relocatable tasks, this API transparently follows the task across graceful shutdown relocations,\nso callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`\nif it is continuing work from an earlier task.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "tasks-get",
         "parameters": [
           {
@@ -31583,7 +31976,7 @@
           {
             "in": "query",
             "name": "requests_per_second",
-            "description": "The throttle for this request in sub-requests per second.",
+            "description": "The maximum number of documents to update per second, across the entire update_by_query operation (including slices).\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -50614,6 +51007,236 @@
           "found"
         ]
       },
+      "_types.TaskId": {
+        "type": "string"
+      },
+      "_types.ReindexStatus": {
+        "type": "object",
+        "properties": {
+          "slice_id": {
+            "description": "The slice ID",
+            "type": "number"
+          },
+          "batches": {
+            "description": "The number of scroll responses pulled back by the reindex.",
+            "type": "number"
+          },
+          "created": {
+            "description": "The number of documents that were successfully created.",
+            "type": "number"
+          },
+          "deleted": {
+            "description": "The number of documents that were successfully deleted.",
+            "type": "number"
+          },
+          "noops": {
+            "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
+            "type": "number"
+          },
+          "requests_per_second": {
+            "description": "The number of requests per second effectively executed during the reindex.",
+            "type": "number"
+          },
+          "retries": {
+            "description": "The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Retries"
+              }
+            ]
+          },
+          "throttled": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_millis": {
+            "description": "Number of milliseconds the request slept to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "throttled_until": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_until_millis": {
+            "description": "This field should always be equal to zero in a `_reindex` response.\nIt only has meaning when using the Task API, where it indicates the next time (in milliseconds since epoch) a throttled request will be executed again in order to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "total": {
+            "description": "The number of documents that were successfully processed.",
+            "type": "number"
+          },
+          "updated": {
+            "description": "The number of documents that were successfully updated, for example, a document with same ID already existed prior to reindex updating it.",
+            "type": "number"
+          },
+          "version_conflicts": {
+            "description": "The number of version conflicts that reindex hits.",
+            "type": "number"
+          },
+          "cancelled": {
+            "description": "The reason for cancellation if the slice was canceled",
+            "type": "string"
+          }
+        },
+        "required": [
+          "batches",
+          "deleted",
+          "noops",
+          "requests_per_second",
+          "retries",
+          "throttled_millis",
+          "throttled_until_millis",
+          "total",
+          "version_conflicts"
+        ]
+      },
+      "_types.Retries": {
+        "type": "object",
+        "properties": {
+          "bulk": {
+            "description": "The number of bulk actions retried.",
+            "type": "number"
+          },
+          "search": {
+            "description": "The number of search actions retried.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "bulk",
+          "search"
+        ]
+      },
+      "_types.ReindexTaskResult": {
+        "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
+        "type": "object",
+        "properties": {
+          "batches": {
+            "description": "The number of scroll responses pulled back by the reindex.",
+            "type": "number"
+          },
+          "created": {
+            "description": "The number of documents that were successfully created.",
+            "type": "number"
+          },
+          "deleted": {
+            "description": "The number of documents that were successfully deleted.",
+            "type": "number"
+          },
+          "failures": {
+            "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+            }
+          },
+          "noops": {
+            "description": "The number of documents that were ignored because the script returned a `noop` value for `ctx.op`.",
+            "type": "number"
+          },
+          "requests_per_second": {
+            "description": "The number of requests per second effectively executed during the reindex.",
+            "type": "number"
+          },
+          "retries": {
+            "description": "The number of retries attempted by reindex.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Retries"
+              }
+            ]
+          },
+          "throttled_millis": {
+            "description": "Number of milliseconds the request slept to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "throttled_until_millis": {
+            "description": "This field should always be equal to zero in a completed reindex result.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "timed_out": {
+            "description": "Whether any of the requests executed during the reindex timed out.",
+            "type": "boolean"
+          },
+          "took": {
+            "description": "The total milliseconds the entire operation took.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "total": {
+            "description": "The number of documents that were successfully processed.",
+            "type": "number"
+          },
+          "updated": {
+            "description": "The number of documents that were successfully updated.",
+            "type": "number"
+          },
+          "version_conflicts": {
+            "description": "The number of version conflicts that occurred.",
+            "type": "number"
+          }
+        }
+      },
+      "_types.BulkIndexByScrollFailure": {
+        "type": "object",
+        "properties": {
+          "cause": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "index": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "status": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "cause",
+          "id",
+          "index",
+          "status"
+        ]
+      },
       "_types.Names": {
         "oneOf": [
           {
@@ -65302,155 +65925,6 @@
           "auto"
         ]
       },
-      "_types.BulkIndexByScrollFailure": {
-        "type": "object",
-        "properties": {
-          "cause": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ErrorCause"
-              }
-            ]
-          },
-          "id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Id"
-              }
-            ]
-          },
-          "index": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.IndexName"
-              }
-            ]
-          },
-          "status": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "cause",
-          "id",
-          "index",
-          "status"
-        ]
-      },
-      "_types.Retries": {
-        "type": "object",
-        "properties": {
-          "bulk": {
-            "description": "The number of bulk actions retried.",
-            "type": "number"
-          },
-          "search": {
-            "description": "The number of search actions retried.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "bulk",
-          "search"
-        ]
-      },
-      "_types.ReindexStatus": {
-        "type": "object",
-        "properties": {
-          "slice_id": {
-            "description": "The slice ID",
-            "type": "number"
-          },
-          "batches": {
-            "description": "The number of scroll responses pulled back by the reindex.",
-            "type": "number"
-          },
-          "created": {
-            "description": "The number of documents that were successfully created.",
-            "type": "number"
-          },
-          "deleted": {
-            "description": "The number of documents that were successfully deleted.",
-            "type": "number"
-          },
-          "noops": {
-            "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
-            "type": "number"
-          },
-          "requests_per_second": {
-            "description": "The number of requests per second effectively executed during the reindex.",
-            "type": "number"
-          },
-          "retries": {
-            "description": "The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Retries"
-              }
-            ]
-          },
-          "throttled": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "throttled_millis": {
-            "description": "Number of milliseconds the request slept to conform to `requests_per_second`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
-              }
-            ]
-          },
-          "throttled_until": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "throttled_until_millis": {
-            "description": "This field should always be equal to zero in a `_reindex` response.\nIt only has meaning when using the Task API, where it indicates the next time (in milliseconds since epoch) a throttled request will be executed again in order to conform to `requests_per_second`.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
-              }
-            ]
-          },
-          "total": {
-            "description": "The number of documents that were successfully processed.",
-            "type": "number"
-          },
-          "updated": {
-            "description": "The number of documents that were successfully updated, for example, a document with same ID already existed prior to reindex updating it.",
-            "type": "number"
-          },
-          "version_conflicts": {
-            "description": "The number of version conflicts that reindex hits.",
-            "type": "number"
-          },
-          "cancelled": {
-            "description": "The reason for cancellation if the slice was canceled",
-            "type": "string"
-          }
-        },
-        "required": [
-          "batches",
-          "deleted",
-          "noops",
-          "requests_per_second",
-          "retries",
-          "throttled_millis",
-          "throttled_until_millis",
-          "total",
-          "version_conflicts"
-        ]
-      },
-      "_types.TaskId": {
-        "type": "string"
-      },
       "enrich.execute_policy.ExecuteEnrichPolicyStatus": {
         "type": "object",
         "properties": {
@@ -75597,6 +76071,101 @@
           "enterprise"
         ]
       },
+      "_types.ReindexTaskInfo": {
+        "description": "Information about a single parent reindex task, as returned by the reindex management APIs.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the reindex task. The ID is assigned when the task was first created and remains the same across graceful shutdown relocations.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TaskId"
+              }
+            ]
+          },
+          "description": {
+            "description": "A sanitized description of the reindex operation (source and destination indices, and optionally remote host info).",
+            "type": "string"
+          },
+          "start_time_in_millis": {
+            "description": "The time at which the reindex task started, in milliseconds since the Unix epoch. Remains the same across graceful shutdown relocations.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "start_time": {
+            "description": "The time at which the reindex task started, as an ISO-8601 formatted string. Remains the same across graceful shutdown relocations.\nOnly present when the request includes the `?human=true` query parameter.",
+            "type": "string"
+          },
+          "running_time": {
+            "description": "The elapsed running time of the reindex task, including relocations, in a human-readable format.\nOnly present when the request includes the `?human=true` query parameter.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "running_time_in_nanos": {
+            "description": "The elapsed running time of the reindex task, including relocations, in nanoseconds.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "cancelled": {
+            "description": "Whether the reindex task has been cancelled.",
+            "type": "boolean"
+          },
+          "status": {
+            "description": "The current progress of the reindex operation.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ReindexStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "start_time_in_millis",
+          "running_time_in_nanos",
+          "cancelled"
+        ]
+      },
+      "_types.TaskFailure": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "number"
+          },
+          "node_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "task_id",
+          "node_id",
+          "status",
+          "reason"
+        ]
+      },
       "logstash._types.Pipeline": {
         "type": "object",
         "properties": {
@@ -83263,55 +83832,19 @@
       "_types.Password": {
         "type": "string"
       },
-      "_types.TaskFailure": {
-        "type": "object",
-        "properties": {
-          "task_id": {
-            "type": "number"
-          },
-          "node_id": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.NodeId"
-              }
-            ]
-          },
-          "status": {
-            "type": "string"
-          },
-          "reason": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ErrorCause"
-              }
-            ]
-          }
-        },
-        "required": [
-          "task_id",
-          "node_id",
-          "status",
-          "reason"
-        ]
-      },
-      "_global.reindex_rethrottle.ReindexNode": {
-        "allOf": [
+      "_global.reindex_rethrottle.ReindexTasks": {
+        "oneOf": [
           {
-            "$ref": "#/components/schemas/_spec_utils.BaseNode"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
+            }
           },
           {
             "type": "object",
-            "properties": {
-              "tasks": {
-                "type": "object",
-                "additionalProperties": {
-                  "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
-                }
-              }
-            },
-            "required": [
-              "tasks"
-            ]
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_global.reindex_rethrottle.ParentReindexTask"
+            }
           }
         ]
       },
@@ -83484,106 +84017,6 @@
           "throttled_until_millis",
           "total",
           "version_conflicts"
-        ]
-      },
-      "_spec_utils.BaseNode": {
-        "type": "object",
-        "properties": {
-          "attributes": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            }
-          },
-          "host": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Host"
-              }
-            ]
-          },
-          "ip": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Ip"
-              }
-            ]
-          },
-          "name": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Name"
-              }
-            ]
-          },
-          "roles": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.NodeRoles"
-              }
-            ]
-          },
-          "transport_address": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TransportAddress"
-              }
-            ]
-          }
-        },
-        "required": [
-          "attributes",
-          "host",
-          "ip",
-          "name",
-          "transport_address"
-        ]
-      },
-      "_types.Ip": {
-        "type": "string"
-      },
-      "_types.NodeRoles": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/_types.NodeRole"
-        }
-      },
-      "_types.NodeRole": {
-        "type": "string",
-        "enum": [
-          "master",
-          "data",
-          "data_cold",
-          "data_content",
-          "data_frozen",
-          "data_hot",
-          "data_warm",
-          "client",
-          "ingest",
-          "ml",
-          "voting_only",
-          "transform",
-          "remote_cluster_client",
-          "coordinating_only"
-        ]
-      },
-      "_types.TransportAddress": {
-        "type": "string"
-      },
-      "_global.reindex_rethrottle.ReindexTasks": {
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
-            }
-          },
-          {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_global.reindex_rethrottle.ParentReindexTask"
-            }
-          }
         ]
       },
       "_global.reindex_rethrottle.ParentReindexTask": {
@@ -85404,6 +85837,26 @@
                 "$ref": "#/components/schemas/_types.TaskId"
               }
             ]
+          },
+          "original_task_id": {
+            "description": "The task ID of the original task. Only present when the task is continuing the work of an earlier task that was running on a node which has since shut down (i.e. a relocatable task).\nFor tasks that have not been relocated this is always equal to the task's own ID and is omitted from the response.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TaskId"
+              }
+            ]
+          },
+          "original_start_time_in_millis": {
+            "description": "The time at which the original task started, in milliseconds since the Unix epoch. Only present together with `original_task_id`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "original_start_time": {
+            "description": "The time at which the original task started, as an ISO 8601 formatted string. Only present together with `original_task_id` and when the request includes the `?human=true` query parameter.",
+            "type": "string"
           }
         },
         "required": [
