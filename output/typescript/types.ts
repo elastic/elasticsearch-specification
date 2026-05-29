@@ -14557,7 +14557,7 @@ export interface InferenceAnthropicTaskSettings {
   top_p?: float
 }
 
-export type InferenceAnthropicTaskType = 'completion'
+export type InferenceAnthropicTaskType = 'completion' | 'chat_completion'
 
 export interface InferenceAzureAiStudioServiceSettings {
   api_key: string
@@ -15265,7 +15265,7 @@ export type InferenceTaskTypeAmazonBedrock = 'chat_completion' | 'completion' | 
 
 export type InferenceTaskTypeAmazonSageMaker = 'text_embedding' | 'completion' | 'chat_completion' | 'sparse_embedding' | 'rerank'
 
-export type InferenceTaskTypeAnthropic = 'completion'
+export type InferenceTaskTypeAnthropic = 'completion' | 'chat_completion'
 
 export type InferenceTaskTypeAzureAIStudio = 'text_embedding' | 'completion' | 'rerank'
 
