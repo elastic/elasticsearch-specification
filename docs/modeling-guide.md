@@ -598,8 +598,10 @@ Syntax:
 Values and meaning:
 - `stable` => "Generally available"
 - `beta` => "Beta"
-- `experimental` => "Technical Preview"
+- `experimental` => "Experimental"
 - `tech_preview` => "Technical preview"
+
+`experimental` and `tech_preview` are distinct lifecycles (in 9.5 and later) and produce different OpenAPI `x-state` labels.
 
 Examples:
 ```ts
