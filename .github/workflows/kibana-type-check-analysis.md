@@ -83,6 +83,9 @@ safe-outputs:
     labels:
       - kibana-spec-check
       - "auto-pr: kibana type check"
+  add-comment:
+    target: "*"
+    max: 2
   env:
     GITHUB_TOKEN: ${{ steps.fetch-token.outputs.token }}
 network:
@@ -109,14 +112,14 @@ Classify each error as one of:
 Group errors by classification. For each group, provide a concrete description of the root cause and the required fix.
 
 **If there are SPEC errors:**
-- Read `/tmp/gh-aw/agent/open-spec-issues.json`. If there is already an open issue (array is non-empty), add a comment to the existing issue (use the first one's `number`) with the new Buildkite build URL and the updated analysis. Do **not** open a new issue.
+- Read `/tmp/gh-aw/agent/open-spec-issues.json`. If there is already an open issue (array is non-empty), use `safe-outputs.add-comment` with that issue's `number` (the first one) as the target to post the new Buildkite build URL and the updated analysis. Do **not** open a new issue.
 - If there are no open issues, use `safe-outputs.create-issue` to open one issue with:
   - Title: `Kibana type check: spec fixes needed`
   - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
   - Do not set labels yourself; the `kibana-spec-check` and `auto-pr: kibana type check` labels are applied automatically.
 
 **If there are GENERATOR errors:**
-- Read `/tmp/gh-aw/agent/open-generator-issues.json`. If there is already an open issue, add a comment to it with the new build URL and updated analysis. Do **not** open a new issue.
+- Read `/tmp/gh-aw/agent/open-generator-issues.json`. If there is already an open issue, use `safe-outputs.add-comment` with that issue's `number` as the target to post the new build URL and updated analysis. Do **not** open a new issue.
 - If there are no open issues, use `safe-outputs.create-issue` to open one issue with:
   - Title: `Kibana type check: generator fixes needed`
   - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all GENERATOR errors
