@@ -2028,6 +2028,7 @@ export interface SearchShardsRequest extends RequestBase {
   master_timeout?: Duration
   preference?: string
   routing?: Routing
+  _slice?: string
 }
 
 export interface SearchShardsResponse {
