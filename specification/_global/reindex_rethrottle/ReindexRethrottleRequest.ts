@@ -37,7 +37,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * This behavior prevents scroll timeouts.
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @doc_tag document
  * @doc_id docs-reindex
  */
