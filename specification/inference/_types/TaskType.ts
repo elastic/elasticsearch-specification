@@ -62,7 +62,8 @@ export enum TaskTypeAmazonSageMaker {
 }
 
 export enum TaskTypeAnthropic {
-  completion
+  completion,
+  chat_completion
 }
 
 export enum TaskTypeAzureAIStudio {
