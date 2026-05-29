@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, MediaType } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Delete an ES|QL view.
@@ -40,7 +40,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /** The view name to remove. */
-    name: Id
+    name: Ids
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json

@@ -11,4 +11,4 @@ notify:
   - slack:
       channels:
         - "#kibana-spec-type-check"
-      if: build.state == "failed"
+    if: build.state == "failed"

@@ -19,9 +19,13 @@
 
 import { DataStreamName } from '@_types/common'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { GlobalRetention } from '@indices/get_data_lifecycle/_types/response'
 
 export class Response {
-  body: { data_streams: DataStreamWithLifecycle[] }
+  body: {
+    data_streams: DataStreamWithLifecycle[]
+    global_retention: GlobalRetention
+  }
 }
 
 class DataStreamWithLifecycle {

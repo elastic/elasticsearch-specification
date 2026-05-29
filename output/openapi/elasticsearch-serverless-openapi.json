@@ -2419,7 +2419,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3162,7 +3162,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3425,7 +3425,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3599,7 +3599,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -4180,7 +4180,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6551,7 +6551,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6610,7 +6610,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6633,7 +6633,7 @@
             "required": true,
             "deprecated": false,
             "schema": {
-              "$ref": "#/components/schemas/_types.Id"
+              "$ref": "#/components/schemas/_types.Ids"
             },
             "style": "simple"
           }
@@ -6650,7 +6650,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6735,7 +6735,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6757,7 +6757,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6797,7 +6797,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -9807,10 +9807,18 @@
                       "items": {
                         "$ref": "#/components/schemas/indices.get_data_lifecycle.DataStreamWithLifecycle"
                       }
+                    },
+                    "global_retention": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/indices.get_data_lifecycle._types.GlobalRetention"
+                        }
+                      ]
                     }
                   },
                   "required": [
-                    "data_streams"
+                    "data_streams",
+                    "global_retention"
                   ]
                 },
                 "examples": {
@@ -12356,7 +12364,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`chat_completion`, `completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put",
         "parameters": [
           {
@@ -12479,7 +12487,7 @@
           "inference"
         ],
         "summary": "Create an inference endpoint",
-        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "description": "IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.\nFor built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.\nHowever, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThe following integrations are available through the inference API. You can find the available task types next to the integration name:\n* AI21 (`chat_completion`, `completion`)\n* AlibabaCloud AI Search (`completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Amazon Bedrock (`chat_completion`, `completion`, `text_embedding`)\n* Amazon SageMaker (`chat_completion`, `completion`, `rerank`, `sparse_embedding`, `text_embedding`)\n* Anthropic (`chat_completion`, `completion`)\n* Azure AI Studio (`completion`, `rerank`, `text_embedding`)\n* Azure OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* Cohere (`completion`, `rerank`, `text_embedding`)\n* DeepSeek (`chat_completion`, `completion`)\n* Elasticsearch (`rerank`, `sparse_embedding`, `text_embedding` - this service is for built-in models and models uploaded through Eland)\n* ELSER (`sparse_embedding`)\n* Fireworks AI (`chat_completion`, `completion`, `text_embedding`)\n* Google AI Studio (`completion`, `text_embedding`)\n* Google Vertex AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* Groq (`chat_completion`)\n* Hugging Face (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* JinaAI (`embedding`, `rerank`, `text_embedding`)\n* Llama (`chat_completion`, `completion`, `text_embedding`)\n* Mistral (`chat_completion`, `completion`, `text_embedding`)\n* Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)\n* OpenAI (`chat_completion`, `completion`, `text_embedding`)\n* OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n* VoyageAI (`rerank`, `text_embedding`)\n* Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-put-1",
         "parameters": [
           {
@@ -12658,7 +12666,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -13241,7 +13249,7 @@
           {
             "in": "path",
             "name": "task_type",
-            "description": "The task type.\nThe only valid task type for the model to perform is `completion`.",
+            "description": "The task type.\nThe valid task types for the model to perform are `completion` and `chat_completion`.\nNOTE: The `chat_completion` task type only supports streaming and only through the _stream API.",
             "required": true,
             "deprecated": false,
             "schema": {
@@ -13308,6 +13316,10 @@
                 ]
               },
               "examples": {
+                "PutAnthropicChatCompletionRequestExample1": {
+                  "description": "Run `PUT _inference/chat_completion/anthropic_chat_completion` to create an inference endpoint that performs a chat completion task.",
+                  "value": "{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"claude-sonnet-4-5\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
+                },
                 "PutAnthropicRequestExample1": {
                   "description": "Run `PUT _inference/completion/anthropic_completion` to create an inference endpoint that performs a completion task.",
                   "value": "{\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n        \"api_key\": \"Anthropic-Api-Key\",\n        \"model_id\": \"Model-ID\"\n    },\n    \"task_settings\": {\n        \"max_tokens\": 1024\n    }\n}"
@@ -24773,7 +24785,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24822,7 +24834,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24870,7 +24882,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24932,7 +24944,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24977,7 +24989,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25002,7 +25014,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25025,7 +25037,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25999,6 +26011,86 @@
         ]
       }
     },
+    "/_reindex/{task_id}/_rethrottle": {
+      "post": {
+        "tags": [
+          "document"
+        ],
+        "summary": "Throttle a reindex operation",
+        "description": "Change the number of requests per second for a particular reindex operation.\nFor example:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch.\nThis behavior prevents scroll timeouts.",
+        "operationId": "reindex-rethrottle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "task_id",
+            "description": "The task identifier, which can be found by using the tasks API.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "requests_per_second",
+            "description": "The throttle for this request in sub-requests per second.\nIt can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "node_failures": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.ErrorCause"
+                      }
+                    },
+                    "task_failures": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.TaskFailure"
+                      }
+                    },
+                    "nodes": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexNode"
+                      }
+                    },
+                    "tasks": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTasks"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_render/template": {
       "get": {
         "tags": [
@@ -26121,7 +26213,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26144,7 +26236,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26995,7 +27087,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -27035,7 +27127,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -27076,7 +27168,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -27098,7 +27190,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -28150,6 +28242,216 @@
                 }
               }
             }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/service/{namespace}/{service}/credential/token/{name}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Delete service account tokens",
+        "description": "Delete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-delete-service-token.html"
+        },
+        "operationId": "security-delete-service-token",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "description": "The namespace, which is a top-level grouping of service accounts.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Namespace"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "service",
+            "description": "The service name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Service"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of the service account token.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "description": "If the service account token is successfully deleted, the request returns `{\"found\": true}`.\nOtherwise, the response will have status code 404 and `found` is set to `false`.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "found"
+                  ]
+                },
+                "examples": {
+                  "DeleteServiceTokenResponseExample1": {
+                    "description": "A successful response from `DELETE /_security/service/elastic/fleet-server/credential/token/token42`.\n",
+                    "value": "{\n  \"found\" : true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/service/{namespace}/{service}/credential/token": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
           }
         },
         "x-state": "Generally available",
@@ -29790,7 +30092,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -38074,7 +38376,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-count-ks-test-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a two sample Kolmogorov–Smirnov test (\"K-S test\") against a provided distribution and the distribution implied by the documents counts in the configured sibling aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketKsAggregation"
@@ -38086,7 +38388,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-correlation-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a correlation function on the configured sibling multi-bucket aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketCorrelationAggregation"
@@ -38131,7 +38433,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-categorize-text-aggregation"
                 },
                 "description": "A multi-bucket aggregation that groups semi-structured text into buckets.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
@@ -38781,7 +39083,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-time-series-aggregation"
                 },
                 "description": "The time series aggregation queries data created using a time series index.\nThis is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.TimeSeriesAggregation"
@@ -40873,10 +41175,16 @@
           "seq_no_primary_term": {
             "type": "boolean"
           },
-          "fields": {
+          "field": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.Field"
+            }
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
             }
           },
           "sort": {
@@ -42176,6 +42484,13 @@
       "_types.QueryVectorBuilder": {
         "type": "object",
         "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Embedding"
+              }
+            ]
+          },
           "text_embedding": {
             "allOf": [
               {
@@ -42195,6 +42510,105 @@
         },
         "minProperties": 1,
         "maxProperties": 1
+      },
+      "_types.Embedding": {
+        "type": "object",
+        "properties": {
+          "inference_id": {
+            "type": "string"
+          },
+          "input": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
+              }
+            ]
+          },
+          "timeout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "_types.KnnEmbeddingInput": {
+        "description": "Knn embedding input.\nEither a string, an object or array of objects",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.InferenceStringGroup"
+          }
+        ]
+      },
+      "_types.InferenceStringGroup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.InferenceString"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.InferenceString"
+            }
+          }
+        ]
+      },
+      "_types.InferenceString": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of data that the value represents.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the data. If null, the default data format for the given type is used.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "value": {
+            "description": "String which may be raw text, or the string representation of some other data such as an image in base64.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference._types.EmbeddingContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ]
+      },
+      "inference._types.EmbeddingContentFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64"
+        ]
       },
       "_types.TextEmbedding": {
         "type": "object",
@@ -44692,7 +45106,7 @@
               },
               "pruning_config": {
                 "description": "Token pruning configurations",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.TokenPruningConfig"
@@ -44861,9 +45275,13 @@
               },
               "minimum_interval": {
                 "description": "The minimum rounding interval.\nThis can make the collection process more efficient, as the aggregation will not attempt to round at any interval lower than `minimum_interval`.",
-                "allOf": [
+                "oneOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.MinimumInterval"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
                   }
                 ]
               },
@@ -53544,6 +53962,22 @@
               }
             ]
           },
+          "effective_retention": {
+            "description": "The least amount of time data should be kept by elasticsearch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "retention_determined_by": {
+            "description": "Configuration source that can influence the retention of a data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.RetentionSource"
+              }
+            ]
+          },
           "downsampling": {
             "description": "The list of downsampling rounds to execute as part of this downsampling configuration",
             "type": "array",
@@ -53573,6 +54007,15 @@
             ]
           }
         }
+      },
+      "indices._types.RetentionSource": {
+        "type": "string",
+        "enum": [
+          "data_stream_configuration",
+          "default_global_retention",
+          "max_global_retention",
+          "default_failures_retention"
+        ]
       },
       "indices._types.DownsamplingRound": {
         "type": "object",
@@ -61307,7 +61750,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -61620,7 +62063,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -62883,7 +63326,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -63225,7 +63668,7 @@
               },
               "time_series_metric": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -63235,7 +63678,7 @@
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
                 "default": false,
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               }
             }
@@ -66287,12 +66730,12 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "boolean"
           },
           "time_series_metric": {
             "description": "Contains metric type if this fields is used as a time series\nmetrics, absent if the field is not used as metric.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -66301,7 +66744,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -66309,7 +66752,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -66880,6 +67323,25 @@
         "required": [
           "name"
         ]
+      },
+      "indices.get_data_lifecycle._types.GlobalRetention": {
+        "type": "object",
+        "properties": {
+          "max_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "default_retention": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "indices._types.DataStream": {
         "type": "object",
@@ -69033,23 +69495,6 @@
           "value"
         ]
       },
-      "inference._types.EmbeddingContentType": {
-        "type": "string",
-        "enum": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ]
-      },
-      "inference._types.EmbeddingContentFormat": {
-        "type": "string",
-        "enum": [
-          "text",
-          "base64"
-        ]
-      },
       "inference._types.EmbeddingInferenceResult": {
         "description": "EmbeddingInferenceResult is an aggregation of mutually exclusive embeddings variants",
         "type": "object",
@@ -69852,7 +70297,8 @@
       "inference._types.AnthropicTaskType": {
         "type": "string",
         "enum": [
-          "completion"
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.AnthropicServiceType": {
@@ -69890,22 +70336,22 @@
         "type": "object",
         "properties": {
           "max_tokens": {
-            "description": "For a `completion` task, it is the maximum number of tokens to generate before stopping.",
+            "description": "For a `completion` or `chat_completion` task, it is the maximum number of tokens to generate before stopping.",
             "type": "number"
           },
           "temperature": {
             "externalDocs": {
               "url": "https://docs.anthropic.com/en/api/messages"
             },
-            "description": "For a `completion` task, it is the amount of randomness injected into the response.\nFor more details about the supported range, refer to Anthropic documentation.",
+            "description": "For a `completion` or `chat_completion` task, it is the amount of randomness injected into the response.\nFor more details about the supported range, refer to Anthropic documentation.",
             "type": "number"
           },
           "top_k": {
-            "description": "For a `completion` task, it specifies to only sample from the top K options for each subsequent token.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "description": "For a `completion` or `chat_completion` task, it specifies to only sample from the top K options for each subsequent token.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
             "type": "number"
           },
           "top_p": {
-            "description": "For a `completion` task, it specifies to use Anthropic's nucleus sampling.\nIn nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.\nYou should either alter `temperature` or `top_p`, but not both.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
+            "description": "For a `completion` or `chat_completion` task, it specifies to use Anthropic's nucleus sampling.\nIn nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.\nYou should either alter `temperature` or `top_p`, but not both.\nIt is recommended for advanced use cases only.\nYou usually only need to use `temperature`.",
             "type": "number"
           }
         },
@@ -69944,7 +70390,8 @@
       "inference._types.TaskTypeAnthropic": {
         "type": "string",
         "enum": [
-          "completion"
+          "completion",
+          "chat_completion"
         ]
       },
       "inference._types.AzureAiStudioTaskType": {
@@ -70753,12 +71200,12 @@
           },
           "long_document_strategy": {
             "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "string"
           },
           "max_chunks_per_doc": {
             "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "number"
           }
         },
@@ -73085,6 +73532,16 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "max_field_bytes": {
+                "description": "Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,\nchecked before base64 decoding) or byte array length for binary (for example, CBOR).\nIf set to `-1`, there is no per-processor limit.\nThe node setting `ingest.attachment.max_field_size` also applies.",
+                "default": "-1",
+                "x-state": "Generally available",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ByteSize"
                   }
                 ]
               },
@@ -80507,6 +80964,13 @@
               }
             ]
           },
+          "average_inference_process_memory_rss_bytes": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -82135,6 +82599,7 @@
             "type": "boolean"
           },
           "routing": {
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -83326,7 +83791,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"
@@ -83447,19 +83912,55 @@
       "_types.Password": {
         "type": "string"
       },
-      "_global.reindex_rethrottle.ReindexTasks": {
-        "oneOf": [
+      "_types.TaskFailure": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "number"
+          },
+          "node_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "task_id",
+          "node_id",
+          "status",
+          "reason"
+        ]
+      },
+      "_global.reindex_rethrottle.ReindexNode": {
+        "allOf": [
           {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
-            }
+            "$ref": "#/components/schemas/_spec_utils.BaseNode"
           },
           {
             "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/_global.reindex_rethrottle.ParentReindexTask"
-            }
+            "properties": {
+              "tasks": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
+                }
+              }
+            },
+            "required": [
+              "tasks"
+            ]
           }
         ]
       },
@@ -83505,7 +84006,7 @@
           "status": {
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.ReindexStatus"
+                "$ref": "#/components/schemas/_global.reindex_rethrottle.ParentReindexStatus"
               }
             ]
           },
@@ -83532,6 +84033,206 @@
           "status",
           "type",
           "headers"
+        ]
+      },
+      "_global.reindex_rethrottle.ParentReindexStatus": {
+        "type": "object",
+        "properties": {
+          "slices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.ReindexStatus"
+            }
+          },
+          "slice_id": {
+            "description": "The slice ID",
+            "type": "number"
+          },
+          "batches": {
+            "description": "The number of scroll responses pulled back by the reindex.",
+            "type": "number"
+          },
+          "created": {
+            "description": "The number of documents that were successfully created.",
+            "type": "number"
+          },
+          "deleted": {
+            "description": "The number of documents that were successfully deleted.",
+            "type": "number"
+          },
+          "noops": {
+            "description": "The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.",
+            "type": "number"
+          },
+          "requests_per_second": {
+            "description": "The number of requests per second effectively executed during the reindex.",
+            "type": "number"
+          },
+          "retries": {
+            "description": "The number of retries attempted by reindex. `bulk` is the number of bulk actions retried and `search` is the number of search actions retried.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Retries"
+              }
+            ]
+          },
+          "throttled": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_millis": {
+            "description": "Number of milliseconds the request slept to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "throttled_until": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "throttled_until_millis": {
+            "description": "This field should always be equal to zero in a `_reindex` response.\nIt only has meaning when using the Task API, where it indicates the next time (in milliseconds since epoch) a throttled request will be executed again in order to conform to `requests_per_second`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "total": {
+            "description": "The number of documents that were successfully processed.",
+            "type": "number"
+          },
+          "updated": {
+            "description": "The number of documents that were successfully updated, for example, a document with same ID already existed prior to reindex updating it.",
+            "type": "number"
+          },
+          "version_conflicts": {
+            "description": "The number of version conflicts that reindex hits.",
+            "type": "number"
+          },
+          "cancelled": {
+            "description": "The reason for cancellation if the slice was canceled",
+            "type": "string"
+          }
+        },
+        "required": [
+          "batches",
+          "deleted",
+          "noops",
+          "requests_per_second",
+          "retries",
+          "throttled_millis",
+          "throttled_until_millis",
+          "total",
+          "version_conflicts"
+        ]
+      },
+      "_spec_utils.BaseNode": {
+        "type": "object",
+        "properties": {
+          "attributes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "host": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Host"
+              }
+            ]
+          },
+          "ip": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Ip"
+              }
+            ]
+          },
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "roles": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeRoles"
+              }
+            ]
+          },
+          "transport_address": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TransportAddress"
+              }
+            ]
+          }
+        },
+        "required": [
+          "attributes",
+          "host",
+          "ip",
+          "name",
+          "transport_address"
+        ]
+      },
+      "_types.Ip": {
+        "type": "string"
+      },
+      "_types.NodeRoles": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/_types.NodeRole"
+        }
+      },
+      "_types.NodeRole": {
+        "type": "string",
+        "enum": [
+          "master",
+          "data",
+          "data_cold",
+          "data_content",
+          "data_frozen",
+          "data_hot",
+          "data_warm",
+          "client",
+          "ingest",
+          "ml",
+          "voting_only",
+          "transform",
+          "remote_cluster_client",
+          "coordinating_only"
+        ]
+      },
+      "_types.TransportAddress": {
+        "type": "string"
+      },
+      "_global.reindex_rethrottle.ReindexTasks": {
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexTask"
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_global.reindex_rethrottle.ParentReindexTask"
+            }
+          }
         ]
       },
       "_global.reindex_rethrottle.ParentReindexTask": {
@@ -83918,6 +84619,7 @@
               "manage_ml",
               "manage_own_api_key",
               "manage_pipeline",
+              "manage_reindex",
               "manage_search_application",
               "manage_search_query_rules",
               "manage_search_synonyms",
@@ -83928,6 +84630,7 @@
               "monitor_esql",
               "monitor_inference",
               "monitor_ml",
+              "monitor_reindex",
               "monitor_transform",
               "none",
               "post_behavioral_analytics_event",
@@ -84178,6 +84881,31 @@
           {
             "type": "string"
           }
+        ]
+      },
+      "_types.Namespace": {
+        "type": "string"
+      },
+      "_types.Service": {
+        "type": "string"
+      },
+      "security.create_service_token.Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
         ]
       },
       "security._types.ApiKey": {
@@ -87932,6 +88660,38 @@
               "SecurityCreateApiKeyResponseExample1": {
                 "description": "A successful response from `POST /_security/api_key`.",
                 "value": "{\n  \"id\": \"VuaCfGcBCdbkQm-e5aOx\",        \n  \"name\": \"my-api-key\",\n  \"expiration\": 1544068612110,         \n  \"api_key\": \"ui2lp2axTNmsyakw9tvNnw\", \n  \"encoded\": \"VnVhQ2ZHY0JDZGJrUW0tZTVhT3g6dWkybHAyYXhUTm1zeWFrdzl0dk5udw==\"  \n}"
+              }
+            }
+          }
+        }
+      },
+      "security.create_service_token-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "created": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/security.create_service_token.Token"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "created",
+                "token"
+              ]
+            },
+            "examples": {
+              "CreateServiceTokenRequestExample1": {
+                "description": "A successful response from `POST /_security/service/elastic/fleet-server/credential/token/token1`. The response includes the service account token, its name, and its secret value as a bearer token.\n",
+                "value": "{\n  \"created\": true,\n  \"token\": {\n    \"name\": \"token1\",\n    \"value\": \"AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ\" \n  }\n}"
               }
             }
           }
@@ -92425,7 +93185,7 @@
       "msearch-routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom routing value used to route search operations to a specific shard.",
+        "description": "Custom routing value used to route search operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -93581,6 +94341,49 @@
         "style": "form"
       },
       "security.create_api_key-refresh": {
+        "in": "query",
+        "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Refresh"
+        },
+        "style": "form"
+      },
+      "security.create_service_token-namespace": {
+        "in": "path",
+        "name": "namespace",
+        "description": "The name of the namespace, which is a top-level grouping of service accounts.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Namespace"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-service": {
+        "in": "path",
+        "name": "service",
+        "description": "The name of the service.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Service"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name for the service account token.\nIf omitted, a random name will be generated.\n\nToken names must be at least one and no more than 256 characters.\nThey can contain alphanumeric characters (a-z, A-Z, 0-9), dashes (`-`), and underscores (`_`), but cannot begin with an underscore.\n\nNOTE: Token names must be unique in the context of the associated service account.\nThey must also be globally unique with their fully qualified names, which are comprised of the service account principal and token name, such as `<namespace>/<service>/<token-name>`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Name"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-refresh": {
         "in": "query",
         "name": "refresh",
         "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",

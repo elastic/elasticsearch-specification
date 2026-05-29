@@ -135,7 +135,10 @@ export class InnerHits {
   ignore_unmapped?: boolean
   script_fields?: Dictionary<Field, ScriptField>
   seq_no_primary_term?: boolean
-  fields?: Field[]
+  // this is InnerHitBuilder.FIELD_FIELD
+  field?: Field[]
+  // this is SearchSourceBuilder.FETCH_FIELDS_FIELD
+  fields?: FieldAndFormat[]
   /**
    * How the inner hits should be sorted per `inner_hits`.
    * By default, inner hits are sorted by score.

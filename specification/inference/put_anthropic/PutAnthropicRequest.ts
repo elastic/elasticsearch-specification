@@ -47,7 +47,8 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * The task type.
-     * The only valid task type for the model to perform is `completion`.
+     * The valid task types for the model to perform are `completion` and `chat_completion`.
+     * NOTE: The `chat_completion` task type only supports streaming and only through the _stream API.
      */
     task_type: AnthropicTaskType
     /**

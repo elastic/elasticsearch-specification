@@ -163,6 +163,8 @@ export class TrainedModelDeploymentNodesStats {
   /** The average time for each inference call to complete on this node, excluding cache */
   average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
 
+  average_inference_process_memory_rss_bytes?: ByteSize
+
   /** The number of errors when evaluating the trained model. */
   error_count?: integer
   /** The total number of inference calls made against this node for this model. */

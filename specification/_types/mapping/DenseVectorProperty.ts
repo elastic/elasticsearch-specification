@@ -176,6 +176,16 @@ export class DenseVectorIndexOptions {
    * @availability stack since=9.3.0 stability=experimental
    */
   on_disk_rescore?: boolean
+  /**
+   * The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat
+   * search. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and
+   * `int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, and `bbq_hnsw` index types.
+   * @server_default -1
+   * @availability stack since=9.4.0 stability=stable
+   */
+  flat_index_threshold?: integer
 }
 
 export enum DenseVectorIndexOptionsType {
