@@ -2277,7 +2277,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3020,7 +3020,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3283,7 +3283,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -3457,7 +3457,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -4038,7 +4038,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6409,7 +6409,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6468,7 +6468,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6508,7 +6508,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6593,7 +6593,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6615,7 +6615,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6655,7 +6655,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12369,7 +12369,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -24062,7 +24062,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24111,7 +24111,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24159,7 +24159,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24221,7 +24221,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24266,7 +24266,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24291,7 +24291,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -24314,7 +24314,7 @@
             "$ref": "#/components/responses/project.tags-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25656,7 +25656,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -25679,7 +25679,7 @@
             "$ref": "#/components/responses/scripts_painless_execute-200"
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26530,7 +26530,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26570,7 +26570,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26611,7 +26611,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -26633,7 +26633,7 @@
           }
         },
         "deprecated": true,
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -27685,6 +27685,216 @@
                 }
               }
             }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/service/{namespace}/{service}/credential/token/{name}": {
+      "put": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-name"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Delete service account tokens",
+        "description": "Delete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-delete-service-token.html"
+        },
+        "operationId": "security-delete-service-token",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "namespace",
+            "description": "The namespace, which is a top-level grouping of service accounts.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Namespace"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "service",
+            "description": "The service name.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Service"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The name of the service account token.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "refresh",
+            "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Refresh"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "found": {
+                      "description": "If the service account token is successfully deleted, the request returns `{\"found\": true}`.\nOtherwise, the response will have status code 404 and `found` is set to `false`.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "found"
+                  ]
+                },
+                "examples": {
+                  "DeleteServiceTokenResponseExample1": {
+                    "description": "A successful response from `DELETE /_security/service/elastic/fleet-server/credential/token/token42`.\n",
+                    "value": "{\n  \"found\" : true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/service/{namespace}/{service}/credential/token": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Create a service account token",
+        "description": "Create a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.\n\n## Required authorization\n\n* Cluster privileges: `manage_service_account`\n",
+        "externalDocs": {
+          "description": "More about service accounts",
+          "url": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-create-service-token.html"
+        },
+        "operationId": "security-create-service-token-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.create_service_token-namespace"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-service"
+          },
+          {
+            "$ref": "#/components/parameters/security.create_service_token-refresh"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.create_service_token-200"
           }
         },
         "x-state": "Generally available",
@@ -29325,7 +29535,7 @@
             }
           }
         },
-        "x-state": "Technical preview",
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -37609,7 +37819,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-count-ks-test-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a two sample Kolmogorov–Smirnov test (\"K-S test\") against a provided distribution and the distribution implied by the documents counts in the configured sibling aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketKsAggregation"
@@ -37621,7 +37831,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-correlation-aggregation"
                 },
                 "description": "A sibling pipeline aggregation which runs a correlation function on the configured sibling multi-bucket aggregation.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.BucketCorrelationAggregation"
@@ -37666,7 +37876,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-categorize-text-aggregation"
                 },
                 "description": "A multi-bucket aggregation that groups semi-structured text into buckets.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.CategorizeTextAggregation"
@@ -38316,7 +38526,7 @@
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-time-series-aggregation"
                 },
                 "description": "The time series aggregation queries data created using a time series index.\nThis is typically data such as metrics or other data streams with a time component, and requires creating an index using the time series mode.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.TimeSeriesAggregation"
@@ -44339,7 +44549,7 @@
               },
               "pruning_config": {
                 "description": "Token pruning configurations",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.TokenPruningConfig"
@@ -60753,7 +60963,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -61066,7 +61276,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -62329,7 +62539,7 @@
               },
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               },
               "type": {
@@ -62671,7 +62881,7 @@
               },
               "time_series_metric": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -62681,7 +62891,7 @@
               "time_series_dimension": {
                 "description": "For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.",
                 "default": false,
-                "x-state": "Technical preview",
+                "x-state": "Experimental",
                 "type": "boolean"
               }
             }
@@ -65882,12 +66092,12 @@
           },
           "time_series_dimension": {
             "description": "Whether this field is used as a time series dimension.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "boolean"
           },
           "time_series_metric": {
             "description": "Contains metric type if this fields is used as a time series\nmetrics, absent if the field is not used as metric.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.TimeSeriesMetricType"
@@ -65896,7 +66106,7 @@
           },
           "non_dimension_indices": {
             "description": "If this list is present in response then some indices have the\nfield marked as a dimension and other indices, the ones in this list, do not.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -65904,7 +66114,7 @@
           },
           "metric_conflicts_indices": {
             "description": "The list of indices where this field is present if these indices\ndon’t have the same `time_series_metric` value for this field.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_types.IndexName"
@@ -70350,12 +70560,12 @@
           },
           "long_document_strategy": {
             "description": "Available only for the `rerank` task type using the Elastic reranker model.\nControls the strategy used for processing long documents during inference.\n\nPossible values:\n- `truncate` (default): Processes only the beginning of each document.\n- `chunk`: Splits long documents into smaller parts (chunks) before inference.\n\nWhen `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.\nThat score reflects the highest relevance score among all chunks.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "string"
           },
           "max_chunks_per_doc": {
             "description": "Only for the `rerank` task type.\nLimits the number of chunks per document that are sent for inference when chunking is enabled.\nIf not set, all chunks generated for the document are processed.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "type": "number"
           }
         },
@@ -72682,6 +72892,16 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "max_field_bytes": {
+                "description": "Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,\nchecked before base64 decoding) or byte array length for binary (for example, CBOR).\nIf set to `-1`, there is no per-processor limit.\nThe node setting `ingest.attachment.max_field_size` also applies.",
+                "default": "-1",
+                "x-state": "Generally available",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.ByteSize"
                   }
                 ]
               },
@@ -82835,7 +83055,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
-            "x-state": "Technical preview",
+            "x-state": "Experimental",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"
@@ -83582,6 +83802,31 @@
           {
             "type": "string"
           }
+        ]
+      },
+      "_types.Namespace": {
+        "type": "string"
+      },
+      "_types.Service": {
+        "type": "string"
+      },
+      "security.create_service_token.Token": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
         ]
       },
       "security._types.ApiKey": {
@@ -87316,6 +87561,38 @@
               "SecurityCreateApiKeyResponseExample1": {
                 "description": "A successful response from `POST /_security/api_key`.",
                 "value": "{\n  \"id\": \"VuaCfGcBCdbkQm-e5aOx\",        \n  \"name\": \"my-api-key\",\n  \"expiration\": 1544068612110,         \n  \"api_key\": \"ui2lp2axTNmsyakw9tvNnw\", \n  \"encoded\": \"VnVhQ2ZHY0JDZGJrUW0tZTVhT3g6dWkybHAyYXhUTm1zeWFrdzl0dk5udw==\"  \n}"
+              }
+            }
+          }
+        }
+      },
+      "security.create_service_token-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "created": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/security.create_service_token.Token"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "created",
+                "token"
+              ]
+            },
+            "examples": {
+              "CreateServiceTokenRequestExample1": {
+                "description": "A successful response from `POST /_security/service/elastic/fleet-server/credential/token/token1`. The response includes the service account token, its name, and its secret value as a bearer token.\n",
+                "value": "{\n  \"created\": true,\n  \"token\": {\n    \"name\": \"token1\",\n    \"value\": \"AAEAAWVsYXN0aWM...vZmxlZXQtc2VydmVyL3Rva2VuMTo3TFdaSDZ\" \n  }\n}"
               }
             }
           }
@@ -92965,6 +93242,49 @@
         "style": "form"
       },
       "security.create_api_key-refresh": {
+        "in": "query",
+        "name": "refresh",
+        "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Refresh"
+        },
+        "style": "form"
+      },
+      "security.create_service_token-namespace": {
+        "in": "path",
+        "name": "namespace",
+        "description": "The name of the namespace, which is a top-level grouping of service accounts.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Namespace"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-service": {
+        "in": "path",
+        "name": "service",
+        "description": "The name of the service.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Service"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name for the service account token.\nIf omitted, a random name will be generated.\n\nToken names must be at least one and no more than 256 characters.\nThey can contain alphanumeric characters (a-z, A-Z, 0-9), dashes (`-`), and underscores (`_`), but cannot begin with an underscore.\n\nNOTE: Token names must be unique in the context of the associated service account.\nThey must also be globally unique with their fully qualified names, which are comprised of the service account principal and token name, such as `<namespace>/<service>/<token-name>`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Name"
+        },
+        "style": "simple"
+      },
+      "security.create_service_token-refresh": {
         "in": "query",
         "name": "refresh",
         "description": "If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.",

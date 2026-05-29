@@ -971,6 +971,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
 export interface OpenPointInTimeResponse {
   _shards: ShardStatistics
   id: Id
+  _clusters?: ClusterStatistics
 }
 
 export interface PingRequest extends RequestBase {
@@ -6050,6 +6051,7 @@ export interface MappingDenseVectorIndexOptions {
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
   on_disk_rescore?: boolean
+  flat_index_threshold?: integer
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
@@ -15850,6 +15852,7 @@ export interface IngestAttachmentProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
   indexed_chars?: long
   indexed_chars_field?: Field
+  max_field_bytes?: ByteSize
   properties?: string[]
   target_field?: Field
   remove_binary?: boolean
