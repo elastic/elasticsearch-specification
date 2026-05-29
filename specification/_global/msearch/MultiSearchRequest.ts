@@ -153,7 +153,7 @@ export interface Request extends RequestBase {
     rest_total_hits_as_int?: boolean
     /**
      * Custom routing value used to route search operations to a specific shard.
-     * Cannot be used together with `_slice`.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
     /**
@@ -164,7 +164,7 @@ export interface Request extends RequestBase {
      * The slice identifier for routing the search to a specific slice.
      * When provided at the top level, all sub-searches are routed to shards matching the given slice value.
      * Use the special value `_all` to query all slices without restricting to a routing value.
-     * Cannot be used together with `routing`.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
      * Individual sub-search headers can also specify `_slice` to override the top-level setting.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
      */
