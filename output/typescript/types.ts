@@ -853,6 +853,7 @@ export interface MsearchMultisearchHeader {
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
   ignore_throttled?: boolean
+  _slice?: string
 }
 
 export interface MsearchRequest extends RequestBase {
@@ -870,6 +871,7 @@ export interface MsearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
+  _slice?: string
   typed_keys?: boolean
   body?: MsearchRequestItem[]
 }

@@ -81864,6 +81864,7 @@
             "type": "boolean"
           },
           "routing": {
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -92086,7 +92087,7 @@
       "msearch-routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom routing value used to route search operations to a specific shard.",
+        "description": "Custom routing value used to route search operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
