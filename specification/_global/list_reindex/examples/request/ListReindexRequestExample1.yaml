@@ -1,0 +1,4 @@
+summary: List active reindex tasks without `detailed=true`
+method_request: GET _reindex
+description: Run `GET _reindex` to list all currently running reindex tasks across the cluster without `detailed=true`.
+# type: request

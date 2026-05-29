@@ -30,6 +30,10 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * WARNING: The task management API is new and should still be considered a beta feature.
  * The API may change in ways that are not backwards compatible.
  *
+ * For relocatable tasks, this API transparently follows the task across graceful shutdown relocations,
+ * so callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`
+ * if it is continuing work from an earlier task.
+ *
  * **Identifying running tasks**
  *
  * The `X-Opaque-Id header`, when provided on the HTTP request header, is going to be returned as a header in the response as well as in the headers field for in the task information.

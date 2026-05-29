@@ -1,0 +1,22 @@
+summary: Rethrottle during relocation (HTTP 200)
+description: >
+  While the HTTP status remains `200 OK`, a rethrottle sent during a node-shutdown relocation
+  handoff can return `task_failures` with `status: SERVICE_UNAVAILABLE` and a `status_exception`
+  cause. Retry with the same task ID; the retry follows the relocated task until it succeeds.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "task_failures": [
+      {
+        "task_id": 36619,
+        "node_id": "r1A2WoRbTwKZ516z6NEs5A",
+        "status": "SERVICE_UNAVAILABLE",
+        "reason": {
+          "type": "status_exception",
+          "reason": "cannot rethrottle, task is being relocated"
+        }
+      }
+    ],
+    "tasks": {}
+  }
