@@ -1,8 +1,7 @@
 summary: Throttle to ingesting maximum 10 documents per second
 method_request: POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=10
 description: >
-  Run `POST _reindex/{task_id}/_rethrottle?requests_per_second=10` to throttle a
-  running reindex task to ingest maximum 10 documents per second. Slowing a reindex down takes
-  effect after the current batch completes.
+  Run `POST _reindex/{task_id}/_rethrottle?requests_per_second=10` to throttle a running reindex task to ingest maximum 10 documents
+  per second. Slowing a reindex down takes effect after the current batch completes.
 
 # type: request
