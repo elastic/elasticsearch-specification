@@ -598,13 +598,23 @@ Syntax:
 Values and meaning:
 - `stable` => "Generally available"
 - `beta` => "Beta"
-- `experimental` => "Technical Preview"
+- `experimental` => "Experimental"
+- `tech_preview` => "Technical preview"
+
+`experimental` and `tech_preview` are distinct lifecycles (in 9.5 and later) and produce different OpenAPI `x-state` labels.
 
 Examples:
 ```ts
 /**
  * @rest_spec_name indices.create
  * @availability stack since=1.0.0 stability=experimental
+ */
+```
+
+```ts
+/**
+ * @rest_spec_name endpoint.name
+ * @availability stack since=1.2.3 stability=tech_preview
  */
 ```
 

@@ -33,6 +33,10 @@ import { MediaType, TaskId } from '@_types/common'
  *
  * To troubleshoot why a cancelled task does not complete promptly, use the get task information API with the `?detailed` parameter to identify the other tasks the system is running.
  * You can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.
+ *
+ * For relocatable tasks, this API transparently follows the task across graceful shutdown relocations,
+ * so callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`
+ * if it is continuing work from an earlier task.
  * @rest_spec_name tasks.cancel
  * @availability stack since=2.3.0 stability=experimental
  * @availability serverless stability=experimental visibility=private

@@ -101,6 +101,11 @@ export enum ClusterPrivilege {
   manage_own_api_key,
   manage_pipeline,
   /**
+   * @availability stack since=9.5.0
+   * @availability serverless since=9.5.0
+   */
+  manage_reindex,
+  /**
    * @availability stack
    */
   manage_rollup,
@@ -146,6 +151,11 @@ export enum ClusterPrivilege {
   monitor_esql,
   monitor_inference,
   monitor_ml,
+  /**
+   * @availability stack since=9.5.0
+   * @availability serverless since=9.5.0
+   */
+  monitor_reindex,
   /**
    * @availability stack
    */

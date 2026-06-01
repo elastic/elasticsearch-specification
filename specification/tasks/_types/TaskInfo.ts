@@ -55,4 +55,17 @@ export class TaskInfo {
   status?: UserDefinedValue
   type: string
   parent_task_id?: TaskId
+  /**
+   * The task ID of the original task. Only present when the task is continuing the work of an earlier task that was running on a node which has since shut down (i.e. a relocatable task).
+   * For tasks that have not been relocated this is always equal to the task's own ID and is omitted from the response.
+   */
+  original_task_id?: TaskId
+  /**
+   * The time at which the original task started, in milliseconds since the Unix epoch. Only present together with `original_task_id`.
+   */
+  original_start_time_in_millis?: EpochTime<UnitMillis>
+  /**
+   * The time at which the original task started, as an ISO 8601 formatted string. Only present together with `original_task_id` and when the request includes the `?human=true` query parameter.
+   */
+  original_start_time?: string
 }

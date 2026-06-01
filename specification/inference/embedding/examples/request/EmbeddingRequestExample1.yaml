@@ -1,7 +1,6 @@
 summary: Multimodal embedding task
 description: Run `POST _inference/embedding/my-multimodal-endpoint` to generate embeddings from the example text and image
 method_request: 'POST _inference/embedding/my-multimodal-endpoint'
-# type: "request"
 value: |-
   {
     "input": [

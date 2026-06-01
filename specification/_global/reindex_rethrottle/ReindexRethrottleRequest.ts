@@ -25,19 +25,29 @@ import { GroupBy } from '@tasks/_types/GroupBy'
 /**
  * Throttle a reindex operation.
  *
- * Change the number of requests per second for a particular reindex operation.
- * For example:
+ * Change the maximum number of documents to index per second for a particular reindex operation.
+ * For example, to unthrottle to unlimited documents per second:
  *
  * ```
  * POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1
  * ```
  *
  * Rethrottling that speeds up the query takes effect immediately.
- * Rethrottling that slows down the query will take effect after completing the current batch.
+ * Rethrottling that slows down the query will take effect after completing the current batch of documents.
  * This behavior prevents scroll timeouts.
+ *
+ * This API follows reindex tasks across node-shutdown relocations, so callers can keep using
+ * the original task ID throughout the lifetime of the operation.
+ * The relocated task ID is also accepted and is followed transparently.
+ * In either case, returned task IDs and timings reflect the original task, not its relocated successor.
+ *
+ * The rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains
+ * no successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default
+ * `group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with
+ * `group_by=none` or `group_by=parents`).
  * @rest_spec_name reindex_rethrottle
  * @availability stack since=2.4.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @doc_tag document
  * @doc_id docs-reindex
  */
@@ -50,18 +60,23 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /**
-     * The task identifier, which can be found by using the tasks API.
+     * The task identifier, returned when creating a reindex task, or by listing tasks via
+     * `GET /_reindex` or `GET /_tasks`.
+     * In stack, can be either the original task ID or the task ID of the relocated task.
      */
     task_id: Id
   }
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * The throttle for this request in sub-requests per second.
+     * The maximum number of documents to index per second, across the entire reindex operation (including slices).
      * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
     requests_per_second: float
     /**
+     * The way to group the tasks in the response.
+     * We recommend setting this to `none`, which provides the cleanest response format.
+     * @server_default nodes
      * @availability stack stability=stable
      */
     group_by?: GroupBy

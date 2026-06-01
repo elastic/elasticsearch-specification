@@ -19,7 +19,12 @@
 
 import { Field } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import { InnerHits } from '@global/search/_types/hits'
+import {
+  EmbeddingContentFormat,
+  EmbeddingContentType
+} from '@inference/_types/CommonTypes'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 
 export type QueryVector = float[]
@@ -105,6 +110,7 @@ export interface KnnQuery extends QueryBase {
 
 /** @variants container */
 export interface QueryVectorBuilder {
+  embedding?: Embedding
   text_embedding?: TextEmbedding
   /**
    * Lookup a vector from an existing document.
@@ -113,6 +119,38 @@ export interface QueryVectorBuilder {
    * @availability serverless
    */
   lookup?: LookupQueryVectorBuilder
+}
+
+export interface Embedding {
+  inference_id?: string
+  input: KnnEmbeddingInput
+  timeout?: Duration
+}
+
+/**
+ * Knn embedding input.
+ * Either a string, an object or array of objects
+ * @codegen_names string, object
+ */
+export type KnnEmbeddingInput = string | InferenceStringGroup
+
+export type InferenceStringGroup = InferenceString | InferenceString[]
+
+export class InferenceString {
+  /**
+   * The type of data that the value represents.
+   */
+  type: EmbeddingContentType
+
+  /**
+   * The format of the data. If null, the default data format for the given type is used.
+   */
+  format?: EmbeddingContentFormat | null
+
+  /**
+   * String which may be raw text, or the string representation of some other data such as an image in base64.
+   */
+  value: string
 }
 
 export interface TextEmbedding {

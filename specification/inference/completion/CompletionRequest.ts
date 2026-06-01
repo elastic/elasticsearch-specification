@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference request to complete.
-     * @server_default 30s
+     * @server_default 120s
      */
     timeout?: Duration
   }
