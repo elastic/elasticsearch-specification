@@ -1,0 +1,35 @@
+summary: In-progress task
+description: >
+  A successful response for an in-progress reindex task. The `status` block reports
+  current progress; the `response` block is absent until the task completes.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "completed": false,
+    "id": "r1A2WoRbTwKZ516z6NEs5A:36619",
+    "description": "reindex from [reindex_src] to [reindex_dst]",
+    "start_time_in_millis": 1778265266199,
+    "running_time_in_nanos": 1588606084,
+    "cancelled": false,
+    "status": {
+      "total": 0,
+      "updated": 0,
+      "created": 0,
+      "deleted": 0,
+      "batches": 0,
+      "version_conflicts": 0,
+      "noops": 0,
+      "retries": {
+        "bulk": 0,
+        "search": 0
+      },
+      "throttled_millis": 0,
+      "requests_per_second": 4.0,
+      "throttled_until_millis": 0,
+      "slices": [
+        null,
+        null
+      ]
+    }
+  }

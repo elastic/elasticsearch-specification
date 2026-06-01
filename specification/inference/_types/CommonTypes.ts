@@ -528,6 +528,8 @@ export class RequestEmbedding {
   /**
    * Inference input.
    * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+   * `content` objects may contain a single item or an array of items. Models that support multiple items per `content`
+   * object will return a single embedding for each `content` object, regardless of how many items it contains.
    *
    * string example:
    * ```
@@ -563,6 +565,24 @@ export class RequestEmbedding {
    *       "format": "base64",
    *       "value": "data:image/jpeg;base64,..."
    *     }
+   *   }
+   * ]
+   * ```
+   * Multiple items in one `content` object example:
+   * ```
+   * "input": [
+   *   {
+   *     "content": [
+   *       {
+   *         "type": "image",
+   *         "format": "base64",
+   *         "value": "data:image/jpeg;base64,..."
+   *       },
+   *       {
+   *         "type": "text",
+   *         "value": "Some text to create an embedding"
+   *       }
+   *     ]
    *   }
    * ]
    * ```
@@ -612,22 +632,29 @@ type EmbeddingContentInput =
  */
 export class EmbeddingContentObject {
   /**
-   * An object containing the input data for the model to embed
+   * An object or an array of objects containing the input data for the model to embed
    */
-  content: EmbeddingContentObjectContents
+  content: EmbeddingContentObjectGroup
 }
 
 /**
- *  An object containing the input data for the model to embed.
+ * Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.
  */
-export class EmbeddingContentObjectContents {
+type EmbeddingContentObjectGroup =
+  | EmbeddingContentObjectItem
+  | Array<EmbeddingContentObjectItem>
+
+/**
+ *  An object containing the input data for a single item for the model to embed.
+ */
+export class EmbeddingContentObjectItem {
   /**
-   * The type of input to embed.
+   * The type of input to embed. Not all models support all input types.
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
-   * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+   * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.
+   * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
    */
   format?: EmbeddingContentFormat
   /**
@@ -641,7 +668,10 @@ export class EmbeddingContentObjectContents {
  */
 export enum EmbeddingContentType {
   text,
-  image
+  image,
+  audio,
+  video,
+  pdf
 }
 
 /**
@@ -681,6 +711,18 @@ export class AmazonSageMakerServiceSettings {
    */
   secret_key: string
   /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The similarity measure used when invoking the
+   * `text_embedding` task type.
+   */
+  similarity?: AmazonSageMakerSimilarity
+
+  /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The data type returned by the text embedding
+   * model.
+   * This value is used when parsing the response back to Elasticsearch data structures.
+   */
+  element_type?: AmazonSageMakerElementType
+  /**
    * The model ID when calling a multi-model endpoint.
    * @ext_doc_id amazonsagemaker-invoke
    */
@@ -712,23 +754,6 @@ export class AmazonSageMakerServiceSettings {
 export enum AmazonSageMakerApi {
   openai,
   elastic
-}
-
-/**
- * Service settings specific to the Elastic API for the Amazon SageMaker service.
- */
-export class AmazonSageMakerElasticServiceSettings extends AmazonSageMakerServiceSettings {
-  /**
-   * Similarity measure used when invoking the `text_embedding` task type.
-   */
-  similarity?: AmazonSageMakerSimilarity
-
-  /**
-   * The data type returned by the text embedding model.
-   * This value must be set when `task_type` is `text_embedding` and is used when parsing the response
-   * back to Elasticsearch data structures.
-   */
-  element_type: AmazonSageMakerElementType
 }
 
 export enum AmazonSageMakerSimilarity {
@@ -816,23 +841,23 @@ export class AnthropicServiceSettings {
 
 export class AnthropicTaskSettings {
   /**
-   * For a `completion` task, it is the maximum number of tokens to generate before stopping.
+   * For a `completion` or `chat_completion` task, it is the maximum number of tokens to generate before stopping.
    */
   max_tokens: integer
   /**
-   * For a `completion` task, it is the amount of randomness injected into the response.
+   * For a `completion` or `chat_completion` task, it is the amount of randomness injected into the response.
    * For more details about the supported range, refer to Anthropic documentation.
    * @ext_doc_id anthropic-messages
    */
   temperature?: float
   /**
-   * For a `completion` task, it specifies to only sample from the top K options for each subsequent token.
+   * For a `completion` or `chat_completion` task, it specifies to only sample from the top K options for each subsequent token.
    * It is recommended for advanced use cases only.
    * You usually only need to use `temperature`.
    */
   top_k?: integer
   /**
-   * For a `completion` task, it specifies to use Anthropic's nucleus sampling.
+   * For a `completion` or `chat_completion` task, it specifies to use Anthropic's nucleus sampling.
    * In nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.
    * You should either alter `temperature` or `top_p`, but not both.
    * It is recommended for advanced use cases only.
@@ -842,7 +867,8 @@ export class AnthropicTaskSettings {
 }
 
 export enum AnthropicTaskType {
-  completion
+  completion,
+  chat_completion
 }
 
 export enum AnthropicServiceType {
@@ -2132,7 +2158,7 @@ export class OpenAIServiceSettings {
    */
   api_key: string
   /**
-   * The number of dimensions the resulting output embeddings should have.
+   * For a `text_embedding` or `embedding` task, the number of dimensions the resulting output embeddings should have.
    * It is supported only in `text-embedding-3` and later models.
    * If it is not set, the OpenAI defined default for the model is used.
    */
@@ -2151,18 +2177,19 @@ export class OpenAIServiceSettings {
   /**
    * This setting helps to minimize the number of rate limit errors returned from OpenAI.
    * The `openai` service sets a default number of requests allowed per minute depending on the task type.
-   * For `text_embedding`, it is set to `3000`.
-   * For `completion`, it is set to `500`.
+   * For `text_embedding` and `embedding`, it is set to `3000`.
+   * For `completion` and `chat_completion`, it is set to `500`.
    */
   rate_limit?: RateLimitSetting
   /**
-   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm. Defaults to `dot_product`.
+   * For a `text_embedding` or `embedding` task, the similarity measure. One of `cosine`, `dot_product`, `l2_norm`. Defaults to `dot_product`.
    */
   similarity?: OpenAISimilarityType
   /**
    * The URL endpoint to use for the requests.
    * It can be changed for testing purposes.
-   * @server_default https://api.openai.com/v1/embeddings.
+   * Default value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,
+   * `https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.
    */
   url?: string
 }
@@ -2195,7 +2222,8 @@ export class OpenAITaskSettings {
 export enum OpenAITaskType {
   chat_completion,
   completion,
-  text_embedding
+  text_embedding,
+  embedding
 }
 
 export enum OpenAIServiceType {

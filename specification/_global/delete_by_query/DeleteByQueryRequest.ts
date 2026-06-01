@@ -229,7 +229,8 @@ export interface Request extends RequestBase {
      */
     request_cache?: boolean
     /**
-     * The throttle for this request in sub-requests per second.
+     * The maximum number of documents to delete per second, across the entire delete-by-query operation (including slices).
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      * @server_default -1
      */
     requests_per_second?: float

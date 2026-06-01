@@ -27,11 +27,13 @@ export class Response {
      */
     reindex: ReindexTaskInfo[]
     /**
-     * Task-level failures that occurred while listing reindex tasks.
+     * Per-task failures encountered while listing reindex tasks. Tasks that failed are not included in the `reindex` array.
      */
     task_failures?: TaskFailure[]
     /**
-     * Node-level failures that occurred while listing reindex tasks.
+     * Node-level failures encountered while listing reindex tasks.
+     * Typically populated when a node disconnects or stops responding mid-request,
+     * reindex tasks running on such nodes will be missing from the `reindex` array for the duration of the disruption.
      */
     node_failures?: ErrorCause[]
   }

@@ -58,11 +58,22 @@ export class MultisearchHeader {
   preference?: string
   project_routing?: ProjectRouting
   request_cache?: boolean
+  /**
+   * A custom value used to route operations to a specific shard.
+   * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+   */
   routing?: Routing
   search_type?: SearchType
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
   ignore_throttled?: boolean
+  /**
+   * The slice identifier for routing the search to a specific slice.
+   * Use the special value `_all` to query all slices without restricting to a routing value.
+   * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   */
+  _slice?: string
 }
 
 export class MultiSearchResult<TDocument> {

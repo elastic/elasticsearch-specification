@@ -30,6 +30,10 @@ import { Duration } from '@_types/Time'
  * The API may change in ways that are not backwards compatible.
  *
  * If the task identifier is not found, a 404 response code indicates that there are no resources that match the request.
+ *
+ * For relocatable tasks, this API transparently follows the task across graceful shutdown relocations,
+ * so callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`
+ * if it is continuing work from an earlier task.
  * @rest_spec_name tasks.get
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=public

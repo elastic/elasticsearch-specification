@@ -27,9 +27,12 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  *
  * NOTE: Service account tokens never expire.
  * You must actively delete them if they are no longer needed.
+ *
+ * IMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.
+ * Creating tokens for any other service account requires operator privileges.
  * @rest_spec_name security.create_service_token
  * @availability stack stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_service_account
  * @doc_id security-api-create-service-token
  * @ext_doc_id service-accounts
