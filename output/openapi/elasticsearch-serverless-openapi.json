@@ -29543,12 +29543,6 @@
                         }
                       }
                     ]
-                  },
-                  "replace_all": {
-                    "description": "If `true`, the entire synonyms set is replaced with the new synonym rules definitions.\nIf `false`, the provided synonym rules are appended to the existing set, with matching IDs overwriting existing rules.\nDefaults to `true`.",
-                    "default": true,
-                    "x-state": "Generally available",
-                    "type": "boolean"
                   }
                 },
                 "required": [

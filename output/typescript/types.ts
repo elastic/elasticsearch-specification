@@ -23370,7 +23370,6 @@ export interface SynonymsGetSynonymsSetsSynonymsSetItem {
 export interface SynonymsPutSynonymRequest extends RequestBase {
   id: Id
   refresh?: boolean
-  append?: boolean
   body?: {
     synonyms_set: SynonymsSynonymRule | SynonymsSynonymRule[]
   }
