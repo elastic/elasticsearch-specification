@@ -1925,7 +1925,7 @@ export class JinaAIServiceSettings {
    * Use `float` for the default float embeddings.
    * @server_default float
    */
-  element_type?: JinaAIElementType
+  embedding_type?: JinaAIElementType
   /**
    * For the `embedding` task, whether the model supports multimodal inputs. If true, requests sent to the Jina model
    * will use the multimodal request format (a list of objects). If false, requests sent to the model will use the same
