@@ -23338,7 +23338,6 @@ export interface SynonymsGetSynonymRequest extends RequestBase {
   id: Id
   from?: integer
   size?: integer
-  search_after?: string
 }
 
 export interface SynonymsGetSynonymResponse {
