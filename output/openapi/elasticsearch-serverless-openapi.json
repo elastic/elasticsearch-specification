@@ -29438,7 +29438,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "The starting offset for query rules to retrieve.",
+            "description": "The starting offset for synonym rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -29448,11 +29448,22 @@
           {
             "in": "query",
             "name": "size",
-            "description": "The max number of query rules to retrieve.",
+            "description": "The max number of synonym rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
             },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after",
+            "description": "The synonym rule ID to use as a cursor for pagination.\nThe next page of results will start after this rule ID.\nThis parameter cannot be used with `from`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -59013,8 +59024,18 @@
                 "type": "string"
               },
               "synonyms_set": {
-                "description": "Provide a synonym set created via Synonyms Management APIs.",
-                "type": "string"
+                "description": "Provide one or more synonym sets created via Synonyms Management APIs.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
               },
               "tokenizer": {
                 "deprecated": true,

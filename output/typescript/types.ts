@@ -5822,7 +5822,7 @@ export interface AnalysisSynonymTokenFilterBase extends AnalysisTokenFilterBase 
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
-  synonyms_set?: string
+  synonyms_set?: string | string[]
   tokenizer?: string
   updateable?: boolean
 }
@@ -23338,6 +23338,7 @@ export interface SynonymsGetSynonymRequest extends RequestBase {
   id: Id
   from?: integer
   size?: integer
+  search_after?: string
 }
 
 export interface SynonymsGetSynonymResponse {
