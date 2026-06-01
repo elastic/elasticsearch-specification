@@ -33,6 +33,16 @@ export class DataStreamLifecycle {
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
+
+  /**
+   * The least amount of time data should be kept by elasticsearch.
+   */
+  effective_retention?: Duration
+
+  /**
+   * Configuration source that can influence the retention of a data stream.
+   */
+  retention_determined_by?: RetentionSource
   /**
    * The list of downsampling rounds to execute as part of this downsampling configuration
    */
@@ -52,6 +62,13 @@ export class DataStreamLifecycle {
    * Only available with feature flag dlm_searchable_snapshots.
    */
   frozen_after?: Duration
+}
+
+export enum RetentionSource {
+  data_stream_configuration,
+  default_global_retention,
+  max_global_retention,
+  default_failures_retention
 }
 
 /**

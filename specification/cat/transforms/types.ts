@@ -88,6 +88,12 @@ export class TransformsRecord {
    */
   'pipeline'?: string
   /**
+   * The project routing filter for cross-project search from the source configuration.
+   * @aliases pr, projectRouting
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+   */
+  'project_routing'?: string
+  /**
    * The description of the transform.
    * @aliases d
    */

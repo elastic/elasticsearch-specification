@@ -1,0 +1,7 @@
+summary: Cancel and wait for completion
+method_request: POST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel
+description: >
+  Run `POST _reindex/{task_id}/_cancel` to cancel a running reindex task. By default the
+  request blocks until cancellation is complete and returns the final task state.
+
+# type: request

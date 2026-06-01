@@ -1,0 +1,8 @@
+summary: List with detailed status and human readable times
+method_request: GET _reindex?detailed=true&human=true
+description: >
+  Run `GET /_reindex?detailed=true&human=true` to include the per-task `status`
+  block (current progress counters) for each running reindex task and return
+  human-readable time fields such as `start_time` and `running_time`.
+
+# type: request

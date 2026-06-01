@@ -1,0 +1,136 @@
+summary: Cancellation completed
+description: >
+  A successful response from `POST _reindex/{task_id}/_cancel` (the default
+  `wait_for_completion=true`). The response includes the final task state with
+  `cancelled: true` and the `response` block summarising work done before
+  cancellation.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "completed": true,
+    "id": "iXIKIbk_T4aF05n5iTA0nA:876",
+    "description": "reindex from [cancel_reindex_src] to [cancel_reindex_dst]",
+    "start_time_in_millis": 1778265634844,
+    "running_time_in_nanos": 1096397958,
+    "cancelled": true,
+    "status": {
+      "total": 170,
+      "updated": 0,
+      "created": 16,
+      "deleted": 0,
+      "batches": 8,
+      "version_conflicts": 0,
+      "noops": 0,
+      "retries": {
+        "bulk": 0,
+        "search": 0
+      },
+      "throttled_millis": 941,
+      "requests_per_second": 17.0,
+      "canceled": "by user request",
+      "throttled_until_millis": 0,
+      "slices": [
+        {
+          "slice_id": 0,
+          "total": 75,
+          "updated": 0,
+          "created": 6,
+          "deleted": 0,
+          "batches": 3,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 235,
+          "requests_per_second": -1.0,
+          "canceled": "by user request",
+          "throttled_until_millis": 0
+        },
+        {
+          "slice_id": 1,
+          "total": 95,
+          "updated": 0,
+          "created": 10,
+          "deleted": 0,
+          "batches": 5,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled_millis": 705,
+          "requests_per_second": -1.0,
+          "canceled": "by user request",
+          "throttled_until_millis": 0
+        }
+      ]
+    },
+    "response": {
+      "took": 1074,
+      "timed_out": false,
+      "total": 170,
+      "updated": 0,
+      "created": 16,
+      "deleted": 0,
+      "batches": 8,
+      "version_conflicts": 0,
+      "noops": 0,
+      "retries": {
+        "bulk": 0,
+        "search": 0
+      },
+      "throttled": "941.1ms",
+      "throttled_millis": 941,
+      "requests_per_second": 17.0,
+      "canceled": "by user request",
+      "throttled_until": "0s",
+      "throttled_until_millis": 0,
+      "slices": [
+        {
+          "slice_id": 0,
+          "total": 75,
+          "updated": 0,
+          "created": 6,
+          "deleted": 0,
+          "batches": 3,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled": "235.2ms",
+          "throttled_millis": 235,
+          "requests_per_second": -1.0,
+          "canceled": "by user request",
+          "throttled_until": "0s",
+          "throttled_until_millis": 0
+        },
+        {
+          "slice_id": 1,
+          "total": 95,
+          "updated": 0,
+          "created": 10,
+          "deleted": 0,
+          "batches": 5,
+          "version_conflicts": 0,
+          "noops": 0,
+          "retries": {
+            "bulk": 0,
+            "search": 0
+          },
+          "throttled": "705.8ms",
+          "throttled_millis": 705,
+          "requests_per_second": -1.0,
+          "canceled": "by user request",
+          "throttled_until": "0s",
+          "throttled_until_millis": 0
+        }
+      ],
+      "failures": []
+    }
+  }
