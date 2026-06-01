@@ -45,14 +45,22 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * The starting offset for query rules to retrieve.
+     * The starting offset for synonym rules to retrieve.
      * @server_default 0
      */
     from?: integer
     /**
-     * The max number of query rules to retrieve.
+     * The max number of synonym rules to retrieve.
      * @server_default 10
      */
     size?: integer
+    /**
+     * The synonym rule ID to use as a cursor for pagination.
+     * The next page of results will start after this rule ID.
+     * This parameter cannot be used with `from`.
+     * @availability stack since=9.5.0
+     * @availability serverless
+     */
+    search_after?: string
   }
 }

@@ -1,8 +1,7 @@
 summary: Completed task
 method_request: GET _reindex/r1A2WoRbTwKZ516z6NEs5A:36619
 description: >
-  Run `GET _reindex/{task_id}` to retrieve the final status and result of a
-  reindex task after it has completed. The same request shape is used while
-  the task is in progress; only the response body differs.
+  Run `GET _reindex/{task_id}` to retrieve the final status and result of a reindex task after it has completed. The same request
+  shape is used while the task is in progress; only the response body differs.
 
 # type: request
