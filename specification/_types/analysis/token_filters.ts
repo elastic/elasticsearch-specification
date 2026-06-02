@@ -159,7 +159,7 @@ export class SynonymTokenFilterBase extends TokenFilterBase {
   synonyms?: string[]
   /** Used to provide a synonym file. This path must be absolute or relative to the `config` location. */
   synonyms_path?: string
-  /** Provide one or more synonym sets created via Synonyms Management APIs. */
+  /** Provide one or more synonym sets created through the Synonyms Management APIs. Maximum 100 sets per filter. */
   synonyms_set?: string | string[]
   /**
    * Controls the tokenizers that will be used to tokenize the synonym, this parameter is for backwards compatibility for indices that created before 6.0.
