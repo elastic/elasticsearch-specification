@@ -14843,7 +14843,7 @@ export interface InferenceJinaAIServiceSettings {
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceJinaAISimilarityType
   dimensions?: integer
-  element_type?: InferenceJinaAIElementType
+  embedding_type?: InferenceJinaAIElementType
 }
 
 export type InferenceJinaAIServiceType = 'jinaai'
