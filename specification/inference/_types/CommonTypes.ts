@@ -1664,7 +1664,7 @@ export class JinaAIServiceSettings {
    * Use `float` for the default float embeddings.
    * @server_default float
    */
-  element_type?: JinaAIElementType
+  embedding_type?: JinaAIElementType
 }
 
 export class JinaAITaskSettings {
