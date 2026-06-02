@@ -59035,7 +59035,7 @@
                 "type": "string"
               },
               "synonyms_set": {
-                "description": "Provide one or more synonym sets created via Synonyms Management APIs.",
+                "description": "Provide one or more synonym sets created through the Synonyms Management APIs. Maximum 100 sets per filter.",
                 "oneOf": [
                   {
                     "type": "string"
