@@ -65492,7 +65492,7 @@
             "description": "For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Jina documentation for more information.",
             "type": "number"
           },
-          "element_type": {
+          "embedding_type": {
             "description": "For a `text_embedding` task, the data type returned by the model.\nUse `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.\nUse `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).\nUse `float` for the default float embeddings.",
             "default": "float",
             "allOf": [
