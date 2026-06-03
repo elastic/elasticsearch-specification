@@ -18810,7 +18810,7 @@
                     "type": "number"
                   },
                   "platform_architecture": {
-                    "description": "The platform architecture (if applicable) of the trained mode. If the model\nonly works on one platform, because it is heavily optimized for a particular\nprocessor architecture and OS combination, then this field specifies which.\nThe format of the string must match the platform identifiers used by Elasticsearch,\nso one of, `linux-x86_64`, `linux-aarch64`, `darwin-x86_64`, `darwin-aarch64`,\nor `windows-x86_64`. For portable models (those that work independent of processor\narchitecture or OS features), leave this field unset.",
+                    "description": "The platform architecture (if applicable) of the trained mode. If the model\nonly works on one platform, because it is heavily optimized for a particular\nprocessor architecture and OS combination, then this field specifies which.\nThe format of the string must match the platform identifiers used by Elasticsearch,\nso one of, `linux-x86_64`, `linux-aarch64`, `darwin-aarch64`,\nor `windows-x86_64`. For portable models (those that work independent of processor\narchitecture or OS features), leave this field unset.",
                     "type": "string"
                   },
                   "tags": {
