@@ -83743,7 +83743,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
-            "x-state": "Experimental",
+            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"
