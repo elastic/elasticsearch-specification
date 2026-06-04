@@ -246,6 +246,10 @@ actions:
             url: https://www.elastic.co/docs/reference/elasticsearch/rest-apis/searching-with-query-rules
             description: Learn more about searching with query rules.
       # R
+        - name: reindex
+          x-displayName: Reindex
+          description: >
+            The reindex APIs enable you to copy documents from a source to a destination and to manage reindex tasks.
         - name: rollup
           x-displayName: Rollup
           description: >
