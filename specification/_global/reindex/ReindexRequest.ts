@@ -138,7 +138,7 @@ export interface Request extends RequestBase {
      * If it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.
      *
      * If `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.
-     * 
+     *
      * If `slices` is set, the `max_docs` limit is split evenly across the slices.
      * If the number of documents in the source is equal to or slightly more than `max_docs`, this could result in slightly fewer than `max_docs` documents being reindexed, due to skew in the slicing.
      */
