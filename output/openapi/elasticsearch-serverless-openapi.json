@@ -14804,6 +14804,11 @@
                   "description": "Run `PUT _inference/chat_completion/google_model_garden_ai21_chat_completion` to create an inference endpoint to perform a `chat_completion` task using AI21's model hosted on Google Model Garden serverless endpoint with single streaming URL provided. See the AI21 model documentation for instructions on how to construct URLs.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"ai21\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
                 },
+                "PutGoogleVertexAiRequestExample23": {
+                  "summary": "A text embedding task targeting the global endpoint",
+                  "description": "Run `PUT _inference/text_embedding/google_vertex_ai_embeddings_global` to create an inference endpoint that performs a `text_embedding` task against the Google Vertex AI global endpoint. Omit `location` to target the global endpoint (`https://aiplatform.googleapis.com`) instead of a regional one.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"model_id\": \"model-id\",\n        \"project_id\": \"project-id\"\n    }\n}"
+                },
                 "PutGoogleVertexAiRequestExample3": {
                   "summary": "A completion task for Google Model Garden Anthropic serverless endpoint with separate URLs for streaming and non-streaming tasks",
                   "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's serverless model hosted on Google Model Garden with separate URLs for streaming and non-streaming tasks. See the Anthropic model documentation for instructions on how to construct URLs.",
@@ -71543,7 +71548,7 @@
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations"
             },
-            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
+            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google`, `location` is optional.\nWhen `location` is omitted, the request targets the Google Vertex AI global endpoint (`https://aiplatform.googleapis.com`); when it is provided, the corresponding regional endpoint (`https://<location>-aiplatform.googleapis.com`) is used.\nThe field must be omitted to select the global endpoint; an empty string is not a valid `location`.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
             "type": "string"
           },
           "model_id": {
