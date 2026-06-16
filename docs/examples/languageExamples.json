@@ -19348,5 +19348,203 @@
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":[{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"},{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}]}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
     }
+  ],
+  "specification/_global/list_reindex/examples/request/ListReindexRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.list_reindex(\n    detailed=True,\n    human=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.listReindex({\n  detailed: \"true\",\n  human: \"true\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.list_reindex(\n  detailed: \"true\",\n  human: \"true\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->listReindex([\n    \"detailed\" => \"true\",\n    \"human\" => \"true\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex?detailed=true&human=true\""
+    }
+  ],
+  "specification/_global/list_reindex/examples/request/ListReindexRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.list_reindex()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.listReindex();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.list_reindex"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->listReindex();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex\""
+    }
+  ],
+  "specification/_global/get_reindex/examples/request/GetReindexRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.get_reindex(\n    task_id=\"r1A2WoRbTwKZ516z6NEs5A:36619\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.getReindex({\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.get_reindex(\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->getReindex([\n    \"task_id\" => \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619\""
+    }
+  ],
+  "specification/_global/get_reindex/examples/request/GetReindexRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.get_reindex(\n    task_id=\"r1A2WoRbTwKZ516z6NEs5A:36619\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.getReindex({\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.get_reindex(\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->getReindex([\n    \"task_id\" => \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619\""
+    }
+  ],
+  "specification/_global/cancel_reindex/examples/request/CancelReindexRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cancel_reindex(\n    task_id=\"r1A2WoRbTwKZ516z6NEs5A:36619\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cancelReindex({\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cancel_reindex(\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cancelReindex([\n    \"task_id\" => \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel\""
+    }
+  ],
+  "specification/_global/cancel_reindex/examples/request/CancelReindexRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.cancel_reindex(\n    task_id=\"r1A2WoRbTwKZ516z6NEs5A:36619\",\n    wait_for_completion=False,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.cancelReindex({\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  wait_for_completion: \"false\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.cancel_reindex(\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  wait_for_completion: \"false\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->cancelReindex([\n    \"task_id\" => \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n    \"wait_for_completion\" => \"false\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel?wait_for_completion=false\""
+    }
+  ],
+  "specification/_global/reindex_rethrottle/examples/request/ReindexRethrottleRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.reindex_rethrottle(\n    task_id=\"non_existing_node:123\",\n    requests_per_second=\"10\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.reindexRethrottle({\n  task_id: \"non_existing_node:123\",\n  requests_per_second: 10,\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.reindex_rethrottle(\n  task_id: \"non_existing_node:123\",\n  requests_per_second: \"10\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->reindexRethrottle([\n    \"task_id\" => \"non_existing_node:123\",\n    \"requests_per_second\" => \"10\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/non_existing_node:123/_rethrottle?requests_per_second=10\""
+    }
+  ],
+  "specification/_global/reindex_rethrottle/examples/request/ReindexRethrottleRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.reindex_rethrottle(\n    task_id=\"r1A2WoRbTwKZ516z6NEs5A:36619\",\n    requests_per_second=\"10\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.reindexRethrottle({\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  requests_per_second: 10,\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.reindex_rethrottle(\n  task_id: \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n  requests_per_second: \"10\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->reindexRethrottle([\n    \"task_id\" => \"r1A2WoRbTwKZ516z6NEs5A:36619\",\n    \"requests_per_second\" => \"10\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=10\""
+    }
+  ],
+  "specification/inference/put_anthropic/examples/request/PutAnthropicChatCompletionRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"chat_completion\",\n    inference_id=\"anthropic_chat_completion\",\n    inference_config={\n        \"service\": \"anthropic\",\n        \"service_settings\": {\n            \"api_key\": \"Anthropic-Api-Key\",\n            \"model_id\": \"claude-sonnet-4-5\"\n        },\n        \"task_settings\": {\n            \"max_tokens\": 1024\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"chat_completion\",\n  inference_id: \"anthropic_chat_completion\",\n  inference_config: {\n    service: \"anthropic\",\n    service_settings: {\n      api_key: \"Anthropic-Api-Key\",\n      model_id: \"claude-sonnet-4-5\",\n    },\n    task_settings: {\n      max_tokens: 1024,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"chat_completion\",\n  inference_id: \"anthropic_chat_completion\",\n  body: {\n    \"service\": \"anthropic\",\n    \"service_settings\": {\n      \"api_key\": \"Anthropic-Api-Key\",\n      \"model_id\": \"claude-sonnet-4-5\"\n    },\n    \"task_settings\": {\n      \"max_tokens\": 1024\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"chat_completion\",\n    \"inference_id\" => \"anthropic_chat_completion\",\n    \"body\" => [\n        \"service\" => \"anthropic\",\n        \"service_settings\" => [\n            \"api_key\" => \"Anthropic-Api-Key\",\n            \"model_id\" => \"claude-sonnet-4-5\",\n        ],\n        \"task_settings\" => [\n            \"max_tokens\" => 1024,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"claude-sonnet-4-5\"},\"task_settings\":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/anthropic_chat_completion\""
+    }
   ]
 }

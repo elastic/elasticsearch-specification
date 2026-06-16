@@ -68,6 +68,7 @@ scroll-1,scroll
 search-1,search
 search-application-get-behavioral-analytics-1,search-application-get-behavioral-analytics
 search-template-1,search-template
+security-create-service-token-1,security-create-service-token
 security-get-role-1,security-get-role
 security-has-privileges-1,security-has-privileges
 termvectors-1,termvectors

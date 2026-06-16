@@ -5822,7 +5822,7 @@ export interface AnalysisSynonymTokenFilterBase extends AnalysisTokenFilterBase 
   lenient?: boolean
   synonyms?: string[]
   synonyms_path?: string
-  synonyms_set?: string
+  synonyms_set?: string | string[]
   tokenizer?: string
   updateable?: boolean
 }
@@ -15072,7 +15072,7 @@ export interface InferenceJinaAIServiceSettings {
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceJinaAISimilarityType
   dimensions?: integer
-  element_type?: InferenceJinaAIElementType
+  embedding_type?: InferenceJinaAIElementType
   multimodal_model?: boolean
 }
 
@@ -23338,6 +23338,7 @@ export interface SynonymsGetSynonymRequest extends RequestBase {
   id: Id
   from?: integer
   size?: integer
+  search_after?: string
 }
 
 export interface SynonymsGetSynonymResponse {
@@ -23370,6 +23371,7 @@ export interface SynonymsGetSynonymsSetsSynonymsSetItem {
 export interface SynonymsPutSynonymRequest extends RequestBase {
   id: Id
   refresh?: boolean
+  append?: boolean
   body?: {
     synonyms_set: SynonymsSynonymRule | SynonymsSynonymRule[]
   }

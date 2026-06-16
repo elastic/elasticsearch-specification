@@ -14804,6 +14804,11 @@
                   "description": "Run `PUT _inference/chat_completion/google_model_garden_ai21_chat_completion` to create an inference endpoint to perform a `chat_completion` task using AI21's model hosted on Google Model Garden serverless endpoint with single streaming URL provided. See the AI21 model documentation for instructions on how to construct URLs.",
                   "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"provider\": \"ai21\",\n        \"service_account_json\": \"service-account-json\",\n        \"streaming_url\": \"https://%LOCATION_ID%-aiplatform.googleapis.com/v1/projects/%PROJECT_ID%/locations/%LOCATION_ID%/publishers/ai21/models/%MODEL_ID%:streamRawPredict\"\n    }\n}"
                 },
+                "PutGoogleVertexAiRequestExample23": {
+                  "summary": "A text embedding task targeting the global endpoint",
+                  "description": "Run `PUT _inference/text_embedding/google_vertex_ai_embeddings_global` to create an inference endpoint that performs a `text_embedding` task against the Google Vertex AI global endpoint. Omit `location` to target the global endpoint (`https://aiplatform.googleapis.com`) instead of a regional one.",
+                  "value": "{\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n        \"service_account_json\": \"service-account-json\",\n        \"model_id\": \"model-id\",\n        \"project_id\": \"project-id\"\n    }\n}"
+                },
                 "PutGoogleVertexAiRequestExample3": {
                   "summary": "A completion task for Google Model Garden Anthropic serverless endpoint with separate URLs for streaming and non-streaming tasks",
                   "description": "Run `PUT _inference/completion/google_model_garden_anthropic_completion` to create an inference endpoint to perform a `completion` task using Anthropic's serverless model hosted on Google Model Garden with separate URLs for streaming and non-streaming tasks. See the Anthropic model documentation for instructions on how to construct URLs.",
@@ -17478,7 +17483,7 @@
           {
             "in": "query",
             "name": "max_docs",
-            "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.",
+            "description": "The maximum number of documents to reindex.\nBy default, all documents are reindexed.\nIf it is a value less then or equal to `scroll_size`, a scroll will not be used to retrieve the results for the operation.\n\nIf `conflicts` is set to `proceed`, the reindex operation could attempt to reindex more documents from the source than `max_docs` until it has successfully indexed `max_docs` documents into the target or it has gone through every document in the source query.\n\nIf `slices` is set, the `max_docs` limit is split evenly across the slices.\nIf the number of documents in the source is equal to or slightly more than `max_docs`, this could result in slightly fewer than `max_docs` documents being reindexed, due to skew in the slicing.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -20155,7 +20160,7 @@
                     "type": "number"
                   },
                   "platform_architecture": {
-                    "description": "The platform architecture (if applicable) of the trained mode. If the model\nonly works on one platform, because it is heavily optimized for a particular\nprocessor architecture and OS combination, then this field specifies which.\nThe format of the string must match the platform identifiers used by Elasticsearch,\nso one of, `linux-x86_64`, `linux-aarch64`, `darwin-x86_64`, `darwin-aarch64`,\nor `windows-x86_64`. For portable models (those that work independent of processor\narchitecture or OS features), leave this field unset.",
+                    "description": "The platform architecture (if applicable) of the trained mode. If the model\nonly works on one platform, because it is heavily optimized for a particular\nprocessor architecture and OS combination, then this field specifies which.\nThe format of the string must match the platform identifiers used by Elasticsearch,\nso one of, `linux-x86_64`, `linux-aarch64`, `darwin-aarch64`,\nor `windows-x86_64`. For portable models (those that work independent of processor\narchitecture or OS features), leave this field unset.",
                     "type": "string"
                   },
                   "tags": {
@@ -23869,7 +23874,7 @@
             }
           }
         },
-        "x-state": "Beta",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -29438,7 +29443,7 @@
           {
             "in": "query",
             "name": "from",
-            "description": "The starting offset for query rules to retrieve.",
+            "description": "The starting offset for synonym rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
@@ -29448,11 +29453,22 @@
           {
             "in": "query",
             "name": "size",
-            "description": "The max number of query rules to retrieve.",
+            "description": "The max number of synonym rules to retrieve.",
             "deprecated": false,
             "schema": {
               "type": "number"
             },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after",
+            "description": "The synonym rule ID to use as a cursor for pagination.\nThe next page of results will start after this rule ID.\nThis parameter cannot be used with `from`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -29504,7 +29520,7 @@
           "synonyms"
         ],
         "summary": "Create or update a synonym set",
-        "description": "Synonyms sets are limited to a maximum of 10,000 synonym rules per set.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
+        "description": "Synonym sets are limited to a maximum of 100,000 synonym rules per set by default.\nThis limit is configurable using the `synonyms.max_synonym_rules` cluster setting.\n\nWhen an existing synonyms set is updated, the search analyzers that use the synonyms set are reloaded automatically for all indices.\nThis is equivalent to invoking the reload search analyzers API for all indices that use the synonyms set.\n\nFor practical examples of how to create or update a synonyms set, refer to the External documentation.\n\n## Required authorization\n\n* Cluster privileges: `manage_search_synonyms`\n",
         "externalDocs": {
           "description": "About synonym API examples",
           "url": "https://www.elastic.co/docs/solutions/search/full-text/create-update-synonyms-api-example",
@@ -29522,6 +29538,17 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "append",
+            "description": "If `true`, the provided synonym rules are appended to the existing set, with matching IDs overwriting existing rules.\nIf `false`, the entire synonyms set is replaced with the new synonym rules definitions.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "x-state": "Generally available",
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -59013,8 +59040,18 @@
                 "type": "string"
               },
               "synonyms_set": {
-                "description": "Provide a synonym set created via Synonyms Management APIs.",
-                "type": "string"
+                "description": "Provide one or more synonym sets created through the Synonyms Management APIs. Maximum 100 sets per filter.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                ]
               },
               "tokenizer": {
                 "deprecated": true,
@@ -71511,7 +71548,7 @@
             "externalDocs": {
               "url": "https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations"
             },
-            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
+            "description": "The name of the location to use for the inference task for the Google Vertex AI inference task.\nFor Google Vertex AI, when `provider` is omitted or `google`, `location` is optional.\nWhen `location` is omitted, the request targets the Google Vertex AI global endpoint (`https://aiplatform.googleapis.com`); when it is provided, the corresponding regional endpoint (`https://<location>-aiplatform.googleapis.com`) is used.\nThe field must be omitted to select the global endpoint; an empty string is not a valid `location`.\nFor Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.\nRefer to the Google documentation for the list of supported locations.",
             "type": "string"
           },
           "model_id": {
@@ -71872,7 +71909,7 @@
             "description": "For an `embedding` or `text_embedding` task, the number of dimensions the resulting output embeddings should have.\nBy default, the model's standard output dimension is used.\nRefer to the Jina documentation for more information.",
             "type": "number"
           },
-          "element_type": {
+          "embedding_type": {
             "description": "For an `embedding` or `text_embedding` task, the data type returned by the model.\nUse `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.\nUse `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).\nUse `float` for the default float embeddings.",
             "default": "float",
             "allOf": [
@@ -83711,7 +83748,7 @@
           },
           "remote": {
             "description": "A remote instance of Elasticsearch that you want to index from.",
-            "x-state": "Experimental",
+            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.reindex.RemoteSource"

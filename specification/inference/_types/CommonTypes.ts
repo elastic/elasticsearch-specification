@@ -1716,7 +1716,9 @@ export class GoogleVertexAIServiceSettings {
   streaming_url?: string
   /**
    * The name of the location to use for the inference task for the Google Vertex AI inference task.
-   * For Google Vertex AI, when `provider` is omitted or `google` `location` is mandatory.
+   * For Google Vertex AI, when `provider` is omitted or `google`, `location` is optional.
+   * When `location` is omitted, the request targets the Google Vertex AI global endpoint (`https://aiplatform.googleapis.com`); when it is provided, the corresponding regional endpoint (`https://<location>-aiplatform.googleapis.com`) is used.
+   * The field must be omitted to select the global endpoint; an empty string is not a valid `location`.
    * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.
    * Refer to the Google documentation for the list of supported locations.
    * @ext_doc_id googlevertexai-locations
@@ -1950,7 +1952,7 @@ export class JinaAIServiceSettings {
    * Use `float` for the default float embeddings.
    * @server_default float
    */
-  element_type?: JinaAIElementType
+  embedding_type?: JinaAIElementType
   /**
    * For the `embedding` task, whether the model supports multimodal inputs. If true, requests sent to the Jina model
    * will use the multimodal request format (a list of objects). If false, requests sent to the model will use the same
