@@ -10,10 +10,5 @@ jobs:
       comment_body: ${{ github.event.comment.body }}
       comment_user: ${{ github.event.comment.user.login }}
       pr_number: ${{ github.event.issue.number }}
-      # output/ is generated build output (e.g. output/schema/schema.json) - too large
-      # to hand-merge. Skip AI-merge for it and regenerate from the resolved sources.
-      node_version: "24"
-      generated_paths: "output/"
-      regenerate_command: "make setup && make compile && make generate && make transform-to-openapi && make filter-for-serverless"
     secrets:
       LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
