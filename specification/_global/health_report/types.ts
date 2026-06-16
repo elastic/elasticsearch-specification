@@ -40,6 +40,7 @@ export class Indicators {
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
+  project_encryption_key?: ProjectEncryptionKeyIndicator
 }
 
 export class BaseIndicator {
@@ -214,4 +215,18 @@ export class FileSettingsIndicator extends BaseIndicator {
 export class FileSettingsIndicatorDetails {
   failure_streak: long
   most_recent_failure: string
+}
+
+/** PROJECT_ENCRYPTION_KEY **/
+
+export class ProjectEncryptionKeyIndicator extends BaseIndicator {
+  details?: ProjectEncryptionKeyDetails
+}
+
+export class ProjectEncryptionKeyDetails {
+  active_key_id?: string
+  active_password_id?: string
+  key_count?: integer
+  metadata_password_id?: string
+  state: string
 }
