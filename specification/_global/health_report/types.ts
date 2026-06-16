@@ -225,7 +225,7 @@ export class ProjectEncryptionKeyIndicator extends BaseIndicator {
 
 export class ProjectEncryptionKeyDetails {
   active_key_id?: string
-  active_password_id?: string
+  active_password_id: string
   key_count?: integer
   metadata_password_id?: string
   state: string
