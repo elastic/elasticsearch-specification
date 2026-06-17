@@ -6,13 +6,19 @@ value: |-
       {
         "remove_backing_index": {
           "data_stream": "my-data-stream",
-          "index": ".ds-my-data-stream-2023.07.26-000001"
+          "index": ".ds-my-data-stream-2023.07.26-000002"
         }
       },
       {
         "add_backing_index": {
           "data_stream": "my-data-stream",
-          "index": ".ds-my-data-stream-2023.07.26-000001-downsample"
+          "index": ".ds-my-data-stream-2023.07.26-000002-downsample"
+        }
+      },
+      {
+        "delete_backing_index": {
+          "data_stream": "my-data-stream",
+          "index": ".ds-my-data-stream-2023.07.20-000001-downsample"
         }
       }
     ]
