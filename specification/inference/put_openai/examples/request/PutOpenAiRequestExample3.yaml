@@ -1,0 +1,17 @@
+summary: A text embedding task with OAuth 2.0 authentication
+description:
+  Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding`
+  task. The embeddings created by requests to this endpoint will have 128 dimensions and use OAuth 2.0 authentication.
+method_request: 'PUT _inference/text_embedding/openai-embeddings'
+value: |-
+  {
+    "service": "openai",
+    "service_settings": {
+      "model_id": "text-embedding-3-small",
+      "client_id": "test_client_id",
+      "scopes": ["scope1", "scope2"],
+      "client_secret": "secret",
+      "token_url": "http://localhost:8080/token",
+      "url": "https://api.openai.com/v1/embeddings"
+    }
+  }

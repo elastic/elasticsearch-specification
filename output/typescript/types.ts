@@ -15151,11 +15151,14 @@ export type InferenceNvidiaTaskType = 'chat_completion' | 'completion' | 'rerank
 
 export interface InferenceOpenAIServiceSettings {
   api_key: string
+  client_id?: string
+  client_secret?: string
   dimensions?: integer
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
   similarity?: InferenceOpenAISimilarityType
+  token_url?: string
   url?: string
 }
 

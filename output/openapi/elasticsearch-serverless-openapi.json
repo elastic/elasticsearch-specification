@@ -15784,6 +15784,11 @@
                   "summary": "A completion task",
                   "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a `completion` task type.",
                   "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                },
+                "PutOpenAiRequestExample3": {
+                  "summary": "A text embedding task with OAuth 2.0 authentication",
+                  "description": "Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 128 dimensions and use OAuth 2.0 authentication.",
+                  "value": "{\n  \"service\": \"openai\",\n  \"service_settings\": {\n    \"model_id\": \"text-embedding-3-small\",\n    \"client_id\": \"test_client_id\",\n    \"scopes\": [\"scope1\", \"scope2\"],\n    \"client_secret\": \"secret\",\n    \"token_url\": \"http://localhost:8080/token\",\n    \"url\": \"https://api.openai.com/v1/embeddings\"\n  }\n}"
                 }
               }
             }
@@ -72346,10 +72351,18 @@
         "type": "object",
         "properties": {
           "api_key": {
+            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_id": {
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_secret": {
             "externalDocs": {
-              "url": "https://platform.openai.com/api-keys"
+              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "dimensions": {
@@ -72382,6 +72395,10 @@
                 "$ref": "#/components/schemas/inference._types.OpenAISimilarityType"
               }
             ]
+          },
+          "token_url": {
+            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nAn OAuth2 token endpoint where your application sends a POST request to exchange client credentials for an access token.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
           },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
