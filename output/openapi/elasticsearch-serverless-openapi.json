@@ -13587,7 +13587,7 @@
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
                 },
                 "PutAzureOpenAiRequestExample4": {
-                  "summary": "A text embedding task with OAuth 2.0 authentication and custom headers",
+                  "summary": "A text embedding task with OAuth 2.0 authorization and custom headers",
                   "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345\",\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
                 }
@@ -15786,8 +15786,8 @@
                   "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
                 },
                 "PutOpenAiRequestExample3": {
-                  "summary": "A text embedding task with OAuth 2.0 authentication",
-                  "description": "Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 128 dimensions and use OAuth 2.0 authentication.",
+                  "summary": "A text embedding task with OAuth 2.0 authorization",
+                  "description": "Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The embeddings created by requests to this endpoint will have 128 dimensions and use OAuth 2.0 authorization.",
                   "value": "{\n  \"service\": \"openai\",\n  \"service_settings\": {\n    \"model_id\": \"text-embedding-3-small\",\n    \"client_id\": \"test_client_id\",\n    \"scopes\": [\"scope1\", \"scope2\"],\n    \"client_secret\": \"secret\",\n    \"token_url\": \"http://localhost:8080/token\",\n    \"url\": \"https://api.openai.com/v1/embeddings\"\n  }\n}"
                 }
               }
@@ -70512,14 +70512,14 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "client_secret": {
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "deployment_id": {
@@ -70558,7 +70558,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/entra/identity-platform/scopes-oidc"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "array",
             "items": {
               "type": "string"
@@ -70568,7 +70568,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           }
         },
@@ -70896,7 +70896,7 @@
             "type": "number"
           },
           "headers": {
-            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "description": "Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -72355,14 +72355,11 @@
             "type": "string"
           },
           "client_id": {
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "client_secret": {
-            "externalDocs": {
-              "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
-            },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application secret that you created for your app.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "dimensions": {
@@ -72397,7 +72394,7 @@
             ]
           },
           "token_url": {
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nAn OAuth2 token endpoint where your application sends a POST request to exchange client credentials for an access token.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nAn OAuth2 token endpoint where Elasticsearch sends a request to exchange client credentials for an access token.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "url": {
