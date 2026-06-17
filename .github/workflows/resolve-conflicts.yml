@@ -10,5 +10,8 @@ jobs:
       comment_body: ${{ github.event.comment.body }}
       comment_user: ${{ github.event.comment.user.login }}
       pr_number: ${{ github.event.issue.number }}
+      node_version: "24"
+      generated_paths: "output/"
+      regenerate_command: "make setup && make compile && make generate && make transform-to-openapi"
     secrets:
       LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
