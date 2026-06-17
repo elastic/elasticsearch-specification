@@ -980,7 +980,7 @@ export class AzureOpenAIServiceSettings {
    */
   api_version: string
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
    * The application ID that's assigned to your app.
    *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
@@ -989,7 +989,7 @@ export class AzureOpenAIServiceSettings {
    */
   client_id?: string
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
    * The application secret that you created in the Microsoft app registration portal for your app.
    *
    * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
@@ -1029,7 +1029,7 @@ export class AzureOpenAIServiceSettings {
    */
   resource_name: string
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
    * The resource identifier (application ID URI) of the resource you want, suffixed with .default
    * For example:
    * ```
@@ -1044,7 +1044,7 @@ export class AzureOpenAIServiceSettings {
    */
   scopes?: Array<string>
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
    * The directory tenant the application plans to operate against.
    *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.
@@ -1213,7 +1213,7 @@ export class CustomServiceSettings {
    */
   batch_size?: integer
   /**
-   * Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.
+   * Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service.
    * For example:
    * ```
    * "headers": {
@@ -2159,7 +2159,7 @@ export class OpenAIServiceSettings {
    */
   api_key: string
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
    * The application ID that's assigned to your app.
    *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.
@@ -2167,15 +2167,14 @@ export class OpenAIServiceSettings {
    */
   client_id?: string
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
-   * The application secret that you created in the Microsoft app registration portal for your app.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The application secret that you created for your app.
    *
    * IMPORTANT: You must specify either `api_key` or `client_secret`.
    * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
    *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
-   * @ext_doc_id azureopenai-oauth2
    */
   client_secret?: string
   /**
@@ -2207,8 +2206,8 @@ export class OpenAIServiceSettings {
    */
   similarity?: OpenAISimilarityType
   /**
-   * For OAuth 2.0 authentication using the client credentials grant flow.
-   * An OAuth2 token endpoint where your application sends a POST request to exchange client credentials for an access token.
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * An OAuth2 token endpoint where Elasticsearch sends a request to exchange client credentials for an access token.
    *
    * IMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, token_url, and client_secret together.
    * If one of the fields is missing, you will receive an error when you try to create your endpoint.
