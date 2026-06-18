@@ -59,9 +59,9 @@ import { long } from '@_types/Numeric'
  * * One or more aliases
  * * All data streams and indices in a cluster
  *
- * Each targeted shard is force-merged separately using the force_merge threadpool.
- * By default each node only has a single `force_merge` thread which means that the shards on that node are force-merged one at a time.
- * If you expand the `force_merge` threadpool on a node then it will force merge its shards in parallel
+ * Each targeted shard is force-merged separately using the `force_merge` threadpool.
+ * The `force_merge` threadpool has a fixed size of `max(1, allocatedProcessors / 8)` per node, which means multiple shards on a node may be force-merged in parallel.
+ * If you expand the `force_merge` threadpool on a node then it will force merge its shards with more parallelism.
  *
  * Force merge makes the storage for the shard being merged temporarily increase, as it may require free space up to triple its size in case `max_num_segments parameter` is set to `1`, to rewrite all segments into a new one.
  *
