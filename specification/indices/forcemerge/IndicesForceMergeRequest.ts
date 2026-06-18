@@ -48,7 +48,6 @@ import { long } from '@_types/Numeric'
  * If the request contains `wait_for_completion=false`, Elasticsearch performs some preflight checks, launches the request, and returns a task you can use to get the status of the task.
  * However, you can not cancel this task as the force merge task is not cancelable.
  * Elasticsearch creates a record of this task as a document at `_tasks/<task_id>`.
- * When you are done with a task, you should delete the task document so Elasticsearch can reclaim the space.
  *
  * **Force merging multiple indices**
  *
