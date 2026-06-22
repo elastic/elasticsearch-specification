@@ -372,7 +372,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
       - id: fetch-token
         name: Fetch ephemeral GitHub token
-        uses: elastic/ci-gh-actions/fetch-github-token@2feb1c6f5086cf8e06f61ef35e275abed3456f7b # 622f9dc1eecdd4af2e81dfb38028aacb1dae03e8
+        uses: elastic/ci-gh-actions/fetch-github-token@2feb1c6f5086cf8e06f61ef35e275abed3456f7b # 2feb1c6f5086cf8e06f61ef35e275abed3456f7b
         with:
           vault-instance: ci-prod
       - env:
