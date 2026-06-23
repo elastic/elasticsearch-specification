@@ -35,6 +35,7 @@ export class Action {
    */
   remove_backing_index?: IndexAndDataStreamAction
   /**
+   * @availability stack since=9.5.0 stability=stable
    * Deletes a backing index from a data stream.
    * The deletion is atomically executed along with the other actions in this operation.
    * A data stream’s write index cannot be deleted.
