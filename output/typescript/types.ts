@@ -13572,6 +13572,7 @@ export type IndicesMigrateToDataStreamResponse = AcknowledgedResponseBase
 export interface IndicesModifyDataStreamAction {
   add_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
   remove_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+  delete_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
 }
 
 export interface IndicesModifyDataStreamIndexAndDataStreamAction {

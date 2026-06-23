@@ -11247,7 +11247,7 @@
               "examples": {
                 "IndicesModifyDataStreamExample1": {
                   "description": "An example body for a `POST _data_stream/_modify` request.",
-                  "value": "{\n  \"actions\": [\n    {\n      \"remove_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001\"\n      }\n    },\n    {\n      \"add_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000001-downsample\"\n      }\n    }\n  ]\n}"
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000002\"\n      }\n    },\n    {\n      \"add_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.26-000002-downsample\"\n      }\n    },\n    {\n      \"delete_backing_index\": {\n        \"data_stream\": \"my-data-stream\",\n        \"index\": \".ds-my-data-stream-2023.07.20-000001-downsample\"\n      }\n    }\n  ]\n}"
                 }
               }
             }
@@ -67910,6 +67910,14 @@
           },
           "remove_backing_index": {
             "description": "Removes a backing index from a data stream.\nThe index is unhidden as part of this operation.\nA data stream’s write index cannot be removed.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices.modify_data_stream.IndexAndDataStreamAction"
+              }
+            ]
+          },
+          "delete_backing_index": {
+            "description": "Deletes a backing index from a data stream.\nThe deletion is atomically executed along with the other actions in this operation.\nA data stream’s write index cannot be deleted.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices.modify_data_stream.IndexAndDataStreamAction"
