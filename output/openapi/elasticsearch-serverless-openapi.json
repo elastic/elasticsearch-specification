@@ -66686,6 +66686,20 @@
           "type": {
             "type": "string"
           },
+          "inference": {
+            "description": "Whether this field is an inference field, meaning a field that automatically performs inference (for example, `semantic_text` fields), on all indices.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "non_inference_indices": {
+            "description": "The list of indices where this field is not an inference field, or null if all indices have the same definition for the field.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Indices"
+              }
+            ]
+          },
           "metadata_field": {
             "description": "Whether this field is registered as a metadata field.",
             "type": "boolean"
@@ -87250,13 +87264,13 @@
             "examples": {
               "FieldCapabilitiesResponseExample1": {
                 "summary": "Get two fields",
-                "description": "A successful response from `GET _field_caps?fields=rating,title`. The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`. The field `rating` is not aggregatable in `index1`. The field `rating` is not searchable in `index4`. The field `title` is defined as text in all indices.\n",
-                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+                "description": "A successful response from `GET _field_caps?fields=rating,title`. The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`. The field `rating` is not aggregatable in `index1`. The field `rating` is not searchable in `index4`. The field `title` is defined as text in all indices. None of the fields are inference fields.\n",
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {\n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]\n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"inference\": false,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]\n      }\n    },\n    \"title\": {\n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false\n      }\n    }\n  }\n}"
               },
               "FieldCapabilitiesResponseExample2": {
                 "summary": "Get unmapped fields",
                 "description": "A successful response from `GET _field_caps?fields=rating,title&include_unmapped`. The response contains an entry for each field that is present in some indices but not all. For example, the `rating` and `title` fields are unmapped in `index5`.\n",
-                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {\n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]\n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"inference\": false,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]\n      }\n    },\n    \"title\": {\n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false\n      }\n    }\n  }\n}"
               }
             }
           }
