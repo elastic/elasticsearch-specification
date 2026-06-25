@@ -21,7 +21,7 @@ engine:
 steps:
   - name: Fetch ephemeral GitHub token
     id: fetch-token
-    uses: elastic/ci-gh-actions/fetch-github-token@622f9dc1eecdd4af2e81dfb38028aacb1dae03e8 # v1.5.0
+    uses: elastic/ci-gh-actions/fetch-github-token@2feb1c6f5086cf8e06f61ef35e275abed3456f7b # v1.5.3
     with:
       vault-instance: "ci-prod"
   - name: Fetch Buildkite errors
