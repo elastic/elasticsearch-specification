@@ -15840,6 +15840,7 @@ export type InferenceTextEmbeddingResponse = InferenceTextEmbeddingInferenceResu
 export interface InferenceUpdateRequest extends RequestBase {
   inference_id: Id
   task_type?: InferenceTaskType
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
