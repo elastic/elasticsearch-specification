@@ -92205,7 +92205,7 @@
       "inference.put-timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be created.\nThe default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Duration"
