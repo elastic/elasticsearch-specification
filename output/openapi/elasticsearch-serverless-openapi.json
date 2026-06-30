@@ -60577,11 +60577,7 @@
           "min_chars": {
             "type": "number"
           }
-        },
-        "required": [
-          "max_chars",
-          "min_chars"
-        ]
+        }
       },
       "_types.mapping.TermVectorOption": {
         "type": "string",
