@@ -327,8 +327,8 @@ export enum IndexOptions {
 }
 
 export class TextIndexPrefixes {
-  max_chars: integer
-  min_chars: integer
+  max_chars?: integer
+  min_chars?: integer
 }
 
 export class TextProperty extends CorePropertyBase {
