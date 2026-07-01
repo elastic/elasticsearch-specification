@@ -18,9 +18,9 @@
  */
 
 import { Field, IndexName } from '@_types/common'
+import { OnScriptError } from '@_types/mapping/core'
 import { Script } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
-import {OnScriptError} from "@_types/mapping/core";
 
 export type RuntimeFields = Dictionary<Field, RuntimeField>
 
