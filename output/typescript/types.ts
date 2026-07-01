@@ -2108,6 +2108,7 @@ export interface TermsEnumRequest extends RequestBase {
     index_filter?: QueryDslQueryContainer
     string?: string
     search_after?: string
+    project_routing?: ProjectRouting
   }
 }
 
