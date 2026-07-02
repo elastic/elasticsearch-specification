@@ -6074,14 +6074,8 @@ export interface MappingDenseVectorProperty extends MappingPropertyBase {
 
 export type MappingDenseVectorSimilarity = 'cosine' | 'dot_product' | 'l2_norm' | 'max_inner_product'
 
-export type MappingDocValues = boolean | MappingDocValuesConfig
-
-export interface MappingDocValuesConfig {
-  multi_value?: boolean
-}
-
 export interface MappingDocValuesPropertyBase extends MappingCorePropertyBase {
-  doc_values?: MappingDocValues
+  doc_values?: boolean
 }
 
 export interface MappingDoubleNumberProperty extends MappingNumberPropertyBase {
