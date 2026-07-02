@@ -216,6 +216,7 @@ docvalue-fields,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/re
 dot-expand-processor,https://www.elastic.co/docs/reference/enrich-processor/dot-expand-processor,[use-doc-url],,About the dot expander processor
 drop-processor,https://www.elastic.co/docs/reference/enrich-processor/drop-processor,[use-doc-url],,More about the drop processor
 eland-import,https://www.elastic.co/docs/explore-analyze/machine-learning/nlp/ml-nlp-import-model#ml-nlp-import-script,[use-doc-url],,About importing a trained model
+encryption-reset,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,About Elasticsearch API
 enrich-processor,https://www.elastic.co/docs/reference/enrich-processor/enrich-processor,[use-doc-url],,More about the enrich processor
 enrich-stats-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-enrich-stats,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/enrich-stats-api.html,Learn more about enrich stats
 eql-async-search-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-get,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-eql-search-api.html,About async EQL search results
