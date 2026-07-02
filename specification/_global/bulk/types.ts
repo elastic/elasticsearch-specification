@@ -154,7 +154,12 @@ export class UpdateOperation extends OperationBase {
   retry_on_conflict?: integer
 }
 
-/** @variants container */
+/**
+ * An action line, which is the first line of each operation in a bulk request.
+ * It specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata, such as the target index and document ID.
+ * All actions except `delete` expect a source line to follow.
+ * @variants container
+ */
 export class OperationContainer {
   /**
    * Index the specified document.
@@ -178,6 +183,10 @@ export class OperationContainer {
   delete?: DeleteOperation
 }
 
+/**
+ * The source line that must follow an `update` action line.
+ * It specifies the partial document, script, or upsert options to apply, plus optional update settings.
+ */
 export class UpdateAction<TDocument, TPartialDocument> {
   /**
    * If true, the `result` in the response is set to 'noop' when no changes to the document occur.
