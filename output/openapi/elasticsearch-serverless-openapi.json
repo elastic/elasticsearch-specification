@@ -41298,6 +41298,13 @@
               }
             ]
           },
+          "on_script_error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.OnScriptError"
+              }
+            ]
+          },
           "type": {
             "description": "Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.",
             "allOf": [
@@ -41357,6 +41364,13 @@
         },
         "required": [
           "field"
+        ]
+      },
+      "_types.mapping.OnScriptError": {
+        "type": "string",
+        "enum": [
+          "fail",
+          "continue"
         ]
       },
       "_types.ScriptLanguage": {
@@ -59586,13 +59600,6 @@
         "enum": [
           "array",
           "disabled"
-        ]
-      },
-      "_types.mapping.OnScriptError": {
-        "type": "string",
-        "enum": [
-          "fail",
-          "continue"
         ]
       },
       "_types.mapping.DynamicProperty": {
