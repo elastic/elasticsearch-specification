@@ -29,13 +29,12 @@ jobs:
       - name: Build docs-final OpenAPI specs
         uses: ./.github/actions/build-openapi-docs
 
-      # TODO: swap to elastic/docs-actions/openapi/lint@v1 once released (elastic/docs-actions#207)
       - name: Lint stateful spec
-        uses: elastic/docs-actions/openapi/lint@355df64f39af21900e4d84afefd093f6b16bc841
+        uses: elastic/docs-actions/openapi/lint@v1
         with:
           spec-path: output/openapi/elasticsearch-openapi-docs-final.json
 
       - name: Lint serverless spec
-        uses: elastic/docs-actions/openapi/lint@355df64f39af21900e4d84afefd093f6b16bc841
+        uses: elastic/docs-actions/openapi/lint@v1
         with:
           spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
