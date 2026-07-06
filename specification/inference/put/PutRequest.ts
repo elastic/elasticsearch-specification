@@ -87,7 +87,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
-     * @server_default 30s
+     * The default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.
      */
     timeout?: Duration
   }

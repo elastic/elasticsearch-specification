@@ -13587,7 +13587,7 @@
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_key\": \"Api-Key\",\n        \"resource_name\": \"Resource-name\",\n        \"deployment_id\": \"Deployment-id\",\n        \"api_version\": \"2024-02-01\"\n    }\n}"
                 },
                 "PutAzureOpenAiRequestExample4": {
-                  "summary": "A text embedding task with OAuth 2.0 authentication and custom headers",
+                  "summary": "A text embedding task with OAuth 2.0 authorization and custom headers",
                   "description": "Run `PUT _inference/text_embedding/azure_openai_embeddings` to create an inference endpoint that performs a `text_embedding` task. You do not specify a model, as it is defined already in the Azure OpenAI deployment.",
                   "value": "{\n    \"service\": \"azureopenai\",\n    \"service_settings\": {\n        \"api_version\": \"2023-05-15\",\n        \"client_id\": \"12345\",\n        \"client_secret\": \"secret\",\n        \"deployment_id\": \"Deployment-id\",\n        \"resource_name\": \"Resource-name\",\n        \"scopes\": [\"Scope-1\", \"Scope-2\"],\n        \"tenant_id\": \"tenant id\"\n    },\n    \"task_settings\": {\n        \"headers\": {\n            \"Custom-Header-Key\": \"Custom header value\"\n        }\n    }\n}"
                 }
@@ -15784,6 +15784,11 @@
                   "summary": "A completion task",
                   "description": "Run `PUT _inference/completion/openai-completion` to create an inference endpoint to perform a `completion` task type.",
                   "value": "{\n    \"service\": \"openai\",\n    \"service_settings\": {\n        \"api_key\": \"OpenAI-API-Key\",\n        \"model_id\": \"gpt-3.5-turbo\"\n    }\n}"
+                },
+                "PutOpenAiRequestExample3": {
+                  "summary": "A text embedding task with OAuth 2.0 authorization",
+                  "description": "Run `PUT _inference/text_embedding/openai-embeddings` to create an inference endpoint that performs a `text_embedding` task. The requests to this endpoint will use OAuth 2.0 authorization.",
+                  "value": "{\n  \"service\": \"openai\",\n  \"service_settings\": {\n    \"model_id\": \"text-embedding-3-small\",\n    \"client_id\": \"test_client_id\",\n    \"scopes\": [\"scope1\", \"scope2\"],\n    \"client_secret\": \"secret\",\n    \"token_url\": \"http://localhost:8080/token\",\n    \"url\": \"https://api.openai.com/v1/embeddings\"\n  }\n}"
                 }
               }
             }
@@ -16661,6 +16666,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/inference.update-inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.update-timeout"
           }
         ],
         "requestBody": {
@@ -16694,6 +16702,9 @@
           },
           {
             "$ref": "#/components/parameters/inference.update-inference_id"
+          },
+          {
+            "$ref": "#/components/parameters/inference.update-timeout"
           }
         ],
         "requestBody": {
@@ -54178,6 +54189,13 @@
               }
             ]
           },
+          "unassigned": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassigned"
+              }
+            ]
+          },
           "gc_deletes": {
             "default": "60s",
             "allOf": [
@@ -54830,6 +54848,32 @@
           "replicas",
           "none"
         ]
+      },
+      "indices._types.IndexSettingsUnassigned": {
+        "type": "object",
+        "properties": {
+          "node_left": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassignedNodeLeft"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.IndexSettingsUnassignedNodeLeft": {
+        "type": "object",
+        "properties": {
+          "delayed_timeout": {
+            "description": "The amount of time to wait for a node that has left before assuming its\nshards are permanently missing and starting to allocate replacement replicas.",
+            "default": "1m",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "_types.PipelineName": {
         "type": "string"
@@ -61899,11 +61943,7 @@
           "min_chars": {
             "type": "number"
           }
-        },
-        "required": [
-          "max_chars",
-          "min_chars"
-        ]
+        }
       },
       "_types.mapping.TermVectorOption": {
         "type": "string",
@@ -70507,14 +70547,14 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "client_secret": {
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application secret that you created in the Microsoft app registration portal for your app.\n\nIMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "deployment_id": {
@@ -70553,7 +70593,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/entra/identity-platform/scopes-oidc"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe resource identifier (application ID URI) of the resource you want, suffixed with .default\nFor example:\n```\n\"scopes\": [\n  \"https://cognitiveservices.azure.com/.default\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "array",
             "items": {
               "type": "string"
@@ -70563,7 +70603,7 @@
             "externalDocs": {
               "url": "https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-ai-apis#oauth-20-authorization-by-using-identity-provider"
             },
-            "description": "For OAuth 2.0 authentication using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify client_id, scopes, tenant_id, and client_secret together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe directory tenant the application plans to operate against.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           }
         },
@@ -70891,7 +70931,7 @@
             "type": "number"
           },
           "headers": {
-            "description": "Specifies the HTTP header parameters – such as `Authentication` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
+            "description": "Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service.\nFor example:\n```\n\"headers\": {\n  \"Authorization\": \"Bearer ${api_key}\",\n  \"Content-Type\": \"application/json;charset=utf-8\"\n}\n```",
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -72349,7 +72389,15 @@
             "externalDocs": {
               "url": "https://platform.openai.com/api-keys"
             },
-            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
+            "description": "A valid API key of your OpenAI account.\nYou can find your OpenAI API keys in your OpenAI account under the API keys section.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_id": {
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application ID that's assigned to your app.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
+          "client_secret": {
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe application secret that you created for your app.\n\nIMPORTANT: You must specify either `api_key` or `client_secret`.\nIf you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
             "type": "string"
           },
           "dimensions": {
@@ -72375,6 +72423,13 @@
               }
             ]
           },
+          "scopes": {
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nThe resource identifier of the resource you want.\nFor example:\n```\n\"scopes\": [\n  \"scope1\",\n  \"scope2\"\n]\n```\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "similarity": {
             "description": "For a `text_embedding` or `embedding` task, the similarity measure. One of `cosine`, `dot_product`, `l2_norm`. Defaults to `dot_product`.",
             "allOf": [
@@ -72383,13 +72438,16 @@
               }
             ]
           },
+          "token_url": {
+            "description": "For OAuth 2.0 authorization using the client credentials grant flow.\nAn OAuth2 token endpoint where Elasticsearch sends a request to exchange client credentials for an access token.\n\nIMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.\nIf one of the fields is missing, you will receive an error when you try to create your endpoint.",
+            "type": "string"
+          },
           "url": {
             "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
             "type": "string"
           }
         },
         "required": [
-          "api_key",
           "model_id"
         ]
       },
@@ -92176,7 +92234,7 @@
       "inference.put-timeout": {
         "in": "query",
         "name": "timeout",
-        "description": "Specifies the amount of time to wait for the inference endpoint to be created.",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be created.\nThe default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Duration"
@@ -92204,6 +92262,17 @@
           "$ref": "#/components/schemas/inference._types.TaskType"
         },
         "style": "simple"
+      },
+      "inference.update-timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "Specifies the amount of time to wait for the inference endpoint to be updated.\nThe default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Duration"
+        },
+        "x-state": "Generally available",
+        "style": "form"
       },
       "ingest.get_pipeline-id": {
         "in": "path",

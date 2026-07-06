@@ -21,7 +21,7 @@ engine:
 steps:
   - name: Fetch ephemeral GitHub token
     id: fetch-token
-    uses: elastic/ci-gh-actions/fetch-github-token@622f9dc1eecdd4af2e81dfb38028aacb1dae03e8 # v1.5.0
+    uses: elastic/ci-gh-actions/fetch-github-token@2feb1c6f5086cf8e06f61ef35e275abed3456f7b # v1.5.3
     with:
       vault-instance: "ci-prod"
   - name: Fetch Buildkite errors
@@ -80,12 +80,21 @@ steps:
         > /tmp/gh-aw/agent/open-generator-issues.json || echo "[]" > /tmp/gh-aw/agent/open-generator-issues.json
 safe-outputs:
   create-issue:
+    target-repo: "*"
+    allowed-repos:
+      - elastic/elasticsearch-specification
+      - elastic/elastic-client-generator-js
     labels:
       - kibana-spec-check
       - "auto-pr: kibana type check"
+    max: 15
   add-comment:
     target: "*"
-    max: 2
+    target-repo: "*"
+    allowed-repos:
+      - elastic/elasticsearch-specification
+      - elastic/elastic-client-generator-js
+    max: 15
   env:
     GITHUB_TOKEN: ${{ steps.fetch-token.outputs.token }}
 network:
@@ -109,20 +118,17 @@ Classify each error as one of:
 - **KIBANA**: Kibana code needs to be updated to match the improved types (e.g. removing stale `@ts-expect-error` comments)
 - **UNKNOWN**: cannot determine from the error alone
 
-Group errors by classification. For each group, provide a concrete description of the root cause and the required fix.
+Now, **within the GENERATOR and SPEC errors, group them by distinct root cause**. A root cause is a single underlying problem (e.g. "`Duration` is not emitted as a string alias") that may manifest across several files. Errors that share the same fix belong to the same root cause; errors that need different fixes are different root causes.
 
-**If there are SPEC errors:**
-- Read `/tmp/gh-aw/agent/open-spec-issues.json`. If there is already an open issue (array is non-empty), use `safe-outputs.add-comment` with that issue's `number` (the first one) as the target to post the new Buildkite build URL and the updated analysis. Do **not** open a new issue.
-- If there are no open issues, use `safe-outputs.create-issue` to open one issue with:
-  - Title: `Kibana type check: spec fixes needed`
-  - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all SPEC errors
-  - Do not set labels yourself; the `kibana-spec-check` and `auto-pr: kibana type check` labels are applied automatically.
+**Open one issue per distinct root cause — never a single combined issue.** For each GENERATOR or SPEC root cause:
 
-**If there are GENERATOR errors:**
-- Read `/tmp/gh-aw/agent/open-generator-issues.json`. If there is already an open issue, use `safe-outputs.add-comment` with that issue's `number` as the target to post the new build URL and updated analysis. Do **not** open a new issue.
-- If there are no open issues, use `safe-outputs.create-issue` to open one issue with:
-  - Title: `Kibana type check: generator fixes needed`
-  - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`) followed by the full analysis of all GENERATOR errors
-  - Do not set labels yourself; they are applied automatically.
+1. **Pick the target repository** (you must supply the `repo` argument on every `create-issue`/`add-comment` call):
+   - GENERATOR root cause → `elastic/elastic-client-generator-js`
+   - SPEC root cause → `elastic/elasticsearch-specification`
+2. **Deduplicate.** Read `/tmp/gh-aw/agent/open-generator-issues.json` (for GENERATOR) or `/tmp/gh-aw/agent/open-spec-issues.json` (for SPEC). If an open issue already describes this same root cause (match on the descriptive part of the title), do **not** open a new issue — instead use `safe-outputs.add-comment` (with `repo` set to that issue's repository and `number` set to that issue's number) to post the new Buildkite build URL and the refreshed analysis.
+3. **Otherwise open a new issue** with `safe-outputs.create-issue` (with `repo` set to the target repository):
+   - Title: `Kibana type check: <concise, specific, stable summary of this root cause>` — keep the wording stable across runs so the same problem dedupes. Example: `Kibana type check: Duration not emitted as string alias`.
+   - Body: the Buildkite build URL (from `/tmp/gh-aw/agent/build-url.txt`), then the root-cause description, the affected file locations, and the required fix for **this root cause only**.
+   - Do not set labels yourself; the `kibana-spec-check` and `auto-pr: kibana type check` labels are applied automatically.
 
 **If there are no SPEC or GENERATOR errors** (only KIBANA or UNKNOWN), call `noop` with a brief explanation.

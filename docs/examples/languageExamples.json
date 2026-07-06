@@ -19546,5 +19546,49 @@
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"claude-sonnet-4-5\"},\"task_settings\":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/anthropic_chat_completion\""
     }
+  ],
+  "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample23.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"google_vertex_ai_embeddings_global\",\n    inference_config={\n        \"service\": \"googlevertexai\",\n        \"service_settings\": {\n            \"service_account_json\": \"service-account-json\",\n            \"model_id\": \"model-id\",\n            \"project_id\": \"project-id\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"google_vertex_ai_embeddings_global\",\n  inference_config: {\n    service: \"googlevertexai\",\n    service_settings: {\n      service_account_json: \"service-account-json\",\n      model_id: \"model-id\",\n      project_id: \"project-id\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"google_vertex_ai_embeddings_global\",\n  body: {\n    \"service\": \"googlevertexai\",\n    \"service_settings\": {\n      \"service_account_json\": \"service-account-json\",\n      \"model_id\": \"model-id\",\n      \"project_id\": \"project-id\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"google_vertex_ai_embeddings_global\",\n    \"body\" => [\n        \"service\" => \"googlevertexai\",\n        \"service_settings\" => [\n            \"service_account_json\" => \"service-account-json\",\n            \"model_id\" => \"model-id\",\n            \"project_id\" => \"project-id\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"project_id\":\"project-id\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/google_vertex_ai_embeddings_global\""
+    }
+  ],
+  "specification/inference/put_openai/examples/request/PutOpenAiRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put(\n    task_type=\"text_embedding\",\n    inference_id=\"openai-embeddings\",\n    inference_config={\n        \"service\": \"openai\",\n        \"service_settings\": {\n            \"model_id\": \"text-embedding-3-small\",\n            \"client_id\": \"test_client_id\",\n            \"scopes\": [\n                \"scope1\",\n                \"scope2\"\n            ],\n            \"client_secret\": \"secret\",\n            \"token_url\": \"http://localhost:8080/token\",\n            \"url\": \"https://api.openai.com/v1/embeddings\"\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.put({\n  task_type: \"text_embedding\",\n  inference_id: \"openai-embeddings\",\n  inference_config: {\n    service: \"openai\",\n    service_settings: {\n      model_id: \"text-embedding-3-small\",\n      client_id: \"test_client_id\",\n      scopes: [\"scope1\", \"scope2\"],\n      client_secret: \"secret\",\n      token_url: \"http://localhost:8080/token\",\n      url: \"https://api.openai.com/v1/embeddings\",\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put(\n  task_type: \"text_embedding\",\n  inference_id: \"openai-embeddings\",\n  body: {\n    \"service\": \"openai\",\n    \"service_settings\": {\n      \"model_id\": \"text-embedding-3-small\",\n      \"client_id\": \"test_client_id\",\n      \"scopes\": [\n        \"scope1\",\n        \"scope2\"\n      ],\n      \"client_secret\": \"secret\",\n      \"token_url\": \"http://localhost:8080/token\",\n      \"url\": \"https://api.openai.com/v1/embeddings\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->put([\n    \"task_type\" => \"text_embedding\",\n    \"inference_id\" => \"openai-embeddings\",\n    \"body\" => [\n        \"service\" => \"openai\",\n        \"service_settings\" => [\n            \"model_id\" => \"text-embedding-3-small\",\n            \"client_id\" => \"test_client_id\",\n            \"scopes\" => array(\n                \"scope1\",\n                \"scope2\",\n            ),\n            \"client_secret\" => \"secret\",\n            \"token_url\" => \"http://localhost:8080/token\",\n            \"url\" => \"https://api.openai.com/v1/embeddings\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openai\",\"service_settings\":{\"model_id\":\"text-embedding-3-small\",\"client_id\":\"test_client_id\",\"scopes\":[\"scope1\",\"scope2\"],\"client_secret\":\"secret\",\"token_url\":\"http://localhost:8080/token\",\"url\":\"https://api.openai.com/v1/embeddings\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
+    }
   ]
 }

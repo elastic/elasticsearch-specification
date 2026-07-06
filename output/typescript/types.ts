@@ -6493,8 +6493,8 @@ export type MappingSyntheticSourceKeepEnum = 'none' | 'arrays' | 'all'
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
 export interface MappingTextIndexPrefixes {
-  max_chars: integer
-  min_chars: integer
+  max_chars?: integer
+  min_chars?: integer
 }
 
 export interface MappingTextProperty extends MappingCorePropertyBase {
@@ -12516,6 +12516,7 @@ export interface IndicesIndexSettingsKeys {
   max_terms_count?: integer
   max_regex_length?: integer
   routing?: IndicesIndexRouting
+  unassigned?: IndicesIndexSettingsUnassigned
   gc_deletes?: Duration
   default_pipeline?: PipelineName
   final_pipeline?: PipelineName
@@ -12570,6 +12571,14 @@ export interface IndicesIndexSettingsLifecycleStep {
 export interface IndicesIndexSettingsTimeSeries {
   end_time?: DateTime
   start_time?: DateTime
+}
+
+export interface IndicesIndexSettingsUnassigned {
+  node_left?: IndicesIndexSettingsUnassignedNodeLeft
+}
+
+export interface IndicesIndexSettingsUnassignedNodeLeft {
+  delayed_timeout?: Duration
 }
 
 export interface IndicesIndexState {
@@ -15150,12 +15159,16 @@ export interface InferenceNvidiaTaskSettings {
 export type InferenceNvidiaTaskType = 'chat_completion' | 'completion' | 'rerank' | 'text_embedding'
 
 export interface InferenceOpenAIServiceSettings {
-  api_key: string
+  api_key?: string
+  client_id?: string
+  client_secret?: string
   dimensions?: integer
   model_id: string
   organization_id?: string
   rate_limit?: InferenceRateLimitSetting
+  scopes?: string[]
   similarity?: InferenceOpenAISimilarityType
+  token_url?: string
   url?: string
 }
 
@@ -15836,6 +15849,7 @@ export type InferenceTextEmbeddingResponse = InferenceTextEmbeddingInferenceResu
 export interface InferenceUpdateRequest extends RequestBase {
   inference_id: Id
   task_type?: InferenceTaskType
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
