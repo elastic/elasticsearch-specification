@@ -26,9 +26,9 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 /**
  * Create or replace an ES|QL dataset.
  *
- * Creates or replaces a dataset that references a parent data source. Dataset
+ * Creates or replaces a dataset that references a data source. Dataset
  * names participate in the index namespace and must follow index/alias naming
- * rules. Returns `404` if the parent data source does not exist.
+ * rules. Returns `404` if the referenced data source does not exist.
  *
  * @rest_spec_name esql.put_dataset
  * @index_privileges manage
@@ -62,13 +62,19 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
-    /** The name of the parent data source. The data source must already exist. */
+    /** The name of the referenced data source. The data source must already exist. */
     data_source: Name
-    /** The data source-specific resource path. */
+    /**
+     * The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.
+     * For S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.
+     */
     resource: string
     /** A free-text description of the dataset. */
     description?: string
-    /** Type-specific settings. */
+    /**
+     * Format and parsing-specific settings that configure how the resource is read.
+     * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
+     */
     settings?: Dictionary<string, UserDefinedValue>
   }
 }

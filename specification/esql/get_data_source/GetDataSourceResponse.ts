@@ -21,6 +21,10 @@ import { ESQLDataSource } from '@esql/_types/types'
 
 export class Response {
   body: {
+    /**
+     * The matching data sources.
+     * Credential values in each data source's settings are redacted as `::es_redacted::` in the response.
+     */
     data_sources: ESQLDataSource[]
   }
 }
