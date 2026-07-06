@@ -31,6 +31,7 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import {SearchRequestBody} from "@global/search/_types/SearchRequestBody";
 
 export class ChainInput {
   inputs: Array<SingleKeyDictionary<string, InputContainer>>
@@ -113,7 +114,7 @@ export class SearchInput {
 }
 
 export class SearchInputRequestDefinition {
-  body?: SearchInputRequestBody
+  body?: SearchRequestBody
   indices?: IndexName[]
   indices_options?: IndicesOptions
   search_type?: SearchType
@@ -139,10 +140,6 @@ export class SearchTemplateRequestBody {
    * parameter is required.
    */
   source?: string
-}
-
-export class SearchInputRequestBody {
-  query: QueryContainer
 }
 
 export class SimpleInput {
