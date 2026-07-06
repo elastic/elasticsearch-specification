@@ -138,6 +138,7 @@ export class IndexSettings
   /** @server_default 1000 */
   max_regex_length?: integer
   routing?: IndexRouting
+  unassigned?: IndexSettingsUnassigned
   /** @server_default 60s */
   gc_deletes?: Duration
   /** @server_default _none */
@@ -348,6 +349,19 @@ export class IndexSettingsLifecycleStep {
    * See Shard allocation for shrink.
    */
   wait_time_threshold?: Duration
+}
+
+export class IndexSettingsUnassigned {
+  node_left?: IndexSettingsUnassignedNodeLeft
+}
+
+export class IndexSettingsUnassignedNodeLeft {
+  /**
+   * The amount of time to wait for a node that has left before assuming its
+   * shards are permanently missing and starting to allocate replacement replicas.
+   * @server_default 1m
+   */
+  delayed_timeout?: Duration
 }
 
 export class IndexSettingsAnalysis {
