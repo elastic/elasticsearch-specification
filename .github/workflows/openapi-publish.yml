@@ -1,4 +1,4 @@
-name: OpenAPI Publish
+name: openapi-publish
 
 on:
   push:
