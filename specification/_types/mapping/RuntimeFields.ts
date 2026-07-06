@@ -18,6 +18,7 @@
  */
 
 import { Field, IndexName } from '@_types/common'
+import { OnScriptError } from '@_types/mapping/core'
 import { Script } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -43,6 +44,7 @@ export class RuntimeField {
    * Painless script executed at query time.
    */
   script?: Script
+  on_script_error?: OnScriptError
   /**
    * Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.
    */
