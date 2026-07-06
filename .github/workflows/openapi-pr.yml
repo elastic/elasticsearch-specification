@@ -2,11 +2,12 @@ name: OpenAPI Lint
 
 on:
   pull_request:
-    paths:
-      - 'specification/**'
-      - 'docs/overlays/**'
-      - 'docs/linters/**'
-      - 'Makefile'
+    # TODO: re-enable path filtering once this workflow is verified end-to-end
+    # paths:
+    #   - 'specification/**'
+    #   - 'docs/overlays/**'
+    #   - 'docs/linters/**'
+    #   - 'Makefile'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
