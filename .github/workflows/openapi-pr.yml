@@ -1,0 +1,56 @@
+name: OpenAPI Lint
+
+on:
+  pull_request:
+    paths:
+      - 'specification/**'
+      - 'docs/overlays/**'
+      - 'docs/linters/**'
+      - 'Makefile'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Node 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Setup Dependencies
+        run: make setup
+
+      - name: Build docs-final OpenAPI specs
+        run: |
+          make generate
+          make transform-to-openapi-for-docs
+          make overlay-docs
+
+      # TODO: swap to elastic/docs-actions/openapi/lint@v1 once released (elastic/docs-actions#207)
+      - name: Lint stateful spec
+        uses: elastic/docs-actions/openapi/lint@355df64f39af21900e4d84afefd093f6b16bc841
+        with:
+          spec-path: output/openapi/elasticsearch-openapi-docs-final.json
+
+      - name: Lint serverless spec
+        uses: elastic/docs-actions/openapi/lint@355df64f39af21900e4d84afefd093f6b16bc841
+        with:
+          spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
