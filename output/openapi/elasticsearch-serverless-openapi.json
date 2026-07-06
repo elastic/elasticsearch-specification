@@ -48686,6 +48686,13 @@
               }
             ]
           },
+          "unassigned": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassigned"
+              }
+            ]
+          },
           "gc_deletes": {
             "default": "60s",
             "allOf": [
@@ -49338,6 +49345,32 @@
           "replicas",
           "none"
         ]
+      },
+      "indices._types.IndexSettingsUnassigned": {
+        "type": "object",
+        "properties": {
+          "node_left": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassignedNodeLeft"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.IndexSettingsUnassignedNodeLeft": {
+        "type": "object",
+        "properties": {
+          "delayed_timeout": {
+            "description": "The amount of time to wait for a node that has left before assuming its\nshards are permanently missing and starting to allocate replacement replicas.",
+            "default": "1m",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "_types.PipelineName": {
         "type": "string"
