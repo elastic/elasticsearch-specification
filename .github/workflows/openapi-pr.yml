@@ -8,6 +8,7 @@ on:
     #   - 'docs/overlays/**'
     #   - 'docs/linters/**'
     #   - 'Makefile'
+    #   - '.github/actions/build-openapi-docs/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -25,21 +26,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Setup Node 24
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: npm
-          cache-dependency-path: '**/package-lock.json'
-
-      - name: Setup Dependencies
-        run: make setup
-
       - name: Build docs-final OpenAPI specs
-        run: |
-          make generate
-          make transform-to-openapi-for-docs
-          make overlay-docs
+        uses: ./.github/actions/build-openapi-docs
 
       # TODO: swap to elastic/docs-actions/openapi/lint@v1 once released (elastic/docs-actions#207)
       - name: Lint stateful spec
