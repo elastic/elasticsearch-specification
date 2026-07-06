@@ -6149,6 +6149,7 @@ export interface MappingRuntimeField {
   target_field?: Field
   target_index?: IndexName
   script?: Script | string
+  on_script_error?: MappingOnScriptError
   type: MappingRuntimeFieldType
 }
 
