@@ -387,6 +387,8 @@ export interface FieldCapsFieldCapability {
   non_searchable_indices?: Indices
   searchable: boolean
   type: string
+  inference?: boolean
+  non_inference_indices?: Indices
   metadata_field?: boolean
   time_series_dimension?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
