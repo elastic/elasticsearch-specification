@@ -6396,6 +6396,7 @@ export interface MappingRuntimeField {
   target_field?: Field
   target_index?: IndexName
   script?: Script | ScriptSource
+  on_script_error?: MappingOnScriptError
   type: MappingRuntimeFieldType
 }
 
@@ -6495,8 +6496,8 @@ export type MappingSyntheticSourceKeepEnum = 'none' | 'arrays' | 'all'
 export type MappingTermVectorOption = 'no' | 'yes' | 'with_offsets' | 'with_positions' | 'with_positions_offsets' | 'with_positions_offsets_payloads' | 'with_positions_payloads'
 
 export interface MappingTextIndexPrefixes {
-  max_chars: integer
-  min_chars: integer
+  max_chars?: integer
+  min_chars?: integer
 }
 
 export interface MappingTextProperty extends MappingCorePropertyBase {
@@ -12518,6 +12519,7 @@ export interface IndicesIndexSettingsKeys {
   max_terms_count?: integer
   max_regex_length?: integer
   routing?: IndicesIndexRouting
+  unassigned?: IndicesIndexSettingsUnassigned
   gc_deletes?: Duration
   default_pipeline?: PipelineName
   final_pipeline?: PipelineName
@@ -12572,6 +12574,14 @@ export interface IndicesIndexSettingsLifecycleStep {
 export interface IndicesIndexSettingsTimeSeries {
   end_time?: DateTime
   start_time?: DateTime
+}
+
+export interface IndicesIndexSettingsUnassigned {
+  node_left?: IndicesIndexSettingsUnassignedNodeLeft
+}
+
+export interface IndicesIndexSettingsUnassignedNodeLeft {
+  delayed_timeout?: Duration
 }
 
 export interface IndicesIndexState {
@@ -15842,6 +15852,7 @@ export type InferenceTextEmbeddingResponse = InferenceTextEmbeddingInferenceResu
 export interface InferenceUpdateRequest extends RequestBase {
   inference_id: Id
   task_type?: InferenceTaskType
+  timeout?: Duration
   body?: InferenceInferenceEndpoint
 }
 
