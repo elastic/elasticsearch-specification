@@ -57,7 +57,8 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Query input.
-     * The query can be specified as a single string, or as an object to support non-text inputs.
+     * The query can be specified as a single string, or as an object.
+     * The object form additionally allows specifying non-text inputs, such as images.
      *
      * > info
      * > Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.
@@ -78,7 +79,8 @@ export interface Request extends RequestBase {
     query: RerankQuery
     /**
      * The documents to rank.
-     * The input can be specified as a single string or an array of strings, or as an object or an array of objects to support non-text inputs.
+     * The input can be specified as a single string or an array of strings, or as an object or an array of objects.
+     * The object form additionally allows specifying non-text inputs, such as images.
      *
      * > info
      * > Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.
@@ -134,7 +136,7 @@ export interface Request extends RequestBase {
 
 /**
  * Query input for the `rerank` task.
- * Either a string, or an object describing a single non-text input.
+ * Either a string, or an object. The object form additionally allows specifying non-text inputs, such as images.
  *
  * > info
  * > Only the `elastic` service currently supports non-text queries for the `rerank` task.
@@ -144,7 +146,8 @@ export type RerankQuery = string | RerankInputObject
 
 /**
  * The documents to rank for the `rerank` task.
- * Either a string, an array of strings, an object, or an array of objects describing non-text inputs.
+ * Either a string, an array of strings, an object, or an array of objects.
+ * The object form additionally allows specifying non-text inputs, such as images.
  *
  * > info
  * > Only the `elastic` service currently supports non-text inputs for the `rerank` task.
@@ -158,12 +161,12 @@ export type RerankInput = RerankStringInput | RerankObjectInput
 type RerankStringInput = string | Array<string>
 
 /**
- * Allows specifying non-text documents to rank for the `rerank` task.
+ * Allows specifying documents to rank as objects, which additionally supports non-text inputs, such as images.
  */
 type RerankObjectInput = RerankInputObject | Array<RerankInputObject>
 
 /**
- * An object describing a single input for the `rerank` task, which allows specifying non-text inputs.
+ * An object describing a single input for the `rerank` task, which additionally allows specifying non-text inputs, such as images.
  */
 export class RerankInputObject {
   /**

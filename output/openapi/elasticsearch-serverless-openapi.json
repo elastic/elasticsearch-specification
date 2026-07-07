@@ -16260,7 +16260,7 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "Query input.\nThe query can be specified as a single string, or as an object to support non-text inputs.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference.rerank.RerankQuery"
@@ -16268,7 +16268,7 @@
                     ]
                   },
                   "input": {
-                    "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects to support non-text inputs.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```",
+                    "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference.rerank.RerankInput"
@@ -72847,7 +72847,7 @@
         ]
       },
       "inference.rerank.RerankQuery": {
-        "description": "Query input for the `rerank` task.\nEither a string, or an object describing a single non-text input.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task.",
+        "description": "Query input for the `rerank` task.\nEither a string, or an object. The object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task.",
         "oneOf": [
           {
             "type": "string"
@@ -72858,7 +72858,7 @@
         ]
       },
       "inference.rerank.RerankInputObject": {
-        "description": "An object describing a single input for the `rerank` task, which allows specifying non-text inputs.",
+        "description": "An object describing a single input for the `rerank` task, which additionally allows specifying non-text inputs, such as images.",
         "type": "object",
         "properties": {
           "type": {
@@ -72902,7 +72902,7 @@
         ]
       },
       "inference.rerank.RerankInput": {
-        "description": "The documents to rank for the `rerank` task.\nEither a string, an array of strings, an object, or an array of objects describing non-text inputs.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task.",
+        "description": "The documents to rank for the `rerank` task.\nEither a string, an array of strings, an object, or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task.",
         "oneOf": [
           {
             "$ref": "#/components/schemas/inference.rerank.RerankStringInput"
@@ -72927,7 +72927,7 @@
         ]
       },
       "inference.rerank.RerankObjectInput": {
-        "description": "Allows specifying non-text documents to rank for the `rerank` task.",
+        "description": "Allows specifying documents to rank as objects, which additionally supports non-text inputs, such as images.",
         "oneOf": [
           {
             "$ref": "#/components/schemas/inference.rerank.RerankInputObject"
