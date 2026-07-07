@@ -45,3 +45,47 @@ actions:
     update:
       security:
         - apiKeyAuth: []
+  - target: "$.paths['/{index}'].put.requestBody.content['application/json'].examples.indicesCreateRequestExample1"
+    description: Use a Serverless-compatible create index example
+    update:
+      description: Create an index with default settings.
+      value: "{}"
+  - target: "$.paths['/{index}'].put.requestBody.content['application/json'].examples.indicesCreateRequestExample2"
+    description: Use a Serverless-compatible create index with mappings example
+    update:
+      value: "{\n  \"mappings\": {\n    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"
+  - target: "$.paths['/{index}'].put['x-codeSamples']"
+    description: Use Serverless-compatible code samples for create index
+    update:
+      - lang: Console
+        source: |
+          PUT /my-index-000001
+          {}
+      - lang: Python
+        source: |
+          resp = client.indices.create(
+              index="my-index-000001",
+          )
+      - lang: JavaScript
+        source: |
+          const response = await client.indices.create({
+            index: "my-index-000001",
+          });
+      - lang: Ruby
+        source: |
+          response = client.indices.create(
+            index: "my-index-000001"
+          )
+      - lang: PHP
+        source: |
+          $resp = $client->indices()->create([
+              "index" => "my-index-000001",
+          ]);
+      - lang: curl
+        source: |
+          curl -X PUT -H "Authorization: ApiKey $ELASTIC_API_KEY" "$ELASTICSEARCH_URL/my-index-000001"
+      - lang: Java
+        source: |
+          client.indices().create(c -> c
+              .index("my-index-000001")
+          );
