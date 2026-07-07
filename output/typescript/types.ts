@@ -15803,13 +15803,31 @@ export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
   body?: {
-    query: string
-    input: string[]
+    query: InferenceRerankRerankQuery
+    input: InferenceRerankRerankInput
     return_documents?: boolean
     top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
+
+export type InferenceRerankRerankInput = InferenceRerankRerankStringInput | InferenceRerankRerankObjectInput
+
+export type InferenceRerankRerankInputFormat = 'text' | 'base64'
+
+export interface InferenceRerankRerankInputObject {
+  type: InferenceRerankRerankInputType
+  format?: InferenceRerankRerankInputFormat
+  value: string
+}
+
+export type InferenceRerankRerankInputType = 'text' | 'image'
+
+export type InferenceRerankRerankObjectInput = InferenceRerankRerankInputObject | InferenceRerankRerankInputObject[]
+
+export type InferenceRerankRerankQuery = string | InferenceRerankRerankInputObject
+
+export type InferenceRerankRerankStringInput = string | string[]
 
 export type InferenceRerankResponse = InferenceRerankedInferenceResult
 

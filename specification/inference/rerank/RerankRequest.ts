@@ -57,12 +57,65 @@ export interface Request extends RequestBase {
   body: {
     /**
      * Query input.
+     * The query can be specified as a single string, or as an object to support non-text inputs.
+     *
+     * > info
+     * > Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.
+     *
+     * string example:
+     * ```
+     * "query": "some query text"
+     * ```
+     * object example:
+     * ```
+     * "query": {
+     *   "type": "image",
+     *   "format": "base64",
+     *   "value": "data:image/jpeg;base64,..."
+     * }
+     * ```
      */
-    query: string
+    query: RerankQuery
     /**
      * The documents to rank.
+     * The input can be specified as a single string or an array of strings, or as an object or an array of objects to support non-text inputs.
+     *
+     * > info
+     * > Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.
+     *
+     * string example:
+     * ```
+     * "input": "some document text"
+     * ```
+     * string array example:
+     * ```
+     * "input": ["some document text", "some more document text"]
+     * ```
+     * object example:
+     * ```
+     * "input": {
+     *   "type": "image",
+     *   "format": "base64",
+     *   "value": "data:image/jpeg;base64,..."
+     * }
+     * ```
+     * object array example:
+     * ```
+     * "input": [
+     *   {
+     *     "type": "text",
+     *     "format": "text",
+     *     "value": "some document text"
+     *   },
+     *   {
+     *     "type": "image",
+     *     "format": "base64",
+     *     "value": "data:image/jpeg;base64,..."
+     *   }
+     * ]
+     * ```
      */
-    input: Array<string>
+    input: RerankInput
     /**
      * Include the document text in the response.
      */
@@ -77,4 +130,70 @@ export interface Request extends RequestBase {
      */
     task_settings?: TaskSettings
   }
+}
+
+/**
+ * Query input for the `rerank` task.
+ * Either a string, or an object describing a single non-text input.
+ *
+ * > info
+ * > Only the `elastic` service currently supports non-text queries for the `rerank` task.
+ * @codegen_names string, object
+ */
+export type RerankQuery = string | RerankInputObject
+
+/**
+ * The documents to rank for the `rerank` task.
+ * Either a string, an array of strings, an object, or an array of objects describing non-text inputs.
+ *
+ * > info
+ * > Only the `elastic` service currently supports non-text inputs for the `rerank` task.
+ * @codegen_names string, object
+ */
+export type RerankInput = RerankStringInput | RerankObjectInput
+
+/**
+ * Allows specifying text-only documents to rank for the `rerank` task.
+ */
+type RerankStringInput = string | Array<string>
+
+/**
+ * Allows specifying non-text documents to rank for the `rerank` task.
+ */
+type RerankObjectInput = RerankInputObject | Array<RerankInputObject>
+
+/**
+ * An object describing a single input for the `rerank` task, which allows specifying non-text inputs.
+ */
+export class RerankInputObject {
+  /**
+   * The type of input. Not all services and models support all input types.
+   */
+  type: RerankInputType
+  /**
+   * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.
+   * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
+   */
+  format?: RerankInputFormat
+  /**
+   * The value of the input. For images, this must be a base64-encoded data URI, that is, "data:content/type;base64,...".
+   */
+  value: string
+}
+
+/**
+ * The type of input to rank.
+ */
+export enum RerankInputType {
+  text,
+  image
+}
+
+/**
+ * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.
+ * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
+ */
+export enum RerankInputFormat {
+  text,
+  base64
 }
