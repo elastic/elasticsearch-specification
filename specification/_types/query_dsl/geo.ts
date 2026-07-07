@@ -25,6 +25,7 @@ import {
   GeoHash,
   GeoHexCell,
   GeoLocation,
+  GeoPoint,
   GeoShape,
   GeoShapeRelation,
   GeoTile
@@ -125,7 +126,8 @@ export enum GeoFormat {
 }
 
 export class GeoShapeFieldQuery {
-  shape?: GeoShape
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
+  shape?: GeoShape | GeoPoint
   /**
    * Query using an indexed shape retrieved from the the specified document and path.
    */
