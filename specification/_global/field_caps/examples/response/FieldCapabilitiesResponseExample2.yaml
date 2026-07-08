@@ -9,27 +9,30 @@ value: |-
   {
     "indices": [ "index1", "index2", "index3", "index4", "index5" ],
     "fields": {
-      "rating": {                                   
+      "rating": {
         "long": {
           "metadata_field": false,
           "searchable": true,
           "aggregatable": false,
+          "inference": false,
           "indices": [ "index1", "index2" ],
-          "non_aggregatable_indices": [ "index1" ]  
+          "non_aggregatable_indices": [ "index1" ]
         },
         "keyword": {
           "metadata_field": false,
           "searchable": false,
           "aggregatable": true,
+          "inference": false,
           "indices": [ "index3", "index4" ],
-          "non_searchable_indices": [ "index4" ]    
+          "non_searchable_indices": [ "index4" ]
         }
       },
-      "title": {                                    
+      "title": {
         "text": {
           "metadata_field": false,
           "searchable": true,
-          "aggregatable": false
+          "aggregatable": false,
+          "inference": false
         }
       }
     }
