@@ -126,6 +126,8 @@ export enum GeoFormat {
 }
 
 export class GeoShapeFieldQuery {
+  // Hackfix: typed shortcut for Point shapes, without modeling the full
+  // GeoJSON variant union (would be breaking). See elastic/elasticsearch-java#501 for context.
   // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   shape?: GeoShape | GeoPoint
   /**
