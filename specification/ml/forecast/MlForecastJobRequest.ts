@@ -31,7 +31,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name ml.forecast
  * @availability stack since=6.1.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
  * @doc_tag ml anomaly
  * @doc_id ml-forecast
