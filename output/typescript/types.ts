@@ -186,6 +186,7 @@ export interface CountRequest extends RequestBase {
   min_score?: double
   preference?: string
   routing?: Routing
+  stats?: string[] | string
   terminate_after?: long
   q?: string
   body?: {
@@ -624,6 +625,7 @@ export interface HealthReportIndicators {
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
+  project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
@@ -646,6 +648,18 @@ export interface HealthReportMasterIsStableIndicatorDetails {
 export interface HealthReportMasterIsStableIndicatorExceptionFetchingHistory {
   message: string
   stack_trace: string
+}
+
+export interface HealthReportProjectEncryptionKeyDetails {
+  active_key_id?: string
+  active_password_id: string
+  key_count?: integer
+  metadata_password_id?: string
+  state: string
+}
+
+export interface HealthReportProjectEncryptionKeyIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportProjectEncryptionKeyDetails
 }
 
 export interface HealthReportRepositoryIntegrityIndicator extends HealthReportBaseIndicator {
@@ -1284,7 +1298,7 @@ export interface SearchRequest extends RequestBase {
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
-  stats?: string[]
+  stats?: string[] | string
   stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode

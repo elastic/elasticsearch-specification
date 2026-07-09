@@ -4235,6 +4235,9 @@
             "$ref": "#/components/parameters/count-routing"
           },
           {
+            "$ref": "#/components/parameters/count-stats"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -4300,6 +4303,9 @@
           },
           {
             "$ref": "#/components/parameters/count-routing"
+          },
+          {
+            "$ref": "#/components/parameters/count-stats"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -4374,6 +4380,9 @@
             "$ref": "#/components/parameters/count-routing"
           },
           {
+            "$ref": "#/components/parameters/count-stats"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -4442,6 +4451,9 @@
           },
           {
             "$ref": "#/components/parameters/count-routing"
+          },
+          {
+            "$ref": "#/components/parameters/count-stats"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -90389,6 +90401,26 @@
         },
         "style": "form"
       },
+      "count-stats": {
+        "in": "query",
+        "name": "stats",
+        "description": "Specific `tag` of the request for logging and statistical purposes.",
+        "deprecated": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "style": "form"
+      },
       "count-terminate_after": {
         "in": "query",
         "name": "terminate_after",
@@ -93710,10 +93742,17 @@
         "description": "Specific `tag` of the request for logging and statistical purposes.",
         "deprecated": false,
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "style": "form"
       },
