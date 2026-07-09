@@ -140,3 +140,17 @@ export class EsqlApproximationSettings {
    */
   confidence_level?: double
 }
+
+/**
+ * Per-query settings supplied through the request body.
+ * This is the request-body equivalent of the in-query `SET` command: each key is a
+ * setting name (for example `time_zone`) and its value configures how the query runs.
+ * @behavior_meta AdditionalProperties fieldname=settings description="Additional per-query settings, equivalent to in-query `SET` keys."
+ */
+export class EsqlQuerySettings implements AdditionalProperties<string, UserDefinedValue> {
+  /**
+   * Sets the default timezone of the query.
+   * @doc_id esql-timezones
+   */
+  time_zone?: string
+}
