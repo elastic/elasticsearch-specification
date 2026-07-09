@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { FieldValue, Name } from '@_types/common'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { FieldValue } from '@_types/common'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -41,40 +42,15 @@ export class ESQLView {
 }
 
 /**
- * Represents a data source definition stored in cluster state. A data source holds
- * connection settings (credentials, endpoints, auth) for an external data provider.
+ * Per-query settings supplied through the request body.
+ * This is the request-body equivalent of the in-query `SET` command: each key is a
+ * setting name (for example `time_zone`) and its value configures how the query runs.
+ * @behavior_meta AdditionalProperties fieldname=settings description="Additional per-query settings, equivalent to in-query `SET` keys."
  */
-export class ESQLDataSource {
-  /** The data source name. */
-  name: Name
-  /** The data source type. */
-  type: string
-  /** A free-text description. */
-  description?: string
-  /** Type-specific settings. */
-  settings: Dictionary<string, UserDefinedValue>
-}
-
-/**
- * Represents a dataset definition stored in cluster state. A dataset is a named reference
- * to external data that participates in the index namespace alongside indices, aliases, and views.
- * Datasets inherit credentials from their referenced data source at query time.
- */
-export class ESQLDataset {
-  /** The dataset name. */
-  name: Name
-  /** The name of the referenced data source. */
-  data_source: Name
+export class EsqlQuerySettings implements AdditionalProperties<string, UserDefinedValue> {
   /**
-   * The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.
-   * For S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.
+   * Sets the default timezone of the query.
+   * @doc_id esql-timezones
    */
-  resource: string
-  /** A free-text description. */
-  description?: string
-  /**
-   * Format- and parsing-specific settings that configure how the resource is read.
-   * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
-   */
-  settings?: Dictionary<string, UserDefinedValue>
+  time_zone?: string
 }

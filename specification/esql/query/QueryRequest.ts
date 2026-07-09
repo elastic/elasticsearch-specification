@@ -22,7 +22,7 @@ import { MediaType, ProjectRouting } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
-import { ESQLParams } from '@esql/_types/types'
+import { ESQLParams, EsqlQuerySettings } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -143,5 +143,12 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
      */
     project_routing?: ProjectRouting
+    /**
+     * Per-query settings, the request-body equivalent of the in-query `SET` command.
+     * For example, `time_zone` can be supplied here instead of as a top-level field.
+     * @availability stack since=9.5.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    settings?: EsqlQuerySettings
   }
 }
