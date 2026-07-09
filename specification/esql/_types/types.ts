@@ -52,7 +52,7 @@ export class ESQLDataSource {
   /** A free-text description. */
   description?: string
   /** Type-specific settings. */
-  settings?: Dictionary<string, UserDefinedValue>
+  settings: Dictionary<string, UserDefinedValue>
 }
 
 /**
