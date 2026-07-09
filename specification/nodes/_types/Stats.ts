@@ -33,6 +33,10 @@ export class Stats {
    */
   adaptive_selection?: Dictionary<string, AdaptiveSelection>
   /**
+   * Statistics about shard allocations on the node.
+   */
+  allocations?: Allocations
+  /**
    * Statistics about the field data circuit breaker.
    */
   breakers?: Dictionary<string, Breaker>
@@ -111,6 +115,29 @@ export class Stats {
    * Indices stats about size, document count, indexing and deletion times, search times, field cache size, merges and flushes.
    */
   indices?: ShardStats
+}
+
+export class Allocations {
+  /**
+   * Number of shards allocated to the node.
+   */
+  shards?: integer
+  /**
+   * Number of shards allocated to the node that are currently undesired.
+   */
+  undesired_shards?: integer
+  /**
+   * Forecasted ingest load for the node.
+   */
+  forecasted_ingest_load?: double
+  /**
+   * Forecasted disk usage, in bytes, for the node.
+   */
+  forecasted_disk_usage_in_bytes?: long
+  /**
+   * Current disk usage, in bytes, for the node.
+   */
+  current_disk_usage_in_bytes?: long
 }
 
 export class IndexingPressure {
