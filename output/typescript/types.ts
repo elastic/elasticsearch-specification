@@ -19461,6 +19461,14 @@ export interface NodesAdaptiveSelection {
   rank?: string
 }
 
+export interface NodesAllocations {
+  shards?: integer
+  undesired_shards?: integer
+  forecasted_ingest_load?: double
+  forecasted_disk_usage_in_bytes?: long
+  current_disk_usage_in_bytes?: long
+}
+
 export interface NodesBreaker {
   estimated_size?: string
   estimated_size_in_bytes?: long
@@ -19891,6 +19899,7 @@ export interface NodesSizeHttpHistogram {
 
 export interface NodesStats {
   adaptive_selection?: Record<string, NodesAdaptiveSelection>
+  allocations?: NodesAllocations
   breakers?: Record<string, NodesBreaker>
   fs?: NodesFileSystem
   host?: Host
