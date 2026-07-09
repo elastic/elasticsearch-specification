@@ -54,6 +54,10 @@ actions:
     description: Use a Serverless-compatible create index with mappings example
     update:
       value: "{\n  \"mappings\": {\n    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"
+  - target: "$.paths['/{index}'].put.requestBody.content['application/json'].examples.indicesCreateRequestExample3"
+    description: Use a Serverless-compatible create index with aliases example
+    update:
+      value: "{\n  \"aliases\": {\n    \"alias_1\": {},\n    \"alias_2\": {\n      \"filter\": {\n        \"term\": {\n          \"user.id\": \"kimchy\"\n        }\n      }\n    }\n  }\n}"
   - target: "$.paths['/{index}'].put['x-codeSamples']"
     description: Remove stack-only create index code samples before replacing them
     remove: true
