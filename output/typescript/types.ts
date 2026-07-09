@@ -19786,7 +19786,7 @@ export interface NodesInfoNodeInfoClient {
 export interface NodesInfoNodeInfoDiscoverKeys {
   seed_hosts?: string[] | string
   type?: string
-  seed_providers?: string[]
+  seed_providers?: string[] | string
 }
 export type NodesInfoNodeInfoDiscover = NodesInfoNodeInfoDiscoverKeys
   & { [property: string]: any }
