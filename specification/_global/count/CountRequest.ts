@@ -148,6 +148,13 @@ export interface Request extends RequestBase {
      */
     stats?: string[] | string
     /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     */
+    _slice?: string
+    /**
      * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
      * Elasticsearch collects documents before sorting.

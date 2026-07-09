@@ -234,6 +234,13 @@ export interface Request<TDocument> extends RequestBase {
      */
     routing?: Routing
     /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     */
+    _slice?: string
+    /**
      * The period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.
      *
      * This parameter is useful for situations where the primary shard assigned to perform the operation might not be available when the operation runs.

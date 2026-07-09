@@ -128,6 +128,13 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     routing?: Routing
     /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     */
+    _slice?: string
+    /**
      * The period to wait for the following operations: dynamic mapping updates and waiting for active shards.
      * Elasticsearch waits for at least the timeout period before failing.
      * The actual wait time could be longer, particularly when multiple waits occur.
