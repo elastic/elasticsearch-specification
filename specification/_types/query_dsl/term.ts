@@ -110,7 +110,7 @@ export class PrefixQuery extends QueryBase {
    */
   value: string
   /**
-   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * Allows case insensitive matching of the value with the indexed field values when set to `true`.
    * Default is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.
    * @server_default false
    * @availability stack since=7.10.0
@@ -244,7 +244,7 @@ export class TermQuery extends QueryBase {
    */
   value: FieldValue
   /**
-   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * Allows case insensitive matching of the value with the indexed field values when set to `true`.
    * When `false`, the case sensitivity of matching depends on the underlying field’s mapping.
    * @availability stack since=7.10.0
    * @availability serverless
