@@ -91,25 +91,9 @@ export class ExecutionResultConditionResolved {
   resolved_values?: Dictionary<string, UserDefinedValue>
 }
 
-export class ExecutionResultAction {
-  email?: EmailResult
-  id: Id
-  index?: IndexResult
-  logging?: LoggingResult
-  pagerduty?: PagerDutyResult
-  reason?: string
-  slack?: SlackResult
-  status: ActionStatusOptions
-  type: ActionType
-  webhook?: WebhookResult
-  error?: ErrorCause
-  condition?: ExecutionResultCondition
-  transform?: ExecutionResultTransform
-  foreach?: ExecutionResultForeachAction[]
-  max_iterations?: integer
-  number_of_actions_executed?: integer
-}
-
+/**
+ * The result of a single action execution.
+ */
 export class ExecutionResultForeachAction {
   email?: EmailResult
   index?: IndexResult
@@ -119,8 +103,17 @@ export class ExecutionResultForeachAction {
   webhook?: WebhookResult
   error?: ErrorCause
   reason?: string
-  status?: ActionStatusOptions
-  type?: ActionType
+}
+
+export class ExecutionResultAction extends ExecutionResultForeachAction {
+  id: Id
+  type: ActionType
+  status: ActionStatusOptions
+  condition?: ExecutionResultCondition
+  transform?: ExecutionResultTransform
+  foreach?: ExecutionResultForeachAction[]
+  max_iterations?: integer
+  number_of_actions_executed?: integer
 }
 
 export class ExecutionResultTransform {
