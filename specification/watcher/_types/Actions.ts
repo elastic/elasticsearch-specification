@@ -264,6 +264,13 @@ export class IndexAction {
   execution_time_field?: Field
 }
 
+// This is IndexAction.Result and IndexAction.Simulated in the server
+/**
+ * The result of an index action.
+ * It is a container that holds either the `response` of an executed index
+ * operation, or the `request` that would have run when the action is simulated.
+ * @variants container
+ */
 export class IndexResult {
   /**
    * The outcome of the index operation.
@@ -281,6 +288,7 @@ export class IndexResult {
 export class IndexResultRequestSummary {
   doc_id?: Id
   index: IndexName
+  refresh?: Refresh
   source?: UserDefinedValue
 }
 
