@@ -57,6 +57,7 @@ export class Destination {
    * If it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.
    * If it is `discard`, the routing on the bulk request sent for each match is set to `null`.
    * If it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).
+   * Not allowed when `index.slice.enabled` is `true` for the destination index; use `_slice` instead.
    * @server_default keep
    */
   routing?: string

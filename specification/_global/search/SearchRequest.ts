@@ -236,6 +236,7 @@ export interface Request extends RequestBase {
     request_cache?: boolean
     /**
      * A custom value that is used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      * @ext_doc_id search-shard-routing
      */
     routing?: Routing

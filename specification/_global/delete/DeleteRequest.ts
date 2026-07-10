@@ -117,6 +117,7 @@ export interface Request extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
     /**
