@@ -1,5 +1,7 @@
 summary: A sparse embedding task
-description: Run `PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding` to create an inference endpoint that performs a sparse embedding task.
+description:
+  Run `PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding` to create an inference endpoint that performs a
+  sparse embedding task.
 method_request: 'PUT _inference/sparse_embedding/amazon_sagemaker_sparse_embedding'
 # type: "request"
 value: |-
