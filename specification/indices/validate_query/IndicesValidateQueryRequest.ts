@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, MediaType } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
@@ -121,6 +121,13 @@ export interface Request extends RequestBase {
      * Query in the Lucene query string syntax.
      */
     q?: string
+    /**
+     * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack since=9.5.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    routing?: Routing
     /**
      * The slice identifier used to route the operation to a specific slice.
      * Use the special value `_all` to target all slices without restricting to a routing value.
