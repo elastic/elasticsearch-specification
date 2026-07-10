@@ -254,7 +254,7 @@ export class EmailAction extends Email {}
 // Index -------------------------------- //
 
 export class IndexAction {
-  index: IndexName
+  index?: IndexName
   doc_id?: Id
   refresh?: Refresh
   /** @server_default index */
@@ -265,7 +265,23 @@ export class IndexAction {
 }
 
 export class IndexResult {
-  response: IndexResultSummary
+  /**
+   * The outcome of the index operation.
+   * A single summary is returned when a single document is indexed,
+   * or an array when several documents are indexed at once.
+   */
+  response?: IndexResultSummary | IndexResultSummary[]
+  /**
+   * The request that would have been executed.
+   * It is only present when the action is simulated.
+   */
+  request?: IndexResultRequestSummary
+}
+
+export class IndexResultRequestSummary {
+  doc_id?: Id
+  index: IndexName
+  source?: UserDefinedValue
 }
 
 export class IndexResultSummary {

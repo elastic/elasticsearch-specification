@@ -18,6 +18,7 @@
  */
 
 import { Id, Metadata, Username } from '@_types/common'
+import { DateTime } from '@_types/Time'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { ExecutionResult, ExecutionStatus } from '@watcher/_types/Execution'
 import { InputContainer } from '@watcher/_types/Input'
@@ -25,6 +26,7 @@ import { TriggerEventResult } from '@watcher/_types/Trigger'
 import { WatchStatus } from '@watcher/_types/Watch'
 
 export class WatchRecord {
+  '@timestamp': DateTime
   condition: ConditionContainer
   input: InputContainer
   messages: string[]
