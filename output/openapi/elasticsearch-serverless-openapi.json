@@ -43588,7 +43588,7 @@
                 "type": "string"
               },
               "case_insensitive": {
-                "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "description": "Allows case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
@@ -44989,7 +44989,7 @@
                 ]
               },
               "case_insensitive": {
-                "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "description": "Allows case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
