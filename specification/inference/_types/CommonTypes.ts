@@ -1207,6 +1207,9 @@ export class CustomTaskSettings {
    *   }
    * }
    * ```
+   *
+   * > warn
+   * > The `task_settings.parameters` cannot contain the same keys as `secret_parameters`. If they do, an error will be returned. This applies to PUT requests and POST requests.
    */
   parameters?: UserDefinedValue
 }
