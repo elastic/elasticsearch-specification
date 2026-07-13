@@ -156,6 +156,11 @@ export class ExecutionResultSearchInput {
 
 export class ExecutionResultHttpInput {
   request: HttpInputRequestResult
+  /**
+   * The HTTP status code returned by the request.
+   * It is only present when the request was executed.
+   */
+  status_code?: integer
 }
 
 export class ExecutionThreadPool {

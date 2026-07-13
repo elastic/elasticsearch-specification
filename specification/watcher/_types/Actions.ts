@@ -289,7 +289,7 @@ export class IndexResultRequestSummary {
   doc_id?: Id
   index: IndexName
   refresh?: Refresh
-  source?: UserDefinedValue
+  source: UserDefinedValue
 }
 
 export class IndexResultSummary {

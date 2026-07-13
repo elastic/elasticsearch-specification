@@ -100,6 +100,7 @@ export class InputContainer {
 export enum InputType {
   chain,
   http,
+  none,
   search,
   simple,
   transform
