@@ -64906,7 +64906,7 @@
         "type": "object",
         "properties": {
           "parameters": {
-            "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```",
+            "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```\n\n> warn\n> The `task_settings.parameters` cannot contain the same keys as `secret_parameters`. If they do, an error will be returned. This applies to PUT requests and POST requests.",
             "type": "object"
           }
         }
