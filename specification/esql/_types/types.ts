@@ -19,7 +19,8 @@
 
 import { FieldValue, Name, ProjectRouting } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { AdditionalProperties } from '@spec_utils/behaviors'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -173,7 +174,7 @@ export class EsqlQuerySettings
    * @availability stack since=9.5.0 stability=experimental
    * @availability serverless stability=experimental
    */
-  column_metadata?: boolean
+  column_metadata?: Stringified<boolean>
   /**
    * Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.
    * Excluded projects are not queried, which can reduce cost and latency.
