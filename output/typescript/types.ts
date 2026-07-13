@@ -14716,6 +14716,11 @@ export interface InferenceContextualAITaskSettings {
   top_k?: integer
 }
 
+export interface InferenceCspRegion {
+  csp: string
+  region: string
+}
+
 export interface InferenceCustomRequestParams {
   content: string
 }
@@ -15244,6 +15249,19 @@ export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'mi
 
 export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
 
+export interface InferenceRegionPolicy {
+  allowed_geos?: string[]
+  allowed_regions?: InferenceCspRegion[]
+}
+
+export interface InferenceRegionPolicyDoc {
+  region_policy: InferenceRegionPolicy
+  created_at: DateTime
+  created_by?: string
+  updated_at?: DateTime
+  updated_by?: string
+}
+
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
@@ -15426,6 +15444,11 @@ export interface InferenceDeleteRequest extends RequestBase {
 
 export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
 
+export interface InferenceDeleteRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceDeleteRegionPolicyResponse = AcknowledgedResponseBase
+
 export interface InferenceEmbeddingRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
@@ -15442,6 +15465,11 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferenceGetRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceGetRegionPolicyResponse = InferenceRegionPolicyDoc
 
 export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -15788,6 +15816,15 @@ export interface InferencePutOpenshiftAiRequest extends RequestBase {
 }
 
 export type InferencePutOpenshiftAiResponse = InferenceInferenceEndpointInfoOpenShiftAi
+
+export interface InferencePutRegionPolicyRequest extends RequestBase {
+  force?: boolean
+  body?: {
+    region_policy: InferenceRegionPolicy
+  }
+}
+
+export type InferencePutRegionPolicyResponse = InferenceRegionPolicyDoc
 
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
