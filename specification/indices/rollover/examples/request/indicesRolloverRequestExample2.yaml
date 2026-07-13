@@ -1,4 +1,5 @@
 summary: Serverless request
+availability: [serverless]
 method_request: POST my-data-stream/_rollover
 description: 'Create a new index for a data stream'
 value: '{}'

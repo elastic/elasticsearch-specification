@@ -29,7 +29,7 @@ use openapiv3::{
     RequestBody, Response, Responses, StatusCode, Example
 };
 use serde_json::Value;
-use clients_schema::SchemaExample;
+use clients_schema::{Flavor, SchemaExample};
 use crate::components::TypesAndComponents;
 use crate::convert_availabilities;
 
@@ -150,12 +150,20 @@ pub fn add_endpoint(
             };
 
             if example.is_some() {
+                let mut extensions: IndexMap<String, Value> = Default::default();
+                if let Some(availability) = &schema_example.availability {
+                    let flavors: Vec<&str> = availability.keys().map(|flavor| match flavor {
+                        Flavor::Stack => "stack",
+                        Flavor::Serverless => "serverless",
+                    }).collect();
+                    extensions.insert("x-availability".to_string(), serde_json::json!(flavors));
+                }
                 let openapi_example = Example {
                     value: example,
                     description: schema_example.description.clone(),
                     summary: schema_example.summary.clone(),
                     external_value: None,
-                    extensions: Default::default(),
+                    extensions,
                 };
                 openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
             }
