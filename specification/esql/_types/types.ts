@@ -48,7 +48,9 @@ export class ESQLView {
  * setting name (for example `time_zone`) and its value configures how the query runs.
  * @behavior_meta AdditionalProperties fieldname=settings description="Additional per-query settings, equivalent to in-query `SET` keys."
  */
-export class EsqlQuerySettings implements AdditionalProperties<string, UserDefinedValue> {
+export class EsqlQuerySettings
+  implements AdditionalProperties<string, UserDefinedValue>
+{
   /**
    * The default timezone to be used in the query.
    * It defaults to UTC and overrides the `time_zone` request parameter.
