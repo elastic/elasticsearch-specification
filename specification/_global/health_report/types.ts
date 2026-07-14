@@ -229,7 +229,6 @@ export class ProjectEncryptionKeyDetails {
   /**
    * Whether callers must refuse to store secrets when the service is not ready.
    * If `false`, callers may fall back to storing secrets in plaintext (with a warning).
-   * @server_default true
    */
   encryption_required: boolean
   key_count?: integer
