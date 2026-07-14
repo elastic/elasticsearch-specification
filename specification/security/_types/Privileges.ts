@@ -417,6 +417,11 @@ export enum IndexPrivilege {
 
 export class GlobalPrivilege {
   application: ApplicationGlobalUserPrivileges
+  /**
+   * A list of data source privilege entries, used to grant access to ES|QL data sources.
+   * @availability stack since=9.5.0
+   */
+  data_source?: DataSourcePrivileges[]
 }
 
 export class ApplicationGlobalUserPrivileges {
@@ -425,6 +430,41 @@ export class ApplicationGlobalUserPrivileges {
 
 export class ManageUserPrivileges {
   applications: string[]
+}
+
+export class DataSourcePrivileges {
+  /**
+   * A list of data source names or wildcard patterns to which the permissions in this entry apply.
+   */
+  names: string[]
+  /**
+   * The data source privileges that owners of the role have for the specified data sources.
+   */
+  privileges: DataSourcePrivilege[]
+}
+
+/** @non_exhaustive */
+export enum DataSourcePrivilege {
+  /**
+   * Grants privilege to create a data source with a matching name.
+   */
+  create,
+  /**
+   * Grants privilege to delete a data source with a matching name.
+   */
+  delete,
+  /**
+   * Grants privilege to read a data source's metadata.
+   */
+  read_metadata,
+  /**
+   * Grants privilege to attach a dataset to a data source with a matching name.
+   */
+  read,
+  /**
+   * Grants all data source privileges, including `create`, `delete`, `read`, and `read_metadata`.
+   */
+  manage
 }
 
 export class ReplicationAccess {

@@ -52,7 +52,7 @@ export class RoleDescriptor {
    */
   remote_cluster?: RemoteClusterPrivileges[]
   /**
-   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.
+   * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware.
    * @availability stack
    */
   global?: GlobalPrivilege[] | GlobalPrivilege
