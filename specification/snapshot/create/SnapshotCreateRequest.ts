@@ -123,11 +123,12 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /**
-     * If `true`, it enables you to restore a partial snapshot of indices with unavailable shards.
-     * Only shards that were successfully included in the snapshot will be restored.
-     * All missing shards will be recreated as empty.
+     * If `true`, allows the snapshot to proceed even if some of the target shards are unavailable.
+     * In this case, the resulting snapshot will not contain snapshots of the unavailable target shards, and will report its state as `PARTIAL`.
+     * Additionally, if `true`, allows index metadata operations such as deletions while the snapshot is in progress.
+     * This is almost always preferable to failing the snapshot completely when a single shard is unavailable, and blocking index metadata operations.
      *
-     * If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available.
+     * If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available, and index metadata operations such as deletions will be forbidden until the snapshot completes.
      * @server_default false
      */
     partial?: boolean
