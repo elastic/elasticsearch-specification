@@ -1,0 +1,15 @@
+summary: A region policy allowing specific cloud service provider regions
+description: A successful response when creating a region policy that allows specific cloud service provider regions.
+# type: response
+# response_code:
+value: |-
+  {
+    "region_policy": {
+      "allowed_regions": [
+        { "csp": "aws", "region": "us-east-1" },
+        { "csp": "aws", "region": "eu-west-1" }
+      ]
+    },
+    "created_at": "2026-07-13T12:00:00.000Z",
+    "created_by": "inference_user"
+  }
