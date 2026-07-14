@@ -23,7 +23,7 @@ import { Normalizer } from '@_types/analysis/normalizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
-  ByteSize,
+  ByteSize, Field,
   Name,
   PipelineName,
   Uuid,
@@ -375,6 +375,14 @@ export class IndexSettingsAnalysis {
 export class IndexSettingsTimeSeries {
   end_time?: DateTime
   start_time?: DateTime
+  /**
+   * The name of the field that stores the temporality of a metric.
+   * The referenced field must be a `keyword` dimension field; if the setting is unset or the
+   * field is missing or invalid, the metric temporality resolves to null.
+   * @availability stack since=9.4.0 visibility=feature_flag feature_flag=time_series_temporality
+   * @availability serverless visibility=feature_flag feature_flag=time_series_temporality
+   */
+  temporality_field?: Field
 }
 
 export class Merge {

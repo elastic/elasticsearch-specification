@@ -31,10 +31,21 @@ export class FlattenedProperty extends PropertyBase {
   index?: boolean
   index_options?: IndexOptions
   null_value?: string
+  /**
+   * When set to lossy (the default), leaf arrays are sorted, de-nulled, and deduplicated in the returned synthetic source.
+   * When set to exact, leaf arrays preserve order, nulls, and duplicates.
+   * @server_default lossy
+   */
+  preserve_leaf_arrays?: PreserveLeafArrays
   similarity?: string
   split_queries_on_whitespace?: boolean
   time_series_dimensions?: string[]
   type: 'flattened'
+}
+
+export enum PreserveLeafArrays {
+  lossy,
+  exact
 }
 
 export class NestedProperty extends CorePropertyBase {
