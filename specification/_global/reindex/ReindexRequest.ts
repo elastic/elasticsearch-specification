@@ -158,7 +158,9 @@ export interface Request extends RequestBase {
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
-     * If `true`, the request blocks until the operation is complete.
+     * If `true`, the request blocks until the operation is complete. If your requested reindex operation is complex or time-consuming,
+     * it might timeout due to transport-layer limitations. While the reindex will continue to be processed by the cluster, your
+     * client will not receive updates on status automatically after timeout. Set this option `true` if you anticipate a long-running reindex.
      * @server_default true
      */
     wait_for_completion?: boolean

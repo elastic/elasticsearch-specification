@@ -47,6 +47,18 @@ export class FieldCapability {
   searchable: boolean
   type: string
   /**
+   * Whether this field is an inference field, meaning a field that automatically performs inference (for example, `semantic_text` fields), on all indices.
+   * @availability stack since=9.5.0
+   * @availability serverless
+   */
+  inference?: boolean
+  /**
+   * The list of indices where this field is not an inference field, or null if all indices have the same definition for the field.
+   * @availability stack since=9.5.0
+   * @availability serverless
+   */
+  non_inference_indices?: Indices
+  /**
    * Whether this field is registered as a metadata field.
    * @doc_id mapping-metadata
    */

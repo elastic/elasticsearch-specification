@@ -1240,3 +1240,58 @@ actions:
     description: Re-add a simple string type for Duration
     update:
       type: string
+# Clarify the three kinds of lines in the bulk request body
+# NOTE: The spec compiler drops JSDoc descriptions on value-kind bodies, so the body description must be added here.
+  - target: "$.components['requestBodies']['bulk']"
+    description: Describe the three kinds of NDJSON lines in the bulk request body
+    update:
+      description: |
+        The request body contains a newline-delimited list of `create`, `delete`, `index`, and `update` actions and their associated source data.
+        Each item in the list is one of three kinds of NDJSON lines:
+
+        * An action line, which specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata. For example: `{ "index": { "_index": "my-index", "_id": "1" } }`.
+        * An update source line, which must follow an `update` action line. It contains the partial document, script, or upsert options to apply.
+        * A document source line, which must follow an `index` or `create` action line. It contains the document to index.
+
+        A `delete` action is not followed by a source line.
+  - target: "$.components['requestBodies']['bulk'].content['application/json'].schema.items.oneOf[2]"
+    description: Add a title and description to the anonymous document source line in the bulk request body
+    update:
+      title: Document source
+      description: The document to index. A document source line must follow an `index` or `create` action line.
+  - target: "$.components['schemas']['_global.bulk.OperationContainer']"
+    description: Add a display title to the bulk action line object
+    update:
+      title: Action and metadata
+  - target: "$.components['schemas']['_global.bulk.UpdateAction']"
+    description: Add a display title to the bulk update source line object
+    update:
+      title: Update source
+# Clarify how the rerank `input` and `query` union types render in the docs.
+# The Array<...> cases become anonymous oneOf branches that Bump renders as "array-2";
+# these overlays give them titles/descriptions. Titles are also added to the named union
+# members so the "One of" tabs don't read as "RerankObjectInput" / "RerankStringInput".
+# NOTE: overlay-only — the JSDoc descriptions already live on the TS types; a title on an
+# anonymous oneOf branch has no TS equivalent. Mirrors PR #6393.
+  - target: "$.components['schemas']['inference.rerank.RerankObjectInput'].oneOf[1]"
+    description: Title the anonymous array-of-objects branch of the rerank object input
+    update:
+      title: Array of objects
+      description: An array of input objects to rank. Each object can specify a non-text input, such as an image.
+  - target: "$.components['schemas']['inference.rerank.RerankStringInput'].oneOf[1]"
+    description: Title the anonymous array-of-strings branch of the rerank string input
+    update:
+      title: Array of strings
+      description: An array of text documents to rank.
+  - target: "$.components['schemas']['inference.rerank.RerankStringInput']"
+    description: Add a display title to the rerank string input union
+    update:
+      title: String or array of strings
+  - target: "$.components['schemas']['inference.rerank.RerankObjectInput']"
+    description: Add a display title to the rerank object input union
+    update:
+      title: Object or array of objects
+  - target: "$.components['schemas']['inference.rerank.RerankInputObject']"
+    description: Add a display title to the rerank input object
+    update:
+      title: Input object

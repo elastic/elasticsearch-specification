@@ -186,6 +186,7 @@ export interface CountRequest extends RequestBase {
   min_score?: double
   preference?: string
   routing?: Routing
+  stats?: string[] | string
   terminate_after?: long
   q?: string
   body?: {
@@ -387,6 +388,8 @@ export interface FieldCapsFieldCapability {
   non_searchable_indices?: Indices
   searchable: boolean
   type: string
+  inference?: boolean
+  non_inference_indices?: Indices
   metadata_field?: boolean
   time_series_dimension?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
@@ -622,6 +625,7 @@ export interface HealthReportIndicators {
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
+  project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
@@ -644,6 +648,18 @@ export interface HealthReportMasterIsStableIndicatorDetails {
 export interface HealthReportMasterIsStableIndicatorExceptionFetchingHistory {
   message: string
   stack_trace: string
+}
+
+export interface HealthReportProjectEncryptionKeyDetails {
+  active_key_id?: string
+  active_password_id: string
+  key_count?: integer
+  metadata_password_id?: string
+  state: string
+}
+
+export interface HealthReportProjectEncryptionKeyIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportProjectEncryptionKeyDetails
 }
 
 export interface HealthReportRepositoryIntegrityIndicator extends HealthReportBaseIndicator {
@@ -1282,7 +1298,7 @@ export interface SearchRequest extends RequestBase {
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
-  stats?: string[]
+  stats?: string[] | string
   stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode
@@ -2108,6 +2124,7 @@ export interface TermsEnumRequest extends RequestBase {
     index_filter?: QueryDslQueryContainer
     string?: string
     search_after?: string
+    project_routing?: ProjectRouting
   }
 }
 
@@ -6394,6 +6411,7 @@ export interface MappingRuntimeField {
   target_field?: Field
   target_index?: IndexName
   script?: Script | ScriptSource
+  on_script_error?: MappingOnScriptError
   type: MappingRuntimeFieldType
 }
 
@@ -6458,8 +6476,6 @@ export interface MappingSizeField {
 }
 
 export interface MappingSourceField {
-  compress?: boolean
-  compress_threshold?: string
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
@@ -11397,6 +11413,14 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
+export interface EncryptionResetRequest extends RequestBase {
+  accept_data_loss: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type EncryptionResetResponse = AcknowledgedResponseBase
+
 export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
@@ -12516,6 +12540,7 @@ export interface IndicesIndexSettingsKeys {
   max_terms_count?: integer
   max_regex_length?: integer
   routing?: IndicesIndexRouting
+  unassigned?: IndicesIndexSettingsUnassigned
   gc_deletes?: Duration
   default_pipeline?: PipelineName
   final_pipeline?: PipelineName
@@ -12570,6 +12595,14 @@ export interface IndicesIndexSettingsLifecycleStep {
 export interface IndicesIndexSettingsTimeSeries {
   end_time?: DateTime
   start_time?: DateTime
+}
+
+export interface IndicesIndexSettingsUnassigned {
+  node_left?: IndicesIndexSettingsUnassignedNodeLeft
+}
+
+export interface IndicesIndexSettingsUnassignedNodeLeft {
+  delayed_timeout?: Duration
 }
 
 export interface IndicesIndexState {
@@ -14689,6 +14722,11 @@ export interface InferenceContextualAITaskSettings {
   top_k?: integer
 }
 
+export interface InferenceCspRegion {
+  csp: string
+  region: string
+}
+
 export interface InferenceCustomRequestParams {
   content: string
 }
@@ -15217,6 +15255,19 @@ export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'mi
 
 export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
 
+export interface InferenceRegionPolicy {
+  allowed_geos?: string[]
+  allowed_regions?: InferenceCspRegion[]
+}
+
+export interface InferenceRegionPolicyDoc {
+  region_policy: InferenceRegionPolicy
+  created_at: DateTime
+  created_by?: string
+  updated_at?: DateTime
+  updated_by?: string
+}
+
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
@@ -15399,6 +15450,11 @@ export interface InferenceDeleteRequest extends RequestBase {
 
 export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
 
+export interface InferenceDeleteRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceDeleteRegionPolicyResponse = AcknowledgedResponseBase
+
 export interface InferenceEmbeddingRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
@@ -15415,6 +15471,11 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferenceGetRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceGetRegionPolicyResponse = InferenceRegionPolicyDoc
 
 export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -15762,6 +15823,15 @@ export interface InferencePutOpenshiftAiRequest extends RequestBase {
 
 export type InferencePutOpenshiftAiResponse = InferenceInferenceEndpointInfoOpenShiftAi
 
+export interface InferencePutRegionPolicyRequest extends RequestBase {
+  force?: boolean
+  body?: {
+    region_policy: InferenceRegionPolicy
+  }
+}
+
+export type InferencePutRegionPolicyResponse = InferenceRegionPolicyDoc
+
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
   voyageai_inference_id: Id
@@ -15793,13 +15863,31 @@ export interface InferenceRerankRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
   body?: {
-    query: string
-    input: string[]
+    query: InferenceRerankRerankQuery
+    input: InferenceRerankRerankInput
     return_documents?: boolean
     top_n?: integer
     task_settings?: InferenceTaskSettings
   }
 }
+
+export type InferenceRerankRerankInput = InferenceRerankRerankStringInput | InferenceRerankRerankObjectInput
+
+export type InferenceRerankRerankInputFormat = 'text' | 'base64'
+
+export interface InferenceRerankRerankInputObject {
+  type: InferenceRerankRerankInputType
+  format?: InferenceRerankRerankInputFormat
+  value: string
+}
+
+export type InferenceRerankRerankInputType = 'text' | 'image'
+
+export type InferenceRerankRerankObjectInput = InferenceRerankRerankInputObject | InferenceRerankRerankInputObject[]
+
+export type InferenceRerankRerankQuery = string | InferenceRerankRerankInputObject
+
+export type InferenceRerankRerankStringInput = string | string[]
 
 export type InferenceRerankResponse = InferenceRerankedInferenceResult
 
@@ -19478,6 +19566,14 @@ export interface NodesAdaptiveSelection {
   rank?: string
 }
 
+export interface NodesAllocations {
+  shards?: integer
+  undesired_shards?: integer
+  forecasted_ingest_load?: double
+  forecasted_disk_usage_in_bytes?: long
+  current_disk_usage_in_bytes?: long
+}
+
 export interface NodesBreaker {
   estimated_size?: string
   estimated_size_in_bytes?: long
@@ -19908,6 +20004,7 @@ export interface NodesSizeHttpHistogram {
 
 export interface NodesStats {
   adaptive_selection?: Record<string, NodesAdaptiveSelection>
+  allocations?: NodesAllocations
   breakers?: Record<string, NodesBreaker>
   fs?: NodesFileSystem
   host?: Host
@@ -20055,7 +20152,7 @@ export interface NodesInfoNodeInfoClient {
 export interface NodesInfoNodeInfoDiscoverKeys {
   seed_hosts?: string[] | string
   type?: string
-  seed_providers?: string[]
+  seed_providers?: string[] | string
 }
 export type NodesInfoNodeInfoDiscover = NodesInfoNodeInfoDiscoverKeys
   & { [property: string]: any }
@@ -21060,6 +21157,13 @@ export interface SecurityCreatedStatus {
 
 export type SecurityCredentialManagedBy = 'cloud' | 'elasticsearch'
 
+export type SecurityDataSourcePrivilege = 'create' | 'delete' | 'read_metadata' | 'read' | 'manage'| string
+
+export interface SecurityDataSourcePrivileges {
+  names: string[]
+  privileges: SecurityDataSourcePrivilege[]
+}
+
 export interface SecurityFieldSecurity {
   except?: Fields
   grant?: Fields
@@ -21067,6 +21171,7 @@ export interface SecurityFieldSecurity {
 
 export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
+  data_source?: SecurityDataSourcePrivileges[]
 }
 
 export type SecurityGrantType = 'password' | 'access_token'
