@@ -4,6 +4,8 @@ description: Run `PUT /_snapshot/my_repository/snapshot_2?wait_for_completion=tr
 # type: request
 value: "{
 
+  \  \"partial\": true,
+
   \  \"indices\": \"index_1,index_2\",
 
   \  \"ignore_unavailable\": true,
