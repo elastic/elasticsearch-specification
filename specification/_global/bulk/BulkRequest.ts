@@ -242,6 +242,13 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   }
   /**
    * The request body contains a newline-delimited list of `create`, `delete`, `index`, and `update` actions and their associated source data.
+   * Each item in the list is one of three kinds of NDJSON lines:
+   *
+   * * An action line, which specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata. For example: `{ "index": { "_index": "my-index", "_id": "1" } }`.
+   * * An update source line, which must follow an `update` action line. It contains the partial document, script, or upsert options to apply.
+   * * A document source line, which must follow an `index` or `create` action line. It contains the document to index.
+   *
+   * A `delete` action is not followed by a source line.
    * @codegen_name operations */
   // This declaration captures action_and_meta_data (OperationContainer) and the two kinds of sources
   // that can follow: an update action for update operations and anything for index or create operations.
