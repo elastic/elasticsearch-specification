@@ -19590,5 +19590,49 @@
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openai\",\"service_settings\":{\"model_id\":\"text-embedding-3-small\",\"client_id\":\"test_client_id\",\"scopes\":[\"scope1\",\"scope2\"],\"client_secret\":\"secret\",\"token_url\":\"http://localhost:8080/token\",\"url\":\"https://api.openai.com/v1/embeddings\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
     }
+  ],
+  "specification/inference/put_region_policy/examples/request/PutRegionPolicyRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put_region_policy(\n    region_policy={\n        \"allowed_geos\": [\n            \"us\",\n            \"eu\"\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.putRegionPolicy({\n  region_policy: {\n    allowed_geos: [\"us\", \"eu\"],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put_region_policy(\n  body: {\n    \"region_policy\": {\n      \"allowed_geos\": [\n        \"us\",\n        \"eu\"\n      ]\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->putRegionPolicy([\n    \"body\" => [\n        \"region_policy\" => [\n            \"allowed_geos\" => array(\n                \"us\",\n                \"eu\",\n            ),\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_geos\":[\"us\",\"eu\"]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
+    }
+  ],
+  "specification/inference/put_region_policy/examples/request/PutRegionPolicyRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.put_region_policy(\n    region_policy={\n        \"allowed_regions\": [\n            {\n                \"csp\": \"aws\",\n                \"region\": \"us-east-1\"\n            },\n            {\n                \"csp\": \"aws\",\n                \"region\": \"eu-west-1\"\n            }\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.putRegionPolicy({\n  region_policy: {\n    allowed_regions: [\n      {\n        csp: \"aws\",\n        region: \"us-east-1\",\n      },\n      {\n        csp: \"aws\",\n        region: \"eu-west-1\",\n      },\n    ],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.put_region_policy(\n  body: {\n    \"region_policy\": {\n      \"allowed_regions\": [\n        {\n          \"csp\": \"aws\",\n          \"region\": \"us-east-1\"\n        },\n        {\n          \"csp\": \"aws\",\n          \"region\": \"eu-west-1\"\n        }\n      ]\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->putRegionPolicy([\n    \"body\" => [\n        \"region_policy\" => [\n            \"allowed_regions\" => array(\n                [\n                    \"csp\" => \"aws\",\n                    \"region\" => \"us-east-1\",\n                ],\n                [\n                    \"csp\" => \"aws\",\n                    \"region\" => \"eu-west-1\",\n                ],\n            ),\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_regions\":[{\"csp\":\"aws\",\"region\":\"us-east-1\"},{\"csp\":\"aws\",\"region\":\"eu-west-1\"}]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
+    }
   ]
 }

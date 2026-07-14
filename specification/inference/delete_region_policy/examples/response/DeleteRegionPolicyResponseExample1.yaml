@@ -1,0 +1,8 @@
+summary: A deleted region policy
+description: A successful response when deleting the region policy.
+# type: response
+# response_code:
+value: |-
+  {
+    "acknowledged": true
+  }

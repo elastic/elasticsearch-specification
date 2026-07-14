@@ -144,6 +144,10 @@ export interface Request extends RequestBase {
      */
     routing?: Routing
     /**
+     * Specific `tag` of the request for logging and statistical purposes.
+     */
+    stats?: string[] | string
+    /**
      * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
      * Elasticsearch collects documents before sorting.

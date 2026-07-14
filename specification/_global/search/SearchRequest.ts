@@ -254,7 +254,7 @@ export interface Request extends RequestBase {
     /**
      * Specific `tag` of the request for logging and statistical purposes.
      */
-    stats?: string[]
+    stats?: string[] | string
     /**
      * A comma-separated list of stored fields to return as part of a hit.
      * If no fields are specified, no stored fields are included in the response.

@@ -4235,6 +4235,9 @@
             "$ref": "#/components/parameters/count-routing"
           },
           {
+            "$ref": "#/components/parameters/count-stats"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -4300,6 +4303,9 @@
           },
           {
             "$ref": "#/components/parameters/count-routing"
+          },
+          {
+            "$ref": "#/components/parameters/count-stats"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -4374,6 +4380,9 @@
             "$ref": "#/components/parameters/count-routing"
           },
           {
+            "$ref": "#/components/parameters/count-stats"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -4442,6 +4451,9 @@
           },
           {
             "$ref": "#/components/parameters/count-routing"
+          },
+          {
+            "$ref": "#/components/parameters/count-stats"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -12585,6 +12597,157 @@
         ]
       }
     },
+    "/_inference/_region_policy": {
+      "get": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Get the inference region policy",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-get-region-policy",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.RegionPolicyDoc"
+                },
+                "examples": {
+                  "GetRegionPolicyResponseExample1": {
+                    "summary": "The configured region policy",
+                    "description": "A successful response when retrieving the currently configured region policy.",
+                    "value": "{\n  \"region_policy\": {\n    \"allowed_geos\": [\"us\", \"eu\"]\n  },\n  \"created_at\": \"2026-07-13T12:00:00.000Z\",\n  \"created_by\": \"inference_user\",\n  \"updated_at\": \"2026-07-13T13:30:00.000Z\",\n  \"updated_by\": \"inference_user\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create or update the inference region policy",
+        "description": "The region policy restricts inference to a set of allowed geographic areas or cloud service provider regions.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-region-policy",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "force",
+            "description": "If `true`, the region policy is applied even if it would deny access to inference endpoints that are currently in use by ingest pipeline or indices.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "region_policy": {
+                    "description": "The region policy configuration.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.RegionPolicy"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "region_policy"
+                ]
+              },
+              "examples": {
+                "PutRegionPolicyRequestExample1": {
+                  "summary": "A region policy allowing specific cloud service provider regions",
+                  "description": "Run `PUT _inference/_region_policy` to restrict inference to a specific set of cloud service provider regions.",
+                  "value": "{\n    \"region_policy\": {\n        \"allowed_regions\": [\n            { \"csp\": \"aws\", \"region\": \"us-east-1\" },\n            { \"csp\": \"aws\", \"region\": \"eu-west-1\" }\n        ]\n    }\n}"
+                },
+                "PutRegionPolicyRequestExample2": {
+                  "summary": "A region policy allowing specific geographic areas",
+                  "description": "Run `PUT _inference/_region_policy` to restrict inference to a specific set of geographic areas.",
+                  "value": "{\n    \"region_policy\": {\n        \"allowed_geos\": [\"us\", \"eu\"]\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.RegionPolicyDoc"
+                },
+                "examples": {
+                  "PutRegionPolicyResponseExample1": {
+                    "summary": "A region policy allowing specific cloud service provider regions",
+                    "description": "A successful response when creating a region policy that allows specific cloud service provider regions.",
+                    "value": "{\n  \"region_policy\": {\n    \"allowed_regions\": [\n      { \"csp\": \"aws\", \"region\": \"us-east-1\" },\n      { \"csp\": \"aws\", \"region\": \"eu-west-1\" }\n    ]\n  },\n  \"created_at\": \"2026-07-13T12:00:00.000Z\",\n  \"created_by\": \"inference_user\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Delete the inference region policy",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-delete-region-policy",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteRegionPolicyResponseExample1": {
+                    "summary": "A deleted region policy",
+                    "description": "A successful response when deleting the region policy.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/embedding/{inference_id}": {
       "post": {
         "tags": [
@@ -16260,15 +16423,20 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "Query input.",
-                    "type": "string"
+                    "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.rerank.RerankQuery"
+                      }
+                    ]
                   },
                   "input": {
-                    "description": "The documents to rank.",
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
+                    "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.rerank.RerankInput"
+                      }
+                    ]
                   },
                   "return_documents": {
                     "description": "Include the document text in the response.",
@@ -17524,7 +17692,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "If `true`, the request blocks until the operation is complete.",
+            "description": "If `true`, the request blocks until the operation is complete. If your requested reindex operation is complex or time-consuming,\nit might timeout due to transport-layer limitations. While the reindex will continue to be processed by the cluster, your\nclient will not receive updates on status automatically after timeout. Set this option `true` if you anticipate a long-running reindex.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
@@ -20774,6 +20942,134 @@
           }
         },
         "deprecated": true,
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_ml/anomaly_detectors/{job_id}/_forecast": {
+      "post": {
+        "tags": [
+          "ml anomaly"
+        ],
+        "summary": "Predict future behavior of a time series",
+        "description": "Forecasts are not supported for jobs that perform population analysis; an\nerror occurs if you try to create a forecast for a job that has an\n`over_field_name` in its configuration. Forcasts predict future behavior\nbased on historical data.\n\n## Required authorization\n\n* Cluster privileges: `manage_ml`\n",
+        "operationId": "ml-forecast",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "description": "Identifier for the anomaly detection job. The job must be open when you\ncreate a forecast; otherwise, an error occurs.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "A period of time that indicates how far into the future to forecast. For\nexample, `30d` corresponds to 30 days. The forecast starts at the last\nrecord that was processed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "expires_in",
+            "description": "The period of time that forecast results are retained. After a forecast\nexpires, the results are deleted. If set to a value of 0, the forecast is\nnever automatically deleted.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_model_memory",
+            "description": "The maximum memory the forecast can use. If the forecast needs to use\nmore than the provided amount, it will spool to disk. Default is 20mb,\nmaximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s\nconfigured memory limit, it is automatically reduced to below that\namount.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "description": "Refer to the description for the `duration` query parameter.",
+                    "default": "1d",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "expires_in": {
+                    "description": "Refer to the description for the `expires_in` query parameter.",
+                    "default": "14d",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "max_model_memory": {
+                    "description": "Refer to the description for the `max_model_memory` query parameter.",
+                    "default": "20mb",
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "MlForecastExample1": {
+                  "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_forecast` request.",
+                  "value": "{\n  \"duration\": \"10d\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "type": "boolean"
+                    },
+                    "forecast_id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Id"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "acknowledged",
+                    "forecast_id"
+                  ]
+                }
+              }
+            }
+          }
+        },
         "x-state": "Generally available",
         "x-metaTags": [
           {
@@ -43576,7 +43872,7 @@
                 "type": "string"
               },
               "case_insensitive": {
-                "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
+                "description": "Allows case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
@@ -44977,7 +45273,7 @@
                 ]
               },
               "case_insensitive": {
-                "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
+                "description": "Allows case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
                 "x-state": "Generally available",
                 "type": "boolean"
@@ -50211,6 +50507,13 @@
               }
             ]
           },
+          "on_script_error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.OnScriptError"
+              }
+            ]
+          },
           "type": {
             "description": "Field type, which can be: `boolean`, `composite`, `date`, `double`, `geo_point`, `ip`,`keyword`, `long`, or `lookup`.",
             "allOf": [
@@ -50270,6 +50573,13 @@
         },
         "required": [
           "field"
+        ]
+      },
+      "_types.mapping.OnScriptError": {
+        "type": "string",
+        "enum": [
+          "fail",
+          "continue"
         ]
       },
       "_types.ScrollId": {
@@ -54191,6 +54501,13 @@
               }
             ]
           },
+          "unassigned": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassigned"
+              }
+            ]
+          },
           "gc_deletes": {
             "default": "60s",
             "allOf": [
@@ -54843,6 +55160,32 @@
           "replicas",
           "none"
         ]
+      },
+      "indices._types.IndexSettingsUnassigned": {
+        "type": "object",
+        "properties": {
+          "node_left": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexSettingsUnassignedNodeLeft"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.IndexSettingsUnassignedNodeLeft": {
+        "type": "object",
+        "properties": {
+          "delayed_timeout": {
+            "description": "The amount of time to wait for a node that has left before assuming its\nshards are permanently missing and starting to allocate replacement replicas.",
+            "default": "1m",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "_types.PipelineName": {
         "type": "string"
@@ -61758,13 +62101,6 @@
           "disabled"
         ]
       },
-      "_types.mapping.OnScriptError": {
-        "type": "string",
-        "enum": [
-          "fail",
-          "continue"
-        ]
-      },
       "_types.mapping.DynamicProperty": {
         "allOf": [
           {
@@ -64155,12 +64491,6 @@
       "_types.mapping.SourceField": {
         "type": "object",
         "properties": {
-          "compress": {
-            "type": "boolean"
-          },
-          "compress_threshold": {
-            "type": "string"
-          },
           "enabled": {
             "type": "boolean"
           },
@@ -66689,6 +67019,20 @@
           },
           "type": {
             "type": "string"
+          },
+          "inference": {
+            "description": "Whether this field is an inference field, meaning a field that automatically performs inference (for example, `semantic_text` fields), on all indices.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "non_inference_indices": {
+            "description": "The list of indices where this field is not an inference field, or null if all indices have the same definition for the field.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Indices"
+              }
+            ]
           },
           "metadata_field": {
             "description": "Whether this field is registered as a metadata field.",
@@ -69643,6 +69987,87 @@
       "inference._types.ServiceSettings": {
         "type": "object"
       },
+      "inference._types.RegionPolicyDoc": {
+        "description": "The stored region policy document.",
+        "type": "object",
+        "properties": {
+          "region_policy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RegionPolicy"
+              }
+            ]
+          },
+          "created_at": {
+            "description": "The date and time the region policy was created.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_by": {
+            "description": "The user who created the region policy.",
+            "type": "string"
+          },
+          "updated_at": {
+            "description": "The date and time the region policy was last updated.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "updated_by": {
+            "description": "The user who last updated the region policy.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "region_policy",
+          "created_at"
+        ]
+      },
+      "inference._types.RegionPolicy": {
+        "description": "The region policy configuration.\nSpecify exactly one of `allowed_geos` or `allowed_regions`.",
+        "type": "object",
+        "properties": {
+          "allowed_geos": {
+            "description": "The list of allowed geographic areas.\nMutually exclusive with `allowed_regions`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allowed_regions": {
+            "description": "The list of allowed cloud service provider regions.\nMutually exclusive with `allowed_geos`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.CspRegion"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "inference._types.CspRegion": {
+        "description": "A cloud service provider region.",
+        "type": "object",
+        "properties": {
+          "csp": {
+            "description": "The cloud service provider, for example `aws`, `gcp`, or `azure`.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The region of the cloud service provider, for example `us-east-1`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "csp",
+          "region"
+        ]
+      },
       "inference._types.InferenceResult": {
         "description": "InferenceResult is an aggregation of mutually exclusive variants",
         "type": "object",
@@ -70991,7 +71416,7 @@
         "type": "object",
         "properties": {
           "parameters": {
-            "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```",
+            "description": "Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.\nFor example:\n```\n\"task_settings\":{\n  \"parameters\":{\n    \"input_type\":\"query\",\n    \"return_token\":true\n  }\n}\n```\n\n> warn\n> The `task_settings.parameters` cannot contain the same keys as `secret_parameters`. If they do, an error will be returned. This applies to PUT requests and POST requests.",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/inference._types.CustomTaskParameter"
@@ -72801,6 +73226,100 @@
           "text_embedding",
           "chat_completion",
           "completion"
+        ]
+      },
+      "inference.rerank.RerankQuery": {
+        "description": "Query input for the `rerank` task.\nEither a string, or an object. The object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference.rerank.RerankInputObject"
+          }
+        ]
+      },
+      "inference.rerank.RerankInputObject": {
+        "description": "An object describing a single input for the `rerank` task, which additionally allows specifying non-text inputs, such as images.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of input. Not all services and models support all input types.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.rerank.RerankInputType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.\nIf not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.rerank.RerankInputFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the input. For images, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.rerank.RerankInputType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image"
+        ]
+      },
+      "inference.rerank.RerankInputFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64"
+        ]
+      },
+      "inference.rerank.RerankInput": {
+        "description": "The documents to rank for the `rerank` task.\nEither a string, an array of strings, an object, or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.rerank.RerankStringInput"
+          },
+          {
+            "$ref": "#/components/schemas/inference.rerank.RerankObjectInput"
+          }
+        ]
+      },
+      "inference.rerank.RerankStringInput": {
+        "description": "Allows specifying text-only documents to rank for the `rerank` task.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "inference.rerank.RerankObjectInput": {
+        "description": "Allows specifying documents to rank as objects, which additionally supports non-text inputs, such as images.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.rerank.RerankInputObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference.rerank.RerankInputObject"
+            }
+          }
         ]
       },
       "inference._types.RerankedInferenceResult": {
@@ -87254,13 +87773,13 @@
             "examples": {
               "FieldCapabilitiesResponseExample1": {
                 "summary": "Get two fields",
-                "description": "A successful response from `GET _field_caps?fields=rating,title`. The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`. The field `rating` is not aggregatable in `index1`. The field `rating` is not searchable in `index4`. The field `title` is defined as text in all indices.\n",
-                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+                "description": "A successful response from `GET _field_caps?fields=rating,title`. The field `rating` is defined as a long in `index1` and `index2` and as a `keyword` in `index3` and `index4`. The field `rating` is not aggregatable in `index1`. The field `rating` is not searchable in `index4`. The field `title` is defined as text in all indices. None of the fields are inference fields.\n",
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {\n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]\n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"inference\": false,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]\n      }\n    },\n    \"title\": {\n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false\n      }\n    }\n  }\n}"
               },
               "FieldCapabilitiesResponseExample2": {
                 "summary": "Get unmapped fields",
                 "description": "A successful response from `GET _field_caps?fields=rating,title&include_unmapped`. The response contains an entry for each field that is present in some indices but not all. For example, the `rating` and `title` fields are unmapped in `index5`.\n",
-                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {                                   \n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]  \n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]    \n      }\n    },\n    \"title\": {                                    \n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false\n      }\n    }\n  }\n}"
+                "value": "{\n  \"indices\": [ \"index1\", \"index2\", \"index3\", \"index4\", \"index5\" ],\n  \"fields\": {\n    \"rating\": {\n      \"long\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false,\n        \"indices\": [ \"index1\", \"index2\" ],\n        \"non_aggregatable_indices\": [ \"index1\" ]\n      },\n      \"keyword\": {\n        \"metadata_field\": false,\n        \"searchable\": false,\n        \"aggregatable\": true,\n        \"inference\": false,\n        \"indices\": [ \"index3\", \"index4\" ],\n        \"non_searchable_indices\": [ \"index4\" ]\n      }\n    },\n    \"title\": {\n      \"text\": {\n        \"metadata_field\": false,\n        \"searchable\": true,\n        \"aggregatable\": false,\n        \"inference\": false\n      }\n    }\n  }\n}"
               }
             }
           }
@@ -90334,6 +90853,26 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
+        },
+        "style": "form"
+      },
+      "count-stats": {
+        "in": "query",
+        "name": "stats",
+        "description": "Specific `tag` of the request for logging and statistical purposes.",
+        "deprecated": false,
+        "schema": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "style": "form"
       },
@@ -93658,10 +94197,17 @@
         "description": "Specific `tag` of the request for logging and statistical purposes.",
         "deprecated": false,
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "string"
+            }
+          ]
         },
         "style": "form"
       },
