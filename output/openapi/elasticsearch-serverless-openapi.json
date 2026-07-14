@@ -12597,6 +12597,157 @@
         ]
       }
     },
+    "/_inference/_region_policy": {
+      "get": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Get the inference region policy",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-get-region-policy",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.RegionPolicyDoc"
+                },
+                "examples": {
+                  "GetRegionPolicyResponseExample1": {
+                    "summary": "The configured region policy",
+                    "description": "A successful response when retrieving the currently configured region policy.",
+                    "value": "{\n  \"region_policy\": {\n    \"allowed_geos\": [\"us\", \"eu\"]\n  },\n  \"created_at\": \"2026-07-13T12:00:00.000Z\",\n  \"created_by\": \"inference_user\",\n  \"updated_at\": \"2026-07-13T13:30:00.000Z\",\n  \"updated_by\": \"inference_user\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Create or update the inference region policy",
+        "description": "The region policy restricts inference to a set of allowed geographic areas or cloud service provider regions.\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-put-region-policy",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "force",
+            "description": "If `true`, the region policy is applied even if it would deny access to inference endpoints that are currently in use by ingest pipeline or indices.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "region_policy": {
+                    "description": "The region policy configuration.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.RegionPolicy"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "region_policy"
+                ]
+              },
+              "examples": {
+                "PutRegionPolicyRequestExample1": {
+                  "summary": "A region policy allowing specific cloud service provider regions",
+                  "description": "Run `PUT _inference/_region_policy` to restrict inference to a specific set of cloud service provider regions.",
+                  "value": "{\n    \"region_policy\": {\n        \"allowed_regions\": [\n            { \"csp\": \"aws\", \"region\": \"us-east-1\" },\n            { \"csp\": \"aws\", \"region\": \"eu-west-1\" }\n        ]\n    }\n}"
+                },
+                "PutRegionPolicyRequestExample2": {
+                  "summary": "A region policy allowing specific geographic areas",
+                  "description": "Run `PUT _inference/_region_policy` to restrict inference to a specific set of geographic areas.",
+                  "value": "{\n    \"region_policy\": {\n        \"allowed_geos\": [\"us\", \"eu\"]\n    }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.RegionPolicyDoc"
+                },
+                "examples": {
+                  "PutRegionPolicyResponseExample1": {
+                    "summary": "A region policy allowing specific cloud service provider regions",
+                    "description": "A successful response when creating a region policy that allows specific cloud service provider regions.",
+                    "value": "{\n  \"region_policy\": {\n    \"allowed_regions\": [\n      { \"csp\": \"aws\", \"region\": \"us-east-1\" },\n      { \"csp\": \"aws\", \"region\": \"eu-west-1\" }\n    ]\n  },\n  \"created_at\": \"2026-07-13T12:00:00.000Z\",\n  \"created_by\": \"inference_user\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Delete the inference region policy",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
+        "operationId": "inference-delete-region-policy",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteRegionPolicyResponseExample1": {
+                    "summary": "A deleted region policy",
+                    "description": "A successful response when deleting the region policy.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/embedding/{inference_id}": {
       "post": {
         "tags": [
@@ -69706,6 +69857,87 @@
       },
       "inference._types.ServiceSettings": {
         "type": "object"
+      },
+      "inference._types.RegionPolicyDoc": {
+        "description": "The stored region policy document.",
+        "type": "object",
+        "properties": {
+          "region_policy": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.RegionPolicy"
+              }
+            ]
+          },
+          "created_at": {
+            "description": "The date and time the region policy was created.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_by": {
+            "description": "The user who created the region policy.",
+            "type": "string"
+          },
+          "updated_at": {
+            "description": "The date and time the region policy was last updated.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "updated_by": {
+            "description": "The user who last updated the region policy.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "region_policy",
+          "created_at"
+        ]
+      },
+      "inference._types.RegionPolicy": {
+        "description": "The region policy configuration.\nSpecify exactly one of `allowed_geos` or `allowed_regions`.",
+        "type": "object",
+        "properties": {
+          "allowed_geos": {
+            "description": "The list of allowed geographic areas.\nMutually exclusive with `allowed_regions`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "allowed_regions": {
+            "description": "The list of allowed cloud service provider regions.\nMutually exclusive with `allowed_geos`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.CspRegion"
+            }
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "inference._types.CspRegion": {
+        "description": "A cloud service provider region.",
+        "type": "object",
+        "properties": {
+          "csp": {
+            "description": "The cloud service provider, for example `aws`, `gcp`, or `azure`.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The region of the cloud service provider, for example `us-east-1`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "csp",
+          "region"
+        ]
       },
       "inference._types.InferenceResult": {
         "description": "InferenceResult is an aggregation of mutually exclusive variants",
