@@ -23,7 +23,8 @@ import { Normalizer } from '@_types/analysis/normalizers'
 import { TokenFilter } from '@_types/analysis/token_filters'
 import { Tokenizer } from '@_types/analysis/tokenizers'
 import {
-  ByteSize, Field,
+  ByteSize,
+  Field,
   Name,
   PipelineName,
   Uuid,
