@@ -226,6 +226,12 @@ export class ProjectEncryptionKeyIndicator extends BaseIndicator {
 export class ProjectEncryptionKeyDetails {
   active_key_id?: string
   active_password_id: string
+  /**
+   * Whether callers must refuse to store secrets when the service is not ready.
+   * If `false`, callers may fall back to storing secrets in plaintext (with a warning).
+   * @server_default true
+   */
+  encryption_required: boolean
   key_count?: integer
   metadata_password_id?: string
   state: string
