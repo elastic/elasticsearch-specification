@@ -6476,8 +6476,6 @@ export interface MappingSizeField {
 }
 
 export interface MappingSourceField {
-  compress?: boolean
-  compress_threshold?: string
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
