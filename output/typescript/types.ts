@@ -186,6 +186,7 @@ export interface CountRequest extends RequestBase {
   min_score?: double
   preference?: string
   routing?: Routing
+  stats?: string[] | string
   terminate_after?: long
   q?: string
   body?: {
@@ -624,6 +625,7 @@ export interface HealthReportIndicators {
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
+  project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {
@@ -646,6 +648,18 @@ export interface HealthReportMasterIsStableIndicatorDetails {
 export interface HealthReportMasterIsStableIndicatorExceptionFetchingHistory {
   message: string
   stack_trace: string
+}
+
+export interface HealthReportProjectEncryptionKeyDetails {
+  active_key_id?: string
+  active_password_id: string
+  key_count?: integer
+  metadata_password_id?: string
+  state: string
+}
+
+export interface HealthReportProjectEncryptionKeyIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportProjectEncryptionKeyDetails
 }
 
 export interface HealthReportRepositoryIntegrityIndicator extends HealthReportBaseIndicator {
@@ -1284,7 +1298,7 @@ export interface SearchRequest extends RequestBase {
   routing?: Routing
   scroll?: Duration
   search_type?: SearchType
-  stats?: string[]
+  stats?: string[] | string
   stored_fields?: Fields
   suggest_field?: Field
   suggest_mode?: SuggestMode
@@ -2110,6 +2124,7 @@ export interface TermsEnumRequest extends RequestBase {
     index_filter?: QueryDslQueryContainer
     string?: string
     search_after?: string
+    project_routing?: ProjectRouting
   }
 }
 
@@ -14699,6 +14714,11 @@ export interface InferenceContextualAITaskSettings {
   top_k?: integer
 }
 
+export interface InferenceCspRegion {
+  csp: string
+  region: string
+}
+
 export interface InferenceCustomRequestParams {
   content: string
 }
@@ -15227,6 +15247,19 @@ export type InferenceReasoningEffort = 'xhigh' | 'high' | 'medium' | 'low' | 'mi
 
 export type InferenceReasoningSummary = 'auto' | 'concise' | 'detailed'
 
+export interface InferenceRegionPolicy {
+  allowed_geos?: string[]
+  allowed_regions?: InferenceCspRegion[]
+}
+
+export interface InferenceRegionPolicyDoc {
+  region_policy: InferenceRegionPolicy
+  created_at: DateTime
+  created_by?: string
+  updated_at?: DateTime
+  updated_by?: string
+}
+
 export interface InferenceRequestChatCompletion {
   messages: InferenceMessage[]
   model?: string
@@ -15409,6 +15442,11 @@ export interface InferenceDeleteRequest extends RequestBase {
 
 export type InferenceDeleteResponse = InferenceDeleteInferenceEndpointResult
 
+export interface InferenceDeleteRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceDeleteRegionPolicyResponse = AcknowledgedResponseBase
+
 export interface InferenceEmbeddingRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
@@ -15425,6 +15463,11 @@ export interface InferenceGetRequest extends RequestBase {
 export interface InferenceGetResponse {
   endpoints: InferenceInferenceEndpointInfo[]
 }
+
+export interface InferenceGetRegionPolicyRequest extends RequestBase {
+}
+
+export type InferenceGetRegionPolicyResponse = InferenceRegionPolicyDoc
 
 export interface InferenceInferenceRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -15771,6 +15814,15 @@ export interface InferencePutOpenshiftAiRequest extends RequestBase {
 }
 
 export type InferencePutOpenshiftAiResponse = InferenceInferenceEndpointInfoOpenShiftAi
+
+export interface InferencePutRegionPolicyRequest extends RequestBase {
+  force?: boolean
+  body?: {
+    region_policy: InferenceRegionPolicy
+  }
+}
+
+export type InferencePutRegionPolicyResponse = InferenceRegionPolicyDoc
 
 export interface InferencePutVoyageaiRequest extends RequestBase {
   task_type: InferenceVoyageAITaskType
@@ -19488,6 +19540,14 @@ export interface NodesAdaptiveSelection {
   rank?: string
 }
 
+export interface NodesAllocations {
+  shards?: integer
+  undesired_shards?: integer
+  forecasted_ingest_load?: double
+  forecasted_disk_usage_in_bytes?: long
+  current_disk_usage_in_bytes?: long
+}
+
 export interface NodesBreaker {
   estimated_size?: string
   estimated_size_in_bytes?: long
@@ -19918,6 +19978,7 @@ export interface NodesSizeHttpHistogram {
 
 export interface NodesStats {
   adaptive_selection?: Record<string, NodesAdaptiveSelection>
+  allocations?: NodesAllocations
   breakers?: Record<string, NodesBreaker>
   fs?: NodesFileSystem
   host?: Host
@@ -20065,7 +20126,7 @@ export interface NodesInfoNodeInfoClient {
 export interface NodesInfoNodeInfoDiscoverKeys {
   seed_hosts?: string[] | string
   type?: string
-  seed_providers?: string[]
+  seed_providers?: string[] | string
 }
 export type NodesInfoNodeInfoDiscover = NodesInfoNodeInfoDiscoverKeys
   & { [property: string]: any }
