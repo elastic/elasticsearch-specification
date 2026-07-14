@@ -17687,7 +17687,7 @@
           {
             "in": "query",
             "name": "wait_for_completion",
-            "description": "If `true`, the request blocks until the operation is complete.",
+            "description": "If `true`, the request blocks until the operation is complete. If your requested reindex operation is complex or time-consuming,\nit might timeout due to transport-layer limitations. While the reindex will continue to be processed by the cluster, your\nclient will not receive updates on status automatically after timeout. Set this option `true` if you anticipate a long-running reindex.",
             "deprecated": false,
             "schema": {
               "type": "boolean"
