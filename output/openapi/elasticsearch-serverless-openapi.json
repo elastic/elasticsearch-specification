@@ -64489,12 +64489,6 @@
       "_types.mapping.SourceField": {
         "type": "object",
         "properties": {
-          "compress": {
-            "type": "boolean"
-          },
-          "compress_threshold": {
-            "type": "string"
-          },
           "enabled": {
             "type": "boolean"
           },

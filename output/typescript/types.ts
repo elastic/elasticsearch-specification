@@ -11413,6 +11413,14 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
+export interface EncryptionResetRequest extends RequestBase {
+  accept_data_loss: boolean
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type EncryptionResetResponse = AcknowledgedResponseBase
+
 export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices
