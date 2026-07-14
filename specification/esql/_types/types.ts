@@ -19,10 +19,8 @@
 
 import { FieldValue, ProjectRouting } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
-import { AdditionalProperties } from '@spec_utils/behaviors'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @codegen_names value, named
@@ -45,13 +43,11 @@ export class ESQLView {
 
 /**
  * Per-query settings supplied through the request body.
- * This is the request-body equivalent of the in-query `SET` command: each key is a
- * setting name (for example `time_zone`) and its value configures how the query runs.
- * @behavior_meta AdditionalProperties fieldname=settings description="Additional per-query settings, equivalent to in-query `SET` keys."
+ * This is the request-body equivalent of the in-query `SET` command.
+ * Only settings that are exposed as request-body parameters can be set here; other `SET`-only
+ * settings (such as `unmapped_fields`) must be supplied in the query itself.
  */
-export class EsqlQuerySettings
-  implements AdditionalProperties<string, UserDefinedValue>
-{
+export class EsqlQuerySettings {
   /**
    * The default timezone to be used in the query.
    * It defaults to UTC and overrides the `time_zone` request parameter.
@@ -82,13 +78,6 @@ export class EsqlQuerySettings
    * @availability serverless stability=experimental
    */
   project_routing?: ProjectRouting
-  /**
-   * Determines how unmapped fields are treated.
-   * Possible values are `default` (queries fail when referencing unmapped fields), `nullify` (treats unmapped fields as null values), and `load` (loads unmapped fields from the stored `_source` with type `keyword`, or nullifies them if absent from `_source`).
-   * @availability stack since=9.3.0 stability=experimental
-   * @availability serverless stability=experimental
-   */
-  unmapped_fields?: string
 }
 
 /**
