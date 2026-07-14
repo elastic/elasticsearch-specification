@@ -150,6 +150,8 @@ export class FlushStats {
   total: long
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
+  total_time_excluding_waiting?: Duration
+  total_time_excluding_waiting_on_lock_in_millis?: DurationValue<UnitMillis>
 }
 
 export class GetStats {
@@ -160,7 +162,7 @@ export class GetStats {
   missing_time?: Duration
   missing_time_in_millis: DurationValue<UnitMillis>
   missing_total: long
-  time?: Duration
+  getTime?: Duration
   time_in_millis: DurationValue<UnitMillis>
   total: long
 }
@@ -179,6 +181,7 @@ export class IndexingStats {
   index_time_in_millis: DurationValue<UnitMillis>
   index_total: long
   index_failed: long
+  index_failed_due_to_version_conflict?: long
   types?: Dictionary<string, IndexingStats>
   write_load?: double
   recent_write_load?: double
@@ -254,14 +257,19 @@ export class QueryCacheStats {
 
 export class RecoveryStats {
   current_as_source: long
+  current_as_source_queued?: long
   current_as_target: long
+  current_as_target_queued?: long
+  current_from_store?: long
+  current_from_store_queued?: long
   throttle_time?: Duration
   throttle_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class RefreshStats {
   external_total: long
-  external_total_time_in_millis: DurationValue<UnitMillis>
+  external_total_time?: Duration
+  external_total_time_in_millis?: DurationValue<UnitMillis>
   listeners: long
   total: long
   total_time?: Duration
@@ -281,11 +289,13 @@ export class SearchStats {
   fetch_time?: Duration
   fetch_time_in_millis: DurationValue<UnitMillis>
   fetch_total: long
+  fetch_failure: long
   open_contexts?: long
   query_current: long
   query_time?: Duration
   query_time_in_millis: DurationValue<UnitMillis>
   query_total: long
+  query_failure: long
   scroll_current: long
   scroll_time?: Duration
   scroll_time_in_millis: DurationValue<UnitMillis>
