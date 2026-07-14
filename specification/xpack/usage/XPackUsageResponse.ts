@@ -22,6 +22,7 @@ import {
   Archive,
   Base,
   Ccr,
+  DataStreamLifecycleUsage,
   DataStreams,
   DataTiers,
   Eql,
@@ -53,6 +54,7 @@ export class Response {
     ccr: Ccr
     data_frame?: Base
     data_science?: Base
+    data_lifecycle?: DataStreamLifecycleUsage
     data_streams?: DataStreams
     data_tiers: DataTiers
     enrich?: Base
