@@ -50,8 +50,41 @@ export class CorePropertyBase extends PropertyBase {
   store?: boolean
 }
 
+/**
+ * Configuration object for doc values when sub-parameters are needed.
+ */
+export class DocValuesConfig {
+  /**
+   * If `false`, the field is treated as single-valued, enabling optimized storage.
+   * Only has an effect when columnar index mode is active.
+   * @server_default true
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  multi_value?: boolean
+
+  /**
+   * If `false`, every document must provide a non-null value for the field: a document that
+   * omits the field, sets it to `null`, or supplies only null values (an empty array or an
+   * all-null array) is rejected at index time.
+   * A field that defines `null_value` is always exempt, since the configured default removes
+   * the absence of a value.
+   * Only has an effect when columnar index mode is active.
+   * @server_default true
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  nullability?: boolean
+}
+
+/**
+ * Defines whether doc values are enabled for a field. Can be a simple boolean, or a configuration object for finer-grained control over sub-parameters such as `multi_value`.
+ * @codegen_names enabled, config
+ */
+export type DocValues = boolean | DocValuesConfig
+
 export class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values?: boolean
+  doc_values?: DocValues
 }
 
 export class BinaryProperty extends DocValuesPropertyBase {
