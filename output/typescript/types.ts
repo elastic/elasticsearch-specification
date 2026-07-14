@@ -21157,6 +21157,13 @@ export interface SecurityCreatedStatus {
 
 export type SecurityCredentialManagedBy = 'cloud' | 'elasticsearch'
 
+export type SecurityDataSourcePrivilege = 'create' | 'delete' | 'read_metadata' | 'read' | 'manage'| string
+
+export interface SecurityDataSourcePrivileges {
+  names: string[]
+  privileges: SecurityDataSourcePrivilege[]
+}
+
 export interface SecurityFieldSecurity {
   except?: Fields
   grant?: Fields
@@ -21164,6 +21171,7 @@ export interface SecurityFieldSecurity {
 
 export interface SecurityGlobalPrivilege {
   application: SecurityApplicationGlobalUserPrivileges
+  data_source?: SecurityDataSourcePrivileges[]
 }
 
 export type SecurityGrantType = 'password' | 'access_token'
