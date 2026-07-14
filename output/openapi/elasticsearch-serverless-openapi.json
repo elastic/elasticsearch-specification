@@ -20946,6 +20946,134 @@
         ]
       }
     },
+    "/_ml/anomaly_detectors/{job_id}/_forecast": {
+      "post": {
+        "tags": [
+          "ml anomaly"
+        ],
+        "summary": "Predict future behavior of a time series",
+        "description": "Forecasts are not supported for jobs that perform population analysis; an\nerror occurs if you try to create a forecast for a job that has an\n`over_field_name` in its configuration. Forcasts predict future behavior\nbased on historical data.\n\n## Required authorization\n\n* Cluster privileges: `manage_ml`\n",
+        "operationId": "ml-forecast",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "description": "Identifier for the anomaly detection job. The job must be open when you\ncreate a forecast; otherwise, an error occurs.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "duration",
+            "description": "A period of time that indicates how far into the future to forecast. For\nexample, `30d` corresponds to 30 days. The forecast starts at the last\nrecord that was processed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "expires_in",
+            "description": "The period of time that forecast results are retained. After a forecast\nexpires, the results are deleted. If set to a value of 0, the forecast is\nnever automatically deleted.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "max_model_memory",
+            "description": "The maximum memory the forecast can use. If the forecast needs to use\nmore than the provided amount, it will spool to disk. Default is 20mb,\nmaximum is 500mb and minimum is 1mb. If set to 40% or more of the job’s\nconfigured memory limit, it is automatically reduced to below that\namount.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "duration": {
+                    "description": "Refer to the description for the `duration` query parameter.",
+                    "default": "1d",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "expires_in": {
+                    "description": "Refer to the description for the `expires_in` query parameter.",
+                    "default": "14d",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "max_model_memory": {
+                    "description": "Refer to the description for the `max_model_memory` query parameter.",
+                    "default": "20mb",
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "MlForecastExample1": {
+                  "description": "An example body for a `POST _ml/anomaly_detectors/low_request_rate/_forecast` request.",
+                  "value": "{\n  \"duration\": \"10d\"\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "acknowledged": {
+                      "type": "boolean"
+                    },
+                    "forecast_id": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Id"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "acknowledged",
+                    "forecast_id"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_ml/calendars/{calendar_id}/events": {
       "get": {
         "tags": [
