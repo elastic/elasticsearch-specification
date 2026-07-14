@@ -45976,6 +45976,7 @@
         ]
       },
       "_global.bulk.OperationContainer": {
+        "description": "An action line, which is the first line of each operation in a bulk request.\nIt specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata, such as the target index and document ID.\nAll actions except `delete` expect a source line to follow.",
         "type": "object",
         "properties": {
           "index": {
@@ -46147,6 +46148,7 @@
         ]
       },
       "_global.bulk.UpdateAction": {
+        "description": "The source line that must follow an `update` action line.\nIt specifies the partial document, script, or upsert options to apply, plus optional update settings.",
         "type": "object",
         "properties": {
           "detect_noop": {
