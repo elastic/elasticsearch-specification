@@ -12797,7 +12797,7 @@
                 },
                 "EmbeddingRequestExample3": {
                   "summary": "Embedding task using multiple items grouped under a single content object",
-                  "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image",
+                  "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image. Multiple items in a single `content` object are available in Elasticsearch 9.5.0 and later.",
                   "value": "{\n  \"input\": [\n    {\n      \"content\": [\n        {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpeg;base64,...\"\n        },\n        {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      ]\n    }\n  ]\n}"
                 }
               }
@@ -69714,7 +69714,7 @@
         "type": "object",
         "properties": {
           "input": {
-            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\nMultiple items in one `content` object example:\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
+            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\nSupport for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\nMultiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingInput"
@@ -69795,7 +69795,7 @@
         ]
       },
       "inference._types.EmbeddingContentObjectGroup": {
-        "description": "Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.",
+        "description": "Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.\nSupport for multiple items is available in Elasticsearch 9.5.0 and later.",
         "oneOf": [
           {
             "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
@@ -69813,7 +69813,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "description": "The type of input to embed. Not all models support all input types.",
+            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
