@@ -530,6 +530,7 @@ export class RequestEmbedding {
    * Either a string, an array of strings, a `content` object, or an array of `content` objects.
    * `content` objects may contain a single item or an array of items. Models that support multiple items per `content`
    * object will return a single embedding for each `content` object, regardless of how many items it contains.
+   * Support for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.
    *
    * string example:
    * ```
@@ -568,7 +569,7 @@ export class RequestEmbedding {
    *   }
    * ]
    * ```
-   * Multiple items in one `content` object example:
+   * Multiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):
    * ```
    * "input": [
    *   {
@@ -639,6 +640,7 @@ export class EmbeddingContentObject {
 
 /**
  * Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.
+ * Support for multiple items is available in Elasticsearch 9.5.0 and later.
  */
 type EmbeddingContentObjectGroup =
   | EmbeddingContentObjectItem
@@ -650,6 +652,7 @@ type EmbeddingContentObjectGroup =
 export class EmbeddingContentObjectItem {
   /**
    * The type of input to embed. Not all models support all input types.
+   * The `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.
    */
   type: EmbeddingContentType
   /**
@@ -665,6 +668,7 @@ export class EmbeddingContentObjectItem {
 
 /**
  * The type of input to embed.
+ * The `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.
  */
 export enum EmbeddingContentType {
   text,
