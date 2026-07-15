@@ -1,5 +1,5 @@
 summary: Embedding task using multiple items grouped under a single content object
-description: Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image
+description: Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image. Multiple items in a single `content` object are available in Elasticsearch 9.5.0 and later.
 method_request: 'POST _inference/embedding/my-multimodal-endpoint'
 value: |-
   {
