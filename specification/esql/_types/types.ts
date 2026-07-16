@@ -27,8 +27,36 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @codegen_names value, named
  */
 export type ESQLParams = SingleOrMultiValue[] | NamedValue[]
-export type NamedValue = SingleKeyDictionary<string, SingleOrMultiValue>
+export type NamedValue = SingleKeyDictionary<string, NamedParameterValue>
 export type SingleOrMultiValue = FieldValue | FieldValue[]
+
+/**
+ * The value of a named ES|QL query parameter.
+ * It is either a literal single or multi value, or a single-key object that classifies how
+ * the parameter is interpreted.
+ * @codegen_names literal, classified
+ */
+export type NamedParameterValue = SingleOrMultiValue | ClassifiedNamedParameter
+
+/**
+ * A named ES|QL query parameter supplied in its classified form.
+ * Exactly one of `value`, `identifier`, or `pattern` must be set.
+ * @variants container
+ */
+export class ClassifiedNamedParameter {
+  /**
+   * Interpret the parameter as a literal value.
+   */
+  value?: SingleOrMultiValue
+  /**
+   * Interpret the parameter as an identifier, such as a field or function name.
+   */
+  identifier?: string
+  /**
+   * Interpret the parameter as a pattern, such as an index or field name pattern.
+   */
+  pattern?: string
+}
 
 /**
  *
