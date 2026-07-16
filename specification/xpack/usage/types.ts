@@ -78,7 +78,7 @@ export class Datafeed {
 /**
  * Usage statistics about logging configuration reported by `_xpack/usage`.
  */
-export class Logging extends Base {
+export class Logging {
   /**
    * Search query log configuration.
    */
@@ -105,7 +105,7 @@ export class QueryLoggingConfig {
   /**
    * The configured logging threshold, if any.
    */
-  threshold?: string
+  threshold?: Duration
 }
 
 export class EsqlLoggingConfig {
@@ -120,7 +120,7 @@ export class EsqlLoggingConfig {
   /**
    * The configured logging thresholds, keyed by threshold name, if any.
    */
-  thresholds?: Dictionary<string, string>
+  thresholds?: Dictionary<string, Duration>
 }
 
 export class DataStreams extends Base {
