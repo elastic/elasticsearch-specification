@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { FieldValue } from '@_types/common'
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { FieldValue, Name } from '@_types/common'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @codegen_names value, named
@@ -37,4 +38,43 @@ export class ESQLView {
   name: string
   /** The ES|QL query */
   query: string
+}
+
+/**
+ * Represents a data source definition stored in cluster state. A data source holds
+ * connection settings (credentials, endpoints, auth) for an external data provider.
+ */
+export class ESQLDataSource {
+  /** The data source name. */
+  name: Name
+  /** The data source type. */
+  type: string
+  /** A free-text description. */
+  description?: string
+  /** Type-specific settings. */
+  settings: Dictionary<string, UserDefinedValue>
+}
+
+/**
+ * Represents a dataset definition stored in cluster state. A dataset is a named reference
+ * to external data that participates in the index namespace alongside indices, aliases, and views.
+ * Datasets inherit credentials from their referenced data source at query time.
+ */
+export class ESQLDataset {
+  /** The dataset name. */
+  name: Name
+  /** The name of the referenced data source. */
+  data_source: Name
+  /**
+   * The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.
+   * For S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.
+   */
+  resource: string
+  /** A free-text description. */
+  description?: string
+  /**
+   * Format- and parsing-specific settings that configure how the resource is read.
+   * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
+   */
+  settings?: Dictionary<string, UserDefinedValue>
 }
