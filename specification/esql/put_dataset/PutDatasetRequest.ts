@@ -22,6 +22,7 @@ import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { DatasetMapping } from '@esql/_types/types'
 
 /**
  * Create or replace an ES|QL dataset.
@@ -71,6 +72,8 @@ export interface Request extends RequestBase {
     resource: string
     /** A free-text description of the dataset. */
     description?: string
+    /** User-declared mapping on the dataset definition */
+    mappings?: DatasetMapping
     /**
      * Format and parsing-specific settings that configure how the resource is read.
      * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
