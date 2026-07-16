@@ -11636,6 +11636,12 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
+export interface EsqlClassifiedNamedParameter {
+  value?: EsqlSingleOrMultiValue
+  identifier?: string
+  pattern?: string
+}
+
 export interface EsqlESQLDataSource {
   name: Name
   type: string
@@ -11723,7 +11729,9 @@ export interface EsqlEsqlShardInfo {
   failed?: integer
 }
 
-export type EsqlNamedValue = Partial<Record<string, EsqlSingleOrMultiValue>>
+export type EsqlNamedParameterValue = EsqlSingleOrMultiValue | EsqlClassifiedNamedParameter
+
+export type EsqlNamedValue = Partial<Record<string, EsqlNamedParameterValue>>
 
 export type EsqlSingleOrMultiValue = FieldValue | FieldValue[]
 
