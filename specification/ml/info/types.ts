@@ -24,6 +24,16 @@ import { CategorizationAnalyzer } from '@ml/_types/Analysis'
 export class Defaults {
   anomaly_detectors: AnomalyDetectors
   datafeeds: Datafeeds
+  /**
+   * Returns `linux-x86_64` when all ML nodes are x86, or when no ML nodes exist but the cluster is in Elastic Cloud.
+   * Returns `platform_agnostic` otherwise.
+   */
+  model_platform_variant: ModelPlatformVariant
+}
+
+export enum ModelPlatformVariant {
+  linux86 = `linux-x86_64`,
+  platform_agnostic = `platform_agnostic`
 }
 
 export class NativeCode {
