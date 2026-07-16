@@ -11636,6 +11636,12 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
+export interface EsqlClassifiedNamedParameter {
+  value?: EsqlSingleOrMultiValue
+  identifier?: string
+  pattern?: string
+}
+
 export interface EsqlESQLDataSource {
   name: Name
   type: string
@@ -11723,7 +11729,9 @@ export interface EsqlEsqlShardInfo {
   failed?: integer
 }
 
-export type EsqlNamedValue = Partial<Record<string, EsqlSingleOrMultiValue>>
+export type EsqlNamedParameterValue = EsqlSingleOrMultiValue | EsqlClassifiedNamedParameter
+
+export type EsqlNamedValue = Partial<Record<string, EsqlNamedParameterValue>>
 
 export type EsqlSingleOrMultiValue = FieldValue | FieldValue[]
 
@@ -18941,6 +18949,7 @@ export interface MlInfoDatafeeds {
 export interface MlInfoDefaults {
   anomaly_detectors: MlInfoAnomalyDetectors
   datafeeds: MlInfoDatafeeds
+  model_platform_variant: MlInfoModelPlatformVariant
 }
 
 export interface MlInfoLimits {
@@ -18950,6 +18959,8 @@ export interface MlInfoLimits {
   effective_max_model_memory_limit?: ByteSize
   total_ml_memory: ByteSize
 }
+
+export type MlInfoModelPlatformVariant = 'linux-x86_64' | 'platform_agnostic'
 
 export interface MlInfoNativeCode {
   build_hash: string
@@ -25067,6 +25078,40 @@ export interface XpackUsageCounter {
   total: long
 }
 
+export interface XpackUsageDataStreamLifecycleEffectiveRetentionStats extends XpackUsageDataStreamLifecycleThresholdStats {
+  retained_data_streams: long
+}
+
+export interface XpackUsageDataStreamLifecycleGlobalRetention {
+  default: XpackUsageDataStreamLifecycleGlobalRetentionStats
+  max: XpackUsageDataStreamLifecycleGlobalRetentionStats
+}
+
+export interface XpackUsageDataStreamLifecycleGlobalRetentionStats {
+  defined: boolean
+  affected_data_streams?: long
+  retention_millis?: long
+}
+
+export interface XpackUsageDataStreamLifecycleRetentionStats extends XpackUsageDataStreamLifecycleThresholdStats {
+  configured_data_streams: long
+}
+
+export interface XpackUsageDataStreamLifecycleThresholdStats {
+  minimum_millis?: long
+  maximum_millis?: long
+  average_millis?: double
+}
+
+export interface XpackUsageDataStreamLifecycleUsage extends XpackUsageBase {
+  count?: long
+  default_rollover_used?: boolean
+  data_retention?: XpackUsageDataStreamLifecycleRetentionStats
+  effective_retention?: XpackUsageDataStreamLifecycleEffectiveRetentionStats
+  frozen_after?: XpackUsageDataStreamLifecycleRetentionStats
+  global_retention?: XpackUsageDataStreamLifecycleGlobalRetention
+}
+
 export interface XpackUsageDataStreams extends XpackUsageBase {
   data_streams: long
   indices_count: long
@@ -25333,6 +25378,7 @@ export interface XpackUsageResponse {
   ccr: XpackUsageCcr
   data_frame?: XpackUsageBase
   data_science?: XpackUsageBase
+  data_lifecycle?: XpackUsageDataStreamLifecycleUsage
   data_streams?: XpackUsageDataStreams
   data_tiers: XpackUsageDataTiers
   enrich?: XpackUsageBase

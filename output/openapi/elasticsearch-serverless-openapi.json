@@ -67190,7 +67190,42 @@
       "esql._types.NamedValue": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+          "$ref": "#/components/schemas/esql._types.NamedParameterValue"
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "esql._types.NamedParameterValue": {
+        "description": "The value of a named ES|QL query parameter.\nIt is either a literal single or multi value, or a single-key object that classifies how\nthe parameter is interpreted.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+          },
+          {
+            "$ref": "#/components/schemas/esql._types.ClassifiedNamedParameter"
+          }
+        ]
+      },
+      "esql._types.ClassifiedNamedParameter": {
+        "description": "A named ES|QL query parameter supplied in its classified form.\nExactly one of `value`, `identifier`, or `pattern` must be set.",
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "Interpret the parameter as a literal value.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.SingleOrMultiValue"
+              }
+            ]
+          },
+          "identifier": {
+            "description": "Interpret the parameter as an identifier, such as a field or function name.",
+            "type": "string"
+          },
+          "pattern": {
+            "description": "Interpret the parameter as a pattern, such as an index or field name pattern.",
+            "type": "string"
+          }
         },
         "minProperties": 1,
         "maxProperties": 1
