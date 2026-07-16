@@ -64,6 +64,17 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
+     * If true, the response includes `id`, `state`, `node`, `stats`, `health`,
+     * and basic `checkpointing` information (the last and next checkpoint
+     * numbers, and the next checkpoint's `position` and `progress`). Skips
+     * statistics that require heavy computations to calculate:
+     * `operations_behind`, `changes_last_detected_at`, `last_search_time`, and
+     * the checkpoint timestamps.
+     * @server_default false
+     * @availability stack since=8.13.0
+     */
+    basic?: boolean
+    /**
      * Skips the specified number of transforms.
      * @server_default 0
      */
