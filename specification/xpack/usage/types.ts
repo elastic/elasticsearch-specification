@@ -496,6 +496,20 @@ export class Vector extends Base {
   sparse_vector_fields_count?: integer
 }
 
+/**
+ * Usage statistics for indices using the `vectordb_document` index mode.
+ */
+export class VectorDbDocument extends Base {
+  /**
+   * The number of indices using the `vectordb_document` index mode.
+   */
+  indices_count: integer
+  /**
+   * The total number of documents held across all `vectordb_document` indices.
+   */
+  num_docs: long
+}
+
 export class Watcher extends Base {
   execution: WatcherActions
   watch: WatcherWatch

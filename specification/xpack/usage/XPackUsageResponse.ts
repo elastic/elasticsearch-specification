@@ -37,6 +37,7 @@ import {
   Slm,
   Sql,
   Vector,
+  VectorDbDocument,
   Watcher
 } from './types'
 
@@ -77,6 +78,10 @@ export class Response {
     sql: Sql
     transform: Base
     vectors?: Vector
+    /**
+     * @availability stack since=9.5.0
+     */
+    vectordb_document?: VectorDbDocument
     voting_only: Base
   }
 }
