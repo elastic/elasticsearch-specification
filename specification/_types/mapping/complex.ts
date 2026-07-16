@@ -32,9 +32,9 @@ export class FlattenedProperty extends PropertyBase {
   index_options?: IndexOptions
   null_value?: string
   /**
-   * When set to lossy (the default), leaf arrays are sorted, de-nulled, and deduplicated in the returned synthetic source.
-   * When set to exact, leaf arrays preserve order, nulls, and duplicates.
-   * @server_default lossy
+   * How leaf arrays are represented in synthetic source.
+   * When set to `lossy`, leaf arrays are sorted, de-nulled, and deduplicated in the returned synthetic source.
+   * When set to `exact`, leaf arrays preserve order, nulls, and duplicates.
    */
   preserve_leaf_arrays?: PreserveLeafArrays
   similarity?: string
