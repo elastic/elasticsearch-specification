@@ -11621,6 +11621,21 @@ export interface EsqlAsyncEsqlResult extends EsqlEsqlResult {
   is_running: boolean
 }
 
+export interface EsqlESQLDataSource {
+  name: Name
+  type: string
+  description?: string
+  settings: Record<string, any>
+}
+
+export interface EsqlESQLDataset {
+  name: Name
+  data_source: Name
+  resource: string
+  description?: string
+  settings?: Record<string, any>
+}
+
 export type EsqlESQLParams = EsqlSingleOrMultiValue[] | EsqlNamedValue[]
 
 export interface EsqlESQLView {
@@ -11746,11 +11761,45 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
 
 export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
 
+export interface EsqlDeleteDataSourceRequest extends RequestBase {
+  name: Names
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type EsqlDeleteDataSourceResponse = AcknowledgedResponseBase
+
+export interface EsqlDeleteDatasetRequest extends RequestBase {
+  name: Names
+  master_timeout?: Duration
+  timeout?: Duration
+}
+
+export type EsqlDeleteDatasetResponse = AcknowledgedResponseBase
+
 export interface EsqlDeleteViewRequest extends RequestBase {
   name: Ids
 }
 
 export type EsqlDeleteViewResponse = AcknowledgedResponseBase
+
+export interface EsqlGetDataSourceRequest extends RequestBase {
+  name?: Names
+  master_timeout?: Duration
+}
+
+export interface EsqlGetDataSourceResponse {
+  data_sources: EsqlESQLDataSource[]
+}
+
+export interface EsqlGetDatasetRequest extends RequestBase {
+  name?: Names
+  master_timeout?: Duration
+}
+
+export interface EsqlGetDatasetResponse {
+  datasets: EsqlESQLDataset[]
+}
 
 export interface EsqlGetQueryRequest extends RequestBase {
   id: Id
@@ -11788,6 +11837,33 @@ export interface EsqlListQueriesRequest extends RequestBase {
 export interface EsqlListQueriesResponse {
   queries: Record<TaskId, EsqlListQueriesBody>
 }
+
+export interface EsqlPutDataSourceRequest extends RequestBase {
+  name: Name
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    type: string
+    description?: string
+    settings?: Record<string, any>
+  }
+}
+
+export type EsqlPutDataSourceResponse = AcknowledgedResponseBase
+
+export interface EsqlPutDatasetRequest extends RequestBase {
+  name: Name
+  master_timeout?: Duration
+  timeout?: Duration
+  body?: {
+    data_source: Name
+    resource: string
+    description?: string
+    settings?: Record<string, any>
+  }
+}
+
+export type EsqlPutDatasetResponse = AcknowledgedResponseBase
 
 export interface EsqlPutViewRequest extends RequestBase {
   name: Id
