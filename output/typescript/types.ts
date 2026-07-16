@@ -25338,6 +25338,7 @@ export interface XpackUsageResponse {
   sql: XpackUsageSql
   transform: XpackUsageBase
   vectors?: XpackUsageVector
+  vectordb_document?: XpackUsageVectorDbDocument
   voting_only: XpackUsageBase
 }
 
@@ -25440,6 +25441,11 @@ export interface XpackUsageVector extends XpackUsageBase {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
+}
+
+export interface XpackUsageVectorDbDocument extends XpackUsageBase {
+  indices_count: integer
+  num_docs: long
 }
 
 export interface XpackUsageWatcher extends XpackUsageBase {
