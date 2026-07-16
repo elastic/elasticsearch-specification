@@ -6545,6 +6545,375 @@
         ]
       }
     },
+    "/_query/data_source/{name}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get one or more ES|QL data sources",
+        "description": "Returns the requested data sources. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "esql-get-data-source-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/esql.get_data_source-name"
+          },
+          {
+            "$ref": "#/components/parameters/esql.get_data_source-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_data_source-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Create or update an ES|QL data source",
+        "description": "Creates or replaces a named, type-specific data source configuration that\ndatasets reference to access external data. Names must be lowercase and\nfollow index/alias naming rules.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "esql-put-data-source",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The data source name to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The time to wait for the request to be completed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "The data source type. Must be lowercase and contain no whitespace.",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "A free-text description of the data source.",
+                    "type": "string"
+                  },
+                  "settings": {
+                    "description": "Type-specific settings. The accepted keys depend on the data source type's validator.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete one or more ES|QL data sources",
+        "description": "Fails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "esql-delete-data-source",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of data source names to delete.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Names"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The time to wait for the request to be completed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/dataset/{name}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get one or more ES|QL datasets",
+        "description": "Returns the requested datasets. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "esql-get-dataset-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/esql.get_dataset-name"
+          },
+          {
+            "$ref": "#/components/parameters/esql.get_dataset-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_dataset-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Create or replace an ES|QL dataset",
+        "description": "Creates or replaces a dataset that references a data source. Dataset\nnames participate in the index namespace and must follow index/alias naming\nrules. Returns `404` if the referenced data source does not exist.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "esql-put-dataset",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The dataset name to create or update.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The time to wait for the request to be completed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data_source": {
+                    "description": "The name of the referenced data source. The data source must already exist.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Name"
+                      }
+                    ]
+                  },
+                  "resource": {
+                    "description": "The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.\nFor S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.",
+                    "type": "string"
+                  },
+                  "description": {
+                    "description": "A free-text description of the dataset.",
+                    "type": "string"
+                  },
+                  "settings": {
+                    "description": "Format and parsing-specific settings that configure how the resource is read.\nThe accepted keys depend on the format reader; compression can be inferred from the resource URI.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "data_source",
+                  "resource"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete one or more ES|QL datasets",
+        "description": "\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "esql-delete-dataset",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "A comma-separated list of dataset names to delete.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Names"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The time to wait for the request to be completed.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_query/view/{name}": {
       "get": {
         "tags": [
@@ -6660,6 +7029,60 @@
                 }
               }
             }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/data_source": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get one or more ES|QL data sources",
+        "description": "Returns the requested data sources. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "esql-get-data-source",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/esql.get_data_source-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_data_source-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/dataset": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get one or more ES|QL datasets",
+        "description": "Returns the requested datasets. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "operationId": "esql-get-dataset",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/esql.get_dataset-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/esql.get_dataset-200"
           }
         },
         "x-state": "Experimental",
@@ -66576,6 +66999,82 @@
           "head"
         ]
       },
+      "esql._types.ESQLDataSource": {
+        "description": "Represents a data source definition stored in cluster state. A data source holds\nconnection settings (credentials, endpoints, auth) for an external data provider.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The data source name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "type": {
+            "description": "The data source type.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "Type-specific settings.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "settings"
+        ]
+      },
+      "esql._types.ESQLDataset": {
+        "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The dataset name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "data_source": {
+            "description": "The name of the referenced data source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "resource": {
+            "description": "The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.\nFor S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "Format- and parsing-specific settings that configure how the resource is read.\nThe accepted keys depend on the format reader; compression can be inferred from the resource URI.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "data_source",
+          "resource"
+        ]
+      },
       "esql._types.ESQLView": {
         "description": "A non-materialized ES|QL view.",
         "type": "object",
@@ -87698,6 +88197,49 @@
           }
         }
       },
+      "esql.get_data_source-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data_sources": {
+                  "description": "The matching data sources.\nCredential values in each data source's settings are redacted as `::es_redacted::` in the response.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/esql._types.ESQLDataSource"
+                  }
+                }
+              },
+              "required": [
+                "data_sources"
+              ]
+            }
+          }
+        }
+      },
+      "esql.get_dataset-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "datasets": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/esql._types.ESQLDataset"
+                  }
+                }
+              },
+              "required": [
+                "datasets"
+              ]
+            }
+          }
+        }
+      },
       "esql.get_view-200": {
         "description": "",
         "content": {
@@ -91167,6 +91709,48 @@
         "in": "query",
         "name": "wait_for_completion_timeout",
         "description": "Timeout duration to wait for the request to finish. Defaults to no timeout, meaning the request waits for complete search results.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Duration"
+        },
+        "style": "form"
+      },
+      "esql.get_data_source-name": {
+        "in": "path",
+        "name": "name",
+        "description": "A comma-separated list of data source names or wildcard patterns. Omit to return all data sources.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Names"
+        },
+        "style": "simple"
+      },
+      "esql.get_data_source-master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Duration"
+        },
+        "style": "form"
+      },
+      "esql.get_dataset-name": {
+        "in": "path",
+        "name": "name",
+        "description": "A comma-separated list of dataset names or wildcard patterns. Omit to return all datasets.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Names"
+        },
+        "style": "simple"
+      },
+      "esql.get_dataset-master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Duration"
