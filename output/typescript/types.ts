@@ -11658,6 +11658,13 @@ export interface EsqlESQLView {
   query: string
 }
 
+export type EsqlEsqlApproximation = boolean | EsqlEsqlApproximationSettings
+
+export interface EsqlEsqlApproximationSettings {
+  rows?: integer
+  confidence_level?: double
+}
+
 export interface EsqlEsqlClusterDetails {
   status: EsqlEsqlClusterStatus
   indices: string
@@ -11684,6 +11691,13 @@ export interface EsqlEsqlColumnInfo {
 }
 
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
+
+export interface EsqlEsqlQuerySettings {
+  time_zone?: string
+  approximation?: EsqlEsqlApproximation
+  column_metadata?: SpecUtilsStringified<boolean>
+  project_routing?: ProjectRouting
+}
 
 export interface EsqlEsqlResult {
   took?: DurationValue<UnitMillis>
@@ -11748,6 +11762,7 @@ export interface EsqlAsyncQueryRequest extends RequestBase {
     keep_alive?: Duration
     keep_on_completion?: boolean
     project_routing?: ProjectRouting
+    settings?: EsqlEsqlQuerySettings
   }
 }
 
@@ -11906,6 +11921,7 @@ export interface EsqlQueryRequest extends RequestBase {
     include_ccs_metadata?: boolean
     include_execution_metadata?: boolean
     project_routing?: ProjectRouting
+    settings?: EsqlEsqlQuerySettings
   }
 }
 
