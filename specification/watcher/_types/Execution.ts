@@ -75,7 +75,7 @@ export class ExecutionResult {
   condition?: ExecutionResultCondition
   execution_duration: DurationValue<UnitMillis>
   execution_time: DateTime
-  input: ExecutionResultInput
+  input?: ExecutionResultInput
   transform?: ExecutionResultTransform
 }
 
