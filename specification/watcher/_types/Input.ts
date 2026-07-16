@@ -19,7 +19,7 @@
 
 import {
   Id,
-  IndexName,
+  Indices,
   IndicesOptions,
   Password,
   SearchType,
@@ -27,8 +27,10 @@ import {
 } from '@_types/common'
 import { Host } from '@_types/Networking'
 import { uint } from '@_types/Numeric'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { ScriptLanguage } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { TransformContainer } from '@_types/Transform'
+import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -92,12 +94,16 @@ export class InputContainer {
   http?: HttpInput
   search?: SearchInput
   simple?: Dictionary<string, UserDefinedValue>
+  transform?: TransformContainer
 }
 
 export enum InputType {
+  chain,
   http,
+  none,
   search,
-  simple
+  simple,
+  transform
 }
 
 export enum ResponseContentType {
@@ -113,8 +119,8 @@ export class SearchInput {
 }
 
 export class SearchInputRequestDefinition {
-  body?: SearchInputRequestBody
-  indices?: IndexName[]
+  body?: SearchRequestBody
+  indices?: Indices
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: SearchTemplateRequestBody
@@ -130,6 +136,12 @@ export class SearchTemplateRequestBody {
    * this parameter is required.
    */
   id?: Id
+  /**
+   * The language the template is written in.
+   * It is reported in the resolved search input of a watch record.
+   * @server_default mustache
+   */
+  lang?: ScriptLanguage
   params?: Dictionary<string, UserDefinedValue>
   /** @server_default false */
   profile?: boolean
@@ -139,10 +151,6 @@ export class SearchTemplateRequestBody {
    * parameter is required.
    */
   source?: string
-}
-
-export class SearchInputRequestBody {
-  query: QueryContainer
 }
 
 export class SimpleInput {

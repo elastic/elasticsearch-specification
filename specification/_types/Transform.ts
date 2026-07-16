@@ -34,6 +34,9 @@ export class TransformContainer {
   search?: SearchTransform
 }
 
+/**
+ * @shortcut_property source
+ */
 export class ScriptTransform {
   /**
    * @server_default painless
@@ -46,5 +49,5 @@ export class ScriptTransform {
 
 export class SearchTransform {
   request: SearchInputRequestDefinition
-  timeout: Duration
+  timeout?: Duration
 }

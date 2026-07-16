@@ -93,11 +93,18 @@ export class SimulatedActions {
   use_all: boolean
 }
 
+/**
+ * The status of an executed action.
+ * It maps to the server-side `Action.Result.Status` enum.
+ */
 export enum ActionStatusOptions {
   success,
   failure,
-  simulated,
-  throttled
+  partial_failure,
+  acknowledged,
+  throttled,
+  condition_failed,
+  simulated
 }
 
 export enum AcknowledgementOptions {

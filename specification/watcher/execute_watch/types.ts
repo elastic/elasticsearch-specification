@@ -18,6 +18,10 @@
  */
 
 import { Id, Metadata, Username } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { DateTime } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ConditionContainer } from '@watcher/_types/Conditions'
 import { ExecutionResult, ExecutionStatus } from '@watcher/_types/Execution'
 import { InputContainer } from '@watcher/_types/Input'
@@ -25,15 +29,18 @@ import { TriggerEventResult } from '@watcher/_types/Trigger'
 import { WatchStatus } from '@watcher/_types/Watch'
 
 export class WatchRecord {
-  condition: ConditionContainer
-  input: InputContainer
-  messages: string[]
-  metadata?: Metadata
+  '@timestamp': DateTime
   node: string
-  result: ExecutionResult
   state: ExecutionStatus
   trigger_event: TriggerEventResult
-  user: Username
   watch_id: Id
+  condition?: ConditionContainer
+  input?: InputContainer
+  metadata?: Metadata
+  result?: ExecutionResult
+  user?: Username
   status?: WatchStatus
+  messages?: string[]
+  vars?: Dictionary<string, UserDefinedValue>
+  exception?: ErrorCause
 }
