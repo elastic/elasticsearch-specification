@@ -80,6 +80,99 @@ export class DataStreams extends Base {
   indices_count: long
 }
 
+/**
+ * Usage statistics for data stream lifecycle (DLM), reported by `_xpack/usage` under `data_lifecycle`.
+ * Besides `available` and `enabled`, all the following statistics are only present when the feature is enabled.
+ */
+export class DataStreamLifecycleUsage extends Base {
+  /**
+   * The number of data streams that have a lifecycle configured.
+   */
+  count?: long
+  /**
+   * Whether the default rollover configuration is used by at least one data stream.
+   */
+  default_rollover_used?: boolean
+  /**
+   * Statistics about the explicitly configured data retention across data streams.
+   */
+  data_retention?: DataStreamLifecycleRetentionStats
+  /**
+   * Statistics about the effective retention (configured or derived from global retention) across data streams.
+   */
+  effective_retention?: DataStreamLifecycleEffectiveRetentionStats
+  /**
+   * Statistics about the configured `frozen_after` (searchable snapshot) tier threshold across data streams.
+   * @availability stack since=9.5.0
+   */
+  frozen_after?: DataStreamLifecycleRetentionStats
+  /**
+   * Statistics about the cluster's global default and maximum retention settings.
+   */
+  global_retention?: DataStreamLifecycleGlobalRetention
+}
+
+/**
+ * The `minimum_millis`, `maximum_millis`, and `average_millis` fields are only present when at least one data stream contributes to these statistics.
+ */
+export class DataStreamLifecycleThresholdStats {
+  /**
+   * The smallest configured value in milliseconds.
+   */
+  minimum_millis?: long
+  /**
+   * The largest configured value in milliseconds.
+   */
+  maximum_millis?: long
+  /**
+   * The average configured value in milliseconds.
+   */
+  average_millis?: double
+}
+
+export class DataStreamLifecycleRetentionStats extends DataStreamLifecycleThresholdStats {
+  /**
+   * The number of data streams for which this value is configured.
+   */
+  configured_data_streams: long
+}
+
+export class DataStreamLifecycleEffectiveRetentionStats extends DataStreamLifecycleThresholdStats {
+  /**
+   * The number of data streams for which an effective retention applies.
+   */
+  retained_data_streams: long
+}
+
+export class DataStreamLifecycleGlobalRetention {
+  /**
+   * Statistics about the cluster's default global retention.
+   */
+  default: DataStreamLifecycleGlobalRetentionStats
+  /**
+   * Statistics about the cluster's maximum global retention.
+   */
+  max: DataStreamLifecycleGlobalRetentionStats
+}
+
+/**
+ * The `affected_data_streams` and `retention_millis` fields are only present when this global retention is defined.
+ */
+export class DataStreamLifecycleGlobalRetentionStats {
+  /**
+   * Whether this global retention is defined for the cluster.
+   */
+  defined: boolean
+  /**
+   * The number of data streams affected by this global retention.
+   */
+  affected_data_streams?: long
+  /**
+   * The global retention period in milliseconds.
+   */
+  retention_millis?: long
+}
+
 export class DataTierPhaseStatistics {
   node_count: long
   index_count: long
