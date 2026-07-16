@@ -19,13 +19,14 @@
 
 import { Id } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
-import { long } from '@_types/Numeric'
+import { integer, long } from '@_types/Numeric'
 import { DateTime, DurationValue, UnitMillis } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionStatusOptions, ActionType } from './Action'
 import {
   EmailResult,
+  HttpInputRequestResult,
   IndexResult,
   LoggingResult,
   PagerDutyResult,
@@ -33,7 +34,7 @@ import {
   WebhookResult
 } from './Actions'
 import { ConditionType } from './Conditions'
-import { InputType } from './Input'
+import { InputType, SearchInputRequestDefinition } from './Input'
 
 export enum ExecutionStatus {
   awaits_execution,
@@ -57,38 +58,109 @@ export enum ExecutionPhase {
   finished
 }
 
+/**
+ * The status of an input, condition, or transform phase.
+ * These phases can only succeed or fail, so unlike an action they never report
+ * statuses such as `throttled`, `condition_failed`, or `simulated`.
+ * It maps to the server-side `Input.Result.Status`, `Condition.Result.Status`,
+ * and `Transform.Result.Status` enums.
+ */
+export enum ExecutionResultStatus {
+  success,
+  failure
+}
+
 export class ExecutionResult {
   actions: ExecutionResultAction[]
-  condition: ExecutionResultCondition
+  condition?: ExecutionResultCondition
   execution_duration: DurationValue<UnitMillis>
   execution_time: DateTime
-  input: ExecutionResultInput
+  input?: ExecutionResultInput
+  transform?: ExecutionResultTransform
 }
 
 export class ExecutionResultCondition {
   met: boolean
-  status: ActionStatusOptions
+  status: ExecutionResultStatus
   type: ConditionType
+  compare?: ExecutionResultConditionResolved
+  array_compare?: ExecutionResultConditionResolved
 }
 
-export class ExecutionResultAction {
+export class ExecutionResultConditionResolved {
+  resolved_values?: Dictionary<string, UserDefinedValue>
+}
+
+/**
+ * The result of a single action execution.
+ */
+export class ExecutionResultForeachAction {
   email?: EmailResult
-  id: Id
   index?: IndexResult
   logging?: LoggingResult
   pagerduty?: PagerDutyResult
-  reason?: string
   slack?: SlackResult
-  status: ActionStatusOptions
-  type: ActionType
   webhook?: WebhookResult
   error?: ErrorCause
+  reason?: string
+}
+
+export class ExecutionResultAction extends ExecutionResultForeachAction {
+  id: Id
+  type: ActionType
+  status: ActionStatusOptions
+  condition?: ExecutionResultCondition
+  transform?: ExecutionResultTransform
+  foreach?: ExecutionResultForeachAction[]
+  max_iterations?: integer
+  number_of_actions_executed?: integer
+}
+
+export class ExecutionResultTransform {
+  payload?: Dictionary<string, UserDefinedValue>
+  status: ExecutionResultStatus
+  type: ExecutionResultTransformType
+  search?: ExecutionResultSearchInput
+  error?: ErrorCause
+  reason?: string
+}
+
+export enum ExecutionResultTransformType {
+  script,
+  search,
+  chain
 }
 
 export class ExecutionResultInput {
-  payload: Dictionary<string, UserDefinedValue>
-  status: ActionStatusOptions
+  payload?: Dictionary<string, UserDefinedValue>
+  status: ExecutionResultStatus
   type: InputType
+  /**
+   * The resolved search request, present when the input is a search input.
+   */
+  search?: ExecutionResultSearchInput
+  /**
+   * The resolved HTTP request, present when the input is an HTTP input.
+   */
+  http?: ExecutionResultHttpInput
+  /**
+   * The result of each named input, present when the input is a chain input.
+   */
+  chain?: Dictionary<string, ExecutionResultInput>
+  error?: ErrorCause
+}
+
+export class ExecutionResultSearchInput {
+  request: SearchInputRequestDefinition
+}
+
+export class ExecutionResultHttpInput {
+  request: HttpInputRequestResult
+  /**
+   * The HTTP status code returned by the request.
+   * It is only present when the request was executed.
+   */
+  status_code?: integer
 }
 
 export class ExecutionThreadPool {

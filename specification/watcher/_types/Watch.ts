@@ -36,7 +36,7 @@ import { TriggerContainer } from './Trigger'
 
 export class Watch {
   actions: Dictionary<IndexName, Action>
-  condition: ConditionContainer
+  condition?: ConditionContainer
   input: InputContainer
   metadata?: Metadata
   status?: WatchStatus
