@@ -59,6 +59,65 @@ export class ClassifiedNamedParameter {
 }
 
 /**
+ * A user-declared mapping (the `mappings` block) attached to a dataset.
+ * It is entirely optional: a dataset with no declared mapping relies on inference.
+ */
+export class DatasetMapping {
+  /**
+   * The policy for columns that are not declared in `properties`.
+   * `true` (the default) infers undeclared columns and overlays the declarations; `false` makes the declaration the entire schema, so undeclared columns are not queryable.
+   * @server_default true
+   */
+  dynamic?: Dynamic
+  /**
+   * The per-column declarations, keyed by logical column name.
+   */
+  properties?: Dictionary<string, DatasetFieldMapping>
+  /**
+   * The `_id` meta-field configuration, sourcing the document identity from a column.
+   */
+  _id?: IdPath
+}
+
+/**
+ * The undeclared-column policy for a dataset mapping.
+ * Only the two read-applicable values are supported.
+ */
+export enum Dynamic {
+  true,
+  false
+}
+
+/**
+ * The `_id` meta-field of a dataset mapping.
+ */
+export class IdPath {
+  /**
+   * The name of the column that provides the document identity.
+   */
+  path: string
+}
+
+/**
+ * A per-column declaration inside a dataset mapping's `properties`.
+ */
+export class DatasetFieldMapping {
+  /**
+   * The declared column type.
+   */
+  type: string
+  /**
+   * The underlying file column that this logical column reads from.
+   * This is a read-path rename: the physical column becomes this single logical column.
+   */
+  path?: string
+  /**
+   * The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.
+   */
+  format?: string
+}
+
+/**
  *
  * A non-materialized ES|QL view.
  *
@@ -107,6 +166,10 @@ export class ESQLDataset {
    * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
    */
   settings?: Dictionary<string, UserDefinedValue>
+  /**
+   * The user-declared mapping on the dataset definition.
+   */
+  mappings?: DatasetMapping
 }
 
 /**
