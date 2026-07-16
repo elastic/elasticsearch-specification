@@ -254,7 +254,7 @@ export class EmailAction extends Email {}
 // Index -------------------------------- //
 
 export class IndexAction {
-  index: IndexName
+  index?: IndexName
   doc_id?: Id
   refresh?: Refresh
   /** @server_default index */
@@ -264,16 +264,55 @@ export class IndexAction {
   execution_time_field?: Field
 }
 
+// This is IndexAction.Result and IndexAction.Simulated in the server
+/**
+ * The result of an index action.
+ * It is a container that holds either the `response` of an executed index
+ * operation, or the `request` that would have run when the action is simulated.
+ * @variants container
+ */
 export class IndexResult {
-  response: IndexResultSummary
+  /**
+   * The outcome of the index operation.
+   * A single summary is returned when a single document is indexed, or an array
+   * when several documents are indexed at once. When a bulk operation ends in
+   * `failure` or `partial_failure`, the array includes failed items.
+   */
+  response?: IndexResultSummary | IndexResultSummary[]
+  /**
+   * The request that would have been executed.
+   * It is only present when the action is simulated.
+   */
+  request?: IndexResultRequestSummary
 }
 
+export class IndexResultRequestSummary {
+  doc_id?: Id
+  index: IndexName
+  refresh?: Refresh
+  source: UserDefinedValue
+}
+
+/**
+ * A single item of an index action result.
+ * Successful items and failed items expose different fields; only `id` and `index`
+ * are present in both. Failed items appear when a bulk index action ends in
+ * `failure` or `partial_failure`.
+ */
 export class IndexResultSummary {
-  created: boolean
   id: Id
   index: IndexName
-  result: Result
-  version: VersionNumber
+  created?: boolean
+  result?: Result
+  version?: VersionNumber
+  /**
+   * Only present for failed items
+   */
+  failed?: boolean
+  /**
+   * Only present for failed items
+   */
+  message?: string
 }
 
 // Logging ------------------------------ //
