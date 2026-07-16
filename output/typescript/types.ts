@@ -54,6 +54,7 @@ export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> ex
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
+  _slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -187,6 +188,7 @@ export interface CountRequest extends RequestBase {
   preference?: string
   routing?: Routing
   stats?: string[] | string
+  _slice?: string
   terminate_after?: long
   q?: string
   body?: {
@@ -225,6 +227,7 @@ export interface DeleteRequest extends RequestBase {
   if_seq_no?: SequenceNumber
   refresh?: Refresh
   routing?: Routing
+  _slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -251,6 +254,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
+  _slice?: string
   q?: string
   scroll?: Duration
   scroll_size?: long
@@ -362,6 +366,7 @@ export interface ExplainRequest extends RequestBase {
   lenient?: boolean
   preference?: string
   routing?: Routing
+  _slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -441,6 +446,7 @@ export interface GetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
+  _slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_exclude_vectors?: boolean
@@ -747,6 +753,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
+  _slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -831,6 +838,7 @@ export interface MgetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
+  _slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -948,6 +956,7 @@ export interface MtermvectorsRequest extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
+  _slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -1108,6 +1117,7 @@ export interface ReindexDestination {
   op_type?: OpType
   pipeline?: string
   routing?: string
+  _slice?: string
   version_type?: VersionType
 }
 
@@ -1296,6 +1306,7 @@ export interface SearchRequest extends RequestBase {
   pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
+  _slice?: string
   scroll?: Duration
   search_type?: SearchType
   stats?: string[] | string
@@ -2161,6 +2172,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
+  _slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -2220,6 +2232,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   require_alias?: boolean
   retry_on_conflict?: integer
   routing?: Routing
+  _slice?: string
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   _source?: SearchSourceConfigParam
@@ -2262,6 +2275,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
+  _slice?: string
   scroll?: Duration
   scroll_size?: long
   search_timeout?: Duration
@@ -3180,7 +3194,7 @@ export interface SearchStats {
 
 export interface SearchTransform {
   request: WatcherSearchInputRequestDefinition
-  timeout: Duration
+  timeout?: Duration
 }
 
 export type SearchType = 'query_then_fetch' | 'dfs_query_then_fetch'
@@ -3351,7 +3365,7 @@ export interface TopRightBottomLeftGeoBounds {
 
 export interface TransformContainer {
   chain?: TransformContainer[]
-  script?: ScriptTransform
+  script?: ScriptTransform | ScriptSource
   search?: SearchTransform
 }
 
@@ -13688,6 +13702,7 @@ export type IndicesMigrateToDataStreamResponse = AcknowledgedResponseBase
 export interface IndicesModifyDataStreamAction {
   add_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
   remove_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
+  delete_backing_index?: IndicesModifyDataStreamIndexAndDataStreamAction
 }
 
 export interface IndicesModifyDataStreamIndexAndDataStreamAction {
@@ -14562,6 +14577,8 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   lenient?: boolean
   rewrite?: boolean
   q?: string
+  routing?: Routing
+  _slice?: string
   body?: {
     query?: QueryDslQueryContainer
   }
@@ -24193,7 +24210,7 @@ export interface WatcherActionStatus {
   last_throttle?: WatcherThrottleState
 }
 
-export type WatcherActionStatusOptions = 'success' | 'failure' | 'simulated' | 'throttled'
+export type WatcherActionStatusOptions = 'success' | 'failure' | 'partial_failure' | 'acknowledged' | 'throttled' | 'condition_failed' | 'simulated'
 
 export type WatcherActionType = 'email' | 'webhook' | 'index' | 'logging' | 'slack' | 'pagerduty'
 
@@ -24297,37 +24314,78 @@ export type WatcherExecutionPhase = 'awaits_execution' | 'started' | 'input' | '
 
 export interface WatcherExecutionResult {
   actions: WatcherExecutionResultAction[]
-  condition: WatcherExecutionResultCondition
+  condition?: WatcherExecutionResultCondition
   execution_duration: DurationValue<UnitMillis>
   execution_time: DateTime
-  input: WatcherExecutionResultInput
+  input?: WatcherExecutionResultInput
+  transform?: WatcherExecutionResultTransform
 }
 
-export interface WatcherExecutionResultAction {
-  email?: WatcherEmailResult
+export interface WatcherExecutionResultAction extends WatcherExecutionResultForeachAction {
   id: Id
-  index?: WatcherIndexResult
-  logging?: WatcherLoggingResult
-  pagerduty?: WatcherPagerDutyResult
-  reason?: string
-  slack?: WatcherSlackResult
-  status: WatcherActionStatusOptions
   type: WatcherActionType
-  webhook?: WatcherWebhookResult
-  error?: ErrorCause
+  status: WatcherActionStatusOptions
+  condition?: WatcherExecutionResultCondition
+  transform?: WatcherExecutionResultTransform
+  foreach?: WatcherExecutionResultForeachAction[]
+  max_iterations?: integer
+  number_of_actions_executed?: integer
 }
 
 export interface WatcherExecutionResultCondition {
   met: boolean
-  status: WatcherActionStatusOptions
+  status: WatcherExecutionResultStatus
   type: WatcherConditionType
+  compare?: WatcherExecutionResultConditionResolved
+  array_compare?: WatcherExecutionResultConditionResolved
+}
+
+export interface WatcherExecutionResultConditionResolved {
+  resolved_values?: Record<string, any>
+}
+
+export interface WatcherExecutionResultForeachAction {
+  email?: WatcherEmailResult
+  index?: WatcherIndexResult
+  logging?: WatcherLoggingResult
+  pagerduty?: WatcherPagerDutyResult
+  slack?: WatcherSlackResult
+  webhook?: WatcherWebhookResult
+  error?: ErrorCause
+  reason?: string
+}
+
+export interface WatcherExecutionResultHttpInput {
+  request: WatcherHttpInputRequestResult
+  status_code?: integer
 }
 
 export interface WatcherExecutionResultInput {
-  payload: Record<string, any>
-  status: WatcherActionStatusOptions
+  payload?: Record<string, any>
+  status: WatcherExecutionResultStatus
   type: WatcherInputType
+  search?: WatcherExecutionResultSearchInput
+  http?: WatcherExecutionResultHttpInput
+  chain?: Record<string, WatcherExecutionResultInput>
+  error?: ErrorCause
 }
+
+export interface WatcherExecutionResultSearchInput {
+  request: WatcherSearchInputRequestDefinition
+}
+
+export type WatcherExecutionResultStatus = 'success' | 'failure'
+
+export interface WatcherExecutionResultTransform {
+  payload?: Record<string, any>
+  status: WatcherExecutionResultStatus
+  type: WatcherExecutionResultTransformType
+  search?: WatcherExecutionResultSearchInput
+  error?: ErrorCause
+  reason?: string
+}
+
+export type WatcherExecutionResultTransformType = 'script' | 'search' | 'chain'
 
 export interface WatcherExecutionState {
   successful: boolean
@@ -24405,7 +24463,7 @@ export interface WatcherHttpInputResponseResult {
 }
 
 export interface WatcherIndexAction {
-  index: IndexName
+  index?: IndexName
   doc_id?: Id
   refresh?: Refresh
   op_type?: OpType
@@ -24414,15 +24472,25 @@ export interface WatcherIndexAction {
 }
 
 export interface WatcherIndexResult {
-  response: WatcherIndexResultSummary
+  response?: WatcherIndexResultSummary | WatcherIndexResultSummary[]
+  request?: WatcherIndexResultRequestSummary
+}
+
+export interface WatcherIndexResultRequestSummary {
+  doc_id?: Id
+  index: IndexName
+  refresh?: Refresh
+  source: any
 }
 
 export interface WatcherIndexResultSummary {
-  created: boolean
   id: Id
   index: IndexName
-  result: Result
-  version: VersionNumber
+  created?: boolean
+  result?: Result
+  version?: VersionNumber
+  failed?: boolean
+  message?: string
 }
 
 export interface WatcherInputContainer {
@@ -24430,9 +24498,10 @@ export interface WatcherInputContainer {
   http?: WatcherHttpInput
   search?: WatcherSearchInput
   simple?: Record<string, any>
+  transform?: TransformContainer
 }
 
-export type WatcherInputType = 'http' | 'search' | 'simple'
+export type WatcherInputType = 'chain' | 'http' | 'none' | 'search' | 'simple' | 'transform'
 
 export interface WatcherLoggingAction {
   level?: string
@@ -24539,13 +24608,9 @@ export interface WatcherSearchInput {
   timeout?: Duration
 }
 
-export interface WatcherSearchInputRequestBody {
-  query: QueryDslQueryContainer
-}
-
 export interface WatcherSearchInputRequestDefinition {
-  body?: WatcherSearchInputRequestBody
-  indices?: IndexName[]
+  body?: SearchSearchRequestBody
+  indices?: Indices
   indices_options?: IndicesOptions
   search_type?: SearchType
   template?: WatcherSearchTemplateRequestBody
@@ -24555,6 +24620,7 @@ export interface WatcherSearchInputRequestDefinition {
 export interface WatcherSearchTemplateRequestBody {
   explain?: boolean
   id?: Id
+  lang?: ScriptLanguage
   params?: Record<string, any>
   profile?: boolean
   source?: string
@@ -24651,7 +24717,7 @@ export interface WatcherTriggerEventResult {
 
 export interface WatcherWatch {
   actions: Record<IndexName, WatcherAction>
-  condition: WatcherConditionContainer
+  condition?: WatcherConditionContainer
   input: WatcherInputContainer
   metadata?: Metadata
   status?: WatcherWatchStatus
@@ -24733,17 +24799,20 @@ export interface WatcherExecuteWatchResponse {
 }
 
 export interface WatcherExecuteWatchWatchRecord {
-  condition: WatcherConditionContainer
-  input: WatcherInputContainer
-  messages: string[]
-  metadata?: Metadata
+  '@timestamp': DateTime
   node: string
-  result: WatcherExecutionResult
   state: WatcherExecutionStatus
   trigger_event: WatcherTriggerEventResult
-  user: Username
   watch_id: Id
+  condition?: WatcherConditionContainer
+  input?: WatcherInputContainer
+  metadata?: Metadata
+  result?: WatcherExecutionResult
+  user?: Username
   status?: WatcherWatchStatus
+  messages?: string[]
+  vars?: Record<string, any>
+  exception?: ErrorCause
 }
 
 export interface WatcherGetSettingsRequest extends RequestBase {

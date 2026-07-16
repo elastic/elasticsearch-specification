@@ -4677,7 +4677,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -5006,7 +5006,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -5401,7 +5401,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -12356,6 +12356,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-q"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-routing"
           }
         ],
         "requestBody": {
@@ -12417,6 +12420,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-q"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-routing"
           }
         ],
         "requestBody": {
@@ -12483,6 +12489,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-q"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-routing"
           }
         ],
         "requestBody": {
@@ -12547,6 +12556,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-q"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-routing"
           }
         ],
         "requestBody": {
@@ -32350,7 +32362,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -32743,7 +32755,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -84788,7 +84800,7 @@
             "type": "string"
           },
           "routing": {
-            "description": "By default, a document's routing is preserved unless it's changed by the script.\nIf it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.\nIf it is `discard`, the routing on the bulk request sent for each match is set to `null`.\nIf it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).",
+            "description": "By default, a document's routing is preserved unless it's changed by the script.\nIf it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.\nIf it is `discard`, the routing on the bulk request sent for each match is set to `null`.\nIf it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).\nNot allowed when `index.slice.enabled` is `true` for the destination index; use `_slice` instead.",
             "default": "keep",
             "type": "string"
           },
@@ -90629,7 +90641,7 @@
       "bulk-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -91424,7 +91436,7 @@
       "count-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -91853,7 +91865,7 @@
       "explain-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -92102,7 +92114,7 @@
       "index-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -93238,6 +93250,17 @@
         },
         "style": "form"
       },
+      "indices.validate_query-routing": {
+        "in": "query",
+        "name": "routing",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Routing"
+        },
+        "x-state": "Generally available",
+        "style": "form"
+      },
       "inference.delete-task_type": {
         "in": "path",
         "name": "task_type",
@@ -93506,7 +93529,7 @@
       "mget-routing": {
         "in": "query",
         "name": "routing",
-        "description": "Custom value used to route operations to a specific shard.",
+        "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -94385,7 +94408,7 @@
       "mtermvectors-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -94781,7 +94804,7 @@
       "search-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -95618,7 +95641,7 @@
       "termvectors-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
