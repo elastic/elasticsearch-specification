@@ -17,8 +17,10 @@
  * under the License.
  */
 
-import { FieldValue, Name } from '@_types/common'
+import { FieldValue, Name, ProjectRouting } from '@_types/common'
+import { double, integer } from '@_types/Numeric'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -77,4 +79,64 @@ export class ESQLDataset {
    * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
    */
   settings?: Dictionary<string, UserDefinedValue>
+}
+
+/**
+ * Per-query settings supplied through the request body.
+ * This is the request-body equivalent of the in-query `SET` command.
+ * Only settings that are exposed as request-body parameters can be set here; other `SET`-only
+ * settings (such as `unmapped_fields`) must be supplied in the query itself.
+ */
+export class EsqlQuerySettings {
+  /**
+   * The default timezone to be used in the query.
+   * It defaults to UTC and overrides the `time_zone` request parameter.
+   * @doc_id esql-timezones
+   * @availability stack since=9.4.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  time_zone?: string
+  /**
+   * Enables query approximation if possible for the query.
+   * `false` (the default) disables query approximation and `true` enables it with default settings.
+   * A map value enables query approximation with custom settings.
+   * @availability stack since=9.5.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  approximation?: EsqlApproximation
+  /**
+   * When enabled, column metadata is added to the query response as additional `_meta` properties.
+   * Currently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.
+   * @server_default false
+   * @availability stack since=9.5.0 stability=experimental
+   * @availability serverless stability=experimental
+   */
+  column_metadata?: Stringified<boolean>
+  /**
+   * Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.
+   * Excluded projects are not queried, which can reduce cost and latency.
+   * @availability serverless stability=experimental
+   */
+  project_routing?: ProjectRouting
+}
+
+/**
+ * The `approximation` query setting.
+ * It can be a boolean that toggles query approximation with default settings, or a map that enables it with custom settings.
+ * @codegen_names enabled, settings
+ */
+export type EsqlApproximation = boolean | EsqlApproximationSettings
+
+export class EsqlApproximationSettings {
+  /**
+   * The number of sampled rows used for approximating the query.
+   * It must be at least 10,000. A null value uses the system default.
+   */
+  rows?: integer
+  /**
+   * The confidence level of the computed confidence intervals.
+   * A null value disables computing confidence intervals.
+   * @server_default 0.90
+   */
+  confidence_level?: double
 }
