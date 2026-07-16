@@ -57,9 +57,17 @@ export class Destination {
    * If it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.
    * If it is `discard`, the routing on the bulk request sent for each match is set to `null`.
    * If it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).
+   * Not allowed when `index.slice.enabled` is `true` for the destination index; use `_slice` instead.
    * @server_default keep
    */
   routing?: string
+  /**
+   * The slice identifier used to route the reindexed documents to a specific slice of the destination index.
+   * Use the special value `_all` to target all slices without restricting to a routing value.
+   * Required when `index.slice.enabled` is `true` for the destination index; not allowed when `index.slice.enabled` is `false`.
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   */
+  _slice?: string
   /**
    *  The versioning to use for the indexing operation.
    */
