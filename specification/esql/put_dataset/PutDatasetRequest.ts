@@ -20,9 +20,9 @@
 import { RequestBase } from '@_types/Base'
 import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { DatasetMapping } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { DatasetMapping } from '@esql/_types/types'
 
 /**
  * Create or replace an ES|QL dataset.
