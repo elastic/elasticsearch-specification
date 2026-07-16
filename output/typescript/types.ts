@@ -659,6 +659,7 @@ export interface HealthReportMasterIsStableIndicatorExceptionFetchingHistory {
 export interface HealthReportProjectEncryptionKeyDetails {
   active_key_id?: string
   active_password_id: string
+  encryption_required: boolean
   key_count?: integer
   metadata_password_id?: string
   state: string
