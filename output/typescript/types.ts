@@ -11642,6 +11642,20 @@ export interface EsqlClassifiedNamedParameter {
   pattern?: string
 }
 
+export interface EsqlDatasetFieldMapping {
+  type: string
+  path?: string
+  format?: string
+}
+
+export interface EsqlDatasetMapping {
+  dynamic?: EsqlDynamic
+  properties?: Record<string, EsqlDatasetFieldMapping>
+  _id?: EsqlIdPath
+}
+
+export type EsqlDynamic = boolean | 'true' | 'false'
+
 export interface EsqlESQLDataSource {
   name: Name
   type: string
@@ -11655,6 +11669,7 @@ export interface EsqlESQLDataset {
   resource: string
   description?: string
   settings?: Record<string, any>
+  mappings?: EsqlDatasetMapping
 }
 
 export type EsqlESQLParams = EsqlSingleOrMultiValue[] | EsqlNamedValue[]
@@ -11727,6 +11742,10 @@ export interface EsqlEsqlShardInfo {
   successful?: integer
   skipped?: integer
   failed?: integer
+}
+
+export interface EsqlIdPath {
+  path: string
 }
 
 export type EsqlNamedParameterValue = EsqlSingleOrMultiValue | EsqlClassifiedNamedParameter
@@ -11897,6 +11916,7 @@ export interface EsqlPutDatasetRequest extends RequestBase {
     data_source: Name
     resource: string
     description?: string
+    mappings?: EsqlDatasetMapping
     settings?: Record<string, any>
   }
 }

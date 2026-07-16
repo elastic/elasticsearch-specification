@@ -6816,6 +6816,14 @@
                     "description": "A free-text description of the dataset.",
                     "type": "string"
                   },
+                  "mappings": {
+                    "description": "User-declared mapping on the dataset definition",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/esql._types.DatasetMapping"
+                      }
+                    ]
+                  },
                   "settings": {
                     "description": "Format and parsing-specific settings that configure how the resource is read.\nThe accepted keys depend on the format reader; compression can be inferred from the resource URI.",
                     "type": "object",
@@ -67088,12 +67096,91 @@
             "additionalProperties": {
               "type": "object"
             }
+          },
+          "mappings": {
+            "description": "The user-declared mapping on the dataset definition.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.DatasetMapping"
+              }
+            ]
           }
         },
         "required": [
           "name",
           "data_source",
           "resource"
+        ]
+      },
+      "esql._types.DatasetMapping": {
+        "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
+        "type": "object",
+        "properties": {
+          "dynamic": {
+            "description": "The policy for columns that are not declared in `properties`.\n`true` (the default) infers undeclared columns and overlays the declarations; `false` makes the declaration the entire schema, so undeclared columns are not queryable.",
+            "default": "true",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.Dynamic"
+              }
+            ]
+          },
+          "properties": {
+            "description": "The per-column declarations, keyed by logical column name.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/esql._types.DatasetFieldMapping"
+            }
+          },
+          "_id": {
+            "description": "The `_id` meta-field configuration, sourcing the document identity from a column.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.IdPath"
+              }
+            ]
+          }
+        }
+      },
+      "esql._types.Dynamic": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
+        ]
+      },
+      "esql._types.DatasetFieldMapping": {
+        "description": "A per-column declaration inside a dataset mapping's `properties`.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The declared column type.",
+            "type": "string"
+          },
+          "path": {
+            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "esql._types.IdPath": {
+        "description": "The `_id` meta-field of a dataset mapping.",
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "The name of the column that provides the document identity.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
         ]
       },
       "esql._types.ESQLView": {
