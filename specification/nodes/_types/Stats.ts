@@ -161,7 +161,7 @@ export class RepositorySnapshotStats {
   /**
    * The cumulative size, in bytes, of the blobs uploaded to this repository.
    */
-  uploaded_size_in_bytes?: long
+  uploaded_size_in_bytes: long
   /**
    * The cumulative time spent uploading blobs to this repository.
    */
@@ -169,7 +169,7 @@ export class RepositorySnapshotStats {
   /**
    * The cumulative time, in milliseconds, spent uploading blobs to this repository.
    */
-  total_upload_time_in_millis?: DurationValue<UnitMillis>
+  total_upload_time_in_millis: DurationValue<UnitMillis>
   /**
    * The cumulative time spent reading blobs while uploading to this repository.
    */
@@ -177,7 +177,7 @@ export class RepositorySnapshotStats {
   /**
    * The cumulative time, in milliseconds, spent reading blobs while uploading to this repository.
    */
-  total_read_time_in_millis?: DurationValue<UnitMillis>
+  total_read_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class Allocations {
@@ -477,27 +477,24 @@ export class IngestStats {
   /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
-  time_in_millis?: DurationValue<UnitMillis>
+  time_in_millis: DurationValue<UnitMillis>
   /**
    * Total size of all documents ingested by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document (for example, a final pipeline after a default pipeline, a pipeline run after a reroute processor, or a pipeline invoked by a pipeline processor), the value is `0`.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
    */
   ingested_as_first_pipeline?: ByteSize
   /**
    * Total number of bytes of all documents ingested by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
    */
-  ingested_as_first_pipeline_in_bytes?: long
+  ingested_as_first_pipeline_in_bytes: long
   /**
    * Total size of all documents produced by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
    * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
@@ -505,13 +502,12 @@ export class IngestStats {
   produced_as_first_pipeline?: ByteSize
   /**
    * Total number of bytes of all documents produced by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
    * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
    */
-  produced_as_first_pipeline_in_bytes?: long
+  produced_as_first_pipeline_in_bytes: long
 }
 
 export class IngestTotal {
@@ -534,7 +530,7 @@ export class IngestTotal {
   /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
-  time_in_millis?: DurationValue<UnitMillis>
+  time_in_millis: DurationValue<UnitMillis>
 }
 
 export class KeyedProcessor {
@@ -877,14 +873,14 @@ export class HttpRoute {
 export class HttpRouteRequests {
   count: long
   total_size?: ByteSize
-  total_size_in_bytes?: long
+  total_size_in_bytes: long
   size_histogram: SizeHttpHistogram[]
 }
 
 export class HttpRouteResponses {
   count: long
   total_size?: ByteSize
-  total_size_in_bytes?: long
+  total_size_in_bytes: long
   handling_time_histogram: TimeHttpHistogram[]
   size_histogram: SizeHttpHistogram[]
 }
@@ -1425,7 +1421,7 @@ export class TransportActionMessageStats {
   /**
    * The cumulative size, in bytes, of the messages of this kind that the node has handled for this action.
    */
-  total_size_in_bytes?: long
+  total_size_in_bytes: long
   /**
    * The distribution of the sizes of the messages of this kind that the node has handled for this action, represented as a histogram.
    */

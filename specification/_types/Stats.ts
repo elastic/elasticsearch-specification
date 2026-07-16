@@ -151,7 +151,7 @@ export class FlushStats {
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
   total_time_excluding_waiting?: Duration
-  total_time_excluding_waiting_on_lock_in_millis?: DurationValue<UnitMillis>
+  total_time_excluding_waiting_on_lock_in_millis: DurationValue<UnitMillis>
 }
 
 export class GetStats {
@@ -181,7 +181,7 @@ export class IndexingStats {
   index_time_in_millis: DurationValue<UnitMillis>
   index_total: long
   index_failed: long
-  index_failed_due_to_version_conflict?: long
+  index_failed_due_to_version_conflict: long
   types?: Dictionary<string, IndexingStats>
   write_load?: double
   recent_write_load?: double
@@ -257,10 +257,22 @@ export class QueryCacheStats {
 
 export class RecoveryStats {
   current_as_source: long
+  /**
+   * @availability stack since=9.5.0
+   */
   current_as_source_queued?: long
   current_as_target: long
+  /**
+   * @availability stack since=9.5.0
+   */
   current_as_target_queued?: long
+  /**
+   * @availability stack since=9.5.0
+   */
   current_from_store?: long
+  /**
+   * @availability stack since=9.5.0
+   */
   current_from_store_queued?: long
   throttle_time?: Duration
   throttle_time_in_millis: DurationValue<UnitMillis>
@@ -269,7 +281,7 @@ export class RecoveryStats {
 export class RefreshStats {
   external_total: long
   external_total_time?: Duration
-  external_total_time_in_millis?: DurationValue<UnitMillis>
+  external_total_time_in_millis: DurationValue<UnitMillis>
   listeners: long
   total: long
   total_time?: Duration

@@ -150,7 +150,7 @@ export class ShardQueryCache {
   evictions: long
   hit_count: long
   memory_size?: ByteSize
-  memory_size_in_bytes?: long
+  memory_size_in_bytes: long
   miss_count: long
   total_count: long
 }
@@ -189,9 +189,9 @@ export class MappingStats {
   total_count: long
   total_estimated_overhead?: ByteSize
   total_estimated_overhead_in_bytes: long
-  total_segments?: long
-  total_segment_fields?: long
-  average_fields_per_segment?: long
+  total_segments: long
+  total_segment_fields: long
+  average_fields_per_segment: long
 }
 
 export class ShardStats {
