@@ -5,6 +5,12 @@
         "Request: different number of urls in the json spec"
       ],
       "response": []
+    },
+    "transform.get_transform_stats": {
+      "request": [
+        "Request: query parameter 'basic' does not exist in the json spec"
+      ],
+      "response": []
     }
   },
   "generalErrors": [
