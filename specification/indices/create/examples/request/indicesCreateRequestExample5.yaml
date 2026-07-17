@@ -1,15 +1,9 @@
 summary: Create an index with mappings.
-availability: [stack]
+availability: [serverless]
 method_request: PUT /test
 description: You can provide mapping definitions in the create index API requests.
 # type: request
 value: "{
-
-  \  \"settings\": {
-
-  \    \"number_of_shards\": 1
-
-  \  },
 
   \  \"mappings\": {
 

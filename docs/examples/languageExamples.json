@@ -19634,5 +19634,71 @@
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_regions\":[{\"csp\":\"aws\",\"region\":\"us-east-1\"},{\"csp\":\"aws\",\"region\":\"eu-west-1\"}]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
     }
+  ],
+  "specification/indices/create/examples/request/indicesCreateRequestExample6.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.create(\n    index=\"test\",\n    aliases={\n        \"alias_1\": {},\n        \"alias_2\": {\n            \"filter\": {\n                \"term\": {\n                    \"user.id\": \"kimchy\"\n                }\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.create({\n  index: \"test\",\n  aliases: {\n    alias_1: {},\n    alias_2: {\n      filter: {\n        term: {\n          \"user.id\": \"kimchy\",\n        },\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.create(\n  index: \"test\",\n  body: {\n    \"aliases\": {\n      \"alias_1\": {},\n      \"alias_2\": {\n        \"filter\": {\n          \"term\": {\n            \"user.id\": \"kimchy\"\n          }\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->create([\n    \"index\" => \"test\",\n    \"body\" => [\n        \"aliases\" => [\n            \"alias_1\" => new ArrayObject([]),\n            \"alias_2\" => [\n                \"filter\" => [\n                    \"term\" => [\n                        \"user.id\" => \"kimchy\",\n                    ],\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"aliases\":{\"alias_1\":{},\"alias_2\":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}}}}}' \"$ELASTICSEARCH_URL/test\""
+    }
+  ],
+  "specification/indices/create/examples/request/indicesCreateRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.create(\n    index=\"my-index-000001\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.create({\n  index: \"my-index-000001\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.create(\n  index: \"my-index-000001\",\n  body: {}\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->create([\n    \"index\" => \"my-index-000001\",\n    \"body\" => new ArrayObject([]),\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/my-index-000001\""
+    }
+  ],
+  "specification/indices/create/examples/request/indicesCreateRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.indices.create(\n    index=\"test\",\n    mappings={\n        \"properties\": {\n            \"field1\": {\n                \"type\": \"text\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.indices.create({\n  index: \"test\",\n  mappings: {\n    properties: {\n      field1: {\n        type: \"text\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.indices.create(\n  index: \"test\",\n  body: {\n    \"mappings\": {\n      \"properties\": {\n        \"field1\": {\n          \"type\": \"text\"\n        }\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->indices()->create([\n    \"index\" => \"test\",\n    \"body\" => [\n        \"mappings\" => [\n            \"properties\" => [\n                \"field1\" => [\n                    \"type\" => \"text\",\n                ],\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"mappings\":{\"properties\":{\"field1\":{\"type\":\"text\"}}}}' \"$ELASTICSEARCH_URL/test\""
+    }
   ]
 }

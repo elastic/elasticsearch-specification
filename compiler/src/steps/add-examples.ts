@@ -149,6 +149,7 @@ class BaseExamplesProcessor {
       if (BaseExamplesProcessor.languageExamples[alternativeKey] !== undefined) {
         example.alternatives = BaseExamplesProcessor.languageExamples[alternativeKey]
       }
+      this.normalizeExampleAvailability(example, filePath)
       // Some of the example files set their 'value' as a JSON string,
       // and some files set their 'value' as an object. For consistency,
       // if the value is not a JSON string, convert it to a JSON string.
@@ -159,6 +160,35 @@ class BaseExamplesProcessor {
       examples.set(exampleName, example)
     }
     return examples
+  }
+
+  // Normalize the optional availability field from a YAML list of flavor names
+  // (e.g. [stack, serverless]) into the Availabilities object used by the metamodel.
+  // When omitted, the example applies to all flavors.
+  normalizeExampleAvailability (example: model.Example, filePath: string): void {
+    const rawAvailability = (example as { availability?: unknown }).availability
+    if (rawAvailability === undefined || rawAvailability === null) {
+      delete example.availability
+      return
+    }
+
+    if (!Array.isArray(rawAvailability)) {
+      throw new Error(`Example availability in ${filePath} must be a list of flavor names`)
+    }
+
+    const validFlavors = new Set(['stack', 'serverless'])
+    const availability: model.Availabilities = {}
+    for (const flavor of rawAvailability) {
+      if (typeof flavor !== 'string' || !validFlavors.has(flavor)) {
+        throw new Error(
+          `Example availability in ${filePath} contains invalid value "${String(flavor)}". ` +
+          'Accepted values are "stack" and "serverless".'
+        )
+      }
+      availability[flavor as keyof model.Availabilities] = {}
+    }
+
+    example.availability = availability
   }
 }
 

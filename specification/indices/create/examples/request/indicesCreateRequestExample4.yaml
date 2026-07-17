@@ -1,0 +1,6 @@
+summary: Create an index.
+availability: [serverless]
+method_request: PUT /my-index-000001
+description: Create an index with default settings.
+# type: request
+value: '{}'
