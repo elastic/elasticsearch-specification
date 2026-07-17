@@ -6205,6 +6205,7 @@ export interface MappingFlattenedProperty extends MappingPropertyBase {
   index?: boolean
   index_options?: MappingIndexOptions
   null_value?: string
+  preserve_leaf_arrays?: MappingPreserveLeafArrays
   similarity?: string
   split_queries_on_whitespace?: boolean
   time_series_dimensions?: string[]
@@ -6395,6 +6396,8 @@ export interface MappingPointProperty extends MappingDocValuesPropertyBase {
   null_value?: string
   type: 'point'
 }
+
+export type MappingPreserveLeafArrays = 'lossy' | 'exact'
 
 export type MappingProperty = MappingBinaryProperty | MappingBooleanProperty | MappingDynamicProperty | MappingJoinProperty | MappingKeywordProperty | MappingMatchOnlyTextProperty | MappingPercolatorProperty | MappingRankFeatureProperty | MappingRankFeaturesProperty | MappingSearchAsYouTypeProperty | MappingTextProperty | MappingVersionProperty | MappingWildcardProperty | MappingDateNanosProperty | MappingDateProperty | MappingAggregateMetricDoubleProperty | MappingDenseVectorProperty | MappingFlattenedProperty | MappingNestedProperty | MappingObjectProperty | MappingPassthroughObjectProperty | MappingRankVectorProperty | MappingSemanticTextProperty | MappingSparseVectorProperty | MappingCompletionProperty | MappingConstantKeywordProperty | MappingCountedKeywordProperty | MappingFieldAliasProperty | MappingHistogramProperty | MappingExponentialHistogramProperty | MappingIpProperty | MappingMurmur3HashProperty | MappingTokenCountProperty | MappingGeoPointProperty | MappingGeoShapeProperty | MappingPointProperty | MappingShapeProperty | MappingByteNumberProperty | MappingDoubleNumberProperty | MappingFloatNumberProperty | MappingHalfFloatNumberProperty | MappingIntegerNumberProperty | MappingLongNumberProperty | MappingScaledFloatNumberProperty | MappingShortNumberProperty | MappingUnsignedLongNumberProperty | MappingDateRangeProperty | MappingDoubleRangeProperty | MappingFloatRangeProperty | MappingIntegerRangeProperty | MappingIpRangeProperty | MappingLongRangeProperty | MappingIcuCollationProperty
 
@@ -12747,6 +12750,7 @@ export interface IndicesIndexSettingsLifecycleStep {
 export interface IndicesIndexSettingsTimeSeries {
   end_time?: DateTime
   start_time?: DateTime
+  temporality_field?: Field
 }
 
 export interface IndicesIndexSettingsUnassigned {
