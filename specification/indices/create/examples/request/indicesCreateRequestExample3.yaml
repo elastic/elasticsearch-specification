@@ -1,4 +1,5 @@
 summary: Create an index with aliases.
+availability: [stack]
 method_request: PUT /test
 description: >
   You can provide mapping definitions in the create index API requests. Index alias names also support date math.
