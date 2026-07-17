@@ -29,6 +29,7 @@ import { TriggerEventResult } from '@watcher/_types/Trigger'
 import { WatchStatus } from '@watcher/_types/Watch'
 
 export class WatchRecord {
+  /** @codegen_name timestamp */
   '@timestamp': DateTime
   node: string
   state: ExecutionStatus
