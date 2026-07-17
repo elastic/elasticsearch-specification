@@ -22,7 +22,7 @@ import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Get one or more ES|QL data sources.
+ * Get ES|QL data sources.
  *
  * Returns one or more data sources used in ES|QL data federation.
  * A concrete-name miss returns `404`; a wildcard pattern or list-all request with no match

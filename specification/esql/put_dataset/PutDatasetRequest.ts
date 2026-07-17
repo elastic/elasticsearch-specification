@@ -25,7 +25,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Create or replace an ES|QL dataset.
+ * Create or update an ES|QL dataset.
  *
  * Creates or replaces a dataset that references a data source in ES|QL data federation.
  * Dataset names participate in the index namespace and must follow index or alias naming rules.

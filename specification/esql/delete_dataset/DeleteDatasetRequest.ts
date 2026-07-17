@@ -22,7 +22,7 @@ import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Delete one or more ES|QL datasets.
+ * Delete ES|QL datasets.
  *
  * Deletes one or more datasets used in ES|QL data federation.
  * If any specified dataset does not exist, the request fails and no datasets are deleted.

@@ -22,7 +22,7 @@ import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
- * Delete one or more ES|QL data sources.
+ * Delete ES|QL data sources.
  *
  * Deletes one or more data sources used in ES|QL data federation.
  * Fails with `409` if any dataset references one of the named data sources;
