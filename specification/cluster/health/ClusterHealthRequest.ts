@@ -103,6 +103,7 @@ export interface Request extends RequestBase {
      * Use `all` to wait for all shards in the cluster to be active.
      * Use `0` to not wait.
      * @server_default 0
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**

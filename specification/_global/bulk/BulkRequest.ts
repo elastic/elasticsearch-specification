@@ -132,10 +132,6 @@ import { OperationContainer, UpdateAction } from './types'
  *
  * NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.
  *
- * **Wait for active shards**
- *
- * When making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.
- *
  * **Refresh**
  *
  * Control when the changes made by this request are visible to search.
@@ -240,6 +236,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default is `1`, which waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**

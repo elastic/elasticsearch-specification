@@ -155,6 +155,7 @@ export interface Request extends RequestBase {
      * Set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default value is one, which means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**

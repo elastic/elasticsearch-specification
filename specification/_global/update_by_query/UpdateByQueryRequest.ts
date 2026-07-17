@@ -75,16 +75,6 @@ import { Duration } from '@_types/Time'
  * [task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) you can use to cancel or get the status of the task.
  * Elasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.
  *
- * **Waiting for active shards**
- *
- * `wait_for_active_shards` controls how many copies of a shard must be active
- * before proceeding with the request. See [`wait_for_active_shards`](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create#operation-create-wait_for_active_shards)
- * for details. `timeout` controls how long each write request waits for unavailable
- * shards to become available. Both work exactly the way they work in the
- * [Bulk API](https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk). Update by query uses scrolled searches, so you can also
- * specify the `scroll` parameter to control how long it keeps the search context
- * alive, for example `?scroll=10m`. The default is 5 minutes.
- *
  * **Throttling update requests**
  *
  * To control the rate at which update by query issues batches of update operations, you can set `requests_per_second` to any positive decimal number.
@@ -335,7 +325,9 @@ export interface Request extends RequestBase {
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The `timeout` parameter controls how long each write request waits for unavailable shards to become available.
      * Both work exactly the way they work in the bulk API.
+     * Update by query uses scrolled searches, so you can also specify the `scroll` parameter to control how long it keeps the search context alive, for example `?scroll=10m`.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
