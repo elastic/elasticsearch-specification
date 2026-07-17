@@ -287,6 +287,8 @@ export class Example {
   external_value?: string
   /** An array of alternatives for this example in other languages */
   alternatives?: ExampleAlternative[]
+  /** Which API flavors this example applies to. Omitted means all flavors. */
+  availability?: Availabilities
 }
 
 /**

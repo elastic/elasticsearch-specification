@@ -586,6 +586,8 @@ export class Example {
 }
 ```
 
+Request and response example YAML files use the same flavor names in an optional `availability` field (for example, `availability: [serverless]`). When omitted, the example applies to both Stack and Serverless.
+
 ### Stability property for `@availability`
 
 The `stability` property can be added to an `@availability` annotation to indicate the maturity and expected backwards-compatibility of an API or property.
