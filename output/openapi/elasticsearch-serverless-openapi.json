@@ -65173,13 +65173,25 @@
             "description": "The URI of the client’s most recent request.",
             "type": "string"
           },
+          "opened_time": {
+            "description": "Time at which the client opened the connection.",
+            "type": "string"
+          },
           "opened_time_millis": {
             "description": "Time at which the client opened the connection.",
             "type": "number"
           },
+          "closed_time": {
+            "description": "Time at which the client closed the connection if the connection is closed.",
+            "type": "string"
+          },
           "closed_time_millis": {
             "description": "Time at which the client closed the connection if the connection is closed.",
             "type": "number"
+          },
+          "last_request_time": {
+            "description": "Time of the most recent request from this client.",
+            "type": "string"
           },
           "last_request_time_millis": {
             "description": "Time of the most recent request from this client.",
@@ -65244,6 +65256,14 @@
               }
             }
           },
+          "time": {
+            "description": "Total time spent preprocessing ingest documents during the lifetime of this node.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
           "time_in_millis": {
             "description": "Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.",
             "allOf": [
@@ -65252,13 +65272,31 @@
               }
             ]
           },
+          "ingested_as_first_pipeline": {
+            "description": "Total size of all documents ingested by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document (for example, a final pipeline after a default pipeline, a pipeline run after a reroute processor, or a pipeline invoked by a pipeline processor), the value is `0`.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "ingested_as_first_pipeline_in_bytes": {
-            "description": "Total number of bytes of all documents ingested by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.",
+            "description": "Total number of bytes of all documents ingested by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.",
             "x-state": "Generally available",
             "type": "number"
           },
+          "produced_as_first_pipeline": {
+            "description": "Total size of all documents produced by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "produced_as_first_pipeline_in_bytes": {
-            "description": "Total number of bytes of all documents produced by the pipeline.\nThis field is only present on pipelines which are the first to process a document.\nThus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
+            "description": "Total number of bytes of all documents produced by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
             "x-state": "Generally available",
             "type": "number"
           }
@@ -65303,6 +65341,14 @@
             "description": "Number of failed operations for the processor.",
             "type": "number"
           },
+          "time": {
+            "description": "Time spent by the processor transforming documents.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
           "time_in_millis": {
             "description": "Time, in milliseconds, spent by the processor transforming documents.",
             "allOf": [
@@ -65327,6 +65373,14 @@
           "failed": {
             "description": "Total number of failed ingest operations during the lifetime of this node.",
             "type": "number"
+          },
+          "time": {
+            "description": "Total time spent preprocessing ingest documents during the lifetime of this node.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           },
           "time_in_millis": {
             "description": "Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.",

@@ -2625,6 +2625,8 @@ export interface FlushStats {
   total: long
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
+  total_time_excluding_waiting?: Duration
+  total_time_excluding_waiting_on_lock_in_millis: DurationValue<UnitMillis>
 }
 
 export type Fuzziness = string | integer
@@ -2677,7 +2679,7 @@ export interface GetStats {
   missing_time?: Duration
   missing_time_in_millis: DurationValue<UnitMillis>
   missing_total: long
-  time?: Duration
+  getTime?: Duration
   time_in_millis: DurationValue<UnitMillis>
   total: long
 }
@@ -2732,6 +2734,7 @@ export interface IndexingStats {
   index_time_in_millis: DurationValue<UnitMillis>
   index_total: long
   index_failed: long
+  index_failed_due_to_version_conflict: long
   types?: Record<string, IndexingStats>
   write_load?: double
   recent_write_load?: double
@@ -2998,7 +3001,11 @@ export interface RankContainer {
 
 export interface RecoveryStats {
   current_as_source: long
+  current_as_source_queued?: long
   current_as_target: long
+  current_as_target_queued?: long
+  current_from_store?: long
+  current_from_store_queued?: long
   throttle_time?: Duration
   throttle_time_in_millis: DurationValue<UnitMillis>
 }
@@ -3007,6 +3014,7 @@ export type Refresh = boolean | 'true' | 'false' | 'wait_for'
 
 export interface RefreshStats {
   external_total: long
+  external_total_time?: Duration
   external_total_time_in_millis: DurationValue<UnitMillis>
   listeners: long
   total: long
@@ -3176,11 +3184,13 @@ export interface SearchStats {
   fetch_time?: Duration
   fetch_time_in_millis: DurationValue<UnitMillis>
   fetch_total: long
+  fetch_failure: long
   open_contexts?: long
   query_current: long
   query_time?: Duration
   query_time_in_millis: DurationValue<UnitMillis>
   query_total: long
+  query_failure: long
   scroll_current: long
   scroll_time?: Duration
   scroll_time_in_millis: DurationValue<UnitMillis>
@@ -10599,8 +10609,8 @@ export interface ClusterStatsDenseVectorOffHeapStats {
   total_veq_size?: ByteSize
   total_vex_size_bytes: long
   total_vex_size?: ByteSize
-  total_cenif_size_bytes: long
-  total_cenif_size?: ByteSize
+  total_cenivf_size_bytes: long
+  total_cenivf_size?: ByteSize
   total_clivf_size_bytes: long
   total_clivf_size?: ByteSize
   fielddata?: Record<string, Record<string, long>>
@@ -14441,6 +14451,9 @@ export interface IndicesStatsMappingStats {
   total_count: long
   total_estimated_overhead?: ByteSize
   total_estimated_overhead_in_bytes: long
+  total_segments: long
+  total_segment_fields: long
+  average_fields_per_segment: long
 }
 
 export interface IndicesStatsRequest extends RequestBase {
@@ -14497,6 +14510,7 @@ export interface IndicesStatsShardQueryCache {
   cache_size: long
   evictions: long
   hit_count: long
+  memory_size?: ByteSize
   memory_size_in_bytes: long
   miss_count: long
   total_count: long
@@ -14526,6 +14540,7 @@ export interface IndicesStatsShardSequenceNumber {
 export interface IndicesStatsShardStats {
   commit?: IndicesStatsShardCommit
   completion?: CompletionStats
+  dense_vector?: ClusterStatsDenseVectorStats
   docs?: DocStats
   fielddata?: FielddataStats
   flush?: FlushStats
@@ -14543,13 +14558,14 @@ export interface IndicesStatsShardStats {
   search?: SearchStats
   segments?: SegmentsStats
   seq_no?: IndicesStatsShardSequenceNumber
+  sparse_vector?: ClusterStatsSparseVectorStats
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
   bulk?: BulkStats
   shards?: Record<IndexName, any>
   shard_stats?: IndicesStatsShardsTotalStats
-  indices?: IndicesStatsIndicesStats
+  indices?: Record<IndexName, IndicesStatsShardStats>
 }
 
 export interface IndicesStatsShardsTotalStats {
@@ -19718,7 +19734,9 @@ export interface NodesAllocations {
   shards?: integer
   undesired_shards?: integer
   forecasted_ingest_load?: double
+  forecasted_disk_usage?: string
   forecasted_disk_usage_in_bytes?: long
+  current_disk_usage?: string
   current_disk_usage_in_bytes?: long
 }
 
@@ -19762,8 +19780,11 @@ export interface NodesClient {
   local_address?: string
   remote_address?: string
   last_uri?: string
+  opened_time?: string
   opened_time_millis?: long
+  closed_time?: string
   closed_time_millis?: long
+  last_request_time?: string
   last_request_time_millis?: long
   request_count?: long
   request_size_bytes?: long
@@ -19806,6 +19827,7 @@ export interface NodesContext {
 }
 
 export interface NodesCpu {
+  available_processors?: integer
   percent?: integer
   sys?: Duration
   sys_in_millis?: DurationValue<UnitMillis>
@@ -19833,6 +19855,14 @@ export interface NodesDataPathStats {
   disk_write_size_in_bytes?: long
   free?: string
   free_in_bytes?: long
+  low_watermark_free_space?: string
+  low_watermark_free_space_in_bytes?: long
+  high_watermark_free_space?: string
+  high_watermark_free_space_in_bytes?: long
+  flood_stage_free_space?: string
+  flood_stage_free_space_in_bytes?: long
+  frozen_flood_stage_free_space?: string
+  frozen_flood_stage_free_space_in_bytes?: long
   mount?: string
   path?: string
   total?: string
@@ -19893,12 +19923,14 @@ export interface NodesHttpRoute {
 
 export interface NodesHttpRouteRequests {
   count: long
+  total_size?: ByteSize
   total_size_in_bytes: long
   size_histogram: NodesSizeHttpHistogram[]
 }
 
 export interface NodesHttpRouteResponses {
   count: long
+  total_size?: ByteSize
   total_size_in_bytes: long
   handling_time_histogram: NodesTimeHttpHistogram[]
   size_histogram: NodesSizeHttpHistogram[]
@@ -19925,8 +19957,11 @@ export interface NodesIngestStats {
   current: long
   failed: long
   processors: Record<string, NodesKeyedProcessor>[]
+  time?: Duration
   time_in_millis: DurationValue<UnitMillis>
+  ingested_as_first_pipeline?: ByteSize
   ingested_as_first_pipeline_in_bytes: long
+  produced_as_first_pipeline?: ByteSize
   produced_as_first_pipeline_in_bytes: long
 }
 
@@ -19934,6 +19969,7 @@ export interface NodesIngestTotal {
   count: long
   current: long
   failed: long
+  time?: Duration
   time_in_millis: DurationValue<UnitMillis>
 }
 
@@ -19969,12 +20005,16 @@ export interface NodesJvmClasses {
 }
 
 export interface NodesJvmMemoryStats {
+  heap_used?: ByteSize
   heap_used_in_bytes?: long
   heap_used_percent?: long
+  heap_committed?: ByteSize
   heap_committed_in_bytes?: long
   heap_max_in_bytes?: long
   heap_max?: ByteSize
+  non_heap_used?: ByteSize
   non_heap_used_in_bytes?: long
+  non_heap_committed?: ByteSize
   non_heap_committed_in_bytes?: long
   pools?: Record<string, NodesPool>
 }
@@ -19990,6 +20030,7 @@ export interface NodesKeyedProcessor {
 }
 
 export interface NodesMemoryStats {
+  adjusted_total?: string
   adjusted_total_in_bytes?: long
   resident?: string
   resident_in_bytes?: long
@@ -19997,8 +20038,11 @@ export interface NodesMemoryStats {
   share_in_bytes?: long
   total_virtual?: string
   total_virtual_in_bytes?: long
+  total?: string
   total_in_bytes?: long
+  free?: string
   free_in_bytes?: long
+  used?: string
   used_in_bytes?: long
 }
 
@@ -20032,9 +20076,13 @@ export interface NodesOperatingSystem {
 }
 
 export interface NodesPool {
+  used?: string
   used_in_bytes?: long
+  max?: string
   max_in_bytes?: long
+  peak_used?: string
   peak_used_in_bytes?: long
+  peak_max?: string
   peak_max_in_bytes?: long
 }
 
@@ -20068,6 +20116,7 @@ export interface NodesProcessor {
   count?: long
   current?: long
   failed?: long
+  time?: Duration
   time_in_millis?: DurationValue<UnitMillis>
 }
 
@@ -20100,6 +20149,23 @@ export interface NodesRepositoryMeteringInformation {
   archived: boolean
   cluster_version?: VersionNumber
   request_counts: NodesRequestCounts
+}
+
+export interface NodesRepositorySnapshotStats {
+  total_read_throttled_time?: Duration
+  total_write_throttled_time?: Duration
+  total_read_throttled_time_nanos: DurationValue<UnitNanos>
+  total_write_throttled_time_nanos: DurationValue<UnitNanos>
+  shard_snapshots_started: long
+  shard_snapshots_completed: long
+  shard_snapshots_in_progress: long
+  uploaded_blobs: long
+  uploaded_size?: ByteSize
+  uploaded_size_in_bytes: long
+  total_upload_time?: Duration
+  total_upload_time_in_millis: DurationValue<UnitMillis>
+  total_read_time?: Duration
+  total_read_time_in_millis: DurationValue<UnitMillis>
 }
 
 export interface NodesRequestCounts {
@@ -20146,7 +20212,9 @@ export interface NodesSerializedClusterStateDetail {
 
 export interface NodesSizeHttpHistogram {
   count: long
+  ge?: ByteSize
   ge_bytes?: long
+  lt?: ByteSize
   lt_bytes?: long
 }
 
@@ -20174,6 +20242,7 @@ export interface NodesStats {
   discovery?: NodesDiscovery
   indexing_pressure?: NodesIndexingPressure
   indices?: IndicesStatsShardStats
+  repositories?: Record<string, NodesRepositorySnapshotStats>
 }
 
 export interface NodesThreadCount {
@@ -20187,7 +20256,9 @@ export interface NodesThreadCount {
 
 export interface NodesTimeHttpHistogram {
   count: long
+  ge?: Duration
   ge_millis?: long
+  lt?: Duration
   lt_millis?: long
 }
 
@@ -20202,12 +20273,35 @@ export interface NodesTransport {
   tx_size?: string
   tx_size_in_bytes?: long
   total_outbound_connections?: long
+  actions?: Record<string, NodesTransportActionStats>
+}
+
+export interface NodesTransportActionMessageStats {
+  count: long
+  total_size?: ByteSize
+  total_size_in_bytes: long
+  histogram: NodesTransportMessageSizeHistogramBucket[]
+}
+
+export interface NodesTransportActionStats {
+  requests: NodesTransportActionMessageStats
+  responses: NodesTransportActionMessageStats
 }
 
 export interface NodesTransportHistogram {
   count?: long
+  lt?: Duration
   lt_millis?: long
+  ge?: Duration
   ge_millis?: long
+}
+
+export interface NodesTransportMessageSizeHistogramBucket {
+  count: long
+  ge?: ByteSize
+  ge_bytes?: long
+  lt?: ByteSize
+  lt_bytes?: long
 }
 
 export interface NodesClearRepositoriesMeteringArchiveRequest extends RequestBase {
