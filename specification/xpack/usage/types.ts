@@ -75,6 +75,54 @@ export class Datafeed {
   count: long
 }
 
+/**
+ * Usage statistics about logging configuration reported by `_xpack/usage`.
+ */
+export class Logging {
+  /**
+   * Search query log configuration.
+   */
+  querylog: QueryLoggingConfig
+  /**
+   * ES|QL query log configuration.
+   */
+  esql: EsqlLoggingConfig
+}
+
+export class QueryLoggingConfig {
+  /**
+   * Whether query logging is enabled.
+   */
+  enabled: boolean
+  /**
+   * Whether user information is included in the query log.
+   */
+  user: boolean
+  /**
+   * Whether system queries are included in the query log.
+   */
+  system: boolean
+  /**
+   * The configured logging threshold, if any.
+   */
+  threshold?: Duration
+}
+
+export class EsqlLoggingConfig {
+  /**
+   * Whether ES|QL query logging is enabled.
+   */
+  enabled: boolean
+  /**
+   * Whether user information is included in the ES|QL query log.
+   */
+  user: boolean
+  /**
+   * The configured logging thresholds, keyed by threshold name, if any.
+   */
+  thresholds?: Dictionary<string, Duration>
+}
+
 export class DataStreams extends Base {
   data_streams: long
   indices_count: long
