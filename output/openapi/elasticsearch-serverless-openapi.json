@@ -59400,6 +59400,15 @@
                 "$ref": "#/components/schemas/_types.DateTime"
               }
             ]
+          },
+          "temporality_field": {
+            "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
           }
         }
       },
@@ -61623,6 +61632,14 @@
               "null_value": {
                 "type": "string"
               },
+              "preserve_leaf_arrays": {
+                "description": "How leaf arrays are represented in synthetic source.\nWhen set to `lossy`, leaf arrays are sorted, de-nulled, and deduplicated in the returned synthetic source.\nWhen set to `exact`, leaf arrays preserve order, nulls, and duplicates.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.PreserveLeafArrays"
+                  }
+                ]
+              },
               "similarity": {
                 "type": "string"
               },
@@ -61646,6 +61663,13 @@
               "type"
             ]
           }
+        ]
+      },
+      "_types.mapping.PreserveLeafArrays": {
+        "type": "string",
+        "enum": [
+          "lossy",
+          "exact"
         ]
       },
       "_types.mapping.NestedProperty": {
