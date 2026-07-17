@@ -1,0 +1,14 @@
+summary: Data source details
+description: >
+  The response contains the requested data source. Credential values are replaced
+  by the ::es_redacted:: sentinel.
+value:
+  data_sources:
+    - name: prod_s3_logs
+      type: s3
+      description: Production S3 logs bucket
+      settings:
+        region: us-east-1
+        auth: static_credentials
+        access_key: '::es_redacted::'
+        secret_key: '::es_redacted::'

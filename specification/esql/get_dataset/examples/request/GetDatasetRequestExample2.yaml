@@ -1,0 +1,3 @@
+summary: List all datasets
+method_request: GET /_query/dataset
+description: List all datasets configured for ES|QL data federation.
