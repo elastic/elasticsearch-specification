@@ -522,6 +522,8 @@ pub struct SchemaExample {
     pub value: Option<String>,
     pub external_value: Option<String>,
     pub alternatives: Option<Vec<ExampleAlternative>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub availability: Option<Availabilities>,
 }
 
 /// Common attributes for all type definitions
