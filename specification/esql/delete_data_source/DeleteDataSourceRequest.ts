@@ -24,6 +24,7 @@ import { Duration } from '@_types/Time'
 /**
  * Delete one or more ES|QL data sources.
  *
+ * Deletes one or more data sources used in ES|QL data federation.
  * Fails with `409` if any dataset references one of the named data sources;
  * delete the dependent datasets first.
  *
@@ -31,6 +32,7 @@ import { Duration } from '@_types/Time'
  * @cluster_privileges manage
  * @availability stack since=9.5.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
+ * @ext_doc_id esql-data-federation
  * @doc_id esql-delete-data-source
  */
 export interface Request extends RequestBase {

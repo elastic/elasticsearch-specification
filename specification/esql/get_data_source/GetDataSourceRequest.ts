@@ -24,14 +24,15 @@ import { Duration } from '@_types/Time'
 /**
  * Get one or more ES|QL data sources.
  *
- * Returns the requested data sources. A concrete-name miss returns `404`; a
- * wildcard pattern or list-all with no match returns `200` with an empty
- * array.
+ * Returns one or more data sources used in ES|QL data federation.
+ * A concrete-name miss returns `404`; a wildcard pattern or list-all request with no match
+ * returns `200` with an empty array.
  *
  * @rest_spec_name esql.get_data_source
  * @cluster_privileges manage
  * @availability stack since=9.5.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
+ * @ext_doc_id esql-data-federation
  * @doc_id esql-get-data-source
  */
 export interface Request extends RequestBase {

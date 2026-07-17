@@ -136,11 +136,11 @@ export class ESQLView {
 export class ESQLDataSource {
   /** The data source name. */
   name: Name
-  /** The data source type. */
+  /** The data source type. Currently, `s3` is supported. */
   type: string
   /** A free-text description. */
   description?: string
-  /** Type-specific settings. */
+  /** Type-specific connection and authentication settings. */
   settings: Dictionary<string, UserDefinedValue>
 }
 
@@ -155,15 +155,17 @@ export class ESQLDataset {
   /** The name of the referenced data source. */
   data_source: Name
   /**
-   * The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.
-   * For S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.
+   * The URI that identifies the data to read, resolved against the referenced data source.
+   * It can include glob patterns, for example a recursive pattern that matches
+   * Parquet files under `s3://logs-bucket/access`.
    */
   resource: string
   /** A free-text description. */
   description?: string
   /**
    * Format- and parsing-specific settings that configure how the resource is read.
-   * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
+   * Common keys include `format` and `partition_detection`. Additional keys depend on the format reader;
+   * compression can be inferred from the resource URI.
    */
   settings?: Dictionary<string, UserDefinedValue>
   /**

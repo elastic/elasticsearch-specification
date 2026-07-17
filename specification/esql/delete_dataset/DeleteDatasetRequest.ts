@@ -24,10 +24,14 @@ import { Duration } from '@_types/Time'
 /**
  * Delete one or more ES|QL datasets.
  *
+ * Deletes one or more datasets used in ES|QL data federation.
+ * If any specified dataset does not exist, the request fails and no datasets are deleted.
+ *
  * @rest_spec_name esql.delete_dataset
  * @index_privileges manage
  * @availability stack since=9.5.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
+ * @ext_doc_id esql-data-federation
  * @doc_id esql-delete-dataset
  */
 export interface Request extends RequestBase {
