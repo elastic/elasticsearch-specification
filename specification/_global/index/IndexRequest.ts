@@ -50,7 +50,7 @@ import { Duration } from '@_types/Time'
  * Automatic data stream creation requires a matching index template with data stream enabled.
  *
  * NOTE: Replica shards might not all be started when an indexing operation returns successfully.
- * By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.
+ * By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless).
  *
  * **Automatically create data streams and indices**
  *
@@ -99,7 +99,7 @@ import { Duration } from '@_types/Time'
  * If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.
  * By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).
  * This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.
- * To alter this behavior per operation, use the `wait_for_active_shards request` parameter.
+ * To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless).
  *
  * Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).
  * Specifying a negative value or a number greater than the number of shard copies will throw an error.
@@ -266,6 +266,7 @@ export interface Request<TDocument> extends RequestBase {
      * You can set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
