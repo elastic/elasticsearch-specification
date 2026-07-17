@@ -178,6 +178,12 @@ These examples are for use in the API documentation and must adhere to the [Open
 If there are multiple examples for the endpoint, they must each have a brief `summary` field, which is used as the label for the example. You can also optionaly provide an explanation in a `description` field.
 In order to generate curl and console examples automatically, the request examples must also contain a `method_request`.
 
+If an example applies to only Stack or Serverless Elasticsearch, add an optional `availability` field with a list of flavor names. Accepted values are `stack` and `serverless`. When omitted, the example applies to all contexts. This field works for both request and response examples.
+
+```yaml
+availability: [stack]
+```
+
 For example:
 
 ```yaml

@@ -223,6 +223,13 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
                 typeDef.body.properties = typeDef.body.properties.filter(filterItem())
                 break
             }
+            if (typeDef.examples !== undefined) {
+              typeDef.examples = Object.fromEntries(
+                Object.entries(typeDef.examples).filter(([, example]) =>
+                  (example.availability !== undefined) ? include(example.availability) : true
+                )
+              )
+            }
           }
         })
         break
@@ -234,6 +241,13 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
               case 'properties':
                 typeDef.body.properties = typeDef.body.properties.filter(filterItem())
                 break
+            }
+            if (typeDef.examples !== undefined) {
+              typeDef.examples = Object.fromEntries(
+                Object.entries(typeDef.examples).filter(([, example]) =>
+                  (example.availability !== undefined) ? include(example.availability) : true
+                )
+              )
             }
           }
         })
