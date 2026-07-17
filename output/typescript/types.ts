@@ -24793,6 +24793,12 @@ export interface XpackUsageEqlFeaturesSequences {
   sequence_maxspan: uint
 }
 
+export interface XpackUsageEsqlLoggingConfig {
+  enabled: boolean
+  user: boolean
+  thresholds?: Record<string, Duration>
+}
+
 export interface XpackUsageFeatureToggle {
   enabled: boolean
 }
@@ -24843,6 +24849,11 @@ export interface XpackUsageJobUsage {
   detectors: MlJobStatistics
   forecasts: XpackUsageMlJobForecasts
   model_size: MlJobStatistics
+}
+
+export interface XpackUsageLogging {
+  querylog: XpackUsageQueryLoggingConfig
+  esql: XpackUsageEsqlLoggingConfig
 }
 
 export interface XpackUsageMachineLearning extends XpackUsageBase {
@@ -24957,6 +24968,13 @@ export interface XpackUsageQuery {
   total?: integer
 }
 
+export interface XpackUsageQueryLoggingConfig {
+  enabled: boolean
+  user: boolean
+  system: boolean
+  threshold?: Duration
+}
+
 export interface XpackUsageRealm extends XpackUsageBase {
   name?: string[]
   order?: long[]
@@ -24993,6 +25011,7 @@ export interface XpackUsageResponse {
   gpu_vector_indexing?: XpackUsageGpuVectorIndexing
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
+  logging?: XpackUsageLogging
   logstash: XpackUsageBase
   ml: XpackUsageMachineLearning
   monitoring: XpackUsageMonitoring
