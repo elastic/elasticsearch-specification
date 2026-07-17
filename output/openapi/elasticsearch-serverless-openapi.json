@@ -8913,20 +8913,20 @@
                 }
               },
               "examples": {
-                "indicesCreateRequestExample1": {
+                "indicesCreateRequestExample4": {
                   "summary": "Create an index.",
-                  "description": "This request specifies the `number_of_shards` and `number_of_replicas`.",
-                  "value": "{\n  \"settings\": {\n    \"number_of_shards\": 3,\n    \"number_of_replicas\": 2\n  }\n}"
+                  "description": "Create an index with default settings.",
+                  "value": "{}"
                 },
-                "indicesCreateRequestExample2": {
+                "indicesCreateRequestExample5": {
                   "summary": "Create an index with mappings.",
                   "description": "You can provide mapping definitions in the create index API requests.",
-                  "value": "{\n  \"settings\": {\n    \"number_of_shards\": 1\n  },\n  \"mappings\": {\n    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"
+                  "value": "{\n  \"mappings\": {\n    \"properties\": {\n      \"field1\": { \"type\": \"text\" }\n    }\n  }\n}"
                 },
-                "indicesCreateRequestExample3": {
+                "indicesCreateRequestExample6": {
                   "summary": "Create an index with aliases.",
                   "description": "You can provide mapping definitions in the create index API requests. Index alias names also support date math.\n",
-                  "value": "{\n  \"aliases\": {\n    \"alias_1\": {},\n    \"alias_2\": {\n      \"filter\": {\n        \"term\": {\n          \"user.id\": \"kimchy\"\n        }\n      },\n      \"routing\": \"shard-1\"\n    }\n  }\n}"
+                  "value": "{\n  \"aliases\": {\n    \"alias_1\": {},\n    \"alias_2\": {\n      \"filter\": {\n        \"term\": {\n          \"user.id\": \"kimchy\"\n        }\n      }\n    }\n  }\n}"
                 }
               }
             }
@@ -97156,11 +97156,6 @@
               }
             },
             "examples": {
-              "indicesRolloverRequestExample1": {
-                "summary": "Stack request",
-                "description": "Create a new index for a data stream",
-                "value": "{\n  \"conditions\": {\n    \"max_age\": \"7d\",\n    \"max_docs\": 1000,\n    \"max_primary_shard_size\": \"50gb\",\n    \"max_primary_shard_docs\": \"2000\"\n  }\n}"
-              },
               "indicesRolloverRequestExample2": {
                 "summary": "Serverless request",
                 "description": "Create a new index for a data stream",
