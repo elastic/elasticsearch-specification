@@ -30,6 +30,7 @@ import {
   GpuVectorIndexing,
   HealthStatistics,
   Ilm,
+  Logging,
   MachineLearning,
   Monitoring,
   RuntimeFieldTypes,
@@ -68,6 +69,10 @@ export class Response {
     gpu_vector_indexing?: GpuVectorIndexing
     health_api?: HealthStatistics
     ilm: Ilm
+    /**
+     * @availability stack since=9.5.0
+     */
+    logging?: Logging
     logstash: Base
     ml: MachineLearning
     monitoring: Monitoring
