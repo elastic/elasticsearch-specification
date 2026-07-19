@@ -44,14 +44,21 @@ pub fn generate(open_api: &OpenAPI) -> anyhow::Result<clients_schema::IndexedMod
 fn generate_types(open_api: &OpenAPI, model: &mut IndexedModel) -> anyhow::Result<()> {
     if let Some(ref components) = open_api.components {
         let mut types = types::Types::default();
+        let mut generation_errors = 0;
         for (id, schema) in &components.schemas {
             let result = types::generate_type(open_api, id, &schema.into(), &mut types);
 
             if let Err(err) = result {
+                generation_errors += 1;
                 warn!("Problem with type '{id}'\n    {err}\n    Definition: {:?}", &schema);
             }
         }
-        let _ = types.check_tracker(); // TODO: actually fail
+        types.check_tracker()?;
+        if generation_errors > 0 {
+            return Err(anyhow::anyhow!(
+                "Failed to generate {generation_errors} type(s)"
+            ));
+        }
         model.types = types.types().into_iter().map(|t| (t.name().clone(), t)).collect();
     }
 
