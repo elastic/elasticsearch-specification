@@ -1,0 +1,26 @@
+name: Build docs-final OpenAPI specs
+description: >
+  Install dependencies and build the docs-ready OpenAPI specs at
+  output/openapi/elasticsearch-openapi-docs-final.json and
+  output/openapi/elasticsearch-serverless-openapi-docs-final.json.
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node 24
+      uses: actions/setup-node@v6
+      with:
+        node-version: 24
+        cache: npm
+        cache-dependency-path: '**/package-lock.json'
+
+    - name: Setup Dependencies
+      shell: bash
+      run: make setup
+
+    - name: Build docs-final OpenAPI specs
+      shell: bash
+      run: |
+        make generate
+        make transform-to-openapi-for-docs
+        make overlay-docs

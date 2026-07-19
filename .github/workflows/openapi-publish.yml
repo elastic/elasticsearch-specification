@@ -1,0 +1,53 @@
+name: openapi-publish
+
+on:
+  push:
+    branches:
+      - 'main'
+      - '[0-9]+.[0-9]+'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build-lint-publish:
+    runs-on: ubuntu-latest
+    # Avoid running on forks
+    if: github.repository_owner == 'elastic'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Build docs-final OpenAPI specs
+        uses: ./.github/actions/build-openapi-docs
+
+      - name: Lint stateful spec
+        uses: elastic/docs-actions/openapi/lint@v1
+        with:
+          spec-path: output/openapi/elasticsearch-openapi-docs-final.json
+
+      - name: Lint serverless spec
+        uses: elastic/docs-actions/openapi/lint@v1
+        with:
+          spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
+
+      - name: Publish stateful spec
+        uses: elastic/docs-actions/openapi/upload@v1
+        with:
+          spec-path: output/openapi/elasticsearch-openapi-docs-final.json
+          spec-name: elasticsearch
+
+      # Serverless is always-latest: only publish from main.
+      - name: Publish serverless spec
+        if: github.ref_name == 'main'
+        uses: elastic/docs-actions/openapi/upload@v1
+        with:
+          spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
+          spec-name: elasticsearch-serverless
