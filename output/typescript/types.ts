@@ -54,7 +54,7 @@ export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> ex
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -188,7 +188,7 @@ export interface CountRequest extends RequestBase {
   preference?: string
   routing?: Routing
   stats?: string[] | string
-  _slice?: string
+  route_slice?: string
   terminate_after?: long
   q?: string
   body?: {
@@ -227,7 +227,7 @@ export interface DeleteRequest extends RequestBase {
   if_seq_no?: SequenceNumber
   refresh?: Refresh
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -254,7 +254,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   q?: string
   scroll?: Duration
   scroll_size?: long
@@ -366,7 +366,7 @@ export interface ExplainRequest extends RequestBase {
   lenient?: boolean
   preference?: string
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -446,7 +446,7 @@ export interface GetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_exclude_vectors?: boolean
@@ -754,7 +754,7 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -839,7 +839,7 @@ export interface MgetRequest extends RequestBase {
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -896,7 +896,7 @@ export interface MsearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
-  _slice?: string
+  route_slice?: string
   typed_keys?: boolean
   body?: MsearchRequestItem[]
 }
@@ -957,7 +957,7 @@ export interface MtermvectorsRequest extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -1307,7 +1307,7 @@ export interface SearchRequest extends RequestBase {
   pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   scroll?: Duration
   search_type?: SearchType
   stats?: string[] | string
@@ -2058,7 +2058,7 @@ export interface SearchShardsRequest extends RequestBase {
   master_timeout?: Duration
   preference?: string
   routing?: Routing
-  _slice?: string
+  route_slice?: string
 }
 
 export interface SearchShardsResponse {
@@ -2173,7 +2173,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -2233,7 +2233,7 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   require_alias?: boolean
   retry_on_conflict?: integer
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   _source?: SearchSourceConfigParam
@@ -2276,7 +2276,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   scroll?: Duration
   scroll_size?: long
   search_timeout?: Duration
@@ -14643,7 +14643,7 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   rewrite?: boolean
   q?: string
   routing?: Routing
-  _slice?: string
+  route_slice?: string
   body?: {
     query?: QueryDslQueryContainer
   }
