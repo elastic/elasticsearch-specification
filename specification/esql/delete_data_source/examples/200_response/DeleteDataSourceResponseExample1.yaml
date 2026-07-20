@@ -1,0 +1,4 @@
+summary: Data source deleted
+description: The data source configuration was deleted successfully.
+value:
+  acknowledged: true

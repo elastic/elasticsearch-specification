@@ -26,14 +26,15 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 /**
  * Create or update an ES|QL data source.
  *
- * Creates or replaces a named, type-specific data source configuration that
- * datasets reference to access external data. Names must be lowercase and
- * follow index/alias naming rules.
+ * Creates or replaces a named, type-specific data source configuration for ES|QL data federation.
+ * Datasets reference data source configurations to access external data. Names must be lowercase
+ * and follow index or alias naming rules.
  *
  * @rest_spec_name esql.put_data_source
  * @cluster_privileges manage
- * @availability stack since=9.5.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.5.0 stability=tech_preview visibility=public
+ * @availability serverless stability=tech_preview visibility=public
+ * @ext_doc_id esql-data-federation
  * @doc_id esql-put-data-source
  */
 export interface Request extends RequestBase {
@@ -62,11 +63,18 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
   body: {
-    /** The data source type. Must be lowercase and contain no whitespace. */
+    /**
+     * The data source type. Currently, `s3` is supported.
+     * The value must be lowercase and contain no whitespace.
+     */
     type: string
     /** A free-text description of the data source. */
     description?: string
-    /** Type-specific settings. The accepted keys depend on the data source type's validator. */
+    /**
+     * Type-specific connection and authentication settings.
+     * For `s3`, connection settings include `region` and `endpoint`. Authentication settings
+     * include `auth` and the credentials required by the selected authentication method.
+     */
     settings?: Dictionary<string, UserDefinedValue>
   }
 }
