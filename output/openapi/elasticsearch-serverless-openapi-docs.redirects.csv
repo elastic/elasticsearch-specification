@@ -14,8 +14,6 @@ cluster-get-component-template-1,cluster-get-component-template
 connector-put-1,connector-put
 count-1,count
 enrich-get-policy-1,enrich-get-policy
-esql-get-data-source-1,esql-get-data-source
-esql-get-dataset-1,esql-get-dataset
 esql-get-view-1,esql-get-view
 field-caps-1,field-caps
 index-1,index
