@@ -1,0 +1,4 @@
+summary: No data sources matched
+description: A wildcard or list-all request with no matches returns an empty array.
+value:
+  data_sources: []
