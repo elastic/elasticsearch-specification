@@ -6550,8 +6550,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Get one or more ES|QL data sources",
-        "description": "Returns the requested data sources. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "summary": "Get ES|QL data sources",
+        "description": "Returns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-get-data-source-1",
         "parameters": [
           {
@@ -6566,7 +6570,7 @@
             "$ref": "#/components/responses/esql.get_data_source-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6579,7 +6583,11 @@
           "esql"
         ],
         "summary": "Create or update an ES|QL data source",
-        "description": "Creates or replaces a named, type-specific data source configuration that\ndatasets reference to access external data. Names must be lowercase and\nfollow index/alias naming rules.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "description": "Creates or replaces a named, type-specific data source configuration for ES|QL data federation.\nDatasets reference data source configurations to access external data. Names must be lowercase\nand follow index or alias naming rules.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-put-data-source",
         "parameters": [
           {
@@ -6621,7 +6629,7 @@
                 "type": "object",
                 "properties": {
                   "type": {
-                    "description": "The data source type. Must be lowercase and contain no whitespace.",
+                    "description": "The data source type. Currently, `s3` is supported.\nThe value must be lowercase and contain no whitespace.",
                     "type": "string"
                   },
                   "description": {
@@ -6629,7 +6637,7 @@
                     "type": "string"
                   },
                   "settings": {
-                    "description": "Type-specific settings. The accepted keys depend on the data source type's validator.",
+                    "description": "Type-specific connection and authentication settings.\nFor `s3`, connection settings include `region` and `endpoint`. Authentication settings\ninclude `auth` and the credentials required by the selected authentication method.",
                     "type": "object",
                     "additionalProperties": {
                       "type": "object"
@@ -6639,6 +6647,13 @@
                 "required": [
                   "type"
                 ]
+              },
+              "examples": {
+                "PutDataSourceRequestExample1": {
+                  "summary": "Create an S3 data source",
+                  "description": "Create a data source for production logs stored in Amazon S3. The data source uses static credentials and connects to a bucket in the us-east-1 region.\n",
+                  "value": "{\n  \"type\": \"s3\",\n  \"description\": \"Production S3 logs bucket\",\n  \"settings\": {\n    \"region\": \"us-east-1\",\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+                }
               }
             }
           },
@@ -6651,12 +6666,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutDataSourceResponseExample1": {
+                    "summary": "Data source created",
+                    "description": "The data source configuration was stored successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6668,8 +6690,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Delete one or more ES|QL data sources",
-        "description": "Fails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "summary": "Delete ES|QL data sources",
+        "description": "Deletes one or more data sources used in ES|QL data federation.\nFails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-delete-data-source",
         "parameters": [
           {
@@ -6711,12 +6737,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteDataSourceResponseExample1": {
+                    "summary": "Data source deleted",
+                    "description": "The data source configuration was deleted successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6730,8 +6763,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Get one or more ES|QL datasets",
-        "description": "Returns the requested datasets. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "summary": "Get ES|QL datasets",
+        "description": "Returns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-get-dataset-1",
         "parameters": [
           {
@@ -6746,7 +6783,7 @@
             "$ref": "#/components/responses/esql.get_dataset-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6758,8 +6795,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Create or replace an ES|QL dataset",
-        "description": "Creates or replaces a dataset that references a data source. Dataset\nnames participate in the index namespace and must follow index/alias naming\nrules. Returns `404` if the referenced data source does not exist.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "summary": "Create or update an ES|QL dataset",
+        "description": "Creates or replaces a dataset that references a data source in ES|QL data federation.\nDataset names participate in the index namespace and must follow index or alias naming rules.\nReturns `404` if the referenced data source does not exist.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-put-dataset",
         "parameters": [
           {
@@ -6809,7 +6850,7 @@
                     ]
                   },
                   "resource": {
-                    "description": "The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.\nFor S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.",
+                    "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns. For example, a recursive pattern can match\nall Parquet files under the `s3://logs-bucket/access` prefix.",
                     "type": "string"
                   },
                   "description": {
@@ -6825,7 +6866,7 @@
                     ]
                   },
                   "settings": {
-                    "description": "Format and parsing-specific settings that configure how the resource is read.\nThe accepted keys depend on the format reader; compression can be inferred from the resource URI.",
+                    "description": "Format and parsing-specific settings that configure how the resource is read.\nCommon keys include `format`, which explicitly selects a registered format, and\n`partition_detection`, which accepts `auto`, `hive`, `template`, or `none`. Additional\nkeys depend on the format reader. Compression can be inferred from the resource URI.",
                     "type": "object",
                     "additionalProperties": {
                       "type": "object"
@@ -6836,6 +6877,13 @@
                   "data_source",
                   "resource"
                 ]
+              },
+              "examples": {
+                "PutDatasetRequestExample1": {
+                  "summary": "Create a Parquet dataset",
+                  "description": "Create a dataset that reads partitioned Parquet access logs through the prod_s3_logs data source.\n",
+                  "value": "{\n  \"data_source\": \"prod_s3_logs\",\n  \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n  \"description\": \"Production access logs\",\n  \"settings\": {\n    \"partition_detection\": \"hive\"\n  }\n}"
+                }
               }
             }
           },
@@ -6848,12 +6896,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutDatasetResponseExample1": {
+                    "summary": "Dataset created",
+                    "description": "The dataset definition was stored successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6865,8 +6920,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Delete one or more ES|QL datasets",
-        "description": "\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "summary": "Delete ES|QL datasets",
+        "description": "Deletes one or more datasets used in ES|QL data federation.\nIf any specified dataset does not exist, the request fails and no datasets are deleted.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-delete-dataset",
         "parameters": [
           {
@@ -6908,12 +6967,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteDatasetResponseExample1": {
+                    "summary": "Dataset deleted",
+                    "description": "The dataset definition was deleted successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -7053,8 +7119,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Get one or more ES|QL data sources",
-        "description": "Returns the requested data sources. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "summary": "Get ES|QL data sources",
+        "description": "Returns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-get-data-source",
         "parameters": [
           {
@@ -7066,7 +7136,7 @@
             "$ref": "#/components/responses/esql.get_data_source-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -7080,8 +7150,12 @@
         "tags": [
           "esql"
         ],
-        "summary": "Get one or more ES|QL datasets",
-        "description": "Returns the requested datasets. A concrete-name miss returns `404`; a\nwildcard pattern or list-all with no match returns `200` with an empty\narray.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "summary": "Get ES|QL datasets",
+        "description": "Returns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
         "operationId": "esql-get-dataset",
         "parameters": [
           {
@@ -7093,7 +7167,7 @@
             "$ref": "#/components/responses/esql.get_dataset-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Technical preview",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -67119,7 +67193,7 @@
             ]
           },
           "type": {
-            "description": "The data source type.",
+            "description": "The data source type. Currently, `s3` is supported.",
             "type": "string"
           },
           "description": {
@@ -67127,7 +67201,7 @@
             "type": "string"
           },
           "settings": {
-            "description": "Type-specific settings.",
+            "description": "Type-specific connection and authentication settings.",
             "type": "object",
             "additionalProperties": {
               "type": "object"
@@ -67161,7 +67235,7 @@
             ]
           },
           "resource": {
-            "description": "The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.\nFor S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.",
+            "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns, for example a recursive pattern that matches\nParquet files under `s3://logs-bucket/access`.",
             "type": "string"
           },
           "description": {
@@ -67169,7 +67243,7 @@
             "type": "string"
           },
           "settings": {
-            "description": "Format- and parsing-specific settings that configure how the resource is read.\nThe accepted keys depend on the format reader; compression can be inferred from the resource URI.",
+            "description": "Format- and parsing-specific settings that configure how the resource is read.\nCommon keys include `format` and `partition_detection`. Additional keys depend on the format reader;\ncompression can be inferred from the resource URI.",
             "type": "object",
             "additionalProperties": {
               "type": "object"
@@ -88500,6 +88574,18 @@
               "required": [
                 "data_sources"
               ]
+            },
+            "examples": {
+              "GetDataSourceResponseExample1": {
+                "summary": "Data source details",
+                "description": "The response contains the requested data source. Credential values are replaced by the ::es_redacted:: sentinel.\n",
+                "value": "{\n  \"data_sources\": [\n    {\n      \"name\": \"prod_s3_logs\",\n      \"type\": \"s3\",\n      \"description\": \"Production S3 logs bucket\",\n      \"settings\": {\n        \"region\": \"us-east-1\",\n        \"auth\": \"static_credentials\",\n        \"access_key\": \"::es_redacted::\",\n        \"secret_key\": \"::es_redacted::\"\n      }\n    }\n  ]\n}"
+              },
+              "GetDataSourceResponseExample2": {
+                "summary": "No data sources matched",
+                "description": "A wildcard or list-all request with no matches returns an empty array.",
+                "value": "{\n  \"data_sources\": []\n}"
+              }
             }
           }
         }
@@ -88512,6 +88598,7 @@
               "type": "object",
               "properties": {
                 "datasets": {
+                  "description": "The matching datasets.",
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/esql._types.ESQLDataset"
@@ -88521,6 +88608,18 @@
               "required": [
                 "datasets"
               ]
+            },
+            "examples": {
+              "GetDatasetResponseExample1": {
+                "summary": "Dataset details",
+                "description": "The response contains the requested dataset definition.",
+                "value": "{\n  \"datasets\": [\n    {\n      \"name\": \"access_logs\",\n      \"data_source\": \"prod_s3_logs\",\n      \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n      \"description\": \"Production access logs\",\n      \"settings\": {\n        \"partition_detection\": \"hive\"\n      }\n    }\n  ]\n}"
+              },
+              "GetDatasetResponseExample2": {
+                "summary": "No datasets matched",
+                "description": "A wildcard or list-all request with no matches returns an empty array.",
+                "value": "{\n  \"datasets\": []\n}"
+              }
             }
           }
         }
