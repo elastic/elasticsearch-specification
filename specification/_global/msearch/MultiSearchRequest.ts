@@ -167,6 +167,7 @@ export interface Request extends RequestBase {
      * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
      * Individual sub-search headers can also specify `_slice` to override the top-level setting.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
      */
     _slice?: string
     /**
