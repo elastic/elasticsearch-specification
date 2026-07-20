@@ -209,6 +209,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Use the special value `_all` to target all slices without restricting to a routing value.
      * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
      */
     _slice?: string
     /**
