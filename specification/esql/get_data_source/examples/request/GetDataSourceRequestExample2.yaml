@@ -1,0 +1,3 @@
+summary: List all data sources
+method_request: GET /_query/data_source
+description: List all data sources configured for ES|QL data federation.

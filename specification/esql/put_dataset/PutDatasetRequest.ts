@@ -25,16 +25,17 @@ import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
- * Create or replace an ES|QL dataset.
+ * Create or update an ES|QL dataset.
  *
- * Creates or replaces a dataset that references a data source. Dataset
- * names participate in the index namespace and must follow index/alias naming
- * rules. Returns `404` if the referenced data source does not exist.
+ * Creates or replaces a dataset that references a data source in ES|QL data federation.
+ * Dataset names participate in the index namespace and must follow index or alias naming rules.
+ * Returns `404` if the referenced data source does not exist.
  *
  * @rest_spec_name esql.put_dataset
  * @index_privileges manage
- * @availability stack since=9.5.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.5.0 stability=tech_preview visibility=public
+ * @availability serverless stability=tech_preview visibility=public
+ * @ext_doc_id esql-data-federation
  * @doc_id esql-put-dataset
  */
 export interface Request extends RequestBase {
@@ -66,8 +67,9 @@ export interface Request extends RequestBase {
     /** The name of the referenced data source. The data source must already exist. */
     data_source: Name
     /**
-     * The URI that identifies the data to read, resolved against the referenced data source, rather than only a path.
-     * For S3, it can include glob patterns, for example a recursive `/**` matching `*.parquet` files under a prefix such as `s3://bucket/logs`.
+     * The URI that identifies the data to read, resolved against the referenced data source.
+     * It can include glob patterns. For example, a recursive pattern can match
+     * all Parquet files under the `s3://logs-bucket/access` prefix.
      */
     resource: string
     /** A free-text description of the dataset. */
@@ -76,7 +78,9 @@ export interface Request extends RequestBase {
     mappings?: DatasetMapping
     /**
      * Format and parsing-specific settings that configure how the resource is read.
-     * The accepted keys depend on the format reader; compression can be inferred from the resource URI.
+     * Common keys include `format`, which explicitly selects a registered format, and
+     * `partition_detection`, which accepts `auto`, `hive`, `template`, or `none`. Additional
+     * keys depend on the format reader. Compression can be inferred from the resource URI.
      */
     settings?: Dictionary<string, UserDefinedValue>
   }

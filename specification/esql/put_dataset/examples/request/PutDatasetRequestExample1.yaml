@@ -1,0 +1,11 @@
+summary: Create a Parquet dataset
+method_request: PUT /_query/dataset/access_logs
+description: >
+  Create a dataset that reads partitioned Parquet access logs through the
+  prod_s3_logs data source.
+value:
+  data_source: prod_s3_logs
+  resource: 's3://logs-bucket/access/**/*.parquet'
+  description: Production access logs
+  settings:
+    partition_detection: hive

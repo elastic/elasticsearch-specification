@@ -21,6 +21,7 @@ import { ESQLDataset } from '@esql/_types/types'
 
 export class Response {
   body: {
+    /** The matching datasets. */
     datasets: ESQLDataset[]
   }
 }

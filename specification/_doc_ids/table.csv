@@ -229,6 +229,7 @@ eql-missing-events,https://www.elastic.co/docs/reference/query-languages/eql/eql
 eql-syntax,https://www.elastic.co/docs/reference/query-languages/eql/eql-syntax,[use-doc-url],,More about EQL syntax reference
 eql,https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql,[use-doc-url],,Learn more about EQL
 esql,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql,[use-doc-url],,More about ES|QL reference
+esql-data-federation,https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation,[use-doc-url],,ES|QL Data Federation
 esql-async-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-api.html,About running an async ES|QL
 esql-async-query-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-delete-api.html,About deleting an async ES|QL
 esql-async-query-get,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-get,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-get-api.html,About async ES|QL query results

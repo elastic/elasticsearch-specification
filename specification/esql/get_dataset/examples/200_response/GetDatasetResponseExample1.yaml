@@ -1,0 +1,10 @@
+summary: Dataset details
+description: The response contains the requested dataset definition.
+value:
+  datasets:
+    - name: access_logs
+      data_source: prod_s3_logs
+      resource: 's3://logs-bucket/access/**/*.parquet'
+      description: Production access logs
+      settings:
+        partition_detection: hive
