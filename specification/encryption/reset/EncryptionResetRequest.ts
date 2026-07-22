@@ -39,6 +39,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=9.5.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
  * @doc_id encryption-reset
+ * @doc_tag security
  */
 export interface Request extends RequestBase {
   urls: [
