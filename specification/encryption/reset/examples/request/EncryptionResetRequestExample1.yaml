@@ -2,6 +2,5 @@ summary: Reset the project encryption key
 method_request: POST /_encryption/_reset?accept_data_loss=true
 # type: request
 description: >
-  Run `POST /_encryption/_reset?accept_data_loss=true` to destroy the current project
-  encryption key and generate a new one. All data encrypted under the destroyed key is
-  permanently unrecoverable.
+  Run `POST /_encryption/_reset?accept_data_loss=true` to destroy the current project encryption key and generate a new one. All
+  data encrypted under the destroyed key is permanently unrecoverable.

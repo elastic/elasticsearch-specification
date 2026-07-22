@@ -1,8 +1,8 @@
 summary: Create an S3 data source
 method_request: PUT /_query/data_source/prod_s3_logs
 description: >
-  Create a data source for production logs stored in Amazon S3. The data source
-  uses static credentials and connects to a bucket in the us-east-1 region.
+  Create a data source for production logs stored in Amazon S3. The data source uses static credentials and connects to a bucket in
+  the us-east-1 region.
 value:
   type: s3
   description: Production S3 logs bucket
