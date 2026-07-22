@@ -880,7 +880,7 @@
     },
     {
       "language": "Java",
-      "code": "client.snapshot().createRepository(c -> c\n    .name(\"my_src_only_repository\")\n    .repository(r -> r\n        .source(s -> s\n            .settings(se -> se\n                .delegateType(\"fs\")\n            )\n        )\n    )\n);\n"
+      "code": "client.snapshot().createRepository(c -> c\n    .name(\"my_src_only_repository\")\n    .repository(r -> r\n        .source(s -> s\n            .settings(se -> se\n                .fs(f -> f\n                    .location(\"my_backup_repository\")\n                )\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/snapshot/create_repository/examples/request/SnapshotCreateRepositoryRequestExample2.yaml": [
@@ -1224,27 +1224,27 @@
   "specification/snapshot/create/examples/request/SnapshotCreateRequestExample1.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.snapshot.create(\n    repository=\"my_repository\",\n    snapshot=\"snapshot_2\",\n    wait_for_completion=True,\n    indices=\"index_1,index_2\",\n    ignore_unavailable=True,\n    include_global_state=False,\n    metadata={\n        \"taken_by\": \"user123\",\n        \"taken_because\": \"backup before upgrading\"\n    },\n)"
+      "code": "resp = client.snapshot.create(\n    repository=\"my_repository\",\n    snapshot=\"snapshot_2\",\n    wait_for_completion=True,\n    partial=True,\n    indices=\"index_1,index_2\",\n    ignore_unavailable=True,\n    include_global_state=False,\n    metadata={\n        \"taken_by\": \"user123\",\n        \"taken_because\": \"backup before upgrading\"\n    },\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.snapshot.create({\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  indices: \"index_1,index_2\",\n  ignore_unavailable: true,\n  include_global_state: false,\n  metadata: {\n    taken_by: \"user123\",\n    taken_because: \"backup before upgrading\",\n  },\n});"
+      "code": "const response = await client.snapshot.create({\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  partial: true,\n  indices: \"index_1,index_2\",\n  ignore_unavailable: true,\n  include_global_state: false,\n  metadata: {\n    taken_by: \"user123\",\n    taken_because: \"backup before upgrading\",\n  },\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.snapshot.create(\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  body: {\n    \"indices\": \"index_1,index_2\",\n    \"ignore_unavailable\": true,\n    \"include_global_state\": false,\n    \"metadata\": {\n      \"taken_by\": \"user123\",\n      \"taken_because\": \"backup before upgrading\"\n    }\n  }\n)"
+      "code": "response = client.snapshot.create(\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  body: {\n    \"partial\": true,\n    \"indices\": \"index_1,index_2\",\n    \"ignore_unavailable\": true,\n    \"include_global_state\": false,\n    \"metadata\": {\n      \"taken_by\": \"user123\",\n      \"taken_because\": \"backup before upgrading\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->snapshot()->create([\n    \"repository\" => \"my_repository\",\n    \"snapshot\" => \"snapshot_2\",\n    \"wait_for_completion\" => \"true\",\n    \"body\" => [\n        \"indices\" => \"index_1,index_2\",\n        \"ignore_unavailable\" => true,\n        \"include_global_state\" => false,\n        \"metadata\" => [\n            \"taken_by\" => \"user123\",\n            \"taken_because\" => \"backup before upgrading\",\n        ],\n    ],\n]);"
+      "code": "$resp = $client->snapshot()->create([\n    \"repository\" => \"my_repository\",\n    \"snapshot\" => \"snapshot_2\",\n    \"wait_for_completion\" => \"true\",\n    \"body\" => [\n        \"partial\" => true,\n        \"indices\" => \"index_1,index_2\",\n        \"ignore_unavailable\" => true,\n        \"include_global_state\" => false,\n        \"metadata\" => [\n            \"taken_by\" => \"user123\",\n            \"taken_because\" => \"backup before upgrading\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"indices\":\"index_1,index_2\",\"ignore_unavailable\":true,\"include_global_state\":false,\"metadata\":{\"taken_by\":\"user123\",\"taken_because\":\"backup before upgrading\"}}' \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2?wait_for_completion=true\""
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"partial\":true,\"indices\":\"index_1,index_2\",\"ignore_unavailable\":true,\"include_global_state\":false,\"metadata\":{\"taken_by\":\"user123\",\"taken_because\":\"backup before upgrading\"}}' \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2?wait_for_completion=true\""
     },
     {
       "language": "Java",
-      "code": "client.snapshot().create(c -> c\n    .expandWildcards(List.of())\n    .featureStates(List.of())\n    .ignoreUnavailable(true)\n    .includeGlobalState(false)\n    .indices(\"index_1,index_2\")\n    .metadata(Map.of(\"taken_by\", JsonData.fromJson(\"\\\"user123\\\"\"),\"taken_because\", JsonData.fromJson(\"\\\"backup before upgrading\\\"\")))\n    .repository(\"my_repository\")\n    .snapshot(\"snapshot_2\")\n    .waitForCompletion(true)\n);\n"
+      "code": "client.snapshot().create(c -> c\n    .expandWildcards(List.of())\n    .featureStates(List.of())\n    .ignoreUnavailable(true)\n    .includeGlobalState(false)\n    .indices(\"index_1,index_2\")\n    .metadata(Map.of(\"taken_by\", JsonData.fromJson(\"\\\"user123\\\"\"),\"taken_because\", JsonData.fromJson(\"\\\"backup before upgrading\\\"\")))\n    .partial(true)\n    .repository(\"my_repository\")\n    .snapshot(\"snapshot_2\")\n    .waitForCompletion(true)\n);\n"
     }
   ],
   "specification/snapshot/restore/examples/request/SnapshotRestoreRequestExample2.yaml": [
@@ -3034,7 +3034,7 @@
     },
     {
       "language": "Java",
-      "code": "client.indices().validateQuery(v -> v\n    .expandWildcards(List.of())\n    .index(\"my-index-000001\")\n    .q(\"user.id:kimchy\")\n);\n"
+      "code": "client.indices().validateQuery(v -> v\n    .expandWildcards(List.of())\n    .index(\"my-index-000001\")\n    .q(\"user.id:kimchy\")\n    .routing(List.of())\n);\n"
     }
   ],
   "specification/indices/put_index_template/examples/request/IndicesPutIndexTemplateRequestExample1.yaml": [
@@ -4830,7 +4830,7 @@
     },
     {
       "language": "Java",
-      "code": "client.count(c -> c\n    .expandWildcards(List.of())\n    .index(\"my-index-000001\")\n    .query(q -> q\n        .term(t -> t\n            .field(\"user.id\")\n            .value(FieldValue.of(\"kimchy\"))\n        )\n    )\n    .routing(List.of())\n);\n"
+      "code": "client.count(c -> c\n    .expandWildcards(List.of())\n    .index(\"my-index-000001\")\n    .query(q -> q\n        .term(t -> t\n            .field(\"user.id\")\n            .value(FieldValue.of(\"kimchy\"))\n        )\n    )\n    .routing(List.of())\n    .stats(List.of())\n);\n"
     }
   ],
   "specification/_global/termvectors/examples/request/TermVectorsRequestExample3.yaml": [
@@ -5636,7 +5636,7 @@
     },
     {
       "language": "Java",
-      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .sourceFields(List.of(\"user.id\",\"_doc\"))\n    )\n);\n"
+      "code": "client.reindex(r -> r\n    .dest(d -> d\n        .index(\"my-new-index-000001\")\n    )\n    .source(s -> s\n        .index(\"my-index-000001\")\n        .sort(List.of())\n        .sourceFields(so -> so\n            .filter(f -> f\n                .excludes(List.of())\n                .includes(List.of(\"user.id\",\"_doc\"))\n            )\n        )\n        .runtimeMappings(Map.of())\n    )\n);\n"
     }
   ],
   "specification/_global/reindex/examples/request/ReindexRequestExample3.yaml": [
@@ -5941,6 +5941,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"docs\":[{\"_index\":\"test\",\"_id\":\"1\",\"_source\":false},{\"_index\":\"test\",\"_id\":\"2\",\"_source\":[\"field3\",\"field4\"]},{\"_index\":\"test\",\"_id\":\"3\",\"_source\":{\"include\":[\"user\"],\"exclude\":[\"user.location\"]}}]}' \"$ELASTICSEARCH_URL/_mget\""
+    },
+    {
+      "language": "Java",
+      "code": "client.mget(m -> m\n    .sourceExcludes(List.of())\n    .sourceIncludes(List.of())\n    .docs(List.of(MultiGetOperation.of(mu -> mu\n            .id(\"1\")\n            .index(\"test\")\n            .routing(List.of())\n            .source(s -> s\n                .fetch(false)\n            )\n            .storedFields(List.of())\n        ),MultiGetOperation.of(mul -> mul\n            .id(\"2\")\n            .index(\"test\")\n            .routing(List.of())\n            .source(s -> s\n                .filter(f -> f\n                    .excludes(List.of())\n                    .includes(List.of(\"field3\",\"field4\"))\n                )\n            )\n            .storedFields(List.of())\n        ),MultiGetOperation.of(mult -> mult\n            .id(\"3\")\n            .index(\"test\")\n            .routing(List.of())\n            .source(s -> s\n                .filter(f -> f\n                    .excludes(\"user.location\")\n                    .includes(\"user\")\n                )\n            )\n            .storedFields(List.of())\n        )))\n    .ids(List.of())\n    .routing(List.of())\n    .storedFields(List.of())\n);\n"
     }
   ],
   "specification/_global/mget/examples/request/MultiGetRequestExample3.yaml": [
@@ -6382,7 +6386,7 @@
     },
     {
       "language": "Java",
-      "code": "client.watcher().executeWatch(e -> e\n    .actionModes(Map.of())\n    .alternativeInput(Map.of())\n    .watch(w -> w\n        .actions(\"log_error\", a -> a\n            .logging(l -> l\n                .text(\"Found {{ctx.payload.hits.total}} errors in the logs\")\n            )\n        )\n        .condition(c -> c\n            .compare(NamedValue.of(\"ctx.payload.hits.total\",Pair.of(ConditionOp.Gt,FieldValue.of(0))))\n        )\n        .input(i -> i\n            .search(s -> s\n                .extract(List.of())\n                .request(r -> r\n                    .body(b -> b\n                        .query(q -> q\n                            .match(m -> m\n                                .field(\"message\")\n                                .query(FieldValue.of(\"error\"))\n                            )\n                        )\n                    )\n                    .indices(\"logs\")\n                )\n            )\n        )\n        .metadata(Map.of())\n        .trigger(t -> t\n            .schedule(sc -> sc\n                .interval(in -> in\n                    .time(\"10s\")\n                )\n            )\n        )\n    )\n);\n"
+      "code": "client.watcher().executeWatch(e -> e\n    .actionModes(Map.of())\n    .alternativeInput(Map.of())\n    .watch(w -> w\n        .actions(\"log_error\", a -> a\n            .logging(l -> l\n                .text(\"Found {{ctx.payload.hits.total}} errors in the logs\")\n            )\n        )\n        .condition(c -> c\n            .compare(NamedValue.of(\"ctx.payload.hits.total\",Pair.of(ConditionOp.Gt,FieldValue.of(0))))\n        )\n        .input(i -> i\n            .search(s -> s\n                .extract(List.of())\n                .request(r -> r\n                    .body(b -> b\n                        .aggregations(Map.of())\n                        .ext(Map.of())\n                        .indicesBoost(List.of())\n                        .docvalueFields(List.of())\n                        .knn(List.of())\n                        .query(q -> q\n                            .match(m -> m\n                                .field(\"message\")\n                                .query(FieldValue.of(\"error\"))\n                            )\n                        )\n                        .rescore(List.of())\n                        .scriptFields(Map.of())\n                        .searchAfter(List.of())\n                        .sort(List.of())\n                        .fields(List.of())\n                        .storedFields(List.of())\n                        .runtimeMappings(Map.of())\n                        .stats(List.of())\n                    )\n                    .indices(\"logs\")\n                )\n            )\n        )\n        .metadata(Map.of())\n        .trigger(t -> t\n            .schedule(sc -> sc\n                .interval(in -> in\n                    .time(\"10s\")\n                )\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/watcher/start/examples/request/WatcherStartRequestExample1.yaml": [
@@ -6486,7 +6490,7 @@
     },
     {
       "language": "Java",
-      "code": "client.watcher().putWatch(p -> p\n    .actions(\"email_admin\", a -> a\n        .email(e -> e\n            .bcc(List.of())\n            .cc(List.of())\n            .replyTo(List.of())\n            .subject(\"404 recently encountered\")\n            .to(\"admin@domain.host.com\")\n            .attachments(Map.of())\n        )\n    )\n    .condition(c -> c\n        .compare(NamedValue.of(\"ctx.payload.hits.total\",Pair.of(ConditionOp.Gt,FieldValue.of(0))))\n    )\n    .id(\"my-watch\")\n    .input(i -> i\n        .search(s -> s\n            .extract(List.of())\n            .request(r -> r\n                .body(b -> b\n                    .query(q -> q\n                        .bool(bo -> bo\n                            .filter(f -> f\n                                .range(ra -> ra\n                                    .untyped(u -> u\n                                        .field(\"@timestamp\")\n                                    )\n                                )\n                            )\n                            .must(m -> m\n                                .match(ma -> ma\n                                    .field(\"response\")\n                                    .query(FieldValue.of(404))\n                                )\n                            )\n                            .mustNot(List.of())\n                            .should(List.of())\n                        )\n                    )\n                )\n                .indices(\"logstash*\")\n            )\n        )\n    )\n    .metadata(Map.of())\n    .trigger(t -> t\n        .schedule(sc -> sc\n            .cron(\"0 0/1 * * * ?\")\n        )\n    )\n);\n"
+      "code": "client.watcher().putWatch(p -> p\n    .actions(\"email_admin\", a -> a\n        .email(e -> e\n            .bcc(List.of())\n            .cc(List.of())\n            .replyTo(List.of())\n            .subject(\"404 recently encountered\")\n            .to(\"admin@domain.host.com\")\n            .attachments(Map.of())\n        )\n    )\n    .condition(c -> c\n        .compare(NamedValue.of(\"ctx.payload.hits.total\",Pair.of(ConditionOp.Gt,FieldValue.of(0))))\n    )\n    .id(\"my-watch\")\n    .input(i -> i\n        .search(s -> s\n            .extract(List.of())\n            .request(r -> r\n                .body(b -> b\n                    .aggregations(Map.of())\n                    .ext(Map.of())\n                    .indicesBoost(List.of())\n                    .docvalueFields(List.of())\n                    .knn(List.of())\n                    .query(q -> q\n                        .bool(bo -> bo\n                            .filter(f -> f\n                                .range(ra -> ra\n                                    .untyped(u -> u\n                                        .field(\"@timestamp\")\n                                    )\n                                )\n                            )\n                            .must(m -> m\n                                .match(ma -> ma\n                                    .field(\"response\")\n                                    .query(FieldValue.of(404))\n                                )\n                            )\n                            .mustNot(List.of())\n                            .should(List.of())\n                        )\n                    )\n                    .rescore(List.of())\n                    .scriptFields(Map.of())\n                    .searchAfter(List.of())\n                    .sort(List.of())\n                    .fields(List.of())\n                    .storedFields(List.of())\n                    .runtimeMappings(Map.of())\n                    .stats(List.of())\n                )\n                .indices(\"logstash*\")\n            )\n        )\n    )\n    .metadata(Map.of())\n    .trigger(t -> t\n        .schedule(sc -> sc\n            .cron(\"0 0/1 * * * ?\")\n        )\n    )\n);\n"
     }
   ],
   "specification/watcher/get_watch/examples/request/GetWatchRequestExample1.yaml": [
@@ -14252,7 +14256,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"cohere_rerank\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"cohere_rerank\")\n    .input(i -> i\n        .string(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    )\n    .query(q -> q\n        .string(\"star wars main character\")\n    )\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample2.yaml": [
@@ -14278,7 +14282,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n    .returnDocuments(false)\n    .topN(2)\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(i -> i\n        .string(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    )\n    .query(q -> q\n        .string(\"star wars main character\")\n    )\n    .returnDocuments(false)\n    .topN(2)\n);\n"
     }
   ],
   "specification/inference/rerank/examples/request/RerankRequestExample3.yaml": [
@@ -14304,7 +14308,7 @@
     },
     {
       "language": "Java",
-      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    .query(\"\"\"\n        star wars main character\n        \"\"\")\n    .returnDocuments(true)\n    .topN(3)\n);\n"
+      "code": "client.inference().rerank(r -> r\n    .inferenceId(\"bge-reranker-base-mkn\")\n    .input(i -> i\n        .string(List.of(\"luke\",\"like\",\"leia\",\"chewy\",\"r2d2\",\"star\",\"wars\"))\n    )\n    .query(q -> q\n        .string(\"star wars main character\")\n    )\n    .returnDocuments(true)\n    .topN(3)\n);\n"
     }
   ],
   "specification/inference/put_alibabacloud/examples/request/PutAlibabaCloudRequestExample4.yaml": [
@@ -19347,6 +19351,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":[{\"content\":[{\"type\":\"image\",\"format\":\"base64\",\"value\":\"data:image/jpeg;base64,...\"},{\"type\":\"text\",\"value\":\"Some text to create an embedding\"}]}]}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().embedding(e -> e\n    .inferenceId(\"my-multimodal-endpoint\")\n    .embedding(em -> em\n        .input(i -> i\n            .content(c -> c\n                .content(List.of(EmbeddingContentObjectItem.of(emb -> emb\n                        .type(EmbeddingContentType.Image)\n                        .format(EmbeddingContentFormat.Base64)\n                        .value(\"data:image/jpeg;base64,...\")\n                    ),EmbeddingContentObjectItem.of(emb -> emb\n                        .type(EmbeddingContentType.Text)\n                        .value(\"Some text to create an embedding\")\n                    )))\n            )\n        )\n    )\n);\n"
     }
   ],
   "specification/_global/list_reindex/examples/request/ListReindexRequestExample2.yaml": [
@@ -19369,6 +19377,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex?detailed=true&human=true\""
+    },
+    {
+      "language": "Java",
+      "code": "client.listReindex(l -> l\n    .detailed(true)\n);\n"
     }
   ],
   "specification/_global/list_reindex/examples/request/ListReindexRequestExample1.yaml": [
@@ -19391,6 +19403,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex\""
+    },
+    {
+      "language": "Java",
+      "code": "client.listReindex(l -> l);\n"
     }
   ],
   "specification/_global/get_reindex/examples/request/GetReindexRequestExample1.yaml": [
@@ -19413,6 +19429,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619\""
+    },
+    {
+      "language": "Java",
+      "code": "client.getReindex(g -> g\n    .taskId(\"r1A2WoRbTwKZ516z6NEs5A:36619\")\n);\n"
     }
   ],
   "specification/_global/get_reindex/examples/request/GetReindexRequestExample2.yaml": [
@@ -19435,6 +19455,10 @@
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619\""
+    },
+    {
+      "language": "Java",
+      "code": "client.getReindex(g -> g\n    .taskId(\"r1A2WoRbTwKZ516z6NEs5A:36619\")\n);\n"
     }
   ],
   "specification/_global/cancel_reindex/examples/request/CancelReindexRequestExample1.yaml": [
@@ -19457,6 +19481,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel\""
+    },
+    {
+      "language": "Java",
+      "code": "client.cancelReindex(c -> c\n    .taskId(\"r1A2WoRbTwKZ516z6NEs5A:36619\")\n);\n"
     }
   ],
   "specification/_global/cancel_reindex/examples/request/CancelReindexRequestExample2.yaml": [
@@ -19479,6 +19507,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_cancel?wait_for_completion=false\""
+    },
+    {
+      "language": "Java",
+      "code": "client.cancelReindex(c -> c\n    .taskId(\"r1A2WoRbTwKZ516z6NEs5A:36619\")\n    .waitForCompletion(false)\n);\n"
     }
   ],
   "specification/_global/reindex_rethrottle/examples/request/ReindexRethrottleRequestExample3.yaml": [
@@ -19501,6 +19533,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/non_existing_node:123/_rethrottle?requests_per_second=10\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindexRethrottle(r -> r\n    .requestsPerSecond(10.0F)\n    .taskId(\"non_existing_node:123\")\n);\n"
     }
   ],
   "specification/_global/reindex_rethrottle/examples/request/ReindexRethrottleRequestExample2.yaml": [
@@ -19523,6 +19559,10 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=10\""
+    },
+    {
+      "language": "Java",
+      "code": "client.reindexRethrottle(r -> r\n    .requestsPerSecond(10.0F)\n    .taskId(\"r1A2WoRbTwKZ516z6NEs5A:36619\")\n);\n"
     }
   ],
   "specification/inference/put_anthropic/examples/request/PutAnthropicChatCompletionRequestExample1.yaml": [
@@ -19545,6 +19585,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"anthropic\",\"service_settings\":{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"claude-sonnet-4-5\"},\"task_settings\":{\"max_tokens\":1024}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/anthropic_chat_completion\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"anthropic_chat_completion\")\n    .taskType(TaskType.ChatCompletion)\n    .inferenceConfig(i -> i\n        .service(\"anthropic\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"api_key\":\"Anthropic-Api-Key\",\"model_id\":\"claude-sonnet-4-5\"}\n\"\"\"))\n        .taskSettings(JsonData.fromJson(\"\"\"\n{\"max_tokens\":1024}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_googlevertexai/examples/request/PutGoogleVertexAiRequestExample23.yaml": [
@@ -19567,6 +19611,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"googlevertexai\",\"service_settings\":{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"project_id\":\"project-id\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/google_vertex_ai_embeddings_global\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"google_vertex_ai_embeddings_global\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"googlevertexai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"service_account_json\":\"service-account-json\",\"model_id\":\"model-id\",\"project_id\":\"project-id\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_openai/examples/request/PutOpenAiRequestExample3.yaml": [
@@ -19589,6 +19637,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"service\":\"openai\",\"service_settings\":{\"model_id\":\"text-embedding-3-small\",\"client_id\":\"test_client_id\",\"scopes\":[\"scope1\",\"scope2\"],\"client_secret\":\"secret\",\"token_url\":\"http://localhost:8080/token\",\"url\":\"https://api.openai.com/v1/embeddings\"}}' \"$ELASTICSEARCH_URL/_inference/text_embedding/openai-embeddings\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().put(p -> p\n    .inferenceId(\"openai-embeddings\")\n    .taskType(TaskType.TextEmbedding)\n    .inferenceConfig(i -> i\n        .service(\"openai\")\n        .serviceSettings(JsonData.fromJson(\"\"\"\n{\"model_id\":\"text-embedding-3-small\",\"client_id\":\"test_client_id\",\"scopes\":[\"scope1\",\"scope2\"],\"client_secret\":\"secret\",\"token_url\":\"http://localhost:8080/token\",\"url\":\"https://api.openai.com/v1/embeddings\"}\n\"\"\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_region_policy/examples/request/PutRegionPolicyRequestExample2.yaml": [
@@ -19611,6 +19663,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_geos\":[\"us\",\"eu\"]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().putRegionPolicy(p -> p\n    .regionPolicy(r -> r\n        .allowedGeos(List.of(\"us\",\"eu\"))\n    )\n);\n"
     }
   ],
   "specification/inference/put_region_policy/examples/request/PutRegionPolicyRequestExample1.yaml": [
@@ -19633,6 +19689,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_regions\":[{\"csp\":\"aws\",\"region\":\"us-east-1\"},{\"csp\":\"aws\",\"region\":\"eu-west-1\"}]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
+    },
+    {
+      "language": "Java",
+      "code": "client.inference().putRegionPolicy(p -> p\n    .regionPolicy(r -> r\n        .allowedRegions(List.of(CspRegion.of(c -> c\n                .csp(\"aws\")\n                .region(\"us-east-1\")\n            ),CspRegion.of(c -> c\n                .csp(\"aws\")\n                .region(\"eu-west-1\")\n            )))\n    )\n);\n"
     }
   ],
   "specification/indices/create/examples/request/indicesCreateRequestExample6.yaml": [
@@ -19655,6 +19715,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"aliases\":{\"alias_1\":{},\"alias_2\":{\"filter\":{\"term\":{\"user.id\":\"kimchy\"}}}}}' \"$ELASTICSEARCH_URL/test\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().create(c -> c\n    .aliases(Map.of(\"alias_2\", Alias.of(a -> a\n            .filter(f -> f\n                .term(t -> t\n                    .field(\"user.id\")\n                    .value(FieldValue.of(\"kimchy\"))\n                )\n            )\n        ),\"alias_1\", Alias.of(al -> al)))\n    .index(\"test\")\n);\n"
     }
   ],
   "specification/indices/create/examples/request/indicesCreateRequestExample4.yaml": [
@@ -19677,6 +19741,10 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{}' \"$ELASTICSEARCH_URL/my-index-000001\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().create(c -> c\n    .aliases(Map.of())\n    .index(\"my-index-000001\")\n);\n"
     }
   ],
   "specification/indices/create/examples/request/indicesCreateRequestExample5.yaml": [
@@ -19699,6 +19767,244 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"mappings\":{\"properties\":{\"field1\":{\"type\":\"text\"}}}}' \"$ELASTICSEARCH_URL/test\""
+    },
+    {
+      "language": "Java",
+      "code": "client.indices().create(c -> c\n    .aliases(Map.of())\n    .index(\"test\")\n    .mappings(m -> m\n        .dynamicDateFormats(List.of())\n        .dynamicTemplates(List.of())\n        .meta(Map.of())\n        .properties(\"field1\", p -> p\n            .text(t -> t\n                .copyTo(List.of())\n                .meta(Map.of())\n                .properties(Map.of())\n                .fields(Map.of())\n            )\n        )\n        .runtime(Map.of())\n    )\n);\n"
+    }
+  ],
+  "specification/esql/get_data_source/examples/request/GetDataSourceRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.get_data_source()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.getDataSource();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.get_data_source"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->getDataSource();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().getDataSource(g -> g\n    .name(List.of())\n);\n"
+    }
+  ],
+  "specification/esql/get_data_source/examples/request/GetDataSourceRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.get_data_source(\n    name=\"prod_s3_logs\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.getDataSource({\n  name: \"prod_s3_logs\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.get_data_source(\n  name: \"prod_s3_logs\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->getDataSource([\n    \"name\" => \"prod_s3_logs\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().getDataSource(g -> g\n    .name(\"prod_s3_logs\")\n);\n"
+    }
+  ],
+  "specification/esql/put_dataset/examples/request/PutDatasetRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.put_dataset(\n    name=\"access_logs\",\n    data_source=\"prod_s3_logs\",\n    resource=\"s3://logs-bucket/access/**/*.parquet\",\n    description=\"Production access logs\",\n    settings={\n        \"partition_detection\": \"hive\"\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.putDataset({\n  name: \"access_logs\",\n  data_source: \"prod_s3_logs\",\n  resource: \"s3://logs-bucket/access/**/*.parquet\",\n  description: \"Production access logs\",\n  settings: {\n    partition_detection: \"hive\",\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.put_dataset(\n  name: \"access_logs\",\n  body: {\n    \"data_source\": \"prod_s3_logs\",\n    \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n    \"description\": \"Production access logs\",\n    \"settings\": {\n      \"partition_detection\": \"hive\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->putDataset([\n    \"name\" => \"access_logs\",\n    \"body\" => [\n        \"data_source\" => \"prod_s3_logs\",\n        \"resource\" => \"s3://logs-bucket/access/**/*.parquet\",\n        \"description\" => \"Production access logs\",\n        \"settings\" => [\n            \"partition_detection\" => \"hive\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"data_source\":\"prod_s3_logs\",\"resource\":\"s3://logs-bucket/access/**/*.parquet\",\"description\":\"Production access logs\",\"settings\":{\"partition_detection\":\"hive\"}}' \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().putDataset(p -> p\n    .dataSource(\"prod_s3_logs\")\n    .description(\"Production access logs\")\n    .name(\"access_logs\")\n    .resource(\"s3://logs-bucket/access/**/*.parquet\")\n    .settings(\"partition_detection\", JsonData.fromJson(\"\\\"hive\\\"\"))\n);\n"
+    }
+  ],
+  "specification/esql/put_data_source/examples/request/PutDataSourceRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.put_data_source(\n    name=\"prod_s3_logs\",\n    type=\"s3\",\n    description=\"Production S3 logs bucket\",\n    settings={\n        \"region\": \"us-east-1\",\n        \"auth\": \"static_credentials\",\n        \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n        \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.putDataSource({\n  name: \"prod_s3_logs\",\n  type: \"s3\",\n  description: \"Production S3 logs bucket\",\n  settings: {\n    region: \"us-east-1\",\n    auth: \"static_credentials\",\n    access_key: \"<AWS_ACCESS_KEY_ID>\",\n    secret_key: \"<AWS_SECRET_ACCESS_KEY>\",\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.put_data_source(\n  name: \"prod_s3_logs\",\n  body: {\n    \"type\": \"s3\",\n    \"description\": \"Production S3 logs bucket\",\n    \"settings\": {\n      \"region\": \"us-east-1\",\n      \"auth\": \"static_credentials\",\n      \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n      \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->putDataSource([\n    \"name\" => \"prod_s3_logs\",\n    \"body\" => [\n        \"type\" => \"s3\",\n        \"description\" => \"Production S3 logs bucket\",\n        \"settings\" => [\n            \"region\" => \"us-east-1\",\n            \"auth\" => \"static_credentials\",\n            \"access_key\" => \"<AWS_ACCESS_KEY_ID>\",\n            \"secret_key\" => \"<AWS_SECRET_ACCESS_KEY>\",\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"type\":\"s3\",\"description\":\"Production S3 logs bucket\",\"settings\":{\"region\":\"us-east-1\",\"auth\":\"static_credentials\",\"access_key\":\"<AWS_ACCESS_KEY_ID>\",\"secret_key\":\"<AWS_SECRET_ACCESS_KEY>\"}}' \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().putDataSource(p -> p\n    .description(\"Production S3 logs bucket\")\n    .name(\"prod_s3_logs\")\n    .settings(Map.of(\"secret_key\", JsonData.fromJson(\"\\\"<AWS_SECRET_ACCESS_KEY>\\\"\"),\"auth\", JsonData.fromJson(\"\\\"static_credentials\\\"\"),\"access_key\", JsonData.fromJson(\"\\\"<AWS_ACCESS_KEY_ID>\\\"\"),\"region\", JsonData.fromJson(\"\\\"us-east-1\\\"\")))\n    .type(\"s3\")\n);\n"
+    }
+  ],
+  "specification/esql/get_dataset/examples/request/GetDatasetRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.get_dataset()"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.getDataset();"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.get_dataset"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->getDataset();"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().getDataset(g -> g\n    .name(List.of())\n);\n"
+    }
+  ],
+  "specification/esql/get_dataset/examples/request/GetDatasetRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.get_dataset(\n    name=\"access_logs\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.getDataset({\n  name: \"access_logs\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.get_dataset(\n  name: \"access_logs\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->getDataset([\n    \"name\" => \"access_logs\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().getDataset(g -> g\n    .name(\"access_logs\")\n);\n"
+    }
+  ],
+  "specification/esql/delete_data_source/examples/request/DeleteDataSourceRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.delete_data_source(\n    name=\"prod_s3_logs\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.deleteDataSource({\n  name: \"prod_s3_logs\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.delete_data_source(\n  name: \"prod_s3_logs\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->deleteDataSource([\n    \"name\" => \"prod_s3_logs\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().deleteDataSource(d -> d\n    .name(\"prod_s3_logs\")\n);\n"
+    }
+  ],
+  "specification/esql/delete_dataset/examples/request/DeleteDatasetRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.delete_dataset(\n    name=\"access_logs\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.deleteDataset({\n  name: \"access_logs\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.esql.delete_dataset(\n  name: \"access_logs\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->esql()->deleteDataset([\n    \"name\" => \"access_logs\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
+    },
+    {
+      "language": "Java",
+      "code": "client.esql().deleteDataset(d -> d\n    .name(\"access_logs\")\n);\n"
+    }
+  ],
+  "specification/encryption/reset/examples/request/EncryptionResetRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.encryption.reset(\n    accept_data_loss=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.encryption.reset({\n  accept_data_loss: \"true\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.encryption.reset(\n  accept_data_loss: \"true\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->encryption()->reset([\n    \"accept_data_loss\" => \"true\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_encryption/_reset?accept_data_loss=true\""
+    },
+    {
+      "language": "Java",
+      "code": "client.encryption().reset(r -> r\n    .acceptDataLoss(true)\n);\n"
     }
   ]
 }
