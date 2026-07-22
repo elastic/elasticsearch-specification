@@ -3,7 +3,8 @@
     "transform-to-openapi": "npm run transform-to-openapi --prefix compiler --"
   },
   "dependencies": {
-    "@elastic/request-converter": "^9.1.2",
+    "@elastic/request-converter": "~8.19.2",
+    "@elastic/request-converter-dotnet": "~8.19.0",
     "@redocly/cli": "^1.34.3",
     "yaml": "^2.8.0",
     "java-caller": "^4.1.1"
