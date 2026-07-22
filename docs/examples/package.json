@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "@elastic/request-converter": "^9.1.2",
+    "@elastic/request-converter-dotnet": "~9.5.0",
     "@redocly/cli": "^1.34.5",
     "yaml": "^2.8.0",
     "java-caller": "^4.1.1"
