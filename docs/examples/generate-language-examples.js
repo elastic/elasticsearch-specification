@@ -24,7 +24,14 @@ const { convertRequests, loadSchema } = require('@elastic/request-converter');
 const {parseRequest} = require("@elastic/request-converter/dist/parse");
 const {JavaCaller} = require("java-caller");
 
-const LANGUAGES = ['Python', 'JavaScript', 'Ruby', 'PHP', 'curl'];
+const LANGUAGES = ['Python', 'JavaScript', 'Ruby', 'PHP', 'curl', 'C#'];
+
+// The C# converter runs out of process in a .NET WASM bundle and has known
+// endpoint-coverage gaps; a failed conversion skips that language for the
+// example instead of aborting the whole run.
+const BEST_EFFORT_LANGUAGES = new Set(['C#']);
+const conversionFailures = [];
+
 const EXAMPLES_JSON = 'docs/examples/languageExamples.json';
 let languageExamples = {};
 
@@ -46,10 +53,17 @@ async function generateLanguages(example) {
   }
   let alternatives = [];
   for (const lang of LANGUAGES) {
-    alternatives.push({
-      language: lang,
-      code: (await convertRequests(request, lang, {})).trim(),
-    });
+    try {
+      alternatives.push({
+        language: lang,
+        code: (await convertRequests(request, lang, {})).trim(),
+      });
+    } catch (err) {
+      if (!BEST_EFFORT_LANGUAGES.has(lang)) {
+        throw err;
+      }
+      conversionFailures.push({ example, lang, message: err.message });
+    }
   }
   alternatives = alternatives.concat((languageExamples[example] ?? []).filter(pair => !LANGUAGES.includes(pair.language)));
 
@@ -149,6 +163,12 @@ async function main() {
   }
   await fs.promises.writeFile(EXAMPLES_JSON, JSON.stringify(languageExamples, null, 2));
   console.log(`${count} examples processed, ${errors} errors.`);
+  if (conversionFailures.length > 0) {
+    console.log(`\n${conversionFailures.length} best-effort conversions skipped:`);
+    for (const failure of conversionFailures) {
+      console.log(`  [${failure.lang}] ${failure.example}: ${failure.message}`);
+    }
+  }
 }
 
 main();
