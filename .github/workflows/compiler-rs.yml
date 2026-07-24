@@ -6,6 +6,9 @@ on:
 env: 
   CARGO_TERM_COLOR: always
 
+permissions:
+  contents: read
+
 jobs:
   build_and_test:
     name: compiler-rs
