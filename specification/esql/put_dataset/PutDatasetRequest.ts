@@ -34,7 +34,6 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @rest_spec_name esql.put_dataset
  * @index_privileges manage
  * @availability stack since=9.5.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
  * @ext_doc_id esql-data-federation
  * @doc_id esql-put-dataset
  */
