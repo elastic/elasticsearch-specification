@@ -30,7 +30,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name esql.get_dataset
  * @index_privileges manage
- * @availability stack since=9.5.0 stability=experimental visibility=public
+ * @availability stack stability=experimental visibility=public
  * @ext_doc_id esql-data-federation
  * @doc_id esql-get-dataset
  */
