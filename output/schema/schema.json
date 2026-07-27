@@ -5543,14 +5543,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Delete ES|QL data sources.\n\nDeletes one or more data sources used in ES|QL data federation.\nFails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.",
@@ -5592,14 +5587,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Delete ES|QL datasets.\n\nDeletes one or more datasets used in ES|QL data federation.\nIf any specified dataset does not exist, the request fails and no datasets are deleted.",
@@ -5687,14 +5677,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Get ES|QL data sources.\n\nReturns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
@@ -5742,14 +5727,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Get ES|QL datasets.\n\nReturns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
@@ -5941,14 +5921,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Create or update an ES|QL data source.\n\nCreates or replaces a named, type-specific data source configuration for ES|QL data federation.\nDatasets reference data source configurations to access external data. Names must be lowercase\nand follow index or alias naming rules.",
@@ -5990,14 +5965,9 @@
     },
     {
       "availability": {
-        "serverless": {
-          "stability": "tech_preview",
-          "visibility": "public"
-        },
         "stack": {
-          "since": "9.5.0",
-          "stability": "tech_preview",
-          "visibility": "public"
+          "stability": "experimental",
+          "visibility": "private"
         }
       },
       "description": "Create or update an ES|QL dataset.\n\nCreates or replaces a dataset that references a data source in ES|QL data federation.\nDataset names participate in the index namespace and must follow index or alias naming rules.\nReturns `404` if the referenced data source does not exist.",
@@ -151578,7 +151548,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L63"
+      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -151700,7 +151670,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L62"
+      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L61"
     },
     {
       "kind": "response",
@@ -151895,7 +151865,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L62"
+      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L61"
     },
     {
       "kind": "response",
@@ -152049,7 +152019,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L62"
+      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L61"
     },
     {
       "kind": "response",
@@ -152546,7 +152516,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L80"
+      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L79"
     },
     {
       "kind": "response",
@@ -152738,7 +152708,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L87"
+      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L86"
     },
     {
       "kind": "response",
