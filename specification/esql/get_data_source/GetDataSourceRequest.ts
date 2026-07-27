@@ -30,7 +30,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name esql.get_data_source
  * @cluster_privileges manage
- * @availability stack stability=experimental visibility=public
+ * @availability stack stability=experimental visibility=private
  * @ext_doc_id esql-data-federation
  * @doc_id esql-get-data-source
  */
