@@ -32,8 +32,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * @rest_spec_name esql.put_data_source
  * @cluster_privileges manage
- * @availability stack since=9.5.0 stability=tech_preview visibility=public
- * @availability serverless stability=tech_preview visibility=public
+ * @availability stack stability=experimental visibility=private
  * @ext_doc_id esql-data-federation
  * @doc_id esql-put-data-source
  */

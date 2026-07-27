@@ -30,8 +30,7 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name esql.delete_data_source
  * @cluster_privileges manage
- * @availability stack since=9.5.0 stability=tech_preview visibility=public
- * @availability serverless stability=tech_preview visibility=public
+ * @availability stack stability=experimental visibility=private
  * @ext_doc_id esql-data-federation
  * @doc_id esql-delete-data-source
  */
