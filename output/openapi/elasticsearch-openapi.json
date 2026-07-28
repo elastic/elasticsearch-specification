@@ -132479,7 +132479,7 @@
             "type": "string"
           },
           "state": {
-            "description": "The current snapshot state:\n\n* `FAILED`: The snapshot finished with an error and failed to store any data.\n* `STARTED`: The snapshot is currently running.\n* `SUCCESS`: The snapshot completed.",
+            "description": "The current snapshot state:\n\n* `STARTED`: The snapshot is currently running.\n* `SUCCESS`: All shard snapshots have completed. The snapshot may or may not have completed finalization.\n* `FAILED`: The snapshot finished with an error and failed to store any data.",
             "type": "string"
           },
           "stats": {
