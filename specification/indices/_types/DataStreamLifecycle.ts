@@ -59,7 +59,10 @@ export class DataStreamLifecycle {
    */
   enabled?: boolean
   /**
-   * Only available with feature flag dlm_searchable_snapshots.
+   * The period after which data stream backing indices are automatically converted to partially mounted searchable snapshots.
+   * This field is valid only on main data stream lifecycles and cannot be set on failure-store lifecycles.
+   * @availability stack since=9.5.0 stability=stable
+   * @doc_id dlm-searchable-snapshots
    */
   frozen_after?: Duration
 }
