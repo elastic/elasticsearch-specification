@@ -159245,7 +159245,15 @@
           }
         },
         {
-          "description": "Only available with feature flag dlm_searchable_snapshots.",
+          "availability": {
+            "stack": {
+              "since": "9.5.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The period after which data stream backing indices are automatically converted to partially mounted searchable snapshots.\nThis field is valid only on main data stream lifecycles and cannot be set on failure-store lifecycles.",
+          "docId": "dlm-searchable-snapshots",
+          "docUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream/dlm-searchable-snapshots",
           "name": "frozen_after",
           "required": false,
           "type": {
@@ -159257,7 +159265,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L26-L65"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L26-L68"
     },
     {
       "kind": "interface",
@@ -159377,7 +159385,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L87-L99"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L90-L102"
     },
     {
       "kind": "interface",
@@ -159406,7 +159414,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L74-L85"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L77-L88"
     },
     {
       "kind": "interface",
@@ -162978,7 +162986,7 @@
         "name": "RetentionSource",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/DataStreamLifecycle.ts#L67-L72"
+      "specLocation": "indices/_types/DataStreamLifecycle.ts#L70-L75"
     },
     {
       "kind": "enum",
