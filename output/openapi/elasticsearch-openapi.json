@@ -89009,7 +89009,8 @@
             "type": "boolean"
           },
           "frozen_after": {
-            "description": "Only available with feature flag dlm_searchable_snapshots.",
+            "description": "The period after which data stream backing indices are automatically converted to partially mounted searchable snapshots.\nThis field is valid only on main data stream lifecycles and cannot be set on failure-store lifecycles.",
+            "x-state": "Generally available; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
