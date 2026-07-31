@@ -1,0 +1,55 @@
+name: Update language examples
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Scheduled runs always execute on the default branch (main). Version
+    # branches (e.g. 9.4) must be updated by manually dispatching this
+    # workflow from the respective branch.
+    - cron: '0 4 * * 1' # Weekly, Monday at 04:00 UTC.
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-language-examples:
+    name: Update language examples
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'elastic'
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: |
+          npm install --prefix docs/examples
+          npm install --prefix compiler
+
+      - name: Generate language examples
+        run: |
+          make generate-language-examples
+
+      - name: Debug git status
+        run: |
+          git status --porcelain
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: Update language examples (${{ github.ref_name }})
+          body: >-
+            Automated update of the request converter language examples for
+            branch `${{ github.ref_name }}`.
+          commit-message: Update language examples
+          labels: specification,skip-backport
+          delete-branch: true
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo
+          branch: automated/update-language-examples-${{ github.ref_name }}
