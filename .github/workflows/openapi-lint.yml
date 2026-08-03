@@ -2,13 +2,9 @@ name: openapi-lint
 
 on:
   pull_request:
-    # TODO: re-enable path filtering once this workflow is verified end-to-end
-    # paths:
-    #   - 'specification/**'
-    #   - 'docs/overlays/**'
-    #   - 'docs/linters/**'
-    #   - 'Makefile'
-    #   - '.github/actions/build-openapi-docs/**'
+    branches:
+      - main
+      - '[0-9]+.[0-9]+'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,15 +22,15 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Build docs-final OpenAPI specs
+      - name: Build OpenAPI docs specs
         uses: ./.github/actions/build-openapi-docs
 
       - name: Lint stateful spec
         uses: elastic/docs-actions/openapi/lint@v1
         with:
-          spec-path: output/openapi/elasticsearch-openapi-docs-final.json
+          spec-path: output/openapi/elasticsearch-openapi-docs.json
 
       - name: Lint serverless spec
         uses: elastic/docs-actions/openapi/lint@v1
         with:
-          spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
+          spec-path: output/openapi/elasticsearch-serverless-openapi-docs.json
