@@ -6,6 +6,13 @@ on:
       - main
       - '8.19'
       - '9.[0-9]+'
+    paths:
+      - 'output/openapi/elasticsearch-openapi.json'
+      - 'output/openapi/elasticsearch-serverless-openapi.json'
+      - 'specification/**/examples/request/*.yaml'
+      - 'docs/examples/**'
+      - '.github/actions/build-openapi-docs/**'
+      - '.github/workflows/openapi-publish.yml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
