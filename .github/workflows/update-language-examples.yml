@@ -51,5 +51,5 @@ jobs:
           commit-message: Update language examples
           labels: specification,skip-backport
           delete-branch: true
-          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo
+          reviewers: Anaethelion,flobernd,JoshMock,l-trotta
           branch: automated/update-language-examples-${{ github.ref_name }}
