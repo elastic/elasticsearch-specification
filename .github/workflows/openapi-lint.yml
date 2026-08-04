@@ -1,0 +1,37 @@
+name: openapi-lint
+
+on:
+  pull_request:
+    branches:
+      - main
+      - '8.19'
+      - '9.[0-9]+'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Build OpenAPI docs specs
+        uses: ./.github/actions/build-openapi-docs
+
+      - name: Lint stateful spec
+        uses: elastic/docs-actions/openapi/lint@v1
+        with:
+          spec-path: output/openapi/elasticsearch-openapi-docs.json
+
+      - name: Lint serverless spec
+        uses: elastic/docs-actions/openapi/lint@v1
+        with:
+          spec-path: output/openapi/elasticsearch-serverless-openapi-docs.json
