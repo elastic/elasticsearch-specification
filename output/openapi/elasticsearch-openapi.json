@@ -121610,7 +121610,7 @@
             "properties": {
               "cluster_name": {
                 "externalDocs": {
-                  "url": "https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration##_cluster_name_setting"
+                  "url": "https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration#_cluster_name_setting"
                 },
                 "description": "Name of the cluster. Based on the `cluster.name` setting.",
                 "allOf": [

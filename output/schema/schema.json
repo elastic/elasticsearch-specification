@@ -244074,7 +244074,7 @@
         {
           "description": "Name of the cluster. Based on the `cluster.name` setting.",
           "extDocId": "cluster-name",
-          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration##_cluster_name_setting",
+          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/deploy/self-managed/important-settings-configuration#_cluster_name_setting",
           "name": "cluster_name",
           "required": true,
           "type": {
