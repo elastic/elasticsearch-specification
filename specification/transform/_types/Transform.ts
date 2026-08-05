@@ -24,7 +24,13 @@ import {
   HistogramAggregation,
   TermsAggregation
 } from '@_types/aggregations/bucket'
-import { Field, IndexName, Indices, ProjectRouting } from '@_types/common'
+import {
+  Field,
+  IndexAlias,
+  IndexName,
+  Indices,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -39,9 +45,34 @@ export class Destination {
    */
   index?: IndexName
   /**
+   * The aliases that the destination index for the transform should have.
+   * Aliases are manipulated using the stored credentials of the transform, which means the secondary credentials
+   * supplied at creation time (if both primary and secondary credentials are specified).
+   *
+   * The destination index is added to the aliases regardless of whether the destination index was created by the
+   * transform or pre-created by the user.
+   * @availability stack since=8.8.0
+   * @availability serverless
+   */
+  aliases?: DestinationAlias[]
+  /**
    * The unique identifier for an ingest pipeline.
    */
   pipeline?: string
+}
+
+export class DestinationAlias {
+  /**
+   * The name of the alias.
+   */
+  alias: IndexAlias
+  /**
+   * Whether the destination index should be the only index in this alias.
+   * If `true`, all the other indices will be removed from this alias before adding the destination index to this
+   * alias. This does not delete the removed indices; it only removes them from the alias.
+   * @server_default false
+   */
+  move_on_creation?: boolean
 }
 
 export class Latest {
