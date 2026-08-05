@@ -30,6 +30,14 @@ const LANGUAGES = ['Python', 'JavaScript', 'Ruby', 'PHP', 'curl', 'C#'];
 // endpoint-coverage gaps; a failed conversion skips that language for the
 // example instead of aborting the whole run.
 const BEST_EFFORT_LANGUAGES = new Set(['C#']);
+
+const LANGUAGE_OPTIONS = {
+  'C#': {
+    client_call_format: 'inline',
+    client_call_style: 'async',
+    emit_usings: false,
+  },
+};
 const conversionFailures = [];
 
 const EXAMPLES_JSON = 'docs/examples/languageExamples.json';
@@ -56,7 +64,7 @@ async function generateLanguages(example) {
     try {
       alternatives.push({
         language: lang,
-        code: (await convertRequests(request, lang, {})).trim(),
+        code: (await convertRequests(request, lang, LANGUAGE_OPTIONS[lang] ?? {})).trim(),
       });
     } catch (err) {
       if (!BEST_EFFORT_LANGUAGES.has(lang)) {
