@@ -5,6 +5,9 @@ on:
     paths:
       - 'compiler/**'
 
+permissions:
+  contents: read
+
 jobs:
   compiler-test:
     name: build

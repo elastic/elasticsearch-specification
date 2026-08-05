@@ -6,6 +6,9 @@ on:
       - 'compiler/**'
       - 'typescript-generator/**'
 
+permissions:
+  contents: read
+
 jobs:
   build:
 
