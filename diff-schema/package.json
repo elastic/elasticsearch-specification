@@ -1,0 +1,18 @@
+{
+  "name": "diff-schema",
+  "version": "1.0.0",
+  "main": "diff-schema.js",
+  "type": "commonjs",
+  "scripts": {
+    "diff-schema": "npx tsc && node lib/diff-schema.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^24.6.0",
+    "typescript": "^5.9.2"
+  }
+}
