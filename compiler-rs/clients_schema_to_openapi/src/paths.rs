@@ -26,7 +26,7 @@ use icu_segmenter::SentenceSegmenter;
 use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
-    RequestBody, Response, Responses, StatusCode, Example
+    RequestBody, Response, Responses, Schema, StatusCode, Example
 };
 use serde_json::Value;
 use clients_schema::SchemaExample;
@@ -65,12 +65,17 @@ pub fn add_endpoint(
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
         let mut extensions: IndexMap<String,Value> = Default::default();
         convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
+
+        // Wrap `$ref` schemas in `allOf` so per-parameter keywords like `default` are valid in OAS 3.0.
+        let mut schema: Schema = TypesAndComponents::into_inline_schema(tac.convert_value_of(&prop.typ)?);
+        schema.schema_data.default = prop.server_default.clone().map(|value| serde_json::json!(value));
+
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
             required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
-            format: ParameterSchemaOrContent::Schema(tac.convert_value_of(&prop.typ)?),
+            format: ParameterSchemaOrContent::Schema(ReferenceOr::Item(schema)),
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
