@@ -20,9 +20,10 @@
 import { Id, Metadata, VersionString } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
-import { Destination, Source } from '@global/reindex/types'
+import { Source } from '@global/reindex/types'
 import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
+  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
