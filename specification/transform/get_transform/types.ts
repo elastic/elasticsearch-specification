@@ -19,9 +19,9 @@
 
 import { Id, Metadata, VersionString } from '@_types/common'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
-import { Destination } from '@global/reindex/types'
 import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
+  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
