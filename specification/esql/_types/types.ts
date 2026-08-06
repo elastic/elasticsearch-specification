@@ -127,6 +127,8 @@ export class ESQLView {
   name: string
   /** The ES|QL query */
   query: string
+  /** A free-text description of the view. */
+  description?: string
 }
 
 /**

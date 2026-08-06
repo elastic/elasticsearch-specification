@@ -43,6 +43,8 @@ export interface Request extends RequestBase {
   body: {
     /** The ES|QL query string from which to create a view. */
     query: string
+    /** A free-text description of the view. */
+    description?: string
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
