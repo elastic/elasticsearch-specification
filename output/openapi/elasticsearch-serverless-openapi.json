@@ -28964,6 +28964,11 @@
                   "summary": "A latest transform",
                   "description": "Run `PUT _transform/ecommerce_transform2` to create a transform that uses the latest method.",
                   "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"latest\": {\n    \"unique_key\": [\n      \"customer_id\"\n    ],\n    \"sort\": \"order_date\"\n  },\n  \"description\": \"Latest order for each customer\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform2\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  }\n}"
+                },
+                "PutTransformRequestExample3": {
+                  "summary": "A transform with destination aliases",
+                  "description": "Run `PUT _transform/ecommerce_transform3` to create a transform that adds the destination index to aliases. With `move_on_creation` set to `true`, the destination index becomes the only index in that alias.\n",
+                  "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"latest\": {\n    \"unique_key\": [\n      \"customer_id\"\n    ],\n    \"sort\": \"order_date\"\n  },\n  \"description\": \"Latest order for each customer\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform3\",\n    \"aliases\": [\n      {\n        \"alias\": \"kibana_sample_data_ecommerce_transform\"\n      },\n      {\n        \"alias\": \"kibana_sample_data_ecommerce_transform_latest\",\n        \"move_on_creation\": true\n      }\n    ]\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  }\n}"
                 }
               }
             }
@@ -29803,7 +29808,7 @@
                     "dest": {
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/_global.reindex.Destination"
+                          "$ref": "#/components/schemas/transform._types.Destination"
                         }
                       ]
                     },
@@ -82802,7 +82807,7 @@
             "description": "The destination for the transform.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/_global.reindex.Destination"
+                "$ref": "#/components/schemas/transform._types.Destination"
               }
             ]
           },
@@ -82911,6 +82916,52 @@
             "type": "string"
           }
         }
+      },
+      "transform._types.Destination": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source\nfields when possible. If alternate mappings are required, use the create index API prior to starting the\ntransform.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "aliases": {
+            "description": "The aliases that the destination index for the transform should have.\nAliases are manipulated using the stored credentials of the transform, which means the secondary credentials\nsupplied at creation time (if both primary and secondary credentials are specified).\n\nThe destination index is added to the aliases regardless of whether the destination index was created by the\ntransform or pre-created by the user.",
+            "x-state": "Generally available",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/transform._types.DestinationAlias"
+            }
+          },
+          "pipeline": {
+            "description": "The unique identifier for an ingest pipeline.",
+            "type": "string"
+          }
+        }
+      },
+      "transform._types.DestinationAlias": {
+        "type": "object",
+        "properties": {
+          "alias": {
+            "description": "The name of the alias.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexAlias"
+              }
+            ]
+          },
+          "move_on_creation": {
+            "description": "Whether the destination index should be the only index in this alias.\nIf `true`, all the other indices will be removed from this alias before adding the destination index to this\nalias. This does not delete the removed indices; it only removes them from the alias.",
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "alias"
+        ]
       },
       "transform._types.Latest": {
         "type": "object",
@@ -83466,23 +83517,6 @@
           "search_total",
           "trigger_count"
         ]
-      },
-      "transform._types.Destination": {
-        "type": "object",
-        "properties": {
-          "index": {
-            "description": "The destination index for the transform. The mappings of the destination index are deduced based on the source\nfields when possible. If alternate mappings are required, use the create index API prior to starting the\ntransform.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.IndexName"
-              }
-            ]
-          },
-          "pipeline": {
-            "description": "The unique identifier for an ingest pipeline.",
-            "type": "string"
-          }
-        }
       },
       "_global.update.UpdateWriteResponseBase": {
         "allOf": [

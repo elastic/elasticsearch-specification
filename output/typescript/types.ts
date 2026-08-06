@@ -23238,7 +23238,13 @@ export interface TextStructureTestGrokPatternResponse {
 
 export interface TransformDestination {
   index?: IndexName
+  aliases?: TransformDestinationAlias[]
   pipeline?: string
+}
+
+export interface TransformDestinationAlias {
+  alias: IndexAlias
+  move_on_creation?: boolean
 }
 
 export interface TransformLatest {
@@ -23341,7 +23347,7 @@ export interface TransformGetTransformTransformSummary {
   create_time?: EpochTime<UnitMillis>
   create_time_string?: DateTime
   description?: string
-  dest: ReindexDestination
+  dest: TransformDestination
   frequency?: Duration
   id: Id
   latest?: TransformLatest
@@ -23541,7 +23547,7 @@ export interface TransformUpdateTransformResponse {
   authorization?: MlTransformAuthorization
   create_time: long
   description: string
-  dest: ReindexDestination
+  dest: TransformDestination
   frequency?: Duration
   id: Id
   latest?: TransformLatest

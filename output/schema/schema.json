@@ -276497,6 +276497,27 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.8.0"
+            }
+          },
+          "description": "The aliases that the destination index for the transform should have.\nAliases are manipulated using the stored credentials of the transform, which means the secondary credentials\nsupplied at creation time (if both primary and secondary credentials are specified).\n\nThe destination index is added to the aliases regardless of whether the destination index was created by the\ntransform or pre-created by the user.",
+          "name": "aliases",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DestinationAlias",
+                "namespace": "transform._types"
+              }
+            }
+          }
+        },
+        {
           "description": "The unique identifier for an ingest pipeline.",
           "name": "pipeline",
           "required": false,
@@ -276509,7 +276530,42 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L34-L45"
+      "specLocation": "transform/_types/Transform.ts#L34-L56"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DestinationAlias",
+        "namespace": "transform._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the alias.",
+          "name": "alias",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexAlias",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Whether the destination index should be the only index in this alias.\nIf `true`, all the other indices will be removed from this alias before adding the destination index to this\nalias. This does not delete the removed indices; it only removes them from the alias.",
+          "name": "move_on_creation",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "transform/_types/Transform.ts#L58-L70"
     },
     {
       "kind": "interface",
@@ -276546,7 +276602,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L47-L52"
+      "specLocation": "transform/_types/Transform.ts#L72-L77"
     },
     {
       "kind": "interface",
@@ -276605,7 +276661,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L54-L68"
+      "specLocation": "transform/_types/Transform.ts#L79-L93"
     },
     {
       "kind": "interface",
@@ -276659,7 +276715,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L70-L78",
+      "specLocation": "transform/_types/Transform.ts#L95-L103",
       "variants": {
         "kind": "container"
       }
@@ -276696,7 +276752,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L88-L96"
+      "specLocation": "transform/_types/Transform.ts#L113-L121"
     },
     {
       "kind": "interface",
@@ -276718,7 +276774,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L80-L86",
+      "specLocation": "transform/_types/Transform.ts#L105-L111",
       "variants": {
         "kind": "container"
       }
@@ -276847,7 +276903,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L98-L165"
+      "specLocation": "transform/_types/Transform.ts#L123-L190"
     },
     {
       "kind": "interface",
@@ -276899,7 +276955,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L167-L186"
+      "specLocation": "transform/_types/Transform.ts#L192-L211"
     },
     {
       "kind": "interface",
@@ -276921,7 +276977,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L190-L196",
+      "specLocation": "transform/_types/Transform.ts#L215-L221",
       "variants": {
         "kind": "container"
       }
@@ -276959,7 +277015,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L198-L210"
+      "specLocation": "transform/_types/Transform.ts#L223-L235"
     },
     {
       "kind": "request",
@@ -277476,7 +277532,7 @@
             "kind": "instance_of",
             "type": {
               "name": "Destination",
-              "namespace": "_global.reindex"
+              "namespace": "transform._types"
             }
           }
         },
@@ -278924,6 +278980,12 @@
           "method_request": "PUT _transform/ecommerce_transform2",
           "summary": "A latest transform",
           "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"latest\": {\n    \"unique_key\": [\n      \"customer_id\"\n    ],\n    \"sort\": \"order_date\"\n  },\n  \"description\": \"Latest order for each customer\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform2\"\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  }\n}"
+        },
+        "PutTransformRequestExample3": {
+          "description": "Run `PUT _transform/ecommerce_transform3` to create a transform that adds the destination index to aliases. With `move_on_creation` set to `true`, the destination index becomes the only index in that alias.\n",
+          "method_request": "PUT _transform/ecommerce_transform3",
+          "summary": "A transform with destination aliases",
+          "value": "{\n  \"source\": {\n    \"index\": \"kibana_sample_data_ecommerce\"\n  },\n  \"latest\": {\n    \"unique_key\": [\n      \"customer_id\"\n    ],\n    \"sort\": \"order_date\"\n  },\n  \"description\": \"Latest order for each customer\",\n  \"dest\": {\n    \"index\": \"kibana_sample_data_ecommerce_transform3\",\n    \"aliases\": [\n      {\n        \"alias\": \"kibana_sample_data_ecommerce_transform\"\n      },\n      {\n        \"alias\": \"kibana_sample_data_ecommerce_transform_latest\",\n        \"move_on_creation\": true\n      }\n    ]\n  },\n  \"frequency\": \"5m\",\n  \"sync\": {\n    \"time\": {\n      \"field\": \"order_date\",\n      \"delay\": \"60s\"\n    }\n  }\n}"
         }
       },
       "inherits": {
@@ -279857,7 +279919,7 @@
               "kind": "instance_of",
               "type": {
                 "name": "Destination",
-                "namespace": "_global.reindex"
+                "namespace": "transform._types"
               }
             }
           },
@@ -279983,7 +280045,7 @@
         "name": "Response",
         "namespace": "transform.update_transform"
       },
-      "specLocation": "transform/update_transform/UpdateTransformResponse.ts#L33-L51"
+      "specLocation": "transform/update_transform/UpdateTransformResponse.ts#L34-L52"
     },
     {
       "kind": "request",
