@@ -24,12 +24,7 @@ import {
   HistogramAggregation,
   TermsAggregation
 } from '@_types/aggregations/bucket'
-import {
-  Field,
-  IndexAlias,
-  IndexName,
-  Indices
-} from '@_types/common'
+import { Field, IndexAlias, IndexName, Indices } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
