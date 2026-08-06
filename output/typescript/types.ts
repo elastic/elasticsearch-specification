@@ -7726,7 +7726,7 @@ export type CatCatPluginsColumn = 'id' | 'name' | 'n' | 'component' | 'c' | 'ver
 
 export type CatCatPluginsColumns = CatCatPluginsColumn | CatCatPluginsColumn[]
 
-export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis' | 'time' | 't' | 'ti' | 'type' | 'ty' | 'stage' | 'st' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'rep' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top'| string
+export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis' | 'time' | 't' | 'ti' | 'type' | 'ty' | 'stage' | 'st' | 'priority' | 'pr' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'rep' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top'| string
 
 export type CatCatRecoveryColumns = CatCatRecoveryColumn | CatCatRecoveryColumn[]
 
@@ -9039,6 +9039,8 @@ export interface CatRecoveryRecoveryRecord {
   ty?: string
   stage?: string
   st?: string
+  priority?: string
+  pr?: string
   source_host?: string
   shost?: string
   source_node?: string
@@ -14036,6 +14038,8 @@ export interface IndicesRecoveryRecoveryOrigin {
   index?: IndexName
 }
 
+export type IndicesRecoveryRecoveryPriority = 'UNASSIGNED_NEW_PRIMARY' | 'UNASSIGNED_UNEXPECTED' | 'UNASSIGNED_EXPECTED' | 'RELOCATION_CAN_REMAIN_NO' | 'RELOCATION_CAN_REMAIN_NOT_PREFERRED' | 'RELOCATE_REBALANCING' | 'UNKNOWN'
+
 export type IndicesRecoveryRecoveryStage = 'INIT' | 'INDEX' | 'VERIFY_INDEX' | 'TRANSLOG' | 'FINALIZE' | 'DONE'
 
 export interface IndicesRecoveryRecoveryStartStatus {
@@ -14068,6 +14072,7 @@ export interface IndicesRecoveryShardRecovery {
   primary: boolean
   source: IndicesRecoveryRecoveryOrigin
   stage: IndicesRecoveryRecoveryStage
+  priority: IndicesRecoveryRecoveryPriority
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
