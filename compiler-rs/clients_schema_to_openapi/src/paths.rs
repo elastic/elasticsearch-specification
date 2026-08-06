@@ -26,7 +26,7 @@ use icu_segmenter::SentenceSegmenter;
 use itertools::Itertools;
 use openapiv3::{
     MediaType, Parameter, ParameterData, ParameterSchemaOrContent, PathItem, PathStyle, Paths, QueryStyle, ReferenceOr,
-    RequestBody, Response, Responses, Schema, StatusCode, Example
+    RequestBody, Response, Responses, StatusCode, Example
 };
 use serde_json::Value;
 use clients_schema::SchemaExample;
@@ -66,16 +66,24 @@ pub fn add_endpoint(
         let mut extensions: IndexMap<String,Value> = Default::default();
         convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
 
-        // Wrap `$ref` schemas in `allOf` so per-parameter keywords like `default` are valid in OAS 3.0.
-        let mut schema: Schema = TypesAndComponents::into_inline_schema(tac.convert_value_of(&prop.typ)?);
-        schema.schema_data.default = prop.server_default.clone().map(|value| serde_json::json!(value));
+        let schema_ref = tac.convert_value_of(&prop.typ)?;
+        // Only wrap `$ref` in `allOf` when attaching a per-parameter `default` (OAS 3.0 forbids
+        // siblings of `$ref`). Parameters without a server default keep a bare `$ref`/inline schema.
+        let schema = match &prop.server_default {
+            None => schema_ref,
+            Some(default) => {
+                let mut schema = TypesAndComponents::into_inline_schema(schema_ref);
+                schema.schema_data.default = Some(serde_json::json!(default));
+                ReferenceOr::Item(schema)
+            }
+        };
 
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
             required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
-            format: ParameterSchemaOrContent::Schema(ReferenceOr::Item(schema)),
+            format: ParameterSchemaOrContent::Schema(schema),
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
