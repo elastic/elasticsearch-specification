@@ -25,5 +25,6 @@ const realArgs = process.argv.slice(2)
 try {
   convert_schema_to_openapi(realArgs, '..')
 } catch (e) {
-  console.log(e)
+  console.error(e)
+  process.exit(1)
 }
