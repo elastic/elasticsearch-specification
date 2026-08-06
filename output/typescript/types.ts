@@ -11690,6 +11690,7 @@ export type EsqlESQLParams = EsqlSingleOrMultiValue[] | EsqlNamedValue[]
 export interface EsqlESQLView {
   name: string
   query: string
+  description?: string
 }
 
 export type EsqlEsqlApproximation = boolean | EsqlEsqlApproximationSettings
@@ -11940,6 +11941,7 @@ export interface EsqlPutViewRequest extends RequestBase {
   name: Id
   body?: {
     query: string
+    description?: string
   }
 }
 

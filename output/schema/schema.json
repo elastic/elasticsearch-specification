@@ -149656,7 +149656,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L132-L145"
+      "specLocation": "esql/_types/types.ts#L134-L147"
     },
     {
       "kind": "interface",
@@ -149746,7 +149746,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L147-L175"
+      "specLocation": "esql/_types/types.ts#L149-L177"
     },
     {
       "kind": "type_alias",
@@ -149816,9 +149816,21 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "A free-text description of the view.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L120-L130"
+      "specLocation": "esql/_types/types.ts#L120-L132"
     },
     {
       "kind": "type_alias",
@@ -149831,7 +149843,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L216-L221",
+      "specLocation": "esql/_types/types.ts#L218-L223",
       "type": {
         "kind": "union_of",
         "items": [
@@ -149885,7 +149897,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L223-L235"
+      "specLocation": "esql/_types/types.ts#L225-L237"
     },
     {
       "kind": "interface",
@@ -150254,7 +150266,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L177-L214"
+      "specLocation": "esql/_types/types.ts#L179-L216"
     },
     {
       "kind": "interface",
@@ -152755,6 +152767,18 @@
                 "namespace": "_builtins"
               }
             }
+          },
+          {
+            "description": "A free-text description of the view.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -152784,7 +152808,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/put_view/PutViewRequest.ts#L23-L49"
+      "specLocation": "esql/put_view/PutViewRequest.ts#L23-L51"
     },
     {
       "kind": "response",

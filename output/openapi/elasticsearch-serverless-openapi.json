@@ -6556,6 +6556,10 @@
                   "query": {
                     "description": "The ES|QL query string from which to create a view.",
                     "type": "string"
+                  },
+                  "description": {
+                    "description": "A free-text description of the view.",
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -66572,6 +66576,10 @@
           },
           "query": {
             "description": "The ES|QL query",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description of the view.",
             "type": "string"
           }
         },
