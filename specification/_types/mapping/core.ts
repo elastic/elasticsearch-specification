@@ -243,7 +243,9 @@ export class SemanticTextProperty {
    * Inference endpoint that will be used to generate embeddings for the field.
    * This parameter cannot be updated. Use the Create inference API to create the endpoint.
    * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
-   * @server_default .elser-2-elasticsearch
+   * If the `inference_id` is not specified, it will default to `.elser-2-elastic` if the cluster is authorized to use the Elastic Inference Service,
+   * otherwise it will default to `.elser-2-elasticsearch`. The `.elser-2-elasticsearch` inference endpoint relies on a local ML node to run the ELSER model.
+   * @server_default .elser-2-elastic
    */
   inference_id?: Id
   /**
