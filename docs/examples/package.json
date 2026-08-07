@@ -6,7 +6,7 @@
     "@elastic/request-converter": "~8.19.3",
     "@elastic/request-converter-dotnet": "~8.19.3",
     "@redocly/cli": "^1.34.3",
-    "java-caller": "^4.1.1",
-    "yaml": "^2.8.0"
+    "yaml": "^2.8.0",
+    "java-caller": "^4.1.1"
   }
 }
