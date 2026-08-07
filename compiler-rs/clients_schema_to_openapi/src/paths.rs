@@ -65,12 +65,25 @@ pub fn add_endpoint(
     fn parameter_data(prop: &Property, in_path: bool, tac: &mut TypesAndComponents) -> anyhow::Result<ParameterData> {
         let mut extensions: IndexMap<String,Value> = Default::default();
         convert_availabilities(&prop.availability, &tac.config.flavor, &mut extensions);
+
+        let schema_ref = tac.convert_value_of(&prop.typ)?;
+        // Only wrap `$ref` in `allOf` when attaching a per-parameter `default` (OAS 3.0 forbids
+        // siblings of `$ref`). Parameters without a server default keep a bare `$ref`/inline schema.
+        let schema = match &prop.server_default {
+            None => schema_ref,
+            Some(default) => {
+                let mut schema = TypesAndComponents::into_inline_schema(schema_ref);
+                schema.schema_data.default = Some(serde_json::json!(default));
+                ReferenceOr::Item(schema)
+            }
+        };
+
         Ok(ParameterData {
             name: prop.name.clone(),
             description: tac.property_description(prop)?,
             required: in_path || prop.required, // Path parameters are always required
             deprecated: Some(prop.deprecation.is_some()),
-            format: ParameterSchemaOrContent::Schema(tac.convert_value_of(&prop.typ)?),
+            format: ParameterSchemaOrContent::Schema(schema),
             example: None,
             examples: Default::default(),
             explode: None, // Defaults to simple, i.e. comma-separated values for arrays
