@@ -1,0 +1,78 @@
+name: Generate Language Examples
+
+# Regenerates the language examples for the API docs, including the Java
+# examples. Java requires the java-request-converter jar, which is built here
+# and passed to the generator via JAVA_ES_REQUEST_CONVERTER_JAR. The single
+# `generate-language-examples` target produces every language.
+
+on:
+  workflow_dispatch:
+  # Uncomment to also refresh on a schedule once validated:
+  # schedule:
+  #   - cron: '0 3 * * 1' # Mondays at 03:00
+
+jobs:
+  generate-language-examples:
+    name: Generate language examples
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'elastic'
+
+    steps:
+      - name: Checkout specification
+        uses: actions/checkout@v5
+
+      - name: Checkout java-request-converter
+        uses: actions/checkout@v5
+        with:
+          repository: elastic/java-request-converter
+          path: java-request-converter
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Use Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21' # java-caller requires a JRE >= 21 to run the jar
+
+      - name: Build the Java converter jar
+        working-directory: java-request-converter
+        run: |
+          chmod +x gradlew
+          ./gradlew jar
+
+      - name: Export jar path
+        run: |
+          JAR=$(ls "$GITHUB_WORKSPACE"/java-request-converter/build/libs/*.jar | head -n1)
+          echo "Using jar: $JAR"
+          echo "JAVA_ES_REQUEST_CONVERTER_JAR=$JAR" >> "$GITHUB_ENV"
+
+      - name: Install dependencies
+        run: make setup
+
+      - name: Generate language examples
+        run: make generate-language-examples
+
+      - name: Debug git status
+        run: git status --porcelain
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: Update language examples
+          body: 'Automated regeneration of the language examples.'
+          commit-message: 'Update language examples'
+          labels: specification,skip-backport
+          delete-branch: true
+          reviewers: l-trotta
+          branch: automated/language-examples-update
+          # Only the generated examples belong in the PR - never the
+          # java-request-converter checkout or its build artifacts.
+          add-paths: |
+            specification/**/examples/request/**
+            docs/examples/languageExamples.json
