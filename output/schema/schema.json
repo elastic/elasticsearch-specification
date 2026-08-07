@@ -91840,7 +91840,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L399-L430"
+      "specLocation": "_types/mapping/core.ts#L401-L432"
     },
     {
       "kind": "interface",
@@ -93129,7 +93129,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L355-L360"
+      "specLocation": "_types/mapping/core.ts#L357-L362"
     },
     {
       "kind": "interface",
@@ -93711,7 +93711,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L328-L353"
+      "specLocation": "_types/mapping/core.ts#L330-L355"
     },
     {
       "kind": "enum",
@@ -94787,7 +94787,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L432-L436"
+      "specLocation": "_types/mapping/core.ts#L434-L438"
     },
     {
       "kind": "interface",
@@ -95268,7 +95268,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L309-L320"
+      "specLocation": "_types/mapping/core.ts#L311-L322"
     },
     {
       "kind": "interface",
@@ -95340,10 +95340,10 @@
           }
         },
         {
-          "description": "Inference endpoint that will be used to generate embeddings for the field.\nThis parameter cannot be updated. Use the Create inference API to create the endpoint.\nIf `search_inference_id` is specified, the inference endpoint will only be used at index time.",
+          "description": "Inference endpoint that will be used to generate embeddings for the field.\nThis parameter cannot be updated. Use the Create inference API to create the endpoint.\nIf `search_inference_id` is specified, the inference endpoint will only be used at index time.\nIf the `inference_id` is not specified, it will default to `.jina-embeddings-v5-text-small` if the cluster is authorized to use the Elastic Inference Service,\notherwise it will default to `.elser-2-elasticsearch`. The `.elser-2-elasticsearch` inference endpoint relies on a local ML node to run the ELSER model.",
           "name": "inference_id",
           "required": false,
-          "serverDefault": ".elser-2-elasticsearch",
+          "serverDefault": ".jina-embeddings-v5-text-small",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -95426,7 +95426,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L272-L307"
+      "specLocation": "_types/mapping/core.ts#L272-L309"
     },
     {
       "kind": "interface",
@@ -95912,7 +95912,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L362-L365"
+      "specLocation": "_types/mapping/core.ts#L364-L367"
     },
     {
       "kind": "interface",
@@ -96125,7 +96125,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L367-L384"
+      "specLocation": "_types/mapping/core.ts#L369-L386"
     },
     {
       "kind": "enum",
@@ -96532,7 +96532,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L386-L388"
+      "specLocation": "_types/mapping/core.ts#L388-L390"
     },
     {
       "kind": "interface",
@@ -96573,7 +96573,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L390-L397"
+      "specLocation": "_types/mapping/core.ts#L392-L399"
     },
     {
       "kind": "interface",
