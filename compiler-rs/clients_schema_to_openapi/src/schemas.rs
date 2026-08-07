@@ -241,24 +241,29 @@ impl<'a> TypesAndComponents<'a> {
         Ok(result)
     }
 
-    fn convert_property(&mut self, prop: &Property) -> anyhow::Result<ReferenceOr<Schema>> {
-        let result = self.convert_value_of(&prop.typ)?;
-
-        // OpenAPI 3.0 doesn't allow adding summary and description to a reference. The recommended workaround
-        // is to use a schema with a single `allOf` - see https://github.com/OAI/OpenAPI-Specification/issues/1514
-        //
-        // OpenAPI 3.1 added summary and description for a `$ref` have been added to avoid the workaround
-        // https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#reference-object
-
-        let mut schema = match result {
+    /// Convert a schema reference-or-item into an always-inline Schema.
+    ///
+    /// OpenAPI 3.0 doesn't allow adding keywords such as `description` or `default` as siblings of a
+    /// `$ref`. The recommended workaround is to wrap the reference in a schema with a single `allOf`
+    /// — see https://github.com/OAI/OpenAPI-Specification/issues/1514
+    ///
+    /// OpenAPI 3.1 added summary and description on `$ref` to avoid the workaround:
+    /// https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#reference-object
+    pub fn into_inline_schema(schema: ReferenceOr<Schema>) -> Schema {
+        match schema {
             ReferenceOr::Item(schema) => schema,
             reference @ ReferenceOr::Reference { reference: _ } => Schema {
                 schema_kind: SchemaKind::AllOf {
-                    all_of: vec![reference]
+                    all_of: vec![reference],
                 },
                 schema_data: Default::default(),
-            }
-        };
+            },
+        }
+    }
+
+    fn convert_property(&mut self, prop: &Property) -> anyhow::Result<ReferenceOr<Schema>> {
+        let result = self.convert_value_of(&prop.typ)?;
+        let mut schema = Self::into_inline_schema(result);
 
         // Add docs & other properties
         self.fill_data_with_prop(&mut schema.schema_data, prop)?;
