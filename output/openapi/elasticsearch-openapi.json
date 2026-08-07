@@ -88701,8 +88701,8 @@
             }
           },
           "inference_id": {
-            "description": "Inference endpoint that will be used to generate embeddings for the field.\nThis parameter cannot be updated. Use the Create inference API to create the endpoint.\nIf `search_inference_id` is specified, the inference endpoint will only be used at index time.",
-            "default": ".elser-2-elasticsearch",
+            "description": "Inference endpoint that will be used to generate embeddings for the field.\nThis parameter cannot be updated. Use the Create inference API to create the endpoint.\nIf `search_inference_id` is specified, the inference endpoint will only be used at index time.\nIf the `inference_id` is not specified, it will default to `.elser-2-elastic` if the cluster is authorized to use the Elastic Inference Service,\notherwise it will default to `.elser-2-elasticsearch`. The `.elser-2-elasticsearch` inference endpoint relies on a local ML node to run the ELSER model.",
+            "default": ".elser-2-elastic",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Id"
