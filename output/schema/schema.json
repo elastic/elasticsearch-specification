@@ -177128,7 +177128,7 @@
         "name": "RecoveryPriority",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L146-L161"
+      "specLocation": "indices/recovery/types.ts#L146-L162"
     },
     {
       "kind": "enum",
@@ -177541,7 +177541,7 @@
           },
           "description": "The recovery priority.",
           "name": "priority",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -177700,7 +177700,7 @@
           }
         }
       ],
-      "specLocation": "indices/recovery/types.ts#L163-L189"
+      "specLocation": "indices/recovery/types.ts#L164-L190"
     },
     {
       "kind": "interface",

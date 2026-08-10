@@ -80589,6 +80589,8 @@
               "ty",
               "stage",
               "st",
+              "priority",
+              "pr",
               "source_host",
               "shost",
               "source_node",
@@ -80691,6 +80693,11 @@
           },
           "stage": {
             "description": "The recovery stage.",
+            "type": "string"
+          },
+          "priority": {
+            "description": "The recovery priority.",
+            "x-state": "Generally available; Added in 9.6.0",
             "type": "string"
           },
           "source_host": {
@@ -104321,6 +104328,15 @@
               }
             ]
           },
+          "priority": {
+            "description": "The recovery priority.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices.recovery.RecoveryPriority"
+              }
+            ]
+          },
           "start": {
             "allOf": [
               {
@@ -104705,6 +104721,18 @@
           "TRANSLOG",
           "FINALIZE",
           "DONE"
+        ]
+      },
+      "indices.recovery.RecoveryPriority": {
+        "type": "string",
+        "enum": [
+          "UNASSIGNED_NEW_PRIMARY",
+          "UNASSIGNED_UNEXPECTED",
+          "UNASSIGNED_EXPECTED",
+          "RELOCATION_CAN_REMAIN_NO",
+          "RELOCATION_CAN_REMAIN_NOT_PREFERRED",
+          "RELOCATE_REBALANCING",
+          "UNKNOWN"
         ]
       },
       "indices.recovery.RecoveryStartStatus": {

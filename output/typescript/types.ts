@@ -14072,7 +14072,7 @@ export interface IndicesRecoveryShardRecovery {
   primary: boolean
   source: IndicesRecoveryRecoveryOrigin
   stage: IndicesRecoveryRecoveryStage
-  priority: IndicesRecoveryRecoveryPriority
+  priority?: IndicesRecoveryRecoveryPriority
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
