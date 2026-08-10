@@ -143,6 +143,7 @@ export enum RecoveryType {
   SNAPSHOT
 }
 
+/** The priority for a shard recovery. These are listed from high to low priority. */
 export enum RecoveryPriority {
   /** A primary shard which is unassigned because it is newly created. */
   UNASSIGNED_NEW_PRIMARY,
