@@ -68,6 +68,13 @@ export class RecoveryRecord {
    */
   'stage'?: string
   /**
+   * The recovery priority.
+   * @aliases pr
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'priority'?: string
+  /**
    * The source host.
    * @aliases shost
    */

@@ -143,6 +143,24 @@ export enum RecoveryType {
   SNAPSHOT
 }
 
+/** The priority for a shard recovery. These are listed from high to low priority. */
+export enum RecoveryPriority {
+  /** A primary shard which is unassigned because it is newly created. */
+  UNASSIGNED_NEW_PRIMARY,
+  /** A shard which is unassigned because of an unexpected condition, i.e. some kind of failure. */
+  UNASSIGNED_UNEXPECTED,
+  /** A shard which is unassigned for an expected condition, i.e. because of a user operation such as opening or restoring an index, but which is not an UNASSIGNED_NEW_PRIMARY. */
+  UNASSIGNED_EXPECTED,
+  /** A shard which is assigned, and is being relocated because it cannot remain on its current node according to the allocation deciders. */
+  RELOCATION_CAN_REMAIN_NO,
+  /** A shard which is assigned, and is being relocated because it is not preferred for it to remain on its current node according to the allocation deciders. */
+  RELOCATION_CAN_REMAIN_NOT_PREFERRED,
+  /** A shard which is assigned, and is being relocated for rebalancing. */
+  RELOCATE_REBALANCING,
+  /** Placeholder value for unknown priorities. */
+  UNKNOWN
+}
+
 export class ShardRecovery {
   id: long
   index: RecoveryIndexStatus
@@ -150,6 +168,13 @@ export class ShardRecovery {
   source: RecoveryOrigin
   /** The recovery stage. */
   stage: RecoveryStage
+  /**
+   * The recovery priority.
+   *
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  priority?: RecoveryPriority
   start?: RecoveryStartStatus
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>

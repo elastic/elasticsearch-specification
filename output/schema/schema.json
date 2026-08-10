@@ -108534,7 +108534,7 @@
         "name": "CatAliasesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2529-L2529",
+      "specLocation": "cat/_types/CatBase.ts#L2536-L2536",
       "type": {
         "kind": "union_of",
         "items": [
@@ -108669,7 +108669,7 @@
         "name": "CatAllocationColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2530-L2530",
+      "specLocation": "cat/_types/CatBase.ts#L2537-L2537",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109286,7 +109286,7 @@
         "name": "CatCircuitBreakerColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2531-L2533",
+      "specLocation": "cat/_types/CatBase.ts#L2538-L2540",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109376,7 +109376,7 @@
         "name": "CatComponentColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2534-L2534",
+      "specLocation": "cat/_types/CatBase.ts#L2541-L2541",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109443,7 +109443,7 @@
         "name": "CatCountColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2535-L2535",
+      "specLocation": "cat/_types/CatBase.ts#L2542-L2542",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109573,7 +109573,7 @@
         "name": "CatDatafeedColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2524-L2524",
+      "specLocation": "cat/_types/CatBase.ts#L2531-L2531",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109731,7 +109731,7 @@
         "name": "CatDfaColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2523-L2523",
+      "specLocation": "cat/_types/CatBase.ts#L2530-L2530",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109808,7 +109808,7 @@
         "name": "CatFieldDataColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2536-L2536",
+      "specLocation": "cat/_types/CatBase.ts#L2543-L2543",
       "type": {
         "kind": "union_of",
         "items": [
@@ -109975,7 +109975,7 @@
         "name": "CatHealthColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2537-L2537",
+      "specLocation": "cat/_types/CatBase.ts#L2544-L2544",
       "type": {
         "kind": "union_of",
         "items": [
@@ -110914,7 +110914,7 @@
         "name": "CatIndicesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2538-L2538",
+      "specLocation": "cat/_types/CatBase.ts#L2545-L2545",
       "type": {
         "kind": "union_of",
         "items": [
@@ -110977,7 +110977,7 @@
         "name": "CatMasterColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2539-L2539",
+      "specLocation": "cat/_types/CatBase.ts#L2546-L2546",
       "type": {
         "kind": "union_of",
         "items": [
@@ -111722,7 +111722,7 @@
         "name": "CatNodeColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2525-L2525",
+      "specLocation": "cat/_types/CatBase.ts#L2532-L2532",
       "type": {
         "kind": "union_of",
         "items": [
@@ -111817,7 +111817,7 @@
         "name": "CatNodeattrsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2540-L2540",
+      "specLocation": "cat/_types/CatBase.ts#L2547-L2547",
       "type": {
         "kind": "union_of",
         "items": [
@@ -111878,7 +111878,7 @@
         "name": "CatPendingTasksColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2499-L2521"
+      "specLocation": "cat/_types/CatBase.ts#L2506-L2528"
     },
     {
       "kind": "type_alias",
@@ -111886,7 +111886,7 @@
         "name": "CatPendingTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2541-L2543",
+      "specLocation": "cat/_types/CatBase.ts#L2548-L2550",
       "type": {
         "kind": "union_of",
         "items": [
@@ -111959,7 +111959,7 @@
         "name": "CatPluginsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2544-L2544",
+      "specLocation": "cat/_types/CatBase.ts#L2551-L2551",
       "type": {
         "kind": "union_of",
         "items": [
@@ -112052,6 +112052,19 @@
           ],
           "description": "The recovery stage.",
           "name": "stage"
+        },
+        {
+          "aliases": [
+            "pr"
+          ],
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The recovery priority.",
+          "name": "priority"
         },
         {
           "aliases": [
@@ -112177,7 +112190,7 @@
         "name": "CatRecoveryColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2322-L2454"
+      "specLocation": "cat/_types/CatBase.ts#L2322-L2461"
     },
     {
       "kind": "type_alias",
@@ -112185,7 +112198,7 @@
         "name": "CatRecoveryColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2526-L2526",
+      "specLocation": "cat/_types/CatBase.ts#L2533-L2533",
       "type": {
         "kind": "union_of",
         "items": [
@@ -112326,7 +112339,7 @@
         "name": "CatSegmentsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2527-L2527",
+      "specLocation": "cat/_types/CatBase.ts#L2534-L2534",
       "type": {
         "kind": "union_of",
         "items": [
@@ -112896,7 +112909,7 @@
         "name": "CatShardColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2840-L3213"
+      "specLocation": "cat/_types/CatBase.ts#L2847-L3220"
     },
     {
       "kind": "type_alias",
@@ -112904,7 +112917,7 @@
         "name": "CatShardColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3214-L3214",
+      "specLocation": "cat/_types/CatBase.ts#L3221-L3221",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113041,7 +113054,7 @@
         "name": "CatSnapshotsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2528-L2528",
+      "specLocation": "cat/_types/CatBase.ts#L2535-L2535",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113186,7 +113199,7 @@
         "name": "CatTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2545-L2545",
+      "specLocation": "cat/_types/CatBase.ts#L2552-L2552",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113255,7 +113268,7 @@
         "name": "CatTemplatesColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2470-L2497"
+      "specLocation": "cat/_types/CatBase.ts#L2477-L2504"
     },
     {
       "kind": "type_alias",
@@ -113263,7 +113276,7 @@
         "name": "CatTemplatesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2546-L2546",
+      "specLocation": "cat/_types/CatBase.ts#L2553-L2553",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113430,7 +113443,7 @@
         "name": "CatThreadPoolColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3216-L3316"
+      "specLocation": "cat/_types/CatBase.ts#L3223-L3323"
     },
     {
       "kind": "type_alias",
@@ -113438,7 +113451,7 @@
         "name": "CatThreadPoolColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3317-L3317",
+      "specLocation": "cat/_types/CatBase.ts#L3324-L3324",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113575,7 +113588,7 @@
         "name": "CatTrainedModelsColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2548-L2622"
+      "specLocation": "cat/_types/CatBase.ts#L2555-L2629"
     },
     {
       "kind": "type_alias",
@@ -113583,7 +113596,7 @@
         "name": "CatTrainedModelsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2623-L2625",
+      "specLocation": "cat/_types/CatBase.ts#L2630-L2632",
       "type": {
         "kind": "union_of",
         "items": [
@@ -113864,7 +113877,7 @@
         "name": "CatTransformColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2627-L2837"
+      "specLocation": "cat/_types/CatBase.ts#L2634-L2844"
     },
     {
       "kind": "type_alias",
@@ -113872,7 +113885,7 @@
         "name": "CatTransformColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2838-L2838",
+      "specLocation": "cat/_types/CatBase.ts#L2845-L2845",
       "type": {
         "kind": "union_of",
         "items": [
@@ -123354,6 +123367,27 @@
         },
         {
           "aliases": [
+            "pr"
+          ],
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The recovery priority.",
+          "name": "priority",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "aliases": [
             "shost"
           ],
           "description": "The source host.",
@@ -123608,7 +123642,7 @@
           }
         }
       ],
-      "specLocation": "cat/recovery/types.ts#L24-L155"
+      "specLocation": "cat/recovery/types.ts#L24-L162"
     },
     {
       "kind": "request",
@@ -177062,6 +177096,44 @@
       "kind": "enum",
       "members": [
         {
+          "description": "A primary shard which is unassigned because it is newly created.",
+          "name": "UNASSIGNED_NEW_PRIMARY"
+        },
+        {
+          "description": "A shard which is unassigned because of an unexpected condition, i.e. some kind of failure.",
+          "name": "UNASSIGNED_UNEXPECTED"
+        },
+        {
+          "description": "A shard which is unassigned for an expected condition, i.e. because of a user operation such as opening or restoring an index, but which is not an UNASSIGNED_NEW_PRIMARY.",
+          "name": "UNASSIGNED_EXPECTED"
+        },
+        {
+          "description": "A shard which is assigned, and is being relocated because it cannot remain on its current node according to the allocation deciders.",
+          "name": "RELOCATION_CAN_REMAIN_NO"
+        },
+        {
+          "description": "A shard which is assigned, and is being relocated because it is not preferred for it to remain on its current node according to the allocation deciders.",
+          "name": "RELOCATION_CAN_REMAIN_NOT_PREFERRED"
+        },
+        {
+          "description": "A shard which is assigned, and is being relocated for rebalancing.",
+          "name": "RELOCATE_REBALANCING"
+        },
+        {
+          "description": "Placeholder value for unknown priorities.",
+          "name": "UNKNOWN"
+        }
+      ],
+      "name": {
+        "name": "RecoveryPriority",
+        "namespace": "indices.recovery"
+      },
+      "specLocation": "indices/recovery/types.ts#L146-L161"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "description": "Recovery has not started.",
           "name": "INIT"
         },
@@ -177461,6 +177533,24 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The recovery priority.",
+          "name": "priority",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryPriority",
+              "namespace": "indices.recovery"
+            }
+          }
+        },
+        {
           "name": "start",
           "required": false,
           "type": {
@@ -177610,7 +177700,7 @@
           }
         }
       ],
-      "specLocation": "indices/recovery/types.ts#L146-L165"
+      "specLocation": "indices/recovery/types.ts#L163-L189"
     },
     {
       "kind": "interface",
