@@ -5545,7 +5545,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Delete ES|QL data sources.\n\nDeletes one or more data sources used in ES|QL data federation.\nFails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.",
@@ -5589,7 +5589,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Delete ES|QL datasets.\n\nDeletes one or more datasets used in ES|QL data federation.\nIf any specified dataset does not exist, the request fails and no datasets are deleted.",
@@ -5679,7 +5679,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Get ES|QL data sources.\n\nReturns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
@@ -5729,7 +5729,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Get ES|QL datasets.\n\nReturns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
@@ -5923,7 +5923,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Create or update an ES|QL data source.\n\nCreates or replaces a named, type-specific data source configuration for ES|QL data federation.\nDatasets reference data source configurations to access external data. Names must be lowercase\nand follow index or alias naming rules.",
@@ -5967,7 +5967,7 @@
       "availability": {
         "stack": {
           "stability": "experimental",
-          "visibility": "private"
+          "visibility": "public"
         }
       },
       "description": "Create or update an ES|QL dataset.\n\nCreates or replaces a dataset that references a data source in ES|QL data federation.\nDataset names participate in the index namespace and must follow index or alias naming rules.\nReturns `404` if the referenced data source does not exist.",
