@@ -1,4 +1,4 @@
-name: Generate Language Examples
+name: Generate Language Clients Example Requests For Docs
 
 # Regenerates the language examples for the API docs, including the Java
 # examples. Java requires the java-request-converter jar, which is built here
@@ -13,7 +13,7 @@ on:
 
 jobs:
   generate-language-examples:
-    name: Generate language examples
+    name: Generate Language Clients Example Requests For Docs
     runs-on: ubuntu-latest
     if: github.repository_owner == 'elastic'
 
@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies
         run: make setup
 
-      - name: Generate language examples
+      - name: Generate Language Examples
         run: make generate-language-examples
 
       - name: Debug git status
