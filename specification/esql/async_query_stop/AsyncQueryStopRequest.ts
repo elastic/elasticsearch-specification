@@ -29,6 +29,7 @@ import { Id, MediaType } from '@_types/common'
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @doc_id esql-async-query-stop
  * @ext_doc_id esql
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
