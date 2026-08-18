@@ -5483,6 +5483,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-get-api.html",
       "name": "esql.async_query_get",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "esql.async_query_get"
@@ -5520,6 +5525,11 @@
       "extDocId": "esql",
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
       "name": "esql.async_query_stop",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "esql.async_query_stop"
@@ -6068,6 +6078,11 @@
       "extDocId": "esql",
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
       "name": "esql.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "esql.query"
@@ -151857,7 +151872,7 @@
           }
         }
       ],
-      "specLocation": "esql/async_query_get/AsyncQueryGetRequest.ts#L25-L75"
+      "specLocation": "esql/async_query_get/AsyncQueryGetRequest.ts#L25-L76"
     },
     {
       "kind": "response",
@@ -151957,7 +151972,7 @@
           }
         }
       ],
-      "specLocation": "esql/async_query_stop/AsyncQueryStopRequest.ts#L23-L57"
+      "specLocation": "esql/async_query_stop/AsyncQueryStopRequest.ts#L23-L58"
     },
     {
       "kind": "response",
@@ -153672,7 +153687,7 @@
           }
         }
       ],
-      "specLocation": "esql/query/QueryRequest.ts#L28-L154"
+      "specLocation": "esql/query/QueryRequest.ts#L28-L155"
     },
     {
       "kind": "response",
