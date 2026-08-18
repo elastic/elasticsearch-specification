@@ -86,10 +86,6 @@ generate-language-examples:
 	@node docs/examples/generate-language-examples.js
 	@npm run format:fix-examples --prefix compiler
 
-generate-language-examples-with-java:
-	@node docs/examples/generate-language-examples.js java
-	@npm run format:fix-examples --prefix compiler
-
 lint:
 	@npm run lint --prefix specification
 
