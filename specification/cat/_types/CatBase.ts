@@ -2367,6 +2367,13 @@ export enum CatRecoveryColumn {
    */
   stage,
   /**
+   * The recovery priority.
+   * @aliases pr
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  priority,
+  /**
    * The source host.
    * @aliases shost
    */
