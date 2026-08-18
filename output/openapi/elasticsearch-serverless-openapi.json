@@ -6949,7 +6949,7 @@
           "esql"
         ],
         "summary": "Run an ES|QL query",
-        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "More about ES|QL reference",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql"

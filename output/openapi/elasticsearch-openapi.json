@@ -11481,7 +11481,7 @@
           "esql"
         ],
         "summary": "Get async ES|QL query results",
-        "description": "Get the current status and available results or stored results for an ES|QL asynchronous query.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.",
+        "description": "Get the current status and available results or stored results for an ES|QL asynchronous query.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "More about ES|QL reference",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
@@ -11614,7 +11614,7 @@
           "esql"
         ],
         "summary": "Stop async ES|QL query",
-        "description": "This API interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.",
+        "description": "This API interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "More about ES|QL reference",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql"
@@ -12489,7 +12489,7 @@
           "esql"
         ],
         "summary": "Run an ES|QL query",
-        "description": "Get search results for an ES|QL (Elasticsearch query language) query.",
+        "description": "Get search results for an ES|QL (Elasticsearch query language) query.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "More about ES|QL reference",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql"

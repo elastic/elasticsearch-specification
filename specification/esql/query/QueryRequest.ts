@@ -34,6 +34,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * @availability serverless
  * @doc_id esql-query
  * @ext_doc_id esql
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [

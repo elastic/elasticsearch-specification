@@ -31,6 +31,7 @@ import { EsqlFormat } from '@esql/_types/QueryParameters'
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @doc_id esql-async-query-get
  * @ext_doc_id esql
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
