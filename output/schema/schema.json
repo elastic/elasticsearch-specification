@@ -60197,7 +60197,7 @@
         {
           "description": "Number of nearest neighbor candidates to consider per shard.",
           "name": "num_candidates",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
