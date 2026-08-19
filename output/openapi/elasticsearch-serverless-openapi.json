@@ -50686,8 +50686,7 @@
             },
             "required": [
               "field",
-              "k",
-              "num_candidates"
+              "k"
             ]
           }
         ]
