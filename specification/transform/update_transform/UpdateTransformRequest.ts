@@ -112,5 +112,13 @@ export interface Request extends RequestBase {
      * criteria is deleted from the destination index.
      */
     retention_policy?: RetentionPolicyContainer | null
+    /**
+     * When true, force reminting of the transform's internal cloud API key from the
+     * caller's cloud credential without requiring other configuration changes.
+     * Requires a cloud-authenticated caller and an environment that supports
+     * cross-project calls. Rejected with 400 otherwise.
+     * @availability serverless
+     */
+    _force_rekeying?: boolean
   }
 }
