@@ -107,6 +107,7 @@ export class OperationBase {
   _index?: IndexName
   /**
    * A custom value used to route operations to a specific shard, or multiple comma separated values.
+   * @availability stack stability=stable
    */
   routing?: string
   if_primary_term?: long
