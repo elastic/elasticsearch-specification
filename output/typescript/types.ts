@@ -19575,6 +19575,7 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
+    _force_rekeying?: boolean
   }
 }
 
@@ -24305,6 +24306,7 @@ export interface TransformUpdateTransformRequest extends RequestBase {
     settings?: TransformSettings
     sync?: TransformSyncContainer
     retention_policy?: TransformRetentionPolicyContainer | null
+    _force_rekeying?: boolean
   }
 }
 

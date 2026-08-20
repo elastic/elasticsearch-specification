@@ -238382,6 +238382,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "When true, force reminting of the datafeed's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.",
+            "name": "_force_rekeying",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -238505,7 +238520,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L173"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L181"
     },
     {
       "kind": "response",
@@ -293793,6 +293808,21 @@
                 }
               ]
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "When true, force reminting of the transform's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise.",
+            "name": "_force_rekeying",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -293885,7 +293915,7 @@
           }
         }
       ],
-      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L116"
+      "specLocation": "transform/update_transform/UpdateTransformRequest.ts#L31-L124"
     },
     {
       "kind": "response",

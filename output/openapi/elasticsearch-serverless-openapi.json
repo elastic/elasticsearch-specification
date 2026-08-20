@@ -24213,6 +24213,11 @@
                     "description": "The size parameter that is used in Elasticsearch searches when the datafeed does not use aggregations.\nThe maximum value is the value of `index.max_result_window`.",
                     "default": 1000.0,
                     "type": "number"
+                  },
+                  "_force_rekeying": {
+                    "description": "When true, force reminting of the datafeed's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.",
+                    "x-state": "Generally available",
+                    "type": "boolean"
                   }
                 }
               },
@@ -32409,6 +32414,11 @@
                         "type": "string"
                       }
                     ]
+                  },
+                  "_force_rekeying": {
+                    "description": "When true, force reminting of the transform's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise.",
+                    "x-state": "Generally available",
+                    "type": "boolean"
                   }
                 }
               },
