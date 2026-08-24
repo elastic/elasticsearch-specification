@@ -212,6 +212,11 @@ pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &
         if let Some(flav) = flavor {
             if let Some(availability) = avails.get(flav) {
                 let Availability {since,stability,..} = &availability;
+                // Flavor-only @availability (no since/stability) marks membership for filtering.
+                // Omitting x-state keeps output consistent with properties that have no annotation.
+                if since.is_none() && stability.is_none() {
+                    return;
+                }
                 let stab = stability.clone().unwrap_or(Stability::Stable);
                 let mut since_str = "".to_string();
                 if let Some(since) = since {
@@ -233,5 +238,124 @@ pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &
                 }
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use clients_schema::{Availability, Availabilities, Flavor};
+    use serde_json::Value;
+
+    fn stack_availability(stability: Stability, since: Option<&str>) -> Availabilities {
+        let mut avails = Availabilities::default();
+        avails.insert(
+            Flavor::Stack,
+            Availability {
+                since: since.map(|s| s.to_string()),
+                stability: Some(stability),
+                visibility: None,
+            },
+        );
+        avails
+    }
+
+    fn flavor_availability(
+        flavor: Flavor,
+        stability: Option<Stability>,
+        since: Option<&str>,
+    ) -> Availabilities {
+        let mut avails = Availabilities::default();
+        avails.insert(
+            flavor,
+            Availability {
+                since: since.map(|s| s.to_string()),
+                stability,
+                visibility: None,
+            },
+        );
+        avails
+    }
+
+    #[test]
+    fn tech_preview_x_state() {
+        let avails = stack_availability(Stability::TechPreview, Some("1.2.3"));
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Technical preview; Added in 1.2.3".to_string()))
+        );
+    }
+
+    #[test]
+    fn experimental_x_state() {
+        let avails = stack_availability(Stability::Experimental, Some("1.2.3"));
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Experimental; Added in 1.2.3".to_string()))
+        );
+    }
+
+    #[test]
+    fn experimental_x_state_without_since() {
+        let avails = stack_availability(Stability::Experimental, None);
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Experimental".to_string()))
+        );
+    }
+
+    #[test]
+    fn flavor_only_availability_omits_x_state() {
+        let avails = flavor_availability(Flavor::Serverless, None, None);
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Serverless), &mut result);
+        assert!(!result.contains_key("x-state"));
+    }
+
+    #[test]
+    fn stack_flavor_only_availability_omits_x_state() {
+        let avails = flavor_availability(Flavor::Stack, None, None);
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
+        assert!(!result.contains_key("x-state"));
+    }
+
+    #[test]
+    fn serverless_since_only_emits_generally_available() {
+        let avails = flavor_availability(Flavor::Serverless, None, Some("8.14.0"));
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Serverless), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Generally available; Added in 8.14.0".to_string()))
+        );
+    }
+
+    #[test]
+    fn serverless_stable_without_since_emits_generally_available() {
+        let avails = flavor_availability(Flavor::Serverless, Some(Stability::Stable), None);
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Serverless), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Generally available".to_string()))
+        );
+    }
+
+    #[test]
+    fn serverless_experimental_without_since_emits_experimental() {
+        let avails = flavor_availability(Flavor::Serverless, Some(Stability::Experimental), None);
+        let mut result = IndexMap::new();
+        convert_availabilities(&Some(avails), &Some(Flavor::Serverless), &mut result);
+        assert_eq!(
+            result.get("x-state"),
+            Some(&Value::String("Experimental".to_string()))
+        );
     }
 }
