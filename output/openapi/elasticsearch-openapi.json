@@ -40623,7 +40623,6 @@
                     },
                     "nodes": {
                       "description": "Tasks grouped by node, returned only when `group_by=nodes` (the default).",
-                      "x-state": "Generally available",
                       "type": "object",
                       "additionalProperties": {
                         "$ref": "#/components/schemas/_global.reindex_rethrottle.ReindexNode"
@@ -82888,7 +82887,6 @@
           },
           "number_of_shards": {
             "default": "1",
-            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "number"
@@ -82900,7 +82898,6 @@
           },
           "number_of_replicas": {
             "default": "0",
-            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "number"
@@ -118228,7 +118225,6 @@
           },
           "node": {
             "description": "Contains properties for the node that runs the job. This information is available only for running jobs.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.NodeAttributes"
@@ -118654,7 +118650,6 @@
           },
           "node": {
             "description": "For started datafeeds only, this information pertains to the node upon which the datafeed is started.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.DiscoveryNodeCompact"
@@ -119267,7 +119262,6 @@
           },
           "node": {
             "description": "Contains properties for the node that runs the job.\nThis information is available only for open jobs.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.DiscoveryNodeCompact"
@@ -120162,7 +120156,6 @@
             ]
           },
           "node": {
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.DiscoveryNode"
@@ -121968,7 +121961,6 @@
           },
           "node": {
             "description": "Information pertaining to the node.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.DiscoveryNode"
@@ -130099,7 +130091,6 @@
           },
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware.",
-            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "array",
@@ -130278,7 +130269,6 @@
           "allow_restricted_indices": {
             "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         },
@@ -130481,7 +130471,6 @@
           "allow_restricted_indices": {
             "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         },
@@ -130777,7 +130766,6 @@
           "allow_restricted_indices": {
             "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         },
@@ -131253,7 +131241,6 @@
           "allow_restricted_indices": {
             "description": "Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         },
@@ -131424,7 +131411,6 @@
           },
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware.",
-            "x-state": "Generally available",
             "oneOf": [
               {
                 "type": "array",
@@ -135996,7 +135982,6 @@
             ]
           },
           "node": {
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.NodeAttributes"
@@ -161468,7 +161453,6 @@
                 },
                 "global": {
                   "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
-                  "x-state": "Generally available",
                   "type": "object",
                   "additionalProperties": {
                     "type": "object"

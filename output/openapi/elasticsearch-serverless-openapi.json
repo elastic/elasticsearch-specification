@@ -4745,7 +4745,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -7099,7 +7098,6 @@
             }
           }
         },
-        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -8565,7 +8563,6 @@
                 }
               ]
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -17723,7 +17720,6 @@
                   "field_access_pattern": {
                     "description": "Controls how processors in this pipeline should read and write data on a document's source.",
                     "default": "classic",
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
@@ -19596,7 +19592,6 @@
                     ]
                   },
                   "headers": {
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.HttpHeaders"
@@ -19604,7 +19599,6 @@
                     ]
                   },
                   "version": {
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.VersionString"
@@ -20012,7 +20006,6 @@
                     "type": "number"
                   },
                   "headers": {
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.HttpHeaders"
@@ -20918,7 +20911,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -20930,7 +20922,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -21002,7 +20993,6 @@
                   },
                   "prefix_strings": {
                     "description": "Optional prefix strings applied at inference",
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/ml._types.TrainedModelPrefixStrings"
@@ -23104,7 +23094,6 @@
                   },
                   "merges": {
                     "description": "The optional model merges if required by the tokenizer.",
-                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "string"
@@ -23112,7 +23101,6 @@
                   },
                   "scores": {
                     "description": "The optional vocabulary value scores if required by the tokenizer.",
-                    "x-state": "Generally available",
                     "type": "array",
                     "items": {
                       "type": "number"
@@ -28832,7 +28820,6 @@
                       "type": "string"
                     },
                     "token": {
-                      "x-state": "Generally available",
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/security.authenticate.Token"
@@ -28946,7 +28933,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -28958,7 +28944,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -28970,7 +28955,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -30530,7 +30514,6 @@
             "schema": {
               "type": "string"
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -30610,7 +30593,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -32171,7 +32153,6 @@
               "default": false,
               "type": "boolean"
             },
-            "x-state": "Generally available",
             "style": "form"
           }
         ],
@@ -39187,7 +39168,6 @@
               "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
             },
             "description": "The approximate kNN search to run.",
-            "x-state": "Generally available",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.KnnSearch"
@@ -40371,7 +40351,6 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-combined-fields-query"
             },
             "description": "The `combined_fields` query supports searching multiple text fields as if their contents had been indexed into one combined field.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.query_dsl.CombinedFieldsQuery"
@@ -40776,7 +40755,6 @@
           },
           "semantic": {
             "description": "A semantic query to semantic_text field types",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.query_dsl.SemanticQuery"
@@ -40910,7 +40888,6 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-sparse-vector-query"
             },
             "description": "Using input query vectors or a natural language processing model to convert a query into a list of token-weight pairs, queries against a sparse vector field.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.query_dsl.SparseVectorQuery"
@@ -40958,7 +40935,6 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-text-expansion-query"
             },
             "description": "Uses a natural language processing model to convert the query text into a list of token-weight pairs which are then used in a query against a sparse vector or rank features field.",
-            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.TextExpansionQuery"
@@ -40972,7 +40948,6 @@
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-weighted-tokens-query"
             },
             "description": "Supports returning text_expansion query results by sending in precomputed tokens with the query.",
-            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/_types.query_dsl.WeightedTokensQuery"
@@ -43577,7 +43552,6 @@
               },
               "visit_percentage": {
                 "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-                "x-state": "Generally available",
                 "type": "number"
               },
               "k": {
@@ -43604,7 +43578,6 @@
               },
               "rescore_vector": {
                 "description": "Apply oversampling and rescoring to quantized vectors",
-                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.RescoreVector"
@@ -43643,7 +43616,6 @@
           },
           "lookup": {
             "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
@@ -43758,7 +43730,6 @@
         "properties": {
           "model_id": {
             "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
-            "x-state": "Generally available",
             "type": "string"
           },
           "model_text": {
@@ -44763,7 +44734,6 @@
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nDefault is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -45396,7 +45366,6 @@
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the regular expression value with the indexed field values when set to `true`.\nWhen `false`, case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               },
               "flags": {
@@ -46082,12 +46051,10 @@
                   },
                   "prune": {
                     "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-                    "x-state": "Generally available",
                     "type": "boolean"
                   },
                   "pruning_config": {
                     "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
-                    "x-state": "Generally available",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.TokenPruningConfig"
@@ -46164,7 +46131,6 @@
               "case_insensitive": {
                 "description": "Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.\nWhen `false`, the case sensitivity of matching depends on the underlying field’s mapping.",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -46194,7 +46160,6 @@
             "properties": {
               "minimum_should_match": {
                 "description": "Specification describing number of matching terms required to return a document.",
-                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.MinimumShouldMatch"
@@ -46317,7 +46282,6 @@
             "properties": {
               "case_insensitive": {
                 "description": "Allows case insensitive matching of the pattern with the indexed field values when set to true. Default is false which means the case sensitivity of matching depends on the underlying field’s mapping.",
-                "x-state": "Generally available",
                 "type": "boolean"
               },
               "rewrite": {
@@ -50422,7 +50386,6 @@
           },
           "visit_percentage": {
             "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-            "x-state": "Generally available",
             "type": "number"
           },
           "boost": {
@@ -50460,7 +50423,6 @@
           },
           "rescore_vector": {
             "description": "Apply oversampling and rescoring to quantized vectors",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.RescoreVector"
@@ -50786,7 +50748,6 @@
               },
               "visit_percentage": {
                 "description": "The percentage of vectors to explore per shard while doing knn search with bbq_disk",
-                "x-state": "Generally available",
                 "type": "number"
               },
               "similarity": {
@@ -50795,7 +50756,6 @@
               },
               "rescore_vector": {
                 "description": "Apply oversampling and rescoring to quantized vectors",
-                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.RescoreVector"
@@ -54611,7 +54571,6 @@
             "type": "string"
           },
           "type": {
-            "x-state": "Generally available",
             "type": "string"
           }
         }
@@ -54939,7 +54898,6 @@
           },
           "created_date": {
             "description": "Date and time when the component template was created. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -54948,7 +54906,6 @@
           },
           "created_date_millis": {
             "description": "Date and time when the component template was created, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -54957,7 +54914,6 @@
           },
           "modified_date": {
             "description": "Date and time when the component template was last modified. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -54966,7 +54922,6 @@
           },
           "modified_date_millis": {
             "description": "Date and time when the component template was last modified, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -61704,7 +61659,6 @@
           },
           "temporality_field": {
             "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -62401,7 +62355,6 @@
             ]
           },
           "_data_stream_timestamp": {
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.DataStreamTimestamp"
@@ -63622,7 +63575,6 @@
                 ]
               },
               "null_value": {
-                "x-state": "Generally available",
                 "type": "string"
               }
             },
@@ -64226,12 +64178,10 @@
         "properties": {
           "prune": {
             "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "pruning_config": {
             "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.TokenPruningConfig"
@@ -64302,7 +64252,6 @@
               },
               "index_options": {
                 "description": "Additional index options for the sparse vector field that controls the\ntoken pruning behavior of the sparse vector field.",
-                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.mapping.SparseVectorIndexOptions"
@@ -65502,7 +65451,6 @@
           "is_hidden": {
             "description": "If `true`, the alias is hidden.\nAll indices for the alias must have the same `is_hidden` value.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -65726,7 +65674,6 @@
           },
           "ingested_as_first_pipeline": {
             "description": "Total size of all documents ingested by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document (for example, a final pipeline after a default pipeline, a pipeline run after a reroute processor, or a pipeline invoked by a pipeline processor), the value is `0`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -65735,12 +65682,10 @@
           },
           "ingested_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents ingested by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.",
-            "x-state": "Generally available",
             "type": "number"
           },
           "produced_as_first_pipeline": {
             "description": "Total size of all documents produced by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -65749,7 +65694,6 @@
           },
           "produced_as_first_pipeline_in_bytes": {
             "description": "Total number of bytes of all documents produced by the pipeline.\nThe value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.\nIn situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.",
-            "x-state": "Generally available",
             "type": "number"
           }
         },
@@ -68115,12 +68059,10 @@
           },
           "inference": {
             "description": "Whether this field is an inference field, meaning a field that automatically performs inference (for example, `semantic_text` fields), on all indices.",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "non_inference_indices": {
             "description": "The list of indices where this field is not an inference field, or null if all indices have the same definition for the field.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Indices"
@@ -68855,7 +68797,6 @@
           },
           "system": {
             "description": "If `true`, the data stream is created and managed by an Elastic stack component and cannot be modified through normal user interaction.",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "template": {
@@ -69169,12 +69110,10 @@
           },
           "deprecated": {
             "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "ignore_missing_component_templates": {
             "description": "A list of component template names that are allowed to be absent.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Names"
@@ -69183,7 +69122,6 @@
           },
           "created_date": {
             "description": "Date and time when the index template was created. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -69192,7 +69130,6 @@
           },
           "created_date_millis": {
             "description": "Date and time when the index template was created, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -69201,7 +69138,6 @@
           },
           "modified_date": {
             "description": "Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -69210,7 +69146,6 @@
           },
           "modified_date_millis": {
             "description": "Date and time when the index template was last modified, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -69817,12 +69752,10 @@
           },
           "deprecated": {
             "description": "Marks this index template as deprecated.\nWhen creating or updating a non-deprecated index template that uses deprecated components,\nElasticsearch will emit a deprecation warning.",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "ignore_missing_component_templates": {
             "description": "A list of component template names that are allowed to be absent.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Names"
@@ -69831,7 +69764,6 @@
           },
           "created_date": {
             "description": "Date and time when the index template was created. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -69840,7 +69772,6 @@
           },
           "created_date_millis": {
             "description": "Date and time when the index template was created, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -69849,7 +69780,6 @@
           },
           "modified_date": {
             "description": "Date and time when the index template was last modified. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -69858,7 +69788,6 @@
           },
           "modified_date_millis": {
             "description": "Date and time when the index template was last modified, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -74583,7 +74512,6 @@
           },
           "created_date": {
             "description": "Date and time when the pipeline was created. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -74592,7 +74520,6 @@
           },
           "created_date_millis": {
             "description": "Date and time when the pipeline was created, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -74601,7 +74528,6 @@
           },
           "modified_date": {
             "description": "Date and time when the pipeline was last modified. Only returned if the `human` query parameter is `true`.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -74610,7 +74536,6 @@
           },
           "modified_date_millis": {
             "description": "Date and time when the pipeline was last modified, in milliseconds since the epoch.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -74620,7 +74545,6 @@
           "field_access_pattern": {
             "description": "Controls how processors in this pipeline should read and write data on a document's source.",
             "default": "classic",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.FieldAccessPattern"
@@ -75134,7 +75058,6 @@
               "max_field_bytes": {
                 "description": "Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,\nchecked before base64 decoding) or byte array length for binary (for example, CBOR).\nIf set to `-1`, there is no per-processor limit.\nThe node setting `ingest.attachment.max_field_size` also applies.",
                 "default": "-1",
-                "x-state": "Generally available",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.ByteSize"
@@ -76167,7 +76090,6 @@
               "validate_only": {
                 "description": "When `true`, the processor does matching but does not extract structured fields",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -76772,7 +76694,6 @@
               "trace_redact": {
                 "description": "If `true` then ingest metadata `_ingest._redact._is_redacted` is set to `true` if the document has been redacted",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -77366,7 +77287,6 @@
               "extract_device_type": {
                 "description": "Extracts device type from the user agent string on a best-effort basis.",
                 "default": false,
-                "x-state": "Generally available",
                 "type": "boolean"
               }
             },
@@ -77511,7 +77431,6 @@
         "type": "object",
         "properties": {
           "_redact": {
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.Redact"
@@ -81222,7 +81141,6 @@
           "annotations_enabled": {
             "description": "If true, enables calculation and storage of the model change annotations for each entity that is being analyzed.",
             "default": true,
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "enabled": {
@@ -81232,7 +81150,6 @@
           },
           "terms": {
             "description": "Limits data collection to this comma separated list of partition or by field values. If terms are not specified or it is an empty string, no filtering is applied. Wildcards are not supported. Only the specified terms can be viewed when using the Single Metric Viewer.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -81501,7 +81418,6 @@
           },
           "text_classification": {
             "description": "Text classification configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.TextClassificationInferenceOptions"
@@ -81510,7 +81426,6 @@
           },
           "zero_shot_classification": {
             "description": "Zeroshot classification configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.ZeroShotClassificationInferenceOptions"
@@ -81519,7 +81434,6 @@
           },
           "fill_mask": {
             "description": "Fill mask configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.FillMaskInferenceOptions"
@@ -81535,7 +81449,6 @@
           },
           "ner": {
             "description": "Named entity recognition configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.NerInferenceOptions"
@@ -81544,7 +81457,6 @@
           },
           "pass_through": {
             "description": "Pass through configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.PassThroughInferenceOptions"
@@ -81553,7 +81465,6 @@
           },
           "text_embedding": {
             "description": "Text embedding configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.TextEmbeddingInferenceOptions"
@@ -81562,7 +81473,6 @@
           },
           "text_expansion": {
             "description": "Text expansion configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.TextExpansionInferenceOptions"
@@ -81571,7 +81481,6 @@
           },
           "question_answering": {
             "description": "Question answering configuration for inference.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.QuestionAnsweringInferenceOptions"
@@ -81640,7 +81549,6 @@
           },
           "mpnet": {
             "description": "Indicates MPNET tokenization and its options",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.NlpBertTokenizationConfig"
@@ -81649,7 +81557,6 @@
           },
           "roberta": {
             "description": "Indicates RoBERTa tokenization and its options",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ml._types.NlpRobertaTokenizationConfig"
@@ -84057,7 +83964,6 @@
           },
           "cache_size": {
             "description": "The size of the trained model cache.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -85479,7 +85385,6 @@
           },
           "api_key": {
             "description": "The API key to use for authentication with the remote host (as an alternative to basic auth when the remote cluster is in Elastic Cloud).\n(It is not permitted to set this and also to set an `Authorization` header via `headers`.)",
-            "x-state": "Generally available",
             "type": "string"
           },
           "socket_timeout": {
@@ -85982,11 +85887,9 @@
             ]
           },
           "type": {
-            "x-state": "Generally available",
             "type": "string"
           },
           "managed_by": {
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.CredentialManagedBy"
@@ -86386,7 +86289,6 @@
           },
           "type": {
             "description": "The type of the API key (e.g. `rest` or `cross_cluster`).",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.ApiKeyType"
@@ -86415,7 +86317,6 @@
           },
           "invalidation": {
             "description": "If the key has been invalidated, invalidation time in milliseconds.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -86436,12 +86337,10 @@
           },
           "realm_type": {
             "description": "Realm type of the principal for which this API key was created",
-            "x-state": "Generally available",
             "type": "string"
           },
           "metadata": {
             "description": "Metadata of the API key",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Metadata"
@@ -86457,7 +86356,6 @@
           },
           "limited_by": {
             "description": "The owner user’s permissions associated with the API key.\nIt is a point-in-time snapshot captured at creation and subsequent updates.\nAn API key’s effective permissions are an intersection of its assigned privileges and the owner user’s permissions.",
-            "x-state": "Generally available",
             "type": "array",
             "items": {
               "type": "object",
@@ -86468,7 +86366,6 @@
           },
           "access": {
             "description": "The access granted to cross-cluster API keys.\nThe access is composed of permissions for cross cluster search and cross cluster replication.\nAt least one of them must be specified.\nWhen specified, the new access assignment fully replaces the previously assigned access.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.Access"
@@ -86477,7 +86374,6 @@
           },
           "profile_uid": {
             "description": "The profile uid for the API key owner principal, if requested and if it exists",
-            "x-state": "Generally available",
             "type": "string"
           },
           "_sort": {
@@ -86644,7 +86540,6 @@
             }
           },
           "global": {
-            "x-state": "Generally available",
             "type": "object",
             "additionalProperties": {
               "type": "object",
@@ -86673,7 +86568,6 @@
         "properties": {
           "implicitly_granted": {
             "description": "Set to `true` on entries that were contributed by a registered `ImplicitPrivilegesProvider`\nrather than explicitly stored on the role. Only present when the get role API is called with\n`include_implicit=true`. The put role API rejects this field, so clients must not echo it back\non a GET-then-PUT round-trip.",
-            "x-state": "Generally available",
             "type": "boolean"
           },
           "field_security": {
@@ -87744,7 +87638,6 @@
           },
           "aliases": {
             "description": "The aliases that the destination index for the transform should have.\nAliases are manipulated using the stored credentials of the transform, which means the secondary credentials\nsupplied at creation time (if both primary and secondary credentials are specified).\n\nThe destination index is added to the aliases regardless of whether the destination index was created by the\ntransform or pre-created by the user.",
-            "x-state": "Generally available",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/transform._types.DestinationAlias"
@@ -87932,13 +87825,11 @@
           },
           "num_failure_retries": {
             "description": "Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.\nThe minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.\nIf unset, the cluster-level setting `num_transform_failure_retries` is used.\n\nThis setting cannot be specified when `unattended` is `true`, because unattended transforms always retry\nindefinitely.",
-            "x-state": "Generally available",
             "type": "number"
           },
           "unattended": {
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
-            "x-state": "Generally available",
             "type": "boolean"
           }
         }
@@ -87964,7 +87855,6 @@
           },
           "runtime_mappings": {
             "description": "Definitions of search-time runtime fields that can be used by the transform. For search runtime fields all data\nnodes, including remote nodes, must be 7.12 or later.",
-            "x-state": "Generally available",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
@@ -90131,7 +90021,6 @@
                 },
                 "encoded": {
                   "description": "API key credentials which is the base64-encoding of\nthe UTF-8 representation of `id` and `api_key` joined\nby a colon (`:`).",
-                  "x-state": "Generally available",
                   "type": "string"
                 }
               },
@@ -92687,7 +92576,6 @@
             }
           ]
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "field_caps-types": {
@@ -92701,7 +92589,6 @@
             "type": "string"
           }
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "field_caps-include_empty_fields": {
@@ -92713,7 +92600,6 @@
           "default": true,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "index-id": {
@@ -94324,7 +94210,6 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Duration"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "ingest.get_pipeline-id": {
@@ -96030,7 +95915,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "search-_source_includes": {
@@ -96139,7 +96023,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "search_mvt-index": {
@@ -96438,7 +96321,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "search_template-typed_keys": {
@@ -96525,7 +96407,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "security.has_privileges-user": {
@@ -96569,7 +96450,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "security.query_api_keys-with_profile_uid": {
@@ -96581,7 +96461,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "security.query_api_keys-typed_keys": {
@@ -96593,7 +96472,6 @@
           "default": false,
           "type": "boolean"
         },
-        "x-state": "Generally available",
         "style": "form"
       },
       "sql.query-format": {
@@ -96910,7 +96788,6 @@
                 },
                 "knn": {
                   "description": "Defines the approximate kNN search to run.",
-                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"
@@ -97413,7 +97290,6 @@
                   ]
                 },
                 "runtime_mappings": {
-                  "x-state": "Generally available",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
@@ -97479,7 +97355,6 @@
               "properties": {
                 "fields": {
                   "description": "A list of fields to retrieve capabilities for. Wildcard (`*`) expressions are supported.",
-                  "x-state": "Generally available",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Fields"
@@ -97496,7 +97371,6 @@
                 },
                 "runtime_mappings": {
                   "description": "Define ad-hoc runtime fields in the request similar to the way it is done in search requests.\nThese fields exist only as part of the query and take precedence over fields defined with the same name in the index mappings.",
-                  "x-state": "Generally available",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
@@ -98760,7 +98634,6 @@
                     "url": "https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn"
                   },
                   "description": "The approximate kNN search to run.",
-                  "x-state": "Generally available",
                   "oneOf": [
                     {
                       "$ref": "#/components/schemas/_types.KnnSearch"
@@ -99215,7 +99088,6 @@
                 },
                 "metadata": {
                   "description": "Arbitrary metadata that you want to associate with the API key. It supports nested data structure. Within the metadata object, keys beginning with `_` are reserved for system usage.",
-                  "x-state": "Generally available",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Metadata"
