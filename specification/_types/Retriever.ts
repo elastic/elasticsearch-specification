@@ -122,7 +122,7 @@ export class KnnRetriever extends RetrieverBase {
   /** Number of nearest neighbors to return as top hits. */
   k: integer
   /** Number of nearest neighbor candidates to consider per shard. */
-  num_candidates: integer
+  num_candidates?: integer
   /** The minimum similarity required for a document to be considered a match.  */
   similarity?: float
   /** Apply oversampling and rescoring to quantized vectors *
