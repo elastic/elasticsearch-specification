@@ -186,6 +186,19 @@ export class DenseVectorIndexOptions {
    * @availability stack since=9.4.0 stability=stable
    */
   flat_index_threshold?: integer
+  /**
+   * Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.
+   * @server_default 384
+   * @availability stack since=9.2.0 stability=stable
+   */
+  cluster_size?: integer
+  /**
+   * Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.
+   * A value of 0 defaults to using `num_candidates` for calculating the visit percentage.
+   * @server_default 0
+   * @availability stack since=9.2.0 stability=stable
+   */
+  default_visit_percentage?: float
 }
 
 export enum DenseVectorIndexOptionsType {
