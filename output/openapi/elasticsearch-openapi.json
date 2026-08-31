@@ -65413,8 +65413,7 @@
             },
             "required": [
               "field",
-              "k",
-              "num_candidates"
+              "k"
             ]
           }
         ]
@@ -65726,6 +65725,7 @@
         "type": "object",
         "properties": {
           "retriever": {
+            "description": "The nested retriever configuration.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.RetrieverContainer"
@@ -65733,9 +65733,13 @@
             ]
           },
           "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the linear combination.\nMust be non-negative.",
+            "default": 1.0,
             "type": "number"
           },
           "normalizer": {
+            "description": "Score normalizer to apply to this retriever's results before weighting.\nFalls back to the top-level `normalizer` on the linear retriever if unset,\nthen to `none` (identity) if neither is set.",
+            "default": "none",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ScoreNormalizer"
@@ -65744,9 +65748,7 @@
           }
         },
         "required": [
-          "retriever",
-          "weight",
-          "normalizer"
+          "retriever"
         ]
       },
       "_types.ScoreNormalizer": {
