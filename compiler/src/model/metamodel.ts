@@ -413,7 +413,8 @@ export class TypeAlias extends BaseType {
 export enum Stability {
   stable = 'stable',
   beta = 'beta',
-  experimental = 'experimental'
+  experimental = 'experimental',
+  tech_preview = 'tech_preview'
 }
 export enum Visibility {
   public = 'public',

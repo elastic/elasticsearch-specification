@@ -54149,6 +54149,7 @@
       },
       "properties": [
         {
+          "description": "The nested retriever configuration.",
           "name": "retriever",
           "required": true,
           "type": {
@@ -54160,8 +54161,10 @@
           }
         },
         {
+          "description": "Weight multiplier for this retriever's contribution to the linear combination.\nMust be non-negative.",
           "name": "weight",
-          "required": true,
+          "required": false,
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54171,8 +54174,10 @@
           }
         },
         {
+          "description": "Score normalizer to apply to this retriever's results before weighting.\nFalls back to the top-level `normalizer` on the linear retriever if unset,\nthen to `none` (identity) if neither is set.",
           "name": "normalizer",
-          "required": true,
+          "required": false,
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -54182,7 +54187,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L85-L89"
+      "specLocation": "_types/Retriever.ts#L85-L101"
     },
     {
       "kind": "type_alias",
@@ -54444,7 +54449,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L115-L133"
+      "specLocation": "_types/Retriever.ts#L127-L145"
     },
     {
       "kind": "interface",
@@ -56155,7 +56160,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L135-L144"
+      "specLocation": "_types/Retriever.ts#L147-L156"
     },
     {
       "kind": "interface",
@@ -56923,7 +56928,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L159-L168"
+      "specLocation": "_types/Retriever.ts#L171-L180"
     },
     {
       "kind": "type_alias",
@@ -56998,7 +57003,7 @@
         "name": "ScoreNormalizer",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L91-L95"
+      "specLocation": "_types/Retriever.ts#L103-L107"
     },
     {
       "kind": "interface",
@@ -58500,7 +58505,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L97-L100"
+      "specLocation": "_types/Retriever.ts#L109-L112"
     },
     {
       "kind": "interface",
@@ -58576,7 +58581,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L102-L113"
+      "specLocation": "_types/Retriever.ts#L114-L125"
     },
     {
       "kind": "interface",
@@ -58963,7 +58968,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L146-L157"
+      "specLocation": "_types/Retriever.ts#L158-L169"
     },
     {
       "kind": "enum",

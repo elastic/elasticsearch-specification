@@ -591,6 +591,13 @@ Examples:
  */
 ```
 
+```ts
+/**
+ * @rest_spec_name endpoint.name
+ * @availability stack since=1.2.3 stability=tech_preview
+ */
+```
+
 #### description
 
 You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
