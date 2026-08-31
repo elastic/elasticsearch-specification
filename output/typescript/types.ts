@@ -2636,8 +2636,8 @@ export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
 
 export interface InnerRetriever {
   retriever: RetrieverContainer
-  weight: float
-  normalizer: ScoreNormalizer
+  weight?: float
+  normalizer?: ScoreNormalizer
 }
 
 export type Ip = string

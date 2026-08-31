@@ -53442,7 +53442,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L205-L210"
+      "specLocation": "_types/Retriever.ts#L217-L222"
     },
     {
       "kind": "type_alias",
@@ -54335,7 +54335,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L216-L233"
+      "specLocation": "_types/Retriever.ts#L228-L245"
     },
     {
       "kind": "enum",
@@ -54349,7 +54349,7 @@
         "name": "DiversifyRetrieverTypes",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L212-L214"
+      "specLocation": "_types/Retriever.ts#L224-L226"
     },
     {
       "kind": "interface",
@@ -56747,6 +56747,7 @@
       },
       "properties": [
         {
+          "description": "The nested retriever configuration.",
           "name": "retriever",
           "required": true,
           "type": {
@@ -56758,8 +56759,10 @@
           }
         },
         {
+          "description": "Weight multiplier for this retriever's contribution to the linear combination.\nMust be non-negative.",
           "name": "weight",
-          "required": true,
+          "required": false,
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56769,8 +56772,10 @@
           }
         },
         {
+          "description": "Score normalizer to apply to this retriever's results before weighting.\nFalls back to the top-level `normalizer` on the linear retriever if unset,\nthen to `none` (identity) if neither is set.",
           "name": "normalizer",
-          "required": true,
+          "required": false,
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -56780,7 +56785,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L88-L92"
+      "specLocation": "_types/Retriever.ts#L88-L104"
     },
     {
       "kind": "type_alias",
@@ -57072,7 +57077,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L118-L143"
+      "specLocation": "_types/Retriever.ts#L130-L155"
     },
     {
       "kind": "interface",
@@ -58804,7 +58809,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L164-L173"
+      "specLocation": "_types/Retriever.ts#L176-L185"
     },
     {
       "kind": "interface",
@@ -58840,7 +58845,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L145-L156"
+      "specLocation": "_types/Retriever.ts#L157-L168"
     },
     {
       "kind": "type_alias",
@@ -58853,7 +58858,7 @@
         "name": "RRFRetrieverEntry",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L158-L162",
+      "specLocation": "_types/Retriever.ts#L170-L174",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59876,7 +59881,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L194-L203"
+      "specLocation": "_types/Retriever.ts#L206-L215"
     },
     {
       "kind": "type_alias",
@@ -59951,7 +59956,7 @@
         "name": "ScoreNormalizer",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L94-L98"
+      "specLocation": "_types/Retriever.ts#L106-L110"
     },
     {
       "kind": "interface",
@@ -61495,7 +61500,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L100-L103"
+      "specLocation": "_types/Retriever.ts#L112-L115"
     },
     {
       "kind": "interface",
@@ -61571,7 +61576,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L105-L116"
+      "specLocation": "_types/Retriever.ts#L117-L128"
     },
     {
       "kind": "interface",
@@ -61967,7 +61972,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L175-L192"
+      "specLocation": "_types/Retriever.ts#L187-L204"
     },
     {
       "kind": "enum",
