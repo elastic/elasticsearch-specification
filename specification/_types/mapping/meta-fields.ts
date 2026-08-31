@@ -65,6 +65,7 @@ export class SourceField {
 export enum SourceFieldMode {
   disabled,
   stored,
+  columnar_stored,
   /**
    *  Instead of storing source documents on disk exactly as you send them,
    *  Elasticsearch can reconstruct source content on the fly upon retrieval.
