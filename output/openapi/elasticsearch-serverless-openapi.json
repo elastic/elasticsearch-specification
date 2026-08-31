@@ -553,9 +553,6 @@
             "$ref": "#/components/parameters/bulk-refresh"
           },
           {
-            "$ref": "#/components/parameters/bulk-routing"
-          },
-          {
             "$ref": "#/components/parameters/bulk-_source"
           },
           {
@@ -614,9 +611,6 @@
           },
           {
             "$ref": "#/components/parameters/bulk-refresh"
-          },
-          {
-            "$ref": "#/components/parameters/bulk-routing"
           },
           {
             "$ref": "#/components/parameters/bulk-_source"
@@ -684,9 +678,6 @@
             "$ref": "#/components/parameters/bulk-refresh"
           },
           {
-            "$ref": "#/components/parameters/bulk-routing"
-          },
-          {
             "$ref": "#/components/parameters/bulk-_source"
           },
           {
@@ -748,9 +739,6 @@
           },
           {
             "$ref": "#/components/parameters/bulk-refresh"
-          },
-          {
-            "$ref": "#/components/parameters/bulk-routing"
           },
           {
             "$ref": "#/components/parameters/bulk-_source"
@@ -4845,9 +4833,6 @@
             "$ref": "#/components/parameters/index-refresh"
           },
           {
-            "$ref": "#/components/parameters/index-routing"
-          },
-          {
             "$ref": "#/components/parameters/index-timeout"
           },
           {
@@ -4915,9 +4900,6 @@
           },
           {
             "$ref": "#/components/parameters/index-refresh"
-          },
-          {
-            "$ref": "#/components/parameters/index-routing"
           },
           {
             "$ref": "#/components/parameters/index-timeout"
@@ -5013,16 +4995,6 @@
                   "$ref": "#/components/schemas/_types.Refresh"
                 }
               ]
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Routing"
             },
             "style": "form"
           },
@@ -5427,16 +5399,6 @@
             "schema": {
               "default": -1.0,
               "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Routing"
             },
             "style": "form"
           },
@@ -7887,9 +7849,6 @@
           },
           {
             "$ref": "#/components/parameters/index-refresh"
-          },
-          {
-            "$ref": "#/components/parameters/index-routing"
           },
           {
             "$ref": "#/components/parameters/index-timeout"
@@ -32656,16 +32615,6 @@
           },
           {
             "in": "query",
-            "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Routing"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
             "name": "timeout",
             "description": "The period to wait for the following operations: dynamic mapping updates and waiting for active shards.\nElasticsearch waits for at least the timeout period before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
             "deprecated": false,
@@ -33066,16 +33015,6 @@
             "schema": {
               "default": -1.0,
               "type": "number"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
-            "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Routing"
             },
             "style": "form"
           },
@@ -51827,10 +51766,6 @@
                 "$ref": "#/components/schemas/_types.IndexName"
               }
             ]
-          },
-          "routing": {
-            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
-            "type": "string"
           },
           "if_primary_term": {
             "type": "number"
@@ -90982,16 +90917,6 @@
         },
         "style": "form"
       },
-      "bulk-routing": {
-        "in": "query",
-        "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Routing"
-        },
-        "style": "form"
-      },
       "bulk-_source": {
         "in": "query",
         "name": "_source",
@@ -92537,16 +92462,6 @@
               "$ref": "#/components/schemas/_types.Refresh"
             }
           ]
-        },
-        "style": "form"
-      },
-      "index-routing": {
-        "in": "query",
-        "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-        "deprecated": false,
-        "schema": {
-          "$ref": "#/components/schemas/_types.Routing"
         },
         "style": "form"
       },
