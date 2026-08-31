@@ -163,6 +163,19 @@ export class DenseVectorIndexOptions {
    * The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
    */
   rescore_vector?: DenseVectorIndexOptionsRescoreVector
+  /**
+   * Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.
+   * @server_default 384
+   * @availability stack since=9.2.0 stability=stable
+   */
+  cluster_size?: integer
+  /**
+   * Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.
+   * A value of 0 defaults to using `num_candidates` for calculating the visit percentage.
+   * @server_default 0
+   * @availability stack since=9.2.0 stability=stable
+   */
+  default_visit_percentage?: float
 }
 
 export enum DenseVectorIndexOptionsType {
