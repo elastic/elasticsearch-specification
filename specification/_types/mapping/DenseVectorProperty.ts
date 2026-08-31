@@ -176,6 +176,29 @@ export class DenseVectorIndexOptions {
    * @availability stack since=9.3.0 stability=experimental
    */
   on_disk_rescore?: boolean
+  /**
+   * The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat
+   * search. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and
+   * `int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.
+   * @server_default -1
+   * @availability stack since=9.4.0 stability=stable
+   */
+  flat_index_threshold?: integer
+  /**
+   * Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.
+   * @server_default 384
+   * @availability stack since=9.2.0 stability=stable
+   */
+  cluster_size?: integer
+  /**
+   * Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.
+   * A value of 0 defaults to using `num_candidates` for calculating the visit percentage.
+   * @server_default 0
+   * @availability stack since=9.2.0 stability=stable
+   */
+  default_visit_percentage?: float
 }
 
 export enum DenseVectorIndexOptionsType {
