@@ -88457,6 +88457,24 @@
             "default": false,
             "x-state": "Technical preview; Added in 9.3.0",
             "type": "boolean"
+          },
+          "flat_index_threshold": {
+            "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.",
+            "default": -1.0,
+            "x-state": "Generally available; Added in 9.4.0",
+            "type": "number"
+          },
+          "cluster_size": {
+            "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+            "default": 384.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
+          },
+          "default_visit_percentage": {
+            "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+            "default": 0.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
           }
         },
         "required": [

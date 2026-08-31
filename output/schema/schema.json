@@ -87439,9 +87439,66 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.4.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.",
+          "name": "flat_index_threshold",
+          "required": false,
+          "serverDefault": -1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+          "name": "cluster_size",
+          "required": false,
+          "serverDefault": 384,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+          "name": "default_visit_percentage",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L179"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L202"
     },
     {
       "kind": "interface",
@@ -87463,7 +87520,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L237-L245"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L260-L268"
     },
     {
       "kind": "enum",
@@ -87515,7 +87572,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L181-L235"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L204-L258"
     },
     {
       "kind": "interface",

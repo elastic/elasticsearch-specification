@@ -5911,6 +5911,9 @@ export interface MappingDenseVectorIndexOptions {
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
   on_disk_rescore?: boolean
+  flat_index_threshold?: integer
+  cluster_size?: integer
+  default_visit_percentage?: float
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
