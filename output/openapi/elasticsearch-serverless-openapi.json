@@ -10564,7 +10564,7 @@
                     "type": "number"
                   },
                   "project_routing": {
-                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
                     "type": "string"
                   },
                   "headers": {
@@ -10639,7 +10639,7 @@
                       "type": "number"
                     },
                     "project_routing": {
-                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
                       "type": "string"
                     }
                   },
@@ -11706,7 +11706,6 @@
             }
           }
         },
-        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
@@ -13619,7 +13618,7 @@
                     "type": "number"
                   },
                   "project_routing": {
-                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
                     "type": "string"
                   }
                 }
@@ -13691,7 +13690,7 @@
                       "type": "number"
                     },
                     "project_routing": {
-                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
                       "type": "string"
                     }
                   },
@@ -19795,7 +19794,7 @@
                       "$ref": "#/components/schemas/transform._types:Settings"
                     },
                     "source": {
-                      "$ref": "#/components/schemas/_global.reindex:Source"
+                      "$ref": "#/components/schemas/transform._types:Source"
                     },
                     "sync": {
                       "$ref": "#/components/schemas/transform._types:SyncContainer"
@@ -35240,6 +35239,10 @@
             "description": "The source indices for the transform.",
             "type": "string"
           },
+          "project_routing": {
+            "description": "The project routing expression for the transform source.",
+            "type": "string"
+          },
           "dest_index": {
             "description": "The destination index for the transform.",
             "type": "string"
@@ -50598,7 +50601,7 @@
             "$ref": "#/components/schemas/_types:IndicesOptions"
           },
           "project_routing": {
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "type": "string"
           }
         },
@@ -52601,7 +52604,7 @@
             "$ref": "#/components/schemas/_types:IndicesOptions"
           },
           "project_routing": {
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "type": "string"
           },
           "job_id": {
@@ -56032,6 +56035,10 @@
           },
           "runtime_mappings": {
             "$ref": "#/components/schemas/_types.mapping:RuntimeFields"
+          },
+          "project_routing": {
+            "description": "A Lucene-style expression that limits which linked projects the transform\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for transforms.",
+            "type": "string"
           }
         },
         "required": [

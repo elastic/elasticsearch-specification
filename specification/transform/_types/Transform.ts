@@ -162,6 +162,14 @@ export class Source {
    * @availability serverless
    */
   runtime_mappings?: RuntimeFields
+  /**
+   * A Lucene-style expression that limits which linked projects the transform
+   * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+   * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
+   * search scope. Rejected when CPS is not enabled for transforms.
+   * @availability serverless
+   */
+  project_routing?: string
 }
 
 export class Sync {}

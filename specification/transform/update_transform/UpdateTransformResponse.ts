@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { Destination, Source } from '@global/reindex/types'
+import { Destination } from '@global/reindex/types'
 import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
+  Source,
   SyncContainer
 } from '@transform/_types/Transform'
 import { Id, Metadata, VersionString } from '@_types/common'

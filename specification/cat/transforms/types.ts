@@ -78,6 +78,12 @@ export class TransformsRecord {
    */
   'source_index'?: string
   /**
+   * The project routing expression for the transform source.
+   * @aliases pr
+   * @availability serverless
+   */
+  'project_routing'?: string
+  /**
    * The destination index for the transform.
    * @aliases di, destIndex
    */

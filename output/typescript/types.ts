@@ -8724,6 +8724,8 @@ export interface CatTransformsTransformsRecord {
   source_index?: string
   si?: string
   sourceIndex?: string
+  project_routing?: string
+  pr?: string
   dest_index?: string
   di?: string
   destIndex?: string
@@ -20612,6 +20614,7 @@ export interface TransformSource {
   index: Indices
   query?: QueryDslQueryContainer
   runtime_mappings?: MappingRuntimeFields
+  project_routing?: string
 }
 
 export interface TransformSyncContainer {
@@ -20837,7 +20840,7 @@ export interface TransformUpdateTransformResponse {
   pivot?: TransformPivot
   retention_policy?: TransformRetentionPolicyContainer
   settings: TransformSettings
-  source: ReindexSource
+  source: TransformSource
   sync?: TransformSyncContainer
   version: VersionString
   _meta?: Metadata

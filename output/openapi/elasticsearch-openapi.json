@@ -20629,7 +20629,6 @@
             }
           }
         },
-        "deprecated": true,
         "x-state": "Added in 5.4.0"
       }
     },
@@ -38229,7 +38228,7 @@
                       "$ref": "#/components/schemas/transform._types:Settings"
                     },
                     "source": {
-                      "$ref": "#/components/schemas/_global.reindex:Source"
+                      "$ref": "#/components/schemas/transform._types:Source"
                     },
                     "sync": {
                       "$ref": "#/components/schemas/transform._types:SyncContainer"
