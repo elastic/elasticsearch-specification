@@ -89227,6 +89227,44 @@
         {
           "availability": {
             "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+          "name": "cluster_size",
+          "required": false,
+          "serverDefault": 384,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+          "name": "default_visit_percentage",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
               "since": "9.4.0",
               "stability": "stable"
             }
@@ -89282,7 +89320,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L215"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L228"
     },
     {
       "kind": "interface",
@@ -89304,7 +89342,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L273-L281"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L286-L294"
     },
     {
       "kind": "enum",
@@ -89356,7 +89394,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L217-L271"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
     },
     {
       "kind": "interface",
