@@ -5879,6 +5879,8 @@ export interface MappingDenseVectorIndexOptions {
   m?: integer
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
+  cluster_size?: integer
+  default_visit_percentage?: float
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {

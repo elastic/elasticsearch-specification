@@ -86066,9 +86066,47 @@
               "namespace": "_types.mapping"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+          "name": "cluster_size",
+          "required": false,
+          "serverDefault": 384,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+          "name": "default_visit_percentage",
+          "required": false,
+          "serverDefault": 0,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L129-L166"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L129-L179"
     },
     {
       "kind": "interface",
@@ -86090,7 +86128,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L224-L232"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L237-L245"
     },
     {
       "kind": "enum",
@@ -86142,7 +86180,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L168-L222"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L181-L235"
     },
     {
       "kind": "interface",

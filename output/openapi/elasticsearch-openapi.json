@@ -87362,6 +87362,18 @@
                 "$ref": "#/components/schemas/_types.mapping.DenseVectorIndexOptionsRescoreVector"
               }
             ]
+          },
+          "cluster_size": {
+            "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+            "default": 384.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
+          },
+          "default_visit_percentage": {
+            "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+            "default": 0.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
           }
         },
         "required": [
