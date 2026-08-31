@@ -26993,7 +26993,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L139-L139"
+      "specLocation": "_global/bulk/types.ts#L140-L140"
     },
     {
       "kind": "interface",
@@ -27008,7 +27008,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L143-L143"
+      "specLocation": "_global/bulk/types.ts#L144-L144"
     },
     {
       "kind": "enum",
@@ -27045,7 +27045,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L141-L141"
+      "specLocation": "_global/bulk/types.ts#L142-L142"
     },
     {
       "kind": "interface",
@@ -27079,6 +27079,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
           "name": "routing",
           "required": false,
@@ -27135,7 +27140,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L116"
+      "specLocation": "_global/bulk/types.ts#L99-L117"
     },
     {
       "kind": "interface",
@@ -27194,7 +27199,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L157-L184",
+      "specLocation": "_global/bulk/types.ts#L158-L185",
       "variants": {
         "kind": "container"
       }
@@ -27493,6 +27498,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
@@ -27615,7 +27625,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L273"
+      "specLocation": "_global/bulk/BulkRequest.ts#L33-L274"
     },
     {
       "kind": "response",
@@ -27993,7 +28003,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L186-L225"
+      "specLocation": "_global/bulk/types.ts#L187-L226"
     },
     {
       "kind": "interface",
@@ -28034,7 +28044,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L145-L155"
+      "specLocation": "_global/bulk/types.ts#L146-L156"
     },
     {
       "kind": "interface",
@@ -28098,7 +28108,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L118-L137"
+      "specLocation": "_global/bulk/types.ts#L119-L138"
     },
     {
       "kind": "request",
@@ -29721,6 +29731,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
@@ -29803,7 +29818,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L157"
+      "specLocation": "_global/delete/DeleteRequest.ts#L35-L158"
     },
     {
       "kind": "response",
@@ -30285,6 +30300,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
@@ -30490,7 +30510,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L340"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L341"
     },
     {
       "kind": "response",
@@ -35833,6 +35853,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
@@ -35943,7 +35968,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L288"
+      "specLocation": "_global/index/IndexRequest.ts#L36-L289"
     },
     {
       "kind": "response",
@@ -54137,6 +54162,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
@@ -54232,7 +54262,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L208"
+      "specLocation": "_global/update/UpdateRequest.ts#L39-L209"
     },
     {
       "kind": "response",
@@ -54779,6 +54809,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
@@ -54980,7 +55015,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L38-L374"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L38-L375"
     },
     {
       "kind": "response",

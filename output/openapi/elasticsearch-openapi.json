@@ -9460,6 +9460,7 @@
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -9889,6 +9890,7 @@
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -56130,6 +56132,7 @@
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -56560,6 +56563,7 @@
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
             },
+            "x-state": "Generally available",
             "style": "form"
           },
           {
@@ -76937,6 +76941,7 @@
           },
           "routing": {
             "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+            "x-state": "Generally available",
             "type": "string"
           },
           "if_primary_term": {
@@ -147232,6 +147237,7 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "bulk-_source": {
@@ -150561,6 +150567,7 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "x-state": "Generally available",
         "style": "form"
       },
       "index-timeout": {
