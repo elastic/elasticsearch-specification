@@ -95640,6 +95640,9 @@
           "name": "stored"
         },
         {
+          "name": "columnar_stored"
+        },
+        {
           "description": "Instead of storing source documents on disk exactly as you send them,\n Elasticsearch can reconstruct source content on the fly upon retrieval.",
           "name": "synthetic"
         }
@@ -95648,7 +95651,7 @@
         "name": "SourceFieldMode",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/meta-fields.ts#L65-L73"
+      "specLocation": "_types/mapping/meta-fields.ts#L65-L74"
     },
     {
       "kind": "interface",
