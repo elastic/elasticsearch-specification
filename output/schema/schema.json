@@ -89121,10 +89121,6 @@
       },
       "properties": [
         {
-          "deprecation": {
-            "description": "",
-            "version": "9.5.0"
-          },
           "description": "The confidence interval to use when quantizing the vectors. Can be any value between and including `0.90` and\n`1.0` or exactly `0`. When the value is `0`, this indicates that dynamic quantiles should be calculated for\noptimized quantization. When between `0.90` and `1.0`, this value restricts the values used when calculating\nthe quantization thresholds.\n\nFor example, a value of `0.95` will only use the middle `95%` of the values when calculating the quantization\nthresholds (e.g. the highest and lowest `2.5%` of values will be ignored).\n\nDefaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.\n\nOnly applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.",
           "name": "confidence_interval",
           "required": false,
@@ -89299,28 +89295,9 @@
               "namespace": "_builtins"
             }
           }
-        },
-        {
-          "availability": {
-            "stack": {
-              "since": "9.5.0",
-              "stability": "stable"
-            }
-          },
-          "description": "Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal\nquantization encoding, oversampling factor, and preconditioning for each merged segment based\non estimated recall characteristics. Cannot be changed after the field is created.",
-          "name": "auto_calibrate",
-          "required": false,
-          "serverDefault": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L228"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L219"
     },
     {
       "kind": "interface",
@@ -89342,7 +89319,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L286-L294"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L277-L285"
     },
     {
       "kind": "enum",
@@ -89394,7 +89371,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L221-L275"
     },
     {
       "kind": "interface",

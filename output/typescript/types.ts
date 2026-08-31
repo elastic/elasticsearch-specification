@@ -6049,7 +6049,6 @@ export interface MappingDenseVectorIndexOptions {
   default_visit_percentage?: float
   bits?: integer
   precondition?: boolean
-  auto_calibrate?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
