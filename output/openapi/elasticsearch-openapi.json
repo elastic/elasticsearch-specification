@@ -92909,6 +92909,18 @@
             "x-state": "Generally available; Added in 9.4.0",
             "type": "number"
           },
+          "cluster_size": {
+            "description": "Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.",
+            "default": 384.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
+          },
+          "default_visit_percentage": {
+            "description": "Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.\nA value of 0 defaults to using `num_candidates` for calculating the visit percentage.",
+            "default": 0.0,
+            "x-state": "Generally available; Added in 9.2.0",
+            "type": "number"
+          },
           "bits": {
             "description": "Only applicable to `bbq_disk`. The number of bits per dimension for quantization encoding.\nValid values are `1`, `2`, `4`, or `7`. When no `rescore_vector` is explicitly set,\nthe default oversampling is automatically adjusted based on the bits value.\nThis setting can be changed without reindexing.",
             "default": 1.0,
