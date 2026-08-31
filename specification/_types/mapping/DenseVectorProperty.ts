@@ -188,6 +188,19 @@ export class DenseVectorIndexOptions {
    */
   flat_index_threshold?: integer
   /**
+   * Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.
+   * @server_default 384
+   * @availability stack since=9.2.0 stability=stable
+   */
+  cluster_size?: integer
+  /**
+   * Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.
+   * A value of 0 defaults to using `num_candidates` for calculating the visit percentage.
+   * @server_default 0
+   * @availability stack since=9.2.0 stability=stable
+   */
+  default_visit_percentage?: float
+  /**
    * Only applicable to `bbq_disk`. The number of bits per dimension for quantization encoding.
    * Valid values are `1`, `2`, `4`, or `7`. When no `rescore_vector` is explicitly set,
    * the default oversampling is automatically adjusted based on the bits value.
