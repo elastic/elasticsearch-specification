@@ -87443,25 +87443,6 @@
         {
           "availability": {
             "stack": {
-              "since": "9.4.0",
-              "stability": "stable"
-            }
-          },
-          "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.",
-          "name": "flat_index_threshold",
-          "required": false,
-          "serverDefault": -1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
               "since": "9.2.0",
               "stability": "stable"
             }
@@ -87498,7 +87479,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L202"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L192"
     },
     {
       "kind": "interface",
@@ -87520,7 +87501,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L260-L268"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L250-L258"
     },
     {
       "kind": "enum",
@@ -87572,7 +87553,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L204-L258"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L194-L248"
     },
     {
       "kind": "interface",
