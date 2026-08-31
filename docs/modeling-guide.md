@@ -564,6 +564,8 @@ export class Example {
 
 Request and response example YAML files use the same flavor names in an optional `availability` field (for example, `availability: [serverless]`). When omitted, the example applies to both Stack and Serverless.
 
+A flavor-only tag such as `@availability serverless` (with no `since` or `stability`) marks flavor membership for filtering. It does **not** produce an OpenAPI `x-state` extension. OpenAPI `x-state` is emitted only when `since` or `stability` is set on the availability annotation for the generated flavor.
+
 ### Stability property for `@availability`
 
 The `stability` property can be added to an `@availability` annotation to indicate the maturity and expected backwards-compatibility of an API or property.
@@ -576,8 +578,10 @@ Syntax:
 Values and meaning:
 - `stable` => "Generally available"
 - `beta` => "Beta"
-- `experimental` => "Technical Preview"
+- `experimental` => "Experimental"
 - `tech_preview` => "Technical preview"
+
+`experimental` and `tech_preview` are distinct lifecycles (in 9.5 and later) and produce different OpenAPI `x-state` labels. Setting `since` without `stability` also produces an `x-state` of "Generally available" (optionally with an "Added in" version suffix).
 
 Examples:
 ```ts
