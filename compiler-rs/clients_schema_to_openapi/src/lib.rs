@@ -299,7 +299,7 @@ mod tests {
         convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
         assert_eq!(
             result.get("x-state"),
-            Some(&Value::String("Experimental; Added in 1.2.3".to_string()))
+            Some(&Value::String("Technical preview; Added in 1.2.3".to_string()))
         );
     }
 
@@ -310,7 +310,7 @@ mod tests {
         convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
         assert_eq!(
             result.get("x-state"),
-            Some(&Value::String("Experimental".to_string()))
+            Some(&Value::String("Technical preview".to_string()))
         );
     }
 
@@ -353,55 +353,13 @@ mod tests {
     }
 
     #[test]
-    fn serverless_experimental_without_since_emits_experimental() {
+    fn serverless_experimental_without_since_emits_technical_preview() {
         let avails = flavor_availability(Flavor::Serverless, Some(Stability::Experimental), None);
         let mut result = IndexMap::new();
         convert_availabilities(&Some(avails), &Some(Flavor::Serverless), &mut result);
         assert_eq!(
             result.get("x-state"),
-            Some(&Value::String("Experimental".to_string()))
-        );
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use clients_schema::{Availability, Availabilities, Flavor};
-    use serde_json::Value;
-
-    fn stack_availability(stability: Stability, since: &str) -> Availabilities {
-        let mut avails = Availabilities::default();
-        avails.insert(
-            Flavor::Stack,
-            Availability {
-                since: Some(since.to_string()),
-                stability: Some(stability),
-                visibility: None,
-            },
-        );
-        avails
-    }
-
-    #[test]
-    fn tech_preview_x_state() {
-        let avails = stack_availability(Stability::TechPreview, "1.2.3");
-        let mut result = IndexMap::new();
-        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
-        assert_eq!(
-            result.get("x-state"),
-            Some(&Value::String("Technical preview; Added in 1.2.3".to_string()))
-        );
-    }
-
-    #[test]
-    fn experimental_x_state_unchanged() {
-        let avails = stack_availability(Stability::Experimental, "1.2.3");
-        let mut result = IndexMap::new();
-        convert_availabilities(&Some(avails), &Some(Flavor::Stack), &mut result);
-        assert_eq!(
-            result.get("x-state"),
-            Some(&Value::String("Technical preview; Added in 1.2.3".to_string()))
+            Some(&Value::String("Technical preview".to_string()))
         );
     }
 }
