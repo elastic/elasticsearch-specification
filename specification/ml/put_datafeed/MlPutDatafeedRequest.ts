@@ -176,6 +176,14 @@ export interface Request extends RequestBase {
      */
     scroll_size?: integer
     /**
+     * A Lucene-style expression that limits which linked projects the datafeed
+     * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+     * `_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.
+     * Rejected when CPS is not enabled for ML datafeeds.
+     * @availability serverless
+     */
+    project_routing?: string
+    /**
      * @availability stack since=8.0.0
      * @availability serverless
      */

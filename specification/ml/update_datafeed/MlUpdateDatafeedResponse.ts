@@ -45,5 +45,13 @@ export class Response {
     runtime_mappings?: RuntimeFields
     script_fields?: Dictionary<string, ScriptField>
     scroll_size: integer
+    /**
+     * A Lucene-style expression that limits which linked projects the datafeed
+     * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+     * `_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.
+     * Rejected when CPS is not enabled for ML datafeeds.
+     * @availability serverless
+     */
+    project_routing?: string
   }
 }

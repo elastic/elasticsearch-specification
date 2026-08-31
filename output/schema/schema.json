@@ -157509,7 +157509,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L251-L264"
+      "specLocation": "ml/_types/Datafeed.ts#L267-L280"
     },
     {
       "kind": "enum",
@@ -157528,7 +157528,7 @@
         "name": "ChunkingMode",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L245-L249"
+      "specLocation": "ml/_types/Datafeed.ts#L261-L265"
     },
     {
       "kind": "interface",
@@ -158206,9 +158206,24 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {}
+          },
+          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+          "name": "project_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L37-L61"
+      "specLocation": "ml/_types/Datafeed.ts#L37-L69"
     },
     {
       "kind": "interface",
@@ -158368,6 +158383,21 @@
           }
         },
         {
+          "availability": {
+            "serverless": {}
+          },
+          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+          "name": "project_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "job_id",
           "required": false,
           "type": {
@@ -158463,7 +158493,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L63-L120"
+      "specLocation": "ml/_types/Datafeed.ts#L71-L136"
     },
     {
       "kind": "interface",
@@ -158509,7 +158539,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L210-L224"
+      "specLocation": "ml/_types/Datafeed.ts#L226-L240"
     },
     {
       "kind": "enum",
@@ -158531,7 +158561,7 @@
         "name": "DatafeedState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L136-L141"
+      "specLocation": "ml/_types/Datafeed.ts#L152-L157"
     },
     {
       "kind": "interface",
@@ -158616,7 +158646,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L143-L172"
+      "specLocation": "ml/_types/Datafeed.ts#L159-L188"
     },
     {
       "kind": "interface",
@@ -158736,7 +158766,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L174-L202"
+      "specLocation": "ml/_types/Datafeed.ts#L190-L218"
     },
     {
       "kind": "interface",
@@ -160998,7 +161028,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L122-L133"
+      "specLocation": "ml/_types/Datafeed.ts#L138-L149"
     },
     {
       "kind": "enum",
@@ -161769,7 +161799,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L204-L208"
+      "specLocation": "ml/_types/Datafeed.ts#L220-L224"
     },
     {
       "kind": "interface",
@@ -165603,7 +165633,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L226-L243"
+      "specLocation": "ml/_types/Datafeed.ts#L242-L259"
     },
     {
       "kind": "enum",
@@ -176014,6 +176044,21 @@
           },
           {
             "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "availability": {
               "serverless": {},
               "stack": {
                 "since": "8.0.0"
@@ -176114,7 +176159,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L184"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L37-L192"
     },
     {
       "kind": "response",
@@ -176310,6 +176355,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -176317,7 +176377,7 @@
         "name": "Response",
         "namespace": "ml.put_datafeed"
       },
-      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L49"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L57"
     },
     {
       "kind": "request",
@@ -179535,6 +179595,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -179621,7 +179696,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L170"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L178"
     },
     {
       "kind": "response",
@@ -179817,6 +179892,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. Omitted means flat-world / all linked projects per CPS defaults.\nRejected when CPS is not enabled for ML datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -179824,7 +179914,7 @@
         "name": "Response",
         "namespace": "ml.update_datafeed"
       },
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L49"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L57"
     },
     {
       "kind": "request",
