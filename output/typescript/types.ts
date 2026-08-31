@@ -6097,6 +6097,7 @@ export interface MappingDenseVectorIndexOptions {
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
   on_disk_rescore?: boolean
   flat_index_threshold?: integer
+  auto_calibrate?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {

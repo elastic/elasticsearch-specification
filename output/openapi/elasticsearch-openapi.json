@@ -92893,6 +92893,12 @@
             "default": -1.0,
             "x-state": "Generally available; Added in 9.4.0",
             "type": "number"
+          },
+          "auto_calibrate": {
+            "description": "Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal\nquantization encoding, oversampling factor, and preconditioning for each merged segment based\non estimated recall characteristics. Cannot be changed after the field is created.",
+            "default": false,
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "boolean"
           }
         },
         "required": [

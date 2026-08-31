@@ -91171,9 +91171,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.5.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal\nquantization encoding, oversampling factor, and preconditioning for each merged segment based\non estimated recall characteristics. Cannot be changed after the field is created.",
+          "name": "auto_calibrate",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L189"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L197"
     },
     {
       "kind": "interface",
@@ -91195,7 +91214,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L247-L255"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L255-L263"
     },
     {
       "kind": "enum",
@@ -91247,7 +91266,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L191-L245"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L199-L253"
     },
     {
       "kind": "interface",
