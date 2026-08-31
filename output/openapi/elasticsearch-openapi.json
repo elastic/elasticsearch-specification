@@ -100310,6 +100310,8 @@
             "$ref": "#/components/schemas/_types.RetrieverContainer"
           },
           "weight": {
+            "description": "Weight multiplier for this retriever's contribution to the linear combination.\nMust be non-negative.",
+            "default": 1.0,
             "type": "number"
           },
           "normalizer": {
@@ -100317,9 +100319,7 @@
           }
         },
         "required": [
-          "retriever",
-          "weight",
-          "normalizer"
+          "retriever"
         ]
       },
       "_types.ScoreNormalizer": {
