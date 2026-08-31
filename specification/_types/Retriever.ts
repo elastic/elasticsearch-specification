@@ -83,9 +83,21 @@ export class PinnedRetriever extends RetrieverBase {
 }
 
 export class InnerRetriever {
+  /** The nested retriever configuration. */
   retriever: RetrieverContainer
-  weight: float
-  normalizer: ScoreNormalizer
+  /**
+   * Weight multiplier for this retriever's contribution to the linear combination.
+   * Must be non-negative.
+   * @server_default 1.0
+   */
+  weight?: float
+  /**
+   * Score normalizer to apply to this retriever's results before weighting.
+   * Falls back to the top-level `normalizer` on the linear retriever if unset,
+   * then to `none` (identity) if neither is set.
+   * @server_default none
+   */
+  normalizer?: ScoreNormalizer
 }
 
 export enum ScoreNormalizer {
