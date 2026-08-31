@@ -91078,6 +91078,10 @@
       },
       "properties": [
         {
+          "deprecation": {
+            "description": "",
+            "version": "9.5.0"
+          },
           "description": "The confidence interval to use when quantizing the vectors. Can be any value between and including `0.90` and\n`1.0` or exactly `0`. When the value is `0`, this indicates that dynamic quantiles should be calculated for\noptimized quantization. When between `0.90` and `1.0`, this value restricts the values used when calculating\nthe quantization thresholds.\n\nFor example, a value of `0.95` will only use the middle `95%` of the values when calculating the quantization\nthresholds (e.g. the highest and lowest `2.5%` of values will be ignored).\n\nDefaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.\n\nOnly applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.",
           "name": "confidence_interval",
           "required": false,
@@ -91165,7 +91169,7 @@
               "stability": "stable"
             }
           },
-          "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, and `bbq_hnsw` index types.",
+          "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.",
           "name": "flat_index_threshold",
           "required": false,
           "serverDefault": -1,
@@ -91174,6 +91178,44 @@
             "type": {
               "name": "integer",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.4.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. The number of bits per dimension for quantization encoding.\nValid values are `1`, `2`, `4`, or `7`. When no `rescore_vector` is explicitly set,\nthe default oversampling is automatically adjusted based on the bits value.\nThis setting can be changed without reindexing.",
+          "name": "bits",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.4.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Only applicable to `bbq_disk`. When `true`, transforms indexed vectors using a random orthogonal\nprojection before quantization, which can improve accuracy when vector components are not normally\ndistributed. Cannot be changed after the field is created.",
+          "name": "precondition",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
             }
           }
         },
@@ -91197,7 +91239,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L197"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L215"
     },
     {
       "kind": "interface",
@@ -91219,7 +91261,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L255-L263"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L273-L281"
     },
     {
       "kind": "enum",
@@ -91271,7 +91313,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L199-L253"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L217-L271"
     },
     {
       "kind": "interface",
