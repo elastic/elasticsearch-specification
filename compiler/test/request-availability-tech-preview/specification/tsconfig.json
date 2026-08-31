@@ -1,0 +1,5 @@
+{
+  "extends": "../../../../specification/tsconfig.json",
+  "typeRoots": ["./**/*.ts"],
+  "include": ["./**/*.ts"]
+}
