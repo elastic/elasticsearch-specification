@@ -2775,8 +2775,8 @@ export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
 
 export interface InnerRetriever {
   retriever: RetrieverContainer
-  weight: float
-  normalizer: ScoreNormalizer
+  weight?: float
+  normalizer?: ScoreNormalizer
 }
 
 export type Ip = string
@@ -6097,6 +6097,9 @@ export interface MappingDenseVectorIndexOptions {
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
   on_disk_rescore?: boolean
   flat_index_threshold?: integer
+  bits?: integer
+  precondition?: boolean
+  auto_calibrate?: boolean
 }
 
 export interface MappingDenseVectorIndexOptionsRescoreVector {
@@ -6517,7 +6520,7 @@ export interface MappingSourceField {
   mode?: MappingSourceFieldMode
 }
 
-export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
+export type MappingSourceFieldMode = 'disabled' | 'stored' | 'columnar_stored' | 'synthetic'
 
 export interface MappingSparseVectorIndexOptions {
   prune?: boolean

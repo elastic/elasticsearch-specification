@@ -144,6 +144,7 @@ export class DenseVectorIndexOptions {
    * Defaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.
    *
    * Only applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.
+   * @deprecated 9.5.0
    */
   confidence_interval?: float
   /**
@@ -181,7 +182,7 @@ export class DenseVectorIndexOptions {
    * search. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and
    * `int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, and `bbq_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.
    * @server_default -1
    * @availability stack since=9.4.0 stability=stable
    */
@@ -199,6 +200,31 @@ export class DenseVectorIndexOptions {
    * @availability stack since=9.2.0 stability=stable
    */
   default_visit_percentage?: float
+  /**
+   * Only applicable to `bbq_disk`. The number of bits per dimension for quantization encoding.
+   * Valid values are `1`, `2`, `4`, or `7`. When no `rescore_vector` is explicitly set,
+   * the default oversampling is automatically adjusted based on the bits value.
+   * This setting can be changed without reindexing.
+   * @server_default 1
+   * @availability stack since=9.4.0 stability=stable
+   */
+  bits?: integer
+  /**
+   * Only applicable to `bbq_disk`. When `true`, transforms indexed vectors using a random orthogonal
+   * projection before quantization, which can improve accuracy when vector components are not normally
+   * distributed. Cannot be changed after the field is created.
+   * @server_default false
+   * @availability stack since=9.4.0 stability=stable
+   */
+  precondition?: boolean
+  /**
+   * Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal
+   * quantization encoding, oversampling factor, and preconditioning for each merged segment based
+   * on estimated recall characteristics. Cannot be changed after the field is created.
+   * @server_default false
+   * @availability stack since=9.5.0 stability=stable
+   */
+  auto_calibrate?: boolean
 }
 
 export enum DenseVectorIndexOptionsType {
