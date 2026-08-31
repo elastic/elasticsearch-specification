@@ -108,6 +108,7 @@ export class OperationBase {
   _index?: IndexName
   /**
    * A custom value used to route operations to a specific shard.
+   * @availability stack stability=stable
    */
   routing?: Routing
   if_primary_term?: long

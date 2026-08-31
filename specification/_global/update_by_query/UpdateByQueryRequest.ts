@@ -241,6 +241,7 @@ export interface Request extends RequestBase {
     requests_per_second?: float
     /**
      * A custom value used to route operations to a specific shard.
+     * @availability stack stability=stable
      */
     routing?: Routing
     /**

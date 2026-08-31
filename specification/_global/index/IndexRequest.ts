@@ -228,6 +228,8 @@ export interface Request<TDocument> extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @availability stack stability=stable
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**
