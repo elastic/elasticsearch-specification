@@ -94458,6 +94458,7 @@
         "enum": [
           "disabled",
           "stored",
+          "columnar_stored",
           "synthetic"
         ]
       },

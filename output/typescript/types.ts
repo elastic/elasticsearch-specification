@@ -6517,7 +6517,7 @@ export interface MappingSourceField {
   mode?: MappingSourceFieldMode
 }
 
-export type MappingSourceFieldMode = 'disabled' | 'stored' | 'synthetic'
+export type MappingSourceFieldMode = 'disabled' | 'stored' | 'columnar_stored' | 'synthetic'
 
 export interface MappingSparseVectorIndexOptions {
   prune?: boolean
