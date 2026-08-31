@@ -204,6 +204,13 @@ export class DenseVectorIndexOptions {
    * @availability stack since=9.4.0 stability=stable
    */
   precondition?: boolean
+   * Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal
+   * quantization encoding, oversampling factor, and preconditioning for each merged segment based
+   * on estimated recall characteristics. Cannot be changed after the field is created.
+   * @server_default false
+   * @availability stack since=9.5.0 stability=stable
+   */
+  auto_calibrate?: boolean
 }
 
 export enum DenseVectorIndexOptionsType {
