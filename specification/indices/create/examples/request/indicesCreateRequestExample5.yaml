@@ -1,0 +1,18 @@
+summary: Create an index with mappings.
+availability: [serverless]
+method_request: PUT /test
+description: You can provide mapping definitions in the create index API requests.
+# type: request
+value: "{
+
+  \  \"mappings\": {
+
+  \    \"properties\": {
+
+  \      \"field1\": { \"type\": \"text\" }
+
+  \    }
+
+  \  }
+
+  }"

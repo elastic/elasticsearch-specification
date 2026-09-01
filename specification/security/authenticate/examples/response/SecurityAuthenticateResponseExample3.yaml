@@ -1,0 +1,29 @@
+# summary:
+description: A successful response from `GET /_security/_authenticate` for service account token authentication.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "username": "elastic/fleet-server",
+    "roles": [ ],
+    "full_name": "Service account - elastic/fleet-server",
+    "email": null,
+    "metadata": {
+      "_elastic_service_account": true
+    },
+    "enabled": true,
+    "authentication_realm": {
+      "name": "_service_account",
+      "type": "_service_account"
+    },
+    "lookup_realm": {
+      "name": "_service_account",
+      "type": "_service_account"
+    },
+    "authentication_type": "token",
+    "token": {
+      "type": "_service_account_index",
+      "name": "token_abcd1234",
+      "managed_by": "elasticsearch"
+    }
+  }

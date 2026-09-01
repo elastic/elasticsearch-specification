@@ -24,17 +24,11 @@ import { double, integer, long } from './Numeric'
 
 /**
  * A field value.
- * @codegen_names long, double, string, boolean, null, any
+ * @codegen_names long, double, string, boolean, null
  */
 // Note: the ending `UserDefinedValue` includes all other union members, but we keep them explicit so that
 // code generators can provide direct access to scalar values, which are the most common use case.
-export type FieldValue =
-  | long
-  | double
-  | string
-  | boolean
-  | null
-  | UserDefinedValue
+export type FieldValue = long | double | string | boolean | null
 
 /**
  * A scalar value.
@@ -55,7 +49,7 @@ export type Uri = string
 export type ScrollId = string
 export type ScrollIds = ScrollId | ScrollId[]
 
-export type CategoryId = string
+export type CategoryId = long
 export type ActionIds = string // TODO: check if this should be an array of ActionId
 
 export type Id = string
@@ -69,11 +63,13 @@ export type IndexAlias = string
 export type IndexPattern = string
 export type IndexPatterns = IndexPattern[]
 
-export type Routing = string
+export type ProjectRouting = string
+
+/**
+ * Only to be used in query and path parameters, as the array form is actually a csv
+ */
+export type Routing = string | string[]
 export type LongId = string
-//TODO encode metrics as API specific enums
-export type IndexMetrics = string
-export type Metrics = string | string[]
 
 export type ClusterAlias = string
 
@@ -89,7 +85,6 @@ export type GrokPattern = string
 /** @doc_id modules-node */
 export type NodeName = string
 
-/** @doc_id data-stream-path-param  */
 export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
@@ -118,11 +113,7 @@ export enum VersionType {
    * NOTE: The `external_gte` version type is meant for special use cases and should be used with care.
    * If used incorrectly, it can result in loss of data.
    */
-  external_gte,
-  /**
-   * This option is deprecated because it can cause primary and replica shards to diverge.
-   */
-  force
+  external_gte
 }
 
 // TODO: replace all uuid's with this type
@@ -133,7 +124,7 @@ export type SequenceNumber = long
 
 export type PropertyName = string
 export type RelationName = string
-export type TaskId = string | integer
+export type TaskId = string
 /** @doc_id fuzziness */
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */
@@ -239,7 +230,9 @@ export enum HealthStatus {
    * One or more primary shards are unassigned, so some data is unavailable. This can occur briefly during cluster startup as primary shards are assigned.
    * @aliases RED
    */
-  red
+  red,
+  unknown,
+  unavailable
 }
 
 export enum HttpMethod {
@@ -250,8 +243,28 @@ export enum HttpMethod {
   HEAD
 }
 
+export enum MediaType {
+  Arrow = 'application/vnd.apache.arrow.stream',
+  Cbor = 'application/cbor',
+  Csv = 'text/csv',
+  EventStream = 'text/event-stream',
+  Json = 'application/json',
+  MapboxVectorTile = 'application/vnd.mapbox-vector-tile',
+  Ndjson = 'application/x-ndjson',
+  Smile = 'application/x-jackson-smile',
+  Text = 'text/plain',
+  Yaml = 'application/x-yaml'
+}
+
+// This is the ClusterStatsLevel enum in Elasticsearch
 export enum Level {
   cluster,
+  indices,
+  shards
+}
+
+export enum NodeStatsLevel {
+  node,
   indices,
   shards
 }
@@ -299,10 +312,15 @@ export enum SuggestMode {
 }
 
 export enum ThreadType {
+  /** Threads that consume the most CPU time. */
   cpu,
+  /** Threads that have been in a waiting state the longest. */
   wait,
+  /** Threads that have been blocked the longest. */
   block,
+  /** Threads that consume the most GPU time. */
   gpu,
+  /** Threads that allocate the most memory. */
   mem
 }
 
@@ -342,9 +360,12 @@ export class InlineGet<TDocument>
  */
 export class IndicesOptions {
   /**
-   * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only
-   * missing or closed indices. This behavior applies even if the request targets other open indices. For example,
-   * a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+   * A setting that does two separate checks on the index expression.
+   * If `false`, the request returns an error (1) if any wildcard expression
+   * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+   * complete set of resolved indices, aliases or data streams is empty after all
+   * expressions are evaluated. If `true`, index expressions that resolve to no
+   * indices are allowed and the request returns an empty result.
    */
   allow_no_indices?: boolean
   /**
@@ -354,7 +375,9 @@ export class IndicesOptions {
    */
   expand_wildcards?: ExpandWildcards
   /**
-   * If true, missing or closed indices are not included in the response.
+   * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+   * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+   * If `true`, unavailable concrete targets are silently ignored.
    * @server_default false
    */
   ignore_unavailable?: boolean
@@ -391,3 +414,61 @@ export enum ClusterInfoTarget {
 }
 
 export type ClusterInfoTargets = ClusterInfoTarget | ClusterInfoTarget[]
+
+export enum CommonStatsFlag {
+  /** Return all statistics. */
+  _all,
+  /** Size of the index in byte units. */
+  store,
+  /** Indexing statistics. */
+  indexing,
+  /** Get statistics, including missing stats. */
+  get,
+  /**
+   * Search statistics including suggest statistics.
+   * You can include statistics for custom groups by adding an extra `groups` parameter
+   * (search operations can be associated with one or more groups).
+   * The `groups` parameter accepts a comma-separated list of group names.
+   * Use `_all` to return statistics for all groups.
+   */
+  search,
+  /** Merge statistics. */
+  merge,
+  /** Flush statistics. */
+  flush,
+  /** Refresh statistics. */
+  refresh,
+  /** Query cache statistics. */
+  query_cache,
+  /** Fielddata statistics. */
+  fielddata,
+  /** Number of documents and deleted docs not yet merged out. Index refreshes can affect this statistic. */
+  docs,
+  /** Index warming statistics. */
+  warmer,
+  /** Completion suggester statistics. */
+  completion,
+  /**
+   * Memory use of all open segments.
+   * If the `include_segment_file_sizes` parameter is `true`, this metric includes the aggregated disk usage of each Lucene index file.
+   */
+  segments,
+  /** Translog statistics. */
+  translog,
+  /** Shard request cache statistics. */
+  request_cache,
+  /** Recovery statistics. */
+  recovery,
+  /** Bulk operations statistics. */
+  bulk,
+  /** Shard statistics, including the total number of shards. */
+  shard_stats,
+  /** Mapping statistics, including the total count and estimated overhead. */
+  mappings,
+  /** Total number of dense vectors indexed. Index refreshes can affect this statistic. */
+  dense_vector,
+  /** Total number of sparse vectors indexed. Index refreshes can affect this statistic. */
+  sparse_vector
+}
+
+export type CommonStatsFlags = CommonStatsFlag | CommonStatsFlag[]

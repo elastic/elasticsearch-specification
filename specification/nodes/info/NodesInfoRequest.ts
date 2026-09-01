@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get node information.
+ *
  * By default, the API returns all attributes and core settings for cluster nodes.
  * @rest_spec_name nodes.info
  * @availability stack since=1.3.0 stability=stable
@@ -53,8 +54,9 @@ export interface Request extends RequestBase {
     /** Comma-separated list of node IDs or names used to limit returned information. */
     node_id?: NodeIds
     /** Limits the information returned to the specific metrics. Supports a comma-separated list, such as http,ingest. */
-    metric?: Metrics
+    metric?: NodesInfoMetrics
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, returns settings in flat format.
@@ -68,3 +70,22 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
 }
+
+export enum NodesInfoMetric {
+  _all,
+  _none,
+  settings,
+  os,
+  process,
+  jvm,
+  thread_pool,
+  transport,
+  http,
+  remote_cluster_server,
+  plugins,
+  ingest,
+  aggregations,
+  indices
+}
+
+export type NodesInfoMetrics = NodesInfoMetric | NodesInfoMetric[]

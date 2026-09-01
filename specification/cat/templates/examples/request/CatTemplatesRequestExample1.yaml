@@ -1,0 +1,1 @@
+method_request: GET _cat/templates/my-template-*?v=true&s=name&format=json

@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -51,14 +51,19 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default false
      */
     allow_no_indices?: boolean
@@ -66,12 +71,13 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -94,7 +100,17 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
+    /**
+     * The slice identifier for routing the search to a specific slice.
+     * When provided, the request is limited to shards that match the given slice value.
+     * Use the special value `_all` to query all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
 }

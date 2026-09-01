@@ -21,6 +21,7 @@ import { TimeSeriesMetricType } from '@_types/mapping/TimeSeriesMetricType'
 import { double, integer } from '@_types/Numeric'
 import { CorePropertyBase, IndexOptions } from './core'
 import { PropertyBase } from './Property'
+import { Subobjects } from './TypeMapping'
 
 export class FlattenedProperty extends PropertyBase {
   boost?: double
@@ -30,9 +31,21 @@ export class FlattenedProperty extends PropertyBase {
   index?: boolean
   index_options?: IndexOptions
   null_value?: string
+  /**
+   * How leaf arrays are represented in synthetic source.
+   * When set to `lossy`, leaf arrays are sorted, de-nulled, and deduplicated in the returned synthetic source.
+   * When set to `exact`, leaf arrays preserve order, nulls, and duplicates.
+   */
+  preserve_leaf_arrays?: PreserveLeafArrays
   similarity?: string
   split_queries_on_whitespace?: boolean
+  time_series_dimensions?: string[]
   type: 'flattened'
+}
+
+export enum PreserveLeafArrays {
+  lossy,
+  exact
 }
 
 export class NestedProperty extends CorePropertyBase {
@@ -44,7 +57,7 @@ export class NestedProperty extends CorePropertyBase {
 
 export class ObjectProperty extends CorePropertyBase {
   enabled?: boolean
-  subobjects?: boolean
+  subobjects?: Subobjects
   type?: 'object'
 }
 
@@ -58,6 +71,7 @@ export class PassthroughObjectProperty extends CorePropertyBase {
 export class AggregateMetricDoubleProperty extends PropertyBase {
   type: 'aggregate_metric_double'
   default_metric: string
+  ignore_malformed?: boolean
   metrics: string[]
   time_series_metric?: TimeSeriesMetricType
 }

@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Field } from '@_types/common'
+import { SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Property } from './Property'
 
 export class FieldMapping {
@@ -56,8 +56,6 @@ export class SizeField {
 }
 
 export class SourceField {
-  compress?: boolean
-  compress_threshold?: string
   enabled?: boolean
   excludes?: string[]
   includes?: string[]
@@ -67,6 +65,10 @@ export class SourceField {
 export enum SourceFieldMode {
   disabled,
   stored,
+  /**
+   * @availability stack since=9.5.0 stability=tech_preview
+   */
+  columnar_stored,
   /**
    *  Instead of storing source documents on disk exactly as you send them,
    *  Elasticsearch can reconstruct source content on the fly upon retrieval.

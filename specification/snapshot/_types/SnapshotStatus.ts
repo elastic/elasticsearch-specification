@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Uuid } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { SnapshotIndexStats } from './SnapshotIndexStats'
 import { ShardsStats } from './SnapshotShardsStats'
 import { SnapshotStats } from './SnapshotStats'
@@ -44,9 +44,9 @@ export class Status {
   /**
    * The current snapshot state:
    *
-   * * `FAILED`: The snapshot finished with an error and failed to store any data.
    * * `STARTED`: The snapshot is currently running.
-   * * `SUCCESS`: The snapshot completed.
+   * * `SUCCESS`: All shard snapshots have completed. The snapshot may or may not have completed finalization.
+   * * `FAILED`: The snapshot finished with an error and failed to store any data.
    */
   state: string
   /**

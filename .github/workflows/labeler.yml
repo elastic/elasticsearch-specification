@@ -9,4 +9,7 @@ jobs:
     - uses: actions/labeler@v5
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    permissions:
+      pull-requests: write
+      issues: write
 

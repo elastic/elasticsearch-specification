@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Get index recovery information.
+ *
  * Get information about ongoing and completed shard recoveries for one or more indices.
  * For data streams, the API returns information for the stream's backing indices.
  *
@@ -69,6 +70,7 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the response only includes ongoing shard recoveries.
@@ -80,5 +82,29 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     detailed?: boolean
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
   }
 }

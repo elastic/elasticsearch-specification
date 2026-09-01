@@ -17,10 +17,10 @@
  * under the License.
  */
 
+import { TaskId } from '@_types/common'
 import { BaseNode } from '@spec_utils/BaseNode'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { TaskInfo } from '@tasks/_types/TaskInfo'
-import { TaskId } from '@_types/common'
 
 export class UpdateByQueryRethrottleNode extends BaseNode {
   tasks: Dictionary<TaskId, TaskInfo>

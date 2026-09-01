@@ -20,5 +20,6 @@
 import { Connector } from '../_types/Connector'
 
 export class Response {
+  /** @codegen_name connector */
   body: Connector
 }

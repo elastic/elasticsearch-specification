@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when the transform is scheduled to run now.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true

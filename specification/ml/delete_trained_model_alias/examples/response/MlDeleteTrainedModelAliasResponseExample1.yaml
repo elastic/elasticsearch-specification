@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when deleting a trained model alias.
+# type: response
+# response_code: 200
+value:
+  acknowledged: true

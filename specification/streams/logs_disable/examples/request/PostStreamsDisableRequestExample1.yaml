@@ -1,0 +1,3 @@
+summary: 'Disable the logs.otel streams on this cluster'
+method_request: POST _streams/logs.otel/_disable
+# type: request

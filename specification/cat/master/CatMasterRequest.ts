@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatMasterColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get master node information.
@@ -39,7 +40,18 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
+    /**
+     * A comma-separated list of columns names to display. It supports simple wildcards.
+     */
+    h?: CatMasterColumns
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed

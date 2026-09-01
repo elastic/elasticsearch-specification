@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Clear trained model deployment cache.
+ *
  * Cache will be cleared on all nodes where the trained model is assigned.
  * A trained model deployment may have an inference cache enabled.
  * As requests are handled by each allocated node, their responses may be cached on that individual node.
@@ -46,4 +47,6 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Check in a connector.
@@ -41,4 +41,5 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  response_media_type: MediaType.Json
 }

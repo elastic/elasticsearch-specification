@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   Id,
@@ -34,6 +31,9 @@ import { NodeAttributes } from '@_types/Node'
 import { double, integer, long, Percentage } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { DurationValue, EpochTime, UnitMillis } from '@_types/Time'
+import { DataframeAnalyticsAuthorization } from '@ml/_types/Authorization'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DataframeState } from './Dataframe'
 
 export class DataframeAnalyticsSource {
@@ -238,9 +238,9 @@ export class DataframeAnalysisClassification extends DataframeAnalysis {
 /** @shortcut_property includes */
 export class DataframeAnalysisAnalyzedFields {
   /** An array of strings that defines the fields that will be excluded from the analysis. You do not need to add fields with unsupported data types to excludes, these fields are excluded from the analysis automatically. */
-  includes: string[]
+  includes?: string[]
   /** An array of strings that defines the fields that will be included in the analysis. */
-  excludes: string[]
+  excludes?: string[]
 }
 
 /** @variants container */

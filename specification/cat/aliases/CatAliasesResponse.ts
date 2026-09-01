@@ -20,5 +20,6 @@
 import { AliasesRecord } from './types'
 
 export class Response {
+  /** @codegen_name aliases */
   body: Array<AliasesRecord>
 }

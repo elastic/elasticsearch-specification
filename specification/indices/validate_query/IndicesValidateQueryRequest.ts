@@ -18,16 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Validate a query.
+ *
  * Validates a query without running it.
  * @rest_spec_name indices.validate_query
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @doc_id search-validate
  */
 export interface Request extends RequestBase {
   urls: [
@@ -48,10 +50,16 @@ export interface Request extends RequestBase {
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -71,8 +79,8 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
-     * @server_default OR
+     * The default operator for query string query: `and` or `or`.
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -84,7 +92,6 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -94,7 +101,9 @@ export interface Request extends RequestBase {
      */
     explain?: boolean
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -112,8 +121,23 @@ export interface Request extends RequestBase {
      * Query in the Lucene query string syntax.
      */
     q?: string
+    /**
+     * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack since=9.5.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
-  body: {
+  body?: {
     /**
      * Query in the Lucene query string syntax.
      */

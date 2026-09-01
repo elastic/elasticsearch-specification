@@ -18,12 +18,18 @@
  */
 
 import { Id } from '@_types/common'
-import { ShardStatistics } from '@_types/Stats'
+import { ClusterStatistics, ShardStatistics } from '@_types/Stats'
 
 export class Response {
   body: {
     /** Shards used to create the PIT */
     _shards: ShardStatistics
     id: Id
+    /**
+     * Metadata about the clusters involved in the request, returned when the request targets
+     * one or more remote clusters.
+     * @availability stack since=9.5.0
+     */
+    _clusters?: ClusterStatistics
   }
 }

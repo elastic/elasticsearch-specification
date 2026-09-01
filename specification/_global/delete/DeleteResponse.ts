@@ -20,6 +20,7 @@
 import { ErrorResponseBase, WriteResponseBase } from '@_types/Base'
 
 export class Response {
+  /** @codegen_name result */
   body: WriteResponseBase
   exceptions: [
     {
@@ -28,6 +29,7 @@ export class Response {
        * the response is the same as the successful case, but with a 404.
        */
       statusCodes: [404]
+      // eslint-disable-next-line es-spec-validator/no-inline-unions, es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
       body: WriteResponseBase | ErrorResponseBase
     }
   ]

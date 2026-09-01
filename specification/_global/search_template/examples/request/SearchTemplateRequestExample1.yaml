@@ -1,5 +1,5 @@
 # summary:
-# method_request: GET my-index/_search/template
+method_request: GET my-index/_search/template
 description: >
   Run `GET my-index/_search/template` to run a search with a search template.
 # type: request

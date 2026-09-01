@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Open anomaly detection jobs.
+ *
  * An anomaly detection job must be opened to be ready to receive and analyze
  * data. It can be opened and closed multiple times throughout its lifecycle.
  * When you open a new job, it starts with an empty model.
@@ -49,6 +50,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Controls the time to wait until a job has opened.
@@ -56,7 +59,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `timeout` query parameter.
      * @server_default 30m

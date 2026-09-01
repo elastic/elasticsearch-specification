@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Fields } from '@_types/common'
+import { Fields, MediaType, Names } from '@_types/common'
+import { CatFieldDataColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get field data cache information.
@@ -51,10 +51,19 @@ export interface Request extends CatRequestBase {
      */
     fields?: Fields
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /** Comma-separated list of fields used to limit returned information. */
     fields?: Fields
+    /**
+     * A comma-separated list of columns names to display. It supports simple wildcards.
+     */
+    h?: CatFieldDataColumns
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

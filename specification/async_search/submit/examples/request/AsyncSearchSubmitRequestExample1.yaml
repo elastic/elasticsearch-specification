@@ -1,7 +1,31 @@
 # summary: "Performs a search request asynchronously."
-# method_request: "POST /sales*/_async_search?size=0"
+method_request: 'POST /sales*/_async_search?size=0'
 description: >
-  Perform a search request asynchronously with `POST /sales*/_async_search?size=0`.
-  It accepts the same parameters and request body as the search API.
+  Perform a search request asynchronously with `POST /sales*/_async_search?size=0`. It accepts the same parameters and request body
+  as the search API.
 # type: "request",
-value: "{\n  \"sort\": [\n    { \"date\": { \"order\": \"asc\" } }\n  ],\n  \"aggs\": {\n    \"sale_date\": {\n      \"date_histogram\": {\n        \"field\": \"date\",\n        \"calendar_interval\": \"1d\"\n      }\n    }\n  }\n}"
+value: "{
+
+  \  \"sort\": [
+
+  \    { \"date\": { \"order\": \"asc\" } }
+
+  \  ],
+
+  \  \"aggs\": {
+
+  \    \"sale_date\": {
+
+  \      \"date_histogram\": {
+
+  \        \"field\": \"date\",
+
+  \        \"calendar_interval\": \"1d\"
+
+  \      }
+
+  \    }
+
+  \  }
+
+  }"

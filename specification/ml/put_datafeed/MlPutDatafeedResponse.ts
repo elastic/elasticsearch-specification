@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { DatafeedAuthorization } from '@ml/_types/Authorization'
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -27,6 +24,9 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

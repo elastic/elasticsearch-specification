@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { byte, float, integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -28,33 +28,64 @@ import { byte, float, integer } from '@_types/Numeric'
 export type SparseVector = Dictionary<string, float>
 
 /**
- * Text Embedding results are represented as Dense Vectors
+ * Dense Embedding results are represented as Dense Vectors
  * of floats.
  */
 export type DenseVector = Array<float>
 
 export class SparseEmbeddingResult {
+  /**
+   * Indicates if the text input was truncated in the request sent to the service
+   */
+  is_truncated: boolean
   embedding: SparseVector
 }
 
 /**
- * Text Embedding results containing bytes are represented as Dense
+ * The response format for the sparse embedding request.
+ */
+export class SparseEmbeddingInferenceResult {
+  sparse_embedding: Array<SparseEmbeddingResult>
+}
+
+/**
+ * Dense Embedding results containing bytes are represented as Dense
  * Vectors of bytes.
  */
 export type DenseByteVector = Array<byte>
 
 /**
- * The text embedding result object for byte representation
+ * The dense embedding result object for byte representation
  */
-export class TextEmbeddingByteResult {
+export class DenseEmbeddingByteResult {
   embedding: DenseByteVector
 }
 
 /**
- * The text embedding result object
+ * The dense embedding result object for float representation
  */
-export class TextEmbeddingResult {
+export class DenseEmbeddingResult {
   embedding: DenseVector
+}
+
+/**
+ * TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants
+ * @variants container
+ */
+export class TextEmbeddingInferenceResult {
+  text_embedding_bytes?: Array<DenseEmbeddingByteResult>
+  text_embedding_bits?: Array<DenseEmbeddingByteResult>
+  text_embedding?: Array<DenseEmbeddingResult>
+}
+
+/**
+ * EmbeddingInferenceResult is an aggregation of mutually exclusive embeddings variants
+ * @variants container
+ */
+export class EmbeddingInferenceResult {
+  embeddings_bytes?: Array<DenseEmbeddingByteResult>
+  embeddings_bits?: Array<DenseEmbeddingByteResult>
+  embeddings?: Array<DenseEmbeddingResult>
 }
 
 /**
@@ -65,27 +96,29 @@ export class CompletionResult {
 }
 
 /**
+ * Defines the completion result.
+ */
+export class CompletionInferenceResult {
+  completion: Array<CompletionResult>
+}
+
+/**
  * The rerank result object representing a single ranked document
  * id: the original index of the document in the request
- * score: the score of the document relative to the query
+ * relevance_score: the relevance_score of the document relative to the query
  * text: Optional, the text of the document, if requested
  */
 export class RankedDocument {
   index: integer
-  score: float
+  relevance_score: float
   text?: string
 }
 
 /**
- * InferenceResult is an aggregation of mutually exclusive variants
- * @variants container
+ * Defines the response for a rerank request.
  */
-export class InferenceResult {
-  text_embedding_bytes?: Array<TextEmbeddingByteResult>
-  text_embedding?: Array<TextEmbeddingResult>
-  sparse_embedding?: Array<SparseEmbeddingResult>
-  completion?: Array<CompletionResult>
-  rerank?: Array<RankedDocument>
+export class RerankedInferenceResult {
+  rerank: Array<RankedDocument>
 }
 
 /**
@@ -93,4 +126,20 @@ export class InferenceResult {
  */
 export class DeleteInferenceEndpointResult extends AcknowledgedResponseBase {
   pipelines: Array<string>
+}
+
+/**
+ * InferenceResult is an aggregation of mutually exclusive variants
+ * @variants container
+ */
+export class InferenceResult {
+  embeddings_bytes?: Array<DenseEmbeddingByteResult>
+  embeddings_bits?: Array<DenseEmbeddingByteResult>
+  embeddings?: Array<DenseEmbeddingResult>
+  text_embedding_bytes?: Array<DenseEmbeddingByteResult>
+  text_embedding_bits?: Array<DenseEmbeddingByteResult>
+  text_embedding?: Array<DenseEmbeddingResult>
+  sparse_embedding?: Array<SparseEmbeddingResult>
+  completion?: Array<CompletionResult>
+  rerank?: Array<RankedDocument>
 }

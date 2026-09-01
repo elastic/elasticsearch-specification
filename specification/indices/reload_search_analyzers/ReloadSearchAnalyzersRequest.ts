@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Reload search analyzers.
+ *
  * Reload an index's search analyzers and their resources.
  * For data streams, the API reloads search analyzers and resources for the stream's backing indices.
  *
@@ -49,11 +50,34 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** A comma-separated list of index names to reload analyzers for */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     */
     allow_no_indices?: boolean
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     */
     ignore_unavailable?: boolean
+    /**
+     * Changed resource to reload analyzers from if applicable
+     */
+    resource?: string
   }
 }

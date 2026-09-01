@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete an anomaly detection job.
+ *
  * All job configuration, model state and results are deleted.
  * It is not currently possible to delete multiple jobs using wildcards or a
  * comma separated list. If you delete a job that has a datafeed, the request
@@ -48,10 +49,12 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Use to forcefully delete an opened job; this method is quicker than
      * closing and deleting the job.
+     * @server_default false
      */
     force?: boolean
     /**

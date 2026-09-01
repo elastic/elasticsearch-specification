@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds, ThreadType } from '@_types/common'
+import { MediaType, NodeIds, ThreadType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the hot threads for nodes.
+ *
  * Get a breakdown of the hot threads on each selected node in the cluster.
  * The output is plain text with a breakdown of the top hot threads for each node.
  * @rest_spec_name nodes.hot_threads
@@ -50,6 +51,7 @@ export interface Request extends RequestBase {
      */
     node_id?: NodeIds
   }
+  response_media_type: MediaType.Text
   query_parameters: {
     /**
      * If true, known idle threads (e.g. waiting in a socket select, or to get
@@ -83,6 +85,10 @@ export interface Request extends RequestBase {
      * @server_default cpu
      */
     type?: ThreadType
+    /**
+     * The sort order for 'cpu' type
+     * @server_default total
+     */
     sort?: ThreadType
   }
 }

@@ -1,9 +1,25 @@
 # summary:
-description: A successful response from `GET _cat/ml/trained_models?h=c,o,l,ct,v&v=true`.
+description: A successful response from `GET _cat/ml/trained_models?v=true&format=json`.
 # type: response
 # response_code: ''
 value: |-
-  id                           created_by operations license  create_time              version
-  ddddd-1580216177138              _xpack 196        PLATINUM 2020-01-28T12:56:17.138Z 8.0.0
-  flight-regress-1580215685537     _xpack 102        PLATINUM 2020-01-28T12:48:05.537Z 8.0.0
-  lang_ident_model_1               _xpack 39629      BASIC    2019-12-05T12:28:34.594Z 7.6.0
+  [
+    {
+      "id": "ddddd-1580216177138",
+      "heap_size": "0b",
+      "operations": "196",
+      "create_time": "2025-03-25T00:01:38.662Z",
+      "type": "pytorch",
+      "ingest.pipelines": "0",
+      "data_frame.id": "__none__"
+    },
+    {
+      "id": "lang_ident_model_1",
+      "heap_size": "1mb",
+      "operations": "39629",
+      "create_time": "2019-12-05T12:28:34.594Z",
+      "type": "lang_ident",
+      "ingest.pipelines": "0",
+      "data_frame.id": "__none__"
+    }
+  ]

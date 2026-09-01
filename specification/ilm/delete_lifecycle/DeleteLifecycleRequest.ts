@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete a lifecycle policy.
+ *
  * You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.
  * @rest_spec_name ilm.delete_lifecycle
  * @availability stack since=6.6.0 stability=stable
@@ -43,6 +44,7 @@ export interface Request extends RequestBase {
      */
     policy: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

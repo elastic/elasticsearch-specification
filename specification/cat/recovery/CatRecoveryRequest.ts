@@ -17,9 +17,8 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Indices } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { Indices, MediaType, Names } from '@_types/common'
+import { CatRecoveryColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get shard recovery information.
@@ -53,6 +52,7 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * If `true`, the response only includes ongoing shard recoveries.
@@ -60,17 +60,25 @@ export interface Request extends CatRequestBase {
      */
     active_only?: boolean
     /**
-     * The unit used to display byte values.
-     */
-    bytes?: Bytes
-    /**
      * If `true`, the response includes detailed information about shard recoveries.
      * @server_default false
      */
     detailed?: boolean
     /**
-     * Unit used to display time values.
+     * Comma-separated list or wildcard expression of index names to limit the returned information
      */
-    time?: TimeUnit
+    index?: Indices
+    /**
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
+     */
+    h?: CatRecoveryColumns
+    /**
+     * A comma-separated list of column names or aliases that determines the sort order.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

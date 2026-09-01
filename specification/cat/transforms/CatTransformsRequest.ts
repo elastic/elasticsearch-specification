@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatTransformColumns } from '@cat/_types/CatBase'
 
 /**
  * Get transform information.
@@ -55,6 +54,7 @@ export interface Request extends CatRequestBase {
      */
     transform_id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no transforms that match; contains the `_all` string or no identifiers and there are no matches; contains wildcard expressions and there are only partial matches.
@@ -73,13 +73,10 @@ export interface Request extends CatRequestBase {
      * @server_default changes_last_detection_time,checkpoint,checkpoint_progress,documents_processed,id,last_search_time,state
      */
     h?: CatTransformColumns
-    /** Comma-separated list of column names or column aliases used to sort the response.
+    /**
+      Comma-separated list of column names or column aliases used to sort the response.
      */
     s?: CatTransformColumns
-    /**
-     * The unit used to display time values.
-     */
-    time?: TimeUnit
     /**
      * The maximum number of transforms to obtain.
      * @server_default 100

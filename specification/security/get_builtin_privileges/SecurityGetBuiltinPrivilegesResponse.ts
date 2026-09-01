@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import {
   ClusterPrivilege,
   RemoteClusterPrivilege
 } from '@security/_types/Privileges'
-import { IndexName } from '@_types/common'
 
 export class Response {
   body: {

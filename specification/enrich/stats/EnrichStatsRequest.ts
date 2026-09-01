@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get enrich stats.
+ *
  * Returns enrich coordinator statistics and information about enrich policies that are currently executing.
  * @rest_spec_name enrich.stats
  * @availability stack since=7.5.0 stability=stable
@@ -35,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

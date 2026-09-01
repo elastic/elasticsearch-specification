@@ -1,5 +1,5 @@
 summary: Users in a LDAP sub-tree and realm
-# method_request: POST /_security/role_mapping/mapping7
+method_request: POST /_security/role_mapping/mapping7
 description: >
   Run `POST /_security/role_mapping/mapping7` to match users within a particular LDAP sub-tree in a specific realm.
 # type: request

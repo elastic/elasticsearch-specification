@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { ScriptSource } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { SearchInputRequestDefinition } from '@watcher/_types/Input'
@@ -33,17 +34,20 @@ export class TransformContainer {
   search?: SearchTransform
 }
 
+/**
+ * @shortcut_property source
+ */
 export class ScriptTransform {
   /**
    * @server_default painless
    */
   lang?: string
   params?: Dictionary<string, UserDefinedValue>
-  source?: string
+  source?: ScriptSource
   id?: string
 }
 
 export class SearchTransform {
   request: SearchInputRequestDefinition
-  timeout: Duration
+  timeout?: Duration
 }

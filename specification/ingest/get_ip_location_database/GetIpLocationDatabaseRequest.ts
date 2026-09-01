@@ -18,11 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get IP geolocation database configurations.
+ *
  * @rest_spec_name ingest.get_ip_location_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
@@ -48,12 +48,5 @@ export interface Request extends RequestBase {
      */
     id?: Ids
   }
-  query_parameters: {
-    /**
-     * The period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * A value of `-1` indicates that the request should never time out.
-     * @server_default 30s */
-    master_timeout?: Duration
-  }
+  response_media_type: MediaType.Json
 }

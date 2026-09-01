@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Get a document by its ID.
@@ -107,10 +108,11 @@ export interface Request extends RequestBase {
     /** The name of the index that contains the document. */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates whether the request forces synthetic `_source`.
-     * Use this paramater to test if the mapping supports synthetic `_source` and to get a sense of the worst case performance.
+     * Use this parameter to test if the mapping supports synthetic `_source` and to get a sense of the worst case performance.
      * Fetches with this parameter enabled will be slower than enabling synthetic source natively in the index.
      * @availability stack since=8.4.0 visibility=feature_flag feature_flag=es.index_mode_feature_flag_registered
      */
@@ -139,9 +141,18 @@ export interface Request extends RequestBase {
     refresh?: boolean
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      * @ext_doc_id routing
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * Indicates whether to return the `_source` field (`true` or `false`) or lists the fields to return.
      */
@@ -153,6 +164,13 @@ export interface Request extends RequestBase {
      */
     _source_excludes?: Fields
     /**
+     * Whether vectors should be excluded from _source
+     * @availability stack since=9.2.0
+     * @availability serverless
+     * @server_default false
+     */
+    _source_exclude_vectors?: boolean
+    /**
      * A comma-separated list of source fields to include in the response.
      * If this parameter is specified, only these source fields are returned.
      * You can exclude fields from this subset using the `_source_excludes` query parameter.
@@ -163,8 +181,9 @@ export interface Request extends RequestBase {
      * A comma-separated list of stored fields to return as part of a hit.
      * If no fields are specified, no stored fields are included in the response.
      * If this field is specified, the `_source` parameter defaults to `false`.
-     * Only leaf fields can be retrieved with the `stored_field` option.
-     * Object fields can't be returned;​if specified, the request fails.
+     * Only leaf fields can be retrieved with the `stored_fields` option.
+     * Object fields can't be returned; if specified, the request fails.
+     * @ext_doc_id retrieve-stored-fields
      */
     stored_fields?: Fields
     /**

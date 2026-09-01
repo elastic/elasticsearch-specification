@@ -20,5 +20,6 @@
 import { ForceMergeResponseBody } from '@indices/forcemerge/_types/response'
 
 export class Response {
+  /** @codegen_name result */
   body: ForceMergeResponseBody
 }

@@ -1,0 +1,11 @@
+# summary:
+method_request: POST /_security/profile/_activate
+description: >
+  Run `POST /_security/profile/_activate` to activate a user profile.
+# type: request
+value: |-
+  {
+    "grant_type": "password",
+    "username" : "jacknich",
+    "password" : "l0ng-r4nd0m-p@ssw0rd"
+  }

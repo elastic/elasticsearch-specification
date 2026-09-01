@@ -41,5 +41,14 @@ export class Response {
      * Machine learning-related deprecation warnings.
      */
     ml_settings: Deprecation[]
+    /**
+     * Template warnings are sectioned off per template and include deprecations for both component templates and
+     * index templates.
+     */
+    templates: Dictionary<string, Deprecation[]>
+    /**
+     * ILM policy warnings are sectioned off per policy.
+     */
+    ilm_policies: Dictionary<string, Deprecation[]>
   }
 }

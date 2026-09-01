@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ByteSize,
   HealthStatus,
@@ -48,6 +46,9 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { DenseVectorStats, SparseVectorStats } from '@cluster/stats/types'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {
   /** Contains statistics about completions across all shards assigned to the node. */
@@ -148,6 +149,7 @@ export class ShardQueryCache {
   cache_size: long
   evictions: long
   hit_count: long
+  memory_size?: ByteSize
   memory_size_in_bytes: long
   miss_count: long
   total_count: long
@@ -187,11 +189,15 @@ export class MappingStats {
   total_count: long
   total_estimated_overhead?: ByteSize
   total_estimated_overhead_in_bytes: long
+  total_segments: long
+  total_segment_fields: long
+  average_fields_per_segment: long
 }
 
 export class ShardStats {
   commit?: ShardCommit
   completion?: CompletionStats
+  dense_vector?: DenseVectorStats
   docs?: DocStats
   fielddata?: FielddataStats
   flush?: FlushStats
@@ -209,6 +215,7 @@ export class ShardStats {
   search?: SearchStats
   segments?: SegmentsStats
   seq_no?: ShardSequenceNumber
+  sparse_vector?: SparseVectorStats
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
@@ -219,13 +226,9 @@ export class ShardStats {
    */
   shards?: Dictionary<IndexName, UserDefinedValue>
   shard_stats?: ShardsTotalStats
-  indices?: IndicesStats
+  indices?: Dictionary<IndexName, ShardStats>
 }
 
-/**
- * @availability stack since=8.1.0
- * @availability serverless
- */
 export enum IndexMetadataState {
   open,
   close

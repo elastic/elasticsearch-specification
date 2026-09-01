@@ -1,11 +1,40 @@
 summary: Reindex from remote on Elastic Cloud
-# method_request: POST _reindex
+method_request: POST _reindex
 description: >
   When using Elastic Cloud, you can run `POST _reindex` and authenticate against a remote cluster with an API key.
 # type: request
-value:
-  "{\n  \"source\": {\n    \"remote\": {\n      \"host\": \"http://otherhost:9200\"\
-  ,\n      \"username\": \"user\",\n      \"password\": \"pass\"\n    },\n    \"index\"\
-  : \"my-index-000001\",\n    \"query\": {\n      \"match\": {\n        \"test\":\
-  \ \"data\"\n      }\n    }\n  },\n  \"dest\": {\n    \"index\": \"my-new-index-000001\"\
-  \n  }\n}"
+value: "{
+
+  \  \"source\": {
+
+  \    \"remote\": {
+
+  \      \"host\": \"http://otherhost:9200\",
+
+  \      \"username\": \"user\",
+
+  \      \"password\": \"pass\"
+
+  \    },
+
+  \    \"index\": \"my-index-000001\",
+
+  \    \"query\": {
+
+  \      \"match\": {
+
+  \        \"test\": \"data\"
+
+  \      }
+
+  \    }
+
+  \  },
+
+  \  \"dest\": {
+
+  \    \"index\": \"my-new-index-000001\"
+
+  \  }
+
+  }"

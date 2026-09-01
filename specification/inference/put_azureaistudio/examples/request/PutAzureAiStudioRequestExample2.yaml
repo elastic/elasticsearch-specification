@@ -1,0 +1,14 @@
+summary: A completion task
+description: Run `PUT _inference/completion/azure_ai_studio_completion` to create an inference endpoint that performs a completion task.
+method_request: 'PUT _inference/completion/azure_ai_studio_completion'
+# type: "request"
+value: |-
+  {
+      "service": "azureaistudio",
+      "service_settings": {
+          "api_key": "Azure-AI-Studio-API-key",
+          "target": "Target-URI",
+          "provider": "databricks",
+          "endpoint_type": "realtime"
+      }
+  }

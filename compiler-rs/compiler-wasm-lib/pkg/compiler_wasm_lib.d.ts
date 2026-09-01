@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
-* @param {string} json
-* @param {string} flavor
-* @returns {string}
-*/
-export function convert_schema_to_openapi(json: string, flavor: string): string;
+ * Convert schema.json to OpenAPI. The `cwd` argument is the current directory to be used
+ * if not the system-defined one, as is the case when running with `npm rum --prefix compiler`
+ */
+export function convert_schema_to_openapi(args: string[], cwd?: string | null): void;
+export function convert_schema_to_individual_rest_api_spec_files(args: string[], cwd?: string | null): void;

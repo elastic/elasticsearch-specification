@@ -20,5 +20,6 @@
 import { RecoveryRecord } from './types'
 
 export class Response {
+  /** @codegen_name recovery_records */
   body: Array<RecoveryRecord>
 }

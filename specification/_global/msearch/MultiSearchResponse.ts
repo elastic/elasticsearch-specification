@@ -23,5 +23,6 @@ import { MultiSearchResult } from '@global/msearch/types'
 // - msearch
 // - fleet.msearch
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: MultiSearchResult<TDocument>
 }

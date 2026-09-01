@@ -1,0 +1,8 @@
+method_request: POST _ml/filters/safe_domains/_update
+description: An example body for a `POST _ml/filters/safe_domains/_update` request.
+value: |-
+  {
+    "description": "Updated list of domains",
+    "add_items": ["*.myorg.com"],
+    "remove_items": ["wikipedia.org"]
+  }

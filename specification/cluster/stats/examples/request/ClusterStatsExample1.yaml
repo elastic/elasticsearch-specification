@@ -1,0 +1,1 @@
+method_request: GET _cluster/stats?human&filter_path=indices.mappings.total_deduplicated_mapping_size*

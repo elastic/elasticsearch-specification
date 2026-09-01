@@ -17,13 +17,16 @@
  * under the License.
  */
 
-import { ProcessorContainer } from '@ingest/_types/Processors'
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata, VersionNumber } from '@_types/common'
+import { Id, MediaType, Metadata, VersionNumber } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { FieldAccessPattern } from '@ingest/_types/Pipeline'
+import { ProcessorContainer } from '@ingest/_types/Processors'
 
 /**
  * Create or update a pipeline.
+ *
  * Changes made using this API take effect immediately.
  * @doc_id ingest
  * @rest_spec_name ingest.put_pipeline
@@ -44,6 +47,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
@@ -57,7 +62,7 @@ export interface Request extends RequestBase {
     /**
      * Required version for optimistic concurrency control for pipeline updates
      */
-    if_version?: VersionNumber
+    if_version?: integer
   }
   body: {
     /**
@@ -86,5 +91,12 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     deprecated?: boolean
+    /**
+     * Controls how processors in this pipeline should read and write data on a document's source.
+     * @server_default classic
+     * @availability stack since=9.2.0
+     * @availability serverless
+     */
+    field_access_pattern?: FieldAccessPattern
   }
 }

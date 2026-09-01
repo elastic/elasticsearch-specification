@@ -1,5 +1,5 @@
 summary: Bulk role success
-# method_request: POST /_security/role
+method_request: POST /_security/role
 description: >
   Run `POST /_security/role` to add roles called `my_admin_role` and `my_user_role`.
 # type: request

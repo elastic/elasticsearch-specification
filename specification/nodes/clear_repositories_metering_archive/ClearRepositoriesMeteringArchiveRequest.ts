@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
  * Clear the archived repositories metering.
+ *
  * Clear the archived repositories metering information in the cluster.
  * @rest_spec_name nodes.clear_repositories_metering_archive
  * @availability stack since=7.16.0 stability=experimental
@@ -49,4 +50,5 @@ export interface Request extends RequestBase {
      */
     max_archive_version: long
   }
+  response_media_type: MediaType.Json
 }

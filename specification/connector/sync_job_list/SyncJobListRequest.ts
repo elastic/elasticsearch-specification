@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { SyncStatus } from '../_types/Connector'
 import { SyncJobType } from '../_types/SyncJob'
@@ -38,13 +38,16 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Starting offset (default: 0)
+     * Starting offset
+     * @server_default 0
      */
     from?: integer
     /**
      * Specifies a max number of results to get
+     * @server_default 100
      */
     size?: integer
     /**

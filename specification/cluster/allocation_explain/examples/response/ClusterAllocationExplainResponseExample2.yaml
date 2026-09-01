@@ -1,0 +1,42 @@
+summary: Maximum retries
+description: >
+  An example of an allocation explanation for an unassigned primary shard that has reached the maximum number of allocation retry attempts.
+  After the maximum number of retries is reached, Elasticsearch stops attempting to allocate the shard in order to prevent infinite retries which may impact cluster performance.
+# type: response
+# response_code:
+value: |-
+  {
+    "index" : "my-index-000001",
+    "shard" : 0,
+    "primary" : true,
+    "current_state" : "unassigned",
+    "unassigned_info" : {
+      "at" : "2017-01-04T18:03:28.464Z",
+      "failed shard on node [mEKjwwzLT1yJVb8UxT6anw]: failed recovery, failure RecoveryFailedException",
+      "reason": "ALLOCATION_FAILED",
+      "failed_allocation_attempts": 5,
+      "last_allocation_status": "no",
+    },
+    "can_allocate": "no",
+    "allocate_explanation": "cannot allocate because allocation is not permitted to any of the nodes",
+    "node_allocation_decisions" : [
+      {
+        "node_id" : "3sULLVJrRneSg0EfBB-2Ew",
+        "node_name" : "node_t0",
+        "transport_address" : "127.0.0.1:9400",
+        "roles" : ["data_content", "data_hot"],
+        "node_decision" : "no",
+        "store" : {
+          "matching_size" : "4.2kb",
+          "matching_size_in_bytes" : 4325
+        },
+        "deciders" : [
+          {
+            "decider": "max_retry",
+            "decision" : "NO",
+            "explanation": "shard has exceeded the maximum number of retries [5] on failed allocation attempts - manually call [POST /_cluster/reroute?retry_failed] to retry, [unassigned_info[[reason=ALLOCATION_FAILED], at[2024-07-30T21:04:12.166Z], failed_attempts[5], failed_nodes[[mEKjwwzLT1yJVb8UxT6anw]], delayed=false, details[failed shard on node [mEKjwwzLT1yJVb8UxT6anw]: failed recovery, failure RecoveryFailedException], allocation_status[deciders_no]]]"
+          }
+        ]
+      }
+    ]
+  }

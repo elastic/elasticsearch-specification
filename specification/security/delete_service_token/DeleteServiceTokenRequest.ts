@@ -18,15 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name, Namespace, Refresh, Service } from '@_types/common'
+import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
 
 /**
  * Delete service account tokens.
  *
  * Delete service account tokens for a service in a specified namespace.
+ *
+ * IMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.
+ * Deleting tokens for any other service account requires operator privileges.
  * @rest_spec_name security.delete_service_token
  * @availability stack since=5.5.0 stability=stable
- * @availability serverless stability=stable visibility=private
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_service_account
  * @doc_id security-api-delete-service-token
  * @ext_doc_id service-accounts
@@ -52,7 +55,11 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * If `true` (the default) then refresh the affected shards to make this operation visible to search, if `wait_for` then wait for a refresh to make this operation visible to search, if `false` then do nothing with refreshes.
+     */
     refresh?: Refresh
   }
 }

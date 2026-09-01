@@ -17,9 +17,14 @@
  * under the License.
  */
 
-import { InnerHits } from '@global/search/_types/hits'
 import { Field } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
+import { InnerHits } from '@global/search/_types/hits'
+import {
+  EmbeddingContentFormat,
+  EmbeddingContentType
+} from '@inference/_types/CommonTypes'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 
 export type QueryVector = float[]
@@ -43,6 +48,12 @@ export interface KnnSearch {
   k?: integer
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** Boost value to apply to kNN scores */
   boost?: float
   /** Filters for the kNN search query */
@@ -52,13 +63,17 @@ export interface KnnSearch {
   /**
    * If defined, each search hit will contain inner hits.
    * @doc_id knn-inner-hits
+   * @ext_doc_id inner-hits
    */
   inner_hits?: InnerHits
-  /** Apply oversampling and rescoring to quantized vectors *
-   * @availability stack since=8.18.0 stability=experimental
-   * @availability serverless stability=experimental
+  /**
+   * Apply oversampling and rescoring to quantized vectors
+   * @availability stack since=8.18.0
+   * @availability serverless
    */
   rescore_vector?: RescoreVector
+  /** @codegen_name query_name */
+  _name?: string
 }
 
 /**
@@ -73,25 +88,90 @@ export interface KnnQuery extends QueryBase {
   query_vector_builder?: QueryVectorBuilder
   /** The number of nearest neighbor candidates to consider per shard */
   num_candidates?: integer
+  /**
+   * The percentage of vectors to explore per shard while doing knn search with bbq_disk
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  visit_percentage?: float
   /** The final number of nearest neighbors to return as top hits */
   k?: integer
   /** Filters for the kNN search query */
   filter?: QueryContainer | QueryContainer[]
   /** The minimum similarity for a vector to be considered a match */
   similarity?: float
-  /** Apply oversampling and rescoring to quantized vectors *
-   * @availability stack since=8.18.0 stability=experimental
-   * @availability serverless stability=experimental
+  /**
+   * Apply oversampling and rescoring to quantized vectors
+   * @availability stack since=8.18.0
+   * @availability serverless
    */
   rescore_vector?: RescoreVector
 }
 
 /** @variants container */
 export interface QueryVectorBuilder {
+  embedding?: Embedding
   text_embedding?: TextEmbedding
+  /**
+   * Lookup a vector from an existing document.
+   * Must reference a dense_vector field and a single value.
+   * @availability stack since=9.4.0
+   * @availability serverless
+   */
+  lookup?: LookupQueryVectorBuilder
+}
+
+export interface Embedding {
+  inference_id?: string
+  input: KnnEmbeddingInput
+  timeout?: Duration
+}
+
+/**
+ * Knn embedding input.
+ * Either a string, an object or array of objects
+ * @codegen_names string, object
+ */
+export type KnnEmbeddingInput = string | InferenceStringGroup
+
+export type InferenceStringGroup = InferenceString | InferenceString[]
+
+export class InferenceString {
+  /**
+   * The type of data that the value represents.
+   */
+  type: EmbeddingContentType
+
+  /**
+   * The format of the data. If null, the default data format for the given type is used.
+   */
+  format?: EmbeddingContentFormat | null
+
+  /**
+   * String which may be raw text, or the string representation of some other data such as an image in base64.
+   */
+  value: string
 }
 
 export interface TextEmbedding {
-  model_id: string
+  /**
+   * Model ID is required for all dense_vector fields but
+   * may be inferred for semantic_text fields
+   * @availability stack since=8.18.0
+   * @availability serverless
+   */
+  model_id?: string
+  /** The text to be converted into a vector by the specified model */
   model_text: string
+}
+
+export interface LookupQueryVectorBuilder {
+  /** The ID of the document to fetch the vector from */
+  id: string
+  /** The name of the index to fetch the document from */
+  index: string
+  /** The name of the field containing the vector */
+  path: string
+  /** The routing value to use when fetching the document */
+  routing?: string
 }

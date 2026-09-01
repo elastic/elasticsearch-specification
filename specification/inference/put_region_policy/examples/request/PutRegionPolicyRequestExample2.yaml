@@ -1,0 +1,10 @@
+summary: A region policy allowing specific geographic areas
+description: Run `PUT _inference/_region_policy` to restrict inference to a specific set of geographic areas.
+method_request: 'PUT _inference/_region_policy'
+# type: "request"
+value: |-
+  {
+      "region_policy": {
+          "allowed_geos": ["us", "eu"]
+      }
+  }

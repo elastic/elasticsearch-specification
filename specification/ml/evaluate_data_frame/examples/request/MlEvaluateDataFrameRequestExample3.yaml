@@ -1,0 +1,11 @@
+summary: Outlier detection
+method_request: POST _ml/data_frame/_evaluate
+description: >
+  Run `POST _ml/data_frame/_evaluate` to evaluate an outlier detection job for an annotated index.
+# type: request
+value:
+  index: my_analytics_dest_index
+  evaluation:
+    outlier_detection:
+      actual_field: is_outlier
+      predicted_probability_field: ml.outlier_score

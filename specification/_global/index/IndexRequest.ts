@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   OpType,
   Refresh,
   Routing,
@@ -49,7 +50,7 @@ import { Duration } from '@_types/Time'
  * Automatic data stream creation requires a matching index template with data stream enabled.
  *
  * NOTE: Replica shards might not all be started when an indexing operation returns successfully.
- * By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior.
+ * By default, only the primary is required. Set `wait_for_active_shards` to change this default behavior (this parameter is not available in Elasticsearch Serverless).
  *
  * **Automatically create data streams and indices**
  *
@@ -98,7 +99,7 @@ import { Duration } from '@_types/Time'
  * If the requisite number of active shard copies are not available, then the write operation must wait and retry, until either the requisite shard copies have started or a timeout occurs.
  * By default, write operations only wait for the primary shards to be active before proceeding (that is to say `wait_for_active_shards` is `1`).
  * This default can be overridden in the index settings dynamically by setting `index.write.wait_for_active_shards`.
- * To alter this behavior per operation, use the `wait_for_active_shards request` parameter.
+ * To alter this behavior per operation, use the `wait_for_active_shards request` parameter (this parameter is not available in Elasticsearch Serverless).
  *
  * Valid values are all or any positive integer up to the total number of configured copies per shard in the index (which is `number_of_replicas`+1).
  * Specifying a negative value or a number greater than the number of shard copies will throw an error.
@@ -146,12 +147,14 @@ import { Duration } from '@_types/Time'
  *     "id": "elkbee"
  *   }
  * }
+ * ```
  *
  * In this example, the operation will succeed since the supplied version of 2 is higher than the current document version of 1.
  * If the document was already updated and its version was set to 2 or higher, the indexing command will fail and result in a conflict (409 HTTP status code).
  *
  * A nice side effect is that there is no need to maintain strict ordering of async indexing operations run as a result of changes to a source database, as long as version numbers from the source database are used.
  * Even the simple case of updating the Elasticsearch index using data from a database is simplified if external versioning is used, as only the latest version will be used if the index operations arrive out of order.
+ *
  * @rest_spec_name index
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -185,6 +188,8 @@ export interface Request<TDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.
@@ -196,6 +201,11 @@ export interface Request<TDocument> extends RequestBase {
      * @ext_doc_id optimistic-concurrency
      */
     if_seq_no?: SequenceNumber
+    /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
     /**
      * Set to `create` to only index the document if it does not already exist (put if absent).
      * If a document with the specified `_id` already exists, the indexing operation will fail.
@@ -220,8 +230,19 @@ export interface Request<TDocument> extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value that is used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack stability=stable
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * The period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.
      *
@@ -247,6 +268,7 @@ export interface Request<TDocument> extends RequestBase {
      * You can set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
@@ -254,6 +276,11 @@ export interface Request<TDocument> extends RequestBase {
      * @server_default false
      */
     require_alias?: boolean
+    /**
+     * If `true`, the request's actions must target a data stream (existing or to be created).
+     * @server_default false
+     */
+    require_data_stream?: boolean
   }
   /** @codegen_name document */
   /**

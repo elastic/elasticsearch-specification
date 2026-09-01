@@ -1,0 +1,13 @@
+method_request: POST _aliases
+description: An example body for a `POST _aliases` request.
+value: |-
+  {
+    "actions": [
+      {
+        "add": {
+          "index": "logs-nginx.access-prod",
+          "alias": "logs"
+        }
+      }
+    ]
+  }

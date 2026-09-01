@@ -17,14 +17,13 @@
  * under the License.
  */
 
+import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { DateTime } from '@_types/Time'
 import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { ActionStatusOptions } from '@watcher/_types/Action'
-import { Id, IndexName, Name, VersionNumber, VersionType } from '@_types/common'
-import { ErrorCause } from '@_types/Errors'
-import { DateTime } from '@_types/Time'
 
 export class Ingest {
   /**
@@ -46,14 +45,22 @@ export class Redact {
 export class SimulateDocumentResult {
   doc?: DocumentSimulation
   error?: ErrorCause
-  processor_results?: PipelineSimulation[]
+  processor_results?: PipelineProcessorResult[]
 }
 
-export class PipelineSimulation {
+export enum PipelineSimulationStatusOptions {
+  success,
+  error,
+  error_ignored,
+  skipped,
+  dropped
+}
+
+export class PipelineProcessorResult {
   doc?: DocumentSimulation
   tag?: string
   processor_type?: string
-  status?: ActionStatusOptions
+  status?: PipelineSimulationStatusOptions
   description?: string
   ignored_error?: ErrorCause
   error?: ErrorCause

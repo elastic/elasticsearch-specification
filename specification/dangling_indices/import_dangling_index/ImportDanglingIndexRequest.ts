@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Uuid } from '@_types/common'
+import { MediaType, Uuid } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -45,13 +45,23 @@ export interface Request extends RequestBase {
      */
     index_uuid: Uuid
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * This parameter must be set to true to import a dangling index.
      * Because Elasticsearch cannot know where the dangling index data came from or determine which shard copies are fresh and which are stale, it cannot guarantee that the imported data represents the latest state of the index when it was last in the cluster.
+     * @server_default false
      */
-    accept_data_loss: boolean
+    accept_data_loss?: boolean
+    /**
+     * The period to wait for a connection to the master node.
+     * @server_default 30s
+     */
     master_timeout?: Duration
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

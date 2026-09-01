@@ -1,6 +1,8 @@
 summary: Normalizer
-# method_request: GET /analyze_sample/_analyze
-description: Run `GET /analyze_sample/_analyze` and supply a normalizer for a keyword field if there is a normalizer associated with the specified index.
+method_request: GET /analyze_sample/_analyze
+description:
+  Run `GET /analyze_sample/_analyze` and supply a normalizer for a keyword field if there is a normalizer associated with
+  the specified index.
 # type: request
 value:
   normalizer: my_normalizer

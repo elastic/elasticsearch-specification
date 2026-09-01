@@ -18,12 +18,11 @@
  */
 
 import * as model from '../model/metamodel'
-import { JsonSpec } from '../model/json-spec'
 
 /**
  * Adds the `_info` field to the JSON model.
  */
-export default async function addInfo (model: model.Model, jsonSpec: Map<string, JsonSpec>): Promise<model.Model> {
+export default async function addInfo (model: model.Model): Promise<model.Model> {
   model._info = {
     title: 'Elasticsearch Request & Response Specification',
     license: {

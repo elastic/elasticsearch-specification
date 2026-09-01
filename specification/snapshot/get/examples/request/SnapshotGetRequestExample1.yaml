@@ -1,0 +1,1 @@
+method_request: GET /_snapshot/my_repository/snapshot_*?sort=start_time&from_sort_value=1577833200000

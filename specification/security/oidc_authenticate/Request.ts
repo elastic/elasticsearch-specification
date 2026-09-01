@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Authenticate OpenID Connect.
@@ -37,6 +38,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Associate a client session with an ID token and mitigate replay attacks.
@@ -45,7 +48,8 @@ export interface Request extends RequestBase {
     nonce: string
     /**
      * The name of the OpenID Connect realm.
-     * This property is useful in cases where multiple realms are defined. */
+     * This property is useful in cases where multiple realms are defined.
+     */
     realm?: string
     /**
      * The URL to which the OpenID Connect Provider redirected the User Agent in response to an authentication request after a successful authentication.

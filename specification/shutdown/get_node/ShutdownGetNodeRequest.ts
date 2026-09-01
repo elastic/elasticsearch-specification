@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { MediaType, NodeIds } from '@_types/common'
+import { Duration } from '@_types/Time'
 
 /**
  * Get the shutdown status.
@@ -31,7 +31,7 @@ import { TimeUnit } from '@_types/Time'
  *
  * If the operator privileges feature is enabled, you must be an operator to use this API.
  * @rest_spec_name shutdown.get_node
- * @availability stack since=7.13.0 stability=stable
+ * @availability stack since=7.13.0 stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id nodes-api-shutdown-status
  */
@@ -47,13 +47,16 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** Comma-separated list of nodes for which to retrieve the shutdown status */
     node_id?: NodeIds
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeUnit
+    master_timeout?: Duration
   }
 }

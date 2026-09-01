@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get snapshot lifecycle management statistics.
+ *
  * Get global and policy-level statistics about actions taken by snapshot lifecycle management.
  * @rest_spec_name slm.get_stats
  * @availability stack since=7.5.0 stability=stable
@@ -36,6 +38,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

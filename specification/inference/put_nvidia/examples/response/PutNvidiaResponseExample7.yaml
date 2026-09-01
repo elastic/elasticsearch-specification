@@ -1,0 +1,17 @@
+summary: A rerank task
+description: A successful response when creating an Nvidia `rerank` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "nvidia-rerank",
+    "task_type": "rerank",
+    "service": "nvidia",
+    "service_settings": {
+      "model_id": "nv-rerank-qa-mistral-4b:1",
+      "url": "nvidia-rerank-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }

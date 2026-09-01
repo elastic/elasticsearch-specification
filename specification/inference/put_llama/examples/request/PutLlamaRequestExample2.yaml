@@ -1,0 +1,12 @@
+# summary:
+description: Run `PUT _inference/completion/llama-completion` to create a Llama inference endpoint that performs a `completion` task.
+method_request: 'PUT _inference/completion/llama-completion'
+# type: "request"
+value: |-
+  {
+    "service": "llama",
+    "service_settings": {
+      "url": "http://localhost:8321/v1/openai/v1/chat/completions",
+      "model_id": "llama3.2:3b" 
+    }
+  }

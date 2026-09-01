@@ -115,12 +115,66 @@ export class VerifyIndex {
   total_time_in_millis: DurationValue<UnitMillis>
 }
 
+export enum RecoveryStage {
+  /** Recovery has not started. */
+  INIT,
+  /** Reading index metadata and copying bytes from source to destination. */
+  INDEX,
+  /** Verifying the integrity of the index. */
+  VERIFY_INDEX,
+  /** Replaying the transaction log. */
+  TRANSLOG,
+  /** Cleanup. */
+  FINALIZE,
+  /** Complete. */
+  DONE
+}
+
+export enum RecoveryType {
+  /** An empty store. Indicates a new primary shard or the forced allocation of an empty primary shard using the cluster reroute API. */
+  EMPTY_STORE,
+  /** The store of an existing primary shard. Indicates recovery is related to node startup or the allocation of an existing primary shard. */
+  EXISTING_STORE,
+  /** Shards of another index on the same node. Indicates recovery is related to a clone, shrink, or split operation. */
+  LOCAL_SHARDS,
+  /** A primary shard on another node. Indicates recovery is related to shard replication. */
+  PEER,
+  /** A snapshot. Indicates recovery is related to a snapshot restore operation. */
+  SNAPSHOT
+}
+
+/** The priority for a shard recovery. These are listed from high to low priority. */
+export enum RecoveryPriority {
+  /** A primary shard which is unassigned because it is newly created. */
+  UNASSIGNED_NEW_PRIMARY,
+  /** A shard which is unassigned because of an unexpected condition, i.e. some kind of failure. */
+  UNASSIGNED_UNEXPECTED,
+  /** A shard which is unassigned for an expected condition, i.e. because of a user operation such as opening or restoring an index, but which is not an UNASSIGNED_NEW_PRIMARY. */
+  UNASSIGNED_EXPECTED,
+  /** A shard which is assigned, and is being relocated because it cannot remain on its current node according to the allocation deciders. */
+  RELOCATION_CAN_REMAIN_NO,
+  /** A shard which is assigned, and is being relocated because it is not preferred for it to remain on its current node according to the allocation deciders. */
+  RELOCATION_CAN_REMAIN_NOT_PREFERRED,
+  /** A shard which is assigned, and is being relocated for rebalancing. */
+  RELOCATE_REBALANCING,
+  /** Placeholder value for unknown priorities. */
+  UNKNOWN
+}
+
 export class ShardRecovery {
   id: long
   index: RecoveryIndexStatus
   primary: boolean
   source: RecoveryOrigin
-  stage: string
+  /** The recovery stage. */
+  stage: RecoveryStage
+  /**
+   * The recovery priority.
+   *
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  priority?: RecoveryPriority
   start?: RecoveryStartStatus
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
@@ -130,6 +184,7 @@ export class ShardRecovery {
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
   translog: TranslogStatus
-  type: string
+  /** The recovery source type. */
+  type: RecoveryType
   verify_index: VerifyIndex
 }

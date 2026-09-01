@@ -1,9 +1,16 @@
 # summary:
 description: >
-  A successful response from `GET /_cat/repositories?v=true`.
+  A successful response from `GET /_cat/repositories?v=true&format=json`.
 # type: response
 # response_code: 200
 value: |-
-  id    type
-  repo1   fs
-  repo2   s3
+  [
+    {
+      "id": "repo1",
+      "type": "fs"
+    },
+    {
+      "id": "repo2",
+      "type": "s3"
+    }
+  ]

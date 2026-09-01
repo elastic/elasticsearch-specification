@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete IP geolocation database configurations.
+ *
  * @rest_spec_name ingest.delete_ip_location_database
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
@@ -42,6 +43,7 @@ export interface Request extends RequestBase {
      */
     id: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

@@ -18,9 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Get feature migration information.
+ *
  * Version upgrades sometimes require changes to how features store configuration information and data in system indices.
  * Check which features need to be migrated and the status of any migrations that are in progress.
  *
@@ -39,4 +41,5 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
 }

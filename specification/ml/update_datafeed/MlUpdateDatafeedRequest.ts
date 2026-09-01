@@ -17,19 +17,20 @@
  * under the License.
  */
 
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndicesOptions } from '@_types/common'
+import { ExpandWildcards, Id, IndicesOptions, MediaType } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update a datafeed.
+ *
  * You must stop and start the datafeed for the changes to be applied.
  * When Elasticsearch security features are enabled, your datafeed remembers which roles the user who updated it had at
  * the time of the update and runs the query using those same roles. If you provide secondary authorization headers,
@@ -56,22 +57,22 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `true`, wildcard indices expressions that resolve into no concrete indices are ignored. This includes the
-     * `_all` string or when no indices are specified.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
     /**
      * Type of index that wildcard patterns can match. If the request can target data streams, this argument determines
-     * whether wildcard expressions match hidden data streams. Supports comma-separated values. Valid values are:
-     *
-     * * `all`: Match any data stream or index, including hidden ones.
-     * * `closed`: Match closed, non-hidden indices. Also matches any non-hidden data stream. Data streams cannot be closed.
-     * * `hidden`: Match hidden data streams and hidden indices. Must be combined with `open`, `closed`, or both.
-     * * `none`: Wildcard patterns are not accepted.
-     * * `open`: Match open, non-hidden indices. Also matches any non-hidden data stream.
+     * whether wildcard expressions match hidden data streams. Supports comma-separated values.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
@@ -82,7 +83,9 @@ export interface Request extends RequestBase {
      */
     ignore_throttled?: boolean
     /**
-     * If `true`, unavailable indices (missing or closed) are ignored.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -174,5 +177,13 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     project_routing?: string
+    /**
+     * When true, force reminting of the datafeed's internal cloud API key from the
+     * caller's cloud credential without requiring other configuration changes.
+     * Requires a cloud-authenticated caller and an environment that supports
+     * cross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.
+     * @availability serverless
+     */
+    _force_rekeying?: boolean
   }
 }

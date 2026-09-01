@@ -17,11 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { Id, IndexName, Names } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptLanguage } from '@_types/Scripting'
+import { OverloadOf } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldSecurity } from './FieldSecurity'
 
 export class ApplicationPrivileges {
@@ -83,6 +84,7 @@ export enum ClusterPrivilege {
    */
   manage_data_stream_global_retention,
   manage_enrich,
+  manage_esql,
   /**
    * @availability stack
    */
@@ -98,6 +100,11 @@ export enum ClusterPrivilege {
   manage_oidc,
   manage_own_api_key,
   manage_pipeline,
+  /**
+   * @availability stack since=9.5.0
+   * @availability serverless since=9.5.0
+   */
+  manage_reindex,
   /**
    * @availability stack
    */
@@ -141,8 +148,14 @@ export enum ClusterPrivilege {
    */
   monitor_data_stream_global_retention,
   monitor_enrich,
+  monitor_esql,
   monitor_inference,
   monitor_ml,
+  /**
+   * @availability stack since=9.5.0
+   * @availability serverless since=9.5.0
+   */
+  monitor_reindex,
   /**
    * @availability stack
    */
@@ -195,7 +208,15 @@ export enum ClusterPrivilege {
   /**
    * @availability stack
    */
-  write_fleet_secrets
+  write_fleet_secrets,
+  /**
+   * @availability serverless
+   */
+  read_project_routing,
+  /**
+   * @availability serverless
+   */
+  manage_project_routing
 }
 
 /**
@@ -212,8 +233,7 @@ export enum RemoteClusterPrivilege {
   monitor_stats
 }
 
-// Keep in sync with RemoteIndicesPrivileges
-export class IndicesPrivileges {
+export class IndicesPrivilegesBase {
   /**
    * The document fields that the owners of the role have read access to.
    * @ext_doc_id field-and-document-access-control
@@ -241,38 +261,18 @@ export class IndicesPrivileges {
   allow_restricted_indices?: boolean
 }
 
+export class IndicesPrivileges implements OverloadOf<IndicesPrivilegesBase> {}
+
 /**
  * The subset of index level privileges that can be defined for remote clusters.
  */
-// Keep in sync with IndicesPrivileges
-export class RemoteIndicesPrivileges {
+export class RemoteIndicesPrivileges
+  implements OverloadOf<IndicesPrivilegesBase>
+{
   /**
    *  A list of cluster aliases to which the permissions in this entry apply.
    */
   clusters: Names
-  /**
-   * The document fields that the owners of the role have read access to.
-   * @ext_doc_id field-and-document-access-control
-   */
-  field_security?: FieldSecurity
-  /**
-   * A list of indices (or index name patterns) to which the permissions in this entry apply.
-   */
-  names: IndexName | IndexName[]
-  /**
-   * The index level privileges that owners of the role have on the specified indices.
-   */
-  privileges: IndexPrivilege[]
-  /**
-   * A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.
-   */
-  query?: IndicesPrivilegesQuery
-  /**
-   * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
-   * @server_default false
-   * @availability stack
-   */
-  allow_restricted_indices?: boolean
 }
 
 /**
@@ -289,7 +289,7 @@ export class RemoteClusterPrivileges {
   privileges: RemoteClusterPrivilege[]
 }
 
-export class UserIndicesPrivileges {
+export class UserIndicesPrivilegesBase {
   /**
    * The document fields that the owners of the role have read access to.
    * @ext_doc_id field-and-document-access-control
@@ -311,6 +311,15 @@ export class UserIndicesPrivileges {
    * Set to `true` if using wildcard or regular expressions for patterns that cover restricted indices. Implicitly, restricted indices have limited privileges that can cause pattern tests to fail. If restricted indices are explicitly included in the `names` list, Elasticsearch checks privileges against these indices regardless of the value set for `allow_restricted_indices`.
    */
   allow_restricted_indices: boolean
+}
+
+export class UserIndicesPrivileges
+  implements OverloadOf<UserIndicesPrivilegesBase> {}
+
+export class RemoteUserIndicesPrivileges
+  implements OverloadOf<UserIndicesPrivilegesBase>
+{
+  clusters: string[]
 }
 
 /**
@@ -365,6 +374,7 @@ export enum IndexPrivilege {
   create,
   create_doc,
   create_index,
+  create_view,
   /**
    * @availability stack
    */
@@ -375,6 +385,7 @@ export enum IndexPrivilege {
   cross_cluster_replication_internal,
   delete,
   delete_index,
+  delete_view,
   index,
   maintenance,
   manage,
@@ -391,6 +402,7 @@ export enum IndexPrivilege {
    * @availability stack
    */
   manage_leader_index,
+  manage_view,
   monitor,
   none,
   read,
@@ -398,12 +410,18 @@ export enum IndexPrivilege {
    * @availability stack
    */
   read_cross_cluster,
+  read_view_metadata,
   view_index_metadata,
   write
 }
 
 export class GlobalPrivilege {
   application: ApplicationGlobalUserPrivileges
+  /**
+   * A list of data source privilege entries, used to grant access to ES|QL data sources.
+   * @availability stack since=9.5.0
+   */
+  data_source?: DataSourcePrivileges[]
 }
 
 export class ApplicationGlobalUserPrivileges {
@@ -412,6 +430,41 @@ export class ApplicationGlobalUserPrivileges {
 
 export class ManageUserPrivileges {
   applications: string[]
+}
+
+export class DataSourcePrivileges {
+  /**
+   * A list of data source names or wildcard patterns to which the permissions in this entry apply.
+   */
+  names: string[]
+  /**
+   * The data source privileges that owners of the role have for the specified data sources.
+   */
+  privileges: DataSourcePrivilege[]
+}
+
+/** @non_exhaustive */
+export enum DataSourcePrivilege {
+  /**
+   * Grants privilege to create a data source with a matching name.
+   */
+  create,
+  /**
+   * Grants privilege to delete a data source with a matching name.
+   */
+  delete,
+  /**
+   * Grants privilege to read a data source's metadata.
+   */
+  read_metadata,
+  /**
+   * Grants privilege to attach a dataset to a data source with a matching name.
+   */
+  read,
+  /**
+   * Grants all data source privileges, including `create`, `delete`, `read`, and `read_metadata`.
+   */
+  manage
 }
 
 export class ReplicationAccess {

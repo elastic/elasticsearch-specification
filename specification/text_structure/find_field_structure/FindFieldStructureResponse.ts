@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { PipelineConfig } from '@ingest/_types/Pipeline'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Field, GrokPattern } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
+import { PipelineConfig } from '@ingest/_types/Pipeline'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   EcsCompatibilityType,
   FieldStat,

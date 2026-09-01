@@ -17,15 +17,12 @@
  * under the License.
  */
 
-import {
-  SourceConfig,
-  SourceConfigParam
-} from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   SequenceNumber,
@@ -34,6 +31,10 @@ import {
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import {
+  SourceConfig,
+  SourceConfigParam
+} from '@global/search/_types/SourceFilter'
 
 /**
  * Update a document.
@@ -55,11 +56,13 @@ import { Duration } from '@_types/Time'
  *
  * The `_source` field must be enabled to use this API.
  * In addition to `_source`, you can access the following variables through the `ctx` map: `_index`, `_type`, `_id`, `_version`, `_routing`, and `_now` (the current timestamp).
+ * For usage examples such as partial updates, upserts, and scripted updates, see the External documentation.
  * @rest_spec_name update
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges write
  * @doc_tag document
+ * @ext_doc_id update-document
  * @doc_id docs-update
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
@@ -80,6 +83,8 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.
@@ -91,6 +96,11 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * @ext_doc_id optimistic-concurrency
      */
     if_seq_no?: SequenceNumber
+    /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
     /**
      * The script language.
      * @server_default painless
@@ -115,8 +125,18 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     retry_on_conflict?: integer
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack stability=stable
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * The period to wait for the following operations: dynamic mapping updates and waiting for active shards.
      * Elasticsearch waits for at least the timeout period before failing.
@@ -129,6 +149,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Set to 'all' or any positive integer up to the total number of shards in the index (`number_of_replicas`+1).
      * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**

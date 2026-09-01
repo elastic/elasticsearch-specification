@@ -1,0 +1,10 @@
+method_request: PUT /_enrich/policy/postal_policy
+description: An example body for a `PUT /_enrich/policy/postal_policy` request.
+value: |-
+  {
+    "geo_match": {
+      "indices": "postal_codes",
+      "match_field": "location",
+      "enrich_fields": [ "location", "postal_code" ]
+    }
+  }

@@ -18,7 +18,7 @@
 use std::cell::RefCell;
 
 use crate::transform::Worksheet;
-use crate::{Availabilities, Body, IndexedModel, Inherits, Property, TypeDefinition, TypeName, ValueOf};
+use crate::{Availabilities, Body, IndexedModel, Inherits, Property, SchemaExample, TypeDefinition, TypeName, ValueOf};
 
 pub struct Availability {
     #[allow(clippy::type_complexity)]
@@ -97,11 +97,13 @@ impl Availability {
                 self.filter_properties(&mut request.path);
                 self.filter_properties(&mut request.query);
                 self.filter_body(&mut request.body);
+                self.filter_examples(&mut request.examples);
             }
 
             TypeDefinition::Response(ref mut response) => {
                 response.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_body(&mut response.body);
+                self.filter_examples(&mut response.examples);
             }
         }
     }
@@ -161,6 +163,12 @@ impl Availability {
             Body::Value(ref value) => self.filter_value_of(&value.value),
             Body::Properties(ref mut props) => self.filter_properties(&mut props.properties),
             Body::NoBody(_) => {}
+        }
+    }
+
+    fn filter_examples(&self, examples: &mut Option<indexmap::IndexMap<String, SchemaExample>>) {
+        if let Some(examples) = examples {
+            examples.retain(|_, example| self.is_available(&example.availability));
         }
     }
 }

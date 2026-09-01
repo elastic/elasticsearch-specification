@@ -17,17 +17,22 @@
  * under the License.
  */
 
-import { GroupBy } from '@tasks/_types/GroupBy'
 import { RequestBase } from '@_types/Base'
-import { Id, NodeIds } from '@_types/common'
+import { Id, MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { GroupBy } from '@tasks/_types/GroupBy'
 
 /**
  * Get all tasks.
+ *
  * Get information about the tasks currently running on one or more nodes in the cluster.
  *
  * WARNING: The task management API is new and should still be considered a beta feature.
  * The API may change in ways that are not backwards compatible.
+ *
+ * For relocatable tasks, this API transparently follows the task across graceful shutdown relocations,
+ * so callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`
+ * if it is continuing work from an earlier task.
  *
  * **Identifying running tasks**
  *
@@ -95,6 +100,7 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list or wildcard expression of actions used to limit the request.
@@ -110,6 +116,7 @@ export interface Request extends RequestBase {
     /**
      * A key that is used to group tasks in the response.
      * The task lists can be grouped either by nodes or by parent tasks.
+     * @server_default nodes
      */
     group_by?: GroupBy
     /**

@@ -1,0 +1,3 @@
+summary: Get a data source
+method_request: GET /_query/data_source/prod_s3_logs
+description: Get the configuration for a specific ES|QL data federation data source.

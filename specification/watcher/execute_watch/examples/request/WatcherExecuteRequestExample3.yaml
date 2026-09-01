@@ -1,9 +1,8 @@
 summary: Run a watch inline
-# method_request: POST _watcher/watch/_execute
+method_request: POST _watcher/watch/_execute
 description: >
-  Run `POST _watcher/watch/_execute` to run a watch inline.
-  All other settings for this API still apply when inlining a watch.
-  In this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
+  Run `POST _watcher/watch/_execute` to run a watch inline. All other settings for this API still apply when inlining a watch. In
+  this example, while the inline watch defines a compare condition, during the execution this condition will be ignored.
 # type: request
 value: |-
   {

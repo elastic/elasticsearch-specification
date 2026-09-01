@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ShardFileSizeInfo } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { ByteSize, ClusterAlias, Field, Name, VersionString } from './common'
 import { ShardFailure } from './Errors'
 import { double, integer, long, uint } from './Numeric'
@@ -109,6 +109,15 @@ export class DocStats {
    * Elasticsearch reclaims the disk space of deleted Lucene documents when a segment is merged.
    */
   deleted?: long
+  /**
+   * Returns the total size in bytes of all documents in this stats.
+   * This value may be more reliable than store_stats.size_in_bytes in estimating the index size.
+   */
+  total_size_in_bytes: long
+  /**
+   * Human readable total_size_in_bytes
+   */
+  total_size?: ByteSize
 }
 
 export class FielddataStats {
@@ -116,6 +125,19 @@ export class FielddataStats {
   memory_size?: ByteSize
   memory_size_in_bytes: long
   fields?: Dictionary<Field, FieldMemoryUsage>
+  global_ordinals: GlobalOrdinalsStats
+}
+
+export class GlobalOrdinalsStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  fields?: Dictionary<Name, GlobalOrdinalFieldStats>
+}
+
+export class GlobalOrdinalFieldStats {
+  build_time_in_millis: UnitMillis
+  build_time?: string
+  shard_max_value_count: long
 }
 
 export class FieldMemoryUsage {
@@ -128,6 +150,8 @@ export class FlushStats {
   total: long
   total_time?: Duration
   total_time_in_millis: DurationValue<UnitMillis>
+  total_time_excluding_waiting?: Duration
+  total_time_excluding_waiting_on_lock_in_millis: DurationValue<UnitMillis>
 }
 
 export class GetStats {
@@ -138,7 +162,7 @@ export class GetStats {
   missing_time?: Duration
   missing_time_in_millis: DurationValue<UnitMillis>
   missing_total: long
-  time?: Duration
+  getTime?: Duration
   time_in_millis: DurationValue<UnitMillis>
   total: long
 }
@@ -157,8 +181,11 @@ export class IndexingStats {
   index_time_in_millis: DurationValue<UnitMillis>
   index_total: long
   index_failed: long
+  index_failed_due_to_version_conflict: long
   types?: Dictionary<string, IndexingStats>
   write_load?: double
+  recent_write_load?: double
+  peak_write_load?: double
 }
 
 export class MergesStats {
@@ -230,13 +257,30 @@ export class QueryCacheStats {
 
 export class RecoveryStats {
   current_as_source: long
+  /**
+   * @availability stack since=9.5.0
+   */
+  current_as_source_queued?: long
   current_as_target: long
+  /**
+   * @availability stack since=9.5.0
+   */
+  current_as_target_queued?: long
+  /**
+   * @availability stack since=9.5.0
+   */
+  current_from_store?: long
+  /**
+   * @availability stack since=9.5.0
+   */
+  current_from_store_queued?: long
   throttle_time?: Duration
   throttle_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class RefreshStats {
   external_total: long
+  external_total_time?: Duration
   external_total_time_in_millis: DurationValue<UnitMillis>
   listeners: long
   total: long
@@ -257,11 +301,13 @@ export class SearchStats {
   fetch_time?: Duration
   fetch_time_in_millis: DurationValue<UnitMillis>
   fetch_total: long
+  fetch_failure: long
   open_contexts?: long
   query_current: long
   query_time?: Duration
   query_time_in_millis: DurationValue<UnitMillis>
   query_total: long
+  query_failure: long
   scroll_current: long
   scroll_time?: Duration
   scroll_time_in_millis: DurationValue<UnitMillis>
@@ -270,6 +316,7 @@ export class SearchStats {
   suggest_time?: Duration
   suggest_time_in_millis: DurationValue<UnitMillis>
   suggest_total: long
+  recent_search_load?: double
   groups?: Dictionary<string, SearchStats>
 }
 
@@ -304,7 +351,6 @@ export class SegmentsStats {
    * Total amount of memory used by all index writers across all shards assigned to selected nodes.
    */
   index_writer_memory?: ByteSize
-  index_writer_max_memory_in_bytes?: long
   /**
    * Total amount, in bytes, of memory used by all index writers across all shards assigned to selected nodes.
    */
@@ -337,11 +383,14 @@ export class SegmentsStats {
    * Total amount, in bytes, of memory used for points across all shards assigned to selected nodes.
    */
   points_memory_in_bytes: long
-  stored_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for stored fields across all shards assigned to selected nodes.
    */
   stored_fields_memory_in_bytes: long
+  /**
+   * Total amount of memory used for stored fields across all shards assigned to selected nodes.
+   */
+  stored_fields_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for terms across all shards assigned to selected nodes.
    */
@@ -353,7 +402,7 @@ export class SegmentsStats {
   /**
    * Total amount of memory used for term vectors across all shards assigned to selected nodes.
    */
-  term_vectory_memory?: ByteSize
+  term_vectors_memory?: ByteSize
   /**
    * Total amount, in bytes, of memory used for term vectors across all shards assigned to selected nodes.
    */

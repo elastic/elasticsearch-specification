@@ -17,16 +17,19 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
 import { Field } from '@_types/common'
 import {
   Distance,
   GeoBounds,
   GeoDistanceType,
+  GeoHash,
+  GeoHexCell,
   GeoLocation,
   GeoShape,
-  GeoShapeRelation
+  GeoShapeRelation,
+  GeoTile
 } from '@_types/Geo'
+import { AdditionalProperty } from '@spec_utils/behaviors'
 import { FieldLookup, QueryBase } from './abstractions'
 
 /**
@@ -92,12 +95,18 @@ export class GeoDistanceQuery
   ignore_unmapped?: boolean
 }
 
+/** @variants container */
+export class GeoGridQuery extends QueryBase {
+  geotile?: GeoTile
+  geohash?: GeoHash
+  geohex?: GeoHexCell
+}
+
 export class GeoPolygonPoints {
   points: GeoLocation[]
 }
 
 /**
- * @deprecated 7.12.0 Use geo-shape instead.
  * @behavior_meta AdditionalProperty key=field value=polygon
  * @ext_doc_id query-dsl-geo-polygon-query
  */

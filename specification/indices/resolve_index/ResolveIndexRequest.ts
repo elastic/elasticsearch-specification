@@ -18,10 +18,17 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Names } from '@_types/common'
+import {
+  ExpandWildcards,
+  MediaType,
+  Names,
+  ProjectRouting
+} from '@_types/common'
+import { IndexMode } from '@indices/_types/DataStream'
 
 /**
  * Resolve indices.
+ *
  * Resolve the names and/or index patterns for indices, aliases, and data streams.
  * Multiple patterns and remote clusters are supported.
  * @rest_spec_name indices.resolve_index
@@ -34,7 +41,7 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_resolve/index/{name}'
-      methods: ['GET']
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -44,26 +51,51 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
+    /**
+     * Filter indices by index mode - standard, lookup, time_series, etc. Comma-separated list of IndexMode. Empty means no filter.
+     * @availability stack since=9.2.0 stability=stable
+     * @availability serverless stability=stable visibility=public
+     */
+    mode?: IndexMode | IndexMode[]
+  }
+  body?: {
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

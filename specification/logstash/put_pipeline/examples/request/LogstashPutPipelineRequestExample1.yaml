@@ -1,5 +1,5 @@
 summary: Create a pipeline
-# method_request: PUT _logstash/pipeline/my_pipeline
+method_request: PUT _logstash/pipeline/my_pipeline
 description: Run `PUT _logstash/pipeline/my_pipeline` to create a pipeline.
 # type: request
 value:

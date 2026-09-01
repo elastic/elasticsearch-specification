@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { DataStreamName } from '@_types/common'
+import { DataStreamName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -50,6 +50,7 @@ export interface Request extends RequestBase {
      */
     name: DataStreamName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.

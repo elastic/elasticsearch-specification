@@ -1,39 +1,33 @@
-name: Update rest-api-spec
+name: Update 8.19 rest-api-spec
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4 * * *'  # At 04:00.
+    - cron: '0 4 * * *' # At 04:00.
 
 jobs:
   update-rest-api:
     name: Update rest-api-spec
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        branch: ['main', '8.x', '8.16', '8.17', '7.17']
-
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
-          ref: ${{ matrix.branch }}
+          ref: 8.19
 
-      - name: Use Node.js 20
-        uses: actions/setup-node@v4
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install deps
         run: |
           npm install --prefix .github/download-artifacts
-          npm install --prefix compiler
-          npm install --prefix typescript-generator
+          make setup
 
       - name: Download artifacts
         run: |
-          node .github/download-artifacts/index.js --branch ${{ matrix.branch }}
+          node .github/download-artifacts/index.js --branch 8.19
 
       - name: Generate output
         run: |
@@ -49,17 +43,7 @@ jobs:
           title: Update rest-api-spec ${{ matrix.branch }}
           body: 'As titled.'
           commit-message: 'Update rest-api-spec'
-          labels: specification
+          labels: specification,skip-backport
           delete-branch: true
-          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo,pquentin,srikanthmanvi,swallez,technige
+          reviewers: Anaethelion,ezimuel,flobernd,JoshMock,l-trotta,miguelgrinberg,picandocodigo
           branch: automated/rest-api-spec-update-${{ matrix.branch }}
-
-      - name: Open an issue if the action fails
-        if: ${{ failure() }}
-        uses: nashmaniac/create-issue-action@v1.2
-        with:
-          title: rest-api-spec update failed
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: bug
-          body: The rest-api-spec action is currently failing, see [here](https://github.com/elastic/elasticsearch-specification/actions/workflows/update-rest-api-json.yml).
-

@@ -1,13 +1,36 @@
 summary: Create a policy
-# method_request: PUT /_slm/policy/daily-snapshots
+method_request: PUT /_slm/policy/daily-snapshots
 description: >
-  Run `PUT /_slm/policy/daily-snapshots` to create a lifecycle policy.
-  The `schedule` is when the snapshot should be taken, in this case, 1:30am daily.
-  The `retention` details specify to: keep snapshots for 30 days; always keep at least 5 successful snapshots, even if they're more than 30 days old; keep no more than 50 successful snapshots, even if they're less than 30 days old.
+  Run `PUT /_slm/policy/daily-snapshots` to create a lifecycle policy. The `schedule` is when the snapshot should be taken, in this
+  case, 1:30am daily. The `retention` details specify to: keep snapshots for 30 days; always keep at least 5 successful snapshots,
+  even if they're more than 30 days old; keep no more than 50 successful snapshots, even if they're less than 30 days old.
 # type: request
-value:
-  "{\n  \"schedule\": \"0 30 1 * * ?\",\n  \"name\": \"<daily-snap-{now/d}>\"\
-  ,\n  \"repository\": \"my_repository\",\n  \"config\": {\n    \"indices\": [\"data-*\"\
-  , \"important\"],\n    \"ignore_unavailable\": false,\n    \"include_global_state\"\
-  : false\n  },\n  \"retention\": {\n    \"expire_after\": \"30d\",\n    \"min_count\"\
-  : 5,\n    \"max_count\": 50\n  }\n}"
+value: "{
+
+  \  \"schedule\": \"0 30 1 * * ?\",
+
+  \  \"name\": \"<daily-snap-{now/d}>\",
+
+  \  \"repository\": \"my_repository\",
+
+  \  \"config\": {
+
+  \    \"indices\": [\"data-*\", \"important\"],
+
+  \    \"ignore_unavailable\": false,
+
+  \    \"include_global_state\": false
+
+  \  },
+
+  \  \"retention\": {
+
+  \    \"expire_after\": \"30d\",
+
+  \    \"min_count\": 5,
+
+  \    \"max_count\": 50
+
+  \  }
+
+  }"

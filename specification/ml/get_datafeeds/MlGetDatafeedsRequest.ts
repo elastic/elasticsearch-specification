@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get datafeeds configuration info.
+ *
  * You can get information for multiple datafeeds in a single API request by
  * using a comma-separated list of datafeeds or a wildcard expression. You can
  * get information for all datafeeds by using `_all`, by specifying `*` as the
@@ -53,6 +54,7 @@ export interface Request extends RequestBase {
      */
     datafeed_id?: Ids
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

@@ -34,7 +34,8 @@ export class DatafeedAuthorization {
    */
   api_key?: ApiKeyAuthorization
   /**
-   *  If a user ID was used for the most recent update to the datafeed, its roles at the time of the update are listed in the response. */
+   *  If a user ID was used for the most recent update to the datafeed, its roles at the time of the update are listed in the response.
+   */
   roles?: string[]
   /**
    * If a service account was used for the most recent update to the datafeed, the account name is listed in the response.
@@ -48,7 +49,8 @@ export class DataframeAnalyticsAuthorization {
    */
   api_key?: ApiKeyAuthorization
   /**
-   *  If a user ID was used for the most recent update to the job, its roles at the time of the update are listed in the response. */
+   *  If a user ID was used for the most recent update to the job, its roles at the time of the update are listed in the response.
+   */
   roles?: string[]
   /**
    * If a service account was used for the most recent update to the job, the account name is listed in the response.
@@ -62,7 +64,8 @@ export class TransformAuthorization {
    */
   api_key?: ApiKeyAuthorization
   /**
-   *  If a user ID was used for the most recent update to the transform, its roles at the time of the update are listed in the response. */
+   *  If a user ID was used for the most recent update to the transform, its roles at the time of the update are listed in the response.
+   */
   roles?: string[]
   /**
    * If a service account was used for the most recent update to the transform, the account name is listed in the response.

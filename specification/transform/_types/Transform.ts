@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import {
   DateHistogramAggregation,
@@ -25,11 +24,18 @@ import {
   HistogramAggregation,
   TermsAggregation
 } from '@_types/aggregations/bucket'
-import { Field, IndexName, Indices } from '@_types/common'
+import {
+  Field,
+  IndexAlias,
+  IndexName,
+  Indices,
+  ProjectRouting
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Destination {
   /**
@@ -39,9 +45,34 @@ export class Destination {
    */
   index?: IndexName
   /**
+   * The aliases that the destination index for the transform should have.
+   * Aliases are manipulated using the stored credentials of the transform, which means the secondary credentials
+   * supplied at creation time (if both primary and secondary credentials are specified).
+   *
+   * The destination index is added to the aliases regardless of whether the destination index was created by the
+   * transform or pre-created by the user.
+   * @availability stack since=8.8.0
+   * @availability serverless
+   */
+  aliases?: DestinationAlias[]
+  /**
    * The unique identifier for an ingest pipeline.
    */
   pipeline?: string
+}
+
+export class DestinationAlias {
+  /**
+   * The name of the alias.
+   */
+  alias: IndexAlias
+  /**
+   * Whether the destination index should be the only index in this alias.
+   * If `true`, all the other indices will be removed from this alias before adding the destination index to this
+   * alias. This does not delete the removed indices; it only removes them from the alias.
+   * @server_default false
+   */
+  move_on_creation?: boolean
 }
 
 export class Latest {
@@ -126,10 +157,31 @@ export class Settings {
   /**
    * Defines the initial page size to use for the composite aggregation for each checkpoint. If circuit breaker
    * exceptions occur, the page size is dynamically adjusted to a lower value. The minimum value is `10` and the
-   * maximum is `65,536`.
-   * @server_default 500
+   * maximum is `65,536`. The default value is `500` for `pivot` transforms and `5000` for `latest` transforms.
    */
   max_page_search_size?: integer
+  /**
+   * Specifies whether the transform checkpoint will use the Point In Time API while searching over the source index.
+   * In general, Point In Time is an optimization that will reduce pressure on the source index by reducing the amount
+   * of refreshes and merges, but it can be expensive if a large number of Point In Times are opened and closed for a
+   * given index. The benefits and impact depend on the data being searched, the ingest rate into the source index, and
+   * the amount of other consumers searching the same source index.
+   * @ext_doc_id point-in-time-api
+   * @server_default true
+   */
+  use_point_in_time?: boolean
+
+  /**
+   * Defines the number of retries on a recoverable failure before the transform task is marked as `failed`.
+   * The minimum value is `0` and the maximum is `100`, where `-1` indicates that the transform retries indefinitely.
+   * If unset, the cluster-level setting `num_transform_failure_retries` is used.
+   *
+   * This setting cannot be specified when `unattended` is `true`, because unattended transforms always retry
+   * indefinitely.
+   * @availability stack since=8.4.0
+   * @availability serverless
+   */
+  num_failure_retries?: integer
 
   /**
    * If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case
@@ -163,13 +215,17 @@ export class Source {
    */
   runtime_mappings?: RuntimeFields
   /**
-   * A Lucene-style expression that limits which linked projects the transform
-   * searches when cross-project search is enabled. Examples: `_alias:_origin`,
-   * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
-   * search scope. Rejected when CPS is not enabled for transforms.
-   * @availability serverless
+   * Specifies a subset of projects to target using project
+   * metadata tags in a subset of Lucene query syntax.
+   * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+   * Examples:
+   *  _alias:my-project
+   *  _alias:_origin
+   *  _alias:*pr*
+   * Supported in serverless only.
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
    */
-  project_routing?: string
+  project_routing?: ProjectRouting
 }
 
 export class Sync {}

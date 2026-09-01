@@ -76,7 +76,12 @@ export enum DenseVectorElementType {
   /**
    * Indexes a 4-byte floating-point value per dimension.
    */
-  float
+  float,
+  /**
+   * Indexes a 2-byte floating-point value per dimension.
+   * @availability stack since=9.3.0
+   */
+  bfloat16
 }
 
 export enum DenseVectorSimilarity {
@@ -139,19 +144,20 @@ export class DenseVectorIndexOptions {
    * Defaults to `1/(dims + 1)` for `int8` quantized vectors and `0` for `int4` for dynamic quantile calculation.
    *
    * Only applicable to `int8_hnsw`, `int4_hnsw`, `int8_flat`, and `int4_flat` index types.
+   * @deprecated 9.5.0
    */
   confidence_interval?: float
   /**
    * The number of candidates to track while assembling the list of nearest neighbors for each new node.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 100
    */
   ef_construction?: integer
   /**
    * The number of neighbors each node will be connected to in the HNSW graph.
    *
-   * Only applicable to `hnsw`, `int8_hnsw`, and `int4_hnsw` index types.
+   * Only applicable to `hnsw`, `int8_hnsw`, `bbq_hnsw`, and `int4_hnsw` index types.
    * @server_default 16
    */
   m?: integer
@@ -159,9 +165,90 @@ export class DenseVectorIndexOptions {
    * The type of kNN algorithm to use.
    */
   type: DenseVectorIndexOptionsType
+  /**
+   * The rescore vector options. This is only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`, `bbq_flat`, `int4_flat`, and `int8_flat` index types.
+   */
+  rescore_vector?: DenseVectorIndexOptionsRescoreVector
+  /**
+   * `true` if vector rescoring should be done on-disk
+   *
+   * Only applicable to `bbq_disk`, `bbq_hnsw`, `int4_hnsw`, `int8_hnsw`
+   * @server_default false
+   * @availability stack since=9.3.0 stability=experimental
+   */
+  on_disk_rescore?: boolean
+  /**
+   * The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat
+   * search. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and
+   * `int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.
+   * @server_default -1
+   * @availability stack since=9.4.0 stability=stable
+   */
+  flat_index_threshold?: integer
+  /**
+   * Only applicable to `bbq_disk`. The number of vectors per cluster. Must be between 64 and 65536.
+   * @server_default 384
+   * @availability stack since=9.2.0 stability=stable
+   */
+  cluster_size?: integer
+  /**
+   * Only applicable to `bbq_disk`. The percentage of clusters to visit during search. Must be between 0 and 100.
+   * A value of 0 defaults to using `num_candidates` for calculating the visit percentage.
+   * @server_default 0
+   * @availability stack since=9.2.0 stability=stable
+   */
+  default_visit_percentage?: float
+  /**
+   * Only applicable to `bbq_disk`. The number of bits per dimension for quantization encoding.
+   * Valid values are `1`, `2`, `4`, or `7`. When no `rescore_vector` is explicitly set,
+   * the default oversampling is automatically adjusted based on the bits value.
+   * This setting can be changed without reindexing.
+   * @server_default 1
+   * @availability stack since=9.4.0 stability=stable
+   */
+  bits?: integer
+  /**
+   * Only applicable to `bbq_disk`. When `true`, transforms indexed vectors using a random orthogonal
+   * projection before quantization, which can improve accuracy when vector components are not normally
+   * distributed. Cannot be changed after the field is created.
+   * @server_default false
+   * @availability stack since=9.4.0 stability=stable
+   */
+  precondition?: boolean
+  /**
+   * Only applicable to `bbq_disk`. When `true`, Elasticsearch automatically selects the optimal
+   * quantization encoding, oversampling factor, and preconditioning for each merged segment based
+   * on estimated recall characteristics. Cannot be changed after the field is created.
+   * @server_default false
+   * @availability stack since=9.5.0 stability=stable
+   */
+  auto_calibrate?: boolean
 }
 
 export enum DenseVectorIndexOptionsType {
+  /**
+   * This utilizes a brute-force search algorithm in addition to automatically quantizing to binary vectors.
+   * Only supports `element_type` of `float`.
+   */
+  bbq_flat,
+  /**
+   * This utilizes the HNSW algorithm in addition to automatic binary quantization for scalable approximate kNN
+   * search with `element_type` of `float`.
+   *
+   * This can reduce the memory footprint by nearly 32x at the cost of some accuracy.
+   */
+  bbq_hnsw,
+  /**
+   * This utilizes the DiskBBQ algorithm, a version of Inverted Vector File (IVF) that uses BBQ to quantize vectors.
+   * Only supports `element_type` of `float`.
+   *
+   * This not only significantly reduces memory usage, but also allows for indexing and searching of very large datasets that do not fit in memory.
+   * Unlike HNSW, this index type loses performance gracefully as the index grows larger than memory.
+   * @availability stack since=9.2.0 stability=stable
+   */
+  bbq_disk,
   /**
    * This utilizes a brute-force search algorithm for exact kNN search. This supports all `element_type` values.
    */
@@ -194,4 +281,14 @@ export enum DenseVectorIndexOptionsType {
    * This can reduce the memory footprint by 4x at the cost of some accuracy.
    */
   int8_hnsw
+}
+
+export class DenseVectorIndexOptionsRescoreVector {
+  /**
+   * The oversampling factor to use when searching for the nearest neighbor. This is only applicable to the quantized formats: `bbq_*`, `int4_*`, and `int8_*`.
+   * When provided, `oversample * k` vectors will be gathered and then their scores will be re-computed with the original vectors.
+   *
+   * valid values are between `1.0` and `10.0` (inclusive), or `0` exactly to disable oversampling.
+   */
+  oversample: float
 }

@@ -19,6 +19,7 @@
 
 import { long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { SnapshotPolicyStats } from '@slm/_types/SnapshotLifecycle'
 
 export class Response {
   body: {
@@ -31,6 +32,6 @@ export class Response {
     total_snapshot_deletion_failures: long
     total_snapshots_failed: long
     total_snapshots_taken: long
-    policy_stats: string[]
+    policy_stats: SnapshotPolicyStats[]
   }
 }

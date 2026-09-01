@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeIds, Password } from '@_types/common'
+import { MediaType, NodeIds, Password } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
      */
     node_id?: NodeIds
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a response.
@@ -61,7 +63,7 @@ export interface Request extends RequestBase {
      */
     timeout?: Duration
   }
-  body: {
+  body?: {
     /**
      * The password for the Elasticsearch keystore.
      */

@@ -17,13 +17,13 @@
  * under the License.
  */
 
-import { ShardStats } from '@indices/stats/types'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+import { ShardStats } from '@indices/stats/types'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 // The node stats response can be filtered both by `metric` and `filter_path`,
 // every property needs to be optional to be compliant with the API behavior.
@@ -32,6 +32,10 @@ export class Stats {
    * Statistics about adaptive replica selection.
    */
   adaptive_selection?: Dictionary<string, AdaptiveSelection>
+  /**
+   * Statistics about shard allocations on the node.
+   */
+  allocations?: Allocations
   /**
    * Statistics about the field data circuit breaker.
    */
@@ -111,6 +115,100 @@ export class Stats {
    * Indices stats about size, document count, indexing and deletion times, search times, field cache size, merges and flushes.
    */
   indices?: ShardStats
+  /**
+   * Statistics about snapshot activity for the node's registered repositories, keyed by repository name.
+   */
+  repositories?: Dictionary<string, RepositorySnapshotStats>
+}
+
+export class RepositorySnapshotStats {
+  /**
+   * The cumulative time spent throttling read operations for this repository.
+   */
+  total_read_throttled_time?: Duration
+  /**
+   * The cumulative time spent throttling write operations for this repository.
+   */
+  total_write_throttled_time?: Duration
+  /**
+   * The cumulative time, in nanoseconds, spent throttling read operations for this repository.
+   */
+  total_read_throttled_time_nanos: DurationValue<UnitNanos>
+  /**
+   * The cumulative time, in nanoseconds, spent throttling write operations for this repository.
+   */
+  total_write_throttled_time_nanos: DurationValue<UnitNanos>
+  /**
+   * The number of shard snapshots started for this repository.
+   */
+  shard_snapshots_started: long
+  /**
+   * The number of shard snapshots completed for this repository.
+   */
+  shard_snapshots_completed: long
+  /**
+   * The number of shard snapshots currently in progress for this repository.
+   */
+  shard_snapshots_in_progress: long
+  /**
+   * The number of blobs uploaded to this repository.
+   */
+  uploaded_blobs: long
+  /**
+   * The cumulative size of the blobs uploaded to this repository.
+   */
+  uploaded_size?: ByteSize
+  /**
+   * The cumulative size, in bytes, of the blobs uploaded to this repository.
+   */
+  uploaded_size_in_bytes: long
+  /**
+   * The cumulative time spent uploading blobs to this repository.
+   */
+  total_upload_time?: Duration
+  /**
+   * The cumulative time, in milliseconds, spent uploading blobs to this repository.
+   */
+  total_upload_time_in_millis: DurationValue<UnitMillis>
+  /**
+   * The cumulative time spent reading blobs while uploading to this repository.
+   */
+  total_read_time?: Duration
+  /**
+   * The cumulative time, in milliseconds, spent reading blobs while uploading to this repository.
+   */
+  total_read_time_in_millis: DurationValue<UnitMillis>
+}
+
+export class Allocations {
+  /**
+   * Number of shards allocated to the node.
+   */
+  shards?: integer
+  /**
+   * Number of shards allocated to the node that are currently undesired.
+   */
+  undesired_shards?: integer
+  /**
+   * Forecasted ingest load for the node.
+   */
+  forecasted_ingest_load?: double
+  /**
+   * Forecasted disk usage for the node.
+   */
+  forecasted_disk_usage?: string
+  /**
+   * Forecasted disk usage, in bytes, for the node.
+   */
+  forecasted_disk_usage_in_bytes?: long
+  /**
+   * Current disk usage for the node.
+   */
+  current_disk_usage?: string
+  /**
+   * Current disk usage, in bytes, for the node.
+   */
+  current_disk_usage_in_bytes?: long
 }
 
 export class IndexingPressure {
@@ -196,6 +294,8 @@ export interface PressureMemory {
    * Number of indexing requests rejected in the replica stage.
    */
   replica_rejections?: long
+  primary_document_rejections?: long
+  large_operation_rejections?: long
 }
 
 export class Discovery {
@@ -371,21 +471,38 @@ export class IngestStats {
    */
   processors: Dictionary<string, KeyedProcessor>[]
   /**
+   * Total time spent preprocessing ingest documents during the lifetime of this node.
+   */
+  time?: Duration
+  /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
   time_in_millis: DurationValue<UnitMillis>
   /**
+   * Total size of all documents ingested by the pipeline.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document (for example, a final pipeline after a default pipeline, a pipeline run after a reroute processor, or a pipeline invoked by a pipeline processor), the value is `0`.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  ingested_as_first_pipeline?: ByteSize
+  /**
    * Total number of bytes of all documents ingested by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
    */
   ingested_as_first_pipeline_in_bytes: long
   /**
+   * Total size of all documents produced by the pipeline.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
+   * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
+   * @availability stack since=8.15.0 stability=stable
+   * @availability serverless
+   */
+  produced_as_first_pipeline?: ByteSize
+  /**
    * Total number of bytes of all documents produced by the pipeline.
-   * This field is only present on pipelines which are the first to process a document.
-   * Thus, it is not present on pipelines which only serve as a final pipeline after a default pipeline, a pipeline run after a reroute processor, or pipelines in pipeline processors.
+   * The value counts documents for which this pipeline was the first to process them; for pipelines that are not the first to process a document, the value is `0`.
    * In situations where there are subsequent pipelines, the value represents the size of the document after all pipelines have run.
    * @availability stack since=8.15.0 stability=stable
    * @availability serverless
@@ -406,6 +523,10 @@ export class IngestTotal {
    * Total number of failed ingest operations during the lifetime of this node.
    */
   failed: long
+  /**
+   * Total time spent preprocessing ingest documents during the lifetime of this node.
+   */
+  time?: Duration
   /**
    * Total time, in milliseconds, spent preprocessing ingest documents during the lifetime of this node.
    */
@@ -430,6 +551,10 @@ export class Processor {
    * Number of failed operations for the processor.
    */
   failed?: long
+  /**
+   * Time spent by the processor transforming documents.
+   */
+  time?: Duration
   /**
    * Time, in milliseconds, spent by the processor transforming documents.
    */
@@ -573,6 +698,10 @@ export class CgroupMemory {
 }
 
 export class Cpu {
+  /**
+   * The number of processors available to the Java virtual machine.
+   */
+  available_processors?: integer
   percent?: integer
   sys?: Duration
   sys_in_millis?: DurationValue<UnitMillis>
@@ -608,6 +737,38 @@ export class DataPathStats {
    */
   free_in_bytes?: long
   /**
+   * The amount of free disk space that, once reached, triggers the low disk watermark.
+   */
+  low_watermark_free_space?: string
+  /**
+   * The amount of free disk space, in bytes, that, once reached, triggers the low disk watermark.
+   */
+  low_watermark_free_space_in_bytes?: long
+  /**
+   * The amount of free disk space that, once reached, triggers the high disk watermark.
+   */
+  high_watermark_free_space?: string
+  /**
+   * The amount of free disk space, in bytes, that, once reached, triggers the high disk watermark.
+   */
+  high_watermark_free_space_in_bytes?: long
+  /**
+   * The amount of free disk space that, once reached, triggers the flood stage disk watermark.
+   */
+  flood_stage_free_space?: string
+  /**
+   * The amount of free disk space, in bytes, that, once reached, triggers the flood stage disk watermark.
+   */
+  flood_stage_free_space_in_bytes?: long
+  /**
+   * The amount of free disk space that, once reached, triggers the frozen flood stage disk watermark.
+   */
+  frozen_flood_stage_free_space?: string
+  /**
+   * The amount of free disk space, in bytes, that, once reached, triggers the frozen flood stage disk watermark.
+   */
+  frozen_flood_stage_free_space_in_bytes?: long
+  /**
    * Mount point of the file store (for example: `/dev/sda2`).
    */
   mount?: string
@@ -631,6 +792,11 @@ export class DataPathStats {
 
 export class MemoryStats {
   /**
+   * If the amount of physical memory has been overridden using the `es`.`total_memory_bytes` system property then this reports the overridden value.
+   * Otherwise it reports the same value as `total`.
+   */
+  adjusted_total?: string
+  /**
    * If the amount of physical memory has been overridden using the `es`.`total_memory_bytes` system property then this reports the overridden value in bytes.
    * Otherwise it reports the same value as `total_in_bytes`.
    */
@@ -642,13 +808,25 @@ export class MemoryStats {
   total_virtual?: string
   total_virtual_in_bytes?: long
   /**
+   * Total amount of physical memory.
+   */
+  total?: string
+  /**
    * Total amount of physical memory in bytes.
    */
   total_in_bytes?: long
   /**
+   * Amount of free physical memory.
+   */
+  free?: string
+  /**
    * Amount of free physical memory in bytes.
    */
   free_in_bytes?: long
+  /**
+   * Amount of used physical memory.
+   */
+  used?: string
   /**
    * Amount of used physical memory in bytes.
    */
@@ -694,12 +872,14 @@ export class HttpRoute {
 
 export class HttpRouteRequests {
   count: long
+  total_size?: ByteSize
   total_size_in_bytes: long
   size_histogram: SizeHttpHistogram[]
 }
 
 export class HttpRouteResponses {
   count: long
+  total_size?: ByteSize
   total_size_in_bytes: long
   handling_time_histogram: TimeHttpHistogram[]
   size_histogram: SizeHttpHistogram[]
@@ -707,13 +887,17 @@ export class HttpRouteResponses {
 
 export class TimeHttpHistogram {
   count: long
+  ge?: Duration
   ge_millis?: long
+  lt?: Duration
   lt_millis?: long
 }
 
 export class SizeHttpHistogram {
   count: long
+  ge?: ByteSize
   ge_bytes?: long
+  lt?: ByteSize
   lt_bytes?: long
 }
 
@@ -742,11 +926,23 @@ export class Client {
   /**
    * Time at which the client opened the connection.
    */
+  opened_time?: string
+  /**
+   * Time at which the client opened the connection.
+   */
   opened_time_millis?: long
   /**
    * Time at which the client closed the connection if the connection is closed.
    */
+  closed_time?: string
+  /**
+   * Time at which the client closed the connection if the connection is closed.
+   */
   closed_time_millis?: long
+  /**
+   * Time of the most recent request from this client.
+   */
+  last_request_time?: string
   /**
    * Time of the most recent request from this client.
    */
@@ -917,6 +1113,10 @@ export class Jvm {
 
 export class JvmMemoryStats {
   /**
+   * Memory currently in use by the heap.
+   */
+  heap_used?: ByteSize
+  /**
    * Memory, in bytes, currently in use by the heap.
    */
   heap_used_in_bytes?: long
@@ -924,6 +1124,10 @@ export class JvmMemoryStats {
    * Percentage of memory currently in use by the heap.
    */
   heap_used_percent?: long
+  /**
+   * Amount of memory available for use by the heap.
+   */
+  heap_committed?: ByteSize
   /**
    * Amount of memory, in bytes, available for use by the heap.
    */
@@ -933,9 +1137,22 @@ export class JvmMemoryStats {
    */
   heap_max_in_bytes?: long
   /**
+   * Maximum amount of memory, available for use by the heap.
+   */
+  heap_max?: ByteSize
+
+  /**
+   * Non-heap memory used.
+   */
+  non_heap_used?: ByteSize
+  /**
    * Non-heap memory used, in bytes.
    */
   non_heap_used_in_bytes?: long
+  /**
+   * Amount of non-heap memory available.
+   */
+  non_heap_committed?: ByteSize
   /**
    * Amount of non-heap memory available, in bytes.
    */
@@ -948,17 +1165,33 @@ export class JvmMemoryStats {
 
 export class Pool {
   /**
+   * Memory used by the heap.
+   */
+  used?: string
+  /**
    * Memory, in bytes, used by the heap.
    */
   used_in_bytes?: long
+  /**
+   * Maximum amount of memory available for use by the heap.
+   */
+  max?: string
   /**
    * Maximum amount of memory, in bytes, available for use by the heap.
    */
   max_in_bytes?: long
   /**
+   * Largest amount of memory historically used by the heap.
+   */
+  peak_used?: string
+  /**
    * Largest amount of memory, in bytes, historically used by the heap.
    */
   peak_used_in_bytes?: long
+  /**
+   * Largest amount of memory historically used by the heap.
+   */
+  peak_max?: string
   /**
    * Largest amount of memory, in bytes, historically used by the heap.
    */
@@ -1065,6 +1298,7 @@ export class Scripting {
   contexts?: Context[]
 }
 
+// eslint-disable-next-line es-spec-validator/no-same-name-as-enclosing-type
 export class Context {
   context?: string
   compilations?: long
@@ -1158,6 +1392,67 @@ export class Transport {
    * Transport connections are typically long-lived so this statistic should remain constant in a stable cluster.
    */
   total_outbound_connections?: long
+  /**
+   * Statistics about the transport messages sent and received by the node, broken down by action name.
+   */
+  actions?: Dictionary<string, TransportActionStats>
+}
+
+export class TransportActionStats {
+  /**
+   * Statistics about the requests received for this action.
+   */
+  requests: TransportActionMessageStats
+  /**
+   * Statistics about the responses sent for this action.
+   */
+  responses: TransportActionMessageStats
+}
+
+export class TransportActionMessageStats {
+  /**
+   * The number of messages of this kind that the node has handled for this action.
+   */
+  count: long
+  /**
+   * The cumulative size of the messages of this kind that the node has handled for this action.
+   */
+  total_size?: ByteSize
+  /**
+   * The cumulative size, in bytes, of the messages of this kind that the node has handled for this action.
+   */
+  total_size_in_bytes: long
+  /**
+   * The distribution of the sizes of the messages of this kind that the node has handled for this action, represented as a histogram.
+   */
+  histogram: TransportMessageSizeHistogramBucket[]
+}
+
+export class TransportMessageSizeHistogramBucket {
+  /**
+   * The number of messages with a size that falls within the bounds of this bucket.
+   */
+  count: long
+  /**
+   * The inclusive lower bound of the bucket.
+   * May be omitted on the first bucket if this bucket has no lower bound.
+   */
+  ge?: ByteSize
+  /**
+   * The inclusive lower bound of the bucket in bytes.
+   * May be omitted on the first bucket if this bucket has no lower bound.
+   */
+  ge_bytes?: long
+  /**
+   * The exclusive upper bound of the bucket.
+   * May be omitted on the last bucket if this bucket has no upper bound.
+   */
+  lt?: ByteSize
+  /**
+   * The exclusive upper bound of the bucket in bytes.
+   * May be omitted on the last bucket if this bucket has no upper bound.
+   */
+  lt_bytes?: long
 }
 
 export class TransportHistogram {
@@ -1166,10 +1461,19 @@ export class TransportHistogram {
    */
   count?: long
   /**
+   * The exclusive upper bound of the bucket.
+   * May be omitted on the last bucket if this bucket has no upper bound.
+   */
+  lt?: Duration
+  /**
    * The exclusive upper bound of the bucket in milliseconds.
    * May be omitted on the last bucket if this bucket has no upper bound.
    */
   lt_millis?: long
+  /**
+   * The inclusive lower bound of the bucket. May be omitted on the first bucket if this bucket has no lower bound.
+   */
+  ge?: Duration
   /**
    * The inclusive lower bound of the bucket in milliseconds. May be omitted on the first bucket if this bucket has no lower bound.
    */

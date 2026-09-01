@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Access } from '@security/_types/Access'
 import { RequestBase } from '@_types/Base'
-import { Metadata, Name } from '@_types/common'
+import { MediaType, Metadata, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Access } from '@security/_types/Access'
 
 /**
  * Create a cross-cluster API key.
@@ -53,6 +53,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The access to be granted to this API key.
@@ -76,5 +78,11 @@ export interface Request extends RequestBase {
     metadata?: Metadata
     /** Specifies the name for this API key. */
     name: Name
+    /**
+     * The certificate identity to associate with this API key.
+     * This field is used to restrict the API key to connections authenticated by a specific TLS certificate.
+     * The value should match the certificate's distinguished name (DN) pattern.
+     */
+    certificate_identity?: string
   }
 }

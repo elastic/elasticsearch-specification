@@ -17,8 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Field,
   FieldValue,
@@ -27,12 +25,13 @@ import {
   Ids,
   IndexName,
   MinimumShouldMatch,
-  MultiTermQueryRewrite,
-  Routing
+  MultiTermQueryRewrite
 } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateFormat, DateMath, TimeZone } from '@_types/Time'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { QueryBase } from './abstractions'
 
 /**
@@ -82,6 +81,7 @@ export class FuzzyQuery extends QueryBase {
   // ES is lenient and accepts any primitive type, but ultimately converts it to a string.
   // Changing this field definition from UserDefinedValue to string breaks a recording produced from Nest tests,
   // but Nest is probably also overly flexible here and exposes an option that should not exist.
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   value: string | double | boolean
 }
 
@@ -110,7 +110,7 @@ export class PrefixQuery extends QueryBase {
    */
   value: string
   /**
-   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * Allows case insensitive matching of the value with the indexed field values when set to `true`.
    * Default is `false` which means the case sensitivity of matching depends on the underlying field’s mapping.
    * @server_default false
    * @availability stack since=7.10.0
@@ -141,10 +141,6 @@ export class RangeQueryBase<T> extends QueryBase {
    * Less than or equal to.
    */
   lte?: T
-  /** @deprecated 8.16.0 Use gte or gt instead */
-  from?: T | null
-  /** @deprecated 8.16.0 Use lte or lt instead */
-  to?: T | null
 }
 
 export class UntypedRangeQuery extends RangeQueryBase<UserDefinedValue> {
@@ -171,10 +167,12 @@ export class DateRangeQuery extends RangeQueryBase<DateMath> {
 
 export class NumberRangeQuery extends RangeQueryBase<double> {}
 
+export class LongNumberRangeQuery extends RangeQueryBase<long> {}
+
 export class TermRangeQuery extends RangeQueryBase<string> {}
 
 /**
- * @codegen_names untyped, date, number, term
+ * @codegen_names untyped, date, number, long_number, term
  * @variants untagged untyped=_types.query_dsl.UntypedRangeQuery
  * @ext_doc_id query-dsl-range-query
  */
@@ -183,6 +181,7 @@ export type RangeQuery =
   | UntypedRangeQuery
   | DateRangeQuery
   | NumberRangeQuery
+  | LongNumberRangeQuery
   | TermRangeQuery
 
 export enum RangeRelation {
@@ -245,7 +244,7 @@ export class TermQuery extends QueryBase {
    */
   value: FieldValue
   /**
-   * Allows ASCII case insensitive matching of the value with the indexed field values when set to `true`.
+   * Allows case insensitive matching of the value with the indexed field values when set to `true`.
    * When `false`, the case sensitivity of matching depends on the underlying field’s mapping.
    * @availability stack since=7.10.0
    * @availability serverless
@@ -271,7 +270,7 @@ export class TermsLookup {
   index: IndexName
   id: Id
   path: Field
-  routing?: Routing
+  routing?: string
 }
 
 /**

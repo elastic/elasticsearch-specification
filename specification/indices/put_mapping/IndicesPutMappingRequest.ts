@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
+  MediaType,
   Metadata,
   PropertyName
 } from '@_types/common'
@@ -37,37 +37,23 @@ import {
 import { Property } from '@_types/mapping/Property'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { Duration } from '@_types/Time'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * Update field mappings.
+ *
  * Add new fields to an existing data stream or index.
- * You can also use this API to change the search settings of existing fields and add new properties to existing object fields.
- * For data streams, these changes are applied to all backing indices by default.
+ * You can use the update mapping API to:
  *
- * **Add multi-fields to an existing field**
+ * - Add a new field to an existing index
+ * - Update mappings for multiple indices in a single request
+ * - Add new properties to an object field
+ * - Enable multi-fields for an existing field
+ * - Update supported mapping parameters
+ * - Change a field's mapping using reindexing
+ * - Rename a field using a field alias
  *
- * Multi-fields let you index the same field in different ways.
- * You can use this API to update the fields mapping parameter and enable multi-fields for an existing field.
- * WARNING: If an index (or data stream) contains documents when you add a multi-field, those documents will not have values for the new multi-field.
- * You can populate the new multi-field with the update by query API.
- *
- * **Change supported mapping parameters for an existing field**
- *
- * The documentation for each mapping parameter indicates whether you can update it for an existing field using this API.
- * For example, you can use the update mapping API to update the `ignore_above` parameter.
- *
- * **Change the mapping of an existing field**
- *
- * Except for supported mapping parameters, you can't change the mapping or field type of an existing field.
- * Changing an existing field could invalidate data that's already indexed.
- *
- * If you need to change the mapping of a field in a data stream's backing indices, refer to documentation about modifying data streams.
- * If you need to change the mapping of a field in other indices, create a new index with the correct mapping and reindex your data into that index.
- *
- * **Rename a field**
- *
- * Renaming a field would invalidate data already indexed under the old field name.
- * Instead, add an alias field to create an alternate field name.
+ * Learn how to use the update mapping API with practical examples in the [Update mapping API examples](https://www.elastic.co/docs/manage-data/data-store/mapping/update-mappings-examples) guide.
  * @rest_spec_name indices.put_mapping
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
@@ -83,12 +69,22 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of index names the mapping should be added to (supports wildcards).
+     * Use `_all` or omit to add the mapping on all indices.
+     */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -96,12 +92,13 @@ export interface Request extends RequestBase {
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
      * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -141,9 +138,7 @@ export interface Request extends RequestBase {
     /**
      * Specify dynamic templates for the mapping.
      */
-    dynamic_templates?:
-      | Dictionary<string, DynamicTemplate>
-      | Dictionary<string, DynamicTemplate>[]
+    dynamic_templates?: SingleKeyDictionary<string, DynamicTemplate>[]
     /**
      * Control whether field names are enabled for the index.
      */

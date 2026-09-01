@@ -92,7 +92,8 @@ export class BucketInfluencer {
   influencer_field_name: Field
   /**
    * The score between 0-100 for each bucket influencer. This score is the initial value that was calculated at the
-   * time the bucket was processed. */
+   * time the bucket was processed.
+   */
   initial_anomaly_score: double
   /**
    * If true, this is an interim result. In other words, the results are calculated based on partial input data.

@@ -1,0 +1,1 @@
+method_request: POST _tasks/<task_id>/_cancel

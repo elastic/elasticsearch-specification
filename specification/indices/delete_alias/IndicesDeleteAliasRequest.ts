@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Indices, Names } from '@_types/common'
+import { Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete an alias.
+ *
  * Removes a data stream or index from an alias.
  * @rest_spec_name indices.delete_alias
  * @availability stack stability=stable
@@ -53,6 +54,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

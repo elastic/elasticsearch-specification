@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Indices } from '@_types/common'
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export enum IndicatorHealthStatus {
   green,
   yellow,
   red,
-  unknown
+  unknown,
+  unavailable
 }
 
 export class Indicators {
@@ -39,6 +40,7 @@ export class Indicators {
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
+  project_encryption_key?: ProjectEncryptionKeyIndicator
 }
 
 export class BaseIndicator {
@@ -213,4 +215,23 @@ export class FileSettingsIndicator extends BaseIndicator {
 export class FileSettingsIndicatorDetails {
   failure_streak: long
   most_recent_failure: string
+}
+
+/** PROJECT_ENCRYPTION_KEY **/
+
+export class ProjectEncryptionKeyIndicator extends BaseIndicator {
+  details?: ProjectEncryptionKeyDetails
+}
+
+export class ProjectEncryptionKeyDetails {
+  active_key_id?: string
+  active_password_id: string
+  /**
+   * Whether callers must refuse to store secrets when the service is not ready.
+   * If `false`, callers may fall back to storing secrets in plaintext (with a warning).
+   */
+  encryption_required: boolean
+  key_count?: integer
+  metadata_password_id?: string
+  state: string
 }

@@ -1,5 +1,5 @@
 # summary:
-# method_request: DELETE /_pit
+method_request: DELETE /_pit
 description: Run `DELETE /_pit` to close a point-in-time.
 # type: request
 value: |-

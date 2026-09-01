@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a filter.
+ *
  * If an anomaly detection job references the filter, you cannot delete the
  * filter. You must update or delete the job before you can delete the filter.
  * @rest_spec_name ml.delete_filter
@@ -44,4 +45,5 @@ export interface Request extends RequestBase {
      */
     filter_id: Id
   }
+  response_media_type: MediaType.Json
 }

@@ -1,0 +1,1 @@
+method_request: DELETE /_ingest/pipeline/my-pipeline-id

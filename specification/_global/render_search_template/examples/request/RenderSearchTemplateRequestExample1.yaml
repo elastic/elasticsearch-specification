@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST _render/template
+method_request: POST _render/template
 description: Run `POST _render/template`
 # type: request
 value: |-

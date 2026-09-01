@@ -1,8 +1,8 @@
 summary: Update the document source
-# method_request: POST my-index-000001/_update_by_query
+method_request: POST my-index-000001/_update_by_query
 description: >
-  Run `POST my-index-000001/_update_by_query` with a script to update the document source.
-  It increments the `count` field for all documents with a `user.id` of `kimchy` in `my-index-000001`.
+  Run `POST my-index-000001/_update_by_query` with a script to update the document source. It increments the `count` field for all
+  documents with a `user.id` of `kimchy` in `my-index-000001`.
 # type: "request"
 value: |-
   {

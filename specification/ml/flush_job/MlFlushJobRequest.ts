@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { DateTime } from '@_types/Time'
 
 /**
  * Force buffered data to be processed.
+ *
  * The flush jobs API is only applicable when sending data for analysis using
  * the post data API. Depending on the content of the buffer, then it might
  * additionally calculate new results. Both flush and close operations are
@@ -35,6 +36,7 @@ import { DateTime } from '@_types/Time'
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_ml
+ * @deprecated 9.1.0 Forcing any buffered data to be processed is deprecated, in a future major version a datafeed will be required.
  * @doc_tag ml anomaly
  * @doc_id ml-flush-job
  */
@@ -51,6 +53,8 @@ export interface Request extends RequestBase {
      */
     job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies to advance to a particular time value. Results are generated
@@ -82,7 +86,7 @@ export interface Request extends RequestBase {
     // Also accepts `now` as a value, epoch seconds (< 10 digits) and epoch milliseconds
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `advance_time` query parameter.
      */

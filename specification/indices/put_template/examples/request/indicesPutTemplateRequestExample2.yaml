@@ -1,8 +1,8 @@
 summary: Create an index template with aliases
-# method_request: PUT _template/template_1
+method_request: PUT _template/template_1
 description: >
-  You can include index aliases in an index template.
-  During index creation, the `{index}` placeholder in the alias name will be replaced with the actual index name that the template gets applied to.
+  You can include index aliases in an index template. During index creation, the `{index}` placeholder in the alias name will be
+  replaced with the actual index name that the template gets applied to.
 # type: request
 value:
   index_patterns:

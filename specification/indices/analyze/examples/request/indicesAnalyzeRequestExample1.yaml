@@ -1,5 +1,5 @@
 summary: No index specified
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: You can apply any of the built-in analyzers to the text string without specifying an index.
 # type: request
 value:

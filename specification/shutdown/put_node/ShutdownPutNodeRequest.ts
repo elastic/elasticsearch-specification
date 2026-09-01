@@ -18,8 +18,8 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { NodeId } from '@_types/common'
-import { TimeUnit } from '@_types/Time'
+import { MediaType, NodeId } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Type } from '../_types/types'
 
 /**
@@ -40,7 +40,7 @@ import { Type } from '../_types/types'
  * IMPORTANT: This API does NOT terminate the Elasticsearch process.
  * Monitor the node shutdown status to determine when it is safe to stop Elasticsearch.
  * @rest_spec_name shutdown.put_node
- * @availability stack since=7.13.0 stability=stable
+ * @availability stack since=7.13.0 stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id nodes-api-shutdown
  */
@@ -60,19 +60,21 @@ export interface Request extends RequestBase {
      */
     node_id: NodeId
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    master_timeout?: TimeUnit
+    master_timeout?: Duration
     /**
      * The period to wait for a response.
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
-    timeout?: TimeUnit
+    timeout?: Duration
   }
   body: {
     /**
@@ -94,7 +96,9 @@ export interface Request extends RequestBase {
      * Only valid if type is restart.
      * Controls how long Elasticsearch will wait for the node to restart and join the cluster before reassigning its shards to other nodes.
      * This works the same as delaying allocation with the index.unassigned.node_left.delayed_timeout setting.
-     * If you specify both a restart allocation delay and an index-level allocation delay, the longer of the two is used.
+     * If you don't specify a restart allocation delay, a default value of 5 minutes will be used.
+     * If both a restart allocation delay and an index-level allocation delay are configured, the longer of the two is used.
+     * @server_default 5m
      */
     allocation_delay?: string
     /**

@@ -17,18 +17,24 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import {
+  IndexAlias,
+  IndexName,
+  MediaType,
+  WaitForActiveShards
+} from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
+import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { IndexAlias, IndexName, WaitForActiveShards } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
-import { Duration } from '@_types/Time'
 import { RolloverConditions } from './types'
 
 /**
  * Roll over to a new index.
- * TIP: It is recommended to use the index lifecycle rollover action to automate rollovers.
+ *
+ * TIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.
  *
  * The rollover API creates a new index for a data stream or index alias.
  * The API behavior depends on the rollover target.
@@ -94,6 +100,8 @@ export interface Request extends RequestBase {
      */
     new_index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, checks whether the current index satisfies the specified conditions but does not perform a rollover.
@@ -116,10 +124,17 @@ export interface Request extends RequestBase {
      * The number of shard copies that must be active before proceeding with the operation.
      * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
+    /**
+     * If set to true, the rollover action will only mark a data stream to signal that it needs to be rolled over at the next write.
+     * Only allowed on data streams.
+     * @server_default false
+     */
+    lazy?: boolean
   }
-  body: {
+  body?: {
     /**
      * Aliases for the target index.
      * Data streams do not support this parameter.

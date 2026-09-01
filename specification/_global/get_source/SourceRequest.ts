@@ -17,16 +17,17 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
 } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Get a document's source.
@@ -64,6 +65,7 @@ export interface Request extends RequestBase {
     /** The name of the index that contains the document. */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The node or shard the operation should be performed on.
@@ -99,10 +101,6 @@ export interface Request extends RequestBase {
      * A comma-separated list of source fields to include in the response.
      */
     _source_includes?: Fields
-    /**
-     * A comma-separated list of stored fields to return as part of a hit.
-     */
-    stored_fields?: Fields
     /**
      * The version number for concurrency control.
      * It must match the current version of the document for the request to succeed.

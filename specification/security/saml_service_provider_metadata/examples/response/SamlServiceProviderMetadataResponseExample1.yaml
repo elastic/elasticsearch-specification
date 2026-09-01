@@ -1,0 +1,9 @@
+# summary:
+description: >
+  A successful response from `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data`, which indicates that the request is acknowledged.
+# type: response
+# response_code:
+value: |-
+  {
+  "metadata": """<?xml version="1.0" encoding="UTF-8"?><md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://<kibana_url>"><md:SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"><md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://<kibana_url>/logout"/><md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://<kibana_url>/api/security/saml/callback" index="1" isDefault="true"/></md:SPSSODescriptor></md:EntityDescriptor>"""
+  }

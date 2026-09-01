@@ -18,6 +18,7 @@
  */
 
 import { Id } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { AsyncSearch } from './AsyncSearch'
 
@@ -30,7 +31,9 @@ export class AsyncSearchResponseBase {
   is_partial: boolean
   /**
    * Indicates whether the search is still running or has completed.
-   * NOTE: If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.
+   *
+   * > info
+   * > If the search failed after some shards returned their results or the node that is coordinating the async search dies, results may be partial even though `is_running` is `false`.
    */
   is_running: boolean
   /**
@@ -41,14 +44,28 @@ export class AsyncSearchResponseBase {
   start_time?: DateTime
   start_time_in_millis: EpochTime<UnitMillis>
   /**
-   * Indicates when the async search completed. Only present
-   * when the search has completed.
+   * Indicates when the async search completed.
+   * It is present only when the search has completed.
    */
   completion_time?: DateTime
   completion_time_in_millis?: EpochTime<UnitMillis>
+  error?: ErrorCause
 }
 export class AsyncSearchDocumentResponseBase<
   TDocument
 > extends AsyncSearchResponseBase {
   response: AsyncSearch<TDocument>
+}
+
+export class AsyncSearchResponseException<TDocument> {
+  is_partial: boolean
+  is_running: boolean
+  expiration_time?: DateTime
+  expiration_time_in_millis: EpochTime<UnitMillis>
+  start_time?: DateTime
+  start_time_in_millis: EpochTime<UnitMillis>
+  completion_time?: DateTime
+  completion_time_in_millis?: EpochTime<UnitMillis>
+  error?: ErrorCause
+  response?: AsyncSearch<TDocument>
 }

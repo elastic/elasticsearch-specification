@@ -1,0 +1,18 @@
+summary: An active async search
+description: A succesful response from `GET /_async_search/status/FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=`, which retrieves the status of a previously submitted async search without the results.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "id" : "FmRldE8zREVEUzA2ZVpUeGs2ejJFUFEaMkZ5QTVrSTZSaVN3WlNFVmtlWHJsdzoxMDc=",
+    "is_running" : true,
+    "is_partial" : true,
+    "start_time_in_millis" : 1583945890986,
+    "expiration_time_in_millis" : 1584377890986,
+    "_shards" : {
+        "total" : 562,
+        "successful" : 188, 
+        "skipped" : 0,
+        "failed" : 0
+    }
+  }

@@ -17,16 +17,16 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Schedule a transform to start now.
- * Instantly runs a transform to process data.
  *
- * If you _schedule_now a transform, it will process the new data instantly,
- * without waiting for the configured frequency interval. After _schedule_now API is called,
- * the transform will be processed again at now + frequency unless _schedule_now API
+ * Instantly run a transform to process data.
+ * If you run this API, the transform will process the new data instantly,
+ * without waiting for the configured frequency interval. After the API is called,
+ * the transform will be processed again at `now + frequency` unless the API
  * is called again in the meantime.
  * @rest_spec_name transform.schedule_now_transform
  * @availability stack since=8.7.0 stability=stable
@@ -47,11 +47,22 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Controls the time to wait for the scheduling to take place
      * @server_default 30s
      */
     timeout?: Duration
+    /**
+     * When true, defers the scheduling by the transform's configured sync delay
+     * instead of triggering immediately. The transform will process new data after
+     * the delay elapses rather than right away.
+     * @server_default false
+     * @availability stack since=9.4.0
+     * @availability serverless
+     */
+    defer?: boolean
   }
 }

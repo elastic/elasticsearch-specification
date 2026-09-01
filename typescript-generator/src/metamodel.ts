@@ -261,6 +261,37 @@ export class Interface extends BaseType {
 }
 
 /**
+ * An alternative of an example, coded in a given language.
+ */
+export class ExampleAlternative {
+  language: string
+  code: string
+}
+
+/**
+ * The Example type is used for both requests and responses
+ * This type definition is taken from the OpenAPI spec
+ *     https://spec.openapis.org/oas/v3.1.0#example-object
+ * With the exception of using String as the 'value' type
+ */
+export class Example {
+  /** Short description. */
+  summary?: string
+  /** Long description. */
+  description?: string
+  /** request method and URL */
+  method_request?: string
+  /** Embedded literal example. Mutually exclusive with `external_value` */
+  value?: string
+  /** A URI that points to the literal example */
+  external_value?: string
+  /** An array of alternatives for this example in other languages */
+  alternatives?: ExampleAlternative[]
+  /** Which API flavors this example applies to. Omitted means all flavors. */
+  availability?: Availabilities
+}
+
+/**
  * A request type
  */
 export class Request extends BaseType {
@@ -288,6 +319,7 @@ export class Request extends BaseType {
   body: Body
   behaviors?: Behavior[]
   attachedBehaviors?: string[]
+  examples?: Record<string, Example>
 }
 
 /**
@@ -300,6 +332,7 @@ export class Response extends BaseType {
   behaviors?: Behavior[]
   attachedBehaviors?: string[]
   exceptions?: ResponseException[]
+  examples?: Record<string, Example>
 }
 
 export class ResponseException {
@@ -380,7 +413,8 @@ export class TypeAlias extends BaseType {
 export enum Stability {
   stable = 'stable',
   beta = 'beta',
-  experimental = 'experimental'
+  experimental = 'experimental',
+  tech_preview = 'tech_preview'
 }
 export enum Visibility {
   public = 'public',
@@ -409,9 +443,12 @@ export class Endpoint {
   name: string
   description: string
   docUrl: string
+  docUrlServerless: string
   docId?: string
   extDocId?: string
   extDocUrl?: string
+  extDocDescription?: string
+  extPreviousVersionDocUrl?: string
   deprecation?: Deprecation
   availability: Availabilities
   docTag?: string
@@ -436,6 +473,8 @@ export class Endpoint {
     index?: string[]
     cluster?: string[]
   }
+
+  codegenExclude?: boolean
 }
 
 export class UrlTemplate {

@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
  * Analyze the index disk usage.
+ *
  * Analyze the disk usage of each field of an index or data stream.
  * This API might not support indices created in previous Elasticsearch versions.
  * The result of a small index can be inaccurate as some parts of an index might not be analyzed by the API.
@@ -29,6 +30,9 @@ import { ExpandWildcards, Indices } from '@_types/common'
  * NOTE: The total size of fields of the analyzed shards of the index in the response is usually smaller than the index `store_size` value because some small metadata files are ignored and some parts of data files might not be scanned by the API.
  * Since stored fields are stored together in a compressed format, the sizes of stored fields are also estimates and can be inaccurate.
  * The stored size of the `_id` field is likely underestimated while the `_source` field is overestimated.
+ *
+ * For usage examples see the External documentation or refer to [Analyze the index disk usage example](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/index-disk-usage) for an example.
+ * @ext_doc_id indices-disk-usage
  * @doc_id indices-disk-usage
  * @rest_spec_name indices.disk_usage
  * @availability stack since=7.15.0 stability=experimental
@@ -48,11 +52,15 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters?: {
     /**
-     * If false, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -70,7 +78,9 @@ export interface Request extends RequestBase {
      */
     flush?: boolean
     /**
-     * If `true`, missing or closed indices are not included in the response.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean

@@ -1,5 +1,5 @@
 #
-# method_request: "GET /_search/scroll"
+method_request: 'GET /_search/scroll'
 description: Run `GET /_search/scroll` to get the next batch of results for a scrolling search.
 # type: "request"
 value: |-

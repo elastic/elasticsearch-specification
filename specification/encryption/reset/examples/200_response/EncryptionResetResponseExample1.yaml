@@ -1,0 +1,6 @@
+summary: Reset the project encryption key
+description: >
+  A successful response from `POST /_encryption/_reset?accept_data_loss=true`.
+# type: response
+value:
+  acknowledged: true

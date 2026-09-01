@@ -121,20 +121,21 @@ export class Anomaly {
 }
 
 export class AnomalyCause {
-  actual: double[]
-  by_field_name: Name
-  by_field_value: string
-  correlated_by_field_value: string
-  field_name: Field
-  function: string
-  function_description: string
-  influencers: Influence[]
-  over_field_name: Name
-  over_field_value: string
-  partition_field_name: string
-  partition_field_value: string
+  actual?: double[]
+  by_field_name?: Name
+  by_field_value?: string
+  correlated_by_field_value?: string
+  field_name?: Field
+  function?: string
+  function_description?: string
+  geo_results?: GeoResults
+  influencers?: Influence[]
+  over_field_name?: Name
+  over_field_value?: string
+  partition_field_name?: string
+  partition_field_value?: string
   probability: double
-  typical: double[]
+  typical?: double[]
 }
 
 export class Influence {
@@ -146,11 +147,11 @@ export class GeoResults {
   /**
    * The actual value for the bucket formatted as a `geo_point`.
    */
-  actual_point: string
+  actual_point?: string
   /**
    * The typical value for the bucket formatted as a `geo_point`.
    */
-  typical_point: string
+  typical_point?: string
 }
 
 export class AnomalyExplanation {

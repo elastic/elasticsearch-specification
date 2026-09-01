@@ -18,16 +18,18 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ByteSize, Id } from '@_types/common'
+import { ByteSize, Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import {
+  AdaptiveAllocationsSettings,
   DeploymentAllocationState,
   TrainingPriority
 } from '../_types/TrainedModel'
 
 /**
  * Start a trained model deployment.
+ *
  * It allocates the model to every machine learning node.
  * @rest_spec_name ml.start_trained_model_deployment
  * @availability stack since=8.0.0 stability=stable
@@ -49,6 +51,8 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The inference cache size (in memory outside the JVM heap) per node for the model.
@@ -68,9 +72,11 @@ export interface Request extends RequestBase {
      * Increasing this value generally increases the throughput.
      * If this setting is greater than the number of hardware threads
      * it will automatically be changed to a value less than the number of hardware threads.
+     * If adaptive_allocations is enabled, do not set this value, because it’s automatically set.
      * @server_default 1
      */
     number_of_allocations?: integer
+    /** The deployment priority */
     priority?: TrainingPriority
     /**
      * Specifies the number of inference requests that are allowed in the queue. After the number of requests exceeds
@@ -97,5 +103,13 @@ export interface Request extends RequestBase {
      * @server_default started
      */
     wait_for?: DeploymentAllocationState
+  }
+  body?: {
+    /**
+     * Adaptive allocations configuration. When enabled, the number of allocations
+     * is set based on the current load.
+     * If adaptive_allocations is enabled, do not set the number of allocations manually.
+     */
+    adaptive_allocations?: AdaptiveAllocationsSettings
   }
 }

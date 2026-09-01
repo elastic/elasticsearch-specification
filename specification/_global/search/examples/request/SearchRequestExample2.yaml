@@ -1,9 +1,9 @@
 summary: A point in time search
-# method_request: POST /_search
+method_request: POST /_search
 description: >
-  Run `POST /_search` to run a point in time search.
-  The `id` parameter tells Elasticsearch to run the request using contexts from this open point in time.
-  The `keep_alive` parameter tells Elasticsearch how long it should extend the time to live of the point in time.
+  Run `POST /_search` to run a point in time search. The `id` parameter tells Elasticsearch to run the request using contexts from
+  this open point in time. The `keep_alive` parameter tells Elasticsearch how long it should extend the time to live of the point in
+  time.
 # type: request
 value: |-
   {

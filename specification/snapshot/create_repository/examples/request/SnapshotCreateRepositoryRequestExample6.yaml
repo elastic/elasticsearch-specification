@@ -1,7 +1,15 @@
 summary: A read-only URL repository
-# method_request: PUT _snapshot/my_read_only_url_repository
+method_request: PUT _snapshot/my_read_only_url_repository
 description: Run `PUT _snapshot/my_read_only_url_repository` to create or update a read-only URL snapshot repository.
 # type: request
-value:
-  "{\n  \"type\": \"url\",\n  \"settings\": {\n    \"url\": \"file:/mount/backups/my_fs_backup_location\"\
-  \n  }\n}"
+value: "{
+
+  \  \"type\": \"url\",
+
+  \  \"settings\": {
+
+  \    \"url\": \"file:/mount/backups/my_fs_backup_location\"
+
+  \  }
+
+  }"

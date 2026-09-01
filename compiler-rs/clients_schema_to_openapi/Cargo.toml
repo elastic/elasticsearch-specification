@@ -7,8 +7,10 @@ publish = false
 [dependencies]
 clients_schema = {path="../clients_schema"}
 
+argh = { workspace = true }
+derive_more = { version = "2", features = ["from_str"] }
 serde_json = { workspace = true }
-serde_ignored = { workspace = true }
+itertools = { workspace = true }
 icu_segmenter = { workspace = true }
 openapiv3 = { workspace = true }
 anyhow = { workspace = true }
@@ -16,5 +18,3 @@ indexmap = { workspace = true }
 
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-clap = { workspace = true, features = ["derive"] }
-

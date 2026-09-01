@@ -1,0 +1,14 @@
+summary: An embedding task using a multimodal model
+description:
+  Run `PUT _inference/embedding/jinaai-embeddings-multimodal` to create an inference endpoint for embedding tasks using
+  an embedding model that supports multimodal inputs (e.g. `jina-embeddings-v4`) via the JinaAI service.
+method_request: 'PUT _inference/embedding/jinaai-embeddings-multimodal'
+# type: "request"
+value: |-
+  {
+      "service": "jinaai",
+      "service_settings": {
+          "model_id": "jina-embeddings-v4",
+          "api_key": "JinaAi-Api-key"
+      }
+  }

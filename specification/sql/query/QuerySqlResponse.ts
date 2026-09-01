@@ -18,7 +18,7 @@
  */
 
 import { Id } from '@_types/common'
-import { Column, Row } from '../types'
+import { Column, Row } from '../_types/types'
 
 export class Response {
   body: {

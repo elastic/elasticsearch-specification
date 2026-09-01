@@ -1,6 +1,6 @@
 # summary:
 # description:
 # type: request
-# method_request: PUT /_watcher/settings
+method_request: PUT /_watcher/settings
 value:
   index.auto_expand_replicas: 0-4

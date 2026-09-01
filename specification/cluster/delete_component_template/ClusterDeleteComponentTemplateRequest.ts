@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete component templates.
+ *
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
  * @rest_spec_name cluster.delete_component_template
  * @availability stack since=7.8.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

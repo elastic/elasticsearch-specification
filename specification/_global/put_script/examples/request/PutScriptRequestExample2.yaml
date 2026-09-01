@@ -1,5 +1,5 @@
 summary: Create a stored script
-# method_request: PUT _scripts/my-stored-script
+method_request: PUT _scripts/my-stored-script
 description: >
   Run `PUT _scripts/my-stored-script` to create a stored script.
 # type: request

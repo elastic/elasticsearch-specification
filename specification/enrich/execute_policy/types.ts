@@ -19,11 +19,13 @@
 
 export class ExecuteEnrichPolicyStatus {
   phase: EnrichPolicyPhase
+  step?: string
 }
 
 export enum EnrichPolicyPhase {
   SCHEDULED,
   RUNNING,
   COMPLETE,
-  FAILED
+  FAILED,
+  CANCELLED
 }

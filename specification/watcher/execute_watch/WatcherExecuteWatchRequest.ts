@@ -17,16 +17,17 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { ActionExecutionMode, SimulatedActions } from '@watcher/_types/Action'
 import { ScheduleTriggerEvent } from '@watcher/_types/Schedule'
 import { Watch } from '@watcher/_types/Watch'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Run a watch.
+ *
  * This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.
  *
  * For testing and debugging purposes, you also have fine-grained control on how the watch runs.
@@ -40,10 +41,12 @@ import { Id } from '@_types/common'
  * If your user is allowed to read index `a`, but not index `b`, then the exact same set of rules will apply during execution of a watch.
  *
  * When using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.
+ * Refer to the external documentation for examples of watch execution requests, including existing, customized, and inline watches.
  * @rest_spec_name watcher.execute_watch
  * @availability stack stability=stable
  * @cluster_privileges manage_watcher
  * @doc_id watcher-api-execute-watch
+ * @ext_doc_id execute-watch
  */
 export interface Request extends RequestBase {
   urls: [
@@ -62,6 +65,8 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Defines whether the watch runs in debug mode.
@@ -69,7 +74,7 @@ export interface Request extends RequestBase {
      */
     debug?: boolean
   }
-  body: {
+  body?: {
     /**
      * Determines how to handle the watch actions as part of the watch execution.
      */

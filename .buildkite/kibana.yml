@@ -1,0 +1,14 @@
+agents:
+  memory: "48G"
+  cpu: "4"
+  ephemeralStorage: 25Gi
+
+steps:
+  - label: "Run Kibana type checks"
+    command: .buildkite/kibana.sh
+
+notify:
+  - slack:
+      channels:
+        - "#kibana-spec-type-check"
+    if: build.state == "failed"

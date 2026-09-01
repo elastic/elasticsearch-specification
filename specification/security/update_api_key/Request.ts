@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { RoleDescriptor } from '@security/_types/RoleDescriptor'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Update an API key.
@@ -63,7 +63,9 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
-  body: {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  body?: {
     /**
      * The role descriptors to assign to this API key.
      * The API key's effective permissions are an intersection of its assigned privileges and the point in time snapshot of permissions of the owner user.

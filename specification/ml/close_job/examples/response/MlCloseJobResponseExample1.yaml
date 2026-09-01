@@ -1,0 +1,6 @@
+# summary:
+description: A successful response when closing anomaly detection jobs.
+# type: response
+# response_code: 200
+value:
+  closed: true

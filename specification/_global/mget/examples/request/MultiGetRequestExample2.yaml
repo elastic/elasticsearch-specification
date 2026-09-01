@@ -1,10 +1,8 @@
 summary: Filter source fields
-# method_request: "GET /_mget"
+method_request: 'GET /_mget'
 description: >
-  Run `GET /_mget`.
-  This request sets `_source` to `false` for document 1 to exclude the source entirely.
-  It retrieves `field3` and `field4` from document 2.
-  It retrieves the `user` field from document 3 but filters out the `user.location` field.
+  Run `GET /_mget`. This request sets `_source` to `false` for document 1 to exclude the source entirely. It retrieves `field3` and
+  `field4` from document 2. It retrieves the `user` field from document 3 but filters out the `user.location` field.
 # type: "request"
 value: |-
   {

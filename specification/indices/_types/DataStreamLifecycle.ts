@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { DataStreamLifecycleDownsampling } from '@indices/_types/DataStreamLifecycleDownsampling'
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
+import { SamplingMethod } from './Downsample'
 
 /**
  * Data stream lifecycle denotes that a data stream is managed by the data stream lifecycle and contains the configuration.
@@ -32,16 +33,45 @@ export class DataStreamLifecycle {
    * When empty, every document in this data stream will be stored indefinitely.
    */
   data_retention?: Duration
+
   /**
-   * The downsampling configuration to execute for the managed backing index after rollover.
+   * The least amount of time data should be kept by elasticsearch.
    */
-  downsampling?: DataStreamLifecycleDownsampling
+  effective_retention?: Duration
+
+  /**
+   * Configuration source that can influence the retention of a data stream.
+   */
+  retention_determined_by?: RetentionSource
+  /**
+   * The list of downsampling rounds to execute as part of this downsampling configuration
+   */
+  downsampling?: DownsamplingRound[]
+  /**
+   * The method used to downsample the data. There are two options `aggregate` and `last_value`. It requires
+   * `downsampling` to be defined. Defaults to `aggregate`.
+   */
+  downsampling_method?: SamplingMethod
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
    * @server_default true
    */
   enabled?: boolean
+  /**
+   * The period after which data stream backing indices are automatically converted to partially mounted searchable snapshots.
+   * This field is valid only on main data stream lifecycles and cannot be set on failure-store lifecycles.
+   * @availability stack since=9.5.0 stability=stable
+   * @doc_id dlm-searchable-snapshots
+   */
+  frozen_after?: Duration
+}
+
+export enum RetentionSource {
+  data_stream_configuration,
+  default_global_retention,
+  max_global_retention,
+  default_failures_retention
 }
 
 /**

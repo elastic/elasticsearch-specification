@@ -1,9 +1,17 @@
 summary: Doc as upsert
-# method_request: POST test/_update/1
+method_request: POST test/_update/1
 description: >
-  Run `POST test/_update/1` to perform a doc as upsert.
-  Instead of sending a partial `doc` plus an `upsert` doc, you can set `doc_as_upsert` to `true` to use the contents of `doc` as the `upsert` value.
+  Run `POST test/_update/1` to perform a doc as upsert. Instead of sending a partial `doc` plus an `upsert` doc, you can set
+  `doc_as_upsert` to `true` to use the contents of `doc` as the `upsert` value.
 # type: request
-value:
-  "{\n  \"doc\": {\n    \"name\": \"new_name\"\n  },\n  \"doc_as_upsert\": true\n\
+value: "{
+
+  \  \"doc\": {
+
+  \    \"name\": \"new_name\"
+
+  \  },
+
+  \  \"doc_as_upsert\": true
+
   }"

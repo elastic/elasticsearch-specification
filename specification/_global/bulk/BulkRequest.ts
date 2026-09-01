@@ -17,20 +17,22 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
 import {
   Fields,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   WaitForActiveShards
 } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { OperationContainer, UpdateAction } from './types'
 
 /**
  * Bulk index or delete documents.
+ *
  * Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.
  * This reduces overhead and can greatly increase indexing speed.
  *
@@ -94,8 +96,10 @@ import { OperationContainer, UpdateAction } from './types'
  * * Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`
  * * Python: Check out `elasticsearch.helpers.*`
  * * JavaScript: Check out `client.helpers.*`
+ * * Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`
  * * .NET: Check out `BulkAllObservable`
  * * PHP: Check out bulk indexing.
+ * * Ruby: Check out `Elasticsearch::Helpers::BulkHelper`
  *
  * **Submitting bulk requests with cURL**
  *
@@ -128,10 +132,6 @@ import { OperationContainer, UpdateAction } from './types'
  *
  * NOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.
  *
- * **Wait for active shards**
- *
- * When making bulk calls, you can set the `wait_for_active_shards` parameter to require a minimum number of shard copies to be active before starting to process the bulk request.
- *
  * **Refresh**
  *
  * Control when the changes made by this request are visible to search.
@@ -140,12 +140,15 @@ import { OperationContainer, UpdateAction } from './types'
  * Imagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.
  * The request will only wait for those three shards to refresh.
  * The other two shards that make up the index do not participate in the `_bulk` request at all.
+ *
+ * You might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.
+ * Refer to the linked documentation for step-by-step instructions using the index settings API.
  * @rest_spec_name bulk
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-bulk
+ * @ext_doc_id indices-refresh-disable
  * @doc_tag document
- *
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   urls: [
@@ -164,7 +167,14 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
     /**
      * If `true`, the response will include the ingest pipelines that were run for each index or create.
      * @server_default false
@@ -186,8 +196,19 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value that is used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack stability=stable
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * Indicates whether to return the `_source` field (`true` or `false`) or contains a list of fields to return.
      */
@@ -217,6 +238,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default is `1`, which waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
@@ -232,6 +254,13 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
   }
   /**
    * The request body contains a newline-delimited list of `create`, `delete`, `index`, and `update` actions and their associated source data.
+   * Each item in the list is one of three kinds of NDJSON lines:
+   *
+   * * An action line, which specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata. For example: `{ "index": { "_index": "my-index", "_id": "1" } }`.
+   * * An update source line, which must follow an `update` action line. It contains the partial document, script, or upsert options to apply.
+   * * A document source line, which must follow an `index` or `create` action line. It contains the document to index.
+   *
+   * A `delete` action is not followed by a source line.
    * @codegen_name operations */
   // This declaration captures action_and_meta_data (OperationContainer) and the two kinds of sources
   // that can follow: an update action for update operations and anything for index or create operations.

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
- * Get data frame analytics jobs usage info.
+ * Get data frame analytics job stats.
+ *
  * @rest_spec_name ml.get_data_frame_analytics_stats
  * @availability stack since=7.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
@@ -49,6 +50,7 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:

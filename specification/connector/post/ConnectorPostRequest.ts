@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Create a connector.
@@ -37,10 +37,13 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The connector document to be created
+   * @codegen_name connector
    */
-  /** @codegen_name connector */
   body?: {
     description?: string
     index_name?: IndexName

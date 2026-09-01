@@ -17,14 +17,27 @@
  * under the License.
  */
 
-import { Stats } from '@nodes/_types/Stats'
 import { Name } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
+import { DateTime } from '@_types/Time'
 
-export class NodeReloadError {
+export class NodeReloadResult {
   name: Name
   reload_exception?: ErrorCause
+  /**
+   * The names of the secure settings that were reloaded.
+   */
+  secure_setting_names?: string[]
+  /**
+   * The path to the keystore file.
+   */
+  keystore_path?: string
+  /**
+   * A SHA-256 hash of the keystore file contents.
+   */
+  keystore_digest?: string
+  /**
+   * The last modification time of the keystore file.
+   */
+  keystore_last_modified_time?: DateTime
 }
-
-/** @codegen_names stats, error */
-export type NodeReloadResult = Stats | NodeReloadError

@@ -15,10 +15,14 @@ default = ["console_error_panic_hook"]
 wasm-bindgen = { workspace = true }
 clients_schema = {path="../clients_schema"}
 clients_schema_to_openapi = {path="../clients_schema_to_openapi"}
+clients_schema_to_rest_api_spec = {path="../clients_schema_to_rest_api_spec"}
 serde_json = { workspace = true }
 anyhow = { workspace = true }
+tracing = "0.1"
+argh = { workspace = true }
 
 console_error_panic_hook = { workspace = true, optional = true }
+tracing-wasm = "0.2.1"
 
 [dev-dependencies]
 wasm-bindgen-test = { workspace = true }

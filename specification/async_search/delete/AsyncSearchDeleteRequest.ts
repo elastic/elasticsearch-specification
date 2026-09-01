@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete an async search.
@@ -43,4 +43,5 @@ export interface Request extends RequestBase {
     /** A unique identifier for the async search. */
     id: Id
   }
+  response_media_type: MediaType.Json
 }

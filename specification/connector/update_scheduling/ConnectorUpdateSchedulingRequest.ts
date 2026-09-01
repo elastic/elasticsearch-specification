@@ -17,11 +17,12 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { SchedulingConfiguration } from '../_types/Connector'
 
 /**
  * Update the connector scheduling.
+ *
  * @rest_spec_name connector.update_scheduling
  * @availability stack since=8.12.0 stability=beta
  * @availability serverless stability=beta visibility=public
@@ -40,6 +41,8 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * The connector scheduling object
    */

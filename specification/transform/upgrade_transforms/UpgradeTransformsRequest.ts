@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Upgrade all transforms.
+ *
  * Transforms are compatible across minor versions and between supported major versions.
  * However, over time, the format of transform configuration information may change.
  * This API identifies transforms that have a legacy configuration format and upgrades them to the latest version.
@@ -48,6 +50,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, the request checks for updates but does not run them.

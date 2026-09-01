@@ -21,8 +21,15 @@
  * @rest_spec_name index
  * @availability serverless visibility=private stability=experimental
  * @availability stack stability=beta since=1.2.3 visibility=feature_flag feature_flag=abc
+ * @doc_id docs-index
  */
 export interface Request<TDocument> {
+  urls: [
+    {
+      path: '/{index}/_doc/{id}'
+      methods: ['POST', 'PUT']
+    }
+  ]
   path_parts: {
     id?: string
     index: string

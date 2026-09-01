@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Clone a snapshot.
+ *
  * Clone part of all of a snapshot into another snapshot in the same repository.
  * @rest_spec_name snapshot.clone
  * @availability stack since=7.10.0 stability=stable
@@ -51,6 +52,8 @@ export interface Request extends RequestBase {
      */
     target_snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.
@@ -59,12 +62,6 @@ export interface Request extends RequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
-    /**
-     * The period of time to wait for a response.
-     * If no response is received before the timeout expires, the request fails and returns an error.
-     * @server_default 30s
-     */
-    timeout?: Duration
   }
   body: {
     /**

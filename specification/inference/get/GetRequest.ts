@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { TaskType } from '@inference/_types/TaskType'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { TaskType } from '@inference/_types/TaskType'
 
 /**
- * Get an inference endpoint
+ * Get an inference endpoint.
+ *
+ * This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).
  * @rest_spec_name inference.get
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
@@ -41,16 +43,22 @@ export interface Request extends RequestBase {
     {
       path: '/_inference/{task_type}/{inference_id}'
       methods: ['GET']
+    },
+    {
+      path: '/_inference/{task_type}/_all'
+      methods: ['GET']
     }
   ]
   path_parts: {
     /**
-     * The task type
+     * The task type of the endpoint to return
      */
     task_type?: TaskType
     /**
-     * The inference Id
+     * The inference Id of the endpoint to return. Using `_all` or `*` will return all endpoints with the specified
+     * `task_type` if one is specified, or all endpoints for all task types if no `task_type` is specified
      */
     inference_id?: Id
   }
+  response_media_type: MediaType.Json
 }

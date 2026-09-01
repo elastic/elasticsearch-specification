@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Id,
   IndexName,
@@ -28,6 +27,7 @@ import {
 import { integer } from '@_types/Numeric'
 import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { Action, Actions } from './Action'
 import { ActivationState } from './Activation'
 import { ConditionContainer } from './Conditions'
@@ -36,7 +36,7 @@ import { TriggerContainer } from './Trigger'
 
 export class Watch {
   actions: Dictionary<IndexName, Action>
-  condition: ConditionContainer
+  condition?: ConditionContainer
   input: InputContainer
   metadata?: Metadata
   status?: WatchStatus

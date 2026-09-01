@@ -1,5 +1,5 @@
 summary: An array of text strings
-# method_request: GET /_analyze
+method_request: GET /_analyze
 description: If the text parameter is provided as array of strings, it is analyzed as a multi-value field.
 # type: request
 value:

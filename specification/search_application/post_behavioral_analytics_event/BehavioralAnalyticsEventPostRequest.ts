@@ -16,18 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { EventType } from '../_types/AnalyticsEvent'
 
 /**
  * Create a behavioral analytics collection event.
+ *
  * @rest_spec_name search_application.post_behavioral_analytics_event
  * @availability stack stability=experimental visibility=public
  * @doc_tag analytics
  * @doc_id behavioral-analytics-collection-event
  * @ext_doc_id behavioral-analytics-event-reference
+ * @deprecated 9.0.0
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,6 +48,8 @@ export interface Request extends RequestBase {
      */
     event_type: EventType
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Whether the response type has to include more details

@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import {
   Buckets,
   CardinalityAggregate,
@@ -59,6 +58,7 @@ import {
   TermsQuery,
   WildcardQuery
 } from '@_types/query_dsl/term'
+import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 
 /**
  * @variants container
@@ -120,7 +120,7 @@ export class ApiKeyAggregationContainer {
 }
 
 /**
- * @variants external
+ * @variants typed_keys_quirk
  * @non_exhaustive
  */
 export type ApiKeyAggregate =

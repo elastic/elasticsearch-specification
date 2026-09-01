@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, GrokPattern, IndexName } from '@_types/common'
+import { Field, GrokPattern, IndexName, MediaType } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { EcsCompatibilityType, FormatType } from '../_types/Structure'
 
 /**
  * Find the structure of a text field.
+ *
  * Find the structure of a text field in an Elasticsearch index.
  *
  * This API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.
@@ -54,13 +55,14 @@ interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `format` is set to `delimited`, you can specify the column names in a comma-separated list.
      * If this parameter is not specified, the structure finder uses the column names from the header row of the text.
      * If the text does not have a header row, columns are named "column1", "column2", "column3", for example.
      */
-    column_names?: string
+    column_names?: string | string[]
     /**
      * If you have set `format` to `delimited`, you can specify the character used to delimit the values in each row.
      * Only a single character is supported; the delimiter cannot have multiple characters.
@@ -124,6 +126,14 @@ interface Request extends RequestBase {
      * Otherwise, the default value is `false`.
      */
     should_trim_fields?: boolean
+    /**
+     * If the format is `ndjson`, you can specify whether to parse nested JSON objects recursively.
+     * The nested objects are parsed to a maximum depth equal to the default value of the `index.mapping.depth.limit` setting.
+     * Anything beyond that depth is parsed as an `object` type field.
+     * For formats other than `ndjson`, this parameter is ignored.
+     * @server_default false
+     */
+    should_parse_recursively?: boolean
     /**
      * The maximum amount of time that the structure analysis can take.
      * If the analysis is still running when the timeout expires, it will be stopped.

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Check existence of index templates.
+ *
  * Get information about whether index templates exist.
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  *
@@ -47,6 +48,7 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Indicates whether to use a flat format for the response.
@@ -55,6 +57,7 @@ export interface Request extends RequestBase {
     flat_settings?: boolean
     /**
      * Indicates whether to get information from the local node only.
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
      * @server_default false
      */
     local?: boolean

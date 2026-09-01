@@ -1,0 +1,27 @@
+# summary:
+description: A successful response from `GET /_security/_authenticate` for access token authentication.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "username": "0000000001",
+    "roles": [
+      "admin"
+    ],
+    "full_name": "Peter Parker",
+    "email": "spider-man@marvel.com",
+    "metadata": {},
+    "enabled": true,
+    "authentication_realm": {
+      "name": "cloud-saml-kibana",
+      "type": "saml"
+    },
+    "lookup_realm": {
+      "name": "cloud-saml-kibana",
+      "type": "saml"
+    },
+    "authentication_type": "token",
+    "token": {
+      "managed_by": "cloud"
+    }
+  }

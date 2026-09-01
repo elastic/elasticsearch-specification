@@ -21,13 +21,14 @@ import { RequestBase } from '@_types/Base'
 import {
   ExpandWildcards,
   Indices,
-  Metrics,
+  MediaType,
   VersionNumber
 } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the cluster state.
+ *
  * Get comprehensive information about the state of the cluster.
  *
  * The cluster state is an internal data structure which keeps track of a variety of information needed by every node, including the identity and attributes of the other nodes in the cluster; cluster-wide settings; index metadata, including the mapping and settings for each index; the location and status of every shard copy in the cluster.
@@ -68,22 +69,83 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    metric?: Metrics
+    /** Limit the information returned to the specified metrics. */
+    metric?: ClusterStateMetrics
+    /**
+     * A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices
+     */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
-    /** @server_default true */
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     * @server_default true
+     */
     allow_no_indices?: boolean
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
-    /** @server_default false */
+    /**
+     * Return settings in flat format
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** @server_default false */
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     * @server_default false
+     */
     ignore_unavailable?: boolean
-    /** @server_default false */
+    /**
+     * Return local information, do not retrieve the state from master node
+     * @deprecated 9.0.0 This parameter has no effect, is now deprecated, and will be removed in a future version.
+     * @server_default false
+     */
     local?: boolean
-    /** @server_default 30s */
+    /**
+     * Timeout for waiting for new cluster state in case it is blocked
+     * @server_default 30s
+     * */
     master_timeout?: Duration
+    /**
+     * Wait for the metadata version to be equal or greater than the specified metadata version
+     */
     wait_for_metadata_version?: VersionNumber
+    /**
+     * The maximum time to wait for wait_for_metadata_version before timing out
+     */
     wait_for_timeout?: Duration
   }
 }
+
+export enum ClusterStateMetric {
+  /** Shows all metrics. */
+  _all,
+  /** Shows the cluster state version. */
+  version,
+  /** Shows the elected `master_node` part of the response. */
+  master_node,
+  /** Shows the `blocks` part of the response. */
+  blocks,
+  /** Shows the `nodes` part of the response. */
+  nodes,
+  /** Shows the `metadata` part of the response. If you supply a comma-separated list of indices, the returned output will only contain metadata for these indices. */
+  metadata,
+  /** Shows the `routing_table` part of the response. If you supply a comma-separated list of indices, the returned output will only contain the routing table for these indices. */
+  routing_table,
+  /** Shows the `routing_nodes` part of the response. */
+  routing_nodes,
+  /** Shows the `customs` part of the response, which includes custom cluster state information. */
+  customs
+}
+
+export type ClusterStateMetrics = ClusterStateMetric | ClusterStateMetric[]

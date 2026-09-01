@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Prepare OpenID connect authentication.
@@ -39,6 +40,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * In the case of a third party initiated single sign on, this is the issuer identifier for the OP that the RP is to send the authentication request to.

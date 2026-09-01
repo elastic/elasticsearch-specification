@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexAlias, IndexName } from '@_types/common'
+import { IndexAlias, IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { Checkpoint } from '../_types/Checkpoints'
 
@@ -43,8 +43,11 @@ export interface Request extends RequestBase {
     /**
      * A single index or index alias that resolves to a single index.
      */
+    // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
     index: IndexName | IndexAlias
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A boolean value which controls whether to wait (until the timeout) for the global checkpoints

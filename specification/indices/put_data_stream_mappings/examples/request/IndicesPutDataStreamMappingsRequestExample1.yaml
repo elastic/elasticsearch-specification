@@ -1,0 +1,16 @@
+summary: Change a data stream mapping
+method_request: PUT /_data_stream/my-data-stream/_mappings
+description: >
+  This is a request to add or modify two fields in a mapping on a data stream.
+type: request
+value: |-
+  {
+     "properties":{
+        "field1":{
+           "type":"ip"
+        },
+        "field3":{
+           "type":"text"
+        }
+     }
+  }

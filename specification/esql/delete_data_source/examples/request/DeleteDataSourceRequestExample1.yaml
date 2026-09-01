@@ -1,0 +1,3 @@
+summary: Delete a data source
+method_request: DELETE /_query/data_source/prod_s3_logs
+description: Delete an ES|QL data federation data source that has no dependent datasets.

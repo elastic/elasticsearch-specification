@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ResponseItem } from '_global/msearch/types'
+import { ResponseItem } from '@global/msearch/types'
 
 // Keep changes in sync with:
 // - msearch

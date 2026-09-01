@@ -16,13 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import { RequestBase } from '@_types/Base'
+import { MediaType, Name } from '@_types/common'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
 
 /**
  * Render a search application query.
+ *
  * Generate an Elasticsearch query using the specified query parameters and the search template associated with the search application or a default template if none is specified.
  * If a parameter used in the search template is not specified in `params`, the parameter's default value will be used.
  * The API returns the specific Elasticsearch query that would be generated and run by calling the search application search API.
@@ -45,10 +46,12 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /**
    * Contains parameters for a search application.
    */
-  body: {
+  body?: {
     params?: Dictionary<string, UserDefinedValue>
   }
 }

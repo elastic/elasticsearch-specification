@@ -1,8 +1,8 @@
 summary: Automatic slicing
-# method_request: POST my-index-000001/_delete_by_query?refresh&slices=5
+method_request: POST my-index-000001/_delete_by_query?refresh&slices=5
 description: >
-  Run `POST my-index-000001/_delete_by_query?refresh&slices=5` to let delete by query automatically parallelize using sliced scroll to slice on `_id`.
-  The `slices` query parameter value specifies the number of slices to use.
+  Run `POST my-index-000001/_delete_by_query?refresh&slices=5` to let delete by query automatically parallelize using sliced scroll
+  to slice on `_id`. The `slices` query parameter value specifies the number of slices to use.
 # type: request
 value: |-
   {

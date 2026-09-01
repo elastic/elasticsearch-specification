@@ -18,13 +18,20 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Routing } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  ProjectRouting,
+  Routing
+} from '@_types/common'
 import { double, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
 /**
  * Count search results.
+ *
  * Get the number of documents matching a query.
  *
  * The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
@@ -58,14 +65,20 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams and indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index?: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -81,9 +94,9 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -105,7 +118,9 @@ export interface Request extends RequestBase {
      */
     ignore_throttled?: boolean
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -126,8 +141,21 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
+    /**
+     * Specific `tag` of the request for logging and statistical purposes.
+     */
+    stats?: string[] | string
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * The maximum number of documents to collect for each shard.
      * If a query reaches this limit, Elasticsearch terminates the query early.
@@ -144,11 +172,23 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search query using Query DSL. A request body query cannot be used
      * with the `q` query string parameter.
      */
     query?: QueryContainer
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

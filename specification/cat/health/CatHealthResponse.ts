@@ -20,5 +20,6 @@
 import { HealthRecord } from './types'
 
 export class Response {
+  /** @codegen_name health_records */
   body: Array<HealthRecord>
 }

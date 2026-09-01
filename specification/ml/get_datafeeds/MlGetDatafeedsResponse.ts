@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Datafeed } from '@ml/_types/Datafeed'
 import { long } from '@_types/Numeric'
+import { Datafeed } from '@ml/_types/Datafeed'
 
 export class Response {
   body: {

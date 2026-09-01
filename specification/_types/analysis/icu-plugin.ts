@@ -18,8 +18,8 @@
  */
 
 import { CharFilterBase } from './char_filters'
-import { TokenizerBase } from './tokenizers'
 import { TokenFilterBase } from './token_filters'
+import { TokenizerBase } from './tokenizers'
 
 export class IcuTransformTokenFilter extends TokenFilterBase {
   type: 'icu_transform'
@@ -41,6 +41,7 @@ export class IcuNormalizationCharFilter extends CharFilterBase {
   type: 'icu_normalizer'
   mode?: IcuNormalizationMode
   name?: IcuNormalizationType
+  unicode_set_filter?: string
 }
 
 export class IcuFoldingTokenFilter extends TokenFilterBase {
@@ -51,16 +52,16 @@ export class IcuFoldingTokenFilter extends TokenFilterBase {
 export class IcuCollationTokenFilter extends TokenFilterBase {
   type: 'icu_collation'
   alternate?: IcuCollationAlternate
-  case_first?: IcuCollationCaseFirst
-  case_level?: boolean
+  caseFirst?: IcuCollationCaseFirst
+  caseLevel?: boolean
   country?: string
   decomposition?: IcuCollationDecomposition
-  hiragana_quaternary_mode?: boolean
+  hiraganaQuaternaryMode?: boolean
   language?: string
   numeric?: boolean
   rules?: string
   strength?: IcuCollationStrength
-  variable_top?: string
+  variableTop?: string
   variant?: string
 }
 

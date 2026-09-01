@@ -18,6 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
+import { integer } from '@_types/Numeric'
 import { ShardStatistics } from '@_types/Stats'
 
 export class Response {
@@ -32,6 +33,7 @@ export class Response {
 export class IndicesValidationExplanation {
   error?: string
   explanation?: string
-  index: IndexName
+  index?: IndexName
+  shard?: integer
   valid: boolean
 }

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Pipeline } from '@logstash/_types/Pipeline'
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
+import { Pipeline } from '@logstash/_types/Pipeline'
 
 /**
  * Create or update a Logstash pipeline.
@@ -43,9 +43,12 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * An identifier for the pipeline.
+     * Pipeline IDs must begin with a letter or underscore and contain only letters, underscores, dashes, hyphens and numbers.
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   /** @codegen_name pipeline */
   body: Pipeline
 }

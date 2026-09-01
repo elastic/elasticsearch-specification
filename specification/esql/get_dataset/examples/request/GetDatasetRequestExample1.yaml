@@ -1,0 +1,3 @@
+summary: Get a dataset
+method_request: GET /_query/dataset/access_logs
+description: Get the definition for a specific ES|QL data federation dataset.

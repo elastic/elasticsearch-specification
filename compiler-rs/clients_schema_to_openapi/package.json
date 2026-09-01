@@ -4,14 +4,9 @@
   "type": "module",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "validate": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-openapi.json",
-    "validate-serverless": "./node_modules/.bin/spectral lint ../../output/openapi/elasticsearch-serverless-openapi.json"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@stoplight/spectral-cli": "^6.10.1",
     "json-diff": "^1.0.6"
   }
 }

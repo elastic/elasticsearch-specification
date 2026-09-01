@@ -17,14 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, MediaType, Name } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { IndexName, Name } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { StorageOption } from './types'
 
 /**
  * Mount a snapshot.
+ *
  * Mount a snapshot as a searchable snapshot index.
  * Do not use this API for snapshots managed by index lifecycle management (ILM).
  * Manually mounting ILM-managed snapshots can interfere with ILM processes.
@@ -51,6 +53,8 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.
@@ -66,9 +70,10 @@ export interface Request extends RequestBase {
     wait_for_completion?: boolean
     /**
      * The mount option for the searchable snapshot index.
+     * For further information on mount options, refer to: [Mount options](https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/searchable-snapshots#searchable-snapshot-mount-storage-options)
      * @server_default full_copy
      */
-    storage?: string
+    storage?: StorageOption
   }
   body: {
     /**

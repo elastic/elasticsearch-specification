@@ -1,5 +1,5 @@
 # summary:
-# method_request: PUT my-index-000001/_create/1
+method_request: PUT my-index-000001/_create/1
 description: >
   Run `PUT my-index-000001/_create/1` to index a document into the `my-index-000001` index if no document with that ID exists.
 # type: request

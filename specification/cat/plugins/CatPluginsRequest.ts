@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatPluginsColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get plugin information.
@@ -38,7 +39,18 @@ export interface Request extends CatRequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
+    /**
+     * A comma-separated list of columns names to display. It supports simple wildcards.
+     */
+    h?: CatPluginsColumns
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * Include bootstrap plugins in the response
      * @server_default false

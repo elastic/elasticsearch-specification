@@ -1,0 +1,2462 @@
+/*
+ * Licensed to Elasticsearch B.V. under one or more contributor
+ * license agreements. See the NOTICE file distributed with
+ * this work for additional information regarding copyright
+ * ownership. Elasticsearch B.V. licenses this file to you under
+ * the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+import { Id } from '@_types/common'
+import { double, float, integer, long } from '@_types/Numeric'
+import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+
+export class RequestChatCompletion {
+  /**
+   * A list of objects representing the conversation.
+   * Requests should generally only add new messages from the user (role `user`).
+   * The other message roles (`assistant`, `system`, or `tool`) should generally only be copied from the response to a previous completion request, such that the messages array is built up throughout a conversation.
+   */
+  messages: Array<Message>
+  /**
+   * The ID of the model to use. By default, the model ID is set to the value included when creating the inference endpoint.
+   */
+  model?: string
+  /**
+   * The upper bound limit for the number of tokens that can be generated for a completion request.
+   */
+  max_completion_tokens?: long
+  /**
+   * The reasoning configuration for the completion request.
+   * This controls the model's reasoning process in one of two ways:
+   *
+   * * By specifying the model’s reasoning effort level with the `effort` field.
+   * * By enabling reasoning with default settings by setting `enabled` field to `true`.
+   *
+   * It also includes optional settings to control:
+   *
+   * * The level of detail in the summary returned in the response with the `summary` field.
+   * * Whether reasoning details are included in the response at all with the `exclude` field.
+   *
+   * Example (effort):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "effort": "high",
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Example (enabled):
+   * ```
+   * {
+   *    "reasoning": {
+   *        "enabled": true,
+   *        "summary": "concise",
+   *        "exclude": false
+   *    }
+   * }
+   * ```
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: Reasoning
+  /**
+   * A sequence of strings to control when the model should stop generating additional tokens.
+   */
+  stop?: Array<string>
+  /**
+   * The sampling temperature to use.
+   */
+  temperature?: float
+  /**
+   * Controls which tool is called by the model.
+   * String representation: One of `auto`, `none`, or `requrired`. `auto` allows the model to choose between calling tools and generating a message. `none` causes the model to not call any tools. `required` forces the model to call one or more tools.
+   * Example (object representation):
+   * ```
+   * {
+   *   "tool_choice": {
+   *       "type": "function",
+   *       "function": {
+   *           "name": "get_current_weather"
+   *       }
+   *   }
+   * }
+   * ```
+   */
+  tool_choice?: CompletionToolType
+  /**
+   * A list of tools that the model can call.
+   * Example:
+   * ```
+   * {
+   *   "tools": [
+   *       {
+   *           "type": "function",
+   *           "function": {
+   *               "name": "get_price_of_item",
+   *               "description": "Get the current price of an item",
+   *               "parameters": {
+   *                   "type": "object",
+   *                   "properties": {
+   *                       "item": {
+   *                           "id": "12345"
+   *                       },
+   *                       "unit": {
+   *                           "type": "currency"
+   *                       }
+   *                   }
+   *               }
+   *           }
+   *       }
+   *   ]
+   * }
+   * ```
+   */
+  tools?: Array<CompletionTool>
+  /**
+   * Nucleus sampling, an alternative to sampling with temperature.
+   */
+  top_p?: float
+}
+
+export class AdaptiveAllocations {
+  /**
+   * Turn on `adaptive_allocations`.
+   * @server_default false
+   */
+  enabled?: boolean
+  /**
+   * The maximum number of allocations to scale to.
+   * If set, it must be greater than or equal to `min_number_of_allocations`.
+   */
+  max_number_of_allocations?: integer
+  /**
+   * The minimum number of allocations to scale to.
+   * If set, it must be greater than or equal to 0.
+   * If not defined, the deployment scales to 0.
+   */
+  min_number_of_allocations?: integer
+}
+
+/**
+ * @codegen_names string, object
+ */
+export type CompletionToolType = string | CompletionToolChoice
+
+/**
+ * An object style representation of a single portion of a conversation.
+ */
+export interface ContentObject {
+  /**
+   * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
+   * types other than "text"
+   */
+  type: ContentType
+  /**
+   * The text content. Only applicable for the `text` type
+   */
+  text: string
+  /**
+   * The image content. Only applicable for the `image_url` type
+   */
+  image_url: ImageUrl
+  /**
+   * The file content. Only applicable for the `file` type
+   */
+  file: FileContent
+}
+
+export enum ContentType {
+  text,
+  image_url,
+  file
+}
+
+export interface ImageUrl {
+  /**
+   * The base64 encoded image data as a data URI
+   */
+  url: string
+  /**
+   * Specifies the detail level of the image
+   */
+  detail?: ImageUrlDetail
+}
+
+export enum ImageUrlDetail {
+  auto,
+  low,
+  high
+}
+
+export interface FileContent {
+  /**
+   * The base64 encoded file data
+   */
+  file_data: string
+  /**
+   * The name of the file
+   */
+  filename: string
+}
+
+/**
+ * The reasoning configuration to use for the completion request.
+ * Currently supported only for `elastic` provider.
+ */
+export interface Reasoning {
+  /**
+   * The level of effort the model should put into reasoning.
+   * This is a hint that guides the model in how much effort to put into reasoning,
+   * with `xhigh` being the most effort and `none` being no effort.
+   */
+  effort?: ReasoningEffort
+  /**
+   * Whether to enable reasoning with default settings.
+   * This is a shortcut for enabling reasoning without having to specify the other parameters.
+   * If `enabled` is set to `true`, then reasoning at the `medium` effort level is enabled.
+   * Ignored if `effort` is specified,
+   * in which case that parameter will control the reasoning process instead.
+   */
+  enabled?: boolean
+  /**
+   * Whether to exclude reasoning information from the response.
+   * If `true`, the response will not include any reasoning details.
+   */
+  exclude?: boolean
+  /**
+   * The level of detail included in the reasoning summary returned in the response.
+   * This is a hint on how much detail to include in the summary of the reasoning that is returned in the response,
+   * with `auto` being the default level of detail, `concise` being less detail, and `detailed` being more detail.
+   */
+  summary?: ReasoningSummary
+}
+
+export enum ReasoningEffort {
+  xhigh,
+  high,
+  medium,
+  low,
+  minimal,
+  none
+}
+
+export enum ReasoningSummary {
+  auto,
+  concise,
+  detailed
+}
+
+/**
+ * The function that the model called.
+ */
+export interface ToolCallFunction {
+  /**
+   * The arguments to call the function with in JSON format.
+   */
+  arguments: string
+  /**
+   * The name of the function to call.
+   */
+  name: string
+}
+
+/**
+ * A tool call generated by the model.
+ */
+export interface ToolCall {
+  /**
+   * The identifier of the tool call.
+   */
+  id: Id
+  /**
+   * The function that the model called.
+   */
+  function: ToolCallFunction
+  /**
+   * The type of the tool call.
+   */
+  type: string
+}
+
+/**
+ * @codegen_names string, object
+ */
+export type MessageContent = string | Array<ContentObject>
+
+/**
+ * An object representing part of the conversation.
+ */
+export interface Message {
+  /**
+   * The content of the message.
+   *
+   * String example:
+   * ```
+   * {
+   *    "content": "Some string"
+   * }
+   * ```
+   *
+   * Text example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "text": "Some text",
+   *        "type": "text"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * Image example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "image_url": {
+   *          "url": "data:image/jpeg;base64,..."
+   *        },
+   *        "type": "image_url"
+   *       }
+   *    ]
+   * }
+   * ```
+   *
+   * File example:
+   * ```
+   * {
+   *   "content": [
+   *       {
+   *        "file": {
+   *          "file_data": "data:application/pdf;base64,...",
+   *          "filename": "somePDF"
+   *        },
+   *        "type": "file"
+   *       }
+   *    ]
+   * }
+   * ```
+   */
+  content?: MessageContent
+  /**
+   * The role of the message author. Valid values are `user`, `assistant`, `system`, and `tool`.
+   */
+  role: string
+  /**
+   * Only for `tool` role messages. The tool call that this message is responding to.
+   */
+  tool_call_id?: Id
+  /**
+   * Only for `assistant` role messages. The tool calls generated by the model. If it's specified, the `content` field is optional.
+   * Example:
+   * ```
+   * {
+   *   "tool_calls": [
+   *       {
+   *           "id": "call_KcAjWtAww20AihPHphUh46Gd",
+   *           "type": "function",
+   *           "function": {
+   *               "name": "get_current_weather",
+   *               "arguments": "{\"location\":\"Boston, MA\"}"
+   *           }
+   *       }
+   *   ]
+   * }
+   * ```
+   */
+  tool_calls?: Array<ToolCall>
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as plaintext.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning?: string
+  /**
+   * Only for `assistant` role messages. The reasoning details generated by the model as structured data.
+   * Currently supported only for `elastic` provider.
+   */
+  reasoning_details?: Array<ReasoningDetail>
+}
+
+/**
+ * Type representing the different types of reasoning details that can be included in the response from the model.
+ * Currently supported only for `elastic` provider.
+ * @variants internal tag='type'
+ */
+export type ReasoningDetail =
+  | EncryptedReasoningDetail
+  | SummaryReasoningDetail
+  | TextReasoningDetail
+
+/**
+ * The base reasoning detail that includes common fields across different types of reasoning details.
+ */
+export interface BaseReasoningDetail {
+  /**
+   * The format of the reasoning detail.
+   */
+  format?: string
+  /**
+   * The identifier of the reasoning detail.
+   */
+  id?: string
+  /**
+   * The index of the reasoning detail,
+   * which indicates its position in the sequence of reasoning details generated by the model.
+   */
+  index?: integer
+}
+
+/**
+ * The reasoning detail with encrypted reasoning data that may be redacted or protected.
+ */
+export interface EncryptedReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.encrypted'
+  /**
+   * The encrypted reasoning data generated by the model,
+   * which may be redacted or protected based on the model's configuration and the nature of the reasoning information.
+   */
+  data: string
+}
+
+/**
+ * The reasoning summary detail includes a high-level summary of the model's reasoning process.
+ */
+export interface SummaryReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.summary'
+  /**
+   * The summary of the reasoning process generated by the model,
+   * which provides an overview of the key points and conclusions reached during the reasoning process.
+   */
+  summary: string
+}
+
+/**
+ * The reasoning text detail includes plaintext reasoning with optional signature verification.
+ */
+export interface TextReasoningDetail extends BaseReasoningDetail {
+  type: 'reasoning.text'
+  /**
+   * The signature of the reasoning text,
+   * which can be used to verify the authenticity and integrity of the reasoning information provided by the model.
+   */
+  signature?: string
+  /**
+   * The plaintext reasoning generated by the model,
+   * which provides a detailed explanation of the model's reasoning process in human-readable form.
+   */
+  text?: string
+}
+
+/**
+ * The tool choice function.
+ *
+ */
+export interface CompletionToolChoiceFunction {
+  /**
+   * The name of the function to call.
+   */
+  name: string
+}
+
+/**
+ * Controls which tool is called by the model.
+ */
+export interface CompletionToolChoice {
+  /**
+   * The type of the tool.
+   */
+  type: string
+  /**
+   * The tool choice function.
+   */
+  function: CompletionToolChoiceFunction
+}
+
+/**
+ * The completion tool function definition.
+ */
+export interface CompletionToolFunction {
+  /**
+   * A description of what the function does.
+   * This is used by the model to choose when and how to call the function.
+   */
+  description?: string
+  /**
+   * The name of the function.
+   */
+  name: string
+  /**
+   * The parameters the functional accepts. This should be formatted as a JSON object.
+   */
+  parameters?: UserDefinedValue
+  /**
+   * Whether to enable schema adherence when generating the function call.
+   */
+  strict?: boolean
+}
+
+/**
+ * A list of tools that the model can call.
+ */
+export interface CompletionTool {
+  /**
+   * The type of tool.
+   */
+  type: string
+  /**
+   * The function definition.
+   */
+  function: CompletionToolFunction
+}
+
+export class RequestEmbedding {
+  /**
+   * Inference input.
+   * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+   * `content` objects may contain a single item or an array of items. Models that support multiple items per `content`
+   * object will return a single embedding for each `content` object, regardless of how many items it contains.
+   * Support for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.
+   *
+   * string example:
+   * ```
+   * "input": "Some text"
+   * ```
+   * string array example:
+   * ```
+   * "input": ["Some text", "Some more text"]
+   * ```
+   * `content` object example:
+   * ```
+   * "input": {
+   *     "content": {
+   *       "type": "image",
+   *       "format": "base64",
+   *       "value": "data:image/jpeg;base64,..."
+   *     }
+   *   }
+   * ```
+   * `content` object array example:
+   * ```
+   * "input": [
+   *   {
+   *     "content": {
+   *       "type": "text",
+   *       "format": "text",
+   *       "value": "Some text to generate an embedding"
+   *     }
+   *   },
+   *   {
+   *     "content": {
+   *       "type": "image",
+   *       "format": "base64",
+   *       "value": "data:image/jpeg;base64,..."
+   *     }
+   *   }
+   * ]
+   * ```
+   * Multiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):
+   * ```
+   * "input": [
+   *   {
+   *     "content": [
+   *       {
+   *         "type": "image",
+   *         "format": "base64",
+   *         "value": "data:image/jpeg;base64,..."
+   *       },
+   *       {
+   *         "type": "text",
+   *         "value": "Some text to create an embedding"
+   *       }
+   *     ]
+   *   }
+   * ]
+   * ```
+   */
+  input: EmbeddingInput
+  /**
+   * The input data type for the embedding model. Possible values include:
+   * * `SEARCH`
+   * * `INGEST`
+   * * `CLASSIFICATION`
+   * * `CLUSTERING`
+   *
+   * Not all models support all values. Unsupported values will trigger a validation exception.
+   * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
+   *
+   * > info
+   * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
+   */
+  input_type?: string
+  /**
+   * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
+   */
+  task_settings?: TaskSettings
+}
+
+/**
+ * Inference input.
+ * Either a string, an array of strings, a `content` object, or an array of `content` objects.
+ * @codegen_names string, content
+ */
+type EmbeddingInput = EmbeddingStringInput | EmbeddingContentInput
+
+/**
+ * Allows specifying text-only inputs for the `embedding` task.
+ */
+type EmbeddingStringInput = string | Array<string>
+
+/**
+ * Allows specifying multimodal inputs for the `embedding` task.
+ */
+type EmbeddingContentInput =
+  | EmbeddingContentObject
+  | Array<EmbeddingContentObject>
+
+/**
+ * A wrapper object which contains the fields required to specify multimodal inputs
+ */
+export class EmbeddingContentObject {
+  /**
+   * An object or an array of objects containing the input data for the model to embed
+   */
+  content: EmbeddingContentObjectGroup
+}
+
+/**
+ * Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.
+ * Support for multiple items is available in Elasticsearch 9.5.0 and later.
+ */
+type EmbeddingContentObjectGroup =
+  | EmbeddingContentObjectItem
+  | Array<EmbeddingContentObjectItem>
+
+/**
+ *  An object containing the input data for a single item for the model to embed.
+ */
+export class EmbeddingContentObjectItem {
+  /**
+   * The type of input to embed. Not all models support all input types.
+   * The `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.
+   */
+  type: EmbeddingContentType
+  /**
+   * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.
+   * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
+   */
+  format?: EmbeddingContentFormat
+  /**
+   * The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. "data:content/type;base64,..."
+   */
+  value: string
+}
+
+/**
+ * The type of input to embed.
+ * The `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.
+ */
+export enum EmbeddingContentType {
+  text,
+  image,
+  audio,
+  video,
+  pdf
+}
+
+/**
+ * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
+ * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+ */
+export enum EmbeddingContentFormat {
+  text,
+  base64
+}
+
+export class AmazonSageMakerServiceSettings {
+  /**
+   * A valid AWS access key that has permissions to use Amazon SageMaker and access to models for invoking requests.
+   */
+  access_key: string
+  /**
+   * The name of the SageMaker endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  endpoint_name: string
+  /**
+   * The API format to use when calling SageMaker.
+   * Elasticsearch will convert the POST _inference request to this data format when invoking the SageMaker endpoint.
+   */
+  api: AmazonSageMakerApi
+  /**
+   * The region that your endpoint or Amazon Resource Name (ARN) is deployed in.
+   * The list of available regions per model can be found in the Amazon SageMaker documentation.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  region: string
+  /**
+   * A valid AWS secret key that is paired with the `access_key`.
+   * For information about creating and managing access and secret keys, refer to the AWS documentation.
+   * @ext_doc_id amazonsagemaker-secret-keys
+   */
+  secret_key: string
+  /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The similarity measure used when invoking the
+   * `text_embedding` task type.
+   */
+  similarity?: AmazonSageMakerSimilarity
+
+  /**
+   * Required when `api` is `elastic` and task type is `text_embedding`. The data type returned by the text embedding
+   * model.
+   * This value is used when parsing the response back to Elasticsearch data structures.
+   */
+  element_type?: AmazonSageMakerElementType
+  /**
+   * The model ID when calling a multi-model endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_model?: string
+  /**
+   * The container to directly invoke when calling a multi-container endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_container_hostname?: string
+  /**
+   * The inference component to directly invoke when calling a multi-component endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  inference_component_name?: string
+  /**
+   * The maximum number of inputs in each batch. This value is used by inference ingestion pipelines
+   * when processing semantic values. It correlates to the number of times the SageMaker endpoint is
+   * invoked (one per batch of input).
+   * @server_default 256
+   */
+  batch_size?: integer
+  /**
+   * The number of dimensions returned by the text embedding models. If this value is not provided, then
+   * it is guessed by making invoking the endpoint for the `text_embedding` task.
+   */
+  dimensions?: integer
+}
+
+export enum AmazonSageMakerApi {
+  openai,
+  elastic
+}
+
+export enum AmazonSageMakerSimilarity {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export enum AmazonSageMakerElementType {
+  byte,
+  float,
+  bit
+}
+
+export interface AmazonSageMakerTaskSettings {
+  /**
+   * The AWS custom attributes passed verbatim through to the model running in the SageMaker Endpoint.
+   * Values will be returned in the `X-elastic-sagemaker-custom-attributes` header.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  custom_attributes?: string
+  /**
+   * The optional JMESPath expression used to override the EnableExplanations provided during endpoint creation.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  enable_explanations?: string
+  /**
+   * The capture data ID when enabled in the endpoint.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  inference_id?: string
+  /**
+   * The stateful session identifier for a new or existing session.
+   * New sessions will be returned in the `X-elastic-sagemaker-new-session-id` header.
+   * Closed sessions will be returned in the `X-elastic-sagemaker-closed-session-id` header.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  session_id?: string
+  /**
+   * Specifies the variant when running with multi-variant Endpoints.
+   * @ext_doc_id amazonsagemaker-invoke
+   */
+  target_variant?: string
+}
+
+/**
+ * `elastic` API allows any key value pair in the task settings when calling the inference endpoint, but it cannot
+ * be used when creating the inference endpoint.
+ */
+export class AmazonSageMakerElasticTaskSettings
+  implements AmazonSageMakerTaskSettings
+{
+  [key: string]: unknown
+}
+
+/**
+ * `openai` API-specific task settings for Amazon SageMaker.
+ */
+export interface AmazonSageMakerOpenAiTaskSettings
+  extends AmazonSageMakerTaskSettings {
+  user?: string
+}
+
+export enum AmazonSageMakerServiceType {
+  amazon_sagemaker
+}
+
+export class AnthropicServiceSettings {
+  /**
+   * A valid API key for the Anthropic API.
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Anthropic documentation for the list of supported models.
+   * @ext_doc_id anothropic-models
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Anthropic.
+   * By default, the `anthropic` service sets the number of requests allowed per minute to 50.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export class AnthropicTaskSettings {
+  /**
+   * For a `completion` or `chat_completion` task, it is the maximum number of tokens to generate before stopping.
+   */
+  max_tokens: integer
+  /**
+   * For a `completion` or `chat_completion` task, it is the amount of randomness injected into the response.
+   * For more details about the supported range, refer to Anthropic documentation.
+   * @ext_doc_id anthropic-messages
+   */
+  temperature?: float
+  /**
+   * For a `completion` or `chat_completion` task, it specifies to only sample from the top K options for each subsequent token.
+   * It is recommended for advanced use cases only.
+   * You usually only need to use `temperature`.
+   */
+  top_k?: integer
+  /**
+   * For a `completion` or `chat_completion` task, it specifies to use Anthropic's nucleus sampling.
+   * In nucleus sampling, Anthropic computes the cumulative distribution over all the options for each subsequent token in decreasing probability order and cuts it off once it reaches the specified probability.
+   * You should either alter `temperature` or `top_p`, but not both.
+   * It is recommended for advanced use cases only.
+   * You usually only need to use `temperature`.
+   */
+  top_p?: float
+}
+
+export enum AnthropicTaskType {
+  completion,
+  chat_completion
+}
+
+export enum AnthropicServiceType {
+  anthropic
+}
+
+export class AzureAiStudioServiceSettings {
+  /**
+   * A valid API key of your Azure AI Studio model deployment.
+   * This key can be found on the overview page for your deployment in the management section of your Azure AI Studio account.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id azureaistudio-api-keys
+   */
+  api_key: string
+  /**
+   * The type of endpoint that is available for deployment through Azure AI Studio: `token` or `realtime`.
+   * The `token` endpoint type is for "pay as you go" endpoints that are billed per token.
+   * The `realtime` endpoint type is for "real-time" endpoints that are billed per hour of usage.
+   * @ext_doc_id azureaistudio-endpoint-types
+   */
+  endpoint_type: string
+  /**
+   * The target URL of your Azure AI Studio model deployment.
+   * This can be found on the overview page for your deployment in the management section of your Azure AI Studio account.
+   */
+  target: string
+  /**
+   * The model provider for your deployment.
+   * Note that some providers may support only certain task types.
+   * Supported providers include:
+   *
+   * * `cohere` - available for `text_embedding`, `rerank` and `completion` task types
+   * * `databricks` - available for `completion` task type only
+   * * `meta` - available for `completion` task type only
+   * * `microsoft_phi` - available for `completion` task type only
+   * * `mistral` - available for `completion` task type only
+   * * `openai` - available for `text_embedding` and `completion` task types
+   */
+  provider: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Azure AI Studio.
+   * By default, the `azureaistudio` service sets the number of requests allowed per minute to 240.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export class AzureAiStudioTaskSettings {
+  /**
+   * For a `completion` task, instruct the inference process to perform sampling.
+   * It has no effect unless `temperature` or `top_p` is specified.
+   */
+  do_sample?: float
+  /**
+   * For a `completion` task, provide a hint for the maximum number of output tokens to be generated.
+   */
+  max_new_tokens?: integer
+  /**
+   * For a `completion` task, control the apparent creativity of generated completions with a sampling temperature.
+   * It must be a number in the range of 0.0 to 2.0.
+   * It should not be used if `top_p` is specified.
+   */
+  temperature?: float
+  /**
+   * For a `completion` task, make the model consider the results of the tokens with nucleus sampling probability.
+   * It is an alternative value to `temperature` and must be a number in the range of 0.0 to 2.0.
+   * It should not be used if `temperature` is specified.
+   */
+  top_p?: float
+  /**
+   * For a `text_embedding` task, specify the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   */
+  top_n?: integer
+}
+
+export enum AzureAiStudioTaskType {
+  completion,
+  rerank,
+  text_embedding
+}
+
+export enum AzureAiStudioServiceType {
+  azureaistudio
+}
+
+export class AzureOpenAIServiceSettings {
+  /**
+   * A valid API key for your Azure OpenAI account.
+   *
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-auth
+   */
+  api_key?: string
+  /**
+   * The Azure API version ID to use.
+   * It is recommended to use the latest supported non-preview version.
+   */
+  api_version: string
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The application ID that's assigned to your app.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  client_id?: string
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The application secret that you created in the Microsoft app registration portal for your app.
+   *
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  client_secret?: string
+  /**
+   * The deployment name of your deployed models.
+   * Your Azure OpenAI deployments can be found though the Azure OpenAI Studio portal that is linked to your subscription.
+   * @ext_doc_id azureopenai
+   */
+  deployment_id: string
+  /**
+   * A valid Microsoft Entra token.
+   *
+   * IMPORTANT: You must specify either `api_key`, `entra_id`, or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-auth
+   */
+  entra_id?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Azure.
+   * The `azureopenai` service sets a default number of requests allowed per minute depending on the task type.
+   * For `text_embedding`, it is set to `1440`.
+   * For `completion` and `chat_completion`, it is set to `120`.
+   * @ext_doc_id azureopenai-quota-limits
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The name of your Azure OpenAI resource.
+   * You can find this from the list of resources in the Azure Portal for your subscription.
+   * @ext_doc_id azureopenai-portal
+   */
+  resource_name: string
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The resource identifier (application ID URI) of the resource you want, suffixed with .default
+   * For example:
+   * ```
+   * "scopes": [
+   *   "https://cognitiveservices.azure.com/.default"
+   * ]
+   * ```
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2-scopes
+   */
+  scopes?: Array<string>
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The directory tenant the application plans to operate against.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `tenant_id`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id azureopenai-oauth2
+   */
+  tenant_id?: string
+}
+
+export class AzureOpenAITaskSettings {
+  /**
+   * Specifies the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
+}
+
+export enum AzureOpenAITaskType {
+  completion,
+  chat_completion,
+  text_embedding
+}
+
+export enum AzureOpenAIServiceType {
+  azureopenai
+}
+
+export class CohereServiceSettings {
+  /**
+   * A valid API key for your Cohere account.
+   * You can find or create your Cohere API keys on the Cohere API key settings page.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id cohere-api-keys
+   */
+  api_key: string
+  /**
+   * For a `text_embedding` task, the types of embeddings you want to get back.
+   * Use `binary` for binary embeddings, which are encoded as bytes with signed int8 precision.
+   * Use `bit` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `binary`).
+   * Use `byte` for signed int8 embeddings (this is a synonym of `int8`).
+   * Use `float` for the default float embeddings.
+   * Use `int8` for signed int8 embeddings.
+   * @server_default float
+   */
+  embedding_type?: CohereEmbeddingType
+  /**
+   * For a `completion`, `rerank`, or `text_embedding` task, the name of the model to use for the inference task.
+   *
+   * * For the available `completion` models, refer to the [Cohere command docs](https://docs.cohere.com/docs/models#command).
+   * * For the available `rerank` models, refer to the [Cohere rerank docs](https://docs.cohere.com/reference/rerank-1).
+   * * For the available `text_embedding` models, refer to [Cohere embed docs](https://docs.cohere.com/reference/embed).
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Cohere.
+   * By default, the `cohere` service sets the number of requests allowed per minute to 10000.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The similarity measure.
+   * If the `embedding_type` is `float`, the default value is `dot_product`.
+   * If the `embedding_type` is `int8` or `byte`, the default value is `cosine`.
+   */
+  similarity?: CohereSimilarityType
+}
+
+export enum CohereTaskType {
+  completion,
+  rerank,
+  text_embedding
+}
+
+export enum CohereServiceType {
+  cohere
+}
+
+export enum CohereEmbeddingType {
+  binary,
+  bit,
+  byte,
+  float,
+  int8
+}
+
+export enum CohereInputType {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export enum CohereSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export enum CohereTruncateType {
+  END,
+  NONE,
+  START
+}
+
+export class CohereTaskSettings {
+  /**
+   * For a `text_embedding` task, the type of input passed to the model.
+   * Valid values are:
+   *
+   * * `classification`: Use it for embeddings passed through a text classifier.
+   * * `clustering`: Use it for the embeddings run through a clustering algorithm.
+   * * `ingest`: Use it for storing document embeddings in a vector database.
+   * * `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.
+   *
+   * IMPORTANT: The `input_type` field is required when using embedding models `v3` and higher.
+   */
+  input_type: CohereInputType
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   * If this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.
+   */
+  top_n?: integer
+  /**
+   * For a `text_embedding` task, the method to handle inputs longer than the maximum token length.
+   * Valid values are:
+   *
+   * * `END`: When the input exceeds the maximum input token length, the end of the input is discarded.
+   * * `NONE`: When the input exceeds the maximum input token length, an error is returned.
+   * * `START`: When the input exceeds the maximum input token length, the start of the input is discarded.
+   */
+  truncate?: CohereTruncateType
+}
+
+export enum CustomServiceInputType {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export type CustomServiceQueryParameter = string[]
+
+export class CustomServiceSettings {
+  /**
+   * Specifies the batch size used for the semantic_text field. If the field is not provided, the default is 10.
+   * The batch size is the maximum number of inputs in a single request to the upstream service.
+   * The chunk within the batch are controlled by the selected chunking strategy for the semantic_text field.
+   * @ext_doc_id sematic-text-chunking
+   */
+  batch_size?: integer
+  /**
+   * Specifies the HTTP header parameters – such as `Authorization` or `Content-Type` – that are required to access the custom service.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Authorization": "Bearer ${api_key}",
+   *   "Content-Type": "application/json;charset=utf-8"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
+  /**
+   * Specifies the input type translation values that are used to replace the `${input_type}` template in the request body.
+   * For example:
+   * ```
+   * "input_type": {
+   *   "translation": {
+   *     "ingest": "do_ingest",
+   *     "search": "do_search"
+   *   },
+   *   "default": "a_default"
+   * },
+   * ```
+   * If the subsequent inference requests come from a search context, the `search` key will be used and the template will be replaced with `do_search`.
+   * If it comes from the ingest context `do_ingest` is used. If it's a different context that is not specified, the default value will be used. If no default is specified an empty string is used.
+   * `translation` can be:
+   * * `classification`
+   * * `clustering`
+   * * `ingest`
+   * * `search`
+   */
+  input_type?: Dictionary<CustomServiceInputType, string>
+  /**
+   * Specifies the query parameters as a list of tuples. The arrays inside the `query_parameters` must have two items, a key and a value.
+   * For example:
+   * ```
+   * "query_parameters":[
+   *   ["param_key", "some_value"],
+   *   ["param_key", "another_value"],
+   *   ["other_key", "other_value"]
+   * ]
+   * ```
+   * If the base url is `https://www.elastic.co` it results in: `https://www.elastic.co?param_key=some_value&param_key=another_value&other_key=other_value`.
+   */
+  query_parameters?: Array<CustomServiceQueryParameter>
+  /**
+   * The request configuration object.
+   */
+  request: CustomRequestParams
+  /**
+   * The response configuration object.
+   */
+  response: CustomResponseParams
+  /**
+   * Specifies secret parameters, like `api_key` or `api_token`, that are required to access the custom service.
+   * For example:
+   * ```
+   * "secret_parameters":{
+   *   "api_key":"<api_key>"
+   * }
+   * ```
+   */
+  secret_parameters: Dictionary<string, string>
+  /**
+   * The URL endpoint to use for the requests.
+   */
+  url?: string
+}
+
+export class CustomRequestParams {
+  /**
+   * The body structure of the request. It requires passing in the string-escaped result of the JSON format HTTP request body.
+   * For example:
+   * ```
+   * "request": "{\"input\":${input}}"
+   * ```
+   * > info
+   * > The content string needs to be a single line except when using the Kibana console.
+   */
+  content: string
+}
+
+export class CustomResponseParams {
+  /**
+   * Specifies the JSON parser that is used to parse the response from the custom service.
+   * Different task types require different json_parser parameters.
+   * For example:
+   * ```
+   * # text_embedding
+   * # For a response like this:
+   *
+   * {
+   *  "object": "list",
+   *  "data": [
+   *      {
+   *        "object": "embedding",
+   *        "index": 0,
+   *        "embedding": [
+   *            0.014539449,
+   *            -0.015288644
+   *        ]
+   *      }
+   *  ],
+   *  "model": "text-embedding-ada-002-v2",
+   *  "usage": {
+   *      "prompt_tokens": 8,
+   *      "total_tokens": 8
+   *  }
+   * }
+   *
+   * # the json_parser definition should look like this:
+   *
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.data[*].embedding[*]"
+   *   }
+   * }
+   *
+   * # Elasticsearch supports the following embedding types:
+   * * float
+   * * byte
+   * * bit (or binary)
+   *
+   * To specify the embedding type for the response, the `embedding_type`
+   * field should be added in the `json_parser` object. Here's an example:
+   * "response":{
+   *   "json_parser":{
+   *     "text_embeddings":"$.data[*].embedding[*]",
+   *     "embedding_type":"bit"
+   *   }
+   * }
+   *
+   * If `embedding_type` is not specified, it defaults to `float`.
+   *
+   * # sparse_embedding
+   * # For a response like this:
+   *
+   * {
+   *   "request_id": "75C50B5B-E79E-4930-****-F48DBB392231",
+   *   "latency": 22,
+   *   "usage": {
+   *      "token_count": 11
+   *   },
+   *   "result": {
+   *      "sparse_embeddings": [
+   *         {
+   *           "index": 0,
+   *           "embedding": [
+   *             {
+   *               "token_id": 6,
+   *               "weight": 0.101
+   *             },
+   *             {
+   *               "token_id": 163040,
+   *               "weight": 0.28417
+   *             }
+   *           ]
+   *         }
+   *      ]
+   *   }
+   * }
+   *
+   * # the json_parser definition should look like this:
+   *
+   * "response":{
+   *   "json_parser":{
+   *     "token_path":"$.result.sparse_embeddings[*].embedding[*].token_id",
+   *     "weight_path":"$.result.sparse_embeddings[*].embedding[*].weight"
+   *   }
+   * }
+   *
+   * # rerank
+   * # For a response like this:
+   *
+   * {
+   *   "results": [
+   *     {
+   *       "index": 3,
+   *       "relevance_score": 0.999071,
+   *       "document": "abc"
+   *     },
+   *     {
+   *       "index": 4,
+   *       "relevance_score": 0.7867867,
+   *       "document": "123"
+   *     },
+   *     {
+   *       "index": 0,
+   *       "relevance_score": 0.32713068,
+   *       "document": "super"
+   *     }
+   *   ],
+   * }
+   *
+   * # the json_parser definition should look like this:
+   *
+   * "response":{
+   *   "json_parser":{
+   *     "reranked_index":"$.result.scores[*].index",    // optional
+   *     "relevance_score":"$.result.scores[*].score",
+   *     "document_text":"xxx"    // optional
+   *   }
+   * }
+   *
+   * # completion
+   * # For a response like this:
+   *
+   * {
+   *  "id": "chatcmpl-B9MBs8CjcvOU2jLn4n570S5qMJKcT",
+   *  "object": "chat.completion",
+   *  "created": 1741569952,
+   *  "model": "gpt-4.1-2025-04-14",
+   *  "choices": [
+   *    {
+   *     "index": 0,
+   *     "message": {
+   *       "role": "assistant",
+   *       "content": "Hello! How can I assist you today?",
+   *       "refusal": null,
+   *       "annotations": []
+   *     },
+   *     "logprobs": null,
+   *     "finish_reason": "stop"
+   *   }
+   *  ]
+   * }
+   *
+   * # the json_parser definition should look like this:
+   *
+   * "response":{
+   *   "json_parser":{
+   *     "completion_result":"$.choices[*].message.content"
+   *   }
+   * }
+   */
+  json_parser: Dictionary<string, string>
+}
+
+export enum CustomTaskType {
+  text_embedding,
+  sparse_embedding,
+  rerank,
+  completion
+}
+
+export enum CustomServiceType {
+  custom
+}
+
+export type CustomTaskParameter = string | integer | double | float | boolean
+
+export class CustomTaskSettings {
+  /**
+   * Specifies parameters that are required to run the custom service. The parameters depend on the model your custom service uses.
+   * For example:
+   * ```
+   * "task_settings":{
+   *   "parameters":{
+   *     "input_type":"query",
+   *     "return_token":true
+   *   }
+   * }
+   * ```
+   *
+   * > warn
+   * > The `task_settings.parameters` cannot contain the same keys as `secret_parameters`. If they do, an error will be returned. This applies to PUT requests and POST requests.
+   */
+  parameters?: Dictionary<string, CustomTaskParameter>
+}
+
+export enum ContextualAIServiceType {
+  contextualai
+}
+
+export class ContextualAIServiceSettings {
+  /**
+   * A valid API key for your Contexutual AI account.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id contextualai-api-keys
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Contextual AI documentation for the list of available rerank models.
+   * @ext_doc_id contextualai-rerank
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Contextual AI.
+   * The `contextualai` service sets a default number of requests allowed per minute depending on the task type.
+   * For `rerank`, it is set to `1000`.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export class ContextualAITaskSettings {
+  /**
+   * Instructions for the reranking model. Refer to <https://docs.contextual.ai/api-reference/rerank/rerank#body-instruction>
+   * Only for the `rerank` task type.
+   */
+  instruction?: string
+  /**
+   * The number of most relevant documents to return.
+   * If not specified, the reranking results of all documents will be returned.
+   * Only for the `rerank` task type.
+   */
+  top_k?: integer
+}
+
+export class DeepSeekServiceSettings {
+  /**
+   * A valid API key for your DeepSeek account.
+   * You can find or create your DeepSeek API keys on the DeepSeek API key page.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id deepseek-api-keys
+   */
+  api_key: string
+  /**
+   * For a `completion` or `chat_completion` task, the name of the model to use for the inference task.
+   *
+   * For the available `completion` and `chat_completion` models, refer to the [DeepSeek Models & Pricing docs](https://api-docs.deepseek.com/quick_start/pricing).
+   */
+  model_id: string
+  /**
+   * The URL endpoint to use for the requests. Defaults to `https://api.deepseek.com/chat/completions`.
+   */
+  url?: string
+}
+
+export enum DeepSeekServiceType {
+  deepseek
+}
+
+export class ElasticsearchServiceSettings {
+  /**
+   * Adaptive allocations configuration details.
+   * If `enabled` is true, the number of allocations of the model is set based on the current load the process gets.
+   * When the load is high, a new model allocation is automatically created, respecting the value of `max_number_of_allocations` if it's set.
+   * When the load is low, a model allocation is automatically removed, respecting the value of `min_number_of_allocations` if it's set.
+   * If `enabled` is true, do not set the number of allocations manually.
+   */
+  adaptive_allocations?: AdaptiveAllocations
+  /**
+   * The deployment identifier for a trained model deployment.
+   * When `deployment_id` is used the `model_id` is optional.
+   */
+  deployment_id?: string
+  /**
+   * The name of the model to use for the inference task.
+   * It can be the ID of a built-in model (for example, `.multilingual-e5-small` for E5) or a text embedding model that was uploaded by using the Eland client.
+   * @ext_doc_id eland-import
+   */
+  model_id: string
+  /**
+   * The total number of allocations that are assigned to the model across machine learning nodes.
+   * Increasing this value generally increases the throughput.
+   * If adaptive allocations are enabled, do not set this value because it's automatically set.
+   */
+  num_allocations?: integer
+  /**
+   * The number of threads used by each model allocation during inference.
+   * This setting generally increases the speed per inference request.
+   * The inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.
+   * The value must be a power of 2.
+   * The maximum value is 32.
+   */
+  num_threads: integer
+  /**
+   * Available only for the `rerank` task type using the Elastic reranker model.
+   * Controls the strategy used for processing long documents during inference.
+   *
+   * Possible values:
+   * - `truncate` (default): Processes only the beginning of each document.
+   * - `chunk`: Splits long documents into smaller parts (chunks) before inference.
+   *
+   * When `long_document_strategy` is set to `chunk`, Elasticsearch splits each document into smaller parts but still returns a single score per document.
+   * That score reflects the highest relevance score among all chunks.
+   * @availability stack stability=experimental visibility=public
+   * @availability serverless stability=experimental visibility=public
+   */
+  long_document_strategy?: string
+  /**
+   * Only for the `rerank` task type.
+   * Limits the number of chunks per document that are sent for inference when chunking is enabled.
+   * If not set, all chunks generated for the document are processed.
+   * @availability stack stability=experimental visibility=public
+   * @availability serverless stability=experimental visibility=public
+   */
+  max_chunks_per_doc?: integer
+}
+
+export class ElasticsearchTaskSettings {
+  /**
+   * For a `rerank` task, return the document instead of only the index.
+   * @server_default true
+   */
+  return_documents?: boolean
+}
+
+export enum ElasticsearchTaskType {
+  rerank,
+  sparse_embedding,
+  text_embedding
+}
+
+export enum ElasticsearchServiceType {
+  elasticsearch
+}
+
+export class ElserServiceSettings {
+  /**
+   * Adaptive allocations configuration details.
+   * If `enabled` is true, the number of allocations of the model is set based on the current load the process gets.
+   * When the load is high, a new model allocation is automatically created, respecting the value of `max_number_of_allocations` if it's set.
+   * When the load is low, a model allocation is automatically removed, respecting the value of `min_number_of_allocations` if it's set.
+   * If `enabled` is true, do not set the number of allocations manually.
+   */
+  adaptive_allocations?: AdaptiveAllocations
+  /**
+   * The total number of allocations this model is assigned across machine learning nodes.
+   * Increasing this value generally increases the throughput.
+   * If adaptive allocations is enabled, do not set this value because it's automatically set.
+   */
+  num_allocations: integer
+  /**
+   * The number of threads used by each model allocation during inference.
+   * Increasing this value generally increases the speed per inference request.
+   * The inference process is a compute-bound process; `threads_per_allocations` must not exceed the number of available allocated processors per node.
+   * The value must be a power of 2.
+   * The maximum value is 32.
+   *
+   * > info
+   * > If you want to optimize your ELSER endpoint for ingest, set the number of threads to 1. If you want to optimize your ELSER endpoint for search, set the number of threads to greater than 1.
+   */
+  num_threads: integer
+}
+
+export enum ElserTaskType {
+  sparse_embedding
+}
+
+export enum ElserServiceType {
+  elser
+}
+
+export class GoogleAiStudioServiceSettings {
+  /**
+   * A valid API key of your Google Gemini account.
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Google documentation for the list of supported models.
+   * @ext_doc_id googleaistudio-models
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Google AI Studio.
+   * By default, the `googleaistudio` service sets the number of requests allowed per minute to 360.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum GoogleAiStudioTaskType {
+  completion,
+  text_embedding
+}
+
+export enum GoogleAiServiceType {
+  googleaistudio
+}
+
+export class GoogleVertexAIServiceSettings {
+  /**
+   * The name of the Google Model Garden Provider for `completion` and `chat_completion` tasks.
+   * In order for a Google Model Garden endpoint to be used `provider` must be defined and be other than `google`.
+   * Modes:
+   * - Google Model Garden (third-party models): set `provider` to a supported non-`google` value and provide `url` and/or `streaming_url`.
+   * - Google Vertex AI: omit `provider` or set it to `google`. In this mode, do not set `url` or `streaming_url` and Elastic will construct the endpoint url from `location`, `model_id`, and `project_id` parameters.
+   */
+  provider?: GoogleModelGardenProvider
+  /**
+   * The URL for non-streaming `completion` requests to a Google Model Garden provider endpoint.
+   * If both `url` and `streaming_url` are provided, each is used for its respective mode.
+   * If `streaming_url` is not provided, `url` is also used for streaming `completion` and `chat_completion`.
+   * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `url` (or `streaming_url`).
+   * At least one of `url` or `streaming_url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `url`.
+   */
+  url?: string
+  /**
+   * The URL for streaming `completion` and `chat_completion` requests to a Google Model Garden provider endpoint.
+   * If both `streaming_url` and `url` are provided, each is used for its respective mode.
+   * If `url` is not provided, `streaming_url` is also used for non-streaming `completion` requests.
+   * If `provider` is not provided or set to `google` (Google Vertex AI), do not set `streaming_url` (or `url`).
+   * At least one of `streaming_url` or `url` must be provided for Google Model Garden endpoint usage.
+   * Certain providers require separate URLs for streaming and non-streaming operations (e.g., Anthropic, Mistral, AI21). Others support both operation types through a single URL (e.g., Meta, Hugging Face).
+   * Information on constructing the URL for various providers can be found in the Google Model Garden documentation for the model, or on the endpoint’s `Sample request` page. The request examples also illustrate the proper formatting for the `streaming_url`.
+   */
+  streaming_url?: string
+  /**
+   * The name of the location to use for the inference task for the Google Vertex AI inference task.
+   * For Google Vertex AI, when `provider` is omitted or `google`, `location` is optional.
+   * When `location` is omitted, the request targets the Google Vertex AI global endpoint (`https://aiplatform.googleapis.com`); when it is provided, the corresponding regional endpoint (`https://<location>-aiplatform.googleapis.com`) is used.
+   * The field must be omitted to select the global endpoint; an empty string is not a valid `location`.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `location` is ignored.
+   * Refer to the Google documentation for the list of supported locations.
+   * @ext_doc_id googlevertexai-locations
+   */
+  location?: string
+  /**
+   * The name of the model to use for the inference task.
+   * For Google Vertex AI `model_id` is mandatory.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `model_id` will be used for some providers that require it, otherwise - ignored.
+   * Refer to the Google documentation for the list of supported models for Google Vertex AI.
+   * @ext_doc_id googlevertexai-models
+   */
+  model_id?: string
+  /**
+   * The name of the project to use for the Google Vertex AI inference task.
+   * For Google Vertex AI `project_id` is mandatory.
+   * For Google Model Garden's `completion` and `chat_completion` tasks, when `provider` is a supported non-`google` value - `project_id` is ignored.
+   */
+  project_id?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Google Vertex AI.
+   * By default, the `googlevertexai` service sets the number of requests allowed per minute to 30.000.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * A valid service account in JSON format for the Google Vertex AI API.
+   */
+  service_account_json: string
+  /**
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * By default, the model's standard output dimension is used.
+   * Refer to the Google documentation for more information.
+   * @ext_doc_id googlevertexai-output-dimensionality
+   */
+  dimensions?: integer
+  /**
+   * Only applicable for the `text_embedding` task type.
+   * Controls the batch size of chunked inference requests sent to Google Vertex AI.
+   *
+   * Setting this parameter lower reduces the risk of exceeding token limits but may result in more API calls. Setting it higher increases throughput but may risk hitting token limits.
+   *
+   * To estimate a safe `max_batch_size` value, you can use it together with the `max_chunk_size` parameter using the following formula:
+   * `max_batch_size ≈ max_chunk_size × 1.3 × 512 ÷ 20000`
+   *
+   * Where:
+   * - `1.3` is an approximate tokens-per-word ratio
+   * - `512` is the maximum number of chunks that can be generated per document
+   * - `20000` is the Google Vertex AI token limit per request
+   *
+   * This estimate assumes the worst-case scenario with a document generating the maximum 512 chunks.
+   * @server_default 250
+   */
+  max_batch_size?: integer
+}
+
+export enum GoogleModelGardenProvider {
+  google,
+  anthropic,
+  meta,
+  hugging_face,
+  mistral,
+  ai21
+}
+
+export class GoogleVertexAITaskSettings {
+  /**
+   * For a `text_embedding` task, truncate inputs longer than the maximum token length automatically.
+   */
+  auto_truncate?: boolean
+  /**
+   * For a `rerank` task, the number of the top N documents that should be returned.
+   */
+  top_n?: integer
+  /**
+   * For a `completion` or `chat_completion` task, allows configuration of the thinking features for the model.
+   * Refer to the Google documentation for the allowable configurations for each model type.
+   * @ext_doc_id googlevertexai-thinking
+   */
+  thinking_config?: ThinkingConfig
+  /**
+   * For `completion` and `chat_completion` tasks, specifies the `max_tokens` value for requests sent to the Google Model Garden `anthropic` provider.
+   * If `provider` is not set to `anthropic`, this field is ignored.
+   * If `max_tokens` is specified - it must be a positive integer. If not specified, the default value of 1024 is used.
+   * Anthropic models require `max_tokens` to be set for each request. Please refer to the Anthropic documentation for more information.
+   * @ext_doc_id anthropic-max-tokens
+   */
+  max_tokens?: integer
+}
+
+export class ThinkingConfig {
+  /**
+   * Indicates the desired thinking budget in tokens.
+   */
+  thinking_budget?: integer
+}
+
+export enum GoogleVertexAITaskType {
+  rerank,
+  text_embedding,
+  completion,
+  chat_completion
+}
+
+export enum GoogleVertexAIServiceType {
+  googlevertexai
+}
+
+export class GroqServiceSettings {
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Groq model documentation for the list of supported models and versions.
+   * Service has been tested and confirmed to be working for `completion` and `chat_completion` tasks with the following models:
+   * * `llama-3.3-70b-versatile`
+   * @ext_doc_id groq-api-models
+   */
+  model_id: string
+  /**
+   * A valid API key for accessing Groq API.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   */
+  api_key?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Groq API.
+   * By default, the `groq` service sets the number of requests allowed per minute to 1000. Refer to Groq documentation for more details.
+   * @ext_doc_id groq-rate-limit
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum GroqTaskType {
+  chat_completion
+}
+
+export enum GroqServiceType {
+  groq
+}
+
+export class HuggingFaceServiceSettings {
+  /**
+   * A valid access token for your HuggingFace account.
+   * You can create or find your access tokens on the HuggingFace settings page.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id huggingface-tokens
+   */
+  api_key: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Hugging Face.
+   * By default, the `hugging_face` service sets the number of requests allowed per minute to 3000 for all supported tasks.
+   * Hugging Face does not publish a universal rate limit — actual limits may vary.
+   * It is recommended to adjust this value based on the capacity and limits of your specific deployment environment.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The URL endpoint to use for the requests.
+   * For `completion` and `chat_completion` tasks, the deployed model must be compatible with the Hugging Face Chat Completion interface (see the linked external documentation for details). The endpoint URL for the request must include `/v1/chat/completions`.
+   * If the model supports the OpenAI Chat Completion schema, a toggle should appear in the interface. Enabling this toggle doesn't change any model behavior, it reveals the full endpoint URL needed (which should include `/v1/chat/completions`) when configuring the inference endpoint in Elasticsearch. If the model doesn't support this schema, the toggle may not be shown.
+   * @ext_doc_id huggingface-chat-completion-interface
+   */
+  url: string
+  /**
+   * The name of the HuggingFace model to use for the inference task.
+   * For `completion` and `chat_completion` tasks, this field is optional but may be required for certain models — particularly when using serverless inference endpoints.
+   * For the `text_embedding` task, this field should not be included. Otherwise, the request will fail.
+   */
+  model_id?: string
+}
+
+export class HuggingFaceTaskSettings {
+  /**
+   * For a `rerank` task, return doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   */
+  top_n?: integer
+}
+
+export enum HuggingFaceTaskType {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
+}
+
+export enum HuggingFaceServiceType {
+  hugging_face
+}
+
+export class JinaAIServiceSettings {
+  /**
+   * A valid API key of your JinaAI account.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id jinaAi-embeddings
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from JinaAI.
+   * By default, the `jinaai` service sets the number of requests allowed per minute to 2000 for all task types.
+   * @ext_doc_id jinaAi-rate-limit
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * For an `embedding` or `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * The default values varies with the embedding type.
+   * For example, a float embedding type uses a `dot_product` similarity measure by default.
+   */
+  similarity?: JinaAISimilarityType
+  /**
+   * For an `embedding` or `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * By default, the model's standard output dimension is used.
+   * Refer to the Jina documentation for more information.
+   * @ext_doc_id jinaAi-embeddings
+   */
+  dimensions?: integer
+  /**
+   * For an `embedding` or `text_embedding` task, the data type returned by the model.
+   * Use `bit` for binary embeddings, which are encoded as bytes with signed int8 precision.
+   * Use `binary` for binary embeddings, which are encoded as bytes with signed int8 precision (this is a synonym of `bit`).
+   * Use `float` for the default float embeddings.
+   * @server_default float
+   */
+  embedding_type?: JinaAIElementType
+  /**
+   * For the `embedding` task, whether the model supports multimodal inputs. If true, requests sent to the Jina model
+   * will use the multimodal request format (a list of objects). If false, requests sent to the model will use the same
+   * format as the `text_embedding` task (a list of strings). Setting this to `false` allows the `embedding` task to be
+   * used with models that do not support multimodal requests.
+   * @server_default true
+   */
+  multimodal_model?: boolean
+}
+
+export class JinaAITaskSettings {
+  /**
+   * For a `rerank` task, return the doc text within the results.
+   */
+  return_documents?: boolean
+  /**
+   * For an `embedding` or `text_embedding` task, the task passed to the model.
+   * Valid values are:
+   *
+   * * `classification`: Use it for embeddings passed through a classifier.
+   * * `clustering`: Use it for the embeddings run through a clustering algorithm.
+   * * `ingest`: Use it for storing document embeddings in a vector database.
+   * * `search`: Use it for storing embeddings of search queries run against a vector database to find relevant documents.
+   */
+  input_type?: JinaAITextEmbeddingTask
+  /**
+   * For an `embedding` or `text_embedding` task, controls when text is split into chunks.
+   * When set to `true`, a request from Elasticsearch contains only chunks related to a single document. Instead of batching chunks across documents, Elasticsearch sends them in separate requests. This ensures that chunk embeddings retain context from the entire document, improving semantic quality.
+   *
+   * If a document exceeds the model's context limits, or if the document contains non-text inputs (relevant when using the multimodal `embedding` task), late chunking is automatically disabled for that document only and standard chunking is used instead.
+   *
+   * If not specified, defaults to `false`.
+   */
+  late_chunking?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   * It defaults to the number of the documents.
+   * If this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.
+   */
+  top_n?: integer
+}
+
+export enum JinaAITaskType {
+  embedding,
+  rerank,
+  text_embedding
+}
+
+export enum JinaAIServiceType {
+  jinaai
+}
+
+export enum JinaAISimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export enum JinaAITextEmbeddingTask {
+  classification,
+  clustering,
+  ingest,
+  search
+}
+
+export enum JinaAIElementType {
+  binary,
+  bit,
+  float
+}
+
+export class LlamaServiceSettings {
+  /**
+   * The URL endpoint of the Llama stack endpoint.
+   * URL must contain:
+   * * For `text_embedding` task - `/v1/inference/embeddings`.
+   * * For `completion` and `chat_completion` tasks - `/v1/openai/v1/chat/completions`.
+   */
+  url: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Llama downloading models documentation for different ways of getting a list of available models and downloading them.
+   * Service has been tested and confirmed to be working with the following models:
+   * * For `text_embedding` task - `all-MiniLM-L6-v2`.
+   * * For `completion` and `chat_completion` tasks - `llama3.2:3b`.
+   * @ext_doc_id llama-api-models
+   */
+  model_id: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   */
+  similarity?: LlamaSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Llama API.
+   * By default, the `llama` service sets the number of requests allowed per minute to 3000.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum LlamaTaskType {
+  text_embedding,
+  completion,
+  chat_completion
+}
+
+export enum LlamaServiceType {
+  llama
+}
+
+export enum LlamaSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class FireworksAIServiceSettings {
+  /**
+   * A valid API key for your Fireworks AI account.
+   * You can find or create your API keys in the Fireworks AI dashboard.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id fireworksai-api-keys
+   */
+  api_key: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the Fireworks AI documentation for the list of available models for chat completion, completion, and text embedding.
+   * For text embedding, supported models include the Qwen3 embedding family (e.g. `fireworks/qwen3-embedding-8b`) and other models in the Fireworks model library.
+   * @ext_doc_id fireworksai-recommended-models
+   */
+  model_id: string
+  /**
+   * The URL endpoint to use for the requests.
+   * If not provided, the default Fireworks AI API endpoint is used.
+   */
+  url?: string
+  /**
+   * For a `text_embedding` task, the number of dimensions the resulting output embeddings should have.
+   * Variable-length embeddings are supported via this parameter.
+   */
+  dimensions?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * @server_default cosine
+   * @ext_doc_id fireworksai-embeddings
+   */
+  similarity?: FireworksAISimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the Fireworks AI API.
+   * Rate limit grouping is per API key only.
+   * By default, the `fireworksai` service sets the number of requests allowed per minute to 6000.
+   * @ext_doc_id fireworksai-rate-limits
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum FireworksAITaskType {
+  chat_completion,
+  completion,
+  text_embedding
+}
+
+export enum FireworksAIServiceType {
+  fireworksai
+}
+
+export enum FireworksAISimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class FireworksAITaskSettings {
+  /**
+   * For a `completion` or`chat_completion` task, specify the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
+  /**
+   * For a `completion` or`chat_completion` task. Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
+}
+
+export class OpenAIServiceSettings {
+  /**
+   * A valid API key of your OpenAI account.
+   * You can find your OpenAI API keys in your OpenAI account under the API keys section.
+   *
+   * IMPORTANT: You must specify either `api_key` or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   * @ext_doc_id openai-api-keys
+   */
+  api_key?: string
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The application ID that's assigned to your app.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   */
+  client_id?: string
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The application secret that you created for your app.
+   *
+   * IMPORTANT: You must specify either `api_key` or `client_secret`.
+   * If you do not provide one or you provide more than one of them, you will receive an error when you try to create your endpoint.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   */
+  client_secret?: string
+  /**
+   * For a `text_embedding` or `embedding` task, the number of dimensions the resulting output embeddings should have.
+   * It is supported only in `text-embedding-3` and later models.
+   * If it is not set, the OpenAI defined default for the model is used.
+   */
+  dimensions?: integer
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the OpenAI documentation for the list of available text embedding models.
+   * @ext_doc_id openai-models
+   */
+  model_id: string
+  /**
+   * The unique identifier for your organization.
+   * You can find the Organization ID in your OpenAI account under *Settings > Organizations*.
+   */
+  organization_id?: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from OpenAI.
+   * The `openai` service sets a default number of requests allowed per minute depending on the task type.
+   * For `text_embedding` and `embedding`, it is set to `3000`.
+   * For `completion` and `chat_completion`, it is set to `500`.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * The resource identifier of the resource you want.
+   * For example:
+   * ```
+   * "scopes": [
+   *   "scope1",
+   *   "scope2"
+   * ]
+   * ```
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   */
+  scopes?: Array<string>
+  /**
+   * For a `text_embedding` or `embedding` task, the similarity measure. One of `cosine`, `dot_product`, `l2_norm`. Defaults to `dot_product`.
+   */
+  similarity?: OpenAISimilarityType
+  /**
+   * For OAuth 2.0 authorization using the client credentials grant flow.
+   * An OAuth2 token endpoint where Elasticsearch sends a request to exchange client credentials for an access token.
+   *
+   * IMPORTANT: To configure OAuth 2.0, you must specify `client_id`, `scopes`, `token_url`, and `client_secret` together.
+   * If one of the fields is missing, you will receive an error when you try to create your endpoint.
+   */
+  token_url?: string
+  /**
+   * The URL endpoint to use for the requests.
+   * It can be changed for testing purposes.
+   * Default value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,
+   * `https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.
+   */
+  url?: string
+}
+
+export enum OpenAISimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class OpenAITaskSettings {
+  /**
+   * Specifies the user issuing the request.
+   * This information can be used for abuse detection.
+   */
+  user?: string
+  /**
+   * Specifies custom HTTP header parameters.
+   * For example:
+   * ```
+   * "headers": {
+   *   "Custom-Header": "Some-Value",
+   *   "Another-Custom-Header": "Another-Value"
+   * }
+   * ```
+   */
+  headers?: Dictionary<string, string>
+}
+
+export enum OpenAITaskType {
+  chat_completion,
+  completion,
+  text_embedding,
+  embedding
+}
+
+export enum OpenAIServiceType {
+  openai
+}
+
+export class OpenShiftAiServiceSettings {
+  /**
+   * A valid API key for your OpenShift AI endpoint.
+   * Can be found in `Token authentication` section of model related information.
+   */
+  api_key: string
+  /**
+   * The URL of the OpenShift AI hosted model endpoint.
+   */
+  url: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the hosted model's documentation for the name if needed.
+   * Service has been tested and confirmed to be working with the following models:
+   * * For `text_embedding` task - `gritlm-7b`.
+   * * For `completion` and `chat_completion` tasks - `llama-31-8b-instruct`.
+   * * For `rerank` task - `bge-reranker-v2-m3`.
+   */
+  model_id?: string
+  /**
+   * For a `text_embedding` task, the maximum number of tokens per input before chunking occurs.
+   */
+  max_input_tokens?: integer
+  /**
+   * For a `text_embedding` task, the similarity measure. One of cosine, dot_product, l2_norm.
+   * If not specified, the default dot_product value is used.
+   */
+  similarity?: OpenShiftAiSimilarityType
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from the OpenShift AI API.
+   * By default, the `openshift_ai` service sets the number of requests allowed per minute to 3000.
+   */
+  rate_limit?: RateLimitSetting
+}
+
+export enum OpenShiftAiTaskType {
+  text_embedding,
+  completion,
+  chat_completion,
+  rerank
+}
+
+export enum OpenShiftAiServiceType {
+  openshift_ai
+}
+
+export enum OpenShiftAiSimilarityType {
+  cosine,
+  dot_product,
+  l2_norm
+}
+
+export class OpenShiftAiTaskSettings {
+  /**
+   * For a `rerank` task, whether to return the source documents in the response.
+   */
+  return_documents?: boolean
+  /**
+   * For a `rerank` task, the number of most relevant documents to return.
+   */
+  top_n?: integer
+}
+
+export class VoyageAIServiceSettings {
+  /**
+   * The number of dimensions for resulting output embeddings.
+   * This setting maps to `output_dimension` in the VoyageAI documentation.
+   * Only for the `text_embedding` task type.
+   * @ext_doc_id voyageai-embeddings
+   */
+  dimensions?: integer
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the VoyageAI documentation for the list of available text embedding and rerank models.
+   * @ext_doc_id voyageai-embeddings
+   * @ext_doc_id voyageai-rerank
+   */
+  model_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from VoyageAI.
+   * The `voyageai` service sets a default number of requests allowed per minute depending on the task type.
+   * For both `text_embedding` and `rerank`, it is set to `2000`.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The data type for the embeddings to be returned.
+   * This setting maps to `output_dtype` in the VoyageAI documentation.
+   * Permitted values: float, int8, bit.
+   * `int8` is a synonym of `byte` in the VoyageAI documentation.
+   * `bit` is a synonym of `binary` in the VoyageAI documentation.
+   * Only for the `text_embedding` task type.
+   * @ext_doc_id voyageai-embeddings
+   */
+  embedding_type?: float
+}
+
+export class VoyageAITaskSettings {
+  /**
+   * Type of the input text.
+   * Permitted values: `ingest` (maps to `document` in the VoyageAI documentation), `search` (maps to `query` in the VoyageAI documentation).
+   * Only for the `text_embedding` task type.
+   */
+  input_type?: string
+  /**
+   * Whether to return the source documents in the response.
+   * Only for the `rerank` task type.
+   * @server_default false
+   */
+  return_documents?: boolean
+  /**
+   * The number of most relevant documents to return.
+   * If not specified, the reranking results of all documents will be returned.
+   * Only for the `rerank` task type.
+   */
+  top_k?: integer
+  /**
+   * Whether to truncate the input texts to fit within the context length.
+   * @server_default true
+   */
+  truncation?: boolean
+}
+
+export enum VoyageAITaskType {
+  text_embedding,
+  rerank
+}
+
+export enum VoyageAIServiceType {
+  voyageai
+}
+
+export class WatsonxServiceSettings {
+  /**
+   * A valid API key of your Watsonx account.
+   * You can find your Watsonx API keys or you can create a new one on the API keys page.
+   *
+   * IMPORTANT: You need to provide the API key only once, during the inference model creation.
+   * The get inference endpoint API does not retrieve your API key.
+   * @ext_doc_id watsonx-api-keys
+   */
+  api_key: string
+  /**
+   * A version parameter that takes a version date in the format of `YYYY-MM-DD`.
+   * For the active version data parameters, refer to the Wastonx documentation.
+   * @ext_doc_id watsonx-api-version
+   */
+  api_version: string
+  /**
+   * The name of the model to use for the inference task.
+   * Refer to the IBM Embedding Models section in the Watsonx documentation for the list of available text embedding models.
+   * Refer to the IBM library - Foundation models in Watsonx.ai.
+   * @ext_doc_id watsonx-api-models
+   */
+  model_id: string
+  /**
+   * The identifier of the IBM Cloud project to use for the inference task.
+   */
+  project_id: string
+  /**
+   * This setting helps to minimize the number of rate limit errors returned from Watsonx.
+   * By default, the `watsonxai` service sets the number of requests allowed per minute to 120.
+   */
+  rate_limit?: RateLimitSetting
+  /**
+   * The URL of the inference endpoint that you created on Watsonx.
+   */
+  url: string
+}
+
+export enum WatsonxTaskType {
+  text_embedding,
+  rerank,
+  chat_completion,
+  completion
+}
+
+export enum WatsonxServiceType {
+  watsonxai
+}

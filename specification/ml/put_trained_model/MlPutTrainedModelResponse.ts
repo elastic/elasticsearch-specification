@@ -20,5 +20,6 @@
 import { TrainedModelConfig } from '@ml/_types/TrainedModel'
 
 export class Response {
+  /** @codegen_name trained_model_config */
   body: TrainedModelConfig
 }

@@ -18,9 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Migrate to data tiers routing.
+ *
  * Switch the indices, ILM policies, and legacy, composable, and component templates from using custom node attributes and attribute-based allocation filters to using data tiers.
  * Optionally, delete one legacy index template.
  * Using node roles enables ILM to automatically move the indices between data tiers.
@@ -46,6 +49,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, simulates the migration from node attributes based allocation filters to data tiers, but does not perform the migration.
@@ -53,8 +58,15 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     dry_run?: boolean
+    /**
+     * The period to wait for a connection to the master node.
+     * If no response is received before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
+     * @server_default 30s
+     */
+    master_timeout?: Duration
   }
-  body: {
+  body?: {
     legacy_template_to_delete?: string
     node_attribute?: string
   }

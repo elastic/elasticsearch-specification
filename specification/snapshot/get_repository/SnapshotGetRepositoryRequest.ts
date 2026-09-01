@@ -18,13 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get snapshot repository information.
+ *
  * @rest_spec_name snapshot.get_repository
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges monitor_snapshot
  * @doc_id snapshot-repo-get
@@ -50,6 +51,7 @@ export interface Request extends RequestBase {
      */
     repository?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `true`, the request gets information from the local node only.
@@ -61,7 +63,7 @@ export interface Request extends RequestBase {
      * The period to wait for the master node.
      * If the master node is not available before the timeout expires, the request fails and returns an error.
      * To indicate that the request should never timeout, set it to `-1`.
-     * @server_default to 30s
+     * @server_default 30s
      */
     master_timeout?: Duration
   }

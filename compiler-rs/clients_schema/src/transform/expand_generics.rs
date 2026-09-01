@@ -211,8 +211,10 @@ pub fn expand(model: IndexedModel, config: ExpandConfig) -> anyhow::Result<Index
 
         expand_behaviors(&mut resp.behaviors, &mappings, model, ctx)?;
         expand_body(&mut resp.body, &mappings, model, ctx)?;
-
-        // TODO: exceptions
+        
+        for exception in &mut resp.exceptions {
+            expand_body(&mut exception.body, &mappings, model, ctx)?;
+        }
 
         Ok(resp.into())
     }

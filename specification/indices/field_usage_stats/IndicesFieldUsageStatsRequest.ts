@@ -18,15 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {
-  ExpandWildcards,
-  Fields,
-  Indices,
-  WaitForActiveShards
-} from '@_types/common'
+import { ExpandWildcards, Fields, Indices, MediaType } from '@_types/common'
 
 /**
  * Get field usage stats.
+ *
  * Get field usage information for each shard and field of an index.
  * Field usage statistics are automatically captured when queries are running on a cluster.
  * A shard-level search request that accesses a given field, even if multiple times during that request, is counted as a single use.
@@ -52,21 +48,28 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      */
     allow_no_indices?: boolean
     /**
      * Type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
     /**
-     * If `true`, missing or closed indices are not included in the response.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -74,11 +77,5 @@ export interface Request extends RequestBase {
      * Comma-separated list or wildcard expressions of fields to include in the statistics.
      */
     fields?: Fields
-    /**
-     * The number of shard copies that must be active before proceeding with the operation.
-     * Set to all or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
-     * @server_default 1
-     */
-    wait_for_active_shards?: WaitForActiveShards
   }
 }

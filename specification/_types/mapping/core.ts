@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
-import { NumericFielddata } from '@indices/_types/NumericFielddata'
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   Fields,
   FieldValue,
@@ -38,7 +35,13 @@ import {
 } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateTime } from '@_types/Time'
+import { FielddataFrequencyFilter } from '@indices/_types/FielddataFrequencyFilter'
+import { NumericFielddata } from '@indices/_types/NumericFielddata'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { ChunkingSettings } from './ChunkingSettings'
 import { Property, PropertyBase } from './Property'
+import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
+import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
@@ -47,8 +50,41 @@ export class CorePropertyBase extends PropertyBase {
   store?: boolean
 }
 
+/**
+ * Configuration object for doc values when sub-parameters are needed.
+ */
+export class DocValuesConfig {
+  /**
+   * If `false`, the field is treated as single-valued, enabling optimized storage.
+   * Only has an effect when columnar index mode is active.
+   * @server_default true
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  multi_value?: boolean
+
+  /**
+   * If `false`, every document must provide a non-null value for the field: a document that
+   * omits the field, sets it to `null`, or supplies only null values (an empty array or an
+   * all-null array) is rejected at index time.
+   * A field that defines `null_value` is always exempt, since the configured default removes
+   * the absence of a value.
+   * Only has an effect when columnar index mode is active.
+   * @server_default true
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  nullability?: boolean
+}
+
+/**
+ * Defines whether doc values are enabled for a field. Can be a simple boolean, or a configuration object for finer-grained control over sub-parameters such as `multi_value`.
+ * @codegen_names enabled, config
+ */
+export type DocValues = boolean | DocValuesConfig
+
 export class DocValuesPropertyBase extends CorePropertyBase {
-  doc_values?: boolean
+  doc_values?: DocValues
 }
 
 export class BinaryProperty extends DocValuesPropertyBase {
@@ -60,6 +96,15 @@ export class BooleanProperty extends DocValuesPropertyBase {
   fielddata?: NumericFielddata
   index?: boolean
   null_value?: boolean
+  ignore_malformed?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
+  /**
+   * For internal use by Elastic only. Marks the field as a time series dimension. Defaults to false.
+   * @availability stack stability=experimental
+   * @availability serverless stability=experimental
+   */
+  time_series_dimension?: boolean
   type: 'boolean'
 }
 
@@ -69,6 +114,8 @@ export class DateProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   locale?: string
@@ -80,6 +127,8 @@ export class DateNanosProperty extends DocValuesPropertyBase {
   format?: string
   ignore_malformed?: boolean
   index?: boolean
+  script?: Script
+  on_script_error?: OnScriptError
   null_value?: DateTime
   precision_step?: integer
   type: 'date_nanos'
@@ -199,14 +248,64 @@ export class RankFeaturesProperty extends PropertyBase {
   type: 'rank_features'
 }
 
+/**
+ * Technical preview
+ */
+export class RankVectorProperty extends PropertyBase {
+  type: 'rank_vectors'
+  element_type?: RankVectorElementType
+  dims?: integer
+}
+
 export class SparseVectorProperty extends PropertyBase {
+  store?: boolean
   type: 'sparse_vector'
+  /**
+   * Additional index options for the sparse vector field that controls the
+   * token pruning behavior of the sparse vector field.
+   * @availability stack since=8.19.0
+   * @availability serverless
+   */
+  index_options?: SparseVectorIndexOptions
 }
 
 export class SemanticTextProperty {
   type: 'semantic_text'
   meta?: Dictionary<string, string>
-  inference_id: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings for the field.
+   * This parameter cannot be updated. Use the Create inference API to create the endpoint.
+   * If `search_inference_id` is specified, the inference endpoint will only be used at index time.
+   * If the `inference_id` is not specified, it will default to `.jina-embeddings-v5-text-small` if the cluster is authorized to use the Elastic Inference Service,
+   * otherwise it will default to `.elser-2-elasticsearch`. The `.elser-2-elasticsearch` inference endpoint relies on a local ML node to run the ELSER model.
+   * @server_default .jina-embeddings-v5-text-small
+   */
+  inference_id?: Id
+  /**
+   * Inference endpoint that will be used to generate embeddings at query time.
+   * You can update this parameter by using the Update mapping API. Use the Create inference API to create the endpoint.
+   * If not specified, the inference endpoint defined by inference_id will be used at both index and query time.
+   */
+  search_inference_id?: Id
+
+  /**
+   * Settings for index_options that override any defaults used by semantic_text, for example
+   * specific quantization settings.
+   */
+  index_options?: SemanticTextIndexOptions
+
+  /**
+   * Settings for chunking text into smaller passages. If specified, these will override the
+   * chunking settings sent in the inference endpoint associated with inference_id. If chunking settings are updated,
+   * they will not be applied to existing documents until they are reindexed.
+   */
+  chunking_settings?: ChunkingSettings | null
+  /**
+   * Multi-fields allow the same string value to be indexed in multiple ways for different purposes, such as one
+   * field for search and a multi-field for sorting and aggregations, or the same string value analyzed by different analyzers.
+   * @doc_id multi-fields
+   */
+  fields?: Dictionary<PropertyName, Property>
 }
 
 export class SearchAsYouTypeProperty extends CorePropertyBase {
@@ -263,8 +362,8 @@ export enum IndexOptions {
 }
 
 export class TextIndexPrefixes {
-  max_chars: integer
-  min_chars: integer
+  max_chars?: integer
+  min_chars?: integer
 }
 
 export class TextProperty extends CorePropertyBase {
@@ -330,4 +429,10 @@ export class DynamicProperty extends DocValuesPropertyBase {
   format?: string
   precision_step?: integer
   locale?: string
+}
+
+export enum RankVectorElementType {
+  byte,
+  float,
+  bit
 }

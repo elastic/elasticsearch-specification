@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Set a connector sync job error.
+ *
  * Set the `error` field for a connector sync job and set its `status` to `error`.
  *
  * To sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.
@@ -43,6 +44,8 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The error for the connector sync job error field.

@@ -156,6 +156,11 @@ export class NodesRecord {
    */
   'load_15m'?: string
   /**
+   * The number of available processors (logical CPU cores available to the JVM).
+   * @aliases ap
+   */
+  'available_processors'?: string
+  /**
    * The node uptime.
    * @aliases u
    */

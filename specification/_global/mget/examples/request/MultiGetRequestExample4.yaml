@@ -1,10 +1,9 @@
 summary: Document routing
-# method_request: "GET /_mget?routing=key1"
+method_request: 'GET /_mget?routing=key1'
 description: >
-  Run `GET /_mget?routing=key1`.
-  If routing is used during indexing, you need to specify the routing value to retrieve documents.
-  This request fetches `test/_doc/2` from the shard corresponding to routing key `key1`.
-  It fetches `test/_doc/1` from the shard corresponding to routing key `key2`.
+  Run `GET /_mget?routing=key1`. If routing is used during indexing, you need to specify the routing value to retrieve documents.
+  This request fetches `test/_doc/2` from the shard corresponding to routing key `key1`. It fetches `test/_doc/1` from the shard
+  corresponding to routing key `key2`.
 # type: "request"
 value: |-
   {

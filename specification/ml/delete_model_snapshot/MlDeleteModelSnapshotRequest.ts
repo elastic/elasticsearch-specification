@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Delete a model snapshot.
+ *
  * You cannot delete the active model snapshot. To delete that snapshot, first
  * revert to a different one. To identify the active model snapshot, refer to
  * the `model_snapshot_id` in the results from the get jobs API.
@@ -49,4 +50,5 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
+  response_media_type: MediaType.Json
 }

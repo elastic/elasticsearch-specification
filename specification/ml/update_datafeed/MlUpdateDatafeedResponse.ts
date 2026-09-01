@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { DatafeedAuthorization } from '@ml/_types/Authorization'
-import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { Id, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
@@ -27,6 +24,9 @@ import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { ScriptField } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
+import { DatafeedAuthorization } from '@ml/_types/Authorization'
+import { ChunkingConfig, DelayedDataCheckConfig } from '@ml/_types/Datafeed'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {
@@ -35,6 +35,9 @@ export class Response {
     chunking_config: ChunkingConfig
     delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id
+    /**
+     * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
+     */
     frequency?: Duration
     indices: string[]
     indices_options?: IndicesOptions

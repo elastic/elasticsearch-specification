@@ -23,7 +23,6 @@ import {
   DataframeRegressionSummary
 } from './types'
 
-/** @variants container */
 export class Response {
   body: {
     /**

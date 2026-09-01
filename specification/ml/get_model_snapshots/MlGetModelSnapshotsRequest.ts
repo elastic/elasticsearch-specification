@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { Page } from '@ml/_types/Page'
 import { RequestBase } from '@_types/Base'
-import { Field, Id } from '@_types/common'
+import { Field, Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
+import { Page } from '@ml/_types/Page'
 
 /**
  * Get model snapshots info.
+ *
  * @rest_spec_name ml.get_model_snapshots
  * @availability stack since=5.4.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -55,6 +56,8 @@ export interface Request extends RequestBase {
      */
     snapshot_id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If true, the results are sorted in descending order.
@@ -85,7 +88,7 @@ export interface Request extends RequestBase {
      */
     start?: DateTime
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `desc` query parameter.
      * @server_default false

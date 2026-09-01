@@ -1,5 +1,5 @@
 summary: Query API keys by name
-# method_request: GET /_security/_query/api_key
+method_request: GET /_security/_query/api_key
 description: Run `GET /_security/_query/api_key` to retrieve the API key by name.
 # type: request
 value: |-

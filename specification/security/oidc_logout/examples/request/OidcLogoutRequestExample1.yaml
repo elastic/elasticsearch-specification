@@ -1,0 +1,9 @@
+# summary:
+method_request: POST /_security/oidc/logout
+description: Run `POST /_security/oidc/logout` to perform the logout.
+# type: request
+value: |-
+  {
+    "token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+    "refresh_token": "vLBPvmAB6KvwvJZr27cS"
+  }

@@ -34,6 +34,12 @@ export class Action {
    * A data stream’s write index cannot be removed.
    */
   remove_backing_index?: IndexAndDataStreamAction
+  /**
+   * Deletes a backing index from a data stream.
+   * A data stream’s write index cannot be deleted because it is the write index.
+   * @availability stack since=9.5.0 stability=stable visibility=public
+   */
+  delete_backing_index?: IndexAndDataStreamAction
 }
 
 export class IndexAndDataStreamAction {

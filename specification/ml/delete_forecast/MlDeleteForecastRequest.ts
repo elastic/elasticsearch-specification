@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete forecasts from a job.
+ *
  * By default, forecasts are retained for 14 days. You can specify a
  * different retention period with the `expires_in` parameter in the forecast
  * jobs API. The delete forecast API enables you to delete one or more
@@ -57,6 +58,7 @@ export interface Request extends RequestBase {
      */
     forecast_id?: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies whether an error occurs when there are no forecasts. In

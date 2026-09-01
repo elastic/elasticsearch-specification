@@ -24,9 +24,26 @@ import { Fields } from '@_types/common'
  * @shortcut_property includes
  */
 export class SourceFilter {
-  /** @aliases exclude */
+  /**
+   * If `true`, vector fields are excluded from the returned source.
+   *
+   * This option takes precedence over `includes`: any vector field will
+   * remain excluded even if it matches an `includes` rule.
+   */
+  exclude_vectors?: boolean
+
+  /**
+   * A list of fields to exclude from the returned source.
+   *
+   * @aliases exclude
+   */
   excludes?: Fields
-  /** @aliases include */
+
+  /**
+   * A list of fields to include in the returned source.
+   *
+   * @aliases include
+   */
   includes?: Fields
 }
 

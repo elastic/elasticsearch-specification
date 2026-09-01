@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
-import { Fields, Ids, IndexName, Routing } from '@_types/common'
+import { Fields, Ids, IndexName, MediaType, Routing } from '@_types/common'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operation } from './types'
 
 /**
@@ -64,6 +64,8 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Should this request force synthetic _source?
@@ -89,8 +91,17 @@ export interface Request extends RequestBase {
     refresh?: boolean
     /**
      * Custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * True or false to return the `_source` field or not, or a list of fields to return.
      */

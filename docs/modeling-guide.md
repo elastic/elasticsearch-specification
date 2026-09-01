@@ -148,7 +148,7 @@ property: UserDefinedValue
 
 ### Numbers
 
-The numeric type in TypeScript is `number`, but given that this specification targets mutliple languages,
+The numeric type in TypeScript is `number`, but given that this specification targets multiple languages,
 it offers a bunch of aliases that represent the type that should be used if the language supports it:
 
 ```ts
@@ -332,7 +332,9 @@ type FooOrBar = Foo | Bar
 
 An example of internal variants are the type mapping properties.
 
-#### External
+#### typed_keys_quirk
+
+**Note**: this feature exists because of some early Elasticsearch APIs where tagging was forgotten, and added after the fact using this quirk to avoid breaking compatibility. **It should not be used for new APIs.**
 
 The key that defines the variant is external to the definition, like in the
 case of aggregations in responses or suggesters.
@@ -343,7 +345,7 @@ name in the definition itself.
 The syntax is:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 
 /** @variant name='<field-name>' */
 ```
@@ -351,7 +353,7 @@ The syntax is:
 For example:
 
 ```ts
-/** @variants external */
+/** @variants typed_keys_quirk */
 type FooAlias = Faz | Bar
 
 /** @variant name='faz' */
@@ -369,7 +371,7 @@ In the example above, `FooAlias` will look like this:
 
 ```json
 {
-  "faz": {
+  "name#faz": {
     "prop": "hello world"
   }
 }
@@ -379,7 +381,7 @@ or:
 
 ```json
 {
-  "bar": {
+  "name#bar": {
     "prop": true
   }
 }
@@ -468,6 +470,30 @@ export class MyTypeSpecialized3 extends MyTypeBase<bool> {}
 export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | MyTypeSpecialized3 
 ```
 
+#### Other cases
+
+If none of the above variant options are applicable to the newly defined union, likely because there's no way to distinguish between the two types, `@codegen_names` must be used so that the clients can provide better builders and handle deserialization more easily.
+
+For example:
+
+```ts
+/** @codegen_names value, computed */
+export type Slices = integer | SlicesCalculation
+```
+
+```ts
+/** @codegen_names regexp, terms, partition */
+export type TermsInclude = string | string[] | TermsPartition
+```
+
+```ts
+/** @codegen_names string, object */
+export type MessageContent = string | Array<ContentObject>
+```
+
+In general, avoid introducing new unhandled unions, as it might break code generation for some of the clients. 
+
+
 ### Shortcut properties
 
 In many places Elasticsearch accepts a property value to be either a complete data structure or a single value, that value being a shortcut for a property in the data structure.
@@ -502,7 +528,7 @@ Code generators should track the `es_quirk` they implement and fail if a new unh
 
 ### Additional information
 
-If needed, you can specify additional information on each type with the approariate JSDoc tag.
+If needed, you can specify additional information on each type with the appropriate JSDoc tag.
 Following you can find a list of the supported tags:
 
 #### `@availability`
@@ -560,6 +586,42 @@ export class Example {
 }
 ```
 
+Request and response example YAML files use the same flavor names in an optional `availability` field (for example, `availability: [serverless]`). When omitted, the example applies to both Stack and Serverless.
+
+A flavor-only tag such as `@availability serverless` (with no `since` or `stability`) marks flavor membership for filtering. It does **not** produce an OpenAPI `x-state` extension. OpenAPI `x-state` is emitted only when `since` or `stability` is set on the availability annotation for the generated flavor.
+
+### Stability property for `@availability`
+
+The `stability` property can be added to an `@availability` annotation to indicate the maturity and expected backwards-compatibility of an API or property.
+
+Syntax:
+```ts
+/** @availability stack since=<version> stability=<value> */
+```
+
+Values and meaning:
+- `stable` => "Generally available"
+- `beta` => "Beta"
+- `experimental` => "Experimental"
+- `tech_preview` => "Technical preview"
+
+`experimental` and `tech_preview` are distinct lifecycles (in 9.5 and later) and produce different OpenAPI `x-state` labels. Setting `since` without `stability` also produces an `x-state` of "Generally available" (optionally with an "Added in" version suffix).
+
+Examples:
+```ts
+/**
+ * @rest_spec_name indices.create
+ * @availability stack since=1.0.0 stability=experimental
+ */
+```
+
+```ts
+/**
+ * @rest_spec_name endpoint.name
+ * @availability stack since=1.2.3 stability=tech_preview
+ */
+```
+
 #### description
 
 You can (and should!) add a description for each type and property. For an in-depth explanation of how to write good descriptions, see [Documenting the API specification](doc-comments-guide.md).
@@ -596,6 +658,18 @@ class Foo {
   /** @server_default ['hello'] */
   baz?: string[]
   faz: string
+}
+```
+
+If you need an `@` sign, you can escape it:
+
+```ts
+class Foo {
+  /**
+   * Field containing event timestamp.
+   * @server_default \@timestamp
+   */
+  timestamp_field?: Field
 }
 ```
 
@@ -670,6 +744,9 @@ class Request {
   ...
 }
 ```
+
+You can see the existing tag values in [elasticsearch-shared-overlays.yaml](https://github.com/elastic/elasticsearch-specification/blob/main/docs/overlays/elasticsearch-shared-overlays.yaml).
+If you add a new tag value in your specification, you must also add it to this file.
 
 NOTE: In the OpenAPI specification, operations can have multiple tags. However, we currently support only a single tag.
 
@@ -768,3 +845,12 @@ class Foo {
 #### `@stability` and `@visibility`
 
 These annotations have been removed, use `@availability` instead.
+
+#### `@UpdateForV10`
+
+We sometimes want to make breaking changes but have to wait until the next major version.
+To not forget about those change, you can use the UpdateForV10 JSDoc tag in any commment.
+There are a few benefits of using JSDoc instead of a simple TODO comment:
+
+ * With the allowlist of tags in our eslint config, we can't make typos
+ * We enforce a proper description to explain why the breaking change needs to be made

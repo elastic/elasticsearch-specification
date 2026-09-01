@@ -1,5 +1,9 @@
 # summary: connector/apis/update-connector-error-api.asciidoc:75
-# method_request: PUT _connector/my-connector/_error
+method_request: PUT _connector/my-connector/_error
 # description: ''
 # type: request
-value: "{\n    \"error\": \"Houston, we have a problem!\"\n}"
+value: "{
+
+  \    \"error\": \"Houston, we have a problem!\"
+
+  }"

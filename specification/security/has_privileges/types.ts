@@ -17,15 +17,17 @@
  * under the License.
  */
 
+import { Indices, Name } from '@_types/common'
 import { IndexPrivilege } from '@security/_types/Privileges'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Indices, Name } from '@_types/common'
 
 export class ApplicationPrivilegesCheck {
   /** The name of the application. */
   application: string
-  /** A list of the privileges that you want to check for the specified resources.
-   * It may be either application privilege names or the names of actions that are granted by those privileges */
+  /**
+   * A list of the privileges that you want to check for the specified resources.
+   * It may be either application privilege names or the names of actions that are granted by those privileges
+   */
   privileges: string[]
   /** A list of resource names against which the privileges should be checked. */
   resources: string[]

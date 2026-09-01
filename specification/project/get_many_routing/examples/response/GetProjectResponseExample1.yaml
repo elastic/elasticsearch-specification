@@ -1,0 +1,8 @@
+summary: Multiple expressions
+# type: response
+# response_code: 200
+value: |-
+  {
+   "aws-us-only": { "expression": "_csp:aws AND _region:us*" },
+   "aws-eu-only": { "expression": "_csp:aws AND _region:eu*" }
+  }

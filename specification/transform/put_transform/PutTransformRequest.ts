@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType, Metadata } from '@_types/common'
+import { Duration } from '@_types/Time'
 import {
   Destination,
   Latest,
@@ -26,12 +29,10 @@ import {
   Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Create a transform.
+ *
  * Creates a transform.
  *
  * A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as
@@ -69,11 +70,14 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /** Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
+    /**
+     * Identifier for the transform. This identifier can contain lowercase alphanumeric characters (a-z and 0-9),
      * hyphens, and underscores. It has a 64 character limit and must start and end with alphanumeric characters.
      */
     transform_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When the transform is created, a series of validations occur to ensure its success. For example, there is a

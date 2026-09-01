@@ -25,5 +25,6 @@ export class UpdateWriteResponseBase<TDocument> extends WriteResponseBase {
 }
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: UpdateWriteResponseBase<TDocument>
 }

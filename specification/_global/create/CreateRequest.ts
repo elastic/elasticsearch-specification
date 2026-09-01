@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   VersionNumber,
@@ -130,7 +131,14 @@ export interface Request<TDocument> extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * True or false if to include the document source in the error message in case of parsing errors.
+     * @server_default true
+     */
+    include_source_on_error?: boolean
     /**
      * The ID of the pipeline to use to preprocess incoming documents.
      * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
@@ -145,7 +153,18 @@ export interface Request<TDocument> extends RequestBase {
      */
     refresh?: Refresh
     /**
+     * If `true`, the destination must be an index alias.
+     * @server_default false
+     */
+    require_alias?: boolean
+    /**
+     * If `true`, the request's actions must target a data stream (existing or to be created).
+     * @server_default false
+     */
+    require_data_stream?: boolean
+    /**
      * A custom value that is used to route operations to a specific shard.
+     * @ext_doc_id search-shard-routing
      */
     routing?: Routing
     /**
@@ -174,6 +193,7 @@ export interface Request<TDocument> extends RequestBase {
      * You can set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
   }

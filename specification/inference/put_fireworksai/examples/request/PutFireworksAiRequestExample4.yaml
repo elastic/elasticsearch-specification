@@ -1,0 +1,11 @@
+summary: Create an endpoint for completion tasks
+description: Run `PUT _inference/completion/my-fireworks-completion` to create an inference endpoint that performs a `completion` task.
+method_request: 'PUT _inference/completion/my-fireworks-completion'
+value: |-
+  {
+      "service": "fireworksai",
+      "service_settings": {
+          "api_key": "your-api-key",
+          "model_id": "accounts/fireworks/models/deepseek-v3p1"
+      }
+  }

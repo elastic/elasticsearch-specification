@@ -1,0 +1,1 @@
+method_request: POST _ml/anomaly_detectors/low_request_rate/model_snapshots/1828371/_upgrade?timeout=45m&wait_for_completion=true

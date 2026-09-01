@@ -20,5 +20,10 @@
 import { AcknowledgedResponseBase } from '@_types/Base'
 
 export class Response {
-  body: AcknowledgedResponseBase
+  /** @codegen_name result */
+  body: IndicesAliasesResponseBody
+}
+
+export class IndicesAliasesResponseBody extends AcknowledgedResponseBase {
+  errors?: boolean
 }

@@ -1,0 +1,12 @@
+summary: A completion task
+description: Run `PUT _inference/completion/google_ai_studio_completion` to create an inference endpoint to perform a `completion` task type.
+method_request: 'PUT _inference/completion/google_ai_studio_completion'
+# type: "request"
+value: |-
+  {
+      "service": "googleaistudio",
+      "service_settings": {
+          "api_key": "api-key",
+          "model_id": "model-id"
+      }
+  }

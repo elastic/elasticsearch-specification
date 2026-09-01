@@ -1,8 +1,0 @@
-lang: Ruby
-# label:
-source: |
-  response = client.exists(
-    index: 'my-index-000001',
-    id: 0
-  )
-  puts response

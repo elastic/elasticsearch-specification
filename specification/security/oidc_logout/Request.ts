@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Logout of OpenID Connect.
@@ -39,11 +40,13 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The access token to be invalidated.
      */
-    access_token: string
+    token: string
     /**
      * The refresh token to be invalidated.
      */

@@ -19,12 +19,15 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Get cross-cluster replication stats.
+ *
  * This API returns stats about auto-following and the same shard-level stats as the get follower stats API.
  * @rest_spec_name ccr.stats
  * @availability stack since=6.5.0 stability=stable
+ * @cluster_privileges monitor
  * @doc_id ccr-get-stats
  */
 export interface Request extends RequestBase {
@@ -34,14 +37,17 @@ export interface Request extends RequestBase {
       methods: ['GET']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Period to wait for a connection to the master node.
+     * The period to wait for a connection to the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * It can also be set to `-1` to indicate that the request should never timeout.
      * @server_default 30s
      */
     master_timeout?: Duration
     /**
-     * Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
      */
     timeout?: Duration

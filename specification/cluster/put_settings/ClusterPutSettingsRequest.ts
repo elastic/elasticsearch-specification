@@ -17,10 +17,11 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Duration } from '@_types/Time'
 
 /**
  * Update the cluster settings.
@@ -46,6 +47,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-update-settings
+ * @ext_doc_id stack-settings
  */
 export interface Request extends RequestBase {
   urls: [
@@ -54,15 +56,29 @@ export interface Request extends RequestBase {
       methods: ['PUT']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Return settings in flat format
+     * @server_default false
+     */
     flat_settings?: boolean
-    /** @server_default 30s */
+    /**
+     * The period to wait for a connection to the master node.
+     * @server_default 30s
+     */
     master_timeout?: Duration
-    /** @server_default 30s */
+    /**
+     * The period to wait for a response.
+     * @server_default 30s
+     */
     timeout?: Duration
   }
   body: {
+    /** The settings that persist after the cluster restarts. */
     persistent?: Dictionary<string, UserDefinedValue>
+    /** The settings that do not persist after the cluster restarts. */
     transient?: Dictionary<string, UserDefinedValue>
   }
 }

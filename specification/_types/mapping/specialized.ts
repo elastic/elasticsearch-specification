@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   IcuCollationAlternate,
   IcuCollationCaseFirst,
@@ -27,8 +26,10 @@ import {
 import { Field, Name } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { DocValuesPropertyBase, IndexOptions, OnScriptError } from './core'
 import { PropertyBase } from './Property'
+import { TimeSeriesMetricType } from './TimeSeriesMetricType'
 
 export class CompletionProperty extends DocValuesPropertyBase {
   analyzer?: string
@@ -44,6 +45,7 @@ export class SuggestContext {
   name: Name
   path?: Field
   type: string
+  // eslint-disable-next-line es-spec-validator/no-inline-unions -- TODO: create named alias
   precision?: integer | string
 }
 
@@ -68,7 +70,13 @@ export class FieldAliasProperty extends PropertyBase {
 
 export class HistogramProperty extends PropertyBase {
   ignore_malformed?: boolean
+  time_series_metric?: TimeSeriesMetricType
   type: 'histogram'
+}
+
+export class ExponentialHistogramProperty extends PropertyBase {
+  time_series_metric?: TimeSeriesMetricType
+  type: 'exponential_histogram'
 }
 
 export class IpProperty extends DocValuesPropertyBase {

@@ -20,5 +20,6 @@
 import { PendingTasksRecord } from './types'
 
 export class Response {
+  /** @codegen_name pending_tasks */
   body: Array<PendingTasksRecord>
 }

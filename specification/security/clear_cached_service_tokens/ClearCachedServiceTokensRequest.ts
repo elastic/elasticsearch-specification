@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names, Namespace, Service } from '@_types/common'
+import { MediaType, Names, Namespace, Service } from '@_types/common'
 
 /**
  * Clear service account token caches.
@@ -55,4 +55,5 @@ export interface Request extends RequestBase {
      */
     name: Names
   }
+  response_media_type: MediaType.Json
 }

@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Clean up the snapshot repository.
+ *
  * Trigger the review of the contents of a snapshot repository and delete any stale data not referenced by existing snapshots.
  * @rest_spec_name snapshot.cleanup_repository
  * @availability stack since=7.4.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      * @codegen_name name */
     repository: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

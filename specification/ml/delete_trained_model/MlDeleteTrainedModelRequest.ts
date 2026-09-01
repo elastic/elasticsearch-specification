@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete an unreferenced trained model.
+ *
  * The request deletes a trained inference model that is not referenced by an ingest pipeline.
  * @rest_spec_name ml.delete_trained_model
  * @availability stack since=7.10.0 stability=stable
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      */
     model_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /** Forcefully deletes a trained model that is referenced by ingest pipelines or has a started deployment. **/
     force?: boolean

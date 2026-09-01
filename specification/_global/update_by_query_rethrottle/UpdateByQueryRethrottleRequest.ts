@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { float } from '@_types/Numeric'
 
 /**
@@ -45,12 +45,12 @@ export interface Request extends RequestBase {
      */
     task_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * The throttle for this request in sub-requests per second.
-     * To turn off throttling, set it to `-1`.
-     * @server_default -1
+     * The maximum number of documents to update per second, across the entire update_by_query operation (including slices).
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
-    requests_per_second?: float
+    requests_per_second: float
   }
 }

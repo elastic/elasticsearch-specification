@@ -20,5 +20,6 @@
 import { CountRecord } from './types'
 
 export class Response {
+  /** @codegen_name count_records */
   body: Array<CountRecord>
 }

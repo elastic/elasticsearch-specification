@@ -17,13 +17,14 @@
  * under the License.
  */
 
-import { DataframeEvaluationContainer } from '@ml/_types/DataframeEvaluation'
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { DataframeEvaluationContainer } from '@ml/_types/DataframeEvaluation'
 
 /**
  * Evaluate data frame analytics.
+ *
  * The API packages together commonly used evaluation metrics for various types
  * of machine learning features. This has been designed for use on indexes
  * created by data frame analytics. Evaluation requires both a ground truth
@@ -42,6 +43,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * Defines the type of evaluation you want to perform.

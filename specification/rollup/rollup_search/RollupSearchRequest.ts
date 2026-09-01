@@ -17,15 +17,16 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { Indices } from '@_types/common'
+import { Indices, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Search rolled-up data.
+ *
  * The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.
  * It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.
  *
@@ -35,36 +36,13 @@ import { QueryContainer } from '@_types/query_dsl/abstractions'
  * `size`: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.
  * `highlighter`, `suggestors`, `post_filter`, `profile`, `explain`: These are similarly disallowed.
  *
- * **Searching both historical rollup and non-rollup data**
+ * For more detailed examples of using the rollup search API, including querying rolled-up data only or combining rolled-up and live data, refer to the External documentation.
  *
- * The rollup search API has the capability to search across both "live" non-rollup data and the aggregated rollup data.
- * This is done by simply adding the live indices to the URI. For example:
- *
- * ```
- * GET sensor-1,sensor_rollup/_rollup_search
- * {
- *   "size": 0,
- *   "aggregations": {
- *      "max_temperature": {
- *       "max": {
- *         "field": "temperature"
- *       }
- *     }
- *   }
- * }
- * ```
- *
- * The rollup search endpoint does two things when the search runs:
- *
- * * The original request is sent to the non-rollup index unaltered.
- * * A rewritten version of the original request is sent to the rollup index.
- *
- * When the two responses are received, the endpoint rewrites the rollup response and merges the two together.
- * During the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.
  * @rest_spec_name rollup.rollup_search
  * @availability stack since=6.3.0 stability=experimental
  * @deprecated 8.11.0
  * @doc_id rollup-search
+ * @ext_doc_id rollup-examples
  */
 export interface Request extends RequestBase {
   urls: [
@@ -85,8 +63,18 @@ export interface Request extends RequestBase {
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * Indicates whether hits.total should be rendered as an integer or an object in the rest search response
+     * @server_default false
+     */
     rest_total_hits_as_int?: boolean
+    /**
+     * Specify whether aggregation and suggester names should be prefixed by their respective types in the response
+     * @server_default false
+     */
     typed_keys?: boolean
   }
   body: {

@@ -20,8 +20,15 @@
 /**
  * @rest_spec_name index
  * @availability stack since=0.0.0 stability=stable
+ * @doc_id docs-index
  */
 export interface Request {
+  urls: [
+    {
+      path: "/foo/{id}"
+      methods: ["POST"]
+    }
+  ]
   path_parts: {
     id: string
   }

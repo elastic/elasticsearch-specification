@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Hint } from './types'
 
@@ -42,6 +43,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A comma-separated list of filters for the `data` field of the profile document.
@@ -52,7 +55,7 @@ export interface Request extends RequestBase {
      */
     data?: string | string[]
   }
-  body: {
+  body?: {
     /**
      * A query string used to match name-related fields in user profile documents.
      * Name-related fields are the user's `username`, `full_name`, and `email`.

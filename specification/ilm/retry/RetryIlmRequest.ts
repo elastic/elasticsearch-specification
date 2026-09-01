@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 
 /**
  * Retry a policy.
+ *
  * Retry running the lifecycle policy for an index that is in the ERROR step.
  * The API sets the policy back to the step where the error occurred and runs the step.
  * Use the explain lifecycle state API to determine whether an index is in the ERROR step.
@@ -38,6 +39,8 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /** The name of the indices (comma-separated) whose failed lifecycle step is to be retry */
     index: IndexName
   }
+  response_media_type: MediaType.Json
 }

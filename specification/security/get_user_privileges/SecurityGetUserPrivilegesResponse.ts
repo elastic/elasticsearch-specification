@@ -20,6 +20,8 @@
 import {
   ApplicationPrivileges,
   GlobalPrivilege,
+  RemoteClusterPrivileges,
+  RemoteUserIndicesPrivileges,
   UserIndicesPrivileges
 } from '@security/_types/Privileges'
 
@@ -27,8 +29,10 @@ export class Response {
   body: {
     applications: ApplicationPrivileges[]
     cluster: string[]
+    remote_cluster?: RemoteClusterPrivileges[]
     global: GlobalPrivilege[]
     indices: UserIndicesPrivileges[]
+    remote_indices?: RemoteUserIndicesPrivileges[]
     run_as: string[]
   }
 }

@@ -1,6 +1,8 @@
 summary: Role example 3
-# method_request: POST /_security/role/only_remote_access_role
-description: Run `POST /_security/role/only_remote_access_role` to configure a role with remote indices and remote cluster privileges for a remote cluster.
+method_request: POST /_security/role/only_remote_access_role
+description:
+  Run `POST /_security/role/only_remote_access_role` to configure a role with remote indices and remote cluster
+  privileges for a remote cluster.
 # type: request
 value: |-
   {

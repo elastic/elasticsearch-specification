@@ -1,0 +1,25 @@
+summary: An embedding task using a non-multimodal model
+description: A successful response when creating a JinaAI `embedding` inference endpoint with a model that does not support multimodal inputs.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "jinaai-embeddings-text-only",
+    "task_type": "embedding",
+    "service": "jinaai",
+    "service_settings": {
+      "model_id": "jina-embeddings-v3",
+      "rate_limit": {
+        "requests_per_minute": 2000
+      },
+      "dimensions": 1024,
+      "embedding_type": "float",
+      "similarity": "dot_product",
+      "multimodal_model": false
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }

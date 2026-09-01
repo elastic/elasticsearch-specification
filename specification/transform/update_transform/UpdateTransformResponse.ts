@@ -17,19 +17,19 @@
  * under the License.
  */
 
-import { Destination } from '@global/reindex/types'
+import { Id, Metadata, VersionString } from '@_types/common'
+import { long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
+import { Source } from '@global/reindex/types'
 import { TransformAuthorization } from '@ml/_types/Authorization'
 import {
+  Destination,
   Latest,
   Pivot,
   RetentionPolicyContainer,
   Settings,
-  Source,
   SyncContainer
 } from '@transform/_types/Transform'
-import { Id, Metadata, VersionString } from '@_types/common'
-import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
 
 export class Response {
   body: {

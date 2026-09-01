@@ -1,5 +1,5 @@
 summary: Create a search template
-# method_request: PUT _scripts/my-search-template
+method_request: PUT _scripts/my-search-template
 description: >
   Run `PUT _scripts/my-search-template` to create a search template.
 # type: request

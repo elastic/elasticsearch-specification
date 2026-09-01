@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import {
   Id,
   IndexName,
+  MediaType,
   Refresh,
   Routing,
   SequenceNumber,
@@ -95,6 +96,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Only perform the operation if the document has this primary term.
@@ -115,8 +117,18 @@ export interface Request extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack stability=stable
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * The period to wait for active shards.
      *
@@ -140,6 +152,7 @@ export interface Request extends RequestBase {
      * You can set it to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The default value of `1` means it waits for each primary shard to be active.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
   }

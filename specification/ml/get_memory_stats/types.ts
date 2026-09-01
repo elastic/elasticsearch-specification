@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Id, Name } from '@_types/common'
 import { TransportAddress } from '@_types/Networking'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Memory {
   attributes: Dictionary<string, string>

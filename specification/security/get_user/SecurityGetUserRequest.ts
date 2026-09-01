@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Username } from '@_types/common'
+import { MediaType, Username } from '@_types/common'
 
 /**
  * Get users.
@@ -44,6 +44,7 @@ export interface Request extends RequestBase {
     /** An identifier for the user. You can specify multiple usernames as a comma-separated list. If you omit this parameter, the API retrieves information about all users. */
     username?: Username | Username[]
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Determines whether to retrieve the user profile UID, if it exists, for the users.

@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { UserProfileId } from '@security/_types/UserProfile'
 import { RequestBase } from '@_types/Base'
-import { Refresh } from '@_types/common'
+import { MediaType, Refresh } from '@_types/common'
+import { UserProfileId } from '@security/_types/UserProfile'
 
 /**
  * Enable a user profile.
@@ -51,6 +51,7 @@ export interface Request extends RequestBase {
      */
     uid: UserProfileId
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If 'true', Elasticsearch refreshes the affected shards to make this operation

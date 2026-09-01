@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Ids } from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get Logstash pipelines.
+ *
  * Get pipelines that are used for Logstash Central Management.
  * @rest_spec_name logstash.get_pipeline
  * @availability stack since=7.12.0 stability=stable
@@ -47,4 +48,5 @@ export interface Request extends RequestBase {
      */
     id?: Ids
   }
+  response_media_type: MediaType.Json
 }

@@ -1,0 +1,13 @@
+summary: A region policy allowing specific cloud service provider regions
+description: Run `PUT _inference/_region_policy` to restrict inference to a specific set of cloud service provider regions.
+method_request: 'PUT _inference/_region_policy'
+# type: "request"
+value: |-
+  {
+      "region_policy": {
+          "allowed_regions": [
+              { "csp": "aws", "region": "us-east-1" },
+              { "csp": "aws", "region": "eu-west-1" }
+          ]
+      }
+  }

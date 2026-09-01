@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 
 /**
  * Force a merge.
+ *
  * Perform the force merge operation on the shards of one or more indices.
  * For data streams, the API forces a merge on the shards of the stream's backing indices.
  *
@@ -47,7 +48,6 @@ import { long } from '@_types/Numeric'
  * If the request contains `wait_for_completion=false`, Elasticsearch performs some preflight checks, launches the request, and returns a task you can use to get the status of the task.
  * However, you can not cancel this task as the force merge task is not cancelable.
  * Elasticsearch creates a record of this task as a document at `_tasks/<task_id>`.
- * When you are done with a task, you should delete the task document so Elasticsearch can reclaim the space.
  *
  * **Force merging multiple indices**
  *
@@ -58,9 +58,9 @@ import { long } from '@_types/Numeric'
  * * One or more aliases
  * * All data streams and indices in a cluster
  *
- * Each targeted shard is force-merged separately using the force_merge threadpool.
- * By default each node only has a single `force_merge` thread which means that the shards on that node are force-merged one at a time.
- * If you expand the `force_merge` threadpool on a node then it will force merge its shards in parallel
+ * Each targeted shard is force-merged separately using the `force_merge` threadpool.
+ * The `force_merge` threadpool has a fixed size of `max(1, allocatedProcessors / 8)` per node, which means multiple shards on a node may be force-merged in parallel.
+ * If you expand the `force_merge` threadpool on a node then it will force merge its shards with more parallelism.
  *
  * Force merge makes the storage for the shard being merged temporarily increase, as it may require free space up to triple its size in case `max_num_segments parameter` is set to `1`, to rewrite all segments into a new one.
  *
@@ -94,15 +94,51 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of index names; use `_all` or empty string to perform the operation on all indices
+     */
     index?: Indices
   }
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     */
     allow_no_indices?: boolean
+    /**
+     * Whether to expand wildcard expression to concrete indices that are open, closed or both.
+     * @server_default open
+     */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Specify whether the index should be flushed after performing the operation
+     * @server_default true
+     */
     flush?: boolean
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     */
     ignore_unavailable?: boolean
+    /**
+     * The number of segments the index should be merged into (default: dynamic)
+     */
     max_num_segments?: long
+    /**
+     * Specify whether the operation should only expunge deleted documents
+     * @server_default false
+     */
     only_expunge_deletes?: boolean
+    /**
+     * Should the request wait until the force merge is completed
+     * @server_default true
+     */
     wait_for_completion?: boolean
   }
 }

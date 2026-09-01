@@ -17,15 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, MediaType, WaitForActiveShards } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { IndexName, WaitForActiveShards } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Split an index.
+ *
  * Split an index into a new index with more primary shards.
  * * Before you can split an index:
  *
@@ -57,6 +58,7 @@ import { Duration } from '@_types/Time'
  * * The target index must not exist.
  * * The source index must have fewer primary shards than the target index.
  * * The number of primary shards in the target index must be a multiple of the number of primary shards in the source index.
+ * * The number of primary shards in the target index must be a divisor of the source index's `index.number_of_routing_shards`.
  * * The node handling the split process must have sufficient free disk space to accommodate a second copy of the existing index.
  * @doc_id indices-split-index
  * @rest_spec_name indices.split
@@ -80,6 +82,8 @@ export interface Request extends RequestBase {
      */
     target: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.
@@ -97,6 +101,7 @@ export interface Request extends RequestBase {
      * The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
   }

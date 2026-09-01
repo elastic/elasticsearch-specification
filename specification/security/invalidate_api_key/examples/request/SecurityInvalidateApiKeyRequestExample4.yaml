@@ -1,5 +1,5 @@
 summary: API keys by user
-# method_request: DELETE /_security/api_key
+method_request: DELETE /_security/api_key
 description: Run `DELETE /_security/api_key` to invalidate all API keys for the user `myuser` in all realms.
 # type: request
 value: |-

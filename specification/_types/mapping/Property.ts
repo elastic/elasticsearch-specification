@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { PropertyName } from '@_types/common'
 import {
   GeoPointProperty,
@@ -34,6 +33,7 @@ import {
   LongRangeProperty
 } from '@_types/mapping/range'
 import { integer } from '@_types/Numeric'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   AggregateMetricDoubleProperty,
   FlattenedProperty,
@@ -59,6 +59,7 @@ import {
   PercolatorProperty,
   RankFeatureProperty,
   RankFeaturesProperty,
+  RankVectorProperty,
   ScaledFloatNumberProperty,
   SearchAsYouTypeProperty,
   SemanticTextProperty,
@@ -75,6 +76,7 @@ import {
   CompletionProperty,
   ConstantKeywordProperty,
   CountedKeywordProperty,
+  ExponentialHistogramProperty,
   FieldAliasProperty,
   HistogramProperty,
   IcuCollationProperty,
@@ -147,6 +149,7 @@ export type Property =
   | NestedProperty
   | ObjectProperty
   | PassthroughObjectProperty
+  | RankVectorProperty
   | SemanticTextProperty
   | SparseVectorProperty
 
@@ -156,6 +159,7 @@ export type Property =
   | CountedKeywordProperty
   | FieldAliasProperty
   | HistogramProperty
+  | ExponentialHistogramProperty
   | IpProperty
   | Murmur3HashProperty
   | TokenCountProperty
@@ -197,6 +201,7 @@ export enum FieldType {
   keyword,
   text,
   search_as_you_type,
+  wildcard,
   date,
   date_nanos,
   boolean,

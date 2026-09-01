@@ -20,5 +20,6 @@
 import { TransformsRecord } from './types'
 
 export class Response {
+  /** @codegen_name transforms */
   body: Array<TransformsRecord>
 }

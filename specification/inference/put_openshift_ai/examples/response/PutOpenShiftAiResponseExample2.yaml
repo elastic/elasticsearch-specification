@@ -1,0 +1,17 @@
+summary: A completion task
+description: A successful response when creating an OpenShift AI `completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "openshift-ai-completion",
+    "task_type": "completion",
+    "service": "openshift_ai",
+    "service_settings": {
+      "model_id": "llama-31-8b-instruct",
+      "url": "openshift-ai-completion-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      }
+    }
+  }

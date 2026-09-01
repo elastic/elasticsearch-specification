@@ -1,0 +1,4 @@
+summary: Analyze a repository
+method_request: POST /_snapshot/my_repository/_analyze?blob_count=10&max_blob_size=1mb&timeout=120s
+type: request
+description: Analyze `my_repository` by writing 10 blobs of 1mb max. Cancel the test after 2 minutes.

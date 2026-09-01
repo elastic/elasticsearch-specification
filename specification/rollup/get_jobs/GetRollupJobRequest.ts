@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get rollup job information.
+ *
  * Get the configuration, stats, and status of rollup jobs.
  *
  * NOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.
@@ -51,4 +52,5 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  response_media_type: MediaType.Json
 }

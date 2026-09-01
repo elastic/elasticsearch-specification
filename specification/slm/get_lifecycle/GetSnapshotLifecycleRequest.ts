@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get policy information.
+ *
  * Get snapshot lifecycle policy definitions and information about the latest snapshot attempts.
  * @rest_spec_name slm.get_lifecycle
  * @availability stack since=7.4.0 stability=stable
@@ -42,11 +43,10 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
-    /*
-    A comma-separate list of snapshot lifecycle policy identifiers.
-    */
+    /** A comma-separated list of snapshot lifecycle policy identifiers. */
     policy_id?: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.

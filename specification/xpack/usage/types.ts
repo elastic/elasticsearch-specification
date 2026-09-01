@@ -17,12 +17,12 @@
  * under the License.
  */
 
-import { JobStatistics } from '@ml/_types/Job'
-import { Statistics } from '@slm/_types/SnapshotLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ByteSize, Field, Name } from '@_types/common'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import { JobStatistics } from '@ml/_types/Job'
+import { Statistics } from '@slm/_types/SnapshotLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Base {
   available: boolean
@@ -75,9 +75,150 @@ export class Datafeed {
   count: long
 }
 
+/**
+ * Usage statistics about logging configuration reported by `_xpack/usage`.
+ */
+export class Logging {
+  /**
+   * Search query log configuration.
+   */
+  querylog: QueryLoggingConfig
+  /**
+   * ES|QL query log configuration.
+   */
+  esql: EsqlLoggingConfig
+}
+
+export class QueryLoggingConfig {
+  /**
+   * Whether query logging is enabled.
+   */
+  enabled: boolean
+  /**
+   * Whether user information is included in the query log.
+   */
+  user: boolean
+  /**
+   * Whether system queries are included in the query log.
+   */
+  system: boolean
+  /**
+   * The configured logging threshold, if any.
+   */
+  threshold?: Duration
+}
+
+export class EsqlLoggingConfig {
+  /**
+   * Whether ES|QL query logging is enabled.
+   */
+  enabled: boolean
+  /**
+   * Whether user information is included in the ES|QL query log.
+   */
+  user: boolean
+  /**
+   * The configured logging thresholds, keyed by threshold name, if any.
+   */
+  thresholds?: Dictionary<string, Duration>
+}
+
 export class DataStreams extends Base {
   data_streams: long
   indices_count: long
+}
+
+/**
+ * Usage statistics for data stream lifecycle (DLM), reported by `_xpack/usage` under `data_lifecycle`.
+ * Besides `available` and `enabled`, all the following statistics are only present when the feature is enabled.
+ */
+export class DataStreamLifecycleUsage extends Base {
+  /**
+   * The number of data streams that have a lifecycle configured.
+   */
+  count?: long
+  /**
+   * Whether the default rollover configuration is used by at least one data stream.
+   */
+  default_rollover_used?: boolean
+  /**
+   * Statistics about the explicitly configured data retention across data streams.
+   */
+  data_retention?: DataStreamLifecycleRetentionStats
+  /**
+   * Statistics about the effective retention (configured or derived from global retention) across data streams.
+   */
+  effective_retention?: DataStreamLifecycleEffectiveRetentionStats
+  /**
+   * Statistics about the configured `frozen_after` (searchable snapshot) tier threshold across data streams.
+   * @availability stack since=9.5.0
+   */
+  frozen_after?: DataStreamLifecycleRetentionStats
+  /**
+   * Statistics about the cluster's global default and maximum retention settings.
+   */
+  global_retention?: DataStreamLifecycleGlobalRetention
+}
+
+/**
+ * The `minimum_millis`, `maximum_millis`, and `average_millis` fields are only present when at least one data stream contributes to these statistics.
+ */
+export class DataStreamLifecycleThresholdStats {
+  /**
+   * The smallest configured value in milliseconds.
+   */
+  minimum_millis?: long
+  /**
+   * The largest configured value in milliseconds.
+   */
+  maximum_millis?: long
+  /**
+   * The average configured value in milliseconds.
+   */
+  average_millis?: double
+}
+
+export class DataStreamLifecycleRetentionStats extends DataStreamLifecycleThresholdStats {
+  /**
+   * The number of data streams for which this value is configured.
+   */
+  configured_data_streams: long
+}
+
+export class DataStreamLifecycleEffectiveRetentionStats extends DataStreamLifecycleThresholdStats {
+  /**
+   * The number of data streams for which an effective retention applies.
+   */
+  retained_data_streams: long
+}
+
+export class DataStreamLifecycleGlobalRetention {
+  /**
+   * Statistics about the cluster's default global retention.
+   */
+  default: DataStreamLifecycleGlobalRetentionStats
+  /**
+   * Statistics about the cluster's maximum global retention.
+   */
+  max: DataStreamLifecycleGlobalRetentionStats
+}
+
+/**
+ * The `affected_data_streams` and `retention_millis` fields are only present when this global retention is defined.
+ */
+export class DataStreamLifecycleGlobalRetentionStats {
+  /**
+   * Whether this global retention is defined for the cluster.
+   */
+  defined: boolean
+  /**
+   * The number of data streams affected by this global retention.
+   */
+  affected_data_streams?: long
+  /**
+   * The global retention period in milliseconds.
+   */
+  retention_millis?: long
 }
 
 export class DataTierPhaseStatistics {
@@ -320,9 +461,42 @@ export class SecurityRolesDls {
 }
 
 export class SecurityRolesDlsBitSetCache {
+  /** Number of entries in the cache. */
   count: integer
+  /** Human-readable amount of memory taken up by the cache. */
   memory?: ByteSize
+  /** Memory taken up by the cache in bytes. */
   memory_in_bytes: ulong
+  /**
+   * Total number of cache hits.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  hits: long
+  /**
+   * Total number of cache misses.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  misses: long
+  /**
+   * Total number of cache evictions.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  evictions: long
+  /**
+   * Total combined time spent in cache for hits in milliseconds.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  hits_time_in_millis: DurationValue<UnitMillis>
+  /**
+   * Total combined time spent in cache for misses in milliseconds.
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  misses_time_in_millis: DurationValue<UnitMillis>
 }
 
 export class SecurityRolesFile {
@@ -463,6 +637,20 @@ export class Vector extends Base {
   sparse_vector_fields_count?: integer
 }
 
+/**
+ * Usage statistics for indices using the `vectordb_document` index mode.
+ */
+export class VectorDbDocument extends Base {
+  /**
+   * The number of indices using the `vectordb_document` index mode.
+   */
+  indices_count: integer
+  /**
+   * The total number of documents held across all `vectordb_document` indices.
+   */
+  num_docs: long
+}
+
 export class Watcher extends Base {
   execution: WatcherActions
   watch: WatcherWatch
@@ -472,4 +660,30 @@ export class Watcher extends Base {
 export class WatcherWatchTriggerSchedule extends Counter {
   cron: Counter
   _all: Counter
+}
+
+/**
+ * Per-node GPU statistics for vector indexing.
+ */
+export class GpuNodeStats {
+  /** GPU device type (e.g., "NVIDIA L4", "NVIDIA A100"). */
+  type: string
+  /** GPU memory in bytes. */
+  memory_in_bytes: long
+  /** Whether GPU vector indexing is enabled on this node. */
+  enabled: boolean
+  /** Number of GPU index builds performed on this node. */
+  index_build_count: long
+}
+
+/**
+ * GPU vector indexing usage statistics.
+ */
+export class GpuVectorIndexing extends Base {
+  /** Total GPU index builds across the cluster. */
+  index_build_count: long
+  /** Count of data nodes with GPU support. */
+  nodes_with_gpu: integer
+  /** Per-node GPU details including type, memory, enabled status, and build count. */
+  nodes: GpuNodeStats[]
 }

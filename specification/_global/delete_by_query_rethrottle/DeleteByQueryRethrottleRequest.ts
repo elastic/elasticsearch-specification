@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { TaskId } from '@_types/common'
+import { MediaType, TaskId } from '@_types/common'
 import { float } from '@_types/Numeric'
 
 /**
@@ -45,11 +45,12 @@ export interface Request extends RequestBase {
      */
     task_id: TaskId
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * The throttle for this request in sub-requests per second.
-     * To disable throttling, set it to `-1`.
+     * The maximum number of documents to delete per second, across the entire delete-by-query operation (including slices).
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      */
-    requests_per_second?: float
+    requests_per_second: float
   }
 }

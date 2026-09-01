@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { CronExpression } from '@watcher/_types/Schedule'
 import {
   Id,
   Indices,
@@ -34,6 +33,7 @@ import {
   EpochTime,
   UnitMillis
 } from '@_types/Time'
+import { CronExpression } from '@watcher/_types/Schedule'
 
 export class SnapshotLifecycle {
   in_progress?: InProgress
@@ -148,4 +148,12 @@ export class InProgress {
 export class Invocation {
   snapshot_name: Name
   time: DateTime
+}
+
+export class SnapshotPolicyStats {
+  policy: string
+  snapshots_taken: long
+  snapshots_failed: long
+  snapshots_deleted: long
+  snapshot_deletion_failures: long
 }

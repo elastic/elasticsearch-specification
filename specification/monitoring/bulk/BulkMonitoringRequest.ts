@@ -17,12 +17,14 @@
  * under the License.
  */
 
-import { OperationContainer, UpdateAction } from '@global/bulk/types'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { OperationContainer, UpdateAction } from '@global/bulk/types'
 
 /**
  * Send monitoring data.
+ *
  * This API is used by the monitoring features to send monitoring data.
  * @rest_spec_name monitoring.bulk
  * @availability stack since=6.3.0 stability=stable visibility=private
@@ -33,31 +35,19 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     {
       path: '/_monitoring/bulk'
       methods: ['POST', 'PUT']
-    },
-    {
-      /** @deprecated 7.0.0 Specifying types in urls has been deprecated */
-      path: '/_monitoring/{type}/bulk'
-      methods: ['POST', 'PUT']
     }
   ]
-  path_parts: {
-    /**
-     * @deprecated 7.0.0
-     */
-    type?: string
-  }
-
+  request_media_type: MediaType.Ndjson
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Identifier of the monitored system
      */
     system_id: string
-
     /**
      *
      */
     system_api_version: string
-
     /**
      * Collection interval (e.g., '10s' or '10000ms') of the payload
      */

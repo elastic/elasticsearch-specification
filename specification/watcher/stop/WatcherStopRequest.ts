@@ -19,9 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Stop the watch service.
+ *
  * Stop the Watcher service if it is running.
  * @rest_spec_name watcher.stop
  * @availability stack stability=stable
@@ -35,6 +37,7 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.

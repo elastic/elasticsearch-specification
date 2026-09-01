@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName } from '@_types/common'
+import { IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Explain the lifecycle state.
+ *
  * Get the current lifecycle status for one or more indices.
  * For data streams, the API retrieves the current lifecycle status for the stream's backing indices.
  *
@@ -31,6 +32,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.6.0 stability=stable
  * @index_privileges view_index_metadata,manage_ilm
  * @doc_id ilm-explain-lifecycle
+ * @ext_doc_id explain-lifecycle-state
  */
 export interface Request extends RequestBase {
   urls: [
@@ -46,6 +48,7 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Filters the returned indices to only indices that are managed by ILM and are in an error state, either due to an encountering an error while executing the policy, or attempting to use a policy that does not exist.

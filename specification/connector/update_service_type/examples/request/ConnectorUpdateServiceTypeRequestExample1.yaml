@@ -1,5 +1,9 @@
 # summary: connector/apis/update-connector-service-type-api.asciidoc:77
-# method_request: PUT _connector/my-connector/_service_type
+method_request: PUT _connector/my-connector/_service_type
 # description: ''
 # type: request
-value: "{\n    \"service_type\": \"sharepoint_online\"\n}"
+value: "{
+
+  \    \"service_type\": \"sharepoint_online\"
+
+  }"

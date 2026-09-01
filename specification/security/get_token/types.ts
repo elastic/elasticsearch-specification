@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { User } from '@security/_types/User'
 import { Name } from '@_types/common'
+import { User } from '@security/_types/User'
 
 export enum AccessTokenGrantType {
   /**

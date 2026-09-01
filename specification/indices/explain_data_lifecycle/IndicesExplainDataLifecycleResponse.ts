@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName } from '@_types/common'
 import { Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

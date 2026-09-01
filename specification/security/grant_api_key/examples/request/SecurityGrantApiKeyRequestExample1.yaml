@@ -1,5 +1,5 @@
 summary: Grant an API key
-# method_request: POST /_security/api_key/grant
+method_request: POST /_security/api_key/grant
 description: >
   Run `POST /_security/api_key/grant` to create an API key on behalf of the `test_admin` user.
 # type: request

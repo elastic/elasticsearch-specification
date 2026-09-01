@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import {
   IndexName,
   Metadata,
@@ -34,6 +33,7 @@ import {
   EpochTime,
   UnitMillis
 } from '@_types/Time'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexDetails } from './SnapshotIndexDetails'
 import { InfoFeatureState } from './SnapshotInfoFeatureState'
 import { SnapshotShardFailure } from './SnapshotShardFailure'

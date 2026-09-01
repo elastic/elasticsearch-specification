@@ -1,5 +1,5 @@
 # summary:
-# method_request: "POST stackoverflow/_terms_enum"
+method_request: 'POST stackoverflow/_terms_enum'
 description: Run `POST stackoverflow/_terms_enum`.
 # type: "request"
 value: |-

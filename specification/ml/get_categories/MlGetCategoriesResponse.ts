@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Category } from '@ml/_types/Category'
 import { long } from '@_types/Numeric'
+import { Category } from '@ml/_types/Category'
 
 export class Response {
   body: {

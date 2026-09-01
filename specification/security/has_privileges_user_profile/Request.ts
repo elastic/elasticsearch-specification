@@ -17,8 +17,9 @@
  * under the License.
  */
 
-import { UserProfileId } from '@security/_types/UserProfile'
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
+import { UserProfileId } from '@security/_types/UserProfile'
 import { PrivilegesCheck } from './types'
 
 /**
@@ -42,6 +43,8 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * A list of profile IDs. The privileges are checked for associated users of the profiles.

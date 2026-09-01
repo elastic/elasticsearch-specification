@@ -1,7 +1,21 @@
 summary: Create a template
-# method_request: PUT /_index_template/template_1
+method_request: PUT /_index_template/template_1
 # description: ''
 # type: request
-value:
-  "{\n  \"index_patterns\" : [\"template*\"],\n  \"priority\" : 1,\n  \"template\"\
-  : {\n    \"settings\" : {\n      \"number_of_shards\" : 2\n    }\n  }\n}"
+value: "{
+
+  \  \"index_patterns\" : [\"template*\"],
+
+  \  \"priority\" : 1,
+
+  \  \"template\": {
+
+  \    \"settings\" : {
+
+  \      \"number_of_shards\" : 2
+
+  \    }
+
+  \  }
+
+  }"

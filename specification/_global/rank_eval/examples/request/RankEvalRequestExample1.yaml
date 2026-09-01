@@ -1,0 +1,18 @@
+method_request: GET /my-index-000001/_rank_eval
+description: An example body for a `GET /my-index-000001/_rank_eval` request.
+value: |-
+  {
+    "requests": [
+      {
+        "id": "JFK query",
+        "request": { "query": { "match_all": {} } },
+        "ratings": []
+      } ],
+    "metric": {
+      "precision": {
+        "k": 20,
+        "relevant_rating_threshold": 1,
+        "ignore_unlabeled": false
+      }
+    }
+  }

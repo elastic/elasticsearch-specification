@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 /**
  * Verify the repository integrity.
+ *
  * Verify the integrity of the contents of a snapshot repository.
  *
  * This API enables you to perform a comprehensive check of the contents of a repository, looking for any anomalies in its data or metadata which might prevent you from restoring snapshots from the repository or which might cause future snapshot create or delete operations to fail.
@@ -59,7 +60,7 @@ import { integer } from '@_types/Numeric'
  * The response exposes implementation details of the analysis which may change from version to version.
  * The response body format is therefore not considered stable and may be different in newer versions.
  * @rest_spec_name snapshot.repository_verify_integrity
- * @availability stack since=8.16.0 stability=experimental visibility=private
+ * @availability stack since=8.16.0 stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id snapshot-repo-verify-integrity
  */
@@ -76,6 +77,7 @@ export interface Request extends RequestBase {
      * @codegen_name name */
     repository: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If `verify_blob_contents` is `true`, this parameter specifies how many blobs to verify at once.

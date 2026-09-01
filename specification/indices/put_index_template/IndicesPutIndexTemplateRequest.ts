@@ -17,15 +17,11 @@
  * under the License.
  */
 
-import { Alias } from '@indices/_types/Alias'
-import { DataStreamVisibility } from '@indices/_types/DataStream'
-import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
-import { IndexSettings } from '@indices/_types/IndexSettings'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { RequestBase } from '@_types/Base'
 import {
   IndexName,
   Indices,
+  MediaType,
   Metadata,
   Name,
   VersionNumber
@@ -33,9 +29,16 @@ import {
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Alias } from '@indices/_types/Alias'
+import { DataStreamVisibility } from '@indices/_types/DataStream'
+import { DataStreamLifecycle } from '@indices/_types/DataStreamLifecycle'
+import { DataStreamOptionsTemplate } from '@indices/_types/DataStreamOptions'
+import { IndexSettings } from '@indices/_types/IndexSettings'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * Create or update an index template.
+ *
  * Index templates define settings, mappings, and aliases that can be applied automatically to new indices.
  *
  * Elasticsearch applies templates to new indices based on an wildcard pattern that matches the index name.
@@ -67,6 +70,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_index_templates
+ * @doc_id index-templates-put
  */
 export interface Request extends RequestBase {
   urls: [
@@ -79,9 +83,11 @@ export interface Request extends RequestBase {
     /** Index or template name */
     name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
-     * Name of the index template to create.
+     * Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.
      */
     index_patterns?: Indices
     /**
@@ -150,7 +156,10 @@ export interface Request extends RequestBase {
      * If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s */
     master_timeout?: Duration
-
+    /**
+     * User defined reason for creating or updating the index template
+     * @server_default api
+     */
     cause?: string
   }
 }
@@ -177,4 +186,9 @@ export class IndexTemplateMapping {
    * @availability serverless stability=stable
    */
   lifecycle?: DataStreamLifecycle
+  /**
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  data_stream_options?: DataStreamOptionsTemplate | null
 }

@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { ClusterNode } from '@security/_types/ClusterNode'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { Name } from '@_types/common'
 import { NodeStatistics } from '@_types/Node'
+import { ClusterNode } from '@security/_types/ClusterNode'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Response {
   body: {

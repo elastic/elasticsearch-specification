@@ -22,12 +22,15 @@ import {
   Archive,
   Base,
   Ccr,
+  DataStreamLifecycleUsage,
   DataStreams,
   DataTiers,
   Eql,
   Flattened,
+  GpuVectorIndexing,
   HealthStatistics,
   Ilm,
+  Logging,
   MachineLearning,
   Monitoring,
   RuntimeFieldTypes,
@@ -36,6 +39,7 @@ import {
   Slm,
   Sql,
   Vector,
+  VectorDbDocument,
   Watcher
 } from './types'
 
@@ -52,14 +56,23 @@ export class Response {
     ccr: Ccr
     data_frame?: Base
     data_science?: Base
+    data_lifecycle?: DataStreamLifecycleUsage
     data_streams?: DataStreams
     data_tiers: DataTiers
     enrich?: Base
     eql: Eql
     flattened?: Flattened
     graph: Base
+    /**
+     * @availability stack since=9.3.2
+     */
+    gpu_vector_indexing?: GpuVectorIndexing
     health_api?: HealthStatistics
     ilm: Ilm
+    /**
+     * @availability stack since=9.5.0
+     */
+    logging?: Logging
     logstash: Base
     ml: MachineLearning
     monitoring: Monitoring
@@ -72,6 +85,10 @@ export class Response {
     sql: Sql
     transform: Base
     vectors?: Vector
+    /**
+     * @availability stack since=9.5.0
+     */
+    vectordb_document?: VectorDbDocument
     voting_only: Base
   }
 }

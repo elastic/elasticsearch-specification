@@ -17,18 +17,20 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, IndexName, MediaType } from '@_types/common'
+import { long } from '@_types/Numeric'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { DataDescription } from '@ml/_types/Job'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
-import { RequestBase } from '@_types/Base'
-import { Id, IndexName } from '@_types/common'
-import { long } from '@_types/Numeric'
 
 /**
  * Validate an anomaly detection job.
+ *
  * @rest_spec_name ml.validate
  * @availability stack since=6.3.0 stability=stable visibility=private
  * @availability serverless stability=stable visibility=private
+ * @doc_id ml-jobs
  * @doc_tag ml anomaly
  */
 export interface Request extends RequestBase {
@@ -38,6 +40,8 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     job_id?: Id
     analysis_config?: AnalysisConfig

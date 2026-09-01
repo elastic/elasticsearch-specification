@@ -18,17 +18,22 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get task information.
+ *
  * Get information about a task currently running in the cluster.
  *
  * WARNING: The task management API is new and should still be considered a beta feature.
  * The API may change in ways that are not backwards compatible.
  *
  * If the task identifier is not found, a 404 response code indicates that there are no resources that match the request.
+ *
+ * For relocatable tasks, this API transparently follows the task across graceful shutdown relocations,
+ * so callers can keep using the original task ID. The returned task reports its `original_task_id` and `original_start_time_in_millis`
+ * if it is continuing work from an earlier task.
  * @rest_spec_name tasks.get
  * @availability stack since=5.0.0 stability=experimental
  * @availability serverless stability=experimental visibility=public
@@ -48,6 +53,7 @@ export interface Request extends RequestBase {
      */
     task_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a response.
@@ -60,5 +66,11 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     wait_for_completion?: boolean
+    /**
+     * Internal use only
+     * @availability stack since=9.5.0 stability=experimental visibility=private
+     * @server_default true
+     */
+    follow_relocations?: boolean
   }
 }

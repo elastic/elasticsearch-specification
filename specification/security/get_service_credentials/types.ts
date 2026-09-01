@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { NodeStatistics } from '@_types/Node'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class NodesCredentials {
   /** General status showing how nodes respond to the above collection request */

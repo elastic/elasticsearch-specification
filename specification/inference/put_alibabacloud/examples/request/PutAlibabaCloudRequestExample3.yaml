@@ -1,0 +1,16 @@
+summary: A sparse embedding task
+description:
+  Run `PUT _inference/sparse_embedding/alibabacloud_ai_search_sparse` to create an inference endpoint that performs
+  perform a sparse embedding task.
+method_request: 'PUT _inference/sparse_embedding/alibabacloud_ai_search_sparse'
+# type: "request"
+value: |-
+  {
+      "service": "alibabacloud-ai-search",
+      "service_settings": {
+          "api_key": "AlibabaCloud-API-Key",
+          "service_id": "ops-text-sparse-embedding-001",
+          "host": "default-j01.platform-cn-shanghai.opensearch.aliyuncs.com",
+          "workspace": "default"
+      }
+  }

@@ -17,11 +17,11 @@
  * under the License.
  */
 
+import { IndexName, Name } from '@_types/common'
+import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Alias } from '@indices/_types/Alias'
 import { IndexSettings } from '@indices/_types/IndexSettings'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { IndexName, Name } from '@_types/common'
-import { TypeMapping } from '@_types/mapping/TypeMapping'
 
 export class Response {
   body: {

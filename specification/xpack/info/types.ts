@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { LicenseStatus, LicenseType } from '@license/_types/License'
 import { VersionString } from '@_types/common'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
+import { LicenseStatus, LicenseType } from '@license/_types/License'
 
 export class BuildInformation {
   date: DateTime
@@ -56,6 +56,10 @@ export class Features {
    */
   esql: Feature
   graph: Feature
+  /**
+   * @availability stack since=9.3.2
+   */
+  gpu_vector_indexing: Feature
   ilm: Feature
   logstash: Feature
   logsdb: Feature

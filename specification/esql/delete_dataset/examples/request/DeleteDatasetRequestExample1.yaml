@@ -1,0 +1,3 @@
+summary: Delete a dataset
+method_request: DELETE /_query/dataset/access_logs
+description: Delete an ES|QL data federation dataset.

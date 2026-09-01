@@ -1,5 +1,5 @@
 summary: A simple term search
-# method_request: GET /my-index-000001/_search?from=40&size=20
+method_request: GET /my-index-000001/_search?from=40&size=20
 description: >
   Run `GET /my-index-000001/_search?from=40&size=20` to run a search.
 # type: request

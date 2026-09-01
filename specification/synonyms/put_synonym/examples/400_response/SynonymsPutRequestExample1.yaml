@@ -1,5 +1,4 @@
 # summary:
-# method_request: PUT _synonyms/my-synonyms-set
 description: >
   Run `PUT _synonyms/my-synonyms-set` to create a new synonyms set.
   If any of the synonym rules included is not valid, the API will return an error.

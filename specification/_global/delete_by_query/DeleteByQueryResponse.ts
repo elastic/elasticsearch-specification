@@ -20,6 +20,7 @@
 import { TaskId } from '@_types/common'
 import { BulkIndexByScrollFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
+import { ReindexStatus } from '@_types/Reindex'
 import { Retries } from '@_types/Retries'
 import { Duration, DurationValue, UnitMillis } from '@_types/Time'
 
@@ -56,6 +57,10 @@ export class Response {
      */
     retries?: Retries
     slice_id?: integer
+    /**
+     * Status of each slice if the delete by query was sliced
+     */
+    slices?: ReindexStatus[]
     task?: TaskId
     throttled?: Duration
     /**

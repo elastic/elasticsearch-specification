@@ -18,17 +18,21 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get the async search status.
  *
  * Get the status of a previously submitted async search request given its identifier, without retrieving search results.
- * If the Elasticsearch security features are enabled, use of this API is restricted to the `monitoring_user` role.
+ * If the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:
+ *
+ * * The user or API key that submitted the original async search request.
+ * * Users that have the `monitor` cluster privilege or greater privileges.
  * @rest_spec_name async_search.status
  * @availability stack since=7.11.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @cluster_privileges monitor
  * @doc_id async-search
  * @doc_tag search
  */
@@ -43,9 +47,10 @@ export interface Request extends RequestBase {
     /** A unique identifier for the async search. */
     id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * Specifies how long the async search needs to be available.
+     * The length of time that the async search needs to be available.
      * Ongoing async searches and any saved search results are deleted after this period.
      * @server_default 5d
      */

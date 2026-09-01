@@ -18,12 +18,18 @@
  */
 
 import { Name } from '@_types/common'
+import { CredentialManagedBy } from '@security/_types/CredentialManagedBy'
 
 export class Token {
-  name: Name
+  name?: Name
   /**
    * @availability stack since=7.14.0
    * @availability serverless
    */
   type?: string
+  /**
+   * @availability stack since=9.4.0
+   * @availability serverless
+   */
+  managed_by?: CredentialManagedBy
 }

@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Close a point in time.
+ *
  * A point in time must be opened explicitly before being used in search requests.
  * The `keep_alive` parameter tells Elasticsearch how long it should persist.
  * A point in time is automatically closed when the `keep_alive` period has elapsed.
@@ -39,6 +40,8 @@ export interface Request extends RequestBase {
       methods: ['DELETE']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The ID of the point-in-time.

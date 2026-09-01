@@ -22,6 +22,7 @@ import {
   Conflicts,
   ExpandWildcards,
   Indices,
+  MediaType,
   Routing,
   SearchType,
   Slices,
@@ -36,6 +37,7 @@ import { Duration } from '@_types/Time'
 
 /**
  * Update documents.
+ *
  * Updates documents that match the specified query.
  * If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.
  *
@@ -58,6 +60,20 @@ import { Duration } from '@_types/Time'
  * A bulk update request is performed for each batch of matching documents.
  * Any query or update failures cause the update by query request to fail and the failures are shown in the response.
  * Any update requests that completed successfully still stick, they are not rolled back.
+ *
+ * **Refreshing shards**
+ *
+ * Specifying the `refresh` parameter refreshes all shards once the request completes.
+ * This is different to the update API's `refresh` parameter, which causes only the shard
+ * that received the request to be refreshed. Unlike the update API, it does not support
+ * `wait_for`.
+ *
+ * **Running update by query asynchronously**
+ *
+ * If the request contains `wait_for_completion=false`, Elasticsearch
+ * performs some preflight checks, launches the request, and returns a
+ * [task](https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks) you can use to cancel or get the status of the task.
+ * Elasticsearch creates a record of this task as a document at `.tasks/task/${taskId}`.
  *
  * **Throttling update requests**
  *
@@ -103,28 +119,14 @@ import { Duration } from '@_types/Time'
  * * Update performance scales linearly across available resources with the number of slices.
  *
  * Whether query or update performance dominates the runtime depends on the documents being reindexed and cluster resources.
- *
- * **Update the document source**
- *
- * Update by query supports scripts to update the document source.
- * As with the update API, you can set `ctx.op` to change the operation that is performed.
- *
- * Set `ctx.op = "noop"` if your script decides that it doesn't have to make any changes.
- * The update by query operation skips updating the document and increments the `noop` counter.
- *
- * Set `ctx.op = "delete"` if your script decides that the document should be deleted.
- * The update by query operation deletes the document and increments the `deleted` counter.
- *
- * Update by query supports only `index`, `noop`, and `delete`.
- * Setting `ctx.op` to anything else is an error.
- * Setting any other field in `ctx` is an error.
- * This API enables you to only modify the source of matching documents; you cannot move them.
+ * Refer to the linked documentation for examples of how to update documents using the `_update_by_query` API:
  * @rest_spec_name update_by_query
  * @availability stack since=2.4.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @index_privileges read,write
  * @doc_tag document
  * @doc_id docs-update-by-query
+ * @ext_doc_id update-by-query
  */
 export interface Request extends RequestBase {
   urls: [
@@ -138,14 +140,20 @@ export interface Request extends RequestBase {
      * A comma-separated list of data streams, indices, and aliases to search.
      * It supports wildcards (`*`).
      * To search all data streams or indices, omit this parameter or use `*` or `_all`.
+     * @ext_doc_id search-multiple-indices
      */
     index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.
-     * This behavior applies even if the request targets other open indices.
-     * For example, a request targeting `foo*,bar*` returns an error if an index starts with `foo` but no index starts with `bar`.
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
      * @server_default true
      */
     allow_no_indices?: boolean
@@ -166,9 +174,9 @@ export interface Request extends RequestBase {
      */
     conflicts?: Conflicts
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -180,12 +188,18 @@ export interface Request extends RequestBase {
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
      * It supports comma-separated values, such as `open,hidden`.
-     * Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+     * @server_default open
      */
     expand_wildcards?: ExpandWildcards
+    /**
+     * Skips the specified number of documents.
+     * @server_default 0
+     */
     from?: long
     /**
-     * If `false`, the request returns an error if it targets a missing or closed index.
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
      * @server_default false
      */
     ignore_unavailable?: boolean
@@ -198,7 +212,7 @@ export interface Request extends RequestBase {
     /**
      * The maximum number of documents to process.
      * It defaults to all documents.
-     * When set to a value less then or equal to `scroll_size` then a scroll will not be used to retrieve the results for the operation.
+     * When set to a value less than or equal to `scroll_size` and `conflicts` is set to `abort`, a scroll will not be used to retrieve the results for the operation.
      */
     max_docs?: long
     /**
@@ -225,17 +239,29 @@ export interface Request extends RequestBase {
     /**
      * If `true`, the request cache is used for this request.
      * It defaults to the index-level setting.
+     * @ext_doc_id shard-request-cache
      */
     request_cache?: boolean
     /**
-     * The throttle for this request in sub-requests per second.
+     * The maximum number of documents to update per second, across the entire update_by_query operation (including slices).
+     * It can be either `-1` to turn off throttling or any decimal number like `1.7` or `12` to throttle to that level.
      * @server_default -1
      */
     requests_per_second?: float
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     * @availability stack stability=stable
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * The period to retain the search context for scrolling.
      * @server_default 5m
@@ -292,13 +318,18 @@ export interface Request extends RequestBase {
      * If `true`, returns the document version as part of a hit.
      */
     version?: boolean
+    /**
+     * Should the document increment the version number (internal) on hit or not (reindex)
+     */
     version_type?: boolean
     /**
      * The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * The `timeout` parameter controls how long each write request waits for unavailable shards to become available.
      * Both work exactly the way they work in the bulk API.
+     * Update by query uses scrolled searches, so you can also specify the `scroll` parameter to control how long it keeps the search context alive, for example `?scroll=10m`.
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
     /**
@@ -309,7 +340,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * The maximum number of documents to update.
      */

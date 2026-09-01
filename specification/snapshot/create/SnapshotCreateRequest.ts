@@ -18,14 +18,21 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, Metadata, Name } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  Metadata,
+  Name
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Create a snapshot.
+ *
  * Take a snapshot of a cluster or of data streams and indices.
  * @rest_spec_name snapshot.create
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges create_snapshot
  * @doc_id snapshot-create-api
@@ -50,6 +57,8 @@ export interface Request extends RequestBase {
      */
     snapshot: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
@@ -64,7 +73,7 @@ export interface Request extends RequestBase {
      */
     wait_for_completion?: boolean
   }
-  body: {
+  body?: {
     /**
      * Determines how wildcard patterns in the `indices` parameter match data streams and indices.
      * It supports comma-separated values such as `open,hidden`.
@@ -114,11 +123,12 @@ export interface Request extends RequestBase {
      */
     metadata?: Metadata
     /**
-     * If `true`, it enables you to restore a partial snapshot of indices with unavailable shards.
-     * Only shards that were successfully included in the snapshot will be restored.
-     * All missing shards will be recreated as empty.
+     * If `true`, allows the snapshot to proceed even if some of the target shards are unavailable.
+     * In this case, the resulting snapshot will not contain snapshots of the unavailable target shards, and will report its state as `PARTIAL`.
+     * Additionally, if `true`, allows index metadata operations such as deletions while the snapshot is in progress.
+     * This is almost always preferable to failing the snapshot completely when a single shard is unavailable, and blocking index metadata operations.
      *
-     * If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available.
+     * If `false`, the entire restore operation will fail if one or more indices included in the snapshot do not have all primary shards available, and index metadata operations such as deletions will be forbidden until the snapshot completes.
      * @server_default false
      */
     partial?: boolean

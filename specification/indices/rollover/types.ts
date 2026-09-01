@@ -27,6 +27,9 @@ export class RolloverConditions {
   max_age_millis?: DurationValue<UnitMillis>
   min_docs?: long
   max_docs?: long
+  /**
+   * The `max_size` condition has been deprecated in 9.3.0 and `max_primary_shard_size` should be used instead
+   * @deprecated 9.3.0 */
   max_size?: ByteSize
   max_size_bytes?: long
   min_size?: ByteSize

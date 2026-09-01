@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { ByteSize, Id, NodeId } from '@_types/common'
 import { JobState } from '@ml/_types/Job'
 import { CategorizationStatus, MemoryStatus } from '@ml/_types/Model'
-import { ByteSize, Id, NodeId } from '@_types/common'
 
 export class JobsRecord {
   /**

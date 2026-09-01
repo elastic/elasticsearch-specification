@@ -22,6 +22,7 @@ import {
   Fields,
   Id,
   IndexName,
+  MediaType,
   Routing,
   VersionNumber,
   VersionType
@@ -65,7 +66,12 @@ export interface Request extends RequestBase {
      */
     index?: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
+    /**
+     * A comma-separated list of documents ids. You must define ids as parameter or set "ids" or "docs" in the request body
+     */
     ids?: Id[]
     /**
      * A comma-separated list or wildcard expressions of fields to include in the statistics.
@@ -105,8 +111,17 @@ export interface Request extends RequestBase {
     realtime?: boolean
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * If true, the response includes term frequency and document frequency.
      * @server_default false
@@ -121,7 +136,7 @@ export interface Request extends RequestBase {
      */
     version_type?: VersionType
   }
-  body: {
+  body?: {
     /**
      * An array of existing or artificial documents.
      */

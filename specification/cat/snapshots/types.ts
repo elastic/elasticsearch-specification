@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Duration, EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
 import { Stringified } from '@spec_utils/Stringified'
 import { ScheduleTimeOfDay } from '@watcher/_types/Schedule'
-import { Duration, EpochTime, TimeOfDay, UnitSeconds } from '@_types/Time'
 
 export class SnapshotsRecord {
   /**

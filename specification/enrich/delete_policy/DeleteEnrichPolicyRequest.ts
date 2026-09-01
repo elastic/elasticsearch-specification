@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Delete an enrich policy.
+ *
  * Deletes an existing enrich policy and its enrich index.
  * @rest_spec_name enrich.delete_policy
  * @availability stack since=7.5.0 stability=stable
@@ -42,6 +43,7 @@ export interface Request extends RequestBase {
      */
     name: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.

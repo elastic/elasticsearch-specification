@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Upgrade a snapshot.
+ *
  * Upgrade an anomaly detection model snapshot to the latest major version.
  * Over time, older snapshot formats are deprecated and removed. Anomaly
  * detection jobs support only snapshots that are from the current or previous
@@ -56,6 +57,7 @@ export interface Request extends RequestBase {
      */
     snapshot_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * When true, the API won’t respond until the upgrade is complete.

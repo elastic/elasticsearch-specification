@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 
 /**
  * Create SAML service provider metadata.
@@ -43,4 +43,6 @@ export interface Request extends RequestBase {
     /** The name of the SAML realm in Elasticsearch. */
     realm_name: Name
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
 }

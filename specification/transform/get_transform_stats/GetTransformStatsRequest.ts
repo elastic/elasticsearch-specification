@@ -18,12 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Names } from '@_types/common'
+import { MediaType, Names } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Get transform stats.
+ *
  * Get usage information for transforms.
  * @rest_spec_name transform.get_transform_stats
  * @availability stack since=7.5.0 stability=stable
@@ -48,6 +49,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Names
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -62,6 +64,17 @@ export interface Request extends RequestBase {
      */
     allow_no_match?: boolean
     /**
+     * If true, the response includes `id`, `state`, `node`, `stats`, `health`,
+     * and basic `checkpointing` information (the last and next checkpoint
+     * numbers, and the next checkpoint's `position` and `progress`). Skips
+     * statistics that require heavy computations to calculate:
+     * `operations_behind`, `changes_last_detected_at`, `last_search_time`, and
+     * the checkpoint timestamps.
+     * @server_default false
+     * @availability stack since=8.13.0
+     */
+    basic?: boolean
+    /**
      * Skips the specified number of transforms.
      * @server_default 0
      */
@@ -71,6 +84,10 @@ export interface Request extends RequestBase {
      * @server_default 100
      */
     size?: long
+    /**
+     * Controls the time to wait for the stats
+     * @server_default 30s
+     */
     timeout?: Duration
   }
 }

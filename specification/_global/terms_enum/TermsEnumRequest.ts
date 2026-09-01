@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Field, IndexName } from '@_types/common'
+import { Field, Indices, MediaType, ProjectRouting } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Duration } from '@_types/Time'
@@ -50,8 +50,10 @@ export interface Request extends RequestBase {
      * Wildcard (`*`) expressions are supported.
      * To search all data streams or indices, omit this parameter or use `*`  or `_all`.
      */
-    index: IndexName
+    index: Indices
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /** The string to match at the start of indexed terms. If not provided, all terms in the field are considered. */
     field: Field
@@ -89,5 +91,17 @@ export interface Request extends RequestBase {
      * It allows for a form of pagination if the last result from one request is passed as the `search_after` parameter for a subsequent request.
      */
     search_after?: string
+    /**
+     * Specifies a subset of projects to target for the search using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
   }
 }

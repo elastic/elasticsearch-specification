@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Stop datafeeds.
+ *
  * A datafeed that is stopped ceases to retrieve data from Elasticsearch. A datafeed can be started and stopped
  * multiple times throughout its lifecycle.
  * @rest_spec_name ml.stop_datafeed
@@ -47,6 +48,8 @@ export interface Request extends RequestBase {
      */
     datafeed_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request:
@@ -68,8 +71,12 @@ export interface Request extends RequestBase {
      * Specifies the amount of time to wait until a datafeed stops.
      *  @server_default 20s */
     timeout?: Duration
+    /**
+     * If `true` the job associated with the datafeed is closed.
+     * @server_default false */
+    close_job?: boolean
   }
-  body: {
+  body?: {
     /**
      * Refer to the description for the `allow_no_match` query parameter.
      * @server_default true */
@@ -82,5 +89,9 @@ export interface Request extends RequestBase {
      * Refer to the description for the `timeout` query parameter.
      *  @server_default 20s */
     timeout?: Duration
+    /**
+     * Refer to the description for the `close_job` query parameter.
+     * @server_default false */
+    close_job?: boolean
   }
 }

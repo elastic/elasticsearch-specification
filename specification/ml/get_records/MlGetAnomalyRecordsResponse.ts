@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Anomaly } from '@ml/_types/Anomaly'
 import { long } from '@_types/Numeric'
+import { Anomaly } from '@ml/_types/Anomaly'
 
 export class Response {
   body: {

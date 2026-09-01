@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { Sort, SortResults } from '@_types/sort'
 import { RoleQueryContainer } from './types'
@@ -43,7 +44,9 @@ export interface Request extends RequestBase {
       methods: ['GET', 'POST']
     }
   ]
-  body: {
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  body?: {
     /**
      * A query to filter which roles to return.
      * If the query parameter is missing, it is equivalent to a `match_all` query.
@@ -63,7 +66,8 @@ export interface Request extends RequestBase {
     from?: integer
     /**
      * The sort definition.
-     * You can sort on `username`, `roles`, or `enabled`.
+     * You can sort on `name`, `description`, `metadata`, `applications.application`, `applications.privileges`,
+     * and `applications.resources`.
      * In addition, sort can also be applied to the `_doc` field to sort by index order.
      * @doc_id sort-search-results
      */

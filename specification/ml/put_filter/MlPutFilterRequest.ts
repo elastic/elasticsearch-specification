@@ -18,10 +18,11 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Create a filter.
+ *
  * A filter contains a list of strings. It can be used by one or more anomaly detection jobs.
  * Specifically, filters are referenced in the `custom_rules` property of detector configuration objects.
  * @rest_spec_name ml.put_filter
@@ -44,6 +45,8 @@ export interface Request extends RequestBase {
      */
     filter_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * A description of the filter.

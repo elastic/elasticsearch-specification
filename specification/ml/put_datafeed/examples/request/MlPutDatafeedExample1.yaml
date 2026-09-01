@@ -1,0 +1,18 @@
+method_request: PUT _ml/datafeeds/datafeed-test-job?pretty
+description: An example body for a `PUT _ml/datafeeds/datafeed-test-job?pretty` request.
+value: |-
+  {
+    "indices": [
+      "kibana_sample_data_logs"
+    ],
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "match_all": {}
+          }
+        ]
+      }
+    },
+    "job_id": "test-job"
+  }

@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { RequestBase } from '@_types/Base'
-import { Fields, Id, IndexName, Routing } from '@_types/common'
+import { Fields, Id, IndexName, MediaType, Routing } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
+import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 
 /**
  * Explain a document match result.
+ *
  * Get information about why a specific document matches, or doesn't match, a query.
  * It computes a score explanation for a query and a specific document.
  * @rest_spec_name explain
@@ -52,6 +53,8 @@ export interface Request extends RequestBase {
      */
     index: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The analyzer to use for the query string.
@@ -65,9 +68,9 @@ export interface Request extends RequestBase {
      */
     analyze_wildcard?: boolean
     /**
-     * The default operator for query string query: `AND` or `OR`.
+     * The default operator for query string query: `and` or `or`.
      * This parameter can be used only when the `q` query string parameter is specified.
-     * @server_default OR
+     * @server_default or
      */
     default_operator?: Operator
     /**
@@ -88,8 +91,17 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
+    /**
+     * The slice identifier used to route the operation to a specific slice.
+     * Use the special value `_all` to target all slices without restricting to a routing value.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
     /**
      * `True` or `false` to return the `_source` field or not or a list of fields to return.
      */
@@ -116,7 +128,7 @@ export interface Request extends RequestBase {
      */
     q?: string
   }
-  body: {
+  body?: {
     /**
      * Defines the search definition using the Query DSL.
      */

@@ -20,12 +20,17 @@
 import { RequestBase } from '@_types/Base'
 import { integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { MediaType } from '@_types/common'
 
 /**
  * Update Watcher index settings.
+ *
  * Update settings for the Watcher internal index (`.watches`).
  * Only a subset of settings can be modified.
- * This includes `index.auto_expand_replicas` and `index.number_of_replicas`.
+ * This includes `index.auto_expand_replicas`, `index.number_of_replicas`, `index.routing.allocation.exclude.*`,
+ * `index.routing.allocation.include.*` and `index.routing.allocation.require.*`.
+ * Modification of `index.routing.allocation.include._tier_preference` is an exception and is not allowed as the
+ * Watcher shards must always be in the `data_content` tier.
  * @rest_spec_name watcher.update_settings
  * @availability stack stability=stable visibility=public
  * @cluster_privileges manage_watcher
@@ -38,10 +43,13 @@ export interface Request extends RequestBase {
       methods: ['PUT']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for a connection to the master node.
      * If no response is received before the timeout expires, the request fails and returns an error.
+     * @server_default 30s
      */
     master_timeout?: Duration
     /**

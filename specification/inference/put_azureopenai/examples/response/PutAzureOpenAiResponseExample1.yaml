@@ -1,0 +1,25 @@
+summary: A text embedding task
+description: A successful response when creating an Azure OpenAI `text_embedding` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "azure_openai_embeddings",
+    "task_type": "text_embedding",
+    "service": "azureopenai",
+    "service_settings": {
+      "resource_name": "Resource-name",
+      "deployment_id": "Deployment-id",
+      "api_version": "2024-02-01",
+      "rate_limit": {
+        "requests_per_minute": 1140
+      },
+      "dimensions": 1536,
+      "similarity": "dot_product"
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }

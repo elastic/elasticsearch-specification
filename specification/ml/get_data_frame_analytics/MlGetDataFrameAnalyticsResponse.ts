@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
 import { integer } from '@_types/Numeric'
+import { DataframeAnalyticsSummary } from '@ml/_types/DataframeAnalytics'
 
 export class Response {
   body: {

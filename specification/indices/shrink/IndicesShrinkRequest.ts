@@ -17,15 +17,16 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { IndexName, MediaType, WaitForActiveShards } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { Alias } from '@indices/_types/Alias'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { IndexName, WaitForActiveShards } from '@_types/common'
-import { Duration } from '@_types/Time'
 
 /**
  * Shrink an index.
+ *
  * Shrink an index into a new index with fewer primary shards.
  *
  * Before you can shrink an index:
@@ -41,6 +42,8 @@ import { Duration } from '@_types/Time'
  * For example an index with 8 primary shards can be shrunk into 4, 2 or 1 primary shards or an index with 15 primary shards can be shrunk into 5, 3 or 1.
  * If the number of shards in the index is a prime number it can only be shrunk into a single primary shard
  *  Before shrinking, a (primary or replica) copy of every shard in the index must be present on the same node.
+ *
+ * IMPORTANT: If the source index already has one primary shard, configuring the shrink operation with 'index.number_of_shards: 1' will cause the request to fail. An index with one primary shard cannot be shrunk further.
  *
  * The current write index on a data stream cannot be shrunk. In order to shrink the current write index, the data stream must first be rolled over so that a new write index is created and then the previous write index can be shrunk.
  *
@@ -79,6 +82,8 @@ export interface Request extends RequestBase {
      */
     target: IndexName
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.
@@ -96,6 +101,7 @@ export interface Request extends RequestBase {
      * The number of shard copies that must be active before proceeding with the operation.
      * Set to `all` or any positive integer up to the total number of shards in the index (`number_of_replicas+1`).
      * @server_default 1
+     * @availability stack
      */
     wait_for_active_shards?: WaitForActiveShards
   }

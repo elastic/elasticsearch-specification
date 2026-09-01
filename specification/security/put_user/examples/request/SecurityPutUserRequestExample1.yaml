@@ -1,5 +1,5 @@
 # summary:
-# method_request: POST /_security/user/jacknich
+method_request: POST /_security/user/jacknich
 description: Run `POST /_security/user/jacknich` to activate a user profile.
 # type: request
 value: |-

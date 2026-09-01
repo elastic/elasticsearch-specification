@@ -17,10 +17,11 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+import { Duration } from '@_types/Time'
 import { InferenceEndpoint } from '@inference/_types/Services'
 import { TaskType } from '@inference/_types/TaskType'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Update an inference endpoint.
@@ -32,6 +33,7 @@ import { Id } from '@_types/common'
  * However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.
  * @rest_spec_name inference.update
  * @availability stack since=8.17.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @cluster_privileges manage_inference
  * @doc_id inference-api-update
  */
@@ -39,11 +41,11 @@ export interface Request extends RequestBase {
   urls: [
     {
       path: '/_inference/{inference_id}/_update'
-      methods: ['POST']
+      methods: ['PUT']
     },
     {
       path: '/_inference/{task_type}/{inference_id}/_update'
-      methods: ['POST']
+      methods: ['PUT']
     }
   ]
   path_parts: {
@@ -55,6 +57,17 @@ export interface Request extends RequestBase {
      * The type of inference task that the model performs.
      */
     task_type?: TaskType
+  }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
+  query_parameters: {
+    /**
+     * Specifies the amount of time to wait for the inference endpoint to be updated.
+     * The default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.
+     * @availability stack since=9.5.0
+     * @availability serverless
+     */
+    timeout?: Duration
   }
   /** @codegen_name inference_config */
   body: InferenceEndpoint

@@ -17,12 +17,13 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id, Metadata } from '@_types/common'
+import { Id, MediaType, Metadata } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
 /**
  * Set the connector sync job stats.
+ *
  * Stats include: `deleted_document_count`, `indexed_document_count`, `indexed_document_volume`, and `total_document_count`.
  * You can also update `last_seen`.
  * This API is mainly used by the connector service for updating sync job information.
@@ -49,6 +50,8 @@ export interface Request extends RequestBase {
      */
     connector_sync_job_id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The number of documents the sync job deleted.

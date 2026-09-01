@@ -18,11 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Metrics, NodeIds } from '@_types/common'
+import { MediaType, NodeIds } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Get feature usage information.
+ *
  * @rest_spec_name nodes.usage
  * @availability stack since=6.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
@@ -50,13 +51,18 @@ export interface Request extends RequestBase {
     }
   ]
   path_parts: {
+    /**
+     * A comma-separated list of node IDs or names to limit the returned information.
+     * Use `_local` to return information from the node you're connecting to, leave empty to get information from all nodes.
+     */
     node_id?: NodeIds
     /**
      * Limits the information returned to the specific metrics.
-     * A comma-separated list of the following options: `_all`, `rest_actions`.
+     * A comma-separated list of the following options: `_all`, `rest_actions`, `aggregations`.
      */
-    metric?: Metrics
+    metric?: NodesUsageMetrics
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a response.
@@ -66,3 +72,11 @@ export interface Request extends RequestBase {
     timeout?: Duration
   }
 }
+
+export enum NodesUsageMetric {
+  _all,
+  rest_actions,
+  aggregations
+}
+
+export type NodesUsageMetrics = NodesUsageMetric | NodesUsageMetric[]

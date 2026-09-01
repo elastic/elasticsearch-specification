@@ -1,0 +1,24 @@
+summary: A text embedding task
+description: A successful response when creating an Nvidia `text_embedding` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "nvidia-text-embedding",
+    "task_type": "text_embedding",
+    "service": "nvidia",
+    "service_settings": {
+      "model_id": "nvidia/llama-3.2-nv-embedqa-1b-v2",
+      "url": "nvidia-embeddings-url",
+      "rate_limit": {
+        "requests_per_minute": 3000
+      },
+      "dimensions": 2048,
+      "similarity": "dot_product"
+    },
+    "chunking_settings": {
+      "strategy": "sentence",
+      "max_chunk_size": 250,
+      "sentence_overlap": 1
+    }
+  }

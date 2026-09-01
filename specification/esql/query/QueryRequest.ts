@@ -17,21 +17,24 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { MediaType, ProjectRouting } from '@_types/common'
+import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
+import { ESQLParams, EsqlQuerySettings } from '@esql/_types/types'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { RequestBase } from '@_types/Base'
-import { FieldValue } from '@_types/common'
-import { QueryContainer } from '@_types/query_dsl/abstractions'
 
 /**
  * Run an ES|QL query.
+ *
  * Get search results for an ES|QL (Elasticsearch query language) query.
  * @rest_spec_name esql.query
  * @availability stack since=8.11.0
  * @availability serverless
  * @doc_id esql-query
  * @ext_doc_id esql
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
@@ -40,13 +43,18 @@ export interface Request extends RequestBase {
       methods: ['POST']
     }
   ]
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A short version of the Accept header, e.g. json, yaml.
+     *
+     * `csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.
      */
     format?: EsqlFormat
     /**
      * The character to use between values within a CSV row. Only valid for the CSV format.
+     * @server_default ,
      */
     delimiter?: string
     /**
@@ -55,6 +63,14 @@ export interface Request extends RequestBase {
      * @server_default false
      */
     drop_null_columns?: boolean
+    /**
+     * If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.
+     * If `false`, the query will fail if there are any failures.
+     *
+     * To override the default behavior, you can set the `esql.query.allow_partial_results` cluster setting to `false`.
+     * @server_default true
+     */
+    allow_partial_results?: boolean
   }
   /**
    * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
@@ -68,7 +84,14 @@ export interface Request extends RequestBase {
      * Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.
      */
     filter?: QueryContainer
-    /*
+    /**
+     * Sets the default timezone of the query.
+     * @availability stack since=9.4.0 stability=stable
+     * @availability serverless stability=stable
+     * @doc_id esql-timezones
+     */
+    time_zone?: string
+    /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results
      */
@@ -77,7 +100,7 @@ export interface Request extends RequestBase {
      * To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.
      * @doc_id esql-query-params
      */
-    params?: Array<FieldValue>
+    params?: ESQLParams
     /**
      * If provided and `true` the response will include an extra `profile` object
      * with information on how the query was executed. This information is for human debugging
@@ -94,5 +117,39 @@ export interface Request extends RequestBase {
      * name and the next level key is the column name.
      */
     tables?: Dictionary<string, Dictionary<string, TableValuesContainer>>
+    /**
+     * When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * @server_default false
+     */
+    include_ccs_metadata?: boolean
+    /**
+     * When set to `true`, the response will include an extra `_clusters`
+     * object with information about the clusters that participated in the search along with info such as shards
+     * count.
+     * This is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS
+     * @server_default false
+     */
+    include_execution_metadata?: boolean
+    /**
+     * Specifies a subset of projects to target using project
+     * metadata tags in a subset of Lucene query syntax.
+     * Allowed Lucene queries: the _alias tag and a single value (possibly wildcarded).
+     * Examples:
+     *  _alias:my-project
+     *  _alias:_origin
+     *  _alias:*pr*
+     * Supported in serverless only.
+     * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
+     */
+    project_routing?: ProjectRouting
+    /**
+     * Per-query settings, the request-body equivalent of the in-query `SET` command.
+     * For example, `time_zone` can be supplied here instead of as a top-level field.
+     * @availability stack since=9.5.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    settings?: EsqlQuerySettings
   }
 }

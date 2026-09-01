@@ -17,15 +17,9 @@
  * under the License.
  */
 
-import { EsqlColumns } from '@_types/Binary'
+import { AsyncEsqlResult } from '@esql/_types/EsqlResult'
 
 export class Response {
-  body: {
-    columns?: EsqlColumns
-    /**
-     * Indicates whether the query is still running.
-     * If the value is false, the async query has finished and the results are returned.
-     */
-    is_running: boolean
-  }
+  /** @codegen_name data */
+  body: AsyncEsqlResult
 }

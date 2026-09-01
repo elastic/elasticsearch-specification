@@ -18,12 +18,12 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Reset a transform.
- * Resets a transform.
+ *
  * Before you can reset it, you must stop it; alternatively, use the `force` query parameter.
  * If the destination index was created by the transform, it is deleted.
  * @rest_spec_name transform.reset_transform
@@ -46,6 +46,7 @@ export interface Request extends RequestBase {
      */
     transform_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * If this value is `true`, the transform is reset regardless of its current state. If it's `false`, the transform

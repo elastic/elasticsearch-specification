@@ -12,7 +12,15 @@ value: |-
     "cluster_name": "my_cluster",
     "nodes": {
       "pQHNt5rXTTWNvUgOrdynKg": {
-        "name": "node-0"
+        "name": "node-0",
+        "secure_setting_names": [
+          "keystore.seed",
+          "xpack.security.transport.ssl.keystore.secure_password",
+          "xpack.security.transport.ssl.truststore.secure_password"
+        ],
+        "keystore_path": "/etc/elasticsearch/elasticsearch.keystore",
+        "keystore_digest": "031757c262a50abe1b7e017230cdbab99c1be9fbd7116ff504b27a8787158f46",
+        "keystore_last_modified_time": "2025-12-09T22:06:00.408Z"
       }
     }
   }

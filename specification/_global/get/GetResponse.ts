@@ -17,10 +17,11 @@
  * under the License.
  */
 
-import { GetResult } from '@global/get/types'
 import { ErrorResponseBase } from '@_types/Base'
+import { GetResult } from '@global/get/types'
 
 export class Response<TDocument> {
+  /** @codegen_name result */
   body: GetResult<TDocument>
   exceptions: [
     {
@@ -28,6 +29,7 @@ export class Response<TDocument> {
       //  * index_not_found_exception as an error if the index doesn't exist
       //  * GetResult with only the requested _id, _index properties and found as a false boolean
       statusCodes: [404]
+      // eslint-disable-next-line es-spec-validator/no-inline-unions, es-spec-validator/prefer-tagged-variants -- TODO: use tagged variant
       body: GetResult<TDocument> | ErrorResponseBase
     }
   ]

@@ -1,5 +1,19 @@
 summary: 'Creates an autoscaling policy.'
-# method_request: "PUT /_autoscaling/policy/my_autoscaling_policy"
-description: 'The API method and path for this request: `PUT /_autoscaling/policy/my_autoscaling_policy`. It creates `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having (only) the `data_hot` role.'
+method_request: 'PUT /_autoscaling/policy/my_autoscaling_policy'
+description:
+  'The API method and path for this request: `PUT /_autoscaling/policy/my_autoscaling_policy`. It creates
+  `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having (only) the `data_hot` role.'
 # type: "request"
-value: "{\n  \"roles\" : [ \"data_hot\" ],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+value: "{
+
+  \  \"roles\" : [ \"data_hot\" ],
+
+  \  \"deciders\": {
+
+  \    \"fixed\": {
+
+  \    }
+
+  \  }
+
+  }"

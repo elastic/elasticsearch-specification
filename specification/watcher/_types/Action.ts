@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { IndexName, Name } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateTime, Duration, DurationValue, UnitMillis } from '@_types/Time'
 import { TransformContainer } from '@_types/Transform'
+import { Dictionary } from '@spec_utils/Dictionary'
 import {
   EmailAction,
   IndexAction,
@@ -93,11 +93,18 @@ export class SimulatedActions {
   use_all: boolean
 }
 
+/**
+ * The status of an executed action.
+ * It maps to the server-side `Action.Result.Status` enum.
+ */
 export enum ActionStatusOptions {
   success,
   failure,
-  simulated,
-  throttled
+  partial_failure,
+  acknowledged,
+  throttled,
+  condition_failed,
+  simulated
 }
 
 export enum AcknowledgementOptions {

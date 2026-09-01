@@ -17,9 +17,6 @@
  * under the License.
  */
 
-import { AdditionalProperty } from '@spec_utils/behaviors'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { StopWords } from '@_types/analysis/StopWords'
 import {
   Field,
@@ -34,6 +31,9 @@ import { Distance, GeoLocation, GeoShape, GeoShapeRelation } from '@_types/Geo'
 import { double, float, integer } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { DateMath, Duration } from '@_types/Time'
+import { AdditionalProperty } from '@spec_utils/behaviors'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import { FieldLookup, QueryBase, QueryContainer } from './abstractions'
 
 export class DistanceFeatureQueryBase<TOrigin, TDistance> extends QueryBase {
@@ -156,7 +156,7 @@ export class MoreLikeThisQuery extends QueryBase {
    */
   min_word_length?: integer
 
-  routing?: Routing
+  routing?: string
   /**
    * An array of stop words.
    * Any word in this set is ignored.
@@ -237,7 +237,7 @@ export class PercolateQuery extends QueryBase {
   /**
    * Routing used to fetch document to percolate.
    */
-  routing?: Routing
+  routing?: string
   /**
    * The expected version of a stored document to percolate.
    */
@@ -274,7 +274,7 @@ export class PinnedDoc {
   /**
    * The index that contains the document.
    */
-  _index: IndexName
+  _index?: IndexName
 }
 
 export class RankFeatureFunction {}
@@ -400,6 +400,7 @@ export class ShapeFieldQuery {
  */
 export class RuleQuery extends QueryBase {
   organic: QueryContainer
-  ruleset_ids: Id[]
+  ruleset_ids?: Id | Id[]
+  ruleset_id?: string
   match_criteria: UserDefinedValue
 }

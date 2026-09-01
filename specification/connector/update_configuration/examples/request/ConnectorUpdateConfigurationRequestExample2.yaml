@@ -1,5 +1,13 @@
 # summary: connector/apis/update-connector-configuration-api.asciidoc:335
-# method_request: PUT _connector/my-spo-connector/_configuration
+method_request: PUT _connector/my-spo-connector/_configuration
 # description: ''
 # type: request
-value: "{\n    \"values\": {\n        \"secret_value\": \"foo-bar\"\n    }\n}"
+value: "{
+
+  \    \"values\": {
+
+  \        \"secret_value\": \"foo-bar\"
+
+  \    }
+
+  }"

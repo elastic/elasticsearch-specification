@@ -17,12 +17,13 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Field, Fields, GrokPattern, Id, Name } from '@_types/common'
+import { ByteSize, Field, Fields, GrokPattern, Id, Name } from '@_types/common'
 import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
+import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * @variants container
@@ -50,6 +51,11 @@ export class ProcessorContainer {
    * @doc_id bytes-processor
    */
   bytes?: BytesProcessor
+  /**
+   * Converts a CEF message into a structured format.
+   * @doc_id cef-processor
+   */
+  cef?: CefProcessor
   /**
    * Converts circle definitions of shapes to regular polygons which approximate them.
    * @doc_id ingest-circle-processor
@@ -171,7 +177,7 @@ export class ProcessorContainer {
    */
   join?: JoinProcessor
   /**
-   * Converts a JSON string into a structured JSON object.
+   * Parses a string containing JSON data into a structured object, string, or other value.
    * @doc_id json-processor
    */
   json?: JsonProcessor
@@ -309,7 +315,7 @@ export class ProcessorBase {
   /**
    * Conditionally execute the processor.
    */
-  if?: string
+  if?: Script
   /**
    * Ignore failures for the processor.
    */
@@ -332,14 +338,31 @@ export class AppendProcessor extends ProcessorBase {
    */
   field: Field
   /**
-   * The value to be appended. Supports template snippets.
+   * The value to be appended. Supports template snippets. May specify only one of `value` or `copy_from`.
    */
-  value: UserDefinedValue | UserDefinedValue[]
+  value?: UserDefinedValue | UserDefinedValue[]
+  /**
+   * The media type for encoding `value`.
+   * Applies only when value is a template snippet.
+   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
+   */
+  media_type?: string
+  /**
+   * The origin field which will be appended to `field`, cannot set `value` simultaneously.
+   */
+  copy_from?: Field
   /**
    * If `false`, the processor does not append values already present in the field.
    * @server_default true
    */
   allow_duplicates?: boolean
+  /**
+   * If `true`, the processor will skip empty values from the source (e.g. empty strings, and null values),
+   * rather than appending them to the field.
+   * @server_default false
+   */
+  ignore_empty_values?: boolean
 }
 
 export class AttachmentProcessor extends ProcessorBase {
@@ -363,6 +386,16 @@ export class AttachmentProcessor extends ProcessorBase {
    * @server_default null
    */
   indexed_chars_field?: Field
+  /**
+   * Maximum allowed size of the attachment `field` value in bytes: length of a string (if base64 in JSON,
+   * checked before base64 decoding) or byte array length for binary (for example, CBOR).
+   * If set to `-1`, there is no per-processor limit.
+   * The node setting `ingest.attachment.max_field_size` also applies.
+   * @server_default -1
+   * @availability stack since=9.5.0
+   * @availability serverless
+   */
+  max_field_bytes?: ByteSize
   /**
    * Array of properties to select to be stored.
    * Can be `content`, `title`, `name`, `author`, `keywords`, `date`, `content_type`, `content_length`, `language`.
@@ -532,7 +565,7 @@ export class UserAgentProcessor extends ProcessorBase {
   target_field?: Field
   /**
    * Controls what properties are added to `target_field`.
-   * @server_default ['name', 'major', 'minor', 'patch', 'build', 'os', 'os_name', 'os_major', 'os_minor', 'device']
+   * @server_default ['name', 'os', 'device', 'original', 'version']
    */
   properties?: UserAgentProperty[]
   /**
@@ -568,6 +601,34 @@ export class BytesProcessor extends ProcessorBase {
    * @server_default field
    */
   target_field?: Field
+}
+
+export class CefProcessor extends ProcessorBase {
+  /**
+   * The field containing the CEF message.
+   */
+  field: Field
+  /**
+   * If `true` and `field` does not exist or is `null`, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_missing?: boolean
+  /**
+   * The field to assign the converted value to.
+   * By default, the `target_field` is 'cef'
+   * @server_default 'cef'
+   */
+  target_field?: Field
+  /**
+   * If `true` and value is anempty string in extensions, the processor quietly exits without modifying the document.
+   * @server_default false
+   */
+  ignore_empty_values?: boolean
+  /**
+   * The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.
+   * @server_default UTC
+   */
+  timezone?: string
 }
 
 export class CircleProcessor extends ProcessorBase {
@@ -731,7 +792,7 @@ export class DateIndexNameProcessor extends ProcessorBase {
    * An array of the expected date formats for parsing dates / timestamps in the document being preprocessed.
    * Can be a java time pattern or one of the following formats: ISO8601, UNIX, UNIX_MS, or TAI64N.
    */
-  date_formats: string[]
+  date_formats?: string[]
   /**
    * How to round the date when formatting the date into the index name. Valid values are:
    * `y` (year), `M` (month), `w` (week), `d` (day), `h` (hour), `m` (minute) and `s` (second).
@@ -784,7 +845,7 @@ export class DateProcessor extends ProcessorBase {
   locale?: string
   /**
    * The field that will hold the parsed date.
-   * @server_default `@timestamp`
+   * @server_default \@timestamp
    */
   target_field?: Field
   /**
@@ -978,6 +1039,13 @@ export class GrokProcessor extends ProcessorBase {
    * @server_default false
    */
   trace_match?: boolean
+  /**
+   * When `true`, the processor does matching but does not extract structured fields
+   * @availability stack since=9.4.0
+   * @availability serverless
+   * @server_default false
+   */
+  validate_only?: boolean
 }
 
 export class GsubProcessor extends ProcessorBase {
@@ -1043,6 +1111,24 @@ export class InferenceProcessor extends ProcessorBase {
    * Contains the inference type and its options.
    */
   inference_config?: InferenceConfig
+
+  /**
+   * Input fields for inference and output (destination) fields for the inference results.
+   * This option is incompatible with the target_field and field_map options.
+   */
+  input_output?: InputConfig | InputConfig[]
+
+  /**
+   * If true and any of the input fields defined in input_ouput are missing
+   * then those missing fields are quietly ignored, otherwise a missing field causes a failure.
+   * Only applies when using input_output configurations to explicitly list the input fields.
+   */
+  ignore_missing?: boolean
+}
+
+export class InputConfig {
+  input_field: string
+  output_field: string
 }
 
 /**
@@ -1411,7 +1497,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Script language.
    * @server_default painless
    */
-  lang?: string
+  lang?: ScriptLanguage
   /**
    * Object containing parameters for the script.
    */
@@ -1420,7 +1506,7 @@ export class ScriptProcessor extends ProcessorBase {
    * Inline script.
    * If no `id` is specified, this parameter is required.
    */
-  source?: string
+  source?: ScriptSource
 }
 
 export class SetProcessor extends ProcessorBase {
@@ -1443,6 +1529,7 @@ export class SetProcessor extends ProcessorBase {
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
    * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
+   * @server_default "application/json"
    */
   media_type?: string
   /**

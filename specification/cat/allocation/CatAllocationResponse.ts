@@ -20,5 +20,6 @@
 import { AllocationRecord } from './types'
 
 export class Response {
+  /** @codegen_name allocations */
   body: Array<AllocationRecord>
 }

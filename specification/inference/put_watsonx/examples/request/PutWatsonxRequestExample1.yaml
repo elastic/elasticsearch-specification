@@ -1,0 +1,15 @@
+# summary:
+description: Run `PUT _inference/text_embedding/watsonx-embeddings` to create an Watonsx inference endpoint that performs a text embedding task.
+method_request: 'PUT _inference/text_embedding/watsonx-embeddings'
+# type: "request"
+value: |-
+  {
+    "service": "watsonxai",
+    "service_settings": {
+        "api_key": "Watsonx-API-Key", 
+        "url": "Wastonx-URL", 
+        "model_id": "ibm/slate-30m-english-rtrvr",
+        "project_id": "IBM-Cloud-ID", 
+        "api_version": "2024-03-14"
+    }
+  }

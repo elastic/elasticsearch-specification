@@ -17,7 +17,7 @@
  * under the License.
  */
 import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 
 /**
  * Get a connector.
@@ -41,6 +41,7 @@ export interface Request extends RequestBase {
      */
     connector_id: Id
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * A flag to indicate if the desired connector should be fetched, even if it was soft-deleted.

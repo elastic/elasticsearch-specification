@@ -16,14 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-/*
- * This file hosts `behaviors`. We use this interfaces that are marked with a `@behavior` JS Doc annotation
- * to signal complicated mappings to the compiler -> canonical json -> client generators.
- *
- * These are problem sets that need a custom client solution.
- */
 
-import { Names } from '@_types/common'
+import { Bytes } from '@_types/common'
+import { TimeUnit } from '@_types/Time'
 
 /**
  * In some places in the specification an object consists of the union of a set of known properties
@@ -68,7 +63,7 @@ export interface CommonQueryParameters {
   /**
    * When set to `true` will return statistics in a format suitable for humans.
    * For example `"exists_time": "1h"` for humans and
-   * `"eixsts_time_in_millis": 3600000` for computers. When disabled the human
+   * `"exists_time_in_millis": 3600000` for computers. When disabled the human
    * readable values will be omitted. This makes sense for responses being consumed
    * only by machines.
    * @server_default false
@@ -95,32 +90,38 @@ export interface CommonCatQueryParameters {
    */
   format?: string
   /**
-   * List of columns to appear in the response. Supports simple wildcards.
-   */
-  h?: Names
-  /**
    * When set to `true` will output available columns. This option
    * can't be combined with any other query string option.
    * @server_default false
    */
   help?: boolean
   /**
-   * List of columns that determine how the table should be sorted.
-   * Sorting defaults to ascending and can be changed by setting `:asc`
-   * or `:desc` as a suffix to the column name.
-   */
-  s?: Names
-  /**
    * When set to `true` will enable verbose output.
    * @server_default false
    */
   v?: boolean
+  /**
+   * Sets the units for columns that contain a byte-size value.
+   * Note that byte-size value units work in terms of powers of 1024. For instance `1kb` means 1024 bytes, not 1000 bytes.
+   * If omitted, byte-size values are rendered with a suffix such as `kb`, `mb`, or `gb`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
+   * If given, byte-size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.
+   * Values that are not an exact multiple of the chosen unit are rounded down.
+   */
+  bytes?: Bytes
+  /**
+   * Sets the units for columns that contain a time duration.
+   * If omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.
+   * If given, time duration values are rendered as an integer with no suffix.
+   * Values that are not an exact multiple of the chosen unit are rounded down.
+   */
+  time?: TimeUnit
 }
 
 /**
- * A class that implements `OverloadOf` should have the exact same properties with the same types.
- * It can change if a property is required or not. There is no need to port the descriptions
- * and js doc tags, the compiler will do that for you.
+ * A class that implements `OverloadOf` only needs to declare properties that differ from the parent.
+ * Unchanged properties are inherited automatically. For declared properties, you can change
+ * whether a property is required or not as well as its type. Same for the descriptions and js doc tags,
+ * if not specified, the parent ones will be used.
  * @behavior Defines a class that is the "read" version of a definition used when writing a property.
  */
 export interface OverloadOf<TDefinition> {}

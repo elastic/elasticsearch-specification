@@ -17,9 +17,9 @@
  * under the License.
  */
 
+import { Name } from '@_types/common'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { Name } from '@_types/common'
 import { NodeInfo } from './types'
 
 export class ResponseBase extends NodesResponseBase {
@@ -28,5 +28,6 @@ export class ResponseBase extends NodesResponseBase {
 }
 
 export class Response {
+  /** @codegen_name infos */
   body: ResponseBase
 }

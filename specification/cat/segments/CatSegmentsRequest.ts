@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, Indices } from '@_types/common'
+import { ExpandWildcards, Indices, MediaType, Names } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { CatRequestBase, CatSegmentsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get segment information.
@@ -53,11 +53,20 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
-     * The unit used to display byte values.
+     * A comma-separated list of columns names to display.
+     * It supports simple wildcards.
+     * @server_default ip,hp,rp,r,m,n,cpu,l
      */
-    bytes?: Bytes
+    h?: CatSegmentsColumns
+    /**
+     * A comma-separated list of column names or aliases that determines the sort order.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
     /**
      * If `true`, the request computes the list of selected nodes from the
      * local cluster state. If `false` the list of selected nodes are computed
@@ -71,5 +80,40 @@ export interface Request extends CatRequestBase {
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * Type of index that wildcard expressions can match. If the request can target data streams, this argument
+     * determines whether wildcard expressions match hidden data streams. Supports comma-separated values,
+     * such as open,hidden.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
+    /**
+     * A setting that does two separate checks on the index expression.
+     * If `false`, the request returns an error (1) if any wildcard expression
+     * (including `_all` and `*`) resolves to zero matching indices or (2) if the
+     * complete set of resolved indices, aliases or data streams is empty after all
+     * expressions are evaluated. If `true`, index expressions that resolve to no
+     * indices are allowed and the request returns an empty result.
+     * @server_default true
+     */
+    allow_no_indices?: boolean
+    /**
+     * If true, concrete, expanded or aliased indices are ignored when frozen.
+     * @server_default false
+     */
+    ignore_throttled?: boolean
+    /**
+     * If `false`, the request returns an error if it targets a concrete (non-wildcarded)
+     * index, alias, or data stream that is missing, closed, or otherwise unavailable.
+     * If `true`, unavailable concrete targets are silently ignored.
+     * @server_default false
+     */
+    ignore_unavailable?: boolean
+    /**
+     * If true, allow closed indices to be returned in the response otherwise if false, keep the legacy behaviour
+     * of throwing an exception if index pattern matches closed indices
+     * @server_default false
+     */
+    allow_closed?: boolean
   }
 }

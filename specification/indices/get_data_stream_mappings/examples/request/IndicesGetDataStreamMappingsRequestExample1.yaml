@@ -1,0 +1,3 @@
+summary: Gets the mappings for a data stream
+method_request: GET /_data_stream/my-data-stream/_mappings
+type: request

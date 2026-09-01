@@ -17,10 +17,11 @@
  * under the License.
  */
 
+import { RequestBase } from '@_types/Base'
+import { Id, MediaType } from '@_types/common'
+import { ScriptSource } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { RequestBase } from '@_types/Base'
-import { Id } from '@_types/common'
 
 /**
  * Render a search template.
@@ -51,6 +52,8 @@ export interface Request extends RequestBase {
      */
     id?: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   body: {
     /**
      * The ID of the search template to render.
@@ -71,6 +74,6 @@ export interface Request extends RequestBase {
      * These parameters also support Mustache variables.
      * If no `id` or `<templated-id>` is specified, this parameter is required.
      */
-    source?: string
+    source?: ScriptSource
   }
 }

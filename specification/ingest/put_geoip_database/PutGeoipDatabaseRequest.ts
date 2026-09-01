@@ -17,10 +17,10 @@
  * under the License.
  */
 
-import { Maxmind } from '@ingest/_types/Database'
 import { RequestBase } from '@_types/Base'
-import { Id, Name } from '@_types/common'
+import { Id, MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { Maxmind } from '@ingest/_types/Database'
 
 /**
  * Create or update a GeoIP database configuration.
@@ -44,6 +44,8 @@ export interface Request extends RequestBase {
      */
     id: Id
   }
+  request_media_type: MediaType.Json
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * Period to wait for a connection to the master node.
@@ -58,7 +60,8 @@ export interface Request extends RequestBase {
   body: {
     /** The provider-assigned name of the IP geolocation database to download. */
     name: Name
-    /** The configuration necessary to identify which IP geolocation provider to use to download the database, as well as any provider-specific configuration necessary for such downloading.
+    /**
+     * The configuration necessary to identify which IP geolocation provider to use to download the database, as well as any provider-specific configuration necessary for such downloading.
      * At present, the only supported provider is maxmind, and the maxmind provider requires that an account_id (string) is configured.
      */
     maxmind: Maxmind

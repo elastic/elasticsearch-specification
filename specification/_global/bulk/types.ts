@@ -17,14 +17,10 @@
  * under the License.
  */
 
-import { SourceConfig } from '@global/search/_types/SourceFilter'
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   Id,
   IndexName,
   InlineGet,
-  Routing,
   SequenceNumber,
   VersionNumber,
   VersionType
@@ -33,6 +29,9 @@ import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
 import { Script } from '@_types/Scripting'
 import { ShardStatistics } from '@_types/Stats'
+import { SourceConfig } from '@global/search/_types/SourceFilter'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class ResponseItem {
   /**
@@ -48,6 +47,7 @@ export class ResponseItem {
    * The HTTP status code returned for the operation.
    */
   status: integer
+  failure_store?: FailureStoreStatus
   /**
    * Additional information about the failed operation.
    * The property is returned only for failed operations.
@@ -60,7 +60,7 @@ export class ResponseItem {
   _primary_term?: long
   /**
    * The result of the operation.
-   * Successful values are `created`, `deleted`, and `updated`.
+   * Possible values are `created`, `updated`, `deleted`, `noop`, and `not_found`.
    */
   result?: string
   /**
@@ -82,6 +82,13 @@ export class ResponseItem {
   get?: InlineGet<Dictionary<string, UserDefinedValue>>
 }
 
+export enum FailureStoreStatus {
+  not_applicable_or_unknown,
+  used,
+  not_enabled,
+  failed
+}
+
 export enum OperationType {
   index,
   create,
@@ -99,9 +106,10 @@ export class OperationBase {
    */
   _index?: IndexName
   /**
-   * A custom value used to route operations to a specific shard.
+   * A custom value used to route operations to a specific shard, or multiple comma separated values.
+   * @availability stack stability=stable
    */
-  routing?: Routing
+  routing?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -147,7 +155,12 @@ export class UpdateOperation extends OperationBase {
   retry_on_conflict?: integer
 }
 
-/** @variants container */
+/**
+ * An action line, which is the first line of each operation in a bulk request.
+ * It specifies the action to perform (`index`, `create`, `update`, or `delete`) and its metadata, such as the target index and document ID.
+ * All actions except `delete` expect a source line to follow.
+ * @variants container
+ */
 export class OperationContainer {
   /**
    * Index the specified document.
@@ -171,6 +184,10 @@ export class OperationContainer {
   delete?: DeleteOperation
 }
 
+/**
+ * The source line that must follow an `update` action line.
+ * It specifies the partial document, script, or upsert options to apply, plus optional update settings.
+ */
 export class UpdateAction<TDocument, TPartialDocument> {
   /**
    * If true, the `result` in the response is set to 'noop' when no changes to the document occur.

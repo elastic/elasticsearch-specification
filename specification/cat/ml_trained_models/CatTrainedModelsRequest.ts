@@ -17,10 +17,9 @@
  * under the License.
  */
 
-import { CatRequestBase, CatTrainedModelsColumns } from '@cat/_types/CatBase'
-import { Bytes, Id } from '@_types/common'
+import { Id, MediaType } from '@_types/common'
 import { integer } from '@_types/Numeric'
-import { TimeUnit } from '@_types/Time'
+import { CatRequestBase, CatTrainedModelsColumns } from '@cat/_types/CatBase'
 
 /**
  * Get trained models.
@@ -54,6 +53,7 @@ export interface Request extends CatRequestBase {
      */
     model_id?: Id
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
      * Specifies what to do when the request: contains wildcard expressions and there are no models that match; contains the `_all` string or no identifiers and there are no matches; contains wildcard expressions and there are only partial matches.
@@ -62,19 +62,19 @@ export interface Request extends CatRequestBase {
      * @server_default true
      */
     allow_no_match?: boolean
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /** A comma-separated list of column names to display. */
     h?: CatTrainedModelsColumns
     /** A comma-separated list of column names or aliases used to sort the response. */
     s?: CatTrainedModelsColumns
-    /** Skips the specified number of transforms. */
-    from?: integer
-    /** The maximum number of transforms to display. */
-    size?: integer
     /**
-     * Unit used to display time values.
+     * Skips the specified number of transforms.
+     * @server_default 0
      */
-    time?: TimeUnit
+    from?: integer
+    /**
+     * The maximum number of transforms to display.
+     * @server_default 100
+     */
+    size?: integer
   }
 }

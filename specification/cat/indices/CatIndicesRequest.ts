@@ -17,9 +17,15 @@
  * under the License.
  */
 
-import { CatRequestBase } from '@cat/_types/CatBase'
-import { Bytes, ExpandWildcards, HealthStatus, Indices } from '@_types/common'
-import { Duration, TimeUnit } from '@_types/Time'
+import {
+  ExpandWildcards,
+  HealthStatus,
+  Indices,
+  MediaType,
+  Names
+} from '@_types/common'
+import { Duration } from '@_types/Time'
+import { CatIndicesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
  * Get index information.
@@ -35,6 +41,10 @@ import { Duration, TimeUnit } from '@_types/Time'
  *
  * These metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.
  * To get an accurate count of Elasticsearch documents, use the cat count or count APIs.
+ *
+ * NOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.
+ *
+ * IMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).
  *
  * CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use an index endpoint.
@@ -63,11 +73,11 @@ export interface Request extends CatRequestBase {
      */
     index?: Indices
   }
+  response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
-    /** The unit used to display byte values. */
-    bytes?: Bytes
     /**
      * The type of index that wildcard patterns can match.
+     * @server_default all
      */
     expand_wildcards?: ExpandWildcards
     /** The health status used to limit returned indices. By default, the response includes indices of any health status. */
@@ -82,12 +92,20 @@ export interface Request extends CatRequestBase {
      * @server_default false
      */
     pri?: boolean
-    /** The unit used to display time values. */
-    time?: TimeUnit
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
      */
     master_timeout?: Duration
+    /**
+     * A comma-separated list of columns names to display. It supports simple wildcards.
+     */
+    h?: CatIndicesColumns
+    /**
+     * List of columns that determine how the table should be sorted.
+     * Sorting defaults to ascending and can be changed by setting `:asc`
+     * or `:desc` as a suffix to the column name.
+     */
+    s?: Names
   }
 }

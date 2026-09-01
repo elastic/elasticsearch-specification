@@ -18,14 +18,15 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Name } from '@_types/common'
+import { MediaType, Name } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
  * Verify a snapshot repository.
+ *
  * Check for common misconfigurations in a snapshot repository.
  * @rest_spec_name snapshot.verify_repository
- * @availability stack since=0.0.0 stability=stable
+ * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @cluster_privileges manage
  * @doc_id snapshot-repo-verify
@@ -44,6 +45,7 @@ export interface Request extends RequestBase {
      * @codegen_name name */
     repository: Name
   }
+  response_media_type: MediaType.Json
   query_parameters: {
     /**
      * The period to wait for the master node.
