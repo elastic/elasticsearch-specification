@@ -17270,6 +17270,7 @@ export interface MlDatafeed {
   delayed_data_check_config: MlDelayedDataCheckConfig
   runtime_mappings?: MappingRuntimeFields
   indices_options?: IndicesOptions
+  project_routing?: string
 }
 
 export interface MlDatafeedAuthorization {
@@ -17288,6 +17289,7 @@ export interface MlDatafeedConfig {
   indices?: Indices
   indexes?: Indices
   indices_options?: IndicesOptions
+  project_routing?: string
   job_id?: Id
   max_empty_searches?: integer
   query?: QueryDslQueryContainer
@@ -19192,6 +19194,7 @@ export interface MlPutDatafeedRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
+    project_routing?: string
     headers?: HttpHeaders
   }
 }
@@ -19212,6 +19215,7 @@ export interface MlPutDatafeedResponse {
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
   scroll_size: integer
+  project_routing?: string
 }
 
 export interface MlPutFilterRequest extends RequestBase {
@@ -19580,6 +19584,7 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
     runtime_mappings?: MappingRuntimeFields
     script_fields?: Record<string, ScriptField>
     scroll_size?: integer
+    project_routing?: string
     _force_rekeying?: boolean
   }
 }
@@ -19600,6 +19605,7 @@ export interface MlUpdateDatafeedResponse {
   runtime_mappings?: MappingRuntimeFields
   script_fields?: Record<string, ScriptField>
   scroll_size: integer
+  project_routing?: string
 }
 
 export interface MlUpdateFilterRequest extends RequestBase {

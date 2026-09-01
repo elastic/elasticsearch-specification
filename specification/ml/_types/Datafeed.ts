@@ -61,6 +61,14 @@ export class Datafeed {
   delayed_data_check_config: DelayedDataCheckConfig
   runtime_mappings?: RuntimeFields
   indices_options?: IndicesOptions
+  /**
+   * A Lucene-style expression that limits which linked projects the datafeed
+   * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+   * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
+   * search scope. Rejected when CPS is not enabled for datafeeds.
+   * @availability serverless
+   */
+  project_routing?: string
 }
 
 export class DatafeedConfig {
@@ -95,6 +103,14 @@ export class DatafeedConfig {
    * Specifies index expansion options that are used during search.
    */
   indices_options?: IndicesOptions
+  /**
+   * A Lucene-style expression that limits which linked projects the datafeed
+   * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+   * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
+   * search scope. Rejected when CPS is not enabled for datafeeds.
+   * @availability serverless
+   */
+  project_routing?: string
   job_id?: Id
   /**
    * If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.

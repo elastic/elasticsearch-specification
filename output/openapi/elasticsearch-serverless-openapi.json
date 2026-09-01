@@ -19875,6 +19875,10 @@
                     "default": 1000.0,
                     "type": "number"
                   },
+                  "project_routing": {
+                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+                    "type": "string"
+                  },
                   "headers": {
                     "allOf": [
                       {
@@ -19995,6 +19999,10 @@
                     },
                     "scroll_size": {
                       "type": "number"
+                    },
+                    "project_routing": {
+                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -24161,6 +24169,10 @@
                     "default": 1000.0,
                     "type": "number"
                   },
+                  "project_routing": {
+                    "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+                    "type": "string"
+                  },
                   "_force_rekeying": {
                     "description": "When true, force reminting of the datafeed's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.",
                     "type": "boolean"
@@ -24279,6 +24291,10 @@
                     },
                     "scroll_size": {
                       "type": "number"
+                    },
+                    "project_routing": {
+                      "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -80160,6 +80176,10 @@
                 "$ref": "#/components/schemas/_types.IndicesOptions"
               }
             ]
+          },
+          "project_routing": {
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "type": "string"
           }
         },
         "required": [
@@ -82996,6 +83016,10 @@
                 "$ref": "#/components/schemas/_types.IndicesOptions"
               }
             ]
+          },
+          "project_routing": {
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "type": "string"
           },
           "job_id": {
             "allOf": [

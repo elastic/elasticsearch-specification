@@ -213571,7 +213571,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L255-L268"
+      "specLocation": "ml/_types/Datafeed.ts#L271-L284"
     },
     {
       "kind": "enum",
@@ -213590,7 +213590,7 @@
         "name": "ChunkingMode",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L249-L253"
+      "specLocation": "ml/_types/Datafeed.ts#L265-L269"
     },
     {
       "kind": "interface",
@@ -214269,9 +214269,24 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {}
+          },
+          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+          "name": "project_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L37-L64"
+      "specLocation": "ml/_types/Datafeed.ts#L37-L72"
     },
     {
       "kind": "interface",
@@ -214431,6 +214446,21 @@
           }
         },
         {
+          "availability": {
+            "serverless": {}
+          },
+          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+          "name": "project_routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "job_id",
           "required": false,
           "type": {
@@ -214526,7 +214556,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L66-L124"
+      "specLocation": "ml/_types/Datafeed.ts#L74-L140"
     },
     {
       "kind": "interface",
@@ -214572,7 +214602,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L214-L228"
+      "specLocation": "ml/_types/Datafeed.ts#L230-L244"
     },
     {
       "kind": "enum",
@@ -214594,7 +214624,7 @@
         "name": "DatafeedState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L140-L145"
+      "specLocation": "ml/_types/Datafeed.ts#L156-L161"
     },
     {
       "kind": "interface",
@@ -214679,7 +214709,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L147-L176"
+      "specLocation": "ml/_types/Datafeed.ts#L163-L192"
     },
     {
       "kind": "interface",
@@ -214799,7 +214829,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L178-L206"
+      "specLocation": "ml/_types/Datafeed.ts#L194-L222"
     },
     {
       "kind": "interface",
@@ -217061,7 +217091,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L126-L137"
+      "specLocation": "ml/_types/Datafeed.ts#L142-L153"
     },
     {
       "kind": "enum",
@@ -217830,7 +217860,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L208-L212"
+      "specLocation": "ml/_types/Datafeed.ts#L224-L228"
     },
     {
       "kind": "type_alias",
@@ -221806,7 +221836,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L230-L247"
+      "specLocation": "ml/_types/Datafeed.ts#L246-L263"
     },
     {
       "kind": "enum",
@@ -234257,6 +234287,21 @@
           },
           {
             "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "availability": {
               "serverless": {},
               "stack": {
                 "since": "8.0.0"
@@ -234394,7 +234439,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L194"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L202"
     },
     {
       "kind": "response",
@@ -234590,6 +234635,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -234597,7 +234657,7 @@
         "name": "Response",
         "namespace": "ml.put_datafeed"
       },
-      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L49"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L57"
     },
     {
       "kind": "request",
@@ -238535,6 +238595,21 @@
             "availability": {
               "serverless": {}
             },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
             "description": "When true, force reminting of the datafeed's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.",
             "name": "_force_rekeying",
             "required": false,
@@ -238668,7 +238743,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L181"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L189"
     },
     {
       "kind": "response",
@@ -238865,6 +238940,21 @@
                 "namespace": "_types"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {}
+            },
+            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
+            "name": "project_routing",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -238872,7 +238962,7 @@
         "name": "Response",
         "namespace": "ml.update_datafeed"
       },
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L52"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L60"
     },
     {
       "kind": "request",

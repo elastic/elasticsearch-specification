@@ -170,6 +170,14 @@ export interface Request extends RequestBase {
      */
     scroll_size?: integer
     /**
+     * A Lucene-style expression that limits which linked projects the datafeed
+     * searches when cross-project search is enabled. Examples: `_alias:_origin`,
+     * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
+     * search scope. Rejected when CPS is not enabled for datafeeds.
+     * @availability serverless
+     */
+    project_routing?: string
+    /**
      * When true, force reminting of the datafeed's internal cloud API key from the
      * caller's cloud credential without requiring other configuration changes.
      * Requires a cloud-authenticated caller and an environment that supports
