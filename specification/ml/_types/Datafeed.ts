@@ -66,7 +66,7 @@ export class Datafeed {
    * searches when cross-project search is enabled. Examples: `_alias:_origin`,
    * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
    * search scope. Rejected when CPS is not enabled for datafeeds.
-   * @availability serverless
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
    */
   project_routing?: string
 }
@@ -108,7 +108,7 @@ export class DatafeedConfig {
    * searches when cross-project search is enabled. Examples: `_alias:_origin`,
    * `_alias:prod-*`. If omitted, searches all linked projects within the cross-project
    * search scope. Rejected when CPS is not enabled for datafeeds.
-   * @availability serverless
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
    */
   project_routing?: string
   job_id?: Id

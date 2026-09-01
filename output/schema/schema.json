@@ -214272,7 +214272,11 @@
         },
         {
           "availability": {
-            "serverless": {}
+            "serverless": {
+              "featureFlag": "serverless.cross_project.enabled",
+              "stability": "stable",
+              "visibility": "feature_flag"
+            }
           },
           "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
           "name": "project_routing",
@@ -214447,7 +214451,11 @@
         },
         {
           "availability": {
-            "serverless": {}
+            "serverless": {
+              "featureFlag": "serverless.cross_project.enabled",
+              "stability": "stable",
+              "visibility": "feature_flag"
+            }
           },
           "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
           "name": "project_routing",
@@ -234287,7 +234295,11 @@
           },
           {
             "availability": {
-              "serverless": {}
+              "serverless": {
+                "featureFlag": "serverless.cross_project.enabled",
+                "stability": "stable",
+                "visibility": "feature_flag"
+              }
             },
             "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "name": "project_routing",
@@ -234638,7 +234650,11 @@
           },
           {
             "availability": {
-              "serverless": {}
+              "serverless": {
+                "featureFlag": "serverless.cross_project.enabled",
+                "stability": "stable",
+                "visibility": "feature_flag"
+              }
             },
             "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "name": "project_routing",
@@ -238593,7 +238609,11 @@
           },
           {
             "availability": {
-              "serverless": {}
+              "serverless": {
+                "featureFlag": "serverless.cross_project.enabled",
+                "stability": "stable",
+                "visibility": "feature_flag"
+              }
             },
             "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "name": "project_routing",
@@ -238943,7 +238963,11 @@
           },
           {
             "availability": {
-              "serverless": {}
+              "serverless": {
+                "featureFlag": "serverless.cross_project.enabled",
+                "stability": "stable",
+                "visibility": "feature_flag"
+              }
             },
             "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
             "name": "project_routing",
