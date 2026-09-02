@@ -95755,6 +95755,12 @@
           "name": "stored"
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.5.0",
+              "stability": "tech_preview"
+            }
+          },
           "name": "columnar_stored"
         },
         {
@@ -95766,7 +95772,7 @@
         "name": "SourceFieldMode",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/meta-fields.ts#L65-L74"
+      "specLocation": "_types/mapping/meta-fields.ts#L65-L77"
     },
     {
       "kind": "interface",
