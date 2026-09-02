@@ -116,6 +116,12 @@ export class VerifyIndex {
 }
 
 export enum RecoveryStage {
+  /**
+   * The shard its recovery state have been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  CREATED,
   /** Recovery has not started. */
   INIT,
   /** Reading index metadata and copying bytes from source to destination. */
@@ -176,12 +182,24 @@ export class ShardRecovery {
    */
   priority?: RecoveryPriority
   start?: RecoveryStartStatus
+  /**
+   * The time the recovery started.
+   * For recoveries in the `CREATED` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).
+   */
   start_time?: DateTime
+  /**
+   * The time the recovery started, in milliseconds since the Unix epoch.
+   * For recoveries in the `CREATED` stage (not yet started), this value is `0`.
+   */
   start_time_in_millis: EpochTime<UnitMillis>
   stop_time?: DateTime
   stop_time_in_millis?: EpochTime<UnitMillis>
   target: RecoveryOrigin
   total_time?: Duration
+  /**
+   * The total elapsed recovery time in milliseconds.
+   * For recoveries in the `CREATED` stage (not yet started), this value is `0`.
+   */
   total_time_in_millis: DurationValue<UnitMillis>
   translog: TranslogStatus
   /** The recovery source type. */
