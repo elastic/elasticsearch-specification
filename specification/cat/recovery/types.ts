@@ -20,6 +20,7 @@
 import { IndexName } from '@_types/common'
 import { Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { RecoveryStage } from '@indices/recovery/types'
 
 export class RecoveryRecord {
   /**
@@ -34,26 +35,31 @@ export class RecoveryRecord {
   'shard'?: string
   /**
    * The recovery start time.
+   * For recoveries in the `created` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).
    * @aliases start
    */
   'start_time'?: DateTime
   /**
    * The recovery start time in epoch milliseconds.
+   * For recoveries in the `created` stage (not yet started), this value is `0`.
    * @aliases start_millis
    */
   'start_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery stop time.
+   * Only present for completed recoveries (`done` stage).
    * @aliases stop
    */
   'stop_time'?: DateTime
   /**
    * The recovery stop time in epoch milliseconds.
+   * Only present for completed recoveries (`done` stage).
    * @aliases stop_millis
    */
   'stop_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery time.
+   * For recoveries in the `created` stage (not yet started), this value is `0`.
    * @aliases t,ti
    */
   'time'?: Duration
@@ -66,7 +72,7 @@ export class RecoveryRecord {
    * The recovery stage.
    * @aliases st
    */
-  'stage'?: string
+  'stage'?: RecoveryStage
   /**
    * The recovery priority.
    * @aliases pr

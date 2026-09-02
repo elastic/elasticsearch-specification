@@ -192,7 +192,11 @@ export class ShardRecovery {
    * For recoveries in the `CREATED` stage (not yet started), this value is `0`.
    */
   start_time_in_millis: EpochTime<UnitMillis>
+  /** The time the recovery completed. Only present for completed recoveries (`done` stage). */
   stop_time?: DateTime
+  /** The time the recovery completed, in milliseconds since the Unix epoch.
+   * Only present for completed recoveries (`done` stage).
+   */
   stop_time_in_millis?: EpochTime<UnitMillis>
   target: RecoveryOrigin
   total_time?: Duration
