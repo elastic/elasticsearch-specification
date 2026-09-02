@@ -72,7 +72,7 @@ export class RecoveryRecord {
    * The recovery stage.
    * @aliases st
    */
-  'stage'?: RecoveryStage
+  'stage'?: string
   /**
    * The recovery priority.
    * @aliases pr
