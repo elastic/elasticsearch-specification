@@ -58,8 +58,9 @@ export interface Request extends RequestBase {
      */
     master_timeout?: Duration
     /**
-     * If `true`, the request returns a response when the matching snapshots are all deleted.
      * If `false`, the request returns a response as soon as the deletes are scheduled.
+     * If `true`, the request returns a response when the matching snapshots are all deleted, and the cleanup work associated with the request has completed.
+     * If you make several requests to the delete-snapshots API targetting overlapping collections of snapshots then some of those requests may perform different parts of the associated cleanup work, returning their responses at different times.
      * @server_default true
      */
     wait_for_completion?: boolean
