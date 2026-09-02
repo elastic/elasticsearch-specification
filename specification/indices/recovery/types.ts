@@ -26,7 +26,7 @@ import {
   VersionString
 } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
-import { long, Percentage } from '@_types/Numeric'
+import { integer, long, Percentage } from '@_types/Numeric'
 import {
   DateTime,
   Duration,
@@ -175,6 +175,13 @@ export class ShardRecovery {
   source: RecoveryOrigin
   /** The recovery stage. */
   stage: RecoveryStage
+  /**
+   * The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).
+   *
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  local_retries?: integer
   /**
    * The recovery priority.
    *
