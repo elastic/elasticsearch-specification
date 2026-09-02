@@ -123408,7 +123408,7 @@
           "aliases": [
             "start"
           ],
-          "description": "The recovery start time.\nFor recoveries in the `created` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).",
+          "description": "The recovery start time.",
           "name": "start_time",
           "required": false,
           "type": {
@@ -123423,7 +123423,7 @@
           "aliases": [
             "start_millis"
           ],
-          "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
+          "description": "The recovery start time in epoch milliseconds.",
           "name": "start_time_millis",
           "required": false,
           "type": {
@@ -123447,7 +123447,7 @@
           "aliases": [
             "stop"
           ],
-          "description": "The recovery stop time.\nOnly present for completed recoveries (`done` stage).",
+          "description": "The recovery stop time.",
           "name": "stop_time",
           "required": false,
           "type": {
@@ -123462,7 +123462,7 @@
           "aliases": [
             "stop_millis"
           ],
-          "description": "The recovery stop time in epoch milliseconds.\nOnly present for completed recoveries (`done` stage).",
+          "description": "The recovery stop time in epoch milliseconds.",
           "name": "stop_time_millis",
           "required": false,
           "type": {
@@ -123487,7 +123487,7 @@
             "t",
             "ti"
           ],
-          "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
+          "description": "The recovery time.",
           "name": "time",
           "required": false,
           "type": {
@@ -123805,7 +123805,7 @@
           }
         }
       ],
-      "specLocation": "cat/recovery/types.ts#L24-L167"
+      "specLocation": "cat/recovery/types.ts#L24-L162"
     },
     {
       "kind": "request",
@@ -123874,7 +123874,7 @@
       ],
       "query": [
         {
-          "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).",
+          "description": "If `true`, the response only includes ongoing shard recoveries.",
           "name": "active_only",
           "required": false,
           "serverDefault": false,
@@ -177291,23 +177291,13 @@
         "name": "RecoveryPriority",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L153-L169"
+      "specLocation": "indices/recovery/types.ts#L146-L162"
     },
     {
       "kind": "enum",
       "members": [
         {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "9.6.0"
-            }
-          },
-          "description": "The shard's recovery state has been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).",
-          "name": "CREATED"
-        },
-        {
-          "description": "Recovery has started and is initializing.",
+          "description": "Recovery has not started.",
           "name": "INIT"
         },
         {
@@ -177335,7 +177325,7 @@
         "name": "RecoveryStage",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L118-L138"
+      "specLocation": "indices/recovery/types.ts#L118-L131"
     },
     {
       "kind": "interface",
@@ -177461,7 +177451,7 @@
         "name": "RecoveryType",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L140-L151"
+      "specLocation": "indices/recovery/types.ts#L133-L144"
     },
     {
       "kind": "request",
@@ -177533,7 +177523,7 @@
       ],
       "query": [
         {
-          "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `DONE` stage).",
+          "description": "If `true`, the response only includes ongoing shard recoveries.",
           "name": "active_only",
           "required": false,
           "serverDefault": false,
@@ -177735,7 +177725,6 @@
           }
         },
         {
-          "description": "The time the recovery started.\nFor recoveries in the `CREATED` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).",
           "name": "start_time",
           "required": false,
           "type": {
@@ -177747,7 +177736,6 @@
           }
         },
         {
-          "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
           "name": "start_time_in_millis",
           "required": true,
           "type": {
@@ -177768,7 +177756,6 @@
           }
         },
         {
-          "description": "The time the recovery completed. Only present for completed recoveries (`DONE` stage).",
           "name": "stop_time",
           "required": false,
           "type": {
@@ -177780,7 +177767,6 @@
           }
         },
         {
-          "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`DONE` stage).",
           "name": "stop_time_in_millis",
           "required": false,
           "type": {
@@ -177823,7 +177809,6 @@
           }
         },
         {
-          "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
           "name": "total_time_in_millis",
           "required": true,
           "type": {
@@ -177878,7 +177863,7 @@
           }
         }
       ],
-      "specLocation": "indices/recovery/types.ts#L171-L214"
+      "specLocation": "indices/recovery/types.ts#L164-L190"
     },
     {
       "kind": "interface",

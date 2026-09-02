@@ -46,13 +46,13 @@ export class RecoveryRecord {
   'start_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery stop time.
-   * Only present for completed recoveries (`done` stage).
+   * For recoveries that have not yet completed, this value is the Unix epoch (1970-01-01T00:00:00.000Z).
    * @aliases stop
    */
   'stop_time'?: DateTime
   /**
    * The recovery stop time in epoch milliseconds.
-   * Only present for completed recoveries (`done` stage).
+   * For recoveries that have not yet completed, this value is 0.
    * @aliases stop_millis
    */
   'stop_time_millis'?: EpochTime<UnitMillis>

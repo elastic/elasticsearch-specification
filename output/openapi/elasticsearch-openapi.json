@@ -81190,7 +81190,7 @@
             "type": "string"
           },
           "start_time": {
-            "description": "The recovery start time.\nFor recoveries in the `created` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).",
+            "description": "The recovery start time.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -81198,7 +81198,7 @@
             ]
           },
           "start_time_millis": {
-            "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
+            "description": "The recovery start time in epoch milliseconds.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -81206,7 +81206,7 @@
             ]
           },
           "stop_time": {
-            "description": "The recovery stop time.\nOnly present for completed recoveries (`done` stage).",
+            "description": "The recovery stop time.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -81214,7 +81214,7 @@
             ]
           },
           "stop_time_millis": {
-            "description": "The recovery stop time in epoch milliseconds.\nOnly present for completed recoveries (`done` stage).",
+            "description": "The recovery stop time in epoch milliseconds.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -81222,7 +81222,7 @@
             ]
           },
           "time": {
-            "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
+            "description": "The recovery time.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
@@ -105072,7 +105072,6 @@
             ]
           },
           "start_time": {
-            "description": "The time the recovery started.\nFor recoveries in the `CREATED` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -105080,7 +105079,6 @@
             ]
           },
           "start_time_in_millis": {
-            "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -105088,7 +105086,6 @@
             ]
           },
           "stop_time": {
-            "description": "The time the recovery completed. Only present for completed recoveries (`DONE` stage).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -105096,7 +105093,6 @@
             ]
           },
           "stop_time_in_millis": {
-            "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`DONE` stage).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -105118,7 +105114,6 @@
             ]
           },
           "total_time_in_millis": {
-            "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
@@ -105447,7 +105442,6 @@
       "indices.recovery.RecoveryStage": {
         "type": "string",
         "enum": [
-          "CREATED",
           "INIT",
           "INDEX",
           "VERIFY_INDEX",
@@ -147990,7 +147984,7 @@
       "cat.recovery-active_only": {
         "in": "query",
         "name": "active_only",
-        "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).",
+        "description": "If `true`, the response only includes ongoing shard recoveries.",
         "deprecated": false,
         "schema": {
           "default": false,
@@ -152072,7 +152066,7 @@
       "indices.recovery-active_only": {
         "in": "query",
         "name": "active_only",
-        "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `DONE` stage).",
+        "description": "If `true`, the response only includes ongoing shard recoveries.",
         "deprecated": false,
         "schema": {
           "default": false,
