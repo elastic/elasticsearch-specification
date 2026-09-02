@@ -40,7 +40,7 @@ export class RecoveryRecord {
   'start_time'?: DateTime
   /**
    * The recovery start time in epoch milliseconds.
-   * For recoveries in the `created` stage (not yet started), this value is `0`.
+   * For recoveries in the `created` stage (not yet started), this value is 0.
    * @aliases start_millis
    */
   'start_time_millis'?: EpochTime<UnitMillis>
@@ -58,7 +58,7 @@ export class RecoveryRecord {
   'stop_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery time.
-   * For recoveries in the `created` stage (not yet started), this value is `0`.
+   * For recoveries in the `created` stage (not yet started), this value is 0.
    * @aliases t,ti
    */
   'time'?: Duration

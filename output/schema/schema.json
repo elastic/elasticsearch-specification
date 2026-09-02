@@ -123423,7 +123423,7 @@
           "aliases": [
             "start_millis"
           ],
-          "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is `0`.",
+          "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
           "name": "start_time_millis",
           "required": false,
           "type": {
@@ -123487,7 +123487,7 @@
             "t",
             "ti"
           ],
-          "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is `0`.",
+          "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
           "name": "time",
           "required": false,
           "type": {
@@ -177747,7 +177747,7 @@
           }
         },
         {
-          "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is `0`.",
+          "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
           "name": "start_time_in_millis",
           "required": true,
           "type": {
@@ -177768,7 +177768,7 @@
           }
         },
         {
-          "description": "The time the recovery completed. Only present for completed recoveries (`done` stage).",
+          "description": "The time the recovery completed. Only present for completed recoveries (`DONE` stage).",
           "name": "stop_time",
           "required": false,
           "type": {
@@ -177823,7 +177823,7 @@
           }
         },
         {
-          "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is `0`.",
+          "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
           "name": "total_time_in_millis",
           "required": true,
           "type": {

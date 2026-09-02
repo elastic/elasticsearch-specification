@@ -81198,7 +81198,7 @@
             ]
           },
           "start_time_millis": {
-            "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is `0`.",
+            "description": "The recovery start time in epoch milliseconds.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -81222,7 +81222,7 @@
             ]
           },
           "time": {
-            "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is `0`.",
+            "description": "The recovery time.\nFor recoveries in the `created` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
@@ -105080,7 +105080,7 @@
             ]
           },
           "start_time_in_millis": {
-            "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is `0`.",
+            "description": "The time the recovery started, in milliseconds since the Unix epoch.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
@@ -105088,7 +105088,7 @@
             ]
           },
           "stop_time": {
-            "description": "The time the recovery completed. Only present for completed recoveries (`done` stage).",
+            "description": "The time the recovery completed. Only present for completed recoveries (`DONE` stage).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DateTime"
@@ -105118,7 +105118,7 @@
             ]
           },
           "total_time_in_millis": {
-            "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is `0`.",
+            "description": "The total elapsed recovery time in milliseconds.\nFor recoveries in the `CREATED` stage (not yet started), this value is 0.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
