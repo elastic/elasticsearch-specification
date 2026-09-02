@@ -24104,7 +24104,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L141-L141"
     },
     {
       "kind": "interface",
@@ -24119,7 +24119,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L145-L145"
     },
     {
       "kind": "enum",
@@ -24156,7 +24156,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L143-L143"
     },
     {
       "kind": "interface",
@@ -24190,6 +24190,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -24246,7 +24251,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L100-L117"
+      "specLocation": "_global/bulk/types.ts#L100-L118"
     },
     {
       "kind": "interface",
@@ -24305,7 +24310,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L159-L186",
       "variants": {
         "kind": "container"
       }
@@ -24604,6 +24609,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value that is used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -24704,7 +24714,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L259"
+      "specLocation": "_global/bulk/BulkRequest.ts#L33-L260"
     },
     {
       "kind": "response",
@@ -25082,7 +25092,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L188-L227"
     },
     {
       "kind": "interface",
@@ -25123,7 +25133,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L147-L157"
     },
     {
       "kind": "interface",
@@ -25187,7 +25197,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L120-L139"
     },
     {
       "kind": "interface",
@@ -26430,6 +26440,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -26492,7 +26507,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L148"
+      "specLocation": "_global/delete/DeleteRequest.ts#L35-L149"
     },
     {
       "kind": "response",
@@ -26969,6 +26984,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -27154,7 +27174,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L323"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L324"
     },
     {
       "kind": "response",
@@ -31840,6 +31860,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value that is used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -31928,7 +31953,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L276"
+      "specLocation": "_global/index/IndexRequest.ts#L36-L277"
     },
     {
       "kind": "response",
@@ -48928,6 +48953,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -49003,7 +49033,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L197"
+      "specLocation": "_global/update/UpdateRequest.ts#L39-L198"
     },
     {
       "kind": "response",
@@ -49545,6 +49575,11 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "stability": "stable"
+            }
+          },
           "description": "A custom value used to route operations to a specific shard.",
           "name": "routing",
           "required": false,
@@ -49726,7 +49761,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L38-L346"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L38-L347"
     },
     {
       "kind": "response",
