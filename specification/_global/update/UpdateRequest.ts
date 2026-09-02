@@ -123,6 +123,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     retry_on_conflict?: integer
     /**
      * A custom value used to route operations to a specific shard.
+     * @availability stack stability=stable
      */
     routing?: Routing
     /**

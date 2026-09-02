@@ -196,6 +196,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     refresh?: Refresh
     /**
      * A custom value that is used to route operations to a specific shard.
+     * @availability stack stability=stable
      */
     routing?: Routing
     /**
