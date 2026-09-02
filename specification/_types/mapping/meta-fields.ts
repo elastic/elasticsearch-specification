@@ -65,6 +65,9 @@ export class SourceField {
 export enum SourceFieldMode {
   disabled,
   stored,
+  /**
+   * @availability stack since=9.5.0 stability=tech_preview
+   */
   columnar_stored,
   /**
    *  Instead of storing source documents on disk exactly as you send them,
