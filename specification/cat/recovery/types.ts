@@ -34,26 +34,31 @@ export class RecoveryRecord {
   'shard'?: string
   /**
    * The recovery start time.
+   * For recoveries in the `created` stage (not yet started), this value is the Unix epoch (1970-01-01T00:00:00.000Z).
    * @aliases start
    */
   'start_time'?: DateTime
   /**
    * The recovery start time in epoch milliseconds.
+   * For recoveries in the `created` stage (not yet started), this value is 0.
    * @aliases start_millis
    */
   'start_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery stop time.
+   * For recoveries that have not yet completed, this value is the Unix epoch (1970-01-01T00:00:00.000Z).
    * @aliases stop
    */
   'stop_time'?: DateTime
   /**
    * The recovery stop time in epoch milliseconds.
+   * For recoveries that have not yet completed, this value is 0.
    * @aliases stop_millis
    */
   'stop_time_millis'?: EpochTime<UnitMillis>
   /**
    * The recovery time.
+   * For recoveries in the `created` stage (not yet started), this value is 0.
    * @aliases t,ti
    */
   'time'?: Duration

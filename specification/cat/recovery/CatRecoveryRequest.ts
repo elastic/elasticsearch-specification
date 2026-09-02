@@ -55,7 +55,7 @@ export interface Request extends CatRequestBase {
   response_media_type: MediaType.Text | MediaType.Json
   query_parameters: {
     /**
-     * If `true`, the response only includes ongoing shard recoveries.
+     * If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).
      * @server_default false
      */
     active_only?: boolean
