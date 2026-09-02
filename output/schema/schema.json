@@ -177780,7 +177780,7 @@
           }
         },
         {
-          "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`done` stage).",
+          "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`DONE` stage).",
           "name": "stop_time_in_millis",
           "required": false,
           "type": {
@@ -177878,7 +177878,7 @@
           }
         }
       ],
-      "specLocation": "indices/recovery/types.ts#L170-L212"
+      "specLocation": "indices/recovery/types.ts#L170-L213"
     },
     {
       "kind": "interface",

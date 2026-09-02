@@ -105096,7 +105096,7 @@
             ]
           },
           "stop_time_in_millis": {
-            "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`done` stage).",
+            "description": "The time the recovery completed, in milliseconds since the Unix epoch.\nOnly present for completed recoveries (`DONE` stage).",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
