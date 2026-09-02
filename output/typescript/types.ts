@@ -14045,7 +14045,7 @@ export interface IndicesRecoveryRecoveryOrigin {
 
 export type IndicesRecoveryRecoveryPriority = 'UNASSIGNED_NEW_PRIMARY' | 'UNASSIGNED_UNEXPECTED' | 'UNASSIGNED_EXPECTED' | 'RELOCATION_CAN_REMAIN_NO' | 'RELOCATION_CAN_REMAIN_NOT_PREFERRED' | 'RELOCATE_REBALANCING' | 'UNKNOWN'
 
-export type IndicesRecoveryRecoveryStage = 'INIT' | 'INDEX' | 'VERIFY_INDEX' | 'TRANSLOG' | 'FINALIZE' | 'DONE'
+export type IndicesRecoveryRecoveryStage = 'CREATED' | 'INIT' | 'INDEX' | 'VERIFY_INDEX' | 'TRANSLOG' | 'FINALIZE' | 'DONE'
 
 export interface IndicesRecoveryRecoveryStartStatus {
   check_index_time?: Duration
