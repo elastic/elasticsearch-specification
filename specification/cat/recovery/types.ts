@@ -20,7 +20,6 @@
 import { IndexName } from '@_types/common'
 import { Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
-import { RecoveryStage } from '@indices/recovery/types'
 
 export class RecoveryRecord {
   /**
