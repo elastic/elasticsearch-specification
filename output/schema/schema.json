@@ -177291,7 +177291,7 @@
         "name": "RecoveryPriority",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L152-L168"
+      "specLocation": "indices/recovery/types.ts#L153-L169"
     },
     {
       "kind": "enum",
@@ -177303,11 +177303,11 @@
               "since": "9.6.0"
             }
           },
-          "description": "The shard its recovery state have been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).",
+          "description": "The shard's recovery state has been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).",
           "name": "CREATED"
         },
         {
-          "description": "Recovery has not started.",
+          "description": "Recovery has started and is initializing.",
           "name": "INIT"
         },
         {
@@ -177335,7 +177335,7 @@
         "name": "RecoveryStage",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L118-L137"
+      "specLocation": "indices/recovery/types.ts#L118-L138"
     },
     {
       "kind": "interface",
@@ -177461,7 +177461,7 @@
         "name": "RecoveryType",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L139-L150"
+      "specLocation": "indices/recovery/types.ts#L140-L151"
     },
     {
       "kind": "request",
@@ -177533,7 +177533,7 @@
       ],
       "query": [
         {
-          "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).",
+          "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `DONE` stage).",
           "name": "active_only",
           "required": false,
           "serverDefault": false,
@@ -177878,7 +177878,7 @@
           }
         }
       ],
-      "specLocation": "indices/recovery/types.ts#L170-L213"
+      "specLocation": "indices/recovery/types.ts#L171-L214"
     },
     {
       "kind": "interface",

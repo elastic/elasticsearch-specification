@@ -152072,7 +152072,7 @@
       "indices.recovery-active_only": {
         "in": "query",
         "name": "active_only",
-        "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).",
+        "description": "If `true`, the response only includes shard recoveries that have not yet completed (excludes `DONE` stage).",
         "deprecated": false,
         "schema": {
           "default": false,

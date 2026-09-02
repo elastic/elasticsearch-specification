@@ -73,7 +73,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * If `true`, the response only includes shard recoveries that have not yet completed (excludes `done` stage).
+     * If `true`, the response only includes shard recoveries that have not yet completed (excludes `DONE` stage).
      * @server_default false
      */
     active_only?: boolean

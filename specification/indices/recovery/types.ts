@@ -117,12 +117,13 @@ export class VerifyIndex {
 
 export enum RecoveryStage {
   /**
-   * The shard its recovery state have been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).
+   * The shard's recovery state has been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).
+   *
    * @availability stack since=9.6.0
    * @availability serverless
    */
   CREATED,
-  /** Recovery has not started. */
+  /** Recovery has started and is initializing. */
   INIT,
   /** Reading index metadata and copying bytes from source to destination. */
   INDEX,
