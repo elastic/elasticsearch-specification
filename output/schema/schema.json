@@ -281787,7 +281787,7 @@
           }
         },
         {
-          "description": "If `false`, the request returns a response as soon as the deletes are scheduled.\nIf `true`, the request returns a response when the matching snapshots are all deleted, and the cleanup work associated with the request has completed.\nIf you make several requests to the delete-snapshots API targetting overlapping collections of snapshots then some of those requests may perform different parts of the associated cleanup work, returning their responses at different times.",
+          "description": "If `false`, the request returns a response as soon as the deletes are scheduled.\nIf `true`, the request returns a response when the matching snapshots are all deleted, and the cleanup work associated with the request has completed.\nIf you make several requests to the delete-snapshots API targetting overlapping collections of snapshots then some of those requests may perform different parts of the associated cleanup work, returning their responses at different times.\nFor example, if you make two requests to delete the same snapshot then sometimes all of the cleanup work will be associated with the first request, delaying its response, while the second request has no associated cleanup work and receives its response immediately.",
           "name": "wait_for_completion",
           "required": false,
           "serverDefault": true,
@@ -281800,7 +281800,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/delete/SnapshotDeleteRequest.ts#L24-L68"
+      "specLocation": "snapshot/delete/SnapshotDeleteRequest.ts#L24-L69"
     },
     {
       "kind": "response",
