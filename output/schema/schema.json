@@ -281811,7 +281811,7 @@
           }
         },
         {
-          "description": "If `true`, the request returns a response when the matching snapshots are all deleted.\nIf `false`, the request returns a response as soon as the deletes are scheduled.",
+          "description": "If `false`, the request returns a response as soon as the deletes are scheduled.\nIf `true`, the request returns a response when the matching snapshots are all deleted, and the post-deletion cleanup work associated with the request has completed.\nIf you make several requests to the delete-snapshots API targetting overlapping collections of snapshots then some of those requests may perform different parts of the associated post-deletion cleanup work, returning their responses at different times.\nFor example, if you make two requests to delete the same snapshot then sometimes all of the post-deletion cleanup work will be associated with the first request, delaying its response, while the second request has no associated post-deletion cleanup work and receives its response as soon as the snapshot has been deleted.",
           "name": "wait_for_completion",
           "required": false,
           "serverDefault": true,
@@ -281824,7 +281824,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/delete/SnapshotDeleteRequest.ts#L24-L67"
+      "specLocation": "snapshot/delete/SnapshotDeleteRequest.ts#L24-L69"
     },
     {
       "kind": "response",
