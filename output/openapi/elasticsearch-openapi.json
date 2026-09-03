@@ -81131,6 +81131,8 @@
               "ty",
               "stage",
               "st",
+              "local_retries",
+              "lr",
               "priority",
               "pr",
               "source_host",
@@ -81236,6 +81238,11 @@
           "stage": {
             "description": "The recovery stage.",
             "type": "string"
+          },
+          "local_retries": {
+            "description": "The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "number"
           },
           "priority": {
             "description": "The recovery priority.",
@@ -105054,6 +105061,11 @@
                 "$ref": "#/components/schemas/indices.recovery.RecoveryStage"
               }
             ]
+          },
+          "local_retries": {
+            "description": "The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "number"
           },
           "priority": {
             "description": "The recovery priority.",
