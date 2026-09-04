@@ -21502,7 +21502,7 @@ export interface SecurityRoleDescriptor {
   index?: SecurityIndicesPrivileges[]
   remote_indices?: SecurityRemoteIndicesPrivileges[]
   remote_cluster?: SecurityRemoteClusterPrivileges[]
-  global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
+  global?: SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
@@ -21517,7 +21517,7 @@ export interface SecurityRoleDescriptorRead {
   index: SecurityIndicesPrivileges[]
   remote_indices?: SecurityRemoteIndicesPrivileges[]
   remote_cluster?: SecurityRemoteClusterPrivileges[]
-  global?: SecurityGlobalPrivilege[] | SecurityGlobalPrivilege
+  global?: SecurityGlobalPrivilege
   applications?: SecurityApplicationPrivileges[]
   metadata?: Metadata
   run_as?: string[]
