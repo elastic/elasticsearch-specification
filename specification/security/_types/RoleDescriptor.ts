@@ -55,7 +55,7 @@ export class RoleDescriptor {
    * An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware.
    * @availability stack
    */
-  global?: GlobalPrivilege[] | GlobalPrivilege
+  global?: GlobalPrivilege
   /**
    * A list of application privilege entries
    */
