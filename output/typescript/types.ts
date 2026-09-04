@@ -7731,7 +7731,7 @@ export type CatCatPluginsColumn = 'id' | 'name' | 'n' | 'component' | 'c' | 'ver
 
 export type CatCatPluginsColumns = CatCatPluginsColumn | CatCatPluginsColumn[]
 
-export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis' | 'time' | 't' | 'ti' | 'type' | 'ty' | 'stage' | 'st' | 'priority' | 'pr' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'rep' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top'| string
+export type CatCatRecoveryColumn = 'index' | 'i' | 'idx' | 'shard' | 's' | 'sh' | 'start_time' | 'start' | 'start_time_millis' | 'start_millis' | 'stop_time' | 'stop' | 'stop_time_millis' | 'stop_millis' | 'time' | 't' | 'ti' | 'type' | 'ty' | 'stage' | 'st' | 'local_retries' | 'lr' | 'priority' | 'pr' | 'source_host' | 'shost' | 'source_node' | 'snode' | 'target_host' | 'thost' | 'target_node' | 'tnode' | 'repository' | 'rep' | 'snapshot' | 'snap' | 'files' | 'f' | 'files_recovered' | 'fr' | 'files_percent' | 'fp' | 'files_total' | 'tf' | 'bytes' | 'b' | 'bytes_recovered' | 'br' | 'bytes_percent' | 'bp' | 'bytes_total' | 'tb' | 'translog_ops' | 'to' | 'translog_ops_recovered' | 'tor' | 'translog_ops_percent' | 'top'| string
 
 export type CatCatRecoveryColumns = CatCatRecoveryColumn | CatCatRecoveryColumn[]
 
@@ -9044,6 +9044,8 @@ export interface CatRecoveryRecoveryRecord {
   ty?: string
   stage?: string
   st?: string
+  local_retries?: integer
+  lr?: integer
   priority?: string
   pr?: string
   source_host?: string
@@ -14077,6 +14079,7 @@ export interface IndicesRecoveryShardRecovery {
   primary: boolean
   source: IndicesRecoveryRecoveryOrigin
   stage: IndicesRecoveryRecoveryStage
+  local_retries?: integer
   priority?: IndicesRecoveryRecoveryPriority
   start?: IndicesRecoveryRecoveryStartStatus
   start_time?: DateTime

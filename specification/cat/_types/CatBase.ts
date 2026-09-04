@@ -2367,6 +2367,13 @@ export enum CatRecoveryColumn {
    */
   stage,
   /**
+   * The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).
+   * @aliases lr
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  local_retries,
+  /**
    * The recovery priority.
    * @aliases pr
    * @availability stack since=9.6.0

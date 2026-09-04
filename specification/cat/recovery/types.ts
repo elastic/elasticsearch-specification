@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { Percentage } from '@_types/Numeric'
+import { integer, Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {
@@ -72,6 +72,13 @@ export class RecoveryRecord {
    * @aliases st
    */
   'stage'?: string
+  /**
+   * The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).
+   * @aliases lr
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'local_retries'?: integer
   /**
    * The recovery priority.
    * @aliases pr
