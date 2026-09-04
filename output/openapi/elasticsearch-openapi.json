@@ -125617,13 +125617,7 @@
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "x-state": "Generally available",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/security._types.GlobalPrivilege"
-                }
-              },
+            "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
@@ -126831,13 +126825,7 @@
           "global": {
             "description": "An object defining global privileges. A global privilege is a form of cluster privilege that is request-aware. Support for global privileges is currently limited to the management of application privileges.",
             "x-state": "Generally available",
-            "oneOf": [
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/security._types.GlobalPrivilege"
-                }
-              },
+            "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
