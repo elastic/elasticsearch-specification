@@ -416,7 +416,7 @@ export enum IndexPrivilege {
 }
 
 export class GlobalPrivilege {
-  application: ApplicationGlobalUserPrivileges
+  application?: ApplicationGlobalUserPrivileges
   /**
    * A list of data source privilege entries, used to grant access to ES|QL data sources.
    * @availability stack since=9.5.0
