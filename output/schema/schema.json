@@ -259392,26 +259392,11 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GlobalPrivilege",
-                    "namespace": "security._types"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GlobalPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
+            }
           }
         },
         {
@@ -259611,26 +259596,11 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "union_of",
-            "items": [
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "GlobalPrivilege",
-                    "namespace": "security._types"
-                  }
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "GlobalPrivilege",
-                  "namespace": "security._types"
-                }
-              }
-            ]
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
+            }
           }
         },
         {
