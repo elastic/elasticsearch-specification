@@ -21438,7 +21438,7 @@ export interface SecurityFieldSecurity {
 }
 
 export interface SecurityGlobalPrivilege {
-  application: SecurityApplicationGlobalUserPrivileges
+  application?: SecurityApplicationGlobalUserPrivileges
   data_source?: SecurityDataSourcePrivileges[]
 }
 
