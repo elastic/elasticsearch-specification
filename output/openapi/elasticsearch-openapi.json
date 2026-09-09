@@ -130564,10 +130564,7 @@
               "$ref": "#/components/schemas/security._types.DataSourcePrivileges"
             }
           }
-        },
-        "required": [
-          "application"
-        ]
+        }
       },
       "security._types.ApplicationGlobalUserPrivileges": {
         "type": "object",
