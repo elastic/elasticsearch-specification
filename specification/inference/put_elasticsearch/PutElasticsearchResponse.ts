@@ -17,9 +17,20 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
 import { InferenceEndpointInfoElasticsearch } from '@inference/_types/Services'
 
 export class Response {
   /** @codegen_name endpoint_info */
   body: InferenceEndpointInfoElasticsearch
+  exceptions: [
+    {
+      /**
+       * The request is invalid (400), the license does not allow the service (403),
+       * or the endpoint could not be created (500).
+       */
+      statusCodes: [400, 403, 500]
+      body: ErrorResponseBase
+    }
+  ]
 }
