@@ -45,6 +45,10 @@ export enum ClusterPrivilege {
   all,
   cancel_task,
   /**
+   * @availability stack since=9.4.0
+   */
+  clone_api_key,
+  /**
    * @availability stack
    */
   create_snapshot,
