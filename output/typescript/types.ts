@@ -21951,6 +21951,17 @@ export interface SecurityDeleteUserResponse {
   found: boolean
 }
 
+export interface SecurityDeleteUserManagedServiceAccountRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+  refresh?: Refresh
+  force?: boolean
+}
+
+export interface SecurityDeleteUserManagedServiceAccountResponse {
+  found: boolean
+}
+
 export interface SecurityDisableUserRequest extends RequestBase {
   username: Username
   refresh?: Refresh
@@ -22073,15 +22084,27 @@ export interface SecurityGetRoleMappingRequest extends RequestBase {
 
 export type SecurityGetRoleMappingResponse = Record<string, SecurityRoleMapping>
 
+export interface SecurityGetServiceAccountsBuiltInServiceAccount {
+  type: 'built_in'
+  role_descriptor: SecurityRoleDescriptorRead
+}
+
 export interface SecurityGetServiceAccountsRequest extends RequestBase {
   namespace?: Namespace
   service?: Service
+  type?: SecurityGetServiceAccountsServiceAccountType | SecurityGetServiceAccountsServiceAccountType[]
 }
 
-export type SecurityGetServiceAccountsResponse = Record<string, SecurityGetServiceAccountsRoleDescriptorWrapper>
+export type SecurityGetServiceAccountsResponse = Record<string, SecurityGetServiceAccountsServiceAccountInfo>
 
-export interface SecurityGetServiceAccountsRoleDescriptorWrapper {
-  role_descriptor: SecurityRoleDescriptorRead
+export type SecurityGetServiceAccountsServiceAccountInfo = SecurityGetServiceAccountsBuiltInServiceAccount | SecurityGetServiceAccountsUserManagedServiceAccount
+
+export type SecurityGetServiceAccountsServiceAccountType = 'built_in' | 'user_managed'
+
+export interface SecurityGetServiceAccountsUserManagedServiceAccount {
+  type: 'user_managed'
+  roles: string[]
+  enabled: boolean
 }
 
 export interface SecurityGetServiceCredentialsNodesCredentials {
@@ -22431,6 +22454,20 @@ export interface SecurityPutUserRequest extends RequestBase {
 }
 
 export interface SecurityPutUserResponse {
+  created: boolean
+}
+
+export interface SecurityPutUserManagedServiceAccountRequest extends RequestBase {
+  namespace: Namespace
+  service: Service
+  refresh?: Refresh
+  body?: {
+    roles: string[]
+    enabled?: boolean
+  }
+}
+
+export interface SecurityPutUserManagedServiceAccountResponse {
   created: boolean
 }
 

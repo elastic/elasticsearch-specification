@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ServiceAccountInfo } from './types'
-
 export class Response {
-  /**
-   * A successful call returns a JSON object of service accounts.
-   * The API returns an empty object if no service account is found.
-   * @codegen_name service_accoutns */
-  body: Dictionary<string, ServiceAccountInfo>
+  body: {
+    /**
+     * If the service account is successfully deleted, the request returns `{"found": true}`.
+     * Otherwise, the response will have status code 404 and `found` is set to `false`.
+     */
+    found: boolean
+  }
 }
