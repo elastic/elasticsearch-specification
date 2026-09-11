@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { MediaType, Namespace, Refresh, Service } from '@_types/common'
 
 /**
- * Delete a user-managed service account.
+ * Delete user-managed service accounts.
  *
  * Delete a service account from a namespace of your own.
  *
@@ -32,8 +32,9 @@ import { MediaType, Namespace, Refresh, Service } from '@_types/common'
  * A name that no user-managed service account could have is rejected rather than reported as not found.
  * The `manage_service_account` privilege does not authorize this API.
  * @rest_spec_name security.delete_user_managed_service_account
- * @availability stack since=9.6.0 stability=experimental visibility=private
+ * @availability stack since=9.6.0 stability=stable
  * @cluster_privileges manage_security
+ * @doc_id security-api-delete-user-managed-service-account
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {

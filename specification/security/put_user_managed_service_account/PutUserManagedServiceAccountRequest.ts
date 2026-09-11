@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { MediaType, Namespace, Refresh, Service } from '@_types/common'
 
 /**
- * Create or update a user-managed service account.
+ * Create user-managed service accounts.
  *
  * Create a service account in a namespace of your own, or replace one that already exists.
  * A replacement is not a partial update: every write applies the defaults, so an account that was disabled and is then written again without `enabled` comes back enabled.
@@ -32,8 +32,9 @@ import { MediaType, Namespace, Refresh, Service } from '@_types/common'
  * NOTE: The `elastic` namespace is reserved for the built-in service accounts that ship with Elasticsearch.
  * The `manage_service_account` privilege does not authorize this API.
  * @rest_spec_name security.put_user_managed_service_account
- * @availability stack since=9.6.0 stability=experimental visibility=private
+ * @availability stack since=9.6.0 stability=stable
  * @cluster_privileges manage_security
+ * @doc_id security-api-put-user-managed-service-account
  * @ext_doc_id service-accounts
  */
 export interface Request extends RequestBase {
