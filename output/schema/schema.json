@@ -20951,7 +20951,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
+      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
       "docId": "security-api-create-service-token",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token",
       "docUrlServerless": "",
@@ -21180,7 +21180,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
+      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
       "docId": "security-api-delete-service-token",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token",
       "docUrlServerless": "",
@@ -21250,6 +21250,46 @@
             "DELETE"
           ],
           "path": "/_security/user/{username}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "private"
+        }
+      },
+      "description": "Delete a user-managed service account.\n\nDelete a service account from a namespace of your own.\n\nDeleting an account that still has service tokens is rejected unless `force` is `true`.\nA forced delete leaves the tokens behind: they cannot authenticate while no account of that name exists, and recreating the account is rejected until they are deleted.\n\nNOTE: The `elastic` namespace is reserved for the built-in service accounts that ship with Elasticsearch.\nA name that no user-managed service account could have is rejected rather than reported as not found.\nThe `manage_service_account` privilege does not authorize this API.",
+      "docUrl": null,
+      "extDocDescription": "More about service accounts",
+      "extDocId": "service-accounts",
+      "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+      "name": "security.delete_user_managed_service_account",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.delete_user_managed_service_account"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "security.delete_user_managed_service_account"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_security/service/{namespace}/{service}"
         }
       ]
     },
@@ -21752,7 +21792,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get service accounts.\n\nGet a list of service accounts that match the provided path parameters.\n\nNOTE: Currently, only the `elastic/fleet-server` service account is available.",
+      "description": "Get service accounts.\n\nGet a list of service accounts that match the provided path parameters.\nBuilt-in service accounts ship with Elasticsearch in the `elastic` namespace; user-managed service accounts are created with the put user-managed service account API.\n\nNOTE: When `type` is omitted, a request without a namespace reports built-in accounts only, which preserves the response of a whole-cluster listing.\nA request scoped to a namespace reports both kinds, so an account you created is found without naming its kind.",
       "docId": "security-api-get-service-accounts",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts",
       "docUrlServerless": "",
@@ -22641,6 +22681,49 @@
             "POST"
           ],
           "path": "/_security/user/{username}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "private"
+        }
+      },
+      "description": "Create or update a user-managed service account.\n\nCreate a service account in a namespace of your own, or replace one that already exists.\nA replacement is not a partial update: every write applies the defaults, so an account that was disabled and is then written again without `enabled` comes back enabled.\n\nCreating an account whose name still has leftover service tokens is rejected.\nDelete those tokens first.\n\nNOTE: The `elastic` namespace is reserved for the built-in service accounts that ship with Elasticsearch.\nThe `manage_service_account` privilege does not authorize this API.",
+      "docUrl": null,
+      "extDocDescription": "More about service accounts",
+      "extDocId": "service-accounts",
+      "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/service-accounts",
+      "name": "security.put_user_managed_service_account",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.put_user_managed_service_account"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "security.put_user_managed_service_account"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_security/service/{namespace}/{service}"
         }
       ]
     },
@@ -263299,7 +263382,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
+      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
       "examples": {
         "CreateServiceTokenRequestExample1": {
           "alternatives": [
@@ -263397,7 +263480,7 @@
           }
         }
       ],
-      "specLocation": "security/create_service_token/CreateServiceTokenRequest.ts#L23-L79"
+      "specLocation": "security/create_service_token/CreateServiceTokenRequest.ts#L23-L80"
     },
     {
       "kind": "response",
@@ -264240,7 +264323,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
+      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
       "examples": {
         "DeleteServiceTokenRequestExample1": {
           "alternatives": [
@@ -264338,7 +264421,7 @@
           }
         }
       ],
-      "specLocation": "security/delete_service_token/DeleteServiceTokenRequest.ts#L23-L65"
+      "specLocation": "security/delete_service_token/DeleteServiceTokenRequest.ts#L23-L66"
     },
     {
       "kind": "response",
@@ -264485,6 +264568,119 @@
         "namespace": "security.delete_user"
       },
       "specLocation": "security/delete_user/SecurityDeleteUserResponse.ts#L20-L28"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Delete a user-managed service account.\n\nDelete a service account from a namespace of your own.\n\nDeleting an account that still has service tokens is rejected unless `force` is `true`.\nA forced delete leaves the tokens behind: they cannot authenticate while no account of that name exists, and recreating the account is rejected until they are deleted.\n\nNOTE: The `elastic` namespace is reserved for the built-in service accounts that ship with Elasticsearch.\nA name that no user-managed service account could have is rejected rather than reported as not found.\nThe `manage_service_account` privilege does not authorize this API.",
+      "examples": {
+        "DeleteUserManagedServiceAccountRequestExample1": {
+          "description": "Run `DELETE /_security/service/my-namespace/my-service` to delete a service account. The delete is rejected if the account still has service tokens; add `?force=true` to delete it anyway.\n",
+          "method_request": "DELETE /_security/service/my-namespace/my-service",
+          "summary": "Delete a user-managed service account"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "security.delete_user_managed_service_account"
+      },
+      "path": [
+        {
+          "description": "The namespace, which is a top-level grouping of service accounts.\nIt must start with a letter or digit and can contain only letters, digits, hyphens, and underscores, up to a maximum of 128 characters.\nIt cannot be `elastic`, which is reserved for built-in service accounts.",
+          "name": "namespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The service name.\nIt must start with a letter or digit and can contain only letters, digits, hyphens, and underscores, up to a maximum of 128 characters.",
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `wait_for` (the default) then wait for a refresh to make this operation visible to search, if `true` then refresh the affected shards to make this operation visible to search, if `false` then do nothing with refreshes.",
+          "name": "refresh",
+          "required": false,
+          "serverDefault": "wait_for",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `false` (the default), deleting a service account that still has service tokens is rejected.\nIf `true`, the account is deleted and its tokens are left in place.",
+          "name": "force",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/delete_user_managed_service_account/DeleteUserManagedServiceAccountRequest.ts#L23-L73"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "If the service account is successfully deleted, the request returns `{\"found\": true}`.\nOtherwise, the response will have status code 404 and `found` is set to `false`.",
+            "name": "found",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "DeleteUserManagedServiceAccountResponseExample1": {
+          "description": "A successful response from `DELETE /_security/service/my-namespace/my-service`.\n",
+          "value": "{\n  \"found\": true\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "security.delete_user_managed_service_account"
+      },
+      "specLocation": "security/delete_user_managed_service_account/DeleteUserManagedServiceAccountResponse.ts#L20-L28"
     },
     {
       "kind": "request",
@@ -266189,6 +266385,43 @@
       "specLocation": "security/get_role_mapping/SecurityGetRoleMappingResponse.ts#L23-L29"
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "BuiltInServiceAccount",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The account ships with Elasticsearch.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "built_in"
+          }
+        },
+        {
+          "description": "The role descriptor declared for the account in the Elasticsearch distribution.",
+          "name": "role_descriptor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleDescriptorRead",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L38-L49"
+    },
+    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -266196,7 +266429,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get service accounts.\n\nGet a list of service accounts that match the provided path parameters.\n\nNOTE: Currently, only the `elastic/fleet-server` service account is available.",
+      "description": "Get service accounts.\n\nGet a list of service accounts that match the provided path parameters.\nBuilt-in service accounts ship with Elasticsearch in the `elastic` namespace; user-managed service accounts are created with the put user-managed service account API.\n\nNOTE: When `type` is omitted, a request without a namespace reports built-in accounts only, which preserves the response of a whole-cluster listing.\nA request scoped to a namespace reports both kinds, so an account you created is found without naming its kind.",
       "examples": {
         "GetServiceAccountsRequestExample1": {
           "alternatives": [
@@ -266229,7 +266462,14 @@
               "language": "Java"
             }
           ],
-          "method_request": "GET /_security/service/elastic/fleet-server"
+          "description": "Run `GET /_security/service/elastic/fleet-server` to get a built-in service account.",
+          "method_request": "GET /_security/service/elastic/fleet-server",
+          "summary": "A built-in service account"
+        },
+        "GetServiceAccountsRequestExample2": {
+          "description": "Run `GET /_security/service/my-namespace?type=user_managed` to get every user-managed service account in the `my-namespace` namespace, leaving out any built-in account.\n",
+          "method_request": "GET /_security/service/my-namespace?type=user_managed",
+          "summary": "User-managed service accounts in a namespace"
         }
       },
       "inherits": {
@@ -266268,8 +266508,42 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "security/get_service_accounts/GetServiceAccountsRequest.ts#L23-L65"
+      "query": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "A comma-separated list of the kinds of service account to return.\nIf it is omitted, it defaults to `built_in` when no namespace is given and to `built_in,user_managed` otherwise.",
+          "name": "type",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ServiceAccountType",
+                  "namespace": "security.get_service_accounts"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "ServiceAccountType",
+                    "namespace": "security.get_service_accounts"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/GetServiceAccountsRequest.ts#L24-L77"
     },
     {
       "kind": "response",
@@ -266289,7 +266563,7 @@
           "value": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleDescriptorWrapper",
+              "name": "ServiceAccountInfo",
               "namespace": "security.get_service_accounts"
             }
           }
@@ -266298,7 +266572,13 @@
       "examples": {
         "GetServiceAccountsResponseExample1": {
           "description": "A successful response from `GET /_security/service/elastic/fleet-server`. The response contains information about the `elastic/fleet-server` service account.\n",
-          "value": "{\n  \"elastic/fleet-server\": {\n    \"role_descriptor\": {\n      \"cluster\": [\n        \"monitor\",\n        \"manage_own_api_key\",\n        \"read_fleet_secrets\"\n      ],\n      \"indices\": [\n        {\n          \"names\": [\n            \"logs-*\",\n            \"metrics-*\",\n            \"traces-*\",\n            \".logs-endpoint.diagnostic.collection-*\",\n            \".logs-endpoint.action.responses-*\",\n            \".logs-endpoint.heartbeat-*\"\n          ],\n          \"privileges\": [\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"profiling-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"traces-apm.sampled-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"monitor\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \".fleet-secrets*\"\n          ],\n          \"privileges\": [\n            \"read\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-actions*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-agents*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-artifacts*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-enrollment-api-keys*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies-leader*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-servers*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-fileds*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \"synthetics-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        }\n      ],\n      \"applications\": [\n        {\n          \"application\": \"kibana-*\",\n          \"privileges\": [\n            \"reserved_fleet-setup\"\n          ],\n          \"resources\": [\n            \"*\"\n          ]\n        }\n      ],\n      \"run_as\": [],\n      \"metadata\": {},\n      \"transient_metadata\": {\n        \"enabled\": true\n      }\n    }\n  }\n}"
+          "summary": "A built-in service account",
+          "value": "{\n  \"elastic/fleet-server\": {\n    \"type\": \"built_in\",\n    \"role_descriptor\": {\n      \"cluster\": [\n        \"monitor\",\n        \"manage_own_api_key\",\n        \"read_fleet_secrets\"\n      ],\n      \"indices\": [\n        {\n          \"names\": [\n            \"logs-*\",\n            \"metrics-*\",\n            \"traces-*\",\n            \".logs-endpoint.diagnostic.collection-*\",\n            \".logs-endpoint.action.responses-*\",\n            \".logs-endpoint.heartbeat-*\"\n          ],\n          \"privileges\": [\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"profiling-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"traces-apm.sampled-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"monitor\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \".fleet-secrets*\"\n          ],\n          \"privileges\": [\n            \"read\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-actions*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-agents*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-artifacts*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-enrollment-api-keys*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies-leader*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-servers*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-fileds*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \"synthetics-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        }\n      ],\n      \"applications\": [\n        {\n          \"application\": \"kibana-*\",\n          \"privileges\": [\n            \"reserved_fleet-setup\"\n          ],\n          \"resources\": [\n            \"*\"\n          ]\n        }\n      ],\n      \"run_as\": [],\n      \"metadata\": {},\n      \"transient_metadata\": {\n        \"enabled\": true\n      }\n    }\n  }\n}"
+        },
+        "GetServiceAccountsResponseExample2": {
+          "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
+          "summary": "User-managed service accounts in a namespace",
+          "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
         }
       },
       "name": {
@@ -266308,25 +266588,105 @@
       "specLocation": "security/get_service_accounts/GetServiceAccountsResponse.ts#L23-L29"
     },
     {
+      "kind": "type_alias",
+      "description": "The two kinds of service account describe their privileges differently, so the reported\ninformation is a union tagged by `type`.",
+      "name": {
+        "name": "ServiceAccountInfo",
+        "namespace": "security.get_service_accounts"
+      },
+      "specLocation": "security/get_service_accounts/types.ts#L29-L36",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BuiltInServiceAccount",
+              "namespace": "security.get_service_accounts"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UserManagedServiceAccount",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "An account that ships with Elasticsearch, in the reserved `elastic` namespace.",
+          "name": "built_in"
+        },
+        {
+          "description": "An account created with the put user-managed service account API.",
+          "name": "user_managed"
+        }
+      ],
+      "name": {
+        "name": "ServiceAccountType",
+        "namespace": "security.get_service_accounts"
+      },
+      "specLocation": "security/get_service_accounts/types.ts#L22-L27"
+    },
+    {
       "kind": "interface",
       "name": {
-        "name": "RoleDescriptorWrapper",
+        "name": "UserManagedServiceAccount",
         "namespace": "security.get_service_accounts"
       },
       "properties": [
         {
-          "name": "role_descriptor",
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The account was created with the put user-managed service account API.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "user_managed"
+          }
+        },
+        {
+          "description": "The names of the roles granted to the account, as they were given when it was created.\nThey are resolved when the account authenticates.",
+          "name": "roles",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Whether the account can authenticate.",
+          "name": "enabled",
           "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RoleDescriptorRead",
-              "namespace": "security._types"
+              "name": "boolean",
+              "namespace": "_builtins"
             }
           }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L22-L24"
+      "specLocation": "security/get_service_accounts/types.ts#L51-L66"
     },
     {
       "kind": "interface",
@@ -271307,6 +271667,137 @@
         "namespace": "security.put_user"
       },
       "specLocation": "security/put_user/SecurityPutUserResponse.ts#L20-L28"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The names of the roles to grant to the service account, up to a maximum of 1000.\nThe roles are resolved when the account authenticates, so they do not have to exist yet.",
+            "name": "roles",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Whether the account can authenticate.\nTokens can still be created for a disabled account; they just cannot be used until the account is enabled.",
+            "name": "enabled",
+            "required": false,
+            "serverDefault": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Create or update a user-managed service account.\n\nCreate a service account in a namespace of your own, or replace one that already exists.\nA replacement is not a partial update: every write applies the defaults, so an account that was disabled and is then written again without `enabled` comes back enabled.\n\nCreating an account whose name still has leftover service tokens is rejected.\nDelete those tokens first.\n\nNOTE: The `elastic` namespace is reserved for the built-in service accounts that ship with Elasticsearch.\nThe `manage_service_account` privilege does not authorize this API.",
+      "examples": {
+        "PutUserManagedServiceAccountRequestExample1": {
+          "description": "Run `PUT /_security/service/my-namespace/my-service` to create a service account that is granted the `my_role` role and can authenticate.\n",
+          "method_request": "PUT /_security/service/my-namespace/my-service",
+          "summary": "Create a user-managed service account",
+          "value": "{\n  \"roles\": [\n    \"my_role\"\n  ],\n  \"enabled\": true\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "security.put_user_managed_service_account"
+      },
+      "path": [
+        {
+          "description": "The namespace, which is a top-level grouping of service accounts.\nIt must start with a letter or digit and can contain only letters, digits, hyphens, and underscores, up to a maximum of 128 characters.\nIt cannot be `elastic`, which is reserved for built-in service accounts.",
+          "name": "namespace",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Namespace",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The service name.\nIt must start with a letter or digit and can contain only letters, digits, hyphens, and underscores, up to a maximum of 128 characters.",
+          "name": "service",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Service",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `wait_for` (the default) then wait for a refresh to make this operation visible to search, if `true` then refresh the affected shards to make this operation visible to search, if `false` then do nothing with refreshes.",
+          "name": "refresh",
+          "required": false,
+          "serverDefault": "wait_for",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Refresh",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/put_user_managed_service_account/PutUserManagedServiceAccountRequest.ts#L23-L81"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A successful call returns a JSON structure that shows whether the service account has been created or updated.\nWhen an existing service account is replaced, `created` is set to `false`.",
+            "name": "created",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PutUserManagedServiceAccountResponseExample1": {
+          "description": "A successful response from `PUT /_security/service/my-namespace/my-service`.\n",
+          "value": "{\n  \"created\": true\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "security.put_user_managed_service_account"
+      },
+      "specLocation": "security/put_user_managed_service_account/PutUserManagedServiceAccountResponse.ts#L20-L28"
     },
     {
       "kind": "type_alias",

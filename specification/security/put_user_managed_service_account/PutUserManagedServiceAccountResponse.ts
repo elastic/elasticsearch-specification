@@ -17,13 +17,12 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { ServiceAccountInfo } from './types'
-
 export class Response {
-  /**
-   * A successful call returns a JSON object of service accounts.
-   * The API returns an empty object if no service account is found.
-   * @codegen_name service_accoutns */
-  body: Dictionary<string, ServiceAccountInfo>
+  body: {
+    /**
+     * A successful call returns a JSON structure that shows whether the service account has been created or updated.
+     * When an existing service account is replaced, `created` is set to `false`.
+     */
+    created: boolean
+  }
 }
