@@ -32,7 +32,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name security.clone_api_key
  * @availability stack since=9.4.0 stability=experimental
  * @availability serverless stability=experimental visibility=private
- * @cluster_privileges manage_own_api_key
+ * @cluster_privileges clone_api_key
  * @doc_id security-api-clone-api-key
  */
 export interface Request extends RequestBase {
