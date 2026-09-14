@@ -10,5 +10,8 @@
     "eslint": "^9.26.0",
     "eslint-plugin-es-spec": "file:../validator",
     "eslint-plugin-jsdoc": "^61.2.1"
+  },
+  "overrides": {
+    "js-yaml": "4.3.2"
   }
 }
