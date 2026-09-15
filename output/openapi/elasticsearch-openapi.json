@@ -42076,7 +42076,7 @@
           "security"
         ],
         "summary": "Clone an API key",
-        "description": "Create a copy of an existing API key with a new ID.\nThe cloned key inherits the role descriptors of the source key.\nThis is intended for applications (such as Kibana) that need to\ncreate API keys on behalf of a user using an existing API key credential,\nsince derived API keys (API keys created by API keys) are not otherwise supported.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`\n",
+        "description": "Create a copy of an existing API key with a new ID.\nThe cloned key inherits the role descriptors of the source key.\nThis is intended for applications (such as Kibana) that need to\ncreate API keys on behalf of a user using an existing API key credential,\nsince derived API keys (API keys created by API keys) are not otherwise supported.\n\n## Required authorization\n\n* Cluster privileges: `clone_api_key`\n",
         "operationId": "security-clone-api-key-1",
         "parameters": [
           {
@@ -42104,7 +42104,7 @@
           "security"
         ],
         "summary": "Clone an API key",
-        "description": "Create a copy of an existing API key with a new ID.\nThe cloned key inherits the role descriptors of the source key.\nThis is intended for applications (such as Kibana) that need to\ncreate API keys on behalf of a user using an existing API key credential,\nsince derived API keys (API keys created by API keys) are not otherwise supported.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`\n",
+        "description": "Create a copy of an existing API key with a new ID.\nThe cloned key inherits the role descriptors of the source key.\nThis is intended for applications (such as Kibana) that need to\ncreate API keys on behalf of a user using an existing API key credential,\nsince derived API keys (API keys created by API keys) are not otherwise supported.\n\n## Required authorization\n\n* Cluster privileges: `clone_api_key`\n",
         "operationId": "security-clone-api-key",
         "parameters": [
           {
@@ -125675,6 +125675,7 @@
             "enum": [
               "all",
               "cancel_task",
+              "clone_api_key",
               "create_snapshot",
               "cross_cluster_replication",
               "cross_cluster_search",

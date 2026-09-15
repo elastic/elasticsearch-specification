@@ -20344,7 +20344,7 @@
       "name": "security.clone_api_key",
       "privileges": {
         "cluster": [
-          "manage_own_api_key"
+          "clone_api_key"
         ]
       },
       "request": {
@@ -249955,7 +249955,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L412-L414"
+      "specLocation": "security/_types/Privileges.ts#L416-L418"
     },
     {
       "kind": "interface",
@@ -250084,6 +250084,14 @@
         },
         {
           "name": "cancel_task"
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.4.0"
+            }
+          },
+          "name": "clone_api_key"
         },
         {
           "availability": {
@@ -250377,7 +250385,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L43-L210"
+      "specLocation": "security/_types/Privileges.ts#L43-L214"
     },
     {
       "kind": "interface",
@@ -250467,7 +250475,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L408-L410"
+      "specLocation": "security/_types/Privileges.ts#L412-L414"
     },
     {
       "kind": "enum",
@@ -250592,7 +250600,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L360-L406"
+      "specLocation": "security/_types/Privileges.ts#L364-L410"
     },
     {
       "kind": "interface",
@@ -250706,7 +250714,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L254-L254"
+      "specLocation": "security/_types/Privileges.ts#L258-L258"
     },
     {
       "kind": "interface",
@@ -250800,7 +250808,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L226-L252"
+      "specLocation": "security/_types/Privileges.ts#L230-L256"
     },
     {
       "kind": "type_alias",
@@ -250814,7 +250822,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L315-L323",
+      "specLocation": "security/_types/Privileges.ts#L319-L327",
       "type": {
         "kind": "union_of",
         "items": [
@@ -250864,7 +250872,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L416-L418"
+      "specLocation": "security/_types/Privileges.ts#L420-L422"
     },
     {
       "kind": "interface",
@@ -250944,7 +250952,7 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L212-L224"
+      "specLocation": "security/_types/Privileges.ts#L216-L228"
     },
     {
       "kind": "interface",
@@ -250982,7 +250990,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L268-L280"
+      "specLocation": "security/_types/Privileges.ts#L272-L284"
     },
     {
       "kind": "interface",
@@ -251109,7 +251117,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L256-L266"
+      "specLocation": "security/_types/Privileges.ts#L260-L270"
     },
     {
       "kind": "interface",
@@ -251239,7 +251247,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L309-L313"
+      "specLocation": "security/_types/Privileges.ts#L313-L317"
     },
     {
       "kind": "interface",
@@ -251289,7 +251297,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L420-L430"
+      "specLocation": "security/_types/Privileges.ts#L424-L434"
     },
     {
       "kind": "interface",
@@ -251920,7 +251928,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L357-L358",
+      "specLocation": "security/_types/Privileges.ts#L361-L362",
       "type": {
         "kind": "union_of",
         "items": [
@@ -251963,7 +251971,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L325-L335"
+      "specLocation": "security/_types/Privileges.ts#L329-L339"
     },
     {
       "kind": "interface",
@@ -252051,7 +252059,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L337-L355"
+      "specLocation": "security/_types/Privileges.ts#L341-L359"
     },
     {
       "kind": "interface",
@@ -252152,7 +252160,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L432-L452"
+      "specLocation": "security/_types/Privileges.ts#L436-L456"
     },
     {
       "kind": "interface",
@@ -252419,7 +252427,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L306-L307"
+      "specLocation": "security/_types/Privileges.ts#L310-L311"
     },
     {
       "kind": "interface",
@@ -252515,7 +252523,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L282-L304"
+      "specLocation": "security/_types/Privileges.ts#L286-L308"
     },
     {
       "kind": "interface",
