@@ -45,6 +45,11 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The ID of the point-in-time.
+     *
+     * IMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.
+     * Always use the most recently-received PIT identifier for the next request.
+     * If you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.
+     * In that case, use any of these values for later requests, preferring more recently-received values whenever possible.
      */
     id: Id
   }
