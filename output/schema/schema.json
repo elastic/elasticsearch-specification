@@ -44445,6 +44445,7 @@
           }
         },
         {
+          "description": "An updated identifier for the point-in-time that was searched.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
           "name": "pit_id",
           "required": false,
           "type": {
@@ -44456,7 +44457,7 @@
           }
         },
         {
-          "description": "The identifier for the search and its search context.\nYou can use this scroll ID with the scroll API to retrieve the next batch of search results for the request.\nThis property is returned only if the `scroll` query parameter is specified in the request.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
+          "description": "The identifier for the search and its search context.\nYou can use this scroll ID with the scroll API to retrieve the next batch of search results for the request.\nThis property is returned only if the `scroll` query parameter is specified in the request.",
           "extDocId": "scroll-search-results",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results",
           "name": "_scroll_id",
@@ -44515,7 +44516,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchResponse.ts#L39-L90"
+      "specLocation": "_global/search/SearchResponse.ts#L39-L93"
     },
     {
       "kind": "interface",
