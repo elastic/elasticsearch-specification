@@ -22,23 +22,24 @@ import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { RequestChatCompletion } from '@inference/_types/CommonTypes'
 /**
- * Perform non-streaming chat completion inference on the service.
+ * Perform streaming chat completion inference on the service.
  *
- * The chat completion inference API enables rich responses for chat completion tasks.
+ * The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.
  * It only works with the `chat_completion` task type.
  *
  * NOTE: The `chat_completion` task type supports both streaming and non-streaming.
+ * The Chat completion inference API and the Stream inference API differ in their response structure and capabilities.
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
  * To determine whether a given inference service supports this task type, please see the page for that service.
  * @rest_spec_name inference.chat_completion_unified
- * @availability stack since=9.6.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
- * @doc_id inference-api-non-streaming-chat-completion
+ * @availability stack since=8.18.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
+ * @doc_id inference-api-chat-completion
  */
 export interface Request extends RequestBase {
   urls: [
     {
-      path: '/_inference/chat_completion/{inference_id}'
+      path: '/_inference/chat_completion/{inference_id}/_stream'
       methods: ['POST']
     }
   ]
