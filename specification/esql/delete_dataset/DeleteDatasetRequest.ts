@@ -29,7 +29,8 @@ import { Duration } from '@_types/Time'
  *
  * @rest_spec_name esql.delete_dataset
  * @index_privileges manage
- * @availability stack stability=experimental visibility=public
+ * @availability stack since=9.5.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @ext_doc_id esql-data-federation
  * @doc_id esql-delete-dataset
  */

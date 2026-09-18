@@ -5553,7 +5553,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5597,7 +5602,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5687,7 +5697,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5737,7 +5752,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5931,7 +5951,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5975,7 +6000,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -152356,7 +152386,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L62"
+      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L63"
     },
     {
       "kind": "response",
@@ -152482,7 +152512,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L61"
+      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -152685,7 +152715,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L61"
+      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -152847,7 +152877,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L61"
+      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -153348,7 +153378,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L79"
+      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L80"
     },
     {
       "kind": "response",
@@ -153544,7 +153574,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L86"
+      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L87"
     },
     {
       "kind": "response",
