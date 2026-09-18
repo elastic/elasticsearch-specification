@@ -11692,7 +11692,7 @@
             "$ref": "#/components/responses/esql.get_data_source-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -11810,7 +11810,7 @@
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -11891,7 +11891,7 @@
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -11925,7 +11925,7 @@
             "$ref": "#/components/responses/esql.get_dataset-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12060,7 +12060,7 @@
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12141,7 +12141,7 @@
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12302,7 +12302,7 @@
             "$ref": "#/components/responses/esql.get_data_source-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -12333,7 +12333,7 @@
             "$ref": "#/components/responses/esql.get_dataset-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Experimental; Added in 9.5.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
