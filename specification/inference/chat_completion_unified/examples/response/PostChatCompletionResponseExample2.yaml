@@ -1,0 +1,18 @@
+# summary:
+description: A successful response when performing a chat completion task with response-level reasoning data.
+# type: response
+# response_code: 200
+value: |-
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10","choices":[{"delta":{"content":"With two barbers, the paradox disappears.","role":"assistant"},"index":0,"reasoning":"The contradiction only occurs when a barber must determine whether to shave himself.","reasoning_details":[{"type":"reasoning.encrypted","data":"[REDACTED]"},{"type":"reasoning.summary","summary":"Two barbers can shave each other."},{"type":"reasoning.text","text":"The contradiction only occurs when a barber must determine whether to shave himself.","signature":"sig_example"}]}],"model":"openai-gpt-oss-120b","object":"chat.completion.chunk"}}
+
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10","choices":[{"delta":{"summary":"Each barber can shave the other, so neither needs to shave himself.","role":"assistant"},"index":0,"reasoning":"With two barbers, they can shave each other.","reasoning_details":[{"type":"reasoning.encrypted","data":"[REDACTED]"},{"type":"reasoning.summary","summary":"avoiding the self-reference paradox"},{"type":"reasoning.text","format":"some_text_reasoning_detail_format","text":"With two barbers, they can shave each other.","signature":"sig_example"}]}],"model":"openai-gpt-oss-120b","object":"chat.completion.chunk"}}
+
+  (...)
+
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10","choices":[],"model":"openai-gpt-oss-120b","object":"chat.completion.chunk","usage":{"completion_tokens":28,"prompt_tokens":16,"total_tokens":44,"completion_tokens_details":{"reasoning_tokens":10}}}}
+
+  event: message
+  data: [DONE]

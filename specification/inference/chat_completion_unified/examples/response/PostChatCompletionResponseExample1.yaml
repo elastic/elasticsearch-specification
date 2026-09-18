@@ -1,0 +1,21 @@
+# summary:
+description: A successful response when performing a chat completion task using a User message with `tools` and `tool_choice`.
+# type: response
+# response_code: 200
+value: |-
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3","choices":[{"delta":{"content":"","role":"assistant"},"index":0}],"model":"gpt-4o-2024-08-06","object":"chat.completion.chunk"}}
+
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3","choices":[{"delta":{"content":Elastic"},"index":0}],"model":"gpt-4o-2024-08-06","object":"chat.completion.chunk"}}
+
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3","choices":[{"delta":{"content":" is"},"index":0}],"model":"gpt-4o-2024-08-06","object":"chat.completion.chunk"}}
+
+  (...)
+
+  event: message
+  data: {"chat_completion":{"id":"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3","choices":[],"model":"gpt-4o-2024-08-06","object":"chat.completion.chunk","usage":{"completion_tokens":28,"prompt_tokens":16,"total_tokens":44}}} 
+
+  event: message
+  data: [DONE]
