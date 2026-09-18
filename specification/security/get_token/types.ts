@@ -44,7 +44,17 @@ export enum AccessTokenGrantType {
    * This grant type implements the Refresh Token Grant of OAuth2.
    * In this grant a user exchanges a previously issued refresh token for a new access token and a new refresh token.
    */
-  refresh_token
+  refresh_token,
+  /**
+   * This grant type is supported internally and exchanges a user-managed service account token for an access token that represents that service account.
+   * The request must be made by an authenticated caller with the `manage_token` cluster privilege, on behalf of the service account whose token is passed in the `service_account_token` parameter.
+   * The service account token is authenticated on every exchange, so a disabled account or an invalidated token is rejected.
+   * Tokens that belong to built-in (`elastic/*`) service accounts are rejected.
+   * It generates only access tokens that cannot be refreshed.
+   * The `_user_managed_service_account` grant type may change from version to version.
+   * @availability stack since=9.6.0
+   */
+  _user_managed_service_account
 }
 
 export class UserRealm {

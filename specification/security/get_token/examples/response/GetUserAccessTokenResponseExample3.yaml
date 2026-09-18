@@ -1,0 +1,33 @@
+summary: A _user_managed_service_account grant type example
+description: >
+  A successful response from `POST /_security/oauth2/token` for the `_user_managed_service_account` grant type. No `refresh_token`
+  is returned for this grant type; obtain a new access token by exchanging the service account token again.
+# type: response
+# response_code:
+value: |-
+  {
+    "access_token" : "dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==",
+    "type" : "Bearer",
+    "expires_in" : 1200,
+    "authentication" : {
+      "username" : "apps/oauth2_worker",
+      "roles" : [
+        "umsa_oauth2_monitor"
+      ],
+      "full_name" : "User-managed service account - apps/oauth2_worker",
+      "email" : null,
+      "metadata" : {
+        "_user_managed_service_account" : true
+      },
+      "enabled" : true,
+      "authentication_realm" : {
+        "name" : "_service_account",
+        "type" : "_service_account"
+      },
+      "lookup_realm" : {
+        "name" : "_service_account",
+        "type" : "_service_account"
+      },
+      "authentication_type" : "token"
+    }
+  }

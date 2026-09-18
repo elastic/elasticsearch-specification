@@ -19,6 +19,48 @@
 
 import { RoleDescriptorRead } from '@security/_types/RoleDescriptor'
 
-export class RoleDescriptorWrapper {
+export enum ServiceAccountType {
+  /** An account that ships with Elasticsearch, in the reserved `elastic` namespace. */
+  built_in,
+  /** An account created with the put user-managed service account API. */
+  user_managed
+}
+
+/**
+ * The two kinds of service account describe their privileges differently, so the reported
+ * information is a union tagged by `type`.
+ * @variants internal tag='type'
+ */
+export type ServiceAccountInfo =
+  | BuiltInServiceAccount
+  | UserManagedServiceAccount
+
+export class BuiltInServiceAccount {
+  /**
+   * The account ships with Elasticsearch.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  type: 'built_in'
+  /**
+   * The role descriptor declared for the account in the Elasticsearch distribution.
+   */
   role_descriptor: RoleDescriptorRead
+}
+
+export class UserManagedServiceAccount {
+  /**
+   * The account was created with the put user-managed service account API.
+   * @availability stack since=9.6.0
+   */
+  type: 'user_managed'
+  /**
+   * The names of the roles granted to the account, as they were given when it was created.
+   * They are resolved when the account authenticates.
+   */
+  roles: string[]
+  /**
+   * Whether the account can authenticate.
+   */
+  enabled: boolean
 }

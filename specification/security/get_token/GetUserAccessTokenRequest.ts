@@ -56,7 +56,7 @@ export interface Request extends RequestBase {
   body: {
     /**
      * The type of grant.
-     * Supported grant types are: `password`, `_kerberos`, `client_credentials`, and `refresh_token`.
+     * Supported grant types are: `password`, `_kerberos`, `client_credentials`, `refresh_token`, and `_user_managed_service_account`.
      */
     grant_type?: AccessTokenGrantType
     /**
@@ -82,6 +82,13 @@ export interface Request extends RequestBase {
      * This parameter is not valid with any other supported grant type.
      */
     refresh_token?: string
+    /**
+     * The service account token of a user-managed service account, as returned by the create service account token API.
+     * If you specify the `_user_managed_service_account` grant type, this parameter is required.
+     * This parameter is not valid with any other supported grant type.
+     * @availability stack since=9.6.0
+     */
+    service_account_token?: string
     /**
      * The username that identifies the user.
      * If you specify the `password` grant type, this parameter is required.
