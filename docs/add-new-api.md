@@ -72,6 +72,8 @@ Furthermore, every request definition **must** contain these JS Doc tags:
   - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
     This field is only available for `stack`.
 
+NOTE: The `@rest_spec_name` affects the CLI command name. Refer to the [Modeling Guide](docs/modeling-guide.md#additional-information) for more tips about these tags.
+
 Following, you can find a template valid for any request definition.
 
 ```ts
