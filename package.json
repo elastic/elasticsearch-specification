@@ -7,5 +7,8 @@
     "bump-cli": "^2.10.1",
     "simple-git": "^3.36.0"
   },
-  "version": "overlay"
+  "version": "overlay",
+  "overrides": {
+    "js-yaml": "4.3.2"
+  }
 }

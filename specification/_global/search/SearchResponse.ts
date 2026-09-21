@@ -72,6 +72,14 @@ export class ResponseBody<TDocument> {
   max_score?: double
   num_reduce_phases?: long
   profile?: Profile
+  /**
+   * An updated identifier for the point-in-time that was searched.
+   *
+   * IMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.
+   * Always use the most recently-received PIT identifier for the next request.
+   * If you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.
+   * In that case, use any of these values for later requests, preferring more recently-received values whenever possible.
+   */
   pit_id?: Id
   /**
    * The identifier for the search and its search context.

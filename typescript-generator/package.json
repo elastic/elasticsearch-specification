@@ -27,5 +27,8 @@
   },
   "dependencies": {
     "typescript": "^5"
+  },
+  "overrides": {
+    "js-yaml": "4.3.2"
   }
 }

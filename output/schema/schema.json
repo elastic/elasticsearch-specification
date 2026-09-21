@@ -5553,7 +5553,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5597,7 +5602,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5687,7 +5697,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5737,7 +5752,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5931,7 +5951,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -5975,7 +6000,12 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
+          "since": "9.5.0",
           "stability": "experimental",
           "visibility": "public"
         }
@@ -17920,7 +17950,7 @@
           "stability": "stable"
         }
       },
-      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: The open point in time request and each subsequent search request can return different identifiers; always use the most recently received ID for the next search request.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time",
@@ -20819,7 +20849,7 @@
       "name": "security.clone_api_key",
       "privileges": {
         "cluster": [
-          "manage_own_api_key"
+          "clone_api_key"
         ]
       },
       "request": {
@@ -28925,7 +28955,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The ID of the point-in-time.",
+            "description": "The ID of the point-in-time.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
             "name": "id",
             "required": true,
             "type": {
@@ -28988,7 +29018,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L51"
+      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L56"
     },
     {
       "kind": "response",
@@ -38991,7 +39021,7 @@
           }
         ]
       },
-      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: The open point in time request and each subsequent search request can return different identifiers; always use the most recently received ID for the next search request.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
       "examples": {
         "OpenPointInTimeRequestExample1": {
           "alternatives": [
@@ -39143,7 +39173,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L153"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
     },
     {
       "kind": "response",
@@ -44530,6 +44560,7 @@
           }
         },
         {
+          "description": "An updated identifier for the point-in-time that was searched.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
           "name": "pit_id",
           "required": false,
           "type": {
@@ -44600,7 +44631,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchResponse.ts#L39-L85"
+      "specLocation": "_global/search/SearchResponse.ts#L39-L93"
     },
     {
       "kind": "interface",
@@ -152440,7 +152471,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L62"
+      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L63"
     },
     {
       "kind": "response",
@@ -152566,7 +152597,7 @@
           }
         }
       ],
-      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L61"
+      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -152769,7 +152800,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L61"
+      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -152931,7 +152962,7 @@
           }
         }
       ],
-      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L61"
+      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -153432,7 +153463,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L79"
+      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L80"
     },
     {
       "kind": "response",
@@ -153628,7 +153659,7 @@
           }
         }
       ],
-      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L86"
+      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L87"
     },
     {
       "kind": "response",
@@ -257901,7 +257932,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L427-L429"
+      "specLocation": "security/_types/Privileges.ts#L431-L433"
     },
     {
       "kind": "interface",
@@ -258030,6 +258061,14 @@
         },
         {
           "name": "cancel_task"
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.4.0"
+            }
+          },
+          "name": "clone_api_key"
         },
         {
           "availability": {
@@ -258345,7 +258384,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L43-L220"
+      "specLocation": "security/_types/Privileges.ts#L43-L224"
     },
     {
       "kind": "interface",
@@ -258413,7 +258452,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L446-L468"
+      "specLocation": "security/_types/Privileges.ts#L450-L472"
     },
     {
       "kind": "interface",
@@ -258453,7 +258492,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L435-L444"
+      "specLocation": "security/_types/Privileges.ts#L439-L448"
     },
     {
       "kind": "interface",
@@ -258526,7 +258565,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L418-L425"
+      "specLocation": "security/_types/Privileges.ts#L422-L429"
     },
     {
       "kind": "enum",
@@ -258651,7 +258690,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L370-L416"
+      "specLocation": "security/_types/Privileges.ts#L374-L420"
     },
     {
       "kind": "interface",
@@ -258765,7 +258804,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L264-L264"
+      "specLocation": "security/_types/Privileges.ts#L268-L268"
     },
     {
       "kind": "interface",
@@ -258859,7 +258898,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L236-L262"
+      "specLocation": "security/_types/Privileges.ts#L240-L266"
     },
     {
       "kind": "type_alias",
@@ -258873,7 +258912,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L325-L333",
+      "specLocation": "security/_types/Privileges.ts#L329-L337",
       "type": {
         "kind": "union_of",
         "items": [
@@ -258923,7 +258962,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L431-L433"
+      "specLocation": "security/_types/Privileges.ts#L435-L437"
     },
     {
       "kind": "interface",
@@ -259003,7 +259042,7 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L222-L234"
+      "specLocation": "security/_types/Privileges.ts#L226-L238"
     },
     {
       "kind": "interface",
@@ -259041,7 +259080,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L278-L290"
+      "specLocation": "security/_types/Privileges.ts#L282-L294"
     },
     {
       "kind": "interface",
@@ -259168,7 +259207,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L266-L276"
+      "specLocation": "security/_types/Privileges.ts#L270-L280"
     },
     {
       "kind": "interface",
@@ -259298,7 +259337,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L319-L323"
+      "specLocation": "security/_types/Privileges.ts#L323-L327"
     },
     {
       "kind": "interface",
@@ -259348,7 +259387,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L470-L480"
+      "specLocation": "security/_types/Privileges.ts#L474-L484"
     },
     {
       "kind": "interface",
@@ -259979,7 +260018,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L367-L368",
+      "specLocation": "security/_types/Privileges.ts#L371-L372",
       "type": {
         "kind": "union_of",
         "items": [
@@ -260022,7 +260061,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L335-L345"
+      "specLocation": "security/_types/Privileges.ts#L339-L349"
     },
     {
       "kind": "interface",
@@ -260110,7 +260149,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L347-L365"
+      "specLocation": "security/_types/Privileges.ts#L351-L369"
     },
     {
       "kind": "interface",
@@ -260211,7 +260250,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L482-L502"
+      "specLocation": "security/_types/Privileges.ts#L486-L506"
     },
     {
       "kind": "interface",
@@ -260478,7 +260517,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L316-L317"
+      "specLocation": "security/_types/Privileges.ts#L320-L321"
     },
     {
       "kind": "interface",
@@ -260574,7 +260613,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L292-L314"
+      "specLocation": "security/_types/Privileges.ts#L296-L318"
     },
     {
       "kind": "interface",
