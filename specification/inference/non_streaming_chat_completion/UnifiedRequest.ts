@@ -30,6 +30,22 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * NOTE: The `chat_completion` task type supports both streaming and non-streaming.
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
  * To determine whether a given inference service supports this task type, please see the page for that service.
+ * 
+ * These services support non-streaming chat completion inference:
+ * - AI21
+ * - Azure OpenAI
+ * - Deepseek
+ * - Elastic
+ * - FireworksAI
+ * - Groq
+ * - Huggingface
+ * - IBMWatsonX
+ * - Llama
+ * - Mistral
+ * - NVIDIA
+ * - OpenAI
+ * - OpenShiftAI
+ * 
  * @rest_spec_name inference.non_streaming_chat_completion
  * @availability stack since=9.6.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
