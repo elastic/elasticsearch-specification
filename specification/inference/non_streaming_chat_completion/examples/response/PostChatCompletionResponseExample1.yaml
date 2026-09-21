@@ -1,0 +1,33 @@
+summary: A non-streaming chat completion response
+description: >
+  A successful response from `POST _inference/chat_completion/openai-completion` for a plain user message.
+  The `object` field is `chat.completion` (as opposed to `chat.completion.chunk` in streaming responses).
+  The `message` wrapper contains the model-generated text. Usage statistics include
+  per-category token breakdowns when available.
+value: |-
+  {
+    "id": "chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3",
+    "choices": [
+      {
+        "message": {
+          "content": "Elastic is a company that provides a range of software solutions for search, logging, security, and analytics, built around the open-source Elasticsearch engine.",
+          "role": "assistant"
+        },
+        "finish_reason": "stop",
+        "index": 0
+      }
+    ],
+    "model": "gpt-4o-2024-08-06",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 34,
+      "prompt_tokens": 14,
+      "total_tokens": 48,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  }

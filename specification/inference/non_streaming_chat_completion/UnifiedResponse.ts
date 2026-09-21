@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { StreamResult } from '@_types/Binary'
+import { ChatCompletionInferenceResult } from '@inference/_types/Results'
 
 export class Response {
-  /** @codegen_name data */
-  body: StreamResult
+  /** @codegen_name inference_result */
+  body: ChatCompletionInferenceResult
 }

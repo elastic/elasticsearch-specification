@@ -1,0 +1,42 @@
+summary: A non-streaming chat completion response with tool calls
+description: >
+  A successful response from `POST _inference/chat_completion/openai-completion` when the model decides to call a tool.
+  The `message` contains `tool_calls` instead of `content`, and `finish_reason` is `tool_calls`.
+  Each tool call includes an `index`, an `id`, the function `name` and `arguments` (as a JSON string), and a `type`.
+value: |-
+  {
+    "id": "chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3",
+    "choices": [
+      {
+        "message": {
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "index": 0,
+              "id": "call_KcAjWtAww20AihPHphUh46Gd",
+              "function": {
+                "arguments": "{\"item\":\"scarf\"}",
+                "name": "get_current_price"
+              },
+              "type": "function"
+            }
+          ]
+        },
+        "finish_reason": "tool_calls",
+        "index": 0
+      }
+    ],
+    "model": "gpt-4o-2024-08-06",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 19,
+      "prompt_tokens": 135,
+      "total_tokens": 154,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0
+      }
+    }
+  }
