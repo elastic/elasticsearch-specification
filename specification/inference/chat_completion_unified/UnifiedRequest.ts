@@ -31,7 +31,7 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * The Chat completion inference API and the Stream inference API differ in their response structure and capabilities.
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
  * To determine whether a given inference service supports this task type, please see the page for that service.
- * @rest_spec_name inference.stream_chat_completion_unified
+ * @rest_spec_name inference.chat_completion_unified
  * @availability stack since=8.18.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-chat-completion
