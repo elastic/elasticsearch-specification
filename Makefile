@@ -66,7 +66,7 @@ transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for A
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --include-language-examples --output output/openapi/elasticsearch-serverless-openapi-docs.json
 
 filter-for-serverless: ## Generate the serverless version from the compiled schema
-	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/output/openapi/elasticsearch-serverless-openapi.json
+	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/schema/schema-serverless.json
 
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
