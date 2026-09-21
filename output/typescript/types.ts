@@ -22145,7 +22145,7 @@ export interface SecurityGetStatsResponse {
   nodes: Record<string, SecurityNodeSecurityStats>
 }
 
-export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token'
+export type SecurityGetTokenAccessTokenGrantType = 'password' | 'client_credentials' | '_kerberos' | 'refresh_token' | '_user_managed_service_account'
 
 export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
   authentication_realm: SecurityGetTokenUserRealm
@@ -22166,6 +22166,7 @@ export interface SecurityGetTokenRequest extends RequestBase {
     password?: Password
     kerberos_ticket?: string
     refresh_token?: string
+    service_account_token?: string
     username?: Username
   }
 }

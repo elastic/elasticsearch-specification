@@ -267160,13 +267160,22 @@
         {
           "description": "This grant type implements the Refresh Token Grant of OAuth2.\nIn this grant a user exchanges a previously issued refresh token for a new access token and a new refresh token.",
           "name": "refresh_token"
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "This grant type is supported internally and exchanges a user-managed service account token for an access token that represents that service account.\nThe request must be made by an authenticated caller with the `manage_token` cluster privilege, on behalf of the service account whose token is passed in the `service_account_token` parameter.\nThe service account token is authenticated on every exchange, so a disabled account or an invalidated token is rejected.\nTokens that belong to built-in (`elastic/*`) service accounts are rejected.\nIt generates only access tokens that cannot be refreshed.\nThe `_user_managed_service_account` grant type may change from version to version.",
+          "name": "_user_managed_service_account"
         }
       ],
       "name": {
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L48"
+      "specLocation": "security/get_token/types.ts#L23-L58"
     },
     {
       "kind": "interface",
@@ -267226,7 +267235,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L60-L65"
+      "specLocation": "security/get_token/types.ts#L70-L75"
     },
     {
       "kind": "interface",
@@ -267258,7 +267267,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L55-L58"
+      "specLocation": "security/get_token/types.ts#L65-L68"
     },
     {
       "kind": "request",
@@ -267269,7 +267278,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The type of grant.\nSupported grant types are: `password`, `_kerberos`, `client_credentials`, and `refresh_token`.",
+            "description": "The type of grant.\nSupported grant types are: `password`, `_kerberos`, `client_credentials`, `refresh_token`, and `_user_managed_service_account`.",
             "name": "grant_type",
             "required": false,
             "type": {
@@ -267319,6 +267328,23 @@
           {
             "description": "The string that was returned when you created the token, which enables you to extend its life.\nIf you specify the `refresh_token` grant type, this parameter is required.\nThis parameter is not valid with any other supported grant type.",
             "name": "refresh_token",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "The service account token of a user-managed service account, as returned by the create service account token API.\nIf you specify the `_user_managed_service_account` grant type, this parameter is required.\nThis parameter is not valid with any other supported grant type.",
+            "name": "service_account_token",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -267415,6 +267441,12 @@
           "method_request": "POST /_security/oauth2/token",
           "summary": "A password grant type example",
           "value": "{\n  \"grant_type\" : \"password\",\n  \"username\" : \"test_admin\",\n  \"password\" : \"x-pack-test-password\"\n}"
+        },
+        "GetUserAccessTokenRequestExample3": {
+          "description": "Run `POST /_security/oauth2/token` to exchange a user-managed service account token for an access token that represents the `apps/oauth2_worker` service account. This request needs to be made by an authenticated user with the `manage_token` cluster privilege; the service account itself does not need, and should not hold, that privilege.\n",
+          "method_request": "POST /_security/oauth2/token",
+          "summary": "A _user_managed_service_account grant type example",
+          "value": "{\n  \"grant_type\" : \"_user_managed_service_account\",\n  \"service_account_token\" : \"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\"\n}"
         }
       },
       "inherits": {
@@ -267429,7 +267461,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/get_token/GetUserAccessTokenRequest.ts#L25-L92"
+      "specLocation": "security/get_token/GetUserAccessTokenRequest.ts#L25-L99"
     },
     {
       "kind": "response",
@@ -267525,6 +267557,11 @@
           "description": "A successful response from `POST /_security/oauth2/token`.",
           "summary": "A password grant type example",
           "value": "{\n  \"access_token\" : \"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==\",\n  \"type\" : \"Bearer\",\n  \"expires_in\" : 1200,\n  \"authentication\" : {\n    \"username\" : \"test_admin\",\n    \"roles\" : [\n      \"superuser\"\n    ],\n    \"full_name\" : null,\n    \"email\" : null,\n    \"metadata\" : { },\n    \"enabled\" : true,\n    \"authentication_realm\" : {\n      \"name\" : \"file\",\n      \"type\" : \"file\"\n    },\n    \"lookup_realm\" : {\n      \"name\" : \"file\",\n      \"type\" : \"file\"\n    },\n    \"authentication_type\" : \"realm\"\n  }\n}"
+        },
+        "GetUserAccessTokenResponseExample3": {
+          "description": "A successful response from `POST /_security/oauth2/token` for the `_user_managed_service_account` grant type. No `refresh_token` is returned for this grant type; obtain a new access token by exchanging the service account token again.\n",
+          "summary": "A _user_managed_service_account grant type example",
+          "value": "{\n  \"access_token\" : \"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==\",\n  \"type\" : \"Bearer\",\n  \"expires_in\" : 1200,\n  \"authentication\" : {\n    \"username\" : \"apps/oauth2_worker\",\n    \"roles\" : [\n      \"umsa_oauth2_monitor\"\n    ],\n    \"full_name\" : \"User-managed service account - apps/oauth2_worker\",\n    \"email\" : null,\n    \"metadata\" : {\n      \"_user_managed_service_account\" : true\n    },\n    \"enabled\" : true,\n    \"authentication_realm\" : {\n      \"name\" : \"_service_account\",\n      \"type\" : \"_service_account\"\n    },\n    \"lookup_realm\" : {\n      \"name\" : \"_service_account\",\n      \"type\" : \"_service_account\"\n    },\n    \"authentication_type\" : \"token\"\n  }\n}"
         }
       },
       "name": {
@@ -267563,7 +267600,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L50-L53"
+      "specLocation": "security/get_token/types.ts#L60-L63"
     },
     {
       "kind": "request",

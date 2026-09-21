@@ -47410,7 +47410,7 @@
                 "type": "object",
                 "properties": {
                   "grant_type": {
-                    "description": "The type of grant.\nSupported grant types are: `password`, `_kerberos`, `client_credentials`, and `refresh_token`.",
+                    "description": "The type of grant.\nSupported grant types are: `password`, `_kerberos`, `client_credentials`, `refresh_token`, and `_user_managed_service_account`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/security.get_token.AccessTokenGrantType"
@@ -47437,6 +47437,11 @@
                     "description": "The string that was returned when you created the token, which enables you to extend its life.\nIf you specify the `refresh_token` grant type, this parameter is required.\nThis parameter is not valid with any other supported grant type.",
                     "type": "string"
                   },
+                  "service_account_token": {
+                    "description": "The service account token of a user-managed service account, as returned by the create service account token API.\nIf you specify the `_user_managed_service_account` grant type, this parameter is required.\nThis parameter is not valid with any other supported grant type.",
+                    "x-state": "Generally available; Added in 9.6.0",
+                    "type": "string"
+                  },
                   "username": {
                     "description": "The username that identifies the user.\nIf you specify the `password` grant type, this parameter is required.\nThis parameter is not valid with any other supported grant type.",
                     "allOf": [
@@ -47457,6 +47462,11 @@
                   "summary": "A password grant type example",
                   "description": "Run `POST /_security/oauth2/token` to obtain a token for the `test_admin` user using the password grant type. This request needs to be made by an authenticated user with sufficient privileges that may or may not be the same as the one whose username is passed in the `username` parameter.\n",
                   "value": "{\n  \"grant_type\" : \"password\",\n  \"username\" : \"test_admin\",\n  \"password\" : \"x-pack-test-password\"\n}"
+                },
+                "GetUserAccessTokenRequestExample3": {
+                  "summary": "A _user_managed_service_account grant type example",
+                  "description": "Run `POST /_security/oauth2/token` to exchange a user-managed service account token for an access token that represents the `apps/oauth2_worker` service account. This request needs to be made by an authenticated user with the `manage_token` cluster privilege; the service account itself does not need, and should not hold, that privilege.\n",
+                  "value": "{\n  \"grant_type\" : \"_user_managed_service_account\",\n  \"service_account_token\" : \"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\"\n}"
                 }
               }
             }
@@ -47514,6 +47524,11 @@
                     "summary": "A password grant type example",
                     "description": "A successful response from `POST /_security/oauth2/token`.",
                     "value": "{\n  \"access_token\" : \"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==\",\n  \"type\" : \"Bearer\",\n  \"expires_in\" : 1200,\n  \"authentication\" : {\n    \"username\" : \"test_admin\",\n    \"roles\" : [\n      \"superuser\"\n    ],\n    \"full_name\" : null,\n    \"email\" : null,\n    \"metadata\" : { },\n    \"enabled\" : true,\n    \"authentication_realm\" : {\n      \"name\" : \"file\",\n      \"type\" : \"file\"\n    },\n    \"lookup_realm\" : {\n      \"name\" : \"file\",\n      \"type\" : \"file\"\n    },\n    \"authentication_type\" : \"realm\"\n  }\n}"
+                  },
+                  "GetUserAccessTokenResponseExample3": {
+                    "summary": "A _user_managed_service_account grant type example",
+                    "description": "A successful response from `POST /_security/oauth2/token` for the `_user_managed_service_account` grant type. No `refresh_token` is returned for this grant type; obtain a new access token by exchanging the service account token again.\n",
+                    "value": "{\n  \"access_token\" : \"dGhpcyBpcyBub3QgYSByZWFsIHRva2VuIGJ1dCBpdCBpcyBvbmx5IHRlc3QgZGF0YS4gZG8gbm90IHRyeSB0byByZWFkIHRva2VuIQ==\",\n  \"type\" : \"Bearer\",\n  \"expires_in\" : 1200,\n  \"authentication\" : {\n    \"username\" : \"apps/oauth2_worker\",\n    \"roles\" : [\n      \"umsa_oauth2_monitor\"\n    ],\n    \"full_name\" : \"User-managed service account - apps/oauth2_worker\",\n    \"email\" : null,\n    \"metadata\" : {\n      \"_user_managed_service_account\" : true\n    },\n    \"enabled\" : true,\n    \"authentication_realm\" : {\n      \"name\" : \"_service_account\",\n      \"type\" : \"_service_account\"\n    },\n    \"lookup_realm\" : {\n      \"name\" : \"_service_account\",\n      \"type\" : \"_service_account\"\n    },\n    \"authentication_type\" : \"token\"\n  }\n}"
                   }
                 }
               }
@@ -132013,7 +132028,8 @@
           "password",
           "client_credentials",
           "_kerberos",
-          "refresh_token"
+          "refresh_token",
+          "_user_managed_service_account"
         ]
       },
       "security.get_token.AuthenticatedUser": {
