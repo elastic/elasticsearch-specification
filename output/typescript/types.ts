@@ -11457,6 +11457,21 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
+export interface DataRecoveryGetRecoveryPointsRecoveryPoint {
+  start_time: DateTime
+  end_time: DateTime
+}
+
+export interface DataRecoveryGetRecoveryPointsRequest extends RequestBase {
+  end_time_before?: DateTime
+  master_timeout?: Duration
+  size?: integer
+}
+
+export interface DataRecoveryGetRecoveryPointsResponse {
+  recovery_points: DataRecoveryGetRecoveryPointsRecoveryPoint[]
+}
+
 export interface EncryptionResetRequest extends RequestBase {
   accept_data_loss: boolean
   master_timeout?: Duration
