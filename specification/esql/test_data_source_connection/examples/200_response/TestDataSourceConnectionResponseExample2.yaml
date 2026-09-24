@@ -1,0 +1,5 @@
+summary: Failed connection test
+description: The probe ran but the credentials were rejected.
+value:
+  status: failure
+  error: The AWS Access Key Id you provided does not exist in our records.

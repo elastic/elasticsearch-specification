@@ -1,0 +1,4 @@
+summary: Successful connection test
+description: The credentials are valid and the backend is reachable.
+value:
+  status: success
