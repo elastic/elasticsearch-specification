@@ -192070,7 +192070,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L251-L264"
+      "specLocation": "ml/_types/Datafeed.ts#L255-L268"
     },
     {
       "kind": "enum",
@@ -192089,7 +192089,7 @@
         "name": "ChunkingMode",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L245-L249"
+      "specLocation": "ml/_types/Datafeed.ts#L249-L253"
     },
     {
       "kind": "interface",
@@ -192952,6 +192952,18 @@
           }
         },
         {
+          "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it automatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any cycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly one day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop and retry indefinitely. Values of `0` or less than `-1` are rejected.",
+          "name": "max_consecutive_extraction_failures",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.",
           "name": "query",
           "required": false,
@@ -193024,7 +193036,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L63-L120"
+      "specLocation": "ml/_types/Datafeed.ts#L63-L124"
     },
     {
       "kind": "interface",
@@ -193070,7 +193082,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L210-L224"
+      "specLocation": "ml/_types/Datafeed.ts#L214-L228"
     },
     {
       "kind": "enum",
@@ -193092,7 +193104,7 @@
         "name": "DatafeedState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L136-L141"
+      "specLocation": "ml/_types/Datafeed.ts#L140-L145"
     },
     {
       "kind": "interface",
@@ -193177,7 +193189,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L143-L172"
+      "specLocation": "ml/_types/Datafeed.ts#L147-L176"
     },
     {
       "kind": "interface",
@@ -193297,7 +193309,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L174-L202"
+      "specLocation": "ml/_types/Datafeed.ts#L178-L206"
     },
     {
       "kind": "interface",
@@ -195559,7 +195571,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L122-L133"
+      "specLocation": "ml/_types/Datafeed.ts#L126-L137"
     },
     {
       "kind": "enum",
@@ -196328,7 +196340,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L204-L208"
+      "specLocation": "ml/_types/Datafeed.ts#L208-L212"
     },
     {
       "kind": "type_alias",
@@ -200304,7 +200316,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L226-L243"
+      "specLocation": "ml/_types/Datafeed.ts#L230-L247"
     },
     {
       "kind": "enum",
@@ -212667,6 +212679,18 @@
             }
           },
           {
+            "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
+            "name": "max_consecutive_extraction_failures",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch.",
             "name": "query",
             "required": false,
@@ -212878,7 +212902,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L187"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L195"
     },
     {
       "kind": "response",
@@ -213010,6 +213034,17 @@
             }
           },
           {
+            "name": "max_consecutive_extraction_failures",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "query",
             "required": true,
             "type": {
@@ -213081,7 +213116,7 @@
         "name": "Response",
         "namespace": "ml.put_datafeed"
       },
-      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L49"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L50"
     },
     {
       "kind": "request",
@@ -216907,6 +216942,18 @@
             }
           },
           {
+            "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
+            "name": "max_consecutive_extraction_failures",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch. Note that if you change the query, the analyzed data is also\nchanged. Therefore, the time required to learn might be long and the understandability of the results is\nunpredictable. If you want to make significant changes to the source data, it is recommended that you\nclone the job and datafeed and make the amendments in the clone. Let both run in parallel and close one\nwhen you are satisfied with the results of the job.",
             "name": "query",
             "required": false,
@@ -217101,7 +217148,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L166"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L174"
     },
     {
       "kind": "response",
@@ -217233,6 +217280,17 @@
             }
           },
           {
+            "name": "max_consecutive_extraction_failures",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
             "name": "query",
             "required": true,
             "type": {
@@ -217304,7 +217362,7 @@
         "name": "Response",
         "namespace": "ml.update_datafeed"
       },
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L49"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L50"
     },
     {
       "kind": "request",
