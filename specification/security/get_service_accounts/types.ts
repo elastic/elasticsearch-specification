@@ -27,8 +27,8 @@ export enum ServiceAccountType {
 }
 
 /**
- * The two kinds of service account describe their privileges differently, so the reported
- * information is a union tagged by `type`.
+ * The two kinds of service account describe their privileges differently.
+ * A built-in account includes its role descriptor. A user-managed account includes its role names and whether it is enabled.
  * @variants internal tag='type'
  */
 export type ServiceAccountInfo =
