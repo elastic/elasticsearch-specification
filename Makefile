@@ -52,15 +52,11 @@ transform-expand-generics: ## Create a new schema with all generics expanded
 
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json --branch $(DOCS_BRANCH)
-	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
 	@make generate-language-examples
 	@make generate
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --lift-enum-descriptions --merge-multipath-endpoints --multipath-redirects --include-language-examples --output output/openapi/elasticsearch-openapi-docs.json --branch $(DOCS_BRANCH)
-
-filter-for-serverless: ## Generate the serverless version from the compiled schema
-	@npm run --prefix compiler filter-by-availability -- --serverless --visibility=public --input ../output/schema/schema.json --output ../output/output/openapi/elasticsearch-serverless-openapi.json
 
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
@@ -86,7 +82,7 @@ lint-docs: ## Lint the OpenAPI documents after overlays
 lint-docs-stateful: ## Lint only the elasticsearch-openapi-docs-final.json file
 	@npx @redocly/cli lint "output/openapi/elasticsearch-openapi-docs-final.json" --config "docs/linters/redocly.yaml" --format stylish --max-problems 500
 
-contrib: | generate license-check spec-format-fix transform-to-openapi filter-for-serverless lint-docs ## Pre contribution target
+contrib: | generate license-check spec-format-fix transform-to-openapi lint-docs ## Pre contribution target
 
 help:  ## Display help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)

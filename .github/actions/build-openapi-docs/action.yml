@@ -1,8 +1,7 @@
 name: Build OpenAPI docs specs
 description: >
-  Install dependencies and build the overlayed docs-ready OpenAPI specs at
-  output/openapi/elasticsearch-openapi-docs-final.json and
-  output/openapi/elasticsearch-serverless-openapi-docs-final.json.
+  Install dependencies and build the overlayed docs-ready OpenAPI spec at
+  output/openapi/elasticsearch-openapi-docs-final.json.
 
 runs:
   using: composite
