@@ -860,6 +860,6 @@ There are a few benefits of using JSDoc instead of a simple TODO comment:
 The TypeScript compiler sets `endpoint.name` from `@rest_spec_name`.
 The `endpoint.name` is used to generate an `operationID` in the OpenAPI documents (with `_` and `.` replaced by `-`).
 
-If the same endpoint has more than one path/method, later operations get a suffix (for example, `cancel-reindex-1`, and so on).
+If the same endpoint has more than one path/method, later operations get a suffix (for example, `bulk-1`, `bulk-2`, and so on).
 
 NOTE: SDK and CLI generators turn the OpenAPI `operationID` into method and command names, so setting a user-friendly `@rest_spec_name` is recommended. Prefer kebab-case verb-resource names such as `create-foo`.
