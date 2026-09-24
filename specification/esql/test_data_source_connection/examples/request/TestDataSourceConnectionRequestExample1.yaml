@@ -1,0 +1,11 @@
+summary: Test an S3 data source connection
+method_request: POST /_query/data_source/_test
+description: >
+  Test whether a set of static S3 credentials can reach the AWS S3 API before saving the
+  data source configuration to cluster state.
+value:
+  type: s3
+  settings:
+    auth: static_credentials
+    access_key: '<AWS_ACCESS_KEY_ID>'
+    secret_key: '<AWS_SECRET_ACCESS_KEY>'

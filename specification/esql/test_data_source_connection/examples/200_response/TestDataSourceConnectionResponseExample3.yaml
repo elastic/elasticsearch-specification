@@ -1,0 +1,5 @@
+summary: Untestable connection
+description: The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.
+value:
+  status: untestable
+  message: Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.
