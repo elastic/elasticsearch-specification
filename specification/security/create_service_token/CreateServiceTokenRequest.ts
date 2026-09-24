@@ -24,6 +24,7 @@ import { MediaType, Name, Namespace, Refresh, Service } from '@_types/common'
  * Create a service account token.
  *
  * Create a service accounts token for access without requiring basic authentication.
+ * This route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.
  *
  * NOTE: Service account tokens never expire.
  * You must actively delete them if they are no longer needed.

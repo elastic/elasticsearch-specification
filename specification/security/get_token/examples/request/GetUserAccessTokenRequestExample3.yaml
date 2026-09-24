@@ -1,0 +1,12 @@
+summary: A _user_managed_service_account grant type example
+method_request: POST /_security/oauth2/token
+description: >
+  Run `POST /_security/oauth2/token` to exchange a user-managed service account token for an access token that represents the
+  `apps/oauth2_worker` service account. This request needs to be made by an authenticated user with the `manage_token` cluster
+  privilege; the service account itself does not need, and should not hold, that privilege.
+# type: request
+value: |-
+  {
+    "grant_type" : "_user_managed_service_account",
+    "service_account_token" : "AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR"
+  }
