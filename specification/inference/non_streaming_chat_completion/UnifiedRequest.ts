@@ -47,8 +47,8 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * - OpenShiftAI
  *
  * @rest_spec_name inference.non_streaming_chat_completion
- * @availability stack since=9.6.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.6.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-non-streaming-chat-completion
  */
 export interface Request extends RequestBase {

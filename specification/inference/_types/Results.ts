@@ -160,9 +160,9 @@ export class ChatCompletionToolCall {
    */
   function?: ChatCompletionToolCallFunction
   /**
-   * The type of the tool call. May be `null` when the provider did not return one.
+   * The type of the tool call.
    */
-  type?: string
+  type: string
 }
 
 /**
