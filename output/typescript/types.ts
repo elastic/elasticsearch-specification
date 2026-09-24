@@ -11979,6 +11979,21 @@ export interface EsqlQueryRequest extends RequestBase {
 
 export type EsqlQueryResponse = EsqlEsqlResult
 
+export type EsqlTestDataSourceConnectionDataSourceTestStatus = 'success' | 'failure' | 'untestable'
+
+export interface EsqlTestDataSourceConnectionRequest extends RequestBase {
+  body?: {
+    type: string
+    settings?: Record<string, any>
+  }
+}
+
+export interface EsqlTestDataSourceConnectionResponse {
+  status: EsqlTestDataSourceConnectionDataSourceTestStatus
+  error?: string
+  message?: string
+}
+
 export interface FeaturesFeature {
   name: string
   description: string

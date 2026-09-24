@@ -6140,6 +6140,55 @@
     {
       "availability": {
         "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
+      "docId": "esql-test-data-source-connection",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-data-source-test-connection",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-data-source-test-connection",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.test_data_source_connection",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query/data_source/_test"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -154099,6 +154148,158 @@
         "namespace": "esql.query"
       },
       "specLocation": "esql/query/QueryResponse.ts#L22-L25"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The probe ran and the backend is reachable from every eligible data node.",
+          "name": "success"
+        },
+        {
+          "description": "The probe ran but the backend was unreachable or rejected the connection.\nThe `error` field carries a human-readable reason.",
+          "name": "failure"
+        },
+        {
+          "description": "The type is valid and registered, but the probe cannot give a meaningful result —\nfor example, no connectivity target, anonymous credentials, or bucket-scoped credentials.\nThe optional `message` field may carry user-visible guidance.",
+          "name": "untestable"
+        }
+      ],
+      "name": {
+        "name": "DataSourceTestStatus",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionResponse.ts#L20-L35"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
+      "examples": {
+        "TestDataSourceConnectionRequestExample1": {
+          "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
+          "method_request": "POST /_query/data_source/_test",
+          "summary": "Test an S3 data source connection",
+          "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "path": [],
+      "query": [],
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionRequest.ts#L25-L62"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The outcome of the connection test.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataSourceTestStatus",
+                "namespace": "esql.test_data_source_connection"
+              }
+            }
+          },
+          {
+            "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
+            "name": "error",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
+            "name": "message",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "TestDataSourceConnectionResponseExample1": {
+          "description": "The credentials are valid and the backend is reachable.",
+          "summary": "Successful connection test",
+          "value": "{\n  \"status\": \"success\"\n}"
+        },
+        "TestDataSourceConnectionResponseExample2": {
+          "description": "The probe ran but the credentials were rejected.",
+          "summary": "Failed connection test",
+          "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
+        },
+        "TestDataSourceConnectionResponseExample3": {
+          "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
+          "summary": "Untestable connection",
+          "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionResponse.ts#L37-L53"
     },
     {
       "kind": "interface",

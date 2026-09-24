@@ -7563,6 +7563,110 @@
         ]
       }
     },
+    "/_query/data_source/_test": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Test an ES|QL data source connection",
+        "description": "Tests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
+        "operationId": "esql-test-data-source-connection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
+                    "type": "string"
+                  },
+                  "settings": {
+                    "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
+              "examples": {
+                "TestDataSourceConnectionRequestExample1": {
+                  "summary": "Test an S3 data source connection",
+                  "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
+                  "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "The outcome of the connection test.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/esql.test_data_source_connection.DataSourceTestStatus"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "TestDataSourceConnectionResponseExample1": {
+                    "summary": "Successful connection test",
+                    "description": "The credentials are valid and the backend is reachable.",
+                    "value": "{\n  \"status\": \"success\"\n}"
+                  },
+                  "TestDataSourceConnectionResponseExample2": {
+                    "summary": "Failed connection test",
+                    "description": "The probe ran but the credentials were rejected.",
+                    "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
+                  },
+                  "TestDataSourceConnectionResponseExample3": {
+                    "summary": "Untestable connection",
+                    "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
+                    "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}/_source/{id}": {
       "get": {
         "tags": [
@@ -68487,6 +68591,14 @@
           "shard",
           "index",
           "reason"
+        ]
+      },
+      "esql.test_data_source_connection.DataSourceTestStatus": {
+        "type": "string",
+        "enum": [
+          "success",
+          "failure",
+          "untestable"
         ]
       },
       "_types.InlineGet": {
