@@ -131809,7 +131809,7 @@
         ]
       },
       "security.get_service_accounts.ServiceAccountInfo": {
-        "description": "The two kinds of service account describe their privileges differently, so the reported\ninformation is a union tagged by `type`.",
+        "description": "The two kinds of service account describe their privileges differently.\nA built-in account includes its role descriptor. A user-managed account includes its role names and whether it is enabled.",
         "discriminator": {
           "propertyName": "type",
           "mapping": {
