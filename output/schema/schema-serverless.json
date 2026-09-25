@@ -79348,6 +79348,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.0.0"
+            }
+          },
+          "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
+          "extDocId": "query-dsl-kql-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-kql-query",
+          "name": "kql",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KqlQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Returns documents that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
           "extDocId": "query-dsl-match-query",
           "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query",
@@ -80093,7 +80113,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L97-L428",
+      "specLocation": "_types/query_dsl/abstractions.ts#L98-L437",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -80272,7 +80292,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L453-L464"
+      "specLocation": "_types/query_dsl/abstractions.ts#L462-L473"
     },
     {
       "kind": "type_alias",
@@ -80618,7 +80638,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L466-L500"
+      "specLocation": "_types/query_dsl/abstractions.ts#L475-L509"
     },
     {
       "kind": "enum",
@@ -80634,7 +80654,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L513-L516"
+      "specLocation": "_types/query_dsl/abstractions.ts#L522-L525"
     },
     {
       "kind": "enum",
@@ -80652,7 +80672,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L518-L527"
+      "specLocation": "_types/query_dsl/abstractions.ts#L527-L536"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -83019,7 +83039,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L430-L447"
+      "specLocation": "_types/query_dsl/abstractions.ts#L439-L456"
     },
     {
       "kind": "enum",
@@ -83513,7 +83533,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L529-L543"
+      "specLocation": "_types/query_dsl/abstractions.ts#L538-L552"
     },
     {
       "inherits": {
@@ -86602,6 +86622,89 @@
       "specLocation": "_types/Knn.ts#L35-L38"
     },
     {
+      "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
+      "extDocId": "query-dsl-kql-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-kql-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KqlQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "If `true`, performs case-insensitive matching for field names and keyword or text terms.",
+          "name": "case_insensitive",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Default field, or field pattern with wildcards, to target when a bare term does not specify a field.\nDefaults to the `index.query.default_field` index setting, which has a default value of `*`.",
+          "name": "default_field",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The KQL expression to parse.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Coordinated Universal Time (UTC) offset or IANA time zone used to interpret date literals in the expression.",
+          "name": "time_zone",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TimeZone",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/KqlQuery.ts#L24-L48"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "TimeZone",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Time.ts#L47-L47",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
       "extDocId": "query-dsl-match-query",
       "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query",
       "inherits": {
@@ -88798,21 +88901,6 @@
         }
       ],
       "specLocation": "_types/query_dsl/fulltext.ts#L650-L773"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "TimeZone",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Time.ts#L47-L47",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
-          "namespace": "_builtins"
-        }
-      }
     },
     {
       "codegenNames": [
@@ -91313,7 +91401,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L502-L511"
+      "specLocation": "_types/query_dsl/abstractions.ts#L511-L520"
     },
     {
       "inherits": {
