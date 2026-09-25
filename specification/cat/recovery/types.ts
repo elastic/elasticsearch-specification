@@ -87,6 +87,24 @@ export class RecoveryRecord {
    */
   'priority'?: string
   /**
+   * The name of the recovery gate that blocked recovery on the target node.
+   *
+   * Only present for queued recoveries in the `created` stage that are blocked by a recovery gate.
+   * @aliases g
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'gate'?: string
+  /**
+   * The elapsed time in milliseconds recovery is blocked for.
+   *
+   * Only present with `gate`.
+   * @aliases bf
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'blocked_for_millis'?: string
+  /**
    * The source host.
    * @aliases shost
    */

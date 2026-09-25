@@ -189,6 +189,22 @@ export class ShardRecovery {
    * @availability serverless
    */
   priority?: RecoveryPriority
+  /**
+   * The name of the recovery gate that blocked recovery on the target node.
+   *
+   * Only present for queued recoveries in the `CREATED` stage that are blocked by a recovery gate.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  gate?: string
+  /**
+   * The elapsed time in milliseconds recovery is blocked for.
+   *
+   * Only present with `gate`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  blocked_for_millis?: DurationValue<UnitMillis>
   start?: RecoveryStartStatus
   /**
    * The time the recovery started.
