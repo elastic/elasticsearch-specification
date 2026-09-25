@@ -267690,7 +267690,7 @@
       "kind": "response",
       "body": {
         "kind": "value",
-        "codegenName": "service_accoutns",
+        "codegenName": "service_accounts",
         "value": {
           "kind": "dictionary_of",
           "key": {
