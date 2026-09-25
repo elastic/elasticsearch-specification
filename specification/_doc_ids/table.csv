@@ -607,6 +607,7 @@ query-dsl-has-parent-query,https://www.elastic.co/docs/reference/query-languages
 query-dsl-ids-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-ids-query,[use-doc-url],,Learn more about the ids query
 query-dsl-intervals-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-intervals-query,[use-doc-url],,More about the intervals query
 query-dsl-knn-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-knn-query,[use-doc-url],,Learn more about the kNN query
+query-dsl-kql-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-kql-query,[use-doc-url],,Learn more about the KQL query
 query-dsl-match-all-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-all-query,[use-doc-url],,More about the match all query
 query-dsl-match-bool-prefix-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-bool-prefix-query,[use-doc-url],,About the match boolean prefix
 query-dsl-match-none-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-all-query#query-dsl-match-none-query,[use-doc-url],,More about the match all query
