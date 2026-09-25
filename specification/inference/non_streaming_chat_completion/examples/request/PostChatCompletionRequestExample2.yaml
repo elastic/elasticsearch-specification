@@ -1,0 +1,30 @@
+summary: A non-streaming chat completion task with tool_calls
+description:
+  Run `POST _inference/chat_completion/openai-completion` to perform a non-streaming chat completion using an Assistant message
+  with `tool_calls`.
+method_request: 'POST _inference/chat_completion/openai-completion'
+# type: "request"
+value: |-
+  {
+    "messages": [
+        {
+            "role": "assistant",
+            "content": "Let's find out what the weather is",
+            "tool_calls": [ 
+                {
+                    "id": "call_KcAjWtAww20AihPHphUh46Gd",
+                    "type": "function",
+                    "function": {
+                        "name": "get_current_weather",
+                        "arguments": "{\"location\":\"Boston, MA\"}"
+                    }
+                }
+            ]
+        },
+        { 
+            "role": "tool",
+            "content": "The weather is cold",
+            "tool_call_id": "call_KcAjWtAww20AihPHphUh46Gd"
+        }
+    ]
+  }

@@ -1,0 +1,48 @@
+summary: A non-streaming chat completion response with reasoning details
+description: >
+  A successful response from `POST _inference/chat_completion/reasoning-chat-completion` when the model
+  returns structured reasoning data alongside its answer. The `message` includes a `reasoning` plaintext
+  summary and a `reasoning_details` array covering all three detail types:
+  `reasoning.encrypted` (opaque data), `reasoning.summary` (human-readable summary), and
+  `reasoning.text` (full reasoning text with a verification signature).
+  Currently supported only for the `elastic` provider.
+value: |-
+  {
+    "id": "chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10",
+    "choices": [
+      {
+        "message": {
+          "content": "With two barbers, the paradox disappears — each barber can shave the other.",
+          "role": "assistant",
+          "reasoning": "The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.encrypted",
+              "data": "[REDACTED]"
+            },
+            {
+              "type": "reasoning.summary",
+              "summary": "Two barbers can shave each other, avoiding the self-reference paradox."
+            },
+            {
+              "type": "reasoning.text",
+              "text": "The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.",
+              "signature": "sig_example"
+            }
+          ]
+        },
+        "finish_reason": "stop",
+        "index": 0
+      }
+    ],
+    "model": "openai-gpt-oss-120b",
+    "object": "chat.completion",
+    "usage": {
+      "completion_tokens": 38,
+      "prompt_tokens": 74,
+      "total_tokens": 112,
+      "completion_tokens_details": {
+        "reasoning_tokens": 10
+      }
+    }
+  }
