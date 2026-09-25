@@ -71,7 +71,8 @@ export enum RetentionSource {
   data_stream_configuration,
   default_global_retention,
   max_global_retention,
-  default_failures_retention
+  default_failures_retention,
+  max_retention
 }
 
 /**
