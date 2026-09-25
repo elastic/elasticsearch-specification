@@ -101,6 +101,10 @@ export class DatafeedConfig {
    */
   max_empty_searches?: integer
   /**
+   * The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it automatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any cycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly one day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop and retry indefinitely. Values of `0` or less than `-1` are rejected.
+   */
+  max_consecutive_extraction_failures?: integer
+  /**
    * The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
    */
   query?: QueryContainer
