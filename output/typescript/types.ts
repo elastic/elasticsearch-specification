@@ -14845,6 +14845,58 @@ export interface InferenceBaseReasoningDetail {
   index?: integer
 }
 
+export interface InferenceChatCompletionChoice {
+  message: InferenceChatCompletionMessage
+  finish_reason?: string
+  index: integer
+}
+
+export interface InferenceChatCompletionCompletionTokensDetails {
+  reasoning_tokens?: integer
+}
+
+export interface InferenceChatCompletionInferenceResult {
+  id: string
+  choices?: InferenceChatCompletionChoice[]
+  model: string
+  object: string
+  usage?: InferenceChatCompletionUsage
+}
+
+export interface InferenceChatCompletionMessage {
+  content?: string
+  refusal?: string
+  role?: string
+  reasoning?: string
+  tool_calls?: InferenceChatCompletionToolCall[]
+  reasoning_details?: InferenceReasoningDetail[]
+}
+
+export interface InferenceChatCompletionPromptTokensDetails {
+  cached_tokens?: integer
+  cache_write_tokens?: integer
+}
+
+export interface InferenceChatCompletionToolCall {
+  index: integer
+  id?: string
+  function?: InferenceChatCompletionToolCallFunction
+  type: string
+}
+
+export interface InferenceChatCompletionToolCallFunction {
+  arguments?: string
+  name?: string
+}
+
+export interface InferenceChatCompletionUsage {
+  completion_tokens: integer
+  prompt_tokens: integer
+  total_tokens: integer
+  prompt_tokens_details?: InferenceChatCompletionPromptTokensDetails
+  completion_tokens_details?: InferenceChatCompletionCompletionTokensDetails
+}
+
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
@@ -15693,6 +15745,14 @@ export interface InferenceInferenceRequest extends RequestBase {
 }
 
 export type InferenceInferenceResponse = InferenceInferenceResult
+
+export interface InferenceNonStreamingChatCompletionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestChatCompletion
+}
+
+export type InferenceNonStreamingChatCompletionResponse = InferenceChatCompletionInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
