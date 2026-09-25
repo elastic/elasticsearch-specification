@@ -128494,7 +128494,7 @@
         "name": "CatAliasesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2543-L2543",
+      "specLocation": "cat/_types/CatBase.ts#L2561-L2561",
       "type": {
         "items": [
           {
@@ -128629,7 +128629,7 @@
         "name": "CatAllocationColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2544-L2544",
+      "specLocation": "cat/_types/CatBase.ts#L2562-L2562",
       "type": {
         "items": [
           {
@@ -129246,7 +129246,7 @@
         "name": "CatCircuitBreakerColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2545-L2547",
+      "specLocation": "cat/_types/CatBase.ts#L2563-L2565",
       "type": {
         "items": [
           {
@@ -129336,7 +129336,7 @@
         "name": "CatComponentColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2548-L2548",
+      "specLocation": "cat/_types/CatBase.ts#L2566-L2566",
       "type": {
         "items": [
           {
@@ -129403,7 +129403,7 @@
         "name": "CatCountColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2549-L2549",
+      "specLocation": "cat/_types/CatBase.ts#L2567-L2567",
       "type": {
         "items": [
           {
@@ -129533,7 +129533,7 @@
         "name": "CatDatafeedColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2538-L2538",
+      "specLocation": "cat/_types/CatBase.ts#L2556-L2556",
       "type": {
         "items": [
           {
@@ -129691,7 +129691,7 @@
         "name": "CatDfaColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2537-L2537",
+      "specLocation": "cat/_types/CatBase.ts#L2555-L2555",
       "type": {
         "items": [
           {
@@ -129768,7 +129768,7 @@
         "name": "CatFieldDataColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2550-L2550",
+      "specLocation": "cat/_types/CatBase.ts#L2568-L2568",
       "type": {
         "items": [
           {
@@ -129935,7 +129935,7 @@
         "name": "CatHealthColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2551-L2551",
+      "specLocation": "cat/_types/CatBase.ts#L2569-L2569",
       "type": {
         "items": [
           {
@@ -130874,7 +130874,7 @@
         "name": "CatIndicesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2552-L2552",
+      "specLocation": "cat/_types/CatBase.ts#L2570-L2570",
       "type": {
         "items": [
           {
@@ -130937,7 +130937,7 @@
         "name": "CatMasterColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2553-L2553",
+      "specLocation": "cat/_types/CatBase.ts#L2571-L2571",
       "type": {
         "items": [
           {
@@ -131682,7 +131682,7 @@
         "name": "CatNodeColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2539-L2539",
+      "specLocation": "cat/_types/CatBase.ts#L2557-L2557",
       "type": {
         "items": [
           {
@@ -131777,7 +131777,7 @@
         "name": "CatNodeattrsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2554-L2554",
+      "specLocation": "cat/_types/CatBase.ts#L2572-L2572",
       "type": {
         "items": [
           {
@@ -131838,7 +131838,7 @@
         "name": "CatPendingTasksColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2513-L2535"
+      "specLocation": "cat/_types/CatBase.ts#L2531-L2553"
     },
     {
       "kind": "type_alias",
@@ -131846,7 +131846,7 @@
         "name": "CatPendingTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2555-L2557",
+      "specLocation": "cat/_types/CatBase.ts#L2573-L2575",
       "type": {
         "items": [
           {
@@ -131919,7 +131919,7 @@
         "name": "CatPluginsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2558-L2558",
+      "specLocation": "cat/_types/CatBase.ts#L2576-L2576",
       "type": {
         "items": [
           {
@@ -132038,6 +132038,32 @@
           },
           "description": "The recovery priority.",
           "name": "priority"
+        },
+        {
+          "aliases": [
+            "g"
+          ],
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The name of the recovery gate that blocked recovery on the target node.\n\nThe value is `n/a` unless the recovery is queued in the `created` stage and blocked by a recovery gate.",
+          "name": "gate"
+        },
+        {
+          "aliases": [
+            "bf"
+          ],
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The elapsed time in milliseconds recovery is blocked for.\n\nThe value is `n/a` when the recovery is not blocked by a recovery gate.",
+          "name": "blocked_for_millis"
         },
         {
           "aliases": [
@@ -132163,7 +132189,7 @@
         "name": "CatRecoveryColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2322-L2468"
+      "specLocation": "cat/_types/CatBase.ts#L2322-L2486"
     },
     {
       "kind": "type_alias",
@@ -132171,7 +132197,7 @@
         "name": "CatRecoveryColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2540-L2540",
+      "specLocation": "cat/_types/CatBase.ts#L2558-L2558",
       "type": {
         "items": [
           {
@@ -132285,7 +132311,7 @@
         "name": "CatSegmentsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2541-L2541",
+      "specLocation": "cat/_types/CatBase.ts#L2559-L2559",
       "type": {
         "items": [
           {
@@ -132855,7 +132881,7 @@
         "name": "CatShardColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2854-L3227"
+      "specLocation": "cat/_types/CatBase.ts#L2872-L3245"
     },
     {
       "kind": "type_alias",
@@ -132863,7 +132889,7 @@
         "name": "CatShardColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3228-L3228",
+      "specLocation": "cat/_types/CatBase.ts#L3246-L3246",
       "type": {
         "items": [
           {
@@ -133000,7 +133026,7 @@
         "name": "CatSnapshotsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2542-L2542",
+      "specLocation": "cat/_types/CatBase.ts#L2560-L2560",
       "type": {
         "items": [
           {
@@ -133145,7 +133171,7 @@
         "name": "CatTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2559-L2559",
+      "specLocation": "cat/_types/CatBase.ts#L2577-L2577",
       "type": {
         "items": [
           {
@@ -133214,7 +133240,7 @@
         "name": "CatTemplatesColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2484-L2511"
+      "specLocation": "cat/_types/CatBase.ts#L2502-L2529"
     },
     {
       "kind": "type_alias",
@@ -133222,7 +133248,7 @@
         "name": "CatTemplatesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2560-L2560",
+      "specLocation": "cat/_types/CatBase.ts#L2578-L2578",
       "type": {
         "items": [
           {
@@ -133389,7 +133415,7 @@
         "name": "CatThreadPoolColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3230-L3330"
+      "specLocation": "cat/_types/CatBase.ts#L3248-L3348"
     },
     {
       "kind": "type_alias",
@@ -133397,7 +133423,7 @@
         "name": "CatThreadPoolColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3331-L3331",
+      "specLocation": "cat/_types/CatBase.ts#L3349-L3349",
       "type": {
         "items": [
           {
@@ -133534,7 +133560,7 @@
         "name": "CatTrainedModelsColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2562-L2636"
+      "specLocation": "cat/_types/CatBase.ts#L2580-L2654"
     },
     {
       "kind": "type_alias",
@@ -133542,7 +133568,7 @@
         "name": "CatTrainedModelsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2637-L2639",
+      "specLocation": "cat/_types/CatBase.ts#L2655-L2657",
       "type": {
         "items": [
           {
@@ -133808,7 +133834,7 @@
         "name": "CatTransformColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2641-L2851"
+      "specLocation": "cat/_types/CatBase.ts#L2659-L2869"
     },
     {
       "kind": "type_alias",
@@ -133816,7 +133842,7 @@
         "name": "CatTransformColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2852-L2852",
+      "specLocation": "cat/_types/CatBase.ts#L2870-L2870",
       "type": {
         "items": [
           {
