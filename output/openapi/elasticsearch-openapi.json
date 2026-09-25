@@ -61734,6 +61734,18 @@
               }
             ]
           },
+          "kql": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-kql-query"
+            },
+            "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
+            "x-state": "Generally available; Added in 9.0.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.KqlQuery"
+              }
+            ]
+          },
           "match": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query"
@@ -66269,6 +66281,50 @@
           }
         ]
       },
+      "_types.query_dsl.KqlQuery": {
+        "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "case_insensitive": {
+                "description": "If `true`, performs case-insensitive matching for field names and keyword or text terms.",
+                "default": false,
+                "type": "boolean"
+              },
+              "default_field": {
+                "description": "Default field, or field pattern with wildcards, to target when a bare term does not specify a field.\nDefaults to the `index.query.default_field` index setting, which has a default value of `*`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "query": {
+                "description": "The KQL expression to parse.",
+                "type": "string"
+              },
+              "time_zone": {
+                "description": "Coordinated Universal Time (UTC) offset or IANA time zone used to interpret date literals in the expression.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.TimeZone"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "query"
+            ]
+          }
+        ]
+      },
+      "_types.TimeZone": {
+        "type": "string"
+      },
       "_types.query_dsl.MatchQuery": {
         "allOf": [
           {
@@ -67381,9 +67437,6 @@
             ]
           }
         ]
-      },
-      "_types.TimeZone": {
-        "type": "string"
       },
       "_types.query_dsl.RangeQuery": {
         "externalDocs": {
