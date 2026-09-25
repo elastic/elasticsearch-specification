@@ -52,6 +52,7 @@ import {
   NestedQuery,
   ParentIdQuery
 } from './joining'
+import { KqlQuery } from './KqlQuery'
 import { MatchAllQuery } from './MatchAllQuery'
 import { MatchNoneQuery } from './MatchNoneQuery'
 import { SemanticQuery } from './SemanticQuery'
@@ -204,6 +205,14 @@ export class QueryContainer {
    * @ext_doc_id query-dsl-knn-query
    */
   knn?: KnnQuery
+  /**
+   * Returns documents matching a provided Kibana Query Language (KQL) expression.
+   * The expression is parsed and rewritten into standard Query DSL.
+   * @availability stack since=9.0.0
+   * @availability serverless
+   * @ext_doc_id query-dsl-kql-query
+   */
+  kql?: KqlQuery
   /**
    * Returns documents that match a provided text, number, date or boolean value.
    * The provided text is analyzed before matching.
