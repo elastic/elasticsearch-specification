@@ -38,14 +38,18 @@ export default async function readDefinitionValidation (model: model.Model): Pro
         const readProperties = type.properties.map(p => p.name)
         for (const property of parent.properties) {
           if (!readProperties.includes(property.name)) {
-            type.properties.push({ ...property })
+            // Avoid carrying aliases from overloaded types
+            const inherited = { ...property }
+            delete inherited.aliases
+            type.properties.push(inherited)
             continue
           }
 
           const readProperty = type.properties.find(p => p.name === property.name) as model.Property
 
           for (const key in property) {
-            if (key === 'required') continue
+            // Avoid carrying aliases from overloaded types
+            if (key === 'required' || key === 'aliases') continue
             if (readProperty[key] == null) {
               readProperty[key] = property[key]
             }
