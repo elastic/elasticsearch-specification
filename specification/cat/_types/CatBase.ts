@@ -2383,7 +2383,7 @@ export enum CatRecoveryColumn {
   /**
    * The name of the recovery gate that blocked recovery on the target node.
    *
-   * Only present for queued recoveries in the `created` stage that are blocked by a recovery gate.
+   * The value is `n/a` unless the recovery is queued in the `created` stage and blocked by a recovery gate.
    * @aliases g
    * @availability stack since=9.6.0
    * @availability serverless
@@ -2392,7 +2392,7 @@ export enum CatRecoveryColumn {
   /**
    * The elapsed time in milliseconds recovery is blocked for.
    *
-   * Only present with `gate`.
+   * The value is `n/a` when the recovery is not blocked by a recovery gate.
    * @aliases bf
    * @availability stack since=9.6.0
    * @availability serverless
