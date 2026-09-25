@@ -6871,6 +6871,13 @@ export interface QueryDslIntervalsWildcard {
   use_field?: Field
 }
 
+export interface QueryDslKqlQuery extends QueryDslQueryBase {
+  case_insensitive?: boolean
+  default_field?: Field
+  query: string
+  time_zone?: TimeZone
+}
+
 export type QueryDslLike = string | QueryDslLikeDocument
 
 export interface QueryDslLikeDocument {
@@ -7058,6 +7065,7 @@ export interface QueryDslQueryContainer {
   ids?: QueryDslIdsQuery
   intervals?: Partial<Record<Field, QueryDslIntervalsQuery>>
   knn?: KnnQuery
+  kql?: QueryDslKqlQuery
   match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
   match_all?: QueryDslMatchAllQuery
   match_bool_prefix?: Partial<Record<Field, QueryDslMatchBoolPrefixQuery | string>>
