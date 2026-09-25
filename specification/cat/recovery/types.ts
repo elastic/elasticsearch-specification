@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { integer, Percentage } from '@_types/Numeric'
+import { Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {
@@ -78,7 +78,7 @@ export class RecoveryRecord {
    * @availability stack since=9.6.0
    * @availability serverless
    */
-  'local_retries'?: integer
+  'local_retries'?: string
   /**
    * The recovery priority.
    * @aliases pr
