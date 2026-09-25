@@ -2603,6 +2603,104 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Delete ES|QL data sources.\n\nDeletes one or more data sources used in ES|QL data federation.\nFails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.",
+      "docId": "esql-delete-data-source",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-delete-data-source",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-delete-data-source",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.delete_data_source",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.delete_data_source"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.delete_data_source"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_query/data_source/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Delete ES|QL datasets.\n\nDeletes one or more datasets used in ES|QL data federation.\nIf any specified dataset does not exist, the request fails and no datasets are deleted.",
+      "docId": "esql-delete-dataset",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-delete-dataset",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-delete-dataset",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.delete_dataset",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.delete_dataset"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.delete_dataset"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/_query/dataset/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.4.0",
           "stability": "experimental",
           "visibility": "public"
@@ -2639,6 +2737,116 @@
             "DELETE"
           ],
           "path": "/_query/view/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Get ES|QL data sources.\n\nReturns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
+      "docId": "esql-get-data-source",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-data-source",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-data-source",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.get_data_source",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.get_data_source"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.get_data_source"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query/data_source"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query/data_source/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Get ES|QL datasets.\n\nReturns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
+      "docId": "esql-get-dataset",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-dataset",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-dataset",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.get_dataset",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.get_dataset"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.get_dataset"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query/dataset"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_query/dataset/{name}"
         }
       ]
     },
@@ -2793,6 +3001,104 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Create or update an ES|QL data source.\n\nCreates or replaces a named, type-specific data source configuration for ES|QL data federation.\nDatasets reference data source configurations to access external data. Names must be lowercase\nand follow index or alias naming rules.",
+      "docId": "esql-put-data-source",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-put-data-source",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-put-data-source",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.put_data_source",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.put_data_source"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.put_data_source"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_query/data_source/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Create or update an ES|QL dataset.\n\nCreates or replaces a dataset that references a data source in ES|QL data federation.\nDataset names participate in the index namespace and must follow index or alias naming rules.\nReturns `404` if the referenced data source does not exist.",
+      "docId": "esql-put-dataset",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-put-dataset",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-put-dataset",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.put_dataset",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.put_dataset"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.put_dataset"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "PUT"
+          ],
+          "path": "/_query/dataset/{name}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.4.0",
           "stability": "experimental",
           "visibility": "public"
@@ -2873,6 +3179,55 @@
             "POST"
           ],
           "path": "/_query"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
+      "docId": "esql-test-data-source-connection",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-data-source-test-connection",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-data-source-test-connection",
+      "extDocDescription": "ES|QL Data Federation",
+      "extDocId": "esql-data-federation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
+      "name": "esql.test_data_source_connection",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_query/data_source/_test"
         }
       ]
     },
@@ -10433,7 +10788,7 @@
           "stability": "stable"
         }
       },
-      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: The open point in time request and each subsequent search request can return different identifiers; always use the most recently received ID for the next search request.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
       "docId": "point-in-time-api",
       "docTag": "search",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time",
@@ -12111,7 +12466,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
+      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
       "docId": "security-api-create-service-token",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token",
       "docUrlServerless": "",
@@ -12206,7 +12561,7 @@
           "stability": "stable"
         }
       },
-      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
+      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
       "docId": "security-api-delete-service-token",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token",
       "docUrlServerless": "",
@@ -17856,7 +18211,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The ID of the point-in-time.",
+            "description": "The ID of the point-in-time.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
             "name": "id",
             "required": true,
             "type": {
@@ -17920,7 +18275,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L51"
+      "specLocation": "_global/close_point_in_time/ClosePointInTimeRequest.ts#L23-L56"
     },
     {
       "body": {
@@ -24788,6 +25143,258 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Delete ES|QL data sources.\n\nDeletes one or more data sources used in ES|QL data federation.\nFails with `409` if any dataset references one of the named data sources;\ndelete the dependent datasets first.",
+      "examples": {
+        "DeleteDataSourceRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.delete_data_source(\n    name=\"prod_s3_logs\",\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.deleteDataSource({\n  name: \"prod_s3_logs\",\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"DELETE\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"DELETE\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql.DeleteDataSourceAsync(name: new[] { \"prod_s3_logs\" });",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().deleteDataSource(d -> d\n    .name(\"prod_s3_logs\")\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Delete an ES|QL data federation data source that has no dependent datasets.",
+          "method_request": "DELETE /_query/data_source/prod_s3_logs",
+          "summary": "Delete a data source"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.delete_data_source"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of data source names to delete.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time to wait for the request to be completed.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/delete_data_source/DeleteDataSourceRequest.ts#L24-L63"
+    },
+    {
+      "body": {
+        "codegenName": "result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "examples": {
+        "DeleteDataSourceResponseExample1": {
+          "description": "The data source configuration was deleted successfully.",
+          "summary": "Data source deleted",
+          "value": "{\n  \"acknowledged\": true\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.delete_data_source"
+      },
+      "specLocation": "esql/delete_data_source/DeleteDataSourceResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Delete ES|QL datasets.\n\nDeletes one or more datasets used in ES|QL data federation.\nIf any specified dataset does not exist, the request fails and no datasets are deleted.",
+      "examples": {
+        "DeleteDatasetRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.delete_dataset(\n    name=\"access_logs\",\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.deleteDataset({\n  name: \"access_logs\",\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"DELETE\",\n  \"/_query/dataset/access_logs\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"DELETE\",\n    \"/_query/dataset/access_logs\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql.DeleteDatasetAsync(name: new[] { \"access_logs\" });",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().deleteDataset(d -> d\n    .name(\"access_logs\")\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Delete an ES|QL data federation dataset.",
+          "method_request": "DELETE /_query/dataset/access_logs",
+          "summary": "Delete a dataset"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.delete_dataset"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of dataset names to delete.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time to wait for the request to be completed.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/delete_dataset/DeleteDatasetRequest.ts#L24-L62"
+    },
+    {
+      "body": {
+        "codegenName": "result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "examples": {
+        "DeleteDatasetResponseExample1": {
+          "description": "The dataset definition was deleted successfully.",
+          "summary": "Dataset deleted",
+          "value": "{\n  \"acknowledged\": true\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.delete_dataset"
+      },
+      "specLocation": "esql/delete_dataset/DeleteDatasetResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "description": "Delete an ES|QL view.\n\nDeletes a stored ES|QL view.",
       "inherits": {
         "type": {
@@ -24835,6 +25442,330 @@
         "namespace": "esql.delete_view"
       },
       "specLocation": "esql/delete_view/DeleteViewResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get ES|QL data sources.\n\nReturns one or more data sources used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
+      "examples": {
+        "GetDataSourceRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.get_data_source(\n    name=\"prod_s3_logs\",\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.getDataSource({\n  name: \"prod_s3_logs\",\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql\n    .GetDataSourceAsync(d1 => d1\n        .Name(new[] { \"prod_s3_logs\" })\n    );",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().getDataSource(g -> g\n    .name(\"prod_s3_logs\")\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Get the configuration for a specific ES|QL data federation data source.",
+          "method_request": "GET /_query/data_source/prod_s3_logs",
+          "summary": "Get a data source"
+        },
+        "GetDataSourceRequestExample2": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.get_data_source()",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.getDataSource();",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/data_source\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/data_source\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql.GetDataSourceAsync();",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().getDataSource(g -> g);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "List all data sources configured for ES|QL data federation.",
+          "method_request": "GET /_query/data_source",
+          "summary": "List all data sources"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.get_data_source"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of data source names or wildcard patterns. Omit to return all data sources.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/get_data_source/GetDataSourceRequest.ts#L24-L62"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The matching data sources.\nCredential values in each data source's settings are redacted as `::es_redacted::` in the response.",
+            "name": "data_sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ESQLDataSource",
+                  "namespace": "esql._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "GetDataSourceResponseExample1": {
+          "description": "The response contains the requested data source. Credential values are replaced by the ::es_redacted:: sentinel.\n",
+          "summary": "Data source details",
+          "value": "{\n  \"data_sources\": [\n    {\n      \"name\": \"prod_s3_logs\",\n      \"type\": \"s3\",\n      \"description\": \"Production S3 logs bucket\",\n      \"settings\": {\n        \"region\": \"us-east-1\",\n        \"auth\": \"static_credentials\",\n        \"access_key\": \"::es_redacted::\",\n        \"secret_key\": \"::es_redacted::\"\n      }\n    }\n  ]\n}"
+        },
+        "GetDataSourceResponseExample2": {
+          "description": "A wildcard or list-all request with no matches returns an empty array.",
+          "summary": "No data sources matched",
+          "value": "{\n  \"data_sources\": []\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.get_data_source"
+      },
+      "specLocation": "esql/get_data_source/GetDataSourceResponse.ts#L22-L30"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get ES|QL datasets.\n\nReturns one or more datasets used in ES|QL data federation.\nA concrete-name miss returns `404`; a wildcard pattern or list-all request with no match\nreturns `200` with an empty array.",
+      "examples": {
+        "GetDatasetRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.get_dataset(\n    name=\"access_logs\",\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.getDataset({\n  name: \"access_logs\",\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/dataset/access_logs\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/dataset/access_logs\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql\n    .GetDatasetAsync(d1 => d1\n        .Name(new[] { \"access_logs\" })\n    );",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().getDataset(g -> g\n    .name(\"access_logs\")\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Get the definition for a specific ES|QL data federation dataset.",
+          "method_request": "GET /_query/dataset/access_logs",
+          "summary": "Get a dataset"
+        },
+        "GetDatasetRequestExample2": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.get_dataset()",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.getDataset();",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/dataset\",\n  {},\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/dataset\",\n);\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql.GetDatasetAsync();",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().getDataset(g -> g);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "List all datasets configured for ES|QL data federation.",
+          "method_request": "GET /_query/dataset",
+          "summary": "List all datasets"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.get_dataset"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of dataset names or wildcard patterns. Omit to return all datasets.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Names",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/get_dataset/GetDatasetRequest.ts#L24-L62"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The matching datasets.",
+            "name": "datasets",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ESQLDataset",
+                  "namespace": "esql._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "GetDatasetResponseExample1": {
+          "description": "The response contains the requested dataset definition.",
+          "summary": "Dataset details",
+          "value": "{\n  \"datasets\": [\n    {\n      \"name\": \"access_logs\",\n      \"data_source\": \"prod_s3_logs\",\n      \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n      \"description\": \"Production access logs\",\n      \"settings\": {\n        \"partition_detection\": \"hive\"\n      }\n    }\n  ]\n}"
+        },
+        "GetDatasetResponseExample2": {
+          "description": "A wildcard or list-all request with no matches returns an empty array.",
+          "summary": "No datasets matched",
+          "value": "{\n  \"datasets\": []\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.get_dataset"
+      },
+      "specLocation": "esql/get_dataset/GetDatasetResponse.ts#L22-L27"
     },
     {
       "attachedBehaviors": [
@@ -25085,6 +26016,374 @@
         "namespace": "esql.list_queries"
       },
       "specLocation": "esql/list_queries/ListQueriesResponse.ts#L32-L36"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The data source type. Currently, `s3` is supported.\nThe value must be lowercase and contain no whitespace.",
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "A free-text description of the data source.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Type-specific connection and authentication settings.\nFor `s3`, connection settings include `region` and `endpoint`. Authentication settings\ninclude `auth` and the credentials required by the selected authentication method.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Create or update an ES|QL data source.\n\nCreates or replaces a named, type-specific data source configuration for ES|QL data federation.\nDatasets reference data source configurations to access external data. Names must be lowercase\nand follow index or alias naming rules.",
+      "examples": {
+        "PutDataSourceRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.put_data_source(\n    name=\"prod_s3_logs\",\n    type=\"s3\",\n    description=\"Production S3 logs bucket\",\n    settings={\n        \"region\": \"us-east-1\",\n        \"auth\": \"static_credentials\",\n        \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n        \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    },\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.putDataSource({\n  name: \"prod_s3_logs\",\n  type: \"s3\",\n  description: \"Production S3 logs bucket\",\n  settings: {\n    region: \"us-east-1\",\n    auth: \"static_credentials\",\n    access_key: \"<AWS_ACCESS_KEY_ID>\",\n    secret_key: \"<AWS_SECRET_ACCESS_KEY>\",\n  },\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"PUT\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n  {\n    \"type\": \"s3\",\n    \"description\": \"Production S3 logs bucket\",\n    \"settings\": {\n      \"region\": \"us-east-1\",\n      \"auth\": \"static_credentials\",\n      \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n      \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    }\n  },\n  { \"Content-Type\": \"application/json\" },\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$streamFactory = Psr17FactoryDiscovery::findStreamFactory();\n$request = $requestFactory->createRequest(\n    \"PUT\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$request = $request->withHeader(\"Content-Type\", \"application/json\");\n$request = $request->withBody($streamFactory->createStream(\n    json_encode([\n        \"type\" => \"s3\",\n        \"description\" => \"Production S3 logs bucket\",\n        \"settings\" => [\n            \"region\" => \"us-east-1\",\n            \"auth\" => \"static_credentials\",\n            \"access_key\" => \"<AWS_ACCESS_KEY_ID>\",\n            \"secret_key\" => \"<AWS_SECRET_ACCESS_KEY>\",\n        ],\n    ]),\n));\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"type\":\"s3\",\"description\":\"Production S3 logs bucket\",\"settings\":{\"region\":\"us-east-1\",\"auth\":\"static_credentials\",\"access_key\":\"<AWS_ACCESS_KEY_ID>\",\"secret_key\":\"<AWS_SECRET_ACCESS_KEY>\"}}' \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql\n    .PutDataSourceAsync(name: \"prod_s3_logs\", d1 => d1\n        .Description(\"Production S3 logs bucket\")\n        .Settings(new Dictionary<string, object>()\n        {\n            { \"region\", \"us-east-1\" },\n            { \"auth\", \"static_credentials\" },\n            { \"access_key\", \"<AWS_ACCESS_KEY_ID>\" },\n            { \"secret_key\", \"<AWS_SECRET_ACCESS_KEY>\" }\n        })\n        .Type(\"s3\")\n    );",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().putDataSource(p -> p\n    .description(\"Production S3 logs bucket\")\n    .name(\"prod_s3_logs\")\n    .settings(Map.of(\"secret_key\", JsonData.fromJson(\"\\\"<AWS_SECRET_ACCESS_KEY>\\\"\"),\"auth\", JsonData.fromJson(\"\\\"static_credentials\\\"\"),\"access_key\", JsonData.fromJson(\"\\\"<AWS_ACCESS_KEY_ID>\\\"\"),\"region\", JsonData.fromJson(\"\\\"us-east-1\\\"\")))\n    .type(\"s3\")\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Create a data source for production logs stored in Amazon S3. The data source uses static credentials and connects to a bucket in the us-east-1 region.\n",
+          "method_request": "PUT /_query/data_source/prod_s3_logs",
+          "summary": "Create an S3 data source",
+          "value": "{\n  \"type\": \"s3\",\n  \"description\": \"Production S3 logs bucket\",\n  \"settings\": {\n    \"region\": \"us-east-1\",\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.put_data_source"
+      },
+      "path": [
+        {
+          "description": "The data source name to create or update.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time to wait for the request to be completed.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/put_data_source/PutDataSourceRequest.ts#L26-L80"
+    },
+    {
+      "body": {
+        "codegenName": "result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "examples": {
+        "PutDataSourceResponseExample1": {
+          "description": "The data source configuration was stored successfully.",
+          "summary": "Data source created",
+          "value": "{\n  \"acknowledged\": true\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.put_data_source"
+      },
+      "specLocation": "esql/put_data_source/PutDataSourceResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The name of the referenced data source. The data source must already exist.",
+            "name": "data_source",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Name",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns. For example, a recursive pattern can match\nall Parquet files under the `s3://logs-bucket/access` prefix.",
+            "name": "resource",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "A free-text description of the dataset.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "User-declared mapping on the dataset definition",
+            "name": "mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatasetMapping",
+                "namespace": "esql._types"
+              }
+            }
+          },
+          {
+            "description": "Format and parsing-specific settings that configure how the resource is read.\nCommon keys include `format`, which explicitly selects a registered format, and\n`partition_detection`, which accepts `auto`, `hive`, `template`, or `none`. Additional\nkeys depend on the format reader. Compression can be inferred from the resource URI.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Create or update an ES|QL dataset.\n\nCreates or replaces a dataset that references a data source in ES|QL data federation.\nDataset names participate in the index namespace and must follow index or alias naming rules.\nReturns `404` if the referenced data source does not exist.",
+      "examples": {
+        "PutDatasetRequestExample1": {
+          "alternatives": [
+            {
+              "code": "resp = client.esql.put_dataset(\n    name=\"access_logs\",\n    data_source=\"prod_s3_logs\",\n    resource=\"s3://logs-bucket/access/**/*.parquet\",\n    description=\"Production access logs\",\n    settings={\n        \"partition_detection\": \"hive\"\n    },\n)",
+              "language": "Python"
+            },
+            {
+              "code": "const response = await client.esql.putDataset({\n  name: \"access_logs\",\n  data_source: \"prod_s3_logs\",\n  resource: \"s3://logs-bucket/access/**/*.parquet\",\n  description: \"Production access logs\",\n  settings: {\n    partition_detection: \"hive\",\n  },\n});",
+              "language": "JavaScript"
+            },
+            {
+              "code": "response = client.perform_request(\n  \"PUT\",\n  \"/_query/dataset/access_logs\",\n  {},\n  {\n    \"data_source\": \"prod_s3_logs\",\n    \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n    \"description\": \"Production access logs\",\n    \"settings\": {\n      \"partition_detection\": \"hive\"\n    }\n  },\n  { \"Content-Type\": \"application/json\" },\n)",
+              "language": "Ruby"
+            },
+            {
+              "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$streamFactory = Psr17FactoryDiscovery::findStreamFactory();\n$request = $requestFactory->createRequest(\n    \"PUT\",\n    \"/_query/dataset/access_logs\",\n);\n$request = $request->withHeader(\"Content-Type\", \"application/json\");\n$request = $request->withBody($streamFactory->createStream(\n    json_encode([\n        \"data_source\" => \"prod_s3_logs\",\n        \"resource\" => \"s3://logs-bucket/access/**/*.parquet\",\n        \"description\" => \"Production access logs\",\n        \"settings\" => [\n            \"partition_detection\" => \"hive\",\n        ],\n    ]),\n));\n$resp = $client->sendRequest($request);",
+              "language": "PHP"
+            },
+            {
+              "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"data_source\":\"prod_s3_logs\",\"resource\":\"s3://logs-bucket/access/**/*.parquet\",\"description\":\"Production access logs\",\"settings\":{\"partition_detection\":\"hive\"}}' \"$ELASTICSEARCH_URL/_query/dataset/access_logs\"",
+              "language": "curl"
+            },
+            {
+              "code": "var response = await client.Esql\n    .PutDatasetAsync(name: \"access_logs\", d1 => d1\n        .DataSource(\"prod_s3_logs\")\n        .Description(\"Production access logs\")\n        .Resource(\"s3://logs-bucket/access/**/*.parquet\")\n        .Settings(new Dictionary<string, object>()\n        {\n            { \"partition_detection\", \"hive\" }\n        })\n    );",
+              "language": "C#"
+            },
+            {
+              "code": "client.esql().putDataset(p -> p\n    .dataSource(\"prod_s3_logs\")\n    .description(\"Production access logs\")\n    .name(\"access_logs\")\n    .resource(\"s3://logs-bucket/access/**/*.parquet\")\n    .settings(\"partition_detection\", JsonData.fromJson(\"\\\"hive\\\"\"))\n);\n",
+              "language": "Java"
+            }
+          ],
+          "description": "Create a dataset that reads partitioned Parquet access logs through the prod_s3_logs data source.\n",
+          "method_request": "PUT /_query/dataset/access_logs",
+          "summary": "Create a Parquet dataset",
+          "value": "{\n  \"data_source\": \"prod_s3_logs\",\n  \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n  \"description\": \"Production access logs\",\n  \"settings\": {\n    \"partition_detection\": \"hive\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.put_dataset"
+      },
+      "path": [
+        {
+          "description": "The dataset name to create or update.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Period to wait for a connection to the master node.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time to wait for the request to be completed.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/put_dataset/PutDatasetRequest.ts#L27-L87"
+    },
+    {
+      "body": {
+        "codegenName": "result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "AcknowledgedResponseBase",
+            "namespace": "_types"
+          }
+        }
+      },
+      "examples": {
+        "PutDatasetResponseExample1": {
+          "description": "The dataset definition was stored successfully.",
+          "summary": "Dataset created",
+          "value": "{\n  \"acknowledged\": true\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.put_dataset"
+      },
+      "specLocation": "esql/put_dataset/PutDatasetResponse.ts#L22-L25"
     },
     {
       "attachedBehaviors": [
@@ -25479,6 +26778,136 @@
         "namespace": "esql.query"
       },
       "specLocation": "esql/query/QueryResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
+            "name": "type",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
+            "name": "settings",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "user_defined_value"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
+      "examples": {
+        "TestDataSourceConnectionRequestExample1": {
+          "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
+          "method_request": "POST /_query/data_source/_test",
+          "summary": "Test an S3 data source connection",
+          "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "path": [],
+      "query": [],
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionRequest.ts#L25-L62"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The outcome of the connection test.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DataSourceTestStatus",
+                "namespace": "esql.test_data_source_connection"
+              }
+            }
+          },
+          {
+            "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
+            "name": "error",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
+            "name": "message",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "TestDataSourceConnectionResponseExample1": {
+          "description": "The credentials are valid and the backend is reachable.",
+          "summary": "Successful connection test",
+          "value": "{\n  \"status\": \"success\"\n}"
+        },
+        "TestDataSourceConnectionResponseExample2": {
+          "description": "The probe ran but the credentials were rejected.",
+          "summary": "Failed connection test",
+          "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
+        },
+        "TestDataSourceConnectionResponseExample3": {
+          "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
+          "summary": "Untestable connection",
+          "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionResponse.ts#L37-L53"
     },
     {
       "attachedBehaviors": [
@@ -52534,21 +53963,6 @@
           },
           {
             "availability": {
-              "serverless": {}
-            },
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-            "name": "project_routing",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "availability": {
               "serverless": {},
               "stack": {
                 "since": "8.0.0"
@@ -52687,7 +54101,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L202"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L210"
     },
     {
       "body": {
@@ -52893,21 +54307,6 @@
                 "namespace": "_types"
               }
             }
-          },
-          {
-            "availability": {
-              "serverless": {}
-            },
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-            "name": "project_routing",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
           }
         ]
       },
@@ -52916,7 +54315,7 @@
         "name": "Response",
         "namespace": "ml.put_datafeed"
       },
-      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L57"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L58"
     },
     {
       "attachedBehaviors": [
@@ -55973,21 +57372,6 @@
             "availability": {
               "serverless": {}
             },
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-            "name": "project_routing",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "availability": {
-              "serverless": {}
-            },
             "description": "When true, force reminting of the datafeed's internal cloud API key from the\ncaller's cloud credential without requiring other configuration changes.\nRequires a cloud-authenticated caller and an environment that supports\ncross-project calls. Rejected with 400 otherwise. The datafeed must be stopped.",
             "name": "_force_rekeying",
             "required": false,
@@ -56122,7 +57506,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L189"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L197"
     },
     {
       "body": {
@@ -56329,21 +57713,6 @@
                 "namespace": "_types"
               }
             }
-          },
-          {
-            "availability": {
-              "serverless": {}
-            },
-            "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-            "name": "project_routing",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
           }
         ]
       },
@@ -56352,7 +57721,7 @@
         "name": "Response",
         "namespace": "ml.update_datafeed"
       },
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L60"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L61"
     },
     {
       "attachedBehaviors": [
@@ -58065,7 +59434,7 @@
           }
         ]
       },
-      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: The open point in time request and each subsequent search request can return different identifiers; always use the most recently received ID for the next search request.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
+      "description": "Open a point in time.\n\nA search request by default runs against the most recent visible data of the target indices,\nwhich is called point in time. Elasticsearch pit (point in time) is a lightweight view into the\nstate of the data as it existed when initiated. In some cases, it’s preferred to perform multiple\nsearch requests using the same point in time. For example, if refreshes happen between\n`search_after` requests, then the results of those requests might not be consistent as changes happening\nbetween searches are only visible to the more recent point in time.\n\nA point in time must be opened explicitly before being used in search requests.\n\nA subsequent search request with the `pit` parameter must not specify `index`, `routing`, or `preference` values as these parameters are copied from the point in time.\n\nJust like regular searches, you can use `from` and `size` to page through point in time search results, up to the first 10,000 hits.\nIf you want to retrieve more hits, use PIT with `search_after`.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.\n\nWhen a PIT that contains shard failures is used in a search request, the missing are always reported in the search response as a `NoShardAvailableActionException` exception.\nTo get rid of these exceptions, a new PIT needs to be created so that shards missing from the previous PIT can be handled, assuming they become available in the meantime.\n\n**Keeping point in time alive**\n\nThe `keep_alive` parameter, which is passed to a open point in time request and search request, extends the time to live of the corresponding point in time.\nThe value does not need to be long enough to process all data — it just needs to be long enough for the next request.\n\nNormally, the background merge process optimizes the index by merging together smaller segments to create new, bigger segments.\nOnce the smaller segments are no longer needed they are deleted.\nHowever, open point-in-times prevent the old segments from being deleted since they are still in use.\n\nTIP: Keeping older segments alive means that more disk space and file handles are needed.\nEnsure that you have configured your nodes to have ample free file handles.\n\nAdditionally, if a segment contains deleted or updated documents then the point in time must keep track of whether each document in the segment was live at the time of the initial search request.\nEnsure that your nodes have sufficient heap space if you have many open point-in-times on an index that is subject to ongoing deletes or updates.\nNote that a point-in-time doesn't prevent its associated indices from being deleted.\nYou can check how many point-in-times (that is, search contexts) are open with the nodes stats API.",
       "examples": {
         "OpenPointInTimeRequestExample1": {
           "alternatives": [
@@ -58218,7 +59587,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L153"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
     },
     {
       "body": {
@@ -65614,7 +66983,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
+      "description": "Create a service account token.\n\nCreate a service accounts token for access without requiring basic authentication.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nNOTE: Service account tokens never expire.\nYou must actively delete them if they are no longer needed.\n\nIMPORTANT: On Serverless, non-operator users can create tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nCreating tokens for any other service account requires operator privileges.",
       "examples": {
         "CreateServiceTokenRequestExample1": {
           "alternatives": [
@@ -65713,7 +67082,7 @@
           }
         }
       ],
-      "specLocation": "security/create_service_token/CreateServiceTokenRequest.ts#L23-L79"
+      "specLocation": "security/create_service_token/CreateServiceTokenRequest.ts#L23-L80"
     },
     {
       "body": {
@@ -65878,7 +67247,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
+      "description": "Delete service account tokens.\n\nDelete service account tokens for a service in a specified namespace.\nThis route serves both kinds of service account, but the privileges differ: `manage_service_account` authorizes tokens of built-in accounts in the `elastic` namespace only, and tokens of a user-managed account require `manage_security`.\n\nIMPORTANT: On Serverless, non-operator users can delete tokens for only `elastic/fleet-server` and `elastic/fleet-server-remote`.\nDeleting tokens for any other service account requires operator privileges.",
       "examples": {
         "DeleteServiceTokenRequestExample1": {
           "alternatives": [
@@ -65977,7 +67346,7 @@
           }
         }
       ],
-      "specLocation": "security/delete_service_token/DeleteServiceTokenRequest.ts#L23-L65"
+      "specLocation": "security/delete_service_token/DeleteServiceTokenRequest.ts#L23-L66"
     },
     {
       "body": {
@@ -101177,6 +102546,7 @@
           }
         },
         {
+          "description": "An updated identifier for the point-in-time that was searched.\n\nIMPORTANT: Each search request against a PIT returns in its response a `pit_id` field which may be different from the identifier you originally supplied.\nAlways use the most recently-received PIT identifier for the next request.\nIf you make concurrent search requests against the same PIT, Elasticsearch can return several different `pit_id` values in its responses.\nIn that case, use any of these values for later requests, preferring more recently-received values whenever possible.",
           "name": "pit_id",
           "required": false,
           "type": {
@@ -101247,7 +102617,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchResponse.ts#L39-L85"
+      "specLocation": "_global/search/SearchResponse.ts#L39-L93"
     },
     {
       "kind": "interface",
@@ -126869,7 +128239,7 @@
         "name": "CatAliasesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2536-L2536",
+      "specLocation": "cat/_types/CatBase.ts#L2543-L2543",
       "type": {
         "items": [
           {
@@ -127004,7 +128374,7 @@
         "name": "CatAllocationColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2537-L2537",
+      "specLocation": "cat/_types/CatBase.ts#L2544-L2544",
       "type": {
         "items": [
           {
@@ -127621,7 +128991,7 @@
         "name": "CatCircuitBreakerColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2538-L2540",
+      "specLocation": "cat/_types/CatBase.ts#L2545-L2547",
       "type": {
         "items": [
           {
@@ -127711,7 +129081,7 @@
         "name": "CatComponentColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2541-L2541",
+      "specLocation": "cat/_types/CatBase.ts#L2548-L2548",
       "type": {
         "items": [
           {
@@ -127778,7 +129148,7 @@
         "name": "CatCountColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2542-L2542",
+      "specLocation": "cat/_types/CatBase.ts#L2549-L2549",
       "type": {
         "items": [
           {
@@ -127908,7 +129278,7 @@
         "name": "CatDatafeedColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2531-L2531",
+      "specLocation": "cat/_types/CatBase.ts#L2538-L2538",
       "type": {
         "items": [
           {
@@ -128066,7 +129436,7 @@
         "name": "CatDfaColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2530-L2530",
+      "specLocation": "cat/_types/CatBase.ts#L2537-L2537",
       "type": {
         "items": [
           {
@@ -128143,7 +129513,7 @@
         "name": "CatFieldDataColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2543-L2543",
+      "specLocation": "cat/_types/CatBase.ts#L2550-L2550",
       "type": {
         "items": [
           {
@@ -128310,7 +129680,7 @@
         "name": "CatHealthColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2544-L2544",
+      "specLocation": "cat/_types/CatBase.ts#L2551-L2551",
       "type": {
         "items": [
           {
@@ -129249,7 +130619,7 @@
         "name": "CatIndicesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2545-L2545",
+      "specLocation": "cat/_types/CatBase.ts#L2552-L2552",
       "type": {
         "items": [
           {
@@ -129312,7 +130682,7 @@
         "name": "CatMasterColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2546-L2546",
+      "specLocation": "cat/_types/CatBase.ts#L2553-L2553",
       "type": {
         "items": [
           {
@@ -130057,7 +131427,7 @@
         "name": "CatNodeColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2532-L2532",
+      "specLocation": "cat/_types/CatBase.ts#L2539-L2539",
       "type": {
         "items": [
           {
@@ -130152,7 +131522,7 @@
         "name": "CatNodeattrsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2547-L2547",
+      "specLocation": "cat/_types/CatBase.ts#L2554-L2554",
       "type": {
         "items": [
           {
@@ -130213,7 +131583,7 @@
         "name": "CatPendingTasksColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2506-L2528"
+      "specLocation": "cat/_types/CatBase.ts#L2513-L2535"
     },
     {
       "kind": "type_alias",
@@ -130221,7 +131591,7 @@
         "name": "CatPendingTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2548-L2550",
+      "specLocation": "cat/_types/CatBase.ts#L2555-L2557",
       "type": {
         "items": [
           {
@@ -130294,7 +131664,7 @@
         "name": "CatPluginsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2551-L2551",
+      "specLocation": "cat/_types/CatBase.ts#L2558-L2558",
       "type": {
         "items": [
           {
@@ -130387,6 +131757,19 @@
           ],
           "description": "The recovery stage.",
           "name": "stage"
+        },
+        {
+          "aliases": [
+            "lr"
+          ],
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The number of times this recovery has failed in a way which is retried locally (i.e. on the data node).",
+          "name": "local_retries"
         },
         {
           "aliases": [
@@ -130525,7 +131908,7 @@
         "name": "CatRecoveryColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2322-L2461"
+      "specLocation": "cat/_types/CatBase.ts#L2322-L2468"
     },
     {
       "kind": "type_alias",
@@ -130533,7 +131916,7 @@
         "name": "CatRecoveryColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2533-L2533",
+      "specLocation": "cat/_types/CatBase.ts#L2540-L2540",
       "type": {
         "items": [
           {
@@ -130647,7 +132030,7 @@
         "name": "CatSegmentsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2534-L2534",
+      "specLocation": "cat/_types/CatBase.ts#L2541-L2541",
       "type": {
         "items": [
           {
@@ -131217,7 +132600,7 @@
         "name": "CatShardColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2847-L3220"
+      "specLocation": "cat/_types/CatBase.ts#L2854-L3227"
     },
     {
       "kind": "type_alias",
@@ -131225,7 +132608,7 @@
         "name": "CatShardColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3221-L3221",
+      "specLocation": "cat/_types/CatBase.ts#L3228-L3228",
       "type": {
         "items": [
           {
@@ -131362,7 +132745,7 @@
         "name": "CatSnapshotsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2535-L2535",
+      "specLocation": "cat/_types/CatBase.ts#L2542-L2542",
       "type": {
         "items": [
           {
@@ -131507,7 +132890,7 @@
         "name": "CatTasksColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2552-L2552",
+      "specLocation": "cat/_types/CatBase.ts#L2559-L2559",
       "type": {
         "items": [
           {
@@ -131576,7 +132959,7 @@
         "name": "CatTemplatesColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2477-L2504"
+      "specLocation": "cat/_types/CatBase.ts#L2484-L2511"
     },
     {
       "kind": "type_alias",
@@ -131584,7 +132967,7 @@
         "name": "CatTemplatesColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2553-L2553",
+      "specLocation": "cat/_types/CatBase.ts#L2560-L2560",
       "type": {
         "items": [
           {
@@ -131751,7 +133134,7 @@
         "name": "CatThreadPoolColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3223-L3323"
+      "specLocation": "cat/_types/CatBase.ts#L3230-L3330"
     },
     {
       "kind": "type_alias",
@@ -131759,7 +133142,7 @@
         "name": "CatThreadPoolColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L3324-L3324",
+      "specLocation": "cat/_types/CatBase.ts#L3331-L3331",
       "type": {
         "items": [
           {
@@ -131896,7 +133279,7 @@
         "name": "CatTrainedModelsColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2555-L2629"
+      "specLocation": "cat/_types/CatBase.ts#L2562-L2636"
     },
     {
       "kind": "type_alias",
@@ -131904,7 +133287,7 @@
         "name": "CatTrainedModelsColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2630-L2632",
+      "specLocation": "cat/_types/CatBase.ts#L2637-L2639",
       "type": {
         "items": [
           {
@@ -132170,7 +133553,7 @@
         "name": "CatTransformColumn",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2634-L2844"
+      "specLocation": "cat/_types/CatBase.ts#L2641-L2851"
     },
     {
       "kind": "type_alias",
@@ -132178,7 +133561,7 @@
         "name": "CatTransformColumns",
         "namespace": "cat._types"
       },
-      "specLocation": "cat/_types/CatBase.ts#L2845-L2845",
+      "specLocation": "cat/_types/CatBase.ts#L2852-L2852",
       "type": {
         "items": [
           {
@@ -134086,6 +135469,28 @@
         ],
         "kind": "union_of"
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The probe ran and the backend is reachable from every eligible data node.",
+          "name": "success"
+        },
+        {
+          "description": "The probe ran but the backend was unreachable or rejected the connection.\nThe `error` field carries a human-readable reason.",
+          "name": "failure"
+        },
+        {
+          "description": "The type is valid and registered, but the probe cannot give a meaningful result —\nfor example, no connectivity target, anonymous credentials, or bucket-scoped credentials.\nThe optional `message` field may carry user-visible guidance.",
+          "name": "untestable"
+        }
+      ],
+      "name": {
+        "name": "DataSourceTestStatus",
+        "namespace": "esql.test_data_source_connection"
+      },
+      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionResponse.ts#L20-L35"
     },
     {
       "kind": "type_alias",
@@ -136051,13 +137456,23 @@
         "name": "RecoveryPriority",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L146-L162"
+      "specLocation": "indices/recovery/types.ts#L153-L169"
     },
     {
       "kind": "enum",
       "members": [
         {
-          "description": "Recovery has not started.",
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The shard's recovery state has been created, but the recovery has not started yet (it may be queued behind other ongoing recoveries).",
+          "name": "CREATED"
+        },
+        {
+          "description": "Recovery has started and is initializing.",
           "name": "INIT"
         },
         {
@@ -136085,7 +137500,7 @@
         "name": "RecoveryStage",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L118-L131"
+      "specLocation": "indices/recovery/types.ts#L118-L138"
     },
     {
       "kind": "enum",
@@ -136115,7 +137530,7 @@
         "name": "RecoveryType",
         "namespace": "indices.recovery"
       },
-      "specLocation": "indices/recovery/types.ts#L133-L144"
+      "specLocation": "indices/recovery/types.ts#L140-L151"
     },
     {
       "kind": "enum",
@@ -139395,7 +140810,7 @@
         "name": "ChunkingMode",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L265-L269"
+      "specLocation": "ml/_types/Datafeed.ts#L269-L273"
     },
     {
       "kind": "enum",
@@ -139451,7 +140866,7 @@
         "name": "DatafeedState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L156-L161"
+      "specLocation": "ml/_types/Datafeed.ts#L160-L165"
     },
     {
       "kind": "enum",
@@ -140668,7 +142083,7 @@
         "name": "ClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L43-L220"
+      "specLocation": "security/_types/Privileges.ts#L43-L224"
     },
     {
       "kind": "enum",
@@ -140715,7 +142130,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L446-L468"
+      "specLocation": "security/_types/Privileges.ts#L450-L472"
     },
     {
       "kind": "enum",
@@ -140804,7 +142219,7 @@
         "name": "IndexPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L370-L416"
+      "specLocation": "security/_types/Privileges.ts#L374-L420"
     },
     {
       "codegenNames": [
@@ -140818,7 +142233,7 @@
         "name": "IndicesPrivilegesQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L325-L333",
+      "specLocation": "security/_types/Privileges.ts#L329-L337",
       "type": {
         "items": [
           {
@@ -140868,7 +142283,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L335-L345"
+      "specLocation": "security/_types/Privileges.ts#L339-L349"
     },
     {
       "kind": "interface",
@@ -140956,7 +142371,7 @@
         }
       ],
       "shortcutProperty": "source",
-      "specLocation": "security/_types/Privileges.ts#L347-L365"
+      "specLocation": "security/_types/Privileges.ts#L351-L369"
     },
     {
       "codegenNames": [
@@ -140968,7 +142383,7 @@
         "name": "RoleTemplateInlineQuery",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L367-L368",
+      "specLocation": "security/_types/Privileges.ts#L371-L372",
       "type": {
         "items": [
           {
@@ -140996,7 +142411,7 @@
         "name": "RemoteClusterPrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L222-L234"
+      "specLocation": "security/_types/Privileges.ts#L226-L238"
     },
     {
       "isOpen": true,
@@ -141044,6 +142459,693 @@
       }
     },
     {
+      "description": "The two kinds of service account describe their privileges differently.\nA built-in account includes its role descriptor. A user-managed account includes its role names and whether it is enabled.",
+      "kind": "type_alias",
+      "name": {
+        "name": "ServiceAccountInfo",
+        "namespace": "security.get_service_accounts"
+      },
+      "specLocation": "security/get_service_accounts/types.ts#L29-L36",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BuiltInServiceAccount",
+              "namespace": "security.get_service_accounts"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "UserManagedServiceAccount",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BuiltInServiceAccount",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The account ships with Elasticsearch.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "built_in"
+          }
+        },
+        {
+          "description": "The role descriptor declared for the account in the Elasticsearch distribution.",
+          "name": "role_descriptor",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoleDescriptorRead",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L38-L49"
+    },
+    {
+      "attachedBehaviors": [
+        "OverloadOf"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "RoleDescriptor",
+                "namespace": "security._types"
+              }
+            }
+          ],
+          "type": {
+            "name": "OverloadOf",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "RoleDescriptorRead",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
+          "name": "cluster",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterPrivilege",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index"
+          ],
+          "description": "A list of indices permissions entries.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A list of application privilege entries",
+          "name": "applications",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of users that the API keys can impersonate.\nNOTE: In Elastic Cloud Serverless, the run-as feature is disabled.\nFor API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
+          "extDocId": "run-as-privilege",
+          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users",
+          "name": "run_as",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Optional description of the role descriptor",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Restriction for when the role descriptor is allowed to be effective.",
+          "name": "restriction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Restriction",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "name": "transient_metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L85-L88"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoleDescriptor",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
+          "name": "cluster",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ClusterPrivilege",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "aliases": [
+            "index"
+          ],
+          "description": "A list of indices permissions entries.",
+          "name": "indices",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A list of application privilege entries",
+          "name": "applications",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ApplicationPrivileges",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A list of users that the API keys can impersonate.\nNOTE: In Elastic Cloud Serverless, the run-as feature is disabled.\nFor API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
+          "extDocId": "run-as-privilege",
+          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users",
+          "name": "run_as",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Optional description of the role descriptor",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Restriction for when the role descriptor is allowed to be effective.",
+          "name": "restriction",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Restriction",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "name": "transient_metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L33-L83"
+    },
+    {
+      "attachedBehaviors": [
+        "OverloadOf"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndicesPrivilegesBase",
+                "namespace": "security._types"
+              }
+            }
+          ],
+          "type": {
+            "name": "OverloadOf",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "kind": "interface",
+      "name": {
+        "name": "IndicesPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The document fields that the owners of the role have read access to.",
+          "extDocId": "field-and-document-access-control",
+          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
+          "name": "field_security",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSecurity",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "The index level privileges that owners of the role have on the specified indices.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndicesPrivilegesQuery",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L268-L268"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "IndicesPrivilegesBase",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The document fields that the owners of the role have read access to.",
+          "extDocId": "field-and-document-access-control",
+          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
+          "name": "field_security",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FieldSecurity",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "IndexName",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "IndexName",
+                    "namespace": "_types"
+                  }
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "The index level privileges that owners of the role have on the specified indices.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexPrivilege",
+                "namespace": "security._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
+          "name": "query",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndicesPrivilegesQuery",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L240-L266"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FieldSecurity",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "except",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "grant",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Fields",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/FieldSecurity.ts#L22-L25"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApplicationPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the application to which this entry applies.",
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A list of strings, where each element is the name of an application privilege or action.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "A list resources to which the privileges are applied.",
+          "name": "resources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L28-L41"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Restriction",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of workflows to which the API key is restricted.\nNOTE: In order to use a role restriction, an API key must be created with a single role descriptor.",
+          "name": "workflows",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RestrictionWorkflow",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/RoleDescriptor.ts#L90-L96"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "UserManagedServiceAccount",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The names of the roles granted to the account, as they were given when it was created.\nThey are resolved when the account authenticates.",
+          "name": "roles",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "Whether the account can authenticate.",
+          "name": "enabled",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L51-L66"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "An account that ships with Elasticsearch, in the reserved `elastic` namespace.",
+          "name": "built_in"
+        },
+        {
+          "description": "An account created with the put user-managed service account API.",
+          "name": "user_managed"
+        }
+      ],
+      "name": {
+        "name": "ServiceAccountType",
+        "namespace": "security.get_service_accounts"
+      },
+      "specLocation": "security/get_service_accounts/types.ts#L22-L27"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -141067,7 +143169,7 @@
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L48"
+      "specLocation": "security/get_token/types.ts#L23-L58"
     },
     {
       "kind": "enum",
@@ -158060,6 +160162,291 @@
         }
       ],
       "specLocation": "eql/_types/EqlHits.ts#L56-L64"
+    },
+    {
+      "description": "Represents a data source definition stored in cluster state. A data source holds\nconnection settings (credentials, endpoints, auth) for an external data provider.",
+      "kind": "interface",
+      "name": {
+        "name": "ESQLDataSource",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The data source name.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The data source type. Currently, `s3` is supported.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A free-text description.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Type-specific connection and authentication settings.",
+          "name": "settings",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L134-L147"
+    },
+    {
+      "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
+      "kind": "interface",
+      "name": {
+        "name": "ESQLDataset",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The dataset name.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name of the referenced data source.",
+          "name": "data_source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns, for example a recursive pattern that matches\nParquet files under `s3://logs-bucket/access`.",
+          "name": "resource",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A free-text description.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Format- and parsing-specific settings that configure how the resource is read.\nCommon keys include `format` and `partition_detection`. Additional keys depend on the format reader;\ncompression can be inferred from the resource URI.",
+          "name": "settings",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
+          "description": "The user-declared mapping on the dataset definition.",
+          "name": "mappings",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DatasetMapping",
+              "namespace": "esql._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L149-L177"
+    },
+    {
+      "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
+      "kind": "interface",
+      "name": {
+        "name": "DatasetMapping",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The policy for columns that are not declared in `properties`.\n`true` (the default) infers undeclared columns and overlays the declarations; `false` makes the declaration the entire schema, so undeclared columns are not queryable.",
+          "name": "dynamic",
+          "required": false,
+          "serverDefault": "true",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Dynamic",
+              "namespace": "esql._types"
+            }
+          }
+        },
+        {
+          "description": "The per-column declarations, keyed by logical column name.",
+          "name": "properties",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DatasetFieldMapping",
+                "namespace": "esql._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The `_id` meta-field configuration, sourcing the document identity from a column.",
+          "name": "_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IdPath",
+              "namespace": "esql._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L61-L80"
+    },
+    {
+      "description": "A per-column declaration inside a dataset mapping's `properties`.",
+      "kind": "interface",
+      "name": {
+        "name": "DatasetFieldMapping",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The declared column type.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
+          "name": "path",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L101-L118"
+    },
+    {
+      "description": "The `_id` meta-field of a dataset mapping.",
+      "kind": "interface",
+      "name": {
+        "name": "IdPath",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the column that provides the document identity.",
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L91-L99"
     },
     {
       "description": "A non-materialized ES|QL view.",
@@ -177852,7 +180239,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L163-L192"
+      "specLocation": "ml/_types/Datafeed.ts#L167-L196"
     },
     {
       "kind": "interface",
@@ -177972,7 +180359,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L194-L222"
+      "specLocation": "ml/_types/Datafeed.ts#L198-L226"
     },
     {
       "kind": "interface",
@@ -178042,7 +180429,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L224-L228"
+      "specLocation": "ml/_types/Datafeed.ts#L228-L232"
     },
     {
       "kind": "interface",
@@ -178088,7 +180475,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L230-L244"
+      "specLocation": "ml/_types/Datafeed.ts#L234-L248"
     },
     {
       "kind": "interface",
@@ -178164,7 +180551,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L246-L263"
+      "specLocation": "ml/_types/Datafeed.ts#L250-L267"
     },
     {
       "kind": "interface",
@@ -178383,21 +180770,6 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "availability": {
-            "serverless": {}
-          },
-          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-          "name": "project_routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
         }
       ],
       "specLocation": "ml/_types/Datafeed.ts#L37-L72"
@@ -178484,7 +180856,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L271-L284"
+      "specLocation": "ml/_types/Datafeed.ts#L275-L288"
     },
     {
       "kind": "interface",
@@ -178518,7 +180890,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L142-L153"
+      "specLocation": "ml/_types/Datafeed.ts#L146-L157"
     },
     {
       "description": "Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded\nto actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.",
@@ -183846,21 +186218,6 @@
           }
         },
         {
-          "availability": {
-            "serverless": {}
-          },
-          "description": "A Lucene-style expression that limits which linked projects the datafeed\nsearches when cross-project search is enabled. Examples: `_alias:_origin`,\n`_alias:prod-*`. If omitted, searches all linked projects within the cross-project\nsearch scope. Rejected when CPS is not enabled for datafeeds.",
-          "name": "project_routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "name": "job_id",
           "required": false,
           "type": {
@@ -183968,7 +186325,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L74-L140"
+      "specLocation": "ml/_types/Datafeed.ts#L74-L144"
     },
     {
       "kind": "interface",
@@ -187890,420 +190247,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RoleDescriptor",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "description": "A list of cluster privileges. These privileges define the cluster level actions that API keys are able to execute.",
-          "name": "cluster",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ClusterPrivilege",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "aliases": [
-            "index"
-          ],
-          "description": "A list of indices permissions entries.",
-          "name": "indices",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndicesPrivileges",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "A list of application privilege entries",
-          "name": "applications",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "ApplicationPrivileges",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Optional meta-data. Within the metadata object, keys that begin with `_` are reserved for system usage.",
-          "name": "metadata",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Metadata",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "A list of users that the API keys can impersonate.\nNOTE: In Elastic Cloud Serverless, the run-as feature is disabled.\nFor API compatibility, you can still specify an empty `run_as` field, but a non-empty list will be rejected.",
-          "extDocId": "run-as-privilege",
-          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/submitting-requests-on-behalf-of-other-users",
-          "name": "run_as",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "description": "Optional description of the role descriptor",
-          "name": "description",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Restriction for when the role descriptor is allowed to be effective.",
-          "name": "restriction",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Restriction",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "name": "transient_metadata",
-          "required": false,
-          "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L33-L83"
-    },
-    {
-      "attachedBehaviors": [
-        "OverloadOf"
-      ],
-      "behaviors": [
-        {
-          "generics": [
-            {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndicesPrivilegesBase",
-                "namespace": "security._types"
-              }
-            }
-          ],
-          "type": {
-            "name": "OverloadOf",
-            "namespace": "_spec_utils"
-          }
-        }
-      ],
-      "kind": "interface",
-      "name": {
-        "name": "IndicesPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "description": "The document fields that the owners of the role have read access to.",
-          "extDocId": "field-and-document-access-control",
-          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
-          "name": "field_security",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSecurity",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-          "name": "names",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "The index level privileges that owners of the role have on the specified indices.",
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexPrivilege",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndicesPrivilegesQuery",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L264-L264"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "IndicesPrivilegesBase",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "description": "The document fields that the owners of the role have read access to.",
-          "extDocId": "field-and-document-access-control",
-          "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-access-at-document-field-level",
-          "name": "field_security",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldSecurity",
-              "namespace": "security._types"
-            }
-          }
-        },
-        {
-          "description": "A list of indices (or index name patterns) to which the permissions in this entry apply.",
-          "name": "names",
-          "required": true,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "IndexName",
-                  "namespace": "_types"
-                }
-              },
-              {
-                "kind": "array_of",
-                "value": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "IndexName",
-                    "namespace": "_types"
-                  }
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "The index level privileges that owners of the role have on the specified indices.",
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "IndexPrivilege",
-                "namespace": "security._types"
-              }
-            }
-          }
-        },
-        {
-          "description": "A search query that defines the documents the owners of the role have access to. A document within the specified indices must match this query for it to be accessible by the owners of the role.",
-          "name": "query",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndicesPrivilegesQuery",
-              "namespace": "security._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L236-L262"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FieldSecurity",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "name": "except",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "grant",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Fields",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/FieldSecurity.ts#L22-L25"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ApplicationPrivileges",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "description": "The name of the application to which this entry applies.",
-          "name": "application",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "A list of strings, where each element is the name of an application privilege or action.",
-          "name": "privileges",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        },
-        {
-          "description": "A list resources to which the privileges are applied.",
-          "name": "resources",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/Privileges.ts#L28-L41"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Restriction",
-        "namespace": "security._types"
-      },
-      "properties": [
-        {
-          "description": "A list of workflows to which the API key is restricted.\nNOTE: In order to use a role restriction, an API key must be created with a single role descriptor.",
-          "name": "workflows",
-          "required": true,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RestrictionWorkflow",
-                "namespace": "security._types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "security/_types/RoleDescriptor.ts#L90-L96"
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "Token",
         "namespace": "security.create_service_token"
       },
@@ -188717,7 +190660,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L470-L480"
+      "specLocation": "security/_types/Privileges.ts#L474-L484"
     },
     {
       "kind": "interface",
@@ -188780,7 +190723,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L482-L502"
+      "specLocation": "security/_types/Privileges.ts#L486-L506"
     },
     {
       "kind": "interface",
