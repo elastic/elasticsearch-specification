@@ -142825,9 +142825,6 @@
           }
         },
         {
-          "aliases": [
-            "index"
-          ],
           "description": "A list of indices permissions entries.",
           "name": "indices",
           "required": true,

@@ -21634,7 +21634,6 @@ export interface SecurityRoleDescriptor {
 export interface SecurityRoleDescriptorRead {
   cluster: SecurityClusterPrivilege[]
   indices: SecurityIndicesPrivileges[]
-  index: SecurityIndicesPrivileges[]
   remote_indices?: SecurityRemoteIndicesPrivileges[]
   remote_cluster?: SecurityRemoteClusterPrivileges[]
   global?: SecurityGlobalPrivilege
