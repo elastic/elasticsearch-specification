@@ -56668,7 +56668,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L125-L128"
+      "specLocation": "_types/Geo.ts#L133-L136"
     },
     {
       "kind": "type_alias",
@@ -57254,7 +57254,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L153-L158"
+      "specLocation": "_types/Geo.ts#L161-L166"
     },
     {
       "kind": "enum",
@@ -58707,7 +58707,7 @@
         "name": "GeoBounds",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L134-L147",
+      "specLocation": "_types/Geo.ts#L142-L155",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58888,7 +58888,7 @@
         "name": "GeoHash",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L91-L91",
+      "specLocation": "_types/Geo.ts#L99-L99",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -58916,7 +58916,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L130-L132"
+      "specLocation": "_types/Geo.ts#L138-L140"
     },
     {
       "kind": "type_alias",
@@ -58929,7 +58929,7 @@
         "name": "GeoHashPrecision",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L86-L90",
+      "specLocation": "_types/Geo.ts#L94-L98",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58957,7 +58957,7 @@
         "name": "GeoHexCell",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L96-L97",
+      "specLocation": "_types/Geo.ts#L104-L105",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -59020,7 +59020,7 @@
         "name": "GeoLocation",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L98-L112",
+      "specLocation": "_types/Geo.ts#L106-L120",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59059,6 +59059,44 @@
       }
     },
     {
+      "kind": "interface",
+      "description": "A GeoJson GeoPoint.",
+      "name": {
+        "name": "GeoPoint",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "Always `\"Point\"`",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "`[lon, lat]` coordinates",
+          "name": "coordinates",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "double",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Geo.ts#L64-L70"
+    },
+    {
       "kind": "type_alias",
       "description": "A GeoJson shape, that can also use Elasticsearch's `envelope` extension.",
       "name": {
@@ -59094,7 +59132,7 @@
         "name": "GeoShapeRelation",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L64-L82"
+      "specLocation": "_types/Geo.ts#L72-L90"
     },
     {
       "kind": "type_alias",
@@ -59103,7 +59141,7 @@
         "name": "GeoTile",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L93-L94",
+      "specLocation": "_types/Geo.ts#L101-L102",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -59118,7 +59156,7 @@
         "name": "GeoTilePrecision",
         "namespace": "_types"
       },
-      "specLocation": "_types/Geo.ts#L84-L84",
+      "specLocation": "_types/Geo.ts#L92-L92",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -60776,7 +60814,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L114-L123"
+      "specLocation": "_types/Geo.ts#L122-L131"
     },
     {
       "kind": "enum",
@@ -66152,7 +66190,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L160-L163"
+      "specLocation": "_types/Geo.ts#L168-L171"
     },
     {
       "kind": "interface",
@@ -66184,7 +66222,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L165-L168"
+      "specLocation": "_types/Geo.ts#L173-L176"
     },
     {
       "kind": "interface",
@@ -66640,7 +66678,7 @@
           }
         }
       ],
-      "specLocation": "_types/Geo.ts#L149-L151"
+      "specLocation": "_types/Geo.ts#L157-L159"
     },
     {
       "kind": "interface",
@@ -98654,7 +98692,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L35-L57"
+      "specLocation": "_types/query_dsl/geo.ts#L36-L58"
     },
     {
       "kind": "interface",
@@ -98821,7 +98859,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L64-L96"
+      "specLocation": "_types/query_dsl/geo.ts#L65-L97"
     },
     {
       "kind": "enum",
@@ -98837,7 +98875,7 @@
         "name": "GeoExecution",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L59-L62"
+      "specLocation": "_types/query_dsl/geo.ts#L60-L63"
     },
     {
       "kind": "interface",
@@ -98886,7 +98924,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L98-L103",
+      "specLocation": "_types/query_dsl/geo.ts#L99-L104",
       "variants": {
         "kind": "container"
       }
@@ -98913,7 +98951,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L105-L107"
+      "specLocation": "_types/query_dsl/geo.ts#L106-L108"
     },
     {
       "kind": "interface",
@@ -98985,7 +99023,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L109-L120"
+      "specLocation": "_types/query_dsl/geo.ts#L110-L121"
     },
     {
       "kind": "interface",
@@ -98998,11 +99036,23 @@
           "name": "shape",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "GeoShape",
-              "namespace": "_types"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GeoShape",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "GeoPoint",
+                  "namespace": "_types"
+                }
+              }
+            ]
           }
         },
         {
@@ -99031,7 +99081,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L127-L138"
+      "specLocation": "_types/query_dsl/geo.ts#L128-L140"
     },
     {
       "kind": "interface",
@@ -99093,7 +99143,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/geo.ts#L140-L156"
+      "specLocation": "_types/query_dsl/geo.ts#L142-L158"
     },
     {
       "kind": "enum",
@@ -99114,7 +99164,7 @@
         "name": "GeoValidationMethod",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/geo.ts#L172-L182"
+      "specLocation": "_types/query_dsl/geo.ts#L174-L184"
     },
     {
       "kind": "interface",
