@@ -16073,7 +16073,6 @@ export interface MlDatafeedConfig {
   indices_options?: IndicesOptions
   job_id?: Id
   max_empty_searches?: integer
-  max_consecutive_extraction_failures?: integer
   query?: QueryDslQueryContainer
   query_delay?: Duration
   runtime_mappings?: MappingRuntimeFields
@@ -17968,7 +17967,6 @@ export interface MlPutDatafeedRequest extends RequestBase {
     indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
-    max_consecutive_extraction_failures?: integer
     query?: QueryDslQueryContainer
     query_delay?: Duration
     runtime_mappings?: MappingRuntimeFields
@@ -17989,7 +17987,6 @@ export interface MlPutDatafeedResponse {
   job_id: Id
   indices_options?: IndicesOptions
   max_empty_searches?: integer
-  max_consecutive_extraction_failures?: integer
   query: QueryDslQueryContainer
   query_delay: Duration
   runtime_mappings?: MappingRuntimeFields
@@ -18356,7 +18353,6 @@ export interface MlUpdateDatafeedRequest extends RequestBase {
     indices_options?: IndicesOptions
     job_id?: Id
     max_empty_searches?: integer
-    max_consecutive_extraction_failures?: integer
     query?: QueryDslQueryContainer
     query_delay?: Duration
     runtime_mappings?: MappingRuntimeFields
@@ -18376,7 +18372,6 @@ export interface MlUpdateDatafeedResponse {
   indices_options?: IndicesOptions
   job_id: Id
   max_empty_searches?: integer
-  max_consecutive_extraction_failures?: integer
   query: QueryDslQueryContainer
   query_delay: Duration
   runtime_mappings?: MappingRuntimeFields
