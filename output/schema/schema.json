@@ -6173,12 +6173,12 @@
       "availability": {
         "serverless": {
           "stability": "experimental",
-          "visibility": "public"
+          "visibility": "private"
         },
         "stack": {
           "since": "9.5.0",
           "stability": "experimental",
-          "visibility": "public"
+          "visibility": "private"
         }
       },
       "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",

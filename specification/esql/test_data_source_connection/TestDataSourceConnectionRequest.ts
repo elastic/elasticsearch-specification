@@ -33,8 +33,8 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  *
  * @rest_spec_name esql.test_data_source_connection
  * @cluster_privileges manage
- * @availability stack since=9.5.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.5.0 stability=experimental visibility=private
+ * @availability serverless stability=experimental visibility=private
  * @ext_doc_id esql-data-federation
  * @doc_id esql-test-data-source-connection
  */
