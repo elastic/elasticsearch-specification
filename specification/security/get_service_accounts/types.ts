@@ -63,4 +63,9 @@ export class UserManagedServiceAccount {
    * Whether the account can authenticate.
    */
   enabled: boolean
+  /**
+   * A free-text description of the account, as it was given when the account was created.
+   * It has no meaning to Elasticsearch. Absent when the account has no description.
+   */
+  description?: string
 }
