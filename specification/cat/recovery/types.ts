@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { integer, Percentage } from '@_types/Numeric'
+import { Percentage } from '@_types/Numeric'
 import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 
 export class RecoveryRecord {
@@ -78,7 +78,7 @@ export class RecoveryRecord {
    * @availability stack since=9.6.0
    * @availability serverless
    */
-  'local_retries'?: integer
+  'local_retries'?: string
   /**
    * The recovery priority.
    * @aliases pr
@@ -86,6 +86,24 @@ export class RecoveryRecord {
    * @availability serverless
    */
   'priority'?: string
+  /**
+   * The name of the recovery gate that blocked recovery on the target node.
+   *
+   * The value is `n/a` unless the recovery is queued in the `created` stage and blocked by a recovery gate.
+   * @aliases g
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'gate'?: string
+  /**
+   * The elapsed time in milliseconds recovery is blocked for.
+   *
+   * The value is `n/a` when the recovery is not blocked by a recovery gate.
+   * @aliases bf
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  'blocked_for_millis'?: string
   /**
    * The source host.
    * @aliases shost

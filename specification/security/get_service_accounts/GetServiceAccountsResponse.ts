@@ -24,6 +24,6 @@ export class Response {
   /**
    * A successful call returns a JSON object of service accounts.
    * The API returns an empty object if no service account is found.
-   * @codegen_name service_accoutns */
+   * @codegen_name service_accounts */
   body: Dictionary<string, ServiceAccountInfo>
 }
