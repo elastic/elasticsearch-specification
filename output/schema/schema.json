@@ -6176,7 +6176,7 @@
           "visibility": "private"
         },
         "stack": {
-          "since": "9.5.0",
+          "since": "9.6.0",
           "stability": "experimental",
           "visibility": "private"
         }
