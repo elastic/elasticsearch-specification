@@ -586,6 +586,27 @@ export interface HealthReportDiskIndicatorDetails {
   nodes_with_unknown_disk_status: long
 }
 
+export interface HealthReportDlmFrozenTransitionOverdueIndex {
+  index_name: IndexName
+  transition_state: HealthReportDlmFrozenTransitionState
+}
+
+export type HealthReportDlmFrozenTransitionState = 'unmarked' | 'marked' | 'queued' | 'running'
+
+export interface HealthReportDlmFrozenTransitionsIndicator extends HealthReportBaseIndicator {
+  details?: HealthReportDlmFrozenTransitionsIndicatorDetails
+}
+
+export interface HealthReportDlmFrozenTransitionsIndicatorDetails {
+  transitions_enabled?: boolean
+  service_running?: boolean
+  default_repository_configured?: boolean
+  overdue_indices_count?: integer
+  overdue_indices_count_by_state?: Partial<Record<HealthReportDlmFrozenTransitionState, integer>>
+  overdue_indices_sample?: HealthReportDlmFrozenTransitionOverdueIndex[]
+  generated_at_millis?: long
+}
+
 export interface HealthReportFileSettingsIndicator extends HealthReportBaseIndicator {
   details?: HealthReportFileSettingsIndicatorDetails
 }
@@ -632,6 +653,7 @@ export interface HealthReportIndicators {
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
   project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
+  dlm_frozen_transitions?: HealthReportDlmFrozenTransitionsIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {

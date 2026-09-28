@@ -76496,6 +76496,28 @@
       "kind": "enum",
       "members": [
         {
+          "name": "unmarked"
+        },
+        {
+          "name": "marked"
+        },
+        {
+          "name": "queued"
+        },
+        {
+          "name": "running"
+        }
+      ],
+      "name": {
+        "name": "DlmFrozenTransitionState",
+        "namespace": "_global.health_report"
+      },
+      "specLocation": "_global/health_report/types.ts#L258-L263"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "search"
         },
         {
@@ -76512,7 +76534,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L76-L81"
+      "specLocation": "_global/health_report/types.ts#L78-L83"
     },
     {
       "kind": "enum",

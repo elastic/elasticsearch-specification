@@ -102554,6 +102554,14 @@
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"
               }
             ]
+          },
+          "dlm_frozen_transitions": {
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionsIndicator"
+              }
+            ]
           }
         }
       },
@@ -103287,6 +103295,91 @@
           "active_password_id",
           "encryption_required",
           "state"
+        ]
+      },
+      "_global.health_report.DlmFrozenTransitionsIndicator": {
+        "description": "DLM_FROZEN_TRANSITIONS",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.health_report.BaseIndicator"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "details": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionsIndicatorDetails"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "_global.health_report.DlmFrozenTransitionsIndicatorDetails": {
+        "type": "object",
+        "properties": {
+          "transitions_enabled": {
+            "type": "boolean"
+          },
+          "service_running": {
+            "type": "boolean"
+          },
+          "default_repository_configured": {
+            "type": "boolean"
+          },
+          "overdue_indices_count": {
+            "type": "number"
+          },
+          "overdue_indices_count_by_state": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "overdue_indices_sample": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionOverdueIndex"
+            }
+          },
+          "generated_at_millis": {
+            "description": "Only present when the indicator status is `unknown`, meaning the health snapshot is stale.",
+            "type": "number"
+          }
+        }
+      },
+      "_global.health_report.DlmFrozenTransitionOverdueIndex": {
+        "type": "object",
+        "properties": {
+          "index_name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "transition_state": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionState"
+              }
+            ]
+          }
+        },
+        "required": [
+          "index_name",
+          "transition_state"
+        ]
+      },
+      "_global.health_report.DlmFrozenTransitionState": {
+        "type": "string",
+        "enum": [
+          "unmarked",
+          "marked",
+          "queued",
+          "running"
         ]
       },
       "ilm.explain_lifecycle.LifecycleExplain": {

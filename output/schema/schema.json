@@ -34257,7 +34257,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L46-L51"
+      "specLocation": "_global/health_report/types.ts#L48-L53"
     },
     {
       "kind": "interface",
@@ -34303,7 +34303,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L155-L159"
+      "specLocation": "_global/health_report/types.ts#L157-L161"
     },
     {
       "kind": "interface",
@@ -34331,7 +34331,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L150-L154"
+      "specLocation": "_global/health_report/types.ts#L152-L156"
     },
     {
       "kind": "interface",
@@ -34396,7 +34396,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L53-L59"
+      "specLocation": "_global/health_report/types.ts#L55-L61"
     },
     {
       "kind": "interface",
@@ -34473,7 +34473,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L61-L67"
+      "specLocation": "_global/health_report/types.ts#L63-L69"
     },
     {
       "kind": "interface",
@@ -34501,7 +34501,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L126-L130"
+      "specLocation": "_global/health_report/types.ts#L128-L132"
     },
     {
       "kind": "interface",
@@ -34566,7 +34566,191 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L131-L137"
+      "specLocation": "_global/health_report/types.ts#L133-L139"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DlmFrozenTransitionOverdueIndex",
+        "namespace": "_global.health_report"
+      },
+      "properties": [
+        {
+          "name": "index_name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "transition_state",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DlmFrozenTransitionState",
+              "namespace": "_global.health_report"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/health_report/types.ts#L265-L268"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "unmarked"
+        },
+        {
+          "name": "marked"
+        },
+        {
+          "name": "queued"
+        },
+        {
+          "name": "running"
+        }
+      ],
+      "name": {
+        "name": "DlmFrozenTransitionState",
+        "namespace": "_global.health_report"
+      },
+      "specLocation": "_global/health_report/types.ts#L258-L263"
+    },
+    {
+      "kind": "interface",
+      "description": "DLM_FROZEN_TRANSITIONS",
+      "inherits": {
+        "type": {
+          "name": "BaseIndicator",
+          "namespace": "_global.health_report"
+        }
+      },
+      "name": {
+        "name": "DlmFrozenTransitionsIndicator",
+        "namespace": "_global.health_report"
+      },
+      "properties": [
+        {
+          "name": "details",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DlmFrozenTransitionsIndicatorDetails",
+              "namespace": "_global.health_report"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/health_report/types.ts#L241-L245"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DlmFrozenTransitionsIndicatorDetails",
+        "namespace": "_global.health_report"
+      },
+      "properties": [
+        {
+          "name": "transitions_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "service_running",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "default_repository_configured",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "overdue_indices_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "overdue_indices_count_by_state",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DlmFrozenTransitionState",
+                "namespace": "_global.health_report"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "name": "overdue_indices_sample",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DlmFrozenTransitionOverdueIndex",
+                "namespace": "_global.health_report"
+              }
+            }
+          }
+        },
+        {
+          "description": "Only present when the indicator status is `unknown`, meaning the health snapshot is stale.",
+          "name": "generated_at_millis",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/health_report/types.ts#L247-L256"
     },
     {
       "kind": "interface",
@@ -34594,7 +34778,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L209-L213"
+      "specLocation": "_global/health_report/types.ts#L211-L215"
     },
     {
       "kind": "interface",
@@ -34626,7 +34810,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L215-L218"
+      "specLocation": "_global/health_report/types.ts#L217-L220"
     },
     {
       "kind": "interface",
@@ -34654,7 +34838,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L166-L170"
+      "specLocation": "_global/health_report/types.ts#L168-L172"
     },
     {
       "kind": "interface",
@@ -34697,7 +34881,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L171-L175"
+      "specLocation": "_global/health_report/types.ts#L173-L177"
     },
     {
       "kind": "interface",
@@ -34754,7 +34938,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L69-L74"
+      "specLocation": "_global/health_report/types.ts#L71-L76"
     },
     {
       "kind": "enum",
@@ -34776,7 +34960,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L76-L81"
+      "specLocation": "_global/health_report/types.ts#L78-L83"
     },
     {
       "kind": "enum",
@@ -34857,7 +35041,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L94-L97"
+      "specLocation": "_global/health_report/types.ts#L96-L99"
     },
     {
       "kind": "interface",
@@ -34975,9 +35159,25 @@
               "namespace": "_global.health_report"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "dlm_frozen_transitions",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DlmFrozenTransitionsIndicator",
+              "namespace": "_global.health_report"
+            }
+          }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L33-L44"
+      "specLocation": "_global/health_report/types.ts#L33-L46"
     },
     {
       "kind": "interface",
@@ -35005,7 +35205,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L83-L87"
+      "specLocation": "_global/health_report/types.ts#L85-L89"
     },
     {
       "kind": "interface",
@@ -35048,7 +35248,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L102-L106"
+      "specLocation": "_global/health_report/types.ts#L104-L108"
     },
     {
       "kind": "interface",
@@ -35108,7 +35308,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L88-L93"
+      "specLocation": "_global/health_report/types.ts#L90-L95"
     },
     {
       "kind": "interface",
@@ -35140,7 +35340,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L98-L101"
+      "specLocation": "_global/health_report/types.ts#L100-L103"
     },
     {
       "kind": "interface",
@@ -35217,7 +35417,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L226-L237"
+      "specLocation": "_global/health_report/types.ts#L228-L239"
     },
     {
       "kind": "interface",
@@ -35245,7 +35445,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L220-L224"
+      "specLocation": "_global/health_report/types.ts#L222-L226"
     },
     {
       "kind": "interface",
@@ -35273,7 +35473,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L139-L143"
+      "specLocation": "_global/health_report/types.ts#L141-L145"
     },
     {
       "kind": "interface",
@@ -35319,7 +35519,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L144-L148"
+      "specLocation": "_global/health_report/types.ts#L146-L150"
     },
     {
       "kind": "request",
@@ -35518,7 +35718,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L108-L112"
+      "specLocation": "_global/health_report/types.ts#L110-L114"
     },
     {
       "kind": "interface",
@@ -35638,7 +35838,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L113-L124"
+      "specLocation": "_global/health_report/types.ts#L115-L126"
     },
     {
       "kind": "interface",
@@ -35666,7 +35866,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L193-L197"
+      "specLocation": "_global/health_report/types.ts#L195-L199"
     },
     {
       "kind": "interface",
@@ -35698,7 +35898,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L199-L202"
+      "specLocation": "_global/health_report/types.ts#L201-L204"
     },
     {
       "kind": "interface",
@@ -35730,7 +35930,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L204-L207"
+      "specLocation": "_global/health_report/types.ts#L206-L209"
     },
     {
       "kind": "interface",
@@ -35758,7 +35958,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L177-L181"
+      "specLocation": "_global/health_report/types.ts#L179-L183"
     },
     {
       "kind": "interface",
@@ -35801,7 +36001,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L182-L186"
+      "specLocation": "_global/health_report/types.ts#L184-L188"
     },
     {
       "kind": "interface",
@@ -35844,7 +36044,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L188-L191"
+      "specLocation": "_global/health_report/types.ts#L190-L193"
     },
     {
       "kind": "interface",
@@ -35887,7 +36087,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L160-L164"
+      "specLocation": "_global/health_report/types.ts#L162-L166"
     },
     {
       "kind": "request",
