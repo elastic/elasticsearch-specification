@@ -41,6 +41,8 @@ export class Indicators {
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
   project_encryption_key?: ProjectEncryptionKeyIndicator
+  /** @availability stack since=9.6.0 */
+  dlm_frozen_transitions?: DlmFrozenTransitionsIndicator
 }
 
 export class BaseIndicator {
@@ -234,4 +236,33 @@ export class ProjectEncryptionKeyDetails {
   key_count?: integer
   metadata_password_id?: string
   state: string
+}
+
+/** DLM_FROZEN_TRANSITIONS **/
+
+export class DlmFrozenTransitionsIndicator extends BaseIndicator {
+  details?: DlmFrozenTransitionsIndicatorDetails
+}
+
+export class DlmFrozenTransitionsIndicatorDetails {
+  transitions_enabled?: boolean
+  service_running?: boolean
+  default_repository_configured?: boolean
+  overdue_indices_count?: integer
+  overdue_indices_count_by_state?: Dictionary<DlmFrozenTransitionState, integer>
+  overdue_indices_sample?: DlmFrozenTransitionOverdueIndex[]
+  /** Only present when the indicator status is `unknown`, meaning the health snapshot is stale. */
+  generated_at_millis?: long
+}
+
+export enum DlmFrozenTransitionState {
+  unmarked,
+  marked,
+  queued,
+  running
+}
+
+export class DlmFrozenTransitionOverdueIndex {
+  index_name: IndexName
+  transition_state: DlmFrozenTransitionState
 }
