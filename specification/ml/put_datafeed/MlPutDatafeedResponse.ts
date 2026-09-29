@@ -40,7 +40,6 @@ export class Response {
     job_id: Id
     indices_options?: IndicesOptions
     max_empty_searches?: integer
-    max_consecutive_extraction_failures?: integer
     query: QueryContainer
     query_delay: Duration
     runtime_mappings?: RuntimeFields
