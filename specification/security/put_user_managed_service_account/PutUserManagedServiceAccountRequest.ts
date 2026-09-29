@@ -78,5 +78,10 @@ export interface Request extends RequestBase {
      * @server_default true
      */
     enabled?: boolean
+    /**
+     * A free-text description of the account, as sent on the last PUT of the account.
+     * It has no meaning to Elasticsearch. Absent when the account has no description.
+     */
+    description?: string
   }
 }
