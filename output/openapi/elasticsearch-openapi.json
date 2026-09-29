@@ -12654,110 +12654,6 @@
         ]
       }
     },
-    "/_query/data_source/_test": {
-      "post": {
-        "tags": [
-          "esql"
-        ],
-        "summary": "Test an ES|QL data source connection",
-        "description": "Tests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
-        "externalDocs": {
-          "description": "ES|QL Data Federation",
-          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
-        },
-        "operationId": "esql-test-data-source-connection",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
-                    "type": "string"
-                  },
-                  "settings": {
-                    "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "object"
-                    }
-                  }
-                },
-                "required": [
-                  "type"
-                ]
-              },
-              "examples": {
-                "TestDataSourceConnectionRequestExample1": {
-                  "summary": "Test an S3 data source connection",
-                  "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
-                  "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "description": "The outcome of the connection test.",
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/esql.test_data_source_connection.DataSourceTestStatus"
-                        }
-                      ]
-                    },
-                    "error": {
-                      "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
-                      "type": "string"
-                    },
-                    "message": {
-                      "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "status"
-                  ]
-                },
-                "examples": {
-                  "TestDataSourceConnectionResponseExample1": {
-                    "summary": "Successful connection test",
-                    "description": "The credentials are valid and the backend is reachable.",
-                    "value": "{\n  \"status\": \"success\"\n}"
-                  },
-                  "TestDataSourceConnectionResponseExample2": {
-                    "summary": "Failed connection test",
-                    "description": "The probe ran but the credentials were rejected.",
-                    "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
-                  },
-                  "TestDataSourceConnectionResponseExample3": {
-                    "summary": "Untestable connection",
-                    "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
-                    "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Experimental; Added in 9.5.0",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
     "/{index}/_source/{id}": {
       "get": {
         "tags": [
@@ -31390,10 +31286,6 @@
                     "description": "If a real-time datafeed has never seen any data (including during any initial training period), it automatically\nstops and closes the associated job after this many real-time searches return no documents. In other words,\nit stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no\nend time that sees no data remains started until it is explicitly stopped. By default, it is not set.",
                     "type": "number"
                   },
-                  "max_consecutive_extraction_failures": {
-                    "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
-                    "type": "number"
-                  },
                   "query": {
                     "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch.",
                     "default": "{\"match_all\": {\"boost\": 1}}",
@@ -31521,9 +31413,6 @@
                       ]
                     },
                     "max_empty_searches": {
-                      "type": "number"
-                    },
-                    "max_consecutive_extraction_failures": {
                       "type": "number"
                     },
                     "query": {
@@ -37324,10 +37213,6 @@
                     "description": "If a real-time datafeed has never seen any data (including during any initial training period), it automatically\nstops and closes the associated job after this many real-time searches return no documents. In other words,\nit stops after `frequency` times `max_empty_searches` of real-time operation. If not set, a datafeed with no\nend time that sees no data remains started until it is explicitly stopped. By default, it is not set.",
                     "type": "number"
                   },
-                  "max_consecutive_extraction_failures": {
-                    "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
-                    "type": "number"
-                  },
                   "query": {
                     "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch. Note that if you change the query, the analyzed data is also\nchanged. Therefore, the time required to learn might be long and the understandability of the results is\nunpredictable. If you want to make significant changes to the source data, it is recommended that you\nclone the job and datafeed and make the amendments in the clone. Let both run in parallel and close one\nwhen you are satisfied with the results of the job.",
                     "default": "{\"match_all\": {\"boost\": 1}}",
@@ -37448,9 +37333,6 @@
                       ]
                     },
                     "max_empty_searches": {
-                      "type": "number"
-                    },
-                    "max_consecutive_extraction_failures": {
                       "type": "number"
                     },
                     "query": {
@@ -101711,14 +101593,6 @@
           "query"
         ]
       },
-      "esql.test_data_source_connection.DataSourceTestStatus": {
-        "type": "string",
-        "enum": [
-          "success",
-          "failure",
-          "untestable"
-        ]
-      },
       "_types.InlineGet": {
         "type": "object",
         "properties": {
@@ -123751,10 +123625,6 @@
           },
           "max_empty_searches": {
             "description": "If a real-time datafeed has never seen any data (including during any initial training period) then it will automatically stop itself and close its associated job after this many real-time searches that return no documents. In other words, it will stop after `frequency` times `max_empty_searches` of real-time operation. If not set then a datafeed with no end time that sees no data will remain started until it is explicitly stopped.",
-            "type": "number"
-          },
-          "max_consecutive_extraction_failures": {
-            "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it automatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any cycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly one day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop and retry indefinitely. Values of `0` or less than `-1` are rejected.",
             "type": "number"
           },
           "query": {

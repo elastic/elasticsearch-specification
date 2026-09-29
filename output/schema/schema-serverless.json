@@ -3185,55 +3185,6 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
-          "visibility": "public"
-        },
-        "stack": {
-          "since": "9.5.0",
-          "stability": "experimental",
-          "visibility": "public"
-        }
-      },
-      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
-      "docId": "esql-test-data-source-connection",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-data-source-test-connection",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-data-source-test-connection",
-      "extDocDescription": "ES|QL Data Federation",
-      "extDocId": "esql-data-federation",
-      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation",
-      "name": "esql.test_data_source_connection",
-      "privileges": {
-        "cluster": [
-          "manage"
-        ]
-      },
-      "request": {
-        "name": "Request",
-        "namespace": "esql.test_data_source_connection"
-      },
-      "requestBodyRequired": true,
-      "requestMediaType": [
-        "application/json"
-      ],
-      "response": {
-        "name": "Response",
-        "namespace": "esql.test_data_source_connection"
-      },
-      "responseMediaType": [
-        "application/json"
-      ],
-      "urls": [
-        {
-          "methods": [
-            "POST"
-          ],
-          "path": "/_query/data_source/_test"
-        }
-      ]
-    },
-    {
-      "availability": {
-        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -26819,136 +26770,6 @@
         "namespace": "esql.query"
       },
       "specLocation": "esql/query/QueryResponse.ts#L22-L25"
-    },
-    {
-      "attachedBehaviors": [
-        "CommonQueryParameters"
-      ],
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
-            "name": "type",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
-            "name": "settings",
-            "required": false,
-            "type": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "kind": "user_defined_value"
-              }
-            }
-          }
-        ]
-      },
-      "description": "Test an ES|QL data source connection.\n\nTests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.",
-      "examples": {
-        "TestDataSourceConnectionRequestExample1": {
-          "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
-          "method_request": "POST /_query/data_source/_test",
-          "summary": "Test an S3 data source connection",
-          "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
-        }
-      },
-      "inherits": {
-        "type": {
-          "name": "RequestBase",
-          "namespace": "_types"
-        }
-      },
-      "kind": "request",
-      "name": {
-        "name": "Request",
-        "namespace": "esql.test_data_source_connection"
-      },
-      "path": [],
-      "query": [],
-      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionRequest.ts#L25-L62"
-    },
-    {
-      "body": {
-        "kind": "properties",
-        "properties": [
-          {
-            "description": "The outcome of the connection test.",
-            "name": "status",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "DataSourceTestStatus",
-                "namespace": "esql.test_data_source_connection"
-              }
-            }
-          },
-          {
-            "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
-            "name": "error",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          },
-          {
-            "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
-            "name": "message",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            }
-          }
-        ]
-      },
-      "examples": {
-        "TestDataSourceConnectionResponseExample1": {
-          "description": "The credentials are valid and the backend is reachable.",
-          "summary": "Successful connection test",
-          "value": "{\n  \"status\": \"success\"\n}"
-        },
-        "TestDataSourceConnectionResponseExample2": {
-          "description": "The probe ran but the credentials were rejected.",
-          "summary": "Failed connection test",
-          "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
-        },
-        "TestDataSourceConnectionResponseExample3": {
-          "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
-          "summary": "Untestable connection",
-          "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
-        }
-      },
-      "kind": "response",
-      "name": {
-        "name": "Response",
-        "namespace": "esql.test_data_source_connection"
-      },
-      "specLocation": "esql/test_data_source_connection/TestDataSourceConnectionResponse.ts#L37-L53"
     },
     {
       "attachedBehaviors": [
@@ -54044,18 +53865,6 @@
             }
           },
           {
-            "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
-            "name": "max_consecutive_extraction_failures",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch.",
             "name": "query",
             "required": false,
@@ -54268,7 +54077,7 @@
           }
         }
       ],
-      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L210"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedRequest.ts#L38-L202"
     },
     {
       "body": {
@@ -54399,17 +54208,6 @@
             }
           },
           {
-            "name": "max_consecutive_extraction_failures",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "name": "query",
             "required": true,
             "type": {
@@ -54482,7 +54280,7 @@
         "name": "Response",
         "namespace": "ml.put_datafeed"
       },
-      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L58"
+      "specLocation": "ml/put_datafeed/MlPutDatafeedResponse.ts#L31-L57"
     },
     {
       "attachedBehaviors": [
@@ -57451,18 +57249,6 @@
             }
           },
           {
-            "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it\nautomatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any\ncycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly\none day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop\nand retry indefinitely. Values of `0` or less than `-1` are rejected.",
-            "name": "max_consecutive_extraction_failures",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an\nElasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this\nobject is passed verbatim to Elasticsearch. Note that if you change the query, the analyzed data is also\nchanged. Therefore, the time required to learn might be long and the understandability of the results is\nunpredictable. If you want to make significant changes to the source data, it is recommended that you\nclone the job and datafeed and make the amendments in the clone. Let both run in parallel and close one\nwhen you are satisfied with the results of the job.",
             "name": "query",
             "required": false,
@@ -57673,7 +57459,7 @@
           }
         }
       ],
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L197"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedRequest.ts#L31-L189"
     },
     {
       "body": {
@@ -57805,17 +57591,6 @@
             }
           },
           {
-            "name": "max_consecutive_extraction_failures",
-            "required": false,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "integer",
-                "namespace": "_types"
-              }
-            }
-          },
-          {
             "name": "query",
             "required": true,
             "type": {
@@ -57888,7 +57663,7 @@
         "name": "Response",
         "namespace": "ml.update_datafeed"
       },
-      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L61"
+      "specLocation": "ml/update_datafeed/MlUpdateDatafeedResponse.ts#L31-L60"
     },
     {
       "attachedBehaviors": [
@@ -141113,7 +140888,7 @@
         "name": "ChunkingMode",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L269-L273"
+      "specLocation": "ml/_types/Datafeed.ts#L265-L269"
     },
     {
       "kind": "enum",
@@ -141169,7 +140944,7 @@
         "name": "DatafeedState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/Datafeed.ts#L160-L165"
+      "specLocation": "ml/_types/Datafeed.ts#L156-L161"
     },
     {
       "kind": "enum",
@@ -180972,7 +180747,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L167-L196"
+      "specLocation": "ml/_types/Datafeed.ts#L163-L192"
     },
     {
       "kind": "interface",
@@ -181092,7 +180867,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L198-L226"
+      "specLocation": "ml/_types/Datafeed.ts#L194-L222"
     },
     {
       "kind": "interface",
@@ -181162,7 +180937,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L228-L232"
+      "specLocation": "ml/_types/Datafeed.ts#L224-L228"
     },
     {
       "kind": "interface",
@@ -181208,7 +180983,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L234-L248"
+      "specLocation": "ml/_types/Datafeed.ts#L230-L244"
     },
     {
       "kind": "interface",
@@ -181284,7 +181059,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L250-L267"
+      "specLocation": "ml/_types/Datafeed.ts#L246-L263"
     },
     {
       "kind": "interface",
@@ -181589,7 +181364,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L275-L288"
+      "specLocation": "ml/_types/Datafeed.ts#L271-L284"
     },
     {
       "kind": "interface",
@@ -181623,7 +181398,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L146-L157"
+      "specLocation": "ml/_types/Datafeed.ts#L142-L153"
     },
     {
       "description": "Controls how to deal with unavailable concrete indices (closed or missing), how wildcard expressions are expanded\nto actual indices (all, closed or open indices) and how to deal with wildcard expressions that resolve to no indices.",
@@ -186974,18 +186749,6 @@
           }
         },
         {
-          "description": "The maximum number of consecutive real-time data extraction failures the datafeed tolerates before it automatically stops itself, leaving the associated job open. The consecutive-failure counter resets on any cycle that extracts successfully, including empty-data cycles. If not set, the threshold defaults to roughly one day's worth of searches based on the datafeed `frequency` (floored at 1). Set to `-1` to disable auto-stop and retry indefinitely. Values of `0` or less than `-1` are rejected.",
-          "name": "max_consecutive_extraction_failures",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "The Elasticsearch query domain-specific language (DSL). This value corresponds to the query object in an Elasticsearch search POST body. All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.",
           "name": "query",
           "required": false,
@@ -187058,7 +186821,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/Datafeed.ts#L74-L144"
+      "specLocation": "ml/_types/Datafeed.ts#L74-L140"
     },
     {
       "kind": "interface",
