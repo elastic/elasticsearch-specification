@@ -21565,6 +21565,8 @@ export interface SecurityFieldSecurity {
 
 export interface SecurityGlobalPrivilege {
   application?: SecurityApplicationGlobalUserPrivileges
+  profile?: SecurityWriteProfileGlobalUserPrivileges
+  role?: SecurityManageRolesGlobalUserPrivileges
   data_source?: SecurityDataSourcePrivileges[]
 }
 
@@ -21589,6 +21591,19 @@ export interface SecurityIndicesPrivilegesBase {
 }
 
 export type SecurityIndicesPrivilegesQuery = string | QueryDslQueryContainer | SecurityRoleTemplateQuery
+
+export interface SecurityManageRolesGlobalUserPrivileges {
+  manage?: SecurityManageRolesPrivileges
+}
+
+export interface SecurityManageRolesIndexPermissions {
+  names: string[]
+  privileges: string[]
+}
+
+export interface SecurityManageRolesPrivileges {
+  indices: SecurityManageRolesIndexPermissions[]
+}
 
 export interface SecurityManageUserPrivileges {
   applications: string[]
@@ -21772,6 +21787,10 @@ export interface SecurityUserProfileUser {
 export interface SecurityUserProfileWithMetadata extends SecurityUserProfile {
   last_synchronized: long
   _doc: SecurityUserProfileHitMetadata
+}
+
+export interface SecurityWriteProfileGlobalUserPrivileges {
+  write?: SecurityManageUserPrivileges
 }
 
 export interface SecurityActivateUserProfileRequest extends RequestBase {
@@ -22230,6 +22249,7 @@ export interface SecurityGetServiceAccountsUserManagedServiceAccount {
   type: 'user_managed'
   roles: string[]
   enabled: boolean
+  description?: string
 }
 
 export interface SecurityGetServiceCredentialsNodesCredentials {
@@ -22590,6 +22610,7 @@ export interface SecurityPutUserManagedServiceAccountRequest extends RequestBase
   body?: {
     roles: string[]
     enabled?: boolean
+    description?: string
   }
 }
 

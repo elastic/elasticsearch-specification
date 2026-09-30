@@ -142208,7 +142208,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L450-L472"
+      "specLocation": "security/_types/Privileges.ts#L489-L511"
     },
     {
       "kind": "enum",
@@ -143173,7 +143173,7 @@
       },
       "properties": [
         {
-          "description": "The names of the roles granted to the account, as they were given when it was created.\nThey are resolved when the account authenticates.",
+          "description": "The names of the roles granted to the account, as sent on the last PUT of the account.\nThey are resolved when the account authenticates.",
           "name": "roles",
           "required": true,
           "type": {
@@ -143198,9 +143198,21 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "A free-text description of the account, as sent on the last PUT of the account.\nIt has no meaning to Elasticsearch. Absent when the account has no description.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L51-L66"
+      "specLocation": "security/get_service_accounts/types.ts#L51-L71"
     },
     {
       "kind": "enum",
@@ -191156,7 +191168,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L474-L484"
+      "specLocation": "security/_types/Privileges.ts#L513-L523"
     },
     {
       "kind": "interface",
@@ -191219,7 +191231,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L486-L506"
+      "specLocation": "security/_types/Privileges.ts#L525-L545"
     },
     {
       "kind": "interface",

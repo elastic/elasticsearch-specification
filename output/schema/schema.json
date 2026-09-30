@@ -259290,7 +259290,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L431-L433"
+      "specLocation": "security/_types/Privileges.ts#L439-L441"
     },
     {
       "kind": "interface",
@@ -259810,7 +259810,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L450-L472"
+      "specLocation": "security/_types/Privileges.ts#L489-L511"
     },
     {
       "kind": "interface",
@@ -259850,7 +259850,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L439-L448"
+      "specLocation": "security/_types/Privileges.ts#L478-L487"
     },
     {
       "kind": "interface",
@@ -259903,6 +259903,30 @@
           }
         },
         {
+          "description": "A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.",
+          "name": "profile",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WriteProfileGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A privilege that grants the ability to manage roles that are scoped to the specified indices.",
+          "name": "role",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
           "availability": {
             "stack": {
               "since": "9.5.0"
@@ -259923,7 +259947,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L422-L429"
+      "specLocation": "security/_types/Privileges.ts#L422-L437"
     },
     {
       "kind": "enum",
@@ -260301,6 +260325,92 @@
     {
       "kind": "interface",
       "name": {
+        "name": "ManageRolesGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The index-scoped role management privileges.\nAbsent when the `role` section is present but grants no privileges.",
+          "name": "manage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L455-L461"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesIndexPermissions",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices (or index name patterns) that the owners of the role can manage roles for.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The index privileges that the managed roles are allowed to grant on the specified indices.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L467-L476"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ManageRolesIndexPermissions",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L463-L465"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ManageUserPrivileges",
         "namespace": "security._types"
       },
@@ -260320,7 +260430,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L435-L437"
+      "specLocation": "security/_types/Privileges.ts#L443-L445"
     },
     {
       "kind": "interface",
@@ -260745,7 +260855,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L474-L484"
+      "specLocation": "security/_types/Privileges.ts#L513-L523"
     },
     {
       "kind": "interface",
@@ -261605,7 +261715,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L486-L506"
+      "specLocation": "security/_types/Privileges.ts#L525-L545"
     },
     {
       "kind": "interface",
@@ -262236,6 +262346,28 @@
         }
       ],
       "specLocation": "security/_types/UserProfile.ts#L49-L52"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WriteProfileGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The applications for which user profile data can be written.\nAbsent when the `profile` section is present but grants no privileges.",
+          "name": "write",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L447-L453"
     },
     {
       "kind": "request",
@@ -268055,7 +268187,7 @@
           }
         },
         {
-          "description": "The names of the roles granted to the account, as they were given when it was created.\nThey are resolved when the account authenticates.",
+          "description": "The names of the roles granted to the account, as sent on the last PUT of the account.\nThey are resolved when the account authenticates.",
           "name": "roles",
           "required": true,
           "type": {
@@ -268080,9 +268212,21 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "A free-text description of the account, as sent on the last PUT of the account.\nIt has no meaning to Elasticsearch. Absent when the account has no description.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L51-L66"
+      "specLocation": "security/get_service_accounts/types.ts#L51-L71"
     },
     {
       "kind": "interface",
@@ -273136,6 +273280,18 @@
                 "namespace": "_builtins"
               }
             }
+          },
+          {
+            "description": "A free-text description of the account, as sent on the last PUT of the account.\nIt has no meaning to Elasticsearch. Absent when the account has no description.",
+            "name": "description",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -273199,7 +273355,7 @@
           }
         }
       ],
-      "specLocation": "security/put_user_managed_service_account/PutUserManagedServiceAccountRequest.ts#L23-L82"
+      "specLocation": "security/put_user_managed_service_account/PutUserManagedServiceAccountRequest.ts#L23-L87"
     },
     {
       "kind": "response",
