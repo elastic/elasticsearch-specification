@@ -55,7 +55,7 @@ export class UserManagedServiceAccount {
    */
   type: 'user_managed'
   /**
-   * The names of the roles granted to the account, as they were given when it was created.
+   * The names of the roles granted to the account, as sent on the last PUT of the account.
    * They are resolved when the account authenticates.
    */
   roles: string[]
@@ -63,4 +63,9 @@ export class UserManagedServiceAccount {
    * Whether the account can authenticate.
    */
   enabled: boolean
+  /**
+   * A free-text description of the account, as sent on the last PUT of the account.
+   * It has no meaning to Elasticsearch. Absent when the account has no description.
+   */
+  description?: string
 }
