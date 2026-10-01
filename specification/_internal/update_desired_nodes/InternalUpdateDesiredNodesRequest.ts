@@ -21,8 +21,8 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import {Stringified} from "@spec_utils/Stringified";
 
 /**
  * Designed for indirect use by ECE/ESS and ECK, direct use is not supported.
