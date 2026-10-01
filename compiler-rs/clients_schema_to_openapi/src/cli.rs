@@ -43,6 +43,10 @@ pub struct Cli {
     /// include the x-codeSamples extension with language examples for all endpoints
     #[argh(switch)]
     pub include_language_examples: bool,
+
+    /// include all endpoints regardless of visibility (for internal tooling)
+    #[argh(switch)]
+    pub internal: bool,
 }
 
 impl Cli {
@@ -82,6 +86,7 @@ impl From<Cli> for Configuration {
         Configuration {
             flavor,
             branch,
+            internal: cli.internal,
             lift_enum_descriptions: cli.lift_enum_descriptions,
             merge_multipath_endpoints: cli.merge_multipath_endpoints,
             multipath_redirects: cli.multipath_redirects,

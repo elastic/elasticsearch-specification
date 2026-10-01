@@ -58,17 +58,8 @@ transform-to-rest-api-spec: ## Generate the REST API spec from the compiled sche
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json
-	@set -euo pipefail; \
-		stack_schema="$$(mktemp)"; \
-		serverless_schema="$$(mktemp)"; \
-		trap 'rm -f "$$stack_schema" "$$serverless_schema"' EXIT; \
-		jq 'walk(if type == "object" and ((.availability? | type) == "object") and (.availability.stack? != null) then .availability.stack.visibility = "public" else . end)' output/schema/schema.json > "$$stack_schema"; \
-		jq 'walk(if type == "object" and ((.availability? | type) == "object") and (.availability.serverless? != null) then .availability.serverless.visibility = "public" else . end)' output/schema/schema.json > "$$serverless_schema"; \
-		rm -f output/openapi/elasticsearch-internal-openapi.json output/openapi/elasticsearch-serverless-internal-openapi.json; \
-		npm run transform-to-openapi -- --schema "$$stack_schema" --flavor stack --output output/openapi/elasticsearch-internal-openapi.json; \
-		test -s output/openapi/elasticsearch-internal-openapi.json; \
-		npm run transform-to-openapi -- --schema "$$serverless_schema" --flavor serverless --output output/openapi/elasticsearch-serverless-internal-openapi.json; \
-		test -s output/openapi/elasticsearch-serverless-internal-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --internal --output output/openapi/elasticsearch-internal-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --internal --output output/openapi/elasticsearch-serverless-internal-openapi.json
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
 	@make generate-language-examples
