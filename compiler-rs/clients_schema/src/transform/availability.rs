@@ -16,13 +16,18 @@
 // under the License.
 
 use std::cell::RefCell;
+use std::collections::{HashMap, HashSet};
 
 use crate::transform::Worksheet;
-use crate::{Availabilities, Body, IndexedModel, Inherits, Property, SchemaExample, TypeDefinition, TypeName, ValueOf};
+use crate::{
+    Availabilities, Body, IndexedModel, Inherits, Property, SchemaExample, TypeAliasVariants, TypeDefinition, TypeName,
+    ValueOf,
+};
 
 pub struct Availability {
     #[allow(clippy::type_complexity)]
     avail_filter: Box<dyn Fn(&Option<Availabilities>) -> bool>,
+    unavailable_internal_tag_variants: HashMap<TypeName, HashSet<TypeName>>,
     // Note: we could have avoided the use of interior mutability by adding
     // a `&mut Worksheet` parameter to all methods.
     worksheet: RefCell<Worksheet>,
@@ -33,8 +38,10 @@ impl Availability {
         mut model: IndexedModel,
         avail_filter: fn(&Option<Availabilities>) -> bool,
     ) -> anyhow::Result<IndexedModel> {
+        let unavailable_internal_tag_variants = Self::find_unavailable_internal_tag_variants(&model, avail_filter);
         let filter = Availability {
             avail_filter: Box::new(avail_filter),
+            unavailable_internal_tag_variants,
             worksheet: Worksheet::default().into(),
         };
 
@@ -66,6 +73,46 @@ impl Availability {
         Ok(model)
     }
 
+    fn find_unavailable_internal_tag_variants(
+        model: &IndexedModel,
+        avail_filter: fn(&Option<Availabilities>) -> bool,
+    ) -> HashMap<TypeName, HashSet<TypeName>> {
+        let mut result = HashMap::new();
+
+        for (alias_name, type_def) in &model.types {
+            let TypeDefinition::TypeAlias(alias) = type_def else {
+                continue;
+            };
+            let Some(TypeAliasVariants::InternalTag(tag)) = &alias.variants else {
+                continue;
+            };
+            let ValueOf::UnionOf(union) = &alias.typ else {
+                continue;
+            };
+
+            for item in &union.items {
+                let ValueOf::InstanceOf(instance) = item else {
+                    continue;
+                };
+                let Ok(TypeDefinition::Interface(variant)) = model.get_type(&instance.typ) else {
+                    continue;
+                };
+                let Some(discriminator) = variant.properties.iter().find(|p| p.name == tag.tag) else {
+                    continue;
+                };
+
+                if !avail_filter(&discriminator.availability) {
+                    result
+                        .entry(alias_name.clone())
+                        .or_insert_with(HashSet::new)
+                        .insert(instance.typ.clone());
+                }
+            }
+        }
+
+        result
+    }
+
     fn is_available(&self, availabilities: &Option<Availabilities>) -> bool {
         (self.avail_filter)(availabilities)
     }
@@ -86,7 +133,15 @@ impl Availability {
                 enm.members.retain(|member| self.is_available(&member.availability));
             }
 
-            TypeDefinition::TypeAlias(ref alias) => {
+            TypeDefinition::TypeAlias(ref mut alias) => {
+                if let Some(unavailable) = self.unavailable_internal_tag_variants.get(&alias.base.name) {
+                    if let ValueOf::UnionOf(ref mut union) = alias.typ {
+                        union.items.retain(|item| match item {
+                            ValueOf::InstanceOf(instance) => !unavailable.contains(&instance.typ),
+                            _ => true,
+                        });
+                    }
+                }
                 self.filter_value_of(&alias.typ);
                 alias.generics.iter().for_each(|g| self.filter_type(g));
             }
@@ -170,5 +225,90 @@ impl Availability {
         if let Some(examples) = examples {
             examples.retain(|_, example| self.is_available(&example.availability));
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::{Flavor, TypeDefinition, ValueOf};
+
+    use super::Availability;
+
+    #[test]
+    fn removes_internal_tag_variant_when_discriminator_is_unavailable() {
+        let schema = r#"
+        {
+          "endpoints": [{
+            "name": "test.endpoint",
+            "description": "Test endpoint",
+            "requestBodyRequired": false,
+            "response": { "name": "Response", "namespace": "test" },
+            "urls": []
+          }],
+          "types": [{
+            "kind": "response",
+            "name": { "name": "Response", "namespace": "test" },
+            "body": {
+              "kind": "value",
+              "value": {
+                "kind": "instance_of",
+                "type": { "name": "Variant", "namespace": "test" }
+              }
+            }
+          }, {
+            "kind": "type_alias",
+            "name": { "name": "Variant", "namespace": "test" },
+            "type": {
+              "kind": "union_of",
+              "items": [{
+                "kind": "instance_of",
+                "type": { "name": "ServerlessVariant", "namespace": "test" }
+              }, {
+                "kind": "instance_of",
+                "type": { "name": "StackVariant", "namespace": "test" }
+              }]
+            },
+            "variants": { "kind": "internal_tag", "tag": "type" }
+          }, {
+            "kind": "interface",
+            "name": { "name": "ServerlessVariant", "namespace": "test" },
+            "properties": [{
+              "name": "type",
+              "required": true,
+              "type": { "kind": "literal_value", "value": "serverless" }
+            }]
+          }, {
+            "kind": "interface",
+            "name": { "name": "StackVariant", "namespace": "test" },
+            "properties": [{
+              "availability": { "stack": {} },
+              "name": "type",
+              "required": true,
+              "type": { "kind": "literal_value", "value": "stack" }
+            }]
+          }]
+        }
+        "#;
+        let model = crate::IndexedModel::from_reader(schema.as_bytes()).unwrap();
+
+        let filtered = Availability::filter(model, |a| Flavor::Serverless.available(a)).unwrap();
+
+        let alias = filtered
+            .types
+            .values()
+            .find_map(|type_def| match type_def {
+                TypeDefinition::TypeAlias(alias) if alias.base.name.name == "Variant" => Some(alias),
+                _ => None,
+            })
+            .unwrap();
+        let ValueOf::UnionOf(union) = &alias.typ else {
+            panic!("expected a union alias");
+        };
+        assert_eq!(union.items.len(), 1);
+        let ValueOf::InstanceOf(variant) = &union.items[0] else {
+            panic!("expected a type reference");
+        };
+        assert_eq!(variant.typ.name.as_str(), "ServerlessVariant");
+        assert!(!filtered.types.keys().any(|name| name.name.as_str() == "StackVariant"));
     }
 }

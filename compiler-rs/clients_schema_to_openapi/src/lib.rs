@@ -34,6 +34,9 @@ pub struct Configuration {
     pub namespaces: Option<Vec<String>>,
     pub branch: Option<String>,
 
+    /// Include all endpoints regardless of visibility (for internal tooling).
+    pub internal: bool,
+
     /// If a property value is an enumeration, the description of possible values will be copied in the
     /// property's description (also works for arrays of enums).
     pub lift_enum_descriptions: bool,
@@ -63,12 +66,12 @@ pub fn convert_schema(mut schema: IndexedModel, config: Configuration, product_m
     // Filter flavor
     let filter: Option<fn(&Option<Availabilities>) -> bool> = match config.flavor {
         None => None,
+        Some(Flavor::Stack) if config.internal => Some(|a| Flavor::Stack.available(a)),
         Some(Flavor::Stack) => Some(|a| {
-            // Generate only public items for Stack
             Flavor::Stack.visibility(a) == Some(Visibility::Public)
         }),
+        Some(Flavor::Serverless) if config.internal => Some(|a| Flavor::Serverless.available(a)),
         Some(Flavor::Serverless) => Some(|a| {
-            // Generate only public items for Serverless
             Flavor::Serverless.visibility(a) == Some(Visibility::Public)
         }),
     };
@@ -250,6 +253,53 @@ mod tests {
     use super::*;
     use clients_schema::{Availability, Availabilities, Flavor};
     use serde_json::Value;
+
+    #[test]
+    fn internal_flag_includes_private_endpoints() {
+        // A minimal schema with one Stack endpoint marked visibility=private.
+        // Without --internal the endpoint should be filtered out; with it, it must appear.
+        let schema_json = r#"{
+          "endpoints": [{
+            "name": "test.private_op",
+            "description": "A private endpoint",
+            "requestBodyRequired": false,
+            "availability": {
+              "stack": { "visibility": "private", "stability": "stable" }
+            },
+            "urls": [{ "path": "/_test/private", "methods": ["GET"] }],
+            "request": { "name": "PrivateRequest", "namespace": "test" },
+            "response": { "name": "PrivateResponse", "namespace": "test" }
+          }],
+          "types": [{
+            "kind": "request",
+            "name": { "name": "PrivateRequest", "namespace": "test" },
+            "path": [],
+            "query": [],
+            "body": { "kind": "no_body" }
+          }, {
+            "kind": "response",
+            "name": { "name": "PrivateResponse", "namespace": "test" },
+            "body": { "kind": "no_body" }
+          }]
+        }"#;
+
+        let model = clients_schema::IndexedModel::from_reader(schema_json.as_bytes()).unwrap();
+        let config = Configuration {
+            flavor: Some(Flavor::Stack),
+            internal: true,
+            namespaces: None,
+            branch: None,
+            lift_enum_descriptions: false,
+            merge_multipath_endpoints: false,
+            multipath_redirects: false,
+            include_language_examples: false,
+        };
+        let result = convert_schema(model, config, IndexMap::new()).unwrap();
+        assert!(
+            result.openapi.paths.paths.contains_key("/_test/private"),
+            "private endpoint must appear when internal=true"
+        );
+    }
 
     fn stack_availability(stability: Stability, since: Option<&str>) -> Availabilities {
         let mut avails = Availabilities::default();
