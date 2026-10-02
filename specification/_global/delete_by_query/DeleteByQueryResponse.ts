@@ -18,7 +18,7 @@
  */
 
 import { TaskId } from '@_types/common'
-import { BulkIndexByScrollFailure, ShardFailure } from '@_types/Errors'
+import { BulkByPaginatedSearchFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { ReindexStatus } from '@_types/Reindex'
 import { Retries } from '@_types/Retries'
@@ -40,7 +40,7 @@ export class Response {
      * Delete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.
      * You can use the `conflicts` option to prevent reindex from ending on version conflicts.
      */
-    failures: Array<BulkIndexByScrollFailure | ShardFailure>
+    failures: BulkByPaginatedSearchFailure[]
     /**
      * This field is always equal to zero for delete by query.
      * It exists only so that delete by query, update by query, and reindex APIs return responses with the same structure.
