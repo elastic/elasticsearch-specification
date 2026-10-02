@@ -1,0 +1,15 @@
+summary: Embedding task using the url format
+description:
+  Run `POST _inference/embedding/my-multimodal-endpoint` to generate an embedding from an image referenced by URL. The
+  `url` format is available in Elasticsearch 9.6.0 and later.
+method_request: 'POST _inference/embedding/my-multimodal-endpoint'
+value: |-
+  {
+    "input": {
+      "content": {
+        "type": "image",
+        "format": "url",
+        "value": "https://example.com/image.jpg"
+      }
+    }
+  }
