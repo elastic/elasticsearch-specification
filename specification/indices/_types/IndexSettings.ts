@@ -578,7 +578,7 @@ export class SlowlogTresholdLevels {
 }
 
 export class Storage {
-  type: StorageType
+  type?: StorageType
   /**
    * You can restrict the use of the mmapfs and the related hybridfs store type via the setting node.store.allow_mmap.
    * This is a boolean setting indicating whether or not memory-mapping is allowed. The default is to allow it. This
