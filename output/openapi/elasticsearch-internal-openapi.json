@@ -24892,6 +24892,11 @@
                   "summary": "Embedding task using multiple items grouped under a single content object",
                   "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate a single embedding from the example text and image. Multiple items in a single `content` object are available in Elasticsearch 9.5.0 and later.",
                   "value": "{\n  \"input\": [\n    {\n      \"content\": [\n        {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpeg;base64,...\"\n        },\n        {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      ]\n    }\n  ]\n}"
+                },
+                "EmbeddingRequestExample4": {
+                  "summary": "Embedding task using the url format",
+                  "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate an embedding from an image referenced by URL. The `url` format is available in Elasticsearch 9.6.0 and later.",
+                  "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image.jpg\"\n    }\n  }\n}"
                 }
               }
             }
@@ -28757,7 +28762,7 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject example using the `url` format (available in Elasticsearch 9.6.0 and later):\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"url\",\n  \"value\": \"https://example.com/image.jpg\"\n}\n```",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference.rerank.RerankQuery"
@@ -28765,7 +28770,7 @@
                     ]
                   },
                   "input": {
-                    "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```",
+                    "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```\nobject array example using the `url` format (available in Elasticsearch 9.6.0 and later):\n```\n\"input\": [\n  {\n    \"type\": \"image\",\n    \"format\": \"url\",\n    \"value\": \"https://example.com/image.jpg\"\n  }\n]\n```",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/inference.rerank.RerankInput"
@@ -28809,6 +28814,16 @@
                   "summary": "Rerank task",
                   "description": "Run `POST _inference/rerank/bge-reranker-base-mkn` to perform reranking on the example input via Hugging Face",
                   "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": true,\n  \"top_n\": 3\n}"
+                },
+                "RerankRequestExample4": {
+                  "summary": "Rerank task using the url format",
+                  "description": "Run `POST _inference/rerank/my-multimodal-rerank-endpoint` to rank text documents against an image query referenced by URL. The `url` format is available in Elasticsearch 9.6.0 and later.",
+                  "value": "{\n  \"query\": {\n    \"type\": \"image\",\n    \"format\": \"url\",\n    \"value\": \"https://example.com/image.jpg\"\n  },\n  \"input\": [\"some document text\", \"some more document text\"],\n  \"top_n\": 2\n}"
+                },
+                "RerankRequestExample5": {
+                  "summary": "Rerank task using the url format for inputs",
+                  "description": "Run `POST _inference/rerank/my-multimodal-rerank-endpoint` to rank image documents referenced by URL against a text query. The `url` format is available in Elasticsearch 9.6.0 and later.",
+                  "value": "{\n  \"query\": \"a photo of a cat\",\n  \"input\": [\n    {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image1.jpg\"\n    },\n    {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image2.jpg\"\n    }\n  ],\n  \"top_n\": 2\n}"
                 }
               }
             }
@@ -71414,7 +71429,7 @@
             ]
           },
           "value": {
-            "description": "String which may be raw text, or the string representation of some other data such as an image in base64.",
+            "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
             "type": "string"
           }
         },
@@ -71437,7 +71452,8 @@
         "type": "string",
         "enum": [
           "text",
-          "base64"
+          "base64",
+          "url"
         ]
       },
       "_types.TextEmbedding": {
@@ -111690,7 +111706,7 @@
         "type": "object",
         "properties": {
           "input": {
-            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\nSupport for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\nMultiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
+            "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\nSupport for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\n`content` object using the `url` format example (available in Elasticsearch 9.6.0 and later):\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image.jpg\"\n    }\n  }\n```\nMultiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingInput"
@@ -111797,7 +111813,7 @@
             ]
           },
           "format": {
-            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.",
+            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
@@ -111805,7 +111821,7 @@
             ]
           },
           "value": {
-            "description": "The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\"",
+            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
             "type": "string"
           }
         },
@@ -115468,7 +115484,7 @@
             ]
           },
           "format": {
-            "description": "The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.\nIf not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.",
+            "description": "The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64` or `url`.\nIf not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference.rerank.RerankInputFormat"
@@ -115476,7 +115492,7 @@
             ]
           },
           "value": {
-            "description": "The value of the input. For images, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".",
+            "description": "The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, that is, \"https://example.com/image.jpg\".",
             "type": "string"
           }
         },
@@ -115496,7 +115512,8 @@
         "type": "string",
         "enum": [
           "text",
-          "base64"
+          "base64",
+          "url"
         ]
       },
       "inference.rerank.RerankInput": {

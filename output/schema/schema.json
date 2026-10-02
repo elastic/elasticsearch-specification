@@ -60227,7 +60227,7 @@
           }
         },
         {
-          "description": "String which may be raw text, or the string representation of some other data such as an image in base64.",
+          "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
           "name": "value",
           "required": true,
           "type": {
@@ -185648,7 +185648,7 @@
         "name": "AmazonSageMakerApi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L758-L761"
+      "specLocation": "inference/_types/CommonTypes.ts#L773-L776"
     },
     {
       "kind": "enum",
@@ -185667,7 +185667,7 @@
         "name": "AmazonSageMakerElementType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L769-L773"
+      "specLocation": "inference/_types/CommonTypes.ts#L784-L788"
     },
     {
       "kind": "interface",
@@ -185834,7 +185834,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L690-L756"
+      "specLocation": "inference/_types/CommonTypes.ts#L705-L771"
     },
     {
       "kind": "enum",
@@ -185847,7 +185847,7 @@
         "name": "AmazonSageMakerServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L824-L826"
+      "specLocation": "inference/_types/CommonTypes.ts#L839-L841"
     },
     {
       "kind": "enum",
@@ -185866,7 +185866,7 @@
         "name": "AmazonSageMakerSimilarity",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L763-L767"
+      "specLocation": "inference/_types/CommonTypes.ts#L778-L782"
     },
     {
       "kind": "interface",
@@ -185946,7 +185946,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L775-L804"
+      "specLocation": "inference/_types/CommonTypes.ts#L790-L819"
     },
     {
       "kind": "interface",
@@ -185993,7 +185993,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L828-L844"
+      "specLocation": "inference/_types/CommonTypes.ts#L843-L859"
     },
     {
       "kind": "enum",
@@ -186006,7 +186006,7 @@
         "name": "AnthropicServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L878-L880"
+      "specLocation": "inference/_types/CommonTypes.ts#L893-L895"
     },
     {
       "kind": "interface",
@@ -186066,7 +186066,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L846-L871"
+      "specLocation": "inference/_types/CommonTypes.ts#L861-L886"
     },
     {
       "kind": "enum",
@@ -186082,7 +186082,7 @@
         "name": "AnthropicTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L873-L876"
+      "specLocation": "inference/_types/CommonTypes.ts#L888-L891"
     },
     {
       "kind": "interface",
@@ -186156,7 +186156,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L882-L922"
+      "specLocation": "inference/_types/CommonTypes.ts#L897-L937"
     },
     {
       "kind": "enum",
@@ -186169,7 +186169,7 @@
         "name": "AzureAiStudioServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L968-L970"
+      "specLocation": "inference/_types/CommonTypes.ts#L983-L985"
     },
     {
       "kind": "interface",
@@ -186263,7 +186263,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L924-L960"
+      "specLocation": "inference/_types/CommonTypes.ts#L939-L975"
     },
     {
       "kind": "enum",
@@ -186282,7 +186282,7 @@
         "name": "AzureAiStudioTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L962-L966"
+      "specLocation": "inference/_types/CommonTypes.ts#L977-L981"
     },
     {
       "kind": "interface",
@@ -186433,7 +186433,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L972-L1059"
+      "specLocation": "inference/_types/CommonTypes.ts#L987-L1074"
     },
     {
       "kind": "enum",
@@ -186446,7 +186446,7 @@
         "name": "AzureOpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1086-L1088"
+      "specLocation": "inference/_types/CommonTypes.ts#L1101-L1103"
     },
     {
       "kind": "interface",
@@ -186491,7 +186491,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1061-L1078"
+      "specLocation": "inference/_types/CommonTypes.ts#L1076-L1093"
     },
     {
       "kind": "enum",
@@ -186510,7 +186510,7 @@
         "name": "AzureOpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1080-L1084"
+      "specLocation": "inference/_types/CommonTypes.ts#L1095-L1099"
     },
     {
       "kind": "interface",
@@ -187015,7 +187015,7 @@
         "name": "CohereEmbeddingType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1141-L1147"
+      "specLocation": "inference/_types/CommonTypes.ts#L1156-L1162"
     },
     {
       "kind": "enum",
@@ -187037,7 +187037,7 @@
         "name": "CohereInputType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1149-L1154"
+      "specLocation": "inference/_types/CommonTypes.ts#L1164-L1169"
     },
     {
       "kind": "interface",
@@ -187110,7 +187110,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1090-L1129"
+      "specLocation": "inference/_types/CommonTypes.ts#L1105-L1144"
     },
     {
       "kind": "enum",
@@ -187123,7 +187123,7 @@
         "name": "CohereServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1137-L1139"
+      "specLocation": "inference/_types/CommonTypes.ts#L1152-L1154"
     },
     {
       "kind": "enum",
@@ -187142,7 +187142,7 @@
         "name": "CohereSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1156-L1160"
+      "specLocation": "inference/_types/CommonTypes.ts#L1171-L1175"
     },
     {
       "kind": "interface",
@@ -187200,7 +187200,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1168-L1200"
+      "specLocation": "inference/_types/CommonTypes.ts#L1183-L1215"
     },
     {
       "kind": "enum",
@@ -187219,7 +187219,7 @@
         "name": "CohereTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1131-L1135"
+      "specLocation": "inference/_types/CommonTypes.ts#L1146-L1150"
     },
     {
       "kind": "enum",
@@ -187238,7 +187238,7 @@
         "name": "CohereTruncateType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1162-L1166"
+      "specLocation": "inference/_types/CommonTypes.ts#L1177-L1181"
     },
     {
       "kind": "interface",
@@ -187590,7 +187590,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1493-L1514"
+      "specLocation": "inference/_types/CommonTypes.ts#L1508-L1529"
     },
     {
       "kind": "enum",
@@ -187603,7 +187603,7 @@
         "name": "ContextualAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1489-L1491"
+      "specLocation": "inference/_types/CommonTypes.ts#L1504-L1506"
     },
     {
       "kind": "interface",
@@ -187637,7 +187637,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1516-L1528"
+      "specLocation": "inference/_types/CommonTypes.ts#L1531-L1543"
     },
     {
       "kind": "interface",
@@ -187694,7 +187694,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1288-L1299"
+      "specLocation": "inference/_types/CommonTypes.ts#L1303-L1314"
     },
     {
       "kind": "interface",
@@ -187727,7 +187727,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1301-L1455"
+      "specLocation": "inference/_types/CommonTypes.ts#L1316-L1470"
     },
     {
       "kind": "enum",
@@ -187749,7 +187749,7 @@
         "name": "CustomServiceInputType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1202-L1207"
+      "specLocation": "inference/_types/CommonTypes.ts#L1217-L1222"
     },
     {
       "kind": "type_alias",
@@ -187757,7 +187757,7 @@
         "name": "CustomServiceQueryParameter",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1209-L1209",
+      "specLocation": "inference/_types/CommonTypes.ts#L1224-L1224",
       "type": {
         "kind": "array_of",
         "value": {
@@ -187911,7 +187911,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1211-L1286"
+      "specLocation": "inference/_types/CommonTypes.ts#L1226-L1301"
     },
     {
       "kind": "enum",
@@ -187924,7 +187924,7 @@
         "name": "CustomServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1464-L1466"
+      "specLocation": "inference/_types/CommonTypes.ts#L1479-L1481"
     },
     {
       "kind": "type_alias",
@@ -187932,7 +187932,7 @@
         "name": "CustomTaskParameter",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1468-L1468",
+      "specLocation": "inference/_types/CommonTypes.ts#L1483-L1483",
       "type": {
         "kind": "union_of",
         "items": [
@@ -188005,7 +188005,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1470-L1487"
+      "specLocation": "inference/_types/CommonTypes.ts#L1485-L1502"
     },
     {
       "kind": "enum",
@@ -188027,7 +188027,7 @@
         "name": "CustomTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1457-L1462"
+      "specLocation": "inference/_types/CommonTypes.ts#L1472-L1477"
     },
     {
       "kind": "interface",
@@ -188075,7 +188075,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1530-L1550"
+      "specLocation": "inference/_types/CommonTypes.ts#L1545-L1565"
     },
     {
       "kind": "enum",
@@ -188088,7 +188088,7 @@
         "name": "DeepSeekServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1552-L1554"
+      "specLocation": "inference/_types/CommonTypes.ts#L1567-L1569"
     },
     {
       "kind": "interface",
@@ -188317,7 +188317,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1556-L1612"
+      "specLocation": "inference/_types/CommonTypes.ts#L1571-L1627"
     },
     {
       "kind": "enum",
@@ -188330,7 +188330,7 @@
         "name": "ElasticsearchServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1628-L1630"
+      "specLocation": "inference/_types/CommonTypes.ts#L1643-L1645"
     },
     {
       "kind": "interface",
@@ -188353,7 +188353,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1614-L1620"
+      "specLocation": "inference/_types/CommonTypes.ts#L1629-L1635"
     },
     {
       "kind": "enum",
@@ -188372,7 +188372,7 @@
         "name": "ElasticsearchTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1622-L1626"
+      "specLocation": "inference/_types/CommonTypes.ts#L1637-L1641"
     },
     {
       "kind": "interface",
@@ -188418,7 +188418,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1632-L1658"
+      "specLocation": "inference/_types/CommonTypes.ts#L1647-L1673"
     },
     {
       "kind": "enum",
@@ -188431,7 +188431,7 @@
         "name": "ElserServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1664-L1666"
+      "specLocation": "inference/_types/CommonTypes.ts#L1679-L1681"
     },
     {
       "kind": "enum",
@@ -188444,7 +188444,7 @@
         "name": "ElserTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1660-L1662"
+      "specLocation": "inference/_types/CommonTypes.ts#L1675-L1677"
     },
     {
       "kind": "enum",
@@ -188454,13 +188454,16 @@
         },
         {
           "name": "base64"
+        },
+        {
+          "name": "url"
         }
       ],
       "name": {
         "name": "EmbeddingContentFormat",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L681-L688"
+      "specLocation": "inference/_types/CommonTypes.ts#L694-L703"
     },
     {
       "kind": "type_alias",
@@ -188469,7 +188472,7 @@
         "name": "EmbeddingContentInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L624-L629",
+      "specLocation": "inference/_types/CommonTypes.ts#L634-L639",
       "type": {
         "kind": "union_of",
         "items": [
@@ -188514,7 +188517,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L631-L639"
+      "specLocation": "inference/_types/CommonTypes.ts#L641-L649"
     },
     {
       "kind": "type_alias",
@@ -188523,7 +188526,7 @@
         "name": "EmbeddingContentObjectGroup",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L641-L647",
+      "specLocation": "inference/_types/CommonTypes.ts#L651-L657",
       "type": {
         "kind": "union_of",
         "items": [
@@ -188568,7 +188571,7 @@
           }
         },
         {
-          "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.",
+          "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
           "name": "format",
           "required": false,
           "type": {
@@ -188580,7 +188583,7 @@
           }
         },
         {
-          "description": "The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\"",
+          "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
           "name": "value",
           "required": true,
           "type": {
@@ -188592,7 +188595,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L649-L667"
+      "specLocation": "inference/_types/CommonTypes.ts#L659-L680"
     },
     {
       "kind": "enum",
@@ -188617,7 +188620,7 @@
         "name": "EmbeddingContentType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L669-L679"
+      "specLocation": "inference/_types/CommonTypes.ts#L682-L692"
     },
     {
       "kind": "interface",
@@ -188686,7 +188689,7 @@
         "name": "EmbeddingInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L612-L617",
+      "specLocation": "inference/_types/CommonTypes.ts#L622-L627",
       "type": {
         "kind": "union_of",
         "items": [
@@ -188714,7 +188717,7 @@
         "name": "EmbeddingStringInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L619-L622",
+      "specLocation": "inference/_types/CommonTypes.ts#L629-L632",
       "type": {
         "kind": "union_of",
         "items": [
@@ -188898,7 +188901,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2082-L2122"
+      "specLocation": "inference/_types/CommonTypes.ts#L2097-L2137"
     },
     {
       "kind": "enum",
@@ -188911,7 +188914,7 @@
         "name": "FireworksAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2130-L2132"
+      "specLocation": "inference/_types/CommonTypes.ts#L2145-L2147"
     },
     {
       "kind": "enum",
@@ -188930,7 +188933,7 @@
         "name": "FireworksAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2134-L2138"
+      "specLocation": "inference/_types/CommonTypes.ts#L2149-L2153"
     },
     {
       "kind": "interface",
@@ -188975,7 +188978,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2140-L2157"
+      "specLocation": "inference/_types/CommonTypes.ts#L2155-L2172"
     },
     {
       "kind": "enum",
@@ -188994,7 +188997,7 @@
         "name": "FireworksAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2124-L2128"
+      "specLocation": "inference/_types/CommonTypes.ts#L2139-L2143"
     },
     {
       "kind": "enum",
@@ -189007,7 +189010,7 @@
         "name": "GoogleAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1691-L1693"
+      "specLocation": "inference/_types/CommonTypes.ts#L1706-L1708"
     },
     {
       "kind": "interface",
@@ -189055,7 +189058,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1668-L1684"
+      "specLocation": "inference/_types/CommonTypes.ts#L1683-L1699"
     },
     {
       "kind": "enum",
@@ -189071,7 +189074,7 @@
         "name": "GoogleAiStudioTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1686-L1689"
+      "specLocation": "inference/_types/CommonTypes.ts#L1701-L1704"
     },
     {
       "kind": "enum",
@@ -189099,7 +189102,7 @@
         "name": "GoogleModelGardenProvider",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1784-L1791"
+      "specLocation": "inference/_types/CommonTypes.ts#L1799-L1806"
     },
     {
       "kind": "interface",
@@ -189236,7 +189239,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1695-L1782"
+      "specLocation": "inference/_types/CommonTypes.ts#L1710-L1797"
     },
     {
       "kind": "enum",
@@ -189249,7 +189252,7 @@
         "name": "GoogleVertexAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1832-L1834"
+      "specLocation": "inference/_types/CommonTypes.ts#L1847-L1849"
     },
     {
       "kind": "interface",
@@ -189311,7 +189314,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1793-L1816"
+      "specLocation": "inference/_types/CommonTypes.ts#L1808-L1831"
     },
     {
       "kind": "enum",
@@ -189333,7 +189336,7 @@
         "name": "GoogleVertexAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1825-L1830"
+      "specLocation": "inference/_types/CommonTypes.ts#L1840-L1845"
     },
     {
       "kind": "interface",
@@ -189383,7 +189386,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1836-L1858"
+      "specLocation": "inference/_types/CommonTypes.ts#L1851-L1873"
     },
     {
       "kind": "enum",
@@ -189396,7 +189399,7 @@
         "name": "GroqServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1864-L1866"
+      "specLocation": "inference/_types/CommonTypes.ts#L1879-L1881"
     },
     {
       "kind": "enum",
@@ -189409,7 +189412,7 @@
         "name": "GroqTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1860-L1862"
+      "specLocation": "inference/_types/CommonTypes.ts#L1875-L1877"
     },
     {
       "kind": "interface",
@@ -189471,7 +189474,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1868-L1898"
+      "specLocation": "inference/_types/CommonTypes.ts#L1883-L1913"
     },
     {
       "kind": "enum",
@@ -189484,7 +189487,7 @@
         "name": "HuggingFaceServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1919-L1921"
+      "specLocation": "inference/_types/CommonTypes.ts#L1934-L1936"
     },
     {
       "kind": "interface",
@@ -189518,7 +189521,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1900-L1910"
+      "specLocation": "inference/_types/CommonTypes.ts#L1915-L1925"
     },
     {
       "kind": "enum",
@@ -189540,7 +189543,7 @@
         "name": "HuggingFaceTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1912-L1917"
+      "specLocation": "inference/_types/CommonTypes.ts#L1927-L1932"
     },
     {
       "kind": "interface",
@@ -190984,7 +190987,7 @@
         "name": "JinaAIElementType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2028-L2032"
+      "specLocation": "inference/_types/CommonTypes.ts#L2043-L2047"
     },
     {
       "kind": "interface",
@@ -191086,7 +191089,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1923-L1971"
+      "specLocation": "inference/_types/CommonTypes.ts#L1938-L1986"
     },
     {
       "kind": "enum",
@@ -191099,7 +191102,7 @@
         "name": "JinaAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2011-L2013"
+      "specLocation": "inference/_types/CommonTypes.ts#L2026-L2028"
     },
     {
       "kind": "enum",
@@ -191118,7 +191121,7 @@
         "name": "JinaAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2015-L2019"
+      "specLocation": "inference/_types/CommonTypes.ts#L2030-L2034"
     },
     {
       "kind": "interface",
@@ -191176,7 +191179,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1973-L2003"
+      "specLocation": "inference/_types/CommonTypes.ts#L1988-L2018"
     },
     {
       "kind": "enum",
@@ -191195,7 +191198,7 @@
         "name": "JinaAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2005-L2009"
+      "specLocation": "inference/_types/CommonTypes.ts#L2020-L2024"
     },
     {
       "kind": "enum",
@@ -191217,7 +191220,7 @@
         "name": "JinaAITextEmbeddingTask",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2021-L2026"
+      "specLocation": "inference/_types/CommonTypes.ts#L2036-L2041"
     },
     {
       "kind": "interface",
@@ -191289,7 +191292,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2034-L2064"
+      "specLocation": "inference/_types/CommonTypes.ts#L2049-L2079"
     },
     {
       "kind": "enum",
@@ -191302,7 +191305,7 @@
         "name": "LlamaServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2072-L2074"
+      "specLocation": "inference/_types/CommonTypes.ts#L2087-L2089"
     },
     {
       "kind": "enum",
@@ -191321,7 +191324,7 @@
         "name": "LlamaSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2076-L2080"
+      "specLocation": "inference/_types/CommonTypes.ts#L2091-L2095"
     },
     {
       "kind": "enum",
@@ -191340,7 +191343,7 @@
         "name": "LlamaTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2066-L2070"
+      "specLocation": "inference/_types/CommonTypes.ts#L2081-L2085"
     },
     {
       "kind": "interface",
@@ -191892,7 +191895,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2159-L2246"
+      "specLocation": "inference/_types/CommonTypes.ts#L2174-L2261"
     },
     {
       "kind": "enum",
@@ -191905,7 +191908,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2280-L2282"
+      "specLocation": "inference/_types/CommonTypes.ts#L2295-L2297"
     },
     {
       "kind": "enum",
@@ -191924,7 +191927,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2248-L2252"
+      "specLocation": "inference/_types/CommonTypes.ts#L2263-L2267"
     },
     {
       "kind": "interface",
@@ -191969,7 +191972,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2254-L2271"
+      "specLocation": "inference/_types/CommonTypes.ts#L2269-L2286"
     },
     {
       "kind": "enum",
@@ -191991,7 +191994,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2273-L2278"
+      "specLocation": "inference/_types/CommonTypes.ts#L2288-L2293"
     },
     {
       "kind": "interface",
@@ -192073,7 +192076,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2284-L2317"
+      "specLocation": "inference/_types/CommonTypes.ts#L2299-L2332"
     },
     {
       "kind": "enum",
@@ -192086,7 +192089,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2326-L2328"
+      "specLocation": "inference/_types/CommonTypes.ts#L2341-L2343"
     },
     {
       "kind": "enum",
@@ -192105,7 +192108,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2330-L2334"
+      "specLocation": "inference/_types/CommonTypes.ts#L2345-L2349"
     },
     {
       "kind": "interface",
@@ -192139,7 +192142,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2336-L2345"
+      "specLocation": "inference/_types/CommonTypes.ts#L2351-L2360"
     },
     {
       "kind": "enum",
@@ -192161,7 +192164,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2319-L2324"
+      "specLocation": "inference/_types/CommonTypes.ts#L2334-L2339"
     },
     {
       "kind": "interface",
@@ -192624,7 +192627,7 @@
       },
       "properties": [
         {
-          "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\nSupport for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\nMultiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
+          "description": "Inference input.\nEither a string, an array of strings, a `content` object, or an array of `content` objects.\n`content` objects may contain a single item or an array of items. Models that support multiple items per `content`\nobject will return a single embedding for each `content` object, regardless of how many items it contains.\nSupport for multiple items in a single `content` object is available in Elasticsearch 9.5.0 and later.\n\nstring example:\n```\n\"input\": \"Some text\"\n```\nstring array example:\n```\n\"input\": [\"Some text\", \"Some more text\"]\n```\n`content` object example:\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"text\",\n      \"format\": \"text\",\n      \"value\": \"Some text to generate an embedding\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"base64\",\n      \"value\": \"data:image/jpeg;base64,...\"\n    }\n  }\n]\n```\n`content` object using the `url` format example (available in Elasticsearch 9.6.0 and later):\n```\n\"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image.jpg\"\n    }\n  }\n```\nMultiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):\n```\n\"input\": [\n  {\n    \"content\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"base64\",\n        \"value\": \"data:image/jpeg;base64,...\"\n      },\n      {\n        \"type\": \"text\",\n        \"value\": \"Some text to create an embedding\"\n      }\n    ]\n  }\n]\n```",
           "name": "input",
           "required": true,
           "type": {
@@ -192660,7 +192663,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L527-L610"
+      "specLocation": "inference/_types/CommonTypes.ts#L527-L620"
     },
     {
       "kind": "interface",
@@ -193472,7 +193475,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1818-L1823"
+      "specLocation": "inference/_types/CommonTypes.ts#L1833-L1838"
     },
     {
       "kind": "interface",
@@ -193618,7 +193621,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2347-L2378"
+      "specLocation": "inference/_types/CommonTypes.ts#L2362-L2393"
     },
     {
       "kind": "enum",
@@ -193631,7 +193634,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2411-L2413"
+      "specLocation": "inference/_types/CommonTypes.ts#L2426-L2428"
     },
     {
       "kind": "interface",
@@ -193691,7 +193694,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2380-L2404"
+      "specLocation": "inference/_types/CommonTypes.ts#L2395-L2419"
     },
     {
       "kind": "enum",
@@ -193707,7 +193710,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2406-L2409"
+      "specLocation": "inference/_types/CommonTypes.ts#L2421-L2424"
     },
     {
       "kind": "interface",
@@ -193795,7 +193798,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2415-L2451"
+      "specLocation": "inference/_types/CommonTypes.ts#L2430-L2466"
     },
     {
       "kind": "enum",
@@ -193808,7 +193811,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2460-L2462"
+      "specLocation": "inference/_types/CommonTypes.ts#L2475-L2477"
     },
     {
       "kind": "enum",
@@ -193830,7 +193833,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2453-L2458"
+      "specLocation": "inference/_types/CommonTypes.ts#L2468-L2473"
     },
     {
       "kind": "request",
@@ -194535,6 +194538,12 @@
           "method_request": "POST _inference/embedding/my-multimodal-endpoint",
           "summary": "Embedding task using multiple items grouped under a single content object",
           "value": "{\n  \"input\": [\n    {\n      \"content\": [\n        {\n          \"type\": \"image\",\n          \"format\": \"base64\",\n          \"value\": \"data:image/jpeg;base64,...\"\n        },\n        {\n          \"type\": \"text\",\n          \"value\": \"Some text to create an embedding\"\n        }\n      ]\n    }\n  ]\n}"
+        },
+        "EmbeddingRequestExample4": {
+          "description": "Run `POST _inference/embedding/my-multimodal-endpoint` to generate an embedding from an image referenced by URL. The `url` format is available in Elasticsearch 9.6.0 and later.",
+          "method_request": "POST _inference/embedding/my-multimodal-endpoint",
+          "summary": "Embedding task using the url format",
+          "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image.jpg\"\n    }\n  }\n}"
         }
       },
       "inherits": {
@@ -202299,7 +202308,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+            "description": "Query input.\nThe query can be specified as a single string, or as an object.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text queries for the `rerank` task. For all other services, the query must be a string.\n\nstring example:\n```\n\"query\": \"some query text\"\n```\nobject example:\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject example using the `url` format (available in Elasticsearch 9.6.0 and later):\n```\n\"query\": {\n  \"type\": \"image\",\n  \"format\": \"url\",\n  \"value\": \"https://example.com/image.jpg\"\n}\n```",
             "name": "query",
             "required": true,
             "type": {
@@ -202311,7 +202320,7 @@
             }
           },
           {
-            "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```",
+            "description": "The documents to rank.\nThe input can be specified as a single string or an array of strings, or as an object or an array of objects.\nThe object form additionally allows specifying non-text inputs, such as images.\n\n> info\n> Only the `elastic` service currently supports non-text inputs for the `rerank` task. For all other services, the input must be a string or an array of strings.\n\nstring example:\n```\n\"input\": \"some document text\"\n```\nstring array example:\n```\n\"input\": [\"some document text\", \"some more document text\"]\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```\nobject array example:\n```\n\"input\": [\n  {\n    \"type\": \"text\",\n    \"format\": \"text\",\n    \"value\": \"some document text\"\n  },\n  {\n    \"type\": \"image\",\n    \"format\": \"base64\",\n    \"value\": \"data:image/jpeg;base64,...\"\n  }\n]\n```\nobject array example using the `url` format (available in Elasticsearch 9.6.0 and later):\n```\n\"input\": [\n  {\n    \"type\": \"image\",\n    \"format\": \"url\",\n    \"value\": \"https://example.com/image.jpg\"\n  }\n]\n```",
             "name": "input",
             "required": true,
             "type": {
@@ -202469,6 +202478,18 @@
           "method_request": "POST _inference/rerank/bge-reranker-base-mkn",
           "summary": "Rerank task",
           "value": "{\n  \"input\": [\"luke\", \"like\", \"leia\", \"chewy\",\"r2d2\", \"star\", \"wars\"],\n  \"query\": \"star wars main character\",\n  \"return_documents\": true,\n  \"top_n\": 3\n}"
+        },
+        "RerankRequestExample4": {
+          "description": "Run `POST _inference/rerank/my-multimodal-rerank-endpoint` to rank text documents against an image query referenced by URL. The `url` format is available in Elasticsearch 9.6.0 and later.",
+          "method_request": "POST _inference/rerank/my-multimodal-rerank-endpoint",
+          "summary": "Rerank task using the url format",
+          "value": "{\n  \"query\": {\n    \"type\": \"image\",\n    \"format\": \"url\",\n    \"value\": \"https://example.com/image.jpg\"\n  },\n  \"input\": [\"some document text\", \"some more document text\"],\n  \"top_n\": 2\n}"
+        },
+        "RerankRequestExample5": {
+          "description": "Run `POST _inference/rerank/my-multimodal-rerank-endpoint` to rank image documents referenced by URL against a text query. The `url` format is available in Elasticsearch 9.6.0 and later.",
+          "method_request": "POST _inference/rerank/my-multimodal-rerank-endpoint",
+          "summary": "Rerank task using the url format for inputs",
+          "value": "{\n  \"query\": \"a photo of a cat\",\n  \"input\": [\n    {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image1.jpg\"\n    },\n    {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image2.jpg\"\n    }\n  ],\n  \"top_n\": 2\n}"
         }
       },
       "inherits": {
@@ -202510,7 +202531,7 @@
           }
         }
       ],
-      "specLocation": "inference/rerank/RerankRequest.ts#L26-L135"
+      "specLocation": "inference/rerank/RerankRequest.ts#L26-L153"
     },
     {
       "kind": "type_alias",
@@ -202523,7 +202544,7 @@
         "name": "RerankInput",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L147-L156",
+      "specLocation": "inference/rerank/RerankRequest.ts#L165-L174",
       "type": {
         "kind": "union_of",
         "items": [
@@ -202552,13 +202573,16 @@
         },
         {
           "name": "base64"
+        },
+        {
+          "name": "url"
         }
       ],
       "name": {
         "name": "RerankInputFormat",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L195-L202"
+      "specLocation": "inference/rerank/RerankRequest.ts#L216-L225"
     },
     {
       "kind": "interface",
@@ -202581,7 +202605,7 @@
           }
         },
         {
-          "description": "The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.\nIf not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.",
+          "description": "The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64` or `url`.\nIf not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
           "name": "format",
           "required": false,
           "type": {
@@ -202593,7 +202617,7 @@
           }
         },
         {
-          "description": "The value of the input. For images, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".",
+          "description": "The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, that is, \"https://example.com/image.jpg\".",
           "name": "value",
           "required": true,
           "type": {
@@ -202605,7 +202629,7 @@
           }
         }
       ],
-      "specLocation": "inference/rerank/RerankRequest.ts#L168-L185"
+      "specLocation": "inference/rerank/RerankRequest.ts#L186-L206"
     },
     {
       "kind": "enum",
@@ -202621,7 +202645,7 @@
         "name": "RerankInputType",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L187-L193"
+      "specLocation": "inference/rerank/RerankRequest.ts#L208-L214"
     },
     {
       "kind": "type_alias",
@@ -202630,7 +202654,7 @@
         "name": "RerankObjectInput",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L163-L166",
+      "specLocation": "inference/rerank/RerankRequest.ts#L181-L184",
       "type": {
         "kind": "union_of",
         "items": [
@@ -202665,7 +202689,7 @@
         "name": "RerankQuery",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L137-L145",
+      "specLocation": "inference/rerank/RerankRequest.ts#L155-L163",
       "type": {
         "kind": "union_of",
         "items": [
@@ -202693,7 +202717,7 @@
         "name": "RerankStringInput",
         "namespace": "inference.rerank"
       },
-      "specLocation": "inference/rerank/RerankRequest.ts#L158-L161",
+      "specLocation": "inference/rerank/RerankRequest.ts#L176-L179",
       "type": {
         "kind": "union_of",
         "items": [
