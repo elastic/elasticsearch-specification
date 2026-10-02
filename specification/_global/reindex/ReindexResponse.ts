@@ -18,7 +18,7 @@
  */
 
 import { TaskId } from '@_types/common'
-import { BulkIndexByScrollFailure } from '@_types/Errors'
+import { BulkByPaginatedSearchFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { ReindexStatus } from '@_types/Reindex'
 import { Retries } from '@_types/Retries'
@@ -44,7 +44,7 @@ export class Response {
      * Reindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.
      * You can use the `conflicts` option to prevent the reindex from ending on version conflicts.
      */
-    failures?: BulkIndexByScrollFailure[]
+    failures?: BulkByPaginatedSearchFailure[]
     /**
      * The number of documents that were ignored because the script used for the reindex returned a `noop` value for `ctx.op`.
      */
