@@ -148,7 +148,7 @@ export class InferenceString {
   format?: EmbeddingContentFormat | null
 
   /**
-   * String which may be raw text, or the string representation of some other data such as an image in base64.
+   * String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.
    */
   value: string
 }

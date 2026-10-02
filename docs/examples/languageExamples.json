@@ -912,7 +912,7 @@
     },
     {
       "language": "C#",
-      "code": "var response = await client.Snapshot\n    .CreateRepositoryAsync(name: \"my_src_only_repository\", d1 => d1\n        .Repository(new SourceOnlyRepository()\n        {\n            Settings = new SourceOnlyRepositorySettingsForSharedFileSystem()\n            {\n                Location = \"my_backup_repository\"\n            }\n        })\n    );"
+      "code": "var response = await client.Snapshot\n    .CreateRepositoryAsync(name: \"my_src_only_repository\", d1 => d1\n        .Repository(new SourceOnlyRepository()\n        {\n            Settings = new()\n            {\n                DelegateType = \"fs\"\n            }\n        })\n    );"
     },
     {
       "language": "Java",
@@ -1342,27 +1342,27 @@
   "specification/snapshot/restore/examples/request/SnapshotRestoreRequestExample2.yaml": [
     {
       "language": "Python",
-      "code": "resp = client.cluster.put_settings(\n    indices=\"index_1\",\n)"
+      "code": "resp = client.snapshot.restore(\n    repository=\"my_repository\",\n    snapshot=\"snapshot_2\",\n    wait_for_completion=True,\n    indices=\"index_1\",\n)"
     },
     {
       "language": "JavaScript",
-      "code": "const response = await client.cluster.putSettings({\n  indices: \"index_1\",\n});"
+      "code": "const response = await client.snapshot.restore({\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  indices: \"index_1\",\n});"
     },
     {
       "language": "Ruby",
-      "code": "response = client.cluster.put_settings(\n  body: {\n    \"indices\": \"index_1\"\n  }\n)"
+      "code": "response = client.snapshot.restore(\n  repository: \"my_repository\",\n  snapshot: \"snapshot_2\",\n  wait_for_completion: \"true\",\n  body: {\n    \"indices\": \"index_1\"\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$resp = $client->cluster()->putSettings([\n    \"body\" => [\n        \"indices\" => \"index_1\",\n    ],\n]);"
+      "code": "$resp = $client->snapshot()->restore([\n    \"repository\" => \"my_repository\",\n    \"snapshot\" => \"snapshot_2\",\n    \"wait_for_completion\" => \"true\",\n    \"body\" => [\n        \"indices\" => \"index_1\",\n    ],\n]);"
     },
     {
       "language": "curl",
-      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"indices\":\"index_1\"}' \"$ELASTICSEARCH_URL/_cluster/settings\""
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"indices\":\"index_1\"}' \"$ELASTICSEARCH_URL/_snapshot/my_repository/snapshot_2/_restore?wait_for_completion=true\""
     },
     {
       "language": "C#",
-      "code": "var response = await client.Cluster.PutSettingsAsync();"
+      "code": "var response = await client.Snapshot\n    .RestoreAsync(repository: \"my_repository\", snapshot: \"snapshot_2\", d1 => d1\n        .WaitForCompletion(true)\n        .Indices(new[] { \"index_1\" })\n    );"
     },
     {
       "language": "Java",
@@ -16068,7 +16068,7 @@
     },
     {
       "language": "C#",
-      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"cohere_rerank\", d1 => d1\n        .Input(new string[] { \"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\" })\n        .Query(\"star wars main character\")\n    );"
+      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"cohere_rerank\", d1 => d1\n        .Input(\"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\")\n        .Query(\"star wars main character\")\n    );"
     },
     {
       "language": "Java",
@@ -16098,7 +16098,7 @@
     },
     {
       "language": "C#",
-      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"bge-reranker-base-mkn\", d1 => d1\n        .Input(new string[] { \"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\" })\n        .Query(\"star wars main character\")\n        .ReturnDocuments(false)\n        .TopN(2)\n    );"
+      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"bge-reranker-base-mkn\", d1 => d1\n        .Input(\"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\")\n        .Query(\"star wars main character\")\n        .ReturnDocuments(false)\n        .TopN(2)\n    );"
     },
     {
       "language": "Java",
@@ -16128,7 +16128,7 @@
     },
     {
       "language": "C#",
-      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"bge-reranker-base-mkn\", d1 => d1\n        .Input(new string[] { \"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\" })\n        .Query(\"star wars main character\")\n        .ReturnDocuments(true)\n        .TopN(3)\n    );"
+      "code": "var response = await client.Inference\n    .RerankAsync(inferenceId: \"bge-reranker-base-mkn\", d1 => d1\n        .Input(\"luke\", \"like\", \"leia\", \"chewy\", \"r2d2\", \"star\", \"wars\")\n        .Query(\"star wars main character\")\n        .ReturnDocuments(true)\n        .TopN(3)\n    );"
     },
     {
       "language": "Java",
@@ -22205,10 +22205,6 @@
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_geos\":[\"us\",\"eu\"]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
     },
     {
-      "language": "C#",
-      "code": "var response = await client.Inference\n    .PutRegionPolicyAsync(d1 => d1\n        .RegionPolicy(d2 => d2\n            .AllowedGeos(\"us\", \"eu\")\n        )\n    );"
-    },
-    {
       "language": "Java",
       "code": "client.inference().putRegionPolicy(p -> p\n    .regionPolicy(r -> r\n        .allowedGeos(List.of(\"us\",\"eu\"))\n    )\n);\n"
     }
@@ -22233,10 +22229,6 @@
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"region_policy\":{\"allowed_regions\":[{\"csp\":\"aws\",\"region\":\"us-east-1\"},{\"csp\":\"aws\",\"region\":\"eu-west-1\"}]}}' \"$ELASTICSEARCH_URL/_inference/_region_policy\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Inference\n    .PutRegionPolicyAsync(d1 => d1\n        .RegionPolicy(d2 => d2\n            .AllowedRegions(d3 => d3\n                .Csp(\"aws\")\n                .Region(\"us-east-1\"), d3 => d3\n                .Csp(\"aws\")\n                .Region(\"eu-west-1\")\n            )\n        )\n    );"
     },
     {
       "language": "Java",
@@ -22344,19 +22336,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/data_source\",\n  {},\n)"
+      "code": "response = client.esql.get_data_source"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/data_source\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->getDataSource();"
     },
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql.GetDataSourceAsync();"
     },
     {
       "language": "Java",
@@ -22374,19 +22362,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n)"
+      "code": "response = client.esql.get_data_source(\n  name: \"prod_s3_logs\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->getDataSource([\n    \"name\" => \"prod_s3_logs\",\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql\n    .GetDataSourceAsync(d1 => d1\n        .Name(new[] { \"prod_s3_logs\" })\n    );"
     },
     {
       "language": "Java",
@@ -22404,19 +22388,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"PUT\",\n  \"/_query/dataset/access_logs\",\n  {},\n  {\n    \"data_source\": \"prod_s3_logs\",\n    \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n    \"description\": \"Production access logs\",\n    \"settings\": {\n      \"partition_detection\": \"hive\"\n    }\n  },\n  { \"Content-Type\": \"application/json\" },\n)"
+      "code": "response = client.esql.put_dataset(\n  name: \"access_logs\",\n  body: {\n    \"data_source\": \"prod_s3_logs\",\n    \"resource\": \"s3://logs-bucket/access/**/*.parquet\",\n    \"description\": \"Production access logs\",\n    \"settings\": {\n      \"partition_detection\": \"hive\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$streamFactory = Psr17FactoryDiscovery::findStreamFactory();\n$request = $requestFactory->createRequest(\n    \"PUT\",\n    \"/_query/dataset/access_logs\",\n);\n$request = $request->withHeader(\"Content-Type\", \"application/json\");\n$request = $request->withBody($streamFactory->createStream(\n    json_encode([\n        \"data_source\" => \"prod_s3_logs\",\n        \"resource\" => \"s3://logs-bucket/access/**/*.parquet\",\n        \"description\" => \"Production access logs\",\n        \"settings\" => [\n            \"partition_detection\" => \"hive\",\n        ],\n    ]),\n));\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->putDataset([\n    \"name\" => \"access_logs\",\n    \"body\" => [\n        \"data_source\" => \"prod_s3_logs\",\n        \"resource\" => \"s3://logs-bucket/access/**/*.parquet\",\n        \"description\" => \"Production access logs\",\n        \"settings\" => [\n            \"partition_detection\" => \"hive\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"data_source\":\"prod_s3_logs\",\"resource\":\"s3://logs-bucket/access/**/*.parquet\",\"description\":\"Production access logs\",\"settings\":{\"partition_detection\":\"hive\"}}' \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql\n    .PutDatasetAsync(name: \"access_logs\", d1 => d1\n        .DataSource(\"prod_s3_logs\")\n        .Description(\"Production access logs\")\n        .Resource(\"s3://logs-bucket/access/**/*.parquet\")\n        .Settings(new Dictionary<string, object>()\n        {\n            { \"partition_detection\", \"hive\" }\n        })\n    );"
     },
     {
       "language": "Java",
@@ -22434,19 +22414,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"PUT\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n  {\n    \"type\": \"s3\",\n    \"description\": \"Production S3 logs bucket\",\n    \"settings\": {\n      \"region\": \"us-east-1\",\n      \"auth\": \"static_credentials\",\n      \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n      \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    }\n  },\n  { \"Content-Type\": \"application/json\" },\n)"
+      "code": "response = client.esql.put_data_source(\n  name: \"prod_s3_logs\",\n  body: {\n    \"type\": \"s3\",\n    \"description\": \"Production S3 logs bucket\",\n    \"settings\": {\n      \"region\": \"us-east-1\",\n      \"auth\": \"static_credentials\",\n      \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n      \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    }\n  }\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$streamFactory = Psr17FactoryDiscovery::findStreamFactory();\n$request = $requestFactory->createRequest(\n    \"PUT\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$request = $request->withHeader(\"Content-Type\", \"application/json\");\n$request = $request->withBody($streamFactory->createStream(\n    json_encode([\n        \"type\" => \"s3\",\n        \"description\" => \"Production S3 logs bucket\",\n        \"settings\" => [\n            \"region\" => \"us-east-1\",\n            \"auth\" => \"static_credentials\",\n            \"access_key\" => \"<AWS_ACCESS_KEY_ID>\",\n            \"secret_key\" => \"<AWS_SECRET_ACCESS_KEY>\",\n        ],\n    ]),\n));\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->putDataSource([\n    \"name\" => \"prod_s3_logs\",\n    \"body\" => [\n        \"type\" => \"s3\",\n        \"description\" => \"Production S3 logs bucket\",\n        \"settings\" => [\n            \"region\" => \"us-east-1\",\n            \"auth\" => \"static_credentials\",\n            \"access_key\" => \"<AWS_ACCESS_KEY_ID>\",\n            \"secret_key\" => \"<AWS_SECRET_ACCESS_KEY>\",\n        ],\n    ],\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"type\":\"s3\",\"description\":\"Production S3 logs bucket\",\"settings\":{\"region\":\"us-east-1\",\"auth\":\"static_credentials\",\"access_key\":\"<AWS_ACCESS_KEY_ID>\",\"secret_key\":\"<AWS_SECRET_ACCESS_KEY>\"}}' \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql\n    .PutDataSourceAsync(name: \"prod_s3_logs\", d1 => d1\n        .Description(\"Production S3 logs bucket\")\n        .Settings(new Dictionary<string, object>()\n        {\n            { \"region\", \"us-east-1\" },\n            { \"auth\", \"static_credentials\" },\n            { \"access_key\", \"<AWS_ACCESS_KEY_ID>\" },\n            { \"secret_key\", \"<AWS_SECRET_ACCESS_KEY>\" }\n        })\n        .Type(\"s3\")\n    );"
     },
     {
       "language": "Java",
@@ -22464,19 +22440,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/dataset\",\n  {},\n)"
+      "code": "response = client.esql.get_dataset"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/dataset\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->getDataset();"
     },
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql.GetDatasetAsync();"
     },
     {
       "language": "Java",
@@ -22494,19 +22466,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"GET\",\n  \"/_query/dataset/access_logs\",\n  {},\n)"
+      "code": "response = client.esql.get_dataset(\n  name: \"access_logs\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"GET\",\n    \"/_query/dataset/access_logs\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->getDataset([\n    \"name\" => \"access_logs\",\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql\n    .GetDatasetAsync(d1 => d1\n        .Name(new[] { \"access_logs\" })\n    );"
     },
     {
       "language": "Java",
@@ -22524,19 +22492,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"DELETE\",\n  \"/_query/data_source/prod_s3_logs\",\n  {},\n)"
+      "code": "response = client.esql.delete_data_source(\n  name: \"prod_s3_logs\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"DELETE\",\n    \"/_query/data_source/prod_s3_logs\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->deleteDataSource([\n    \"name\" => \"prod_s3_logs\",\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/data_source/prod_s3_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql.DeleteDataSourceAsync(name: new[] { \"prod_s3_logs\" });"
     },
     {
       "language": "Java",
@@ -22554,19 +22518,15 @@
     },
     {
       "language": "Ruby",
-      "code": "response = client.perform_request(\n  \"DELETE\",\n  \"/_query/dataset/access_logs\",\n  {},\n)"
+      "code": "response = client.esql.delete_dataset(\n  name: \"access_logs\"\n)"
     },
     {
       "language": "PHP",
-      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$request = $requestFactory->createRequest(\n    \"DELETE\",\n    \"/_query/dataset/access_logs\",\n);\n$resp = $client->sendRequest($request);"
+      "code": "$resp = $client->esql()->deleteDataset([\n    \"name\" => \"access_logs\",\n]);"
     },
     {
       "language": "curl",
       "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_query/dataset/access_logs\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Esql.DeleteDatasetAsync(name: new[] { \"access_logs\" });"
     },
     {
       "language": "Java",
@@ -22593,10 +22553,6 @@
     {
       "language": "curl",
       "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_encryption/_reset?accept_data_loss=true\""
-    },
-    {
-      "language": "C#",
-      "code": "var response = await client.Encryption\n    .ResetAsync(d1 => d1\n        .AcceptDataLoss(true)\n    );"
     },
     {
       "language": "Java",
@@ -22627,6 +22583,296 @@
     {
       "language": "C#",
       "code": "var response = await client.TransformManagement\n    .PutTransformAsync(transformId: \"ecommerce_transform3\", d1 => d1\n        .Description(\"Latest order for each customer\")\n        .Dest(d2 => d2\n            .Index(\"kibana_sample_data_ecommerce_transform3\")\n        )\n        .Frequency(\"5m\")\n        .Latest(d2 => d2\n            .Sort(x => x.OrderDate)\n            .UniqueKey(x => x.CustomerId)\n        )\n        .Source(d2 => d2\n            .Indices(new[] { \"kibana_sample_data_ecommerce\" })\n        )\n        .Sync(d2 => d2\n            .Time(d3 => d3\n                .Delay(\"60s\")\n                .Field(x => x.OrderDate)\n            )\n        )\n    );"
+    }
+  ],
+  "specification/security/delete_user_managed_service_account/examples/request/DeleteUserManagedServiceAccountRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.security.delete_user_managed_service_account(\n    namespace=\"my-namespace\",\n    service=\"my-service\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.security.deleteUserManagedServiceAccount({\n  namespace: \"my-namespace\",\n  service: \"my-service\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.security.delete_user_managed_service_account(\n  namespace: \"my-namespace\",\n  service: \"my-service\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->security()->deleteUserManagedServiceAccount([\n    \"namespace\" => \"my-namespace\",\n    \"service\" => \"my-service\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X DELETE -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/service/my-namespace/my-service\""
+    }
+  ],
+  "specification/security/get_token/examples/request/GetUserAccessTokenRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.security.get_token(\n    grant_type=\"_user_managed_service_account\",\n    service_account_token=\"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.security.getToken({\n  grant_type: \"_user_managed_service_account\",\n  service_account_token:\n    \"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.security.get_token(\n  body: {\n    \"grant_type\": \"_user_managed_service_account\",\n    \"service_account_token\": \"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\"\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->security()->getToken([\n    \"body\" => [\n        \"grant_type\" => \"_user_managed_service_account\",\n        \"service_account_token\" => \"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\",\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"grant_type\":\"_user_managed_service_account\",\"service_account_token\":\"AAEAAWFwcHMvb2F1dGgyX3dvcmtlci9leGNoYW5nZS10b2tlbjpyNVdhVjNiYUxTX2lPRXhRb0VOSDdR\"}' \"$ELASTICSEARCH_URL/_security/oauth2/token\""
+    }
+  ],
+  "specification/security/get_service_accounts/examples/request/GetServiceAccountsRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.security.get_service_accounts(\n    namespace=\"my-namespace\",\n    type=\"user_managed\",\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.security.getServiceAccounts({\n  namespace: \"my-namespace\",\n  type: \"user_managed\",\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.security.get_service_accounts(\n  namespace: \"my-namespace\",\n  type: \"user_managed\"\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->security()->getServiceAccounts([\n    \"namespace\" => \"my-namespace\",\n    \"type\" => \"user_managed\",\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X GET -H \"Authorization: ApiKey $ELASTIC_API_KEY\" \"$ELASTICSEARCH_URL/_security/service/my-namespace?type=user_managed\""
+    },
+    {
+      "language": "C#",
+      "code": "var response = await client.Security\n    .GetServiceAccountsAsync(d1 => d1\n        .Namespace(\"my-namespace\")\n    );"
+    }
+  ],
+  "specification/security/put_user_managed_service_account/examples/request/PutUserManagedServiceAccountRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.security.put_user_managed_service_account(\n    namespace=\"my-namespace\",\n    service=\"my-service\",\n    roles=[\n        \"my_role\"\n    ],\n    enabled=True,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.security.putUserManagedServiceAccount({\n  namespace: \"my-namespace\",\n  service: \"my-service\",\n  roles: [\"my_role\"],\n  enabled: true,\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.security.put_user_managed_service_account(\n  namespace: \"my-namespace\",\n  service: \"my-service\",\n  body: {\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->security()->putUserManagedServiceAccount([\n    \"namespace\" => \"my-namespace\",\n    \"service\" => \"my-service\",\n    \"body\" => [\n        \"roles\" => array(\n            \"my_role\",\n        ),\n        \"enabled\" => true,\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X PUT -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"roles\":[\"my_role\"],\"enabled\":true}' \"$ELASTICSEARCH_URL/_security/service/my-namespace/my-service\""
+    }
+  ],
+  "specification/inference/non_streaming_chat_completion/examples/request/PostChatCompletionRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.non_streaming_chat_completion(\n    inference_id=\"openai-completion\",\n    chat_completion_request={\n        \"model\": \"gpt-4o\",\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": \"What is Elastic?\"\n            }\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.nonStreamingChatCompletion({\n  inference_id: \"openai-completion\",\n  chat_completion_request: {\n    model: \"gpt-4o\",\n    messages: [\n      {\n        role: \"user\",\n        content: \"What is Elastic?\",\n      },\n    ],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.non_streaming_chat_completion(\n  inference_id: \"openai-completion\",\n  body: {\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": \"What is Elastic?\"\n      }\n    ]\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->nonStreamingChatCompletion([\n    \"inference_id\" => \"openai-completion\",\n    \"body\" => [\n        \"model\" => \"gpt-4o\",\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => \"What is Elastic?\",\n            ],\n        ),\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"model\":\"gpt-4o\",\"messages\":[{\"role\":\"user\",\"content\":\"What is Elastic?\"}]}' \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion\""
+    }
+  ],
+  "specification/inference/non_streaming_chat_completion/examples/request/PostChatCompletionRequestExample3.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.non_streaming_chat_completion(\n    inference_id=\"openai-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"What's the price of a scarf?\"\n                    }\n                ]\n            }\n        ],\n        \"tools\": [\n            {\n                \"type\": \"function\",\n                \"function\": {\n                    \"name\": \"get_current_price\",\n                    \"description\": \"Get the current price of a item\",\n                    \"parameters\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"item\": {\n                                \"id\": \"123\"\n                            }\n                        }\n                    }\n                }\n            }\n        ],\n        \"tool_choice\": {\n            \"type\": \"function\",\n            \"function\": {\n                \"name\": \"get_current_price\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.nonStreamingChatCompletion({\n  inference_id: \"openai-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"What's the price of a scarf?\",\n          },\n        ],\n      },\n    ],\n    tools: [\n      {\n        type: \"function\",\n        function: {\n          name: \"get_current_price\",\n          description: \"Get the current price of a item\",\n          parameters: {\n            type: \"object\",\n            properties: {\n              item: {\n                id: \"123\",\n              },\n            },\n          },\n        },\n      },\n    ],\n    tool_choice: {\n      type: \"function\",\n      function: {\n        name: \"get_current_price\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.non_streaming_chat_completion(\n  inference_id: \"openai-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What's the price of a scarf?\"\n          }\n        ]\n      }\n    ],\n    \"tools\": [\n      {\n        \"type\": \"function\",\n        \"function\": {\n          \"name\": \"get_current_price\",\n          \"description\": \"Get the current price of a item\",\n          \"parameters\": {\n            \"type\": \"object\",\n            \"properties\": {\n              \"item\": {\n                \"id\": \"123\"\n              }\n            }\n          }\n        }\n      }\n    ],\n    \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"get_current_price\"\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->nonStreamingChatCompletion([\n    \"inference_id\" => \"openai-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"What's the price of a scarf?\",\n                    ],\n                ),\n            ],\n        ),\n        \"tools\" => array(\n            [\n                \"type\" => \"function\",\n                \"function\" => [\n                    \"name\" => \"get_current_price\",\n                    \"description\" => \"Get the current price of a item\",\n                    \"parameters\" => [\n                        \"type\" => \"object\",\n                        \"properties\" => [\n                            \"item\" => [\n                                \"id\" => \"123\",\n                            ],\n                        ],\n                    ],\n                ],\n            ],\n        ),\n        \"tool_choice\" => [\n            \"type\" => \"function\",\n            \"function\" => [\n                \"name\" => \"get_current_price\",\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What'\"'\"'s the price of a scarf?\"}]}],\"tools\":[{\"type\":\"function\",\"function\":{\"name\":\"get_current_price\",\"description\":\"Get the current price of a item\",\"parameters\":{\"type\":\"object\",\"properties\":{\"item\":{\"id\":\"123\"}}}}}],\"tool_choice\":{\"type\":\"function\",\"function\":{\"name\":\"get_current_price\"}}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion\""
+    }
+  ],
+  "specification/inference/non_streaming_chat_completion/examples/request/PostChatCompletionRequestExample2.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.non_streaming_chat_completion(\n    inference_id=\"openai-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"assistant\",\n                \"content\": \"Let's find out what the weather is\",\n                \"tool_calls\": [\n                    {\n                        \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n                        \"type\": \"function\",\n                        \"function\": {\n                            \"name\": \"get_current_weather\",\n                            \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n                        }\n                    }\n                ]\n            },\n            {\n                \"role\": \"tool\",\n                \"content\": \"The weather is cold\",\n                \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n            }\n        ]\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.nonStreamingChatCompletion({\n  inference_id: \"openai-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"assistant\",\n        content: \"Let's find out what the weather is\",\n        tool_calls: [\n          {\n            id: \"call_KcAjWtAww20AihPHphUh46Gd\",\n            type: \"function\",\n            function: {\n              name: \"get_current_weather\",\n              arguments: '{\"location\":\"Boston, MA\"}',\n            },\n          },\n        ],\n      },\n      {\n        role: \"tool\",\n        content: \"The weather is cold\",\n        tool_call_id: \"call_KcAjWtAww20AihPHphUh46Gd\",\n      },\n    ],\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.non_streaming_chat_completion(\n  inference_id: \"openai-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"assistant\",\n        \"content\": \"Let's find out what the weather is\",\n        \"tool_calls\": [\n          {\n            \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n            \"type\": \"function\",\n            \"function\": {\n              \"name\": \"get_current_weather\",\n              \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n            }\n          }\n        ]\n      },\n      {\n        \"role\": \"tool\",\n        \"content\": \"The weather is cold\",\n        \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n      }\n    ]\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->nonStreamingChatCompletion([\n    \"inference_id\" => \"openai-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"assistant\",\n                \"content\" => \"Let's find out what the weather is\",\n                \"tool_calls\" => array(\n                    [\n                        \"id\" => \"call_KcAjWtAww20AihPHphUh46Gd\",\n                        \"type\" => \"function\",\n                        \"function\" => [\n                            \"name\" => \"get_current_weather\",\n                            \"arguments\" => \"{\\\"location\\\":\\\"Boston, MA\\\"}\",\n                        ],\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"tool\",\n                \"content\" => \"The weather is cold\",\n                \"tool_call_id\" => \"call_KcAjWtAww20AihPHphUh46Gd\",\n            ],\n        ),\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"assistant\",\"content\":\"Let'\"'\"'s find out what the weather is\",\"tool_calls\":[{\"id\":\"call_KcAjWtAww20AihPHphUh46Gd\",\"type\":\"function\",\"function\":{\"name\":\"get_current_weather\",\"arguments\":\"{\\\"location\\\":\\\"Boston, MA\\\"}\"}}]},{\"role\":\"tool\",\"content\":\"The weather is cold\",\"tool_call_id\":\"call_KcAjWtAww20AihPHphUh46Gd\"}]}' \"$ELASTICSEARCH_URL/_inference/chat_completion/openai-completion\""
+    }
+  ],
+  "specification/inference/non_streaming_chat_completion/examples/request/PostChatCompletionRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.non_streaming_chat_completion(\n    inference_id=\"reasoning-chat-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"assistant\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n                    }\n                ],\n                \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\": [\n                    {\n                        \"type\": \"reasoning.encrypted\",\n                        \"data\": \"[REDACTED]\"\n                    },\n                    {\n                        \"type\": \"reasoning.summary\",\n                        \"summary\": \"Barber shaving himself creates contradiction\"\n                    },\n                    {\n                        \"type\": \"reasoning.text\",\n                        \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\": \"sig_123\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"What if there are 2 barbers?\"\n                    }\n                ]\n            }\n        ],\n        \"reasoning\": {\n            \"enabled\": True,\n            \"summary\": \"detailed\",\n            \"exclude\": False\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.nonStreamingChatCompletion({\n  inference_id: \"reasoning-chat-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n          },\n        ],\n      },\n      {\n        role: \"assistant\",\n        content: [\n          {\n            type: \"text\",\n            text: \"This is the barber paradox. Such a barber cannot logically exist.\",\n          },\n        ],\n        reasoning:\n          \"If the barber shaves himself, he should not; if he does not, he should.\",\n        reasoning_details: [\n          {\n            type: \"reasoning.encrypted\",\n            data: \"[REDACTED]\",\n          },\n          {\n            type: \"reasoning.summary\",\n            summary: \"Barber shaving himself creates contradiction\",\n          },\n          {\n            type: \"reasoning.text\",\n            text: \"If the barber shaves himself, he should not; if he does not, he should.\",\n            signature: \"sig_123\",\n          },\n        ],\n      },\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"What if there are 2 barbers?\",\n          },\n        ],\n      },\n    ],\n    reasoning: {\n      enabled: true,\n      summary: \"detailed\",\n      exclude: false,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.non_streaming_chat_completion(\n  inference_id: \"reasoning-chat-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n          }\n        ]\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n          }\n        ],\n        \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Barber shaving himself creates contradiction\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n            \"signature\": \"sig_123\"\n          }\n        ]\n      },\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What if there are 2 barbers?\"\n          }\n        ]\n      }\n    ],\n    \"reasoning\": {\n      \"enabled\": true,\n      \"summary\": \"detailed\",\n      \"exclude\": false\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->nonStreamingChatCompletion([\n    \"inference_id\" => \"reasoning-chat-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"assistant\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"This is the barber paradox. Such a barber cannot logically exist.\",\n                    ],\n                ),\n                \"reasoning\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\" => array(\n                    [\n                        \"type\" => \"reasoning.encrypted\",\n                        \"data\" => \"[REDACTED]\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.summary\",\n                        \"summary\" => \"Barber shaving himself creates contradiction\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.text\",\n                        \"text\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\" => \"sig_123\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"What if there are 2 barbers?\",\n                    ],\n                ),\n            ],\n        ),\n        \"reasoning\" => [\n            \"enabled\" => true,\n            \"summary\" => \"detailed\",\n            \"exclude\" => false,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"enabled\":true,\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion\""
+    }
+  ],
+  "specification/inference/non_streaming_chat_completion/examples/request/PostChatCompletionRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.non_streaming_chat_completion(\n    inference_id=\"reasoning-chat-completion\",\n    chat_completion_request={\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"assistant\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n                    }\n                ],\n                \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\": [\n                    {\n                        \"type\": \"reasoning.encrypted\",\n                        \"data\": \"[REDACTED]\"\n                    },\n                    {\n                        \"type\": \"reasoning.summary\",\n                        \"summary\": \"Barber shaving himself creates contradiction\"\n                    },\n                    {\n                        \"type\": \"reasoning.text\",\n                        \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\": \"sig_123\"\n                    }\n                ]\n            },\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"type\": \"text\",\n                        \"text\": \"What if there are 2 barbers?\"\n                    }\n                ]\n            }\n        ],\n        \"reasoning\": {\n            \"effort\": \"high\",\n            \"summary\": \"detailed\",\n            \"exclude\": False\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.nonStreamingChatCompletion({\n  inference_id: \"reasoning-chat-completion\",\n  chat_completion_request: {\n    messages: [\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n          },\n        ],\n      },\n      {\n        role: \"assistant\",\n        content: [\n          {\n            type: \"text\",\n            text: \"This is the barber paradox. Such a barber cannot logically exist.\",\n          },\n        ],\n        reasoning:\n          \"If the barber shaves himself, he should not; if he does not, he should.\",\n        reasoning_details: [\n          {\n            type: \"reasoning.encrypted\",\n            data: \"[REDACTED]\",\n          },\n          {\n            type: \"reasoning.summary\",\n            summary: \"Barber shaving himself creates contradiction\",\n          },\n          {\n            type: \"reasoning.text\",\n            text: \"If the barber shaves himself, he should not; if he does not, he should.\",\n            signature: \"sig_123\",\n          },\n        ],\n      },\n      {\n        role: \"user\",\n        content: [\n          {\n            type: \"text\",\n            text: \"What if there are 2 barbers?\",\n          },\n        ],\n      },\n    ],\n    reasoning: {\n      effort: \"high\",\n      summary: \"detailed\",\n      exclude: false,\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.non_streaming_chat_completion(\n  inference_id: \"reasoning-chat-completion\",\n  body: {\n    \"messages\": [\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n          }\n        ]\n      },\n      {\n        \"role\": \"assistant\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n          }\n        ],\n        \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Barber shaving himself creates contradiction\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n            \"signature\": \"sig_123\"\n          }\n        ]\n      },\n      {\n        \"role\": \"user\",\n        \"content\": [\n          {\n            \"type\": \"text\",\n            \"text\": \"What if there are 2 barbers?\"\n          }\n        ]\n      }\n    ],\n    \"reasoning\": {\n      \"effort\": \"high\",\n      \"summary\": \"detailed\",\n      \"exclude\": false\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->nonStreamingChatCompletion([\n    \"inference_id\" => \"reasoning-chat-completion\",\n    \"body\" => [\n        \"messages\" => array(\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"assistant\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"This is the barber paradox. Such a barber cannot logically exist.\",\n                    ],\n                ),\n                \"reasoning\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                \"reasoning_details\" => array(\n                    [\n                        \"type\" => \"reasoning.encrypted\",\n                        \"data\" => \"[REDACTED]\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.summary\",\n                        \"summary\" => \"Barber shaving himself creates contradiction\",\n                    ],\n                    [\n                        \"type\" => \"reasoning.text\",\n                        \"text\" => \"If the barber shaves himself, he should not; if he does not, he should.\",\n                        \"signature\" => \"sig_123\",\n                    ],\n                ),\n            ],\n            [\n                \"role\" => \"user\",\n                \"content\" => array(\n                    [\n                        \"type\" => \"text\",\n                        \"text\" => \"What if there are 2 barbers?\",\n                    ],\n                ),\n            ],\n        ),\n        \"reasoning\" => [\n            \"effort\" => \"high\",\n            \"summary\" => \"detailed\",\n            \"exclude\" => false,\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"messages\":[{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"}]},{\"role\":\"assistant\",\"content\":[{\"type\":\"text\",\"text\":\"This is the barber paradox. Such a barber cannot logically exist.\"}],\"reasoning\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"reasoning_details\":[{\"type\":\"reasoning.encrypted\",\"data\":\"[REDACTED]\"},{\"type\":\"reasoning.summary\",\"summary\":\"Barber shaving himself creates contradiction\"},{\"type\":\"reasoning.text\",\"text\":\"If the barber shaves himself, he should not; if he does not, he should.\",\"signature\":\"sig_123\"}]},{\"role\":\"user\",\"content\":[{\"type\":\"text\",\"text\":\"What if there are 2 barbers?\"}]}],\"reasoning\":{\"effort\":\"high\",\"summary\":\"detailed\",\"exclude\":false}}' \"$ELASTICSEARCH_URL/_inference/chat_completion/reasoning-chat-completion\""
+    }
+  ],
+  "specification/inference/embedding/examples/request/EmbeddingRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.embedding(\n    inference_id=\"my-multimodal-endpoint\",\n    embedding={\n        \"input\": {\n            \"content\": {\n                \"type\": \"image\",\n                \"format\": \"url\",\n                \"value\": \"https://example.com/image.jpg\"\n            }\n        }\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.embedding({\n  inference_id: \"my-multimodal-endpoint\",\n  embedding: {\n    input: {\n      content: {\n        type: \"image\",\n        format: \"url\",\n        value: \"https://example.com/image.jpg\",\n      },\n    },\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.embedding(\n  inference_id: \"my-multimodal-endpoint\",\n  body: {\n    \"input\": {\n      \"content\": {\n        \"type\": \"image\",\n        \"format\": \"url\",\n        \"value\": \"https://example.com/image.jpg\"\n      }\n    }\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->embedding([\n    \"inference_id\" => \"my-multimodal-endpoint\",\n    \"body\" => [\n        \"input\" => [\n            \"content\" => [\n                \"type\" => \"image\",\n                \"format\" => \"url\",\n                \"value\" => \"https://example.com/image.jpg\",\n            ],\n        ],\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"input\":{\"content\":{\"type\":\"image\",\"format\":\"url\",\"value\":\"https://example.com/image.jpg\"}}}' \"$ELASTICSEARCH_URL/_inference/embedding/my-multimodal-endpoint\""
+    }
+  ],
+  "specification/inference/rerank/examples/request/RerankRequestExample4.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.rerank(\n    inference_id=\"my-multimodal-rerank-endpoint\",\n    query={\n        \"type\": \"image\",\n        \"format\": \"url\",\n        \"value\": \"https://example.com/image.jpg\"\n    },\n    input=[\n        \"some document text\",\n        \"some more document text\"\n    ],\n    top_n=2,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.rerank({\n  inference_id: \"my-multimodal-rerank-endpoint\",\n  query: {\n    type: \"image\",\n    format: \"url\",\n    value: \"https://example.com/image.jpg\",\n  },\n  input: [\"some document text\", \"some more document text\"],\n  top_n: 2,\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.rerank(\n  inference_id: \"my-multimodal-rerank-endpoint\",\n  body: {\n    \"query\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/image.jpg\"\n    },\n    \"input\": [\n      \"some document text\",\n      \"some more document text\"\n    ],\n    \"top_n\": 2\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->rerank([\n    \"inference_id\" => \"my-multimodal-rerank-endpoint\",\n    \"body\" => [\n        \"query\" => [\n            \"type\" => \"image\",\n            \"format\" => \"url\",\n            \"value\" => \"https://example.com/image.jpg\",\n        ],\n        \"input\" => array(\n            \"some document text\",\n            \"some more document text\",\n        ),\n        \"top_n\" => 2,\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":{\"type\":\"image\",\"format\":\"url\",\"value\":\"https://example.com/image.jpg\"},\"input\":[\"some document text\",\"some more document text\"],\"top_n\":2}' \"$ELASTICSEARCH_URL/_inference/rerank/my-multimodal-rerank-endpoint\""
+    }
+  ],
+  "specification/inference/rerank/examples/request/RerankRequestExample5.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.inference.rerank(\n    inference_id=\"my-multimodal-rerank-endpoint\",\n    query=\"a photo of a cat\",\n    input=[\n        {\n            \"type\": \"image\",\n            \"format\": \"url\",\n            \"value\": \"https://example.com/image1.jpg\"\n        },\n        {\n            \"type\": \"image\",\n            \"format\": \"url\",\n            \"value\": \"https://example.com/image2.jpg\"\n        }\n    ],\n    top_n=2,\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.inference.rerank({\n  inference_id: \"my-multimodal-rerank-endpoint\",\n  query: \"a photo of a cat\",\n  input: [\n    {\n      type: \"image\",\n      format: \"url\",\n      value: \"https://example.com/image1.jpg\",\n    },\n    {\n      type: \"image\",\n      format: \"url\",\n      value: \"https://example.com/image2.jpg\",\n    },\n  ],\n  top_n: 2,\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.inference.rerank(\n  inference_id: \"my-multimodal-rerank-endpoint\",\n  body: {\n    \"query\": \"a photo of a cat\",\n    \"input\": [\n      {\n        \"type\": \"image\",\n        \"format\": \"url\",\n        \"value\": \"https://example.com/image1.jpg\"\n      },\n      {\n        \"type\": \"image\",\n        \"format\": \"url\",\n        \"value\": \"https://example.com/image2.jpg\"\n      }\n    ],\n    \"top_n\": 2\n  }\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$resp = $client->inference()->rerank([\n    \"inference_id\" => \"my-multimodal-rerank-endpoint\",\n    \"body\" => [\n        \"query\" => \"a photo of a cat\",\n        \"input\" => array(\n            [\n                \"type\" => \"image\",\n                \"format\" => \"url\",\n                \"value\" => \"https://example.com/image1.jpg\",\n            ],\n            [\n                \"type\" => \"image\",\n                \"format\" => \"url\",\n                \"value\" => \"https://example.com/image2.jpg\",\n            ],\n        ),\n        \"top_n\" => 2,\n    ],\n]);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"query\":\"a photo of a cat\",\"input\":[{\"type\":\"image\",\"format\":\"url\",\"value\":\"https://example.com/image1.jpg\"},{\"type\":\"image\",\"format\":\"url\",\"value\":\"https://example.com/image2.jpg\"}],\"top_n\":2}' \"$ELASTICSEARCH_URL/_inference/rerank/my-multimodal-rerank-endpoint\""
+    }
+  ],
+  "specification/esql/test_data_source_connection/examples/request/TestDataSourceConnectionRequestExample1.yaml": [
+    {
+      "language": "Python",
+      "code": "resp = client.esql.test_data_source_connection(\n    type=\"s3\",\n    settings={\n        \"auth\": \"static_credentials\",\n        \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n        \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    },\n)"
+    },
+    {
+      "language": "JavaScript",
+      "code": "const response = await client.esql.testDataSourceConnection({\n  type: \"s3\",\n  settings: {\n    auth: \"static_credentials\",\n    access_key: \"<AWS_ACCESS_KEY_ID>\",\n    secret_key: \"<AWS_SECRET_ACCESS_KEY>\",\n  },\n});"
+    },
+    {
+      "language": "Ruby",
+      "code": "response = client.perform_request(\n  \"POST\",\n  \"/_query/data_source/_test\",\n  {},\n  {\n    \"type\": \"s3\",\n    \"settings\": {\n      \"auth\": \"static_credentials\",\n      \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n      \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n    }\n  },\n  { \"Content-Type\": \"application/json\" },\n)"
+    },
+    {
+      "language": "PHP",
+      "code": "$requestFactory = Psr17FactoryDiscovery::findRequestFactory();\n$streamFactory = Psr17FactoryDiscovery::findStreamFactory();\n$request = $requestFactory->createRequest(\n    \"POST\",\n    \"/_query/data_source/_test\",\n);\n$request = $request->withHeader(\"Content-Type\", \"application/json\");\n$request = $request->withBody($streamFactory->createStream(\n    json_encode([\n        \"type\" => \"s3\",\n        \"settings\" => [\n            \"auth\" => \"static_credentials\",\n            \"access_key\" => \"<AWS_ACCESS_KEY_ID>\",\n            \"secret_key\" => \"<AWS_SECRET_ACCESS_KEY>\",\n        ],\n    ]),\n));\n$resp = $client->sendRequest($request);"
+    },
+    {
+      "language": "curl",
+      "code": "curl -X POST -H \"Authorization: ApiKey $ELASTIC_API_KEY\" -H \"Content-Type: application/json\" -d '{\"type\":\"s3\",\"settings\":{\"auth\":\"static_credentials\",\"access_key\":\"<AWS_ACCESS_KEY_ID>\",\"secret_key\":\"<AWS_SECRET_ACCESS_KEY>\"}}' \"$ELASTICSEARCH_URL/_query/data_source/_test\""
     }
   ]
 }

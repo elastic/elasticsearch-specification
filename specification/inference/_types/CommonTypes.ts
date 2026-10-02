@@ -569,6 +569,16 @@ export class RequestEmbedding {
    *   }
    * ]
    * ```
+   * `content` object using the `url` format example (available in Elasticsearch 9.6.0 and later):
+   * ```
+   * "input": {
+   *     "content": {
+   *       "type": "image",
+   *       "format": "url",
+   *       "value": "https://example.com/image.jpg"
+   *     }
+   *   }
+   * ```
    * Multiple items in one `content` object example (available in Elasticsearch 9.5.0 and later):
    * ```
    * "input": [
@@ -656,12 +666,15 @@ export class EmbeddingContentObjectItem {
    */
   type: EmbeddingContentType
   /**
-   * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64`.
+   * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.
    * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
+   * The `url` format is available in Elasticsearch 9.6.0 and later.
+   * Not all services and models support all formats.
    */
   format?: EmbeddingContentFormat
   /**
-   * The value of the input to embed. For images, this must be a base64-encoded data URI, i.e. "data:content/type;base64,..."
+   * The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. "data:content/type;base64,...".
+   * For the `url` format, this must be a URL that points to the content, i.e. "https://example.com/image.jpg".
    */
   value: string
 }
@@ -679,12 +692,14 @@ export enum EmbeddingContentType {
 }
 
 /**
- * The format of the input. For the `text` type this must be `text`. For the `image` type, this must be `base64`.
- * If not specified, this will default to `text` for the `text` type and `base64` for the `image` type.
+ * The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.
+ * If not specified, this will default to `text` for the `text` type and `base64` for all other types.
+ * The `url` format is available in Elasticsearch 9.6.0 and later.
  */
 export enum EmbeddingContentFormat {
   text,
-  base64
+  base64,
+  url
 }
 
 export class AmazonSageMakerServiceSettings {

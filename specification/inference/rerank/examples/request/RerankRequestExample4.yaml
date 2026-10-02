@@ -1,0 +1,15 @@
+summary: Rerank task using the url format
+description:
+  Run `POST _inference/rerank/my-multimodal-rerank-endpoint` to rank text documents against an image query referenced by
+  URL. The `url` format is available in Elasticsearch 9.6.0 and later.
+method_request: 'POST _inference/rerank/my-multimodal-rerank-endpoint'
+value: |-
+  {
+    "query": {
+      "type": "image",
+      "format": "url",
+      "value": "https://example.com/image.jpg"
+    },
+    "input": ["some document text", "some more document text"],
+    "top_n": 2
+  }
