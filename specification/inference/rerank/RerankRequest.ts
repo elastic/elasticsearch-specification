@@ -75,6 +75,14 @@ export interface Request extends RequestBase {
      *   "value": "data:image/jpeg;base64,..."
      * }
      * ```
+     * object example using the `url` format (available in Elasticsearch 9.6.0 and later):
+     * ```
+     * "query": {
+     *   "type": "image",
+     *   "format": "url",
+     *   "value": "https://example.com/image.jpg"
+     * }
+     * ```
      */
     query: RerankQuery
     /**
@@ -113,6 +121,16 @@ export interface Request extends RequestBase {
      *     "type": "image",
      *     "format": "base64",
      *     "value": "data:image/jpeg;base64,..."
+     *   }
+     * ]
+     * ```
+     * object array example using the `url` format (available in Elasticsearch 9.6.0 and later):
+     * ```
+     * "input": [
+     *   {
+     *     "type": "image",
+     *     "format": "url",
+     *     "value": "https://example.com/image.jpg"
      *   }
      * ]
      * ```
@@ -174,12 +192,15 @@ export class RerankInputObject {
    */
   type: RerankInputType
   /**
-   * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.
+   * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64` or `url`.
    * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
+   * The `url` format is available in Elasticsearch 9.6.0 and later.
+   * Not all services and models support all formats.
    */
   format?: RerankInputFormat
   /**
-   * The value of the input. For images, this must be a base64-encoded data URI, that is, "data:content/type;base64,...".
+   * The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, "data:content/type;base64,...".
+   * For the `url` format, this must be a URL that points to the content, that is, "https://example.com/image.jpg".
    */
   value: string
 }
@@ -193,10 +214,12 @@ export enum RerankInputType {
 }
 
 /**
- * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64`.
+ * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64` or `url`.
  * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
+ * The `url` format is available in Elasticsearch 9.6.0 and later.
  */
 export enum RerankInputFormat {
   text,
-  base64
+  base64,
+  url
 }

@@ -9,6 +9,407 @@
     "version": ""
   },
   "paths": {
+    "/_internal/desired_balance": {
+      "get": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "This API is a diagnostics API and the output should not be relied upon for building applications",
+        "operationId": "-internal-get-desired-balance",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "This API is a diagnostics API and the output should not be relied upon for building applications",
+        "operationId": "-internal-delete-desired-balance",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_internal/desired_nodes": {
+      "delete": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "Designed for indirect use by ECE/ESS and ECK, direct use is not supported",
+        "operationId": "-internal-delete-desired-nodes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_internal/desired_nodes/_latest": {
+      "get": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "Gets the latest desired nodes",
+        "operationId": "-internal-get-desired-nodes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_internal/prevalidate_node_removal": {
+      "post": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "Prevalidates node removal from the cluster",
+        "operationId": "-internal-prevalidate-node-removal",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "names",
+            "description": "A comma-separated list of node names to prevalidate",
+            "deprecated": false,
+            "schema": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "ids",
+            "description": "A comma-separated list of node IDs to prevalidate",
+            "deprecated": false,
+            "schema": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "external_ids",
+            "description": "A comma-separated list of node external IDs to prevalidate",
+            "deprecated": false,
+            "schema": {
+              "default": [],
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_internal/desired_nodes/{history_id}/{version}": {
+      "put": {
+        "tags": [
+          "_internal"
+        ],
+        "summary": "Designed for indirect use by ECE/ESS and ECK, direct use is not supported",
+        "operationId": "-internal-update-desired-nodes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "history_id",
+            "description": "The history ID",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "version",
+            "description": "The version number",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "number"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "dry_run",
+            "description": "Simulate the update",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "replaced_existing_history_id": {
+                      "type": "boolean"
+                    },
+                    "dry_run": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "replaced_existing_history_id",
+                    "dry_run"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_async_search/{id}": {
       "get": {
         "tags": [
@@ -526,6 +927,328 @@
         ]
       }
     },
+    "/_autoscaling/policy/{name}": {
+      "get": {
+        "tags": [
+          "autoscaling"
+        ],
+        "summary": "Get an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "description": "Learn more about autoscaling",
+          "url": "https://www.elastic.co/docs/deploy-manage/autoscaling",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/autoscaling-get-autoscaling-capacity.html"
+        },
+        "operationId": "autoscaling-get-autoscaling-policy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Name of the autoscaling policy",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/autoscaling._types.AutoscalingPolicy"
+                },
+                "examples": {
+                  "GetAutoscalingPolicyResponseExample1": {
+                    "summary": "A successful response for retrieving an autoscaling policy.",
+                    "description": "This may be a response to `GET /_autoscaling/policy/my_autoscaling_policy`.",
+                    "value": "{\n   \"roles\": <roles>,\n   \"deciders\": <deciders>\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.11.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "autoscaling"
+        ],
+        "summary": "Create or update an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "description": "Learn more about autoscaling",
+          "url": "https://www.elastic.co/docs/deploy-manage/autoscaling",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/autoscaling-put-autoscaling-policy.html"
+        },
+        "operationId": "autoscaling-put-autoscaling-policy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Name of the autoscaling policy",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/autoscaling._types.AutoscalingPolicy"
+              },
+              "examples": {
+                "PutAutoscalingPolicyRequestExample1": {
+                  "summary": "Creates or updates an autoscaling policy.",
+                  "value": "{\n  \"roles\": [],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+                },
+                "PutAutoscalingPolicyRequestExample2": {
+                  "summary": "Creates an autoscaling policy.",
+                  "description": "The API method and path for this request: `PUT /_autoscaling/policy/my_autoscaling_policy`. It creates `my_autoscaling_policy` using the fixed autoscaling decider, applying to the set of nodes having (only) the `data_hot` role.",
+                  "value": "{\n  \"roles\" : [ \"data_hot\" ],\n  \"deciders\": {\n    \"fixed\": {\n    }\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutAutoscalingPolicyResponseExample1": {
+                    "summary": "A successful response when creating an autoscaling policy.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.11.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "autoscaling"
+        ],
+        "summary": "Delete an autoscaling policy",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.",
+        "externalDocs": {
+          "description": "Learn more about autoscaling",
+          "url": "https://www.elastic.co/docs/deploy-manage/autoscaling",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/autoscaling-delete-autoscaling-policy.html"
+        },
+        "operationId": "autoscaling-delete-autoscaling-policy",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "Name of the autoscaling policy",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteAutoscalingPolicyResponseExample1": {
+                    "summary": "A successful response of deleting one or more autoscaling policy.",
+                    "description": "This may be a response to either `DELETE /_autoscaling/policy/my_autoscaling_policy` or `DELETE /_autoscaling/policy/*`.\n",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.11.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_autoscaling/capacity": {
+      "get": {
+        "tags": [
+          "autoscaling"
+        ],
+        "summary": "Get the autoscaling capacity",
+        "description": "NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nThis API gets the current autoscaling capacity based on the configured autoscaling policy.\nIt will return information to size the cluster appropriately to the current workload.\n\nThe `required_capacity` is calculated as the maximum of the `required_capacity` result of all individual deciders that are enabled for the policy.\n\nThe operator should verify that the `current_nodes` match the operator’s knowledge of the cluster to avoid making autoscaling decisions based on stale or incomplete information.\n\nThe response contains decider-specific information you can use to diagnose how and why autoscaling determined a certain capacity was required.\nThis information is provided for diagnosis only.\nDo not use this information to make autoscaling decisions.",
+        "externalDocs": {
+          "description": "Learn more about autoscaling",
+          "url": "https://www.elastic.co/docs/deploy-manage/autoscaling",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/autoscaling-get-autoscaling-capacity.html"
+        },
+        "operationId": "autoscaling-get-autoscaling-capacity",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "policies": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingDeciders"
+                      }
+                    }
+                  },
+                  "required": [
+                    "policies"
+                  ]
+                },
+                "examples": {
+                  "GetAutoscalingCapacityResponseExample1": {
+                    "summary": "A successful response for retrieving the current autoscaling capacity.",
+                    "description": "This may be a response to `GET /_autoscaling/capacity`.",
+                    "value": "{\n  policies: {}\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.11.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_bulk": {
       "put": {
         "tags": [
@@ -554,6 +1277,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk-routing"
+          },
+          {
+            "$ref": "#/components/parameters/bulk-_slice"
           },
           {
             "$ref": "#/components/parameters/bulk-_source"
@@ -620,6 +1346,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk-routing"
+          },
+          {
+            "$ref": "#/components/parameters/bulk-_slice"
           },
           {
             "$ref": "#/components/parameters/bulk-_source"
@@ -693,6 +1422,9 @@
             "$ref": "#/components/parameters/bulk-routing"
           },
           {
+            "$ref": "#/components/parameters/bulk-_slice"
+          },
+          {
             "$ref": "#/components/parameters/bulk-_source"
           },
           {
@@ -760,6 +1492,9 @@
           },
           {
             "$ref": "#/components/parameters/bulk-routing"
+          },
+          {
+            "$ref": "#/components/parameters/bulk-_slice"
           },
           {
             "$ref": "#/components/parameters/bulk-_source"
@@ -935,6 +1670,161 @@
           }
         },
         "x-state": "Generally available; Added in 9.5.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_capabilities": {
+      "get": {
+        "tags": [
+          "capabilities"
+        ],
+        "summary": "Checks if the specified combination of method, API, parameters, and arbitrary capabilities are supported",
+        "operationId": "capabilities",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "method",
+            "description": "REST method to check",
+            "deprecated": false,
+            "schema": {
+              "default": "GET",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_global.capabilities.RestMethod"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "path",
+            "description": "API path to check",
+            "deprecated": false,
+            "schema": {
+              "default": "/",
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "parameters",
+            "description": "Comma-separated list of API parameters to check",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "capabilities",
+            "description": "Comma-separated list of arbitrary API capabilities to check",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "local_only",
+            "description": "True if only the node being called should be considered",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_nodes": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.NodeStatistics"
+                        }
+                      ]
+                    },
+                    "cluster_name": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Name"
+                        }
+                      ]
+                    },
+                    "supported": {
+                      "oneOf": [
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "failures": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_global.capabilities.FailedNodeException"
+                      }
+                    }
+                  },
+                  "required": [
+                    "_nodes",
+                    "cluster_name",
+                    "supported"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6428,6 +7318,141 @@
         ]
       }
     },
+    "/_connector/{connector_id}/_last_sync": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Update the connector last sync stats",
+        "description": "Update the fields related to the last sync of a connector.\nThis action is used for analytics and monitoring.",
+        "operationId": "connector-last-sync",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "last_access_control_sync_error": {
+                    "type": "string"
+                  },
+                  "last_access_control_sync_scheduled_at": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "last_access_control_sync_status": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/connector._types.SyncStatus"
+                      }
+                    ]
+                  },
+                  "last_deleted_document_count": {
+                    "type": "number"
+                  },
+                  "last_incremental_sync_scheduled_at": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "last_indexed_document_count": {
+                    "type": "number"
+                  },
+                  "last_seen": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "last_sync_error": {
+                    "type": "string"
+                  },
+                  "last_sync_scheduled_at": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "last_sync_status": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/connector._types.SyncStatus"
+                      }
+                    ]
+                  },
+                  "last_synced": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "sync_cursor": {
+                    "type": "object"
+                  }
+                }
+              },
+              "examples": {
+                "ConnectorUpdateLastSyncRequestExample1": {
+                  "value": "{\n    \"last_access_control_sync_error\": \"Houston, we have a problem!\",\n    \"last_access_control_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\",\n    \"last_access_control_sync_status\": \"pending\",\n    \"last_deleted_document_count\": 42,\n    \"last_incremental_sync_scheduled_at\": \"2023-11-09T15:13:08.231Z\",\n    \"last_indexed_document_count\": 42,\n    \"last_sync_error\": \"Houston, we have a problem!\",\n    \"last_sync_scheduled_at\": \"2024-11-09T15:13:08.231Z\",\n    \"last_sync_status\": \"completed\",\n    \"last_synced\": \"2024-11-09T15:13:08.231Z\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Result"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental; Added in 8.12.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_connector": {
       "get": {
         "tags": [
@@ -6641,6 +7666,226 @@
           }
         },
         "x-state": "Beta; Added in 8.12.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/_secret/{id}": {
+      "get": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Retrieves a secret stored by Connectors",
+        "operationId": "connector-secret-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the secret",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "value"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Creates or updates a secret for a Connector",
+        "operationId": "connector-secret-put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the secret",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Result"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Deletes a connector secret",
+        "operationId": "connector-secret-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the secret",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "deleted"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/_secret": {
+      "post": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Creates a secret for a Connector",
+        "operationId": "connector-secret-post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -8464,6 +9709,9 @@
             "$ref": "#/components/parameters/count-stats"
           },
           {
+            "$ref": "#/components/parameters/count-_slice"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -8532,6 +9780,9 @@
           },
           {
             "$ref": "#/components/parameters/count-stats"
+          },
+          {
+            "$ref": "#/components/parameters/count-_slice"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -8609,6 +9860,9 @@
             "$ref": "#/components/parameters/count-stats"
           },
           {
+            "$ref": "#/components/parameters/count-_slice"
+          },
+          {
             "$ref": "#/components/parameters/count-terminate_after"
           },
           {
@@ -8680,6 +9934,9 @@
           },
           {
             "$ref": "#/components/parameters/count-stats"
+          },
+          {
+            "$ref": "#/components/parameters/count-_slice"
           },
           {
             "$ref": "#/components/parameters/count-terminate_after"
@@ -9087,6 +10344,17 @@
           },
           {
             "in": "query",
+            "name": "force_synthetic_source",
+            "description": "Indicates whether the request forces synthetic `_source`.\nUse this parameter to test if the mapping supports synthetic `_source` and to get a sense of the worst case performance.\nFetches with this parameter enabled will be slower than enabling synthetic source natively in the index.",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "x-state": "Generally available; Added in 8.4.0",
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "preference",
             "description": "The node or shard the operation should be performed on.\nBy default, the operation is randomized between the shard replicas.\n\nIf it is set to `_local`, the operation will prefer to be run on a local allocated shard when possible.\nIf it is set to a custom value, the value is used to guarantee that the same shards will be used for the same custom value.\nThis can help with \"jumping values\" when hitting different shards in different refresh states.\nA sample value can be something like the web session ID or the user name.",
             "deprecated": false,
@@ -9125,6 +10393,17 @@
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
             },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "_slice",
+            "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available; Added in 9.5.0",
             "style": "form"
           },
           {
@@ -9278,6 +10557,9 @@
             "$ref": "#/components/parameters/index-routing"
           },
           {
+            "$ref": "#/components/parameters/index-_slice"
+          },
+          {
             "$ref": "#/components/parameters/index-timeout"
           },
           {
@@ -9351,6 +10633,9 @@
           },
           {
             "$ref": "#/components/parameters/index-routing"
+          },
+          {
+            "$ref": "#/components/parameters/index-_slice"
           },
           {
             "$ref": "#/components/parameters/index-timeout"
@@ -9461,6 +10746,17 @@
               "$ref": "#/components/schemas/_types.Routing"
             },
             "x-state": "Generally available",
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "_slice",
+            "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available; Added in 9.5.0",
             "style": "form"
           },
           {
@@ -9891,6 +11187,17 @@
               "$ref": "#/components/schemas/_types.Routing"
             },
             "x-state": "Generally available",
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "_slice",
+            "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available; Added in 9.5.0",
             "style": "form"
           },
           {
@@ -12654,6 +13961,110 @@
         ]
       }
     },
+    "/_query/data_source/_test": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Test an ES|QL data source connection",
+        "description": "Tests whether the supplied data source configuration can establish a live connection.\nThe data source does not need to exist in cluster state: this endpoint is intended for\nvalidating a new configuration before saving it.\nThe request body accepts the same `type` and `settings` fields as the create or update data\nsource API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "externalDocs": {
+          "description": "ES|QL Data Federation",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-data-federation"
+        },
+        "operationId": "esql-test-data-source-connection",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "The data source type to test. Must be a known, registered type such as `s3`, `gcs`, or `azure`.\nUnknown types return a `400` error.",
+                    "type": "string"
+                  },
+                  "settings": {
+                    "description": "Type-specific connection and authentication settings to test.\nUses the same structure as the `settings` field in the create or update data source API.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              },
+              "examples": {
+                "TestDataSourceConnectionRequestExample1": {
+                  "summary": "Test an S3 data source connection",
+                  "description": "Test whether a set of static S3 credentials can reach the AWS S3 API before saving the data source configuration to cluster state.\n",
+                  "value": "{\n  \"type\": \"s3\",\n  \"settings\": {\n    \"auth\": \"static_credentials\",\n    \"access_key\": \"<AWS_ACCESS_KEY_ID>\",\n    \"secret_key\": \"<AWS_SECRET_ACCESS_KEY>\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "description": "The outcome of the connection test.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/esql.test_data_source_connection.DataSourceTestStatus"
+                        }
+                      ]
+                    },
+                    "error": {
+                      "description": "A human-readable description of why the connection failed.\nPresent only when `status` is `failure`.",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Optional user-visible guidance explaining why the connection could not be tested.\nPresent only when `status` is `untestable` and additional context is available.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                },
+                "examples": {
+                  "TestDataSourceConnectionResponseExample1": {
+                    "summary": "Successful connection test",
+                    "description": "The credentials are valid and the backend is reachable.",
+                    "value": "{\n  \"status\": \"success\"\n}"
+                  },
+                  "TestDataSourceConnectionResponseExample2": {
+                    "summary": "Failed connection test",
+                    "description": "The probe ran but the credentials were rejected.",
+                    "value": "{\n  \"status\": \"failure\",\n  \"error\": \"The AWS Access Key Id you provided does not exist in our records.\"\n}"
+                  },
+                  "TestDataSourceConnectionResponseExample3": {
+                    "summary": "Untestable connection",
+                    "description": "The credentials are valid but bucket-scoped, so connectivity cannot be verified at the data source level.",
+                    "value": "{\n  \"status\": \"untestable\",\n  \"message\": \"Bucket-scoped credentials cannot be verified at the data source level; create a dataset to validate access.\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}/_source/{id}": {
       "get": {
         "tags": [
@@ -12985,6 +14396,9 @@
             "$ref": "#/components/parameters/explain-routing"
           },
           {
+            "$ref": "#/components/parameters/explain-_slice"
+          },
+          {
             "$ref": "#/components/parameters/explain-_source"
           },
           {
@@ -13050,6 +14464,9 @@
           },
           {
             "$ref": "#/components/parameters/explain-routing"
+          },
+          {
+            "$ref": "#/components/parameters/explain-_slice"
           },
           {
             "$ref": "#/components/parameters/explain-_source"
@@ -13416,6 +14833,106 @@
         "x-metaTags": [
           {
             "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_fleet/secret/{id}": {
+      "get": {
+        "tags": [
+          "fleet"
+        ],
+        "summary": "Retrieves a secret stored by Fleet",
+        "operationId": "fleet-get-secret",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the secret",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "value"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Fleet",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "fleet"
+        ],
+        "summary": "Deletes a secret stored by Fleet",
+        "operationId": "fleet-delete-secret",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the secret",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "deleted": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "deleted"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Fleet",
             "name": "product_name"
           }
         ]
@@ -13794,6 +15311,60 @@
           }
         },
         "x-state": "Experimental; Added in 7.16.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Fleet",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_fleet/secret": {
+      "post": {
+        "tags": [
+          "fleet"
+        ],
+        "summary": "Creates a secret stored by Fleet",
+        "operationId": "fleet-post-secret",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "value"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Fleet",
@@ -15419,6 +16990,9 @@
           },
           {
             "$ref": "#/components/parameters/index-routing"
+          },
+          {
+            "$ref": "#/components/parameters/index-_slice"
           },
           {
             "$ref": "#/components/parameters/index-timeout"
@@ -22415,6 +23989,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-routing"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-_slice"
           }
         ],
         "requestBody": {
@@ -22479,6 +24056,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-routing"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-_slice"
           }
         ],
         "requestBody": {
@@ -22548,6 +24128,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-routing"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-_slice"
           }
         ],
         "requestBody": {
@@ -22615,6 +24198,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.validate_query-routing"
+          },
+          {
+            "$ref": "#/components/parameters/indices.validate_query-_slice"
           }
         ],
         "requestBody": {
@@ -28732,6 +30318,72 @@
         ]
       }
     },
+    "/{index}/_knn_search": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.",
+        "operationId": "knn-search",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_search-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_search-routing"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_search"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_search-200"
+          }
+        },
+        "deprecated": true,
+        "x-state": "Experimental; Added in 8.0.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Run a knn search",
+        "description": "NOTE: The kNN search API has been replaced by the `knn` option in the search API.",
+        "operationId": "knn-search-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_search-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_search-routing"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_search"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_search-200"
+          }
+        },
+        "deprecated": true,
+        "x-state": "Experimental; Added in 8.0.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_license": {
       "get": {
         "tags": [
@@ -29848,6 +31500,9 @@
         "operationId": "mget",
         "parameters": [
           {
+            "$ref": "#/components/parameters/mget-force_synthetic_source"
+          },
+          {
             "$ref": "#/components/parameters/mget-preference"
           },
           {
@@ -29858,6 +31513,9 @@
           },
           {
             "$ref": "#/components/parameters/mget-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mget-_slice"
           },
           {
             "$ref": "#/components/parameters/mget-_source"
@@ -29897,6 +31555,9 @@
         "operationId": "mget-1",
         "parameters": [
           {
+            "$ref": "#/components/parameters/mget-force_synthetic_source"
+          },
+          {
             "$ref": "#/components/parameters/mget-preference"
           },
           {
@@ -29907,6 +31568,9 @@
           },
           {
             "$ref": "#/components/parameters/mget-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mget-_slice"
           },
           {
             "$ref": "#/components/parameters/mget-_source"
@@ -29951,6 +31615,9 @@
             "$ref": "#/components/parameters/mget-index"
           },
           {
+            "$ref": "#/components/parameters/mget-force_synthetic_source"
+          },
+          {
             "$ref": "#/components/parameters/mget-preference"
           },
           {
@@ -29961,6 +31628,9 @@
           },
           {
             "$ref": "#/components/parameters/mget-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mget-_slice"
           },
           {
             "$ref": "#/components/parameters/mget-_source"
@@ -30003,6 +31673,9 @@
             "$ref": "#/components/parameters/mget-index"
           },
           {
+            "$ref": "#/components/parameters/mget-force_synthetic_source"
+          },
+          {
             "$ref": "#/components/parameters/mget-preference"
           },
           {
@@ -30013,6 +31686,9 @@
           },
           {
             "$ref": "#/components/parameters/mget-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mget-_slice"
           },
           {
             "$ref": "#/components/parameters/mget-_source"
@@ -38090,6 +39766,209 @@
         ]
       }
     },
+    "/_ml/anomaly_detectors/_validate": {
+      "post": {
+        "tags": [
+          "ml anomaly"
+        ],
+        "summary": "Validate an anomaly detection job",
+        "operationId": "ml-validate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "job_id": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "analysis_config": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.AnalysisConfig"
+                      }
+                    ]
+                  },
+                  "analysis_limits": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.AnalysisLimits"
+                      }
+                    ]
+                  },
+                  "data_description": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.DataDescription"
+                      }
+                    ]
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "model_plot": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.ModelPlotConfig"
+                      }
+                    ]
+                  },
+                  "model_snapshot_id": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Id"
+                      }
+                    ]
+                  },
+                  "model_snapshot_retention_days": {
+                    "type": "number"
+                  },
+                  "results_index_name": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.IndexName"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 6.3.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_ml/anomaly_detectors/_validate/detector": {
+      "post": {
+        "tags": [
+          "ml anomaly"
+        ],
+        "summary": "Validate an anomaly detection job",
+        "operationId": "ml-validate-detector",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ml._types.Detector"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 5.4.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_monitoring/bulk": {
+      "put": {
+        "tags": [
+          "monitoring"
+        ],
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
+        "operationId": "monitoring-bulk-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-system_id"
+          },
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-system_api_version"
+          },
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-interval"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/monitoring.bulk"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/monitoring.bulk-200"
+          }
+        },
+        "x-state": "Generally available; Added in 6.3.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "monitoring"
+        ],
+        "summary": "Send monitoring data",
+        "description": "This API is used by the monitoring features to send monitoring data.",
+        "operationId": "monitoring-bulk",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-system_id"
+          },
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-system_api_version"
+          },
+          {
+            "$ref": "#/components/parameters/monitoring.bulk-interval"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/monitoring.bulk"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/monitoring.bulk-200"
+          }
+        },
+        "x-state": "Generally available; Added in 6.3.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_msearch": {
       "get": {
         "tags": [
@@ -38137,6 +40016,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-search_type"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-_slice"
           },
           {
             "$ref": "#/components/parameters/msearch-typed_keys"
@@ -38204,6 +40086,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-search_type"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-_slice"
           },
           {
             "$ref": "#/components/parameters/msearch-typed_keys"
@@ -38278,6 +40163,9 @@
             "$ref": "#/components/parameters/msearch-search_type"
           },
           {
+            "$ref": "#/components/parameters/msearch-_slice"
+          },
+          {
             "$ref": "#/components/parameters/msearch-typed_keys"
           }
         ],
@@ -38346,6 +40234,9 @@
           },
           {
             "$ref": "#/components/parameters/msearch-search_type"
+          },
+          {
+            "$ref": "#/components/parameters/msearch-_slice"
           },
           {
             "$ref": "#/components/parameters/msearch-typed_keys"
@@ -38595,6 +40486,9 @@
             "$ref": "#/components/parameters/mtermvectors-routing"
           },
           {
+            "$ref": "#/components/parameters/mtermvectors-_slice"
+          },
+          {
             "$ref": "#/components/parameters/mtermvectors-term_statistics"
           },
           {
@@ -38654,6 +40548,9 @@
           },
           {
             "$ref": "#/components/parameters/mtermvectors-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mtermvectors-_slice"
           },
           {
             "$ref": "#/components/parameters/mtermvectors-term_statistics"
@@ -38722,6 +40619,9 @@
             "$ref": "#/components/parameters/mtermvectors-routing"
           },
           {
+            "$ref": "#/components/parameters/mtermvectors-_slice"
+          },
+          {
             "$ref": "#/components/parameters/mtermvectors-term_statistics"
           },
           {
@@ -38784,6 +40684,9 @@
           },
           {
             "$ref": "#/components/parameters/mtermvectors-routing"
+          },
+          {
+            "$ref": "#/components/parameters/mtermvectors-_slice"
           },
           {
             "$ref": "#/components/parameters/mtermvectors-term_statistics"
@@ -39816,6 +41719,202 @@
           }
         },
         "x-state": "Generally available; Added in 7.10.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_profiling/flamegraph": {
+      "post": {
+        "tags": [
+          "profiling"
+        ],
+        "summary": "Returns basic information about the status of Universal Profiling",
+        "operationId": "profiling-flamegraph",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_profiling/stacktraces": {
+      "post": {
+        "tags": [
+          "profiling"
+        ],
+        "summary": "Extracts raw stacktrace information from Universal Profiling",
+        "operationId": "profiling-stacktraces",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_profiling/status": {
+      "get": {
+        "tags": [
+          "profiling"
+        ],
+        "summary": "Returns basic information about the status of Universal Profiling",
+        "operationId": "profiling-status",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_resources_created",
+            "description": "Whether to return immediately or wait until resources have been created",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "operation_mode": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/profiling.status.ProfilingOperationMode"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "operation_mode"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_profiling/topn/functions": {
+      "post": {
+        "tags": [
+          "profiling"
+        ],
+        "summary": "Extracts a list of topN functions from Universal Profiling",
+        "operationId": "profiling-topn-functions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -41596,6 +43695,9 @@
             "$ref": "#/components/parameters/search-routing"
           },
           {
+            "$ref": "#/components/parameters/search-_slice"
+          },
+          {
             "$ref": "#/components/parameters/search-scroll"
           },
           {
@@ -41666,6 +43768,9 @@
           },
           {
             "$ref": "#/components/parameters/search-sort"
+          },
+          {
+            "$ref": "#/components/parameters/search-force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -41758,6 +43863,9 @@
             "$ref": "#/components/parameters/search-routing"
           },
           {
+            "$ref": "#/components/parameters/search-_slice"
+          },
+          {
             "$ref": "#/components/parameters/search-scroll"
           },
           {
@@ -41828,6 +43936,9 @@
           },
           {
             "$ref": "#/components/parameters/search-sort"
+          },
+          {
+            "$ref": "#/components/parameters/search-force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -41925,6 +44036,9 @@
             "$ref": "#/components/parameters/search-routing"
           },
           {
+            "$ref": "#/components/parameters/search-_slice"
+          },
+          {
             "$ref": "#/components/parameters/search-scroll"
           },
           {
@@ -41995,6 +44109,9 @@
           },
           {
             "$ref": "#/components/parameters/search-sort"
+          },
+          {
+            "$ref": "#/components/parameters/search-force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -42090,6 +44207,9 @@
             "$ref": "#/components/parameters/search-routing"
           },
           {
+            "$ref": "#/components/parameters/search-_slice"
+          },
+          {
             "$ref": "#/components/parameters/search-scroll"
           },
           {
@@ -42160,6 +44280,9 @@
           },
           {
             "$ref": "#/components/parameters/search-sort"
+          },
+          {
+            "$ref": "#/components/parameters/search-force_synthetic_source"
           }
         ],
         "requestBody": {
@@ -42958,6 +45081,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards-routing"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards-_slice"
           }
         ],
         "responses": {
@@ -43001,6 +45127,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards-routing"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards-_slice"
           }
         ],
         "responses": {
@@ -43049,6 +45178,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards-routing"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards-_slice"
           }
         ],
         "responses": {
@@ -43095,6 +45227,9 @@
           },
           {
             "$ref": "#/components/parameters/search_shards-routing"
+          },
+          {
+            "$ref": "#/components/parameters/search_shards-_slice"
           }
         ],
         "responses": {
@@ -49694,6 +51829,252 @@
         ]
       }
     },
+    "/_nodes/{node_id}/shutdown": {
+      "get": {
+        "tags": [
+          "shutdown"
+        ],
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "shutdown-get-node-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/shutdown.get_node-node_id"
+          },
+          {
+            "$ref": "#/components/parameters/shutdown.get_node-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/shutdown.get_node-200"
+          }
+        },
+        "x-state": "Generally available; Added in 7.13.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "shutdown"
+        ],
+        "summary": "Prepare a node to be shut down",
+        "description": "NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf you specify a node that is offline, it will be prepared for shut down when it rejoins the cluster.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\nThe API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.\nThis ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.\n\nYou must specify the type of shutdown: `restart`, `remove`, or `replace`.\nIf a node is already being prepared for shutdown, you can use this API to change the shutdown type.\n\nIMPORTANT: This API does NOT terminate the Elasticsearch process.\nMonitor the node shutdown status to determine when it is safe to stop Elasticsearch.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "shutdown-put-node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "node_id",
+            "description": "The node identifier.\nThis parameter is not validated against the cluster's active nodes.\nThis enables you to register a node for shut down while it is offline.\nNo error is thrown if you specify an invalid node ID.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.NodeId"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "Valid values are restart, remove, or replace.\nUse restart when you need to temporarily shut down a node to perform an upgrade, make configuration changes, or perform other maintenance.\nBecause the node is expected to rejoin the cluster, data is not migrated off of the node.\nUse remove when you need to permanently remove a node from the cluster.\nThe node is not marked ready for shutdown until data is migrated off of the node Use replace to do a 1:1 replacement of a node with another node.\nCertain allocation decisions will be ignored (such as disk watermarks) in the interest of true replacement of the source node with the target node.\nDuring a replace-type shutdown, rollover and index creation may result in unassigned shards, and shrink may fail until the replacement is complete.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/shutdown._types.Type"
+                      }
+                    ]
+                  },
+                  "reason": {
+                    "description": "A human-readable reason that the node is being shut down.\nThis field provides information for other cluster operators; it does not affect the shut down process.",
+                    "type": "string"
+                  },
+                  "allocation_delay": {
+                    "description": "Only valid if type is restart.\nControls how long Elasticsearch will wait for the node to restart and join the cluster before reassigning its shards to other nodes.\nThis works the same as delaying allocation with the index.unassigned.node_left.delayed_timeout setting.\nIf you don't specify a restart allocation delay, a default value of 5 minutes will be used.\nIf both a restart allocation delay and an index-level allocation delay are configured, the longer of the two is used.",
+                    "default": "5m",
+                    "type": "string"
+                  },
+                  "target_node_name": {
+                    "description": "Only valid if type is replace.\nSpecifies the name of the node that is replacing the node being shut down.\nShards from the shut down node are only allowed to be allocated to the target node, and no other data will be allocated to the target node.\nDuring relocation of data certain allocation rules are ignored, such as disk watermarks or user attribute filtering rules.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "reason"
+                ]
+              },
+              "examples": {
+                "ShutdownPutNodeRequestExample1": {
+                  "description": "Register a node for shutdown with `PUT /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`. The `restart` type prepares the node to be restarted.\n",
+                  "value": "{\n  \"type\": \"restart\",\n  \"reason\": \"Demonstrating how the node shutdown API works\",\n  \"allocation_delay\": \"20m\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.13.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "shutdown"
+        ],
+        "summary": "Cancel node shutdown preparations",
+        "description": "Remove a node from the shutdown list so it can resume normal operations.\nYou must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.\nShutdown requests are never removed automatically by Elasticsearch.\n\nNOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.\nDirect use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "shutdown-delete-node",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "node_id",
+            "description": "The node id of node to be removed from the shutdown state",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.NodeId"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Period to wait for a response. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "ShutdownDeleteNodeResponseExample1": {
+                    "description": "A successful response from `DELETE /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`.",
+                    "value": "{\n    \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 7.13.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_nodes/shutdown": {
+      "get": {
+        "tags": [
+          "shutdown"
+        ],
+        "summary": "Get the shutdown status",
+        "description": "Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.\nThe API returns status information for each part of the shut down process.\n\nNOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.\n\nIf the operator privileges feature is enabled, you must be an operator to use this API.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "shutdown-get-node",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/shutdown.get_node-master_timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/shutdown.get_node-200"
+          }
+        },
+        "x-state": "Generally available; Added in 7.13.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_ingest/_simulate": {
       "get": {
         "tags": [
@@ -53665,6 +56046,18 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "follow_relocations",
+            "description": "Internal use only",
+            "deprecated": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            },
+            "x-state": "Experimental; Added in 9.5.0",
+            "style": "form"
           }
         ],
         "responses": {
@@ -53958,6 +56351,9 @@
             "$ref": "#/components/parameters/termvectors-routing"
           },
           {
+            "$ref": "#/components/parameters/termvectors-_slice"
+          },
+          {
             "$ref": "#/components/parameters/termvectors-term_statistics"
           },
           {
@@ -54025,6 +56421,9 @@
           },
           {
             "$ref": "#/components/parameters/termvectors-routing"
+          },
+          {
+            "$ref": "#/components/parameters/termvectors-_slice"
           },
           {
             "$ref": "#/components/parameters/termvectors-term_statistics"
@@ -54095,6 +56494,9 @@
             "$ref": "#/components/parameters/termvectors-routing"
           },
           {
+            "$ref": "#/components/parameters/termvectors-_slice"
+          },
+          {
             "$ref": "#/components/parameters/termvectors-term_statistics"
           },
           {
@@ -54159,6 +56561,9 @@
           },
           {
             "$ref": "#/components/parameters/termvectors-routing"
+          },
+          {
+            "$ref": "#/components/parameters/termvectors-_slice"
           },
           {
             "$ref": "#/components/parameters/termvectors-term_statistics"
@@ -56526,6 +58931,17 @@
           },
           {
             "in": "query",
+            "name": "_slice",
+            "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available; Added in 9.5.0",
+            "style": "form"
+          },
+          {
+            "in": "query",
             "name": "timeout",
             "description": "The period to wait for the following operations: dynamic mapping updates and waiting for active shards.\nElasticsearch waits for at least the timeout period before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
             "deprecated": false,
@@ -56953,6 +59369,17 @@
               "$ref": "#/components/schemas/_types.Routing"
             },
             "x-state": "Generally available",
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "_slice",
+            "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-state": "Generally available; Added in 9.5.0",
             "style": "form"
           },
           {
@@ -58785,21 +61212,6 @@
   },
   "components": {
     "schemas": {
-      "_types.Id": {
-        "type": "string"
-      },
-      "_types.AcknowledgedResponseBase": {
-        "type": "object",
-        "properties": {
-          "acknowledged": {
-            "description": "For a successful response, this value is always true. On failure, an exception is returned instead.",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "acknowledged"
-        ]
-      },
       "_types.Duration": {
         "externalDocs": {
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units"
@@ -58821,6 +61233,21 @@
               "0"
             ]
           }
+        ]
+      },
+      "_types.Id": {
+        "type": "string"
+      },
+      "_types.AcknowledgedResponseBase": {
+        "type": "object",
+        "properties": {
+          "acknowledged": {
+            "description": "For a successful response, this value is always true. On failure, an exception is returned instead.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "acknowledged"
         ]
       },
       "async_search._types.AsyncSearchDocumentResponseBase": {
@@ -77260,6 +79687,145 @@
           }
         ]
       },
+      "autoscaling.get_autoscaling_capacity.AutoscalingDeciders": {
+        "type": "object",
+        "properties": {
+          "required_capacity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingCapacity"
+              }
+            ]
+          },
+          "current_capacity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingCapacity"
+              }
+            ]
+          },
+          "current_nodes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingNode"
+            }
+          },
+          "deciders": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingDecider"
+            }
+          }
+        },
+        "required": [
+          "required_capacity",
+          "current_capacity",
+          "current_nodes",
+          "deciders"
+        ]
+      },
+      "autoscaling.get_autoscaling_capacity.AutoscalingCapacity": {
+        "type": "object",
+        "properties": {
+          "node": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingResources"
+              }
+            ]
+          },
+          "total": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingResources"
+              }
+            ]
+          }
+        },
+        "required": [
+          "node",
+          "total"
+        ]
+      },
+      "autoscaling.get_autoscaling_capacity.AutoscalingResources": {
+        "type": "object",
+        "properties": {
+          "storage": {
+            "type": "number"
+          },
+          "memory": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "storage",
+          "memory"
+        ]
+      },
+      "autoscaling.get_autoscaling_capacity.AutoscalingNode": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeName"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "_types.NodeName": {
+        "type": "string"
+      },
+      "autoscaling.get_autoscaling_capacity.AutoscalingDecider": {
+        "type": "object",
+        "properties": {
+          "required_capacity": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/autoscaling.get_autoscaling_capacity.AutoscalingCapacity"
+              }
+            ]
+          },
+          "reason_summary": {
+            "type": "string"
+          },
+          "reason_details": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "required_capacity"
+        ]
+      },
+      "autoscaling._types.AutoscalingPolicy": {
+        "type": "object",
+        "properties": {
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "deciders": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/deploy-manage/autoscaling/autoscaling-deciders"
+            },
+            "description": "Decider settings.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "roles",
+          "deciders"
+        ]
+      },
       "_types.Refresh": {
         "type": "string",
         "enum": [
@@ -77863,6 +80429,60 @@
           "id",
           "index",
           "status"
+        ]
+      },
+      "_global.capabilities.RestMethod": {
+        "type": "string",
+        "enum": [
+          "GET",
+          "HEAD",
+          "POST",
+          "PUT",
+          "DELETE"
+        ]
+      },
+      "_types.NodeStatistics": {
+        "description": "Contains statistics about the number of nodes selected by the request.",
+        "type": "object",
+        "properties": {
+          "failures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.ErrorCause"
+            }
+          },
+          "total": {
+            "description": "Total number of nodes selected by the request.",
+            "type": "number"
+          },
+          "successful": {
+            "description": "Number of nodes that responded successfully to the request.",
+            "type": "number"
+          },
+          "failed": {
+            "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "total",
+          "successful",
+          "failed"
+        ]
+      },
+      "_global.capabilities.FailedNodeException": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          }
+        },
+        "required": [
+          "node_id"
         ]
       },
       "_types.Names": {
@@ -93579,7 +96199,8 @@
         "type": "string",
         "enum": [
           "true",
-          "false"
+          "false",
+          "auto"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
@@ -96401,9 +99022,6 @@
           "shard"
         ]
       },
-      "_types.NodeName": {
-        "type": "string"
-      },
       "cluster.state.ClusterStateMetrics": {
         "oneOf": [
           {
@@ -99092,35 +101710,6 @@
           }
         }
       },
-      "_types.NodeStatistics": {
-        "description": "Contains statistics about the number of nodes selected by the request.",
-        "type": "object",
-        "properties": {
-          "failures": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.ErrorCause"
-            }
-          },
-          "total": {
-            "description": "Total number of nodes selected by the request.",
-            "type": "number"
-          },
-          "successful": {
-            "description": "Number of nodes that responded successfully to the request.",
-            "type": "number"
-          },
-          "failed": {
-            "description": "Number of nodes that rejected the request or failed to respond. If this value is not 0, a reason for the rejection or failure is included in the response.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "total",
-          "successful",
-          "failed"
-        ]
-      },
       "_types.Result": {
         "type": "string",
         "enum": [
@@ -101627,6 +104216,14 @@
           "query"
         ]
       },
+      "esql.test_data_source_connection.DataSourceTestStatus": {
+        "type": "string",
+        "enum": [
+          "success",
+          "failure",
+          "untestable"
+        ]
+      },
       "_types.InlineGet": {
         "type": "object",
         "properties": {
@@ -101858,6 +104455,11 @@
           },
           "ignore_throttled": {
             "type": "boolean"
+          },
+          "_slice": {
+            "description": "The slice identifier for routing the search to a specific slice.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "string"
           }
         }
       },
@@ -116440,6 +119042,41 @@
           "dropped"
         ]
       },
+      "_global.knn_search._types.KnnSearchQuery": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The name of the vector field to search against",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "query_vector": {
+            "description": "The query vector",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.QueryVector"
+              }
+            ]
+          },
+          "k": {
+            "description": "The final number of nearest neighbors to return as top hits",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard",
+            "type": "number"
+          }
+        },
+        "required": [
+          "field",
+          "query_vector",
+          "k",
+          "num_candidates"
+        ]
+      },
       "license.get.LicenseInformation": {
         "type": "object",
         "properties": {
@@ -123784,6 +126421,10 @@
               }
             ]
           },
+          "job_type": {
+            "description": "Reserved for future use, currently set to `anomaly_detector`.",
+            "type": "string"
+          },
           "model_plot_config": {
             "description": "This advanced configuration option stores model information along with the results.\nIt provides a more detailed view into anomaly detection.\nModel plot provides a simplified and indicative view of the model and its bounds.",
             "allOf": [
@@ -126069,6 +128710,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/nodes.info.NodeInfoSettingsTransportFeatures"
+              }
+            ]
+          },
+          "ignore_deserialization_errors": {
+            "description": "Only used in unit tests",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
               }
             ]
           }
@@ -128642,6 +131291,14 @@
           "aggregations"
         ]
       },
+      "profiling.status.ProfilingOperationMode": {
+        "type": "string",
+        "enum": [
+          "RUNNING",
+          "STOPPING",
+          "STOPPED"
+        ]
+      },
       "query_rules._types.QueryRule": {
         "type": "object",
         "properties": {
@@ -129231,6 +131888,11 @@
           "routing": {
             "description": "By default, a document's routing is preserved unless it's changed by the script.\nIf it is `keep`, the routing on the bulk request sent for each match is set to the routing on the match.\nIf it is `discard`, the routing on the bulk request sent for each match is set to `null`.\nIf it is `=value`, the routing on the bulk request sent for each match is set to all value specified after the equals sign (`=`).\nNot allowed when `index.slice.enabled` is `true` for the destination index; use `_slice` instead.",
             "default": "keep",
+            "type": "string"
+          },
+          "_slice": {
+            "description": "The slice identifier used to route the reindexed documents to a specific slice of the destination index.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the destination index; not allowed when `index.slice.enabled` is `false`.",
+            "x-state": "Generally available; Added in 9.5.0",
             "type": "string"
           },
           "version_type": {
@@ -133688,6 +136350,142 @@
         "required": [
           "value",
           "relation"
+        ]
+      },
+      "shutdown.get_node.NodeShutdownStatus": {
+        "type": "object",
+        "properties": {
+          "node_id": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "type": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShutdownType"
+              }
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "shutdown_startedmillis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShutdownStatus"
+              }
+            ]
+          },
+          "shard_migration": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShardMigrationStatus"
+              }
+            ]
+          },
+          "persistent_tasks": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.PersistentTaskStatus"
+              }
+            ]
+          },
+          "plugins": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.PluginsStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "node_id",
+          "type",
+          "reason",
+          "shutdown_startedmillis",
+          "status",
+          "shard_migration",
+          "persistent_tasks",
+          "plugins"
+        ]
+      },
+      "shutdown.get_node.ShutdownType": {
+        "type": "string",
+        "enum": [
+          "remove",
+          "restart"
+        ]
+      },
+      "shutdown.get_node.ShutdownStatus": {
+        "type": "string",
+        "enum": [
+          "not_started",
+          "in_progress",
+          "stalled",
+          "complete"
+        ]
+      },
+      "shutdown.get_node.ShardMigrationStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShutdownStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "shutdown.get_node.PersistentTaskStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShutdownStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "shutdown.get_node.PluginsStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/shutdown.get_node.ShutdownStatus"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "shutdown._types.Type": {
+        "type": "string",
+        "enum": [
+          "restart",
+          "remove",
+          "replace"
         ]
       },
       "simulate.ingest.MergeType": {
@@ -144836,6 +147634,59 @@
           }
         }
       },
+      "knn_search-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "took": {
+                  "description": "The milliseconds it took Elasticsearch to run the request.",
+                  "type": "number"
+                },
+                "timed_out": {
+                  "description": "If true, the request timed out before completion;\nreturned results may be partial or empty.",
+                  "type": "boolean"
+                },
+                "_shards": {
+                  "description": "A count of shards used for the request.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.ShardStatistics"
+                    }
+                  ]
+                },
+                "hits": {
+                  "description": "The returned documents and metadata.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.search._types.HitsMetadata"
+                    }
+                  ]
+                },
+                "fields": {
+                  "description": "The field values for the documents. These fields\nmust be specified in the request using the `fields` parameter.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object"
+                  }
+                },
+                "max_score": {
+                  "description": "The highest returned document score. This value is null for requests\nthat do not sort by score.",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "took",
+                "timed_out",
+                "_shards",
+                "hits"
+              ]
+            }
+          }
+        }
+      },
       "license.post-200": {
         "description": "",
         "content": {
@@ -145558,6 +148409,41 @@
               "items": {
                 "type": "object"
               }
+            }
+          }
+        }
+      },
+      "monitoring.bulk-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.ErrorCause"
+                    }
+                  ]
+                },
+                "errors": {
+                  "description": "True if there is was an error",
+                  "type": "boolean"
+                },
+                "ignored": {
+                  "description": "Was collection disabled?",
+                  "type": "boolean"
+                },
+                "took": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "errors",
+                "ignored",
+                "took"
+              ]
             }
           }
         }
@@ -146822,6 +149708,33 @@
               "UpdateUserProfileDataResponseExample1": {
                 "description": "A successful response from `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data`, which indicates that the request is acknowledged.\n",
                 "value": "{\n  \"acknowledged\": true\n}"
+              }
+            }
+          }
+        }
+      },
+      "shutdown.get_node-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nodes": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/shutdown.get_node.NodeShutdownStatus"
+                  }
+                }
+              },
+              "required": [
+                "nodes"
+              ]
+            },
+            "examples": {
+              "ShutdownGetNodeResponseExample1": {
+                "description": "Get the status of shutdown preparations with `GET /_nodes/USpTGYaBSIKbgSUJR2Z9lg/shutdown`. The response shows information about the shutdown preparations, including the status of shard migration, task migration, and plugin cleanup\n",
+                "value": "{\n    \"nodes\": [\n        {\n            \"node_id\": \"USpTGYaBSIKbgSUJR2Z9lg\",\n            \"type\": \"RESTART\",\n            \"reason\": \"Demonstrating how the node shutdown API works\",\n            \"shutdown_startedmillis\": 1624406108685,\n            \"allocation_delay\": \"10m\",\n            \"status\": \"COMPLETE\",\n            \"shard_migration\": {\n                \"status\": \"COMPLETE\",\n                \"shard_migrations_remaining\": 0,\n                \"explanation\": \"no shard relocation is necessary for a node restart\"\n            },\n            \"persistent_tasks\": {\n                \"status\": \"COMPLETE\"\n            },\n            \"plugins\": {\n                \"status\": \"COMPLETE\"\n            }\n        }\n    ]\n}"
               }
             }
           }
@@ -148205,6 +151118,17 @@
           "$ref": "#/components/schemas/_types.Routing"
         },
         "x-state": "Generally available",
+        "style": "form"
+      },
+      "bulk-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "bulk-_source": {
@@ -150097,6 +153021,17 @@
         },
         "style": "form"
       },
+      "count-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
+        "style": "form"
+      },
       "count-terminate_after": {
         "in": "query",
         "name": "terminate_after",
@@ -150560,6 +153495,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "style": "form"
+      },
+      "explain-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "explain-_source": {
@@ -151535,6 +154481,17 @@
           "$ref": "#/components/schemas/_types.Routing"
         },
         "x-state": "Generally available",
+        "style": "form"
+      },
+      "index-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "index-timeout": {
@@ -153987,6 +156944,17 @@
         "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
+      "indices.validate_query-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
+        "style": "form"
+      },
       "inference.delete-task_type": {
         "in": "path",
         "name": "task_type",
@@ -154236,6 +157204,27 @@
         },
         "style": "form"
       },
+      "knn_search-index": {
+        "in": "path",
+        "name": "index",
+        "description": "A comma-separated list of index names to search;\nuse `_all` or to perform the operation on all indices.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Indices"
+        },
+        "style": "simple"
+      },
+      "knn_search-routing": {
+        "in": "query",
+        "name": "routing",
+        "description": "A comma-separated list of specific routing values.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Routing"
+        },
+        "style": "form"
+      },
       "license.post-acknowledge": {
         "in": "query",
         "name": "acknowledge",
@@ -154299,6 +157288,17 @@
         },
         "style": "simple"
       },
+      "mget-force_synthetic_source": {
+        "in": "query",
+        "name": "force_synthetic_source",
+        "description": "Should this request force synthetic _source?\nUse this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.\nFetches with this enabled will be slower the enabling synthetic source natively in the index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 8.4.0",
+        "style": "form"
+      },
       "mget-preference": {
         "in": "query",
         "name": "preference",
@@ -154339,6 +157339,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "style": "form"
+      },
+      "mget-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "mget-_source": {
@@ -155572,6 +158583,39 @@
         },
         "style": "form"
       },
+      "monitoring.bulk-system_id": {
+        "in": "query",
+        "name": "system_id",
+        "description": "Identifier of the monitored system",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "monitoring.bulk-system_api_version": {
+        "in": "query",
+        "name": "system_api_version",
+        "description": "",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "monitoring.bulk-interval": {
+        "in": "query",
+        "name": "interval",
+        "description": "Collection interval (e.g., '10s' or '10000ms') of the payload",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Duration"
+        },
+        "style": "form"
+      },
       "msearch-index": {
         "in": "path",
         "name": "index",
@@ -155722,6 +158766,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.SearchType"
         },
+        "style": "form"
+      },
+      "msearch-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier for routing the search to a specific slice.\nWhen provided at the top level, all sub-searches are routed to shards matching the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.\nIndividual sub-search headers can also specify `_slice` to override the top-level setting.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "msearch-typed_keys": {
@@ -155905,6 +158960,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "style": "form"
+      },
+      "mtermvectors-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "mtermvectors-term_statistics": {
@@ -156756,6 +159822,17 @@
         },
         "style": "form"
       },
+      "search-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
+        "style": "form"
+      },
       "search-scroll": {
         "in": "query",
         "name": "scroll",
@@ -157038,6 +160115,17 @@
             }
           ]
         },
+        "style": "form"
+      },
+      "search-force_synthetic_source": {
+        "in": "query",
+        "name": "force_synthetic_source",
+        "description": "Should this request force synthetic _source?\nUse this to test if the mapping supports synthetic _source and to get a sense of the worst case performance.\nFetches with this enabled will be slower the enabling synthetic source natively in the index.",
+        "deprecated": false,
+        "schema": {
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 8.4.0",
         "style": "form"
       },
       "search_application.get_behavioral_analytics-name": {
@@ -157324,6 +160412,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "style": "form"
+      },
+      "search_shards-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier for routing the search to a specific slice.\nWhen provided, the request is limited to shards that match the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "search_template-index": {
@@ -158076,6 +161175,32 @@
         },
         "style": "form"
       },
+      "shutdown.get_node-node_id": {
+        "in": "path",
+        "name": "node_id",
+        "description": "Comma-separated list of nodes for which to retrieve the shutdown status",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.NodeIds"
+        },
+        "style": "simple"
+      },
+      "shutdown.get_node-master_timeout": {
+        "in": "query",
+        "name": "master_timeout",
+        "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+        "deprecated": false,
+        "schema": {
+          "default": "30s",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/_types.Duration"
+            }
+          ]
+        },
+        "style": "form"
+      },
       "simulate.ingest-index": {
         "in": "path",
         "name": "index",
@@ -158529,6 +161654,17 @@
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
         },
+        "style": "form"
+      },
+      "termvectors-_slice": {
+        "in": "query",
+        "name": "_slice",
+        "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "x-state": "Generally available; Added in 9.5.0",
         "style": "form"
       },
       "termvectors-term_statistics": {
@@ -160821,6 +163957,79 @@
         },
         "required": true
       },
+      "knn_search": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "_source": {
+                  "description": "Indicates which source fields are returned for matching documents. These\nfields are returned in the `hits._source` property of the search response.",
+                  "default": "true",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.search._types.SourceConfig"
+                    }
+                  ]
+                },
+                "docvalue_fields": {
+                  "description": "The request returns doc values for field names matching these patterns\nin the `hits.fields` property of the response.\nIt accepts wildcard (`*`) patterns.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_types.query_dsl.FieldAndFormat"
+                  }
+                },
+                "stored_fields": {
+                  "description": "A list of stored fields to return as part of a hit. If no fields are specified,\nno stored fields are included in the response. If this field is specified, the `_source`\nparameter defaults to `false`. You can pass `_source: true` to return both source fields\nand stored fields in the search response.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Fields"
+                    }
+                  ]
+                },
+                "fields": {
+                  "description": "The request returns values for field names matching these patterns\nin the `hits.fields` property of the response.\nIt accepts wildcard (`*`) patterns.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Fields"
+                    }
+                  ]
+                },
+                "filter": {
+                  "description": "A query to filter the documents that can match. The kNN search will return the top\n`k` documents that also match this filter. The value can be a single query or a\nlist of queries. If `filter` isn't provided, all documents are allowed to match.",
+                  "x-state": "Generally available; Added in 8.2.0",
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                      }
+                    }
+                  ]
+                },
+                "knn": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-knn-query"
+                  },
+                  "description": "The kNN query to run.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_search._types.KnnSearchQuery"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "knn"
+              ]
+            }
+          }
+        },
+        "required": true
+      },
       "license.post": {
         "content": {
           "application/json": {
@@ -161357,6 +164566,29 @@
             }
           }
         }
+      },
+      "monitoring.bulk": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.bulk.OperationContainer"
+                  },
+                  {
+                    "$ref": "#/components/schemas/_global.bulk.UpdateAction"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "required": true
       },
       "msearch": {
         "content": {

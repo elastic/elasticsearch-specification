@@ -58,6 +58,8 @@ transform-to-rest-api-spec: ## Generate the REST API spec from the compiled sche
 transform-to-openapi: ## Generate the OpenAPI definition from the compiled schema
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --output output/openapi/elasticsearch-openapi.json
 	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --output output/openapi/elasticsearch-serverless-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor stack --internal --output output/openapi/elasticsearch-internal-openapi.json
+	@npm run transform-to-openapi -- --schema output/schema/schema.json --flavor serverless --internal --output output/openapi/elasticsearch-serverless-internal-openapi.json
 
 transform-to-openapi-for-docs: ## Generate the OpenAPI definition tailored for API docs generation
 	@make generate-language-examples

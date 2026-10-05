@@ -15110,7 +15110,7 @@ export type InferenceElserServiceType = 'elser'
 
 export type InferenceElserTaskType = 'sparse_embedding'
 
-export type InferenceEmbeddingContentFormat = 'text' | 'base64'
+export type InferenceEmbeddingContentFormat = 'text' | 'base64' | 'url'
 
 export type InferenceEmbeddingContentInput = InferenceEmbeddingContentObject | InferenceEmbeddingContentObject[]
 
@@ -16179,7 +16179,7 @@ export interface InferenceRerankRequest extends RequestBase {
 
 export type InferenceRerankRerankInput = InferenceRerankRerankStringInput | InferenceRerankRerankObjectInput
 
-export type InferenceRerankRerankInputFormat = 'text' | 'base64'
+export type InferenceRerankRerankInputFormat = 'text' | 'base64' | 'url'
 
 export interface InferenceRerankRerankInputObject {
   type: InferenceRerankRerankInputType

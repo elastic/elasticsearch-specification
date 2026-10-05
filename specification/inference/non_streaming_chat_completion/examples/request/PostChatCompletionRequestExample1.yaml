@@ -1,7 +1,5 @@
 summary: A non-streaming chat completion task
-description:
-  Run `POST _inference/chat_completion/openai-completion` to perform a chat completion on the example question
-  with non-streaming.
+description: Run `POST _inference/chat_completion/openai-completion` to perform a chat completion on the example question with non-streaming.
 method_request: 'POST _inference/chat_completion/openai-completion'
 # type: "request"
 value: |-
