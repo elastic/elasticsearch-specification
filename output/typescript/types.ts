@@ -11259,6 +11259,27 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
+export interface DataRecoveryGetRpoSeriesRequest extends RequestBase {
+  start?: DateTime
+  end?: DateTime
+  bucket_duration?: Duration
+  master_timeout?: Duration
+}
+
+export interface DataRecoveryGetRpoSeriesResponse {
+  start: DateTime
+  end: DateTime
+  bucket_duration: Duration
+  bucket_count: integer
+  buckets: DataRecoveryGetRpoSeriesRpoBucket[]
+}
+
+export interface DataRecoveryGetRpoSeriesRpoBucket {
+  start: DateTime
+  end: DateTime
+  max_recovery_point_age_millis: long | null
+}
+
 export interface EnrichPolicy {
   enrich_fields: Fields
   indices: Indices

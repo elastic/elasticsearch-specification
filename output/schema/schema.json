@@ -4755,6 +4755,38 @@
     {
       "availability": {
         "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "Get the recovery point objective series.\n\nGet, for each bucket in the half-open range `[start, end)`, the maximum age\nthat the newest recoverable state reached during that bucket.\nThis API is intended for internal operator use.\nThe range is divided into at most 1,000 buckets. A bucket has no value if\nno retained recovery point covers its start.",
+      "docId": "data-recovery-get-rpo-series",
+      "docUrl": "",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-data-recovery-get-rpo-series",
+      "name": "data_recovery.get_rpo_series",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.get_rpo_series"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.get_rpo_series"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/rpo"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -143552,6 +143584,215 @@
         "namespace": "dangling_indices.list_dangling_indices"
       },
       "specLocation": "dangling_indices/list_dangling_indices/ListDanglingIndicesResponse.ts#L23-L27"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get the recovery point objective series.\n\nGet, for each bucket in the half-open range `[start, end)`, the maximum age\nthat the newest recoverable state reached during that bucket.\nThis API is intended for internal operator use.\nThe range is divided into at most 1,000 buckets. A bucket has no value if\nno retained recovery point covers its start.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.get_rpo_series"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "The inclusive start of the range, as a date or epoch milliseconds.\nWhen omitted, it is seven days before `end`, rounded down to a whole multiple of `bucket_duration`,\nso that repeated requests with default parameters return the same bucket boundaries.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The exclusive end of the range, as a date or epoch milliseconds.",
+          "name": "end",
+          "required": false,
+          "serverDefault": "now",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The duration of each bucket. It must be greater than zero, and the range must divide into at most 1,000 buckets.",
+          "name": "bucket_duration",
+          "required": false,
+          "serverDefault": "1h",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesRequest.ts#L24-L68"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The inclusive start of the range.",
+            "name": "start",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The exclusive end of the range.",
+            "name": "end",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The duration of each bucket.",
+            "name": "bucket_duration",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Duration",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of buckets in the series.",
+            "name": "bucket_count",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The buckets in ascending order by start time.",
+            "name": "buckets",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RpoBucket",
+                  "namespace": "data_recovery.get_rpo_series"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.get_rpo_series"
+      },
+      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesResponse.ts#L24-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RpoBucket",
+        "namespace": "data_recovery.get_rpo_series"
+      },
+      "properties": [
+        {
+          "description": "The inclusive start of the bucket.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The exclusive end of the bucket. The last bucket is clipped to the end of the range.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The greatest age, in milliseconds, that the newest recoverable state reached during the bucket.\nIt is `null` if no retained recovery point covers the start of the bucket or the bucket starts in the future.",
+          "name": "max_recovery_point_age_millis",
+          "required": true,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "long",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "specLocation": "data_recovery/get_rpo_series/types.ts#L23-L33"
     },
     {
       "kind": "interface",
