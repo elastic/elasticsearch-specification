@@ -11528,6 +11528,27 @@ export interface DataRecoveryGetRecoverySourcesResponse {
   sources: DataRecoveryGetRecoverySourcesRecoverySource[]
 }
 
+export interface DataRecoveryGetRpoSeriesRequest extends RequestBase {
+  start?: DateTime
+  end?: DateTime
+  bucket_duration?: Duration
+  master_timeout?: Duration
+}
+
+export interface DataRecoveryGetRpoSeriesResponse {
+  start: DateTime
+  end: DateTime
+  bucket_duration: Duration
+  bucket_count: integer
+  buckets: DataRecoveryGetRpoSeriesRpoBucket[]
+}
+
+export interface DataRecoveryGetRpoSeriesRpoBucket {
+  start: DateTime
+  end: DateTime
+  max_recovery_point_age_millis: long | null
+}
+
 export interface EncryptionResetRequest extends RequestBase {
   accept_data_loss: boolean
   master_timeout?: Duration
