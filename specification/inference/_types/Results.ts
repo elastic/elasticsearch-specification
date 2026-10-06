@@ -21,6 +21,7 @@ import { AcknowledgedResponseBase } from '@_types/Base'
 import { byte, float, integer } from '@_types/Numeric'
 import { ReasoningDetail } from '@inference/_types/CommonTypes'
 import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -120,6 +121,32 @@ export class RankedDocument {
  */
 export class RerankedInferenceResult {
   rerank: Array<RankedDocument>
+}
+
+/**
+ * The document extraction result object representing the content extracted from a single document.
+ */
+export class DocumentExtractionResult {
+  /**
+   * The content extracted from the document.
+   */
+  content: string
+  /**
+   * The format of the extracted content, for example `markdown`.
+   */
+  format: string
+  /**
+   * Additional information about the document, such as its title. The available fields depend on the service and model.
+   */
+  metadata?: Dictionary<string, UserDefinedValue>
+}
+
+/**
+ * Defines the response for a document extraction request.
+ * The results are returned in the same order as the documents in the request.
+ */
+export class DocumentExtractionInferenceResult {
+  document_extraction: Array<DocumentExtractionResult>
 }
 
 /**

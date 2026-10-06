@@ -13595,6 +13595,113 @@
         ]
       }
     },
+    "/_inference/document_extraction/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform document extraction inference on the service",
+        "description": "Extract the content of documents, such as PDFs or images of documents, into a textual format.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-document-extraction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "120s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DocumentExtractionRequestExample1": {
+                  "summary": "Document extraction task",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+                  "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+                },
+                "DocumentExtractionRequestExample2": {
+                  "summary": "Document extraction task using the url format and task settings",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+                  "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DocumentExtractionInferenceResult"
+                },
+                "examples": {
+                  "DocumentExtractionResponseExample1": {
+                    "summary": "Document extraction task",
+                    "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+                    "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/embedding/{inference_id}": {
       "post": {
         "tags": [
@@ -71382,7 +71489,8 @@
           "rerank",
           "completion",
           "chat_completion",
-          "embedding"
+          "embedding",
+          "document_extraction"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -71405,6 +71513,121 @@
               "pipelines"
             ]
           }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionInput": {
+        "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+            }
+          }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObject": {
+        "description": "A wrapper object which contains a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The document to extract the content from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObjectItem"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObjectItem": {
+        "description": "An object describing a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the document. Not all services and models support all types.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentType": {
+        "type": "string",
+        "enum": [
+          "image",
+          "pdf"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentFormat": {
+        "type": "string",
+        "enum": [
+          "base64",
+          "url"
+        ]
+      },
+      "inference._types.DocumentExtractionInferenceResult": {
+        "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+        "type": "object",
+        "properties": {
+          "document_extraction": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DocumentExtractionResult"
+            }
+          }
+        },
+        "required": [
+          "document_extraction"
+        ]
+      },
+      "inference._types.DocumentExtractionResult": {
+        "description": "The document extraction result object representing the content extracted from a single document.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The content extracted from the document.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The format of the extracted content, for example `markdown`.",
+            "type": "string"
+          },
+          "metadata": {
+            "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "content",
+          "format"
         ]
       },
       "inference._types.RequestEmbedding": {
