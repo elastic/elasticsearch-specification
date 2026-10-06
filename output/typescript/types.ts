@@ -11506,6 +11506,28 @@ export interface DataRecoveryGetRecoveryPointsResponse {
   recovery_points: DataRecoveryGetRecoveryPointsRecoveryPoint[]
 }
 
+export interface DataRecoveryGetRecoverySourcesRecoverySource {
+  complete: boolean
+  name: string
+  type: DataRecoveryGetRecoverySourcesRecoverySourceType
+}
+
+export type DataRecoveryGetRecoverySourcesRecoverySourceType = 'index' | 'data_stream'
+
+export interface DataRecoveryGetRecoverySourcesRequest extends RequestBase {
+  expression: string | string[]
+  include_incomplete_sources?: boolean
+  master_timeout?: Duration
+  recovery_point_end_time: DateTime
+  size?: integer
+}
+
+export interface DataRecoveryGetRecoverySourcesResponse {
+  has_more: boolean
+  recovery_point: DataRecoveryGetRecoveryPointsRecoveryPoint
+  sources: DataRecoveryGetRecoverySourcesRecoverySource[]
+}
+
 export interface EncryptionResetRequest extends RequestBase {
   accept_data_loss: boolean
   master_timeout?: Duration

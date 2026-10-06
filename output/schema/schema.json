@@ -4849,6 +4849,38 @@
     {
       "availability": {
         "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "Get recovery sources.\n\nGet the logical sources captured at an exact recovery point in the platform-managed data recovery repository.\nThis API is intended for internal operator use. Repository, snapshot, and policy identifiers are not exposed.",
+      "docId": "data-recovery-get-recovery-sources",
+      "docUrl": "",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-data-recovery-get-recovery-sources",
+      "name": "data_recovery.get_recovery_sources",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/sources"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -148427,6 +148459,222 @@
         "namespace": "data_recovery.get_recovery_points"
       },
       "specLocation": "data_recovery/get_recovery_points/DataRecoveryGetRecoveryPointsResponse.ts#L22-L27"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RecoverySource",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "properties": [
+        {
+          "description": "Whether the logical source was completely captured in the recovery point.\nFor a data stream, this includes its backing and failure-store indices.",
+          "name": "complete",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The name of the index or data stream.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of logical source.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoverySourceType",
+              "namespace": "data_recovery.get_recovery_sources"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/get_recovery_sources/types.ts#L20-L30"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "index"
+        },
+        {
+          "name": "data_stream"
+        }
+      ],
+      "name": {
+        "name": "RecoverySourceType",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get recovery sources.\n\nGet the logical sources captured at an exact recovery point in the platform-managed data recovery repository.\nThis API is intended for internal operator use. Repository, snapshot, and policy identifiers are not exposed.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "A comma-separated list of source expressions to match. Wildcards and exclusions prefixed with `-` are supported.",
+          "name": "expression",
+          "required": true,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "description": "If `true`, include logical sources that were not completely captured in the recovery point.",
+          "name": "include_incomplete_sources",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The exact end time of the recovery point.",
+          "name": "recovery_point_end_time",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of matching sources to return. The value must be between 1 and 1000.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 100,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesRequest.ts#L25-L66"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "Whether more matching sources are available than were returned.",
+            "name": "has_more",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The selected recovery point.",
+            "name": "recovery_point",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RecoveryPoint",
+                "namespace": "data_recovery.get_recovery_points"
+              }
+            }
+          },
+          {
+            "description": "Matching logical recovery sources ordered by name.",
+            "name": "sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RecoverySource",
+                  "namespace": "data_recovery.get_recovery_sources"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesResponse.ts#L23-L32"
     },
     {
       "kind": "request",
