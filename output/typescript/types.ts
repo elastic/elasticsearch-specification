@@ -24293,6 +24293,7 @@ export interface TransformSettings {
   use_point_in_time?: boolean
   num_failure_retries?: integer
   unattended?: boolean
+  indexer_request_timeout?: Duration
 }
 
 export interface TransformSource {

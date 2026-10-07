@@ -293767,9 +293767,28 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "name": "indexer_request_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L196"
+      "specLocation": "transform/_types/Transform.ts#L129-L207"
     },
     {
       "kind": "interface",
@@ -293840,7 +293859,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L198-L229"
+      "specLocation": "transform/_types/Transform.ts#L209-L240"
     },
     {
       "kind": "interface",
@@ -293862,7 +293881,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L233-L239",
+      "specLocation": "transform/_types/Transform.ts#L244-L250",
       "variants": {
         "kind": "container"
       }
@@ -293900,7 +293919,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L241-L253"
+      "specLocation": "transform/_types/Transform.ts#L252-L264"
     },
     {
       "kind": "request",
