@@ -21,6 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
@@ -53,7 +54,7 @@ export interface Request extends RequestBase {
     /**
      * Simulate the update
      */
-    dry_run?: boolean
+    dry_run?: Stringified<boolean>
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s

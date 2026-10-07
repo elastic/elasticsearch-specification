@@ -38,20 +38,20 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Json
   query_parameters: {
     /**
-     * A comma-separated list of node names to prevalidate
-     * @server_default []
+     * A comma-separated list of node names to prevalidate.
+     * Defaults to an empty array.
      */
-    names?: string[]
+    names?: string[] | string
     /**
      * A comma-separated list of node IDs to prevalidate
-     * @server_default []
+     * Defaults to an empty array.
      */
-    ids?: string[]
+    ids?: string[] | string
     /**
      * A comma-separated list of node external IDs to prevalidate
-     * @server_default []
+     * Defaults to an empty array.
      */
-    external_ids?: string[]
+    external_ids?: string[] | string
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
