@@ -395,6 +395,8 @@ export interface FieldCapsFieldCapability {
   type: string
   inference?: boolean
   non_inference_indices?: Indices
+  passthrough?: boolean
+  non_passthrough_indices?: Indices
   metadata_field?: boolean
   time_series_dimension?: boolean
   time_series_metric?: MappingTimeSeriesMetricType

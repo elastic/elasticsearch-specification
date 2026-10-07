@@ -101739,6 +101739,20 @@
               }
             ]
           },
+          "passthrough": {
+            "description": "Whether this field is a passthrough source on all indices.\nThis property is present only for field types that support passthrough.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "non_passthrough_indices": {
+            "description": "The list of indices where this field is not a passthrough source, or null if all indices have the same definition for the field.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Indices"
+              }
+            ]
+          },
           "metadata_field": {
             "description": "Whether this field is registered as a metadata field.",
             "type": "boolean"
