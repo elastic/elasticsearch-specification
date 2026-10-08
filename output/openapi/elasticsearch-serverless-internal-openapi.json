@@ -7189,6 +7189,131 @@
         ]
       }
     },
+    "/_data_recovery/sources": {
+      "get": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "Get recovery sources",
+        "description": "Get the logical sources captured at an exact recovery point in the platform-managed data recovery repository.\nThis API is intended for internal operator use. Repository, snapshot, and policy identifiers are not exposed.",
+        "operationId": "data-recovery-get-recovery-sources",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "expression",
+            "description": "A comma-separated list of source expressions to match. Wildcards and exclusions prefixed with `-` are supported.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "include_incomplete_sources",
+            "description": "If `true`, include logical sources that were not completely captured in the recovery point.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "recovery_point_end_time",
+            "description": "The exact end time of the recovery point.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "size",
+            "description": "The maximum number of matching sources to return. The value must be between 1 and 1000.",
+            "deprecated": false,
+            "schema": {
+              "default": 100.0,
+              "type": "number"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "has_more": {
+                      "description": "Whether more matching sources are available than were returned.",
+                      "type": "boolean"
+                    },
+                    "recovery_point": {
+                      "description": "The selected recovery point.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/data_recovery.get_recovery_points.RecoveryPoint"
+                        }
+                      ]
+                    },
+                    "sources": {
+                      "description": "Matching logical recovery sources ordered by name.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/data_recovery.get_recovery_sources.RecoverySource"
+                      }
+                    }
+                  },
+                  "required": [
+                    "has_more",
+                    "recovery_point",
+                    "sources"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/{index}/_doc/{id}": {
       "get": {
         "tags": [
@@ -89109,6 +89234,39 @@
         "required": [
           "start_time",
           "end_time"
+        ]
+      },
+      "data_recovery.get_recovery_sources.RecoverySource": {
+        "type": "object",
+        "properties": {
+          "complete": {
+            "description": "Whether the logical source was completely captured in the recovery point.\nFor a data stream, this includes its backing and failure-store indices.",
+            "type": "boolean"
+          },
+          "name": {
+            "description": "The name of the index or data stream.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of logical source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery.get_recovery_sources.RecoverySourceType"
+              }
+            ]
+          }
+        },
+        "required": [
+          "complete",
+          "name",
+          "type"
+        ]
+      },
+      "data_recovery.get_recovery_sources.RecoverySourceType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "data_stream"
         ]
       },
       "_types.Conflicts": {

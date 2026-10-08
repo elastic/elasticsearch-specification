@@ -11506,6 +11506,49 @@ export interface DataRecoveryGetRecoveryPointsResponse {
   recovery_points: DataRecoveryGetRecoveryPointsRecoveryPoint[]
 }
 
+export interface DataRecoveryGetRecoverySourcesRecoverySource {
+  complete: boolean
+  name: string
+  type: DataRecoveryGetRecoverySourcesRecoverySourceType
+}
+
+export type DataRecoveryGetRecoverySourcesRecoverySourceType = 'index' | 'data_stream'
+
+export interface DataRecoveryGetRecoverySourcesRequest extends RequestBase {
+  expression: string | string[]
+  include_incomplete_sources?: boolean
+  master_timeout?: Duration
+  recovery_point_end_time: DateTime
+  size?: integer
+}
+
+export interface DataRecoveryGetRecoverySourcesResponse {
+  has_more: boolean
+  recovery_point: DataRecoveryGetRecoveryPointsRecoveryPoint
+  sources: DataRecoveryGetRecoverySourcesRecoverySource[]
+}
+
+export interface DataRecoveryGetRpoSeriesRequest extends RequestBase {
+  start?: DateTime
+  end?: DateTime
+  bucket_duration?: Duration
+  master_timeout?: Duration
+}
+
+export interface DataRecoveryGetRpoSeriesResponse {
+  start: DateTime
+  end: DateTime
+  bucket_duration: Duration
+  bucket_count: integer
+  buckets: DataRecoveryGetRpoSeriesRpoBucket[]
+}
+
+export interface DataRecoveryGetRpoSeriesRpoBucket {
+  start: DateTime
+  end: DateTime
+  max_recovery_point_age_millis: long | null
+}
+
 export interface EncryptionResetRequest extends RequestBase {
   accept_data_loss: boolean
   master_timeout?: Duration

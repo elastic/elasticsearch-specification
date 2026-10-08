@@ -135120,6 +135120,22 @@
       "kind": "enum",
       "members": [
         {
+          "name": "index"
+        },
+        {
+          "name": "data_stream"
+        }
+      ],
+      "name": {
+        "name": "RecoverySourceType",
+        "namespace": "data_recovery.get_recovery_sources"
+      },
+      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "geo_match"
         },
         {
