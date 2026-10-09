@@ -19,9 +19,9 @@
 
 import { AcknowledgedResponseBase } from '@_types/Base'
 import { byte, float, integer } from '@_types/Numeric'
+import { Metadata } from '@_types/common'
 import { ReasoningDetail } from '@inference/_types/CommonTypes'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Sparse Embedding tokens are represented as a dictionary
@@ -138,7 +138,7 @@ export class DocumentExtractionResult {
   /**
    * Additional information about the document, such as its title. The available fields depend on the service and model.
    */
-  metadata?: Dictionary<string, UserDefinedValue>
+  metadata?: Metadata
 }
 
 /**

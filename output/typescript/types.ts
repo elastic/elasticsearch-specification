@@ -15089,7 +15089,7 @@ export interface InferenceDocumentExtractionInferenceResult {
 export interface InferenceDocumentExtractionResult {
   content: string
   format: string
-  metadata?: Record<string, any>
+  metadata?: Metadata
 }
 
 export interface InferenceElasticsearchServiceSettings {
