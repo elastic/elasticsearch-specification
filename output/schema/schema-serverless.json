@@ -5743,6 +5743,53 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Perform document extraction inference on the service.\n\nExtract the content of documents, such as PDFs or images of documents, into a textual format.",
+      "docId": "inference-api-post",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
+      "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
+      "name": "inference.document_extraction",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "inference.document_extraction"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "inference.document_extraction"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_inference/document_extraction/{inference_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.4.0",
           "stability": "experimental",
           "visibility": "public"
@@ -37764,6 +37811,122 @@
         "namespace": "inference.delete_region_policy"
       },
       "specLocation": "inference/delete_region_policy/DeleteRegionPolicyResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionInput",
+                "namespace": "inference.document_extraction"
+              }
+            }
+          },
+          {
+            "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+            "name": "task_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TaskSettings",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Perform document extraction inference on the service.\n\nExtract the content of documents, such as PDFs or images of documents, into a textual format.",
+      "examples": {
+        "DocumentExtractionRequestExample1": {
+          "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+          "method_request": "POST _inference/document_extraction/my-document-extraction-endpoint",
+          "summary": "Document extraction task",
+          "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+        },
+        "DocumentExtractionRequestExample2": {
+          "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+          "method_request": "POST _inference/document_extraction/my-document-extraction-endpoint",
+          "summary": "Document extraction task using the url format and task settings",
+          "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "inference.document_extraction"
+      },
+      "path": [
+        {
+          "description": "The unique identifier for the inference endpoint.",
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The amount of time to wait for the inference request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "120s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L25-L100"
+    },
+    {
+      "body": {
+        "codegenName": "inference_result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DocumentExtractionInferenceResult",
+            "namespace": "inference._types"
+          }
+        }
+      },
+      "examples": {
+        "DocumentExtractionResponseExample1": {
+          "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+          "summary": "Document extraction task",
+          "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionResponse.ts#L22-L25"
     },
     {
       "attachedBehaviors": [
@@ -138416,7 +138579,7 @@
         "name": "DenseByteVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L52-L56",
+      "specLocation": "inference/_types/Results.ts#L53-L57",
       "type": {
         "kind": "array_of",
         "value": {
@@ -138435,7 +138598,7 @@
         "name": "DenseVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L31-L35",
+      "specLocation": "inference/_types/Results.ts#L32-L36",
       "type": {
         "kind": "array_of",
         "value": {
@@ -139711,7 +139874,7 @@
         "name": "SparseVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L25-L29",
+      "specLocation": "inference/_types/Results.ts#L26-L30",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -139762,13 +139925,16 @@
         },
         {
           "name": "embedding"
+        },
+        {
+          "name": "document_extraction"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L30"
+      "specLocation": "inference/_types/TaskType.ts#L20-L31"
     },
     {
       "kind": "enum",
@@ -139784,7 +139950,7 @@
         "name": "TaskTypeAi21",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L38-L41"
+      "specLocation": "inference/_types/TaskType.ts#L39-L42"
     },
     {
       "kind": "enum",
@@ -139806,7 +139972,7 @@
         "name": "TaskTypeAlibabaCloudAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L43-L48"
+      "specLocation": "inference/_types/TaskType.ts#L44-L49"
     },
     {
       "kind": "enum",
@@ -139825,7 +139991,7 @@
         "name": "TaskTypeAmazonBedrock",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L50-L54"
+      "specLocation": "inference/_types/TaskType.ts#L51-L55"
     },
     {
       "kind": "enum",
@@ -139850,7 +140016,7 @@
         "name": "TaskTypeAmazonSageMaker",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L56-L62"
+      "specLocation": "inference/_types/TaskType.ts#L57-L63"
     },
     {
       "kind": "enum",
@@ -139866,7 +140032,7 @@
         "name": "TaskTypeAnthropic",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L64-L67"
+      "specLocation": "inference/_types/TaskType.ts#L65-L68"
     },
     {
       "kind": "enum",
@@ -139885,7 +140051,7 @@
         "name": "TaskTypeAzureAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L69-L73"
+      "specLocation": "inference/_types/TaskType.ts#L70-L74"
     },
     {
       "kind": "enum",
@@ -139904,7 +140070,7 @@
         "name": "TaskTypeAzureOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L75-L79"
+      "specLocation": "inference/_types/TaskType.ts#L76-L80"
     },
     {
       "kind": "enum",
@@ -139923,7 +140089,7 @@
         "name": "TaskTypeCohere",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L81-L85"
+      "specLocation": "inference/_types/TaskType.ts#L82-L86"
     },
     {
       "kind": "enum",
@@ -139936,7 +140102,7 @@
         "name": "TaskTypeContextualAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L87-L89"
+      "specLocation": "inference/_types/TaskType.ts#L88-L90"
     },
     {
       "kind": "enum",
@@ -139958,7 +140124,7 @@
         "name": "TaskTypeCustom",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L91-L96"
+      "specLocation": "inference/_types/TaskType.ts#L92-L97"
     },
     {
       "kind": "enum",
@@ -139974,7 +140140,7 @@
         "name": "TaskTypeDeepSeek",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L98-L101"
+      "specLocation": "inference/_types/TaskType.ts#L99-L102"
     },
     {
       "kind": "enum",
@@ -139987,7 +140153,7 @@
         "name": "TaskTypeELSER",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L109-L111"
+      "specLocation": "inference/_types/TaskType.ts#L110-L112"
     },
     {
       "kind": "enum",
@@ -140006,7 +140172,7 @@
         "name": "TaskTypeElasticsearch",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L103-L107"
+      "specLocation": "inference/_types/TaskType.ts#L104-L108"
     },
     {
       "kind": "enum",
@@ -140025,7 +140191,7 @@
         "name": "TaskTypeFireworksAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L174-L178"
+      "specLocation": "inference/_types/TaskType.ts#L175-L179"
     },
     {
       "kind": "enum",
@@ -140041,7 +140207,7 @@
         "name": "TaskTypeGoogleAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L113-L116"
+      "specLocation": "inference/_types/TaskType.ts#L114-L117"
     },
     {
       "kind": "enum",
@@ -140063,7 +140229,7 @@
         "name": "TaskTypeGoogleVertexAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L118-L123"
+      "specLocation": "inference/_types/TaskType.ts#L119-L124"
     },
     {
       "kind": "enum",
@@ -140076,7 +140242,7 @@
         "name": "TaskTypeGroq",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L125-L127"
+      "specLocation": "inference/_types/TaskType.ts#L126-L128"
     },
     {
       "kind": "enum",
@@ -140098,7 +140264,7 @@
         "name": "TaskTypeHuggingFace",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L129-L134"
+      "specLocation": "inference/_types/TaskType.ts#L130-L135"
     },
     {
       "kind": "enum",
@@ -140117,7 +140283,7 @@
         "name": "TaskTypeJinaAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L32-L36"
+      "specLocation": "inference/_types/TaskType.ts#L33-L37"
     },
     {
       "kind": "enum",
@@ -140136,7 +140302,7 @@
         "name": "TaskTypeLlama",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L136-L140"
+      "specLocation": "inference/_types/TaskType.ts#L137-L141"
     },
     {
       "kind": "enum",
@@ -140155,7 +140321,7 @@
         "name": "TaskTypeMistral",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L142-L146"
+      "specLocation": "inference/_types/TaskType.ts#L143-L147"
     },
     {
       "kind": "enum",
@@ -140177,7 +140343,7 @@
         "name": "TaskTypeNvidia",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L148-L153"
+      "specLocation": "inference/_types/TaskType.ts#L149-L154"
     },
     {
       "kind": "enum",
@@ -140199,7 +140365,7 @@
         "name": "TaskTypeOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L155-L160"
+      "specLocation": "inference/_types/TaskType.ts#L156-L161"
     },
     {
       "kind": "enum",
@@ -140221,7 +140387,7 @@
         "name": "TaskTypeOpenShiftAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L162-L167"
+      "specLocation": "inference/_types/TaskType.ts#L163-L168"
     },
     {
       "kind": "enum",
@@ -140237,7 +140403,7 @@
         "name": "TaskTypeVoyageAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L169-L172"
+      "specLocation": "inference/_types/TaskType.ts#L170-L173"
     },
     {
       "kind": "enum",
@@ -140256,7 +140422,7 @@
         "name": "TaskTypeWatsonx",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L180-L184"
+      "specLocation": "inference/_types/TaskType.ts#L181-L185"
     },
     {
       "kind": "enum",
@@ -140321,6 +140487,139 @@
         "namespace": "inference._types"
       },
       "specLocation": "inference/_types/CommonTypes.ts#L2468-L2473"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "base64"
+        },
+        {
+          "name": "url"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionContentFormat",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L148-L155"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "pdf"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionContentType",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L140-L146"
+    },
+    {
+      "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DocumentExtractionInput",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L102-L108",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentObject",
+              "namespace": "inference.document_extraction"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionContentObject",
+                "namespace": "inference.document_extraction"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "A wrapper object which contains a single document to extract the content from.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionContentObject",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The document to extract the content from.",
+          "name": "content",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentObjectItem",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L110-L118"
+    },
+    {
+      "description": "An object describing a single document to extract the content from.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionContentObjectItem",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The type of the document. Not all services and models support all types.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentType",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentFormat",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L138"
     },
     {
       "codegenNames": [
@@ -165647,7 +165946,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L99-L104"
+      "specLocation": "inference/_types/Results.ts#L100-L105"
     },
     {
       "description": "The completion result object",
@@ -165669,7 +165968,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L92-L97"
+      "specLocation": "inference/_types/Results.ts#L93-L98"
     },
     {
       "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
@@ -165700,7 +165999,86 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L125-L130"
+      "specLocation": "inference/_types/Results.ts#L152-L157"
+    },
+    {
+      "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionInferenceResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "document_extraction",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionResult",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L144-L150"
+    },
+    {
+      "description": "The document extraction result object representing the content extracted from a single document.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The content extracted from the document.",
+          "name": "content",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The format of the extracted content, for example `markdown`.",
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L126-L142"
     },
     {
       "kind": "interface",
@@ -165799,7 +166177,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L82-L90",
+      "specLocation": "inference/_types/Results.ts#L83-L91",
       "variants": {
         "kind": "container"
       }
@@ -165824,7 +166202,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L58-L63"
+      "specLocation": "inference/_types/Results.ts#L59-L64"
     },
     {
       "description": "The dense embedding result object for float representation",
@@ -165846,7 +166224,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L65-L70"
+      "specLocation": "inference/_types/Results.ts#L66-L71"
     },
     {
       "description": "Represents an inference endpoint as returned by the GET API",
@@ -166232,7 +166610,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L299-L313",
+      "specLocation": "inference/_types/Results.ts#L326-L340",
       "variants": {
         "kind": "container"
       }
@@ -166268,7 +166646,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L37-L43"
+      "specLocation": "inference/_types/Results.ts#L38-L44"
     },
     {
       "description": "The rerank result object representing a single ranked document\nid: the original index of the document in the request\nrelevance_score: the relevance_score of the document relative to the query\ntext: Optional, the text of the document, if requested",
@@ -166312,7 +166690,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L106-L116"
+      "specLocation": "inference/_types/Results.ts#L107-L117"
     },
     {
       "description": "The response format for the non-streaming unified chat completion request.",
@@ -166386,7 +166764,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L272-L297"
+      "specLocation": "inference/_types/Results.ts#L299-L324"
     },
     {
       "description": "A single completion choice returned by the model.",
@@ -166433,7 +166811,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L200-L218"
+      "specLocation": "inference/_types/Results.ts#L227-L245"
     },
     {
       "description": "The message returned by the model.",
@@ -166522,7 +166900,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L168-L198"
+      "specLocation": "inference/_types/Results.ts#L195-L225"
     },
     {
       "description": "A tool call generated by the model.",
@@ -166581,7 +166959,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L146-L166"
+      "specLocation": "inference/_types/Results.ts#L173-L193"
     },
     {
       "description": "The function called by the tool.",
@@ -166616,7 +166994,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L132-L144"
+      "specLocation": "inference/_types/Results.ts#L159-L171"
     },
     {
       "description": "Token usage statistics for the request.",
@@ -166687,7 +167065,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L244-L270"
+      "specLocation": "inference/_types/Results.ts#L271-L297"
     },
     {
       "description": "Breakdown of tokens used in the prompt.",
@@ -166722,7 +167100,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L220-L232"
+      "specLocation": "inference/_types/Results.ts#L247-L259"
     },
     {
       "description": "Breakdown of tokens used in the request.",
@@ -166745,7 +167123,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L234-L242"
+      "specLocation": "inference/_types/Results.ts#L261-L269"
     },
     {
       "kind": "interface",
@@ -171062,7 +171440,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L118-L123"
+      "specLocation": "inference/_types/Results.ts#L119-L124"
     },
     {
       "description": "The response format for the sparse embedding request.",
@@ -171087,7 +171465,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L45-L50"
+      "specLocation": "inference/_types/Results.ts#L46-L51"
     },
     {
       "description": "TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants",
@@ -171140,7 +171518,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L72-L80",
+      "specLocation": "inference/_types/Results.ts#L73-L81",
       "variants": {
         "kind": "container"
       }

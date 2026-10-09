@@ -15127,6 +15127,16 @@ export interface InferenceDenseEmbeddingResult {
 
 export type InferenceDenseVector = float[]
 
+export interface InferenceDocumentExtractionInferenceResult {
+  document_extraction: InferenceDocumentExtractionResult[]
+}
+
+export interface InferenceDocumentExtractionResult {
+  content: string
+  format: string
+  metadata?: Metadata
+}
+
 export interface InferenceElasticsearchServiceSettings {
   adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
@@ -15653,7 +15663,7 @@ export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningD
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
@@ -15797,6 +15807,33 @@ export interface InferenceDeleteRegionPolicyRequest extends RequestBase {
 }
 
 export type InferenceDeleteRegionPolicyResponse = AcknowledgedResponseBase
+
+export type InferenceDocumentExtractionDocumentExtractionContentFormat = 'base64' | 'url'
+
+export interface InferenceDocumentExtractionDocumentExtractionContentObject {
+  content: InferenceDocumentExtractionDocumentExtractionContentObjectItem
+}
+
+export interface InferenceDocumentExtractionDocumentExtractionContentObjectItem {
+  type: InferenceDocumentExtractionDocumentExtractionContentType
+  format?: InferenceDocumentExtractionDocumentExtractionContentFormat
+  value: string
+}
+
+export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf'
+
+export type InferenceDocumentExtractionDocumentExtractionInput = InferenceDocumentExtractionDocumentExtractionContentObject | InferenceDocumentExtractionDocumentExtractionContentObject[]
+
+export interface InferenceDocumentExtractionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: InferenceDocumentExtractionDocumentExtractionInput
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceDocumentExtractionResponse = InferenceDocumentExtractionInferenceResult
 
 export interface InferenceEmbeddingRequest extends RequestBase {
   inference_id: Id
