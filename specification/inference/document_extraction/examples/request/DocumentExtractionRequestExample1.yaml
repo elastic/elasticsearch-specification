@@ -1,0 +1,15 @@
+summary: Document extraction task
+description: Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document
+method_request: 'POST _inference/document_extraction/my-document-extraction-endpoint'
+value: |-
+  {
+    "input": [
+      {
+        "content": {
+          "type": "pdf",
+          "format": "base64",
+          "value": "data:application/pdf;base64,..."
+        }
+      }
+    ]
+  }
