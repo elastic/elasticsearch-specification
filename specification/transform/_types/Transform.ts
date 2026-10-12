@@ -193,6 +193,17 @@ export class Settings {
    * @availability serverless
    */
   unattended?: boolean
+
+  /**
+   * The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.
+   * Each consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the
+   * maximum is `12h`.
+   *
+   * @server_default 30s
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  indexer_request_timeout?: Duration
 }
 
 export class Source {
