@@ -105080,6 +105080,7 @@
             ]
           },
           "dlm_frozen_transitions": {
+            "description": "Reports the health of data stream lifecycle transitions of backing indices to the frozen tier.",
             "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
@@ -105842,34 +105843,41 @@
         ]
       },
       "_global.health_report.DlmFrozenTransitionsIndicatorDetails": {
+        "description": "An index is overdue when it has passed its `frozen_after` age by more than the configured threshold and has not yet completed its transition to the frozen tier.\nIndices with a running transition are making progress and are not counted as overdue.",
         "type": "object",
         "properties": {
           "transitions_enabled": {
+            "description": "Indicates whether frozen-tier transitions are enabled by the `dlm.frozen_transitions.enabled` cluster setting.",
             "type": "boolean"
           },
           "service_running": {
+            "description": "Indicates whether the frozen transition service is running on the current master node.",
             "type": "boolean"
           },
           "default_repository_configured": {
+            "description": "Indicates whether a default snapshot repository is configured with the `repositories.default_repository` cluster setting.",
             "type": "boolean"
           },
           "overdue_indices_count": {
+            "description": "The total number of overdue indices in the cluster.",
             "type": "number"
           },
           "overdue_indices_count_by_state": {
+            "description": "The number of overdue indices in the cluster for each transition state.\nOnly present when there are overdue indices.",
             "type": "object",
             "additionalProperties": {
               "type": "number"
             }
           },
           "overdue_indices_sample": {
+            "description": "A sample of the overdue indices and their transition states, sorted by index name.\nThe sample is limited to 100 indices for each transition state, so it can contain fewer indices than `overdue_indices_count`.\nOnly present when there are overdue indices.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionOverdueIndex"
             }
           },
           "generated_at_millis": {
-            "description": "Only present when the indicator status is `unknown`, meaning the health snapshot is stale.",
+            "description": "The time, in milliseconds since the Unix epoch, when the master node generated the health snapshot.\nOnly present when the indicator status is `unknown`, meaning the health snapshot is stale.",
             "type": "number"
           }
         }
@@ -105878,6 +105886,7 @@
         "type": "object",
         "properties": {
           "index_name": {
+            "description": "The name of the overdue index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -105885,6 +105894,7 @@
             ]
           },
           "transition_state": {
+            "description": "The transition state of the overdue index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionState"

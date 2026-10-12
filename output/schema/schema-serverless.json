@@ -76335,15 +76335,19 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The index is eligible for a frozen-tier transition but the data stream lifecycle has not marked it for conversion.",
           "name": "unmarked"
         },
         {
+          "description": "The index is marked for conversion but has not been submitted to the transition executor.",
           "name": "marked"
         },
         {
+          "description": "The index has been submitted to the transition executor and is waiting in its queue for a thread.",
           "name": "queued"
         },
         {
+          "description": "The transition of the index is in progress.",
           "name": "running"
         }
       ],
@@ -76351,7 +76355,7 @@
         "name": "DlmFrozenTransitionState",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L258-L263"
+      "specLocation": "_global/health_report/types.ts#L281-L290"
     },
     {
       "kind": "enum",
@@ -76373,7 +76377,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L78-L83"
+      "specLocation": "_global/health_report/types.ts#L81-L86"
     },
     {
       "kind": "enum",
