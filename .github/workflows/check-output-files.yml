@@ -1,0 +1,59 @@
+name: Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: "read"
+  pull-requests: "read"
+
+jobs:
+  check-output-files:
+    name: output files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Check for committed output files"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          readarray -t changed_files < <(gh pr diff "${{ github.event.pull_request.number }}" \
+            --repo "${{ github.repository }}" --name-only)
+
+          # Files that live under output/ but are hand-maintained, not generated.
+          # Edits to these are allowed and must not fail the check.
+          declare -A allowed_files=(
+            ["output/viewer.py"]=1
+            ["output/typescript/tsconfig.json"]=1
+            ["output/typescript/tslint.json"]=1
+            ["output/schema/.gitkeep"]=1
+          )
+
+          declare -a output_files=()
+
+          for file in "${changed_files[@]}"; do
+            if [[ "${file}" == output/* ]] && [ -z "${allowed_files[${file}]}" ]; then
+              output_files+=("${file}")
+            fi
+          done
+
+          if [ "${#output_files[@]}" -gt 0 ]; then
+            echo "::group::Committed output files"
+            for file in "${output_files[@]}"; do
+              echo "${file}"
+            done
+            echo "::endgroup::"
+
+            echo "::error::This PR commits generated files under 'output/'."\
+                  "These are regenerated and committed automatically by the"\
+                  "'Generate Output' workflow after merge, so they must not be"\
+                  "committed in a pull request. Please revert your changes to"\
+                  "'output/' and commit only the non-generated files. See"\
+                  "CONTRIBUTING.md for details."
+            exit 1
+          fi
+
+          echo "No committed output files detected."
