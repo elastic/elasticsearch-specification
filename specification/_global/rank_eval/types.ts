@@ -18,7 +18,7 @@
  */
 
 import { Id, IndexName } from '@_types/common'
-import { double, integer } from '@_types/Numeric'
+import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -128,6 +128,8 @@ export class DocumentRating {
 export class RankEvalMetricDetail {
   /** The metric_score in the details section shows the contribution of this query to the global quality metric score */
   metric_score: double
+  /** The time in milliseconds it took to execute the search request for this query */
+  took: long
   /** The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents */
   unrated_docs: UnratedDocument[]
   /** The hits section shows a grouping of the search results with their supplied ratings */
