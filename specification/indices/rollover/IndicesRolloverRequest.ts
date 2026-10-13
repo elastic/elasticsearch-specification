@@ -33,7 +33,7 @@ import { RolloverConditions } from './types'
 
 /**
  * Roll over to a new index.
- * 
+ *
  * TIP: We recommend using index lifecycle management (ILM) to automate rollovers in deployments that support ILM.
  * Serverless does not support ILM; for data streams in Serverless, use data stream lifecycle instead.
  *
