@@ -190028,6 +190028,18 @@
           }
         },
         {
+          "description": "The time in milliseconds it took to execute the search request for this query",
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
           "name": "unrated_docs",
           "required": true,
@@ -190088,7 +190100,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L128-L137"
+      "specLocation": "_global/rank_eval/types.ts#L128-L139"
     },
     {
       "kind": "interface",
@@ -190120,7 +190132,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L150-L153"
+      "specLocation": "_global/rank_eval/types.ts#L152-L155"
     },
     {
       "kind": "interface",
@@ -190164,7 +190176,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L139-L142"
+      "specLocation": "_global/rank_eval/types.ts#L141-L144"
     },
     {
       "kind": "interface",
@@ -190207,7 +190219,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L144-L148"
+      "specLocation": "_global/rank_eval/types.ts#L146-L150"
     },
     {
       "kind": "interface",

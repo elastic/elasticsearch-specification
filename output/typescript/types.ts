@@ -1074,6 +1074,7 @@ export interface RankEvalRankEvalMetricBase {
 
 export interface RankEvalRankEvalMetricDetail {
   metric_score: double
+  took: long
   unrated_docs: RankEvalUnratedDocument[]
   hits: RankEvalRankEvalHitItem[]
   metric_details: Record<string, Record<string, any>>
