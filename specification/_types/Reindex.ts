@@ -18,7 +18,7 @@
  */
 
 import { TaskId } from '@_types/common'
-import { BulkIndexByScrollFailure } from '@_types/Errors'
+import { BulkByPaginatedSearchFailure } from '@_types/Errors'
 import { float, integer, long } from '@_types/Numeric'
 import { Retries } from '@_types/Retries'
 import {
@@ -107,7 +107,7 @@ export class ReindexTaskResult {
   /**
    * Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.
    */
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   /**
    * The number of documents that were ignored because the script returned a `noop` value for `ctx.op`.
    */
