@@ -252,6 +252,7 @@ pub fn convert_availabilities(availabilities: &Option<Availabilities>, flavor: &
 mod tests {
     use super::*;
     use clients_schema::{Availability, Availabilities, Flavor};
+    use openapiv3::{ReferenceOr, StatusCode};
     use serde_json::Value;
 
     #[test]
@@ -299,6 +300,95 @@ mod tests {
             result.openapi.paths.paths.contains_key("/_test/private"),
             "private endpoint must appear when internal=true"
         );
+    }
+
+    // A schema with one endpoint whose response declares a 404 exception with a body and a 400
+    // exception without one.
+    fn schema_with_exceptions(urls: &str) -> IndexedModel {
+        let schema_json = format!(r#"{{
+          "endpoints": [{{
+            "name": "test.op",
+            "description": "An endpoint with exceptions",
+            "requestBodyRequired": false,
+            "urls": {urls},
+            "request": {{ "name": "Request", "namespace": "test" }},
+            "response": {{ "name": "Response", "namespace": "test" }}
+          }}],
+          "types": [{{
+            "kind": "request",
+            "name": {{ "name": "Request", "namespace": "test" }},
+            "path": [],
+            "query": [],
+            "body": {{ "kind": "no_body" }}
+          }}, {{
+            "kind": "response",
+            "name": {{ "name": "Response", "namespace": "test" }},
+            "body": {{ "kind": "properties", "properties": [{{
+              "name": "acknowledged", "required": true,
+              "type": {{ "kind": "instance_of", "type": {{ "name": "boolean", "namespace": "_builtins" }} }}
+            }}] }},
+            "exceptions": [{{
+              "statusCodes": [404],
+              "body": {{ "kind": "properties", "properties": [{{
+                "name": "found", "required": true,
+                "type": {{ "kind": "instance_of", "type": {{ "name": "boolean", "namespace": "_builtins" }} }}
+              }}] }}
+            }}, {{
+              "description": "The request is malformed.",
+              "statusCodes": [400],
+              "body": {{ "kind": "no_body" }}
+            }}]
+          }}]
+        }}"#);
+        IndexedModel::from_reader(schema_json.as_bytes()).unwrap()
+    }
+
+    fn default_config() -> Configuration {
+        Configuration {
+            flavor: None,
+            internal: false,
+            namespaces: None,
+            branch: None,
+            lift_enum_descriptions: false,
+            merge_multipath_endpoints: false,
+            multipath_redirects: false,
+            include_language_examples: false,
+        }
+    }
+
+    #[test]
+    fn exceptions_become_responses() {
+        let model = schema_with_exceptions(r#"[{ "path": "/_test", "methods": ["GET"] }]"#);
+        let result = convert_schema(model, default_config(), IndexMap::new()).unwrap();
+
+        let path = result.openapi.paths.paths["/_test"].as_item().unwrap();
+        let responses = &path.get.as_ref().unwrap().responses.responses;
+        let codes: Vec<_> = responses.keys().map(|c| c.to_string()).collect();
+        assert_eq!(codes, vec!["200", "404", "400"]);
+
+        let not_found = responses[&StatusCode::Code(404)].as_item().unwrap();
+        assert!(not_found.content["application/json"].schema.is_some());
+
+        let bad_request = responses[&StatusCode::Code(400)].as_item().unwrap();
+        assert_eq!(bad_request.description, "The request is malformed.");
+        assert!(bad_request.content.is_empty(), "a no_body exception has no content");
+    }
+
+    #[test]
+    fn multipath_exceptions_become_shared_responses() {
+        let model = schema_with_exceptions(r#"[{ "path": "/_test", "methods": ["GET", "POST"] }]"#);
+        let result = convert_schema(model, default_config(), IndexMap::new()).unwrap();
+
+        let path = result.openapi.paths.paths["/_test"].as_item().unwrap();
+        for operation in [path.get.as_ref().unwrap(), path.post.as_ref().unwrap()] {
+            assert_eq!(
+                operation.responses.responses[&StatusCode::Code(404)],
+                ReferenceOr::ref_("#/components/responses/test.op-404")
+            );
+        }
+        let components = result.openapi.components.unwrap();
+        assert!(components.responses.contains_key("test.op-404"));
+        assert!(components.responses.contains_key("test.op-400"));
     }
 
     fn stack_availability(stability: Stability, since: Option<&str>) -> Availabilities {
