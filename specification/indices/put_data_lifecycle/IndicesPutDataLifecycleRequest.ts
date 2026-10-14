@@ -33,6 +33,7 @@ import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
  * @doc_tag data stream
  * @doc_id data-stream-put-lifecycle
  * @ext_doc_id data-stream-lifecycle
+ * @index_privileges manage_data_stream_lifecycle
  */
 export interface Request extends RequestBase {
   urls: [
