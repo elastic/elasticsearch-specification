@@ -3967,7 +3967,7 @@
           "cluster"
         ],
         "summary": "Update the cluster settings",
-        "description": "Configure and update dynamic settings on a running cluster.\nYou can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.\n\nUpdates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart.\nYou can also reset transient or persistent settings by assigning them a null value.\n\nIf you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value.\nFor example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting.\nHowever, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.\n\nTIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster.\nIf you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings.\nOnly use `elasticsearch.yml` for static cluster settings and node settings.\nThe API doesn’t require a restart and ensures a setting’s value is the same on all nodes.\n\nWARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.\nIf a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.",
+        "description": "Configure and update dynamic settings on a running cluster.\nYou can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.\n\nUpdates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart.\nYou can also reset transient or persistent settings by assigning them a null value.\n\nIf you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value.\nFor example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting.\nHowever, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.\n\nTIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster.\nIf you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings.\nOnly use `elasticsearch.yml` for static cluster settings and node settings.\nThe API doesn’t require a restart and ensures a setting’s value is the same on all nodes.\n\nWARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.\nIf a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "description": "More about Elastic Stack settings",
           "url": "https://www.elastic.co/docs/deploy-manage/stack-settings",
@@ -14319,7 +14319,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Get the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -14430,7 +14430,7 @@
           "data stream"
         ],
         "summary": "Update data stream lifecycles",
-        "description": "Update the data stream lifecycle of the specified data streams.",
+        "description": "Update the data stream lifecycle of the specified data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -14577,7 +14577,7 @@
           "indices"
         ],
         "summary": "Delete data stream lifecycles",
-        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
+        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",

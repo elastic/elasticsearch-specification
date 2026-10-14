@@ -3065,6 +3065,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/stack-settings",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-update-settings.html",
       "name": "cluster.put_settings",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.put_settings"
@@ -8188,6 +8193,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-delete-lifecycle.html",
       "name": "indices.delete_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete_data_lifecycle"
@@ -8932,6 +8942,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_lifecycle"
@@ -9741,6 +9756,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
@@ -136435,7 +136455,7 @@
           }
         }
       ],
-      "specLocation": "cluster/put_settings/ClusterPutSettingsRequest.ts#L26-L84"
+      "specLocation": "cluster/put_settings/ClusterPutSettingsRequest.ts#L26-L85"
     },
     {
       "kind": "response",
@@ -169719,7 +169739,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L66"
+      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -172829,7 +172849,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L69"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -176206,7 +176226,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L102"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L103"
     },
     {
       "kind": "response",

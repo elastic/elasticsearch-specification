@@ -4330,6 +4330,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_lifecycle"
@@ -4884,6 +4889,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
@@ -32031,7 +32041,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L69"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -34016,7 +34026,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L102"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L103"
     },
     {
       "body": {
