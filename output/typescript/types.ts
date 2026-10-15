@@ -2688,6 +2688,11 @@ export interface GeoLine {
 
 export type GeoLocation = LatLonGeoLocation | GeoHashLocation | double[] | string
 
+export interface GeoPoint {
+  type: string
+  coordinates: double[]
+}
+
 export type GeoShape = any
 
 export type GeoShapeRelation = 'intersects' | 'disjoint' | 'within' | 'contains'
@@ -6828,7 +6833,7 @@ export type QueryDslGeoPolygonQuery = QueryDslGeoPolygonQueryKeys
   & { [property: string]: QueryDslGeoPolygonPoints | QueryDslGeoValidationMethod | boolean | float | string }
 
 export interface QueryDslGeoShapeFieldQuery {
-  shape?: GeoShape
+  shape?: GeoShape | GeoPoint
   indexed_shape?: QueryDslFieldLookup
   relation?: GeoShapeRelation
 }
