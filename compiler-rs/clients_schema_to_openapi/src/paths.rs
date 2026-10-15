@@ -537,15 +537,17 @@ fn add_exception_responses(
                 continue;
             }
 
-            let content = match &schema {
-                Some(schema) => indexmap! {
-                    "application/json".to_string() => MediaType {
-                        schema: Some(schema.clone()),
-                        ..Default::default()
+            let content = schema
+                .as_ref()
+                .map(|schema| {
+                    indexmap! {
+                        "application/json".to_string() => MediaType {
+                            schema: Some(schema.clone()),
+                            ..Default::default()
+                        }
                     }
-                },
-                None => IndexMap::new(),
-            };
+                })
+                .unwrap_or_default();
             let response = Response {
                 description: exception.description.clone().unwrap_or_default(),
                 content,
