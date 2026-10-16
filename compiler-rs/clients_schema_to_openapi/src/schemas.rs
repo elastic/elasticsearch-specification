@@ -203,7 +203,12 @@ impl<'a> TypesAndComponents<'a> {
     }
 
     pub fn convert_response(&mut self, response: &Response) -> anyhow::Result<Option<ReferenceOr<Schema>>> {
-        self.for_body(&response.body)
+        self.convert_body(&response.body)
+    }
+
+    /// Returns the schema, if any, for a body, such as the body of a response or of a response exception
+    pub fn convert_body(&mut self, body: &Body) -> anyhow::Result<Option<ReferenceOr<Schema>>> {
+        self.for_body(body)
     }
 
     pub fn convert_external_docs(&self, obj: &impl clients_schema::ExternalDocument) -> Option<ExternalDocumentation> {
