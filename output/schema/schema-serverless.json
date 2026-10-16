@@ -142643,7 +142643,7 @@
         "name": "ServiceAccountInfo",
         "namespace": "security.get_service_accounts"
       },
-      "specLocation": "security/get_service_accounts/types.ts#L29-L36",
+      "specLocation": "security/get_service_accounts/types.ts#L31-L38",
       "type": {
         "items": [
           {
@@ -142703,7 +142703,7 @@
           }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L38-L49"
+      "specLocation": "security/get_service_accounts/types.ts#L40-L51"
     },
     {
       "attachedBehaviors": [
@@ -143312,7 +143312,100 @@
           }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L51-L71"
+      "specLocation": "security/get_service_accounts/types.ts#L53-L109"
+    },
+    {
+      "description": "The user who wrote a user-managed service account.\nIf the request ran as another user, that user is recorded.\nIf the request was made with an API key, the owner of the key is recorded, from the owner's own realm, together with the key itself.\nFor an older API key that does not record its owner's realm, the realm is the API key realm, `_es_api_key`.",
+      "kind": "interface",
+      "name": {
+        "name": "ServiceAccountAuthor",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The username of the user.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name of the realm that authenticated the user.",
+          "name": "realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of the realm that authenticated the user.",
+          "name": "realm_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The API key that the request was made with.\nAbsent when the request was not made with an API key, or when the API key ran as another user.",
+          "name": "api_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ServiceAccountAuthorApiKey",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L111-L135"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ServiceAccountAuthorApiKey",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The ID of the API key.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name that the API key had when the request was made.\nAbsent when the API key has no name.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L137-L147"
     },
     {
       "kind": "enum",
@@ -143330,7 +143423,7 @@
         "name": "ServiceAccountType",
         "namespace": "security.get_service_accounts"
       },
-      "specLocation": "security/get_service_accounts/types.ts#L22-L27"
+      "specLocation": "security/get_service_accounts/types.ts#L24-L29"
     },
     {
       "kind": "enum",
@@ -143372,7 +143465,7 @@
         "name": "ApiKeyGrantType",
         "namespace": "security.grant_api_key"
       },
-      "specLocation": "security/grant_api_key/types.ts#L47-L50"
+      "specLocation": "security/grant_api_key/types.ts#L47-L58"
     },
     {
       "kind": "type_alias",

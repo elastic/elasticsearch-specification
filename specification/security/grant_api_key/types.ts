@@ -46,5 +46,25 @@ export class GrantApiKey {
 
 export enum ApiKeyGrantType {
   access_token,
-  password
+  password,
+  /**
+   * In this type of grant, you must supply a service account token of a user-managed service account in the `service_account_token` parameter.
+   * The API key is owned by the service account and is limited by the roles assigned to it.
+   * The service account token is authenticated on every grant, so a disabled account or an invalidated token is rejected.
+   * Tokens that belong to built-in (`elastic/*`) service accounts are rejected.
+   * @availability stack since=9.6.0
+   */
+  _user_managed_service_account
+}
+
+export class GrantApiKeyClientAuthentication {
+  /**
+   * The client authentication scheme.
+   * The only supported scheme is `SharedSecret`.
+   */
+  scheme: string
+  /**
+   * The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.
+   */
+  value: string
 }

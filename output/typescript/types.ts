@@ -22288,9 +22288,22 @@ export interface SecurityGetServiceAccountsRequest extends RequestBase {
   namespace?: Namespace
   service?: Service
   type?: SecurityGetServiceAccountsServiceAccountType | SecurityGetServiceAccountsServiceAccountType[]
+  with_profile_uid?: boolean
 }
 
 export type SecurityGetServiceAccountsResponse = Record<string, SecurityGetServiceAccountsServiceAccountInfo>
+
+export interface SecurityGetServiceAccountsServiceAccountAuthor {
+  username: Username
+  realm: string
+  realm_type: string
+  api_key?: SecurityGetServiceAccountsServiceAccountAuthorApiKey
+}
+
+export interface SecurityGetServiceAccountsServiceAccountAuthorApiKey {
+  id: Id
+  name?: Name
+}
 
 export type SecurityGetServiceAccountsServiceAccountInfo = SecurityGetServiceAccountsBuiltInServiceAccount | SecurityGetServiceAccountsUserManagedServiceAccount
 
@@ -22301,6 +22314,12 @@ export interface SecurityGetServiceAccountsUserManagedServiceAccount {
   roles: string[]
   enabled: boolean
   description?: string
+  created_by?: SecurityGetServiceAccountsServiceAccountAuthor
+  created_at?: EpochTime<UnitMillis>
+  created_by_profile_uid?: string
+  updated_by?: SecurityGetServiceAccountsServiceAccountAuthor
+  updated_at?: EpochTime<UnitMillis>
+  updated_by_profile_uid?: string
 }
 
 export interface SecurityGetServiceCredentialsNodesCredentials {
@@ -22417,7 +22436,7 @@ export interface SecurityGetUserProfileResponse {
   errors?: SecurityGetUserProfileGetUserProfileErrors
 }
 
-export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password'
+export type SecurityGrantApiKeyApiKeyGrantType = 'access_token' | 'password' | '_user_managed_service_account'
 
 export interface SecurityGrantApiKeyGrantApiKey {
   name: Name
@@ -22426,12 +22445,19 @@ export interface SecurityGrantApiKeyGrantApiKey {
   metadata?: Metadata
 }
 
+export interface SecurityGrantApiKeyGrantApiKeyClientAuthentication {
+  scheme: string
+  value: string
+}
+
 export interface SecurityGrantApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     api_key: SecurityGrantApiKeyGrantApiKey
     grant_type: SecurityGrantApiKeyApiKeyGrantType
     access_token?: string
+    client_authentication?: SecurityGrantApiKeyGrantApiKeyClientAuthentication
+    service_account_token?: string
     username?: Username
     password?: Password
     run_as?: Username
@@ -22751,6 +22777,42 @@ export interface SecurityQueryRoleResponse {
 }
 
 export interface SecurityQueryRoleRoleQueryContainer {
+  bool?: QueryDslBoolQuery
+  exists?: QueryDslExistsQuery
+  ids?: QueryDslIdsQuery
+  match?: Partial<Record<Field, QueryDslMatchQuery | string | float | boolean>>
+  match_all?: QueryDslMatchAllQuery
+  prefix?: Partial<Record<Field, QueryDslPrefixQuery | string>>
+  range?: Partial<Record<Field, QueryDslRangeQuery>>
+  simple_query_string?: QueryDslSimpleQueryStringQuery
+  term?: Partial<Record<Field, QueryDslTermQuery | FieldValue>>
+  terms?: QueryDslTermsQuery
+  wildcard?: Partial<Record<Field, QueryDslWildcardQuery | string>>
+}
+
+export interface SecurityQueryServiceAccountsQueryServiceAccount extends SecurityGetServiceAccountsUserManagedServiceAccount {
+  username: Username
+  _sort?: SortResults
+}
+
+export interface SecurityQueryServiceAccountsRequest extends RequestBase {
+  with_profile_uid?: boolean
+  body?: {
+    query?: SecurityQueryServiceAccountsServiceAccountQueryContainer
+    from?: integer
+    sort?: Sort
+    size?: integer
+    search_after?: SortResults
+  }
+}
+
+export interface SecurityQueryServiceAccountsResponse {
+  total: integer
+  count: integer
+  service_accounts: SecurityQueryServiceAccountsQueryServiceAccount[]
+}
+
+export interface SecurityQueryServiceAccountsServiceAccountQueryContainer {
   bool?: QueryDslBoolQuery
   exists?: QueryDslExistsQuery
   ids?: QueryDslIdsQuery

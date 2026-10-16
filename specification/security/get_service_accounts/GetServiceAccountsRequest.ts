@@ -72,6 +72,13 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     type?: ServiceAccountType | ServiceAccountType[]
+    /**
+     * If `true`, each user-managed service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.
+     * A profile UID is included only for a user who has an activated user profile.
+     * @server_default false
+     * @availability stack since=9.6.0
+     */
+    with_profile_uid?: boolean
   }
   response_media_type: MediaType.Json
 }

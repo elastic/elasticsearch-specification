@@ -22394,7 +22394,7 @@
           "stability": "stable"
         }
       },
-      "description": "Grant an API key.\n\nCreate an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
+      "description": "Grant an API key.\n\nCreate an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
       "docId": "security-api-grant-api-key",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-grant-api-key",
       "docUrlServerless": "",
@@ -23060,6 +23060,48 @@
             "POST"
           ],
           "path": "/_security/_query/role"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "private"
+        }
+      },
+      "description": "Find user-managed service accounts with a query.\n\nGet a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.",
+      "docUrl": null,
+      "name": "security.query_service_accounts",
+      "privileges": {
+        "cluster": [
+          "read_security",
+          "manage_service_account"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "security.query_service_accounts"
+      },
+      "requestBodyRequired": false,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "security.query_service_accounts"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_security/_query/service"
         }
       ]
     },
@@ -268600,7 +268642,7 @@
           }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L38-L49"
+      "specLocation": "security/get_service_accounts/types.ts#L40-L51"
     },
     {
       "kind": "request",
@@ -268722,9 +268764,27 @@
               }
             ]
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, each user-managed service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+          "name": "with_profile_uid",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_service_accounts/GetServiceAccountsRequest.ts#L24-L77"
+      "specLocation": "security/get_service_accounts/GetServiceAccountsRequest.ts#L24-L84"
     },
     {
       "kind": "response",
@@ -268757,9 +268817,9 @@
           "value": "{\n  \"elastic/fleet-server\": {\n    \"type\": \"built_in\",\n    \"role_descriptor\": {\n      \"cluster\": [\n        \"monitor\",\n        \"manage_own_api_key\",\n        \"read_fleet_secrets\"\n      ],\n      \"indices\": [\n        {\n          \"names\": [\n            \"logs-*\",\n            \"metrics-*\",\n            \"traces-*\",\n            \".logs-endpoint.diagnostic.collection-*\",\n            \".logs-endpoint.action.responses-*\",\n            \".logs-endpoint.heartbeat-*\"\n          ],\n          \"privileges\": [\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"profiling-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \"traces-apm.sampled-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"monitor\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": false\n        },\n        {\n          \"names\": [\n            \".fleet-secrets*\"\n          ],\n          \"privileges\": [\n            \"read\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-actions*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-agents*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-artifacts*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-enrollment-api-keys*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-policies-leader*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-servers*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \".fleet-fileds*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"monitor\",\n            \"create_index\",\n            \"auto_configure\",\n            \"maintenance\"\n          ],\n          \"allow_restricted_indices\": true\n        },\n        {\n          \"names\": [\n            \"synthetics-*\"\n          ],\n          \"privileges\": [\n            \"read\",\n            \"write\",\n            \"create_index\",\n            \"auto_configure\"\n          ],\n          \"allow_restricted_indices\": false\n        }\n      ],\n      \"applications\": [\n        {\n          \"application\": \"kibana-*\",\n          \"privileges\": [\n            \"reserved_fleet-setup\"\n          ],\n          \"resources\": [\n            \"*\"\n          ]\n        }\n      ],\n      \"run_as\": [],\n      \"metadata\": {},\n      \"transient_metadata\": {\n        \"enabled\": true\n      }\n    }\n  }\n}"
         },
         "GetServiceAccountsResponseExample2": {
-          "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
+          "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace. The account was created by `alice` and last replaced by `bob` using an API key.\n",
           "summary": "User-managed service accounts in a namespace",
-          "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
+          "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true,\n    \"created_by\": {\n      \"username\": \"alice\",\n      \"realm\": \"ldap1\",\n      \"realm_type\": \"ldap\"\n    },\n    \"created_at\": 1758585600000,\n    \"updated_by\": {\n      \"username\": \"bob\",\n      \"realm\": \"default_native\",\n      \"realm_type\": \"native\",\n      \"api_key\": {\n        \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n        \"name\": \"deploy-bot-key\"\n      }\n    },\n    \"updated_at\": 1758672000000\n  }\n}"
         }
       },
       "name": {
@@ -268769,13 +268829,106 @@
       "specLocation": "security/get_service_accounts/GetServiceAccountsResponse.ts#L23-L29"
     },
     {
+      "kind": "interface",
+      "description": "The user who wrote a user-managed service account.\nIf the request ran as another user, that user is recorded.\nIf the request was made with an API key, the owner of the key is recorded, from the owner's own realm, together with the key itself.\nFor an older API key that does not record its owner's realm, the realm is the API key realm, `_es_api_key`.",
+      "name": {
+        "name": "ServiceAccountAuthor",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The username of the user.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name of the realm that authenticated the user.",
+          "name": "realm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of the realm that authenticated the user.",
+          "name": "realm_type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The API key that the request was made with.\nAbsent when the request was not made with an API key, or when the API key ran as another user.",
+          "name": "api_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ServiceAccountAuthorApiKey",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L111-L135"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ServiceAccountAuthorApiKey",
+        "namespace": "security.get_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The ID of the API key.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The name that the API key had when the request was made.\nAbsent when the API key has no name.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Name",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/get_service_accounts/types.ts#L137-L147"
+    },
+    {
       "kind": "type_alias",
       "description": "The two kinds of service account describe their privileges differently.\nA built-in account includes its role descriptor. A user-managed account includes its role names and whether it is enabled.",
       "name": {
         "name": "ServiceAccountInfo",
         "namespace": "security.get_service_accounts"
       },
-      "specLocation": "security/get_service_accounts/types.ts#L29-L36",
+      "specLocation": "security/get_service_accounts/types.ts#L31-L38",
       "type": {
         "kind": "union_of",
         "items": [
@@ -268816,7 +268969,7 @@
         "name": "ServiceAccountType",
         "namespace": "security.get_service_accounts"
       },
-      "specLocation": "security/get_service_accounts/types.ts#L22-L27"
+      "specLocation": "security/get_service_accounts/types.ts#L24-L29"
     },
     {
       "kind": "interface",
@@ -268877,9 +269030,129 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The user who created the account.\nAbsent for an account that was created before Elasticsearch recorded its creator.",
+          "name": "created_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ServiceAccountAuthor",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "When the account was created, in milliseconds since the Unix epoch.\nAbsent for an account that was created before Elasticsearch recorded its creation time.",
+          "name": "created_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The profile UID of the user who created the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+          "name": "created_by_profile_uid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The user who last replaced the account with the put user-managed service account API.\nAbsent until the account is first replaced.",
+          "name": "updated_by",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ServiceAccountAuthor",
+              "namespace": "security.get_service_accounts"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "When the account was last replaced, in milliseconds since the Unix epoch.\nAbsent until the account is first replaced.",
+          "name": "updated_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "type": {
+              "name": "EpochTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The profile UID of the user who last replaced the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+          "name": "updated_by_profile_uid",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_service_accounts/types.ts#L51-L71"
+      "specLocation": "security/get_service_accounts/types.ts#L53-L109"
     },
     {
       "kind": "interface",
@@ -270292,13 +270565,22 @@
         },
         {
           "name": "password"
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "In this type of grant, you must supply a service account token of a user-managed service account in the `service_account_token` parameter.\nThe API key is owned by the service account and is limited by the roles assigned to it.\nThe service account token is authenticated on every grant, so a disabled account or an invalidated token is rejected.\nTokens that belong to built-in (`elastic/*`) service accounts are rejected.",
+          "name": "_user_managed_service_account"
         }
       ],
       "name": {
         "name": "ApiKeyGrantType",
         "namespace": "security.grant_api_key"
       },
-      "specLocation": "security/grant_api_key/types.ts#L47-L50"
+      "specLocation": "security/grant_api_key/types.ts#L47-L58"
     },
     {
       "kind": "interface",
@@ -270395,6 +270677,40 @@
       "specLocation": "security/grant_api_key/types.ts#L25-L45"
     },
     {
+      "kind": "interface",
+      "name": {
+        "name": "GrantApiKeyClientAuthentication",
+        "namespace": "security.grant_api_key"
+      },
+      "properties": [
+        {
+          "description": "The client authentication scheme.\nThe only supported scheme is `SharedSecret`.",
+          "name": "scheme",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/grant_api_key/types.ts#L60-L70"
+    },
+    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -270415,7 +270731,7 @@
             }
           },
           {
-            "description": "The type of grant. Supported grant types are: `access_token`, `password`.",
+            "description": "The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.",
             "name": "grant_type",
             "required": true,
             "type": {
@@ -270429,6 +270745,41 @@
           {
             "description": "The user's access token.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
             "name": "access_token",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "availability": {
+              "serverless": {},
+              "stack": {
+                "since": "8.12.0"
+              }
+            },
+            "description": "The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.\nIt is valid only with the `access_token` grant type, when the access token is a JWT.",
+            "name": "client_authentication",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "GrantApiKeyClientAuthentication",
+                "namespace": "security.grant_api_key"
+              }
+            }
+          },
+          {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "The service account token of a user-managed service account, as returned by the create service account token API.\nIf you specify the `_user_managed_service_account` grant type, this parameter is required.\nIt is not valid with other grant types.",
+            "name": "service_account_token",
             "required": false,
             "type": {
               "kind": "instance_of",
@@ -270463,7 +270814,7 @@
             }
           },
           {
-            "description": "The name of the user to be impersonated.",
+            "description": "The name of the user to be impersonated.\nIt is not valid with the `_user_managed_service_account` grant type.",
             "name": "run_as",
             "required": false,
             "type": {
@@ -270476,7 +270827,7 @@
           }
         ]
       },
-      "description": "Grant an API key.\n\nCreate an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
+      "description": "Grant an API key.\n\nCreate an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.",
       "examples": {
         "SecurityGrantApiKeyRequestExample1": {
           "alternatives": [
@@ -270549,6 +270900,12 @@
           "method_request": "POST /_security/api_key/grant",
           "summary": "Grant an API key with run_as",
           "value": "{\n  \"grant_type\": \"password\",\n  \"username\" : \"test_admin\",  \n  \"password\" : \"x-pack-test-password\",  \n  \"run_as\": \"test_user\",  \n  \"api_key\" : {\n    \"name\": \"another-api-key\"\n  }\n}"
+        },
+        "SecurityGrantApiKeyRequestExample3": {
+          "description": "Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by presenting one of its service account tokens. This request needs to be made by an authenticated user with the `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by the service account and is limited by the roles assigned to it.\n",
+          "method_request": "POST /_security/api_key/grant",
+          "summary": "Grant an API key to a user-managed service account",
+          "value": "{\n  \"grant_type\": \"_user_managed_service_account\",\n  \"service_account_token\": \"AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ\",\n  \"api_key\": {\n    \"name\": \"worker-key\",\n    \"expiration\": \"1d\"\n  }\n}"
         }
       },
       "inherits": {
@@ -270577,7 +270934,7 @@
           }
         }
       ],
-      "specLocation": "security/grant_api_key/SecurityGrantApiKeyRequest.ts#L24-L104"
+      "specLocation": "security/grant_api_key/SecurityGrantApiKeyRequest.ts#L28-L125"
     },
     {
       "kind": "response",
@@ -275484,6 +275841,441 @@
         }
       ],
       "specLocation": "security/query_role/types.ts#L37-L101",
+      "variants": {
+        "kind": "container",
+        "nonExhaustive": true
+      }
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "UserManagedServiceAccount",
+          "namespace": "security.get_service_accounts"
+        }
+      },
+      "name": {
+        "name": "QueryServiceAccount",
+        "namespace": "security.query_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "The name of the service account, as `namespace/service`.",
+          "name": "username",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Username",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The sort values of the service account, returned when the request has a `sort`.",
+          "name": "_sort",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortResults",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/query_service_accounts/types.ts#L103-L112"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "A query to filter which service accounts to return.\nIf the query parameter is missing, it is equivalent to a `match_all` query.\nThe query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,\n`ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.\nYou can query the following information associated with a service account: `username`, `roles`, `enabled`, `description`,\n`created_by.username`, `created_by.realm`, `created_by.realm_type`, `created_by.api_key.id`, `created_by.api_key.name`, `created_at`,\n`updated_by.username`, `updated_by.realm`, `updated_by.realm_type`, `updated_by.api_key.id`, `updated_by.api_key.name`, and `updated_at`.\n\nNOTE: The `username` of a service account is its `namespace/service` pair, so use a `prefix` query on `username` to select a namespace.",
+            "name": "query",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ServiceAccountQueryContainer",
+                "namespace": "security.query_service_accounts"
+              }
+            }
+          },
+          {
+            "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "name": "from",
+            "required": false,
+            "serverDefault": 0,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The sort definition.\nAll the fields that you can query on, other than `description`, are eligible for sorting.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+            "extDocId": "sort-search-results",
+            "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/sort-search-results",
+            "name": "sort",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Sort",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of hits to return.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+            "name": "size",
+            "required": false,
+            "serverDefault": 10,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The search after definition.",
+            "extDocId": "search-after",
+            "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after",
+            "name": "search_after",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SortResults",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Find user-managed service accounts with a query.\n\nGet a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.",
+      "examples": {
+        "QueryServiceAccountsRequestExample1": {
+          "description": "Run `POST /_security/_query/service?with_profile_uid=true` to get the enabled service accounts in the `apps` namespace, sorted by when they were created, newest first. The response includes the profile UIDs of the users who created and last replaced each account.\n",
+          "method_request": "POST /_security/_query/service?with_profile_uid=true",
+          "summary": "Query service accounts in a namespace",
+          "value": "{\n  \"query\": {\n    \"bool\": {\n      \"filter\": [\n        { \"prefix\": { \"username\": \"apps/\" } },\n        { \"term\": { \"enabled\": true } }\n      ]\n    }\n  },\n  \"sort\": [\n    { \"created_at\": { \"order\": \"desc\" } }\n  ],\n  \"size\": 10\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "security.query_service_accounts"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "If `true`, each service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+          "name": "with_profile_uid",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/query_service_accounts/QueryServiceAccountsRequest.ts#L26-L97"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The total number of service accounts found.",
+            "name": "total",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of service accounts returned in the response.",
+            "name": "count",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "A list of service account information.",
+            "name": "service_accounts",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "QueryServiceAccount",
+                  "namespace": "security.query_service_accounts"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "QueryServiceAccountsResponseExample1": {
+          "description": "A successful response from `POST /_security/_query/service?with_profile_uid=true`. The `apps/worker` account was created by `alice`, who has a user profile, and has not been replaced since.\n",
+          "summary": "Query service accounts in a namespace",
+          "value": "{\n  \"total\": 1,\n  \"count\": 1,\n  \"service_accounts\": [\n    {\n      \"username\": \"apps/worker\",\n      \"type\": \"user_managed\",\n      \"roles\": [\n        \"runner\"\n      ],\n      \"enabled\": true,\n      \"created_by\": {\n        \"username\": \"alice\",\n        \"realm\": \"ldap1\",\n        \"realm_type\": \"ldap\"\n      },\n      \"created_at\": 1758585600000,\n      \"created_by_profile_uid\": \"u_alice_0\",\n      \"_sort\": [\n        1758585600000\n      ]\n    }\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "security.query_service_accounts"
+      },
+      "specLocation": "security/query_service_accounts/QueryServiceAccountsResponse.ts#L23-L38"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ServiceAccountQueryContainer",
+        "namespace": "security.query_service_accounts"
+      },
+      "properties": [
+        {
+          "description": "Matches service accounts matching boolean combinations of other queries.",
+          "docId": "query-dsl-bool-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query",
+          "name": "bool",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BoolQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain an indexed value for a field.",
+          "docId": "query-dsl-exists-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-exists-query",
+          "name": "exists",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExistsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts based on their IDs.\nThis query uses service account document IDs stored in the `_id` field.",
+          "docId": "query-dsl-ids-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-ids-query",
+          "name": "ids",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IdsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+          "docId": "query-dsl-match-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-query",
+          "name": "match",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "MatchQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Matches all service accounts, giving them all a `_score` of 1.0.",
+          "docId": "query-dsl-match-all-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-match-all-query",
+          "name": "match_all",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "MatchAllQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain a specific prefix in a provided field.",
+          "docId": "query-dsl-prefix-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-prefix-query",
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "PrefixQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain terms within a provided range.",
+          "docId": "query-dsl-range-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-range-query",
+          "name": "range",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RangeQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts based on a provided query string, using a parser with a limited but fault-tolerant syntax.",
+          "docId": "query-dsl-simple-query-string-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-simple-query-string-query",
+          "name": "simple_query_string",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SimpleQueryStringQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+          "docId": "query-dsl-term-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-term-query",
+          "name": "term",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TermQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain one or more exact terms in a provided field.\nTo return a document, one or more terms must exactly match a field value, including whitespace and capitalization.",
+          "docId": "query-dsl-terms-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-terms-query",
+          "name": "terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "description": "Returns service accounts that contain terms matching a wildcard pattern.",
+          "docId": "query-dsl-wildcard-query",
+          "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-wildcard-query",
+          "name": "wildcard",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": true,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "WildcardQuery",
+                "namespace": "_types.query_dsl"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/query_service_accounts/types.ts#L37-L101",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
