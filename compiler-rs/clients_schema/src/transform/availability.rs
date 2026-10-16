@@ -48,6 +48,20 @@ impl Availability {
             }
         }
 
+        // Behaviors attached to a request are only referenced by name, so no type reaches them.
+        // Keep the ones that exist: the OpenAPI conversion reads the query parameters they define.
+        for endpoint in &model.endpoints {
+            let Some(request_name) = &endpoint.request else {
+                continue;
+            };
+            for behavior in &model.get_request(request_name)?.attached_behaviors {
+                let behavior_name = TypeName::new("_spec_utils", behavior);
+                if model.types.contains_key(&behavior_name) {
+                    filter.filter_type(&behavior_name);
+                }
+            }
+        }
+
         while let Some(name) = {
             // filter.worksheet.borrow_mut().next() will not drop the borrow?
             let mut ws = filter.worksheet.borrow_mut();
@@ -178,6 +192,8 @@ impl Availability {
 
 #[cfg(test)]
 mod tests {
+    use crate::{Flavor, TypeDefinition};
+
     use super::Availability;
 
     #[test]
@@ -217,5 +233,65 @@ mod tests {
         let filtered = Availability::filter(model, |_| true).unwrap();
 
         assert!(filtered.types.keys().any(|name| name.name.as_str() == "NotFound"));
+    }
+
+    #[test]
+    fn keeps_behaviors_attached_to_requests() {
+        let schema = r#"
+        {
+          "endpoints": [{
+            "name": "test.endpoint",
+            "description": "Test endpoint",
+            "requestBodyRequired": false,
+            "request": { "name": "Request", "namespace": "test" },
+            "response": { "name": "Response", "namespace": "test" },
+            "urls": []
+          }],
+          "types": [{
+            "kind": "request",
+            "name": { "name": "Request", "namespace": "test" },
+            "attachedBehaviors": ["CommonCatQueryParameters", "NotInTheModel"],
+            "path": [],
+            "query": [],
+            "body": { "kind": "no_body" }
+          }, {
+            "kind": "response",
+            "name": { "name": "Response", "namespace": "test" },
+            "body": { "kind": "no_body" }
+          }, {
+            "kind": "interface",
+            "name": { "name": "CommonCatQueryParameters", "namespace": "_spec_utils" },
+            "properties": [{
+              "name": "format",
+              "required": false,
+              "type": { "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } }
+            }, {
+              "availability": { "stack": {} },
+              "name": "stack_only",
+              "required": false,
+              "type": { "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } }
+            }]
+          }, {
+            "kind": "interface",
+            "name": { "name": "Unused", "namespace": "_spec_utils" },
+            "properties": []
+          }]
+        }
+        "#;
+        let model = crate::IndexedModel::from_reader(schema.as_bytes()).unwrap();
+
+        let filtered = Availability::filter(model, |a| Flavor::Serverless.available(a)).unwrap();
+
+        let behavior = filtered
+            .types
+            .values()
+            .find_map(|type_def| match type_def {
+                TypeDefinition::Interface(itf) if itf.base.name.name == "CommonCatQueryParameters" => Some(itf),
+                _ => None,
+            })
+            .expect("the behavior attached to the request is kept");
+        let properties: Vec<_> = behavior.properties.iter().map(|p| p.name.as_str()).collect();
+        assert_eq!(properties, vec!["format"], "the flavor still filters the behavior's properties");
+        assert!(!filtered.types.keys().any(|name| name.name.as_str() == "Unused"));
     }
 }
