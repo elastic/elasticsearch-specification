@@ -1917,6 +1917,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1956,6 +1971,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1992,6 +2022,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2031,6 +2076,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2067,6 +2127,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.circuit_breaker-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2106,6 +2181,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.circuit_breaker-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2142,6 +2232,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2181,6 +2286,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2211,6 +2331,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -2242,6 +2377,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -2278,6 +2428,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -2312,6 +2477,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -2348,6 +2528,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2384,6 +2579,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2439,6 +2649,21 @@
               "$ref": "#/components/schemas/_types.Names"
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2529,6 +2754,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2577,6 +2817,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2647,6 +2902,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2696,6 +2966,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2732,6 +3017,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2765,6 +3065,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2801,6 +3116,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2834,6 +3164,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2870,6 +3215,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2909,6 +3269,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2951,6 +3326,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3021,6 +3411,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3129,6 +3534,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3221,6 +3641,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3318,6 +3753,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3373,6 +3823,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3415,6 +3880,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3485,6 +3965,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3552,6 +4047,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments-allow_closed"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3606,6 +4116,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments-allow_closed"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3639,6 +4164,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3675,6 +4215,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3711,6 +4266,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3750,6 +4320,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3867,6 +4452,21 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3919,6 +4519,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3958,6 +4573,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3994,6 +4624,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -4033,6 +4678,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -4072,6 +4732,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -4114,6 +4789,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -80766,6 +81456,29 @@
           }
         ]
       },
+      "_types.Bytes": {
+        "type": "string",
+        "enum": [
+          "b",
+          "kb",
+          "mb",
+          "gb",
+          "tb",
+          "pb"
+        ]
+      },
+      "_types.TimeUnit": {
+        "type": "string",
+        "enum": [
+          "nanos",
+          "micros",
+          "ms",
+          "s",
+          "m",
+          "h",
+          "d"
+        ]
+      },
       "cat.aliases.AliasesRecord": {
         "type": "object",
         "properties": {
@@ -151630,6 +152343,59 @@
               "$ref": "#/components/schemas/_types.Duration"
             }
           ]
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-format": {
+        "in": "query",
+        "name": "format",
+        "description": "Specifies the format to return the columnar data in, can be set to\n`text`, `json`, `cbor`, `yaml`, or `smile`.",
+        "deprecated": false,
+        "schema": {
+          "default": "text",
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-help": {
+        "in": "query",
+        "name": "help",
+        "description": "When set to `true` will output available columns. This option\ncan't be combined with any other query string option.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-v": {
+        "in": "query",
+        "name": "v",
+        "description": "When set to `true` will enable verbose output.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-bytes": {
+        "in": "query",
+        "name": "bytes",
+        "description": "Sets the units for columns that contain a byte-size value.\nNote that byte-size value units work in terms of powers of 1024. For instance `1kb` means 1024 bytes, not 1000 bytes.\nIf omitted, byte-size values are rendered with a suffix such as `kb`, `mb`, or `gb`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, byte-size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Bytes"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-time": {
+        "in": "query",
+        "name": "time",
+        "description": "Sets the units for columns that contain a time duration.\nIf omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, time duration values are rendered as an integer with no suffix.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
