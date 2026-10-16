@@ -97,7 +97,8 @@ pub fn convert_expanded_schema(model: &IndexedModel, config: &Configuration, pro
             // Filled from endpoints
             responses: Default::default(),
             // Filled from endpoints
-            // TODO: add common request parameters and common cat parameters?
+            // TODO: add the common request parameters (`CommonQueryParameters`)?
+            // The common cat parameters are added by the endpoints.
             parameters: Default::default(),
             examples: Default::default(),
             // Filled from endpoints
@@ -338,6 +339,110 @@ mod tests {
         let components = result.openapi.components.unwrap();
         assert!(components.responses.contains_key("test.op-404"));
         assert!(components.responses.contains_key("test.op-400"));
+    }
+
+    // A schema with one cat-like endpoint. Its request declares the query parameter `h` and, through
+    // the base class, attaches the `CommonCatQueryParameters` and `CommonQueryParameters` behaviors.
+    // `request_query` is the JSON list of the request's own query parameters.
+    fn schema_with_behaviors(request_query: &str) -> IndexedModel {
+        let string_type = r#"{ "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } }"#;
+        let boolean_type = r#"{ "kind": "instance_of", "type": { "name": "boolean", "namespace": "_builtins" } }"#;
+        let schema_json = format!(r#"{{
+          "endpoints": [{{
+            "name": "cat.op",
+            "description": "A cat endpoint",
+            "requestBodyRequired": false,
+            "urls": [{{ "path": "/_cat/op", "methods": ["GET"] }}],
+            "request": {{ "name": "Request", "namespace": "cat.op" }},
+            "response": {{ "name": "Response", "namespace": "cat.op" }}
+          }}],
+          "types": [{{
+            "kind": "request",
+            "name": {{ "name": "Request", "namespace": "cat.op" }},
+            "inherits": {{ "type": {{ "name": "CatRequestBase", "namespace": "cat._types" }} }},
+            "attachedBehaviors": ["CommonCatQueryParameters", "CommonQueryParameters"],
+            "path": [],
+            "query": {request_query},
+            "body": {{ "kind": "no_body" }}
+          }}, {{
+            "kind": "response",
+            "name": {{ "name": "Response", "namespace": "cat.op" }},
+            "body": {{ "kind": "no_body" }}
+          }}, {{
+            "kind": "interface",
+            "name": {{ "name": "CatRequestBase", "namespace": "cat._types" }},
+            "behaviors": [{{ "type": {{ "name": "CommonCatQueryParameters", "namespace": "_spec_utils" }} }}],
+            "properties": []
+          }}, {{
+            "kind": "interface",
+            "name": {{ "name": "CommonCatQueryParameters", "namespace": "_spec_utils" }},
+            "properties": [
+              {{ "name": "format", "required": false, "description": "The response format.", "type": {string_type} }},
+              {{ "name": "v", "required": false, "description": "Enable verbose output.", "type": {boolean_type} }}
+            ]
+          }}, {{
+            "kind": "interface",
+            "name": {{ "name": "CommonQueryParameters", "namespace": "_spec_utils" }},
+            "properties": [
+              {{ "name": "pretty", "required": false, "type": {boolean_type} }}
+            ]
+          }}]
+        }}"#);
+        IndexedModel::from_reader(schema_json.as_bytes()).unwrap()
+    }
+
+    fn parameter_refs(result: &OpenApiConversion) -> Vec<String> {
+        let path = result.openapi.paths.paths["/_cat/op"].as_item().unwrap();
+        let operation = path.get.as_ref().unwrap();
+        operation
+            .parameters
+            .iter()
+            .map(|p| match p {
+                ReferenceOr::Reference { reference } => reference.clone(),
+                ReferenceOr::Item(item) => format!("inline:{}", item.parameter_data_ref().name),
+            })
+            .collect()
+    }
+
+    #[test]
+    fn cat_behavior_parameters_become_shared_parameters() {
+        let own_query = r#"[{ "name": "h", "required": false, "type": { "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } } }]"#;
+        let model = schema_with_behaviors(own_query);
+        // The flavor filter keeps only the types that endpoints use, so it must keep the behavior
+        let config = Configuration { flavor: Some(Flavor::Stack), ..default_config() };
+        let result = convert_schema(model, config, IndexMap::new()).unwrap();
+
+        assert_eq!(
+            parameter_refs(&result),
+            vec![
+                "inline:h",
+                "#/components/parameters/_spec_utils.CommonCatQueryParameters-format",
+                "#/components/parameters/_spec_utils.CommonCatQueryParameters-v",
+            ],
+            "the endpoint's own parameters come first, `CommonQueryParameters` is not expanded"
+        );
+
+        let components = result.openapi.components.unwrap();
+        let format = components.parameters["_spec_utils.CommonCatQueryParameters-format"].as_item().unwrap();
+        assert_eq!(format.parameter_data_ref().name, "format");
+        assert_eq!(format.parameter_data_ref().description.as_deref(), Some("The response format."));
+        assert!(matches!(format, openapiv3::Parameter::Query { .. }));
+    }
+
+    #[test]
+    fn explicit_request_parameter_wins_over_behavior_parameter() {
+        let own_query = r#"[{ "name": "v", "required": false, "type": { "kind": "instance_of", "type": { "name": "boolean", "namespace": "_builtins" } } }]"#;
+        let model = schema_with_behaviors(own_query);
+        let result = convert_schema(model, default_config(), IndexMap::new()).unwrap();
+
+        assert_eq!(
+            parameter_refs(&result),
+            vec![
+                "inline:v",
+                "#/components/parameters/_spec_utils.CommonCatQueryParameters-format",
+            ],
+            "a parameter the request declares itself is not added a second time"
+        );
     }
 
     fn stack_availability(stability: Stability, since: Option<&str>) -> Availabilities {
