@@ -11494,10 +11494,18 @@ export interface DanglingIndicesListDanglingIndicesResponse {
   dangling_indices: DanglingIndicesListDanglingIndicesDanglingIndex[]
 }
 
-export interface DataRecoveryGetRecoveryPointsRecoveryPoint {
+export interface DataRecoveryPoint {
   start_time: DateTime
   end_time: DateTime
 }
+
+export interface DataRecoveryResolvedRecoverySource {
+  source: string
+  type: DataRecoverySourceType
+  destination: string
+}
+
+export type DataRecoverySourceType = 'index' | 'data_stream'
 
 export interface DataRecoveryGetRecoveryPointsRequest extends RequestBase {
   end_time_before?: DateTime
@@ -11506,16 +11514,14 @@ export interface DataRecoveryGetRecoveryPointsRequest extends RequestBase {
 }
 
 export interface DataRecoveryGetRecoveryPointsResponse {
-  recovery_points: DataRecoveryGetRecoveryPointsRecoveryPoint[]
+  recovery_points: DataRecoveryPoint[]
 }
 
 export interface DataRecoveryGetRecoverySourcesRecoverySource {
   complete: boolean
   name: string
-  type: DataRecoveryGetRecoverySourcesRecoverySourceType
+  type: DataRecoverySourceType
 }
-
-export type DataRecoveryGetRecoverySourcesRecoverySourceType = 'index' | 'data_stream'
 
 export interface DataRecoveryGetRecoverySourcesRequest extends RequestBase {
   expression: string | string[]
@@ -11527,7 +11533,7 @@ export interface DataRecoveryGetRecoverySourcesRequest extends RequestBase {
 
 export interface DataRecoveryGetRecoverySourcesResponse {
   has_more: boolean
-  recovery_point: DataRecoveryGetRecoveryPointsRecoveryPoint
+  recovery_point: DataRecoveryPoint
   sources: DataRecoveryGetRecoverySourcesRecoverySource[]
 }
 
@@ -11550,6 +11556,30 @@ export interface DataRecoveryGetRpoSeriesRpoBucket {
   start: DateTime
   end: DateTime
   max_recovery_point_age_millis: long | null
+}
+
+export type DataRecoveryStartRecoveryRecoveryMode = 'replace' | 'rename'
+
+export interface DataRecoveryStartRecoveryRenameStrategy {
+  prefix?: string
+  suffix?: string
+}
+
+export interface DataRecoveryStartRecoveryRequest extends RequestBase {
+  master_timeout?: Duration
+  body?: {
+    recovery_point_end_time: DateTime
+    sources: string[]
+    mode: DataRecoveryStartRecoveryRecoveryMode
+    rename_strategy?: DataRecoveryStartRecoveryRenameStrategy
+    metadata?: Metadata
+  }
+}
+
+export interface DataRecoveryStartRecoveryResponse {
+  recovery_id: string
+  recovery_point: DataRecoveryPoint
+  resolved_sources: DataRecoveryResolvedRecoverySource[]
 }
 
 export interface EncryptionResetRequest extends RequestBase {
