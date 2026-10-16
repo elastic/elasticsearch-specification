@@ -49,8 +49,9 @@ export interface Request extends RequestBase {
      */
     end_time_before?: DateTime
     /**
-     * The period to wait for a connection to the master node.
-     * If no response is received before the timeout expires, the request fails and returns an error.
+     * The period to wait for the master node.
+     * If the master node is not available before the timeout expires, the request fails and returns an error.
+     * To indicate that the request should never timeout, set it to `-1`.
      * @server_default 30s
      */
     master_timeout?: Duration
