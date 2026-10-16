@@ -158,6 +158,9 @@ impl Availability {
             TypeDefinition::Response(ref mut response) => {
                 response.behaviors.iter().for_each(|i| self.filter_behaviors(i));
                 self.filter_body(&mut response.body);
+                for exception in &mut response.exceptions {
+                    self.filter_body(&mut exception.body);
+                }
                 self.filter_examples(&mut response.examples);
             }
         }
@@ -310,5 +313,44 @@ mod tests {
         };
         assert_eq!(variant.typ.name.as_str(), "ServerlessVariant");
         assert!(!filtered.types.keys().any(|name| name.name.as_str() == "StackVariant"));
+    }
+
+    #[test]
+    fn keeps_types_used_only_by_response_exceptions() {
+        let schema = r#"
+        {
+          "endpoints": [{
+            "name": "test.endpoint",
+            "description": "Test endpoint",
+            "requestBodyRequired": false,
+            "response": { "name": "Response", "namespace": "test" },
+            "urls": []
+          }],
+          "types": [{
+            "kind": "response",
+            "name": { "name": "Response", "namespace": "test" },
+            "body": { "kind": "no_body" },
+            "exceptions": [{
+              "statusCodes": [404],
+              "body": {
+                "kind": "value",
+                "value": {
+                  "kind": "instance_of",
+                  "type": { "name": "NotFound", "namespace": "test" }
+                }
+              }
+            }]
+          }, {
+            "kind": "interface",
+            "name": { "name": "NotFound", "namespace": "test" },
+            "properties": []
+          }]
+        }
+        "#;
+        let model = crate::IndexedModel::from_reader(schema.as_bytes()).unwrap();
+
+        let filtered = Availability::filter(model, |_| true).unwrap();
+
+        assert!(filtered.types.keys().any(|name| name.name.as_str() == "NotFound"));
     }
 }
