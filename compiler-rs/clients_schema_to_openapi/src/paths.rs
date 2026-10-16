@@ -243,10 +243,10 @@ pub fn add_endpoint(
         ReferenceOr::Item(response)
     };
 
-    let responses = indexmap! {
+    let mut responses = indexmap! {
         StatusCode::Code(200) => response
-        // TODO: add error responses
     };
+    add_exception_responses(&endpoint.name, response_def, is_multipath, tac, &mut responses)?;
 
     //---- Merge multipath endpoints if asked for
 
@@ -491,6 +491,50 @@ pub fn add_endpoint(
         }
     }
 
+    Ok(())
+}
+
+/// Add a response for each status code of the exceptions declared on the endpoint's response type.
+/// A status code that already has a response (such as 200) keeps it.
+fn add_exception_responses(
+    endpoint_name: &str,
+    response_def: &clients_schema::Response,
+    is_multipath: bool,
+    tac: &mut TypesAndComponents,
+    responses: &mut IndexMap<StatusCode, ReferenceOr<Response>>,
+) -> anyhow::Result<()> {
+    for exception in &response_def.exceptions {
+        let schema = tac.convert_body(&exception.body)?;
+        for status_code in &exception.status_codes {
+            let status = StatusCode::Code(u16::try_from(*status_code)?);
+            if responses.contains_key(&status) {
+                continue;
+            }
+
+            let content = schema
+                .as_ref()
+                .map(|schema| {
+                    indexmap! {
+                        "application/json".to_string() => MediaType {
+                            schema: Some(schema.clone()),
+                            ..Default::default()
+                        }
+                    }
+                })
+                .unwrap_or_default();
+            let response = Response {
+                description: exception.description.clone().unwrap_or_default(),
+                content,
+                ..Default::default()
+            };
+            let response = if is_multipath {
+                tac.add_response(endpoint_name, status.clone(), response)
+            } else {
+                ReferenceOr::Item(response)
+            };
+            responses.insert(status, response);
+        }
+    }
     Ok(())
 }
 
