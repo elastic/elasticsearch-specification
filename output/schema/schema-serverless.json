@@ -4330,6 +4330,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_lifecycle"
@@ -4884,6 +4889,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
@@ -5337,7 +5347,7 @@
           "stability": "stable"
         }
       },
-      "description": "Roll over to a new index.\n\nTIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
+      "description": "Roll over to a new index.\n\nTIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-rollover",
@@ -32031,7 +32041,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L69"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -34016,7 +34026,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L102"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L103"
     },
     {
       "body": {
@@ -35998,7 +36008,7 @@
           }
         ]
       },
-      "description": "Roll over to a new index.\n\nTIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
+      "description": "Roll over to a new index.\n\nTIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "examples": {
         "indicesRolloverRequestExample2": {
           "alternatives": [
@@ -36131,7 +36141,7 @@
           }
         }
       ],
-      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L34-L162"
+      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L34-L163"
     },
     {
       "body": {
@@ -76335,15 +76345,19 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The index is eligible for a frozen-tier transition but the data stream lifecycle has not marked it for conversion.",
           "name": "unmarked"
         },
         {
+          "description": "The index is marked for conversion but has not been submitted to the transition executor.",
           "name": "marked"
         },
         {
+          "description": "The index has been submitted to the transition executor and is waiting in its queue for a thread.",
           "name": "queued"
         },
         {
+          "description": "The transition of the index is in progress.",
           "name": "running"
         }
       ],
@@ -76351,7 +76365,7 @@
         "name": "DlmFrozenTransitionState",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L258-L263"
+      "specLocation": "_global/health_report/types.ts#L281-L290"
     },
     {
       "kind": "enum",
@@ -76373,7 +76387,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L78-L83"
+      "specLocation": "_global/health_report/types.ts#L81-L86"
     },
     {
       "kind": "enum",
@@ -161465,6 +161479,42 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Whether this field is a passthrough source on all indices.\nThis property is present only for field types that support passthrough.",
+          "name": "passthrough",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The list of indices where this field is not a passthrough source, or null if all indices have the same definition for the field.",
+          "name": "non_passthrough_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Whether this field is registered as a metadata field.",
           "docId": "mapping-metadata",
           "docUrl": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/document-metadata-fields",
@@ -161569,7 +161619,7 @@
           }
         }
       ],
-      "specLocation": "_global/field_caps/types.ts#L23-L93"
+      "specLocation": "_global/field_caps/types.ts#L23-L106"
     },
     {
       "kind": "interface",
@@ -189988,6 +190038,18 @@
           }
         },
         {
+          "description": "The time in milliseconds it took to execute the search request for this query",
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
           "name": "unrated_docs",
           "required": true,
@@ -190048,7 +190110,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L128-L137"
+      "specLocation": "_global/rank_eval/types.ts#L128-L139"
     },
     {
       "kind": "interface",
@@ -190080,7 +190142,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L150-L153"
+      "specLocation": "_global/rank_eval/types.ts#L152-L155"
     },
     {
       "kind": "interface",
@@ -190124,7 +190186,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L139-L142"
+      "specLocation": "_global/rank_eval/types.ts#L141-L144"
     },
     {
       "kind": "interface",
@@ -190167,7 +190229,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L144-L148"
+      "specLocation": "_global/rank_eval/types.ts#L146-L150"
     },
     {
       "kind": "interface",

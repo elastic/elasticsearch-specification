@@ -86,6 +86,46 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available; Added in 7.7.0",
@@ -356,6 +396,18 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/async_search.submit-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/async_search.submit-404"
+          },
+          "400": {
+            "$ref": "#/components/responses/async_search.submit-400"
+          },
+          "500": {
+            "$ref": "#/components/responses/async_search.submit-500"
+          },
+          "429": {
+            "$ref": "#/components/responses/async_search.submit-429"
           }
         },
         "x-state": "Generally available; Added in 7.7.0",
@@ -515,6 +567,18 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/async_search.submit-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/async_search.submit-404"
+          },
+          "400": {
+            "$ref": "#/components/responses/async_search.submit-400"
+          },
+          "500": {
+            "$ref": "#/components/responses/async_search.submit-500"
+          },
+          "429": {
+            "$ref": "#/components/responses/async_search.submit-429"
           }
         },
         "x-state": "Generally available; Added in 7.7.0",
@@ -963,6 +1027,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1002,6 +1081,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1038,6 +1132,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1077,6 +1186,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.allocation-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1113,6 +1237,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.circuit_breaker-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1152,6 +1291,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.circuit_breaker-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1188,6 +1342,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1227,6 +1396,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1257,6 +1441,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1288,6 +1487,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1324,6 +1538,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1358,6 +1587,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1394,6 +1638,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1430,6 +1689,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.fielddata-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1485,6 +1759,21 @@
               "$ref": "#/components/schemas/_types.Names"
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1575,6 +1864,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1623,6 +1927,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1693,6 +2012,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1742,6 +2076,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1778,6 +2127,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1811,6 +2175,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1847,6 +2226,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1880,6 +2274,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1916,6 +2325,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1955,6 +2379,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1997,6 +2436,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2067,6 +2521,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2175,6 +2644,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2267,6 +2751,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2364,6 +2863,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2419,6 +2933,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2461,6 +2990,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.recovery-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2531,6 +3075,21 @@
               ]
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2598,6 +3157,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments-allow_closed"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2652,6 +3226,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.segments-allow_closed"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2685,6 +3274,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2721,6 +3325,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.shards-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2757,6 +3376,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2796,6 +3430,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.snapshots-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2913,6 +3562,21 @@
               "type": "boolean"
             },
             "style": "form"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -2965,6 +3629,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3004,6 +3683,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3040,6 +3734,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3079,6 +3788,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.thread_pool-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3118,6 +3842,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -3160,6 +3899,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -4560,6 +5314,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/clear_scroll-404"
           }
         },
         "x-state": "Generally available",
@@ -4679,6 +5436,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/clear_scroll-404"
           }
         },
         "x-state": "Generally available",
@@ -4754,6 +5514,28 @@
                     "description": "A successful response from `DELETE /_pit`.",
                     "value": "{\n  \"succeeded\": true, \n  \"num_freed\": 3     \n}"
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "succeeded": {
+                      "type": "boolean"
+                    },
+                    "num_freed": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "succeeded",
+                    "num_freed"
+                  ]
                 }
               }
             }
@@ -5416,7 +6198,7 @@
           "cluster"
         ],
         "summary": "Update the cluster settings",
-        "description": "Configure and update dynamic settings on a running cluster.\nYou can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.\n\nUpdates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart.\nYou can also reset transient or persistent settings by assigning them a null value.\n\nIf you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value.\nFor example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting.\nHowever, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.\n\nTIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster.\nIf you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings.\nOnly use `elasticsearch.yml` for static cluster settings and node settings.\nThe API doesn’t require a restart and ensures a setting’s value is the same on all nodes.\n\nWARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.\nIf a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.",
+        "description": "Configure and update dynamic settings on a running cluster.\nYou can also configure dynamic settings locally on an unstarted or shut down node in `elasticsearch.yml`.\n\nUpdates made with this API can be persistent, which apply across cluster restarts, or transient, which reset after a cluster restart.\nYou can also reset transient or persistent settings by assigning them a null value.\n\nIf you configure the same setting using multiple methods, Elasticsearch applies the settings in following order of precedence: 1) Transient setting; 2) Persistent setting; 3) `elasticsearch.yml` setting; 4) Default setting value.\nFor example, you can apply a transient setting to override a persistent setting or `elasticsearch.yml` setting.\nHowever, a change to an `elasticsearch.yml` setting will not override a defined transient or persistent setting.\n\nTIP: In Elastic Cloud, use the user settings feature to configure all cluster settings. This method automatically rejects unsafe settings that could break your cluster.\nIf you run Elasticsearch on your own hardware, use this API to configure dynamic cluster settings.\nOnly use `elasticsearch.yml` for static cluster settings and node settings.\nThe API doesn’t require a restart and ensures a setting’s value is the same on all nodes.\n\nWARNING: Transient cluster settings are no longer recommended. Use persistent cluster settings instead.\nIf a cluster becomes unstable, transient settings can clear unexpectedly, resulting in a potentially undesired cluster configuration.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "description": "More about Elastic Stack settings",
           "url": "https://www.elastic.co/docs/deploy-manage/stack-settings",
@@ -5593,6 +6375,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/cluster.health-200"
+          },
+          "408": {
+            "$ref": "#/components/responses/cluster.health-408"
           }
         },
         "x-state": "Generally available; Added in 1.3.0",
@@ -5653,6 +6438,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/cluster.health-200"
+          },
+          "408": {
+            "$ref": "#/components/responses/cluster.health-408"
           }
         },
         "x-state": "Generally available; Added in 1.3.0",
@@ -9227,6 +10015,23 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.get.GetResult"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                    }
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -9527,6 +10332,23 @@
                     "description": "A successful response from `DELETE /my-index-000001/_doc/1`, which deletes the JSON document 1 from the `my-index-000001` index.",
                     "value": "{\n  \"_shards\": {\n    \"total\": 2,\n    \"failed\": 0,\n    \"successful\": 2\n  },\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 2,\n  \"_primary_term\": 1,\n  \"_seq_no\": 5,\n  \"result\": \"deleted\"\n}"
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\nIf the index does exist, but the document does not,\nthe response is the same as the successful case, but with a 404.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.WriteResponseBase"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                    }
+                  ]
                 }
               }
             }
@@ -17108,6 +17930,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -17403,7 +18228,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Get the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -17514,7 +18339,7 @@
           "data stream"
         ],
         "summary": "Update data stream lifecycles",
-        "description": "Update the data stream lifecycle of the specified data streams.",
+        "description": "Update the data stream lifecycle of the specified data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -17661,7 +18486,7 @@
           "indices"
         ],
         "summary": "Delete data stream lifecycles",
-        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.",
+        "description": "Removes the data stream lifecycle from a data stream, rendering it not managed by the data stream lifecycle.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -18779,6 +19604,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -19303,6 +20131,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -19342,6 +20173,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -21466,7 +22300,7 @@
           "indices"
         ],
         "summary": "Roll over to a new index",
-        "description": "TIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "TIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-rollover",
         "parameters": [
           {
@@ -21511,7 +22345,7 @@
           "indices"
         ],
         "summary": "Roll over to a new index",
-        "description": "TIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
+        "description": "TIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-rollover-1",
         "parameters": [
           {
@@ -42642,6 +43476,15 @@
                 }
               }
             }
+          },
+          "202": {
+            "description": "\nEvent has been accepted and will be ingested."
+          },
+          "400": {
+            "description": "\nEither the event type is unknown or the event payload contains invalid data."
+          },
+          "404": {
+            "description": "\nAnalytics collection does not exist."
           }
         },
         "deprecated": true,
@@ -77163,6 +78006,79 @@
           "start_time_in_millis"
         ]
       },
+      "async_search._types.AsyncSearchResponseException": {
+        "type": "object",
+        "properties": {
+          "is_partial": {
+            "type": "boolean"
+          },
+          "is_running": {
+            "type": "boolean"
+          },
+          "expiration_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "expiration_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "start_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "start_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "completion_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "completion_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "response": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/async_search._types.AsyncSearch"
+              }
+            ]
+          }
+        },
+        "required": [
+          "is_partial",
+          "is_running",
+          "expiration_time_in_millis",
+          "start_time_in_millis"
+        ]
+      },
       "async_search.status.StatusResponseBase": {
         "allOf": [
           {
@@ -77918,6 +78834,29 @@
           {
             "type": "string"
           }
+        ]
+      },
+      "_types.Bytes": {
+        "type": "string",
+        "enum": [
+          "b",
+          "kb",
+          "mb",
+          "gb",
+          "tb",
+          "pb"
+        ]
+      },
+      "_types.TimeUnit": {
+        "type": "string",
+        "enum": [
+          "nanos",
+          "micros",
+          "ms",
+          "s",
+          "m",
+          "h",
+          "d"
         ]
       },
       "cat.aliases.AliasesRecord": {
@@ -100340,6 +101279,26 @@
           "node_ids"
         ]
       },
+      "_types.ErrorResponseBase": {
+        "description": "The response returned by Elasticsearch when request execution did not succeed.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "status": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "error",
+          "status"
+        ]
+      },
       "_types.Conflicts": {
         "type": "string",
         "enum": [
@@ -101739,6 +102698,20 @@
               }
             ]
           },
+          "passthrough": {
+            "description": "Whether this field is a passthrough source on all indices.\nThis property is present only for field types that support passthrough.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "non_passthrough_indices": {
+            "description": "The list of indices where this field is not a passthrough source, or null if all indices have the same definition for the field.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Indices"
+              }
+            ]
+          },
           "metadata_field": {
             "description": "Whether this field is registered as a metadata field.",
             "type": "boolean"
@@ -101985,26 +102958,6 @@
           "timed_out",
           "_shards",
           "hits"
-        ]
-      },
-      "_types.ErrorResponseBase": {
-        "description": "The response returned by Elasticsearch when request execution did not succeed.",
-        "type": "object",
-        "properties": {
-          "error": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ErrorCause"
-              }
-            ]
-          },
-          "status": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "error",
-          "status"
         ]
       },
       "_global.get.GetResult": {
@@ -102464,6 +103417,7 @@
             ]
           },
           "dlm_frozen_transitions": {
+            "description": "Reports the health of data stream lifecycle transitions of backing indices to the frozen tier.",
             "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
@@ -103226,34 +104180,41 @@
         ]
       },
       "_global.health_report.DlmFrozenTransitionsIndicatorDetails": {
+        "description": "An index is overdue when it has passed its `frozen_after` age by more than the configured threshold and has not yet completed its transition to the frozen tier.\nIndices with a running transition are making progress and are not counted as overdue.",
         "type": "object",
         "properties": {
           "transitions_enabled": {
+            "description": "Indicates whether frozen-tier transitions are enabled by the `dlm.frozen_transitions.enabled` cluster setting.",
             "type": "boolean"
           },
           "service_running": {
+            "description": "Indicates whether the frozen transition service is running on the current master node.",
             "type": "boolean"
           },
           "default_repository_configured": {
+            "description": "Indicates whether a default snapshot repository is configured with the `repositories.default_repository` cluster setting.",
             "type": "boolean"
           },
           "overdue_indices_count": {
+            "description": "The total number of overdue indices in the cluster.",
             "type": "number"
           },
           "overdue_indices_count_by_state": {
+            "description": "The number of overdue indices in the cluster for each transition state.\nOnly present when there are overdue indices.",
             "type": "object",
             "additionalProperties": {
               "type": "number"
             }
           },
           "overdue_indices_sample": {
+            "description": "A sample of the overdue indices and their transition states, sorted by index name.\nThe sample is limited to 100 indices for each transition state, so it can contain fewer indices than `overdue_indices_count`.\nOnly present when there are overdue indices.",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionOverdueIndex"
             }
           },
           "generated_at_millis": {
-            "description": "Only present when the indicator status is `unknown`, meaning the health snapshot is stale.",
+            "description": "The time, in milliseconds since the Unix epoch, when the master node generated the health snapshot.\nOnly present when the indicator status is `unknown`, meaning the health snapshot is stale.",
             "type": "number"
           }
         }
@@ -103262,6 +104223,7 @@
         "type": "object",
         "properties": {
           "index_name": {
+            "description": "The name of the overdue index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -103269,6 +104231,7 @@
             ]
           },
           "transition_state": {
+            "description": "The transition state of the overdue index.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.DlmFrozenTransitionState"
@@ -104563,6 +105526,21 @@
         },
         "required": [
           "aliases"
+        ]
+      },
+      "indices.get_alias._types.NotFoundAliases": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "status": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "error",
+          "status"
         ]
       },
       "indices.get_data_lifecycle.DataStreamWithLifecycle": {
@@ -129096,6 +130074,10 @@
             "description": "The metric_score in the details section shows the contribution of this query to the global quality metric score",
             "type": "number"
           },
+          "took": {
+            "description": "The time in milliseconds it took to execute the search request for this query",
+            "type": "number"
+          },
           "unrated_docs": {
             "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
             "type": "array",
@@ -129123,6 +130105,7 @@
         },
         "required": [
           "metric_score",
+          "took",
           "unrated_docs",
           "hits",
           "metric_details"
@@ -142620,6 +143603,46 @@
           }
         }
       },
+      "async_search.submit-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-400": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-500": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-429": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
       "bulk-200": {
         "description": "",
         "content": {
@@ -143119,6 +144142,28 @@
           }
         }
       },
+      "clear_scroll-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "succeeded": {
+                  "type": "boolean"
+                },
+                "num_freed": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "succeeded",
+                "num_freed"
+              ]
+            }
+          }
+        }
+      },
       "cluster.allocation_explain-200": {
         "description": "",
         "content": {
@@ -143333,6 +144378,16 @@
                 "description": "A successful response from `GET _cluster/health`. It is the health status of a quiet single node cluster with a single index with one shard and one replica.\n",
                 "value": "{\n  \"cluster_name\" : \"testcluster\",\n  \"status\" : \"yellow\",\n  \"timed_out\" : false,\n  \"number_of_nodes\" : 1,\n  \"number_of_data_nodes\" : 1,\n  \"active_primary_shards\" : 1,\n  \"active_shards\" : 1,\n  \"relocating_shards\" : 0,\n  \"initializing_shards\" : 0,\n  \"unassigned_shards\" : 1,\n  \"delayed_unassigned_shards\": 0,\n  \"number_of_pending_tasks\" : 0,\n  \"number_of_in_flight_fetch\": 0,\n  \"task_max_waiting_in_queue_millis\": 0,\n  \"active_shards_percent_as_number\": 50.0\n}"
               }
+            }
+          }
+        }
+      },
+      "cluster.health-408": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/cluster.health.HealthResponseBody"
             }
           }
         }
@@ -144116,6 +145171,23 @@
               "additionalProperties": {
                 "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
+            }
+          }
+        }
+      },
+      "indices.get_alias-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/indices.get_alias._types.NotFoundAliases"
+                },
+                {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                }
+              ]
             }
           }
         }
@@ -148347,6 +149419,59 @@
               "$ref": "#/components/schemas/_types.Duration"
             }
           ]
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-format": {
+        "in": "query",
+        "name": "format",
+        "description": "Specifies the format to return the columnar data in, can be set to\n`text`, `json`, `cbor`, `yaml`, or `smile`.",
+        "deprecated": false,
+        "schema": {
+          "default": "text",
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-help": {
+        "in": "query",
+        "name": "help",
+        "description": "When set to `true` will output available columns. This option\ncan't be combined with any other query string option.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-v": {
+        "in": "query",
+        "name": "v",
+        "description": "When set to `true` will enable verbose output.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-bytes": {
+        "in": "query",
+        "name": "bytes",
+        "description": "Sets the units for columns that contain a byte-size value.\nNote that byte-size value units work in terms of powers of 1024. For instance `1kb` means 1024 bytes, not 1000 bytes.\nIf omitted, byte-size values are rendered with a suffix such as `kb`, `mb`, or `gb`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, byte-size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Bytes"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-time": {
+        "in": "query",
+        "name": "time",
+        "description": "Sets the units for columns that contain a time duration.\nIf omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, time duration values are rendered as an integer with no suffix.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },

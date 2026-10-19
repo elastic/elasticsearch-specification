@@ -41,7 +41,10 @@ export class Indicators {
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
   project_encryption_key?: ProjectEncryptionKeyIndicator
-  /** @availability stack since=9.6.0 */
+  /**
+   * Reports the health of data stream lifecycle transitions of backing indices to the frozen tier.
+   * @availability stack since=9.6.0
+   */
   dlm_frozen_transitions?: DlmFrozenTransitionsIndicator
 }
 
@@ -244,25 +247,51 @@ export class DlmFrozenTransitionsIndicator extends BaseIndicator {
   details?: DlmFrozenTransitionsIndicatorDetails
 }
 
+/**
+ * An index is overdue when it has passed its `frozen_after` age by more than the configured threshold and has not yet completed its transition to the frozen tier.
+ * Indices with a running transition are making progress and are not counted as overdue.
+ */
 export class DlmFrozenTransitionsIndicatorDetails {
+  /** Indicates whether frozen-tier transitions are enabled by the `dlm.frozen_transitions.enabled` cluster setting. */
   transitions_enabled?: boolean
+  /** Indicates whether the frozen transition service is running on the current master node. */
   service_running?: boolean
+  /** Indicates whether a default snapshot repository is configured with the `repositories.default_repository` cluster setting. */
   default_repository_configured?: boolean
+  /** The total number of overdue indices in the cluster. */
   overdue_indices_count?: integer
+  /**
+   * The number of overdue indices in the cluster for each transition state.
+   * Only present when there are overdue indices.
+   */
   overdue_indices_count_by_state?: Dictionary<DlmFrozenTransitionState, integer>
+  /**
+   * A sample of the overdue indices and their transition states, sorted by index name.
+   * The sample is limited to 100 indices for each transition state, so it can contain fewer indices than `overdue_indices_count`.
+   * Only present when there are overdue indices.
+   */
   overdue_indices_sample?: DlmFrozenTransitionOverdueIndex[]
-  /** Only present when the indicator status is `unknown`, meaning the health snapshot is stale. */
+  /**
+   * The time, in milliseconds since the Unix epoch, when the master node generated the health snapshot.
+   * Only present when the indicator status is `unknown`, meaning the health snapshot is stale.
+   */
   generated_at_millis?: long
 }
 
 export enum DlmFrozenTransitionState {
+  /** The index is eligible for a frozen-tier transition but the data stream lifecycle has not marked it for conversion. */
   unmarked,
+  /** The index is marked for conversion but has not been submitted to the transition executor. */
   marked,
+  /** The index has been submitted to the transition executor and is waiting in its queue for a thread. */
   queued,
+  /** The transition of the index is in progress. */
   running
 }
 
 export class DlmFrozenTransitionOverdueIndex {
+  /** The name of the overdue index. */
   index_name: IndexName
+  /** The transition state of the overdue index. */
   transition_state: DlmFrozenTransitionState
 }

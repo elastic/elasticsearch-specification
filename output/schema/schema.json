@@ -3065,6 +3065,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/stack-settings",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-update-settings.html",
       "name": "cluster.put_settings",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.put_settings"
@@ -8188,6 +8193,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-delete-lifecycle.html",
       "name": "indices.delete_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete_data_lifecycle"
@@ -8932,6 +8942,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle.html",
       "name": "indices.get_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_lifecycle"
@@ -9741,6 +9756,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-put-lifecycle.html",
       "name": "indices.put_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_lifecycle"
@@ -10380,7 +10400,7 @@
           "stability": "stable"
         }
       },
-      "description": "Roll over to a new index.\n\nTIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
+      "description": "Roll over to a new index.\n\nTIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "docId": "indices-rollover-index",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-rollover",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-rollover",
@@ -32304,6 +32324,42 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Whether this field is a passthrough source on all indices.\nThis property is present only for field types that support passthrough.",
+          "name": "passthrough",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The list of indices where this field is not a passthrough source, or null if all indices have the same definition for the field.",
+          "name": "non_passthrough_indices",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Whether this field is registered as a metadata field.",
           "docId": "mapping-metadata",
           "docUrl": "https://www.elastic.co/docs/reference/elasticsearch/mapping-reference/document-metadata-fields",
@@ -32408,7 +32464,7 @@
           }
         }
       ],
-      "specLocation": "_global/field_caps/types.ts#L23-L93"
+      "specLocation": "_global/field_caps/types.ts#L23-L106"
     },
     {
       "kind": "request",
@@ -34321,7 +34377,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L48-L53"
+      "specLocation": "_global/health_report/types.ts#L51-L56"
     },
     {
       "kind": "interface",
@@ -34367,7 +34423,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L157-L161"
+      "specLocation": "_global/health_report/types.ts#L160-L164"
     },
     {
       "kind": "interface",
@@ -34395,7 +34451,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L152-L156"
+      "specLocation": "_global/health_report/types.ts#L155-L159"
     },
     {
       "kind": "interface",
@@ -34460,7 +34516,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L55-L61"
+      "specLocation": "_global/health_report/types.ts#L58-L64"
     },
     {
       "kind": "interface",
@@ -34537,7 +34593,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L63-L69"
+      "specLocation": "_global/health_report/types.ts#L66-L72"
     },
     {
       "kind": "interface",
@@ -34565,7 +34621,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L128-L132"
+      "specLocation": "_global/health_report/types.ts#L131-L135"
     },
     {
       "kind": "interface",
@@ -34630,7 +34686,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L133-L139"
+      "specLocation": "_global/health_report/types.ts#L136-L142"
     },
     {
       "kind": "interface",
@@ -34640,6 +34696,7 @@
       },
       "properties": [
         {
+          "description": "The name of the overdue index.",
           "name": "index_name",
           "required": true,
           "type": {
@@ -34651,6 +34708,7 @@
           }
         },
         {
+          "description": "The transition state of the overdue index.",
           "name": "transition_state",
           "required": true,
           "type": {
@@ -34662,21 +34720,25 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L265-L268"
+      "specLocation": "_global/health_report/types.ts#L292-L297"
     },
     {
       "kind": "enum",
       "members": [
         {
+          "description": "The index is eligible for a frozen-tier transition but the data stream lifecycle has not marked it for conversion.",
           "name": "unmarked"
         },
         {
+          "description": "The index is marked for conversion but has not been submitted to the transition executor.",
           "name": "marked"
         },
         {
+          "description": "The index has been submitted to the transition executor and is waiting in its queue for a thread.",
           "name": "queued"
         },
         {
+          "description": "The transition of the index is in progress.",
           "name": "running"
         }
       ],
@@ -34684,7 +34746,7 @@
         "name": "DlmFrozenTransitionState",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L258-L263"
+      "specLocation": "_global/health_report/types.ts#L281-L290"
     },
     {
       "kind": "interface",
@@ -34712,16 +34774,18 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L241-L245"
+      "specLocation": "_global/health_report/types.ts#L244-L248"
     },
     {
       "kind": "interface",
+      "description": "An index is overdue when it has passed its `frozen_after` age by more than the configured threshold and has not yet completed its transition to the frozen tier.\nIndices with a running transition are making progress and are not counted as overdue.",
       "name": {
         "name": "DlmFrozenTransitionsIndicatorDetails",
         "namespace": "_global.health_report"
       },
       "properties": [
         {
+          "description": "Indicates whether frozen-tier transitions are enabled by the `dlm.frozen_transitions.enabled` cluster setting.",
           "name": "transitions_enabled",
           "required": false,
           "type": {
@@ -34733,6 +34797,7 @@
           }
         },
         {
+          "description": "Indicates whether the frozen transition service is running on the current master node.",
           "name": "service_running",
           "required": false,
           "type": {
@@ -34744,6 +34809,7 @@
           }
         },
         {
+          "description": "Indicates whether a default snapshot repository is configured with the `repositories.default_repository` cluster setting.",
           "name": "default_repository_configured",
           "required": false,
           "type": {
@@ -34755,6 +34821,7 @@
           }
         },
         {
+          "description": "The total number of overdue indices in the cluster.",
           "name": "overdue_indices_count",
           "required": false,
           "type": {
@@ -34766,6 +34833,7 @@
           }
         },
         {
+          "description": "The number of overdue indices in the cluster for each transition state.\nOnly present when there are overdue indices.",
           "name": "overdue_indices_count_by_state",
           "required": false,
           "type": {
@@ -34788,6 +34856,7 @@
           }
         },
         {
+          "description": "A sample of the overdue indices and their transition states, sorted by index name.\nThe sample is limited to 100 indices for each transition state, so it can contain fewer indices than `overdue_indices_count`.\nOnly present when there are overdue indices.",
           "name": "overdue_indices_sample",
           "required": false,
           "type": {
@@ -34802,7 +34871,7 @@
           }
         },
         {
-          "description": "Only present when the indicator status is `unknown`, meaning the health snapshot is stale.",
+          "description": "The time, in milliseconds since the Unix epoch, when the master node generated the health snapshot.\nOnly present when the indicator status is `unknown`, meaning the health snapshot is stale.",
           "name": "generated_at_millis",
           "required": false,
           "type": {
@@ -34814,7 +34883,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L247-L256"
+      "specLocation": "_global/health_report/types.ts#L250-L279"
     },
     {
       "kind": "interface",
@@ -34842,7 +34911,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L211-L215"
+      "specLocation": "_global/health_report/types.ts#L214-L218"
     },
     {
       "kind": "interface",
@@ -34874,7 +34943,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L217-L220"
+      "specLocation": "_global/health_report/types.ts#L220-L223"
     },
     {
       "kind": "interface",
@@ -34902,7 +34971,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L168-L172"
+      "specLocation": "_global/health_report/types.ts#L171-L175"
     },
     {
       "kind": "interface",
@@ -34945,7 +35014,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L173-L177"
+      "specLocation": "_global/health_report/types.ts#L176-L180"
     },
     {
       "kind": "interface",
@@ -35002,7 +35071,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L71-L76"
+      "specLocation": "_global/health_report/types.ts#L74-L79"
     },
     {
       "kind": "enum",
@@ -35024,7 +35093,7 @@
         "name": "ImpactArea",
         "namespace": "_global.health_report"
       },
-      "specLocation": "_global/health_report/types.ts#L78-L83"
+      "specLocation": "_global/health_report/types.ts#L81-L86"
     },
     {
       "kind": "enum",
@@ -35105,7 +35174,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L96-L99"
+      "specLocation": "_global/health_report/types.ts#L99-L102"
     },
     {
       "kind": "interface",
@@ -35230,6 +35299,7 @@
               "since": "9.6.0"
             }
           },
+          "description": "Reports the health of data stream lifecycle transitions of backing indices to the frozen tier.",
           "name": "dlm_frozen_transitions",
           "required": false,
           "type": {
@@ -35241,7 +35311,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L33-L46"
+      "specLocation": "_global/health_report/types.ts#L33-L49"
     },
     {
       "kind": "interface",
@@ -35269,7 +35339,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L85-L89"
+      "specLocation": "_global/health_report/types.ts#L88-L92"
     },
     {
       "kind": "interface",
@@ -35312,7 +35382,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L104-L108"
+      "specLocation": "_global/health_report/types.ts#L107-L111"
     },
     {
       "kind": "interface",
@@ -35372,7 +35442,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L90-L95"
+      "specLocation": "_global/health_report/types.ts#L93-L98"
     },
     {
       "kind": "interface",
@@ -35404,7 +35474,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L100-L103"
+      "specLocation": "_global/health_report/types.ts#L103-L106"
     },
     {
       "kind": "interface",
@@ -35481,7 +35551,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L228-L239"
+      "specLocation": "_global/health_report/types.ts#L231-L242"
     },
     {
       "kind": "interface",
@@ -35509,7 +35579,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L222-L226"
+      "specLocation": "_global/health_report/types.ts#L225-L229"
     },
     {
       "kind": "interface",
@@ -35537,7 +35607,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L141-L145"
+      "specLocation": "_global/health_report/types.ts#L144-L148"
     },
     {
       "kind": "interface",
@@ -35583,7 +35653,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L146-L150"
+      "specLocation": "_global/health_report/types.ts#L149-L153"
     },
     {
       "kind": "request",
@@ -35782,7 +35852,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L110-L114"
+      "specLocation": "_global/health_report/types.ts#L113-L117"
     },
     {
       "kind": "interface",
@@ -35902,7 +35972,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L115-L126"
+      "specLocation": "_global/health_report/types.ts#L118-L129"
     },
     {
       "kind": "interface",
@@ -35930,7 +36000,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L195-L199"
+      "specLocation": "_global/health_report/types.ts#L198-L202"
     },
     {
       "kind": "interface",
@@ -35962,7 +36032,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L201-L204"
+      "specLocation": "_global/health_report/types.ts#L204-L207"
     },
     {
       "kind": "interface",
@@ -35994,7 +36064,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L206-L209"
+      "specLocation": "_global/health_report/types.ts#L209-L212"
     },
     {
       "kind": "interface",
@@ -36022,7 +36092,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L179-L183"
+      "specLocation": "_global/health_report/types.ts#L182-L186"
     },
     {
       "kind": "interface",
@@ -36065,7 +36135,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L184-L188"
+      "specLocation": "_global/health_report/types.ts#L187-L191"
     },
     {
       "kind": "interface",
@@ -36108,7 +36178,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L190-L193"
+      "specLocation": "_global/health_report/types.ts#L193-L196"
     },
     {
       "kind": "interface",
@@ -36151,7 +36221,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/types.ts#L162-L166"
+      "specLocation": "_global/health_report/types.ts#L165-L169"
     },
     {
       "kind": "request",
@@ -39927,7 +39997,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L144-L148"
+      "specLocation": "_global/rank_eval/types.ts#L146-L150"
     },
     {
       "kind": "interface",
@@ -39971,7 +40041,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L139-L142"
+      "specLocation": "_global/rank_eval/types.ts#L141-L144"
     },
     {
       "kind": "interface",
@@ -40081,6 +40151,18 @@
           }
         },
         {
+          "description": "The time in milliseconds it took to execute the search request for this query",
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The unrated_docs section contains an _index and _id entry for each document in the search result for this query that didn’t have a ratings value. This can be used to ask the user to supply ratings for these documents",
           "name": "unrated_docs",
           "required": true,
@@ -40141,7 +40223,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L128-L137"
+      "specLocation": "_global/rank_eval/types.ts#L128-L139"
     },
     {
       "kind": "interface",
@@ -40667,7 +40749,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L150-L153"
+      "specLocation": "_global/rank_eval/types.ts#L152-L155"
     },
     {
       "kind": "interface",
@@ -136373,7 +136455,7 @@
           }
         }
       ],
-      "specLocation": "cluster/put_settings/ClusterPutSettingsRequest.ts#L26-L84"
+      "specLocation": "cluster/put_settings/ClusterPutSettingsRequest.ts#L26-L85"
     },
     {
       "kind": "response",
@@ -169657,7 +169739,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L66"
+      "specLocation": "indices/delete_data_lifecycle/IndicesDeleteDataLifecycleRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -172767,7 +172849,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L69"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -176144,7 +176226,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L102"
+      "specLocation": "indices/put_data_lifecycle/IndicesPutDataLifecycleRequest.ts#L26-L103"
     },
     {
       "kind": "response",
@@ -180794,7 +180876,7 @@
           }
         ]
       },
-      "description": "Roll over to a new index.\n\nTIP: We recommend using the index lifecycle rollover action to automate rollovers. However, Serverless does not support Index Lifecycle Management (ILM), so don't use this approach in the Serverless context.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
+      "description": "Roll over to a new index.\n\nTIP: To automate rollovers, use index lifecycle management (ILM) in deployments that support it.\nServerless does not support ILM. For data streams in Serverless, use data stream lifecycle instead.\n\nThe rollover API creates a new index for a data stream or index alias.\nThe API behavior depends on the rollover target.\n\n**Roll over a data stream**\n\nIf you roll over a data stream, the API creates a new write index for the stream.\nThe stream's previous write index becomes a regular backing index.\nA rollover also increments the data stream's generation.\n\n**Roll over an index alias with a write index**\n\nTIP: Prior to Elasticsearch 7.9, you'd typically use an index alias with a write index to manage time series data.\nData streams replace this functionality, require less maintenance, and automatically integrate with data tiers.\n\nIf an index alias points to multiple indices, one of the indices must be a write index.\nThe rollover API creates a new write index for the alias with `is_write_index` set to `true`.\nThe API also `sets is_write_index` to `false` for the previous write index.\n\n**Roll over an index alias with one index**\n\nIf you roll over an index alias that points to only one index, the API creates a new index for the alias and removes the original index from the alias.\n\nNOTE: A rollover creates a new index and is subject to the `wait_for_active_shards` setting.\n\n**Increment index names for an alias**\n\nWhen you roll over an index alias, you can specify a name for the new index.\nIf you don't specify a name and the current index ends with `-` and a number, such as `my-index-000001` or `my-index-3`, the new index name increments that number.\nFor example, if you roll over an alias with a current index of `my-index-000001`, the rollover creates a new index named `my-index-000002`.\nThis number is always six characters and zero-padded, regardless of the previous index's name.\n\nIf you use an index alias for time series data, you can use date math in the index name to track the rollover date.\nFor example, you can create an alias that points to an index named `<my-index-{now/d}-000001>`.\nIf you create the index on May 6, 2099, the index's name is `my-index-2099.05.06-000001`.\nIf you roll over the alias on May 7, 2099, the new index's name is `my-index-2099.05.07-000002`.",
       "examples": {
         "indicesRolloverRequestExample1": {
           "alternatives": [
@@ -180981,7 +181063,7 @@
           }
         }
       ],
-      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L34-L162"
+      "specLocation": "indices/rollover/IndicesRolloverRequest.ts#L34-L163"
     },
     {
       "kind": "response",

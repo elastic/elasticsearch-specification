@@ -33,6 +33,11 @@ use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
 use crate::convert_availabilities;
 
+/// Behaviors whose properties are query parameters that the OpenAPI output lists on each request that
+/// implements them. `CommonQueryParameters` (`pretty`, `human`, ...) is not in this list: it applies to all
+/// the endpoints, and is not listed on each of them.
+const QUERY_PARAMETER_BEHAVIORS: [&str; 1] = ["CommonCatQueryParameters"];
+
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
 pub fn add_endpoint(
@@ -132,6 +137,26 @@ pub fn add_endpoint(
         } else {
             ReferenceOr::Item(parameter)
         });
+    }
+
+    // Query parameters that a behavior adds to all the requests that implement it
+    for behavior in request.attached_behaviors.iter().filter(|b| QUERY_PARAMETER_BEHAVIORS.contains(&b.as_str())) {
+        let behavior_name = clients_schema::TypeName::new("_spec_utils", behavior);
+        let model = tac.model;
+        for prop in model.get_interface(&behavior_name)?.properties.iter() {
+            // The request's own definition of a parameter wins over the behavior's
+            if request.query.iter().any(|p| p.name == prop.name) {
+                continue;
+            }
+            let parameter = Parameter::Query {
+                parameter_data: parameter_data(prop, false, tac)?,
+                allow_reserved: false,
+                style: QueryStyle::Form,
+                allow_empty_value: None,
+            };
+            // Always shared, as the same parameter is used by every request that implements the behavior
+            query_params.push(tac.add_parameter(&behavior_name.to_string().replace(':', "."), parameter, false));
+        }
     }
 
     //---- Prepare request body
@@ -243,10 +268,10 @@ pub fn add_endpoint(
         ReferenceOr::Item(response)
     };
 
-    let responses = indexmap! {
+    let mut responses = indexmap! {
         StatusCode::Code(200) => response
-        // TODO: add error responses
     };
+    add_exception_responses(&endpoint.name, response_def, is_multipath, tac, &mut responses)?;
 
     //---- Merge multipath endpoints if asked for
 
@@ -492,6 +517,50 @@ pub fn add_endpoint(
         }
     }
 
+    Ok(())
+}
+
+/// Add a response for each status code of the exceptions declared on the endpoint's response type.
+/// A status code that already has a response (such as 200) keeps it.
+fn add_exception_responses(
+    endpoint_name: &str,
+    response_def: &clients_schema::Response,
+    is_multipath: bool,
+    tac: &mut TypesAndComponents,
+    responses: &mut IndexMap<StatusCode, ReferenceOr<Response>>,
+) -> anyhow::Result<()> {
+    for exception in &response_def.exceptions {
+        let schema = tac.convert_body(&exception.body)?;
+        for status_code in &exception.status_codes {
+            let status = StatusCode::Code(u16::try_from(*status_code)?);
+            if responses.contains_key(&status) {
+                continue;
+            }
+
+            let content = schema
+                .as_ref()
+                .map(|schema| {
+                    indexmap! {
+                        "application/json".to_string() => MediaType {
+                            schema: Some(schema.clone()),
+                            ..Default::default()
+                        }
+                    }
+                })
+                .unwrap_or_default();
+            let response = Response {
+                description: exception.description.clone().unwrap_or_default(),
+                content,
+                ..Default::default()
+            };
+            let response = if is_multipath {
+                tac.add_response(endpoint_name, status.clone(), response)
+            } else {
+                ReferenceOr::Item(response)
+            };
+            responses.insert(status, response);
+        }
+    }
     Ok(())
 }
 

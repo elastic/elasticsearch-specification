@@ -59,6 +59,19 @@ export class FieldCapability {
    */
   non_inference_indices?: Indices
   /**
+   * Whether this field is a passthrough source on all indices.
+   * This property is present only for field types that support passthrough.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  passthrough?: boolean
+  /**
+   * The list of indices where this field is not a passthrough source, or null if all indices have the same definition for the field.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  non_passthrough_indices?: Indices
+  /**
    * Whether this field is registered as a metadata field.
    * @doc_id mapping-metadata
    */
