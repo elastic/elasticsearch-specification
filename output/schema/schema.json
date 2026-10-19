@@ -293772,7 +293772,7 @@
           "availability": {
             "serverless": {},
             "stack": {
-              "since": "9.6.0"
+              "since": "8.19.24"
             }
           },
           "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",

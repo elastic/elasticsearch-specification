@@ -200,7 +200,7 @@ export class Settings {
    * maximum is `12h`.
    *
    * @server_default 30s
-   * @availability stack since=9.6.0
+   * @availability stack since=8.19.24
    * @availability serverless
    */
   indexer_request_timeout?: Duration
