@@ -86,6 +86,46 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -356,6 +396,18 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/async_search.submit-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/async_search.submit-404"
+          },
+          "400": {
+            "$ref": "#/components/responses/async_search.submit-400"
+          },
+          "500": {
+            "$ref": "#/components/responses/async_search.submit-500"
+          },
+          "429": {
+            "$ref": "#/components/responses/async_search.submit-429"
           }
         },
         "x-state": "Generally available",
@@ -515,6 +567,18 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/async_search.submit-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/async_search.submit-404"
+          },
+          "400": {
+            "$ref": "#/components/responses/async_search.submit-400"
+          },
+          "500": {
+            "$ref": "#/components/responses/async_search.submit-500"
+          },
+          "429": {
+            "$ref": "#/components/responses/async_search.submit-429"
           }
         },
         "x-state": "Generally available",
@@ -951,6 +1015,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -990,6 +1069,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.aliases-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1026,6 +1120,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1065,6 +1174,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.component_templates-master_timeout"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1095,6 +1219,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1126,6 +1265,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1162,6 +1316,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1196,6 +1365,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.count-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "requestBody": {
@@ -1273,6 +1457,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1321,6 +1520,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.indices-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1354,6 +1568,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1390,6 +1619,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_data_frame_analytics-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1423,6 +1667,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1459,6 +1718,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_datafeeds-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1492,6 +1766,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1528,6 +1817,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_jobs-s"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1567,6 +1871,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1609,6 +1928,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.ml_trained_models-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1648,6 +1982,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1690,6 +2039,21 @@
           },
           {
             "$ref": "#/components/parameters/cat.transforms-size"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-format"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-help"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-v"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-bytes"
+          },
+          {
+            "$ref": "#/components/parameters/_spec_utils.CommonCatQueryParameters-time"
           }
         ],
         "responses": {
@@ -1803,6 +2167,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/clear_scroll-404"
           }
         },
         "x-state": "Generally available",
@@ -1922,6 +2289,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/clear_scroll-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/clear_scroll-404"
           }
         },
         "x-state": "Generally available",
@@ -1997,6 +2367,28 @@
                     "description": "A successful response from `DELETE /_pit`.",
                     "value": "{\n  \"succeeded\": true, \n  \"num_freed\": 3     \n}"
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "succeeded": {
+                      "type": "boolean"
+                    },
+                    "num_freed": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "succeeded",
+                    "num_freed"
+                  ]
                 }
               }
             }
@@ -4803,6 +5195,23 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.get.GetResult"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                    }
+                  ]
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -5086,6 +5495,23 @@
                     "description": "A successful response from `DELETE /my-index-000001/_doc/1`, which deletes the JSON document 1 from the `my-index-000001` index.",
                     "value": "{\n  \"_shards\": {\n    \"total\": 2,\n    \"failed\": 0,\n    \"successful\": 2\n  },\n  \"_index\": \"my-index-000001\",\n  \"_id\": \"1\",\n  \"_version\": 2,\n  \"_primary_term\": 1,\n  \"_seq_no\": 5,\n  \"result\": \"deleted\"\n}"
                   }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "\nIf the index does exist, but the document does not,\nthe response is the same as the successful case, but with a 404.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.WriteResponseBase"
+                    },
+                    {
+                      "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                    }
+                  ]
                 }
               }
             }
@@ -9200,6 +9626,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -9773,6 +10202,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -9942,6 +10374,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -9981,6 +10416,9 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/indices.get_alias-200"
+          },
+          "404": {
+            "$ref": "#/components/responses/indices.get_alias-404"
           }
         },
         "x-state": "Generally available",
@@ -51742,6 +52180,79 @@
           "start_time_in_millis"
         ]
       },
+      "async_search._types.AsyncSearchResponseException": {
+        "type": "object",
+        "properties": {
+          "is_partial": {
+            "type": "boolean"
+          },
+          "is_running": {
+            "type": "boolean"
+          },
+          "expiration_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "expiration_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "start_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "start_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "completion_time": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "completion_time_in_millis": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "response": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/async_search._types.AsyncSearch"
+              }
+            ]
+          }
+        },
+        "required": [
+          "is_partial",
+          "is_running",
+          "expiration_time_in_millis",
+          "start_time_in_millis"
+        ]
+      },
       "async_search.status.StatusResponseBase": {
         "allOf": [
           {
@@ -52492,6 +53003,29 @@
           {
             "type": "string"
           }
+        ]
+      },
+      "_types.Bytes": {
+        "type": "string",
+        "enum": [
+          "b",
+          "kb",
+          "mb",
+          "gb",
+          "tb",
+          "pb"
+        ]
+      },
+      "_types.TimeUnit": {
+        "type": "string",
+        "enum": [
+          "nanos",
+          "micros",
+          "ms",
+          "s",
+          "m",
+          "h",
+          "d"
         ]
       },
       "cat.aliases.AliasesRecord": {
@@ -67217,6 +67751,26 @@
           "_version"
         ]
       },
+      "_types.ErrorResponseBase": {
+        "description": "The response returned by Elasticsearch when request execution did not succeed.",
+        "type": "object",
+        "properties": {
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "status": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "error",
+          "status"
+        ]
+      },
       "_types.Conflicts": {
         "type": "string",
         "enum": [
@@ -68650,6 +69204,21 @@
         },
         "required": [
           "aliases"
+        ]
+      },
+      "indices.get_alias._types.NotFoundAliases": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "status": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "error",
+          "status"
         ]
       },
       "indices.get_data_lifecycle.DataStreamWithLifecycle": {
@@ -84275,26 +84844,6 @@
           "hits"
         ]
       },
-      "_types.ErrorResponseBase": {
-        "description": "The response returned by Elasticsearch when request execution did not succeed.",
-        "type": "object",
-        "properties": {
-          "error": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ErrorCause"
-              }
-            ]
-          },
-          "status": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "error",
-          "status"
-        ]
-      },
       "_global.msearch_template.RequestItem": {
         "oneOf": [
           {
@@ -88268,6 +88817,46 @@
           }
         }
       },
+      "async_search.submit-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-400": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-500": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
+      "async_search.submit-429": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/async_search._types.AsyncSearchResponseException"
+            }
+          }
+        }
+      },
       "bulk-200": {
         "description": "",
         "content": {
@@ -88514,6 +89103,28 @@
                 },
                 "num_freed": {
                   "description": "The number of scrolling search requests cleared.",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "succeeded",
+                "num_freed"
+              ]
+            }
+          }
+        }
+      },
+      "clear_scroll-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "succeeded": {
+                  "type": "boolean"
+                },
+                "num_freed": {
                   "type": "number"
                 }
               },
@@ -88911,6 +89522,23 @@
               "additionalProperties": {
                 "$ref": "#/components/schemas/indices.get_alias._types.IndexAliases"
               }
+            }
+          }
+        }
+      },
+      "indices.get_alias-404": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/indices.get_alias._types.NotFoundAliases"
+                },
+                {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                }
+              ]
             }
           }
         }
@@ -91251,6 +91879,59 @@
               "$ref": "#/components/schemas/_types.Duration"
             }
           ]
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-format": {
+        "in": "query",
+        "name": "format",
+        "description": "Specifies the format to return the columnar data in, can be set to\n`text`, `json`, `cbor`, `yaml`, or `smile`.",
+        "deprecated": false,
+        "schema": {
+          "default": "text",
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-help": {
+        "in": "query",
+        "name": "help",
+        "description": "When set to `true` will output available columns. This option\ncan't be combined with any other query string option.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-v": {
+        "in": "query",
+        "name": "v",
+        "description": "When set to `true` will enable verbose output.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-bytes": {
+        "in": "query",
+        "name": "bytes",
+        "description": "Sets the units for columns that contain a byte-size value.\nNote that byte-size value units work in terms of powers of 1024. For instance `1kb` means 1024 bytes, not 1000 bytes.\nIf omitted, byte-size values are rendered with a suffix such as `kb`, `mb`, or `gb`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, byte-size values are rendered as an integer with no suffix, representing the value of the column in the chosen unit.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Bytes"
+        },
+        "style": "form"
+      },
+      "_spec_utils.CommonCatQueryParameters-time": {
+        "in": "query",
+        "name": "time",
+        "description": "Sets the units for columns that contain a time duration.\nIf omitted, time duration values are rendered with a suffix such as `ms`, `s`, `m` or `h`, chosen such that the numeric value of the column is as small as possible whilst still being at least `1.0`.\nIf given, time duration values are rendered as an integer with no suffix.\nValues that are not an exact multiple of the chosen unit are rounded down.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.TimeUnit"
         },
         "style": "form"
       },
