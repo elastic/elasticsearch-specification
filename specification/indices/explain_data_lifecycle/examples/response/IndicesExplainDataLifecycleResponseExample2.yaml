@@ -2,7 +2,7 @@ summary: Successful response with error messages
 description: The API reports any errors related to the lifecycle execution for the target index.
 # type: response
 # response_code: ''
-value:
+value: |-
   {
     "indices": {
       ".ds-my-data-stream-test-2026.10.17-000001": {
