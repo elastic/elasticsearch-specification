@@ -164,11 +164,7 @@ pub fn add_endpoint(
 
     // If this endpoint request has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint request in the OpenAPI document.
-    let request_examples = if let Some(examples) = &request.examples {
-        get_openapi_examples(examples)
-    } else {
-        IndexMap::new()
-    };
+    let request_examples = get_openapi_examples(request.examples.as_ref());
 
     let request_body = tac.convert_request(request)?.map(|schema| {
         let media = MediaType {
@@ -203,23 +199,11 @@ pub fn add_endpoint(
     let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
     // If this endpoint response has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint response in the OpenAPI document.
-    let response_examples = if let Some(examples) = &response_def.examples {
-        get_openapi_examples(examples)
-    } else {
-        IndexMap::new()
-    };
+    let response_examples = get_openapi_examples(response_def.examples.as_ref());
     let response = Response {
         description: "".to_string(),
         headers: Default::default(),
-        content: indexmap! {
-            "application/json".to_string() => MediaType {
-                schema: tac.convert_response(response_def)?,
-                example: None,
-                examples: response_examples,
-                encoding: Default::default(),
-                extensions: Default::default(),
-            }
-        },
+        content: json_content(tac.convert_response(response_def)?, response_examples),
         links: Default::default(),
         extensions: Default::default(),
     };
@@ -484,9 +468,9 @@ pub fn add_endpoint(
 // This function converts the IndexMap<String, SchemaExample> examples of
 // schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
 // that OpenAPI expects.
-fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
+fn get_openapi_examples(schema_examples: Option<&IndexMap<String, SchemaExample>>) -> IndexMap<String, ReferenceOr<Example>> {
     let mut openapi_examples = indexmap! {};
-    for (name, schema_example) in schema_examples {
+    for (name, schema_example) in schema_examples.into_iter().flatten() {
         let example = match &schema_example.value {
             None => None,
             // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
@@ -521,6 +505,17 @@ fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> In
     openapi_examples
 }
 
+/// The `application/json` content of a request or response.
+fn json_content(schema: Option<ReferenceOr<openapiv3::Schema>>, examples: IndexMap<String, ReferenceOr<Example>>) -> IndexMap<String, MediaType> {
+    indexmap! {
+        "application/json".to_string() => MediaType {
+            schema,
+            examples,
+            ..Default::default()
+        }
+    }
+}
+
 /// Add a response for each status code of the exceptions declared on the endpoint's response type.
 /// A status code that already has a response (such as 200) keeps it.
 fn add_exception_responses(
@@ -532,25 +527,18 @@ fn add_exception_responses(
 ) -> anyhow::Result<()> {
     for exception in &response_def.exceptions {
         let schema = tac.convert_body(&exception.body)?;
-        let examples = exception.examples.as_ref().map(get_openapi_examples).unwrap_or_default();
+        let examples = get_openapi_examples(exception.examples.as_ref());
         for status_code in &exception.status_codes {
             let status = StatusCode::Code(u16::try_from(*status_code)?);
             if responses.contains_key(&status) {
                 continue;
             }
 
-            let content = schema
-                .as_ref()
-                .map(|schema| {
-                    indexmap! {
-                        "application/json".to_string() => MediaType {
-                            schema: Some(schema.clone()),
-                            examples: examples.clone(),
-                            ..Default::default()
-                        }
-                    }
-                })
-                .unwrap_or_default();
+            let content = if schema.is_none() && examples.is_empty() {
+                IndexMap::new()
+            } else {
+                json_content(schema.clone(), examples.clone())
+            };
             let response = Response {
                 description: exception.description.clone().unwrap_or_default(),
                 content,
