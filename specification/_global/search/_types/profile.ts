@@ -150,6 +150,12 @@ export class QueryProfile {
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
+  /**
+   * Extra details about the query.
+   *
+   * Queries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.
+   */
+  debug?: Dictionary<string, UserDefinedValue>
   children?: QueryProfile[]
 }
 
@@ -167,8 +173,55 @@ export class ShardProfile {
   id: string
   index: IndexName
   node_id: NodeId
+  /**
+   * Profile of each rescorer, in the order they ran.
+   *
+   * Omitted when the request has no rescorer.
+   * @availability stack since=9.6.0
+   */
+  rescore?: RescoreProfile[]
   searches: SearchProfile[]
   shard_id: integer
+}
+
+export class RescoreProfile {
+  /**
+   * The rescorer name, such as `query` or `learning_to_rank`.
+   */
+  type: string
+  /**
+   * A description of the rescorer.
+   *
+   * For `query`, this is the `rescore_query`. For `learning_to_rank`, it is `LTR model [<model_id>]`.
+   */
+  description: string
+  /**
+   * The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.
+   */
+  time?: Duration
+  /**
+   * The total time spent in the rescorer, including the queries it ran.
+   */
+  time_in_nanos: DurationValue<UnitNanos>
+  /**
+   * Timings of the rescorer's own steps. Keys depend on the rescorer and the map is empty if it reports no steps.
+   *
+   * `learning_to_rank` reports `build_feature_extractors`, `feature_extraction` and `inference`,
+   * each with a matching `<name>_count` key.
+   */
+  breakdown: Dictionary<string, long>
+  debug?: RescoreProfileDebug
+}
+
+export class RescoreProfileDebug {
+  /**
+   * The number of top documents per shard that the rescorer processed.
+   */
+  window_size: integer
+  /**
+   * Only present, and `true`, if the search timed out while the rescorer ran.
+   */
+  timed_out?: boolean
 }
 
 export class DfsProfile {
