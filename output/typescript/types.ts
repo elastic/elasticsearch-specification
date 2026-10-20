@@ -13557,6 +13557,8 @@ export interface IndicesExplainDataLifecycleDataStreamLifecycleExplain {
   lifecycle?: IndicesDataStreamLifecycleWithRollover
   generation_time?: Duration
   error?: string
+  frozen_transition_status?: string
+  unmanaged_reason?: string
 }
 
 export interface IndicesExplainDataLifecycleRequest extends RequestBase {

@@ -10802,15 +10802,10 @@
                   ]
                 },
                 "examples": {
-                  "IndicesExplainDataLifecycleResponseExample1": {
-                    "summary": "Successful response",
-                    "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
-                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
-                  },
                   "IndicesExplainDataLifecycleResponseExample2": {
                     "summary": "Successful response with error messages",
                     "description": "The API reports any errors related to the lifecycle execution for the target index.",
-                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+                    "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-2026.10.17-000001\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.17-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792195511314,\n      \"time_since_index_creation\": \"3.07d\",\n      \"rollover_date_millis\": 1792440980120,\n      \"time_since_rollover\": \"5.51h\",\n      \"generation_time\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      },\n      \"error\": {\n        \"first_occurrence_millis\": 1792441580075,\n        \"message\": \"\"\"{\"type\":\"exception\",\"reason\":\"Force merge request only had 1 successful shards out of a total of 2\"}\"\"\",\n        \"last_recorded_millis\": 1792460779960,\n        \"retry_count\": 52\n      }\n    },\n    \".ds-my-data-stream-test-2026.10.19-000002\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.19-000002\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792440980129,\n      \"time_since_index_creation\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      }\n    }\n  }\n}"
                   }
                 }
               }
@@ -69829,6 +69824,12 @@
             ]
           },
           "error": {
+            "type": "string"
+          },
+          "frozen_transition_status": {
+            "type": "string"
+          },
+          "unmanaged_reason": {
             "type": "string"
           }
         },
