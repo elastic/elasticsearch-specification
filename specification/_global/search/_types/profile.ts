@@ -210,7 +210,7 @@ export class LearningToRankRescoreProfileBreakdown {
 }
 
 export class RescoreProfileDebug {
-  window_size?: integer
+  window_size: integer
   timed_out?: boolean
 }
 
