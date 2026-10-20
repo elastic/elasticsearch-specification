@@ -393,6 +393,13 @@ mod tests {
         let components = result.openapi.components.unwrap();
         assert!(components.responses.contains_key("test.op-404"));
         assert!(components.responses.contains_key("test.op-400"));
+
+        // The examples of an exception are carried by the shared component response.
+        let shared = components.responses["test.op-404"].as_item().unwrap();
+        assert_eq!(
+            shared.content["application/json"].examples.keys().collect::<Vec<_>>(),
+            vec!["NotFoundExample"]
+        );
     }
 
     // A schema with one cat-like endpoint. Its request declares the query parameter `h` and, through

@@ -627,6 +627,42 @@ struct SplitDesc {
 mod tests {
     use super::*;
 
+    fn example(summary: &str, value: Option<&str>) -> SchemaExample {
+        SchemaExample {
+            summary: Some(summary.to_string()),
+            method_request: None,
+            description: None,
+            value: value.map(str::to_string),
+            external_value: None,
+            alternatives: None,
+            availability: None,
+        }
+    }
+
+    #[test]
+    fn openapi_examples_keep_summary_and_value_and_skip_valueless() {
+        assert!(get_openapi_examples(None).is_empty());
+
+        let examples = indexmap! {
+            "WithValue".to_string() => example("with value", Some("{}")),
+            "NoValue".to_string() => example("no value", None),
+        };
+        let converted = get_openapi_examples(Some(&examples));
+        assert_eq!(converted.keys().collect::<Vec<_>>(), vec!["WithValue"]);
+        let item = converted["WithValue"].as_item().unwrap();
+        assert_eq!(item.summary.as_deref(), Some("with value"));
+        assert_eq!(item.value, Some(Value::String("{}".to_string())));
+    }
+
+    #[test]
+    fn json_content_wraps_schema_and_examples() {
+        let examples = get_openapi_examples(Some(&indexmap! { "A".to_string() => example("a", Some("1")) }));
+        let content = json_content(None, examples);
+        let media = &content["application/json"];
+        assert!(media.schema.is_none());
+        assert_eq!(media.examples.keys().collect::<Vec<_>>(), vec!["A"]);
+    }
+
     #[test]
     fn test_path_parameters() {
         assert_eq!(get_path_parameters("/{index}/{id}"), vec! {"index", "id"});
