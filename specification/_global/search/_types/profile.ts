@@ -152,6 +152,8 @@ export class QueryProfile {
   type: string
   /**
    * Extra details about the query.
+   *
+   * Queries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.
    * @availability stack since=9.6.0
    * @availability serverless
    */
