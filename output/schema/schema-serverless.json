@@ -135141,10 +135141,28 @@
         }
       ],
       "name": {
-        "name": "RecoverySourceType",
-        "namespace": "data_recovery.get_recovery_sources"
+        "name": "SourceType",
+        "namespace": "data_recovery._types"
       },
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+      "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Replace each source with its state at the recovery point, in the place where it currently is.",
+          "name": "replace"
+        },
+        {
+          "description": "Recover each source under a new name, which is derived from its name by the `rename_strategy`.",
+          "name": "rename"
+        }
+      ],
+      "name": {
+        "name": "RecoveryMode",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/types.ts#L20-L25"
     },
     {
       "kind": "enum",

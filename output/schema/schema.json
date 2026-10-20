@@ -4918,6 +4918,41 @@
     {
       "availability": {
         "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "Start a recovery.\n\nStart recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+      "docId": "data-recovery-start-recovery",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.start_recovery",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_recovery/recoveries"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -148453,8 +148488,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RecoveryPoint",
-        "namespace": "data_recovery.get_recovery_points"
+        "name": "Point",
+        "namespace": "data_recovery._types"
       },
       "properties": [
         {
@@ -148482,7 +148517,69 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_points/types.ts#L22-L27"
+      "specLocation": "data_recovery/_types/Point.ts#L22-L27"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ResolvedRecoverySource",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the index or data stream in the recovery point.",
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of the source.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceType",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The name of the index or data stream that the source is recovered to.",
+          "name": "destination",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/ResolvedRecoverySource.ts#L22-L29"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "index"
+        },
+        {
+          "name": "data_stream"
+        }
+      ],
+      "name": {
+        "name": "SourceType",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
     },
     {
       "kind": "request",
@@ -148518,7 +148615,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148544,7 +148641,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_points/DataRecoveryGetRecoveryPointsRequest.ts#L25-L63"
+      "specLocation": "data_recovery/get_recovery_points/DataRecoveryGetRecoveryPointsRequest.ts#L25-L64"
     },
     {
       "kind": "response",
@@ -148560,8 +148657,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RecoveryPoint",
-                  "namespace": "data_recovery.get_recovery_points"
+                  "name": "Point",
+                  "namespace": "data_recovery._types"
                 }
               }
             }
@@ -148612,29 +148709,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RecoverySourceType",
-              "namespace": "data_recovery.get_recovery_sources"
+              "name": "SourceType",
+              "namespace": "data_recovery._types"
             }
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L20-L30"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "index"
-        },
-        {
-          "name": "data_stream"
-        }
-      ],
-      "name": {
-        "name": "RecoverySourceType",
-        "namespace": "data_recovery.get_recovery_sources"
-      },
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+      "specLocation": "data_recovery/get_recovery_sources/types.ts#L22-L32"
     },
     {
       "kind": "request",
@@ -148698,7 +148779,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148736,7 +148817,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesRequest.ts#L25-L66"
+      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesRequest.ts#L25-L67"
     },
     {
       "kind": "response",
@@ -148762,8 +148843,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RecoveryPoint",
-                "namespace": "data_recovery.get_recovery_points"
+                "name": "Point",
+                "namespace": "data_recovery._types"
               }
             }
           },
@@ -148850,7 +148931,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148863,7 +148944,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesRequest.ts#L24-L68"
+      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesRequest.ts#L24-L69"
     },
     {
       "kind": "response",
@@ -148998,6 +149079,212 @@
         }
       ],
       "specLocation": "data_recovery/get_rpo_series/types.ts#L23-L33"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Replace each source with its state at the recovery point, in the place where it currently is.",
+          "name": "replace"
+        },
+        {
+          "description": "Recover each source under a new name, which is derived from its name by the `rename_strategy`.",
+          "name": "rename"
+        }
+      ],
+      "name": {
+        "name": "RecoveryMode",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/types.ts#L20-L25"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RenameStrategy",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "properties": [
+        {
+          "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+          "name": "suffix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/start_recovery/types.ts#L27-L38"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The exact end time of the recovery point to recover from, as a date or epoch milliseconds.\nAn `end_time` returned when listing recovery points can be passed back as it is.",
+            "name": "recovery_point_end_time",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The sources to recover. Each value is an index or data stream expression. Wildcards and exclusions prefixed with `-` are supported.\nThe list must not be empty and must not contain blank values.",
+            "name": "sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "How to recover the sources: `replace` recovers them in place, over the data that currently exists, and `rename` recovers them under new names.",
+            "name": "mode",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RecoveryMode",
+                "namespace": "data_recovery.start_recovery"
+              }
+            }
+          },
+          {
+            "description": "How to derive the new name of each recovered source from its name.\nRequired when `mode` is `rename`, and not allowed when `mode` is `replace`.",
+            "name": "rename_strategy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RenameStrategy",
+                "namespace": "data_recovery.start_recovery"
+              }
+            }
+          },
+          {
+            "description": "Custom metadata for the recovery.",
+            "name": "metadata",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Start a recovery.\n\nStart recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/start_recovery/DataRecoveryStartRecoveryRequest.ts#L25-L76"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The identifier of the recovery that was started.",
+            "name": "recovery_id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The recovery point that the sources are recovered from.",
+            "name": "recovery_point",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Point",
+                "namespace": "data_recovery._types"
+              }
+            }
+          },
+          {
+            "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+            "name": "resolved_sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ResolvedRecoverySource",
+                  "namespace": "data_recovery._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/DataRecoveryStartRecoveryResponse.ts#L23-L32"
     },
     {
       "kind": "request",

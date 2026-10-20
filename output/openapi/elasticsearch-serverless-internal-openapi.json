@@ -7921,7 +7921,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -7957,7 +7957,7 @@
                       "description": "Recovery points in descending order by end time.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/data_recovery.get_recovery_points.RecoveryPoint"
+                        "$ref": "#/components/schemas/data_recovery._types.Point"
                       }
                     }
                   },
@@ -8021,7 +8021,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -8072,7 +8072,7 @@
                       "description": "The selected recovery point.",
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/data_recovery.get_recovery_points.RecoveryPoint"
+                          "$ref": "#/components/schemas/data_recovery._types.Point"
                         }
                       ]
                     },
@@ -8154,7 +8154,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -8217,6 +8217,133 @@
                     "bucket_duration",
                     "bucket_count",
                     "buckets"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_data_recovery/recoveries": {
+      "post": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "Start a recovery",
+        "description": "Start recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+        "operationId": "data-recovery-start-recovery",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recovery_point_end_time": {
+                    "description": "The exact end time of the recovery point to recover from, as a date or epoch milliseconds.\nAn `end_time` returned when listing recovery points can be passed back as it is.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "sources": {
+                    "description": "The sources to recover. Each value is an index or data stream expression. Wildcards and exclusions prefixed with `-` are supported.\nThe list must not be empty and must not contain blank values.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "mode": {
+                    "description": "How to recover the sources: `replace` recovers them in place, over the data that currently exists, and `rename` recovers them under new names.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/data_recovery.start_recovery.RecoveryMode"
+                      }
+                    ]
+                  },
+                  "rename_strategy": {
+                    "description": "How to derive the new name of each recovered source from its name.\nRequired when `mode` is `rename`, and not allowed when `mode` is `replace`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/data_recovery.start_recovery.RenameStrategy"
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "description": "Custom metadata for the recovery.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Metadata"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "recovery_point_end_time",
+                  "sources",
+                  "mode"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recovery_id": {
+                      "description": "The identifier of the recovery that was started.",
+                      "type": "string"
+                    },
+                    "recovery_point": {
+                      "description": "The recovery point that the sources are recovered from.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/data_recovery._types.Point"
+                        }
+                      ]
+                    },
+                    "resolved_sources": {
+                      "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/data_recovery._types.ResolvedRecoverySource"
+                      }
+                    }
+                  },
+                  "required": [
+                    "recovery_id",
+                    "recovery_point",
+                    "resolved_sources"
                   ]
                 }
               }
@@ -90270,7 +90397,7 @@
           "_version"
         ]
       },
-      "data_recovery.get_recovery_points.RecoveryPoint": {
+      "data_recovery._types.Point": {
         "type": "object",
         "properties": {
           "start_time": {
@@ -90310,7 +90437,7 @@
             "description": "The type of logical source.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/data_recovery.get_recovery_sources.RecoverySourceType"
+                "$ref": "#/components/schemas/data_recovery._types.SourceType"
               }
             ]
           }
@@ -90321,7 +90448,7 @@
           "type"
         ]
       },
-      "data_recovery.get_recovery_sources.RecoverySourceType": {
+      "data_recovery._types.SourceType": {
         "type": "string",
         "enum": [
           "index",
@@ -90364,6 +90491,52 @@
           "start",
           "end",
           "max_recovery_point_age_millis"
+        ]
+      },
+      "data_recovery.start_recovery.RecoveryMode": {
+        "type": "string",
+        "enum": [
+          "replace",
+          "rename"
+        ]
+      },
+      "data_recovery.start_recovery.RenameStrategy": {
+        "type": "object",
+        "properties": {
+          "prefix": {
+            "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          },
+          "suffix": {
+            "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          }
+        }
+      },
+      "data_recovery._types.ResolvedRecoverySource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The name of the index or data stream in the recovery point.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.SourceType"
+              }
+            ]
+          },
+          "destination": {
+            "description": "The name of the index or data stream that the source is recovered to.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "type",
+          "destination"
         ]
       },
       "_types.ErrorResponseBase": {
