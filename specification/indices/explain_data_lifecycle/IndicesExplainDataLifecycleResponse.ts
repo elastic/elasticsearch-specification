@@ -59,7 +59,6 @@ class DataStreamLifecycleExplain {
   lifecycle?: DataStreamLifecycleWithRollover
   /*
    * The generation time of the index.
-   * This time is used to determine when it's safe to delete the index.
    */
   generation_time?: Duration
   error?: string
