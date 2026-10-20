@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RecoveryPoint } from '../get_recovery_points/types'
+import { Point } from '../_types/Point'
 import { RecoverySource } from './types'
 
 export class Response {
@@ -25,7 +25,7 @@ export class Response {
     /** Whether more matching sources are available than were returned. */
     has_more: boolean
     /** The selected recovery point. */
-    recovery_point: RecoveryPoint
+    recovery_point: Point
     /** Matching logical recovery sources ordered by name. */
     sources: RecoverySource[]
   }
