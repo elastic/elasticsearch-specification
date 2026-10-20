@@ -330,6 +330,7 @@ mod tests {
             }}] }},
             "exceptions": [{{
               "statusCodes": [404],
+              "examples": {{ "NotFoundExample": {{ "summary": "Not found", "value": "{{}}" }} }},
               "body": {{ "kind": "properties", "properties": [{{
                 "name": "found", "required": true,
                 "type": {{ "kind": "instance_of", "type": {{ "name": "boolean", "namespace": "_builtins" }} }}
@@ -369,6 +370,8 @@ mod tests {
 
         let not_found = responses[&StatusCode::Code(404)].as_item().unwrap();
         assert!(not_found.content["application/json"].schema.is_some());
+        let examples = &not_found.content["application/json"].examples;
+        assert_eq!(examples.keys().collect::<Vec<_>>(), vec!["NotFoundExample"]);
 
         let bad_request = responses[&StatusCode::Code(400)].as_item().unwrap();
         assert_eq!(bad_request.description, "The request is malformed.");

@@ -161,45 +161,6 @@ pub fn add_endpoint(
 
     //---- Prepare request body
 
-    // This function converts the IndexMap<String, SchemaExample> examples of
-    // schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
-    // that OpenAPI expects.
-    fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
-        let mut openapi_examples = indexmap! {};
-        for (name, schema_example) in schema_examples {
-            let example = match &schema_example.value {
-                None => None,
-                // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
-                // Disabled for now, as some examples use multi-line json as in the Kibana console.
-                Some(text) => Some(serde_json::Value::String(text.clone())),
-                // Some(text) => {
-                //     match serde_json::from_str::<serde_json::Value>(&text) {
-                //         Ok(json) => {
-                //             Some(json)
-                //         }
-                //         // Cannot parse json: assume it's text (e.g. cat requests)
-                //         // but should be validated by looking at the media-type
-                //         Err(err) => {
-                //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
-                //             Some(serde_json::Value::String(text.clone()))
-                //         }
-                //     }
-                // }
-            };
-
-            if example.is_some() {
-                let openapi_example = Example {
-                    value: example,
-                    description: schema_example.description.clone(),
-                    summary: schema_example.summary.clone(),
-                    external_value: None,
-                    extensions: Default::default(),
-                };
-                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
-            }
-        }
-        openapi_examples
-    }
 
     // If this endpoint request has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint request in the OpenAPI document.
@@ -520,6 +481,46 @@ pub fn add_endpoint(
     Ok(())
 }
 
+// This function converts the IndexMap<String, SchemaExample> examples of
+// schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
+// that OpenAPI expects.
+fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
+    let mut openapi_examples = indexmap! {};
+    for (name, schema_example) in schema_examples {
+        let example = match &schema_example.value {
+            None => None,
+            // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
+            // Disabled for now, as some examples use multi-line json as in the Kibana console.
+            Some(text) => Some(serde_json::Value::String(text.clone())),
+            // Some(text) => {
+            //     match serde_json::from_str::<serde_json::Value>(&text) {
+            //         Ok(json) => {
+            //             Some(json)
+            //         }
+            //         // Cannot parse json: assume it's text (e.g. cat requests)
+            //         // but should be validated by looking at the media-type
+            //         Err(err) => {
+            //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
+            //             Some(serde_json::Value::String(text.clone()))
+            //         }
+            //     }
+            // }
+        };
+
+        if example.is_some() {
+            let openapi_example = Example {
+                value: example,
+                description: schema_example.description.clone(),
+                summary: schema_example.summary.clone(),
+                external_value: None,
+                extensions: Default::default(),
+            };
+            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+        }
+    }
+    openapi_examples
+}
+
 /// Add a response for each status code of the exceptions declared on the endpoint's response type.
 /// A status code that already has a response (such as 200) keeps it.
 fn add_exception_responses(
@@ -531,6 +532,7 @@ fn add_exception_responses(
 ) -> anyhow::Result<()> {
     for exception in &response_def.exceptions {
         let schema = tac.convert_body(&exception.body)?;
+        let examples = exception.examples.as_ref().map(get_openapi_examples).unwrap_or_default();
         for status_code in &exception.status_codes {
             let status = StatusCode::Code(u16::try_from(*status_code)?);
             if responses.contains_key(&status) {
@@ -543,6 +545,7 @@ fn add_exception_responses(
                     indexmap! {
                         "application/json".to_string() => MediaType {
                             schema: Some(schema.clone()),
+                            examples: examples.clone(),
                             ..Default::default()
                         }
                     }

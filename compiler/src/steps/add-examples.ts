@@ -303,5 +303,16 @@ class ResponseExamplesProcessor extends BaseExamplesProcessor {
         responseDefinition.examples = Object.fromEntries(examples)
       }
     }
+    // Attach the examples of the other {nnn}_response folders to the exceptions
+    // that declare the matching status code.
+    for (const [statusCode, subfolder] of examplesResponseSubfolderMap ?? []) {
+      if (statusCode === '200') continue
+      const exception = responseDefinition.exceptions?.find(e => e.statusCodes.includes(Number(statusCode)))
+      if (exception === undefined) continue
+      const examples = this.getExampleMap(subfolder)
+      if (examples.size > 0) {
+        exception.examples = { ...exception.examples, ...Object.fromEntries(examples) }
+      }
+    }
   }
 }
