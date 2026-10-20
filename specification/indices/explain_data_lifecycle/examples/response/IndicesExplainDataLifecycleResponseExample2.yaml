@@ -3,10 +3,40 @@ description: The API reports any errors related to the lifecycle execution for t
 # type: response
 # response_code: ''
 value:
-  "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\"\
-  \ : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n\
-  \      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\"\
-  \ : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n \
-  \     \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"\
-  Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently\
-  \ has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+  {
+    "indices": {
+      ".ds-my-data-stream-test-2026.10.17-000001": {
+        "index": ".ds-my-data-stream-test-2026.10.17-000001",
+        "managed_by_lifecycle": true,
+        "index_creation_date_millis": 1792195511314,
+        "time_since_index_creation": "3.07d",
+        "rollover_date_millis": 1792440980120,
+        "time_since_rollover": "5.51h",
+        "generation_time": "5.51h",
+        "lifecycle": {
+          "enabled": true,
+          "data_retention": "30d",
+          "effective_retention": "30d",
+          "retention_determined_by": "data_stream_configuration"
+        },
+        "error": {
+          "first_occurrence_millis": 1792441580075,
+          "message": """{"type":"exception","reason":"Force merge request only had 1 successful shards out of a total of 2"}""",
+          "last_recorded_millis": 1792460779960,
+          "retry_count": 52
+        }
+      },
+      ".ds-my-data-stream-test-2026.10.19-000002": {
+        "index": ".ds-my-data-stream-test-2026.10.19-000002",
+        "managed_by_lifecycle": true,
+        "index_creation_date_millis": 1792440980129,
+        "time_since_index_creation": "5.51h",
+        "lifecycle": {
+          "enabled": true,
+          "data_retention": "30d",
+          "effective_retention": "30d",
+          "retention_determined_by": "data_stream_configuration"
+        }
+      }
+    }
+  }

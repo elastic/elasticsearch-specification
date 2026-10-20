@@ -29,13 +29,49 @@ export class Response {
 }
 
 class DataStreamLifecycleExplain {
+  /*
+   * The name of the backing index.
+   */
   index: IndexName
+  /*
+   * Indicates if the index is managed by the data stream lifecycle.
+   */
   managed_by_lifecycle: boolean
+  /*
+   * The creation date of the index in milliseconds.
+   */
   index_creation_date_millis?: EpochTime<UnitMillis>
+  /*
+   * The time since the index was created.
+   */
   time_since_index_creation?: Duration
+  /*
+   * The rollover date of the index in milliseconds.
+   */
   rollover_date_millis?: EpochTime<UnitMillis>
+  /*
+   * The time since the index was rolled over.
+   */
   time_since_rollover?: Duration
+  /*
+   * The lifecycle of the index.
+   */
   lifecycle?: DataStreamLifecycleWithRollover
+  /*
+   * The generation time of the index.
+   * This time is used to determine when it's safe to delete the index.
+   */
   generation_time?: Duration
   error?: string
+  /*
+   * @availability stack since=9.6.0 stability=stable
+   * The status of the frozen transition.
+   */
+  frozen_transition_status?: string
+  /*
+   * @availability stack since=9.6.0 stability=stable
+   * @availability serverless
+   * The reason if the index is not managed by the lifecycle.
+   */
+  unmanaged_reason?: string
 }
