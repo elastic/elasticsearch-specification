@@ -19,7 +19,7 @@
 
 import { DateTime } from '@_types/Time'
 
-export class RecoveryPoint {
+export class Point {
   /** The time when creation of the recovery point started. */
   start_time: DateTime
   /** The time when creation of the recovery point completed. */
