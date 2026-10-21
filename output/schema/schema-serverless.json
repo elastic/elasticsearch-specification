@@ -71482,12 +71482,36 @@
           }
         ]
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nThe synonym rules are not valid.",
+          "examples": {
+            "SynonymsPutResponseExample1": {
+              "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+            }
+          },
+          "statusCodes": [
+            400
+          ]
+        }
+      ],
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "synonyms.put_synonym"
       },
-      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L23-L36"
+      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L24-L46"
     },
     {
       "attachedBehaviors": [

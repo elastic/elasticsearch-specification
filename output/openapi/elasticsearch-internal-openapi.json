@@ -56109,6 +56109,23 @@
                 }
               }
             }
+          },
+          "409": {
+            "description": "\nAn index named `logs.otel`, or starting with `logs.otel.`, already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "PostStreamsEnableResponseExample2": {
+                    "summary": "Enable logs streams - Failure due to conflicting index",
+                    "description": "An error response from the `POST _streams/logs.otel/_enable` endpoint caused by attempting to enable logs.otel streams when an existing index with the name `logs.otel` already exists\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"status_exception\",\n        \"reason\": \"Cannot enable logs.otel streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n      }\n    ],\n    \"type\": \"status_exception\",\n    \"reason\": \"Cannot enable logs streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n  },\n  \"status\": 409\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Experimental; Added in 9.1.0",
@@ -56409,6 +56426,22 @@
                   "required": [
                     "result"
                   ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "\nThe synonym rules are not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "SynonymsPutResponseExample1": {
+                    "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+                  }
                 }
               }
             }

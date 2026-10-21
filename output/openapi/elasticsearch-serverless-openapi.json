@@ -31654,6 +31654,22 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "\nThe synonym rules are not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "SynonymsPutResponseExample1": {
+                    "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
