@@ -793,6 +793,9 @@ pub struct ResponseException {
     pub body: Body,
 
     pub status_codes: Vec<usize>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub examples: Option<IndexMap<String, SchemaExample>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
