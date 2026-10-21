@@ -402,6 +402,55 @@ mod tests {
         );
     }
 
+    #[test]
+    fn code_samples_cover_all_examples() {
+        let schema_json = r#"{
+          "endpoints": [{
+            "name": "test.op",
+            "description": "An endpoint with several examples",
+            "requestBodyRequired": false,
+            "urls": [{ "path": "/_test", "methods": ["GET"] }],
+            "request": { "name": "Request", "namespace": "test" },
+            "response": { "name": "Response", "namespace": "test" }
+          }],
+          "types": [{
+            "kind": "request",
+            "name": { "name": "Request", "namespace": "test" },
+            "path": [],
+            "query": [],
+            "body": { "kind": "no_body" },
+            "examples": {
+              "FirstExample": {
+                "summary": "First", "method_request": "GET /_test", "value": "",
+                "alternatives": [{ "language": "Python", "code": "first()" }]
+              },
+              "SecondExample": {
+                "summary": "Second one", "method_request": "GET /_test?x=1", "value": "",
+                "alternatives": [{ "language": "Python", "code": "second()" }]
+              },
+              "ThirdExample": {
+                "method_request": "GET /_test?x=2", "value": ""
+              }
+            }
+          }, {
+            "kind": "response",
+            "name": { "name": "Response", "namespace": "test" },
+            "body": { "kind": "no_body" }
+          }]
+        }"#;
+        let model = clients_schema::IndexedModel::from_reader(schema_json.as_bytes()).unwrap();
+        let config = Configuration { include_language_examples: true, ..default_config() };
+        let result = convert_schema(model, config, IndexMap::new()).unwrap();
+
+        let path = result.openapi.paths.paths["/_test"].as_item().unwrap();
+        let samples = &path.get.as_ref().unwrap().extensions["x-codeSamples"];
+        let langs: Vec<_> = samples.as_array().unwrap().iter().map(|s| s["lang"].as_str().unwrap()).collect();
+        assert_eq!(
+            langs,
+            vec!["Console", "Python", "Console_Second one", "Python_Second one", "Console_ThirdExample"]
+        );
+    }
+
     // A schema with one cat-like endpoint. Its request declares the query parameter `h` and, through
     // the base class, attaches the `CommonCatQueryParameters` and `CommonQueryParameters` behaviors.
     // `request_query` is the JSON list of the request's own query parameters.

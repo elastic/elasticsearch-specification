@@ -332,27 +332,7 @@ pub fn add_endpoint(
 
         if tac.config.include_language_examples {
             // add the x-codeSamples extension
-            let mut code_samples = vec![];
-            if let Some(examples) = request.examples.clone() {
-                if let Some((_, example)) = examples.first() {
-                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                    let request_body = example.value.clone().unwrap_or(String::from(""));
-                    if !request_line.is_empty() {
-                        code_samples.push(serde_json::json!({
-                            "lang": "Console",
-                            "source": request_line + "\n" + request_body.as_str(),
-                        }));
-                    }
-                    if let Some(alternatives) = example.alternatives.clone() {
-                        for alternative in alternatives.iter() {
-                            code_samples.push(serde_json::json!({
-                                "lang": alternative.language,
-                                "source": alternative.code.as_str(),
-                            }));
-                        }
-                    }
-                }
-            }
+            let code_samples = code_samples_for(request.examples.as_ref());
             if !code_samples.is_empty() {
                 extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
             }
@@ -463,6 +443,37 @@ pub fn add_endpoint(
     }
 
     Ok(())
+}
+
+/// Builds the `x-codeSamples` entries of an endpoint from the examples of its request.
+///
+/// The first example uses plain language names (`Console`, `Python`, ...). Each following example suffixes them
+/// with the example's summary, or its key if it has none (`Python_A point in time search`), so that consumers
+/// can tell the samples of the different examples apart.
+fn code_samples_for(examples: Option<&IndexMap<String, SchemaExample>>) -> Vec<Value> {
+    let mut code_samples = vec![];
+    for (index, (key, example)) in examples.into_iter().flatten().enumerate() {
+        let suffix = |lang: &str| match index {
+            0 => lang.to_string(),
+            _ => format!("{lang}_{}", example.summary.as_deref().filter(|s| !s.is_empty()).unwrap_or(key)),
+        };
+        let request_line = example.method_request.clone().unwrap_or_default();
+        // Only examples with a request line have a Console sample
+        if !request_line.is_empty() {
+            let request_body = example.value.clone().unwrap_or_default();
+            code_samples.push(serde_json::json!({
+                "lang": suffix("Console"),
+                "source": request_line + "\n" + request_body.as_str(),
+            }));
+        }
+        for alternative in example.alternatives.iter().flatten() {
+            code_samples.push(serde_json::json!({
+                "lang": suffix(&alternative.language),
+                "source": alternative.code.as_str(),
+            }));
+        }
+    }
+    code_samples
 }
 
 // This function converts the IndexMap<String, SchemaExample> examples of
