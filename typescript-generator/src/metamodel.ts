@@ -339,6 +339,7 @@ export class ResponseException {
   description?: string
   body: Body
   statusCodes: number[]
+  examples?: Record<string, Example>
 }
 
 export type Body = ValueBody | PropertiesBody | NoBody
