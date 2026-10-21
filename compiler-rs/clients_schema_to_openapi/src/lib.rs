@@ -451,6 +451,121 @@ mod tests {
         );
     }
 
+    // A schema with one endpoint on `urls` and the given request `examples` (a JSON object).
+    fn schema_with_examples(urls: &str, examples: &str) -> IndexedModel {
+        let schema_json = format!(r#"{{
+          "endpoints": [{{
+            "name": "test.op",
+            "description": "An endpoint with examples",
+            "requestBodyRequired": false,
+            "urls": {urls},
+            "request": {{ "name": "Request", "namespace": "test" }},
+            "response": {{ "name": "Response", "namespace": "test" }}
+          }}],
+          "types": [{{
+            "kind": "request",
+            "name": {{ "name": "Request", "namespace": "test" }},
+            "path": [{{
+              "name": "index", "required": false,
+              "type": {{ "kind": "instance_of", "type": {{ "name": "string", "namespace": "_builtins" }} }}
+            }}],
+            "query": [],
+            "body": {{ "kind": "no_body" }},
+            "examples": {examples}
+          }}, {{
+            "kind": "response",
+            "name": {{ "name": "Response", "namespace": "test" }},
+            "body": {{ "kind": "no_body" }}
+          }}]
+        }}"#);
+        IndexedModel::from_reader(schema_json.as_bytes()).unwrap()
+    }
+
+    fn code_sample_pairs(result: &OpenApiConversion, path: &str) -> Option<Vec<(String, String)>> {
+        let item = result.openapi.paths.paths[path].as_item().unwrap();
+        let operation = item.get.as_ref().or(item.post.as_ref()).unwrap();
+        operation.extensions.get("x-codeSamples").map(|samples| {
+            samples
+                .as_array()
+                .unwrap()
+                .iter()
+                .map(|s| (s["lang"].as_str().unwrap().to_string(), s["source"].as_str().unwrap().to_string()))
+                .collect()
+        })
+    }
+
+    fn examples_config() -> Configuration {
+        Configuration { include_language_examples: true, ..default_config() }
+    }
+
+    #[test]
+    fn code_samples_keep_request_line_and_body() {
+        let model = schema_with_examples(
+            r#"[{ "path": "/_test", "methods": ["POST"] }]"#,
+            r#"{ "A": { "method_request": "POST /_test", "value": "{\"q\":1}" } }"#,
+        );
+        let result = convert_schema(model, examples_config(), IndexMap::new()).unwrap();
+        assert_eq!(
+            code_sample_pairs(&result, "/_test").unwrap(),
+            vec![("Console".to_string(), "POST /_test\n{\"q\":1}".to_string())]
+        );
+    }
+
+    #[test]
+    fn code_samples_are_omitted_without_the_option() {
+        let model = schema_with_examples(
+            r#"[{ "path": "/_test", "methods": ["GET"] }]"#,
+            r#"{ "A": { "method_request": "GET /_test", "value": "" } }"#,
+        );
+        let result = convert_schema(model, default_config(), IndexMap::new()).unwrap();
+        assert!(code_sample_pairs(&result, "/_test").is_none());
+    }
+
+    #[test]
+    fn code_samples_are_omitted_without_examples() {
+        let model = schema_with_examples(r#"[{ "path": "/_test", "methods": ["GET"] }]"#, "{}");
+        let result = convert_schema(model, examples_config(), IndexMap::new()).unwrap();
+        assert!(code_sample_pairs(&result, "/_test").is_none());
+    }
+
+    #[test]
+    fn code_samples_without_request_line_keep_alternatives() {
+        let model = schema_with_examples(
+            r#"[{ "path": "/_test", "methods": ["GET"] }]"#,
+            r#"{
+              "A": { "value": "", "alternatives": [{ "language": "Python", "code": "a()" }] },
+              "B": { "summary": "Bee", "value": "", "alternatives": [{ "language": "Python", "code": "b()" }] }
+            }"#,
+        );
+        let result = convert_schema(model, examples_config(), IndexMap::new()).unwrap();
+        // No Console sample without a request line, but the client samples are kept
+        assert_eq!(
+            code_sample_pairs(&result, "/_test").unwrap(),
+            vec![
+                ("Python".to_string(), "a()".to_string()),
+                ("Python_Bee".to_string(), "b()".to_string()),
+            ]
+        );
+    }
+
+    #[test]
+    fn code_samples_survive_merging_multipath_endpoints() {
+        let urls = r#"[{ "path": "/_test", "methods": ["GET", "POST"] }, { "path": "/{index}/_test", "methods": ["GET", "POST"] }]"#;
+        let examples = r#"{
+          "A": { "method_request": "GET /_test", "value": "" },
+          "B": { "summary": "Bee", "method_request": "POST /my-index/_test", "value": "" }
+        }"#;
+        let unmerged = convert_schema(schema_with_examples(urls, examples), examples_config(), IndexMap::new()).unwrap();
+        let merged_config = Configuration { merge_multipath_endpoints: true, ..examples_config() };
+        let merged = convert_schema(schema_with_examples(urls, examples), merged_config, IndexMap::new()).unwrap();
+
+        let expected = code_sample_pairs(&unmerged, "/{index}/_test").unwrap();
+        assert_eq!(expected.len(), 2);
+        assert_eq!(code_sample_pairs(&merged, "/{index}/_test").unwrap(), expected);
+        // The merge keeps a single path
+        assert!(!merged.openapi.paths.paths.contains_key("/_test"));
+    }
+
     // A schema with one cat-like endpoint. Its request declares the query parameter `h` and, through
     // the base class, attaches the `CommonCatQueryParameters` and `CommonQueryParameters` behaviors.
     // `request_query` is the JSON list of the request's own query parameters.
