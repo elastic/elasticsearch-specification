@@ -297,8 +297,7 @@ export function expandGenerics (inputModel: Model, config?: ExpansionConfig): Mo
         result.exceptions = []
         for (const exception of resp.exceptions) {
           const except: ResponseException = {
-            description: exception.description,
-            statusCodes: exception.statusCodes,
+            ...exception,
             body: expandBody(exception.body, genericParamMapping(resp.generics, params))
           }
           result.exceptions.push(except)

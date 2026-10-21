@@ -280,6 +280,7 @@ mod tests {
             }}] }},
             "exceptions": [{{
               "statusCodes": [404],
+              "examples": {{ "NotFoundExample": {{ "summary": "Not found", "value": "{{}}" }} }},
               "body": {{ "kind": "properties", "properties": [{{
                 "name": "found", "required": true,
                 "type": {{ "kind": "instance_of", "type": {{ "name": "boolean", "namespace": "_builtins" }} }}
@@ -318,6 +319,8 @@ mod tests {
 
         let not_found = responses[&StatusCode::Code(404)].as_item().unwrap();
         assert!(not_found.content["application/json"].schema.is_some());
+        let examples = &not_found.content["application/json"].examples;
+        assert_eq!(examples.keys().collect::<Vec<_>>(), vec!["NotFoundExample"]);
 
         let bad_request = responses[&StatusCode::Code(400)].as_item().unwrap();
         assert_eq!(bad_request.description, "The request is malformed.");
@@ -339,6 +342,13 @@ mod tests {
         let components = result.openapi.components.unwrap();
         assert!(components.responses.contains_key("test.op-404"));
         assert!(components.responses.contains_key("test.op-400"));
+
+        // The examples of an exception are carried by the shared component response.
+        let shared = components.responses["test.op-404"].as_item().unwrap();
+        assert_eq!(
+            shared.content["application/json"].examples.keys().collect::<Vec<_>>(),
+            vec!["NotFoundExample"]
+        );
     }
 
     // A schema with one cat-like endpoint. Its request declares the query parameter `h` and, through

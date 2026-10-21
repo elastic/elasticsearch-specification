@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
 import { Result } from '@_types/Result'
 import { ReloadResult } from '@indices/reload_search_analyzers/types'
 
@@ -25,4 +26,13 @@ export class Response {
     result: Result
     reload_analyzers_details: ReloadResult
   }
+  exceptions: [
+    {
+      /**
+       * The synonym rules are not valid.
+       */
+      statusCodes: [400]
+      body: ErrorResponseBase
+    }
+  ]
 }

@@ -1,0 +1,5 @@
+summary: bad request
+value:
+  error:
+    type: validation_exception
+  status: 400

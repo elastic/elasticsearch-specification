@@ -170,6 +170,8 @@ class Response {
 }
 ```
 
+Response examples in a non-200 `examples/{status}_response` folder are attached to the `exceptions` entry that lists that status code, so declare the status code here (using `ErrorResponseBase` as the `body` for a standard error) for the example to appear in the OpenAPI document.
+
 ### Add endpoint request and response examples
 
 Add an `examples` folder and `request` and `xxx_response` subfolders (where `xxx` is the relevant response code). The file names within these folders should be unique (for example,`DownsampleRequestExample1.yaml` not `RequestExample1.yaml`).
