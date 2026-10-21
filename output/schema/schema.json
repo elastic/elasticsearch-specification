@@ -261137,11 +261137,36 @@
           "value": "{\n  \"acknowledged\": true\n}"
         }
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nAn index named `logs.otel`, or starting with `logs.otel.`, already exists.",
+          "examples": {
+            "PostStreamsLogsEnableResponseExample2": {
+              "description": "An error response from the `POST _streams/logs/_enable` endpoint caused by attempting to enable logs streams  when an existing index with the name `logs` already exists\n",
+              "summary": "Enable logs streams - Failure due to conflicting index",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"status_exception\",\n        \"reason\": \"Cannot enable logs streams: indices named 'logs' or starting with 'logs.' already exist.\"\n      }\n    ],\n    \"type\": \"status_exception\",\n    \"reason\": \"Cannot enable logs streams: indices named 'logs' or starting with 'logs.' already exist.\"\n  },\n  \"status\": 409\n}"
+            }
+          },
+          "statusCodes": [
+            409
+          ]
+        }
+      ],
       "name": {
         "name": "Response",
         "namespace": "streams.logs_enable"
       },
-      "specLocation": "streams/logs_enable/StreamsLogsEnableResponse.ts#L22-L25"
+      "specLocation": "streams/logs_enable/StreamsLogsEnableResponse.ts#L22-L34"
     },
     {
       "kind": "interface",
@@ -262138,11 +262163,35 @@
           }
         ]
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nThe synonym rules are not valid.",
+          "examples": {
+            "SynonymsPutResponseExample1": {
+              "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+            }
+          },
+          "statusCodes": [
+            400
+          ]
+        }
+      ],
       "name": {
         "name": "Response",
         "namespace": "synonyms.put_synonym"
       },
-      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L23-L28"
+      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L24-L38"
     },
     {
       "kind": "request",
