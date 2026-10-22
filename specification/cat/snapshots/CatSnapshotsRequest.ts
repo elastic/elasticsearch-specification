@@ -22,7 +22,7 @@ import { Duration } from '@_types/Time'
 import { CatRequestBase, CatSnapshotsColumns } from '@cat/_types/CatBase'
 
 /**
- * Get snapshot information.
+ * Get a compact list of snapshots.
  *
  * Get information about the snapshots stored in one or more repositories.
  * A snapshot is a backup of an index or running Elasticsearch cluster.

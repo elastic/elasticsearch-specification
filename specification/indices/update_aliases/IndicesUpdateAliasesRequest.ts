@@ -23,7 +23,7 @@ import { Duration } from '@_types/Time'
 import { Action } from './types'
 
 /**
- * Create or update an alias.
+ * Run multiple alias actions atomically.
  *
  * Adds a data stream or index to an alias.
  * @rest_spec_name indices.update_aliases
