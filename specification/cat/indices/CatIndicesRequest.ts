@@ -28,7 +28,7 @@ import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get index information.
+ * Get a compact list of indices.
  *
  * Get high-level information about indices in a cluster, including backing indices for data streams.
  *

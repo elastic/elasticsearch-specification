@@ -22,7 +22,7 @@ import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get task information.
+ * Get a compact list of running tasks.
  *
  * Get information about tasks currently running in the cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.
