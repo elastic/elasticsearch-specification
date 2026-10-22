@@ -1,4 +1,4 @@
-# summary:
+summary: A partially successful response
 description: When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.
 # type: response
 # response_code: 200
