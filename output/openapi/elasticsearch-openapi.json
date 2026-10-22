@@ -1012,7 +1012,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of aliases",
+        "summary": "Get aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases",
         "parameters": [
@@ -1063,7 +1063,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of aliases",
+        "summary": "Get aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases-1",
         "parameters": [
@@ -1327,7 +1327,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of component templates",
+        "summary": "Get component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates",
         "parameters": [
@@ -1378,7 +1378,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of component templates",
+        "summary": "Get component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates-1",
         "parameters": [
@@ -1725,7 +1725,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact cluster health summary",
+        "summary": "Get the cluster health status",
         "description": "IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-health",
         "parameters": [
@@ -1840,7 +1840,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of indices",
+        "summary": "Get index information",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices",
         "parameters": [
@@ -1900,7 +1900,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of indices",
+        "summary": "Get index information",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices-1",
         "parameters": [
@@ -2579,7 +2579,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of nodes",
+        "summary": "Get node information",
         "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-nodes",
         "parameters": [
@@ -3026,7 +3026,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of snapshot repositories",
+        "summary": "Get snapshot repository information",
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-repositories",
         "parameters": [
@@ -3361,7 +3361,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of snapshots",
+        "summary": "Get snapshot information",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots",
         "parameters": [
@@ -3412,7 +3412,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of snapshots",
+        "summary": "Get snapshot information",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots-1",
         "parameters": [
@@ -3466,7 +3466,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get a compact list of running tasks",
+        "summary": "Get task information",
         "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-tasks",
         "parameters": [
@@ -6457,7 +6457,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Get cluster subsystem info",
+        "summary": "Get cluster info",
         "description": "Returns basic information about the cluster.",
         "operationId": "cluster-info",
         "parameters": [
@@ -20698,7 +20698,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Get field mapping definitions",
+        "summary": "Get mapping definitions",
         "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "indices-get-field-mapping",
         "parameters": [
@@ -20737,7 +20737,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Get field mapping definitions",
+        "summary": "Get mapping definitions",
         "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "indices-get-field-mapping-1",
         "parameters": [
@@ -23121,7 +23121,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Run multiple alias actions atomically",
+        "summary": "Create or update an alias",
         "description": "Adds a data stream or index to an alias.",
         "operationId": "indices-update-aliases",
         "parameters": [
@@ -44304,7 +44304,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the searchable snapshots shared cache",
+        "summary": "Clear the cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.\n\n## Required authorization\n\n* Index privileges: `manage`\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "description": "More about searchable snapshots",
@@ -44342,7 +44342,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the searchable snapshots shared cache",
+        "summary": "Clear the cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.\n\n## Required authorization\n\n* Index privileges: `manage`\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "description": "More about searchable snapshots",
