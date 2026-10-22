@@ -418,7 +418,7 @@ mod tests {
             "name": { "name": "Request", "namespace": "test" },
             "path": [],
             "query": [],
-            "body": { "kind": "no_body" },
+            "body": { "kind": "properties", "properties": [] },
             "examples": {
               "FirstExample": {
                 "summary": "First", "method_request": "GET /_test", "value": "",
@@ -442,12 +442,22 @@ mod tests {
         let config = Configuration { include_language_examples: true, ..default_config() };
         let result = convert_schema(model, config, IndexMap::new()).unwrap();
 
-        let path = result.openapi.paths.paths["/_test"].as_item().unwrap();
-        let samples = &path.get.as_ref().unwrap().extensions["x-codeSamples"];
-        let langs: Vec<_> = samples.as_array().unwrap().iter().map(|s| s["lang"].as_str().unwrap()).collect();
+        // The operation keeps the first example's samples for tools that read only the operation
         assert_eq!(
-            langs,
-            vec!["Console", "Python", "Console_Second one", "Python_Second one", "Console_ThirdExample"]
+            code_sample_pairs(&result, "/_test").unwrap(),
+            vec![
+                ("Console".to_string(), "GET /_test\n".to_string()),
+                ("Python".to_string(), "first()".to_string()),
+            ]
+        );
+        // Every example carries its own samples under their plain language names
+        assert_eq!(
+            example_code_sample_langs(&result, "/_test"),
+            vec![
+                ("FirstExample".to_string(), vec!["Console".to_string(), "Python".to_string()]),
+                ("SecondExample".to_string(), vec!["Console".to_string(), "Python".to_string()]),
+                ("ThirdExample".to_string(), vec!["Console".to_string()]),
+            ]
         );
     }
 
@@ -470,7 +480,7 @@ mod tests {
               "type": {{ "kind": "instance_of", "type": {{ "name": "string", "namespace": "_builtins" }} }}
             }}],
             "query": [],
-            "body": {{ "kind": "no_body" }},
+            "body": {{ "kind": "properties", "properties": [] }},
             "examples": {examples}
           }}, {{
             "kind": "response",
@@ -492,6 +502,33 @@ mod tests {
                 .map(|s| (s["lang"].as_str().unwrap().to_string(), s["source"].as_str().unwrap().to_string()))
                 .collect()
         })
+    }
+
+    // The key and the languages of the `x-codeSamples` of each request example, following a shared request body.
+    fn example_code_sample_langs(result: &OpenApiConversion, path: &str) -> Vec<(String, Vec<String>)> {
+        let item = result.openapi.paths.paths[path].as_item().unwrap();
+        let operation = item.get.as_ref().or(item.post.as_ref()).unwrap();
+        let body = match operation.request_body.as_ref().unwrap() {
+            ReferenceOr::Item(body) => body,
+            ReferenceOr::Reference { reference } => result
+                .openapi
+                .components
+                .as_ref()
+                .unwrap()
+                .request_bodies[reference.trim_start_matches("#/components/requestBodies/")]
+                .as_item()
+                .unwrap(),
+        };
+        body.content["application/json"]
+            .examples
+            .iter()
+            .map(|(key, example)| {
+                let langs = example.as_item().unwrap().extensions.get("x-codeSamples").map_or(vec![], |samples| {
+                    samples.as_array().unwrap().iter().map(|s| s["lang"].as_str().unwrap().to_string()).collect()
+                });
+                (key.clone(), langs)
+            })
+            .collect()
     }
 
     fn examples_config() -> Configuration {
@@ -539,11 +576,12 @@ mod tests {
         );
         let result = convert_schema(model, examples_config(), IndexMap::new()).unwrap();
         // No Console sample without a request line, but the client samples are kept
+        assert_eq!(code_sample_pairs(&result, "/_test").unwrap(), vec![("Python".to_string(), "a()".to_string())]);
         assert_eq!(
-            code_sample_pairs(&result, "/_test").unwrap(),
+            example_code_sample_langs(&result, "/_test"),
             vec![
-                ("Python".to_string(), "a()".to_string()),
-                ("Python_Bee".to_string(), "b()".to_string()),
+                ("A".to_string(), vec!["Python".to_string()]),
+                ("B".to_string(), vec!["Python".to_string()]),
             ]
         );
     }
@@ -560,8 +598,11 @@ mod tests {
         let merged = convert_schema(schema_with_examples(urls, examples), merged_config, IndexMap::new()).unwrap();
 
         let expected = code_sample_pairs(&unmerged, "/{index}/_test").unwrap();
-        assert_eq!(expected.len(), 2);
+        assert_eq!(expected.len(), 1);
         assert_eq!(code_sample_pairs(&merged, "/{index}/_test").unwrap(), expected);
+        let expected_examples = example_code_sample_langs(&unmerged, "/{index}/_test");
+        assert_eq!(expected_examples.len(), 2);
+        assert_eq!(example_code_sample_langs(&merged, "/{index}/_test"), expected_examples);
         // The merge keeps a single path
         assert!(!merged.openapi.paths.paths.contains_key("/_test"));
     }
