@@ -22,7 +22,7 @@ import { Duration } from '@_types/Time'
 import { CatComponentColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get component templates.
+ * Get a compact list of component templates.
  *
  * Get information about component templates in a cluster.
  * Component templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.
