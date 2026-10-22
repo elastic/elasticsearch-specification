@@ -1,11 +1,12 @@
 method_request: POST _aliases
-description: An example body for a `POST _aliases` request.
+summary: Add a data stream or index to an alias
+description: If the alias does not exist, it is created.
 value: |-
   {
     "actions": [
       {
         "add": {
-          "index": "logs-nginx.access-prod",
+          "index": "logs-nginx.access-*",
           "alias": "logs"
         }
       }
