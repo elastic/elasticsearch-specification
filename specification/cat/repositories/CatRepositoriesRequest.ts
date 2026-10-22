@@ -22,7 +22,7 @@ import { Duration } from '@_types/Time'
 import { CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get snapshot repository information.
+ * Get a compact list of snapshot repositories.
  *
  * Get a list of snapshot repositories for a cluster.
  * IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.
