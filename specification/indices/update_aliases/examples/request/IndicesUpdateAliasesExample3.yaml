@@ -1,7 +1,8 @@
 method_request: POST _aliases
 summary: Remove an index and move an alias
 description: >
-  First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.
+  First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single
+  request.
 value: |-
   {
     "actions": [
