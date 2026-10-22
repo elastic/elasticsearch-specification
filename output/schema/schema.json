@@ -661,7 +661,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-aliases",
@@ -808,7 +808,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "docId": "cat-component-templates",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-component-templates",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-component-templates",
@@ -957,7 +957,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get the cluster health status.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
+      "description": "Get a compact cluster health summary.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
       "docId": "cat-health",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-health",
       "docUrlServerless": "",
@@ -1037,7 +1037,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-indices",
@@ -1375,7 +1375,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get node information.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+      "description": "Get a compact list of nodes.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
       "docId": "cat-nodes",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes",
       "docUrlServerless": "",
@@ -1557,7 +1557,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get snapshot repository information.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+      "description": "Get a compact list of snapshot repositories.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
       "docId": "cat-repositories",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-repositories",
       "docUrlServerless": "",
@@ -1705,7 +1705,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get snapshot information.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+      "description": "Get a compact list of snapshots.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
       "docId": "cat-snapshots",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-snapshots",
       "docUrlServerless": "",
@@ -1755,7 +1755,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Get task information.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+      "description": "Get a compact list of running tasks.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
       "docId": "cat-tasks",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks",
       "docUrlServerless": "",
@@ -2892,7 +2892,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
@@ -9228,7 +9228,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
+      "description": "Get field mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
       "docId": "indices-get-field-mapping",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-mapping",
@@ -10823,7 +10823,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "docId": "aliases-update",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-update-aliases",
@@ -20459,7 +20459,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Clear the cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
+      "description": "Clear the searchable snapshots shared cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
       "docId": "searchable-snapshots-api-clear-cache",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-clear-cache",
       "docUrlServerless": "",
@@ -114932,7 +114932,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "examples": {
         "CatAliasesRequestExample1": {
           "alternatives": [
@@ -115977,7 +115977,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "examples": {
         "CatComponentTemplatesRequestExample1": {
           "alternatives": [
@@ -116853,7 +116853,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get the cluster health status.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
+      "description": "Get a compact cluster health summary.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
       "examples": {
         "CatHealthRequestExample1": {
           "alternatives": [
@@ -119082,7 +119082,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "examples": {
         "CatIndicesRequestExample1": {
           "alternatives": [
@@ -123518,7 +123518,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get node information.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+      "description": "Get a compact list of nodes.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
       "examples": {
         "CatNodesRequestExample2": {
           "alternatives": [
@@ -124836,7 +124836,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get snapshot repository information.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+      "description": "Get a compact list of snapshot repositories.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
       "examples": {
         "CatRepositoriesRequestExample1": {
           "alternatives": [
@@ -126859,7 +126859,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get snapshot information.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+      "description": "Get a compact list of snapshots.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
       "examples": {
         "CatSnapshotsRequestExample1": {
           "alternatives": [
@@ -127253,7 +127253,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get task information.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+      "description": "Get a compact list of running tasks.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
       "examples": {
         "CatTasksRequestExample1": {
           "alternatives": [
@@ -135667,7 +135667,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "examples": {
         "ClusterInfoExample1": {
           "alternatives": [
@@ -174061,7 +174061,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
+      "description": "Get field mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
       "examples": {
         "indicesGetFieldMappingRequestExample1": {
           "alternatives": [
@@ -185568,7 +185568,7 @@
           }
         ]
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "examples": {
         "IndicesUpdateAliasesExample1": {
           "alternatives": [
@@ -259368,7 +259368,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Clear the cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
+      "description": "Clear the searchable snapshots shared cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
       "examples": {
         "SearchableSnapshotsClearCacheExample1": {
           "alternatives": [
