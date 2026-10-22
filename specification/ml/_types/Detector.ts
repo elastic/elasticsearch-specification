@@ -88,6 +88,12 @@ export class DetectorUpdate {
   custom_rules?: DetectionRule[]
 }
 
+/**
+ * A single detector update, or an array of detector updates.
+ * The update job API accepts either form.
+ */
+export type DetectorUpdates = DetectorUpdate | DetectorUpdate[]
+
 export enum ExcludeFrequent {
   all,
   none,

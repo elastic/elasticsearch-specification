@@ -25,7 +25,7 @@ import {
   AnalysisMemoryLimit,
   PerPartitionCategorization
 } from '@ml/_types/Analysis'
-import { DetectorUpdate } from '@ml/_types/Detector'
+import { DetectorUpdates } from '@ml/_types/Detector'
 import { ModelPlotConfig } from '@ml/_types/ModelPlot'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -139,9 +139,9 @@ export interface Request extends RequestBase {
      */
     groups?: string[]
     /**
-     * An array of detector update objects.
+     * A detector update, or an array of detector updates.
      */
-    detectors?: DetectorUpdate[]
+    detectors?: DetectorUpdates
     /**
      * Settings related to how categorization interacts with partition fields.
      */
