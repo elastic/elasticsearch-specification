@@ -1153,7 +1153,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases",
         "parameters": [
@@ -1204,7 +1204,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases-1",
         "parameters": [
@@ -1363,7 +1363,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates",
         "parameters": [
@@ -1414,7 +1414,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates-1",
         "parameters": [
@@ -1660,7 +1660,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get the cluster health status",
+        "summary": "Get a compact cluster health summary",
         "description": "IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-health",
         "parameters": [
@@ -1775,7 +1775,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices",
         "parameters": [
@@ -1835,7 +1835,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices-1",
         "parameters": [
@@ -2514,7 +2514,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get node information",
+        "summary": "Get a compact list of nodes",
         "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-nodes",
         "parameters": [
@@ -2968,7 +2968,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot repository information",
+        "summary": "Get a compact list of snapshot repositories",
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-repositories",
         "parameters": [
@@ -3303,7 +3303,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots",
         "parameters": [
@@ -3354,7 +3354,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots-1",
         "parameters": [
@@ -3408,7 +3408,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get task information",
+        "summary": "Get a compact list of running tasks",
         "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-tasks",
         "parameters": [
@@ -6323,7 +6323,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Get cluster info",
+        "summary": "Get cluster subsystem info",
         "description": "Returns basic information about the cluster.",
         "operationId": "cluster-info",
         "parameters": [
@@ -18960,7 +18960,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Get mapping definitions",
+        "summary": "Get field mapping definitions",
         "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "indices-get-field-mapping",
         "parameters": [
@@ -19002,7 +19002,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Get mapping definitions",
+        "summary": "Get field mapping definitions",
         "description": "Retrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "indices-get-field-mapping-1",
         "parameters": [
@@ -21518,7 +21518,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Create or update an alias",
+        "summary": "Update aliases and delete indices atomically",
         "description": "Adds a data stream or index to an alias.",
         "operationId": "indices-update-aliases",
         "parameters": [
@@ -40839,7 +40839,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache",
+        "summary": "Clear the searchable snapshots shared cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.\n\n## Required authorization\n\n* Index privileges: `manage`\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/searchable-snapshots.html"
@@ -40875,7 +40875,7 @@
         "tags": [
           "searchable_snapshots"
         ],
-        "summary": "Clear the cache",
+        "summary": "Clear the searchable snapshots shared cache",
         "description": "Clear indices and data streams from the shared cache for partially mounted indices.\n\n## Required authorization\n\n* Index privileges: `manage`\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/searchable-snapshots.html"
