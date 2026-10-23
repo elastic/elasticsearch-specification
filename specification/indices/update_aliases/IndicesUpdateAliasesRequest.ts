@@ -25,10 +25,19 @@ import { Action } from './types'
 /**
  * Update aliases and delete indices atomically.
  *
- * Adds a data stream or index to an alias.
+ * Applies one or more actions in a single request:
+ *
+ * - Add a data stream or index to an alias.
+ * - Remove a data stream or index from an alias.
+ * - Delete an index in that same request, so the deletion and the alias changes are applied together.
+ *
+ * For example, you can replace an index with an alias of the same name.
+ *
+ * NOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.
  * @rest_spec_name indices.update_aliases
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges manage
  * @doc_id aliases-update
  */
 export interface Request extends RequestBase {
