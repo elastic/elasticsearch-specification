@@ -135153,6 +135153,28 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The recovery has not finished.",
+          "name": "running"
+        },
+        {
+          "description": "Every source was recovered.",
+          "name": "completed"
+        },
+        {
+          "description": "The recovery stopped without recovering every source. The `failures` of the recovery describe why.",
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "RecoveryRunStatus",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/RecoveryRunStatus.ts#L20-L27"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "index"
         },
         {

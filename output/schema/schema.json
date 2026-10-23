@@ -4825,6 +4825,38 @@
           "visibility": "private"
         }
       },
+      "description": "Get a recovery.\n\nGet the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+      "docId": "data-recovery-get-recovery",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.get_recovery",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/recoveries/{recovery_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "visibility": "private"
+        }
+      },
       "description": "Get recovery points.\n\nGet recovery points from the platform-managed data recovery repository.\nThis API is intended for internal operator use.\nRecovery points are returned in descending order by end time. Repository,\nsnapshot, and policy identifiers are not exposed.",
       "docId": "data-recovery-get-recovery-points",
       "docUrl": "",
@@ -4912,6 +4944,38 @@
             "GET"
           ],
           "path": "/_data_recovery/rpo"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "docId": "data-recovery-list-recoveries",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.list_recoveries",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/recoveries"
         }
       ]
     },
@@ -148522,6 +148586,244 @@
     {
       "kind": "interface",
       "name": {
+        "name": "Recovery",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The identifier of the recovery.",
+          "name": "recovery_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The status of the recovery.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryRunStatus",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The recovery point that the sources are recovered from.",
+          "name": "recovery_point",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Point",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "Whether the sources are recovered in place (`replace`) or under new names (`rename`).",
+          "name": "destination_mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryMode",
+              "namespace": "data_recovery.start_recovery"
+            }
+          }
+        },
+        {
+          "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+          "name": "sources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ResolvedRecoverySource",
+                "namespace": "data_recovery._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The custom metadata that was provided when the recovery was started.",
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the recovery started.",
+          "name": "started_at",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the recovery finished. It is omitted while the recovery is running.",
+          "name": "completed_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The progress of the recovery.",
+          "name": "progress",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryProgress",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The sources that could not be recovered.\nThe list is capped, so it can be shorter than `total_failure_count`.",
+          "name": "failures",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RecoveryFailure",
+                "namespace": "data_recovery._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The total number of sources that could not be recovered, including any that are not listed in `failures`.",
+          "name": "total_failure_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L46-L72"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RecoveryFailure",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the source that could not be recovered.",
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A stable, machine-readable code for the reason that the source could not be recovered.",
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Human-readable detail about the failure, which can be truncated.",
+          "name": "detail",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L37-L44"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RecoveryProgress",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The estimated percentage of the recovery that has completed, from `0` to `100`.\nIt is omitted when the progress cannot currently be determined, for example before the recovery starts moving data.\nIt is `100` once the recovery has completed.",
+          "name": "percent_complete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L28-L35"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The recovery has not finished.",
+          "name": "running"
+        },
+        {
+          "description": "Every source was recovered.",
+          "name": "completed"
+        },
+        {
+          "description": "The recovery stopped without recovering every source. The `failures` of the recovery describe why.",
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "RecoveryRunStatus",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/RecoveryRunStatus.ts#L20-L27"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "ResolvedRecoverySource",
         "namespace": "data_recovery._types"
       },
@@ -148580,6 +148882,81 @@
         "namespace": "data_recovery._types"
       },
       "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get a recovery.\n\nGet the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+      "examples": {
+        "DataRecoveryGetRecoveryRequestExample1": {
+          "description": "Run `GET _data_recovery/recoveries/rec-0f3a9c1e` to get the status and details of a recovery.",
+          "method_request": "GET _data_recovery/recoveries/rec-0f3a9c1e",
+          "summary": "Get a recovery",
+          "value": ""
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "path": [
+        {
+          "description": "The identifier of the recovery, as returned when the recovery was started.",
+          "name": "recovery_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "data_recovery/get_recovery/DataRecoveryGetRecoveryRequest.ts#L23-L45"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "value",
+        "codegenName": "recovery",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Recovery",
+            "namespace": "data_recovery._types"
+          }
+        }
+      },
+      "examples": {
+        "DataRecoveryGetRecoveryResponseExample1": {
+          "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
+          "summary": "A running recovery",
+          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+        },
+        "DataRecoveryGetRecoveryResponseExample2": {
+          "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
+          "summary": "A failed recovery",
+          "value": "{\n  \"recovery_id\": \"rec-7b21d4aa\",\n  \"status\": \"failed\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"replace\",\n  \"sources\": [\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"orders\" }\n  ],\n  \"metadata\": {},\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"completed_at\": \"2026-10-22T08:41:17.000Z\",\n  \"progress\": { \"percent_complete\": 50 },\n  \"failures\": [\n    { \"source\": \"orders\", \"reason\": \"restore_failed\", \"detail\": \"Failed to restore shard [0]\" }\n  ],\n  \"total_failure_count\": 1\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "specLocation": "data_recovery/get_recovery/DataRecoveryGetRecoveryResponse.ts#L22-L25"
     },
     {
       "kind": "request",
@@ -149079,6 +149456,192 @@
         }
       ],
       "specLocation": "data_recovery/get_rpo_series/types.ts#L23-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "examples": {
+        "DataRecoveryListRecoveriesRequestExample1": {
+          "description": "Run `GET _data_recovery/recoveries?status=failed&size=2` to list the two most recent failed recoveries.",
+          "method_request": "GET _data_recovery/recoveries?status=failed&size=2",
+          "summary": "List failed recoveries",
+          "value": ""
+        },
+        "DataRecoveryListRecoveriesRequestExample2": {
+          "description": "Run `GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e` to retrieve the page after a recovery that started at the given time. Pass the start time and identifier of the last recovery of the previous page.\n",
+          "method_request": "GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e",
+          "summary": "Get the next page",
+          "value": ""
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "The maximum number of recoveries to return. The value must be between 1 and 1000.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 100,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries that started at or after this time, as an ISO-8601 timestamp.",
+          "name": "started_at_gte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries that started before this time, as an ISO-8601 timestamp. It must not be earlier than `started_at_gte`.",
+          "name": "started_at_lt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The order of the recoveries by start time.",
+          "name": "order",
+          "required": false,
+          "serverDefault": "desc",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
+          "name": "search_after_started_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+          "name": "search_after_recovery_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of statuses. Return only recoveries with one of these statuses. By default, recoveries with any status are returned.",
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RecoveryRunStatus",
+                  "namespace": "data_recovery._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "RecoveryRunStatus",
+                    "namespace": "data_recovery._types"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesRequest.ts#L27-L76"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The recoveries, in the requested order.",
+            "name": "recoveries",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Recovery",
+                  "namespace": "data_recovery._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "Whether there are more recoveries after the last one in this page.",
+            "name": "has_more",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "DataRecoveryListRecoveriesResponseExample1": {
+          "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
+          "summary": "A page of recoveries",
+          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesResponse.ts#L22-L29"
     },
     {
       "kind": "enum",

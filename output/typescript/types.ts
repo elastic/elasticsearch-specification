@@ -11499,6 +11499,32 @@ export interface DataRecoveryPoint {
   end_time: DateTime
 }
 
+export interface DataRecoveryRecovery {
+  recovery_id: string
+  status: DataRecoveryRecoveryRunStatus
+  recovery_point: DataRecoveryPoint
+  destination_mode: DataRecoveryStartRecoveryRecoveryMode
+  sources: DataRecoveryResolvedRecoverySource[]
+  metadata: Metadata
+  started_at: DateTime
+  completed_at?: DateTime
+  progress: DataRecoveryRecoveryProgress
+  failures: DataRecoveryRecoveryFailure[]
+  total_failure_count: integer
+}
+
+export interface DataRecoveryRecoveryFailure {
+  source: string
+  reason: string
+  detail?: string
+}
+
+export interface DataRecoveryRecoveryProgress {
+  percent_complete?: integer
+}
+
+export type DataRecoveryRecoveryRunStatus = 'running' | 'completed' | 'failed'
+
 export interface DataRecoveryResolvedRecoverySource {
   source: string
   type: DataRecoverySourceType
@@ -11506,6 +11532,12 @@ export interface DataRecoveryResolvedRecoverySource {
 }
 
 export type DataRecoverySourceType = 'index' | 'data_stream'
+
+export interface DataRecoveryGetRecoveryRequest extends RequestBase {
+  recovery_id: Id
+}
+
+export type DataRecoveryGetRecoveryResponse = DataRecoveryRecovery
 
 export interface DataRecoveryGetRecoveryPointsRequest extends RequestBase {
   end_time_before?: DateTime
@@ -11556,6 +11588,21 @@ export interface DataRecoveryGetRpoSeriesRpoBucket {
   start: DateTime
   end: DateTime
   max_recovery_point_age_millis: long | null
+}
+
+export interface DataRecoveryListRecoveriesRequest extends RequestBase {
+  size?: integer
+  started_at_gte?: DateTime
+  started_at_lt?: DateTime
+  order?: SortOrder
+  search_after_started_at?: DateTime
+  search_after_recovery_id?: Id
+  status?: DataRecoveryRecoveryRunStatus | DataRecoveryRecoveryRunStatus[]
+}
+
+export interface DataRecoveryListRecoveriesResponse {
+  recoveries: DataRecoveryRecovery[]
+  has_more: boolean
 }
 
 export type DataRecoveryStartRecoveryRecoveryMode = 'replace' | 'rename'
