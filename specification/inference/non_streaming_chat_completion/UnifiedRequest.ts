@@ -50,6 +50,7 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * @availability stack since=9.6.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-non-streaming-chat-completion
+ * @cluster_privileges monitor_inference
  */
 export interface Request extends RequestBase {
   urls: [

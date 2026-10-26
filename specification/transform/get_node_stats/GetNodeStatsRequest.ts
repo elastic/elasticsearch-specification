@@ -28,6 +28,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-node-stats
+ * @cluster_privileges monitor_transform
  */
 export interface Request extends RequestBase {
   urls: [

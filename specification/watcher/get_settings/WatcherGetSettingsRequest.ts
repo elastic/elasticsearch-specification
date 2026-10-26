@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * @rest_spec_name watcher.get_settings
  * @availability stack stability=stable visibility=public
  * @doc_id watcher-api-get-settings
+ * @cluster_privileges manage_watcher
  */
 export interface Request extends RequestBase {
   urls: [

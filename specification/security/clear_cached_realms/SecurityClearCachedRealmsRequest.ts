@@ -34,6 +34,7 @@ import { MediaType, Names } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @doc_id security-api-clear-cache
  * @ext_doc_id security-user-cache
+ * @cluster_privileges manage_security
  */
 export interface Request extends RequestBase {
   urls: [

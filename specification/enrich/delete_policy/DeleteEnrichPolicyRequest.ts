@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id delete-enrich-policy-api
+ * @cluster_privileges manage_enrich
  */
 export interface Request extends RequestBase {
   urls: [

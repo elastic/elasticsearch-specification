@@ -32,6 +32,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @availability serverless stability=stable visibility=public
  * @doc_tag ml trained model
  * @doc_id infer-trained-model
+ * @cluster_privileges monitor_ml
  */
 export interface Request extends RequestBase {
   urls: [

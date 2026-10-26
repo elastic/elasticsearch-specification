@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_id delete-pipeline-api
  * @ext_doc_id ingest
+ * @cluster_privileges manage_ingest_pipelines
  */
 export interface Request extends RequestBase {
   urls: [

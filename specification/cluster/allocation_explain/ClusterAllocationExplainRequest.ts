@@ -37,6 +37,7 @@ import { Duration } from '@_types/Time'
  * @doc_id cluster-allocation-explain
  * @ext_doc_id cluster-allocation-explain-examples
  * @doc_tag cluster
+ * @cluster_privileges monitor, manage
  */
 export interface Request extends RequestBase {
   urls: [

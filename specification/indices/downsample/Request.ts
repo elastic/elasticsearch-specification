@@ -41,6 +41,7 @@ import { DownsampleConfig } from '@indices/_types/Downsample'
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_tag data stream
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

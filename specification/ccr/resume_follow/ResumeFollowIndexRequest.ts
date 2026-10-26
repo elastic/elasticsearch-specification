@@ -33,6 +33,8 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-post-resume-follow
  * @ext_doc_id ccr
+ * @cluster_privileges manage_ccr
+ * @index_privileges manage_follow_index
  */
 export interface Request extends RequestBase {
   urls: [

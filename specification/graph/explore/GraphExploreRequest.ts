@@ -38,6 +38,7 @@ import { Hop } from '../_types/Hop'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=private
  * @ext_doc_id graph
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [

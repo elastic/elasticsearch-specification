@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-component-template
  * @doc_tag indices
+ * @cluster_privileges manage_index_templates
  */
 export interface Request extends RequestBase {
   urls: [

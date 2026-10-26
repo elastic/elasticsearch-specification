@@ -28,6 +28,7 @@ import { ExpandWildcards, Indices, MediaType } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-exists
+ * @index_privileges view_index_metadata, manage
  */
 export interface Request extends RequestBase {
   urls: [

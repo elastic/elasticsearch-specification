@@ -30,6 +30,7 @@ import { GrokPattern, MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=private
  * @doc_id test-grok-pattern
  * @ext_doc_id grok
+ * @cluster_privileges monitor_text_structure
  */
 export interface Request extends RequestBase {
   urls: [
