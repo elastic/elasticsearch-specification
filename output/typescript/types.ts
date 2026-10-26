@@ -1761,6 +1761,20 @@ export interface SearchLearningToRank {
   params?: Record<string, any>
 }
 
+export interface SearchLearningToRankRescoreProfile extends SearchRescoreProfileBase {
+  type: 'learning_to_rank'
+  breakdown: SearchLearningToRankRescoreProfileBreakdown
+}
+
+export interface SearchLearningToRankRescoreProfileBreakdown {
+  build_feature_extractors: long
+  build_feature_extractors_count: long
+  feature_extraction: long
+  feature_extraction_count: long
+  inference: long
+  inference_count: long
+}
+
 export interface SearchLinearInterpolationSmoothingModel {
   bigram_lambda: double
   trigram_lambda: double
@@ -1853,7 +1867,13 @@ export interface SearchQueryProfile {
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
+  debug?: Record<string, any>
   children?: SearchQueryProfile[]
+}
+
+export interface SearchQueryRescoreProfile extends SearchRescoreProfileBase {
+  type: 'query'
+  breakdown: EmptyObject
 }
 
 export interface SearchRegexOptions {
@@ -1868,6 +1888,15 @@ export interface SearchRescore {
   script?: SearchScriptRescore
 }
 
+export type SearchRescoreProfile = SearchQueryRescoreProfile | SearchScriptRescoreProfile | SearchLearningToRankRescoreProfile
+
+export interface SearchRescoreProfileBase {
+  description: string
+  time_in_nanos: DurationValue<UnitNanos>
+  time?: Duration
+  debug?: Record<string, any>
+}
+
 export interface SearchRescoreQuery {
   rescore_query: QueryDslQueryContainer
   query_weight?: double
@@ -1879,6 +1908,11 @@ export type SearchScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
 export interface SearchScriptRescore {
   script: Script | ScriptSource
+}
+
+export interface SearchScriptRescoreProfile extends SearchRescoreProfileBase {
+  type: 'script'
+  breakdown: EmptyObject
 }
 
 export interface SearchSearchProfile {
@@ -1938,6 +1972,7 @@ export interface SearchShardProfile {
   id: string
   index: IndexName
   node_id: NodeId
+  rescore?: SearchRescoreProfile[]
   searches: SearchSearchProfile[]
   shard_id: integer
 }

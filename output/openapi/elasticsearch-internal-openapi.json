@@ -66786,6 +66786,14 @@
               }
             ]
           },
+          "rescore": {
+            "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types.RescoreProfile"
+            }
+          },
           "searches": {
             "type": "array",
             "items": {
@@ -67440,6 +67448,191 @@
       "_types.NodeId": {
         "type": "string"
       },
+      "_global.search._types.RescoreProfile": {
+        "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "learning_to_rank": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile",
+            "query": "#/components/schemas/_global.search._types.QueryRescoreProfile",
+            "script": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.QueryRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile"
+          }
+        ]
+      },
+      "_global.search._types.QueryRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "query"
+                ]
+              },
+              "breakdown": {
+                "description": "The `query` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_types.EmptyObject": {
+        "description": "For empty Class assignments",
+        "type": "object"
+      },
+      "_global.search._types.RescoreProfileBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "What the rescorer runs.",
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "description": "The total time spent in the rescorer, including the time spent running its queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "time": {
+            "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "debug": {
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types.ScriptRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "script"
+                ]
+              },
+              "breakdown": {
+                "description": "The `script` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "learning_to_rank"
+                ]
+              },
+              "breakdown": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfileBreakdown"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "build_feature_extractors": {
+            "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+            "type": "number"
+          },
+          "build_feature_extractors_count": {
+            "type": "number"
+          },
+          "feature_extraction": {
+            "description": "The time spent extracting the features of the top documents.",
+            "type": "number"
+          },
+          "feature_extraction_count": {
+            "type": "number"
+          },
+          "inference": {
+            "description": "The time spent running the model on the extracted features.",
+            "type": "number"
+          },
+          "inference_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "build_feature_extractors",
+          "build_feature_extractors_count",
+          "feature_extraction",
+          "feature_extraction_count",
+          "inference",
+          "inference_count"
+        ]
+      },
       "_global.search._types.SearchProfile": {
         "type": "object",
         "properties": {
@@ -67516,6 +67709,14 @@
           },
           "type": {
             "type": "string"
+          },
+          "debug": {
+            "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           },
           "children": {
             "type": "array",
@@ -77315,10 +77516,6 @@
             ]
           }
         ]
-      },
-      "_types.EmptyObject": {
-        "description": "For empty Class assignments",
-        "type": "object"
       },
       "_types.aggregations.MovingAverageAggregationBase": {
         "allOf": [
