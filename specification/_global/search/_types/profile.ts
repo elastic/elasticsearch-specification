@@ -162,8 +162,10 @@ export class QueryProfile {
 }
 
 /**
- * Profile of a single rescorer. The shape of `breakdown` depends on the type of rescorer:
- * the `query` and `script` rescorers do not report any steps, the `learning_to_rank` rescorer does.
+ * Profile of a single rescorer.
+ *
+ * The shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,
+ * `learning_to_rank` does.
  * @variants internal tag='type'
  */
 export type RescoreProfile =
