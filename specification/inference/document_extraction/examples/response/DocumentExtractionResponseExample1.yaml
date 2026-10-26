@@ -1,0 +1,17 @@
+summary: Document extraction task
+description: >
+  An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "document_extraction": [
+      {
+        "content": "# Annual Report 2025\n\n...",
+        "format": "markdown",
+        "metadata": {
+          "title": "Annual Report 2025"
+        }
+      }
+    ]
+  }
