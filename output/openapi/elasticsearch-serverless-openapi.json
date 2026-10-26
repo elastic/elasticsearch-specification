@@ -10436,7 +10436,7 @@
           "data stream"
         ],
         "summary": "Get data stream lifecycles",
-        "description": "Get the data stream lifecycle configuration of one or more data streams.",
+        "description": "Get the data stream lifecycle configuration of one or more data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -10547,7 +10547,7 @@
           "data stream"
         ],
         "summary": "Update data stream lifecycles",
-        "description": "Update the data stream lifecycle of the specified data streams.",
+        "description": "Update the data stream lifecycle of the specified data streams.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
