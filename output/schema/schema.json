@@ -46349,7 +46349,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L274-L279"
+      "specLocation": "_global/search/_types/profile.ts#L201-L206"
     },
     {
       "kind": "interface",
@@ -46384,7 +46384,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L247-L250"
+      "specLocation": "_global/search/_types/profile.ts#L174-L177"
     },
     {
       "kind": "interface",
@@ -46482,7 +46482,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L263-L272"
+      "specLocation": "_global/search/_types/profile.ts#L190-L199"
     },
     {
       "kind": "interface",
@@ -46588,7 +46588,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L252-L260"
+      "specLocation": "_global/search/_types/profile.ts#L179-L187"
     },
     {
       "kind": "interface",
@@ -46825,7 +46825,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L323-L330"
+      "specLocation": "_global/search/_types/profile.ts#L250-L257"
     },
     {
       "kind": "interface",
@@ -46923,7 +46923,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L332-L341"
+      "specLocation": "_global/search/_types/profile.ts#L259-L268"
     },
     {
       "kind": "interface",
@@ -46958,7 +46958,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L343-L346"
+      "specLocation": "_global/search/_types/profile.ts#L270-L273"
     },
     {
       "kind": "interface",
@@ -48333,7 +48333,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L315-L321"
+      "specLocation": "_global/search/_types/profile.ts#L242-L248"
     },
     {
       "kind": "interface",
@@ -48563,7 +48563,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L292-L313"
+      "specLocation": "_global/search/_types/profile.ts#L219-L240"
     },
     {
       "kind": "interface",
@@ -48669,7 +48669,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L281-L289"
+      "specLocation": "_global/search/_types/profile.ts#L208-L216"
     },
     {
       "kind": "interface",
@@ -48733,120 +48733,6 @@
         }
       ],
       "specLocation": "_global/search/_types/rescoring.ts#L91-L100"
-    },
-    {
-      "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "RescoreProfileBase",
-          "namespace": "_global.search._types"
-        }
-      },
-      "name": {
-        "name": "LearningToRankRescoreProfile",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "learning_to_rank"
-          }
-        },
-        {
-          "name": "breakdown",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LearningToRankRescoreProfileBreakdown",
-              "namespace": "_global.search._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L205-L208"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LearningToRankRescoreProfileBreakdown",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "description": "The time spent turning the feature queries of the model into queries that can score documents.",
-          "name": "build_feature_extractors",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "build_feature_extractors_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The time spent extracting the features of the top documents.",
-          "name": "feature_extraction",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "feature_extraction_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The time spent running the model on the extracted features.",
-          "name": "inference",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "inference_count",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L211-L221"
     },
     {
       "kind": "interface",
@@ -49676,31 +49562,6 @@
           }
         },
         {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "9.6.0"
-            }
-          },
-          "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
-          "name": "debug",
-          "required": false,
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        },
-        {
           "name": "children",
           "required": false,
           "type": {
@@ -49715,43 +49576,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L162"
-    },
-    {
-      "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "RescoreProfileBase",
-          "namespace": "_global.search._types"
-        }
-      },
-      "name": {
-        "name": "QueryRescoreProfile",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "query"
-          }
-        },
-        {
-          "description": "The `query` rescorer does not report any steps.",
-          "name": "breakdown",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmptyObject",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+      "specLocation": "_global/search/_types/profile.ts#L148-L154"
     },
     {
       "kind": "interface",
@@ -49860,120 +49685,6 @@
         "kind": "container",
         "nonExhaustive": true
       }
-    },
-    {
-      "kind": "type_alias",
-      "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
-      "name": {
-        "name": "RescoreProfile",
-        "namespace": "_global.search._types"
-      },
-      "specLocation": "_global/search/_types/profile.ts#L164-L175",
-      "type": {
-        "kind": "union_of",
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "QueryRescoreProfile",
-              "namespace": "_global.search._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "ScriptRescoreProfile",
-              "namespace": "_global.search._types"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "LearningToRankRescoreProfile",
-              "namespace": "_global.search._types"
-            }
-          }
-        ]
-      },
-      "variants": {
-        "kind": "internal_tag",
-        "nonExhaustive": true,
-        "tag": "type"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RescoreProfileBase",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "description": "What the rescorer runs.",
-          "name": "description",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The total time spent in the rescorer, including the time spent running its queries.",
-          "name": "time_in_nanos",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "generics": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "UnitNanos",
-                  "namespace": "_types"
-                }
-              }
-            ],
-            "type": {
-              "name": "DurationValue",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
-          "name": "time",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
-          "name": "debug",
-          "required": false,
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L177-L191"
     },
     {
       "kind": "interface",
@@ -50090,42 +49801,6 @@
     },
     {
       "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "RescoreProfileBase",
-          "namespace": "_global.search._types"
-        }
-      },
-      "name": {
-        "name": "ScriptRescoreProfile",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "literal_value",
-            "value": "script"
-          }
-        },
-        {
-          "description": "The `script` rescorer does not report any steps.",
-          "name": "breakdown",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmptyObject",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L199-L203"
-    },
-    {
-      "kind": "interface",
       "name": {
         "name": "SearchProfile",
         "namespace": "_global.search._types"
@@ -50171,7 +49846,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L223-L227"
+      "specLocation": "_global/search/_types/profile.ts#L156-L160"
     },
     {
       "kind": "interface",
@@ -50866,27 +50541,6 @@
           }
         },
         {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "9.6.0"
-            }
-          },
-          "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
-          "name": "rescore",
-          "required": false,
-          "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "RescoreProfile",
-                "namespace": "_global.search._types"
-              }
-            }
-          }
-        },
-        {
           "name": "searches",
           "required": true,
           "type": {
@@ -50912,7 +50566,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L229-L245"
+      "specLocation": "_global/search/_types/profile.ts#L162-L172"
     },
     {
       "kind": "interface",
