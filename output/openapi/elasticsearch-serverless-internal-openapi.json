@@ -988,7 +988,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases",
         "parameters": [
@@ -1039,7 +1039,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases-1",
         "parameters": [
@@ -1303,7 +1303,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates",
         "parameters": [
@@ -1354,7 +1354,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates-1",
         "parameters": [
@@ -1701,7 +1701,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get the cluster health status",
+        "summary": "Get a compact cluster health summary",
         "description": "IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-health",
         "parameters": [
@@ -1816,7 +1816,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices",
         "parameters": [
@@ -1876,7 +1876,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices-1",
         "parameters": [
@@ -2555,7 +2555,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get node information",
+        "summary": "Get a compact list of nodes",
         "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-nodes",
         "parameters": [
@@ -3002,7 +3002,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot repository information",
+        "summary": "Get a compact list of snapshot repositories",
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-repositories",
         "parameters": [
@@ -3337,7 +3337,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots",
         "parameters": [
@@ -3388,7 +3388,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots-1",
         "parameters": [
@@ -3442,7 +3442,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get task information",
+        "summary": "Get a compact list of running tasks",
         "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-tasks",
         "parameters": [
@@ -5002,7 +5002,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Get cluster info",
+        "summary": "Get cluster subsystem info",
         "description": "Returns basic information about the cluster.",
         "operationId": "cluster-info",
         "parameters": [
@@ -7899,6 +7899,59 @@
         ]
       }
     },
+    "/_data_recovery/recoveries/{recovery_id}": {
+      "get": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "Get a recovery",
+        "description": "Get the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+        "operationId": "data-recovery-get-recovery",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "recovery_id",
+            "description": "The identifier of the recovery, as returned when the recovery was started.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_recovery._types.Recovery"
+                },
+                "examples": {
+                  "DataRecoveryGetRecoveryResponseExample1": {
+                    "summary": "A running recovery",
+                    "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
+                    "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+                  },
+                  "DataRecoveryGetRecoveryResponseExample2": {
+                    "summary": "A failed recovery",
+                    "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
+                    "value": "{\n  \"recovery_id\": \"rec-7b21d4aa\",\n  \"status\": \"failed\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"replace\",\n  \"sources\": [\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"orders\" }\n  ],\n  \"metadata\": {},\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"completed_at\": \"2026-10-22T08:41:17.000Z\",\n  \"progress\": { \"percent_complete\": 50 },\n  \"failures\": [\n    { \"source\": \"orders\", \"reason\": \"restore_failed\", \"detail\": \"Failed to restore shard [0]\" }\n  ],\n  \"total_failure_count\": 1\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_data_recovery/points": {
       "get": {
         "tags": [
@@ -7921,7 +7974,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -7957,7 +8010,7 @@
                       "description": "Recovery points in descending order by end time.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/data_recovery.get_recovery_points.RecoveryPoint"
+                        "$ref": "#/components/schemas/data_recovery._types.Point"
                       }
                     }
                   },
@@ -8021,7 +8074,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -8072,7 +8125,7 @@
                       "description": "The selected recovery point.",
                       "allOf": [
                         {
-                          "$ref": "#/components/schemas/data_recovery.get_recovery_points.RecoveryPoint"
+                          "$ref": "#/components/schemas/data_recovery._types.Point"
                         }
                       ]
                     },
@@ -8154,7 +8207,7 @@
           {
             "in": "query",
             "name": "master_timeout",
-            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
             "deprecated": false,
             "schema": {
               "default": "30s",
@@ -8217,6 +8270,271 @@
                     "bucket_duration",
                     "bucket_count",
                     "buckets"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_data_recovery/recoveries": {
+      "get": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "List recoveries",
+        "description": "List the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+        "operationId": "data-recovery-list-recoveries",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "size",
+            "description": "The maximum number of recoveries to return. The value must be between 1 and 1000.",
+            "deprecated": false,
+            "schema": {
+              "default": 100.0,
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "started_at_gte",
+            "description": "Return only recoveries that started at or after this time, as an ISO-8601 timestamp.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "started_at_lt",
+            "description": "Return only recoveries that started before this time, as an ISO-8601 timestamp. It must not be earlier than `started_at_gte`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "description": "The order of the recoveries by start time.",
+            "deprecated": false,
+            "schema": {
+              "default": "desc",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.SortOrder"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after_started_at",
+            "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after_recovery_id",
+            "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "A comma-separated list of statuses. Return only recoveries with one of these statuses. By default, recoveries with any status are returned.",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+                  }
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recoveries": {
+                      "description": "The recoveries, in the requested order.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/data_recovery._types.Recovery"
+                      }
+                    },
+                    "has_more": {
+                      "description": "Whether there are more recoveries after the last one in this page.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "recoveries",
+                    "has_more"
+                  ]
+                },
+                "examples": {
+                  "DataRecoveryListRecoveriesResponseExample1": {
+                    "summary": "A page of recoveries",
+                    "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
+                    "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "Start a recovery",
+        "description": "Start recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+        "operationId": "data-recovery-start-recovery",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "recovery_point_end_time": {
+                    "description": "The exact end time of the recovery point to recover from, as a date or epoch milliseconds.\nAn `end_time` returned when listing recovery points can be passed back as it is.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.DateTime"
+                      }
+                    ]
+                  },
+                  "sources": {
+                    "description": "The sources to recover. Each value is an index or data stream expression. Wildcards and exclusions prefixed with `-` are supported.\nThe list must not be empty and must not contain blank values.",
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "mode": {
+                    "description": "How to recover the sources: `replace` recovers them in place, over the data that currently exists, and `rename` recovers them under new names.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/data_recovery.start_recovery.RecoveryMode"
+                      }
+                    ]
+                  },
+                  "rename_strategy": {
+                    "description": "How to derive the new name of each recovered source from its name.\nRequired when `mode` is `rename`, and not allowed when `mode` is `replace`.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/data_recovery.start_recovery.RenameStrategy"
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "description": "Custom metadata for the recovery.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Metadata"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "recovery_point_end_time",
+                  "sources",
+                  "mode"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recovery_id": {
+                      "description": "The identifier of the recovery that was started.",
+                      "type": "string"
+                    },
+                    "recovery_point": {
+                      "description": "The recovery point that the sources are recovered from.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/data_recovery._types.Point"
+                        }
+                      ]
+                    },
+                    "resolved_sources": {
+                      "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/data_recovery._types.ResolvedRecoverySource"
+                      }
+                    }
+                  },
+                  "required": [
+                    "recovery_id",
+                    "recovery_point",
+                    "resolved_sources"
                   ]
                 }
               }
@@ -16360,15 +16678,10 @@
                   ]
                 },
                 "examples": {
-                  "IndicesExplainDataLifecycleResponseExample1": {
-                    "summary": "Successful response",
-                    "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
-                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
-                  },
                   "IndicesExplainDataLifecycleResponseExample2": {
                     "summary": "Successful response with error messages",
                     "description": "The API reports any errors related to the lifecycle execution for the target index.",
-                    "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+                    "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-2026.10.17-000001\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.17-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792195511314,\n      \"time_since_index_creation\": \"3.07d\",\n      \"rollover_date_millis\": 1792440980120,\n      \"time_since_rollover\": \"5.51h\",\n      \"generation_time\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      },\n      \"error\": {\n        \"first_occurrence_millis\": 1792441580075,\n        \"message\": \"\"\"{\"type\":\"exception\",\"reason\":\"Force merge request only had 1 successful shards out of a total of 2\"}\"\"\",\n        \"last_recorded_millis\": 1792460779960,\n        \"retry_count\": 52\n      }\n    },\n    \".ds-my-data-stream-test-2026.10.19-000002\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.19-000002\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792440980129,\n      \"time_since_index_creation\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      }\n    }\n  }\n}"
                   }
                 }
               }
@@ -19028,7 +19341,7 @@
         "tags": [
           "indices"
         ],
-        "summary": "Create or update an alias",
+        "summary": "Update aliases and delete indices atomically",
         "description": "Adds a data stream or index to an alias.",
         "operationId": "indices-update-aliases",
         "parameters": [
@@ -45685,6 +45998,22 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "\nThe synonym rules are not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "SynonymsPutResponseExample1": {
+                    "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -54434,6 +54763,13 @@
               }
             ]
           },
+          "rescore": {
+            "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types.RescoreProfile"
+            }
+          },
           "searches": {
             "type": "array",
             "items": {
@@ -55088,6 +55424,191 @@
       "_types.NodeId": {
         "type": "string"
       },
+      "_global.search._types.RescoreProfile": {
+        "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "learning_to_rank": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile",
+            "query": "#/components/schemas/_global.search._types.QueryRescoreProfile",
+            "script": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.QueryRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile"
+          }
+        ]
+      },
+      "_global.search._types.QueryRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "query"
+                ]
+              },
+              "breakdown": {
+                "description": "The `query` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_types.EmptyObject": {
+        "description": "For empty Class assignments",
+        "type": "object"
+      },
+      "_global.search._types.RescoreProfileBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "What the rescorer runs.",
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "description": "The total time spent in the rescorer, including the time spent running its queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "time": {
+            "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "debug": {
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types.ScriptRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "script"
+                ]
+              },
+              "breakdown": {
+                "description": "The `script` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "learning_to_rank"
+                ]
+              },
+              "breakdown": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfileBreakdown"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "build_feature_extractors": {
+            "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+            "type": "number"
+          },
+          "build_feature_extractors_count": {
+            "type": "number"
+          },
+          "feature_extraction": {
+            "description": "The time spent extracting the features of the top documents.",
+            "type": "number"
+          },
+          "feature_extraction_count": {
+            "type": "number"
+          },
+          "inference": {
+            "description": "The time spent running the model on the extracted features.",
+            "type": "number"
+          },
+          "inference_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "build_feature_extractors",
+          "build_feature_extractors_count",
+          "feature_extraction",
+          "feature_extraction_count",
+          "inference",
+          "inference_count"
+        ]
+      },
       "_global.search._types.SearchProfile": {
         "type": "object",
         "properties": {
@@ -55164,6 +55685,13 @@
           },
           "type": {
             "type": "string"
+          },
+          "debug": {
+            "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           },
           "children": {
             "type": "array",
@@ -64919,10 +65447,6 @@
             ]
           }
         ]
-      },
-      "_types.EmptyObject": {
-        "description": "For empty Class assignments",
-        "type": "object"
       },
       "_types.aggregations.MovingAverageAggregationBase": {
         "allOf": [
@@ -90270,7 +90794,110 @@
           "_version"
         ]
       },
-      "data_recovery.get_recovery_points.RecoveryPoint": {
+      "data_recovery._types.Recovery": {
+        "type": "object",
+        "properties": {
+          "recovery_id": {
+            "description": "The identifier of the recovery.",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status of the recovery.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+              }
+            ]
+          },
+          "recovery_point": {
+            "description": "The recovery point that the sources are recovered from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.Point"
+              }
+            ]
+          },
+          "destination_mode": {
+            "description": "Whether the sources are recovered in place (`replace`) or under new names (`rename`).",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery.start_recovery.RecoveryMode"
+              }
+            ]
+          },
+          "sources": {
+            "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/data_recovery._types.ResolvedRecoverySource"
+            }
+          },
+          "metadata": {
+            "description": "The custom metadata that was provided when the recovery was started.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "started_at": {
+            "description": "The time when the recovery started.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "completed_at": {
+            "description": "The time when the recovery finished. It is omitted while the recovery is running.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "progress": {
+            "description": "The progress of the recovery.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.RecoveryProgress"
+              }
+            ]
+          },
+          "failures": {
+            "description": "The sources that could not be recovered.\nThe list is capped, so it can be shorter than `total_failure_count`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/data_recovery._types.RecoveryFailure"
+            }
+          },
+          "total_failure_count": {
+            "description": "The total number of sources that could not be recovered, including any that are not listed in `failures`.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "recovery_id",
+          "status",
+          "recovery_point",
+          "destination_mode",
+          "sources",
+          "metadata",
+          "started_at",
+          "progress",
+          "failures",
+          "total_failure_count"
+        ]
+      },
+      "data_recovery._types.RecoveryRunStatus": {
+        "type": "string",
+        "enum": [
+          "running",
+          "completed",
+          "failed"
+        ]
+      },
+      "data_recovery._types.Point": {
         "type": "object",
         "properties": {
           "start_time": {
@@ -90295,6 +90922,76 @@
           "end_time"
         ]
       },
+      "data_recovery.start_recovery.RecoveryMode": {
+        "type": "string",
+        "enum": [
+          "replace",
+          "rename"
+        ]
+      },
+      "data_recovery._types.ResolvedRecoverySource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The name of the index or data stream in the recovery point.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.SourceType"
+              }
+            ]
+          },
+          "destination": {
+            "description": "The name of the index or data stream that the source is recovered to.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "type",
+          "destination"
+        ]
+      },
+      "data_recovery._types.SourceType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "data_stream"
+        ]
+      },
+      "data_recovery._types.RecoveryProgress": {
+        "type": "object",
+        "properties": {
+          "percent_complete": {
+            "description": "The estimated percentage of the recovery that has completed, from `0` to `100`.\nIt is omitted when the progress cannot currently be determined, for example before the recovery starts moving data.\nIt is `100` once the recovery has completed.",
+            "type": "number"
+          }
+        }
+      },
+      "data_recovery._types.RecoveryFailure": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The name of the source that could not be recovered.",
+            "type": "string"
+          },
+          "reason": {
+            "description": "A stable, machine-readable code for the reason that the source could not be recovered.",
+            "type": "string"
+          },
+          "detail": {
+            "description": "Human-readable detail about the failure, which can be truncated.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "reason"
+        ]
+      },
       "data_recovery.get_recovery_sources.RecoverySource": {
         "type": "object",
         "properties": {
@@ -90310,7 +91007,7 @@
             "description": "The type of logical source.",
             "allOf": [
               {
-                "$ref": "#/components/schemas/data_recovery.get_recovery_sources.RecoverySourceType"
+                "$ref": "#/components/schemas/data_recovery._types.SourceType"
               }
             ]
           }
@@ -90319,13 +91016,6 @@
           "complete",
           "name",
           "type"
-        ]
-      },
-      "data_recovery.get_recovery_sources.RecoverySourceType": {
-        "type": "string",
-        "enum": [
-          "index",
-          "data_stream"
         ]
       },
       "data_recovery.get_rpo_series.RpoBucket": {
@@ -90365,6 +91055,19 @@
           "end",
           "max_recovery_point_age_millis"
         ]
+      },
+      "data_recovery.start_recovery.RenameStrategy": {
+        "type": "object",
+        "properties": {
+          "prefix": {
+            "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          },
+          "suffix": {
+            "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          }
+        }
       },
       "_types.ErrorResponseBase": {
         "description": "The response returned by Elasticsearch when request execution did not succeed.",
@@ -93588,6 +94291,12 @@
             ]
           },
           "error": {
+            "type": "string"
+          },
+          "frozen_transition_status": {
+            "type": "string"
+          },
+          "unmanaged_reason": {
             "type": "string"
           }
         },

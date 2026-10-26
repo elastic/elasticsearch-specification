@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { SourceType } from '../_types/SourceType'
+
 export class RecoverySource {
   /**
    * Whether the logical source was completely captured in the recovery point.
@@ -26,10 +28,5 @@ export class RecoverySource {
   /** The name of the index or data stream. */
   name: string
   /** The type of logical source. */
-  type: RecoverySourceType
-}
-
-export enum RecoverySourceType {
-  index,
-  data_stream
+  type: SourceType
 }

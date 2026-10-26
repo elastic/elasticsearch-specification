@@ -661,7 +661,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-aliases",
@@ -808,7 +808,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "docId": "cat-component-templates",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-component-templates",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-component-templates",
@@ -957,7 +957,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get the cluster health status.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
+      "description": "Get a compact cluster health summary.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
       "docId": "cat-health",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-health",
       "docUrlServerless": "",
@@ -1037,7 +1037,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-indices",
@@ -1375,7 +1375,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get node information.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+      "description": "Get a compact list of nodes.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
       "docId": "cat-nodes",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-nodes",
       "docUrlServerless": "",
@@ -1557,7 +1557,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get snapshot repository information.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+      "description": "Get a compact list of snapshot repositories.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
       "docId": "cat-repositories",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-repositories",
       "docUrlServerless": "",
@@ -1705,7 +1705,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get snapshot information.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+      "description": "Get a compact list of snapshots.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
       "docId": "cat-snapshots",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-snapshots",
       "docUrlServerless": "",
@@ -1755,7 +1755,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Get task information.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+      "description": "Get a compact list of running tasks.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
       "docId": "cat-tasks",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-tasks",
       "docUrlServerless": "",
@@ -2892,7 +2892,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
@@ -4825,6 +4825,38 @@
           "visibility": "private"
         }
       },
+      "description": "Get a recovery.\n\nGet the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+      "docId": "data-recovery-get-recovery",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.get_recovery",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/recoveries/{recovery_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "visibility": "private"
+        }
+      },
       "description": "Get recovery points.\n\nGet recovery points from the platform-managed data recovery repository.\nThis API is intended for internal operator use.\nRecovery points are returned in descending order by end time. Repository,\nsnapshot, and policy identifiers are not exposed.",
       "docId": "data-recovery-get-recovery-points",
       "docUrl": "",
@@ -4912,6 +4944,73 @@
             "GET"
           ],
           "path": "/_data_recovery/rpo"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "docId": "data-recovery-list-recoveries",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.list_recoveries",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_data_recovery/recoveries"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "visibility": "private"
+        }
+      },
+      "description": "Start a recovery.\n\nStart recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+      "docId": "data-recovery-start-recovery",
+      "docUrl": "",
+      "docUrlServerless": "",
+      "name": "data_recovery.start_recovery",
+      "request": {
+        "name": "Request",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_data_recovery/recoveries"
         }
       ]
     },
@@ -9193,7 +9292,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
+      "description": "Get field mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
       "docId": "indices-get-field-mapping",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-mapping",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-mapping",
@@ -10788,7 +10887,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "docId": "aliases-update",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-update-aliases",
@@ -20424,7 +20523,7 @@
           "stability": "experimental"
         }
       },
-      "description": "Clear the cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
+      "description": "Clear the searchable snapshots shared cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
       "docId": "searchable-snapshots-api-clear-cache",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-searchable-snapshots-clear-cache",
       "docUrlServerless": "",
@@ -46314,7 +46413,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L201-L206"
+      "specLocation": "_global/search/_types/profile.ts#L274-L279"
     },
     {
       "kind": "interface",
@@ -46349,7 +46448,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L174-L177"
+      "specLocation": "_global/search/_types/profile.ts#L247-L250"
     },
     {
       "kind": "interface",
@@ -46447,7 +46546,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L190-L199"
+      "specLocation": "_global/search/_types/profile.ts#L263-L272"
     },
     {
       "kind": "interface",
@@ -46553,7 +46652,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L179-L187"
+      "specLocation": "_global/search/_types/profile.ts#L252-L260"
     },
     {
       "kind": "interface",
@@ -46790,7 +46889,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L250-L257"
+      "specLocation": "_global/search/_types/profile.ts#L323-L330"
     },
     {
       "kind": "interface",
@@ -46888,7 +46987,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L259-L268"
+      "specLocation": "_global/search/_types/profile.ts#L332-L341"
     },
     {
       "kind": "interface",
@@ -46923,7 +47022,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L270-L273"
+      "specLocation": "_global/search/_types/profile.ts#L343-L346"
     },
     {
       "kind": "interface",
@@ -48298,7 +48397,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L242-L248"
+      "specLocation": "_global/search/_types/profile.ts#L315-L321"
     },
     {
       "kind": "interface",
@@ -48528,7 +48627,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L219-L240"
+      "specLocation": "_global/search/_types/profile.ts#L292-L313"
     },
     {
       "kind": "interface",
@@ -48634,7 +48733,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L208-L216"
+      "specLocation": "_global/search/_types/profile.ts#L281-L289"
     },
     {
       "kind": "interface",
@@ -48698,6 +48797,120 @@
         }
       ],
       "specLocation": "_global/search/_types/rescoring.ts#L91-L100"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "name": {
+        "name": "LearningToRankRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "learning_to_rank"
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L205-L208"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LearningToRankRescoreProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+          "name": "build_feature_extractors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "build_feature_extractors_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent extracting the features of the top documents.",
+          "name": "feature_extraction",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "feature_extraction_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent running the model on the extracted features.",
+          "name": "inference",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "inference_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L211-L221"
     },
     {
       "kind": "interface",
@@ -49527,6 +49740,31 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
           "name": "children",
           "required": false,
           "type": {
@@ -49541,7 +49779,43 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L154"
+      "specLocation": "_global/search/_types/profile.ts#L148-L162"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "name": {
+        "name": "QueryRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "query"
+          }
+        },
+        {
+          "description": "The `query` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L193-L197"
     },
     {
       "kind": "interface",
@@ -49650,6 +49924,120 @@
         "kind": "container",
         "nonExhaustive": true
       }
+    },
+    {
+      "kind": "type_alias",
+      "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+      "name": {
+        "name": "RescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "specLocation": "_global/search/_types/profile.ts#L164-L175",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RescoreProfileBase",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "What the rescorer runs.",
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The total time spent in the rescorer, including the time spent running its queries.",
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L177-L191"
     },
     {
       "kind": "interface",
@@ -49766,6 +50154,42 @@
     },
     {
       "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "name": {
+        "name": "ScriptRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "script"
+          }
+        },
+        {
+          "description": "The `script` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L199-L203"
+    },
+    {
+      "kind": "interface",
       "name": {
         "name": "SearchProfile",
         "namespace": "_global.search._types"
@@ -49811,7 +50235,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L156-L160"
+      "specLocation": "_global/search/_types/profile.ts#L223-L227"
     },
     {
       "kind": "interface",
@@ -50506,6 +50930,27 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+          "name": "rescore",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RescoreProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        },
+        {
           "name": "searches",
           "required": true,
           "type": {
@@ -50531,7 +50976,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L162-L172"
+      "specLocation": "_global/search/_types/profile.ts#L229-L245"
     },
     {
       "kind": "interface",
@@ -114897,7 +115342,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "examples": {
         "CatAliasesRequestExample1": {
           "alternatives": [
@@ -115942,7 +116387,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "examples": {
         "CatComponentTemplatesRequestExample1": {
           "alternatives": [
@@ -116818,7 +117263,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get the cluster health status.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
+      "description": "Get a compact cluster health summary.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.",
       "examples": {
         "CatHealthRequestExample1": {
           "alternatives": [
@@ -119047,7 +119492,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "examples": {
         "CatIndicesRequestExample1": {
           "alternatives": [
@@ -123483,7 +123928,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get node information.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
+      "description": "Get a compact list of nodes.\n\nGet information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.",
       "examples": {
         "CatNodesRequestExample2": {
           "alternatives": [
@@ -124801,7 +125246,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get snapshot repository information.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
+      "description": "Get a compact list of snapshot repositories.\n\nGet a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.",
       "examples": {
         "CatRepositoriesRequestExample1": {
           "alternatives": [
@@ -126824,7 +127269,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get snapshot information.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
+      "description": "Get a compact list of snapshots.\n\nGet information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.",
       "examples": {
         "CatSnapshotsRequestExample1": {
           "alternatives": [
@@ -127218,7 +127663,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get task information.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
+      "description": "Get a compact list of running tasks.\n\nGet information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.",
       "examples": {
         "CatTasksRequestExample1": {
           "alternatives": [
@@ -135632,7 +136077,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "examples": {
         "ClusterInfoExample1": {
           "alternatives": [
@@ -148453,8 +148898,8 @@
     {
       "kind": "interface",
       "name": {
-        "name": "RecoveryPoint",
-        "namespace": "data_recovery.get_recovery_points"
+        "name": "Point",
+        "namespace": "data_recovery._types"
       },
       "properties": [
         {
@@ -148482,7 +148927,382 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_points/types.ts#L22-L27"
+      "specLocation": "data_recovery/_types/Point.ts#L22-L27"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Recovery",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The identifier of the recovery.",
+          "name": "recovery_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The status of the recovery.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryRunStatus",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The recovery point that the sources are recovered from.",
+          "name": "recovery_point",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Point",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "Whether the sources are recovered in place (`replace`) or under new names (`rename`).",
+          "name": "destination_mode",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryMode",
+              "namespace": "data_recovery.start_recovery"
+            }
+          }
+        },
+        {
+          "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+          "name": "sources",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ResolvedRecoverySource",
+                "namespace": "data_recovery._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The custom metadata that was provided when the recovery was started.",
+          "name": "metadata",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the recovery started.",
+          "name": "started_at",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time when the recovery finished. It is omitted while the recovery is running.",
+          "name": "completed_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The progress of the recovery.",
+          "name": "progress",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoveryProgress",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The sources that could not be recovered.\nThe list is capped, so it can be shorter than `total_failure_count`.",
+          "name": "failures",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RecoveryFailure",
+                "namespace": "data_recovery._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The total number of sources that could not be recovered, including any that are not listed in `failures`.",
+          "name": "total_failure_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L46-L72"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RecoveryFailure",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the source that could not be recovered.",
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A stable, machine-readable code for the reason that the source could not be recovered.",
+          "name": "reason",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Human-readable detail about the failure, which can be truncated.",
+          "name": "detail",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L37-L44"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RecoveryProgress",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The estimated percentage of the recovery that has completed, from `0` to `100`.\nIt is omitted when the progress cannot currently be determined, for example before the recovery starts moving data.\nIt is `100` once the recovery has completed.",
+          "name": "percent_complete",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/Recovery.ts#L28-L35"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "The recovery has not finished.",
+          "name": "running"
+        },
+        {
+          "description": "Every source was recovered.",
+          "name": "completed"
+        },
+        {
+          "description": "The recovery stopped without recovering every source. The `failures` of the recovery describe why.",
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "RecoveryRunStatus",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/RecoveryRunStatus.ts#L20-L27"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ResolvedRecoverySource",
+        "namespace": "data_recovery._types"
+      },
+      "properties": [
+        {
+          "description": "The name of the index or data stream in the recovery point.",
+          "name": "source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of the source.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceType",
+              "namespace": "data_recovery._types"
+            }
+          }
+        },
+        {
+          "description": "The name of the index or data stream that the source is recovered to.",
+          "name": "destination",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/_types/ResolvedRecoverySource.ts#L22-L29"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "index"
+        },
+        {
+          "name": "data_stream"
+        }
+      ],
+      "name": {
+        "name": "SourceType",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get a recovery.\n\nGet the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+      "examples": {
+        "DataRecoveryGetRecoveryRequestExample1": {
+          "description": "Run `GET _data_recovery/recoveries/rec-0f3a9c1e` to get the status and details of a recovery.",
+          "method_request": "GET _data_recovery/recoveries/rec-0f3a9c1e",
+          "summary": "Get a recovery",
+          "value": ""
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "path": [
+        {
+          "description": "The identifier of the recovery, as returned when the recovery was started.",
+          "name": "recovery_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "data_recovery/get_recovery/DataRecoveryGetRecoveryRequest.ts#L23-L45"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "value",
+        "codegenName": "recovery",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "Recovery",
+            "namespace": "data_recovery._types"
+          }
+        }
+      },
+      "examples": {
+        "DataRecoveryGetRecoveryResponseExample1": {
+          "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
+          "summary": "A running recovery",
+          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+        },
+        "DataRecoveryGetRecoveryResponseExample2": {
+          "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
+          "summary": "A failed recovery",
+          "value": "{\n  \"recovery_id\": \"rec-7b21d4aa\",\n  \"status\": \"failed\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"replace\",\n  \"sources\": [\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"orders\" }\n  ],\n  \"metadata\": {},\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"completed_at\": \"2026-10-22T08:41:17.000Z\",\n  \"progress\": { \"percent_complete\": 50 },\n  \"failures\": [\n    { \"source\": \"orders\", \"reason\": \"restore_failed\", \"detail\": \"Failed to restore shard [0]\" }\n  ],\n  \"total_failure_count\": 1\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.get_recovery"
+      },
+      "specLocation": "data_recovery/get_recovery/DataRecoveryGetRecoveryResponse.ts#L22-L25"
     },
     {
       "kind": "request",
@@ -148518,7 +149338,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148544,7 +149364,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_points/DataRecoveryGetRecoveryPointsRequest.ts#L25-L63"
+      "specLocation": "data_recovery/get_recovery_points/DataRecoveryGetRecoveryPointsRequest.ts#L25-L64"
     },
     {
       "kind": "response",
@@ -148560,8 +149380,8 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "RecoveryPoint",
-                  "namespace": "data_recovery.get_recovery_points"
+                  "name": "Point",
+                  "namespace": "data_recovery._types"
                 }
               }
             }
@@ -148612,29 +149432,13 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "RecoverySourceType",
-              "namespace": "data_recovery.get_recovery_sources"
+              "name": "SourceType",
+              "namespace": "data_recovery._types"
             }
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L20-L30"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "index"
-        },
-        {
-          "name": "data_stream"
-        }
-      ],
-      "name": {
-        "name": "RecoverySourceType",
-        "namespace": "data_recovery.get_recovery_sources"
-      },
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+      "specLocation": "data_recovery/get_recovery_sources/types.ts#L22-L32"
     },
     {
       "kind": "request",
@@ -148698,7 +149502,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148736,7 +149540,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesRequest.ts#L25-L66"
+      "specLocation": "data_recovery/get_recovery_sources/DataRecoveryGetRecoverySourcesRequest.ts#L25-L67"
     },
     {
       "kind": "response",
@@ -148762,8 +149566,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "RecoveryPoint",
-                "namespace": "data_recovery.get_recovery_points"
+                "name": "Point",
+                "namespace": "data_recovery._types"
               }
             }
           },
@@ -148850,7 +149654,7 @@
           }
         },
         {
-          "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
           "name": "master_timeout",
           "required": false,
           "serverDefault": "30s",
@@ -148863,7 +149667,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesRequest.ts#L24-L68"
+      "specLocation": "data_recovery/get_rpo_series/DataRecoveryGetRpoSeriesRequest.ts#L24-L69"
     },
     {
       "kind": "response",
@@ -148998,6 +149802,398 @@
         }
       ],
       "specLocation": "data_recovery/get_rpo_series/types.ts#L23-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "examples": {
+        "DataRecoveryListRecoveriesRequestExample1": {
+          "description": "Run `GET _data_recovery/recoveries?status=failed&size=2` to list the two most recent failed recoveries.",
+          "method_request": "GET _data_recovery/recoveries?status=failed&size=2",
+          "summary": "List failed recoveries",
+          "value": ""
+        },
+        "DataRecoveryListRecoveriesRequestExample2": {
+          "description": "Run `GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e` to retrieve the page after a recovery that started at the given time. Pass the start time and identifier of the last recovery of the previous page.\n",
+          "method_request": "GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e",
+          "summary": "Get the next page",
+          "value": ""
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "The maximum number of recoveries to return. The value must be between 1 and 1000.",
+          "name": "size",
+          "required": false,
+          "serverDefault": 100,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries that started at or after this time, as an ISO-8601 timestamp.",
+          "name": "started_at_gte",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries that started before this time, as an ISO-8601 timestamp. It must not be earlier than `started_at_gte`.",
+          "name": "started_at_lt",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The order of the recoveries by start time.",
+          "name": "order",
+          "required": false,
+          "serverDefault": "desc",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SortOrder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
+          "name": "search_after_started_at",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+          "name": "search_after_recovery_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "A comma-separated list of statuses. Return only recoveries with one of these statuses. By default, recoveries with any status are returned.",
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RecoveryRunStatus",
+                  "namespace": "data_recovery._types"
+                }
+              },
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "RecoveryRunStatus",
+                    "namespace": "data_recovery._types"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesRequest.ts#L27-L76"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The recoveries, in the requested order.",
+            "name": "recoveries",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Recovery",
+                  "namespace": "data_recovery._types"
+                }
+              }
+            }
+          },
+          {
+            "description": "Whether there are more recoveries after the last one in this page.",
+            "name": "has_more",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "DataRecoveryListRecoveriesResponseExample1": {
+          "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
+          "summary": "A page of recoveries",
+          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.list_recoveries"
+      },
+      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesResponse.ts#L22-L29"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Replace each source with its state at the recovery point, in the place where it currently is.",
+          "name": "replace"
+        },
+        {
+          "description": "Recover each source under a new name, which is derived from its name by the `rename_strategy`.",
+          "name": "rename"
+        }
+      ],
+      "name": {
+        "name": "RecoveryMode",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/types.ts#L20-L25"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RenameStrategy",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "properties": [
+        {
+          "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+          "name": "prefix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+          "name": "suffix",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/start_recovery/types.ts#L27-L38"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The exact end time of the recovery point to recover from, as a date or epoch milliseconds.\nAn `end_time` returned when listing recovery points can be passed back as it is.",
+            "name": "recovery_point_end_time",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DateTime",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The sources to recover. Each value is an index or data stream expression. Wildcards and exclusions prefixed with `-` are supported.\nThe list must not be empty and must not contain blank values.",
+            "name": "sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "How to recover the sources: `replace` recovers them in place, over the data that currently exists, and `rename` recovers them under new names.",
+            "name": "mode",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RecoveryMode",
+                "namespace": "data_recovery.start_recovery"
+              }
+            }
+          },
+          {
+            "description": "How to derive the new name of each recovered source from its name.\nRequired when `mode` is `rename`, and not allowed when `mode` is `replace`.",
+            "name": "rename_strategy",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RenameStrategy",
+                "namespace": "data_recovery.start_recovery"
+              }
+            }
+          },
+          {
+            "description": "Custom metadata for the recovery.",
+            "name": "metadata",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Metadata",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Start a recovery.\n\nStart recovering indices and data streams from a recovery point.\nThis API is intended for internal operator use.\nDepending on the mode, the sources are either replaced with their state at the recovery point, over the data that currently exists,\nor recovered under new names.\nThe recovery runs in the background, so the API returns with a `202 Accepted` status once it has started.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "path": [],
+      "query": [
+        {
+          "description": "The period to wait for the master node.\nIf the master node is not available before the timeout expires, the request fails and returns an error.\nTo indicate that the request should never timeout, set it to `-1`.",
+          "name": "master_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "data_recovery/start_recovery/DataRecoveryStartRecoveryRequest.ts#L25-L76"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The identifier of the recovery that was started.",
+            "name": "recovery_id",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The recovery point that the sources are recovered from.",
+            "name": "recovery_point",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Point",
+                "namespace": "data_recovery._types"
+              }
+            }
+          },
+          {
+            "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+            "name": "resolved_sources",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ResolvedRecoverySource",
+                  "namespace": "data_recovery._types"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/DataRecoveryStartRecoveryResponse.ts#L23-L32"
     },
     {
       "kind": "request",
@@ -171131,9 +172327,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "frozen_transition_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "unmanaged_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L41"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
     },
     {
       "kind": "request",
@@ -171264,14 +172482,17 @@
       },
       "examples": {
         "IndicesExplainDataLifecycleResponseExample1": {
-          "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
+          "availability": {
+            "stack": {}
+          },
+          "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle status for this index.\n",
           "summary": "Successful response",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
+          "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-4-2026.10.20-000001\": {\n      \"index\": \".ds-my-data-stream-test-4-2026.10.20-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792460913455,\n      \"time_since_index_creation\": \"1.31m\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"7d\",\n        \"effective_retention\": \"7d\",\n        \"retention_determined_by\": \"data_stream_configuration\",\n        \"frozen_after\": \"30d\"\n      },\n      \"frozen_transition_status\": \"waiting\"\n    }\n  }\n}"
         },
         "IndicesExplainDataLifecycleResponseExample2": {
           "description": "The API reports any errors related to the lifecycle execution for the target index.",
           "summary": "Successful response with error messages",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+          "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-2026.10.17-000001\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.17-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792195511314,\n      \"time_since_index_creation\": \"3.07d\",\n      \"rollover_date_millis\": 1792440980120,\n      \"time_since_rollover\": \"5.51h\",\n      \"generation_time\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      },\n      \"error\": {\n        \"first_occurrence_millis\": 1792441580075,\n        \"message\": \"\"\"{\"type\":\"exception\",\"reason\":\"Force merge request only had 1 successful shards out of a total of 2\"}\"\"\",\n        \"last_recorded_millis\": 1792460779960,\n        \"retry_count\": 52\n      }\n    },\n    \".ds-my-data-stream-test-2026.10.19-000002\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.19-000002\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792440980129,\n      \"time_since_index_creation\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      }\n    }\n  }\n}"
         }
       },
       "name": {
@@ -173749,7 +174970,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
+      "description": "Get field mapping definitions.\n\nRetrieves mapping definitions for one or more fields.\nFor data streams, the API retrieves field mappings for the stream’s backing indices.\n\nThis API is useful if you don't need a complete mapping or if an index mapping contains a large number of fields.",
       "examples": {
         "indicesGetFieldMappingRequestExample1": {
           "alternatives": [
@@ -185256,7 +186477,7 @@
           }
         ]
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "examples": {
         "IndicesUpdateAliasesExample1": {
           "alternatives": [
@@ -201070,7 +202291,7 @@
             }
           ],
           "description": "Run `PUT _inference/chat_completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
-          "method_request": "PUT _inference/chat-completion/llama-chat-completion",
+          "method_request": "PUT _inference/chat_completion/llama-chat-completion",
           "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
         }
       },
@@ -259056,7 +260277,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Clear the cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
+      "description": "Clear the searchable snapshots shared cache.\n\nClear indices and data streams from the shared cache for partially mounted indices.",
       "examples": {
         "SearchableSnapshotsClearCacheExample1": {
           "alternatives": [
@@ -289225,11 +290446,36 @@
           "value": "{\n  \"acknowledged\": true\n}"
         }
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nAn index named `logs.otel`, or starting with `logs.otel.`, already exists.",
+          "examples": {
+            "PostStreamsEnableResponseExample2": {
+              "description": "An error response from the `POST _streams/logs.otel/_enable` endpoint caused by attempting to enable logs.otel streams when an existing index with the name `logs.otel` already exists\n",
+              "summary": "Enable logs streams - Failure due to conflicting index",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"status_exception\",\n        \"reason\": \"Cannot enable logs.otel streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n      }\n    ],\n    \"type\": \"status_exception\",\n    \"reason\": \"Cannot enable logs streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n  },\n  \"status\": 409\n}"
+            }
+          },
+          "statusCodes": [
+            409
+          ]
+        }
+      ],
       "name": {
         "name": "Response",
         "namespace": "streams.logs_enable"
       },
-      "specLocation": "streams/logs_enable/StreamsEnableResponse.ts#L22-L25"
+      "specLocation": "streams/logs_enable/StreamsEnableResponse.ts#L22-L34"
     },
     {
       "kind": "request",
@@ -290343,11 +291589,35 @@
           }
         ]
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nThe synonym rules are not valid.",
+          "examples": {
+            "SynonymsPutResponseExample1": {
+              "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+            }
+          },
+          "statusCodes": [
+            400
+          ]
+        }
+      ],
       "name": {
         "name": "Response",
         "namespace": "synonyms.put_synonym"
       },
-      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L23-L36"
+      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L24-L46"
     },
     {
       "kind": "request",

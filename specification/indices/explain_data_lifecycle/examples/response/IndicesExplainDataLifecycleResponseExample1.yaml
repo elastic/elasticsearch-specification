@@ -1,12 +1,25 @@
+availability: [stack]
 summary: Successful response
 description: >
-  A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.
+  A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle status for this index.
 # type: response
 # response_code: 200
-value:
-  "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\"\
-  \ : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n\
-  \      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\"\
-  \ : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\"\
-  \ : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\
-  \n  }\n}"
+value: |-
+  {
+    "indices": {
+      ".ds-my-data-stream-test-4-2026.10.20-000001": {
+        "index": ".ds-my-data-stream-test-4-2026.10.20-000001",
+        "managed_by_lifecycle": true,
+        "index_creation_date_millis": 1792460913455,
+        "time_since_index_creation": "1.31m",
+        "lifecycle": {
+          "enabled": true,
+          "data_retention": "7d",
+          "effective_retention": "7d",
+          "retention_determined_by": "data_stream_configuration",
+          "frozen_after": "30d"
+        },
+        "frozen_transition_status": "waiting"
+      }
+    }
+  }

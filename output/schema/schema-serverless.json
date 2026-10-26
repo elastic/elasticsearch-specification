@@ -278,7 +278,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-aliases",
@@ -328,7 +328,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "docId": "cat-component-templates",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-component-templates",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-component-templates",
@@ -465,7 +465,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-indices",
@@ -998,7 +998,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
@@ -5496,7 +5496,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "docId": "aliases-update",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-update-aliases",
@@ -16692,7 +16692,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "examples": {
         "CatAliasesRequestExample1": {
           "alternatives": [
@@ -16839,7 +16839,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "examples": {
         "CatComponentTemplatesRequestExample1": {
           "alternatives": [
@@ -17140,7 +17140,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "examples": {
         "CatIndicesRequestExample1": {
           "alternatives": [
@@ -18755,7 +18755,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "examples": {
         "ClusterInfoExample1": {
           "alternatives": [
@@ -31507,15 +31507,10 @@
         ]
       },
       "examples": {
-        "IndicesExplainDataLifecycleResponseExample1": {
-          "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
-          "summary": "Successful response",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
-        },
         "IndicesExplainDataLifecycleResponseExample2": {
           "description": "The API reports any errors related to the lifecycle execution for the target index.",
           "summary": "Successful response with error messages",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+          "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-2026.10.17-000001\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.17-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792195511314,\n      \"time_since_index_creation\": \"3.07d\",\n      \"rollover_date_millis\": 1792440980120,\n      \"time_since_rollover\": \"5.51h\",\n      \"generation_time\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      },\n      \"error\": {\n        \"first_occurrence_millis\": 1792441580075,\n        \"message\": \"\"\"{\"type\":\"exception\",\"reason\":\"Force merge request only had 1 successful shards out of a total of 2\"}\"\"\",\n        \"last_recorded_millis\": 1792460779960,\n        \"retry_count\": 52\n      }\n    },\n    \".ds-my-data-stream-test-2026.10.19-000002\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.19-000002\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792440980129,\n      \"time_since_index_creation\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      }\n    }\n  }\n}"
         }
       },
       "kind": "response",
@@ -36766,7 +36761,7 @@
           }
         ]
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "examples": {
         "IndicesUpdateAliasesExample1": {
           "alternatives": [
@@ -43848,7 +43843,7 @@
             }
           ],
           "description": "Run `PUT _inference/chat_completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
-          "method_request": "PUT _inference/chat-completion/llama-chat-completion",
+          "method_request": "PUT _inference/chat_completion/llama-chat-completion",
           "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
         }
       },
@@ -71487,12 +71482,36 @@
           }
         ]
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nThe synonym rules are not valid.",
+          "examples": {
+            "SynonymsPutResponseExample1": {
+              "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+            }
+          },
+          "statusCodes": [
+            400
+          ]
+        }
+      ],
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "synonyms.put_synonym"
       },
-      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L23-L36"
+      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L24-L46"
     },
     {
       "attachedBehaviors": [
@@ -108544,6 +108563,27 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+          "name": "rescore",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RescoreProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        },
+        {
           "name": "searches",
           "required": true,
           "type": {
@@ -108569,7 +108609,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L162-L172"
+      "specLocation": "_global/search/_types/profile.ts#L229-L245"
     },
     {
       "kind": "interface",
@@ -109256,7 +109296,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L174-L177"
+      "specLocation": "_global/search/_types/profile.ts#L247-L250"
     },
     {
       "kind": "interface",
@@ -109362,7 +109402,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L179-L187"
+      "specLocation": "_global/search/_types/profile.ts#L252-L260"
     },
     {
       "kind": "interface",
@@ -109460,7 +109500,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L190-L199"
+      "specLocation": "_global/search/_types/profile.ts#L263-L272"
     },
     {
       "kind": "interface",
@@ -109520,7 +109560,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L201-L206"
+      "specLocation": "_global/search/_types/profile.ts#L274-L279"
     },
     {
       "kind": "interface",
@@ -109626,7 +109666,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L208-L216"
+      "specLocation": "_global/search/_types/profile.ts#L281-L289"
     },
     {
       "kind": "interface",
@@ -109856,7 +109896,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L219-L240"
+      "specLocation": "_global/search/_types/profile.ts#L292-L313"
     },
     {
       "kind": "interface",
@@ -109933,7 +109973,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L242-L248"
+      "specLocation": "_global/search/_types/profile.ts#L315-L321"
     },
     {
       "kind": "interface",
@@ -110021,7 +110061,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L250-L257"
+      "specLocation": "_global/search/_types/profile.ts#L323-L330"
     },
     {
       "kind": "interface",
@@ -110119,7 +110159,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L259-L268"
+      "specLocation": "_global/search/_types/profile.ts#L332-L341"
     },
     {
       "kind": "interface",
@@ -110154,7 +110194,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L270-L273"
+      "specLocation": "_global/search/_types/profile.ts#L343-L346"
     },
     {
       "kind": "type_alias",
@@ -110170,6 +110210,306 @@
           "namespace": "_builtins"
         }
       }
+    },
+    {
+      "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+      "kind": "type_alias",
+      "name": {
+        "name": "RescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "specLocation": "_global/search/_types/profile.ts#L164-L175",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "QueryRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "query"
+          }
+        },
+        {
+          "description": "The `query` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RescoreProfileBase",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "What the rescorer runs.",
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The total time spent in the rescorer, including the time spent running its queries.",
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L177-L191"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ScriptRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "script"
+          }
+        },
+        {
+          "description": "The `script` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L199-L203"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LearningToRankRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "learning_to_rank"
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L205-L208"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LearningToRankRescoreProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+          "name": "build_feature_extractors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "build_feature_extractors_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent extracting the features of the top documents.",
+          "name": "feature_extraction",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "feature_extraction_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent running the model on the extracted features.",
+          "name": "inference",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "inference_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L211-L221"
     },
     {
       "kind": "interface",
@@ -110218,7 +110558,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L156-L160"
+      "specLocation": "_global/search/_types/profile.ts#L223-L227"
     },
     {
       "kind": "interface",
@@ -110347,6 +110687,31 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
           "name": "children",
           "required": false,
           "type": {
@@ -110361,7 +110726,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L154"
+      "specLocation": "_global/search/_types/profile.ts#L148-L162"
     },
     {
       "kind": "interface",
@@ -135134,6 +135499,28 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The recovery has not finished.",
+          "name": "running"
+        },
+        {
+          "description": "Every source was recovered.",
+          "name": "completed"
+        },
+        {
+          "description": "The recovery stopped without recovering every source. The `failures` of the recovery describe why.",
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "RecoveryRunStatus",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/RecoveryRunStatus.ts#L20-L27"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "index"
         },
         {
@@ -135141,10 +135528,28 @@
         }
       ],
       "name": {
-        "name": "RecoverySourceType",
-        "namespace": "data_recovery.get_recovery_sources"
+        "name": "SourceType",
+        "namespace": "data_recovery._types"
       },
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+      "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Replace each source with its state at the recovery point, in the place where it currently is.",
+          "name": "replace"
+        },
+        {
+          "description": "Recover each source under a new name, which is derived from its name by the `rename_strategy`.",
+          "name": "rename"
+        }
+      ],
+      "name": {
+        "name": "RecoveryMode",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/types.ts#L20-L25"
     },
     {
       "kind": "enum",
@@ -162321,9 +162726,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "frozen_transition_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "unmanaged_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L41"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
     },
     {
       "kind": "interface",
