@@ -167,6 +167,7 @@ export class QueryProfile {
  * The shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,
  * `learning_to_rank` does.
  * @variants internal tag='type'
+ * @non_exhaustive
  */
 export type RescoreProfile =
   | QueryRescoreProfile
@@ -178,6 +179,8 @@ export class RescoreProfileBase {
   description: string
   /** The total time spent in the rescorer, including the time spent running its queries. */
   time_in_nanos: DurationValue<UnitNanos>
+  /** The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`. */
+  time?: Duration
   debug?: RescoreProfileDebug
 }
 
