@@ -136965,6 +136965,16 @@
             "default": false,
             "x-state": "Generally available; Added in 8.5.0",
             "type": "boolean"
+          },
+          "indexer_request_timeout": {
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+            "default": "30s",
+            "x-state": "Generally available; Added in 8.19.24",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         }
       },
