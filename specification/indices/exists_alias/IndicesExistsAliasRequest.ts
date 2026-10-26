@@ -29,7 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id indices-aliases-exist
- * @index_privileges view_index_metadata
+ * @index_privileges view_index_metadata, manage
  */
 export interface Request extends RequestBase {
   urls: [

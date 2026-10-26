@@ -50,6 +50,7 @@ import { GroupBy } from '@tasks/_types/GroupBy'
  * @availability serverless stability=stable visibility=public
  * @doc_tag document
  * @doc_id docs-reindex
+ * @cluster_privileges manage_reindex
  */
 export interface Request extends RequestBase {
   urls: [

@@ -31,7 +31,7 @@ import { Duration } from '@_types/Time'
  * @doc_tag data stream
  * @doc_id data-stream-explain-lifecycle
  * @ext_doc_id data-stream-lifecycle
- * @index_privileges manage_data_stream_lifecycle
+ * @index_privileges manage_data_stream_lifecycle, view_index_metadata
  */
 export interface Request extends RequestBase {
   urls: [

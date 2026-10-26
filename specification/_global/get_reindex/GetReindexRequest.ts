@@ -45,6 +45,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-get-reindex
  * @doc_tag reindex
+ * @cluster_privileges monitor_reindex, manage_reindex
  */
 export interface Request extends RequestBase {
   urls: [

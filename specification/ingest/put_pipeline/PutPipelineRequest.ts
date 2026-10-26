@@ -33,7 +33,7 @@ import { ProcessorContainer } from '@ingest/_types/Processors'
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @ext_doc_id ingest
- * @cluster_privileges manage_ingest_pipelines
+ * @cluster_privileges manage_pipeline, manage_ingest_pipelines
  */
 export interface Request extends RequestBase {
   urls: [
