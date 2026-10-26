@@ -11873,6 +11873,7 @@ export interface EsqlClassifiedNamedParameter {
 
 export interface EsqlDatasetFieldMapping {
   type: string
+  rename_from?: string
   path?: string
   format?: string
 }

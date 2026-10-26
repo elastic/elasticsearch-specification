@@ -152798,8 +152798,11 @@
           }
         },
         {
-          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
-          "name": "path",
+          "aliases": [
+            "path"
+          ],
+          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
+          "name": "rename_from",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -152822,7 +152825,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L101-L118"
+      "specLocation": "esql/_types/types.ts#L101-L121"
     },
     {
       "kind": "interface",
@@ -152963,7 +152966,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L134-L147"
+      "specLocation": "esql/_types/types.ts#L137-L150"
     },
     {
       "kind": "interface",
@@ -153053,7 +153056,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L149-L177"
+      "specLocation": "esql/_types/types.ts#L152-L180"
     },
     {
       "kind": "type_alias",
@@ -153137,7 +153140,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L120-L132"
+      "specLocation": "esql/_types/types.ts#L123-L135"
     },
     {
       "kind": "type_alias",
@@ -153150,7 +153153,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L218-L223",
+      "specLocation": "esql/_types/types.ts#L221-L226",
       "type": {
         "kind": "union_of",
         "items": [
@@ -153204,7 +153207,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L225-L237"
+      "specLocation": "esql/_types/types.ts#L228-L240"
     },
     {
       "kind": "interface",
@@ -153573,7 +153576,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L179-L216"
+      "specLocation": "esql/_types/types.ts#L182-L219"
     },
     {
       "kind": "interface",

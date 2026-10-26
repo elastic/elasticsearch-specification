@@ -135978,7 +135978,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L218-L223",
+      "specLocation": "esql/_types/types.ts#L221-L226",
       "type": {
         "items": [
           {
@@ -136032,7 +136032,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L225-L237"
+      "specLocation": "esql/_types/types.ts#L228-L240"
     },
     {
       "kind": "enum",
@@ -161118,7 +161118,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L134-L147"
+      "specLocation": "esql/_types/types.ts#L137-L150"
     },
     {
       "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
@@ -161208,7 +161208,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L149-L177"
+      "specLocation": "esql/_types/types.ts#L152-L180"
     },
     {
       "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
@@ -161290,8 +161290,11 @@
           }
         },
         {
-          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
-          "name": "path",
+          "aliases": [
+            "path"
+          ],
+          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
+          "name": "rename_from",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -161314,7 +161317,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L101-L118"
+      "specLocation": "esql/_types/types.ts#L101-L121"
     },
     {
       "description": "The `_id` meta-field of a dataset mapping.",
@@ -161384,7 +161387,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L120-L132"
+      "specLocation": "esql/_types/types.ts#L123-L135"
     },
     {
       "kind": "interface",
@@ -161621,7 +161624,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L179-L216"
+      "specLocation": "esql/_types/types.ts#L182-L219"
     },
     {
       "kind": "interface",
@@ -166504,17 +166507,10 @@
           "name": "metadata",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "kind": "user_defined_value"
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
             }
           }
         }
@@ -194423,9 +194419,28 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.19.24"
+            }
+          },
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "name": "indexer_request_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L196"
+      "specLocation": "transform/_types/Transform.ts#L129-L207"
     },
     {
       "kind": "interface",
@@ -194477,7 +194492,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L198-L229"
+      "specLocation": "transform/_types/Transform.ts#L209-L240"
     },
     {
       "kind": "interface",
@@ -194499,7 +194514,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L233-L239",
+      "specLocation": "transform/_types/Transform.ts#L244-L250",
       "variants": {
         "kind": "container"
       }
@@ -194537,7 +194552,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L241-L253"
+      "specLocation": "transform/_types/Transform.ts#L252-L264"
     },
     {
       "kind": "interface",
