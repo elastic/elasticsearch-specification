@@ -108590,7 +108590,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L228-L244"
+      "specLocation": "_global/search/_types/profile.ts#L229-L245"
     },
     {
       "kind": "interface",
@@ -109277,7 +109277,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L246-L249"
+      "specLocation": "_global/search/_types/profile.ts#L247-L250"
     },
     {
       "kind": "interface",
@@ -109383,7 +109383,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L251-L259"
+      "specLocation": "_global/search/_types/profile.ts#L252-L260"
     },
     {
       "kind": "interface",
@@ -109481,7 +109481,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L262-L271"
+      "specLocation": "_global/search/_types/profile.ts#L263-L272"
     },
     {
       "kind": "interface",
@@ -109541,7 +109541,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L273-L278"
+      "specLocation": "_global/search/_types/profile.ts#L274-L279"
     },
     {
       "kind": "interface",
@@ -109647,7 +109647,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L280-L288"
+      "specLocation": "_global/search/_types/profile.ts#L281-L289"
     },
     {
       "kind": "interface",
@@ -109877,7 +109877,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L291-L312"
+      "specLocation": "_global/search/_types/profile.ts#L292-L313"
     },
     {
       "kind": "interface",
@@ -109954,7 +109954,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L314-L320"
+      "specLocation": "_global/search/_types/profile.ts#L315-L321"
     },
     {
       "kind": "interface",
@@ -110042,7 +110042,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L322-L329"
+      "specLocation": "_global/search/_types/profile.ts#L323-L330"
     },
     {
       "kind": "interface",
@@ -110140,7 +110140,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L331-L340"
+      "specLocation": "_global/search/_types/profile.ts#L332-L341"
     },
     {
       "kind": "interface",
@@ -110175,7 +110175,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L342-L345"
+      "specLocation": "_global/search/_types/profile.ts#L343-L346"
     },
     {
       "kind": "type_alias",
@@ -110266,7 +110266,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L187-L191"
+      "specLocation": "_global/search/_types/profile.ts#L193-L197"
     },
     {
       "kind": "interface",
@@ -110321,50 +110321,26 @@
           }
         },
         {
+          "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
           "name": "debug",
           "required": false,
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "RescoreProfileDebug",
-              "namespace": "_global.search._types"
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
             }
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L177-L185"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "RescoreProfileDebug",
-        "namespace": "_global.search._types"
-      },
-      "properties": [
-        {
-          "name": "window_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timed_out",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_global/search/_types/profile.ts#L217-L220"
+      "specLocation": "_global/search/_types/profile.ts#L177-L191"
     },
     {
       "inherits": {
@@ -110400,7 +110376,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+      "specLocation": "_global/search/_types/profile.ts#L199-L203"
     },
     {
       "inherits": {
@@ -110435,7 +110411,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L199-L202"
+      "specLocation": "_global/search/_types/profile.ts#L205-L208"
     },
     {
       "kind": "interface",
@@ -110514,7 +110490,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L205-L215"
+      "specLocation": "_global/search/_types/profile.ts#L211-L221"
     },
     {
       "kind": "interface",
@@ -110563,7 +110539,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L222-L226"
+      "specLocation": "_global/search/_types/profile.ts#L223-L227"
     },
     {
       "kind": "interface",

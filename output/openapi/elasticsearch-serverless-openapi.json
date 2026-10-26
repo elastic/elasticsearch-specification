@@ -39919,30 +39919,16 @@
             ]
           },
           "debug": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.RescoreProfileDebug"
-              }
-            ]
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           }
         },
         "required": [
           "description",
           "time_in_nanos"
-        ]
-      },
-      "_global.search._types.RescoreProfileDebug": {
-        "type": "object",
-        "properties": {
-          "window_size": {
-            "type": "number"
-          },
-          "timed_out": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "window_size"
         ]
       },
       "_global.search._types.ScriptRescoreProfile": {

@@ -181,7 +181,13 @@ export class RescoreProfileBase {
   time_in_nanos: DurationValue<UnitNanos>
   /** The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`. */
   time?: Duration
-  debug?: RescoreProfileDebug
+  /**
+   * Extra details about the rescorer.
+   *
+   * Every rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is
+   * set to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.
+   */
+  debug?: Dictionary<string, UserDefinedValue>
 }
 
 export class QueryRescoreProfile extends RescoreProfileBase {
@@ -212,11 +218,6 @@ export class LearningToRankRescoreProfileBreakdown {
   /** The time spent running the model on the extracted features. */
   inference: long
   inference_count: long
-}
-
-export class RescoreProfileDebug {
-  window_size: integer
-  timed_out?: boolean
 }
 
 export class SearchProfile {

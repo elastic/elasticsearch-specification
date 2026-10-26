@@ -1894,12 +1894,7 @@ export interface SearchRescoreProfileBase {
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   time?: Duration
-  debug?: SearchRescoreProfileDebug
-}
-
-export interface SearchRescoreProfileDebug {
-  window_size: integer
-  timed_out?: boolean
+  debug?: Record<string, any>
 }
 
 export interface SearchRescoreQuery {
