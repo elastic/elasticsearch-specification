@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, MediaType } from '@_types/common'
 
 /**
- * Clear the cache.
+ * Clear the searchable snapshots shared cache.
  *
  * Clear indices and data streams from the shared cache for partially mounted indices.
  * @rest_spec_name searchable_snapshots.clear_cache

@@ -17,11 +17,11 @@
  * under the License.
  */
 
-import { RecoveryPoint } from './types'
+import { Point } from '../_types/Point'
 
 export class Response {
   body: {
     /** Recovery points in descending order by end time. */
-    recovery_points: RecoveryPoint[]
+    recovery_points: Point[]
   }
 }

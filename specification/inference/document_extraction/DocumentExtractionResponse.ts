@@ -17,11 +17,9 @@
  * under the License.
  */
 
-import { DateTime } from '@_types/Time'
+import { DocumentExtractionInferenceResult } from '@inference/_types/Results'
 
-export class RecoveryPoint {
-  /** The time when creation of the recovery point started. */
-  start_time: DateTime
-  /** The time when creation of the recovery point completed. */
-  end_time: DateTime
+export class Response {
+  /** @codegen_name inference_result */
+  body: DocumentExtractionInferenceResult
 }

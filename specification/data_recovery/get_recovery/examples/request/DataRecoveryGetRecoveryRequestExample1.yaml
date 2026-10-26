@@ -1,0 +1,5 @@
+summary: Get a recovery
+method_request: GET _data_recovery/recoveries/rec-0f3a9c1e
+description: Run `GET _data_recovery/recoveries/rec-0f3a9c1e` to get the status and details of a recovery.
+# type: request
+value: ''

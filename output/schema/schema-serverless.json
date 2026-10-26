@@ -278,7 +278,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "docId": "cat-alias",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-aliases",
@@ -328,7 +328,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "docId": "cat-component-templates",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-component-templates",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-component-templates",
@@ -465,7 +465,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "docId": "cat-indices",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cat-indices",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cat-indices",
@@ -998,7 +998,7 @@
           "stability": "stable"
         }
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "docId": "cluster-info",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-cluster-info",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
@@ -5496,7 +5496,7 @@
           "stability": "stable"
         }
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "docId": "aliases-update",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-update-aliases",
@@ -5743,6 +5743,53 @@
             "DELETE"
           ],
           "path": "/_inference/_region_policy"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Perform document extraction inference on the service.\n\nExtract the content of documents, such as PDFs or images of documents, into a textual format.",
+      "docId": "inference-api-post",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
+      "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
+      "name": "inference.document_extraction",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "inference.document_extraction"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "inference.document_extraction"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_inference/document_extraction/{inference_id}"
         }
       ]
     },
@@ -16692,7 +16739,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
+      "description": "Get a compact list of aliases.\n\nGet the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.",
       "examples": {
         "CatAliasesRequestExample1": {
           "alternatives": [
@@ -16839,7 +16886,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
+      "description": "Get a compact list of component templates.\n\nGet information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.",
       "examples": {
         "CatComponentTemplatesRequestExample1": {
           "alternatives": [
@@ -17140,7 +17187,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get index information.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
+      "description": "Get a compact list of indices.\n\nGet high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.",
       "examples": {
         "CatIndicesRequestExample1": {
           "alternatives": [
@@ -18755,7 +18802,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get cluster info.\n\nReturns basic information about the cluster.",
+      "description": "Get cluster subsystem info.\n\nReturns basic information about the cluster.",
       "examples": {
         "ClusterInfoExample1": {
           "alternatives": [
@@ -31507,15 +31554,10 @@
         ]
       },
       "examples": {
-        "IndicesExplainDataLifecycleResponseExample1": {
-          "description": "A successful response from `GET .ds-metrics-2023.03.22-000001/_lifecycle/explain`, which retrieves  the lifecycle status for a data stream backing index. If the index is managed by a data stream lifecycle, the API will show the `managed_by_lifecycle` field set to `true` and the rest of the response will contain information about the lifecycle execution status for this index.\n",
-          "summary": "Successful response",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"rollover_date_millis\" : 1679475564293,\n      \"time_since_rollover\" : \"121ms\",\n      \"lifecycle\" : { },\n      \"generation_time\" : \"121ms\"\n  }\n}"
-        },
         "IndicesExplainDataLifecycleResponseExample2": {
           "description": "The API reports any errors related to the lifecycle execution for the target index.",
           "summary": "Successful response with error messages",
-          "value": "{\n  \"indices\": {\n    \".ds-metrics-2023.03.22-000001\": {\n      \"index\" : \".ds-metrics-2023.03.22-000001\",\n      \"managed_by_lifecycle\" : true,\n      \"index_creation_date_millis\" : 1679475563571,\n      \"time_since_index_creation\" : \"843ms\",\n      \"lifecycle\" : {\n        \"enabled\": true\n      },\n      \"error\": \"{\\\"type\\\":\\\"validation_exception\\\",\\\"reason\\\":\\\"Validation Failed: 1: this action would add [2] shards, but this cluster\ncurrently has [4]/[3] maximum normal shards open;\\\"}\"\n  }\n}"
+          "value": "{\n  \"indices\": {\n    \".ds-my-data-stream-test-2026.10.17-000001\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.17-000001\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792195511314,\n      \"time_since_index_creation\": \"3.07d\",\n      \"rollover_date_millis\": 1792440980120,\n      \"time_since_rollover\": \"5.51h\",\n      \"generation_time\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      },\n      \"error\": {\n        \"first_occurrence_millis\": 1792441580075,\n        \"message\": \"\"\"{\"type\":\"exception\",\"reason\":\"Force merge request only had 1 successful shards out of a total of 2\"}\"\"\",\n        \"last_recorded_millis\": 1792460779960,\n        \"retry_count\": 52\n      }\n    },\n    \".ds-my-data-stream-test-2026.10.19-000002\": {\n      \"index\": \".ds-my-data-stream-test-2026.10.19-000002\",\n      \"managed_by_lifecycle\": true,\n      \"index_creation_date_millis\": 1792440980129,\n      \"time_since_index_creation\": \"5.51h\",\n      \"lifecycle\": {\n        \"enabled\": true,\n        \"data_retention\": \"30d\",\n        \"effective_retention\": \"30d\",\n        \"retention_determined_by\": \"data_stream_configuration\"\n      }\n    }\n  }\n}"
         }
       },
       "kind": "response",
@@ -36766,7 +36808,7 @@
           }
         ]
       },
-      "description": "Create or update an alias.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
       "examples": {
         "IndicesUpdateAliasesExample1": {
           "alternatives": [
@@ -37774,6 +37816,122 @@
         "namespace": "inference.delete_region_policy"
       },
       "specLocation": "inference/delete_region_policy/DeleteRegionPolicyResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionInput",
+                "namespace": "inference.document_extraction"
+              }
+            }
+          },
+          {
+            "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+            "name": "task_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TaskSettings",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Perform document extraction inference on the service.\n\nExtract the content of documents, such as PDFs or images of documents, into a textual format.",
+      "examples": {
+        "DocumentExtractionRequestExample1": {
+          "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+          "method_request": "POST _inference/document_extraction/my-document-extraction-endpoint",
+          "summary": "Document extraction task",
+          "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+        },
+        "DocumentExtractionRequestExample2": {
+          "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+          "method_request": "POST _inference/document_extraction/my-document-extraction-endpoint",
+          "summary": "Document extraction task using the url format and task settings",
+          "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "inference.document_extraction"
+      },
+      "path": [
+        {
+          "description": "The unique identifier for the inference endpoint.",
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The amount of time to wait for the inference request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "120s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L25-L100"
+    },
+    {
+      "body": {
+        "codegenName": "inference_result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DocumentExtractionInferenceResult",
+            "namespace": "inference._types"
+          }
+        }
+      },
+      "examples": {
+        "DocumentExtractionResponseExample1": {
+          "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+          "summary": "Document extraction task",
+          "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionResponse.ts#L22-L25"
     },
     {
       "attachedBehaviors": [
@@ -43848,7 +44006,7 @@
             }
           ],
           "description": "Run `PUT _inference/chat_completion/llama-chat-completion` to create a Llama inference endpoint that performs a `chat_completion` task.",
-          "method_request": "PUT _inference/chat-completion/llama-chat-completion",
+          "method_request": "PUT _inference/chat_completion/llama-chat-completion",
           "value": "{\n  \"service\": \"llama\",\n  \"service_settings\": {\n    \"url\": \"http://localhost:8321/v1/openai/v1/chat/completions\",\n    \"model_id\": \"llama3.2:3b\" \n  }\n}"
         }
       },
@@ -71487,12 +71645,36 @@
           }
         ]
       },
+      "exceptions": [
+        {
+          "body": {
+            "kind": "value",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ErrorResponseBase",
+                "namespace": "_types"
+              }
+            }
+          },
+          "description": "\nThe synonym rules are not valid.",
+          "examples": {
+            "SynonymsPutResponseExample1": {
+              "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+              "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+            }
+          },
+          "statusCodes": [
+            400
+          ]
+        }
+      ],
       "kind": "response",
       "name": {
         "name": "Response",
         "namespace": "synonyms.put_synonym"
       },
-      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L23-L36"
+      "specLocation": "synonyms/put_synonym/SynonymsPutResponse.ts#L24-L46"
     },
     {
       "attachedBehaviors": [
@@ -108544,6 +108726,27 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+          "name": "rescore",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RescoreProfile",
+                "namespace": "_global.search._types"
+              }
+            }
+          }
+        },
+        {
           "name": "searches",
           "required": true,
           "type": {
@@ -108569,7 +108772,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L162-L172"
+      "specLocation": "_global/search/_types/profile.ts#L229-L245"
     },
     {
       "kind": "interface",
@@ -109256,7 +109459,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L174-L177"
+      "specLocation": "_global/search/_types/profile.ts#L247-L250"
     },
     {
       "kind": "interface",
@@ -109362,7 +109565,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L179-L187"
+      "specLocation": "_global/search/_types/profile.ts#L252-L260"
     },
     {
       "kind": "interface",
@@ -109460,7 +109663,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L190-L199"
+      "specLocation": "_global/search/_types/profile.ts#L263-L272"
     },
     {
       "kind": "interface",
@@ -109520,7 +109723,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L201-L206"
+      "specLocation": "_global/search/_types/profile.ts#L274-L279"
     },
     {
       "kind": "interface",
@@ -109626,7 +109829,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L208-L216"
+      "specLocation": "_global/search/_types/profile.ts#L281-L289"
     },
     {
       "kind": "interface",
@@ -109856,7 +110059,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L219-L240"
+      "specLocation": "_global/search/_types/profile.ts#L292-L313"
     },
     {
       "kind": "interface",
@@ -109933,7 +110136,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L242-L248"
+      "specLocation": "_global/search/_types/profile.ts#L315-L321"
     },
     {
       "kind": "interface",
@@ -110021,7 +110224,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L250-L257"
+      "specLocation": "_global/search/_types/profile.ts#L323-L330"
     },
     {
       "kind": "interface",
@@ -110119,7 +110322,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L259-L268"
+      "specLocation": "_global/search/_types/profile.ts#L332-L341"
     },
     {
       "kind": "interface",
@@ -110154,7 +110357,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L270-L273"
+      "specLocation": "_global/search/_types/profile.ts#L343-L346"
     },
     {
       "kind": "type_alias",
@@ -110170,6 +110373,306 @@
           "namespace": "_builtins"
         }
       }
+    },
+    {
+      "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+      "kind": "type_alias",
+      "name": {
+        "name": "RescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "specLocation": "_global/search/_types/profile.ts#L164-L175",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScriptRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfile",
+              "namespace": "_global.search._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "QueryRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "query"
+          }
+        },
+        {
+          "description": "The `query` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RescoreProfileBase",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "What the rescorer runs.",
+          "name": "description",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The total time spent in the rescorer, including the time spent running its queries.",
+          "name": "time_in_nanos",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitNanos",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L177-L191"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ScriptRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "script"
+          }
+        },
+        {
+          "description": "The `script` rescorer does not report any steps.",
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmptyObject",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L199-L203"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "RescoreProfileBase",
+          "namespace": "_global.search._types"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "LearningToRankRescoreProfile",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "learning_to_rank"
+          }
+        },
+        {
+          "name": "breakdown",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LearningToRankRescoreProfileBreakdown",
+              "namespace": "_global.search._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L205-L208"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LearningToRankRescoreProfileBreakdown",
+        "namespace": "_global.search._types"
+      },
+      "properties": [
+        {
+          "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+          "name": "build_feature_extractors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "build_feature_extractors_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent extracting the features of the top documents.",
+          "name": "feature_extraction",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "feature_extraction_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time spent running the model on the extracted features.",
+          "name": "inference",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "inference_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/search/_types/profile.ts#L211-L221"
     },
     {
       "kind": "interface",
@@ -110218,7 +110721,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L156-L160"
+      "specLocation": "_global/search/_types/profile.ts#L223-L227"
     },
     {
       "kind": "interface",
@@ -110347,6 +110850,31 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+          "name": "debug",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        },
+        {
           "name": "children",
           "required": false,
           "type": {
@@ -110361,7 +110889,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L154"
+      "specLocation": "_global/search/_types/profile.ts#L148-L162"
     },
     {
       "kind": "interface",
@@ -135134,6 +135662,28 @@
       "kind": "enum",
       "members": [
         {
+          "description": "The recovery has not finished.",
+          "name": "running"
+        },
+        {
+          "description": "Every source was recovered.",
+          "name": "completed"
+        },
+        {
+          "description": "The recovery stopped without recovering every source. The `failures` of the recovery describe why.",
+          "name": "failed"
+        }
+      ],
+      "name": {
+        "name": "RecoveryRunStatus",
+        "namespace": "data_recovery._types"
+      },
+      "specLocation": "data_recovery/_types/RecoveryRunStatus.ts#L20-L27"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "index"
         },
         {
@@ -135141,10 +135691,28 @@
         }
       ],
       "name": {
-        "name": "RecoverySourceType",
-        "namespace": "data_recovery.get_recovery_sources"
+        "name": "SourceType",
+        "namespace": "data_recovery._types"
       },
-      "specLocation": "data_recovery/get_recovery_sources/types.ts#L32-L35"
+      "specLocation": "data_recovery/_types/SourceType.ts#L20-L23"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Replace each source with its state at the recovery point, in the place where it currently is.",
+          "name": "replace"
+        },
+        {
+          "description": "Recover each source under a new name, which is derived from its name by the `rename_strategy`.",
+          "name": "rename"
+        }
+      ],
+      "name": {
+        "name": "RecoveryMode",
+        "namespace": "data_recovery.start_recovery"
+      },
+      "specLocation": "data_recovery/start_recovery/types.ts#L20-L25"
     },
     {
       "kind": "enum",
@@ -135410,7 +135978,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L218-L223",
+      "specLocation": "esql/_types/types.ts#L221-L226",
       "type": {
         "items": [
           {
@@ -135464,7 +136032,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L225-L237"
+      "specLocation": "esql/_types/types.ts#L228-L240"
     },
     {
       "kind": "enum",
@@ -138430,7 +138998,7 @@
         "name": "DenseByteVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L52-L56",
+      "specLocation": "inference/_types/Results.ts#L53-L57",
       "type": {
         "kind": "array_of",
         "value": {
@@ -138449,7 +139017,7 @@
         "name": "DenseVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L31-L35",
+      "specLocation": "inference/_types/Results.ts#L32-L36",
       "type": {
         "kind": "array_of",
         "value": {
@@ -139725,7 +140293,7 @@
         "name": "SparseVector",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Results.ts#L25-L29",
+      "specLocation": "inference/_types/Results.ts#L26-L30",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -139776,13 +140344,16 @@
         },
         {
           "name": "embedding"
+        },
+        {
+          "name": "document_extraction"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L30"
+      "specLocation": "inference/_types/TaskType.ts#L20-L31"
     },
     {
       "kind": "enum",
@@ -139798,7 +140369,7 @@
         "name": "TaskTypeAi21",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L38-L41"
+      "specLocation": "inference/_types/TaskType.ts#L39-L42"
     },
     {
       "kind": "enum",
@@ -139820,7 +140391,7 @@
         "name": "TaskTypeAlibabaCloudAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L43-L48"
+      "specLocation": "inference/_types/TaskType.ts#L44-L49"
     },
     {
       "kind": "enum",
@@ -139839,7 +140410,7 @@
         "name": "TaskTypeAmazonBedrock",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L50-L54"
+      "specLocation": "inference/_types/TaskType.ts#L51-L55"
     },
     {
       "kind": "enum",
@@ -139864,7 +140435,7 @@
         "name": "TaskTypeAmazonSageMaker",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L56-L62"
+      "specLocation": "inference/_types/TaskType.ts#L57-L63"
     },
     {
       "kind": "enum",
@@ -139880,7 +140451,7 @@
         "name": "TaskTypeAnthropic",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L64-L67"
+      "specLocation": "inference/_types/TaskType.ts#L65-L68"
     },
     {
       "kind": "enum",
@@ -139899,7 +140470,7 @@
         "name": "TaskTypeAzureAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L69-L73"
+      "specLocation": "inference/_types/TaskType.ts#L70-L74"
     },
     {
       "kind": "enum",
@@ -139918,7 +140489,7 @@
         "name": "TaskTypeAzureOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L75-L79"
+      "specLocation": "inference/_types/TaskType.ts#L76-L80"
     },
     {
       "kind": "enum",
@@ -139937,7 +140508,7 @@
         "name": "TaskTypeCohere",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L81-L85"
+      "specLocation": "inference/_types/TaskType.ts#L82-L86"
     },
     {
       "kind": "enum",
@@ -139950,7 +140521,7 @@
         "name": "TaskTypeContextualAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L87-L89"
+      "specLocation": "inference/_types/TaskType.ts#L88-L90"
     },
     {
       "kind": "enum",
@@ -139972,7 +140543,7 @@
         "name": "TaskTypeCustom",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L91-L96"
+      "specLocation": "inference/_types/TaskType.ts#L92-L97"
     },
     {
       "kind": "enum",
@@ -139988,7 +140559,7 @@
         "name": "TaskTypeDeepSeek",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L98-L101"
+      "specLocation": "inference/_types/TaskType.ts#L99-L102"
     },
     {
       "kind": "enum",
@@ -140001,7 +140572,7 @@
         "name": "TaskTypeELSER",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L109-L111"
+      "specLocation": "inference/_types/TaskType.ts#L110-L112"
     },
     {
       "kind": "enum",
@@ -140020,7 +140591,7 @@
         "name": "TaskTypeElasticsearch",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L103-L107"
+      "specLocation": "inference/_types/TaskType.ts#L104-L108"
     },
     {
       "kind": "enum",
@@ -140039,7 +140610,7 @@
         "name": "TaskTypeFireworksAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L174-L178"
+      "specLocation": "inference/_types/TaskType.ts#L175-L179"
     },
     {
       "kind": "enum",
@@ -140055,7 +140626,7 @@
         "name": "TaskTypeGoogleAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L113-L116"
+      "specLocation": "inference/_types/TaskType.ts#L114-L117"
     },
     {
       "kind": "enum",
@@ -140077,7 +140648,7 @@
         "name": "TaskTypeGoogleVertexAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L118-L123"
+      "specLocation": "inference/_types/TaskType.ts#L119-L124"
     },
     {
       "kind": "enum",
@@ -140090,7 +140661,7 @@
         "name": "TaskTypeGroq",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L125-L127"
+      "specLocation": "inference/_types/TaskType.ts#L126-L128"
     },
     {
       "kind": "enum",
@@ -140112,7 +140683,7 @@
         "name": "TaskTypeHuggingFace",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L129-L134"
+      "specLocation": "inference/_types/TaskType.ts#L130-L135"
     },
     {
       "kind": "enum",
@@ -140131,7 +140702,7 @@
         "name": "TaskTypeJinaAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L32-L36"
+      "specLocation": "inference/_types/TaskType.ts#L33-L37"
     },
     {
       "kind": "enum",
@@ -140150,7 +140721,7 @@
         "name": "TaskTypeLlama",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L136-L140"
+      "specLocation": "inference/_types/TaskType.ts#L137-L141"
     },
     {
       "kind": "enum",
@@ -140169,7 +140740,7 @@
         "name": "TaskTypeMistral",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L142-L146"
+      "specLocation": "inference/_types/TaskType.ts#L143-L147"
     },
     {
       "kind": "enum",
@@ -140191,7 +140762,7 @@
         "name": "TaskTypeNvidia",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L148-L153"
+      "specLocation": "inference/_types/TaskType.ts#L149-L154"
     },
     {
       "kind": "enum",
@@ -140213,7 +140784,7 @@
         "name": "TaskTypeOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L155-L160"
+      "specLocation": "inference/_types/TaskType.ts#L156-L161"
     },
     {
       "kind": "enum",
@@ -140235,7 +140806,7 @@
         "name": "TaskTypeOpenShiftAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L162-L167"
+      "specLocation": "inference/_types/TaskType.ts#L163-L168"
     },
     {
       "kind": "enum",
@@ -140251,7 +140822,7 @@
         "name": "TaskTypeVoyageAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L169-L172"
+      "specLocation": "inference/_types/TaskType.ts#L170-L173"
     },
     {
       "kind": "enum",
@@ -140270,7 +140841,7 @@
         "name": "TaskTypeWatsonx",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L180-L184"
+      "specLocation": "inference/_types/TaskType.ts#L181-L185"
     },
     {
       "kind": "enum",
@@ -140335,6 +140906,139 @@
         "namespace": "inference._types"
       },
       "specLocation": "inference/_types/CommonTypes.ts#L2468-L2473"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "base64"
+        },
+        {
+          "name": "url"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionContentFormat",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L148-L155"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "image"
+        },
+        {
+          "name": "pdf"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionContentType",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L140-L146"
+    },
+    {
+      "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DocumentExtractionInput",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L102-L108",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentObject",
+              "namespace": "inference.document_extraction"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionContentObject",
+                "namespace": "inference.document_extraction"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "A wrapper object which contains a single document to extract the content from.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionContentObject",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The document to extract the content from.",
+          "name": "content",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentObjectItem",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L110-L118"
+    },
+    {
+      "description": "An object describing a single document to extract the content from.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionContentObjectItem",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The type of the document. Not all services and models support all types.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentType",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionContentFormat",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L138"
     },
     {
       "codegenNames": [
@@ -160414,7 +161118,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L134-L147"
+      "specLocation": "esql/_types/types.ts#L137-L150"
     },
     {
       "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
@@ -160504,7 +161208,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L149-L177"
+      "specLocation": "esql/_types/types.ts#L152-L180"
     },
     {
       "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
@@ -160586,8 +161290,11 @@
           }
         },
         {
-          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
-          "name": "path",
+          "aliases": [
+            "path"
+          ],
+          "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
+          "name": "rename_from",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -160610,7 +161317,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L101-L118"
+      "specLocation": "esql/_types/types.ts#L101-L121"
     },
     {
       "description": "The `_id` meta-field of a dataset mapping.",
@@ -160680,7 +161387,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L120-L132"
+      "specLocation": "esql/_types/types.ts#L123-L135"
     },
     {
       "kind": "interface",
@@ -160917,7 +161624,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L179-L216"
+      "specLocation": "esql/_types/types.ts#L182-L219"
     },
     {
       "kind": "interface",
@@ -162321,9 +163028,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "frozen_transition_status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "unmanaged_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L41"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
     },
     {
       "kind": "interface",
@@ -165661,7 +166390,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L99-L104"
+      "specLocation": "inference/_types/Results.ts#L100-L105"
     },
     {
       "description": "The completion result object",
@@ -165683,7 +166412,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L92-L97"
+      "specLocation": "inference/_types/Results.ts#L93-L98"
     },
     {
       "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
@@ -165714,7 +166443,79 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L125-L130"
+      "specLocation": "inference/_types/Results.ts#L152-L157"
+    },
+    {
+      "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionInferenceResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "document_extraction",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DocumentExtractionResult",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L144-L150"
+    },
+    {
+      "description": "The document extraction result object representing the content extracted from a single document.",
+      "kind": "interface",
+      "name": {
+        "name": "DocumentExtractionResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The content extracted from the document.",
+          "name": "content",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The format of the extracted content, for example `markdown`.",
+          "name": "format",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Metadata",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L126-L142"
     },
     {
       "kind": "interface",
@@ -165813,7 +166614,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L82-L90",
+      "specLocation": "inference/_types/Results.ts#L83-L91",
       "variants": {
         "kind": "container"
       }
@@ -165838,7 +166639,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L58-L63"
+      "specLocation": "inference/_types/Results.ts#L59-L64"
     },
     {
       "description": "The dense embedding result object for float representation",
@@ -165860,7 +166661,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L65-L70"
+      "specLocation": "inference/_types/Results.ts#L66-L71"
     },
     {
       "description": "Represents an inference endpoint as returned by the GET API",
@@ -166246,7 +167047,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L299-L313",
+      "specLocation": "inference/_types/Results.ts#L326-L340",
       "variants": {
         "kind": "container"
       }
@@ -166282,7 +167083,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L37-L43"
+      "specLocation": "inference/_types/Results.ts#L38-L44"
     },
     {
       "description": "The rerank result object representing a single ranked document\nid: the original index of the document in the request\nrelevance_score: the relevance_score of the document relative to the query\ntext: Optional, the text of the document, if requested",
@@ -166326,7 +167127,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L106-L116"
+      "specLocation": "inference/_types/Results.ts#L107-L117"
     },
     {
       "description": "The response format for the non-streaming unified chat completion request.",
@@ -166400,7 +167201,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L272-L297"
+      "specLocation": "inference/_types/Results.ts#L299-L324"
     },
     {
       "description": "A single completion choice returned by the model.",
@@ -166447,7 +167248,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L200-L218"
+      "specLocation": "inference/_types/Results.ts#L227-L245"
     },
     {
       "description": "The message returned by the model.",
@@ -166536,7 +167337,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L168-L198"
+      "specLocation": "inference/_types/Results.ts#L195-L225"
     },
     {
       "description": "A tool call generated by the model.",
@@ -166595,7 +167396,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L146-L166"
+      "specLocation": "inference/_types/Results.ts#L173-L193"
     },
     {
       "description": "The function called by the tool.",
@@ -166630,7 +167431,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L132-L144"
+      "specLocation": "inference/_types/Results.ts#L159-L171"
     },
     {
       "description": "Token usage statistics for the request.",
@@ -166701,7 +167502,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L244-L270"
+      "specLocation": "inference/_types/Results.ts#L271-L297"
     },
     {
       "description": "Breakdown of tokens used in the prompt.",
@@ -166736,7 +167537,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L220-L232"
+      "specLocation": "inference/_types/Results.ts#L247-L259"
     },
     {
       "description": "Breakdown of tokens used in the request.",
@@ -166759,7 +167560,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L234-L242"
+      "specLocation": "inference/_types/Results.ts#L261-L269"
     },
     {
       "kind": "interface",
@@ -171076,7 +171877,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L118-L123"
+      "specLocation": "inference/_types/Results.ts#L119-L124"
     },
     {
       "description": "The response format for the sparse embedding request.",
@@ -171101,7 +171902,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L45-L50"
+      "specLocation": "inference/_types/Results.ts#L46-L51"
     },
     {
       "description": "TextEmbeddingInferenceResult is an aggregation of mutually exclusive text_embedding variants",
@@ -171154,7 +171955,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L72-L80",
+      "specLocation": "inference/_types/Results.ts#L73-L81",
       "variants": {
         "kind": "container"
       }
@@ -193618,9 +194419,28 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.19.24"
+            }
+          },
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "name": "indexer_request_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L196"
+      "specLocation": "transform/_types/Transform.ts#L129-L207"
     },
     {
       "kind": "interface",
@@ -193672,7 +194492,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L198-L229"
+      "specLocation": "transform/_types/Transform.ts#L209-L240"
     },
     {
       "kind": "interface",
@@ -193694,7 +194514,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L233-L239",
+      "specLocation": "transform/_types/Transform.ts#L244-L250",
       "variants": {
         "kind": "container"
       }
@@ -193732,7 +194552,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L241-L253"
+      "specLocation": "transform/_types/Transform.ts#L252-L264"
     },
     {
       "kind": "interface",

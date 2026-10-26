@@ -2,7 +2,7 @@
 description:
   Run `PUT _inference/chat_completion/llama-chat-completion` to create a Llama inference endpoint that performs a
   `chat_completion` task.
-method_request: 'PUT _inference/chat-completion/llama-chat-completion'
+method_request: 'PUT _inference/chat_completion/llama-chat-completion'
 # type: "request"
 value: |-
   {

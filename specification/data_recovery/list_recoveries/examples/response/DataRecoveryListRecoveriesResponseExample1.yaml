@@ -1,0 +1,46 @@
+summary: A page of recoveries
+description: >
+  The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "recoveries": [
+      {
+        "recovery_id": "rec-0f3a9c1e",
+        "status": "running",
+        "recovery_point": {
+          "start_time": "2026-10-20T10:00:00.000Z",
+          "end_time": "2026-10-20T10:05:12.000Z"
+        },
+        "destination_mode": "rename",
+        "sources": [
+          { "source": "orders", "type": "index", "destination": "restored-orders" }
+        ],
+        "metadata": {},
+        "started_at": "2026-10-22T08:30:00.000Z",
+        "progress": { "percent_complete": 42 },
+        "failures": [],
+        "total_failure_count": 0
+      },
+      {
+        "recovery_id": "rec-3c9e51b0",
+        "status": "completed",
+        "recovery_point": {
+          "start_time": "2026-10-19T10:00:00.000Z",
+          "end_time": "2026-10-19T10:04:58.000Z"
+        },
+        "destination_mode": "replace",
+        "sources": [
+          { "source": "logs-app-default", "type": "data_stream", "destination": "logs-app-default" }
+        ],
+        "metadata": {},
+        "started_at": "2026-10-21T14:02:00.000Z",
+        "completed_at": "2026-10-21T14:09:40.000Z",
+        "progress": { "percent_complete": 100 },
+        "failures": [],
+        "total_failure_count": 0
+      }
+    ],
+    "has_more": true
+  }

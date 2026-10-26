@@ -33,6 +33,11 @@ use clients_schema::SchemaExample;
 use crate::components::TypesAndComponents;
 use crate::convert_availabilities;
 
+/// Behaviors whose properties are query parameters that the OpenAPI output lists on each request that
+/// implements them. `CommonQueryParameters` (`pretty`, `human`, ...) is not in this list: it applies to all
+/// the endpoints, and is not listed on each of them.
+const QUERY_PARAMETER_BEHAVIORS: [&str; 1] = ["CommonCatQueryParameters"];
+
 /// Add an endpoint to the OpenAPI schema. This will result in the addition of a number of elements to the
 /// openapi schema's `paths` and `components` sections.
 pub fn add_endpoint(
@@ -134,55 +139,32 @@ pub fn add_endpoint(
         });
     }
 
+    // Query parameters that a behavior adds to all the requests that implement it
+    for behavior in request.attached_behaviors.iter().filter(|b| QUERY_PARAMETER_BEHAVIORS.contains(&b.as_str())) {
+        let behavior_name = clients_schema::TypeName::new("_spec_utils", behavior);
+        let model = tac.model;
+        for prop in model.get_interface(&behavior_name)?.properties.iter() {
+            // The request's own definition of a parameter wins over the behavior's
+            if request.query.iter().any(|p| p.name == prop.name) {
+                continue;
+            }
+            let parameter = Parameter::Query {
+                parameter_data: parameter_data(prop, false, tac)?,
+                allow_reserved: false,
+                style: QueryStyle::Form,
+                allow_empty_value: None,
+            };
+            // Always shared, as the same parameter is used by every request that implements the behavior
+            query_params.push(tac.add_parameter(&behavior_name.to_string().replace(':', "."), parameter, false));
+        }
+    }
+
     //---- Prepare request body
 
-    // This function converts the IndexMap<String, SchemaExample> examples of
-    // schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
-    // that OpenAPI expects.
-    fn get_openapi_examples(schema_examples: &IndexMap<String, SchemaExample>) -> IndexMap<String, ReferenceOr<Example>> {
-        let mut openapi_examples = indexmap! {};
-        for (name, schema_example) in schema_examples {
-            let example = match &schema_example.value {
-                None => None,
-                // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
-                // Disabled for now, as some examples use multi-line json as in the Kibana console.
-                Some(text) => Some(serde_json::Value::String(text.clone())),
-                // Some(text) => {
-                //     match serde_json::from_str::<serde_json::Value>(&text) {
-                //         Ok(json) => {
-                //             Some(json)
-                //         }
-                //         // Cannot parse json: assume it's text (e.g. cat requests)
-                //         // but should be validated by looking at the media-type
-                //         Err(err) => {
-                //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
-                //             Some(serde_json::Value::String(text.clone()))
-                //         }
-                //     }
-                // }
-            };
-
-            if example.is_some() {
-                let openapi_example = Example {
-                    value: example,
-                    description: schema_example.description.clone(),
-                    summary: schema_example.summary.clone(),
-                    external_value: None,
-                    extensions: Default::default(),
-                };
-                openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
-            }
-        }
-        openapi_examples
-    }
 
     // If this endpoint request has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint request in the OpenAPI document.
-    let request_examples = if let Some(examples) = &request.examples {
-        get_openapi_examples(examples)
-    } else {
-        IndexMap::new()
-    };
+    let request_examples = get_openapi_examples(request.examples.as_ref(), tac.config.include_language_examples);
 
     let request_body = tac.convert_request(request)?.map(|schema| {
         let media = MediaType {
@@ -217,23 +199,11 @@ pub fn add_endpoint(
     let response_def = tac.model.get_response(endpoint.response.as_ref().unwrap())?;
     // If this endpoint response has examples in schema.json, convert them to the
     // OpenAPI format and add them to the endpoint response in the OpenAPI document.
-    let response_examples = if let Some(examples) = &response_def.examples {
-        get_openapi_examples(examples)
-    } else {
-        IndexMap::new()
-    };
+    let response_examples = get_openapi_examples(response_def.examples.as_ref(), false);
     let response = Response {
         description: "".to_string(),
         headers: Default::default(),
-        content: indexmap! {
-            "application/json".to_string() => MediaType {
-                schema: tac.convert_response(response_def)?,
-                example: None,
-                examples: response_examples,
-                encoding: Default::default(),
-                extensions: Default::default(),
-            }
-        },
+        content: json_content(tac.convert_response(response_def)?, response_examples),
         links: Default::default(),
         extensions: Default::default(),
     };
@@ -243,10 +213,10 @@ pub fn add_endpoint(
         ReferenceOr::Item(response)
     };
 
-    let responses = indexmap! {
+    let mut responses = indexmap! {
         StatusCode::Code(200) => response
-        // TODO: add error responses
     };
+    add_exception_responses(&endpoint.name, response_def, is_multipath, tac, &mut responses)?;
 
     //---- Merge multipath endpoints if asked for
 
@@ -361,28 +331,9 @@ pub fn add_endpoint(
         let mut extensions = crate::availability_as_extensions(&endpoint.availability, &tac.config.flavor);
 
         if tac.config.include_language_examples {
-            // add the x-codeSamples extension
-            let mut code_samples = vec![];
-            if let Some(examples) = request.examples.clone() {
-                if let Some((_, example)) = examples.first() {
-                    let request_line = example.method_request.clone().unwrap_or(String::from(""));
-                    let request_body = example.value.clone().unwrap_or(String::from(""));
-                    if !request_line.is_empty() {
-                        code_samples.push(serde_json::json!({
-                            "lang": "Console",
-                            "source": request_line + "\n" + request_body.as_str(),
-                        }));
-                    }
-                    if let Some(alternatives) = example.alternatives.clone() {
-                        for alternative in alternatives.iter() {
-                            code_samples.push(serde_json::json!({
-                                "lang": alternative.language,
-                                "source": alternative.code.as_str(),
-                            }));
-                        }
-                    }
-                }
-            }
+            // add the x-codeSamples extension: the first example's samples, for tools that only read the operation.
+            // Every request example also carries its own samples, see `get_openapi_examples`.
+            let code_samples = request.examples.iter().flatten().next().map(|(_, example)| code_samples_for(example)).unwrap_or_default();
             if !code_samples.is_empty() {
                 extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
             }
@@ -495,6 +446,123 @@ pub fn add_endpoint(
     Ok(())
 }
 
+/// Builds the `x-codeSamples` entries of a request example: its Console sample, then its client alternatives.
+fn code_samples_for(example: &SchemaExample) -> Vec<Value> {
+    let mut code_samples = vec![];
+    let request_line = example.method_request.clone().unwrap_or_default();
+    // Only examples with a request line have a Console sample
+    if !request_line.is_empty() {
+        let request_body = example.value.clone().unwrap_or_default();
+        code_samples.push(serde_json::json!({
+            "lang": "Console",
+            "source": request_line + "\n" + request_body.as_str(),
+        }));
+    }
+    for alternative in example.alternatives.iter().flatten() {
+        code_samples.push(serde_json::json!({
+            "lang": alternative.language,
+            "source": alternative.code.as_str(),
+        }));
+    }
+    code_samples
+}
+
+// This function converts the IndexMap<String, SchemaExample> examples of
+// schema.json to IndexMap<String, ReferenceOr<Example>> which is the format
+// that OpenAPI expects. With `include_code_samples`, each example carries its own `x-codeSamples`,
+// so that consumers know which example a sample belongs to without any naming convention.
+fn get_openapi_examples(schema_examples: Option<&IndexMap<String, SchemaExample>>, include_code_samples: bool) -> IndexMap<String, ReferenceOr<Example>> {
+    let mut openapi_examples = indexmap! {};
+    for (name, schema_example) in schema_examples.into_iter().flatten() {
+        let example = match &schema_example.value {
+            None => None,
+            // Examples should be objects - https://spec.openapis.org/oas/v3.1.1.html#example-object
+            // Disabled for now, as some examples use multi-line json as in the Kibana console.
+            Some(text) => Some(serde_json::Value::String(text.clone())),
+            // Some(text) => {
+            //     match serde_json::from_str::<serde_json::Value>(&text) {
+            //         Ok(json) => {
+            //             Some(json)
+            //         }
+            //         // Cannot parse json: assume it's text (e.g. cat requests)
+            //         // but should be validated by looking at the media-type
+            //         Err(err) => {
+            //             tracing::warn!("Cannot parse example: {}\n{}", err, text);
+            //             Some(serde_json::Value::String(text.clone()))
+            //         }
+            //     }
+            // }
+        };
+
+        if example.is_some() {
+            let mut extensions = IndexMap::new();
+            let code_samples = if include_code_samples { code_samples_for(schema_example) } else { vec![] };
+            if !code_samples.is_empty() {
+                extensions.insert("x-codeSamples".to_string(), serde_json::json!(code_samples));
+            }
+            let openapi_example = Example {
+                value: example,
+                description: schema_example.description.clone(),
+                summary: schema_example.summary.clone(),
+                external_value: None,
+                extensions,
+            };
+            openapi_examples.insert(name.clone(), ReferenceOr::Item(openapi_example));
+        }
+    }
+    openapi_examples
+}
+
+/// The `application/json` content of a request or response.
+fn json_content(schema: Option<ReferenceOr<openapiv3::Schema>>, examples: IndexMap<String, ReferenceOr<Example>>) -> IndexMap<String, MediaType> {
+    indexmap! {
+        "application/json".to_string() => MediaType {
+            schema,
+            examples,
+            ..Default::default()
+        }
+    }
+}
+
+/// Add a response for each status code of the exceptions declared on the endpoint's response type.
+/// A status code that already has a response (such as 200) keeps it.
+fn add_exception_responses(
+    endpoint_name: &str,
+    response_def: &clients_schema::Response,
+    is_multipath: bool,
+    tac: &mut TypesAndComponents,
+    responses: &mut IndexMap<StatusCode, ReferenceOr<Response>>,
+) -> anyhow::Result<()> {
+    for exception in &response_def.exceptions {
+        let schema = tac.convert_body(&exception.body)?;
+        let examples = get_openapi_examples(exception.examples.as_ref(), false);
+        for status_code in &exception.status_codes {
+            let status = StatusCode::Code(u16::try_from(*status_code)?);
+            if responses.contains_key(&status) {
+                continue;
+            }
+
+            let content = if schema.is_none() && examples.is_empty() {
+                IndexMap::new()
+            } else {
+                json_content(schema.clone(), examples.clone())
+            };
+            let response = Response {
+                description: exception.description.clone().unwrap_or_default(),
+                content,
+                ..Default::default()
+            };
+            let response = if is_multipath {
+                tac.add_response(endpoint_name, status.clone(), response)
+            } else {
+                ReferenceOr::Item(response)
+            };
+            responses.insert(status, response);
+        }
+    }
+    Ok(())
+}
+
 fn get_path_parameters(template: &str) -> Vec<&str> {
     // Note: could be done with regex, but it adds 1 MB to the resulting WASM module
     let mut result = Vec::new();
@@ -566,6 +634,42 @@ struct SplitDesc {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn example(summary: &str, value: Option<&str>) -> SchemaExample {
+        SchemaExample {
+            summary: Some(summary.to_string()),
+            method_request: None,
+            description: None,
+            value: value.map(str::to_string),
+            external_value: None,
+            alternatives: None,
+            availability: None,
+        }
+    }
+
+    #[test]
+    fn openapi_examples_keep_summary_and_value_and_skip_valueless() {
+        assert!(get_openapi_examples(None, false).is_empty());
+
+        let examples = indexmap! {
+            "WithValue".to_string() => example("with value", Some("{}")),
+            "NoValue".to_string() => example("no value", None),
+        };
+        let converted = get_openapi_examples(Some(&examples), false);
+        assert_eq!(converted.keys().collect::<Vec<_>>(), vec!["WithValue"]);
+        let item = converted["WithValue"].as_item().unwrap();
+        assert_eq!(item.summary.as_deref(), Some("with value"));
+        assert_eq!(item.value, Some(Value::String("{}".to_string())));
+    }
+
+    #[test]
+    fn json_content_wraps_schema_and_examples() {
+        let examples = get_openapi_examples(Some(&indexmap! { "A".to_string() => example("a", Some("1")) }), false);
+        let content = json_content(None, examples);
+        let media = &content["application/json"];
+        assert!(media.schema.is_none());
+        assert_eq!(media.examples.keys().collect::<Vec<_>>(), vec!["A"]);
+    }
 
     #[test]
     fn test_path_parameters() {
