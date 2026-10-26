@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, NodeId } from '@_types/common'
+import { EmptyObject, IndexName, NodeId } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { Duration, DurationValue, UnitNanos } from '@_types/Time'
 import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
@@ -150,7 +150,74 @@ export class QueryProfile {
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
+  /**
+   * Extra details about the query.
+   *
+   * Queries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  debug?: Dictionary<string, UserDefinedValue>
   children?: QueryProfile[]
+}
+
+/**
+ * Profile of a single rescorer.
+ *
+ * The shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,
+ * `learning_to_rank` does.
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+export type RescoreProfile =
+  | QueryRescoreProfile
+  | ScriptRescoreProfile
+  | LearningToRankRescoreProfile
+
+export class RescoreProfileBase {
+  /** What the rescorer runs. */
+  description: string
+  /** The total time spent in the rescorer, including the time spent running its queries. */
+  time_in_nanos: DurationValue<UnitNanos>
+  /** The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`. */
+  time?: Duration
+  /**
+   * Extra details about the rescorer.
+   *
+   * Every rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is
+   * set to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.
+   */
+  debug?: Dictionary<string, UserDefinedValue>
+}
+
+export class QueryRescoreProfile extends RescoreProfileBase {
+  type: 'query'
+  /** The `query` rescorer does not report any steps. */
+  breakdown: EmptyObject
+}
+
+export class ScriptRescoreProfile extends RescoreProfileBase {
+  type: 'script'
+  /** The `script` rescorer does not report any steps. */
+  breakdown: EmptyObject
+}
+
+export class LearningToRankRescoreProfile extends RescoreProfileBase {
+  type: 'learning_to_rank'
+  breakdown: LearningToRankRescoreProfileBreakdown
+}
+
+// This is a Map<String, long> in ES. Below are the known fields.
+export class LearningToRankRescoreProfileBreakdown {
+  /** The time spent turning the feature queries of the model into queries that can score documents. */
+  build_feature_extractors: long
+  build_feature_extractors_count: long
+  /** The time spent extracting the features of the top documents. */
+  feature_extraction: long
+  feature_extraction_count: long
+  /** The time spent running the model on the extracted features. */
+  inference: long
+  inference_count: long
 }
 
 export class SearchProfile {
@@ -167,6 +234,12 @@ export class ShardProfile {
   id: string
   index: IndexName
   node_id: NodeId
+  /**
+   * One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  rescore?: RescoreProfile[]
   searches: SearchProfile[]
   shard_id: integer
 }
