@@ -109,8 +109,11 @@ export class DatasetFieldMapping {
   /**
    * The underlying file column that this logical column reads from.
    * This is a read-path rename: the physical column becomes this single logical column.
+   * Responses always use `rename_from`. `path`, the former name for this field, is still
+   * accepted in requests and means the same thing.
+   * @aliases path
    */
-  path?: string
+  rename_from?: string
   /**
    * The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.
    */
