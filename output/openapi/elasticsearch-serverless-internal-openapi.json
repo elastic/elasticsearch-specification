@@ -19342,7 +19342,7 @@
           "indices"
         ],
         "summary": "Update aliases and delete indices atomically",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Applies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-update-aliases",
         "parameters": [
           {
@@ -19393,8 +19393,18 @@
               },
               "examples": {
                 "IndicesUpdateAliasesExample1": {
-                  "description": "An example body for a `POST _aliases` request.",
-                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                  "summary": "Add a data stream or index to an alias",
+                  "description": "If the alias does not exist, it is created.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-*\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample2": {
+                  "summary": "Remove a data stream or index from an alias",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample3": {
+                  "summary": "Remove an index and update an alias",
+                  "description": "First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.\n",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_index\": {\n        \"index\": \"my-index-1\"\n      }\n    },\n    {\n      \"add\": {\n        \"index\": \"my-index-2\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
                 }
               }
             }
@@ -19407,7 +19417,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                  "$ref": "#/components/schemas/indices.update_aliases.IndicesUpdateAliasesResponseBody"
+                },
+                "examples": {
+                  "IndicesUpdateAliasesExample1": {
+                    "summary": "A partially successful response",
+                    "description": "When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.",
+                    "value": "{\n  \"acknowledged\": true,\n  \"errors\": true,\n  \"action_results\": [\n    {\n      \"action\": {\n        \"type\": \"remove\",\n        \"indices\": [\n          \"logs-nginx.access-prod\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 404,\n      \"error\": {\n        \"type\": \"aliases_not_found_exception\",\n        \"reason\": \"aliases [logs-non-existing] missing\",\n        \"resource.type\": \"aliases\",\n        \"resource.id\": \"logs-non-existing\"\n      }\n    },\n    {\n      \"action\": {\n        \"type\": \"add\",\n        \"indices\": [\n          \"logs-nginx.access-default\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 200\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -97935,7 +97952,7 @@
             ]
           },
           "index": {
-            "description": "Data stream or index for the action.\nSupports wildcards (`*`).",
+            "description": "Data stream or index for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -97943,7 +97960,7 @@
             ]
           },
           "indices": {
-            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).",
+            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Indices"
@@ -98051,6 +98068,16 @@
             "type": "boolean"
           }
         }
+      },
+      "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "indices.validate_query.IndicesValidationExplanation": {
         "type": "object",
