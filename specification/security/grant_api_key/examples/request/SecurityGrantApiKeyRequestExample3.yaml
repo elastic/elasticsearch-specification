@@ -1,0 +1,17 @@
+summary: Grant an API key to a user-managed service account
+method_request: POST /_security/api_key/grant
+description: >
+  Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by
+  presenting one of its service account tokens. This request needs to be made by an authenticated user with the
+  `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by
+  the service account and is limited by the roles assigned to it.
+# type: request
+value: |-
+  {
+    "grant_type": "_user_managed_service_account",
+    "service_account_token": "AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ",
+    "api_key": {
+      "name": "worker-key",
+      "expiration": "1d"
+    }
+  }
