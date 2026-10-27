@@ -57,12 +57,18 @@ export enum ApiKeyGrantType {
   _user_managed_service_account
 }
 
+export enum GrantApiKeyClientAuthenticationScheme {
+  /**
+   * The client authenticates with the shared secret configured for the JWT realm.
+   */
+  SharedSecret
+}
+
 export class GrantApiKeyClientAuthentication {
   /**
    * The client authentication scheme.
-   * The only supported scheme is `SharedSecret`.
    */
-  scheme: string
+  scheme: GrantApiKeyClientAuthenticationScheme
   /**
    * The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.
    */
