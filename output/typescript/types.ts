@@ -1761,6 +1761,20 @@ export interface SearchLearningToRank {
   params?: Record<string, any>
 }
 
+export interface SearchLearningToRankRescoreProfile extends SearchRescoreProfileBase {
+  type: 'learning_to_rank'
+  breakdown: SearchLearningToRankRescoreProfileBreakdown
+}
+
+export interface SearchLearningToRankRescoreProfileBreakdown {
+  build_feature_extractors: long
+  build_feature_extractors_count: long
+  feature_extraction: long
+  feature_extraction_count: long
+  inference: long
+  inference_count: long
+}
+
 export interface SearchLinearInterpolationSmoothingModel {
   bigram_lambda: double
   trigram_lambda: double
@@ -1853,7 +1867,13 @@ export interface SearchQueryProfile {
   description: string
   time_in_nanos: DurationValue<UnitNanos>
   type: string
+  debug?: Record<string, any>
   children?: SearchQueryProfile[]
+}
+
+export interface SearchQueryRescoreProfile extends SearchRescoreProfileBase {
+  type: 'query'
+  breakdown: EmptyObject
 }
 
 export interface SearchRegexOptions {
@@ -1868,6 +1888,15 @@ export interface SearchRescore {
   script?: SearchScriptRescore
 }
 
+export type SearchRescoreProfile = SearchQueryRescoreProfile | SearchScriptRescoreProfile | SearchLearningToRankRescoreProfile
+
+export interface SearchRescoreProfileBase {
+  description: string
+  time_in_nanos: DurationValue<UnitNanos>
+  time?: Duration
+  debug?: Record<string, any>
+}
+
 export interface SearchRescoreQuery {
   rescore_query: QueryDslQueryContainer
   query_weight?: double
@@ -1879,6 +1908,11 @@ export type SearchScoreMode = 'avg' | 'max' | 'min' | 'multiply' | 'total'
 
 export interface SearchScriptRescore {
   script: Script | ScriptSource
+}
+
+export interface SearchScriptRescoreProfile extends SearchRescoreProfileBase {
+  type: 'script'
+  breakdown: EmptyObject
 }
 
 export interface SearchSearchProfile {
@@ -1938,6 +1972,7 @@ export interface SearchShardProfile {
   id: string
   index: IndexName
   node_id: NodeId
+  rescore?: SearchRescoreProfile[]
   searches: SearchSearchProfile[]
   shard_id: integer
 }
@@ -11499,6 +11534,32 @@ export interface DataRecoveryPoint {
   end_time: DateTime
 }
 
+export interface DataRecoveryRecovery {
+  recovery_id: string
+  status: DataRecoveryRecoveryRunStatus
+  recovery_point: DataRecoveryPoint
+  destination_mode: DataRecoveryStartRecoveryRecoveryMode
+  sources: DataRecoveryResolvedRecoverySource[]
+  metadata: Metadata
+  started_at: DateTime
+  completed_at?: DateTime
+  progress: DataRecoveryRecoveryProgress
+  failures: DataRecoveryRecoveryFailure[]
+  total_failure_count: integer
+}
+
+export interface DataRecoveryRecoveryFailure {
+  source: string
+  reason: string
+  detail?: string
+}
+
+export interface DataRecoveryRecoveryProgress {
+  percent_complete?: integer
+}
+
+export type DataRecoveryRecoveryRunStatus = 'running' | 'completed' | 'failed'
+
 export interface DataRecoveryResolvedRecoverySource {
   source: string
   type: DataRecoverySourceType
@@ -11506,6 +11567,12 @@ export interface DataRecoveryResolvedRecoverySource {
 }
 
 export type DataRecoverySourceType = 'index' | 'data_stream'
+
+export interface DataRecoveryGetRecoveryRequest extends RequestBase {
+  recovery_id: Id
+}
+
+export type DataRecoveryGetRecoveryResponse = DataRecoveryRecovery
 
 export interface DataRecoveryGetRecoveryPointsRequest extends RequestBase {
   end_time_before?: DateTime
@@ -11556,6 +11623,21 @@ export interface DataRecoveryGetRpoSeriesRpoBucket {
   start: DateTime
   end: DateTime
   max_recovery_point_age_millis: long | null
+}
+
+export interface DataRecoveryListRecoveriesRequest extends RequestBase {
+  size?: integer
+  started_at_gte?: DateTime
+  started_at_lt?: DateTime
+  order?: SortOrder
+  search_after_started_at?: DateTime
+  search_after_recovery_id?: Id
+  status?: DataRecoveryRecoveryRunStatus | DataRecoveryRecoveryRunStatus[]
+}
+
+export interface DataRecoveryListRecoveriesResponse {
+  recoveries: DataRecoveryRecovery[]
+  has_more: boolean
 }
 
 export type DataRecoveryStartRecoveryRecoveryMode = 'replace' | 'rename'
@@ -11791,6 +11873,7 @@ export interface EsqlClassifiedNamedParameter {
 
 export interface EsqlDatasetFieldMapping {
   type: string
+  rename_from?: string
   path?: string
   format?: string
 }
@@ -15160,6 +15243,16 @@ export interface InferenceDenseEmbeddingResult {
 
 export type InferenceDenseVector = float[]
 
+export interface InferenceDocumentExtractionInferenceResult {
+  document_extraction: InferenceDocumentExtractionResult[]
+}
+
+export interface InferenceDocumentExtractionResult {
+  content: string
+  format: string
+  metadata?: Metadata
+}
+
 export interface InferenceElasticsearchServiceSettings {
   adaptive_allocations?: InferenceAdaptiveAllocations
   deployment_id?: string
@@ -15686,7 +15779,7 @@ export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningD
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
@@ -15830,6 +15923,33 @@ export interface InferenceDeleteRegionPolicyRequest extends RequestBase {
 }
 
 export type InferenceDeleteRegionPolicyResponse = AcknowledgedResponseBase
+
+export type InferenceDocumentExtractionDocumentExtractionContentFormat = 'base64' | 'url'
+
+export interface InferenceDocumentExtractionDocumentExtractionContentObject {
+  content: InferenceDocumentExtractionDocumentExtractionContentObjectItem
+}
+
+export interface InferenceDocumentExtractionDocumentExtractionContentObjectItem {
+  type: InferenceDocumentExtractionDocumentExtractionContentType
+  format?: InferenceDocumentExtractionDocumentExtractionContentFormat
+  value: string
+}
+
+export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf'
+
+export type InferenceDocumentExtractionDocumentExtractionInput = InferenceDocumentExtractionDocumentExtractionContentObject | InferenceDocumentExtractionDocumentExtractionContentObject[]
+
+export interface InferenceDocumentExtractionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: InferenceDocumentExtractionDocumentExtractionInput
+    task_settings?: InferenceTaskSettings
+  }
+}
+
+export type InferenceDocumentExtractionResponse = InferenceDocumentExtractionInferenceResult
 
 export interface InferenceEmbeddingRequest extends RequestBase {
   inference_id: Id
@@ -24328,6 +24448,7 @@ export interface TransformSettings {
   use_point_in_time?: boolean
   num_failure_retries?: integer
   unattended?: boolean
+  indexer_request_timeout?: Duration
 }
 
 export interface TransformSource {
