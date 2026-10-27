@@ -1,0 +1,41 @@
+summary: A partially successful response
+description: When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.
+# type: response
+# response_code: 200
+value: |-
+  {
+    "acknowledged": true,
+    "errors": true,
+    "action_results": [
+      {
+        "action": {
+          "type": "remove",
+          "indices": [
+            "logs-nginx.access-prod"
+          ],
+          "aliases": [
+            "logs-non-existing"
+          ]
+        },
+        "status": 404,
+        "error": {
+          "type": "aliases_not_found_exception",
+          "reason": "aliases [logs-non-existing] missing",
+          "resource.type": "aliases",
+          "resource.id": "logs-non-existing"
+        }
+      },
+      {
+        "action": {
+          "type": "add",
+          "indices": [
+            "logs-nginx.access-default"
+          ],
+          "aliases": [
+            "logs-non-existing"
+          ]
+        },
+        "status": 200
+      }
+    ]
+  }
