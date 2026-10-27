@@ -42226,7 +42226,7 @@
           "security"
         ],
         "summary": "Grant an API key",
-        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
+        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
         "operationId": "security-grant-api-key",
         "parameters": [
           {
@@ -42260,7 +42260,7 @@
                     ]
                   },
                   "grant_type": {
-                    "description": "The type of grant. Supported grant types are: `access_token`, `password`.",
+                    "description": "The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/security.grant_api_key.ApiKeyGrantType"
@@ -42270,6 +42270,14 @@
                   "access_token": {
                     "description": "The user's access token.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
+                  },
+                  "client_authentication": {
+                    "description": "The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.\nIt is valid only with the `access_token` grant type, when the access token is a JWT.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthentication"
+                      }
+                    ]
                   },
                   "username": {
                     "description": "The user name that identifies the user.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
@@ -42288,7 +42296,7 @@
                     ]
                   },
                   "run_as": {
-                    "description": "The name of the user to be impersonated.",
+                    "description": "The name of the user to be impersonated.\nIt is not valid with the `_user_managed_service_account` grant type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.Username"
@@ -42311,6 +42319,11 @@
                   "summary": "Grant an API key with run_as",
                   "description": "Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can \"run as\" another user (`test_user`). The API key will be granted to the impersonated user (`test_user`).\n",
                   "value": "{\n  \"grant_type\": \"password\",\n  \"username\" : \"test_admin\",  \n  \"password\" : \"x-pack-test-password\",  \n  \"run_as\": \"test_user\",  \n  \"api_key\" : {\n    \"name\": \"another-api-key\"\n  }\n}"
+                },
+                "SecurityGrantApiKeyRequestExample3": {
+                  "summary": "Grant an API key to a user-managed service account",
+                  "description": "Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by presenting one of its service account tokens. This request needs to be made by an authenticated user with the `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by the service account and is limited by the roles assigned to it.\n",
+                  "value": "{\n  \"grant_type\": \"_user_managed_service_account\",\n  \"service_account_token\": \"AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ\",\n  \"api_key\": {\n    \"name\": \"worker-key\",\n    \"expiration\": \"1d\"\n  }\n}"
                 }
               }
             }
@@ -120962,6 +120975,33 @@
           "password"
         ]
       },
+      "security.grant_api_key.GrantApiKeyClientAuthentication": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "description": "The client authentication scheme.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthenticationScheme"
+              }
+            ]
+          },
+          "value": {
+            "description": "The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "value"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthenticationScheme": {
+        "type": "string",
+        "enum": [
+          "SharedSecret"
+        ]
+      },
       "security.has_privileges.ApplicationPrivilegesCheck": {
         "type": "object",
         "properties": {
@@ -130280,8 +130320,8 @@
               },
               "GetServiceAccountsResponseExample2": {
                 "summary": "User-managed service accounts in a namespace",
-                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
-                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
+                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace. The account was created by `alice` and last replaced by `bob` using an API key.\n",
+                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true,\n    \"created_by\": {\n      \"username\": \"alice\",\n      \"realm\": \"ldap1\",\n      \"realm_type\": \"ldap\"\n    },\n    \"created_at\": 1758585600000,\n    \"updated_by\": {\n      \"username\": \"bob\",\n      \"realm\": \"default_native\",\n      \"realm_type\": \"native\",\n      \"api_key\": {\n        \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n        \"name\": \"deploy-bot-key\"\n      }\n    },\n    \"updated_at\": 1758672000000\n  }\n}"
               }
             }
           }

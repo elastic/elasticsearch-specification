@@ -49437,6 +49437,9 @@
           },
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -50268,6 +50271,9 @@
           },
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -50300,6 +50306,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -51139,7 +51148,7 @@
           "security"
         ],
         "summary": "Grant an API key",
-        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
+        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
         "operationId": "security-grant-api-key",
         "parameters": [
           {
@@ -51173,7 +51182,7 @@
                     ]
                   },
                   "grant_type": {
-                    "description": "The type of grant. Supported grant types are: `access_token`, `password`.",
+                    "description": "The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/security.grant_api_key.ApiKeyGrantType"
@@ -51182,6 +51191,20 @@
                   },
                   "access_token": {
                     "description": "The user's access token.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
+                    "type": "string"
+                  },
+                  "client_authentication": {
+                    "description": "The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.\nIt is valid only with the `access_token` grant type, when the access token is a JWT.",
+                    "x-state": "Generally available; Added in 8.12.0",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthentication"
+                      }
+                    ]
+                  },
+                  "service_account_token": {
+                    "description": "The service account token of a user-managed service account, as returned by the create service account token API.\nIf you specify the `_user_managed_service_account` grant type, this parameter is required.\nIt is not valid with other grant types.",
+                    "x-state": "Generally available; Added in 9.6.0",
                     "type": "string"
                   },
                   "username": {
@@ -51201,7 +51224,7 @@
                     ]
                   },
                   "run_as": {
-                    "description": "The name of the user to be impersonated.",
+                    "description": "The name of the user to be impersonated.\nIt is not valid with the `_user_managed_service_account` grant type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.Username"
@@ -51224,6 +51247,11 @@
                   "summary": "Grant an API key with run_as",
                   "description": "Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can \"run as\" another user (`test_user`). The API key will be granted to the impersonated user (`test_user`).\n",
                   "value": "{\n  \"grant_type\": \"password\",\n  \"username\" : \"test_admin\",  \n  \"password\" : \"x-pack-test-password\",  \n  \"run_as\": \"test_user\",  \n  \"api_key\" : {\n    \"name\": \"another-api-key\"\n  }\n}"
+                },
+                "SecurityGrantApiKeyRequestExample3": {
+                  "summary": "Grant an API key to a user-managed service account",
+                  "description": "Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by presenting one of its service account tokens. This request needs to be made by an authenticated user with the `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by the service account and is limited by the roles assigned to it.\n",
+                  "value": "{\n  \"grant_type\": \"_user_managed_service_account\",\n  \"service_account_token\": \"AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ\",\n  \"api_key\": {\n    \"name\": \"worker-key\",\n    \"expiration\": \"1d\"\n  }\n}"
                 }
               }
             }
@@ -51866,6 +51894,64 @@
           }
         },
         "x-state": "Generally available; Added in 8.15.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/_query/service": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find user-managed service accounts with a query",
+        "description": "Get a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.\n\n## Required authorization\n\n* Cluster privileges: `read_security`,`manage_service_account`\n",
+        "operationId": "security-query-service-accounts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_service_accounts-with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_service_accounts"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_service_accounts-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find user-managed service accounts with a query",
+        "description": "Get a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.\n\n## Required authorization\n\n* Cluster privileges: `read_security`,`manage_service_account`\n",
+        "operationId": "security-query-service-accounts-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_service_accounts-with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_service_accounts"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_service_accounts-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -136683,12 +136769,117 @@
           "description": {
             "description": "A free-text description of the account, as sent on the last PUT of the account.\nIt has no meaning to Elasticsearch. Absent when the account has no description.",
             "type": "string"
+          },
+          "created_by": {
+            "description": "The user who created the account.\nAbsent for an account that was created before Elasticsearch recorded its creator.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthor"
+              }
+            ]
+          },
+          "created_at": {
+            "description": "When the account was created, in milliseconds since the Unix epoch.\nAbsent for an account that was created before Elasticsearch recorded its creation time.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "created_by_profile_uid": {
+            "description": "The profile UID of the user who created the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
+          },
+          "updated_by": {
+            "description": "The user who last replaced the account with the put user-managed service account API.\nAbsent until the account is first replaced.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthor"
+              }
+            ]
+          },
+          "updated_at": {
+            "description": "When the account was last replaced, in milliseconds since the Unix epoch.\nAbsent until the account is first replaced.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "updated_by_profile_uid": {
+            "description": "The profile UID of the user who last replaced the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
           }
         },
         "required": [
           "type",
           "roles",
           "enabled"
+        ]
+      },
+      "security.get_service_accounts.ServiceAccountAuthor": {
+        "description": "The user who wrote a user-managed service account.\nIf the request ran as another user, that user is recorded.\nIf the request was made with an API key, the owner of the key is recorded, from the owner's own realm, together with the key itself.\nFor an older API key that does not record its owner's realm, the realm is the API key realm, `_es_api_key`.",
+        "type": "object",
+        "properties": {
+          "username": {
+            "description": "The username of the user.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Username"
+              }
+            ]
+          },
+          "realm": {
+            "description": "The name of the realm that authenticated the user.",
+            "type": "string"
+          },
+          "realm_type": {
+            "description": "The type of the realm that authenticated the user.",
+            "type": "string"
+          },
+          "api_key": {
+            "description": "The API key that the request was made with.\nAbsent when the request was not made with an API key, or when the API key ran as another user.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthorApiKey"
+              }
+            ]
+          }
+        },
+        "required": [
+          "username",
+          "realm",
+          "realm_type"
+        ]
+      },
+      "security.get_service_accounts.ServiceAccountAuthorApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the API key.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "name": {
+            "description": "The name that the API key had when the request was made.\nAbsent when the API key has no name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "security.get_service_credentials.NodesCredentials": {
@@ -137191,7 +137382,35 @@
         "type": "string",
         "enum": [
           "access_token",
-          "password"
+          "password",
+          "_user_managed_service_account"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthentication": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "description": "The client authentication scheme.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthenticationScheme"
+              }
+            ]
+          },
+          "value": {
+            "description": "The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "value"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthenticationScheme": {
+        "type": "string",
+        "enum": [
+          "SharedSecret"
         ]
       },
       "security.has_privileges.ApplicationPrivilegesCheck": {
@@ -137738,6 +137957,137 @@
             },
             "required": [
               "name"
+            ]
+          }
+        ]
+      },
+      "security.query_service_accounts.ServiceAccountQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "description": "Matches service accounts matching boolean combinations of other queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.BoolQuery"
+              }
+            ]
+          },
+          "exists": {
+            "description": "Returns service accounts that contain an indexed value for a field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.ExistsQuery"
+              }
+            ]
+          },
+          "ids": {
+            "description": "Returns service accounts based on their IDs.\nThis query uses service account document IDs stored in the `_id` field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.IdsQuery"
+              }
+            ]
+          },
+          "match": {
+            "description": "Returns service accounts that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "description": "Matches all service accounts, giving them all a `_score` of 1.0.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.MatchAllQuery"
+              }
+            ]
+          },
+          "prefix": {
+            "description": "Returns service accounts that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "description": "Returns service accounts that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "description": "Returns service accounts based on a provided query string, using a parser with a limited but fault-tolerant syntax.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.SimpleQueryStringQuery"
+              }
+            ]
+          },
+          "term": {
+            "description": "Returns service accounts that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "description": "Returns service accounts that contain one or more exact terms in a provided field.\nTo return a document, one or more terms must exactly match a field value, including whitespace and capitalization.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.TermsQuery"
+              }
+            ]
+          },
+          "wildcard": {
+            "description": "Returns service accounts that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_service_accounts.QueryServiceAccount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security.get_service_accounts.UserManagedServiceAccount"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "username": {
+                "description": "The name of the service account, as `namespace/service`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Username"
+                  }
+                ]
+              },
+              "_sort": {
+                "description": "The sort values of the service account, returned when the request has a `sort`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.SortResults"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "username"
             ]
           }
         ]
@@ -150935,8 +151285,8 @@
               },
               "GetServiceAccountsResponseExample2": {
                 "summary": "User-managed service accounts in a namespace",
-                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
-                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
+                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace. The account was created by `alice` and last replaced by `bob` using an API key.\n",
+                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true,\n    \"created_by\": {\n      \"username\": \"alice\",\n      \"realm\": \"ldap1\",\n      \"realm_type\": \"ldap\"\n    },\n    \"created_at\": 1758585600000,\n    \"updated_by\": {\n      \"username\": \"bob\",\n      \"realm\": \"default_native\",\n      \"realm_type\": \"native\",\n      \"api_key\": {\n        \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n        \"name\": \"deploy-bot-key\"\n      }\n    },\n    \"updated_at\": 1758672000000\n  }\n}"
               }
             }
           }
@@ -151257,6 +151607,45 @@
                 "summary": "Query roles by description",
                 "description": "A successful response from `POST /_security/_query/role`.\n",
                 "value": "{\n    \"total\": 2,\n    \"count\": 1,\n    \"roles\": [\n        {\n          \"name\" : \"my_user_role\",\n          \"cluster\" : [ ],\n          \"indices\" : [\n            {\n              \"names\" : [\n                \"index1\",\n                \"index2\"\n              ],\n              \"privileges\" : [\n                \"all\"\n              ],\n              \"field_security\" : {\n                \"grant\" : [\n                  \"title\",\n                  \"body\"\n                ]\n              },\n              \"allow_restricted_indices\" : false\n            }\n          ],\n          \"applications\" : [ ],\n          \"run_as\" : [ ],\n          \"metadata\" : {\n            \"version\" : 1\n          },\n          \"transient_metadata\" : {\n            \"enabled\" : true\n          },\n          \"description\" : \"Grants user access to some indicies.\"\n        }\n    ]\n}"
+              }
+            }
+          }
+        }
+      },
+      "security.query_service_accounts-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of service accounts found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of service accounts returned in the response.",
+                  "type": "number"
+                },
+                "service_accounts": {
+                  "description": "A list of service account information.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_service_accounts.QueryServiceAccount"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "service_accounts"
+              ]
+            },
+            "examples": {
+              "QueryServiceAccountsResponseExample1": {
+                "summary": "Query service accounts in a namespace",
+                "description": "A successful response from `POST /_security/_query/service?with_profile_uid=true`. The `apps/worker` account was created by `alice`, who has a user profile, and has not been replaced since.\n",
+                "value": "{\n  \"total\": 1,\n  \"count\": 1,\n  \"service_accounts\": [\n    {\n      \"username\": \"apps/worker\",\n      \"type\": \"user_managed\",\n      \"roles\": [\n        \"runner\"\n      ],\n      \"enabled\": true,\n      \"created_by\": {\n        \"username\": \"alice\",\n        \"realm\": \"ldap1\",\n        \"realm_type\": \"ldap\"\n      },\n      \"created_at\": 1758585600000,\n      \"created_by_profile_uid\": \"u_alice_0\",\n      \"_sort\": [\n        1758585600000\n      ]\n    }\n  ]\n}"
               }
             }
           }
@@ -162649,6 +163038,18 @@
         "x-state": "Generally available; Added in 9.6.0",
         "style": "form"
       },
+      "security.get_service_accounts-with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If `true`, each user-managed service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
+        "style": "form"
+      },
       "security.get_user-username": {
         "in": "path",
         "name": "username",
@@ -162805,6 +163206,17 @@
           "type": "boolean"
         },
         "x-state": "Generally available; Added in 8.14.0",
+        "style": "form"
+      },
+      "security.query_service_accounts-with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If `true`, each service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
         "style": "form"
       },
       "security.query_user-with_profile_uid": {
@@ -167817,6 +168229,64 @@
                 "summary": "Query roles by description",
                 "description": "Run `POST /_security/_query/role` to query only the user access role, given its description. It returns only the best matching role because `size` is set to `1`.\n",
                 "value": "{\n  \"query\": {\n    \"match\": {\n      \"description\": {\n        \"query\": \"user access\"\n      }\n    }\n  },\n  \"size\": 1 \n}"
+              }
+            }
+          }
+        }
+      },
+      "security.query_service_accounts": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "description": "A query to filter which service accounts to return.\nIf the query parameter is missing, it is equivalent to a `match_all` query.\nThe query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,\n`ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.\nYou can query the following information associated with a service account: `username`, `roles`, `enabled`, `description`,\n`created_by.username`, `created_by.realm`, `created_by.realm_type`, `created_by.api_key.id`, `created_by.api_key.name`, `created_at`,\n`updated_by.username`, `updated_by.realm`, `updated_by.realm_type`, `updated_by.api_key.id`, `updated_by.api_key.name`, and `updated_at`.\n\nNOTE: The `username` of a service account is its `namespace/service` pair, so use a `prefix` query on `username` to select a namespace.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/security.query_service_accounts.ServiceAccountQueryContainer"
+                    }
+                  ]
+                },
+                "from": {
+                  "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 0.0,
+                  "type": "number"
+                },
+                "sort": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/sort-search-results"
+                  },
+                  "description": "The sort definition.\nAll the fields that you can query on, other than `description`, are eligible for sorting.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Sort"
+                    }
+                  ]
+                },
+                "size": {
+                  "description": "The number of hits to return.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 10.0,
+                  "type": "number"
+                },
+                "search_after": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
+                  },
+                  "description": "The search after definition.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.SortResults"
+                    }
+                  ]
+                }
+              }
+            },
+            "examples": {
+              "QueryServiceAccountsRequestExample1": {
+                "summary": "Query service accounts in a namespace",
+                "description": "Run `POST /_security/_query/service?with_profile_uid=true` to get the enabled service accounts in the `apps` namespace, sorted by when they were created, newest first. The response includes the profile UIDs of the users who created and last replaced each account.\n",
+                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"filter\": [\n        { \"prefix\": { \"username\": \"apps/\" } },\n        { \"term\": { \"enabled\": true } }\n      ]\n    }\n  },\n  \"sort\": [\n    { \"created_at\": { \"order\": \"desc\" } }\n  ],\n  \"size\": 10\n}"
               }
             }
           }
