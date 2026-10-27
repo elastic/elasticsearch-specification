@@ -10887,12 +10887,17 @@
           "stability": "stable"
         }
       },
-      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nApplies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.",
       "docId": "aliases-update",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-update-aliases",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-update-aliases",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-aliases.html",
       "name": "indices.update_aliases",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.update_aliases"
@@ -186269,7 +186274,7 @@
           }
         },
         {
-          "description": "Data stream or index for the action.\nSupports wildcards (`*`).",
+          "description": "Data stream or index for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
           "name": "index",
           "required": false,
           "type": {
@@ -186281,7 +186286,7 @@
           }
         },
         {
-          "description": "Data streams or indices for the action.\nSupports wildcards (`*`).",
+          "description": "Data streams or indices for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
           "name": "indices",
           "required": false,
           "type": {
@@ -186367,7 +186372,177 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/types.ts#L41-L95"
+      "specLocation": "indices/update_aliases/types.ts#L41-L97"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionResult",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action this result describes.",
+          "name": "action",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionSummary",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "HTTP status for this action.\n`200` when the action succeeds.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Cause of the failure.\nReturned only when this action fails.",
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L45-L60"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionSummary",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action that was applied.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionType",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "Resolved data streams or indices for the action.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Aliases for the action.",
+          "name": "aliases",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L68-L81"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "add"
+        },
+        {
+          "name": "remove"
+        },
+        {
+          "name": "remove_index"
+        }
+      ],
+      "name": {
+        "name": "AliasActionType",
+        "namespace": "indices.update_aliases"
+      },
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L62-L66"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "IndicesUpdateAliasesResponseBody",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "availability": {
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
+          "name": "errors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
+          "name": "action_results",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AliasActionResult",
+                "namespace": "indices.update_aliases"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L43"
     },
     {
       "kind": "interface",
@@ -186453,7 +186628,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/types.ts#L97-L122"
+      "specLocation": "indices/update_aliases/types.ts#L99-L124"
     },
     {
       "kind": "interface",
@@ -186500,7 +186675,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/types.ts#L124-L139"
+      "specLocation": "indices/update_aliases/types.ts#L126-L141"
     },
     {
       "kind": "request",
@@ -186527,7 +186702,7 @@
           }
         ]
       },
-      "description": "Update aliases and delete indices atomically.\n\nAdds a data stream or index to an alias.",
+      "description": "Update aliases and delete indices atomically.\n\nApplies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.",
       "examples": {
         "IndicesUpdateAliasesExample1": {
           "alternatives": [
@@ -186560,9 +186735,21 @@
               "language": "Java"
             }
           ],
-          "description": "An example body for a `POST _aliases` request.",
+          "description": "If the alias does not exist, it is created.",
           "method_request": "POST _aliases",
-          "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+          "summary": "Add a data stream or index to an alias",
+          "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-*\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+        },
+        "IndicesUpdateAliasesExample2": {
+          "method_request": "POST _aliases",
+          "summary": "Remove a data stream or index from an alias",
+          "value": "{\n  \"actions\": [\n    {\n      \"remove\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+        },
+        "IndicesUpdateAliasesExample3": {
+          "description": "First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.\n",
+          "method_request": "POST _aliases",
+          "summary": "Remove an index and update an alias",
+          "value": "{\n  \"actions\": [\n    {\n      \"remove_index\": {\n        \"index\": \"my-index-1\"\n      }\n    },\n    {\n      \"add\": {\n        \"index\": \"my-index-2\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
         }
       },
       "inherits": {
@@ -186604,7 +186791,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L25-L63"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesRequest.ts#L25-L72"
     },
     {
       "kind": "response",
@@ -186614,16 +186801,23 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "IndicesUpdateAliasesResponseBody",
+            "namespace": "indices.update_aliases"
           }
+        }
+      },
+      "examples": {
+        "IndicesUpdateAliasesExample1": {
+          "description": "When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.",
+          "summary": "A partially successful response",
+          "value": "{\n  \"acknowledged\": true,\n  \"errors\": true,\n  \"action_results\": [\n    {\n      \"action\": {\n        \"type\": \"remove\",\n        \"indices\": [\n          \"logs-nginx.access-prod\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 404,\n      \"error\": {\n        \"type\": \"aliases_not_found_exception\",\n        \"reason\": \"aliases [logs-non-existing] missing\",\n        \"resource.type\": \"aliases\",\n        \"resource.id\": \"logs-non-existing\"\n      }\n    },\n    {\n      \"action\": {\n        \"type\": \"add\",\n        \"indices\": [\n          \"logs-nginx.access-default\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 200\n    }\n  ]\n}"
         }
       },
       "name": {
         "name": "Response",
         "namespace": "indices.update_aliases"
       },
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L22-L25"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L25-L28"
     },
     {
       "kind": "interface",

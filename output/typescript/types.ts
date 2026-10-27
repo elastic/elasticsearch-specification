@@ -14838,6 +14838,25 @@ export interface IndicesUpdateAliasesAddAction {
   must_exist?: boolean
 }
 
+export interface IndicesUpdateAliasesAliasActionResult {
+  action: IndicesUpdateAliasesAliasActionSummary
+  status: integer
+  error?: ErrorCause
+}
+
+export interface IndicesUpdateAliasesAliasActionSummary {
+  type: IndicesUpdateAliasesAliasActionType
+  indices: IndexName[]
+  aliases: IndexAlias[]
+}
+
+export type IndicesUpdateAliasesAliasActionType = 'add' | 'remove' | 'remove_index'
+
+export interface IndicesUpdateAliasesIndicesUpdateAliasesResponseBody extends AcknowledgedResponseBase {
+  errors: boolean
+  action_results?: IndicesUpdateAliasesAliasActionResult[]
+}
+
 export interface IndicesUpdateAliasesRemoveAction {
   alias?: IndexAlias
   aliases?: IndexAlias | IndexAlias[]
@@ -14860,7 +14879,7 @@ export interface IndicesUpdateAliasesRequest extends RequestBase {
   }
 }
 
-export type IndicesUpdateAliasesResponse = AcknowledgedResponseBase
+export type IndicesUpdateAliasesResponse = IndicesUpdateAliasesIndicesUpdateAliasesResponseBody
 
 export interface IndicesValidateQueryIndicesValidationExplanation {
   error?: string
