@@ -31,11 +31,13 @@ export class IndicesUpdateAliasesResponseBody extends AcknowledgedResponseBase {
   /**
    * If `true`, one or more actions failed.
    * The request still returns HTTP 200.
+   * @availability stack since=8.14.0
    */
   errors: boolean
   /**
    * Results for each action in the request.
    * Returned only when `errors` is `true`.
+   * @availability stack since=8.14.0
    */
   action_results?: AliasActionResult[]
 }
