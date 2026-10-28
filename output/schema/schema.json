@@ -217656,18 +217656,30 @@
             }
           },
           {
-            "description": "An array of detector update objects.",
+            "description": "A detector update object or an array of detector update objects.",
             "name": "detectors",
             "required": false,
             "type": {
-              "kind": "array_of",
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "DetectorUpdate",
-                  "namespace": "ml._types"
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "DetectorUpdate",
+                    "namespace": "ml._types"
+                  }
+                },
+                {
+                  "kind": "array_of",
+                  "value": {
+                    "kind": "instance_of",
+                    "type": {
+                      "name": "DetectorUpdate",
+                      "namespace": "ml._types"
+                    }
+                  }
                 }
-              }
+              ]
             }
           },
           {
