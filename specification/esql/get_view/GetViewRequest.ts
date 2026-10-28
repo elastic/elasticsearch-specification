@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import {Ids, MediaType} from '@_types/common'
+import { Ids, MediaType } from '@_types/common'
 
 /**
  * Get an ES|QL view.
