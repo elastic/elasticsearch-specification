@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Id, MediaType } from '@_types/common'
+import {Id, Ids, MediaType} from '@_types/common'
 
 /**
  * Get an ES|QL view.
@@ -44,7 +44,7 @@ export interface Request extends RequestBase {
   ]
   path_parts: {
     /** The comma-separated view names to retrieve. */
-    name?: Id
+    name?: Ids
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
