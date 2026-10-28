@@ -139,9 +139,9 @@ export interface Request extends RequestBase {
      */
     groups?: string[]
     /**
-     * An array of detector update objects.
+     * A detector update object or an array of detector update objects.
      */
-    detectors?: DetectorUpdate[]
+    detectors?: DetectorUpdate | DetectorUpdate[]
     /**
      * Settings related to how categorization interacts with partition fields.
      */
