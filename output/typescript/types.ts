@@ -19638,7 +19638,7 @@ export interface MlUpdateJobRequest extends RequestBase {
     renormalization_window_days?: long
     results_retention_days?: long
     groups?: string[]
-    detectors?: MlDetectorUpdate[]
+    detectors?: MlDetectorUpdate | MlDetectorUpdate[]
     per_partition_categorization?: MlPerPartitionCategorization
   }
 }
