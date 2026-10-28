@@ -217,6 +217,7 @@ export class PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
+  native_controller_enabled_settings: string[]
 }
 
 export class QueryCacheStats {
