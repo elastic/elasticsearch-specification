@@ -63,9 +63,10 @@ export class Destination {
   routing?: string
   /**
    * The slice identifier used to route the reindexed documents to a specific slice of the destination index.
-   * Use the special value `_all` to target all slices without restricting to a routing value.
-   * Required when `index.slice.enabled` is `true` for the destination index; not allowed when `index.slice.enabled` is `false`.
+   * Not allowed when `index.slice.enabled` is `false` for the destination index.
+   * When `index.slice.enabled` is `true`, it is required unless the source is read with `_slice`, in which case each document keeps its source slice, or a script sets `ctx._slice`.
    * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
   _slice?: string
@@ -114,6 +115,15 @@ export class Source {
    * Slice the reindex request manually using the provided slice ID and total number of slices.
    */
   slice?: SlicedScroll
+  /**
+   * The slice of a slice-enabled source index (`index.slice.enabled` set to `true`) to read, or `_all` to read all slices.
+   * The reindexed documents keep the slice they are read from, unless `_slice` is set in `dest`.
+   * Not supported when reindexing from a remote cluster.
+   * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   * @codegen_name route_slice
+   */
+  _slice?: string
   /**
    * A comma-separated list of `<field>:<direction>` pairs to sort by before indexing.
    * Use it in conjunction with `max_docs` to control what documents are reindexed.

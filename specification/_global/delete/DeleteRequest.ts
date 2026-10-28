@@ -84,6 +84,10 @@ export interface Request extends RequestBase {
     {
       path: '/{index}/_doc/{id}'
       methods: ['DELETE']
+    },
+    {
+      path: '/{index}/{_slice}/_doc/{id}'
+      methods: ['DELETE']
     }
   ]
   path_parts: {
@@ -95,6 +99,14 @@ export interface Request extends RequestBase {
      * The name of the target index.
      */
     index: IndexName
+    /**
+     * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
   response_media_type: MediaType.Json
   query_parameters: {
@@ -121,14 +133,6 @@ export interface Request extends RequestBase {
      * @availability stack stability=stable
      */
     routing?: Routing
-    /**
-     * The slice identifier used to route the operation to a specific slice.
-     * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
-     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
-     * @codegen_name route_slice
-     */
-    _slice?: string
     /**
      * The period to wait for active shards.
      *

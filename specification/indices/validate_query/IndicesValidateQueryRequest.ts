@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  Routing,
+  SliceIds
+} from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
 
@@ -131,11 +137,12 @@ export interface Request extends RequestBase {
     /**
      * The slice identifier used to route the operation to a specific slice.
      * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * When omitted, all slices are targeted.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceIds
   }
   body?: {
     /**

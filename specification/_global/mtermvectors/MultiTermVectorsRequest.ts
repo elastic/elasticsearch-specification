@@ -58,6 +58,10 @@ export interface Request extends RequestBase {
     {
       path: '/{index}/_mtermvectors'
       methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/{_slice}/_mtermvectors'
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -65,6 +69,13 @@ export interface Request extends RequestBase {
      * The name of the index that contains the documents.
      */
     index?: IndexName
+    /**
+     * The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
@@ -114,14 +125,6 @@ export interface Request extends RequestBase {
      * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      */
     routing?: Routing
-    /**
-     * The slice identifier used to route the operation to a specific slice.
-     * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
-     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
-     * @codegen_name route_slice
-     */
-    _slice?: string
     /**
      * If true, the response includes term frequency and document frequency.
      * @server_default false

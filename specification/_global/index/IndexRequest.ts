@@ -172,6 +172,14 @@ export interface Request<TDocument> extends RequestBase {
     {
       path: '/{index}/_doc'
       methods: ['POST']
+    },
+    {
+      path: '/{index}/{_slice}/_doc/{id}'
+      methods: ['PUT', 'POST']
+    },
+    {
+      path: '/{index}/{_slice}/_doc'
+      methods: ['POST']
     }
   ]
   path_parts: {
@@ -187,6 +195,14 @@ export interface Request<TDocument> extends RequestBase {
      * You can check for existing targets with the resolve index API.
      */
     index: IndexName
+    /**
+     * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
@@ -235,14 +251,6 @@ export interface Request<TDocument> extends RequestBase {
      * @ext_doc_id search-shard-routing
      */
     routing?: Routing
-    /**
-     * The slice identifier used to route the operation to a specific slice.
-     * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
-     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
-     * @codegen_name route_slice
-     */
-    _slice?: string
     /**
      * The period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.
      *
