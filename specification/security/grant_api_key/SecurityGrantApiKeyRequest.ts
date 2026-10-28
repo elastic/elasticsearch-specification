@@ -19,7 +19,11 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType, Password, Refresh, Username } from '@_types/common'
-import { ApiKeyGrantType, GrantApiKey } from './types'
+import {
+  ApiKeyGrantType,
+  GrantApiKey,
+  GrantApiKeyClientAuthentication
+} from './types'
 
 /**
  * Grant an API key.
@@ -33,9 +37,11 @@ import { ApiKeyGrantType, GrantApiKey } from './types'
  * * username and password
  * * Elasticsearch access tokens
  * * JWTs
+ * * service account tokens of user-managed service accounts
  *
  * The user, for whom the authentication credentials is provided, can optionally "run as" (impersonate) another user.
  * In this case, the API key will be created on behalf of the impersonated user.
+ * Run as is not supported with the `_user_managed_service_account` grant type.
  *
  * This API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.
  * The API keys are created by the Elasticsearch API key service, which is automatically enabled.
@@ -75,7 +81,7 @@ export interface Request extends RequestBase {
      */
     api_key: GrantApiKey
     /**
-     * The type of grant. Supported grant types are: `access_token`, `password`.
+     * The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.
      */
     grant_type: ApiKeyGrantType
     /**
@@ -84,6 +90,20 @@ export interface Request extends RequestBase {
      * It is not valid with other grant types.
      */
     access_token?: string
+    /**
+     * The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.
+     * It is valid only with the `access_token` grant type, when the access token is a JWT.
+     * @availability stack since=8.12.0
+     * @availability serverless
+     */
+    client_authentication?: GrantApiKeyClientAuthentication
+    /**
+     * The service account token of a user-managed service account, as returned by the create service account token API.
+     * If you specify the `_user_managed_service_account` grant type, this parameter is required.
+     * It is not valid with other grant types.
+     * @availability stack since=9.6.0
+     */
+    service_account_token?: string
     /**
      * The user name that identifies the user.
      * If you specify the `password` grant type, this parameter is required.
@@ -98,6 +118,7 @@ export interface Request extends RequestBase {
     password?: Password
     /**
      * The name of the user to be impersonated.
+     * It is not valid with the `_user_managed_service_account` grant type.
      */
     run_as?: Username
   }

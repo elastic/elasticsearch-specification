@@ -56,11 +56,13 @@ export class AddAction {
   /**
    * Data stream or index for the action.
    * Supports wildcards (`*`).
+   * Wildcard patterns that match both data streams and indices return an error.
    */
   index?: IndexName
   /**
    * Data streams or indices for the action.
    * Supports wildcards (`*`).
+   * Wildcard patterns that match both data streams and indices return an error.
    */
   indices?: Indices
   /**

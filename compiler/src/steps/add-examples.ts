@@ -293,14 +293,15 @@ class ResponseExamplesProcessor extends BaseExamplesProcessor {
       return
     }
     // Get a map of status code to response example subfolder.
-    const examplesResponseSubfolderMap = this.getExamplesResponseSubfolderMap(examplesFolder)
-    const examples200ResponseSubfolder = examplesResponseSubfolderMap?.get('200')
-    // If there is an examples/response or examples/200_response folder,
-    // add the response examples to the model.
-    if (examples200ResponseSubfolder !== undefined) {
-      const examples = this.getExampleMap(examples200ResponseSubfolder)
-      if (examples.size > 0) {
-        responseDefinition.examples = Object.fromEntries(examples)
+    // The 200 examples (examples/response or examples/200_response) go on the response itself,
+    // the others on the exceptions that declare the matching status code.
+    for (const [statusCode, subfolder] of this.getExamplesResponseSubfolderMap(examplesFolder) ?? []) {
+      const target = statusCode === '200'
+        ? responseDefinition
+        : responseDefinition.exceptions?.find(e => e.statusCodes.includes(Number(statusCode)))
+      const examples = this.getExampleMap(subfolder)
+      if (target !== undefined && examples.size > 0) {
+        target.examples = { ...target.examples, ...Object.fromEntries(examples) }
       }
     }
   }

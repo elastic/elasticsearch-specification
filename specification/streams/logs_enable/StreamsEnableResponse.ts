@@ -17,9 +17,18 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { AcknowledgedResponseBase, ErrorResponseBase } from '@_types/Base'
 
 export class Response {
   /** @codegen_name result */
   body: AcknowledgedResponseBase
+  exceptions: [
+    {
+      /**
+       * An index named `logs.otel`, or starting with `logs.otel.`, already exists.
+       */
+      statusCodes: [409]
+      body: ErrorResponseBase
+    }
+  ]
 }

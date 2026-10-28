@@ -1,0 +1,5 @@
+summary: List failed recoveries
+method_request: GET _data_recovery/recoveries?status=failed&size=2
+description: Run `GET _data_recovery/recoveries?status=failed&size=2` to list the two most recent failed recoveries.
+# type: request
+value: ''

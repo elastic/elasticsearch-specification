@@ -22,7 +22,7 @@ import { Duration } from '@_types/Time'
 import { CatAliasesColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get aliases.
+ * Get a compact list of aliases.
  *
  * Get the cluster's index aliases, including filter and routing information.
  * This API does not return data stream aliases.

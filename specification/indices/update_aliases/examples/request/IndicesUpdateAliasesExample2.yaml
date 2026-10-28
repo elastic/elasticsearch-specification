@@ -1,0 +1,13 @@
+method_request: POST _aliases
+summary: Remove a data stream or index from an alias
+value: |-
+  {
+    "actions": [
+      {
+        "remove": {
+          "index": "logs-nginx.access-prod",
+          "alias": "logs"
+        }
+      }
+    ]
+  }

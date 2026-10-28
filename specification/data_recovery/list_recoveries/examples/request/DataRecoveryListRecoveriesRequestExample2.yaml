@@ -1,0 +1,7 @@
+summary: Get the next page
+method_request: GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e
+description: >
+  Run `GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e` to retrieve the page after a recovery
+  that started at the given time. Pass the start time and identifier of the last recovery of the previous page.
+# type: request
+value: ''

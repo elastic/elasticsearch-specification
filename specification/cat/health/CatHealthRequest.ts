@@ -21,7 +21,7 @@ import { MediaType, Names } from '@_types/common'
 import { CatHealthColumns, CatRequestBase } from '@cat/_types/CatBase'
 
 /**
- * Get the cluster health status.
+ * Get a compact cluster health summary.
  *
  * IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.
  * They are not intended for use by applications. For application consumption, use the cluster health API.

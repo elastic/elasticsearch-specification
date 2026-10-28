@@ -21,7 +21,7 @@ import { RequestBase } from '@_types/Base'
 import { ClusterInfoTargets, MediaType } from '@_types/common'
 
 /**
- * Get cluster info.
+ * Get cluster subsystem info.
  *
  * Returns basic information about the cluster.
  * @rest_spec_name cluster.info

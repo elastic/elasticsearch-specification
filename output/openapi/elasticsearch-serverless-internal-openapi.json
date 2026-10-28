@@ -988,7 +988,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases",
         "parameters": [
@@ -1039,7 +1039,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get aliases",
+        "summary": "Get a compact list of aliases",
         "description": "Get the cluster's index aliases, including filter and routing information.\nThis API does not return data stream aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or the Kibana console. They are not intended for use by applications. For application consumption, use the aliases API.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`\n",
         "operationId": "cat-aliases-1",
         "parameters": [
@@ -1303,7 +1303,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates",
         "parameters": [
@@ -1354,7 +1354,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get component templates",
+        "summary": "Get a compact list of component templates",
         "description": "Get information about component templates in a cluster.\nComponent templates are building blocks for constructing index templates that specify index mappings, settings, and aliases.\n\nIMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the get component template API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-component-templates-1",
         "parameters": [
@@ -1701,7 +1701,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get the cluster health status",
+        "summary": "Get a compact cluster health summary",
         "description": "IMPORTANT: CAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use the cluster health API.\nThis API is often used to check malfunctioning clusters.\nTo help you track cluster health alongside log files and alerting systems, the API returns timestamps in two formats:\n`HH:MM:SS`, which is human-readable but includes no date information;\n`Unix epoch time`, which is machine-sortable and includes date information.\nThe latter format is useful for cluster recoveries that take multiple days.\nYou can use the cat health API to verify cluster health across multiple nodes.\nYou also can use the API to track the recovery of a large cluster over a longer period of time.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-health",
         "parameters": [
@@ -1816,7 +1816,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices",
         "parameters": [
@@ -1876,7 +1876,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get index information",
+        "summary": "Get a compact list of indices",
         "description": "Get high-level information about indices in a cluster, including backing indices for data streams.\n\nUse this request to get the following information for each index in a cluster:\n- shard count\n- document count\n- deleted document count\n- primary store size\n- total store size of all shards, including shard replicas\n\nThese metrics are retrieved directly from Lucene, which Elasticsearch uses internally to power indexing and search. As a result, all document counts include hidden nested documents.\nTo get an accurate count of Elasticsearch documents, use the cat count or count APIs.\n\nNOTE: Storage metrics reported by this API reflect the post-compression size of the indices on disk. Because these values are calculated after Elasticsearch compresses the data and processes deletions, they are typically significantly smaller than the raw, uncompressed data volume ingested.\n\nIMPORTANT: For Elastic Cloud Serverless, ingest billing is based on the raw, uncompressed data volume, not the post-compression metrics reported here. To learn more, refer to [Elasticsearch billing dimensions](https://www.elastic.co/docs/deploy-manage/cloud-organization/billing/elasticsearch-billing-dimensions).\n\nCAT APIs are only intended for human consumption using the command line or Kibana console.\nThey are not intended for use by applications. For application consumption, use an index endpoint.\n\n## Required authorization\n\n* Index privileges: `monitor`\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-indices-1",
         "parameters": [
@@ -2555,7 +2555,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get node information",
+        "summary": "Get a compact list of nodes",
         "description": "Get information about the nodes in a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the nodes info API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-nodes",
         "parameters": [
@@ -3002,7 +3002,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot repository information",
+        "summary": "Get a compact list of snapshot repositories",
         "description": "Get a list of snapshot repositories for a cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot repository API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-repositories",
         "parameters": [
@@ -3337,7 +3337,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots",
         "parameters": [
@@ -3388,7 +3388,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get snapshot information",
+        "summary": "Get a compact list of snapshots",
         "description": "Get information about the snapshots stored in one or more repositories.\nA snapshot is a backup of an index or running Elasticsearch cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the get snapshot API.\n\n## Required authorization\n\n* Cluster privileges: `monitor_snapshot`\n",
         "operationId": "cat-snapshots-1",
         "parameters": [
@@ -3442,7 +3442,7 @@
         "tags": [
           "cat"
         ],
-        "summary": "Get task information",
+        "summary": "Get a compact list of running tasks",
         "description": "Get information about tasks currently running in the cluster.\nIMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cat-tasks",
         "parameters": [
@@ -5002,7 +5002,7 @@
         "tags": [
           "cluster"
         ],
-        "summary": "Get cluster info",
+        "summary": "Get cluster subsystem info",
         "description": "Returns basic information about the cluster.",
         "operationId": "cluster-info",
         "parameters": [
@@ -7899,6 +7899,59 @@
         ]
       }
     },
+    "/_data_recovery/recoveries/{recovery_id}": {
+      "get": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "Get a recovery",
+        "description": "Get the status and details of a recovery that was started with the start recovery API.\nThis API is intended for internal operator use.\nThe progress of a running recovery is reported as a percentage, and the repository and audit details of the recovery are not exposed.",
+        "operationId": "data-recovery-get-recovery",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "recovery_id",
+            "description": "The identifier of the recovery, as returned when the recovery was started.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/data_recovery._types.Recovery"
+                },
+                "examples": {
+                  "DataRecoveryGetRecoveryResponseExample1": {
+                    "summary": "A running recovery",
+                    "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
+                    "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+                  },
+                  "DataRecoveryGetRecoveryResponseExample2": {
+                    "summary": "A failed recovery",
+                    "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
+                    "value": "{\n  \"recovery_id\": \"rec-7b21d4aa\",\n  \"status\": \"failed\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"replace\",\n  \"sources\": [\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"orders\" }\n  ],\n  \"metadata\": {},\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"completed_at\": \"2026-10-22T08:41:17.000Z\",\n  \"progress\": { \"percent_complete\": 50 },\n  \"failures\": [\n    { \"source\": \"orders\", \"reason\": \"restore_failed\", \"detail\": \"Failed to restore shard [0]\" }\n  ],\n  \"total_failure_count\": 1\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_data_recovery/points": {
       "get": {
         "tags": [
@@ -8232,6 +8285,144 @@
       }
     },
     "/_data_recovery/recoveries": {
+      "get": {
+        "tags": [
+          "data_recovery"
+        ],
+        "summary": "List recoveries",
+        "description": "List the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+        "operationId": "data-recovery-list-recoveries",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "size",
+            "description": "The maximum number of recoveries to return. The value must be between 1 and 1000.",
+            "deprecated": false,
+            "schema": {
+              "default": 100.0,
+              "type": "number"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "started_at_gte",
+            "description": "Return only recoveries that started at or after this time, as an ISO-8601 timestamp.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "started_at_lt",
+            "description": "Return only recoveries that started before this time, as an ISO-8601 timestamp. It must not be earlier than `started_at_gte`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "description": "The order of the recoveries by start time.",
+            "deprecated": false,
+            "schema": {
+              "default": "desc",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.SortOrder"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after_started_at",
+            "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.DateTime"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "search_after_recovery_id",
+            "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "A comma-separated list of statuses. Return only recoveries with one of these statuses. By default, recoveries with any status are returned.",
+            "deprecated": false,
+            "schema": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+                  }
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recoveries": {
+                      "description": "The recoveries, in the requested order.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/data_recovery._types.Recovery"
+                      }
+                    },
+                    "has_more": {
+                      "description": "Whether there are more recoveries after the last one in this page.",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "recoveries",
+                    "has_more"
+                  ]
+                },
+                "examples": {
+                  "DataRecoveryListRecoveriesResponseExample1": {
+                    "summary": "A page of recoveries",
+                    "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
+                    "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
       "post": {
         "tags": [
           "data_recovery"
@@ -19150,8 +19341,8 @@
         "tags": [
           "indices"
         ],
-        "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "summary": "Update aliases and delete indices atomically",
+        "description": "Applies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-update-aliases",
         "parameters": [
           {
@@ -19202,8 +19393,18 @@
               },
               "examples": {
                 "IndicesUpdateAliasesExample1": {
-                  "description": "An example body for a `POST _aliases` request.",
-                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                  "summary": "Add a data stream or index to an alias",
+                  "description": "If the alias does not exist, it is created.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-*\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample2": {
+                  "summary": "Remove a data stream or index from an alias",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample3": {
+                  "summary": "Remove an index and update an alias",
+                  "description": "First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.\n",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_index\": {\n        \"index\": \"my-index-1\"\n      }\n    },\n    {\n      \"add\": {\n        \"index\": \"my-index-2\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
                 }
               }
             }
@@ -19216,7 +19417,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                  "$ref": "#/components/schemas/indices.update_aliases.IndicesUpdateAliasesResponseBody"
+                },
+                "examples": {
+                  "IndicesUpdateAliasesExample1": {
+                    "summary": "A partially successful response",
+                    "description": "When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.",
+                    "value": "{\n  \"acknowledged\": true,\n  \"errors\": true,\n  \"action_results\": [\n    {\n      \"action\": {\n        \"type\": \"remove\",\n        \"indices\": [\n          \"logs-nginx.access-prod\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 404,\n      \"error\": {\n        \"type\": \"aliases_not_found_exception\",\n        \"reason\": \"aliases [logs-non-existing] missing\",\n        \"resource.type\": \"aliases\",\n        \"resource.id\": \"logs-non-existing\"\n      }\n    },\n    {\n      \"action\": {\n        \"type\": \"add\",\n        \"indices\": [\n          \"logs-nginx.access-default\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 200\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -20105,6 +20313,113 @@
           }
         },
         "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/document_extraction/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform document extraction inference on the service",
+        "description": "Extract the content of documents, such as PDFs or images of documents, into a textual format.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-document-extraction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "120s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DocumentExtractionRequestExample1": {
+                  "summary": "Document extraction task",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+                  "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+                },
+                "DocumentExtractionRequestExample2": {
+                  "summary": "Document extraction task using the url format and task settings",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+                  "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DocumentExtractionInferenceResult"
+                },
+                "examples": {
+                  "DocumentExtractionResponseExample1": {
+                    "summary": "Document extraction task",
+                    "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+                    "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -33710,11 +34025,18 @@
                     }
                   },
                   "detectors": {
-                    "description": "An array of detector update objects.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ml._types.DetectorUpdate"
-                    }
+                    "description": "A detector update object or an array of detector update objects.",
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                        }
+                      }
+                    ]
                   },
                   "per_partition_categorization": {
                     "description": "Settings related to how categorization interacts with partition fields.",
@@ -41911,7 +42233,7 @@
           "security"
         ],
         "summary": "Grant an API key",
-        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
+        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
         "operationId": "security-grant-api-key",
         "parameters": [
           {
@@ -41945,7 +42267,7 @@
                     ]
                   },
                   "grant_type": {
-                    "description": "The type of grant. Supported grant types are: `access_token`, `password`.",
+                    "description": "The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/security.grant_api_key.ApiKeyGrantType"
@@ -41955,6 +42277,14 @@
                   "access_token": {
                     "description": "The user's access token.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
                     "type": "string"
+                  },
+                  "client_authentication": {
+                    "description": "The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.\nIt is valid only with the `access_token` grant type, when the access token is a JWT.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthentication"
+                      }
+                    ]
                   },
                   "username": {
                     "description": "The user name that identifies the user.\nIf you specify the `password` grant type, this parameter is required.\nIt is not valid with other grant types.",
@@ -41973,7 +42303,7 @@
                     ]
                   },
                   "run_as": {
-                    "description": "The name of the user to be impersonated.",
+                    "description": "The name of the user to be impersonated.\nIt is not valid with the `_user_managed_service_account` grant type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.Username"
@@ -41996,6 +42326,11 @@
                   "summary": "Grant an API key with run_as",
                   "description": "Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can \"run as\" another user (`test_user`). The API key will be granted to the impersonated user (`test_user`).\n",
                   "value": "{\n  \"grant_type\": \"password\",\n  \"username\" : \"test_admin\",  \n  \"password\" : \"x-pack-test-password\",  \n  \"run_as\": \"test_user\",  \n  \"api_key\" : {\n    \"name\": \"another-api-key\"\n  }\n}"
+                },
+                "SecurityGrantApiKeyRequestExample3": {
+                  "summary": "Grant an API key to a user-managed service account",
+                  "description": "Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by presenting one of its service account tokens. This request needs to be made by an authenticated user with the `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by the service account and is limited by the roles assigned to it.\n",
+                  "value": "{\n  \"grant_type\": \"_user_managed_service_account\",\n  \"service_account_token\": \"AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ\",\n  \"api_key\": {\n    \"name\": \"worker-key\",\n    \"expiration\": \"1d\"\n  }\n}"
                 }
               }
             }
@@ -45804,6 +46139,22 @@
                   "required": [
                     "result"
                   ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "\nThe synonym rules are not valid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "SynonymsPutResponseExample1": {
+                    "description": "An abbreviated response from `PUT _synonyms/my-synonyms-set`. If any of the synonym rules included is not valid, the API returns an error.\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"action_request_validation_exception\",\n        \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n        \"stack_trace\": ...\n      }\n    ],\n    \"type\": \"action_request_validation_exception\",\n    \"reason\": \"Validation Failed: 1: More than one explicit mapping specified in the same synonyms rule: [hello => hi => howdy];\",\n    \"stack_trace\": ...\n  },\n  \"status\": 400\n}"
+                  }
                 }
               }
             }
@@ -54556,6 +54907,13 @@
               }
             ]
           },
+          "rescore": {
+            "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types.RescoreProfile"
+            }
+          },
           "searches": {
             "type": "array",
             "items": {
@@ -55210,6 +55568,191 @@
       "_types.NodeId": {
         "type": "string"
       },
+      "_global.search._types.RescoreProfile": {
+        "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "learning_to_rank": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile",
+            "query": "#/components/schemas/_global.search._types.QueryRescoreProfile",
+            "script": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.QueryRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile"
+          }
+        ]
+      },
+      "_global.search._types.QueryRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "query"
+                ]
+              },
+              "breakdown": {
+                "description": "The `query` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_types.EmptyObject": {
+        "description": "For empty Class assignments",
+        "type": "object"
+      },
+      "_global.search._types.RescoreProfileBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "What the rescorer runs.",
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "description": "The total time spent in the rescorer, including the time spent running its queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "time": {
+            "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "debug": {
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types.ScriptRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "script"
+                ]
+              },
+              "breakdown": {
+                "description": "The `script` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "learning_to_rank"
+                ]
+              },
+              "breakdown": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfileBreakdown"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "build_feature_extractors": {
+            "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+            "type": "number"
+          },
+          "build_feature_extractors_count": {
+            "type": "number"
+          },
+          "feature_extraction": {
+            "description": "The time spent extracting the features of the top documents.",
+            "type": "number"
+          },
+          "feature_extraction_count": {
+            "type": "number"
+          },
+          "inference": {
+            "description": "The time spent running the model on the extracted features.",
+            "type": "number"
+          },
+          "inference_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "build_feature_extractors",
+          "build_feature_extractors_count",
+          "feature_extraction",
+          "feature_extraction_count",
+          "inference",
+          "inference_count"
+        ]
+      },
       "_global.search._types.SearchProfile": {
         "type": "object",
         "properties": {
@@ -55286,6 +55829,13 @@
           },
           "type": {
             "type": "string"
+          },
+          "debug": {
+            "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           },
           "children": {
             "type": "array",
@@ -65041,10 +65591,6 @@
             ]
           }
         ]
-      },
-      "_types.EmptyObject": {
-        "description": "For empty Class assignments",
-        "type": "object"
       },
       "_types.aggregations.MovingAverageAggregationBase": {
         "allOf": [
@@ -90392,6 +90938,109 @@
           "_version"
         ]
       },
+      "data_recovery._types.Recovery": {
+        "type": "object",
+        "properties": {
+          "recovery_id": {
+            "description": "The identifier of the recovery.",
+            "type": "string"
+          },
+          "status": {
+            "description": "The status of the recovery.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.RecoveryRunStatus"
+              }
+            ]
+          },
+          "recovery_point": {
+            "description": "The recovery point that the sources are recovered from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.Point"
+              }
+            ]
+          },
+          "destination_mode": {
+            "description": "Whether the sources are recovered in place (`replace`) or under new names (`rename`).",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery.start_recovery.RecoveryMode"
+              }
+            ]
+          },
+          "sources": {
+            "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/data_recovery._types.ResolvedRecoverySource"
+            }
+          },
+          "metadata": {
+            "description": "The custom metadata that was provided when the recovery was started.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "started_at": {
+            "description": "The time when the recovery started.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "completed_at": {
+            "description": "The time when the recovery finished. It is omitted while the recovery is running.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "progress": {
+            "description": "The progress of the recovery.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.RecoveryProgress"
+              }
+            ]
+          },
+          "failures": {
+            "description": "The sources that could not be recovered.\nThe list is capped, so it can be shorter than `total_failure_count`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/data_recovery._types.RecoveryFailure"
+            }
+          },
+          "total_failure_count": {
+            "description": "The total number of sources that could not be recovered, including any that are not listed in `failures`.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "recovery_id",
+          "status",
+          "recovery_point",
+          "destination_mode",
+          "sources",
+          "metadata",
+          "started_at",
+          "progress",
+          "failures",
+          "total_failure_count"
+        ]
+      },
+      "data_recovery._types.RecoveryRunStatus": {
+        "type": "string",
+        "enum": [
+          "running",
+          "completed",
+          "failed"
+        ]
+      },
       "data_recovery._types.Point": {
         "type": "object",
         "properties": {
@@ -90415,6 +91064,76 @@
         "required": [
           "start_time",
           "end_time"
+        ]
+      },
+      "data_recovery.start_recovery.RecoveryMode": {
+        "type": "string",
+        "enum": [
+          "replace",
+          "rename"
+        ]
+      },
+      "data_recovery._types.ResolvedRecoverySource": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The name of the index or data stream in the recovery point.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery._types.SourceType"
+              }
+            ]
+          },
+          "destination": {
+            "description": "The name of the index or data stream that the source is recovered to.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "type",
+          "destination"
+        ]
+      },
+      "data_recovery._types.SourceType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "data_stream"
+        ]
+      },
+      "data_recovery._types.RecoveryProgress": {
+        "type": "object",
+        "properties": {
+          "percent_complete": {
+            "description": "The estimated percentage of the recovery that has completed, from `0` to `100`.\nIt is omitted when the progress cannot currently be determined, for example before the recovery starts moving data.\nIt is `100` once the recovery has completed.",
+            "type": "number"
+          }
+        }
+      },
+      "data_recovery._types.RecoveryFailure": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "description": "The name of the source that could not be recovered.",
+            "type": "string"
+          },
+          "reason": {
+            "description": "A stable, machine-readable code for the reason that the source could not be recovered.",
+            "type": "string"
+          },
+          "detail": {
+            "description": "Human-readable detail about the failure, which can be truncated.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "reason"
         ]
       },
       "data_recovery.get_recovery_sources.RecoverySource": {
@@ -90441,13 +91160,6 @@
           "complete",
           "name",
           "type"
-        ]
-      },
-      "data_recovery._types.SourceType": {
-        "type": "string",
-        "enum": [
-          "index",
-          "data_stream"
         ]
       },
       "data_recovery.get_rpo_series.RpoBucket": {
@@ -90488,13 +91200,6 @@
           "max_recovery_point_age_millis"
         ]
       },
-      "data_recovery.start_recovery.RecoveryMode": {
-        "type": "string",
-        "enum": [
-          "replace",
-          "rename"
-        ]
-      },
       "data_recovery.start_recovery.RenameStrategy": {
         "type": "object",
         "properties": {
@@ -90507,32 +91212,6 @@
             "type": "string"
           }
         }
-      },
-      "data_recovery._types.ResolvedRecoverySource": {
-        "type": "object",
-        "properties": {
-          "source": {
-            "description": "The name of the index or data stream in the recovery point.",
-            "type": "string"
-          },
-          "type": {
-            "description": "The type of the source.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/data_recovery._types.SourceType"
-              }
-            ]
-          },
-          "destination": {
-            "description": "The name of the index or data stream that the source is recovered to.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "source",
-          "type",
-          "destination"
-        ]
       },
       "_types.ErrorResponseBase": {
         "description": "The response returned by Elasticsearch when request execution did not succeed.",
@@ -91304,8 +91983,8 @@
             "description": "The declared column type.",
             "type": "string"
           },
-          "path": {
-            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
+          "rename_from": {
+            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
             "type": "string"
           },
           "format": {
@@ -97293,7 +97972,7 @@
             ]
           },
           "index": {
-            "description": "Data stream or index for the action.\nSupports wildcards (`*`).",
+            "description": "Data stream or index for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -97301,7 +97980,7 @@
             ]
           },
           "indices": {
-            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).",
+            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Indices"
@@ -97409,6 +98088,16 @@
             "type": "boolean"
           }
         }
+      },
+      "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "indices.validate_query.IndicesValidationExplanation": {
         "type": "object",
@@ -98006,7 +98695,8 @@
           "rerank",
           "completion",
           "chat_completion",
-          "embedding"
+          "embedding",
+          "document_extraction"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -98029,6 +98719,122 @@
               "pipelines"
             ]
           }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionInput": {
+        "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+            }
+          }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObject": {
+        "description": "A wrapper object which contains a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The document to extract the content from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObjectItem"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObjectItem": {
+        "description": "An object describing a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the document. Not all services and models support all types.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentType": {
+        "type": "string",
+        "enum": [
+          "image",
+          "pdf"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentFormat": {
+        "type": "string",
+        "enum": [
+          "base64",
+          "url"
+        ]
+      },
+      "inference._types.DocumentExtractionInferenceResult": {
+        "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+        "type": "object",
+        "properties": {
+          "document_extraction": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DocumentExtractionResult"
+            }
+          }
+        },
+        "required": [
+          "document_extraction"
+        ]
+      },
+      "inference._types.DocumentExtractionResult": {
+        "description": "The document extraction result object representing the content extracted from a single document.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The content extracted from the document.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The format of the extracted content, for example `markdown`.",
+            "type": "string"
+          },
+          "metadata": {
+            "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content",
+          "format"
         ]
       },
       "inference._types.RequestEmbedding": {
@@ -120176,6 +120982,33 @@
           "password"
         ]
       },
+      "security.grant_api_key.GrantApiKeyClientAuthentication": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "description": "The client authentication scheme.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthenticationScheme"
+              }
+            ]
+          },
+          "value": {
+            "description": "The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "value"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthenticationScheme": {
+        "type": "string",
+        "enum": [
+          "SharedSecret"
+        ]
+      },
       "security.has_privileges.ApplicationPrivilegesCheck": {
         "type": "object",
         "properties": {
@@ -123471,6 +124304,15 @@
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
             "type": "boolean"
+          },
+          "indexer_request_timeout": {
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+            "default": "30s",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         }
       },
@@ -129485,8 +130327,8 @@
               },
               "GetServiceAccountsResponseExample2": {
                 "summary": "User-managed service accounts in a namespace",
-                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
-                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
+                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace. The account was created by `alice` and last replaced by `bob` using an API key.\n",
+                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true,\n    \"created_by\": {\n      \"username\": \"alice\",\n      \"realm\": \"ldap1\",\n      \"realm_type\": \"ldap\"\n    },\n    \"created_at\": 1758585600000,\n    \"updated_by\": {\n      \"username\": \"bob\",\n      \"realm\": \"default_native\",\n      \"realm_type\": \"native\",\n      \"api_key\": {\n        \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n        \"name\": \"deploy-bot-key\"\n      }\n    },\n    \"updated_at\": 1758672000000\n  }\n}"
               }
             }
           }

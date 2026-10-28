@@ -1,0 +1,26 @@
+summary: A failed recovery
+description: >
+  A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.
+# type: response
+# response_code: ''
+value: |-
+  {
+    "recovery_id": "rec-7b21d4aa",
+    "status": "failed",
+    "recovery_point": {
+      "start_time": "2026-10-20T10:00:00.000Z",
+      "end_time": "2026-10-20T10:05:12.000Z"
+    },
+    "destination_mode": "replace",
+    "sources": [
+      { "source": "orders", "type": "index", "destination": "orders" }
+    ],
+    "metadata": {},
+    "started_at": "2026-10-22T08:30:00.000Z",
+    "completed_at": "2026-10-22T08:41:17.000Z",
+    "progress": { "percent_complete": 50 },
+    "failures": [
+      { "source": "orders", "reason": "restore_failed", "detail": "Failed to restore shard [0]" }
+    ],
+    "total_failure_count": 1
+  }
