@@ -38581,11 +38581,18 @@
                     }
                   },
                   "detectors": {
-                    "description": "An array of detector update objects.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ml._types.DetectorUpdate"
-                    }
+                    "description": "A detector update object or an array of detector update objects.",
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                        }
+                      }
+                    ]
                   },
                   "per_partition_categorization": {
                     "description": "Settings related to how categorization interacts with partition fields.",
