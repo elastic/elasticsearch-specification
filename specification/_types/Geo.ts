@@ -61,6 +61,14 @@ export class GeoLine {
   coordinates: Array<Array<double>>
 }
 
+/** A GeoJson GeoPoint. */
+export class GeoPoint {
+  /** Always `"Point"` */
+  type: string
+  /** `[lon, lat]` coordinates */
+  coordinates: Array<double>
+}
+
 export enum GeoShapeRelation {
   /**
    * Return all documents whose `geo_shape` or `geo_point` field intersects the query geometry.
