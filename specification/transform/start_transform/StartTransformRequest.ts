@@ -69,5 +69,13 @@ export interface Request extends RequestBase {
      * Restricts the set of transformed entities to those changed after this time. Relative times like now-30d are supported. Only applicable for continuous transforms.
      */
     from?: string
+    /**
+     * A one-time, reduced sync delay that applies until the transform has processed its first document.
+     * It then reverts to the `sync.time.delay` of the transform.
+     * Only applicable for continuous transforms, and it can't be greater than `sync.time.delay`.
+     * @availability stack since=9.6.0
+     * @availability serverless
+     */
+    initial_delay?: Duration
   }
 }
