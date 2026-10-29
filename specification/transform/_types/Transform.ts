@@ -139,7 +139,7 @@ export class Settings {
    */
   align_checkpoints?: boolean
   /**
-   * Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was
+   * Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was
    * the default for transforms created before version 7.11. For compatible output set this value to `true`.
    * @server_default false
    */
@@ -197,13 +197,12 @@ export class Settings {
   /**
    * The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.
    * Each consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the
-   * maximum is `12h`.
+   * maximum is `12h`. Defaults to `30s`.
    *
-   * @server_default 30s
    * @availability stack since=8.19.24
    * @availability serverless
    */
-  indexer_request_timeout?: Duration
+  indexer_request_timeout?: Duration | null
 }
 
 export class Source {

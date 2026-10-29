@@ -36,7 +36,7 @@ export class Response {
     authorization?: TransformAuthorization
     create_time: long
     //  create_time_date_time?: DateTime
-    description: string
+    description?: string
     dest: Destination
     frequency?: Duration
     id: Id
