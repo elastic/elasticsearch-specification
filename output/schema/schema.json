@@ -5852,19 +5852,22 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "9.4.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
-      "description": "Delete an ES|QL view.\n\nDeletes a stored ES|QL view.",
+      "description": "Delete an ES|QL view.\n\nDeletes a stored ES|QL view. Deleting a reserved view fails.",
       "docId": "esql-delete-view",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-delete-view",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-delete-view",
+      "extDocDescription": "Define reusable queries with ES|QL views",
+      "extDocId": "esql-views",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views",
       "name": "esql.delete_view",
       "privileges": {
         "index": [
@@ -6054,19 +6057,22 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "9.4.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
-      "description": "Get an ES|QL view.\n\nReturns a stored ES|QL view.",
+      "description": "Get an ES|QL view.\n\nReturns one or more stored views. A reserved view includes `reserved` set to `true`.",
       "docId": "esql-get-view",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-view",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-view",
+      "extDocDescription": "Define reusable queries with ES|QL views",
+      "extDocId": "esql-views",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views",
       "name": "esql.get_view",
       "privileges": {
         "index": [
@@ -6250,19 +6256,22 @@
     {
       "availability": {
         "serverless": {
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         },
         "stack": {
           "since": "9.4.0",
-          "stability": "experimental",
+          "stability": "stable",
           "visibility": "public"
         }
       },
-      "description": "Create or update an ES|QL view.",
+      "description": "Create or update an ES|QL view.\n\nStores an ES|QL query that runs whenever the view is referenced.\nA query that cannot be parsed is rejected. Replacing a reserved view fails.",
       "docId": "esql-put-view",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-put-view",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-put-view",
+      "extDocDescription": "Define reusable queries with ES|QL views",
+      "extDocId": "esql-views",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views",
       "name": "esql.put_view",
       "privileges": {
         "index": [
@@ -153013,7 +153022,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L137-L150"
+      "specLocation": "esql/_types/types.ts#L151-L164"
     },
     {
       "kind": "interface",
@@ -153103,7 +153112,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L152-L180"
+      "specLocation": "esql/_types/types.ts#L166-L194"
     },
     {
       "kind": "type_alias",
@@ -153175,6 +153184,15 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
           "description": "A free-text description of the view.",
           "name": "description",
           "required": false,
@@ -153185,9 +153203,30 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
+          "name": "reserved",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L123-L135"
+      "specLocation": "esql/_types/types.ts#L123-L149"
     },
     {
       "kind": "type_alias",
@@ -153200,7 +153239,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L221-L226",
+      "specLocation": "esql/_types/types.ts#L235-L240",
       "type": {
         "kind": "union_of",
         "items": [
@@ -153254,7 +153293,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L228-L240"
+      "specLocation": "esql/_types/types.ts#L242-L254"
     },
     {
       "kind": "interface",
@@ -153623,7 +153662,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L182-L219"
+      "specLocation": "esql/_types/types.ts#L196-L233"
     },
     {
       "kind": "interface",
@@ -155099,7 +155138,14 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Delete an ES|QL view.\n\nDeletes a stored ES|QL view.",
+      "description": "Delete an ES|QL view.\n\nDeletes a stored ES|QL view. Deleting a reserved view fails.",
+      "examples": {
+        "DeleteViewRequestExample1": {
+          "description": "Delete the country_addresses view.",
+          "method_request": "DELETE /_query/view/country_addresses",
+          "summary": "Delete a view"
+        }
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -155125,7 +155171,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/delete_view/DeleteViewRequest.ts#L23-L47"
+      "specLocation": "esql/delete_view/DeleteViewRequest.ts#L23-L48"
     },
     {
       "kind": "response",
@@ -155138,6 +155184,13 @@
             "name": "AcknowledgedResponseBase",
             "namespace": "_types"
           }
+        }
+      },
+      "examples": {
+        "DeleteViewResponseExample1": {
+          "description": "The view definition was deleted successfully.",
+          "summary": "View deleted",
+          "value": "{\n  \"acknowledged\": true\n}"
         }
       },
       "name": {
@@ -155607,7 +155660,19 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "Get an ES|QL view.\n\nReturns a stored ES|QL view.",
+      "description": "Get an ES|QL view.\n\nReturns one or more stored views. A reserved view includes `reserved` set to `true`.",
+      "examples": {
+        "GetViewRequestExample1": {
+          "description": "Retrieve the definition of the country_addresses view.",
+          "method_request": "GET /_query/view/country_addresses",
+          "summary": "Get a view"
+        },
+        "GetViewRequestExample2": {
+          "description": "Retrieve the reserved .ml-anomalies view. Elasticsearch creates this view; it cannot be replaced or deleted through the views API.\n",
+          "method_request": "GET /_query/view/.ml-anomalies",
+          "summary": "Get a reserved view"
+        }
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -155633,7 +155698,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/get_view/GetViewRequest.ts#L23-L51"
+      "specLocation": "esql/get_view/GetViewRequest.ts#L23-L52"
     },
     {
       "kind": "response",
@@ -155655,6 +155720,18 @@
             }
           }
         ]
+      },
+      "examples": {
+        "GetViewResponseExample1": {
+          "description": "The response contains the requested view.",
+          "summary": "View definition",
+          "value": "{\n  \"views\": [\n    {\n      \"name\": \"country_addresses\",\n      \"query\": \"\"\"\n        FROM addresses\n        | RENAME city.country.name AS country\n        | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n        | STATS count=COUNT() BY country\n      \"\"\",\n      \"description\": \"Address counts by country\"\n    }\n  ]\n}"
+        },
+        "GetViewResponseExample2": {
+          "description": "A reserved view includes reserved set to true. This view is created when anomaly detection results exist.\n",
+          "summary": "Reserved view",
+          "value": "{\n  \"views\": [\n    {\n      \"name\": \".ml-anomalies\",\n      \"query\": \"\"\"\n        FROM .ml-anomalies-* METADATA _index\n        | WHERE result_type IN (\"bucket\", \"record\", \"influencer\")\n        | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),\n               initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)\n        | KEEP timestamp,\n               event.ingested,\n               job_id,\n               result_type,\n               is_interim,\n               score,\n               initial_score,\n               bucket_span,\n               function,\n               function_description,\n               field_name,\n               by_field_name,\n               by_field_value,\n               over_field_name,\n               over_field_value,\n               partition_field_name,\n               partition_field_value,\n               influencer_field_name,\n               influencer_field_value,\n               detector_index,\n               actual,\n               typical,\n               event_count,\n               processing_time_ms,\n               _index\n      \"\"\",\n      \"description\": \"View that contains the results of machine learning anomaly detection jobs.\",\n      \"reserved\": true\n    }\n  ]\n}"
+        }
       },
       "name": {
         "name": "Response",
@@ -156162,7 +156239,7 @@
         "kind": "properties",
         "properties": [
           {
-            "description": "The ES|QL query string from which to create a view.",
+            "description": "The ES|QL query string that defines the view. A query that cannot be parsed is rejected.",
             "name": "query",
             "required": true,
             "type": {
@@ -156174,6 +156251,15 @@
             }
           },
           {
+            "availability": {
+              "serverless": {
+                "stability": "stable"
+              },
+              "stack": {
+                "since": "9.6.0",
+                "stability": "stable"
+              }
+            },
             "description": "A free-text description of the view.",
             "name": "description",
             "required": false,
@@ -156187,7 +156273,21 @@
           }
         ]
       },
-      "description": "Create or update an ES|QL view.",
+      "description": "Create or update an ES|QL view.\n\nStores an ES|QL query that runs whenever the view is referenced.\nA query that cannot be parsed is rejected. Replacing a reserved view fails.",
+      "examples": {
+        "PutViewRequestExample1": {
+          "description": "Create a view that normalizes country names and counts addresses by country.\n",
+          "method_request": "PUT /_query/view/country_addresses",
+          "summary": "Create a view of country counts",
+          "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+        },
+        "PutViewRequestExample2": {
+          "description": "Analyze the view query before saving it. When the query uses an unknown index or column, the response includes a warning and the view is still saved.\n",
+          "method_request": "PUT /_query/view/country_addresses?validate=true",
+          "summary": "Create a view and validate the query",
+          "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+        }
+      },
       "inherits": {
         "type": {
           "name": "RequestBase",
@@ -156212,8 +156312,31 @@
           }
         }
       ],
-      "query": [],
-      "specLocation": "esql/put_view/PutViewRequest.ts#L23-L51"
+      "query": [
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.7.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether to analyze the view query and return a warning when validation fails.\n\nValidation reports an unknown index or column, including an index the caller cannot read.\nThe view is saved even when validation reports a problem.\nFailures unrelated to the query, such as an overloaded cluster, produce no warning.",
+          "name": "validate",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/put_view/PutViewRequest.ts#L23-L72"
     },
     {
       "kind": "response",
@@ -156226,6 +156349,13 @@
             "name": "AcknowledgedResponseBase",
             "namespace": "_types"
           }
+        }
+      },
+      "examples": {
+        "PutViewResponseExample1": {
+          "description": "The view definition was stored successfully.",
+          "summary": "View created",
+          "value": "{\n  \"acknowledged\": true\n}"
         }
       },
       "name": {

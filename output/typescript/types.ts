@@ -11908,6 +11908,7 @@ export interface EsqlESQLView {
   name: string
   query: string
   description?: string
+  reserved?: boolean
 }
 
 export type EsqlEsqlApproximation = boolean | EsqlEsqlApproximationSettings
@@ -12156,6 +12157,7 @@ export type EsqlPutDatasetResponse = AcknowledgedResponseBase
 
 export interface EsqlPutViewRequest extends RequestBase {
   name: Id
+  validate?: boolean
   body?: {
     query: string
     description?: string
