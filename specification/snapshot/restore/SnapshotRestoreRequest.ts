@@ -174,5 +174,16 @@ export interface Request extends RequestBase {
      * The rename replacement string that is used with the `rename_pattern`.
      */
     rename_replacement?: string
+    /**
+     * If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.
+     * An open destination index is closed and restored over in a single step.
+     * A destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.
+     *
+     * It can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.
+     * @server_default false
+     * @availability stack since=9.6.0
+     * @availability serverless
+     */
+    restore_over_existing?: boolean
   }
 }
