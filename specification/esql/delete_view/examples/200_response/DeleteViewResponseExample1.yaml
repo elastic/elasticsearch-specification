@@ -1,0 +1,4 @@
+summary: View deleted
+description: The view definition was deleted successfully.
+value:
+  acknowledged: true
