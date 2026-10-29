@@ -50,6 +50,12 @@ export class GetResult<TDocument> {
    */
   _routing?: string
   /**
+   * The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   */
+  _slice?: string
+  /**
    * The sequence number assigned to the document for the indexing operation.
    * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
    * @ext_doc_id optimistic_concurrency

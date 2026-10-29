@@ -107,9 +107,18 @@ export class OperationBase {
   _index?: IndexName
   /**
    * A custom value used to route operations to a specific shard, or multiple comma separated values.
+   * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
    * @availability stack stability=stable
    */
   routing?: string
+  /**
+   * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.
+   * It overrides the `_slice` set in the request path.
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   * @codegen_name route_slice
+   */
+  _slice?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber

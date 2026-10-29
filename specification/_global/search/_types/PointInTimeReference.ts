@@ -23,4 +23,11 @@ import { Duration } from '@_types/Time'
 export class PointInTimeReference {
   id: Id
   keep_alive?: Duration
+  /**
+   * The slice identifiers to search within the point in time: a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to search all slices.
+   * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   * @codegen_name route_slice
+   */
+  _slice?: string
 }

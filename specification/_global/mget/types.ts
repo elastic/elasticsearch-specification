@@ -40,8 +40,17 @@ export class Operation {
   _index?: IndexName
   /**
    * The key for the primary shard the document resides on. Required if routing is used during indexing.
+   * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
    */
   routing?: Routing
+  /**
+   * The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).
+   * It overrides the `_slice` set in the request path.
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   * @codegen_name route_slice
+   */
+  _slice?: string
   /**
    * If `false`, excludes all _source fields.
    */

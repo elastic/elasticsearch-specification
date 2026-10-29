@@ -159,6 +159,10 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
     {
       path: '/{index}/_bulk'
       methods: ['POST', 'PUT']
+    },
+    {
+      path: '/{index}/{_slice}/_bulk'
+      methods: ['POST', 'PUT']
     }
   ]
   path_parts: {
@@ -166,6 +170,13 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * The name of the data stream, index, or index alias to perform bulk actions on.
      */
     index?: IndexName
+    /**
+     * The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
   request_media_type: MediaType.Ndjson
   response_media_type: MediaType.Json
@@ -201,14 +212,6 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * @ext_doc_id search-shard-routing
      */
     routing?: Routing
-    /**
-     * The slice identifier used to route the operation to a specific slice.
-     * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
-     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
-     * @codegen_name route_slice
-     */
-    _slice?: string
     /**
      * Indicates whether to return the `_source` field (`true` or `false`) or contains a list of fields to return.
      */

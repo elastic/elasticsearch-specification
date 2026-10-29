@@ -116,6 +116,10 @@ export interface Request<TDocument> extends RequestBase {
     {
       path: '/{index}/_create/{id}'
       methods: ['PUT', 'POST']
+    },
+    {
+      path: '/{index}/{_slice}/_create/{id}'
+      methods: ['PUT', 'POST']
     }
   ]
   path_parts: {
@@ -130,6 +134,14 @@ export interface Request<TDocument> extends RequestBase {
      * If the target doesn't exist and doesn’t match a data stream template, this request creates the index.
      */
     index: IndexName
+    /**
+     * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: string
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
@@ -164,6 +176,7 @@ export interface Request<TDocument> extends RequestBase {
     require_data_stream?: boolean
     /**
      * A custom value that is used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      * @ext_doc_id search-shard-routing
      */
     routing?: Routing
