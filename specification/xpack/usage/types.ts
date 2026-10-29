@@ -651,6 +651,20 @@ export class VectorDbDocument extends Base {
   num_docs: long
 }
 
+/**
+ * Usage statistics for indices using the `vectordb_columnar` index mode.
+ */
+export class VectorDbColumnar extends Base {
+  /**
+   * The number of indices using the `vectordb_columnar` index mode.
+   */
+  indices_count: integer
+  /**
+   * The total number of documents held across all `vectordb_columnar` indices.
+   */
+  num_docs: long
+}
+
 export class Watcher extends Base {
   execution: WatcherActions
   watch: WatcherWatch

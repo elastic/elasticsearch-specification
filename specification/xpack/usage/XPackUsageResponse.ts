@@ -40,6 +40,7 @@ import {
   Slm,
   Sql,
   Vector,
+  VectorDbColumnar,
   VectorDbDocument,
   Watcher
 } from './types'
@@ -100,6 +101,12 @@ export class Response {
      * @availability stack since=9.5.0
      */
     vectordb_document?: VectorDbDocument
+    /**
+     * The `vectordb_columnar` index mode is behind a feature flag.
+     * Without the flag, this section is still returned, disabled and with zero counts.
+     * @availability stack since=9.6.0
+     */
+    vectordb_columnar?: VectorDbColumnar
     voting_only: Base
   }
 }
