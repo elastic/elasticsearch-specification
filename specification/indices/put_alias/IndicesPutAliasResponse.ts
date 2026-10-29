@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
+import { AliasesResponseBody } from '@indices/_types/AliasesResponseBody'
 
 export class Response {
   /** @codegen_name result */
-  body: AcknowledgedResponseBase
+  body: AliasesResponseBody
 }
