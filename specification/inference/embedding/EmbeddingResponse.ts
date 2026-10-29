@@ -17,9 +17,19 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
 import { EmbeddingInferenceResult } from '@inference/_types/Results'
 
 export class Response {
   /** @codegen_name inference_result */
   body: EmbeddingInferenceResult
+  exceptions: [
+    {
+      /**
+       * The request is invalid (400) or no inference endpoint exists for the `inference_id` (404).
+       */
+      statusCodes: [400, 404]
+      body: ErrorResponseBase
+    }
+  ]
 }
