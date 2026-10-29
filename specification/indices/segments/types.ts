@@ -85,21 +85,32 @@ export class SegmentSort {
   reverse: boolean
 }
 
-export class SegmentAutoCalibration {
+/**
+ * The auto-calibration information of a `dense_vector` field in a segment.
+ *
+ * The shape of `parameters` depends on the quantization method of the field.
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+export type SegmentAutoCalibration = OsqSegmentAutoCalibration
+
+export class SegmentAutoCalibrationBase {
   /** If `true`, the segment has been calibrated, and `parameters` is present. */
   calibrated: boolean
-  /** The quantization method of the calibration, such as `osq`. */
-  type: string
   /** The number of vectors of the field in the segment. */
   number_of_vectors: long
   size?: ByteSize
   /** The size of the vectors of the field in the segment, in bytes. */
   size_in_bytes: long
-  /** The calibration parameters. */
-  parameters?: SegmentAutoCalibrationParameters
 }
 
-export class SegmentAutoCalibrationParameters {
+export class OsqSegmentAutoCalibration extends SegmentAutoCalibrationBase {
+  type: 'osq'
+  /** The calibration parameters. */
+  parameters?: OsqSegmentAutoCalibrationParameters
+}
+
+export class OsqSegmentAutoCalibrationParameters {
   /** The number of bits used to quantize the vectors. */
   bits: integer
   /** The number of bits used to quantize the query vectors. */
