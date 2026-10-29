@@ -112,7 +112,7 @@ export class IndexSettings
   /** @server_default 1s */
   refresh_interval?: Duration
   /** @server_default 10000 */
-  max_result_window?: integer
+  max_result_window?: Stringified<integer>
   /** @server_default 100 */
   max_inner_result_window?: integer
   /** @server_default 10000 */
