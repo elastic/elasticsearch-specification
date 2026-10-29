@@ -23,12 +23,13 @@ import { Ids, MediaType } from '@_types/common'
 /**
  * Delete an ES|QL view.
  *
- * Deletes a stored ES|QL view.
+ * Deletes a stored ES|QL view. Deleting a reserved view fails.
  *
  * @rest_spec_name esql.delete_view
  * @index_privileges delete_view
- * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.4.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
+ * @ext_doc_id esql-views
  * @doc_id esql-delete-view
  */
 export interface Request extends RequestBase {

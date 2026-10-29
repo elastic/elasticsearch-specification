@@ -23,12 +23,13 @@ import { Id, MediaType } from '@_types/common'
 /**
  * Get an ES|QL view.
  *
- * Returns a stored ES|QL view.
+ * Returns one or more stored views. A reserved view includes `reserved` set to `true`.
  *
  * @rest_spec_name esql.get_view
  * @index_privileges read_view_metadata
- * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.4.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
+ * @ext_doc_id esql-views
  * @doc_id esql-get-view
  */
 export interface Request extends RequestBase {
