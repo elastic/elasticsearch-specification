@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { VersionString } from '@_types/common'
-import { double, integer, long } from '@_types/Numeric'
+import { ByteSize, Field, VersionString } from '@_types/common'
+import { double, float, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexSegment {
@@ -27,14 +27,14 @@ export class IndexSegment {
 
 export class Segment {
   /** Contains information about whether high compression was enabled and per-field vector formats. */
-  attributes: Dictionary<string, string>
+  attributes?: Dictionary<string, string>
   /**
    * If `true`, the segment is synced to disk. Segments that are synced can survive a hard reboot.
    * If `false`, the data from uncommitted segments is also stored in the transaction log so that Elasticsearch is able to replay changes on the next start.
    */
   committed: boolean
   /** If `true`, Lucene merged all files from the segment into a single file to save file descriptors. */
-  compound: boolean
+  compound?: boolean
   /**
    * The number of deleted documents as reported by Lucene, which may be higher or lower than the number of delete operations you have performed.
    * This number excludes deletes that were performed recently and do not yet belong to a segment.
@@ -49,6 +49,12 @@ export class Segment {
    * If `false`, the segment has most likely been written to disk but needs a refresh to be searchable.
    */
   search: boolean
+  /** The ID of the merge the segment is part of. Only returned while the segment is being merged. */
+  merge_id?: string
+  /** The index sort of the segment. Only returned when the index is sorted. */
+  sort?: SegmentSort[]
+  /** Disk space used by the segment. */
+  size?: ByteSize
   /** Disk space used by the segment, in bytes. */
   size_in_bytes: double
   /**
@@ -58,12 +64,68 @@ export class Segment {
    */
   num_docs: long
   /** Version of Lucene used to write the segment. */
-  version: VersionString
+  version?: VersionString
+  /**
+   * The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.
+   * Only returned when `include_auto_calibration` is `true`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  auto_calibration?: Dictionary<Field, SegmentAutoCalibration>
+}
+
+export class SegmentSort {
+  /** The name of the sort field. */
+  field: Field
+  /** The selector used to pick a value from multi-valued fields, such as `min` or `max`. Only returned for numeric and keyword fields. */
+  mode?: string
+  /** The value used for documents that are missing the field. */
+  missing?: string
+  /** If `true`, the sort order is descending. */
+  reverse: boolean
+}
+
+/**
+ * The auto-calibration information of a `dense_vector` field in a segment.
+ *
+ * The shape of `parameters` depends on the quantization method of the field.
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+export type SegmentAutoCalibration = OsqSegmentAutoCalibration
+
+export class SegmentAutoCalibrationBase {
+  /** If `true`, the segment has been calibrated, and `parameters` is present. */
+  calibrated: boolean
+  /** The number of vectors of the field in the segment. */
+  number_of_vectors: long
+  size?: ByteSize
+  /** The size of the vectors of the field in the segment, in bytes. */
+  size_in_bytes: long
+}
+
+export class OsqSegmentAutoCalibration extends SegmentAutoCalibrationBase {
+  type: 'osq'
+  /** The calibration parameters. */
+  parameters?: OsqSegmentAutoCalibrationParameters
+}
+
+export class OsqSegmentAutoCalibrationParameters {
+  /** The number of bits used to quantize the vectors. */
+  bits: integer
+  /** The number of bits used to quantize the query vectors. */
+  query_bits: integer
+  /** If `true`, the vectors are preconditioned before quantization. */
+  precondition: boolean
+  /** The oversampling factor applied when rescoring. */
+  oversample: float
 }
 
 export class ShardSegmentRouting {
   /** The node ID of the node that holds the shard. */
   node: string
+  /** The node ID of the node the shard is relocating to. Only returned while the shard is relocating. */
+  relocating_node?: string
   /** If `true`, the shard is a primary shard. */
   primary: boolean
   /** The state of the shard, such as `STARTED` or `RELOCATING`. */
