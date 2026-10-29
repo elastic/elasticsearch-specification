@@ -90,14 +90,8 @@ export class LearningToRankConfig {
   num_top_feature_importance_values: integer
 }
 
-/**
- * @variants typed_keys_quirk
- */
 export type FeatureExtractor = QueryFeatureExtractor
 
-/**
- * @variant name=query_extractor
- */
 export class QueryFeatureExtractor {
   default_score?: float
   feature_name: string
