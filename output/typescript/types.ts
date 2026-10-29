@@ -2353,6 +2353,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   body?: {
     max_docs?: long
     query?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
     script?: Script | ScriptSource
     slice?: SlicedScroll
     conflicts?: Conflicts
