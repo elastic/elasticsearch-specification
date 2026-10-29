@@ -676,6 +676,24 @@ export class GpuNodeStats {
   index_build_count: long
 }
 
+/** Usage of the indices with a given `index.mode`. */
+export class IndexModeUsage extends Base {
+  /** The number of indices in this index mode. */
+  indices_count: long
+  /** The number of indices in this index mode that use synthetic `_source`. */
+  indices_with_synthetic_source: long
+  /** The number of documents in the indices in this index mode. */
+  num_docs: long
+  /** The size of the indices in this index mode, in bytes. */
+  size_in_bytes: long
+  /** The number of data streams in this index mode. */
+  data_streams_count: long
+  /** The number of data streams in this index mode that are managed by index lifecycle management. */
+  data_streams_managed_by_ilm: long
+  /** The number of data streams in this index mode that are managed by data stream lifecycle. */
+  data_streams_managed_by_dlm: long
+}
+
 /**
  * GPU vector indexing usage statistics.
  */

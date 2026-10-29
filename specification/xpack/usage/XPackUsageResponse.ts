@@ -30,6 +30,7 @@ import {
   GpuVectorIndexing,
   HealthStatistics,
   Ilm,
+  IndexModeUsage,
   Logging,
   MachineLearning,
   Monitoring,
@@ -54,6 +55,11 @@ export class Response {
     archive: Archive
     watcher: Watcher
     ccr: Ccr
+    /**
+     * Usage of the indices with `index.mode` set to `columnar`.
+     * @availability stack since=9.6.0
+     */
+    columnar?: IndexModeUsage
     data_frame?: Base
     data_science?: Base
     data_lifecycle?: DataStreamLifecycleUsage
@@ -73,6 +79,11 @@ export class Response {
      * @availability stack since=9.5.0
      */
     logging?: Logging
+    /**
+     * Usage of the indices with `index.mode` set to `logsdb_columnar`.
+     * @availability stack since=9.6.0
+     */
+    logsdb_columnar?: IndexModeUsage
     logstash: Base
     ml: MachineLearning
     monitoring: Monitoring
