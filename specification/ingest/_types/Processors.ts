@@ -1451,6 +1451,12 @@ export class RenameProcessor extends ProcessorBase {
    */
   ignore_missing?: boolean
   /**
+   * If `true`, the processor overwrites `target_field` if it already exists.
+   * If `false`, the processor fails when `target_field` already exists.
+   * @server_default false
+   */
+  override?: boolean
+  /**
    * The new name of the field.
    * Supports template snippets.
    */
