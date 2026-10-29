@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { VersionString } from '@_types/common'
-import { double, integer, long } from '@_types/Numeric'
+import { ByteSize, Field, VersionString } from '@_types/common'
+import { double, float, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexSegment {
@@ -59,6 +59,38 @@ export class Segment {
   num_docs: long
   /** Version of Lucene used to write the segment. */
   version: VersionString
+  /**
+   * The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.
+   * Only returned when `include_auto_calibration` is `true`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  auto_calibration?: Dictionary<Field, SegmentAutoCalibration>
+}
+
+export class SegmentAutoCalibration {
+  /** If `true`, the segment has been calibrated, and `parameters` is present. */
+  calibrated: boolean
+  /** The quantization method of the calibration, such as `osq`. */
+  type: string
+  /** The number of vectors of the field in the segment. */
+  number_of_vectors: long
+  size?: ByteSize
+  /** The size of the vectors of the field in the segment, in bytes. */
+  size_in_bytes: long
+  /** The calibration parameters. */
+  parameters?: SegmentAutoCalibrationParameters
+}
+
+export class SegmentAutoCalibrationParameters {
+  /** The number of bits used to quantize the vectors. */
+  bits: integer
+  /** The number of bits used to quantize the query vectors. */
+  query_bits: integer
+  /** If `true`, the vectors are preconditioned before quantization. */
+  precondition: boolean
+  /** The oversampling factor applied when rescoring. */
+  oversample: float
 }
 
 export class ShardSegmentRouting {
