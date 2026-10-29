@@ -12978,7 +12978,11 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view-1",
         "parameters": [
           {
@@ -12990,7 +12994,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -13003,7 +13007,11 @@
           "esql"
         ],
         "summary": "Create or update an ES|QL view",
-        "description": "\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "description": "Stores an ES|QL query that runs whenever the view is referenced.\nA query that cannot be parsed is rejected. Replacing a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-put-view",
         "parameters": [
           {
@@ -13016,6 +13024,18 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "validate",
+            "description": "Whether to analyze the view query and return a warning when validation fails.\n\nValidation reports an unknown index or column, including an index the caller cannot read.\nThe view is saved even when validation reports a problem.\nFailures unrelated to the query, such as an overloaded cluster, produce no warning.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "x-state": "Generally available; Added in 9.7.0",
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -13025,17 +13045,30 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "The ES|QL query string from which to create a view.",
+                    "description": "The ES|QL query string that defines the view. A query that cannot be parsed is rejected.",
                     "type": "string"
                   },
                   "description": {
                     "description": "A free-text description of the view.",
+                    "x-state": "Generally available; Added in 9.6.0",
                     "type": "string"
                   }
                 },
                 "required": [
                   "query"
                 ]
+              },
+              "examples": {
+                "PutViewRequestExample1": {
+                  "summary": "Create a view of country counts",
+                  "description": "Create a view that normalizes country names and counts addresses by country.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                },
+                "PutViewRequestExample2": {
+                  "summary": "Create a view and validate the query",
+                  "description": "Analyze the view query before saving it. When the query uses an unknown index or column, the response includes a warning and the view is still saved.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                }
               }
             }
           },
@@ -13048,12 +13081,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutViewResponseExample1": {
+                    "summary": "View created",
+                    "description": "The view definition was stored successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -13066,7 +13106,11 @@
           "esql"
         ],
         "summary": "Delete an ES|QL view",
-        "description": "Deletes a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "description": "Deletes a stored ES|QL view. Deleting a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-delete-view",
         "parameters": [
           {
@@ -13088,12 +13132,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteViewResponseExample1": {
+                    "summary": "View deleted",
+                    "description": "The view definition was deleted successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -13255,14 +13306,18 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view",
         "responses": {
           "200": {
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -58167,6 +58222,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "script": {
                     "description": "The script to run to update the document source or metadata when updating.",
                     "allOf": [
@@ -102936,7 +103002,13 @@
           },
           "description": {
             "description": "A free-text description of the view.",
+            "x-state": "Generally available; Added in 9.6.0",
             "type": "string"
+          },
+          "reserved": {
+            "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           }
         },
         "required": [
@@ -117288,6 +117360,11 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "override": {
+                "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
                 "default": false,
                 "type": "boolean"
               },
@@ -145380,6 +145457,18 @@
               "required": [
                 "views"
               ]
+            },
+            "examples": {
+              "GetViewResponseExample1": {
+                "summary": "View definition",
+                "description": "The response contains the requested view.",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \"country_addresses\",\n      \"query\": \"\"\"\n        FROM addresses\n        | RENAME city.country.name AS country\n        | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n        | STATS count=COUNT() BY country\n      \"\"\",\n      \"description\": \"Address counts by country\"\n    }\n  ]\n}"
+              },
+              "GetViewResponseExample2": {
+                "summary": "Reserved view",
+                "description": "A reserved view includes reserved set to true. This view is created when anomaly detection results exist.\n",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \".ml-anomalies\",\n      \"query\": \"\"\"\n        FROM .ml-anomalies-* METADATA _index\n        | WHERE result_type IN (\"bucket\", \"record\", \"influencer\")\n        | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),\n               initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)\n        | KEEP timestamp,\n               event.ingested,\n               job_id,\n               result_type,\n               is_interim,\n               score,\n               initial_score,\n               bucket_span,\n               function,\n               function_description,\n               field_name,\n               by_field_name,\n               by_field_value,\n               over_field_name,\n               over_field_value,\n               partition_field_name,\n               partition_field_value,\n               influencer_field_name,\n               influencer_field_value,\n               detector_index,\n               actual,\n               typical,\n               event_count,\n               processing_time_ms,\n               _index\n      \"\"\",\n      \"description\": \"View that contains the results of machine learning anomaly detection jobs.\",\n      \"reserved\": true\n    }\n  ]\n}"
+              }
             }
           }
         }

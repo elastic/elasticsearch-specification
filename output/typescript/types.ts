@@ -2353,6 +2353,7 @@ export interface UpdateByQueryRequest extends RequestBase {
   body?: {
     max_docs?: long
     query?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
     script?: Script | ScriptSource
     slice?: SlicedScroll
     conflicts?: Conflicts
@@ -11908,6 +11909,7 @@ export interface EsqlESQLView {
   name: string
   query: string
   description?: string
+  reserved?: boolean
 }
 
 export type EsqlEsqlApproximation = boolean | EsqlEsqlApproximationSettings
@@ -12156,6 +12158,7 @@ export type EsqlPutDatasetResponse = AcknowledgedResponseBase
 
 export interface EsqlPutViewRequest extends RequestBase {
   name: Id
+  validate?: boolean
   body?: {
     query: string
     description?: string
@@ -16911,6 +16914,7 @@ export interface IngestRemoveProcessor extends IngestProcessorBase {
 export interface IngestRenameProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
+  override?: boolean
   target_field: Field
 }
 
