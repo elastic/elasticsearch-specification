@@ -802,6 +802,22 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   })
 }
 
+/** Whether a union is `T | T[]`, `T | null` or `T | string`, the only unions that can have a server default */
+function isServerDefaultUnion (items: model.ValueOf[]): boolean {
+  if (items.length !== 2) {
+    return false
+  }
+  const isBuiltin = (item: model.ValueOf, name: string): boolean =>
+    item.kind === 'instance_of' && item.type.namespace === '_builtins' && item.type.name === name
+  if (items.some(item => isBuiltin(item, 'null') || isBuiltin(item, 'string'))) {
+    return true
+  }
+  const isArrayOf = (array: model.ValueOf, item: model.ValueOf): boolean =>
+    array.kind === 'array_of' && array.value.kind === 'instance_of' && item.kind === 'instance_of' &&
+    array.value.type.name === item.type.name && array.value.type.namespace === item.type.namespace
+  return isArrayOf(items[0], items[1]) || isArrayOf(items[1], items[0])
+}
+
 /** Lifts jsDoc type annotations to fixed properties on Property */
 function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): void {
   // in most of the cases the jsDocs comes in a single block,
@@ -865,24 +881,11 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       assert(jsDocs, property.type.kind === 'instance_of' || property.type.kind === 'union_of' || property.type.kind === 'array_of', `Default values can only be configured for instance_of or union_of types, you are using ${property.type.kind}`)
       assert(jsDocs, !property.required, 'Default values can only be specified on optional properties')
       if (property.type.kind === 'union_of') {
-        let valueType = ''
-        if (value === 'true' || value === 'false') {
-          valueType = 'boolean'
-        } else if (!isNaN(Number(value))) {
-          valueType = 'number'
-        } else {
-          valueType = 'string'
-        }
-        const unionTypes = property.type.items.map(item => {
-          assert(jsDocs, item.kind === 'instance_of', `Default values in unions can only be configured for instance_of types, you are using ${property.type.kind}`)
-          if (['short', 'byte', 'integer', 'uint', 'long', 'ulong', 'float', 'double', 'Percentage'].includes(item.type.name)) {
-            return 'number'
-          }
-          return item.type.name
-        })
-        assert(jsDocs, unionTypes.includes(valueType), `The configured server_default value is not present in the union value: ${unionTypes.join(' | ')}`)
+        assert(jsDocs, isServerDefaultUnion(property.type.items), 'Default values in unions can only be configured for `T | T[]`, `T | null` or `T | string` unions')
+      }
+      if (property.type.kind === 'union_of' && !value.startsWith('[')) {
         property.serverDefault = value
-      } else if (property.type.kind === 'array_of') {
+      } else if (property.type.kind === 'array_of' || property.type.kind === 'union_of') {
         try {
           value = eval(value) // eslint-disable-line
         } catch (err) {
