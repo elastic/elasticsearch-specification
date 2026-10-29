@@ -185049,6 +185049,19 @@
           }
         },
         {
+          "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
+          "name": "override",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "The new name of the field.\nSupports template snippets.",
           "name": "target_field",
           "required": true,
@@ -185061,7 +185074,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1381-L1397"
+      "specLocation": "ingest/_types/Processors.ts#L1381-L1403"
     },
     {
       "kind": "interface",
@@ -185143,7 +185156,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1399-L1427"
+      "specLocation": "ingest/_types/Processors.ts#L1405-L1433"
     },
     {
       "kind": "interface",
@@ -185215,7 +185228,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1429-L1449"
+      "specLocation": "ingest/_types/Processors.ts#L1435-L1455"
     },
     {
       "kind": "interface",
@@ -185302,7 +185315,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1451-L1486"
+      "specLocation": "ingest/_types/Processors.ts#L1457-L1492"
     },
     {
       "kind": "interface",
@@ -185345,7 +185358,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1488-L1497"
+      "specLocation": "ingest/_types/Processors.ts#L1494-L1503"
     },
     {
       "kind": "enum",
@@ -185361,7 +185374,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1499-L1502"
+      "specLocation": "ingest/_types/Processors.ts#L1505-L1508"
     },
     {
       "kind": "interface",
@@ -185460,7 +185473,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1504-L1520"
+      "specLocation": "ingest/_types/Processors.ts#L1510-L1526"
     },
     {
       "kind": "interface",
@@ -185539,7 +185552,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1522-L1547"
+      "specLocation": "ingest/_types/Processors.ts#L1528-L1553"
     },
     {
       "kind": "interface",
@@ -185554,7 +185567,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1549-L1549"
+      "specLocation": "ingest/_types/Processors.ts#L1555-L1555"
     },
     {
       "kind": "interface",
@@ -185608,7 +185621,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1551-L1567"
+      "specLocation": "ingest/_types/Processors.ts#L1557-L1573"
     },
     {
       "kind": "interface",
@@ -185662,7 +185675,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1569-L1585"
+      "specLocation": "ingest/_types/Processors.ts#L1575-L1591"
     },
     {
       "kind": "interface",
@@ -185742,7 +185755,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1605-L1631"
+      "specLocation": "ingest/_types/Processors.ts#L1611-L1637"
     },
     {
       "kind": "interface",
@@ -185796,7 +185809,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1587-L1603"
+      "specLocation": "ingest/_types/Processors.ts#L1593-L1609"
     },
     {
       "kind": "interface",
