@@ -216,6 +216,11 @@ function filterModel (inputModel: Model, stack: boolean, serverless: boolean, vi
         output.endpoints.forEach((endpoint) => {
           if (endpoint.request?.name === typeDef.name.name && endpoint.request.namespace === typeDef.name.namespace) {
             typeDef.path = typeDef.path.filter(filterItem())
+            // remove the urls that use an unavailable path part
+            const pathParts = new Set(typeDef.path.map(part => part.name))
+            endpoint.urls = endpoint.urls.filter(url =>
+              (url.path.match(/{[^}]+}/g) ?? []).every(variable => pathParts.has(variable.slice(1, -1)))
+            )
             typeDef.query = typeDef.query.filter(filterItem())
             // filter out body properties
             switch (typeDef.body.kind) {
