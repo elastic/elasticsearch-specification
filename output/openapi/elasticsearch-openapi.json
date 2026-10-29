@@ -110834,6 +110834,11 @@
                 "default": false,
                 "type": "boolean"
               },
+              "override": {
+                "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
+                "default": false,
+                "type": "boolean"
+              },
               "target_field": {
                 "description": "The new name of the field.\nSupports template snippets.",
                 "allOf": [
