@@ -130,8 +130,22 @@ export class ESQLView {
   name: string
   /** The ES|QL query */
   query: string
-  /** A free-text description of the view. */
+  /**
+   * A free-text description of the view.
+   * @availability stack since=9.6.0 stability=stable
+   * @availability serverless stability=stable
+   */
   description?: string
+  /**
+   * Whether this view is reserved.
+   *
+   * Elasticsearch creates reserved views. They can be queried and read like any other view.
+   * They cannot be created, updated, or deleted through the views API.
+   * The response includes this field only when the value is `true`.
+   * @availability stack since=9.6.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  reserved?: boolean
 }
 
 /**
