@@ -92,9 +92,6 @@ export class LearningToRankConfig {
 
 export type FeatureExtractor = QueryFeatureExtractor
 
-/**
- * @variant name=query_extractor
- */
 export class QueryFeatureExtractor {
   default_score?: float
   feature_name: string
