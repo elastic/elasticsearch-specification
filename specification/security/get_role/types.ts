@@ -21,6 +21,7 @@ import { Metadata } from '@_types/common'
 import {
   ApplicationPrivileges,
   ClusterPrivilege,
+  GlobalPrivilege,
   IndicesPrivileges,
   RemoteClusterPrivileges,
   RemoteIndicesPrivileges
@@ -68,5 +69,5 @@ export class Role {
    * @availability stack since=8.0.0
    * @availability serverless
    */
-  global?: Dictionary<string, Dictionary<string, Dictionary<string, string[]>>>
+  global?: GlobalPrivilege
 }

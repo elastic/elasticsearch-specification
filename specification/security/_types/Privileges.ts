@@ -437,7 +437,11 @@ export class GlobalPrivilege {
 }
 
 export class ApplicationGlobalUserPrivileges {
-  manage: ManageUserPrivileges
+  /**
+   * The applications for which application privileges can be managed.
+   * Absent when the `application` section is present but grants no privileges.
+   */
+  manage?: ManageUserPrivileges
 }
 
 export class ManageUserPrivileges {
