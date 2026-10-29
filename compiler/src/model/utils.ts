@@ -530,16 +530,23 @@ export function modelTypeAlias (declaration: TypeAliasDeclaration): model.TypeAl
     type: alias,
     ...(generics.length > 0 && { generics })
   }
-  if (alias.kind === 'union_of') {
-    const variants = parseVariantsTag(declaration.getJsDocs())
-    if (variants != null) {
-      assert(
-        declaration.getJsDocs(),
-        variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
-        'Type Aliases can only have internal, external or untagged variants'
-      )
-      typeAlias.variants = variants
+  const variants = parseVariantsTag(declaration.getJsDocs())
+  if (variants != null) {
+    assert(
+      declaration.getJsDocs(),
+      variants.kind === 'internal_tag' || variants.kind === 'external_tag' || variants.kind === 'untagged',
+      'Type Aliases can only have internal, external or untagged variants'
+    )
+    // A union with a single variant, so that adding more variants later is not a breaking change
+    if (alias.kind === 'instance_of' && variants.kind !== 'untagged') {
+      typeAlias.type = { kind: 'union_of', items: [alias] }
     }
+    assert(
+      declaration.getJsDocs(),
+      typeAlias.type.kind === 'union_of',
+      'Variants are only allowed on unions, or on a single type to define a tagged union with one variant'
+    )
+    typeAlias.variants = variants
   }
   hoistTypeAnnotations(typeAlias, declaration.getJsDocs())
   return typeAlias
