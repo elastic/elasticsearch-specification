@@ -16913,6 +16913,7 @@ export interface IngestRemoveProcessor extends IngestProcessorBase {
 export interface IngestRenameProcessor extends IngestProcessorBase {
   field: Field
   ignore_missing?: boolean
+  override?: boolean
   target_field: Field
 }
 

@@ -141575,7 +141575,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1560-L1563"
+      "specLocation": "ingest/_types/Processors.ts#L1566-L1569"
     },
     {
       "kind": "enum",
@@ -176327,6 +176327,19 @@
           }
         },
         {
+          "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
+          "name": "override",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "The new name of the field.\nSupports template snippets.",
           "name": "target_field",
           "required": true,
@@ -176339,7 +176352,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1442-L1458"
+      "specLocation": "ingest/_types/Processors.ts#L1442-L1464"
     },
     {
       "inherits": {
@@ -176421,7 +176434,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1460-L1488"
+      "specLocation": "ingest/_types/Processors.ts#L1466-L1494"
     },
     {
       "inherits": {
@@ -176493,7 +176506,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1490-L1510"
+      "specLocation": "ingest/_types/Processors.ts#L1496-L1516"
     },
     {
       "inherits": {
@@ -176580,7 +176593,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1512-L1547"
+      "specLocation": "ingest/_types/Processors.ts#L1518-L1553"
     },
     {
       "inherits": {
@@ -176623,7 +176636,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1549-L1558"
+      "specLocation": "ingest/_types/Processors.ts#L1555-L1564"
     },
     {
       "inherits": {
@@ -176676,7 +176689,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1565-L1581"
+      "specLocation": "ingest/_types/Processors.ts#L1571-L1587"
     },
     {
       "inherits": {
@@ -176755,7 +176768,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1583-L1608"
+      "specLocation": "ingest/_types/Processors.ts#L1589-L1614"
     },
     {
       "inherits": {
@@ -176770,7 +176783,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1610-L1610"
+      "specLocation": "ingest/_types/Processors.ts#L1616-L1616"
     },
     {
       "inherits": {
@@ -176824,7 +176837,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1612-L1628"
+      "specLocation": "ingest/_types/Processors.ts#L1618-L1634"
     },
     {
       "inherits": {
@@ -176878,7 +176891,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1630-L1646"
+      "specLocation": "ingest/_types/Processors.ts#L1636-L1652"
     },
     {
       "inherits": {
@@ -176932,7 +176945,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1648-L1664"
+      "specLocation": "ingest/_types/Processors.ts#L1654-L1670"
     },
     {
       "inherits": {
@@ -177012,7 +177025,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1666-L1692"
+      "specLocation": "ingest/_types/Processors.ts#L1672-L1698"
     },
     {
       "inherits": {
