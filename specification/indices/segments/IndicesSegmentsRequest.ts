@@ -83,5 +83,12 @@ export interface Request extends RequestBase {
      * @availability serverless
      */
     include_auto_calibration?: boolean
+    /**
+     * If `true`, the response includes the vector formats used by the fields of each segment, in `attributes`.
+     * @server_default false
+     * @availability stack since=8.15.0
+     * @availability serverless
+     */
+    vector_formats?: boolean
   }
 }
