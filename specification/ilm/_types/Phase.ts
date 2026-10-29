@@ -130,7 +130,18 @@ export class ForceMergeAction {
 
 export class SearchableSnapshotAction {
   snapshot_repository: string
+  /**
+   * @server_default true
+   */
   force_merge_index?: boolean
+  /**
+   * If `true`, and the index has replicas, ILM first clones the index with zero replicas and force merges the clone, so that replicas are not merged redundantly.
+   * If `false`, the managed index is force merged directly.
+   * Not allowed when `force_merge_index` is `false`.
+   * @server_default true
+   * @availability stack since=9.2.1
+   */
+  force_merge_on_clone?: boolean
 }
 
 export class AllocateAction {
