@@ -50,5 +50,10 @@ export class Response {
      * ILM policy warnings are sectioned off per policy.
      */
     ilm_policies: Dictionary<string, Deprecation[]>
+    /**
+     * Snapshot repository warnings are sectioned off per repository.
+     * @availability stack since=9.6.0
+     */
+    repositories: Dictionary<string, Deprecation[]>
   }
 }
