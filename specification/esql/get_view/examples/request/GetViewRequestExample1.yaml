@@ -1,0 +1,3 @@
+summary: Get a view
+method_request: GET /_query/view/country_addresses
+description: Retrieve the definition of the country_addresses view.
