@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { ExpandWildcards, Indices, MediaType, SearchType } from '@_types/common'
-import { RankEvalMetric, RankEvalRequestItem } from './types'
+import { RankEvalMetric, RankEvalRequestItem, RankEvalTemplate } from './types'
 
 /**
  * Evaluate ranked search results.
@@ -89,5 +89,10 @@ export interface Request extends RequestBase {
      * Definition of the evaluation metric to calculate.
      */
     metric?: RankEvalMetric
+    /**
+     * Query templates that the rated requests can refer to by their `template_id`.
+     * This way, queries that differ only in their parameters don't have to be repeated in `requests`.
+     */
+    templates?: RankEvalTemplate[]
   }
 }

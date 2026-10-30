@@ -20,6 +20,7 @@
 import { Id, IndexName } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { Script } from '@_types/Scripting'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -106,6 +107,13 @@ export class RankEvalRequestItem {
   template_id?: Id
   /** The search template parameters. */
   params?: Dictionary<string, UserDefinedValue>
+}
+
+export class RankEvalTemplate {
+  /** The ID of the template. A rated request refers to it by this ID in its `template_id`. */
+  id: Id
+  /** The template definition. It can be an inline query template or a reference to a stored search template. */
+  template: Script
 }
 
 /**
