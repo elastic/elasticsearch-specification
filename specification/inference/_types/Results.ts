@@ -18,7 +18,7 @@
  */
 
 import { AcknowledgedResponseBase } from '@_types/Base'
-import { byte, float, integer } from '@_types/Numeric'
+import { byte, double, float, integer } from '@_types/Numeric'
 import { Metadata } from '@_types/common'
 import { ReasoningDetail } from '@inference/_types/CommonTypes'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -147,6 +147,106 @@ export class DocumentExtractionResult {
  */
 export class DocumentExtractionInferenceResult {
   document_extraction: Array<DocumentExtractionResult>
+}
+
+/**
+ * Defines the response for a decision request.
+ */
+export class DecisionInferenceResult {
+  decision: DecisionResult
+}
+
+export class DecisionResult {
+  /**
+   * The answers, keyed by the name of the question they answer.
+   */
+  answers: Dictionary<string, DecisionAnswer>
+}
+
+/**
+ * The answer to a single question of a decision request.
+ * The type of the answer matches the type of the question it answers.
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+export type DecisionAnswer =
+  | PredicateDecisionAnswer
+  | ChoiceDecisionAnswer
+  | ScoreDecisionAnswer
+
+/**
+ * The answer to a `predicate` question.
+ */
+export class PredicateDecisionAnswer {
+  type: 'predicate'
+  /**
+   * The probability that the statement in the question is true.
+   */
+  probability: double
+}
+
+/**
+ * The answer to a `choice` question.
+ */
+export class ChoiceDecisionAnswer {
+  type: 'choice'
+  /**
+   * The chosen option.
+   */
+  choice: string
+  /**
+   * The probability of each option.
+   */
+  probabilities: Array<ChoiceDecisionProbability>
+  /**
+   * The confidence in the chosen option.
+   */
+  confidence: double
+}
+
+export class ChoiceDecisionProbability {
+  /**
+   * The option.
+   */
+  value: string
+  /**
+   * The probability of the option.
+   */
+  probability: double
+}
+
+/**
+ * The answer to a `score` question.
+ */
+export class ScoreDecisionAnswer {
+  type: 'score'
+  /**
+   * The probability-weighted position on the scale, from `0` for the lowest level.
+   */
+  score: double
+  /**
+   * The probability of each level, ordered from the lowest to the highest level.
+   */
+  probabilities: Array<ScoreDecisionProbability>
+  /**
+   * The confidence in the score.
+   */
+  confidence: double
+}
+
+export class ScoreDecisionProbability {
+  /**
+   * The zero-based position of the level, which is also its position in the array.
+   */
+  value: integer
+  /**
+   * The label of the level.
+   */
+  label: string
+  /**
+   * The probability of the level.
+   */
+  probability: double
 }
 
 /**
