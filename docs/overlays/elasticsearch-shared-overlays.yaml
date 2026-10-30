@@ -369,23 +369,14 @@ actions:
     description: Add x-model for the QueryContainer object
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis.CharFilter'].oneOf"
-    description: Remove existing oneOf definition for CharFilter
-    remove: true
   - target: "$.components['schemas']['_types.analysis.CharFilter']"
     description: Simplify CharFilter definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis.Tokenizer'].oneOf"
-    description: Remove existing oneOf definition for tokenizer
-    remove: true
   - target: "$.components['schemas']['_types.analysis.Tokenizer']"
     description: Simplify tokenizer definition
     update:
       x-model: true
-  - target: "$.components['schemas']['_types.analysis.TokenFilter'].oneOf"
-    description: Remove existing oneOf definition for tokenfilter
-    remove: true
   - target: "$.components['schemas']['_types.analysis.TokenFilter']"
     description: Simplify tokenfilter definition
     update:
@@ -1126,75 +1117,6 @@ actions:
     description: Add x-model to LikeDocument schema
     update:
       x-model: true
-  - target: "$.components['schemas']['ml._types.Datafeed'].properties.query"
-    description: Remove query object from anomaly detection datafeed
-    remove: true
-  - target: "$.components['schemas']['ml._types.Datafeed'].properties"
-    description: Re-add a simplified query object in anomaly detection datafeed
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {"boost": 1}}`.
-        externalDocs:
-          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
-          description: Query DSL
-  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties.tokenizer"
-    description: Remove tokenizer object from ML anomaly detection analysis config
-    remove: true
-  - target: "$.components['schemas']['ml._types.CategorizationAnalyzerDefinition'].properties"
-    description: Re-add a simplified tokenizer object in anomaly detection analysis config
-    update:
-      tokenizer:
-        x-model: true
-        oneOf:
-          - type: object
-          - type: string
-        description: >
-          The name or definition of the tokenizer to use after character filters are applied.
-          This property is compulsory if `categorization_analyzer` is specified as an object.
-          Machine learning provides a tokenizer called `ml_standard` that tokenizes in a way that has been determined to produce good categorization results on a variety of log file formats for logs in English.
-          If you want to use that tokenizer but change the character or token filters, specify `"tokenizer": "ml_standard"` in your `categorization_analyzer`.
-          Additionally, the `ml_classic` tokenizer is available, which tokenizes in the same way as the non-customizable tokenizer in old versions of the product (before 6.2).
-          `ml_classic` was the default categorization tokenizer in versions 6.2 to 7.13, so if you need categorization identical to the default for jobs created in these versions, specify `"tokenizer": "ml_classic"` in your `categorization_analyzer`.
-        externalDocs:
-          url: https://www.elastic.co/docs/reference/text-analysis/tokenizer-reference
-          description: Tokenizer reference
-  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties.query"
-    description: Remove query object from data frame analytics source
-    remove: true
-  - target: "$.components['schemas']['ml._types.DataframeAnalyticsSource'].properties"
-    description: Re-add a simplified query object in data frame analytics source
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          The Elasticsearch query domain-specific language (DSL).
-          This value corresponds to the query object in an Elasticsearch search POST body.
-          All the options that are supported by Elasticsearch can be used, as this object is passed verbatim to Elasticsearch.
-          By default, this property has the following value: `{"match_all": {}}`.
-        externalDocs:
-          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
-          description: Query DSL
-  - target: "$.components['schemas']['transform._types.Source'].properties.query"
-    description: Remove query object from transform source
-    remove: true
-  - target: "$.components['schemas']['transform._types.Source'].properties"
-    description: Re-add a simplified query object in transform source
-    update:
-      query:
-        x-model: true
-        type: object
-        description: >
-          A query clause that retrieves a subset of data from the source index.
-        externalDocs:
-          url: https://www.elastic.co/docs/explore-analyze/query-filter/languages/querydsl
-          description: Query DSL
   - target: "$.components['schemas']['_global.search._types.FieldCollapse']"
     description: Add x-model and externalDocs
     update:
@@ -1208,38 +1130,11 @@ actions:
       externalDocs:
         description: Index settings
         url: https://www.elastic.co/docs/reference/elasticsearch/index-settings/
-  - target: "$.components['schemas']['indices._types.IndexSettings'].properties"
-    description: Remove properties IndexSettings object
-    remove: true
   # - target: "$.components['schemas']['_global.msearch.MultisearchBody'].properties"
   #   description: Add x-model
   #   update:
   #     aggregations:
   #       x-model: true
-# Remove long lists of enum values
-  - target: "$.components['schemas']['cat._types.CatAnomalyDetectorColumn'].enum"
-    description: Remove enum array from cat detectors
-    remove: true
-  - target: "$.components['schemas']['cat._types.CatDfaColumn'].enum"
-    description: Remove enum array from cat data frame analytics
-    remove: true
-  - target: "$.components['schemas']['cat._types.CatDatafeedColumn'].enum"
-    description: Remove enum array from cat datafeeds
-    remove: true
-  - target: "$.components['schemas']['cat._types.CatTrainedModelsColumn'].enum"
-    description: Remove enum array from cat trained models
-    remove: true
-  - target: "$.components['schemas']['cat._types.CatTransformColumn'].enum"
-    description: Remove enum array from cat transforms
-    remove: true
-# Simplify duration type
-  - target: "$.components['schemas']['_types.Duration'].oneOf"
-    description: Remove existing oneOf definition for Duration
-    remove: true
-  - target: "$.components['schemas']['_types.Duration']"
-    description: Re-add a simple string type for Duration
-    update:
-      type: string
 # Clarify the three kinds of lines in the bulk request body
 # NOTE: The spec compiler drops JSDoc descriptions on value-kind bodies, so the body description must be added here.
   - target: "$.components['requestBodies']['bulk']"
