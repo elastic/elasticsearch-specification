@@ -35,6 +35,7 @@ import { TaskSettings } from '@inference/_types/Services'
  * @availability stack since=8.11.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-post
+ * @cluster_privileges monitor_inference
  */
 export interface Request extends RequestBase {
   urls: [

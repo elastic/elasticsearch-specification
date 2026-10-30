@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=7.5.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id enrich-stats-api
+ * @cluster_privileges manage_enrich
  */
 export interface Request extends RequestBase {
   urls: [

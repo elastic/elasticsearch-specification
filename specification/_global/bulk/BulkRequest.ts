@@ -149,6 +149,7 @@ import { OperationContainer, UpdateAction } from './types'
  * @doc_id docs-bulk
  * @ext_doc_id indices-refresh-disable
  * @doc_tag document
+ * @index_privileges create_doc, create, delete, index, write
  */
 export interface Request<TDocument, TPartialDocument> extends RequestBase {
   urls: [

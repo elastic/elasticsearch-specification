@@ -29,6 +29,7 @@ import { Indices, MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id migrate
  * @doc_tag migration
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

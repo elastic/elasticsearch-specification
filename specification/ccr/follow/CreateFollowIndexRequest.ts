@@ -36,6 +36,8 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * @rest_spec_name ccr.follow
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-follow
+ * @cluster_privileges manage_ccr
+ * @index_privileges manage_follow_index
  */
 export interface Request extends RequestBase {
   urls: [

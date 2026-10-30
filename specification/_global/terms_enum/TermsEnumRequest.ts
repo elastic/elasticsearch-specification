@@ -36,6 +36,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_tag search
  * @doc_id search-terms-enum
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [

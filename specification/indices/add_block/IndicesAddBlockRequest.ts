@@ -31,6 +31,7 @@ import { IndicesBlockOptions } from '@indices/_types/IndexSettings'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id index-block-add
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

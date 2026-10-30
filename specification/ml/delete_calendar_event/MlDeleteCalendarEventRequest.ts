@@ -28,6 +28,7 @@ import { Id, MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id ml-delete-calendar-event
  * @doc_tag ml anomaly
+ * @cluster_privileges manage_ml
  */
 export interface Request extends RequestBase {
   urls: [

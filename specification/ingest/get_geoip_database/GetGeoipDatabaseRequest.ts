@@ -28,6 +28,7 @@ import { Ids, MediaType } from '@_types/common'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @doc_id geoip-get-database
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

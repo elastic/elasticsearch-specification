@@ -41,6 +41,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=7.14.0 stability=stable
  * @doc_id ilm-migrate-to-data-tiers
  * @ext_doc_id migrate-index-allocation-filters
+ * @cluster_privileges manage_ilm
  */
 export interface Request extends RequestBase {
   urls: [

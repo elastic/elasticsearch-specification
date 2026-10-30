@@ -38,6 +38,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.9.0 stability=stable
  * @doc_tag data stream
  * @doc_id data-stream-promote
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

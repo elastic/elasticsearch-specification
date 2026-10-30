@@ -58,6 +58,7 @@ import { MediaType, TaskId } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-cancel-reindex
  * @doc_tag reindex
+ * @cluster_privileges manage_reindex
  */
 export interface Request extends RequestBase {
   urls: [

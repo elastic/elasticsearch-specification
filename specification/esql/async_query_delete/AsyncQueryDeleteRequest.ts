@@ -34,6 +34,7 @@ import { Id, MediaType } from '@_types/common'
  * @availability stack since=8.13.0 stability=stable visibility=public
  * @doc_id esql-async-query-delete
  * @ext_doc_id esql
+ * @cluster_privileges cancel_task
  */
 export interface Request extends RequestBase {
   urls: [

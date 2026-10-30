@@ -32,6 +32,7 @@ import { MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id docs-list-reindex
  * @doc_tag reindex
+ * @cluster_privileges monitor_reindex, manage_reindex
  */
 export interface Request extends RequestBase {
   urls: [
