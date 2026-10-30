@@ -147825,7 +147825,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L22-L25"
+      "specLocation": "indices/_types/IndexRouting.ts#L23-L26"
     },
     {
       "kind": "interface",
@@ -147857,6 +147857,18 @@
           }
         },
         {
+          "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+          "name": "require",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationRequire",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
           "name": "initial_recovery",
           "required": false,
           "type": {
@@ -147879,7 +147891,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L27-L32"
+      "specLocation": "indices/_types/IndexRouting.ts#L28-L39"
     },
     {
       "kind": "interface",
@@ -147912,7 +147924,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L62-L64"
+      "specLocation": "indices/_types/IndexRouting.ts#L74-L76"
     },
     {
       "kind": "interface",
@@ -147944,7 +147956,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L52-L55"
+      "specLocation": "indices/_types/IndexRouting.ts#L64-L67"
     },
     {
       "kind": "interface",
@@ -147965,7 +147977,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L57-L59"
+      "specLocation": "indices/_types/IndexRouting.ts#L69-L71"
     },
     {
       "kind": "enum",
@@ -147987,7 +147999,48 @@
         "name": "IndexRoutingAllocationOptions",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexRouting.ts#L38-L43"
+      "specLocation": "indices/_types/IndexRouting.ts#L50-L55"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexRoutingAllocationRequire",
+        "namespace": "indices._types"
+      },
+      "specLocation": "indices/_types/IndexRouting.ts#L41-L44",
+      "type": {
+        "kind": "dictionary_of",
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "_builtins"
+          }
+        },
+        "singleKey": false,
+        "value": {
+          "kind": "union_of",
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          ]
+        }
+      }
     },
     {
       "kind": "interface",
@@ -148008,7 +148061,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L34-L36"
+      "specLocation": "indices/_types/IndexRouting.ts#L46-L48"
     },
     {
       "kind": "enum",
@@ -148030,7 +148083,7 @@
         "name": "IndexRoutingRebalanceOptions",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexRouting.ts#L45-L50"
+      "specLocation": "indices/_types/IndexRouting.ts#L57-L62"
     },
     {
       "kind": "interface",
