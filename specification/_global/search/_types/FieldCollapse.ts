@@ -37,5 +37,4 @@ export class FieldCollapse {
    * The number of concurrent requests allowed to retrieve the inner_hits per group
    */
   max_concurrent_group_searches?: integer
-  collapse?: FieldCollapse
 }
