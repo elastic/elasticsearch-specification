@@ -77,7 +77,9 @@ export interface Request extends CatRequestBase {
   query_parameters: {
     /**
      * The type of index that wildcard patterns can match.
-     * @server_default all
+     * Note that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.
+     * It does not restrict the response to closed indices only.
+     * @server_default open,closed
      */
     expand_wildcards?: ExpandWildcards
     /** The health status used to limit returned indices. By default, the response includes indices of any health status. */
