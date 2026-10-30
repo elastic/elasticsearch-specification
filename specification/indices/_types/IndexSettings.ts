@@ -166,6 +166,7 @@ export class IndexSettings
   settings?: IndexSettings
   time_series?: IndexSettingsTimeSeries
   queries?: Queries
+  requests?: Requests
   /**
    * Configure custom similarity settings to customize how search results are scored.
    */
@@ -463,6 +464,20 @@ export class Queries {
 
 export class CacheQueries {
   enabled: boolean
+}
+
+export class Requests {
+  cache?: CacheRequests
+}
+
+export class CacheRequests {
+  /**
+   * Whether the shard request cache is enabled for the index.
+   * This setting is dynamic and can be updated on an existing index.
+   * @server_default true
+   * @doc_id shard-request-cache
+   */
+  enable?: boolean
 }
 
 /**
