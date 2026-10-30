@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MediaType, NodeIds, ThreadType } from '@_types/common'
+import { MediaType, NodeIds, ThreadSortOrder, ThreadType } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 
@@ -89,6 +89,6 @@ export interface Request extends RequestBase {
      * The sort order for 'cpu' type
      * @server_default total
      */
-    sort?: ThreadType
+    sort?: ThreadSortOrder
   }
 }
