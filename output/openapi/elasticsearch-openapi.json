@@ -90426,7 +90426,7 @@
           },
           "temporality_field": {
             "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
-            "x-state": "Generally available; Added in 9.4.0",
+            "x-state": "Generally available; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
