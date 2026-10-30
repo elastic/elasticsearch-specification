@@ -131,6 +131,20 @@ export class ForceMergeAction {
 export class SearchableSnapshotAction {
   snapshot_repository: string
   force_merge_index?: boolean
+  /**
+   * The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.
+   * Must be at least 1.
+   * @availability stack since=8.16.0
+   */
+  total_shards_per_node?: integer
+  /**
+   * The period for which the mounted index keeps one replica before the replica is removed.
+   * By default, the index is mounted without replicas.
+   * Must be positive.
+   * Only the first `searchable_snapshot` action in a policy may set this, and any later phase that sets a `min_age` must use one that is at least this long.
+   * @availability stack since=8.18.0
+   */
+  replicate_for?: Duration
 }
 
 export class AllocateAction {
