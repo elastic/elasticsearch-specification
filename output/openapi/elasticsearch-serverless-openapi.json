@@ -53719,6 +53719,14 @@
               }
             ]
           },
+          "require": {
+            "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexRoutingAllocationRequire"
+              }
+            ]
+          },
           "initial_recovery": {
             "allOf": [
               {
@@ -53757,6 +53765,22 @@
               }
             ]
           }
+        }
+      },
+      "indices._types.IndexRoutingAllocationRequire": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
       "indices._types.IndexRoutingAllocationInitialRecovery": {

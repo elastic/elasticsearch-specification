@@ -12447,6 +12447,7 @@ export interface IndicesIndexRouting {
 export interface IndicesIndexRoutingAllocation {
   enable?: IndicesIndexRoutingAllocationOptions
   include?: IndicesIndexRoutingAllocationInclude
+  require?: IndicesIndexRoutingAllocationRequire
   initial_recovery?: IndicesIndexRoutingAllocationInitialRecovery
   disk?: IndicesIndexRoutingAllocationDisk
 }
@@ -12465,6 +12466,8 @@ export interface IndicesIndexRoutingAllocationInitialRecovery {
 }
 
 export type IndicesIndexRoutingAllocationOptions = 'all' | 'primaries' | 'new_primaries' | 'none'
+
+export type IndicesIndexRoutingAllocationRequire = Record<string, string | string[]>
 
 export interface IndicesIndexRoutingRebalance {
   enable: IndicesIndexRoutingRebalanceOptions
