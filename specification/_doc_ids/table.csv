@@ -464,6 +464,7 @@ k-precision,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search
 k-recall,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval#k-recall,[use-doc-url],,More about ranking evaluation
 kv-processor,https://www.elastic.co/docs/reference/enrich-processor/kv-processor,[use-doc-url],,Learn more about kv processor
 knn-approximate,https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn,[use-doc-url],,About kNN search in Elasticsearch
+knn-eval,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-eval,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-knn-eval,,Evaluate kNN search settings
 knn-inner-hits,https://www.elastic.co/docs/solutions/search/vector/knn#nested-knn-search-inner-hits,[use-doc-url],,About kNN search in Elasticsearch
 license-management,https://www.elastic.co/docs/deploy-manage/license/manage-your-license-in-self-managed-cluster,[use-doc-url],,About managing your license
 list-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-get-behavioral-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search-application-get-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/list-analytics-collection.html,About behavioral analytics
