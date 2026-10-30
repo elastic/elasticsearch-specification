@@ -58,7 +58,7 @@ export interface Request extends CatRequestBase {
     /**
      * A comma-separated list of columns names to display.
      * It supports simple wildcards.
-     * @server_default ip,hp,rp,r,m,n,cpu,l
+     * @server_default index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound
      */
     h?: CatSegmentsColumns
     /**

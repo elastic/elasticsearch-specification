@@ -72,7 +72,7 @@ export interface Request extends CatRequestBase {
     allow_no_match?: boolean
     /**
      * Comma-separated list of column names to display.
-     * @server_default ['bc', 'id', 'sc', 's']
+     * @server_default id,state,buckets.count,search.count
      */
     h?: CatDatafeedColumns
     /** Comma-separated list of column names or column aliases used to sort the response. */
