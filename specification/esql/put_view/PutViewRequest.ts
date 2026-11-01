@@ -23,10 +23,14 @@ import { Id, MediaType } from '@_types/common'
 /**
  * Create or update an ES|QL view.
  *
+ * Stores an ES|QL query that runs whenever the view is referenced.
+ * A query that cannot be parsed is rejected. Replacing a reserved view fails.
+ *
  * @rest_spec_name esql.put_view
  * @index_privileges create_view
- * @availability stack since=9.4.0 stability=experimental visibility=public
- * @availability serverless stability=experimental visibility=public
+ * @availability stack since=9.4.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
+ * @ext_doc_id esql-views
  * @doc_id esql-put-view
  */
 export interface Request extends RequestBase {
@@ -40,10 +44,27 @@ export interface Request extends RequestBase {
     /** The view name to create or update. */
     name: Id
   }
+  query_parameters: {
+    /**
+     * Whether to analyze the view query and return a warning when validation fails.
+     *
+     * Validation reports an unknown index or column, including an index the caller cannot read.
+     * The view is saved even when validation reports a problem.
+     * Failures unrelated to the query, such as an overloaded cluster, produce no warning.
+     * @server_default false
+     * @availability stack since=9.7.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    validate?: boolean
+  }
   body: {
-    /** The ES|QL query string from which to create a view. */
+    /** The ES|QL query string that defines the view. A query that cannot be parsed is rejected. */
     query: string
-    /** A free-text description of the view. */
+    /**
+     * A free-text description of the view.
+     * @availability stack since=9.6.0 stability=stable
+     * @availability serverless stability=stable
+     */
     description?: string
   }
   request_media_type: MediaType.Json

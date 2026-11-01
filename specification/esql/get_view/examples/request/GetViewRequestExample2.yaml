@@ -1,0 +1,5 @@
+summary: Get a reserved view
+method_request: GET /_query/view/.ml-anomalies
+description: >
+  Retrieve the reserved .ml-anomalies view.
+  Elasticsearch creates this view; it cannot be replaced or deleted through the views API.

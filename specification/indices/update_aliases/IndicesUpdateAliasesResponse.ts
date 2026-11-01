@@ -18,8 +18,64 @@
  */
 
 import { AcknowledgedResponseBase } from '@_types/Base'
+import { IndexAlias, IndexName } from '@_types/common'
+import { ErrorCause } from '@_types/Errors'
+import { integer } from '@_types/Numeric'
 
 export class Response {
   /** @codegen_name result */
-  body: AcknowledgedResponseBase
+  body: IndicesUpdateAliasesResponseBody
+}
+
+export class IndicesUpdateAliasesResponseBody extends AcknowledgedResponseBase {
+  /**
+   * If `true`, one or more actions failed.
+   * The request still returns HTTP 200.
+   * @availability stack since=8.14.0
+   */
+  errors: boolean
+  /**
+   * Results for each action in the request.
+   * Returned only when `errors` is `true`.
+   * @availability stack since=8.14.0
+   */
+  action_results?: AliasActionResult[]
+}
+
+export class AliasActionResult {
+  /**
+   * The action this result describes.
+   */
+  action: AliasActionSummary
+  /**
+   * HTTP status for this action.
+   * `200` when the action succeeds.
+   */
+  status: integer
+  /**
+   * Cause of the failure.
+   * Returned only when this action fails.
+   */
+  error?: ErrorCause
+}
+
+export enum AliasActionType {
+  add,
+  remove,
+  remove_index
+}
+
+export class AliasActionSummary {
+  /**
+   * The action that was applied.
+   */
+  type: AliasActionType
+  /**
+   * Resolved data streams or indices for the action.
+   */
+  indices: IndexName[]
+  /**
+   * Aliases for the action.
+   */
+  aliases: IndexAlias[]
 }

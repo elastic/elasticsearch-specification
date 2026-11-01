@@ -7492,7 +7492,11 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view-1",
         "parameters": [
           {
@@ -7504,7 +7508,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -7517,7 +7521,11 @@
           "esql"
         ],
         "summary": "Create or update an ES|QL view",
-        "description": "\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "description": "Stores an ES|QL query that runs whenever the view is referenced.\nA query that cannot be parsed is rejected. Replacing a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-put-view",
         "parameters": [
           {
@@ -7530,6 +7538,18 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "validate",
+            "description": "Whether to analyze the view query and return a warning when validation fails.\n\nValidation reports an unknown index or column, including an index the caller cannot read.\nThe view is saved even when validation reports a problem.\nFailures unrelated to the query, such as an overloaded cluster, produce no warning.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "x-state": "Generally available",
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -7539,17 +7559,30 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "The ES|QL query string from which to create a view.",
+                    "description": "The ES|QL query string that defines the view. A query that cannot be parsed is rejected.",
                     "type": "string"
                   },
                   "description": {
                     "description": "A free-text description of the view.",
+                    "x-state": "Generally available",
                     "type": "string"
                   }
                 },
                 "required": [
                   "query"
                 ]
+              },
+              "examples": {
+                "PutViewRequestExample1": {
+                  "summary": "Create a view of country counts",
+                  "description": "Create a view that normalizes country names and counts addresses by country.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                },
+                "PutViewRequestExample2": {
+                  "summary": "Create a view and validate the query",
+                  "description": "Analyze the view query before saving it. When the query uses an unknown index or column, the response includes a warning and the view is still saved.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                }
               }
             }
           },
@@ -7562,12 +7595,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutViewResponseExample1": {
+                    "summary": "View created",
+                    "description": "The view definition was stored successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -7580,7 +7620,11 @@
           "esql"
         ],
         "summary": "Delete an ES|QL view",
-        "description": "Deletes a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "description": "Deletes a stored ES|QL view. Deleting a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-delete-view",
         "parameters": [
           {
@@ -7602,12 +7646,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteViewResponseExample1": {
+                    "summary": "View deleted",
+                    "description": "The view definition was deleted successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -7769,14 +7820,18 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view",
         "responses": {
           "200": {
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental",
+        "x-state": "Generally available",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -13066,7 +13121,7 @@
           "indices"
         ],
         "summary": "Update aliases and delete indices atomically",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Applies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-update-aliases",
         "parameters": [
           {
@@ -13117,8 +13172,18 @@
               },
               "examples": {
                 "IndicesUpdateAliasesExample1": {
-                  "description": "An example body for a `POST _aliases` request.",
-                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                  "summary": "Add a data stream or index to an alias",
+                  "description": "If the alias does not exist, it is created.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-*\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample2": {
+                  "summary": "Remove a data stream or index from an alias",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample3": {
+                  "summary": "Remove an index and update an alias",
+                  "description": "First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.\n",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_index\": {\n        \"index\": \"my-index-1\"\n      }\n    },\n    {\n      \"add\": {\n        \"index\": \"my-index-2\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
                 }
               }
             }
@@ -13131,7 +13196,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                  "$ref": "#/components/schemas/indices.update_aliases.IndicesUpdateAliasesResponseBody"
+                },
+                "examples": {
+                  "IndicesUpdateAliasesExample1": {
+                    "summary": "A partially successful response",
+                    "description": "When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.",
+                    "value": "{\n  \"acknowledged\": true,\n  \"errors\": true,\n  \"action_results\": [\n    {\n      \"action\": {\n        \"type\": \"remove\",\n        \"indices\": [\n          \"logs-nginx.access-prod\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 404,\n      \"error\": {\n        \"type\": \"aliases_not_found_exception\",\n        \"reason\": \"aliases [logs-non-existing] missing\",\n        \"resource.type\": \"aliases\",\n        \"resource.id\": \"logs-non-existing\"\n      }\n    },\n    {\n      \"action\": {\n        \"type\": \"add\",\n        \"indices\": [\n          \"logs-nginx.access-default\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 200\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -14020,6 +14092,113 @@
           }
         },
         "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/document_extraction/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform document extraction inference on the service",
+        "description": "Extract the content of documents, such as PDFs or images of documents, into a textual format.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-document-extraction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "120s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DocumentExtractionRequestExample1": {
+                  "summary": "Document extraction task",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+                  "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+                },
+                "DocumentExtractionRequestExample2": {
+                  "summary": "Document extraction task using the url format and task settings",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+                  "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DocumentExtractionInferenceResult"
+                },
+                "examples": {
+                  "DocumentExtractionResponseExample1": {
+                    "summary": "Document extraction task",
+                    "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+                    "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -25627,11 +25806,18 @@
                     }
                   },
                   "detectors": {
-                    "description": "An array of detector update objects.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ml._types.DetectorUpdate"
-                    }
+                    "description": "A detector update object or an array of detector update objects.",
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                        }
+                      }
+                    ]
                   },
                   "per_partition_categorization": {
                     "description": "Settings related to how categorization interacts with partition fields.",
@@ -34314,6 +34500,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "script": {
                     "description": "The script to run to update the document source or metadata when updating.",
                     "allOf": [
@@ -39189,6 +39386,13 @@
               }
             ]
           },
+          "rescore": {
+            "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types.RescoreProfile"
+            }
+          },
           "searches": {
             "type": "array",
             "items": {
@@ -39843,6 +40047,191 @@
       "_types.NodeId": {
         "type": "string"
       },
+      "_global.search._types.RescoreProfile": {
+        "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "learning_to_rank": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile",
+            "query": "#/components/schemas/_global.search._types.QueryRescoreProfile",
+            "script": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.QueryRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile"
+          }
+        ]
+      },
+      "_global.search._types.QueryRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "query"
+                ]
+              },
+              "breakdown": {
+                "description": "The `query` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_types.EmptyObject": {
+        "description": "For empty Class assignments",
+        "type": "object"
+      },
+      "_global.search._types.RescoreProfileBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "What the rescorer runs.",
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "description": "The total time spent in the rescorer, including the time spent running its queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "time": {
+            "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "debug": {
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types.ScriptRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "script"
+                ]
+              },
+              "breakdown": {
+                "description": "The `script` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "learning_to_rank"
+                ]
+              },
+              "breakdown": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfileBreakdown"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "build_feature_extractors": {
+            "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+            "type": "number"
+          },
+          "build_feature_extractors_count": {
+            "type": "number"
+          },
+          "feature_extraction": {
+            "description": "The time spent extracting the features of the top documents.",
+            "type": "number"
+          },
+          "feature_extraction_count": {
+            "type": "number"
+          },
+          "inference": {
+            "description": "The time spent running the model on the extracted features.",
+            "type": "number"
+          },
+          "inference_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "build_feature_extractors",
+          "build_feature_extractors_count",
+          "feature_extraction",
+          "feature_extraction_count",
+          "inference",
+          "inference_count"
+        ]
+      },
       "_global.search._types.SearchProfile": {
         "type": "object",
         "properties": {
@@ -39919,6 +40308,13 @@
           },
           "type": {
             "type": "string"
+          },
+          "debug": {
+            "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           },
           "children": {
             "type": "array",
@@ -49675,10 +50071,6 @@
           }
         ]
       },
-      "_types.EmptyObject": {
-        "description": "For empty Class assignments",
-        "type": "object"
-      },
       "_types.aggregations.MovingAverageAggregationBase": {
         "allOf": [
           {
@@ -56998,6 +57390,14 @@
               }
             ]
           },
+          "require": {
+            "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexRoutingAllocationRequire"
+              }
+            ]
+          },
           "initial_recovery": {
             "allOf": [
               {
@@ -57036,6 +57436,22 @@
               }
             ]
           }
+        }
+      },
+      "indices._types.IndexRoutingAllocationRequire": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
       "indices._types.IndexRoutingAllocationInitialRecovery": {
@@ -68721,8 +69137,8 @@
             "description": "The declared column type.",
             "type": "string"
           },
-          "path": {
-            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
+          "rename_from": {
+            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
             "type": "string"
           },
           "format": {
@@ -68761,7 +69177,13 @@
           },
           "description": {
             "description": "A free-text description of the view.",
+            "x-state": "Generally available",
             "type": "string"
+          },
+          "reserved": {
+            "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
+            "x-state": "Generally available",
+            "type": "boolean"
           }
         },
         "required": [
@@ -71267,7 +71689,7 @@
             ]
           },
           "index": {
-            "description": "Data stream or index for the action.\nSupports wildcards (`*`).",
+            "description": "Data stream or index for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -71275,7 +71697,7 @@
             ]
           },
           "indices": {
-            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).",
+            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Indices"
@@ -71383,6 +71805,16 @@
             "type": "boolean"
           }
         }
+      },
+      "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
       },
       "indices.validate_query.IndicesValidationExplanation": {
         "type": "object",
@@ -71980,7 +72412,8 @@
           "rerank",
           "completion",
           "chat_completion",
-          "embedding"
+          "embedding",
+          "document_extraction"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -72003,6 +72436,122 @@
               "pipelines"
             ]
           }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionInput": {
+        "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+            }
+          }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObject": {
+        "description": "A wrapper object which contains a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The document to extract the content from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObjectItem"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObjectItem": {
+        "description": "An object describing a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the document. Not all services and models support all types.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentType": {
+        "type": "string",
+        "enum": [
+          "image",
+          "pdf"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentFormat": {
+        "type": "string",
+        "enum": [
+          "base64",
+          "url"
+        ]
+      },
+      "inference._types.DocumentExtractionInferenceResult": {
+        "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+        "type": "object",
+        "properties": {
+          "document_extraction": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DocumentExtractionResult"
+            }
+          }
+        },
+        "required": [
+          "document_extraction"
+        ]
+      },
+      "inference._types.DocumentExtractionResult": {
+        "description": "The document extraction result object representing the content extracted from a single document.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The content extracted from the document.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The format of the extracted content, for example `markdown`.",
+            "type": "string"
+          },
+          "metadata": {
+            "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content",
+          "format"
         ]
       },
       "inference._types.RequestEmbedding": {
@@ -78308,6 +78857,11 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "override": {
+                "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
                 "default": false,
                 "type": "boolean"
               },
@@ -89335,6 +89889,15 @@
             "description": "If `true`, the transform runs in unattended mode. In unattended mode, the transform retries indefinitely in case\nof an error which means the transform never fails. Setting the number of retries other than infinite fails in\nvalidation.",
             "default": false,
             "type": "boolean"
+          },
+          "indexer_request_timeout": {
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+            "default": "30s",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         }
       },
@@ -90325,6 +90888,18 @@
               "required": [
                 "views"
               ]
+            },
+            "examples": {
+              "GetViewResponseExample1": {
+                "summary": "View definition",
+                "description": "The response contains the requested view.",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \"country_addresses\",\n      \"query\": \"\"\"\n        FROM addresses\n        | RENAME city.country.name AS country\n        | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n        | STATS count=COUNT() BY country\n      \"\"\",\n      \"description\": \"Address counts by country\"\n    }\n  ]\n}"
+              },
+              "GetViewResponseExample2": {
+                "summary": "Reserved view",
+                "description": "A reserved view includes reserved set to true. This view is created when anomaly detection results exist.\n",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \".ml-anomalies\",\n      \"query\": \"\"\"\n        FROM .ml-anomalies-* METADATA _index\n        | WHERE result_type IN (\"bucket\", \"record\", \"influencer\")\n        | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),\n               initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)\n        | KEEP timestamp,\n               event.ingested,\n               job_id,\n               result_type,\n               is_interim,\n               score,\n               initial_score,\n               bucket_span,\n               function,\n               function_description,\n               field_name,\n               by_field_name,\n               by_field_value,\n               over_field_name,\n               over_field_value,\n               partition_field_name,\n               partition_field_value,\n               influencer_field_name,\n               influencer_field_value,\n               detector_index,\n               actual,\n               typical,\n               event_count,\n               processing_time_ms,\n               _index\n      \"\"\",\n      \"description\": \"View that contains the results of machine learning anomaly detection jobs.\",\n      \"reserved\": true\n    }\n  ]\n}"
+              }
             }
           }
         }

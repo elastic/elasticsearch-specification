@@ -1,0 +1,14 @@
+summary: Create a view of country counts
+method_request: PUT /_query/view/country_addresses
+description: >
+  Create a view that normalizes country names and counts addresses by country.
+value: |-
+  {
+    "query": """
+      FROM addresses
+      | RENAME city.country.name AS country
+      | EVAL country = CASE(country == "United States of America", "United States", country)
+      | STATS count=COUNT() BY country
+    """,
+    "description": "Address counts by country"
+  }

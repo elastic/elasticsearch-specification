@@ -1,0 +1,17 @@
+summary: View definition
+description: The response contains the requested view.
+value: |-
+  {
+    "views": [
+      {
+        "name": "country_addresses",
+        "query": """
+          FROM addresses
+          | RENAME city.country.name AS country
+          | EVAL country = CASE(country == "United States of America", "United States", country)
+          | STATS count=COUNT() BY country
+        """,
+        "description": "Address counts by country"
+      }
+    ]
+  }
