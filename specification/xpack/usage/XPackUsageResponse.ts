@@ -30,6 +30,7 @@ import {
   GpuVectorIndexing,
   HealthStatistics,
   Ilm,
+  IndexModeUsage,
   Logging,
   MachineLearning,
   Monitoring,
@@ -39,6 +40,7 @@ import {
   Slm,
   Sql,
   Vector,
+  VectorDbColumnar,
   VectorDbDocument,
   Watcher
 } from './types'
@@ -54,6 +56,11 @@ export class Response {
     archive: Archive
     watcher: Watcher
     ccr: Ccr
+    /**
+     * Usage of the indices with `index.mode` set to `columnar`.
+     * @availability stack since=9.6.0
+     */
+    columnar?: IndexModeUsage
     data_frame?: Base
     data_science?: Base
     data_lifecycle?: DataStreamLifecycleUsage
@@ -73,6 +80,11 @@ export class Response {
      * @availability stack since=9.5.0
      */
     logging?: Logging
+    /**
+     * Usage of the indices with `index.mode` set to `logsdb_columnar`.
+     * @availability stack since=9.6.0
+     */
+    logsdb_columnar?: IndexModeUsage
     logstash: Base
     ml: MachineLearning
     monitoring: Monitoring
@@ -89,6 +101,12 @@ export class Response {
      * @availability stack since=9.5.0
      */
     vectordb_document?: VectorDbDocument
+    /**
+     * The `vectordb_columnar` index mode is behind a feature flag.
+     * Without the flag, this section is still returned, disabled and with zero counts.
+     * @availability stack since=9.6.0
+     */
+    vectordb_columnar?: VectorDbColumnar
     voting_only: Base
   }
 }
