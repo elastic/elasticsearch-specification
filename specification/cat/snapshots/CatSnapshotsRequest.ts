@@ -63,7 +63,7 @@ export interface Request extends CatRequestBase {
     /**
      * A comma-separated list of columns names to display.
      * It supports simple wildcards.
-     * @server_default ip,hp,rp,r,m,n,cpu,l
+     * @server_default id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards
      */
     h?: CatSnapshotsColumns
     /**
