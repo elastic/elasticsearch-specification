@@ -144135,7 +144135,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L133-L139"
+      "specLocation": "ilm/_types/Phase.ts#L148-L154"
     },
     {
       "kind": "interface",
@@ -144156,7 +144156,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L149-L151"
+      "specLocation": "ilm/_types/Phase.ts#L164-L166"
     },
     {
       "kind": "interface",
@@ -144241,7 +144241,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L141-L143"
+      "specLocation": "ilm/_types/Phase.ts#L156-L158"
     },
     {
       "kind": "interface",
@@ -144521,9 +144521,43 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+          "name": "total_shards_per_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "8.18.0"
+            }
+          },
+          "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+          "name": "replicate_for",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L128-L131"
+      "specLocation": "ilm/_types/Phase.ts#L128-L146"
     },
     {
       "kind": "interface",
@@ -144608,7 +144642,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L145-L147"
+      "specLocation": "ilm/_types/Phase.ts#L160-L162"
     },
     {
       "kind": "request",
