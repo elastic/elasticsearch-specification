@@ -17,27 +17,22 @@
  * under the License.
  */
 
-import { AcknowledgedResponseBase } from '@_types/Base'
 import { IndexAlias, IndexName } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer } from '@_types/Numeric'
+import { AliasesResponseBody } from '@indices/_types/AliasesResponseBody'
 
 export class Response {
   /** @codegen_name result */
   body: IndicesUpdateAliasesResponseBody
 }
 
-export class IndicesUpdateAliasesResponseBody extends AcknowledgedResponseBase {
-  /**
-   * If `true`, one or more actions failed.
-   * The request still returns HTTP 200.
-   * @availability stack since=8.14.0
-   */
-  errors: boolean
+export class IndicesUpdateAliasesResponseBody extends AliasesResponseBody {
   /**
    * Results for each action in the request.
    * Returned only when `errors` is `true`.
    * @availability stack since=8.14.0
+   * @availability serverless
    */
   action_results?: AliasActionResult[]
 }
