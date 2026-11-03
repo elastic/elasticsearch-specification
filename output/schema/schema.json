@@ -9811,6 +9811,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/aliases",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html",
       "name": "indices.put_alias",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_alias"
@@ -30440,6 +30445,20 @@
             }
           },
           {
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "extDocId": "runtime-search-request",
+            "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Slice the request manually using the provided slice ID and total number of slices.",
             "name": "slice",
             "required": false,
@@ -31045,7 +31064,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L342"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
     },
     {
       "kind": "response",
@@ -31085,7 +31104,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -35485,7 +35504,7 @@
           }
         },
         {
-          "name": "project_encryption_key",
+          "name": "cluster_state_encryption",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -41886,7 +41905,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -47186,20 +47205,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "collapse",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldCollapse",
-              "namespace": "_global.search._types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L40"
     },
     {
       "kind": "interface",
@@ -56213,7 +56221,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -57303,6 +57311,37 @@
       }
     },
     {
+      "kind": "type_alias",
+      "codegenNames": [
+        "bulk",
+        "search"
+      ],
+      "name": {
+        "name": "BulkByPaginatedSearchFailure",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Errors.ts#L64-L67",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BulkIndexByScrollFailure",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardFailure",
+              "namespace": "_types"
+            }
+          }
+        ]
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "BulkIndexByScrollFailure",
@@ -57354,7 +57393,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L64-L69"
+      "specLocation": "_types/Errors.ts#L69-L74"
     },
     {
       "kind": "interface",
@@ -57753,7 +57792,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L408-L414"
+      "specLocation": "_types/common.ts#L415-L421"
     },
     {
       "kind": "type_alias",
@@ -57761,7 +57800,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L416-L416",
+      "specLocation": "_types/common.ts#L423-L423",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58004,7 +58043,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L418-L472"
+      "specLocation": "_types/common.ts#L425-L479"
     },
     {
       "kind": "type_alias",
@@ -58012,7 +58051,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L474-L474",
+      "specLocation": "_types/common.ts#L481-L481",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60862,7 +60901,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L357-L389"
+      "specLocation": "_types/common.ts#L364-L396"
     },
     {
       "kind": "interface",
@@ -61093,7 +61132,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L342-L355"
+      "specLocation": "_types/common.ts#L349-L362"
     },
     {
       "kind": "interface",
@@ -64026,7 +64065,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "BulkIndexByScrollFailure",
+                "name": "BulkByPaginatedSearchFailure",
                 "namespace": "_types"
               }
             }
@@ -66130,7 +66169,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L396",
+      "specLocation": "_types/common.ts#L398-L403",
       "type": {
         "kind": "union_of",
         "items": [
@@ -66163,7 +66202,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L406"
+      "specLocation": "_types/common.ts#L405-L413"
     },
     {
       "kind": "type_alias",
@@ -66728,7 +66767,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L71-L76"
+      "specLocation": "_types/Errors.ts#L76-L81"
     },
     {
       "kind": "type_alias",
@@ -66881,6 +66920,24 @@
         }
       ],
       "specLocation": "_types/Retriever.ts#L187-L204"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Sort by the time the thread was runnable, then by CPU time.",
+          "name": "total"
+        },
+        {
+          "description": "Sort by CPU time only.",
+          "name": "cpu"
+        }
+      ],
+      "name": {
+        "name": "ThreadSortOrder",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L327-L332"
     },
     {
       "kind": "enum",
@@ -67405,7 +67462,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L331"
+      "specLocation": "_types/common.ts#L334-L338"
     },
     {
       "kind": "type_alias",
@@ -67464,7 +67521,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L340"
+      "specLocation": "_types/common.ts#L340-L347"
     },
     {
       "kind": "interface",
@@ -91344,7 +91401,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L90-L92"
+      "specLocation": "_types/mapping/core.ts#L91-L93"
     },
     {
       "kind": "interface",
@@ -91465,7 +91522,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L94-L109"
+      "specLocation": "_types/mapping/core.ts#L95-L110"
     },
     {
       "kind": "interface",
@@ -91500,7 +91557,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L221-L224"
+      "specLocation": "_types/mapping/core.ts#L222-L225"
     },
     {
       "kind": "interface",
@@ -91905,7 +91962,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L48-L51"
+      "specLocation": "_types/mapping/core.ts#L49-L52"
     },
     {
       "kind": "interface",
@@ -92073,7 +92130,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L125-L135"
+      "specLocation": "_types/mapping/core.ts#L126-L136"
     },
     {
       "kind": "interface",
@@ -92207,7 +92264,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L111-L123"
+      "specLocation": "_types/mapping/core.ts#L112-L124"
     },
     {
       "kind": "interface",
@@ -92681,7 +92738,7 @@
         "name": "DocValues",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L80-L84",
+      "specLocation": "_types/mapping/core.ts#L81-L85",
       "type": {
         "kind": "union_of",
         "items": [
@@ -92753,7 +92810,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L78"
+      "specLocation": "_types/mapping/core.ts#L54-L79"
     },
     {
       "kind": "interface",
@@ -92780,7 +92837,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L86-L88"
+      "specLocation": "_types/mapping/core.ts#L87-L89"
     },
     {
       "kind": "interface",
@@ -92815,7 +92872,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L201-L204"
+      "specLocation": "_types/mapping/core.ts#L202-L205"
     },
     {
       "kind": "interface",
@@ -92974,6 +93031,17 @@
           }
         },
         {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "analyzer",
           "required": false,
           "type": {
@@ -92992,6 +93060,28 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "indices._types"
             }
           }
         },
@@ -93096,6 +93186,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -93138,9 +93251,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "subobjects",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Subobjects",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L401-L432"
+      "specLocation": "_types/mapping/core.ts#L402-L442"
     },
     {
       "kind": "interface",
@@ -93824,7 +93948,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "kind": "interface",
@@ -94138,7 +94262,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L196-L199"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "kind": "interface",
@@ -94429,7 +94553,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L357-L362"
+      "specLocation": "_types/mapping/core.ts#L358-L363"
     },
     {
       "kind": "interface",
@@ -94464,7 +94588,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L206-L209"
+      "specLocation": "_types/mapping/core.ts#L207-L210"
     },
     {
       "kind": "interface",
@@ -94694,7 +94818,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L137-L141"
+      "specLocation": "_types/mapping/core.ts#L138-L142"
     },
     {
       "kind": "interface",
@@ -94871,7 +94995,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L143-L162"
+      "specLocation": "_types/mapping/core.ts#L144-L163"
     },
     {
       "kind": "interface",
@@ -94906,7 +95030,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L211-L214"
+      "specLocation": "_types/mapping/core.ts#L212-L215"
     },
     {
       "kind": "interface",
@@ -95011,7 +95135,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L330-L355"
+      "specLocation": "_types/mapping/core.ts#L331-L356"
     },
     {
       "kind": "enum",
@@ -95231,7 +95355,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L164-L184"
+      "specLocation": "_types/mapping/core.ts#L165-L185"
     },
     {
       "kind": "interface",
@@ -95293,7 +95417,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L187-L190"
     },
     {
       "kind": "interface",
@@ -95374,7 +95498,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L237-L239"
+      "specLocation": "_types/mapping/core.ts#L238-L240"
     },
     {
       "kind": "interface",
@@ -96033,7 +96157,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L241-L244"
+      "specLocation": "_types/mapping/core.ts#L242-L245"
     },
     {
       "kind": "interface",
@@ -96068,7 +96192,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L246-L249"
+      "specLocation": "_types/mapping/core.ts#L247-L250"
     },
     {
       "kind": "enum",
@@ -96087,7 +96211,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L434-L438"
+      "specLocation": "_types/mapping/core.ts#L444-L448"
     },
     {
       "kind": "interface",
@@ -96134,7 +96258,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L251-L258"
+      "specLocation": "_types/mapping/core.ts#L252-L259"
     },
     {
       "kind": "interface",
@@ -96433,7 +96557,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L231-L235"
+      "specLocation": "_types/mapping/core.ts#L232-L236"
     },
     {
       "kind": "interface",
@@ -96568,7 +96692,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L311-L322"
+      "specLocation": "_types/mapping/core.ts#L312-L323"
     },
     {
       "kind": "interface",
@@ -96726,7 +96850,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L272-L309"
+      "specLocation": "_types/mapping/core.ts#L273-L310"
     },
     {
       "kind": "interface",
@@ -96832,7 +96956,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L216-L219"
+      "specLocation": "_types/mapping/core.ts#L217-L220"
     },
     {
       "kind": "interface",
@@ -97043,7 +97167,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L260-L270"
+      "specLocation": "_types/mapping/core.ts#L261-L271"
     },
     {
       "kind": "enum",
@@ -97221,7 +97345,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L364-L367"
+      "specLocation": "_types/mapping/core.ts#L365-L368"
     },
     {
       "kind": "interface",
@@ -97434,7 +97558,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L369-L386"
+      "specLocation": "_types/mapping/core.ts#L370-L387"
     },
     {
       "kind": "enum",
@@ -97817,7 +97941,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L226-L229"
+      "specLocation": "_types/mapping/core.ts#L227-L230"
     },
     {
       "kind": "interface",
@@ -97841,7 +97965,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L388-L390"
+      "specLocation": "_types/mapping/core.ts#L389-L391"
     },
     {
       "kind": "interface",
@@ -97882,7 +98006,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L392-L399"
+      "specLocation": "_types/mapping/core.ts#L393-L400"
     },
     {
       "kind": "interface",
@@ -119667,10 +119791,10 @@
       ],
       "query": [
         {
-          "description": "The type of index that wildcard patterns can match.",
+          "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "all",
+          "serverDefault": "open,closed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119755,7 +119879,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L111"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L113"
     },
     {
       "kind": "response",
@@ -120654,7 +120778,7 @@
           "description": "Comma-separated list of column names to display.",
           "name": "h",
           "required": false,
-          "serverDefault": "['bc', 'id', 'sc', 's']",
+          "serverDefault": "id,state,buckets.count,search.count",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124119,7 +124243,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125558,7 +125682,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127460,7 +127584,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154881,7 +155005,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "EsqlResult",
+            "name": "AsyncEsqlResult",
             "namespace": "esql._types"
           }
         }
@@ -155705,7 +155829,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -159804,7 +159928,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L136-L142"
+      "specLocation": "ilm/_types/Phase.ts#L151-L157"
     },
     {
       "kind": "interface",
@@ -159825,7 +159949,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L152-L154"
+      "specLocation": "ilm/_types/Phase.ts#L167-L169"
     },
     {
       "kind": "interface",
@@ -159910,7 +160034,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L144-L146"
+      "specLocation": "ilm/_types/Phase.ts#L159-L161"
     },
     {
       "kind": "interface",
@@ -160195,9 +160319,43 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "8.16.0"
+            }
+          },
+          "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+          "name": "total_shards_per_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "8.18.0"
+            }
+          },
+          "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+          "name": "replicate_for",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L131-L134"
+      "specLocation": "ilm/_types/Phase.ts#L131-L149"
     },
     {
       "kind": "interface",
@@ -160282,7 +160440,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L148-L150"
+      "specLocation": "ilm/_types/Phase.ts#L163-L165"
     },
     {
       "kind": "request",
@@ -162514,6 +162672,40 @@
     },
     {
       "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "AliasesResponseBody",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+          "name": "errors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/AliasesResponseBody.ts#L22-L30"
+    },
+    {
+      "kind": "interface",
       "name": {
         "name": "CacheQueries",
         "namespace": "indices._types"
@@ -164453,12 +164645,21 @@
         {
           "name": "max_result_window",
           "required": false,
-          "serverDefault": 10000,
+          "serverDefault": "10000",
           "type": {
             "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Stringified",
+              "namespace": "_spec_utils"
             }
           }
         },
@@ -167652,7 +167853,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -170965,33 +171166,6 @@
       "specLocation": "indices/delete/IndicesDeleteResponse.ts#L22-L25"
     },
     {
-      "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "name": {
-        "name": "IndicesAliasesResponseBody",
-        "namespace": "indices.delete_alias"
-      },
-      "properties": [
-        {
-          "name": "errors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L27-L29"
-    },
-    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -171109,8 +171283,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndicesAliasesResponseBody",
-            "namespace": "indices.delete_alias"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -172880,6 +173054,23 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "doc_values_skipper",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "uint",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "inverted_index",
           "required": true,
           "type": {
@@ -172891,7 +173082,7 @@
           }
         }
       ],
-      "specLocation": "indices/field_usage_stats/IndicesFieldUsageStatsResponse.ts#L58-L67"
+      "specLocation": "indices/field_usage_stats/IndicesFieldUsageStatsResponse.ts#L58-L72"
     },
     {
       "kind": "interface",
@@ -173030,7 +173221,7 @@
           }
         }
       ],
-      "specLocation": "indices/field_usage_stats/IndicesFieldUsageStatsResponse.ts#L69-L77"
+      "specLocation": "indices/field_usage_stats/IndicesFieldUsageStatsResponse.ts#L74-L82"
     },
     {
       "kind": "request",
@@ -177519,7 +177710,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L107"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L108"
     },
     {
       "kind": "response",
@@ -177529,8 +177720,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -186657,7 +186848,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L45-L60"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L40-L55"
     },
     {
       "kind": "interface",
@@ -186709,7 +186900,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L68-L81"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L63-L76"
     },
     {
       "kind": "enum",
@@ -186728,14 +186919,14 @@
         "name": "AliasActionType",
         "namespace": "indices.update_aliases"
       },
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L62-L66"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L57-L61"
     },
     {
       "kind": "interface",
       "inherits": {
         "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
+          "name": "AliasesResponseBody",
+          "namespace": "indices._types"
         }
       },
       "name": {
@@ -186745,23 +186936,7 @@
       "properties": [
         {
           "availability": {
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
-          "name": "errors",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
+            "serverless": {},
             "stack": {
               "since": "8.14.0"
             }
@@ -186781,7 +186956,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L43"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L38"
     },
     {
       "kind": "interface",
@@ -215502,6 +215677,37 @@
                 }
               }
             }
+          },
+          {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "Snapshot repository warnings are sectioned off per repository.",
+            "name": "repositories",
+            "required": true,
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "singleKey": false,
+              "value": {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "Deprecation",
+                    "namespace": "migration.deprecations"
+                  }
+                }
+              }
+            }
           }
         ]
       },
@@ -215515,7 +215721,7 @@
         "name": "Response",
         "namespace": "migration.deprecations"
       },
-      "specLocation": "migration/deprecations/DeprecationInfoResponse.ts#L23-L54"
+      "specLocation": "migration/deprecations/DeprecationInfoResponse.ts#L23-L59"
     },
     {
       "kind": "interface",
@@ -250864,7 +251070,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ThreadType",
+              "name": "ThreadSortOrder",
               "namespace": "_types"
             }
           }
@@ -261985,8 +262191,9 @@
       },
       "properties": [
         {
+          "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
           "name": "manage",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -261996,7 +262203,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L439-L441"
+      "specLocation": "security/_types/Privileges.ts#L439-L445"
     },
     {
       "kind": "interface",
@@ -262516,7 +262723,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L489-L511"
+      "specLocation": "security/_types/Privileges.ts#L493-L515"
     },
     {
       "kind": "interface",
@@ -262556,7 +262763,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L478-L487"
+      "specLocation": "security/_types/Privileges.ts#L482-L491"
     },
     {
       "kind": "interface",
@@ -263048,7 +263255,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L455-L461"
+      "specLocation": "security/_types/Privileges.ts#L459-L465"
     },
     {
       "kind": "interface",
@@ -263088,7 +263295,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L467-L476"
+      "specLocation": "security/_types/Privileges.ts#L471-L480"
     },
     {
       "kind": "interface",
@@ -263112,7 +263319,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L463-L465"
+      "specLocation": "security/_types/Privileges.ts#L467-L469"
     },
     {
       "kind": "interface",
@@ -263136,7 +263343,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L443-L445"
+      "specLocation": "security/_types/Privileges.ts#L447-L449"
     },
     {
       "kind": "interface",
@@ -263561,7 +263768,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L513-L523"
+      "specLocation": "security/_types/Privileges.ts#L517-L527"
     },
     {
       "kind": "interface",
@@ -264421,7 +264628,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L525-L545"
+      "specLocation": "security/_types/Privileges.ts#L529-L549"
     },
     {
       "kind": "interface",
@@ -265073,7 +265280,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L447-L453"
+      "specLocation": "security/_types/Privileges.ts#L451-L457"
     },
     {
       "kind": "request",
@@ -267192,9 +267399,9 @@
             }
           },
           {
-            "description": "A name for the API key.",
+            "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
             "name": "name",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -267311,7 +267518,7 @@
           }
         }
       ],
-      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L91"
+      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L94"
     },
     {
       "kind": "response",
@@ -270171,7 +270378,7 @@
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L33-L48"
+      "specLocation": "security/get_role/types.ts#L34-L49"
     },
     {
       "kind": "request",
@@ -270465,51 +270672,15 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "dictionary_of",
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "singleKey": false,
-              "value": {
-                "kind": "dictionary_of",
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                },
-                "singleKey": false,
-                "value": {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "_builtins"
-                    }
-                  }
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
             }
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L50-L72"
+      "specLocation": "security/get_role/types.ts#L51-L73"
     },
     {
       "kind": "request",
@@ -271611,7 +271782,7 @@
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L58"
+      "specLocation": "security/get_token/types.ts#L25-L60"
     },
     {
       "kind": "interface",
@@ -271669,9 +271840,33 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Present when the authenticated user is an API key.",
+          "name": "api_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AuthenticateApiKey",
+              "namespace": "security.authenticate"
+            }
+          }
+        },
+        {
+          "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+          "name": "token",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Token",
+              "namespace": "security.authenticate"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L70-L75"
+      "specLocation": "security/get_token/types.ts#L72-L85"
     },
     {
       "kind": "interface",
@@ -271703,7 +271898,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L65-L68"
+      "specLocation": "security/get_token/types.ts#L67-L70"
     },
     {
       "kind": "request",
@@ -272036,7 +272231,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L60-L63"
+      "specLocation": "security/get_token/types.ts#L62-L65"
     },
     {
       "kind": "request",
@@ -289755,6 +289950,25 @@
                 "namespace": "_builtins"
               }
             }
+          },
+          {
+            "availability": {
+              "serverless": {},
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.\nAn open destination index is closed and restored over in a single step.\nA destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.\n\nIt can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.",
+            "name": "restore_over_existing",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
           }
         ]
       },
@@ -289897,7 +290111,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/restore/SnapshotRestoreRequest.ts#L25-L178"
+      "specLocation": "snapshot/restore/SnapshotRestoreRequest.ts#L25-L189"
     },
     {
       "kind": "response",
@@ -296615,7 +296829,7 @@
           }
         },
         {
-          "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+          "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
           "name": "dates_as_epoch_millis",
           "required": false,
           "serverDefault": false,
@@ -296723,20 +296937,31 @@
               "since": "8.19.24"
             }
           },
-          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
           "name": "indexer_request_timeout",
           "required": false,
-          "serverDefault": "30s",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Duration",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L207"
+      "specLocation": "transform/_types/Transform.ts#L129-L206"
     },
     {
       "kind": "interface",
@@ -296807,7 +297032,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L209-L240"
+      "specLocation": "transform/_types/Transform.ts#L208-L239"
     },
     {
       "kind": "interface",
@@ -296829,7 +297054,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L244-L250",
+      "specLocation": "transform/_types/Transform.ts#L243-L249",
       "variants": {
         "kind": "container"
       }
@@ -296867,7 +297092,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L252-L264"
+      "specLocation": "transform/_types/Transform.ts#L251-L263"
     },
     {
       "kind": "request",
@@ -299418,9 +299643,27 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+          "name": "initial_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L73"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L81"
     },
     {
       "kind": "response",
@@ -299863,7 +300106,7 @@
           },
           {
             "name": "description",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -307540,7 +307783,7 @@
           }
         }
       ],
-      "specLocation": "xpack/info/types.ts#L88-L93"
+      "specLocation": "xpack/info/types.ts#L96-L101"
     },
     {
       "kind": "interface",
@@ -307573,6 +307816,22 @@
         },
         {
           "name": "ccr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "columnar",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -307709,6 +307968,22 @@
         },
         {
           "name": "logsdb",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "logsdb_columnar",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -307883,7 +308158,7 @@
           }
         }
       ],
-      "specLocation": "xpack/info/types.ts#L42-L86"
+      "specLocation": "xpack/info/types.ts#L42-L94"
     },
     {
       "kind": "interface",
@@ -309541,7 +309816,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L665-L677"
+      "specLocation": "xpack/usage/types.ts#L679-L691"
     },
     {
       "kind": "interface",
@@ -309597,7 +309872,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L679-L689"
+      "specLocation": "xpack/usage/types.ts#L711-L721"
     },
     {
       "kind": "interface",
@@ -309692,6 +309967,107 @@
         }
       ],
       "specLocation": "xpack/usage/types.ts#L308-L311"
+    },
+    {
+      "kind": "interface",
+      "description": "Usage of the indices with a given `index.mode`.",
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
+      "name": {
+        "name": "IndexModeUsage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "The number of indices in this index mode.",
+          "name": "indices_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of indices in this index mode that use synthetic `_source`.",
+          "name": "indices_with_synthetic_source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of documents in the indices in this index mode.",
+          "name": "num_docs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the indices in this index mode, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode.",
+          "name": "data_streams_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+          "name": "data_streams_managed_by_ilm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+          "name": "data_streams_managed_by_dlm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L693-L709"
     },
     {
       "kind": "interface",
@@ -311102,6 +311478,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "Usage of the indices with `index.mode` set to `columnar`.",
+            "name": "columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexModeUsage",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "data_frame",
             "required": false,
             "type": {
@@ -311255,6 +311648,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+            "name": "logsdb_columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexModeUsage",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "logstash",
             "required": true,
             "type": {
@@ -311403,6 +311813,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+            "name": "vectordb_columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VectorDbColumnar",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "voting_only",
             "required": true,
             "type": {
@@ -311425,7 +311852,7 @@
         "name": "Response",
         "namespace": "xpack.usage"
       },
-      "specLocation": "xpack/usage/XPackUsageResponse.ts#L46-L94"
+      "specLocation": "xpack/usage/XPackUsageResponse.ts#L48-L112"
     },
     {
       "kind": "interface",
@@ -312360,6 +312787,47 @@
     },
     {
       "kind": "interface",
+      "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
+      "name": {
+        "name": "VectorDbColumnar",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "The number of indices using the `vectordb_columnar` index mode.",
+          "name": "indices_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The total number of documents held across all `vectordb_columnar` indices.",
+          "name": "num_docs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L654-L666"
+    },
+    {
+      "kind": "interface",
       "description": "Usage statistics for indices using the `vectordb_document` index mode.",
       "inherits": {
         "type": {
@@ -312446,7 +312914,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L654-L658"
+      "specLocation": "xpack/usage/types.ts#L668-L672"
     },
     {
       "kind": "interface",
@@ -312676,7 +313144,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L660-L663"
+      "specLocation": "xpack/usage/types.ts#L674-L677"
     },
     {
       "kind": "interface",

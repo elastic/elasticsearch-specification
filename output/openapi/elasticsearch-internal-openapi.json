@@ -3501,7 +3501,7 @@
             "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
             "deprecated": false,
             "schema": {
-              "default": "ip,hp,rp,r,m,n,cpu,l",
+              "default": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
               "allOf": [
                 {
                   "$ref": "#/components/schemas/cat._types.CatNodeColumns"
@@ -12194,6 +12194,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "slice": {
                     "description": "Slice the request manually using the provided slice ID and total number of slices.",
                     "allOf": [
@@ -12258,7 +12269,7 @@
                       "description": "An array of failures if there were any unrecoverable errors during the process.\nIf this array is not empty, the request ended abnormally because of those failures.\nDelete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -13781,7 +13792,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/esql._types.EsqlResult"
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
                 }
               }
             }
@@ -19577,7 +19588,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19619,7 +19630,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19737,7 +19748,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19779,7 +19790,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -32254,7 +32265,7 @@
                       "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -55526,6 +55537,12 @@
                   "rename_replacement": {
                     "description": "The rename replacement string that is used with the `rename_pattern`.",
                     "type": "string"
+                  },
+                  "restore_over_existing": {
+                    "description": "If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.\nAn open destination index is closed and restored over in a single step.\nA destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.\n\nIt can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.",
+                    "default": false,
+                    "x-state": "Generally available; Added in 9.6.0",
+                    "type": "boolean"
                   }
                 }
               },
@@ -59476,6 +59493,17 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "initial_delay",
+            "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "x-state": "Generally available; Added in 9.6.0",
+            "style": "form"
           }
         ],
         "responses": {
@@ -59842,7 +59870,6 @@
                   },
                   "required": [
                     "create_time",
-                    "description",
                     "dest",
                     "id",
                     "settings",
@@ -60786,7 +60813,7 @@
                       "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -62133,6 +62160,15 @@
                         }
                       ]
                     },
+                    "columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "data_frame": {
                       "allOf": [
                         {
@@ -62226,6 +62262,15 @@
                         }
                       ]
                     },
+                    "logsdb_columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "logstash": {
                       "allOf": [
                         {
@@ -62315,6 +62360,15 @@
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/xpack.usage.VectorDbDocument"
+                        }
+                      ]
+                    },
+                    "vectordb_columnar": {
+                      "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.VectorDbColumnar"
                         }
                       ]
                     },
@@ -71454,13 +71508,6 @@
           "max_concurrent_group_searches": {
             "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
             "type": "number"
-          },
-          "collapse": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
           }
         },
         "required": [
@@ -81764,7 +81811,7 @@
             "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+              "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
             }
           },
           "noops": {
@@ -81824,6 +81871,16 @@
             "type": "number"
           }
         }
+      },
+      "_types.BulkByPaginatedSearchFailure": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+          },
+          {
+            "$ref": "#/components/schemas/_types.ShardFailure"
+          }
+        ]
       },
       "_types.BulkIndexByScrollFailure": {
         "type": "object",
@@ -87530,8 +87587,12 @@
             ]
           },
           "max_result_window": {
-            "default": 10000.0,
-            "type": "number"
+            "default": "10000",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
+              }
+            ]
           },
           "max_inner_result_window": {
             "default": 100.0,
@@ -94518,10 +94579,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "indices._types.StorageType": {
         "anyOf": [
@@ -96639,11 +96697,24 @@
                   }
                 ]
               },
+              "time_series_dimension": {
+                "type": "boolean"
+              },
               "analyzer": {
                 "type": "string"
               },
               "eager_global_ordinals": {
                 "type": "boolean"
+              },
+              "fielddata": {
+                "type": "boolean"
+              },
+              "fielddata_frequency_filter": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.FielddataFrequencyFilter"
+                  }
+                ]
               },
               "index": {
                 "type": "boolean"
@@ -96681,6 +96752,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "allOf": [
                   {
@@ -96696,6 +96778,13 @@
               },
               "locale": {
                 "type": "string"
+              },
+              "subobjects": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.Subobjects"
+                  }
+                ]
               }
             },
             "required": [
@@ -96712,6 +96801,25 @@
           "summary",
           "histogram",
           "position"
+        ]
+      },
+      "indices._types.FielddataFrequencyFilter": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "min_segment_size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "max",
+          "min",
+          "min_segment_size"
         ]
       },
       "_types.mapping.IndexOptions": {
@@ -96744,6 +96852,14 @@
           "with_positions_offsets",
           "with_positions_offsets_payloads",
           "with_positions_payloads"
+        ]
+      },
+      "_types.mapping.Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false",
+          "auto"
         ]
       },
       "_types.mapping.JoinProperty": {
@@ -97127,25 +97243,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "indices._types.FielddataFrequencyFilter": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "number"
-          },
-          "min": {
-            "type": "number"
-          },
-          "min_segment_size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "max",
-          "min",
-          "min_segment_size"
         ]
       },
       "_types.mapping.VersionProperty": {
@@ -97669,14 +97766,6 @@
               }
             }
           }
-        ]
-      },
-      "_types.mapping.Subobjects": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false",
-          "auto"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
@@ -106554,7 +106643,7 @@
               }
             ]
           },
-          "project_encryption_key": {
+          "cluster_state_encryption": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"
@@ -107927,6 +108016,20 @@
           },
           "force_merge_index": {
             "type": "boolean"
+          },
+          "total_shards_per_node": {
+            "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+            "x-state": "Generally available; Added in 8.16.0",
+            "type": "number"
+          },
+          "replicate_for": {
+            "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+            "x-state": "Generally available; Added in 8.18.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         },
         "required": [
@@ -108442,7 +108545,7 @@
           }
         ]
       },
-      "indices.delete_alias.IndicesAliasesResponseBody": {
+      "indices._types.AliasesResponseBody": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -108451,6 +108554,8 @@
             "type": "object",
             "properties": {
               "errors": {
+                "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+                "x-state": "Generally available; Added in 8.14.0",
                 "type": "boolean"
               }
             }
@@ -112611,16 +112716,11 @@
       "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+            "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
           },
           {
             "type": "object",
             "properties": {
-              "errors": {
-                "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
-                "x-state": "Generally available; Added in 8.14.0",
-                "type": "boolean"
-              },
               "action_results": {
                 "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
                 "x-state": "Generally available; Added in 8.14.0",
@@ -112629,10 +112729,7 @@
                   "$ref": "#/components/schemas/indices.update_aliases.AliasActionResult"
                 }
               }
-            },
-            "required": [
-              "errors"
-            ]
+            }
           }
         ]
       },
@@ -129448,6 +129545,13 @@
           "mem"
         ]
       },
+      "_types.ThreadSortOrder": {
+        "type": "string",
+        "enum": [
+          "total",
+          "cpu"
+        ]
+      },
       "nodes.info.NodesInfoMetrics": {
         "oneOf": [
           {
@@ -135827,16 +135931,14 @@
         "type": "object",
         "properties": {
           "manage": {
+            "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
               }
             ]
           }
-        },
-        "required": [
-          "manage"
-        ]
+        }
       },
       "security._types.ManageUserPrivileges": {
         "type": "object",
@@ -136518,19 +136620,11 @@
           },
           "global": {
             "x-state": "Generally available; Added in 8.0.0",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
-            }
+            ]
           }
         },
         "required": [
@@ -137195,6 +137289,22 @@
               },
               "authentication_type": {
                 "type": "string"
+              },
+              "api_key": {
+                "description": "Present when the authenticated user is an API key.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKey"
+                  }
+                ]
+              },
+              "token": {
+                "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.Token"
+                  }
+                ]
               }
             },
             "required": [
@@ -141660,7 +141770,7 @@
             "type": "boolean"
           },
           "dates_as_epoch_millis": {
-            "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+            "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
             "default": false,
             "type": "boolean"
           },
@@ -141697,12 +141807,15 @@
             "type": "boolean"
           },
           "indexer_request_timeout": {
-            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
-            "default": "30s",
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
             "x-state": "Generally available; Added in 8.19.24",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -144996,6 +145109,14 @@
               }
             ]
           },
+          "columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
           "data_streams": {
             "allOf": [
               {
@@ -145070,6 +145191,14 @@
             ]
           },
           "logsdb": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
+          "logsdb_columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/xpack.info.Feature"
@@ -145181,6 +145310,7 @@
           "aggregate_metric",
           "analytics",
           "ccr",
+          "columnar",
           "data_streams",
           "data_tiers",
           "enrich",
@@ -145192,6 +145322,7 @@
           "ilm",
           "logstash",
           "logsdb",
+          "logsdb_columnar",
           "ml",
           "monitoring",
           "rollup",
@@ -145585,6 +145716,56 @@
             "required": [
               "auto_follow_patterns_count",
               "follower_indices_count"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.IndexModeUsage": {
+        "description": "Usage of the indices with a given `index.mode`.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices in this index mode.",
+                "type": "number"
+              },
+              "indices_with_synthetic_source": {
+                "description": "The number of indices in this index mode that use synthetic `_source`.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The number of documents in the indices in this index mode.",
+                "type": "number"
+              },
+              "size_in_bytes": {
+                "description": "The size of the indices in this index mode, in bytes.",
+                "type": "number"
+              },
+              "data_streams_count": {
+                "description": "The number of data streams in this index mode.",
+                "type": "number"
+              },
+              "data_streams_managed_by_ilm": {
+                "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+                "type": "number"
+              },
+              "data_streams_managed_by_dlm": {
+                "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "indices_with_synthetic_source",
+              "num_docs",
+              "size_in_bytes",
+              "data_streams_count",
+              "data_streams_managed_by_ilm",
+              "data_streams_managed_by_dlm"
             ]
           }
         ]
@@ -147424,6 +147605,31 @@
             ]
           }
         ]
+      },
+      "xpack.usage.VectorDbColumnar": {
+        "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices using the `vectordb_columnar` index mode.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The total number of documents held across all `vectordb_columnar` indices.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "num_docs"
+            ]
+          }
+        ]
       }
     },
     "responses": {
@@ -148983,7 +149189,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -149172,7 +149378,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -149959,6 +150165,17 @@
                       "$ref": "#/components/schemas/migration.deprecations.Deprecation"
                     }
                   }
+                },
+                "repositories": {
+                  "description": "Snapshot repository warnings are sectioned off per repository.",
+                  "x-state": "Generally available; Added in 9.6.0",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations.Deprecation"
+                    }
+                  }
                 }
               },
               "required": [
@@ -149968,7 +150185,8 @@
                 "node_settings",
                 "ml_settings",
                 "templates",
-                "ilm_policies"
+                "ilm_policies",
+                "repositories"
               ]
             },
             "examples": {
@@ -153759,10 +153977,10 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.",
+        "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
         "deprecated": false,
         "schema": {
-          "default": "all",
+          "default": "open,closed",
           "allOf": [
             {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -153913,7 +154131,7 @@
         "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
-          "default": "['bc', 'id', 'sc', 's']",
+          "default": "id,state,buckets.count,search.count",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -154128,7 +154346,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSegmentsColumns"
@@ -154306,7 +154524,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSnapshotsColumns"
@@ -155612,7 +155830,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Id"
+          "$ref": "#/components/schemas/_types.Ids"
         },
         "style": "simple"
       },
@@ -161320,7 +161538,7 @@
           "default": "total",
           "allOf": [
             {
-              "$ref": "#/components/schemas/_types.ThreadType"
+              "$ref": "#/components/schemas/_types.ThreadSortOrder"
             }
           ]
         },
@@ -167794,7 +168012,7 @@
                   ]
                 },
                 "name": {
-                  "description": "A name for the API key.",
+                  "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Name"
@@ -167820,7 +168038,10 @@
                     }
                   ]
                 }
-              }
+              },
+              "required": [
+                "name"
+              ]
             },
             "examples": {
               "SecurityCreateApiKeyRequestExample1": {
