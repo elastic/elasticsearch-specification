@@ -137362,7 +137362,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L136-L142"
+      "specLocation": "ilm/_types/Phase.ts#L151-L157"
     },
     {
       "kind": "interface",
@@ -137383,7 +137383,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L152-L154"
+      "specLocation": "ilm/_types/Phase.ts#L167-L169"
     },
     {
       "kind": "interface",
@@ -137468,7 +137468,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L144-L146"
+      "specLocation": "ilm/_types/Phase.ts#L159-L161"
     },
     {
       "kind": "interface",
@@ -137646,7 +137646,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L131-L134"
+      "specLocation": "ilm/_types/Phase.ts#L131-L149"
     },
     {
       "kind": "interface",
@@ -137710,7 +137710,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L148-L150"
+      "specLocation": "ilm/_types/Phase.ts#L163-L165"
     },
     {
       "kind": "interface",
