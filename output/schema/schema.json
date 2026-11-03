@@ -39402,7 +39402,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L119-L126"
+      "specLocation": "_global/rank_eval/types.ts#L131-L138"
     },
     {
       "kind": "interface",
@@ -39445,7 +39445,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L144-L148"
+      "specLocation": "_global/rank_eval/types.ts#L156-L160"
     },
     {
       "kind": "interface",
@@ -39489,7 +39489,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L139-L142"
+      "specLocation": "_global/rank_eval/types.ts#L151-L154"
     },
     {
       "kind": "interface",
@@ -39554,7 +39554,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L90-L96"
+      "specLocation": "_global/rank_eval/types.ts#L91-L97"
     },
     {
       "kind": "interface",
@@ -39577,7 +39577,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L26-L32"
+      "specLocation": "_global/rank_eval/types.ts#L27-L33"
     },
     {
       "kind": "interface",
@@ -39659,7 +39659,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L128-L137"
+      "specLocation": "_global/rank_eval/types.ts#L140-L149"
     },
     {
       "kind": "interface",
@@ -39692,7 +39692,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L66-L77"
+      "specLocation": "_global/rank_eval/types.ts#L67-L78"
     },
     {
       "kind": "interface",
@@ -39723,7 +39723,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L79-L88"
+      "specLocation": "_global/rank_eval/types.ts#L80-L89"
     },
     {
       "kind": "interface",
@@ -39741,7 +39741,7 @@
         "namespace": "_global.rank_eval"
       },
       "properties": [],
-      "specLocation": "_global/rank_eval/types.ts#L60-L64"
+      "specLocation": "_global/rank_eval/types.ts#L61-L65"
     },
     {
       "kind": "interface",
@@ -39773,7 +39773,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L42-L52"
+      "specLocation": "_global/rank_eval/types.ts#L43-L53"
     },
     {
       "kind": "interface",
@@ -39802,7 +39802,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L34-L40"
+      "specLocation": "_global/rank_eval/types.ts#L35-L41"
     },
     {
       "kind": "interface",
@@ -39820,7 +39820,7 @@
         "namespace": "_global.rank_eval"
       },
       "properties": [],
-      "specLocation": "_global/rank_eval/types.ts#L54-L58"
+      "specLocation": "_global/rank_eval/types.ts#L55-L59"
     },
     {
       "kind": "interface",
@@ -39853,7 +39853,7 @@
         }
       ],
       "shortcutProperty": "query",
-      "specLocation": "_global/rank_eval/types.ts#L111-L117"
+      "specLocation": "_global/rank_eval/types.ts#L123-L129"
     },
     {
       "kind": "interface",
@@ -39933,7 +39933,41 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L98-L109"
+      "specLocation": "_global/rank_eval/types.ts#L99-L110"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalTemplate",
+        "namespace": "_global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The ID of the template. A rated request refers to it by this ID in its `template_id`.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The search template, either an inline `source` or the `id` of a stored search template.\nIt must be a `mustache` template (the default `lang`), and it must render to a search request body.\nAny `params` set here are ignored: each rated request provides its own `params`, which are used to render the template.",
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/rank_eval/types.ts#L112-L121"
     },
     {
       "kind": "request",
@@ -39967,6 +40001,21 @@
               "type": {
                 "name": "RankEvalMetric",
                 "namespace": "_global.rank_eval"
+              }
+            }
+          },
+          {
+            "description": "Query templates that the rated requests can refer to by their `template_id`.\nThis way, queries that differ only in their parameters don't have to be repeated in `requests`.",
+            "name": "templates",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RankEvalTemplate",
+                  "namespace": "_global.rank_eval"
+                }
               }
             }
           }
@@ -40087,7 +40136,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L93"
+      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L98"
     },
     {
       "kind": "response",
@@ -40185,7 +40234,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L150-L153"
+      "specLocation": "_global/rank_eval/types.ts#L162-L165"
     },
     {
       "kind": "interface",
