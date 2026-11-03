@@ -1,0 +1,18 @@
+summary: Evaluate kNN search settings
+description: >
+  Run `POST my-index/_knn_eval` to compare the recall of two `visit_percentage` values on a `bbq_disk` field, using 100 query vectors sampled from the stored documents.
+method_request: 'POST my-index/_knn_eval'
+value: |-
+  {
+    "field": "my_vector",
+    "k": 10,
+    "query_source": {
+      "from": "docs",
+      "size": 100,
+      "seed": 42
+    },
+    "knn_settings": [
+      { "visit_percentage": 1 },
+      { "visit_percentage": 5 }
+    ]
+  }
