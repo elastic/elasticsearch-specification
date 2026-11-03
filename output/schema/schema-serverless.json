@@ -109656,7 +109656,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L229-L245"
+      "specLocation": "_global/search/_types/profile.ts#L239-L255"
     },
     {
       "kind": "interface",
@@ -110343,7 +110343,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L247-L250"
+      "specLocation": "_global/search/_types/profile.ts#L257-L260"
     },
     {
       "kind": "interface",
@@ -110449,7 +110449,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L252-L260"
+      "specLocation": "_global/search/_types/profile.ts#L262-L270"
     },
     {
       "kind": "interface",
@@ -110547,7 +110547,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L263-L272"
+      "specLocation": "_global/search/_types/profile.ts#L273-L282"
     },
     {
       "kind": "interface",
@@ -110607,7 +110607,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L274-L279"
+      "specLocation": "_global/search/_types/profile.ts#L284-L289"
     },
     {
       "kind": "interface",
@@ -110713,7 +110713,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L281-L289"
+      "specLocation": "_global/search/_types/profile.ts#L291-L299"
     },
     {
       "kind": "interface",
@@ -110943,7 +110943,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L292-L313"
+      "specLocation": "_global/search/_types/profile.ts#L302-L323"
     },
     {
       "kind": "interface",
@@ -111020,7 +111020,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L315-L321"
+      "specLocation": "_global/search/_types/profile.ts#L325-L331"
     },
     {
       "kind": "interface",
@@ -111108,7 +111108,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L323-L330"
+      "specLocation": "_global/search/_types/profile.ts#L333-L340"
     },
     {
       "kind": "interface",
@@ -111206,7 +111206,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L332-L341"
+      "specLocation": "_global/search/_types/profile.ts#L342-L351"
     },
     {
       "kind": "interface",
@@ -111241,7 +111241,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L343-L346"
+      "specLocation": "_global/search/_types/profile.ts#L353-L356"
     },
     {
       "kind": "type_alias",
@@ -111265,7 +111265,7 @@
         "name": "RescoreProfile",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/profile.ts#L164-L175",
+      "specLocation": "_global/search/_types/profile.ts#L174-L185",
       "type": {
         "items": [
           {
@@ -111332,7 +111332,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+      "specLocation": "_global/search/_types/profile.ts#L203-L207"
     },
     {
       "kind": "interface",
@@ -111406,7 +111406,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L177-L191"
+      "specLocation": "_global/search/_types/profile.ts#L187-L201"
     },
     {
       "inherits": {
@@ -111442,7 +111442,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L199-L203"
+      "specLocation": "_global/search/_types/profile.ts#L209-L213"
     },
     {
       "inherits": {
@@ -111477,7 +111477,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L205-L208"
+      "specLocation": "_global/search/_types/profile.ts#L215-L218"
     },
     {
       "kind": "interface",
@@ -111556,7 +111556,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L211-L221"
+      "specLocation": "_global/search/_types/profile.ts#L221-L231"
     },
     {
       "kind": "interface",
@@ -111605,7 +111605,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L223-L227"
+      "specLocation": "_global/search/_types/profile.ts#L233-L237"
     },
     {
       "kind": "interface",
@@ -111773,7 +111773,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L162"
+      "specLocation": "_global/search/_types/profile.ts#L158-L172"
     },
     {
       "kind": "interface",
@@ -111839,6 +111839,28 @@
         },
         {
           "name": "create_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set_count",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -112003,7 +112025,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L125-L146"
+      "specLocation": "_global/search/_types/profile.ts#L125-L156"
     },
     {
       "description": "Coordinator snapshot of the original search request, serialized under `profile.request` when profiling is enabled.\nIntroduced in Elasticsearch 9.5; omitted when the cluster contains mixed-version nodes that do not serialize this metadata.",
