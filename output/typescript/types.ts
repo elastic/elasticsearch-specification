@@ -12350,7 +12350,7 @@ export interface IndicesSoftDeletes {
 export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
-  type: IndicesStorageType
+  type?: IndicesStorageType
   allow_mmap?: boolean
   stats_refresh_interval?: Duration
 }
