@@ -22550,7 +22550,7 @@ export interface TransformSettings {
   use_point_in_time?: boolean
   num_failure_retries?: integer
   unattended?: boolean
-  indexer_request_timeout?: Duration
+  indexer_request_timeout?: Duration | null
 }
 
 export interface TransformSource {
@@ -22814,7 +22814,7 @@ export interface TransformUpdateTransformRequest extends RequestBase {
 export interface TransformUpdateTransformResponse {
   authorization?: MlTransformAuthorization
   create_time: long
-  description: string
+  description?: string
   dest: TransformDestination
   frequency?: Duration
   id: Id
