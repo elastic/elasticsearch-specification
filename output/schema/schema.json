@@ -88196,7 +88196,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L57-L59"
+      "specLocation": "_types/mapping/core.ts#L58-L60"
     },
     {
       "kind": "interface",
@@ -88317,7 +88317,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L61-L76"
+      "specLocation": "_types/mapping/core.ts#L62-L77"
     },
     {
       "kind": "interface",
@@ -88352,7 +88352,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L188-L191"
+      "specLocation": "_types/mapping/core.ts#L189-L192"
     },
     {
       "kind": "interface",
@@ -88757,7 +88757,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L48-L51"
+      "specLocation": "_types/mapping/core.ts#L49-L52"
     },
     {
       "kind": "interface",
@@ -88925,7 +88925,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L92-L102"
+      "specLocation": "_types/mapping/core.ts#L93-L103"
     },
     {
       "kind": "interface",
@@ -89059,7 +89059,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L78-L90"
+      "specLocation": "_types/mapping/core.ts#L79-L91"
     },
     {
       "kind": "interface",
@@ -89524,7 +89524,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L55"
+      "specLocation": "_types/mapping/core.ts#L54-L56"
     },
     {
       "kind": "interface",
@@ -89559,7 +89559,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L168-L171"
+      "specLocation": "_types/mapping/core.ts#L169-L172"
     },
     {
       "kind": "interface",
@@ -89718,6 +89718,17 @@
           }
         },
         {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "analyzer",
           "required": false,
           "type": {
@@ -89736,6 +89747,28 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "indices._types"
             }
           }
         },
@@ -89840,6 +89873,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -89882,9 +89938,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "subobjects",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Subobjects",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L368-L399"
+      "specLocation": "_types/mapping/core.ts#L369-L409"
     },
     {
       "kind": "interface",
@@ -90568,7 +90635,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L158-L161"
+      "specLocation": "_types/mapping/core.ts#L159-L162"
     },
     {
       "kind": "interface",
@@ -90882,7 +90949,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L163-L166"
+      "specLocation": "_types/mapping/core.ts#L164-L167"
     },
     {
       "kind": "interface",
@@ -91173,7 +91240,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L324-L329"
+      "specLocation": "_types/mapping/core.ts#L325-L330"
     },
     {
       "kind": "interface",
@@ -91208,7 +91275,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L173-L176"
+      "specLocation": "_types/mapping/core.ts#L174-L177"
     },
     {
       "kind": "interface",
@@ -91438,7 +91505,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L104-L108"
+      "specLocation": "_types/mapping/core.ts#L105-L109"
     },
     {
       "kind": "interface",
@@ -91615,7 +91682,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L110-L129"
+      "specLocation": "_types/mapping/core.ts#L111-L130"
     },
     {
       "kind": "interface",
@@ -91650,7 +91717,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L178-L181"
+      "specLocation": "_types/mapping/core.ts#L179-L182"
     },
     {
       "kind": "interface",
@@ -91755,7 +91822,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L297-L322"
+      "specLocation": "_types/mapping/core.ts#L298-L323"
     },
     {
       "kind": "enum",
@@ -91975,7 +92042,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L131-L151"
+      "specLocation": "_types/mapping/core.ts#L132-L152"
     },
     {
       "kind": "interface",
@@ -92037,7 +92104,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L153-L156"
+      "specLocation": "_types/mapping/core.ts#L154-L157"
     },
     {
       "kind": "interface",
@@ -92118,7 +92185,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L204-L206"
+      "specLocation": "_types/mapping/core.ts#L205-L207"
     },
     {
       "kind": "interface",
@@ -92777,7 +92844,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L208-L211"
+      "specLocation": "_types/mapping/core.ts#L209-L212"
     },
     {
       "kind": "interface",
@@ -92812,7 +92879,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L213-L216"
+      "specLocation": "_types/mapping/core.ts#L214-L217"
     },
     {
       "kind": "enum",
@@ -92831,7 +92898,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L401-L405"
+      "specLocation": "_types/mapping/core.ts#L411-L415"
     },
     {
       "kind": "interface",
@@ -92878,7 +92945,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L218-L225"
+      "specLocation": "_types/mapping/core.ts#L219-L226"
     },
     {
       "kind": "interface",
@@ -93177,7 +93244,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L198-L202"
+      "specLocation": "_types/mapping/core.ts#L199-L203"
     },
     {
       "kind": "interface",
@@ -93312,7 +93379,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L278-L289"
+      "specLocation": "_types/mapping/core.ts#L279-L290"
     },
     {
       "kind": "interface",
@@ -93470,7 +93537,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L239-L276"
+      "specLocation": "_types/mapping/core.ts#L240-L277"
     },
     {
       "kind": "interface",
@@ -93576,7 +93643,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L183-L186"
+      "specLocation": "_types/mapping/core.ts#L184-L187"
     },
     {
       "kind": "interface",
@@ -93800,7 +93867,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L227-L237"
+      "specLocation": "_types/mapping/core.ts#L228-L238"
     },
     {
       "kind": "enum",
@@ -93978,7 +94045,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L331-L334"
+      "specLocation": "_types/mapping/core.ts#L332-L335"
     },
     {
       "kind": "interface",
@@ -94191,7 +94258,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L336-L353"
+      "specLocation": "_types/mapping/core.ts#L337-L354"
     },
     {
       "kind": "enum",
@@ -94574,7 +94641,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L193-L196"
+      "specLocation": "_types/mapping/core.ts#L194-L197"
     },
     {
       "kind": "interface",
@@ -94598,7 +94665,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L355-L357"
+      "specLocation": "_types/mapping/core.ts#L356-L358"
     },
     {
       "kind": "interface",
@@ -94639,7 +94706,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L359-L366"
+      "specLocation": "_types/mapping/core.ts#L360-L367"
     },
     {
       "kind": "interface",
