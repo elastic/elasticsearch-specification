@@ -67098,9 +67098,9 @@
             }
           },
           {
-            "description": "A name for the API key.",
+            "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
             "name": "name",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -67218,7 +67218,7 @@
           }
         }
       ],
-      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L91"
+      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L94"
     },
     {
       "body": {
@@ -83884,20 +83884,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "collapse",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldCollapse",
-              "namespace": "_global.search._types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L40"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -102803,7 +102792,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L187-L190"
     },
     {
       "codegenNames": [
@@ -123803,7 +123792,7 @@
         "name": "DocValues",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L80-L84",
+      "specLocation": "_types/mapping/core.ts#L81-L85",
       "type": {
         "items": [
           {
@@ -123875,7 +123864,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L78"
+      "specLocation": "_types/mapping/core.ts#L54-L79"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and\ntrue and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)",
@@ -123981,7 +123970,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L357-L362"
+      "specLocation": "_types/mapping/core.ts#L358-L363"
     },
     {
       "kind": "enum",
@@ -124427,7 +124416,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L90-L92"
+      "specLocation": "_types/mapping/core.ts#L91-L93"
     },
     {
       "inherits": {
@@ -124454,7 +124443,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L86-L88"
+      "specLocation": "_types/mapping/core.ts#L87-L89"
     },
     {
       "inherits": {
@@ -124492,7 +124481,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L48-L51"
+      "specLocation": "_types/mapping/core.ts#L49-L52"
     },
     {
       "kind": "interface",
@@ -124747,7 +124736,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L94-L109"
+      "specLocation": "_types/mapping/core.ts#L95-L110"
     },
     {
       "kind": "interface",
@@ -124896,6 +124885,17 @@
           }
         },
         {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "analyzer",
           "required": false,
           "type": {
@@ -124914,6 +124914,28 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "indices._types"
             }
           }
         },
@@ -125018,6 +125040,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -125060,9 +125105,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "subobjects",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Subobjects",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L401-L432"
+      "specLocation": "_types/mapping/core.ts#L402-L442"
     },
     {
       "kind": "enum",
@@ -125088,6 +125144,49 @@
         "namespace": "_types.mapping"
       },
       "specLocation": "_types/mapping/TimeSeriesMetricType.ts#L20-L26"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FielddataFrequencyFilter",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_segment_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/FielddataFrequencyFilter.ts#L22-L26"
     },
     {
       "kind": "interface",
@@ -125119,7 +125218,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L364-L367"
+      "specLocation": "_types/mapping/core.ts#L365-L368"
     },
     {
       "kind": "enum",
@@ -125151,6 +125250,23 @@
         "namespace": "_types.mapping"
       },
       "specLocation": "_types/mapping/TermVectorOption.ts#L20-L28"
+    },
+    {
+      "esQuirk": "This enum is a boolean that evolved into a tri-state enum. True and False have\nto be (de)serialized as JSON booleans.",
+      "kind": "enum",
+      "members": [
+        {
+          "name": "true"
+        },
+        {
+          "name": "false"
+        }
+      ],
+      "name": {
+        "name": "Subobjects",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/TypeMapping.ts#L63-L74"
     },
     {
       "inherits": {
@@ -125222,7 +125338,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L137-L141"
+      "specLocation": "_types/mapping/core.ts#L138-L142"
     },
     {
       "inherits": {
@@ -125399,7 +125515,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L143-L162"
+      "specLocation": "_types/mapping/core.ts#L144-L163"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -125480,7 +125596,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L330-L355"
+      "specLocation": "_types/mapping/core.ts#L331-L356"
     },
     {
       "inherits": {
@@ -125504,7 +125620,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L237-L239"
+      "specLocation": "_types/mapping/core.ts#L238-L240"
     },
     {
       "inherits": {
@@ -125539,7 +125655,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L241-L244"
+      "specLocation": "_types/mapping/core.ts#L242-L245"
     },
     {
       "inherits": {
@@ -125574,7 +125690,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L246-L249"
+      "specLocation": "_types/mapping/core.ts#L247-L250"
     },
     {
       "inherits": {
@@ -125709,7 +125825,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L311-L322"
+      "specLocation": "_types/mapping/core.ts#L312-L323"
     },
     {
       "inherits": {
@@ -125922,50 +126038,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L369-L386"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FielddataFrequencyFilter",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min_segment_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/_types/FielddataFrequencyFilter.ts#L22-L26"
+      "specLocation": "_types/mapping/core.ts#L370-L387"
     },
     {
       "inherits": {
@@ -125989,7 +126062,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L388-L390"
+      "specLocation": "_types/mapping/core.ts#L389-L391"
     },
     {
       "inherits": {
@@ -126030,7 +126103,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L392-L399"
+      "specLocation": "_types/mapping/core.ts#L393-L400"
     },
     {
       "inherits": {
@@ -126142,7 +126215,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L125-L135"
+      "specLocation": "_types/mapping/core.ts#L126-L136"
     },
     {
       "inherits": {
@@ -126276,7 +126349,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L111-L123"
+      "specLocation": "_types/mapping/core.ts#L112-L124"
     },
     {
       "inherits": {
@@ -126786,23 +126859,6 @@
       "specLocation": "_types/mapping/complex.ts#L58-L62"
     },
     {
-      "esQuirk": "This enum is a boolean that evolved into a tri-state enum. True and False have\nto be (de)serialized as JSON booleans.",
-      "kind": "enum",
-      "members": [
-        {
-          "name": "true"
-        },
-        {
-          "name": "false"
-        }
-      ],
-      "name": {
-        "name": "Subobjects",
-        "namespace": "_types.mapping"
-      },
-      "specLocation": "_types/mapping/TypeMapping.ts#L63-L74"
-    },
-    {
       "inherits": {
         "type": {
           "name": "CorePropertyBase",
@@ -126904,7 +126960,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L251-L258"
+      "specLocation": "_types/mapping/core.ts#L252-L259"
     },
     {
       "kind": "enum",
@@ -126923,7 +126979,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L434-L438"
+      "specLocation": "_types/mapping/core.ts#L444-L448"
     },
     {
       "kind": "interface",
@@ -127049,7 +127105,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L272-L309"
+      "specLocation": "_types/mapping/core.ts#L273-L310"
     },
     {
       "kind": "interface",
@@ -127293,7 +127349,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L260-L270"
+      "specLocation": "_types/mapping/core.ts#L261-L271"
     },
     {
       "inherits": {
@@ -128204,7 +128260,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L221-L224"
+      "specLocation": "_types/mapping/core.ts#L222-L225"
     },
     {
       "inherits": {
@@ -128327,7 +128383,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L164-L184"
+      "specLocation": "_types/mapping/core.ts#L165-L185"
     },
     {
       "inherits": {
@@ -128362,7 +128418,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L201-L204"
+      "specLocation": "_types/mapping/core.ts#L202-L205"
     },
     {
       "inherits": {
@@ -128397,7 +128453,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "inherits": {
@@ -128432,7 +128488,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L196-L199"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "inherits": {
@@ -128467,7 +128523,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L206-L209"
+      "specLocation": "_types/mapping/core.ts#L207-L210"
     },
     {
       "inherits": {
@@ -128502,7 +128558,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L211-L214"
+      "specLocation": "_types/mapping/core.ts#L212-L215"
     },
     {
       "inherits": {
@@ -128548,7 +128604,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L231-L235"
+      "specLocation": "_types/mapping/core.ts#L232-L236"
     },
     {
       "inherits": {
@@ -128583,7 +128639,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L216-L219"
+      "specLocation": "_types/mapping/core.ts#L217-L220"
     },
     {
       "inherits": {
@@ -128618,7 +128674,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L226-L229"
+      "specLocation": "_types/mapping/core.ts#L227-L230"
     },
     {
       "inherits": {
