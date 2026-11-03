@@ -112,7 +112,11 @@ export class RankEvalRequestItem {
 export class RankEvalTemplate {
   /** The ID of the template. A rated request refers to it by this ID in its `template_id`. */
   id: Id
-  /** The template definition. It can be an inline query template or a reference to a stored search template. */
+  /**
+   * The search template, either an inline `source` or the `id` of a stored search template.
+   * It must be a `mustache` template (the default `lang`), and it must render to a search request body.
+   * Any `params` set here are ignored: each rated request provides its own `params`, which are used to render the template.
+   */
   template: Script
 }
 
