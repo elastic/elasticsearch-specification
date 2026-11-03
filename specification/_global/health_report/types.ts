@@ -40,7 +40,7 @@ export class Indicators {
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
-  project_encryption_key?: ProjectEncryptionKeyIndicator
+  cluster_state_encryption?: ProjectEncryptionKeyIndicator
 }
 
 export class BaseIndicator {
