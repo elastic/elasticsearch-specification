@@ -86591,24 +86591,41 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L79-L109"
+      "specLocation": "_types/Knn.ts#L83-L113"
     },
     {
+      "codegenNames": [
+        "float_array",
+        "base64"
+      ],
+      "description": "Both the float vector form and the base64 string form are accepted by the server",
       "kind": "type_alias",
       "name": {
         "name": "QueryVector",
         "namespace": "_types"
       },
-      "specLocation": "_types/Knn.ts#L30-L30",
+      "specLocation": "_types/Knn.ts#L30-L34",
       "type": {
-        "kind": "array_of",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "float",
-            "namespace": "_types"
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "float",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
           }
-        }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -86659,7 +86676,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L111-L122",
+      "specLocation": "_types/Knn.ts#L115-L126",
       "variants": {
         "kind": "container"
       }
@@ -86705,7 +86722,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L124-L128"
+      "specLocation": "_types/Knn.ts#L128-L132"
     },
     {
       "codegenNames": [
@@ -86718,7 +86735,7 @@
         "name": "KnnEmbeddingInput",
         "namespace": "_types"
       },
-      "specLocation": "_types/Knn.ts#L130-L135",
+      "specLocation": "_types/Knn.ts#L134-L139",
       "type": {
         "items": [
           {
@@ -86745,7 +86762,7 @@
         "name": "InferenceStringGroup",
         "namespace": "_types"
       },
-      "specLocation": "_types/Knn.ts#L137-L137",
+      "specLocation": "_types/Knn.ts#L141-L141",
       "type": {
         "items": [
           {
@@ -86825,7 +86842,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L139-L154"
+      "specLocation": "_types/Knn.ts#L143-L158"
     },
     {
       "kind": "enum",
@@ -86942,7 +86959,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L156-L166"
+      "specLocation": "_types/Knn.ts#L160-L170"
     },
     {
       "kind": "interface",
@@ -87000,7 +87017,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L168-L177"
+      "specLocation": "_types/Knn.ts#L172-L181"
     },
     {
       "kind": "interface",
@@ -87022,7 +87039,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L35-L38"
+      "specLocation": "_types/Knn.ts#L39-L42"
     },
     {
       "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
@@ -95775,7 +95792,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L107-L116"
+      "specLocation": "ml/_types/inference.ts#L101-L110"
     },
     {
       "kind": "interface",
@@ -95848,7 +95865,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L118-L133"
+      "specLocation": "ml/_types/inference.ts#L112-L127"
     },
     {
       "inherits": {
@@ -99452,7 +99469,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L40-L77"
+      "specLocation": "_types/Knn.ts#L44-L81"
     },
     {
       "kind": "interface",
@@ -142406,7 +142423,7 @@
         "name": "FeatureExtractor",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L93-L96",
+      "specLocation": "ml/_types/inference.ts#L93-L93",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -142456,8 +142473,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L98-L105",
-      "variantName": "query_extractor"
+      "specLocation": "ml/_types/inference.ts#L95-L99"
     },
     {
       "kind": "enum",
@@ -142579,7 +142595,7 @@
         "name": "PredictedValue",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L480-L480",
+      "specLocation": "ml/_types/inference.ts#L474-L474",
       "type": {
         "items": [
           {
@@ -142690,7 +142706,7 @@
         "name": "TokenizationTruncate",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L373-L377"
+      "specLocation": "ml/_types/inference.ts#L367-L371"
     },
     {
       "kind": "enum",
@@ -185161,7 +185177,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L202-L214"
+      "specLocation": "ml/_types/inference.ts#L196-L208"
     },
     {
       "description": "Tokenization options stored in inference configuration",
@@ -185243,7 +185259,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L135-L158",
+      "specLocation": "ml/_types/inference.ts#L129-L152",
       "variants": {
         "kind": "container"
       }
@@ -185262,7 +185278,7 @@
         "namespace": "ml._types"
       },
       "properties": [],
-      "specLocation": "ml/_types/inference.ts#L188-L189"
+      "specLocation": "ml/_types/inference.ts#L182-L183"
     },
     {
       "kind": "interface",
@@ -185337,7 +185353,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L160-L186"
+      "specLocation": "ml/_types/inference.ts#L154-L180"
     },
     {
       "description": "RoBERTa tokenization configuration options",
@@ -185367,7 +185383,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L191-L198"
+      "specLocation": "ml/_types/inference.ts#L185-L192"
     },
     {
       "inherits": {
@@ -185382,7 +185398,7 @@
         "namespace": "ml._types"
       },
       "properties": [],
-      "specLocation": "ml/_types/inference.ts#L200-L200"
+      "specLocation": "ml/_types/inference.ts#L194-L194"
     },
     {
       "kind": "interface",
@@ -185403,7 +185419,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L250-L252"
+      "specLocation": "ml/_types/inference.ts#L244-L246"
     },
     {
       "description": "Zero shot classification configuration options",
@@ -185494,7 +185510,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L216-L239"
+      "specLocation": "ml/_types/inference.ts#L210-L233"
     },
     {
       "description": "Fill mask inference options",
@@ -185564,7 +185580,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L286-L303"
+      "specLocation": "ml/_types/inference.ts#L280-L297"
     },
     {
       "kind": "interface",
@@ -185689,7 +185705,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L275-L284"
+      "specLocation": "ml/_types/inference.ts#L269-L278"
     },
     {
       "description": "Pass through configuration options",
@@ -185735,7 +185751,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L241-L248"
+      "specLocation": "ml/_types/inference.ts#L235-L242"
     },
     {
       "description": "Text embedding inference options",
@@ -185793,7 +185809,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L254-L264"
+      "specLocation": "ml/_types/inference.ts#L248-L258"
     },
     {
       "description": "Text expansion inference options",
@@ -185839,7 +185855,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L266-L273"
+      "specLocation": "ml/_types/inference.ts#L260-L267"
     },
     {
       "description": "Question answering inference options",
@@ -185898,7 +185914,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L305-L315"
+      "specLocation": "ml/_types/inference.ts#L299-L309"
     },
     {
       "kind": "interface",
@@ -187427,7 +187443,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L319-L341",
+      "specLocation": "ml/_types/inference.ts#L313-L335",
       "variants": {
         "kind": "container"
       }
@@ -187491,7 +187507,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L386-L395"
+      "specLocation": "ml/_types/inference.ts#L380-L389"
     },
     {
       "kind": "interface",
@@ -187525,7 +187541,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L379-L384"
+      "specLocation": "ml/_types/inference.ts#L373-L378"
     },
     {
       "kind": "interface",
@@ -187586,7 +187602,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L397-L406"
+      "specLocation": "ml/_types/inference.ts#L391-L400"
     },
     {
       "kind": "interface",
@@ -187632,7 +187648,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L434-L441"
+      "specLocation": "ml/_types/inference.ts#L428-L435"
     },
     {
       "kind": "interface",
@@ -187666,7 +187682,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L427-L432"
+      "specLocation": "ml/_types/inference.ts#L421-L426"
     },
     {
       "kind": "interface",
@@ -187700,7 +187716,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L408-L413"
+      "specLocation": "ml/_types/inference.ts#L402-L407"
     },
     {
       "kind": "interface",
@@ -187733,7 +187749,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L415-L419"
+      "specLocation": "ml/_types/inference.ts#L409-L413"
     },
     {
       "kind": "interface",
@@ -187766,7 +187782,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L421-L425"
+      "specLocation": "ml/_types/inference.ts#L415-L419"
     },
     {
       "kind": "interface",
@@ -187836,7 +187852,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L443-L454"
+      "specLocation": "ml/_types/inference.ts#L437-L448"
     },
     {
       "kind": "interface",
@@ -187978,7 +187994,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L482-L530"
+      "specLocation": "ml/_types/inference.ts#L476-L524"
     },
     {
       "kind": "interface",
@@ -188043,7 +188059,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L456-L462"
+      "specLocation": "ml/_types/inference.ts#L450-L456"
     },
     {
       "kind": "interface",
@@ -188086,7 +188102,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L463-L467"
+      "specLocation": "ml/_types/inference.ts#L457-L461"
     },
     {
       "kind": "interface",
@@ -188132,7 +188148,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L474-L478"
+      "specLocation": "ml/_types/inference.ts#L468-L472"
     },
     {
       "kind": "interface",
@@ -188164,7 +188180,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L469-L472"
+      "specLocation": "ml/_types/inference.ts#L463-L466"
     },
     {
       "kind": "interface",
