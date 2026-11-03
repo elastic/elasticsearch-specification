@@ -17,44 +17,16 @@
  * under the License.
  */
 
-import { EmbeddingContentFormat } from '@inference/_types/CommonTypes'
+import { EmbeddingContentObjectItem } from '@inference/_types/CommonTypes'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
  * The input for the `decision` task.
  * Either a string, or an object. The object form additionally allows specifying images.
+ * The `decision` task currently only supports the `text` and `image` types.
  * @codegen_names string, object
  */
-export type DecisionInput = string | DecisionInputObject
-
-/**
- * An object describing the input for the `decision` task, which additionally allows specifying images.
- */
-export class DecisionInputObject {
-  /**
-   * The type of input. Not all services and models support all input types.
-   */
-  type: DecisionInputType
-  /**
-   * The format of the input. For the `text` type this must be `text`. For the `image` type this must be `base64` or `url`.
-   * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
-   * Not all services and models support all formats.
-   */
-  format?: EmbeddingContentFormat
-  /**
-   * The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, "data:content/type;base64,...".
-   * For the `url` format, this must be a URL that points to the content, that is, "https://example.com/image.jpg".
-   */
-  value: string
-}
-
-/**
- * The type of input for the `decision` task.
- */
-export enum DecisionInputType {
-  text,
-  image
-}
+export type DecisionInput = string | EmbeddingContentObjectItem
 
 /**
  * The task settings of the `decision` task.
