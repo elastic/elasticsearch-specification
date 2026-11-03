@@ -3101,6 +3101,7 @@ export interface PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
+  native_controller_enabled_settings: string[]
 }
 
 export type ProjectRouting = string
