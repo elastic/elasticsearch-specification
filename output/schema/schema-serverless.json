@@ -154679,12 +154679,21 @@
         {
           "name": "max_result_window",
           "required": false,
-          "serverDefault": 10000,
+          "serverDefault": "10000",
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Stringified",
+              "namespace": "_spec_utils"
             }
           }
         },

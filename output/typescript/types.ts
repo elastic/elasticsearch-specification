@@ -12925,7 +12925,7 @@ export interface IndicesIndexSettingsKeys {
   merge?: IndicesMerge
   search?: IndicesSettingsSearch
   refresh_interval?: Duration
-  max_result_window?: integer
+  max_result_window?: SpecUtilsStringified<integer>
   max_inner_result_window?: integer
   max_rescore_window?: integer
   max_docvalue_fields_search?: integer
@@ -13668,6 +13668,7 @@ export interface IndicesFieldUsageStatsFieldSummary {
   norms: uint
   term_vectors: uint
   knn_vectors: uint
+  doc_values_skipper: uint
   inverted_index: IndicesFieldUsageStatsInvertedIndex
 }
 
