@@ -279,7 +279,7 @@ export interface DeleteByQueryRequest extends RequestBase {
 export interface DeleteByQueryResponse {
   batches?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   requests_per_second?: float
   retries?: Retries
@@ -654,7 +654,7 @@ export interface HealthReportIndicators {
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
-  project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
+  cluster_state_encryption?: HealthReportProjectEncryptionKeyIndicator
   dlm_frozen_transitions?: HealthReportDlmFrozenTransitionsIndicator
 }
 
@@ -1180,7 +1180,7 @@ export interface ReindexResponse {
   batches?: long
   created?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   retries?: Retries
   requests_per_second?: float
@@ -2362,7 +2362,7 @@ export interface UpdateByQueryRequest extends RequestBase {
 
 export interface UpdateByQueryResponse {
   batches?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   deleted?: long
   requests_per_second?: float
@@ -2466,6 +2466,8 @@ export interface AcknowledgedResponseBase {
 }
 
 export type AggregateName = string
+
+export type BulkByPaginatedSearchFailure = BulkIndexByScrollFailure | ShardFailure
 
 export interface BulkIndexByScrollFailure {
   cause: ErrorCause
@@ -3116,7 +3118,7 @@ export interface ReindexTaskResult {
   batches?: long
   created?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   requests_per_second?: float
   retries?: Retries
@@ -12725,6 +12727,10 @@ export interface IndicesAliasDefinition {
   is_hidden?: boolean
 }
 
+export interface IndicesAliasesResponseBody extends AcknowledgedResponseBase {
+  errors?: boolean
+}
+
 export interface IndicesCacheQueries {
   enabled: boolean
 }
@@ -13263,7 +13269,7 @@ export interface IndicesSoftDeletes {
 export type IndicesSourceMode = 'disabled' | 'stored' | 'synthetic'
 
 export interface IndicesStorage {
-  type: IndicesStorageType
+  type?: IndicesStorageType
   allow_mmap?: boolean
   stats_refresh_interval?: Duration
 }
@@ -13521,10 +13527,6 @@ export interface IndicesDeleteRequest extends RequestBase {
 
 export type IndicesDeleteResponse = IndicesResponseBase
 
-export interface IndicesDeleteAliasIndicesAliasesResponseBody extends AcknowledgedResponseBase {
-  errors?: boolean
-}
-
 export interface IndicesDeleteAliasRequest extends RequestBase {
   index: Indices
   name: Names
@@ -13532,7 +13534,7 @@ export interface IndicesDeleteAliasRequest extends RequestBase {
   timeout?: Duration
 }
 
-export type IndicesDeleteAliasResponse = IndicesDeleteAliasIndicesAliasesResponseBody
+export type IndicesDeleteAliasResponse = IndicesAliasesResponseBody
 
 export interface IndicesDeleteDataLifecycleRequest extends RequestBase {
   name: DataStreamNames
@@ -14055,7 +14057,7 @@ export interface IndicesPutAliasRequest extends RequestBase {
   }
 }
 
-export type IndicesPutAliasResponse = AcknowledgedResponseBase
+export type IndicesPutAliasResponse = IndicesAliasesResponseBody
 
 export interface IndicesPutDataLifecycleRequest extends RequestBase {
   name: DataStreamNames
@@ -14858,8 +14860,7 @@ export interface IndicesUpdateAliasesAliasActionSummary {
 
 export type IndicesUpdateAliasesAliasActionType = 'add' | 'remove' | 'remove_index'
 
-export interface IndicesUpdateAliasesIndicesUpdateAliasesResponseBody extends AcknowledgedResponseBase {
-  errors: boolean
+export interface IndicesUpdateAliasesIndicesUpdateAliasesResponseBody extends IndicesAliasesResponseBody {
   action_results?: IndicesUpdateAliasesAliasActionResult[]
 }
 

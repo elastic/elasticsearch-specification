@@ -12258,7 +12258,7 @@
                       "description": "An array of failures if there were any unrecoverable errors during the process.\nIf this array is not empty, the request ended abnormally because of those failures.\nDelete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -19577,7 +19577,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19619,7 +19619,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19737,7 +19737,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19779,7 +19779,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -32254,7 +32254,7 @@
                       "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -60786,7 +60786,7 @@
                       "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -81764,7 +81764,7 @@
             "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+              "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
             }
           },
           "noops": {
@@ -81824,6 +81824,16 @@
             "type": "number"
           }
         }
+      },
+      "_types.BulkByPaginatedSearchFailure": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+          },
+          {
+            "$ref": "#/components/schemas/_types.ShardFailure"
+          }
+        ]
       },
       "_types.BulkIndexByScrollFailure": {
         "type": "object",
@@ -94518,10 +94528,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "indices._types.StorageType": {
         "anyOf": [
@@ -106554,7 +106561,7 @@
               }
             ]
           },
-          "project_encryption_key": {
+          "cluster_state_encryption": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"
@@ -108442,7 +108449,7 @@
           }
         ]
       },
-      "indices.delete_alias.IndicesAliasesResponseBody": {
+      "indices._types.AliasesResponseBody": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -108451,6 +108458,8 @@
             "type": "object",
             "properties": {
               "errors": {
+                "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+                "x-state": "Generally available; Added in 8.14.0",
                 "type": "boolean"
               }
             }
@@ -112611,16 +112620,11 @@
       "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+            "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
           },
           {
             "type": "object",
             "properties": {
-              "errors": {
-                "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
-                "x-state": "Generally available; Added in 8.14.0",
-                "type": "boolean"
-              },
               "action_results": {
                 "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
                 "x-state": "Generally available; Added in 8.14.0",
@@ -112629,10 +112633,7 @@
                   "$ref": "#/components/schemas/indices.update_aliases.AliasActionResult"
                 }
               }
-            },
-            "required": [
-              "errors"
-            ]
+            }
           }
         ]
       },
@@ -148983,7 +148984,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -149172,7 +149173,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
