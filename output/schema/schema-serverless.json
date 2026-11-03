@@ -26017,7 +26017,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -143227,7 +143227,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L489-L511"
+      "specLocation": "security/_types/Privileges.ts#L493-L515"
     },
     {
       "kind": "enum",
@@ -192648,7 +192648,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L513-L523"
+      "specLocation": "security/_types/Privileges.ts#L517-L527"
     },
     {
       "kind": "interface",
@@ -192711,7 +192711,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L525-L545"
+      "specLocation": "security/_types/Privileges.ts#L529-L549"
     },
     {
       "kind": "interface",
@@ -192840,51 +192840,15 @@
           "name": "global",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "_builtins"
-                    }
-                  }
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
             }
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L50-L72"
+      "specLocation": "security/get_role/types.ts#L51-L73"
     },
     {
       "attachedBehaviors": [
@@ -193001,7 +192965,7 @@
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L33-L48"
+      "specLocation": "security/get_role/types.ts#L34-L49"
     },
     {
       "kind": "interface",
@@ -193034,6 +192998,205 @@
         }
       ],
       "specLocation": "security/_types/RoleTemplate.ts#L28-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GlobalPrivilege",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "application",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ApplicationGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.",
+          "name": "profile",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WriteProfileGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A privilege that grants the ability to manage roles that are scoped to the specified indices.",
+          "name": "role",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L422-L437"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApplicationGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
+          "name": "manage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L439-L445"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L447-L449"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WriteProfileGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The applications for which user profile data can be written.\nAbsent when the `profile` section is present but grants no privileges.",
+          "name": "write",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L451-L457"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The index-scoped role management privileges.\nAbsent when the `role` section is present but grants no privileges.",
+          "name": "manage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L459-L465"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ManageRolesIndexPermissions",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L467-L469"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesIndexPermissions",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices (or index name patterns) that the owners of the role can manage roles for.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The index privileges that the managed roles are allowed to grant on the specified indices.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L471-L480"
     },
     {
       "kind": "interface",

@@ -155710,7 +155710,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -261981,8 +261981,9 @@
       },
       "properties": [
         {
+          "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
           "name": "manage",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -261992,7 +261993,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L439-L441"
+      "specLocation": "security/_types/Privileges.ts#L439-L445"
     },
     {
       "kind": "interface",
@@ -262512,7 +262513,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L489-L511"
+      "specLocation": "security/_types/Privileges.ts#L493-L515"
     },
     {
       "kind": "interface",
@@ -262552,7 +262553,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L478-L487"
+      "specLocation": "security/_types/Privileges.ts#L482-L491"
     },
     {
       "kind": "interface",
@@ -263044,7 +263045,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L455-L461"
+      "specLocation": "security/_types/Privileges.ts#L459-L465"
     },
     {
       "kind": "interface",
@@ -263084,7 +263085,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L467-L476"
+      "specLocation": "security/_types/Privileges.ts#L471-L480"
     },
     {
       "kind": "interface",
@@ -263108,7 +263109,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L463-L465"
+      "specLocation": "security/_types/Privileges.ts#L467-L469"
     },
     {
       "kind": "interface",
@@ -263132,7 +263133,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L443-L445"
+      "specLocation": "security/_types/Privileges.ts#L447-L449"
     },
     {
       "kind": "interface",
@@ -263557,7 +263558,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L513-L523"
+      "specLocation": "security/_types/Privileges.ts#L517-L527"
     },
     {
       "kind": "interface",
@@ -264417,7 +264418,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L525-L545"
+      "specLocation": "security/_types/Privileges.ts#L529-L549"
     },
     {
       "kind": "interface",
@@ -265069,7 +265070,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L447-L453"
+      "specLocation": "security/_types/Privileges.ts#L451-L457"
     },
     {
       "kind": "request",
@@ -270167,7 +270168,7 @@
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L33-L48"
+      "specLocation": "security/get_role/types.ts#L34-L49"
     },
     {
       "kind": "request",
@@ -270461,51 +270462,15 @@
           "name": "global",
           "required": false,
           "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "dictionary_of",
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "singleKey": false,
-              "value": {
-                "kind": "dictionary_of",
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                },
-                "singleKey": false,
-                "value": {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "_builtins"
-                    }
-                  }
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
             }
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L50-L72"
+      "specLocation": "security/get_role/types.ts#L51-L73"
     },
     {
       "kind": "request",

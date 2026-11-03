@@ -12106,7 +12106,7 @@ export interface EsqlGetQueryResponse {
 }
 
 export interface EsqlGetViewRequest extends RequestBase {
-  name?: Id
+  name?: Ids
 }
 
 export interface EsqlGetViewResponse {
@@ -21753,7 +21753,7 @@ export interface SecurityApiKey {
 export type SecurityApiKeyType = 'rest' | 'cross_cluster'
 
 export interface SecurityApplicationGlobalUserPrivileges {
-  manage: SecurityManageUserPrivileges
+  manage?: SecurityManageUserPrivileges
 }
 
 export interface SecurityApplicationPrivileges {
@@ -22447,7 +22447,7 @@ export interface SecurityGetRoleRole {
   transient_metadata?: Record<string, any>
   applications: SecurityApplicationPrivileges[]
   role_templates?: SecurityRoleTemplate[]
-  global?: Record<string, Record<string, Record<string, string[]>>>
+  global?: SecurityGlobalPrivilege
 }
 
 export interface SecurityGetRoleMappingRequest extends RequestBase {
