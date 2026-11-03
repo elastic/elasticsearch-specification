@@ -1116,6 +1116,11 @@ export interface RankEvalRankEvalRequestItem {
   params?: Record<string, any>
 }
 
+export interface RankEvalRankEvalTemplate {
+  id: Id
+  template: Script | ScriptSource
+}
+
 export interface RankEvalRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -1125,6 +1130,7 @@ export interface RankEvalRequest extends RequestBase {
   body?: {
     requests: RankEvalRankEvalRequestItem[]
     metric?: RankEvalRankEvalMetric
+    templates?: RankEvalRankEvalTemplate[]
   }
 }
 
