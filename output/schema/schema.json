@@ -13551,6 +13551,55 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Evaluate kNN search settings.\n\nEstimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.",
+      "docId": "knn-eval",
+      "docTag": "search",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-eval",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-knn-eval",
+      "name": "knn_eval",
+      "privileges": {
+        "index": [
+          "read",
+          "view_index_metadata"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "_global.knn_eval"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "_global.knn_eval"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_knn_eval"
+        }
+      ]
+    },
+    {
+      "availability": {
         "stack": {
           "since": "8.0.0",
           "stability": "experimental",
@@ -36948,6 +36997,744 @@
         "namespace": "_global.info"
       },
       "specLocation": "_global/info/RootNodeInfoResponse.ts#L23-L40"
+    },
+    {
+      "kind": "interface",
+      "description": "Samples the query vectors from the stored documents.",
+      "name": {
+        "name": "KnnEvalDocsQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "docs"
+          }
+        },
+        {
+          "description": "The number of documents to sample, from 1 to 1000.",
+          "name": "size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The seed of the sampling, to sample the same documents across requests.",
+          "name": "seed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L33-L46"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalFailure",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L156-L158"
+    },
+    {
+      "kind": "type_alias",
+      "description": "The source of the query vectors of a kNN evaluation.",
+      "name": {
+        "name": "KnnEvalQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L25-L31",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalDocsQuerySource",
+              "namespace": "_global.knn_eval"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalVectorsQuerySource",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "from"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalQuerySourceSummary",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "How the query vectors were chosen.",
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalQuerySourceType",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L93-L98"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "docs"
+        },
+        {
+          "name": "vectors"
+        }
+      ],
+      "name": {
+        "name": "KnnEvalQuerySourceType",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L100-L103"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalQueryVector",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The identifier of the query, which identifies it in the `failures` of the response.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The query vector.",
+          "name": "query_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVector",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L59-L68"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "KnnEvalSettings",
+          "namespace": "_global.knn_eval"
+        }
+      },
+      "name": {
+        "name": "KnnEvalReportedSettings",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the number of vectors to rescore exceeded the limit of 10000.",
+          "name": "rescore_window_capped",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the hits were not rescored, so their scores are estimates, and no query is excluded from the mean recall.",
+          "name": "quantized_scores",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L105-L116"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalResult",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The evaluated settings.",
+          "name": "knn_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalReportedSettings",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        },
+        {
+          "description": "The mean recall of the included queries, or `null` if no query is included.",
+          "name": "recall",
+          "required": true,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "description": "The number of queries included in the mean recall.",
+          "name": "included_queries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of queries excluded from the mean recall, because the search found a document scoring above the baseline's lowest top `k` score.",
+          "name": "excluded_queries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time the searches took, in milliseconds.",
+          "name": "took_ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of vector operations of the searches.",
+          "name": "vector_ops",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L129-L154"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalSettings",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The percentage of postings to visit, from 0 to 100.\n`0` selects the automatic visit calculation.",
+          "name": "visit_percentage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of nearest neighbor candidates to consider per shard.\nIt can't be less than `k`, or more than 10000 (9999 with sampling).",
+          "name": "num_candidates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The rescoring of the candidates. Only applies to quantized fields.",
+          "name": "rescore_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RescoreVector",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, compares every vector at full precision.\nOnly applies to the `baseline`, requires `allow_exact_baseline`, and can't be combined with other settings.",
+          "name": "exact",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L70-L91"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Full-precision comparisons across all the matching vectors.",
+          "name": "full_precision_scan"
+        },
+        {
+          "description": "Quantized visits plus full-precision rescoring.",
+          "name": "quantized_visit_plus_rescore"
+        }
+      ],
+      "name": {
+        "name": "KnnEvalVectorOpsKind",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L118-L127"
+    },
+    {
+      "kind": "interface",
+      "description": "Uses the query vectors in the request.",
+      "name": {
+        "name": "KnnEvalVectorsQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "vectors"
+          }
+        },
+        {
+          "description": "The query vectors, from 1 to 1000 entries with unique identifiers.",
+          "name": "vectors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQueryVector",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L48-L57"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The `dense_vector` field to evaluate.",
+            "name": "field",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of nearest neighbors to compute the recall for, from 1 to 1000.",
+            "name": "k",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The source of the query vectors.",
+            "name": "query_source",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQuerySource",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The settings of the search that the `knn_settings` entries are compared with.\nIf not specified, it uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.",
+            "name": "baseline",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalSettings",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The kNN search settings to evaluate, from 1 to 32 unique entries.",
+            "name": "knn_settings",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalSettings",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "If `true`, the `baseline` can be `exact`.\nAn exact baseline compares every vector at full precision, and can severely slow down other searches.",
+            "name": "allow_exact_baseline",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Evaluate kNN search settings.\n\nEstimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.",
+      "examples": {
+        "KnnEvalRequestExample1": {
+          "description": "Run `POST my-index/_knn_eval` to compare the recall of two `visit_percentage` values on a `bbq_disk` field, using 100 query vectors sampled from the stored documents.\n",
+          "method_request": "POST my-index/_knn_eval",
+          "summary": "Evaluate kNN search settings",
+          "value": "{\n  \"field\": \"my_vector\",\n  \"k\": 10,\n  \"query_source\": {\n    \"from\": \"docs\",\n    \"size\": 100,\n    \"seed\": 42\n  },\n  \"knn_settings\": [\n    { \"visit_percentage\": 1 },\n    { \"visit_percentage\": 5 }\n  ]\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "_global.knn_eval"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to search.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of index that wildcard patterns can match.\nIt supports comma-separated values, such as `open,hidden`.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the request waits for the evaluation to complete.\nA large evaluation can run for minutes, and closing the connection, for example because of a client or proxy timeout, cancels it.\nIf `false`, the request returns a task identifier, and stores the completed response for retrieval through the task management API.",
+          "name": "wait_for_completion",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/KnnEvalRequest.ts#L25-L117"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The source of the query vectors.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "query_source",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQuerySourceSummary",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The settings of the baseline search.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalReportedSettings",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The time the baseline searches took, in milliseconds.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_took_ms",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "UnitMillis",
+                    "namespace": "_types"
+                  }
+                }
+              ],
+              "type": {
+                "name": "DurationValue",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of vector operations of the baseline searches.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_vector_ops",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "What `baseline_vector_ops` counts.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_vector_ops_kind",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalVectorOpsKind",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The results of each `knn_settings` entry, in the order of the request.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "results",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalResult",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "The queries that failed, by query identifier.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "failures",
+            "required": false,
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalFailure",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "The identifier of the task that runs the evaluation.\nOnly returned when `wait_for_completion` is `false`.",
+            "name": "task",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TaskId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "KnnEvalResponseExample1": {
+          "description": "A response from `POST my-index/_knn_eval`, with the recall of each `knn_settings` entry against the default baseline.\n",
+          "summary": "Evaluate kNN search settings",
+          "value": "{\n  \"query_source\": {\n    \"from\": \"docs\"\n  },\n  \"baseline\": {\n    \"visit_percentage\": 20.0,\n    \"rescore_vector\": {\n      \"oversample\": 100.0\n    }\n  },\n  \"baseline_took_ms\": 412,\n  \"baseline_vector_ops\": 2048000,\n  \"baseline_vector_ops_kind\": \"quantized_visit_plus_rescore\",\n  \"results\": [\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 1.0\n      },\n      \"recall\": 0.87,\n      \"included_queries\": 100,\n      \"excluded_queries\": 0,\n      \"took_ms\": 35,\n      \"vector_ops\": 102400\n    },\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 5.0\n      },\n      \"recall\": 0.97,\n      \"included_queries\": 99,\n      \"excluded_queries\": 1,\n      \"took_ms\": 96,\n      \"vector_ops\": 512000\n    }\n  ],\n  \"failures\": {}\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/KnnEvalResponse.ts#L32-L75"
     },
     {
       "kind": "request",
@@ -98307,7 +99094,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L522-L525"
+      "specLocation": "_types/query_dsl/abstractions.ts#L531-L534"
     },
     {
       "kind": "interface",
@@ -98403,7 +99190,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L475-L509"
+      "specLocation": "_types/query_dsl/abstractions.ts#L484-L518"
     },
     {
       "kind": "enum",
@@ -98421,7 +99208,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L527-L536"
+      "specLocation": "_types/query_dsl/abstractions.ts#L536-L545"
     },
     {
       "kind": "interface",
@@ -98856,6 +99643,85 @@
     },
     {
       "kind": "interface",
+      "extDocId": "query-dsl-dense-vector-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "name": {
+        "name": "DenseVectorQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The name of the `dense_vector` field to search against.\nThe field can be indexed, or not indexed (`index: false`).",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The query vector. It must have the same number of dimensions as the field.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+          "name": "query_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVector",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The configuration to build the query vector, for example by running a text embedding model.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+          "name": "query_vector_builder",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVectorBuilder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The similarity used for scoring, which overrides the similarity of the field for this query.\nIt defaults to the similarity of the field, or to `cosine` for a field that is not indexed.\nFor `bit` fields, only `l2_norm` is supported.\nIt can't be combined with `quantized: true`.",
+          "name": "similarity_function",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorSimilarity",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the documents are scored with the full-precision vectors, regardless of the index options of the field.\nIf `true`, the documents are scored with the quantized vectors of a quantized field, which is faster but less accurate.\nFor a field that is not quantized, `true` has no effect.",
+          "name": "quantized",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/DenseVectorQuery.ts#L25-L58"
+    },
+    {
+      "kind": "interface",
       "extDocId": "query-dsl-dis-max-query",
       "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query",
       "inherits": {
@@ -99085,7 +99951,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L538-L552"
+      "specLocation": "_types/query_dsl/abstractions.ts#L547-L561"
     },
     {
       "kind": "interface",
@@ -99143,7 +100009,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L439-L456"
+      "specLocation": "_types/query_dsl/abstractions.ts#L448-L465"
     },
     {
       "kind": "enum",
@@ -103140,7 +104006,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L462-L473"
+      "specLocation": "_types/query_dsl/abstractions.ts#L471-L482"
     },
     {
       "kind": "interface",
@@ -103236,6 +104102,26 @@
             "kind": "instance_of",
             "type": {
               "name": "ConstantScoreQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Scores every document that has a value for a `dense_vector` field, with the exact similarity between its vector and a query vector.\nUnlike the `knn` query, it doesn't use an index structure, or a cutoff based on `k` or `num_candidates`.",
+          "extDocId": "query-dsl-dense-vector-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query",
+          "name": "dense_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorQuery",
               "namespace": "_types.query_dsl"
             }
           }
@@ -104248,7 +105134,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L98-L437",
+      "specLocation": "_types/query_dsl/abstractions.ts#L99-L446",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -107081,7 +107967,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L511-L520"
+      "specLocation": "_types/query_dsl/abstractions.ts#L520-L529"
     },
     {
       "kind": "enum",
