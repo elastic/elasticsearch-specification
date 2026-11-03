@@ -105322,6 +105322,20 @@
           },
           "force_merge_index": {
             "type": "boolean"
+          },
+          "total_shards_per_node": {
+            "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+            "x-state": "Generally available; Added in 8.16.0",
+            "type": "number"
+          },
+          "replicate_for": {
+            "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+            "x-state": "Generally available; Added in 8.18.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         },
         "required": [
