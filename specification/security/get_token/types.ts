@@ -19,6 +19,8 @@
 
 import { Name } from '@_types/common'
 import { User } from '@security/_types/User'
+import { AuthenticateApiKey } from '@security/authenticate/SecurityAuthenticateResponse'
+import { Token } from '@security/authenticate/types'
 
 export enum AccessTokenGrantType {
   /**
@@ -62,4 +64,12 @@ export class AuthenticatedUser extends User {
   lookup_realm: UserRealm
   authentication_provider?: AuthenticationProvider
   authentication_type: string
+  /**
+   * Present when the authenticated user is an API key.
+   */
+  api_key?: AuthenticateApiKey
+  /**
+   * Present when the authenticated user is a service account, or authenticated with a token.
+   */
+  token?: Token
 }
