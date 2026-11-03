@@ -44981,10 +44981,18 @@
         ]
       },
       "_types.QueryVector": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
+        "description": "Both the float vector form and the base64 string form are accepted by the server",
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "type": "string"
+          }
+        ]
       },
       "_types.QueryVectorBuilder": {
         "type": "object",

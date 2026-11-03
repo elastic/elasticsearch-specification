@@ -3031,7 +3031,7 @@ export interface QueryCacheStats {
   total_count: long
 }
 
-export type QueryVector = float[]
+export type QueryVector = float[] | string
 
 export interface QueryVectorBuilder {
   embedding?: Embedding
