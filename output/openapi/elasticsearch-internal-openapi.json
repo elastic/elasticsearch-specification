@@ -12194,6 +12194,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "slice": {
                     "description": "Slice the request manually using the provided slice ID and total number of slices.",
                     "allOf": [
@@ -59482,6 +59493,17 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "initial_delay",
+            "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "x-state": "Generally available; Added in 9.6.0",
+            "style": "form"
           }
         ],
         "responses": {
@@ -62138,6 +62160,15 @@
                         }
                       ]
                     },
+                    "columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "data_frame": {
                       "allOf": [
                         {
@@ -62231,6 +62262,15 @@
                         }
                       ]
                     },
+                    "logsdb_columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "logstash": {
                       "allOf": [
                         {
@@ -62320,6 +62360,15 @@
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/xpack.usage.VectorDbDocument"
+                        }
+                      ]
+                    },
+                    "vectordb_columnar": {
+                      "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.VectorDbColumnar"
                         }
                       ]
                     },
@@ -145005,6 +145054,14 @@
               }
             ]
           },
+          "columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
           "data_streams": {
             "allOf": [
               {
@@ -145079,6 +145136,14 @@
             ]
           },
           "logsdb": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
+          "logsdb_columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/xpack.info.Feature"
@@ -145190,6 +145255,7 @@
           "aggregate_metric",
           "analytics",
           "ccr",
+          "columnar",
           "data_streams",
           "data_tiers",
           "enrich",
@@ -145201,6 +145267,7 @@
           "ilm",
           "logstash",
           "logsdb",
+          "logsdb_columnar",
           "ml",
           "monitoring",
           "rollup",
@@ -145594,6 +145661,56 @@
             "required": [
               "auto_follow_patterns_count",
               "follower_indices_count"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.IndexModeUsage": {
+        "description": "Usage of the indices with a given `index.mode`.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices in this index mode.",
+                "type": "number"
+              },
+              "indices_with_synthetic_source": {
+                "description": "The number of indices in this index mode that use synthetic `_source`.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The number of documents in the indices in this index mode.",
+                "type": "number"
+              },
+              "size_in_bytes": {
+                "description": "The size of the indices in this index mode, in bytes.",
+                "type": "number"
+              },
+              "data_streams_count": {
+                "description": "The number of data streams in this index mode.",
+                "type": "number"
+              },
+              "data_streams_managed_by_ilm": {
+                "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+                "type": "number"
+              },
+              "data_streams_managed_by_dlm": {
+                "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "indices_with_synthetic_source",
+              "num_docs",
+              "size_in_bytes",
+              "data_streams_count",
+              "data_streams_managed_by_ilm",
+              "data_streams_managed_by_dlm"
             ]
           }
         ]
@@ -147424,6 +147541,31 @@
               },
               "num_docs": {
                 "description": "The total number of documents held across all `vectordb_document` indices.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "num_docs"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.VectorDbColumnar": {
+        "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices using the `vectordb_columnar` index mode.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The total number of documents held across all `vectordb_columnar` indices.",
                 "type": "number"
               }
             },

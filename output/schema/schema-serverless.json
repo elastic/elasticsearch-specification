@@ -22869,6 +22869,20 @@
             }
           },
           {
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "extDocId": "runtime-search-request",
+            "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Slice the request manually using the provided slice ID and total number of slices.",
             "name": "slice",
             "required": false,
@@ -23422,7 +23436,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L342"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
     },
     {
       "body": {
@@ -74408,9 +74422,27 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+          "name": "initial_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L73"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L81"
     },
     {
       "body": {
