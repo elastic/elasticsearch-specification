@@ -17265,10 +17265,10 @@
       ],
       "query": [
         {
-          "description": "The type of index that wildcard patterns can match.",
+          "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "all",
+          "serverDefault": "open,closed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17353,7 +17353,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L111"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L113"
     },
     {
       "body": {
@@ -17601,7 +17601,7 @@
           "description": "Comma-separated list of column names to display.",
           "name": "h",
           "required": false,
-          "serverDefault": "['bc', 'id', 'sc', 's']",
+          "serverDefault": "id,state,buckets.count,search.count",
           "type": {
             "kind": "instance_of",
             "type": {
