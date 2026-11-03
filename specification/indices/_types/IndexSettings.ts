@@ -477,7 +477,7 @@ export class CacheRequests {
    * @server_default true
    * @doc_id shard-request-cache
    */
-  enable?: boolean
+  enable?: Stringified<boolean>
 }
 
 /**
