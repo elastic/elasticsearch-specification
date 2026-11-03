@@ -53087,6 +53087,12 @@
                   "rename_replacement": {
                     "description": "The rename replacement string that is used with the `rename_pattern`.",
                     "type": "string"
+                  },
+                  "restore_over_existing": {
+                    "description": "If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.\nAn open destination index is closed and restored over in a single step.\nA destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.\n\nIt can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.",
+                    "default": false,
+                    "x-state": "Generally available; Added in 9.6.0",
+                    "type": "boolean"
                   }
                 }
               },
@@ -57379,7 +57385,6 @@
                   },
                   "required": [
                     "create_time",
-                    "description",
                     "dest",
                     "id",
                     "settings",
@@ -138674,7 +138679,7 @@
             "type": "boolean"
           },
           "dates_as_epoch_millis": {
-            "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+            "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
             "default": false,
             "type": "boolean"
           },
@@ -138711,12 +138716,15 @@
             "type": "boolean"
           },
           "indexer_request_timeout": {
-            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
-            "default": "30s",
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
             "x-state": "Generally available; Added in 8.19.24",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -146920,6 +146928,17 @@
                       "$ref": "#/components/schemas/migration.deprecations.Deprecation"
                     }
                   }
+                },
+                "repositories": {
+                  "description": "Snapshot repository warnings are sectioned off per repository.",
+                  "x-state": "Generally available; Added in 9.6.0",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations.Deprecation"
+                    }
+                  }
                 }
               },
               "required": [
@@ -146929,7 +146948,8 @@
                 "node_settings",
                 "ml_settings",
                 "templates",
-                "ilm_policies"
+                "ilm_policies",
+                "repositories"
               ]
             },
             "examples": {
