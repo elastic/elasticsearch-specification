@@ -22545,6 +22545,8 @@ export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
   lookup_realm: SecurityGetTokenUserRealm
   authentication_provider?: SecurityGetTokenAuthenticationProvider
   authentication_type: string
+  api_key?: SecurityAuthenticateAuthenticateApiKey
+  token?: SecurityAuthenticateToken
 }
 
 export interface SecurityGetTokenAuthenticationProvider {

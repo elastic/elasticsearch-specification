@@ -271598,7 +271598,7 @@
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L58"
+      "specLocation": "security/get_token/types.ts#L25-L60"
     },
     {
       "kind": "interface",
@@ -271656,9 +271656,33 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "description": "Present when the authenticated user is an API key.",
+          "name": "api_key",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AuthenticateApiKey",
+              "namespace": "security.authenticate"
+            }
+          }
+        },
+        {
+          "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+          "name": "token",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Token",
+              "namespace": "security.authenticate"
+            }
+          }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L70-L75"
+      "specLocation": "security/get_token/types.ts#L72-L85"
     },
     {
       "kind": "interface",
@@ -271690,7 +271714,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L65-L68"
+      "specLocation": "security/get_token/types.ts#L67-L70"
     },
     {
       "kind": "request",
@@ -272023,7 +272047,7 @@
           }
         }
       ],
-      "specLocation": "security/get_token/types.ts#L60-L63"
+      "specLocation": "security/get_token/types.ts#L62-L65"
     },
     {
       "kind": "request",
