@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { EmbeddingContentFormat } from '@inference/_types/CommonTypes'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 /**
@@ -39,7 +40,7 @@ export class DecisionInputObject {
    * If not specified, this defaults to `text` for the `text` type and `base64` for the `image` type.
    * Not all services and models support all formats.
    */
-  format?: DecisionInputFormat
+  format?: EmbeddingContentFormat
   /**
    * The value of the input. For the `base64` format, this must be a base64-encoded data URI, that is, "data:content/type;base64,...".
    * For the `url` format, this must be a URL that points to the content, that is, "https://example.com/image.jpg".
@@ -53,15 +54,6 @@ export class DecisionInputObject {
 export enum DecisionInputType {
   text,
   image
-}
-
-/**
- * The format of the input for the `decision` task.
- */
-export enum DecisionInputFormat {
-  text,
-  base64,
-  url
 }
 
 /**
