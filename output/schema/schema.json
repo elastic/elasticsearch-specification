@@ -30445,6 +30445,20 @@
             }
           },
           {
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "extDocId": "runtime-search-request",
+            "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Slice the request manually using the provided slice ID and total number of slices.",
             "name": "slice",
             "required": false,
@@ -31050,7 +31064,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L342"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
     },
     {
       "kind": "response",
@@ -299521,9 +299535,27 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+          "name": "initial_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L73"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L81"
     },
     {
       "kind": "response",
@@ -307643,7 +307675,7 @@
           }
         }
       ],
-      "specLocation": "xpack/info/types.ts#L88-L93"
+      "specLocation": "xpack/info/types.ts#L96-L101"
     },
     {
       "kind": "interface",
@@ -307676,6 +307708,22 @@
         },
         {
           "name": "ccr",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "columnar",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -307812,6 +307860,22 @@
         },
         {
           "name": "logsdb",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Feature",
+              "namespace": "xpack.info"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "name": "logsdb_columnar",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -307986,7 +308050,7 @@
           }
         }
       ],
-      "specLocation": "xpack/info/types.ts#L42-L86"
+      "specLocation": "xpack/info/types.ts#L42-L94"
     },
     {
       "kind": "interface",
@@ -309644,7 +309708,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L665-L677"
+      "specLocation": "xpack/usage/types.ts#L679-L691"
     },
     {
       "kind": "interface",
@@ -309700,7 +309764,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L679-L689"
+      "specLocation": "xpack/usage/types.ts#L711-L721"
     },
     {
       "kind": "interface",
@@ -309795,6 +309859,107 @@
         }
       ],
       "specLocation": "xpack/usage/types.ts#L308-L311"
+    },
+    {
+      "kind": "interface",
+      "description": "Usage of the indices with a given `index.mode`.",
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
+      "name": {
+        "name": "IndexModeUsage",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "The number of indices in this index mode.",
+          "name": "indices_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of indices in this index mode that use synthetic `_source`.",
+          "name": "indices_with_synthetic_source",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of documents in the indices in this index mode.",
+          "name": "num_docs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the indices in this index mode, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode.",
+          "name": "data_streams_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+          "name": "data_streams_managed_by_ilm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+          "name": "data_streams_managed_by_dlm",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L693-L709"
     },
     {
       "kind": "interface",
@@ -311205,6 +311370,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "Usage of the indices with `index.mode` set to `columnar`.",
+            "name": "columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexModeUsage",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "data_frame",
             "required": false,
             "type": {
@@ -311358,6 +311540,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+            "name": "logsdb_columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexModeUsage",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "logstash",
             "required": true,
             "type": {
@@ -311506,6 +311705,23 @@
             }
           },
           {
+            "availability": {
+              "stack": {
+                "since": "9.6.0"
+              }
+            },
+            "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+            "name": "vectordb_columnar",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "VectorDbColumnar",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
             "name": "voting_only",
             "required": true,
             "type": {
@@ -311528,7 +311744,7 @@
         "name": "Response",
         "namespace": "xpack.usage"
       },
-      "specLocation": "xpack/usage/XPackUsageResponse.ts#L46-L94"
+      "specLocation": "xpack/usage/XPackUsageResponse.ts#L48-L112"
     },
     {
       "kind": "interface",
@@ -312463,6 +312679,47 @@
     },
     {
       "kind": "interface",
+      "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
+      "name": {
+        "name": "VectorDbColumnar",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "The number of indices using the `vectordb_columnar` index mode.",
+          "name": "indices_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The total number of documents held across all `vectordb_columnar` indices.",
+          "name": "num_docs",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L654-L666"
+    },
+    {
+      "kind": "interface",
       "description": "Usage statistics for indices using the `vectordb_document` index mode.",
       "inherits": {
         "type": {
@@ -312549,7 +312806,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L654-L658"
+      "specLocation": "xpack/usage/types.ts#L668-L672"
     },
     {
       "kind": "interface",
@@ -312779,7 +313036,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L660-L663"
+      "specLocation": "xpack/usage/types.ts#L674-L677"
     },
     {
       "kind": "interface",

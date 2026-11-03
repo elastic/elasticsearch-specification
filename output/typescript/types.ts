@@ -271,6 +271,7 @@ export interface DeleteByQueryRequest extends RequestBase {
   body?: {
     max_docs?: long
     query?: QueryDslQueryContainer
+    runtime_mappings?: MappingRuntimeFields
     slice?: SlicedScroll
     sort?: Sort
   }
@@ -24776,6 +24777,7 @@ export interface TransformStartTransformRequest extends RequestBase {
   transform_id: Id
   timeout?: Duration
   from?: string
+  initial_delay?: Duration
 }
 
 export type TransformStartTransformResponse = AcknowledgedResponseBase
@@ -25615,6 +25617,7 @@ export interface XpackInfoFeatures {
   aggregate_metric: XpackInfoFeature
   analytics: XpackInfoFeature
   ccr: XpackInfoFeature
+  columnar: XpackInfoFeature
   data_streams: XpackInfoFeature
   data_tiers: XpackInfoFeature
   enrich: XpackInfoFeature
@@ -25626,6 +25629,7 @@ export interface XpackInfoFeatures {
   ilm: XpackInfoFeature
   logstash: XpackInfoFeature
   logsdb: XpackInfoFeature
+  logsdb_columnar: XpackInfoFeature
   ml: XpackInfoFeature
   monitoring: XpackInfoFeature
   rollup: XpackInfoFeature
@@ -25859,6 +25863,16 @@ export interface XpackUsageIlmPolicyStatistics {
   phases: XpackUsagePhases
 }
 
+export interface XpackUsageIndexModeUsage extends XpackUsageBase {
+  indices_count: long
+  indices_with_synthetic_source: long
+  num_docs: long
+  size_in_bytes: long
+  data_streams_count: long
+  data_streams_managed_by_ilm: long
+  data_streams_managed_by_dlm: long
+}
+
 export interface XpackUsageInvocations {
   total: long
 }
@@ -26025,6 +26039,7 @@ export interface XpackUsageResponse {
   archive: XpackUsageArchive
   watcher: XpackUsageWatcher
   ccr: XpackUsageCcr
+  columnar?: XpackUsageIndexModeUsage
   data_frame?: XpackUsageBase
   data_science?: XpackUsageBase
   data_lifecycle?: XpackUsageDataStreamLifecycleUsage
@@ -26038,6 +26053,7 @@ export interface XpackUsageResponse {
   health_api?: XpackUsageHealthStatistics
   ilm: XpackUsageIlm
   logging?: XpackUsageLogging
+  logsdb_columnar?: XpackUsageIndexModeUsage
   logstash: XpackUsageBase
   ml: XpackUsageMachineLearning
   monitoring: XpackUsageMonitoring
@@ -26051,6 +26067,7 @@ export interface XpackUsageResponse {
   transform: XpackUsageBase
   vectors?: XpackUsageVector
   vectordb_document?: XpackUsageVectorDbDocument
+  vectordb_columnar?: XpackUsageVectorDbColumnar
   voting_only: XpackUsageBase
 }
 
@@ -26153,6 +26170,11 @@ export interface XpackUsageVector extends XpackUsageBase {
   dense_vector_dims_avg_count: integer
   dense_vector_fields_count: integer
   sparse_vector_fields_count?: integer
+}
+
+export interface XpackUsageVectorDbColumnar extends XpackUsageBase {
+  indices_count: integer
+  num_docs: long
 }
 
 export interface XpackUsageVectorDbDocument extends XpackUsageBase {
