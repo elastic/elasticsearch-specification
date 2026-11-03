@@ -144453,7 +144453,7 @@
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L58"
+      "specLocation": "security/get_token/types.ts#L25-L60"
     },
     {
       "kind": "enum",

@@ -13670,6 +13670,7 @@ export interface IndicesFieldUsageStatsFieldSummary {
   norms: uint
   term_vectors: uint
   knn_vectors: uint
+  doc_values_skipper: uint
   inverted_index: IndicesFieldUsageStatsInvertedIndex
 }
 
@@ -22546,6 +22547,8 @@ export interface SecurityGetTokenAuthenticatedUser extends SecurityUser {
   lookup_realm: SecurityGetTokenUserRealm
   authentication_provider?: SecurityGetTokenAuthenticationProvider
   authentication_type: string
+  api_key?: SecurityAuthenticateAuthenticateApiKey
+  token?: SecurityAuthenticateToken
 }
 
 export interface SecurityGetTokenAuthenticationProvider {
