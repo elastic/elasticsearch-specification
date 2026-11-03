@@ -601,6 +601,7 @@ query-dsl-bool-query,https://www.elastic.co/docs/reference/query-languages/query
 query-dsl-boosting-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-boosting-query,[use-doc-url],,More about the boosting query
 query-dsl-combined-fields-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-combined-fields-query,[use-doc-url],,More about combined fields
 query-dsl-constant-score-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-constant-score-query,[use-doc-url],,More about constant score query
+query-dsl-dense-vector-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query,[use-doc-url],,About the dense vector query
 query-dsl-dis-max-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query,[use-doc-url],,About the disjunction max query
 query-dsl-distance-feature-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-distance-feature-query,[use-doc-url],,About the distance feature query
 query-dsl-exists-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-exists-query,[use-doc-url],,More about the exists query
