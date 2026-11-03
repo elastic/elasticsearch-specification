@@ -129531,6 +129531,13 @@
           "mem"
         ]
       },
+      "_types.ThreadSortOrder": {
+        "type": "string",
+        "enum": [
+          "total",
+          "cpu"
+        ]
+      },
       "nodes.info.NodesInfoMetrics": {
         "oneOf": [
           {
@@ -161517,7 +161524,7 @@
           "default": "total",
           "allOf": [
             {
-              "$ref": "#/components/schemas/_types.ThreadType"
+              "$ref": "#/components/schemas/_types.ThreadSortOrder"
             }
           ]
         },

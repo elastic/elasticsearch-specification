@@ -57792,7 +57792,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L408-L414"
+      "specLocation": "_types/common.ts#L415-L421"
     },
     {
       "kind": "type_alias",
@@ -57800,7 +57800,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L416-L416",
+      "specLocation": "_types/common.ts#L423-L423",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58043,7 +58043,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L418-L472"
+      "specLocation": "_types/common.ts#L425-L479"
     },
     {
       "kind": "type_alias",
@@ -58051,7 +58051,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L474-L474",
+      "specLocation": "_types/common.ts#L481-L481",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60901,7 +60901,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L357-L389"
+      "specLocation": "_types/common.ts#L364-L396"
     },
     {
       "kind": "interface",
@@ -61132,7 +61132,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L342-L355"
+      "specLocation": "_types/common.ts#L349-L362"
     },
     {
       "kind": "interface",
@@ -66169,7 +66169,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L396",
+      "specLocation": "_types/common.ts#L398-L403",
       "type": {
         "kind": "union_of",
         "items": [
@@ -66202,7 +66202,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L406"
+      "specLocation": "_types/common.ts#L405-L413"
     },
     {
       "kind": "type_alias",
@@ -66925,6 +66925,24 @@
       "kind": "enum",
       "members": [
         {
+          "description": "Sort by the time the thread was runnable, then by CPU time.",
+          "name": "total"
+        },
+        {
+          "description": "Sort by CPU time only.",
+          "name": "cpu"
+        }
+      ],
+      "name": {
+        "name": "ThreadSortOrder",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L327-L332"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "description": "Threads that consume the most CPU time.",
           "name": "cpu"
         },
@@ -67444,7 +67462,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L331"
+      "specLocation": "_types/common.ts#L334-L338"
     },
     {
       "kind": "type_alias",
@@ -67503,7 +67521,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L340"
+      "specLocation": "_types/common.ts#L340-L347"
     },
     {
       "kind": "interface",
@@ -251018,7 +251036,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ThreadType",
+              "name": "ThreadSortOrder",
               "namespace": "_types"
             }
           }

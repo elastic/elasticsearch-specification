@@ -3413,6 +3413,8 @@ export interface TextSimilarityReranker extends RetrieverBase {
   chunk_rescorer?: ChunkRescorer
 }
 
+export type ThreadSortOrder = 'total' | 'cpu'
+
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
 
 export type TimeOfDay = string
@@ -20724,7 +20726,7 @@ export interface NodesHotThreadsRequest extends RequestBase {
   threads?: long
   timeout?: Duration
   type?: ThreadType
-  sort?: ThreadType
+  sort?: ThreadSortOrder
 }
 
 export interface NodesHotThreadsResponse {
