@@ -88517,7 +88517,7 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.",
+        "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.ExpandWildcards"
