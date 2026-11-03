@@ -125,7 +125,7 @@ export class ShardSegmentRouting {
   /** The node ID of the node that holds the shard. */
   node: string
   /** The node ID of the node the shard is relocating to. Only returned while the shard is relocating. */
-  relocating_node?: string
+  relocating_node?: NodeId
   /** If `true`, the shard is a primary shard. */
   primary: boolean
   /** The state of the shard, such as `STARTED` or `RELOCATING`. */
