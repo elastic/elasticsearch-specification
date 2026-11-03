@@ -66,8 +66,11 @@ export interface Request extends RequestBase {
      * By default, API keys never expire.
      */
     expiration?: Duration
-    /** A name for the API key. */
-    name?: Name
+    /**
+     * A name for the API key.
+     * It is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.
+     */
+    name: Name
     /**
      * An array of role descriptors for this API key.
      * When it is not specified or it is an empty array, the API key will have a point in time snapshot of permissions of the authenticated user.

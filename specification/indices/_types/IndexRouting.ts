@@ -18,6 +18,7 @@
  */
 
 import { Id } from '@_types/common'
+import { Dictionary } from '@spec_utils/Dictionary'
 
 export class IndexRouting {
   allocation?: IndexRoutingAllocation
@@ -27,9 +28,20 @@ export class IndexRouting {
 export class IndexRoutingAllocation {
   enable?: IndexRoutingAllocationOptions
   include?: IndexRoutingAllocationInclude
+  /**
+   * Assign the index to a node whose attribute has all of the given values.
+   * Each key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.
+   * Each value is a comma-separated string or an array of strings, and can use wildcards.
+   */
+  require?: IndexRoutingAllocationRequire
   initial_recovery?: IndexRoutingAllocationInitialRecovery
   disk?: IndexRoutingAllocationDisk
 }
+
+export type IndexRoutingAllocationRequire = Dictionary<
+  string,
+  string | string[]
+>
 
 export class IndexRoutingRebalance {
   enable: IndexRoutingRebalanceOptions
