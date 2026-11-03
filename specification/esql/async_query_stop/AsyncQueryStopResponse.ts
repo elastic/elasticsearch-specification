@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { EsqlResult } from '@esql/_types/EsqlResult'
+import { AsyncEsqlResult } from '@esql/_types/EsqlResult'
 
 export class Response {
-  body: EsqlResult
+  body: AsyncEsqlResult
 }
