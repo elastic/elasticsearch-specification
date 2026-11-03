@@ -290983,7 +290983,7 @@
           }
         },
         {
-          "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+          "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
           "name": "dates_as_epoch_millis",
           "required": false,
           "serverDefault": false,
@@ -291091,20 +291091,31 @@
               "since": "8.19.24"
             }
           },
-          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
           "name": "indexer_request_timeout",
           "required": false,
-          "serverDefault": "30s",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Duration",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L207"
+      "specLocation": "transform/_types/Transform.ts#L129-L206"
     },
     {
       "kind": "interface",
@@ -291175,7 +291186,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L209-L240"
+      "specLocation": "transform/_types/Transform.ts#L208-L239"
     },
     {
       "kind": "interface",
@@ -291197,7 +291208,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L244-L250",
+      "specLocation": "transform/_types/Transform.ts#L243-L249",
       "variants": {
         "kind": "container"
       }
@@ -291235,7 +291246,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L252-L264"
+      "specLocation": "transform/_types/Transform.ts#L251-L263"
     },
     {
       "kind": "request",
@@ -294216,7 +294227,7 @@
           },
           {
             "name": "description",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
