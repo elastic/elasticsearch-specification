@@ -102929,6 +102929,12 @@
           },
           "licensed": {
             "type": "boolean"
+          },
+          "native_controller_enabled_settings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -102940,7 +102946,8 @@
           "java_version",
           "name",
           "version",
-          "licensed"
+          "licensed",
+          "native_controller_enabled_settings"
         ]
       },
       "cluster.stats.ClusterProcess": {

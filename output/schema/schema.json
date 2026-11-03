@@ -63872,9 +63872,23 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "native_controller_enabled_settings",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "_types/Stats.ts#L210-L220"
+      "specLocation": "_types/Stats.ts#L210-L225"
     },
     {
       "kind": "type_alias",
@@ -64010,7 +64024,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L222-L256"
+      "specLocation": "_types/Stats.ts#L227-L261"
     },
     {
       "kind": "type_alias",
@@ -64409,7 +64423,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L258-L279"
+      "specLocation": "_types/Stats.ts#L263-L284"
     },
     {
       "kind": "enum",
@@ -64534,7 +64548,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L281-L289"
+      "specLocation": "_types/Stats.ts#L286-L294"
     },
     {
       "kind": "interface",
@@ -65195,7 +65209,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L291-L297"
+      "specLocation": "_types/Stats.ts#L296-L302"
     },
     {
       "kind": "interface",
@@ -66414,7 +66428,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L299-L321"
+      "specLocation": "_types/Stats.ts#L304-L326"
     },
     {
       "kind": "interface",
@@ -66761,7 +66775,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L323-L418"
+      "specLocation": "_types/Stats.ts#L328-L423"
     },
     {
       "kind": "type_alias",
@@ -67459,7 +67473,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L420-L447"
+      "specLocation": "_types/Stats.ts#L425-L452"
     },
     {
       "kind": "interface",
@@ -68122,7 +68136,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L449-L457"
+      "specLocation": "_types/Stats.ts#L454-L462"
     },
     {
       "kind": "type_alias",
@@ -68421,7 +68435,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L459-L464"
+      "specLocation": "_types/Stats.ts#L464-L469"
     },
     {
       "kind": "interface",
