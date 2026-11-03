@@ -2611,7 +2611,7 @@
             "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
             "deprecated": false,
             "schema": {
-              "default": "ip,hp,rp,r,m,n,cpu,l",
+              "default": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
               "allOf": [
                 {
                   "$ref": "#/components/schemas/cat._types.CatNodeColumns"
@@ -12485,7 +12485,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/esql._types.EsqlResult"
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
                 }
               }
             }
@@ -94016,11 +94016,24 @@
                   }
                 ]
               },
+              "time_series_dimension": {
+                "type": "boolean"
+              },
               "analyzer": {
                 "type": "string"
               },
               "eager_global_ordinals": {
                 "type": "boolean"
+              },
+              "fielddata": {
+                "type": "boolean"
+              },
+              "fielddata_frequency_filter": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.FielddataFrequencyFilter"
+                  }
+                ]
               },
               "index": {
                 "type": "boolean"
@@ -94058,6 +94071,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "allOf": [
                   {
@@ -94073,6 +94097,13 @@
               },
               "locale": {
                 "type": "string"
+              },
+              "subobjects": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.Subobjects"
+                  }
+                ]
               }
             },
             "required": [
@@ -94089,6 +94120,25 @@
           "summary",
           "histogram",
           "position"
+        ]
+      },
+      "indices._types.FielddataFrequencyFilter": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "min_segment_size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "max",
+          "min",
+          "min_segment_size"
         ]
       },
       "_types.mapping.IndexOptions": {
@@ -94121,6 +94171,13 @@
           "with_positions_offsets",
           "with_positions_offsets_payloads",
           "with_positions_payloads"
+        ]
+      },
+      "_types.mapping.Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
         ]
       },
       "_types.mapping.JoinProperty": {
@@ -94504,25 +94561,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "indices._types.FielddataFrequencyFilter": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "number"
-          },
-          "min": {
-            "type": "number"
-          },
-          "min_segment_size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "max",
-          "min",
-          "min_segment_size"
         ]
       },
       "_types.mapping.VersionProperty": {
@@ -95046,13 +95084,6 @@
               }
             }
           }
-        ]
-      },
-      "_types.mapping.Subobjects": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
@@ -150784,10 +150815,10 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.",
+        "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
         "deprecated": false,
         "schema": {
-          "default": "all",
+          "default": "open,closed",
           "allOf": [
             {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -150938,7 +150969,7 @@
         "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
-          "default": "['bc', 'id', 'sc', 's']",
+          "default": "id,state,buckets.count,search.count",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -151153,7 +151184,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSegmentsColumns"
@@ -151331,7 +151362,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSnapshotsColumns"

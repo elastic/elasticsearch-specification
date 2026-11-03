@@ -6215,8 +6215,11 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
   on_script_error?: MappingOnScriptError
   ignore_malformed?: boolean
   time_series_metric?: MappingTimeSeriesMetricType
+  time_series_dimension?: boolean
   analyzer?: string
   eager_global_ordinals?: boolean
+  fielddata?: boolean
+  fielddata_frequency_filter?: IndicesFielddataFrequencyFilter
   index?: boolean
   index_options?: MappingIndexOptions
   index_phrases?: boolean
@@ -6225,10 +6228,12 @@ export interface MappingDynamicProperty extends MappingDocValuesPropertyBase {
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: MappingTermVectorOption
   format?: string
   precision_step?: integer
   locale?: string
+  subobjects?: MappingSubobjects
 }
 
 export interface MappingDynamicTemplate {
@@ -12050,7 +12055,7 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
   drop_null_columns?: boolean
 }
 
-export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
+export type EsqlAsyncQueryStopResponse = EsqlAsyncEsqlResult
 
 export interface EsqlDeleteDataSourceRequest extends RequestBase {
   name: Names

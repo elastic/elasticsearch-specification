@@ -91363,7 +91363,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L90-L92"
+      "specLocation": "_types/mapping/core.ts#L91-L93"
     },
     {
       "kind": "interface",
@@ -91484,7 +91484,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L94-L109"
+      "specLocation": "_types/mapping/core.ts#L95-L110"
     },
     {
       "kind": "interface",
@@ -91519,7 +91519,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L221-L224"
+      "specLocation": "_types/mapping/core.ts#L222-L225"
     },
     {
       "kind": "interface",
@@ -91924,7 +91924,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L48-L51"
+      "specLocation": "_types/mapping/core.ts#L49-L52"
     },
     {
       "kind": "interface",
@@ -92092,7 +92092,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L125-L135"
+      "specLocation": "_types/mapping/core.ts#L126-L136"
     },
     {
       "kind": "interface",
@@ -92226,7 +92226,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L111-L123"
+      "specLocation": "_types/mapping/core.ts#L112-L124"
     },
     {
       "kind": "interface",
@@ -92700,7 +92700,7 @@
         "name": "DocValues",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L80-L84",
+      "specLocation": "_types/mapping/core.ts#L81-L85",
       "type": {
         "kind": "union_of",
         "items": [
@@ -92772,7 +92772,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L78"
+      "specLocation": "_types/mapping/core.ts#L54-L79"
     },
     {
       "kind": "interface",
@@ -92799,7 +92799,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L86-L88"
+      "specLocation": "_types/mapping/core.ts#L87-L89"
     },
     {
       "kind": "interface",
@@ -92834,7 +92834,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L201-L204"
+      "specLocation": "_types/mapping/core.ts#L202-L205"
     },
     {
       "kind": "interface",
@@ -92993,6 +92993,17 @@
           }
         },
         {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "analyzer",
           "required": false,
           "type": {
@@ -93011,6 +93022,28 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "indices._types"
             }
           }
         },
@@ -93115,6 +93148,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ]
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -93157,9 +93213,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "subobjects",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Subobjects",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L401-L432"
+      "specLocation": "_types/mapping/core.ts#L402-L442"
     },
     {
       "kind": "interface",
@@ -93843,7 +93910,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "kind": "interface",
@@ -94157,7 +94224,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L196-L199"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "kind": "interface",
@@ -94448,7 +94515,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L357-L362"
+      "specLocation": "_types/mapping/core.ts#L358-L363"
     },
     {
       "kind": "interface",
@@ -94483,7 +94550,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L206-L209"
+      "specLocation": "_types/mapping/core.ts#L207-L210"
     },
     {
       "kind": "interface",
@@ -94713,7 +94780,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L137-L141"
+      "specLocation": "_types/mapping/core.ts#L138-L142"
     },
     {
       "kind": "interface",
@@ -94890,7 +94957,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L143-L162"
+      "specLocation": "_types/mapping/core.ts#L144-L163"
     },
     {
       "kind": "interface",
@@ -94925,7 +94992,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L211-L214"
+      "specLocation": "_types/mapping/core.ts#L212-L215"
     },
     {
       "kind": "interface",
@@ -95030,7 +95097,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L330-L355"
+      "specLocation": "_types/mapping/core.ts#L331-L356"
     },
     {
       "kind": "enum",
@@ -95250,7 +95317,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L164-L184"
+      "specLocation": "_types/mapping/core.ts#L165-L185"
     },
     {
       "kind": "interface",
@@ -95312,7 +95379,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L187-L190"
     },
     {
       "kind": "interface",
@@ -95393,7 +95460,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L237-L239"
+      "specLocation": "_types/mapping/core.ts#L238-L240"
     },
     {
       "kind": "interface",
@@ -96052,7 +96119,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L241-L244"
+      "specLocation": "_types/mapping/core.ts#L242-L245"
     },
     {
       "kind": "interface",
@@ -96087,7 +96154,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L246-L249"
+      "specLocation": "_types/mapping/core.ts#L247-L250"
     },
     {
       "kind": "enum",
@@ -96106,7 +96173,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L434-L438"
+      "specLocation": "_types/mapping/core.ts#L444-L448"
     },
     {
       "kind": "interface",
@@ -96153,7 +96220,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L251-L258"
+      "specLocation": "_types/mapping/core.ts#L252-L259"
     },
     {
       "kind": "interface",
@@ -96452,7 +96519,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L231-L235"
+      "specLocation": "_types/mapping/core.ts#L232-L236"
     },
     {
       "kind": "interface",
@@ -96587,7 +96654,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L311-L322"
+      "specLocation": "_types/mapping/core.ts#L312-L323"
     },
     {
       "kind": "interface",
@@ -96745,7 +96812,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L272-L309"
+      "specLocation": "_types/mapping/core.ts#L273-L310"
     },
     {
       "kind": "interface",
@@ -96851,7 +96918,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L216-L219"
+      "specLocation": "_types/mapping/core.ts#L217-L220"
     },
     {
       "kind": "interface",
@@ -97062,7 +97129,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L260-L270"
+      "specLocation": "_types/mapping/core.ts#L261-L271"
     },
     {
       "kind": "enum",
@@ -97240,7 +97307,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L364-L367"
+      "specLocation": "_types/mapping/core.ts#L365-L368"
     },
     {
       "kind": "interface",
@@ -97453,7 +97520,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L369-L386"
+      "specLocation": "_types/mapping/core.ts#L370-L387"
     },
     {
       "kind": "enum",
@@ -97836,7 +97903,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L226-L229"
+      "specLocation": "_types/mapping/core.ts#L227-L230"
     },
     {
       "kind": "interface",
@@ -97860,7 +97927,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L388-L390"
+      "specLocation": "_types/mapping/core.ts#L389-L391"
     },
     {
       "kind": "interface",
@@ -97901,7 +97968,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L392-L399"
+      "specLocation": "_types/mapping/core.ts#L393-L400"
     },
     {
       "kind": "interface",
@@ -119686,10 +119753,10 @@
       ],
       "query": [
         {
-          "description": "The type of index that wildcard patterns can match.",
+          "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "all",
+          "serverDefault": "open,closed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -119774,7 +119841,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L111"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L113"
     },
     {
       "kind": "response",
@@ -120673,7 +120740,7 @@
           "description": "Comma-separated list of column names to display.",
           "name": "h",
           "required": false,
-          "serverDefault": "['bc', 'id', 'sc', 's']",
+          "serverDefault": "id,state,buckets.count,search.count",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124138,7 +124205,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -125577,7 +125644,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127479,7 +127546,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -154900,7 +154967,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "EsqlResult",
+            "name": "AsyncEsqlResult",
             "namespace": "esql._types"
           }
         }
