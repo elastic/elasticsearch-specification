@@ -27,7 +27,11 @@ import {
 } from '@inference/_types/CommonTypes'
 import { QueryBase, QueryContainer } from './query_dsl/abstractions'
 
-export type QueryVector = float[]
+/**
+ * Both the float vector form and the base64 string form are accepted by the server
+ * @codegen_names float_array, base64
+ */
+export type QueryVector = float[] | string
 
 /* KnnSearch (used in kNN search) and KnnQuery (ued in kNN queries) are close
  * but different enough to require different classes */
