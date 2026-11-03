@@ -324,6 +324,13 @@ export enum ThreadType {
   mem
 }
 
+export enum ThreadSortOrder {
+  /** Sort by the time the thread was runnable, then by CPU time. */
+  total,
+  /** Sort by CPU time only. */
+  cpu
+}
+
 /** @doc_id cluster-health */
 export enum WaitForActiveShardOptions {
   'all',
