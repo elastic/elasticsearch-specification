@@ -26596,6 +26596,20 @@
             }
           },
           {
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "extDocId": "runtime-search-request",
+            "extDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/{branch}/runtime-search-request.html",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Slice the request manually using the provided slice ID and total number of slices.",
             "name": "slice",
             "required": false,
@@ -27174,7 +27188,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L324"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L331"
     },
     {
       "kind": "response",

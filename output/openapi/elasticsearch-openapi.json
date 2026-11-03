@@ -10685,6 +10685,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/runtime-search-request.html"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "slice": {
                     "description": "Slice the request manually using the provided slice ID and total number of slices.",
                     "allOf": [
