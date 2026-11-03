@@ -802,6 +802,84 @@ export interface InfoResponse {
   version: ElasticsearchVersionInfo
 }
 
+export interface KnnEvalKnnEvalDocsQuerySource {
+  from: 'docs'
+  size: integer
+  seed?: integer
+}
+
+export interface KnnEvalKnnEvalFailure {
+  error: ErrorCause
+}
+
+export type KnnEvalKnnEvalQuerySource = KnnEvalKnnEvalDocsQuerySource | KnnEvalKnnEvalVectorsQuerySource
+
+export interface KnnEvalKnnEvalQuerySourceSummary {
+  from: KnnEvalKnnEvalQuerySourceType
+}
+
+export type KnnEvalKnnEvalQuerySourceType = 'docs' | 'vectors'
+
+export interface KnnEvalKnnEvalQueryVector {
+  id: string
+  query_vector: QueryVector
+}
+
+export interface KnnEvalKnnEvalReportedSettings extends KnnEvalKnnEvalSettings {
+  rescore_window_capped?: boolean
+  quantized_scores?: boolean
+}
+
+export interface KnnEvalKnnEvalResult {
+  knn_settings: KnnEvalKnnEvalReportedSettings
+  recall: double | null
+  included_queries: long
+  excluded_queries: long
+  took_ms: DurationValue<UnitMillis>
+  vector_ops: long
+}
+
+export interface KnnEvalKnnEvalSettings {
+  visit_percentage?: float
+  num_candidates?: integer
+  rescore_vector?: RescoreVector
+  exact?: boolean
+}
+
+export type KnnEvalKnnEvalVectorOpsKind = 'full_precision_scan' | 'quantized_visit_plus_rescore'
+
+export interface KnnEvalKnnEvalVectorsQuerySource {
+  from: 'vectors'
+  vectors: KnnEvalKnnEvalQueryVector[]
+}
+
+export interface KnnEvalRequest extends RequestBase {
+  index: Indices
+  ignore_unavailable?: boolean
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  wait_for_completion?: boolean
+  body?: {
+    field: Field
+    k: integer
+    query_source: KnnEvalKnnEvalQuerySource
+    baseline?: KnnEvalKnnEvalSettings
+    knn_settings: KnnEvalKnnEvalSettings[]
+    allow_exact_baseline?: boolean
+  }
+}
+
+export interface KnnEvalResponse {
+  query_source?: KnnEvalKnnEvalQuerySourceSummary
+  baseline?: KnnEvalKnnEvalReportedSettings
+  baseline_took_ms?: DurationValue<UnitMillis>
+  baseline_vector_ops?: long
+  baseline_vector_ops_kind?: KnnEvalKnnEvalVectorOpsKind
+  results?: KnnEvalKnnEvalResult[]
+  failures?: Record<string, KnnEvalKnnEvalFailure>
+  task?: TaskId
+}
+
 export interface KnnSearchRequest extends RequestBase {
   index: Indices
   routing?: Routing
@@ -1116,6 +1194,11 @@ export interface RankEvalRankEvalRequestItem {
   params?: Record<string, any>
 }
 
+export interface RankEvalRankEvalTemplate {
+  id: Id
+  template: Script | ScriptSource
+}
+
 export interface RankEvalRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -1125,6 +1208,7 @@ export interface RankEvalRequest extends RequestBase {
   body?: {
     requests: RankEvalRankEvalRequestItem[]
     metric?: RankEvalRankEvalMetric
+    templates?: RankEvalRankEvalTemplate[]
   }
 }
 
@@ -6752,6 +6836,14 @@ export interface QueryDslDecayPlacement<TOrigin = unknown, TScale = unknown> {
   origin?: TOrigin
 }
 
+export interface QueryDslDenseVectorQuery extends QueryDslQueryBase {
+  field: Field
+  query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
+  similarity_function?: MappingDenseVectorSimilarity
+  quantized?: boolean
+}
+
 export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
   queries: QueryDslQueryContainer[]
   tie_breaker?: double
@@ -7175,6 +7267,7 @@ export interface QueryDslQueryContainer {
   common?: Partial<Record<Field, QueryDslCommonTermsQuery | string>>
   combined_fields?: QueryDslCombinedFieldsQuery
   constant_score?: QueryDslConstantScoreQuery
+  dense_vector?: QueryDslDenseVectorQuery
   dis_max?: QueryDslDisMaxQuery
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
