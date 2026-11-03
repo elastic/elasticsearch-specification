@@ -631,7 +631,7 @@ export interface HealthReportIndicators {
   slm?: HealthReportSlmIndicator
   shards_capacity?: HealthReportShardsCapacityIndicator
   file_settings?: HealthReportFileSettingsIndicator
-  project_encryption_key?: HealthReportProjectEncryptionKeyIndicator
+  cluster_state_encryption?: HealthReportProjectEncryptionKeyIndicator
 }
 
 export interface HealthReportMasterIsStableIndicator extends HealthReportBaseIndicator {

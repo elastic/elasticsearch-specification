@@ -103047,7 +103047,7 @@
               }
             ]
           },
-          "project_encryption_key": {
+          "cluster_state_encryption": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"

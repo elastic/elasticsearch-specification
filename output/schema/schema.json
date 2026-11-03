@@ -34737,7 +34737,7 @@
           }
         },
         {
-          "name": "project_encryption_key",
+          "name": "cluster_state_encryption",
           "required": false,
           "type": {
             "kind": "instance_of",
