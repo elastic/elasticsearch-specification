@@ -62814,10 +62814,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "indices._types.StorageType": {
         "anyOf": [
