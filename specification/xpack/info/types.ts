@@ -43,6 +43,10 @@ export class Features {
   aggregate_metric: Feature
   analytics: Feature
   ccr: Feature
+  /**
+   * @availability stack since=9.6.0
+   */
+  columnar: Feature
   data_streams: Feature
   data_tiers: Feature
   enrich: Feature
@@ -63,6 +67,10 @@ export class Features {
   ilm: Feature
   logstash: Feature
   logsdb: Feature
+  /**
+   * @availability stack since=9.6.0
+   */
+  logsdb_columnar: Feature
   ml: Feature
   monitoring: Feature
   rollup: Feature
