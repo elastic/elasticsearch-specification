@@ -75830,8 +75830,12 @@
             ]
           },
           "max_result_window": {
-            "default": 10000.0,
-            "type": "number"
+            "default": "10000",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
+              }
+            ]
           },
           "max_inner_result_window": {
             "default": 100.0,
@@ -134116,7 +134120,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Id"
+          "$ref": "#/components/schemas/_types.Ids"
         },
         "style": "simple"
       },
