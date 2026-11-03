@@ -68172,6 +68172,12 @@
           "create_weight_count": {
             "type": "number"
           },
+          "into_bit_set": {
+            "type": "number"
+          },
+          "into_bit_set_count": {
+            "type": "number"
+          },
           "match": {
             "type": "number"
           },
@@ -68222,6 +68228,8 @@
           "build_scorer_count",
           "create_weight",
           "create_weight_count",
+          "into_bit_set",
+          "into_bit_set_count",
           "match",
           "match_count",
           "shallow_advance",

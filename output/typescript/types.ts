@@ -1930,6 +1930,8 @@ export interface SearchQueryBreakdown {
   build_scorer_count: long
   create_weight: long
   create_weight_count: long
+  into_bit_set: long
+  into_bit_set_count: long
   match: long
   match_count: long
   shallow_advance: long
