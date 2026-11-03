@@ -44,6 +44,7 @@ import { SemanticTextIndexOptions } from './SemanticTextIndexOptions'
 import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 import { TermVectorOption } from './TermVectorOption'
 import { TimeSeriesMetricType } from './TimeSeriesMetricType'
+import { Subobjects } from './TypeMapping'
 
 export class CorePropertyBase extends PropertyBase {
   copy_to?: Fields
@@ -412,9 +413,14 @@ export class DynamicProperty extends DocValuesPropertyBase {
   ignore_malformed?: boolean
   time_series_metric?: TimeSeriesMetricType
 
+  // long, boolean
+  time_series_dimension?: boolean
+
   // string
   analyzer?: string
   eager_global_ordinals?: boolean
+  fielddata?: boolean
+  fielddata_frequency_filter?: FielddataFrequencyFilter
   index?: boolean
   index_options?: IndexOptions
   index_phrases?: boolean
@@ -423,12 +429,16 @@ export class DynamicProperty extends DocValuesPropertyBase {
   position_increment_gap?: integer
   search_analyzer?: string
   search_quote_analyzer?: string
+  similarity?: string | null
   term_vector?: TermVectorOption
 
   // date
   format?: string
   precision_step?: integer
   locale?: string
+
+  // object
+  subobjects?: Subobjects
 }
 
 export enum RankVectorElementType {

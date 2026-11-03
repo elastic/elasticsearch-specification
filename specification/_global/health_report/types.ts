@@ -40,7 +40,7 @@ export class Indicators {
   slm?: SlmIndicator
   shards_capacity?: ShardsCapacityIndicator
   file_settings?: FileSettingsIndicator
-  project_encryption_key?: ProjectEncryptionKeyIndicator
+  cluster_state_encryption?: ProjectEncryptionKeyIndicator
   /**
    * Reports the health of data stream lifecycle transitions of backing indices to the frozen tier.
    * @availability stack since=9.6.0
