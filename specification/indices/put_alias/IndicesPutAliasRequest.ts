@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @rest_spec_name indices.put_alias
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
+ * @index_privileges manage
  * @doc_id alias-update
  * @ext_doc_id aliases
  */
