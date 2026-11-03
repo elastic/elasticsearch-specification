@@ -123482,6 +123482,22 @@
               },
               "authentication_type": {
                 "type": "string"
+              },
+              "api_key": {
+                "description": "Present when the authenticated user is an API key.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKey"
+                  }
+                ]
+              },
+              "token": {
+                "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.Token"
+                  }
+                ]
               }
             },
             "required": [
