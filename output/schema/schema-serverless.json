@@ -4845,6 +4845,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/aliases",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html",
       "name": "indices.put_alias",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_alias"
@@ -30891,8 +30896,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndicesAliasesResponseBody",
-            "namespace": "indices.delete_alias"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -33951,7 +33956,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L107"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L108"
     },
     {
       "body": {
@@ -33960,8 +33965,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -138569,7 +138574,7 @@
         "name": "AliasActionType",
         "namespace": "indices.update_aliases"
       },
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L62-L66"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L57-L61"
     },
     {
       "kind": "enum",
@@ -156988,7 +156993,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -163246,11 +163251,18 @@
       },
       "kind": "interface",
       "name": {
-        "name": "IndicesAliasesResponseBody",
-        "namespace": "indices.delete_alias"
+        "name": "AliasesResponseBody",
+        "namespace": "indices._types"
       },
       "properties": [
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
           "name": "errors",
           "required": false,
           "type": {
@@ -163262,7 +163274,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L27-L29"
+      "specLocation": "indices/_types/AliasesResponseBody.ts#L22-L30"
     },
     {
       "kind": "interface",
@@ -166217,8 +166229,8 @@
     {
       "inherits": {
         "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
+          "name": "AliasesResponseBody",
+          "namespace": "indices._types"
         }
       },
       "kind": "interface",
@@ -166226,8 +166238,128 @@
         "name": "IndicesUpdateAliasesResponseBody",
         "namespace": "indices.update_aliases"
       },
-      "properties": [],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L43"
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
+          "name": "action_results",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AliasActionResult",
+                "namespace": "indices.update_aliases"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L38"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionResult",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action this result describes.",
+          "name": "action",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionSummary",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "HTTP status for this action.\n`200` when the action succeeds.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Cause of the failure.\nReturned only when this action fails.",
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L40-L55"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionSummary",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action that was applied.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionType",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "Resolved data streams or indices for the action.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Aliases for the action.",
+          "name": "aliases",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L63-L76"
     },
     {
       "kind": "interface",

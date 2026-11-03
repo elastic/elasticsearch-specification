@@ -9811,6 +9811,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/aliases",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html",
       "name": "indices.put_alias",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_alias"
@@ -35485,7 +35490,7 @@
           }
         },
         {
-          "name": "project_encryption_key",
+          "name": "cluster_state_encryption",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -162514,6 +162519,40 @@
     },
     {
       "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "AcknowledgedResponseBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "AliasesResponseBody",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+          "name": "errors",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/AliasesResponseBody.ts#L22-L30"
+    },
+    {
+      "kind": "interface",
       "name": {
         "name": "CacheQueries",
         "namespace": "indices._types"
@@ -167652,7 +167691,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -170965,33 +171004,6 @@
       "specLocation": "indices/delete/IndicesDeleteResponse.ts#L22-L25"
     },
     {
-      "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
-        }
-      },
-      "name": {
-        "name": "IndicesAliasesResponseBody",
-        "namespace": "indices.delete_alias"
-      },
-      "properties": [
-        {
-          "name": "errors",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L27-L29"
-    },
-    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -171109,8 +171121,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndicesAliasesResponseBody",
-            "namespace": "indices.delete_alias"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -177519,7 +177531,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L107"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L108"
     },
     {
       "kind": "response",
@@ -177529,8 +177541,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -186657,7 +186669,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L45-L60"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L40-L55"
     },
     {
       "kind": "interface",
@@ -186709,7 +186721,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L68-L81"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L63-L76"
     },
     {
       "kind": "enum",
@@ -186728,14 +186740,14 @@
         "name": "AliasActionType",
         "namespace": "indices.update_aliases"
       },
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L62-L66"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L57-L61"
     },
     {
       "kind": "interface",
       "inherits": {
         "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
+          "name": "AliasesResponseBody",
+          "namespace": "indices._types"
         }
       },
       "name": {
@@ -186745,23 +186757,7 @@
       "properties": [
         {
           "availability": {
-            "stack": {
-              "since": "8.14.0"
-            }
-          },
-          "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
-          "name": "errors",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "boolean",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "availability": {
+            "serverless": {},
             "stack": {
               "since": "8.14.0"
             }
@@ -186781,7 +186777,7 @@
           }
         }
       ],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L43"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L38"
     },
     {
       "kind": "interface",
