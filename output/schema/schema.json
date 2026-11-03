@@ -118546,10 +118546,10 @@
       ],
       "query": [
         {
-          "description": "The type of index that wildcard patterns can match.",
+          "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "all",
+          "serverDefault": "open,closed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -118634,7 +118634,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L111"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L113"
     },
     {
       "kind": "response",
@@ -119533,7 +119533,7 @@
           "description": "Comma-separated list of column names to display.",
           "name": "h",
           "required": false,
-          "serverDefault": "['bc', 'id', 'sc', 's']",
+          "serverDefault": "id,state,buckets.count,search.count",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -122998,7 +122998,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -124353,7 +124353,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -126255,7 +126255,7 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
+          "serverDefault": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -152319,7 +152319,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "EsqlResult",
+            "name": "AsyncEsqlResult",
             "namespace": "esql._types"
           }
         }
