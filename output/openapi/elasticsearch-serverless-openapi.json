@@ -93074,7 +93074,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Id"
+          "$ref": "#/components/schemas/_types.Ids"
         },
         "style": "simple"
       },

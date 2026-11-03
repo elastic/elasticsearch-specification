@@ -11899,7 +11899,7 @@ export interface EsqlGetQueryResponse {
 }
 
 export interface EsqlGetViewRequest extends RequestBase {
-  name?: Id
+  name?: Ids
 }
 
 export interface EsqlGetViewResponse {
