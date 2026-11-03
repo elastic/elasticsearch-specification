@@ -86764,11 +86764,24 @@
                   }
                 ]
               },
+              "time_series_dimension": {
+                "type": "boolean"
+              },
               "analyzer": {
                 "type": "string"
               },
               "eager_global_ordinals": {
                 "type": "boolean"
+              },
+              "fielddata": {
+                "type": "boolean"
+              },
+              "fielddata_frequency_filter": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.FielddataFrequencyFilter"
+                  }
+                ]
               },
               "index": {
                 "type": "boolean"
@@ -86806,6 +86819,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "allOf": [
                   {
@@ -86821,6 +86845,13 @@
               },
               "locale": {
                 "type": "string"
+              },
+              "subobjects": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.Subobjects"
+                  }
+                ]
               }
             },
             "required": [
@@ -86837,6 +86868,25 @@
           "summary",
           "histogram",
           "position"
+        ]
+      },
+      "indices._types.FielddataFrequencyFilter": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "min_segment_size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "max",
+          "min",
+          "min_segment_size"
         ]
       },
       "_types.mapping.IndexOptions": {
@@ -86869,6 +86919,13 @@
           "with_positions_offsets",
           "with_positions_offsets_payloads",
           "with_positions_payloads"
+        ]
+      },
+      "_types.mapping.Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
         ]
       },
       "_types.mapping.JoinProperty": {
@@ -87252,25 +87309,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "indices._types.FielddataFrequencyFilter": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "number"
-          },
-          "min": {
-            "type": "number"
-          },
-          "min_segment_size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "max",
-          "min",
-          "min_segment_size"
         ]
       },
       "_types.mapping.VersionProperty": {
@@ -87714,13 +87752,6 @@
               }
             }
           }
-        ]
-      },
-      "_types.mapping.Subobjects": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
