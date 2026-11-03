@@ -135828,16 +135828,14 @@
         "type": "object",
         "properties": {
           "manage": {
+            "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
               }
             ]
           }
-        },
-        "required": [
-          "manage"
-        ]
+        }
       },
       "security._types.ManageUserPrivileges": {
         "type": "object",
@@ -136519,19 +136517,11 @@
           },
           "global": {
             "x-state": "Generally available; Added in 8.0.0",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
-            }
+            ]
           }
         },
         "required": [

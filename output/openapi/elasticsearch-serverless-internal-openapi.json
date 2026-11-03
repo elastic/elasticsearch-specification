@@ -120237,19 +120237,11 @@
             }
           },
           "global": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
-            }
+            ]
           }
         },
         "required": [
@@ -120340,6 +120332,124 @@
         "enum": [
           "string",
           "json"
+        ]
+      },
+      "security._types.GlobalPrivilege": {
+        "type": "object",
+        "properties": {
+          "application": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.ApplicationGlobalUserPrivileges"
+              }
+            ]
+          },
+          "profile": {
+            "description": "A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.WriteProfileGlobalUserPrivileges"
+              }
+            ]
+          },
+          "role": {
+            "description": "A privilege that grants the ability to manage roles that are scoped to the specified indices.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.ManageRolesGlobalUserPrivileges"
+              }
+            ]
+          }
+        }
+      },
+      "security._types.ApplicationGlobalUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "manage": {
+            "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
+              }
+            ]
+          }
+        }
+      },
+      "security._types.ManageUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "applications": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "applications"
+        ]
+      },
+      "security._types.WriteProfileGlobalUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "write": {
+            "description": "The applications for which user profile data can be written.\nAbsent when the `profile` section is present but grants no privileges.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
+              }
+            ]
+          }
+        }
+      },
+      "security._types.ManageRolesGlobalUserPrivileges": {
+        "type": "object",
+        "properties": {
+          "manage": {
+            "description": "The index-scoped role management privileges.\nAbsent when the `role` section is present but grants no privileges.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.ManageRolesPrivileges"
+              }
+            ]
+          }
+        }
+      },
+      "security._types.ManageRolesPrivileges": {
+        "type": "object",
+        "properties": {
+          "indices": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/security._types.ManageRolesIndexPermissions"
+            }
+          }
+        },
+        "required": [
+          "indices"
+        ]
+      },
+      "security._types.ManageRolesIndexPermissions": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "description": "A list of indices (or index name patterns) that the owners of the role can manage roles for.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "privileges": {
+            "description": "The index privileges that the managed roles are allowed to grant on the specified indices.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "names",
+          "privileges"
         ]
       },
       "security._types.RoleMapping": {
@@ -120861,126 +120971,6 @@
       },
       "security._types.RemoteClusterPrivilege": {
         "type": "string"
-      },
-      "security._types.GlobalPrivilege": {
-        "type": "object",
-        "properties": {
-          "application": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.ApplicationGlobalUserPrivileges"
-              }
-            ]
-          },
-          "profile": {
-            "description": "A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.WriteProfileGlobalUserPrivileges"
-              }
-            ]
-          },
-          "role": {
-            "description": "A privilege that grants the ability to manage roles that are scoped to the specified indices.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.ManageRolesGlobalUserPrivileges"
-              }
-            ]
-          }
-        }
-      },
-      "security._types.ApplicationGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "manage": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
-              }
-            ]
-          }
-        },
-        "required": [
-          "manage"
-        ]
-      },
-      "security._types.ManageUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "applications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "applications"
-        ]
-      },
-      "security._types.WriteProfileGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "write": {
-            "description": "The applications for which user profile data can be written.\nAbsent when the `profile` section is present but grants no privileges.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
-              }
-            ]
-          }
-        }
-      },
-      "security._types.ManageRolesGlobalUserPrivileges": {
-        "type": "object",
-        "properties": {
-          "manage": {
-            "description": "The index-scoped role management privileges.\nAbsent when the `role` section is present but grants no privileges.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/security._types.ManageRolesPrivileges"
-              }
-            ]
-          }
-        }
-      },
-      "security._types.ManageRolesPrivileges": {
-        "type": "object",
-        "properties": {
-          "indices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/security._types.ManageRolesIndexPermissions"
-            }
-          }
-        },
-        "required": [
-          "indices"
-        ]
-      },
-      "security._types.ManageRolesIndexPermissions": {
-        "type": "object",
-        "properties": {
-          "names": {
-            "description": "A list of indices (or index name patterns) that the owners of the role can manage roles for.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "privileges": {
-            "description": "The index privileges that the managed roles are allowed to grant on the specified indices.",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "names",
-          "privileges"
-        ]
       },
       "security._types.UserIndicesPrivileges": {
         "type": "object",
