@@ -28,6 +28,7 @@ import {
   Slices,
   WaitForActiveShards
 } from '@_types/common'
+import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { float, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
 import { Operator } from '@_types/query_dsl/Operator'
@@ -330,6 +331,12 @@ export interface Request extends RequestBase {
      * The documents to delete specified with Query DSL.
      */
     query?: QueryContainer
+    /**
+     * One or more runtime fields in the search request.
+     * These fields take precedence over mapped fields with the same name.
+     * @ext_doc_id runtime-search-request
+     */
+    runtime_mappings?: RuntimeFields
     /**
      * Slice the request manually using the provided slice ID and total number of slices.
      */
