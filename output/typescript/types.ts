@@ -11722,7 +11722,7 @@ export interface EsqlAsyncQueryStopRequest extends RequestBase {
   drop_null_columns?: boolean
 }
 
-export type EsqlAsyncQueryStopResponse = EsqlEsqlResult
+export type EsqlAsyncQueryStopResponse = EsqlAsyncEsqlResult
 
 export interface EsqlDeleteViewRequest extends RequestBase {
   name: Ids

@@ -149299,7 +149299,7 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "EsqlResult",
+            "name": "AsyncEsqlResult",
             "namespace": "esql._types"
           }
         }
