@@ -12162,7 +12162,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/esql._types.EsqlResult"
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
                 }
               }
             }
