@@ -16445,7 +16445,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L271"
+      "specLocation": "_global/bulk/BulkRequest.ts#L34-L275"
     },
     {
       "body": {
@@ -22433,7 +22433,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L32-L194"
+      "specLocation": "_global/count/CountRequest.ts#L33-L199"
     },
     {
       "body": {
@@ -22638,7 +22638,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -22689,7 +22689,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L33-L204"
+      "specLocation": "_global/create/CreateRequest.ts#L34-L218"
     },
     {
       "body": {
@@ -22876,7 +22876,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L159"
+      "specLocation": "_global/delete/DeleteRequest.ts#L36-L164"
     },
     {
       "body": {
@@ -23532,7 +23532,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L40-L353"
     },
     {
       "body": {
@@ -27170,7 +27170,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "routing",
           "extDocUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get#get-routing",
           "name": "routing",
@@ -27258,7 +27258,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L139"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L33-L153"
     },
     {
       "body": {
@@ -27725,7 +27725,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L137"
+      "specLocation": "_global/explain/ExplainRequest.ts#L33-L148"
     },
     {
       "body": {
@@ -28378,7 +28378,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L32-L199"
+      "specLocation": "_global/get/GetRequest.ts#L33-L204"
     },
     {
       "body": {
@@ -29408,7 +29408,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L290"
+      "specLocation": "_global/index/IndexRequest.ts#L37-L299"
     },
     {
       "body": {
@@ -37404,7 +37404,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L146"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L31-L153"
     },
     {
       "body": {
@@ -49131,7 +49131,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L138"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L32-L148"
     },
     {
       "body": {
@@ -59685,7 +59685,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L32-L180"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L33-L182"
     },
     {
       "body": {
@@ -60233,7 +60233,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L32-L149"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L33-L153"
     },
     {
       "body": {
@@ -60383,7 +60383,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -60436,7 +60436,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L166"
     },
     {
       "body": {
@@ -65457,7 +65457,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L55-L632"
+      "specLocation": "_global/search/SearchRequest.ts#L56-L637"
     },
     {
       "body": {
@@ -67081,7 +67081,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -67149,7 +67149,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L35-L179"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L36-L195"
     },
     {
       "body": {
@@ -73423,7 +73423,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L34-L255"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L35-L264"
     },
     {
       "body": {
@@ -76252,7 +76252,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L210"
+      "specLocation": "_global/update/UpdateRequest.ts#L40-L215"
     },
     {
       "body": {
@@ -76927,7 +76927,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L39-L374"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L40-L378"
     },
     {
       "body": {
@@ -77196,7 +77196,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L85-L90"
+      "specLocation": "_global/bulk/types.ts#L86-L91"
     },
     {
       "kind": "enum",
@@ -77218,7 +77218,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L92-L97"
+      "specLocation": "_global/bulk/types.ts#L93-L98"
     },
     {
       "kind": "enum",
@@ -77576,7 +77576,7 @@
         "name": "ResponseItem",
         "namespace": "_global.mget"
       },
-      "specLocation": "_global/mget/types.ts#L57-L60",
+      "specLocation": "_global/mget/types.ts#L67-L70",
       "type": {
         "items": [
           {
@@ -77751,7 +77751,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/types.ts#L25-L67"
+      "specLocation": "_global/get/types.ts#L31-L79"
     },
     {
       "kind": "type_alias",
@@ -77804,7 +77804,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L123-L123",
+      "specLocation": "_types/common.ts#L129-L129",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -77819,7 +77819,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L98-L98",
+      "specLocation": "_types/common.ts#L104-L104",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -77869,7 +77869,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L62-L66"
+      "specLocation": "_global/mget/types.ts#L72-L76"
     },
     {
       "attachedBehaviors": [
@@ -78026,7 +78026,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L32-L35",
+      "specLocation": "_global/msearch/types.ts#L33-L36",
       "type": {
         "items": [
           {
@@ -78191,7 +78191,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L37-L78"
+      "specLocation": "_global/msearch/types.ts#L38-L80"
     },
     {
       "kind": "type_alias",
@@ -78199,7 +78199,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L212-L212",
+      "specLocation": "_types/common.ts#L218-L218",
       "type": {
         "items": [
           {
@@ -78251,7 +78251,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L196-L210"
+      "specLocation": "_types/common.ts#L202-L216"
     },
     {
       "kind": "type_alias",
@@ -78345,7 +78345,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L292-L297"
+      "specLocation": "_types/common.ts#L298-L303"
     },
     {
       "kind": "interface",
@@ -80103,7 +80103,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L95-L95",
+      "specLocation": "_types/common.ts#L101-L101",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -81511,7 +81511,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L158-L162",
+      "specLocation": "_types/common.ts#L164-L168",
       "type": {
         "items": [
           {
@@ -81608,7 +81608,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L134",
+      "specLocation": "_types/common.ts#L139-L140",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -83749,7 +83749,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L130-L131",
+      "specLocation": "_types/common.ts#L136-L137",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -83766,7 +83766,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L128-L129",
+      "specLocation": "_types/common.ts#L134-L135",
       "type": {
         "items": [
           {
@@ -85071,7 +85071,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L115-L152"
+      "specLocation": "_global/search/_types/hits.ts#L122-L159"
     },
     {
       "kind": "type_alias",
@@ -85079,7 +85079,7 @@
         "name": "Name",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L76-L76",
+      "specLocation": "_types/common.ts#L82-L82",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -85716,7 +85716,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L135-L135",
+      "specLocation": "_types/common.ts#L141-L141",
       "type": {
         "items": [
           {
@@ -86717,7 +86717,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L126-L126",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -88974,7 +88974,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L102-L117"
+      "specLocation": "_types/common.ts#L108-L123"
     },
     {
       "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
@@ -97086,7 +97086,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L155-L156"
+      "specLocation": "_types/common.ts#L161-L162"
     },
     {
       "inherits": {
@@ -100113,7 +100113,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L154-L162",
+      "specLocation": "_global/search/_types/hits.ts#L161-L169",
       "type": {
         "items": [
           {
@@ -102984,7 +102984,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L299-L312"
+      "specLocation": "_types/common.ts#L305-L318"
     },
     {
       "kind": "interface",
@@ -103388,7 +103388,22 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L33"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceId",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L73-L73",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
     },
     {
       "kind": "type_alias",
@@ -103675,7 +103690,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L85-L88",
+      "specLocation": "_global/msearch/types.ts#L87-L90",
       "type": {
         "items": [
           {
@@ -103745,7 +103760,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L90-L93"
+      "specLocation": "_global/msearch/types.ts#L92-L95"
     },
     {
       "generics": [
@@ -104230,7 +104245,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L71-L81"
+      "specLocation": "_global/search/_types/hits.ts#L78-L88"
     },
     {
       "kind": "interface",
@@ -104262,7 +104277,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L103-L106"
+      "specLocation": "_global/search/_types/hits.ts#L110-L113"
     },
     {
       "kind": "enum",
@@ -104280,7 +104295,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L108-L113"
+      "specLocation": "_global/search/_types/hits.ts#L115-L120"
     },
     {
       "generics": [
@@ -104600,7 +104615,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L69"
+      "specLocation": "_global/search/_types/hits.ts#L41-L76"
     },
     {
       "kind": "interface",
@@ -104718,7 +104733,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L93-L95"
+      "specLocation": "_global/search/_types/hits.ts#L100-L102"
     },
     {
       "kind": "interface",
@@ -104761,7 +104776,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L97-L101"
+      "specLocation": "_global/search/_types/hits.ts#L104-L108"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -104770,7 +104785,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L140-L144",
+      "specLocation": "_types/common.ts#L146-L150",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -109500,7 +109515,7 @@
         "name": "ClusterAlias",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L74-L74",
+      "specLocation": "_types/common.ts#L80-L80",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -112244,7 +112259,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L146-L150",
+      "specLocation": "_types/common.ts#L152-L156",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -113590,7 +113605,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L153-L153",
+      "specLocation": "_types/common.ts#L159-L159",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -113920,7 +113935,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L92-L93",
+      "specLocation": "_types/common.ts#L98-L99",
       "type": {
         "items": [
           {
@@ -113973,7 +113988,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L164-L176"
+      "specLocation": "_types/common.ts#L170-L182"
     },
     {
       "kind": "type_alias",
@@ -114013,7 +114028,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L408-L414"
+      "specLocation": "_types/common.ts#L414-L420"
     },
     {
       "kind": "type_alias",
@@ -114021,7 +114036,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L416-L416",
+      "specLocation": "_types/common.ts#L422-L422",
       "type": {
         "items": [
           {
@@ -114141,7 +114156,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L418-L472"
+      "specLocation": "_types/common.ts#L424-L478"
     },
     {
       "kind": "type_alias",
@@ -114149,7 +114164,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L474-L474",
+      "specLocation": "_types/common.ts#L480-L480",
       "type": {
         "items": [
           {
@@ -114189,7 +114204,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L178-L187"
+      "specLocation": "_types/common.ts#L184-L193"
     },
     {
       "kind": "enum",
@@ -114266,7 +114281,7 @@
         "name": "DataStreamName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L88-L88",
+      "specLocation": "_types/common.ts#L94-L94",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114281,7 +114296,7 @@
         "name": "DataStreamNames",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L90-L90",
+      "specLocation": "_types/common.ts#L96-L96",
       "type": {
         "items": [
           {
@@ -114311,7 +114326,7 @@
         "name": "GrokPattern",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L83-L83",
+      "specLocation": "_types/common.ts#L89-L89",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114355,7 +114370,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L214-L236"
+      "specLocation": "_types/common.ts#L220-L242"
     },
     {
       "kind": "type_alias",
@@ -114484,7 +114499,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L260-L264"
+      "specLocation": "_types/common.ts#L266-L270"
     },
     {
       "kind": "enum",
@@ -114526,7 +114541,7 @@
         "name": "Names",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L77-L77",
+      "specLocation": "_types/common.ts#L83-L83",
       "type": {
         "items": [
           {
@@ -114556,7 +114571,7 @@
         "name": "Namespace",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L79-L79",
+      "specLocation": "_types/common.ts#L85-L85",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114603,7 +114618,7 @@
         "name": "NodeName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L85-L86",
+      "specLocation": "_types/common.ts#L91-L92",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114701,7 +114716,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L270"
+      "specLocation": "_types/common.ts#L272-L276"
     },
     {
       "kind": "enum",
@@ -114744,7 +114759,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L272-L281"
+      "specLocation": "_types/common.ts#L278-L287"
     },
     {
       "kind": "type_alias",
@@ -114752,7 +114767,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L190-L190",
+      "specLocation": "_types/common.ts#L196-L196",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114794,7 +114809,7 @@
         "name": "PipelineName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L82-L82",
+      "specLocation": "_types/common.ts#L88-L88",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114809,7 +114824,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L125-L125",
+      "specLocation": "_types/common.ts#L131-L131",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114836,7 +114851,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L283-L290"
+      "specLocation": "_types/common.ts#L289-L296"
     },
     {
       "kind": "enum",
@@ -114956,13 +114971,44 @@
         "name": "Service",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L80-L80",
+      "specLocation": "_types/common.ts#L86-L86",
       "type": {
         "kind": "instance_of",
         "type": {
           "name": "string",
           "namespace": "_builtins"
         }
+      }
+    },
+    {
+      "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceIds",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L74-L77",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SliceId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -114976,7 +115022,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L396",
+      "specLocation": "_types/common.ts#L397-L402",
       "type": {
         "items": [
           {
@@ -115009,7 +115055,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L406"
+      "specLocation": "_types/common.ts#L404-L412"
     },
     {
       "kind": "type_alias",
@@ -115032,7 +115078,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L127-L127",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115069,7 +115115,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L314-L325"
+      "specLocation": "_types/common.ts#L320-L331"
     },
     {
       "description": "Time of day, expressed as HH:MM:SS",
@@ -115210,7 +115256,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L189-L189",
+      "specLocation": "_types/common.ts#L195-L195",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115225,7 +115271,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L120-L120",
+      "specLocation": "_types/common.ts#L126-L126",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115240,7 +115286,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L100-L100",
+      "specLocation": "_types/common.ts#L106-L106",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115263,7 +115309,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L331"
+      "specLocation": "_types/common.ts#L333-L337"
     },
     {
       "codegenNames": [
@@ -115275,7 +115321,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L137-L138",
+      "specLocation": "_types/common.ts#L143-L144",
       "type": {
         "items": [
           {
@@ -115322,7 +115368,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L340"
+      "specLocation": "_types/common.ts#L339-L346"
     },
     {
       "kind": "type_alias",
@@ -149834,7 +149880,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L168-L195",
       "variants": {
         "kind": "container"
       }
@@ -149852,7 +149898,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L152-L152"
     },
     {
       "inherits": {
@@ -149916,7 +149962,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L129-L148"
     },
     {
       "kind": "interface",
@@ -149994,7 +150040,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L117"
+      "specLocation": "_global/bulk/types.ts#L100-L127"
     },
     {
       "inherits": {
@@ -150009,7 +150055,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L150-L150"
     },
     {
       "inherits": {
@@ -150050,7 +150096,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L156-L166"
     },
     {
       "inherits": {
@@ -150065,7 +150111,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L154-L154"
     },
     {
       "description": "The source line that must follow an `update` action line.\nIt specifies the partial document, script, or upsert options to apply, plus optional update settings.",
@@ -150174,7 +150220,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L197-L236"
     },
     {
       "kind": "interface",
@@ -150353,7 +150399,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L36-L83"
+      "specLocation": "_global/bulk/types.ts#L37-L84"
     },
     {
       "attachedBehaviors": [
@@ -150469,7 +150515,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L342-L355"
+      "specLocation": "_types/common.ts#L348-L361"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -180187,7 +180233,7 @@
           }
         },
         {
-          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -180245,7 +180291,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L32-L55"
+      "specLocation": "_global/mget/types.ts#L33-L65"
     },
     {
       "kind": "interface",
@@ -184774,7 +184820,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L357-L389"
+      "specLocation": "_types/common.ts#L363-L395"
     },
     {
       "kind": "interface",
@@ -191744,7 +191790,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L80-L83"
+      "specLocation": "_global/msearch/types.ts#L82-L85"
     },
     {
       "kind": "interface",
@@ -191862,7 +191908,7 @@
           }
         },
         {
-          "description": "Custom value used to route operations to a specific shard.",
+          "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -191911,7 +191957,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L35-L94"
+      "specLocation": "_global/mtermvectors/types.ts#L36-L104"
     },
     {
       "kind": "interface",
@@ -192108,7 +192154,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L96-L104"
+      "specLocation": "_global/mtermvectors/types.ts#L106-L114"
     },
     {
       "kind": "interface",
@@ -193502,7 +193548,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L39-L76"
+      "specLocation": "_global/reindex/types.ts#L40-L78"
     },
     {
       "kind": "interface",
@@ -193624,7 +193670,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L78-L134"
+      "specLocation": "_global/reindex/types.ts#L80-L145"
     },
     {
       "kind": "interface",
@@ -193737,7 +193783,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L136-L172"
+      "specLocation": "_global/reindex/types.ts#L147-L183"
     },
     {
       "kind": "interface",

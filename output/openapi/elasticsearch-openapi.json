@@ -10427,7 +10427,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -40918,7 +40918,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value that is used to route operations to a specific shard.",
+            "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -79081,7 +79081,7 @@
             ]
           },
           "routing": {
-            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "x-state": "Generally available",
             "type": "string"
           },
@@ -119491,7 +119491,7 @@
             ]
           },
           "routing": {
-            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -127277,7 +127277,7 @@
             "type": "boolean"
           },
           "routing": {
-            "description": "Custom value used to route operations to a specific shard.",
+            "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -153357,7 +153357,7 @@
       "create-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -154218,6 +154218,7 @@
       "fleet.search-routing": {
         "in": "query",
         "name": "routing",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -160647,7 +160648,7 @@
       "search_template-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"

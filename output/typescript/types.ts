@@ -32,6 +32,7 @@ export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
   routing?: string
+  _slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -49,12 +50,12 @@ export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   include_source_on_error?: boolean
   list_executed_pipelines?: boolean
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -175,6 +176,7 @@ export interface ClosePointInTimeResponse {
 
 export interface CountRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -188,7 +190,6 @@ export interface CountRequest extends RequestBase {
   preference?: string
   routing?: Routing
   stats?: string[] | string
-  route_slice?: string
   terminate_after?: long
   q?: string
   body?: {
@@ -205,6 +206,7 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   include_source_on_error?: boolean
   pipeline?: string
   refresh?: Refresh
@@ -223,11 +225,11 @@ export type CreateResponse = WriteResponseBase
 export interface DeleteRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -238,6 +240,7 @@ export type DeleteResponse = WriteResponseBase
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -254,7 +257,6 @@ export interface DeleteByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  route_slice?: string
   q?: string
   scroll?: Duration
   scroll_size?: long
@@ -315,6 +317,7 @@ export type DeleteScriptResponse = AcknowledgedResponseBase
 export interface ExistsRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -360,6 +363,7 @@ export interface ExplainExplanationDetail {
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: QueryDslOperator
@@ -367,7 +371,6 @@ export interface ExplainRequest extends RequestBase {
   lenient?: boolean
   preference?: string
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -436,6 +439,7 @@ export interface GetGetResult<TDocument = unknown> {
   _id: Id
   _primary_term?: long
   _routing?: string
+  _slice?: SliceId
   _seq_no?: SequenceNumber
   _source?: TDocument
   _version?: VersionNumber
@@ -444,12 +448,12 @@ export interface GetGetResult<TDocument = unknown> {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_exclude_vectors?: boolean
@@ -772,6 +776,7 @@ export interface HealthReportStagnatingBackingIndices {
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
@@ -779,7 +784,6 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -929,6 +933,7 @@ export interface MgetOperation {
   _id: Id
   _index?: IndexName
   routing?: Routing
+  _slice?: SliceId
   _source?: SearchSourceConfig
   stored_fields?: Fields
   version?: VersionNumber
@@ -937,12 +942,12 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -981,7 +986,7 @@ export interface MsearchMultisearchHeader {
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
   ignore_throttled?: boolean
-  _slice?: string
+  _slice?: SliceId
 }
 
 export interface MsearchRequest extends RequestBase {
@@ -999,7 +1004,7 @@ export interface MsearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
-  route_slice?: string
+  route_slice?: SliceIds
   typed_keys?: boolean
   body?: MsearchRequestItem[]
 }
@@ -1044,6 +1049,7 @@ export interface MtermvectorsOperation {
   payloads?: boolean
   positions?: boolean
   routing?: Routing
+  _slice?: SliceId
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -1051,6 +1057,7 @@ export interface MtermvectorsOperation {
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   ids?: Id[]
   fields?: Fields
   field_statistics?: boolean
@@ -1060,7 +1067,6 @@ export interface MtermvectorsRequest extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -1090,6 +1096,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   routing?: Routing
+  route_slice?: SliceIds
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
   max_concurrent_shard_requests?: integer
@@ -1228,7 +1235,7 @@ export interface ReindexDestination {
   op_type?: OpType
   pipeline?: string
   routing?: string
-  _slice?: string
+  _slice?: SliceId
   version_type?: VersionType
 }
 
@@ -1288,6 +1295,7 @@ export interface ReindexSource {
   project_routing?: ProjectRouting
   size?: integer
   slice?: SlicedScroll
+  _slice?: SliceId
   sort?: Sort
   _source?: SearchSourceConfig
   runtime_mappings?: MappingRuntimeFields
@@ -1397,6 +1405,7 @@ export type ScrollResponse<TDocument = unknown> = SearchResponseBody<TDocument>
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -1417,7 +1426,6 @@ export interface SearchRequest extends RequestBase {
   pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
-  route_slice?: string
   scroll?: Duration
   search_type?: SearchType
   stats?: string[] | string
@@ -1758,6 +1766,7 @@ export interface SearchHit<TDocument = unknown> {
   _shard?: string
   _node?: string
   _routing?: string
+  _slice?: SliceId
   _source?: TDocument
   _rank?: integer
   _seq_no?: SequenceNumber
@@ -1917,6 +1926,7 @@ export interface SearchPhraseSuggester extends SearchSuggesterBase {
 export interface SearchPointInTimeReference {
   id: Id
   keep_alive?: Duration
+  _slice?: SliceId
 }
 
 export interface SearchProfile {
@@ -2205,7 +2215,7 @@ export interface SearchShardsRequest extends RequestBase {
   master_timeout?: Duration
   preference?: string
   routing?: Routing
-  route_slice?: string
+  route_slice?: SliceIds
 }
 
 export interface SearchShardsResponse {
@@ -2233,6 +2243,7 @@ export interface SearchShardsShardStoreIndex {
 
 export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -2312,6 +2323,7 @@ export interface TermvectorsFilter {
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
+  route_slice?: SliceId
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -2320,7 +2332,6 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -2372,6 +2383,7 @@ export interface TermvectorsToken {
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
@@ -2380,7 +2392,6 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   require_alias?: boolean
   retry_on_conflict?: integer
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   _source?: SearchSourceConfigParam
@@ -2405,6 +2416,7 @@ export interface UpdateUpdateWriteResponseBase<TDocument = unknown> extends Writ
 
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -2423,7 +2435,6 @@ export interface UpdateByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  route_slice?: string
   scroll?: Duration
   scroll_size?: long
   search_timeout?: Duration
@@ -3412,6 +3423,10 @@ export interface ShardStatistics {
 export interface ShardsOperationResponseBase {
   _shards?: ShardStatistics
 }
+
+export type SliceId = string
+
+export type SliceIds = SliceId | SliceId[]
 
 export interface SlicedScroll {
   field?: Field
@@ -12394,6 +12409,7 @@ export interface FleetPostSecretResponse {
 
 export interface FleetSearchRequest extends RequestBase {
   index: IndexName | IndexAlias
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -15014,7 +15030,7 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   rewrite?: boolean
   q?: string
   routing?: Routing
-  route_slice?: string
+  route_slice?: SliceIds
   body?: {
     query?: QueryDslQueryContainer
   }

@@ -576,6 +576,13 @@
             "PUT"
           ],
           "path": "/{index}/_bulk"
+        },
+        {
+          "methods": [
+            "POST",
+            "PUT"
+          ],
+          "path": "/{index}/{_slice}/_bulk"
         }
       ]
     },
@@ -4645,6 +4652,13 @@
             "GET"
           ],
           "path": "/{index}/_count"
+        },
+        {
+          "methods": [
+            "POST",
+            "GET"
+          ],
+          "path": "/{index}/{_slice}/_count"
         }
       ]
     },
@@ -4696,6 +4710,13 @@
             "POST"
           ],
           "path": "/{index}/_create/{id}"
+        },
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_create/{id}"
         }
       ]
     },
@@ -5054,6 +5075,12 @@
             "DELETE"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -5102,6 +5129,12 @@
             "POST"
           ],
           "path": "/{index}/_delete_by_query"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_delete_by_query"
         }
       ]
     },
@@ -6430,6 +6463,12 @@
             "HEAD"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "HEAD"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -6524,6 +6563,13 @@
             "POST"
           ],
           "path": "/{index}/_explain/{id}"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_explain/{id}"
         }
       ]
     },
@@ -6890,6 +6936,13 @@
             "POST"
           ],
           "path": "/{index}/_fleet/_fleet_search"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_fleet/_fleet_search"
         }
       ]
     },
@@ -6933,6 +6986,12 @@
             "GET"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -7736,6 +7795,19 @@
             "POST"
           ],
           "path": "/{index}/_doc"
+        },
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_doc"
         }
       ]
     },
@@ -14200,6 +14272,13 @@
             "POST"
           ],
           "path": "/{index}/_mget"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_mget"
         }
       ]
     },
@@ -18025,6 +18104,13 @@
             "POST"
           ],
           "path": "/{index}/_mtermvectors"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_mtermvectors"
         }
       ]
     },
@@ -20030,6 +20116,13 @@
             "POST"
           ],
           "path": "/{index}/_search"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_search"
         }
       ]
     },
@@ -20627,6 +20720,13 @@
             "POST"
           ],
           "path": "/{index}/_search/template"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_search/template"
         }
       ]
     },
@@ -26049,6 +26149,20 @@
             "POST"
           ],
           "path": "/{index}/_termvectors"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_termvectors/{id}"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_termvectors"
         }
       ]
     },
@@ -26879,6 +26993,12 @@
             "POST"
           ],
           "path": "/{index}/_update/{id}"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_update/{id}"
         }
       ]
     },
@@ -26930,6 +27050,12 @@
             "POST"
           ],
           "path": "/{index}/_update_by_query"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_update_by_query"
         }
       ]
     },
@@ -27617,7 +27743,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L150-L150"
     },
     {
       "kind": "interface",
@@ -27632,7 +27758,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L154-L154"
     },
     {
       "kind": "enum",
@@ -27654,7 +27780,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L85-L90"
+      "specLocation": "_global/bulk/types.ts#L86-L91"
     },
     {
       "kind": "interface",
@@ -27669,7 +27795,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L152-L152"
     },
     {
       "kind": "interface",
@@ -27708,7 +27834,7 @@
               "stability": "stable"
             }
           },
-          "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+          "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -27716,6 +27842,30 @@
             "type": {
               "name": "string",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         },
@@ -27764,7 +27914,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L117"
+      "specLocation": "_global/bulk/types.ts#L100-L127"
     },
     {
       "kind": "interface",
@@ -27823,7 +27973,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L168-L195",
       "variants": {
         "kind": "container"
       }
@@ -27848,7 +27998,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L92-L97"
+      "specLocation": "_global/bulk/types.ts#L93-L98"
     },
     {
       "kind": "request",
@@ -28067,6 +28217,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -28137,26 +28311,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -28252,7 +28406,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L271"
+      "specLocation": "_global/bulk/BulkRequest.ts#L34-L275"
     },
     {
       "kind": "response",
@@ -28521,7 +28675,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L36-L83"
+      "specLocation": "_global/bulk/types.ts#L37-L84"
     },
     {
       "kind": "interface",
@@ -28630,7 +28784,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L197-L236"
     },
     {
       "kind": "interface",
@@ -28671,7 +28825,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L156-L166"
     },
     {
       "kind": "interface",
@@ -28735,7 +28889,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L129-L148"
     },
     {
       "kind": "request",
@@ -29709,6 +29863,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -29895,26 +30073,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
           "name": "terminate_after",
           "required": false,
@@ -29939,7 +30097,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L32-L194"
+      "specLocation": "_global/count/CountRequest.ts#L33-L199"
     },
     {
       "kind": "response",
@@ -30076,6 +30234,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30144,7 +30326,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -30211,7 +30393,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L33-L204"
+      "specLocation": "_global/create/CreateRequest.ts#L34-L218"
     },
     {
       "kind": "response",
@@ -30316,6 +30498,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30378,26 +30584,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to wait for active shards.\n\nThis parameter is useful for situations where the primary shard assigned to perform the delete operation might not be available when the delete operation runs.\nSome reasons for this might be that the primary shard is currently recovering from a store or undergoing relocation.\nBy default, the delete operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error.",
           "name": "timeout",
           "required": false,
@@ -30451,7 +30637,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L159"
+      "specLocation": "_global/delete/DeleteRequest.ts#L36-L164"
     },
     {
       "kind": "response",
@@ -30751,6 +30937,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30964,26 +31174,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "A query in the Lucene query string syntax.",
           "name": "q",
           "required": false,
@@ -31160,7 +31350,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L40-L353"
     },
     {
       "kind": "response",
@@ -31712,6 +31902,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -31756,7 +31970,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "routing",
           "extDocUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get#get-routing",
           "name": "routing",
@@ -31844,7 +32058,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L139"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L33-L153"
     },
     {
       "kind": "response",
@@ -32252,6 +32466,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -32343,26 +32581,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "`True` or `false` to return the `_source` field or not or a list of fields to return.",
           "name": "_source",
           "required": false,
@@ -32423,7 +32641,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L137"
+      "specLocation": "_global/explain/ExplainRequest.ts#L33-L148"
     },
     {
       "kind": "response",
@@ -33243,6 +33461,29 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The sequence number assigned to the document for the indexing operation.\nSequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.",
           "extDocId": "optimistic_concurrency",
           "name": "_seq_no",
@@ -33280,7 +33521,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/types.ts#L25-L67"
+      "specLocation": "_global/get/types.ts#L31-L79"
     },
     {
       "kind": "request",
@@ -33360,6 +33601,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -33433,26 +33698,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -33550,7 +33795,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L32-L199"
+      "specLocation": "_global/get/GetRequest.ts#L33-L204"
     },
     {
       "kind": "response",
@@ -36671,6 +36916,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -36772,26 +37041,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.\n\nThis parameter is useful for situations where the primary shard assigned to perform the operation might not be available when the operation runs.\nSome reasons for this might be that the primary shard is currently recovering from a gateway or undergoing relocation.\nBy default, the operation will wait on the primary shard to become available for at least 1 minute before failing and responding with an error.\nThe actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
@@ -36871,7 +37120,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L290"
+      "specLocation": "_global/index/IndexRequest.ts#L37-L299"
     },
     {
       "kind": "response",
@@ -38327,7 +38576,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L62-L66"
+      "specLocation": "_global/mget/types.ts#L72-L76"
     },
     {
       "kind": "interface",
@@ -38361,13 +38610,37 @@
           }
         },
         {
-          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
               "namespace": "_types"
             }
           }
@@ -38419,7 +38692,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L32-L55"
+      "specLocation": "_global/mget/types.ts#L33-L65"
     },
     {
       "kind": "request",
@@ -38627,6 +38900,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -38702,26 +38999,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "True or false to return the `_source` field or not, or a list of fields to return.",
           "name": "_source",
           "required": false,
@@ -38775,7 +39052,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L138"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L32-L148"
     },
     {
       "kind": "response",
@@ -38836,7 +39113,7 @@
         "name": "ResponseItem",
         "namespace": "_global.mget"
       },
-      "specLocation": "_global/mget/types.ts#L57-L60",
+      "specLocation": "_global/mget/types.ts#L67-L70",
       "type": {
         "kind": "union_of",
         "items": [
@@ -38906,7 +39183,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L90-L93"
+      "specLocation": "_global/msearch/types.ts#L92-L95"
     },
     {
       "kind": "interface",
@@ -38956,7 +39233,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L80-L83"
+      "specLocation": "_global/msearch/types.ts#L82-L85"
     },
     {
       "kind": "interface",
@@ -39103,6 +39380,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -39110,19 +39391,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier for routing the search to a specific slice.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L37-L78"
+      "specLocation": "_global/msearch/types.ts#L38-L80"
     },
     {
       "kind": "request",
@@ -39392,6 +39673,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -39399,14 +39684,14 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided at the top level, all sub-searches are routed to shards matching the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.\nIndividual sub-search headers can also specify `_slice` to override the top-level setting.",
+          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided at the top level, all sub-searches are routed to shards matching the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.\nIndividual sub-search headers can also specify `_slice` to override the top-level setting.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         },
@@ -39423,7 +39708,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L32-L180"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L33-L182"
     },
     {
       "kind": "type_alias",
@@ -39435,7 +39720,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L32-L35",
+      "specLocation": "_global/msearch/types.ts#L33-L36",
       "type": {
         "kind": "union_of",
         "items": [
@@ -39506,7 +39791,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L85-L88",
+      "specLocation": "_global/msearch/types.ts#L87-L90",
       "type": {
         "kind": "union_of",
         "items": [
@@ -39961,13 +40246,37 @@
           }
         },
         {
-          "description": "Custom value used to route operations to a specific shard.",
+          "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
               "namespace": "_types"
             }
           }
@@ -40010,7 +40319,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L35-L94"
+      "specLocation": "_global/mtermvectors/types.ts#L36-L104"
     },
     {
       "kind": "request",
@@ -40185,6 +40494,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -40307,26 +40640,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "If true, the response includes term frequency and document frequency.",
           "name": "term_statistics",
           "required": false,
@@ -40364,7 +40677,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L32-L149"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L33-L153"
     },
     {
       "kind": "response",
@@ -40489,7 +40802,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L96-L104"
+      "specLocation": "_global/mtermvectors/types.ts#L106-L114"
     },
     {
       "kind": "request",
@@ -40631,7 +40944,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -40640,6 +40953,30 @@
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the point in time to that slice.\nWhen omitted, the point in time covers all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
               "namespace": "_types"
             }
           }
@@ -40684,7 +41021,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L166"
     },
     {
       "kind": "response",
@@ -41914,6 +42251,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -41921,14 +42262,14 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier used to route the reindexed documents to a specific slice of the destination index.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the destination index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier used to route the reindexed documents to a specific slice of the destination index.\nNot allowed when `index.slice.enabled` is `false` for the destination index.\nWhen `index.slice.enabled` is `true`, it is required unless the source is read with `_slice`, in which case each document keeps its source slice, or a script sets `ctx._slice`.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         },
@@ -41945,7 +42286,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L39-L76"
+      "specLocation": "_global/reindex/types.ts#L40-L78"
     },
     {
       "kind": "interface",
@@ -42058,7 +42399,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L136-L172"
+      "specLocation": "_global/reindex/types.ts#L147-L183"
     },
     {
       "kind": "request",
@@ -43084,6 +43425,30 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice of a slice-enabled source index (`index.slice.enabled` set to `true`) to read, or `_all` to read all slices.\nThe reindexed documents keep the slice they are read from, unless `_slice` is set in `dest`.\nNot supported when reindexing from a remote cluster.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "deprecation": {
             "description": "",
             "version": "7.6.0"
@@ -43125,7 +43490,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L78-L134"
+      "specLocation": "_global/reindex/types.ts#L80-L145"
     },
     {
       "kind": "interface",
@@ -45282,6 +45647,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -45547,26 +45936,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -45935,7 +46304,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L55-L632"
+      "specLocation": "_global/search/SearchRequest.ts#L56-L637"
     },
     {
       "kind": "response",
@@ -48923,6 +49292,29 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_source",
           "required": false,
           "type": {
@@ -48989,7 +49381,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L69"
+      "specLocation": "_global/search/_types/hits.ts#L41-L76"
     },
     {
       "kind": "interface",
@@ -49075,7 +49467,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L71-L81"
+      "specLocation": "_global/search/_types/hits.ts#L78-L88"
     },
     {
       "kind": "interface",
@@ -49299,7 +49691,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L115-L152"
+      "specLocation": "_global/search/_types/hits.ts#L122-L159"
     },
     {
       "kind": "interface",
@@ -49325,7 +49717,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L93-L95"
+      "specLocation": "_global/search/_types/hits.ts#L100-L102"
     },
     {
       "kind": "interface",
@@ -50001,7 +50393,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L97-L101"
+      "specLocation": "_global/search/_types/hits.ts#L104-L108"
     },
     {
       "kind": "interface",
@@ -50414,9 +50806,33 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers to search within the point in time: a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to search all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L33"
     },
     {
       "kind": "interface",
@@ -52804,7 +53220,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L103-L106"
+      "specLocation": "_global/search/_types/hits.ts#L110-L113"
     },
     {
       "kind": "enum",
@@ -52822,7 +53238,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L108-L113"
+      "specLocation": "_global/search/_types/hits.ts#L115-L120"
     },
     {
       "kind": "type_alias",
@@ -52835,7 +53251,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L154-L162",
+      "specLocation": "_global/search/_types/hits.ts#L161-L169",
       "type": {
         "kind": "union_of",
         "items": [
@@ -53547,6 +53963,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -53554,19 +53974,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided, the request is limited to shards that match the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided, the request is limited to shards that match the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/search_shards/SearchShardsRequest.ts#L24-L116"
+      "specLocation": "_global/search_shards/SearchShardsRequest.ts#L30-L123"
     },
     {
       "kind": "response",
@@ -53973,6 +54393,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -54084,7 +54528,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -54152,7 +54596,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L35-L179"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L36-L195"
     },
     {
       "kind": "response",
@@ -55158,6 +55602,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -55267,26 +55735,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
           "name": "term_statistics",
           "required": false,
@@ -55324,7 +55772,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L34-L255"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L35-L264"
     },
     {
       "kind": "response",
@@ -56139,6 +56587,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -56253,26 +56725,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to wait for the following operations: dynamic mapping updates and waiting for active shards.\nElasticsearch waits for at least the timeout period before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
@@ -56339,7 +56791,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L210"
+      "specLocation": "_global/update/UpdateRequest.ts#L40-L215"
     },
     {
       "kind": "response",
@@ -56680,6 +57132,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -56917,26 +57393,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to retain the search context for scrolling.",
           "extDocId": "search-scroll-results",
           "name": "scroll",
@@ -57109,7 +57565,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L39-L374"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L40-L378"
     },
     {
       "kind": "response",
@@ -58217,7 +58673,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L140-L144",
+      "specLocation": "_types/common.ts#L146-L150",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -58415,7 +58871,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L92-L93",
+      "specLocation": "_types/common.ts#L98-L99",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58468,7 +58924,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L164-L176"
+      "specLocation": "_types/common.ts#L170-L182"
     },
     {
       "kind": "interface",
@@ -58557,7 +59013,7 @@
         "name": "ClusterAlias",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L74-L74",
+      "specLocation": "_types/common.ts#L80-L80",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -58677,7 +59133,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L408-L414"
+      "specLocation": "_types/common.ts#L414-L420"
     },
     {
       "kind": "type_alias",
@@ -58685,7 +59141,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L416-L416",
+      "specLocation": "_types/common.ts#L422-L422",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58928,7 +59384,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L418-L472"
+      "specLocation": "_types/common.ts#L424-L478"
     },
     {
       "kind": "type_alias",
@@ -58936,7 +59392,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L474-L474",
+      "specLocation": "_types/common.ts#L480-L480",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59032,7 +59488,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L178-L187"
+      "specLocation": "_types/common.ts#L184-L193"
     },
     {
       "kind": "interface",
@@ -59163,7 +59619,7 @@
         "name": "DataStreamName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L88-L88",
+      "specLocation": "_types/common.ts#L94-L94",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -59178,7 +59634,7 @@
         "name": "DataStreamNames",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L90-L90",
+      "specLocation": "_types/common.ts#L96-L96",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59810,7 +60266,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L155-L156"
+      "specLocation": "_types/common.ts#L161-L162"
     },
     {
       "kind": "type_alias",
@@ -60019,7 +60475,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L196-L210"
+      "specLocation": "_types/common.ts#L202-L216"
     },
     {
       "kind": "type_alias",
@@ -60027,7 +60483,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L212-L212",
+      "specLocation": "_types/common.ts#L218-L218",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60058,7 +60514,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L134",
+      "specLocation": "_types/common.ts#L139-L140",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -60379,7 +60835,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L135-L135",
+      "specLocation": "_types/common.ts#L141-L141",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60505,7 +60961,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L128-L129",
+      "specLocation": "_types/common.ts#L134-L135",
       "type": {
         "kind": "union_of",
         "items": [
@@ -61209,7 +61665,7 @@
         "name": "GrokPattern",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L83-L83",
+      "specLocation": "_types/common.ts#L89-L89",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -61253,7 +61709,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L214-L236"
+      "specLocation": "_types/common.ts#L220-L242"
     },
     {
       "kind": "type_alias",
@@ -61276,7 +61732,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L153-L153",
+      "specLocation": "_types/common.ts#L159-L159",
       "type": {
         "kind": "dictionary_of",
         "key": {
@@ -61786,7 +62242,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L357-L389"
+      "specLocation": "_types/common.ts#L363-L395"
     },
     {
       "kind": "interface",
@@ -62017,7 +62473,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L342-L355"
+      "specLocation": "_types/common.ts#L348-L361"
     },
     {
       "kind": "interface",
@@ -62627,7 +63083,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L260-L264"
+      "specLocation": "_types/common.ts#L266-L270"
     },
     {
       "kind": "enum",
@@ -63018,7 +63474,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L95-L95",
+      "specLocation": "_types/common.ts#L101-L101",
       "type": {
         "kind": "dictionary_of",
         "key": {
@@ -63043,7 +63499,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L158-L162",
+      "specLocation": "_types/common.ts#L164-L168",
       "type": {
         "kind": "union_of",
         "items": [
@@ -63072,7 +63528,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L130-L131",
+      "specLocation": "_types/common.ts#L136-L137",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63087,7 +63543,7 @@
         "name": "Name",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L76-L76",
+      "specLocation": "_types/common.ts#L82-L82",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63102,7 +63558,7 @@
         "name": "Names",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L77-L77",
+      "specLocation": "_types/common.ts#L83-L83",
       "type": {
         "kind": "union_of",
         "items": [
@@ -63132,7 +63588,7 @@
         "name": "Namespace",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L79-L79",
+      "specLocation": "_types/common.ts#L85-L85",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63329,7 +63785,7 @@
         "name": "NodeName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L85-L86",
+      "specLocation": "_types/common.ts#L91-L92",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63642,7 +64098,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L270"
+      "specLocation": "_types/common.ts#L272-L276"
     },
     {
       "kind": "enum",
@@ -63685,7 +64141,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L272-L281"
+      "specLocation": "_types/common.ts#L278-L287"
     },
     {
       "kind": "type_alias",
@@ -63693,7 +64149,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L190-L190",
+      "specLocation": "_types/common.ts#L196-L196",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63802,7 +64258,7 @@
         "name": "PipelineName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L82-L82",
+      "specLocation": "_types/common.ts#L88-L88",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63958,7 +64414,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L125-L125",
+      "specLocation": "_types/common.ts#L131-L131",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -64490,7 +64946,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L283-L290"
+      "specLocation": "_types/common.ts#L289-L296"
     },
     {
       "kind": "interface",
@@ -65143,7 +65599,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L126-L126",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -66525,7 +66981,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L292-L297"
+      "specLocation": "_types/common.ts#L298-L303"
     },
     {
       "kind": "interface",
@@ -66830,7 +67286,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L123-L123",
+      "specLocation": "_types/common.ts#L129-L129",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -66845,7 +67301,7 @@
         "name": "Service",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L80-L80",
+      "specLocation": "_types/common.ts#L86-L86",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -67032,6 +67488,52 @@
       "specLocation": "_types/Base.ts#L150-L153"
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceId",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L73-L73",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+      "name": {
+        "name": "SliceIds",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L74-L77",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SliceId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "SlicedScroll",
@@ -67085,7 +67587,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L396",
+      "specLocation": "_types/common.ts#L397-L402",
       "type": {
         "kind": "union_of",
         "items": [
@@ -67118,7 +67620,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L406"
+      "specLocation": "_types/common.ts#L404-L412"
     },
     {
       "kind": "type_alias",
@@ -67613,7 +68115,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L299-L312"
+      "specLocation": "_types/common.ts#L305-L318"
     },
     {
       "kind": "type_alias",
@@ -67622,7 +68124,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L146-L150",
+      "specLocation": "_types/common.ts#L152-L156",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -67691,7 +68193,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L127-L127",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -67865,7 +68367,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L314-L325"
+      "specLocation": "_types/common.ts#L320-L331"
     },
     {
       "kind": "type_alias",
@@ -68270,7 +68772,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L189-L189",
+      "specLocation": "_types/common.ts#L195-L195",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68285,7 +68787,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L120-L120",
+      "specLocation": "_types/common.ts#L126-L126",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68300,7 +68802,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L98-L98",
+      "specLocation": "_types/common.ts#L104-L104",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68315,7 +68817,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L100-L100",
+      "specLocation": "_types/common.ts#L106-L106",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68344,7 +68846,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L102-L117"
+      "specLocation": "_types/common.ts#L108-L123"
     },
     {
       "kind": "enum",
@@ -68360,7 +68862,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L331"
+      "specLocation": "_types/common.ts#L333-L337"
     },
     {
       "kind": "type_alias",
@@ -68372,7 +68874,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L137-L138",
+      "specLocation": "_types/common.ts#L143-L144",
       "type": {
         "kind": "union_of",
         "items": [
@@ -68419,7 +68921,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L340"
+      "specLocation": "_types/common.ts#L339-L346"
     },
     {
       "kind": "interface",
@@ -159327,6 +159829,30 @@
               }
             ]
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -159520,6 +160046,7 @@
           }
         },
         {
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -159832,7 +160359,7 @@
           }
         }
       ],
-      "specLocation": "fleet/search/SearchRequest.ts#L55-L284"
+      "specLocation": "fleet/search/SearchRequest.ts#L56-L301"
     },
     {
       "kind": "response",
@@ -188554,6 +189081,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -188561,19 +189092,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L146"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L31-L153"
     },
     {
       "kind": "response",
