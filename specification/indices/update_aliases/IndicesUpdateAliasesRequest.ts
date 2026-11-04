@@ -39,7 +39,6 @@ import { Action } from './types'
  * @availability serverless stability=stable visibility=public
  * @index_privileges manage
  * @doc_id aliases-update
- * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [
