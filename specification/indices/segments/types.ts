@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, Field, VersionString } from '@_types/common'
+import { ByteSize, Field, NodeId, VersionString } from '@_types/common'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -123,7 +123,7 @@ export class OsqSegmentAutoCalibrationParameters {
 
 export class ShardSegmentRouting {
   /** The node ID of the node that holds the shard. */
-  node: string
+  node: NodeId
   /** The node ID of the node the shard is relocating to. Only returned while the shard is relocating. */
   relocating_node?: NodeId
   /** If `true`, the shard is a primary shard. */
