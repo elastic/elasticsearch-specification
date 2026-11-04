@@ -54,6 +54,7 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @availability serverless stability=stable visibility=public
  * @doc_tag document
  * @doc_id docs-get
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [

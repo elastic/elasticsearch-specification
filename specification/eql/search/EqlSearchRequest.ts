@@ -41,6 +41,7 @@ import { ResultPosition } from './types'
  * @availability serverless stability=stable visibility=public
  * @doc_id eql-search-api
  * @ext_doc_id eql
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
