@@ -802,13 +802,15 @@ export function hoistTypeAnnotations (type: model.TypeDefinition, jsDocs: JSDoc[
   })
 }
 
+function isBuiltin (item: model.ValueOf, name: string): boolean {
+  return item.kind === 'instance_of' && item.type.namespace === '_builtins' && item.type.name === name
+}
+
 /** Whether a union is `T | T[]`, `T | null` or `T | string`, the only unions that can have a server default */
 function isServerDefaultUnion (items: model.ValueOf[]): boolean {
   if (items.length !== 2) {
     return false
   }
-  const isBuiltin = (item: model.ValueOf, name: string): boolean =>
-    item.kind === 'instance_of' && item.type.namespace === '_builtins' && item.type.name === name
   if (items.some(item => isBuiltin(item, 'null') || isBuiltin(item, 'string'))) {
     return true
   }
@@ -816,6 +818,28 @@ function isServerDefaultUnion (items: model.ValueOf[]): boolean {
     array.kind === 'array_of' && array.value.kind === 'instance_of' && item.kind === 'instance_of' &&
     array.value.type.name === item.type.name && array.value.type.namespace === item.type.namespace
   return isArrayOf(items[0], items[1]) || isArrayOf(items[1], items[0])
+}
+
+/**
+ * The type a server default is checked against: `T` for `T | T[]`, `T | null`, `T | string` and `Stringified<T>`.
+ * `allowsString` is true when a value that isn't a valid `T` can still be a string, as in `T | string`.
+ */
+function serverDefaultType (type: model.ValueOf): { type: model.ValueOf, allowsString: boolean } {
+  if (type.kind === 'instance_of' && type.type.namespace === '_spec_utils' && type.type.name === 'Stringified' &&
+    type.generics?.length === 1) {
+    return serverDefaultType(type.generics[0])
+  }
+  if (type.kind === 'union_of') {
+    const member = type.items.find(item => !isBuiltin(item, 'null') && !isBuiltin(item, 'string') && item.kind !== 'array_of') ??
+      type.items.find(item => isBuiltin(item, 'string')) ??
+      type.items.find(item => !isBuiltin(item, 'null'))
+    if (member != null) {
+      const allowsString = !isBuiltin(member, 'string') && type.items.some(item => isBuiltin(item, 'string'))
+      const result = serverDefaultType(member)
+      return { type: result.type, allowsString: allowsString || result.allowsString }
+    }
+  }
+  return { type, allowsString: false }
 }
 
 /** Lifts jsDoc type annotations to fixed properties on Property */
@@ -883,9 +907,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
       if (property.type.kind === 'union_of') {
         assert(jsDocs, isServerDefaultUnion(property.type.items), 'Default values in unions can only be configured for `T | T[]`, `T | null` or `T | string` unions')
       }
-      if (property.type.kind === 'union_of' && !value.startsWith('[')) {
-        property.serverDefault = value
-      } else if (property.type.kind === 'array_of' || property.type.kind === 'union_of') {
+      const { type: defaultType, allowsString } = serverDefaultType(property.type)
+      if (defaultType.kind === 'array_of' || (property.type.kind === 'union_of' && value.startsWith('['))) {
         try {
           value = eval(value) // eslint-disable-line
         } catch (err) {
@@ -899,10 +922,14 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
           value = value.replace('\\@', '@')
         }
 
-        switch (property.type.type.name) {
+        switch (defaultType.kind === 'instance_of' ? defaultType.type.name : undefined) {
           case 'boolean':
-            assert(jsDocs, value === 'true' || value === 'false', `The default value for ${property.name} should be a boolean`)
-            property.serverDefault = value === 'true'
+            if (value === 'true' || value === 'false') {
+              property.serverDefault = value === 'true'
+            } else {
+              assert(jsDocs, allowsString, `The default value for ${property.name} should be a boolean`)
+              property.serverDefault = value
+            }
             break
           case 'number':
           case 'short':
@@ -914,8 +941,12 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
           case 'float':
           case 'double':
           case 'Percentage':
-            assert(jsDocs, !isNaN(Number(value)), `The default value for ${property.name} should be a number`)
-            property.serverDefault = Number(value)
+            if (!isNaN(Number(value))) {
+              property.serverDefault = Number(value)
+            } else {
+              assert(jsDocs, allowsString, `The default value for ${property.name} should be a number`)
+              property.serverDefault = value
+            }
             break
           default:
             property.serverDefault = value
