@@ -67,6 +67,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search
  * @doc_tag search
+ * @index_privileges read
  */
 // NOTE: this is a SearchRequest with:
 //  * 2 added parameters: wait_for_completion_timeout, keep_on_completion and keep_alive

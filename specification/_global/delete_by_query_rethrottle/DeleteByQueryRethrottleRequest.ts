@@ -31,6 +31,7 @@ import { float } from '@_types/Numeric'
  * @availability serverless stability=stable visibility=private
  * @doc_tag document
  * @doc_id docs-delete-by-query-rethrottle
+ * @cluster_privileges manage_reindex
  */
 export interface Request extends RequestBase {
   urls: [
