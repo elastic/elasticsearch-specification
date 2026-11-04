@@ -217,6 +217,11 @@ export class PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
+  /*
+  @availability stack since=9.6.0
+  @availability serverless
+  */
+  native_controller_enabled_settings: string[]
 }
 
 export class QueryCacheStats {

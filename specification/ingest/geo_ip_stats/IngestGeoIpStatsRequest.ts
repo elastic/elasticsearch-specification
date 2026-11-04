@@ -29,6 +29,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=7.13.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @ext_doc_id geoip-processor
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   urls: [

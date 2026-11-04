@@ -18,7 +18,13 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Indices, MediaType, Routing } from '@_types/common'
+import {
+  ExpandWildcards,
+  Indices,
+  MediaType,
+  Routing,
+  SliceIds
+} from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -107,10 +113,11 @@ export interface Request extends RequestBase {
      * The slice identifier for routing the search to a specific slice.
      * When provided, the request is limited to shards that match the given slice value.
      * Use the special value `_all` to query all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * When omitted, all slices are targeted.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceIds
   }
 }

@@ -464,6 +464,7 @@ k-precision,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search
 k-recall,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-rank-eval#k-recall,[use-doc-url],,More about ranking evaluation
 kv-processor,https://www.elastic.co/docs/reference/enrich-processor/kv-processor,[use-doc-url],,Learn more about kv processor
 knn-approximate,https://www.elastic.co/docs/solutions/search/vector/knn#approximate-knn,[use-doc-url],,About kNN search in Elasticsearch
+knn-eval,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-eval,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-knn-eval,,Evaluate kNN search settings
 knn-inner-hits,https://www.elastic.co/docs/solutions/search/vector/knn#nested-knn-search-inner-hits,[use-doc-url],,About kNN search in Elasticsearch
 license-management,https://www.elastic.co/docs/deploy-manage/license/manage-your-license-in-self-managed-cluster,[use-doc-url],,About managing your license
 list-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-get-behavioral-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search-application-get-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/list-analytics-collection.html,About behavioral analytics
@@ -568,6 +569,7 @@ node-roles,https://www.elastic.co/docs/reference/elasticsearch/configuration-ref
 nodes-api-shutdown-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-delete-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-shutdown.html,About distributed architecture
 nodes-api-shutdown-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-get-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-shutdown.html,About distributed architecture
 nodes-api-shutdown,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-put-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-shutdown.html,About distributed architecture
+normalize-for-stream-processor,https://www.elastic.co/docs/reference/enrich-processor/normalize-for-stream,[use-doc-url],,More about the normalize-for-stream processor
 openai-api-keys,https://platform.openai.com/api-keys,[use-doc-url],,More about OpenAI platform
 openai-models,https://platform.openai.com/docs/guides/embeddings/what-are-embeddings,[use-doc-url],,Learn more about OpenAI models
 optimistic-concurrency,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control,[use-doc-url],,About optimistic concurrency
@@ -601,6 +603,7 @@ query-dsl-bool-query,https://www.elastic.co/docs/reference/query-languages/query
 query-dsl-boosting-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-boosting-query,[use-doc-url],,More about the boosting query
 query-dsl-combined-fields-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-combined-fields-query,[use-doc-url],,More about combined fields
 query-dsl-constant-score-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-constant-score-query,[use-doc-url],,More about constant score query
+query-dsl-dense-vector-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query,[use-doc-url],,About the dense vector query
 query-dsl-dis-max-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query,[use-doc-url],,About the disjunction max query
 query-dsl-distance-feature-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-distance-feature-query,[use-doc-url],,About the distance feature query
 query-dsl-exists-query,https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-exists-query,[use-doc-url],,More about the exists query
@@ -676,6 +679,7 @@ list-query-rules-in-ui,https://www.elastic.co/docs/solutions/search/query-rules-
 delete-query-ruleset-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset,[use-doc-url],,About deleting a query ruleset
 random_sample,https://www.elastic.co/docs/api/doc/elasticsearch/group/ingest-random-sampling,[use-doc-url],,Learn more about random_sample
 realtime,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html,More about a document by its id
+recover-failure-document-processor,https://www.elastic.co/docs/reference/enrich-processor/recover-failure-document-processor,[use-doc-url],,More about the recover failure document processor
 redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-processor,[use-doc-url],,More about redact processor
 refresh_an_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter,[use-doc-url],,More about the refresh parameter
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax,[use-doc-url],,About the regular expression

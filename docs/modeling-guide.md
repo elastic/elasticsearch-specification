@@ -472,6 +472,30 @@ export type MyType = MyTypeUntyped | MyTypeSpecialized1 | MyTypeSpecialized2 | M
 
 #### Other cases
 
+##### Single member union
+
+If the server currently returns a single class, but you know it will become a tagged union later (for example, in the server code it's the only implementation of a sealed interface), you can model it as a tagged union with a single member:
+
+```ts
+class OsqSegmentAutoCalibration {
+  type: 'osq'
+  calibrated: boolean
+}
+
+/**
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+type SegmentAutoCalibration = OsqSegmentAutoCalibration
+```
+
+Adding more members later won't be a breaking change for the clients.
+
+It only works with `internal` and external variants.
+For external variants, the member still needs a `@variant name=...` tag, as in any externally tagged union.
+
+##### Codegen names
+
 If none of the above variant options are applicable to the newly defined union, likely because there's no way to distinguish between the two types, `@codegen_names` must be used so that the clients can provide better builders and handle deserialization more easily.
 
 For example:

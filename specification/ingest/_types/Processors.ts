@@ -199,10 +199,23 @@ export class ProcessorContainer {
    */
   network_direction?: NetworkDirectionProcessor
   /**
+   * Detects whether a document is OpenTelemetry-compliant and, if not, normalizes it so that it can be queried by clients that expect either ECS or OpenTelemetry Semantic Conventions formats.
+   * @doc_id normalize-for-stream-processor
+   * @availability stack since=9.1.0 stability=tech_preview
+   */
+  normalize_for_stream?: NormalizeForStreamProcessor
+  /**
    * Executes another pipeline.
    * @doc_id pipeline-processor
    */
   pipeline?: PipelineProcessor
+  /**
+   * Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.
+   * @doc_id recover-failure-document-processor
+   * @availability stack since=9.2.0
+   * @availability serverless
+   */
+  recover_failure_document?: RecoverFailureDocumentProcessor
   /**
    * The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.
    * The processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.
@@ -1349,6 +1362,8 @@ export class NetworkDirectionProcessor extends ProcessorBase {
   ignore_missing?: boolean
 }
 
+export class NormalizeForStreamProcessor extends ProcessorBase {}
+
 export class PipelineProcessor extends ProcessorBase {
   /**
    * The name of the pipeline to execute.
@@ -1361,6 +1376,8 @@ export class PipelineProcessor extends ProcessorBase {
    */
   ignore_missing_pipeline?: boolean
 }
+
+export class RecoverFailureDocumentProcessor extends ProcessorBase {}
 
 export class RedactProcessor extends ProcessorBase {
   /**

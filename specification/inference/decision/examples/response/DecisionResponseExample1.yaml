@@ -1,0 +1,36 @@
+summary: Decision task
+description: >
+  A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "decision": {
+      "answers": {
+        "is_complaint": {
+          "type": "predicate",
+          "probability": 0.94
+        },
+        "team": {
+          "type": "choice",
+          "choice": "billing",
+          "probabilities": [
+            { "value": "billing", "probability": 0.91 },
+            { "value": "shipping", "probability": 0.04 },
+            { "value": "other", "probability": 0.05 }
+          ],
+          "confidence": 0.89
+        },
+        "anger": {
+          "type": "score",
+          "score": 1.4,
+          "probabilities": [
+            { "value": 0, "label": "calm", "probability": 0.1 },
+            { "value": 1, "label": "annoyed", "probability": 0.4 },
+            { "value": 2, "label": "furious", "probability": 0.5 }
+          ],
+          "confidence": 0.62
+        }
+      }
+    }
+  }

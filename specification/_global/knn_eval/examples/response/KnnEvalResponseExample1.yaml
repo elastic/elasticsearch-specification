@@ -1,0 +1,43 @@
+summary: Evaluate kNN search settings
+description: >
+  A response from `POST my-index/_knn_eval`, with the recall of each `knn_settings` entry against the default baseline.
+# type: "response"
+# response_code:
+value: |-
+  {
+    "query_source": {
+      "from": "docs"
+    },
+    "baseline": {
+      "visit_percentage": 20.0,
+      "rescore_vector": {
+        "oversample": 100.0
+      }
+    },
+    "baseline_took_ms": 412,
+    "baseline_vector_ops": 2048000,
+    "baseline_vector_ops_kind": "quantized_visit_plus_rescore",
+    "results": [
+      {
+        "knn_settings": {
+          "visit_percentage": 1.0
+        },
+        "recall": 0.87,
+        "included_queries": 100,
+        "excluded_queries": 0,
+        "took_ms": 35,
+        "vector_ops": 102400
+      },
+      {
+        "knn_settings": {
+          "visit_percentage": 5.0
+        },
+        "recall": 0.97,
+        "included_queries": 99,
+        "excluded_queries": 1,
+        "took_ms": 96,
+        "vector_ops": 512000
+      }
+    ],
+    "failures": {}
+  }

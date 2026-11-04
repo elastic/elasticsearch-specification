@@ -32,6 +32,7 @@ export interface BulkOperationBase {
   _id?: Id
   _index?: IndexName
   routing?: string
+  _slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber
@@ -49,12 +50,12 @@ export type BulkOperationType = 'index' | 'create' | 'update' | 'delete'
 
 export interface BulkRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   include_source_on_error?: boolean
   list_executed_pipelines?: boolean
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -175,6 +176,7 @@ export interface ClosePointInTimeResponse {
 
 export interface CountRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -188,7 +190,6 @@ export interface CountRequest extends RequestBase {
   preference?: string
   routing?: Routing
   stats?: string[] | string
-  route_slice?: string
   terminate_after?: long
   q?: string
   body?: {
@@ -205,6 +206,7 @@ export interface CountResponse {
 export interface CreateRequest<TDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   include_source_on_error?: boolean
   pipeline?: string
   refresh?: Refresh
@@ -223,11 +225,11 @@ export type CreateResponse = WriteResponseBase
 export interface DeleteRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -238,6 +240,7 @@ export type DeleteResponse = WriteResponseBase
 
 export interface DeleteByQueryRequest extends RequestBase {
   index: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -254,7 +257,6 @@ export interface DeleteByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  route_slice?: string
   q?: string
   scroll?: Duration
   scroll_size?: long
@@ -315,6 +317,7 @@ export type DeleteScriptResponse = AcknowledgedResponseBase
 export interface ExistsRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   preference?: string
   realtime?: boolean
   refresh?: boolean
@@ -360,6 +363,7 @@ export interface ExplainExplanationDetail {
 export interface ExplainRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   analyzer?: string
   analyze_wildcard?: boolean
   default_operator?: QueryDslOperator
@@ -367,7 +371,6 @@ export interface ExplainRequest extends RequestBase {
   lenient?: boolean
   preference?: string
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -436,6 +439,7 @@ export interface GetGetResult<TDocument = unknown> {
   _id: Id
   _primary_term?: long
   _routing?: string
+  _slice?: SliceId
   _seq_no?: SequenceNumber
   _source?: TDocument
   _version?: VersionNumber
@@ -444,12 +448,12 @@ export interface GetGetResult<TDocument = unknown> {
 export interface GetRequest extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_exclude_vectors?: boolean
@@ -772,6 +776,7 @@ export interface HealthReportStagnatingBackingIndices {
 export interface IndexRequest<TDocument = unknown> extends RequestBase {
   id?: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
@@ -779,7 +784,6 @@ export interface IndexRequest<TDocument = unknown> extends RequestBase {
   pipeline?: string
   refresh?: Refresh
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   version?: VersionNumber
   version_type?: VersionType
@@ -800,6 +804,84 @@ export interface InfoResponse {
   name: Name
   tagline: string
   version: ElasticsearchVersionInfo
+}
+
+export interface KnnEvalKnnEvalDocsQuerySource {
+  from: 'docs'
+  size: integer
+  seed?: integer
+}
+
+export interface KnnEvalKnnEvalFailure {
+  error: ErrorCause
+}
+
+export type KnnEvalKnnEvalQuerySource = KnnEvalKnnEvalDocsQuerySource | KnnEvalKnnEvalVectorsQuerySource
+
+export interface KnnEvalKnnEvalQuerySourceSummary {
+  from: KnnEvalKnnEvalQuerySourceType
+}
+
+export type KnnEvalKnnEvalQuerySourceType = 'docs' | 'vectors'
+
+export interface KnnEvalKnnEvalQueryVector {
+  id: string
+  query_vector: QueryVector
+}
+
+export interface KnnEvalKnnEvalReportedSettings extends KnnEvalKnnEvalSettings {
+  rescore_window_capped?: boolean
+  quantized_scores?: boolean
+}
+
+export interface KnnEvalKnnEvalResult {
+  knn_settings: KnnEvalKnnEvalReportedSettings
+  recall: double | null
+  included_queries: long
+  excluded_queries: long
+  took_ms: DurationValue<UnitMillis>
+  vector_ops: long
+}
+
+export interface KnnEvalKnnEvalSettings {
+  visit_percentage?: float
+  num_candidates?: integer
+  rescore_vector?: RescoreVector
+  exact?: boolean
+}
+
+export type KnnEvalKnnEvalVectorOpsKind = 'full_precision_scan' | 'quantized_visit_plus_rescore'
+
+export interface KnnEvalKnnEvalVectorsQuerySource {
+  from: 'vectors'
+  vectors: KnnEvalKnnEvalQueryVector[]
+}
+
+export interface KnnEvalRequest extends RequestBase {
+  index: Indices
+  ignore_unavailable?: boolean
+  allow_no_indices?: boolean
+  expand_wildcards?: ExpandWildcards
+  wait_for_completion?: boolean
+  body?: {
+    field: Field
+    k: integer
+    query_source: KnnEvalKnnEvalQuerySource
+    baseline?: KnnEvalKnnEvalSettings
+    knn_settings: KnnEvalKnnEvalSettings[]
+    allow_exact_baseline?: boolean
+  }
+}
+
+export interface KnnEvalResponse {
+  query_source?: KnnEvalKnnEvalQuerySourceSummary
+  baseline?: KnnEvalKnnEvalReportedSettings
+  baseline_took_ms?: DurationValue<UnitMillis>
+  baseline_vector_ops?: long
+  baseline_vector_ops_kind?: KnnEvalKnnEvalVectorOpsKind
+  results?: KnnEvalKnnEvalResult[]
+  failures?: Record<string, KnnEvalKnnEvalFailure>
+  task?: TaskId
 }
 
 export interface KnnSearchRequest extends RequestBase {
@@ -851,6 +933,7 @@ export interface MgetOperation {
   _id: Id
   _index?: IndexName
   routing?: Routing
+  _slice?: SliceId
   _source?: SearchSourceConfig
   stored_fields?: Fields
   version?: VersionNumber
@@ -859,12 +942,12 @@ export interface MgetOperation {
 
 export interface MgetRequest extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   force_synthetic_source?: boolean
   preference?: string
   realtime?: boolean
   refresh?: boolean
   routing?: Routing
-  route_slice?: string
   _source?: SearchSourceConfigParam
   _source_excludes?: Fields
   _source_includes?: Fields
@@ -903,7 +986,7 @@ export interface MsearchMultisearchHeader {
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
   ignore_throttled?: boolean
-  _slice?: string
+  _slice?: SliceId
 }
 
 export interface MsearchRequest extends RequestBase {
@@ -921,7 +1004,7 @@ export interface MsearchRequest extends RequestBase {
   rest_total_hits_as_int?: boolean
   routing?: Routing
   search_type?: SearchType
-  route_slice?: string
+  route_slice?: SliceIds
   typed_keys?: boolean
   body?: MsearchRequestItem[]
 }
@@ -966,6 +1049,7 @@ export interface MtermvectorsOperation {
   payloads?: boolean
   positions?: boolean
   routing?: Routing
+  _slice?: SliceId
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -973,6 +1057,7 @@ export interface MtermvectorsOperation {
 
 export interface MtermvectorsRequest extends RequestBase {
   index?: IndexName
+  route_slice?: SliceId
   ids?: Id[]
   fields?: Fields
   field_statistics?: boolean
@@ -982,7 +1067,6 @@ export interface MtermvectorsRequest extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -1012,6 +1096,7 @@ export interface OpenPointInTimeRequest extends RequestBase {
   ignore_unavailable?: boolean
   preference?: string
   routing?: Routing
+  route_slice?: SliceIds
   expand_wildcards?: ExpandWildcards
   allow_partial_search_results?: boolean
   max_concurrent_shard_requests?: integer
@@ -1116,6 +1201,11 @@ export interface RankEvalRankEvalRequestItem {
   params?: Record<string, any>
 }
 
+export interface RankEvalRankEvalTemplate {
+  id: Id
+  template: Script | ScriptSource
+}
+
 export interface RankEvalRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
@@ -1125,6 +1215,7 @@ export interface RankEvalRequest extends RequestBase {
   body?: {
     requests: RankEvalRankEvalRequestItem[]
     metric?: RankEvalRankEvalMetric
+    templates?: RankEvalRankEvalTemplate[]
   }
 }
 
@@ -1144,7 +1235,7 @@ export interface ReindexDestination {
   op_type?: OpType
   pipeline?: string
   routing?: string
-  _slice?: string
+  _slice?: SliceId
   version_type?: VersionType
 }
 
@@ -1204,6 +1295,7 @@ export interface ReindexSource {
   project_routing?: ProjectRouting
   size?: integer
   slice?: SlicedScroll
+  _slice?: SliceId
   sort?: Sort
   _source?: SearchSourceConfig
   runtime_mappings?: MappingRuntimeFields
@@ -1313,6 +1405,7 @@ export type ScrollResponse<TDocument = unknown> = SearchResponseBody<TDocument>
 
 export interface SearchRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   allow_partial_search_results?: boolean
   analyzer?: string
@@ -1333,7 +1426,6 @@ export interface SearchRequest extends RequestBase {
   pre_filter_shard_size?: long
   request_cache?: boolean
   routing?: Routing
-  route_slice?: string
   scroll?: Duration
   search_type?: SearchType
   stats?: string[] | string
@@ -1673,6 +1765,7 @@ export interface SearchHit<TDocument = unknown> {
   _shard?: string
   _node?: string
   _routing?: string
+  _slice?: SliceId
   _source?: TDocument
   _rank?: integer
   _seq_no?: SequenceNumber
@@ -1832,6 +1925,7 @@ export interface SearchPhraseSuggester extends SearchSuggesterBase {
 export interface SearchPointInTimeReference {
   id: Id
   keep_alive?: Duration
+  _slice?: SliceId
 }
 
 export interface SearchProfile {
@@ -1846,6 +1940,8 @@ export interface SearchQueryBreakdown {
   build_scorer_count: long
   create_weight: long
   create_weight_count: long
+  into_bit_set: long
+  into_bit_set_count: long
   match: long
   match_count: long
   shallow_advance: long
@@ -2118,7 +2214,7 @@ export interface SearchShardsRequest extends RequestBase {
   master_timeout?: Duration
   preference?: string
   routing?: Routing
-  route_slice?: string
+  route_slice?: SliceIds
 }
 
 export interface SearchShardsResponse {
@@ -2146,6 +2242,7 @@ export interface SearchShardsShardStoreIndex {
 
 export interface SearchTemplateRequest extends RequestBase {
   index?: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   ccs_minimize_roundtrips?: boolean
   expand_wildcards?: ExpandWildcards
@@ -2225,6 +2322,7 @@ export interface TermvectorsFilter {
 export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   index: IndexName
   id?: Id
+  route_slice?: SliceId
   fields?: Fields
   field_statistics?: boolean
   offsets?: boolean
@@ -2233,7 +2331,6 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
   preference?: string
   realtime?: boolean
   routing?: Routing
-  route_slice?: string
   term_statistics?: boolean
   version?: VersionNumber
   version_type?: VersionType
@@ -2285,6 +2382,7 @@ export interface TermvectorsToken {
 export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> extends RequestBase {
   id: Id
   index: IndexName
+  route_slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   include_source_on_error?: boolean
@@ -2293,7 +2391,6 @@ export interface UpdateRequest<TDocument = unknown, TPartialDocument = unknown> 
   require_alias?: boolean
   retry_on_conflict?: integer
   routing?: Routing
-  route_slice?: string
   timeout?: Duration
   wait_for_active_shards?: WaitForActiveShards
   _source?: SearchSourceConfigParam
@@ -2318,6 +2415,7 @@ export interface UpdateUpdateWriteResponseBase<TDocument = unknown> extends Writ
 
 export interface UpdateByQueryRequest extends RequestBase {
   index: Indices
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -2336,7 +2434,6 @@ export interface UpdateByQueryRequest extends RequestBase {
   request_cache?: boolean
   requests_per_second?: float
   routing?: Routing
-  route_slice?: string
   scroll?: Duration
   scroll_size?: long
   search_timeout?: Duration
@@ -3015,6 +3112,7 @@ export interface PluginStats {
   name: Name
   version: VersionString
   licensed: boolean
+  native_controller_enabled_settings: string[]
 }
 
 export type ProjectRouting = string
@@ -3032,7 +3130,7 @@ export interface QueryCacheStats {
   total_count: long
 }
 
-export type QueryVector = float[]
+export type QueryVector = float[] | string
 
 export interface QueryVectorBuilder {
   embedding?: Embedding
@@ -3326,6 +3424,10 @@ export interface ShardStatistics {
 export interface ShardsOperationResponseBase {
   _shards?: ShardStatistics
 }
+
+export type SliceId = string
+
+export type SliceIds = SliceId | SliceId[]
 
 export interface SlicedScroll {
   field?: Field
@@ -4964,6 +5066,7 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
 
 export interface AggregationsTopMetricsValue {
   field: Field
+  missing?: AggregationsMissing
 }
 
 export interface AggregationsTrendChange {
@@ -6755,6 +6858,14 @@ export interface QueryDslDecayPlacement<TOrigin = unknown, TScale = unknown> {
   origin?: TOrigin
 }
 
+export interface QueryDslDenseVectorQuery extends QueryDslQueryBase {
+  field: Field
+  query_vector?: QueryVector
+  query_vector_builder?: QueryVectorBuilder
+  similarity_function?: MappingDenseVectorSimilarity
+  quantized?: boolean
+}
+
 export interface QueryDslDisMaxQuery extends QueryDslQueryBase {
   queries: QueryDslQueryContainer[]
   tie_breaker?: double
@@ -7178,6 +7289,7 @@ export interface QueryDslQueryContainer {
   common?: Partial<Record<Field, QueryDslCommonTermsQuery | string>>
   combined_fields?: QueryDslCombinedFieldsQuery
   constant_score?: QueryDslConstantScoreQuery
+  dense_vector?: QueryDslDenseVectorQuery
   dis_max?: QueryDslDisMaxQuery
   distance_feature?: QueryDslDistanceFeatureQuery
   exists?: QueryDslExistsQuery
@@ -12301,6 +12413,7 @@ export interface FleetPostSecretResponse {
 
 export interface FleetSearchRequest extends RequestBase {
   index: IndexName | IndexAlias
+  route_slice?: SliceIds
   allow_no_indices?: boolean
   analyzer?: string
   analyze_wildcard?: boolean
@@ -12539,6 +12652,8 @@ export interface IlmRolloverAction {
 export interface IlmSearchableSnapshotAction {
   snapshot_repository: string
   force_merge_index?: boolean
+  total_shards_per_node?: integer
+  replicate_for?: Duration
 }
 
 export interface IlmSetPriorityAction {
@@ -14507,11 +14622,25 @@ export interface IndicesSegmentsIndexSegment {
   shards: Record<string, IndicesSegmentsShardsSegment | IndicesSegmentsShardsSegment[]>
 }
 
+export interface IndicesSegmentsOsqSegmentAutoCalibration extends IndicesSegmentsSegmentAutoCalibrationBase {
+  type: 'osq'
+  parameters?: IndicesSegmentsOsqSegmentAutoCalibrationParameters
+}
+
+export interface IndicesSegmentsOsqSegmentAutoCalibrationParameters {
+  bits: integer
+  query_bits: integer
+  precondition: boolean
+  oversample: float
+}
+
 export interface IndicesSegmentsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
+  include_auto_calibration?: boolean
+  vector_formats?: boolean
 }
 
 export interface IndicesSegmentsResponse {
@@ -14520,19 +14649,40 @@ export interface IndicesSegmentsResponse {
 }
 
 export interface IndicesSegmentsSegment {
-  attributes: Record<string, string>
+  attributes?: Record<string, string>
   committed: boolean
-  compound: boolean
+  compound?: boolean
   deleted_docs: long
   generation: integer
   search: boolean
+  merge_id?: string
+  sort?: IndicesSegmentsSegmentSort[]
+  size?: ByteSize
   size_in_bytes: double
   num_docs: long
-  version: VersionString
+  version?: VersionString
+  auto_calibration?: Record<Field, IndicesSegmentsSegmentAutoCalibration>
+}
+
+export type IndicesSegmentsSegmentAutoCalibration = IndicesSegmentsOsqSegmentAutoCalibration
+
+export interface IndicesSegmentsSegmentAutoCalibrationBase {
+  calibrated: boolean
+  number_of_vectors: long
+  size?: ByteSize
+  size_in_bytes: long
+}
+
+export interface IndicesSegmentsSegmentSort {
+  field: Field
+  mode?: string
+  missing?: string
+  reverse: boolean
 }
 
 export interface IndicesSegmentsShardSegmentRouting {
-  node: string
+  node: NodeId
+  relocating_node?: NodeId
   primary: boolean
   state: string
 }
@@ -14680,6 +14830,7 @@ export type IndicesStatsIndexMetadataState = 'open' | 'close'
 
 export interface IndicesStatsIndexStats {
   completion?: CompletionStats
+  dense_vector?: ClusterStatsDenseVectorStats
   docs?: DocStats
   fielddata?: FielddataStats
   flush?: FlushStats
@@ -14693,6 +14844,7 @@ export interface IndicesStatsIndexStats {
   request_cache?: RequestCacheStats
   search?: SearchStats
   segments?: SegmentsStats
+  sparse_vector?: ClusterStatsSparseVectorStats
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
@@ -14919,7 +15071,7 @@ export interface IndicesValidateQueryRequest extends RequestBase {
   rewrite?: boolean
   q?: string
   routing?: Routing
-  route_slice?: string
+  route_slice?: SliceIds
   body?: {
     query?: QueryDslQueryContainer
   }
@@ -15135,6 +15287,18 @@ export interface InferenceChatCompletionUsage {
   completion_tokens_details?: InferenceChatCompletionCompletionTokensDetails
 }
 
+export interface InferenceChoiceDecisionAnswer {
+  type: 'choice'
+  choice: string
+  probabilities: InferenceChoiceDecisionProbability[]
+  confidence: double
+}
+
+export interface InferenceChoiceDecisionProbability {
+  value: string
+  probability: double
+}
+
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
@@ -15252,6 +15416,16 @@ export interface InferenceCustomTaskSettings {
 }
 
 export type InferenceCustomTaskType = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
+
+export type InferenceDecisionAnswer = InferencePredicateDecisionAnswer | InferenceChoiceDecisionAnswer | InferenceScoreDecisionAnswer
+
+export interface InferenceDecisionInferenceResult {
+  decision: InferenceDecisionResult
+}
+
+export interface InferenceDecisionResult {
+  answers: Record<string, InferenceDecisionAnswer>
+}
 
 export interface InferenceDeepSeekServiceSettings {
   api_key: string
@@ -15735,6 +15909,11 @@ export interface InferenceOpenShiftAiTaskSettings {
 
 export type InferenceOpenShiftAiTaskType = 'text_embedding' | 'completion' | 'chat_completion' | 'rerank'
 
+export interface InferencePredicateDecisionAnswer {
+  type: 'predicate'
+  probability: double
+}
+
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -15793,6 +15972,19 @@ export interface InferenceRerankedInferenceResult {
   rerank: InferenceRankedDocument[]
 }
 
+export interface InferenceScoreDecisionAnswer {
+  type: 'score'
+  score: double
+  probabilities: InferenceScoreDecisionProbability[]
+  confidence: double
+}
+
+export interface InferenceScoreDecisionProbability {
+  value: integer
+  label: string
+  probability: double
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingInferenceResult {
@@ -15813,7 +16005,7 @@ export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningD
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction' | 'decision'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
@@ -15943,6 +16135,50 @@ export interface InferenceCompletionRequest extends RequestBase {
 }
 
 export type InferenceCompletionResponse = InferenceCompletionInferenceResult
+
+export interface InferenceDecisionChoiceDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'choice'
+  choices: Record<string, string | null>
+}
+
+export type InferenceDecisionDecisionInput = string | InferenceEmbeddingContentObjectItem
+
+export type InferenceDecisionDecisionQuestion = InferenceDecisionPredicateDecisionQuestion | InferenceDecisionChoiceDecisionQuestion | InferenceDecisionScoreDecisionQuestion
+
+export interface InferenceDecisionDecisionQuestionBase {
+  instructions: string
+}
+
+export type InferenceDecisionDecisionScoreLevel = string | InferenceDecisionDecisionScoreLevelObject
+
+export interface InferenceDecisionDecisionScoreLevelObject {
+  label: string
+  description?: string
+}
+
+export interface InferenceDecisionDecisionTaskSettings {
+  questions?: Record<string, InferenceDecisionDecisionQuestion>
+}
+
+export interface InferenceDecisionPredicateDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'predicate'
+}
+
+export interface InferenceDecisionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: InferenceDecisionDecisionInput
+    task_settings?: InferenceDecisionDecisionTaskSettings
+  }
+}
+
+export type InferenceDecisionResponse = InferenceDecisionInferenceResult
+
+export interface InferenceDecisionScoreDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'score'
+  levels: InferenceDecisionDecisionScoreLevel[]
+}
 
 export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
@@ -16802,6 +17038,9 @@ export interface IngestNetworkDirectionProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
 }
 
+export interface IngestNormalizeForStreamProcessor extends IngestProcessorBase {
+}
+
 export interface IngestPipeline {
   description?: string
   on_failure?: IngestProcessorContainer[]
@@ -16877,7 +17116,9 @@ export interface IngestProcessorContainer {
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
   network_direction?: IngestNetworkDirectionProcessor
+  normalize_for_stream?: IngestNormalizeForStreamProcessor
   pipeline?: IngestPipelineProcessor
+  recover_failure_document?: IngestRecoverFailureDocumentProcessor
   redact?: IngestRedactProcessor
   registered_domain?: IngestRegisteredDomainProcessor
   remove?: IngestRemoveProcessor
@@ -16894,6 +17135,9 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRecoverFailureDocumentProcessor extends IngestProcessorBase {
 }
 
 export interface IngestRedact {
@@ -23475,9 +23719,11 @@ export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySetti
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 
@@ -23662,9 +23908,11 @@ export interface SnapshotSourceOnlyRepositorySettingsForAzure {
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 
