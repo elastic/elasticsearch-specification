@@ -156084,7 +156084,7 @@
           "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
           "name": "enabled",
           "required": false,
-          "serverDefault": "true",
+          "serverDefault": true,
           "type": {
             "kind": "union_of",
             "items": [
@@ -157480,7 +157480,7 @@
           },
           "name": "number_of_shards",
           "required": false,
-          "serverDefault": "1",
+          "serverDefault": 1,
           "type": {
             "kind": "union_of",
             "items": [
@@ -157507,7 +157507,7 @@
           },
           "name": "number_of_replicas",
           "required": false,
-          "serverDefault": "0",
+          "serverDefault": 0,
           "type": {
             "kind": "union_of",
             "items": [
@@ -157566,7 +157566,7 @@
         {
           "name": "routing_partition_size",
           "required": false,
-          "serverDefault": "1",
+          "serverDefault": 1,
           "type": {
             "kind": "instance_of",
             "generics": [
@@ -157599,7 +157599,7 @@
         {
           "name": "hidden",
           "required": false,
-          "serverDefault": "false",
+          "serverDefault": false,
           "type": {
             "kind": "union_of",
             "items": [
@@ -157678,7 +157678,7 @@
         {
           "name": "max_result_window",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "generics": [
@@ -158354,7 +158354,7 @@
           "description": "Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.\nYou can explicitly set it to skip rollover.",
           "name": "indexing_complete",
           "required": false,
-          "serverDefault": "false",
+          "serverDefault": false,
           "type": {
             "kind": "instance_of",
             "generics": [
@@ -158425,7 +158425,7 @@
           "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
           "name": "prefer_ilm",
           "required": false,
-          "serverDefault": "true",
+          "serverDefault": true,
           "type": {
             "kind": "union_of",
             "items": [
@@ -159875,7 +159875,7 @@
           "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
           "name": "limit",
           "required": false,
-          "serverDefault": "1000",
+          "serverDefault": 1000,
           "type": {
             "kind": "union_of",
             "items": [
@@ -159900,7 +159900,7 @@
           "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
           "name": "ignore_dynamic_beyond_limit",
           "required": false,
-          "serverDefault": "false",
+          "serverDefault": false,
           "type": {
             "kind": "union_of",
             "items": [
@@ -160206,7 +160206,7 @@
         {
           "name": "max_token_count",
           "required": false,
-          "serverDefault": "10000",
+          "serverDefault": 10000,
           "type": {
             "kind": "instance_of",
             "generics": [
