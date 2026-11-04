@@ -569,6 +569,7 @@ node-roles,https://www.elastic.co/docs/reference/elasticsearch/configuration-ref
 nodes-api-shutdown-delete,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-delete-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-shutdown.html,About distributed architecture
 nodes-api-shutdown-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-get-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-shutdown.html,About distributed architecture
 nodes-api-shutdown,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-shutdown-put-node,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-shutdown.html,About distributed architecture
+normalize-for-stream-processor,https://www.elastic.co/docs/reference/enrich-processor/normalize-for-stream,[use-doc-url],,More about the normalize-for-stream processor
 openai-api-keys,https://platform.openai.com/api-keys,[use-doc-url],,More about OpenAI platform
 openai-models,https://platform.openai.com/docs/guides/embeddings/what-are-embeddings,[use-doc-url],,Learn more about OpenAI models
 optimistic-concurrency,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control,[use-doc-url],,About optimistic concurrency
@@ -678,6 +679,7 @@ list-query-rules-in-ui,https://www.elastic.co/docs/solutions/search/query-rules-
 delete-query-ruleset-from-ui,https://www.elastic.co/docs/solutions/search/query-rules-ui#delete-a-ruleset,[use-doc-url],,About deleting a query ruleset
 random_sample,https://www.elastic.co/docs/api/doc/elasticsearch/group/ingest-random-sampling,[use-doc-url],,Learn more about random_sample
 realtime,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html,More about a document by its id
+recover-failure-document-processor,https://www.elastic.co/docs/reference/enrich-processor/recover-failure-document-processor,[use-doc-url],,More about the recover failure document processor
 redact-processor,https://www.elastic.co/docs/reference/enrich-processor/redact-processor,[use-doc-url],,More about redact processor
 refresh_an_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/refresh-parameter,[use-doc-url],,More about the refresh parameter
 regexp-syntax,https://www.elastic.co/docs/reference/query-languages/query-dsl/regexp-syntax,[use-doc-url],,About the regular expression
