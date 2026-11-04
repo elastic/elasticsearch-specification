@@ -51908,6 +51908,14 @@
                 "$ref": "#/components/schemas/_types.Field"
               }
             ]
+          },
+          "missing": {
+            "description": "The value to treat a document as having when it has no value for the field.\nBy default, a document that is missing any of the metrics or the sort value is ignored.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Missing"
+              }
+            ]
           }
         },
         "required": [
@@ -77615,6 +77623,14 @@
               }
             ]
           },
+          "recover_failure_document": {
+            "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.RecoverFailureDocumentProcessor"
+              }
+            ]
+          },
           "redact": {
             "description": "The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.\nThe processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.\nText that matches a Grok pattern is replaced with a configurable string such as `<EMAIL>` where an email address is matched or simply replace all matches with the text `<REDACTED>` if preferred.",
             "allOf": [
@@ -79458,6 +79474,16 @@
             "required": [
               "name"
             ]
+          }
+        ]
+      },
+      "ingest._types.RecoverFailureDocumentProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },

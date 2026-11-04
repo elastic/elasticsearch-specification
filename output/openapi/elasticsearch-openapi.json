@@ -77227,6 +77227,14 @@
                 "$ref": "#/components/schemas/_types.Field"
               }
             ]
+          },
+          "missing": {
+            "description": "The value to treat a document as having when it has no value for the field.\nBy default, a document that is missing any of the metrics or the sort value is ignored.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Missing"
+              }
+            ]
           }
         },
         "required": [
@@ -116278,11 +116286,29 @@
               }
             ]
           },
+          "normalize_for_stream": {
+            "description": "Detects whether a document is OpenTelemetry-compliant and, if not, normalizes it so that it can be queried by clients that expect either ECS or OpenTelemetry Semantic Conventions formats.",
+            "x-state": "Technical preview; Added in 9.1.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.NormalizeForStreamProcessor"
+              }
+            ]
+          },
           "pipeline": {
             "description": "Executes another pipeline.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.PipelineProcessor"
+              }
+            ]
+          },
+          "recover_failure_document": {
+            "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+            "x-state": "Generally available; Added in 9.2.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.RecoverFailureDocumentProcessor"
               }
             ]
           },
@@ -118106,6 +118132,16 @@
           }
         ]
       },
+      "ingest._types.NormalizeForStreamProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
       "ingest._types.PipelineProcessor": {
         "allOf": [
           {
@@ -118131,6 +118167,16 @@
             "required": [
               "name"
             ]
+          }
+        ]
+      },
+      "ingest._types.RecoverFailureDocumentProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },
@@ -137570,6 +137616,11 @@
                 "default": "elasticsearch-snapshots",
                 "type": "string"
               },
+              "data_access_tier": {
+                "description": "The Azure access tier applied to the data blobs of the repository, which hold the files that make up each snapshotted shard.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+                "x-state": "Generally available; Added in 9.5.0",
+                "type": "string"
+              },
               "delete_objects_max_size": {
                 "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
                 "default": 256.0,
@@ -137584,6 +137635,11 @@
                 "description": "The maximum number of concurrent batch delete requests that will be submitted for any individual bulk delete with `BlobBatch`.\nNote that the effective number of concurrent deletes is further limited by the Azure client connection and event loop thread limits.\nDefaults to 10, minimum is 1, maximum is 100.",
                 "default": 10.0,
                 "type": "number"
+              },
+              "metadata_access_tier": {
+                "description": "The Azure access tier applied to the metadata blobs of the repository.\nThese are generally smaller than the data blobs but can be read more often, for example to list the repository contents or to take snapshots.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+                "x-state": "Generally available; Added in 9.5.0",
+                "type": "string"
               },
               "readonly": {
                 "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
@@ -138152,6 +138208,11 @@
             "default": "elasticsearch-snapshots",
             "type": "string"
           },
+          "data_access_tier": {
+            "description": "The Azure access tier applied to the data blobs of the repository, which hold the files that make up each snapshotted shard.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "string"
+          },
           "delete_objects_max_size": {
             "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
             "default": 256.0,
@@ -138166,6 +138227,11 @@
             "description": "The maximum number of concurrent batch delete requests that will be submitted for any individual bulk delete with `BlobBatch`.\nNote that the effective number of concurrent deletes is further limited by the Azure client connection and event loop thread limits.\nDefaults to 10, minimum is 1, maximum is 100.",
             "default": 10.0,
             "type": "number"
+          },
+          "metadata_access_tier": {
+            "description": "The Azure access tier applied to the metadata blobs of the repository.\nThese are generally smaller than the data blobs but can be read more often, for example to list the repository contents or to take snapshots.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "string"
           },
           "readonly": {
             "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
