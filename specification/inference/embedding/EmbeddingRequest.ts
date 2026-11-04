@@ -29,6 +29,7 @@ import { RequestEmbedding } from '@inference/_types/CommonTypes'
  * @availability stack since=9.4.0 stability=experimental visibility=public
  * @availability serverless stability=experimental visibility=public
  * @doc_id inference-api-post
+ * @cluster_privileges monitor_inference
  */
 export interface Request extends RequestBase {
   urls: [

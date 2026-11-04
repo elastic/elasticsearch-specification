@@ -36,6 +36,7 @@ import { Operator } from '@_types/query_dsl/Operator'
  * @availability stack since=1.3.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id search-validate
+ * @index_privileges view_index_metadata, manage
  */
 export interface Request extends RequestBase {
   urls: [
