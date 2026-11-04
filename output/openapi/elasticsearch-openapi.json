@@ -109053,6 +109053,14 @@
               }
             ]
           },
+          "dense_vector": {
+            "description": "Contains statistics about the dense vectors in the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/cluster.stats.DenseVectorStats"
+              }
+            ]
+          },
           "docs": {
             "description": "Contains statistics about documents across all primary shards assigned to the node.",
             "allOf": [
@@ -109154,6 +109162,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.SegmentsStats"
+              }
+            ]
+          },
+          "sparse_vector": {
+            "description": "Contains statistics about the sparse vectors in the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/cluster.stats.SparseVectorStats"
               }
             ]
           },

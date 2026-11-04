@@ -140051,7 +140051,7 @@
         "name": "IndexMetadataState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L232-L235"
+      "specLocation": "indices/stats/types.ts#L236-L239"
     },
     {
       "kind": "enum",
@@ -140073,7 +140073,7 @@
         "name": "ShardRoutingState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L171-L176"
+      "specLocation": "indices/stats/types.ts#L175-L180"
     },
     {
       "kind": "enum",
