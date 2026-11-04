@@ -18,7 +18,14 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { Fields, Ids, IndexName, MediaType, Routing } from '@_types/common'
+import {
+  Fields,
+  Ids,
+  IndexName,
+  MediaType,
+  Routing,
+  SliceId
+} from '@_types/common'
 import { SourceConfigParam } from '@global/search/_types/SourceFilter'
 import { Operation } from './types'
 
@@ -73,7 +80,7 @@ export interface Request extends RequestBase {
      * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceId
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json

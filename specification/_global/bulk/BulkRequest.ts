@@ -24,6 +24,7 @@ import {
   MediaType,
   Refresh,
   Routing,
+  SliceId,
   WaitForActiveShards
 } from '@_types/common'
 import { Duration } from '@_types/Time'
@@ -176,7 +177,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceId
   }
   request_media_type: MediaType.Ndjson
   response_media_type: MediaType.Json

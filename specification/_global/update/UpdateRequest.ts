@@ -26,6 +26,7 @@ import {
   Refresh,
   Routing,
   SequenceNumber,
+  SliceId,
   WaitForActiveShards
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
@@ -93,7 +94,7 @@ export interface Request<TDocument, TPartialDocument> extends RequestBase {
      * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceId
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json

@@ -25,6 +25,7 @@ import {
   IndexName,
   MediaType,
   Routing,
+  SliceId,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -117,7 +118,7 @@ export interface Request<TDocument> extends RequestBase {
      * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceId
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json

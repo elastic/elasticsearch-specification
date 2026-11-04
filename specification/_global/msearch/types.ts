@@ -23,7 +23,8 @@ import {
   Indices,
   ProjectRouting,
   Routing,
-  SearchType
+  SearchType,
+  SliceId
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
@@ -75,7 +76,7 @@ export class MultisearchHeader {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
 }
 
 export class MultiSearchResult<TDocument> {

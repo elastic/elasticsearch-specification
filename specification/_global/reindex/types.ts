@@ -23,6 +23,7 @@ import {
   OpType,
   Password,
   ProjectRouting,
+  SliceId,
   Username,
   VersionType
 } from '@_types/common'
@@ -69,7 +70,7 @@ export class Destination {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
   /**
    *  The versioning to use for the indexing operation.
    */
@@ -123,7 +124,7 @@ export class Source {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
   /**
    * A comma-separated list of `<field>:<direction>` pairs to sort by before indexing.
    * Use it in conjunction with `max_docs` to control what documents are reindexed.

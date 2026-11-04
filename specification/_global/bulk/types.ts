@@ -22,6 +22,7 @@ import {
   IndexName,
   InlineGet,
   SequenceNumber,
+  SliceId,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -118,7 +119,7 @@ export class OperationBase {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
   version?: VersionNumber

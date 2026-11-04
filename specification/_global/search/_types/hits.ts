@@ -24,6 +24,7 @@ import {
   IndexName,
   Name,
   SequenceNumber,
+  SliceId,
   VersionNumber
 } from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
@@ -65,7 +66,7 @@ export class Hit<TDocument> {
    * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    */
-  _slice?: string
+  _slice?: SliceId
   _source?: TDocument
   _rank?: integer
   _seq_no?: SequenceNumber

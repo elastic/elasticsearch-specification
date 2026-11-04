@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Id } from '@_types/common'
+import { Id, SliceId } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 export class PointInTimeReference {
@@ -29,5 +29,5 @@ export class PointInTimeReference {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
 }

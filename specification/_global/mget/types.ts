@@ -22,6 +22,7 @@ import {
   Id,
   IndexName,
   Routing,
+  SliceId,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -50,7 +51,7 @@ export class Operation {
    * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
   /**
    * If `false`, excludes all _source fields.
    */

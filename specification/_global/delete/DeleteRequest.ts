@@ -25,6 +25,7 @@ import {
   Refresh,
   Routing,
   SequenceNumber,
+  SliceId,
   VersionNumber,
   VersionType,
   WaitForActiveShards
@@ -106,7 +107,7 @@ export interface Request extends RequestBase {
      * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceId
   }
   response_media_type: MediaType.Json
   query_parameters: {
