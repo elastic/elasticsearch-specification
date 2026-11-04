@@ -5832,6 +5832,53 @@
     {
       "availability": {
         "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "docId": "inference-api-post",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
+      "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
+      "name": "inference.decision",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_inference/decision/{inference_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -16640,7 +16687,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L272"
+      "specLocation": "_global/bulk/BulkRequest.ts#L34-L276"
     },
     {
       "body": {
@@ -22628,7 +22675,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L32-L194"
+      "specLocation": "_global/count/CountRequest.ts#L33-L199"
     },
     {
       "body": {
@@ -22833,7 +22880,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -22884,7 +22931,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L33-L204"
+      "specLocation": "_global/create/CreateRequest.ts#L34-L218"
     },
     {
       "body": {
@@ -23071,7 +23118,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L159"
+      "specLocation": "_global/delete/DeleteRequest.ts#L36-L164"
     },
     {
       "body": {
@@ -23727,7 +23774,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L40-L353"
     },
     {
       "body": {
@@ -27365,7 +27412,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "routing",
           "extDocUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get#get-routing",
           "name": "routing",
@@ -27453,7 +27500,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L140"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L33-L154"
     },
     {
       "body": {
@@ -27920,7 +27967,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L137"
+      "specLocation": "_global/explain/ExplainRequest.ts#L33-L148"
     },
     {
       "body": {
@@ -28573,7 +28620,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L32-L199"
+      "specLocation": "_global/get/GetRequest.ts#L33-L204"
     },
     {
       "body": {
@@ -29603,7 +29650,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L290"
+      "specLocation": "_global/index/IndexRequest.ts#L37-L299"
     },
     {
       "body": {
@@ -37599,7 +37646,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L147"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L31-L154"
     },
     {
       "body": {
@@ -38072,6 +38119,116 @@
         "namespace": "inference.completion"
       },
       "specLocation": "inference/completion/CompletionResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionInput",
+                "namespace": "inference.decision"
+              }
+            }
+          },
+          {
+            "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+            "name": "task_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionTaskSettings",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "examples": {
+        "DecisionRequestExample1": {
+          "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+          "method_request": "POST _inference/decision/my-decision-endpoint",
+          "summary": "Decision task",
+          "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "path": [
+        {
+          "description": "The unique identifier for the inference endpoint.",
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The amount of time to wait for the inference request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/DecisionRequest.ts#L25-L88"
+    },
+    {
+      "body": {
+        "codegenName": "inference_result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DecisionInferenceResult",
+            "namespace": "inference._types"
+          }
+        }
+      },
+      "examples": {
+        "DecisionResponseExample1": {
+          "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+          "summary": "Decision task",
+          "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/DecisionResponse.ts#L22-L25"
     },
     {
       "attachedBehaviors": [
@@ -49216,7 +49373,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L138"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L32-L148"
     },
     {
       "body": {
@@ -59770,7 +59927,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L32-L180"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L33-L182"
     },
     {
       "body": {
@@ -60318,7 +60475,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L32-L149"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L33-L153"
     },
     {
       "body": {
@@ -60468,7 +60625,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -60521,7 +60678,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L166"
     },
     {
       "body": {
@@ -65542,7 +65699,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L55-L632"
+      "specLocation": "_global/search/SearchRequest.ts#L56-L637"
     },
     {
       "body": {
@@ -67166,7 +67323,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -67234,7 +67391,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L35-L179"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L36-L195"
     },
     {
       "body": {
@@ -73508,7 +73665,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L34-L255"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L35-L264"
     },
     {
       "body": {
@@ -76337,7 +76494,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L210"
+      "specLocation": "_global/update/UpdateRequest.ts#L40-L215"
     },
     {
       "body": {
@@ -77012,7 +77169,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L39-L374"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L40-L378"
     },
     {
       "body": {
@@ -77281,7 +77438,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L85-L90"
+      "specLocation": "_global/bulk/types.ts#L86-L91"
     },
     {
       "kind": "enum",
@@ -77303,7 +77460,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L92-L97"
+      "specLocation": "_global/bulk/types.ts#L93-L98"
     },
     {
       "kind": "enum",
@@ -77661,7 +77818,7 @@
         "name": "ResponseItem",
         "namespace": "_global.mget"
       },
-      "specLocation": "_global/mget/types.ts#L57-L60",
+      "specLocation": "_global/mget/types.ts#L67-L70",
       "type": {
         "items": [
           {
@@ -77836,7 +77993,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/types.ts#L25-L67"
+      "specLocation": "_global/get/types.ts#L31-L79"
     },
     {
       "kind": "type_alias",
@@ -77889,7 +78046,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L123-L123",
+      "specLocation": "_types/common.ts#L129-L129",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -77904,7 +78061,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L98-L98",
+      "specLocation": "_types/common.ts#L104-L104",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -77954,7 +78111,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L62-L66"
+      "specLocation": "_global/mget/types.ts#L72-L76"
     },
     {
       "attachedBehaviors": [
@@ -78111,7 +78268,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L32-L35",
+      "specLocation": "_global/msearch/types.ts#L33-L36",
       "type": {
         "items": [
           {
@@ -78276,7 +78433,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L37-L78"
+      "specLocation": "_global/msearch/types.ts#L38-L80"
     },
     {
       "kind": "type_alias",
@@ -78284,7 +78441,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L212-L212",
+      "specLocation": "_types/common.ts#L218-L218",
       "type": {
         "items": [
           {
@@ -78336,7 +78493,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L196-L210"
+      "specLocation": "_types/common.ts#L202-L216"
     },
     {
       "kind": "type_alias",
@@ -78430,7 +78587,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L292-L297"
+      "specLocation": "_types/common.ts#L298-L303"
     },
     {
       "kind": "interface",
@@ -80188,7 +80345,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L95-L95",
+      "specLocation": "_types/common.ts#L101-L101",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -81596,7 +81753,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L158-L162",
+      "specLocation": "_types/common.ts#L164-L168",
       "type": {
         "items": [
           {
@@ -81693,7 +81850,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L134",
+      "specLocation": "_types/common.ts#L139-L140",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -83834,7 +83991,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L130-L131",
+      "specLocation": "_types/common.ts#L136-L137",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -83851,7 +84008,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L128-L129",
+      "specLocation": "_types/common.ts#L134-L135",
       "type": {
         "items": [
           {
@@ -85156,7 +85313,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L115-L152"
+      "specLocation": "_global/search/_types/hits.ts#L122-L159"
     },
     {
       "kind": "type_alias",
@@ -85164,7 +85321,7 @@
         "name": "Name",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L76-L76",
+      "specLocation": "_types/common.ts#L82-L82",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -85790,7 +85947,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L135-L135",
+      "specLocation": "_types/common.ts#L141-L141",
       "type": {
         "items": [
           {
@@ -86791,7 +86948,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L126-L126",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -89048,7 +89205,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L102-L117"
+      "specLocation": "_types/common.ts#L108-L123"
     },
     {
       "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
@@ -97160,7 +97317,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L155-L156"
+      "specLocation": "_types/common.ts#L161-L162"
     },
     {
       "inherits": {
@@ -100187,7 +100344,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L154-L162",
+      "specLocation": "_global/search/_types/hits.ts#L161-L169",
       "type": {
         "items": [
           {
@@ -103058,7 +103215,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L299-L312"
+      "specLocation": "_types/common.ts#L305-L318"
     },
     {
       "kind": "interface",
@@ -103462,7 +103619,22 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L33"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceId",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L73-L73",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
     },
     {
       "kind": "type_alias",
@@ -103749,7 +103921,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L85-L88",
+      "specLocation": "_global/msearch/types.ts#L87-L90",
       "type": {
         "items": [
           {
@@ -103819,7 +103991,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L90-L93"
+      "specLocation": "_global/msearch/types.ts#L92-L95"
     },
     {
       "generics": [
@@ -104304,7 +104476,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L71-L81"
+      "specLocation": "_global/search/_types/hits.ts#L78-L88"
     },
     {
       "kind": "interface",
@@ -104336,7 +104508,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L103-L106"
+      "specLocation": "_global/search/_types/hits.ts#L110-L113"
     },
     {
       "kind": "enum",
@@ -104354,7 +104526,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L108-L113"
+      "specLocation": "_global/search/_types/hits.ts#L115-L120"
     },
     {
       "generics": [
@@ -104674,7 +104846,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L69"
+      "specLocation": "_global/search/_types/hits.ts#L41-L76"
     },
     {
       "kind": "interface",
@@ -104792,7 +104964,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L93-L95"
+      "specLocation": "_global/search/_types/hits.ts#L100-L102"
     },
     {
       "kind": "interface",
@@ -104835,7 +105007,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L97-L101"
+      "specLocation": "_global/search/_types/hits.ts#L104-L108"
     },
     {
       "description": "The aggregation name as returned from the server. Depending whether typed_keys is specified this could come back\nin the form of `name#type` instead of simply `name`",
@@ -104844,7 +105016,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L140-L144",
+      "specLocation": "_types/common.ts#L146-L150",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -109574,7 +109746,7 @@
         "name": "ClusterAlias",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L74-L74",
+      "specLocation": "_types/common.ts#L80-L80",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -112318,7 +112490,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L146-L150",
+      "specLocation": "_types/common.ts#L152-L156",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -113664,7 +113836,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L153-L153",
+      "specLocation": "_types/common.ts#L159-L159",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -114079,7 +114251,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L92-L93",
+      "specLocation": "_types/common.ts#L98-L99",
       "type": {
         "items": [
           {
@@ -114132,7 +114304,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L164-L176"
+      "specLocation": "_types/common.ts#L170-L182"
     },
     {
       "kind": "type_alias",
@@ -114172,7 +114344,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L415-L421"
+      "specLocation": "_types/common.ts#L421-L427"
     },
     {
       "kind": "type_alias",
@@ -114180,7 +114352,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L423-L423",
+      "specLocation": "_types/common.ts#L429-L429",
       "type": {
         "items": [
           {
@@ -114300,7 +114472,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L425-L479"
+      "specLocation": "_types/common.ts#L431-L485"
     },
     {
       "kind": "type_alias",
@@ -114308,7 +114480,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L481-L481",
+      "specLocation": "_types/common.ts#L487-L487",
       "type": {
         "items": [
           {
@@ -114348,7 +114520,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L178-L187"
+      "specLocation": "_types/common.ts#L184-L193"
     },
     {
       "kind": "enum",
@@ -114425,7 +114597,7 @@
         "name": "DataStreamName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L88-L88",
+      "specLocation": "_types/common.ts#L94-L94",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114440,7 +114612,7 @@
         "name": "DataStreamNames",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L90-L90",
+      "specLocation": "_types/common.ts#L96-L96",
       "type": {
         "items": [
           {
@@ -114470,7 +114642,7 @@
         "name": "GrokPattern",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L83-L83",
+      "specLocation": "_types/common.ts#L89-L89",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114514,7 +114686,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L214-L236"
+      "specLocation": "_types/common.ts#L220-L242"
     },
     {
       "kind": "type_alias",
@@ -114643,7 +114815,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L260-L264"
+      "specLocation": "_types/common.ts#L266-L270"
     },
     {
       "kind": "enum",
@@ -114685,7 +114857,7 @@
         "name": "Names",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L77-L77",
+      "specLocation": "_types/common.ts#L83-L83",
       "type": {
         "items": [
           {
@@ -114715,7 +114887,7 @@
         "name": "Namespace",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L79-L79",
+      "specLocation": "_types/common.ts#L85-L85",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114762,7 +114934,7 @@
         "name": "NodeName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L85-L86",
+      "specLocation": "_types/common.ts#L91-L92",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114860,7 +115032,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L270"
+      "specLocation": "_types/common.ts#L272-L276"
     },
     {
       "kind": "enum",
@@ -114903,7 +115075,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L272-L281"
+      "specLocation": "_types/common.ts#L278-L287"
     },
     {
       "kind": "type_alias",
@@ -114911,7 +115083,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L190-L190",
+      "specLocation": "_types/common.ts#L196-L196",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114953,7 +115125,7 @@
         "name": "PipelineName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L82-L82",
+      "specLocation": "_types/common.ts#L88-L88",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114968,7 +115140,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L125-L125",
+      "specLocation": "_types/common.ts#L131-L131",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -114995,7 +115167,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L283-L290"
+      "specLocation": "_types/common.ts#L289-L296"
     },
     {
       "kind": "enum",
@@ -115115,13 +115287,44 @@
         "name": "Service",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L80-L80",
+      "specLocation": "_types/common.ts#L86-L86",
       "type": {
         "kind": "instance_of",
         "type": {
           "name": "string",
           "namespace": "_builtins"
         }
+      }
+    },
+    {
+      "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceIds",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L74-L77",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SliceId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
       }
     },
     {
@@ -115135,7 +115338,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L403",
+      "specLocation": "_types/common.ts#L404-L409",
       "type": {
         "items": [
           {
@@ -115168,7 +115371,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L405-L413"
+      "specLocation": "_types/common.ts#L411-L419"
     },
     {
       "kind": "type_alias",
@@ -115191,7 +115394,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L127-L127",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115216,7 +115419,7 @@
         "name": "ThreadSortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L332"
+      "specLocation": "_types/common.ts#L333-L338"
     },
     {
       "kind": "enum",
@@ -115246,7 +115449,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L314-L325"
+      "specLocation": "_types/common.ts#L320-L331"
     },
     {
       "description": "Time of day, expressed as HH:MM:SS",
@@ -115387,7 +115590,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L189-L189",
+      "specLocation": "_types/common.ts#L195-L195",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115402,7 +115605,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L120-L120",
+      "specLocation": "_types/common.ts#L126-L126",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115417,7 +115620,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L100-L100",
+      "specLocation": "_types/common.ts#L106-L106",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -115440,7 +115643,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L334-L338"
+      "specLocation": "_types/common.ts#L340-L344"
     },
     {
       "codegenNames": [
@@ -115452,7 +115655,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L137-L138",
+      "specLocation": "_types/common.ts#L143-L144",
       "type": {
         "items": [
           {
@@ -115499,7 +115702,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L340-L347"
+      "specLocation": "_types/common.ts#L346-L353"
     },
     {
       "kind": "type_alias",
@@ -139598,6 +139801,183 @@
       "specLocation": "indices/recovery/types.ts#L140-L151"
     },
     {
+      "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "specLocation": "indices/segments/types.ts#L88-L95",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibration",
+              "namespace": "indices.segments"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SegmentAutoCalibrationBase",
+          "namespace": "indices.segments"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "osq"
+          }
+        },
+        {
+          "description": "The calibration parameters.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibrationParameters",
+              "namespace": "indices.segments"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L107-L111"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentAutoCalibrationBase",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+          "name": "calibrated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The number of vectors of the field in the segment.",
+          "name": "number_of_vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the vectors of the field in the segment, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L97-L105"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibrationParameters",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The number of bits used to quantize the vectors.",
+          "name": "bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of bits used to quantize the query vectors.",
+          "name": "query_bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the vectors are preconditioned before quantization.",
+          "name": "precondition",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The oversampling factor applied when rescoring.",
+          "name": "oversample",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L113-L122"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -140318,6 +140698,273 @@
         "namespace": "inference._types"
       },
       "specLocation": "inference/_types/CommonTypes.ts#L1472-L1477"
+    },
+    {
+      "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Results.ts#L166-L175",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "description": "The answer to a `predicate` question.",
+      "kind": "interface",
+      "name": {
+        "name": "PredicateDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        },
+        {
+          "description": "The probability that the statement in the question is true.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L177-L186"
+    },
+    {
+      "description": "The answer to a `choice` question.",
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The chosen option.",
+          "name": "choice",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of each option.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ChoiceDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the chosen option.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L188-L205"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The option.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the option.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L207-L216"
+    },
+    {
+      "description": "The answer to a `score` question.",
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+          "name": "score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The probability of each level, ordered from the lowest to the highest level.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScoreDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the score.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L218-L235"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The zero-based position of the level, which is also its position in the array.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the level.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L237-L250"
     },
     {
       "kind": "enum",
@@ -141688,13 +142335,16 @@
         },
         {
           "name": "document_extraction"
+        },
+        {
+          "name": "decision"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L31"
+      "specLocation": "inference/_types/TaskType.ts#L20-L32"
     },
     {
       "kind": "enum",
@@ -141710,7 +142360,7 @@
         "name": "TaskTypeAi21",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L39-L42"
+      "specLocation": "inference/_types/TaskType.ts#L40-L43"
     },
     {
       "kind": "enum",
@@ -141732,7 +142382,7 @@
         "name": "TaskTypeAlibabaCloudAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L44-L49"
+      "specLocation": "inference/_types/TaskType.ts#L45-L50"
     },
     {
       "kind": "enum",
@@ -141751,7 +142401,7 @@
         "name": "TaskTypeAmazonBedrock",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L51-L55"
+      "specLocation": "inference/_types/TaskType.ts#L52-L56"
     },
     {
       "kind": "enum",
@@ -141776,7 +142426,7 @@
         "name": "TaskTypeAmazonSageMaker",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L57-L63"
+      "specLocation": "inference/_types/TaskType.ts#L58-L64"
     },
     {
       "kind": "enum",
@@ -141792,7 +142442,7 @@
         "name": "TaskTypeAnthropic",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L65-L68"
+      "specLocation": "inference/_types/TaskType.ts#L66-L69"
     },
     {
       "kind": "enum",
@@ -141811,7 +142461,7 @@
         "name": "TaskTypeAzureAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L70-L74"
+      "specLocation": "inference/_types/TaskType.ts#L71-L75"
     },
     {
       "kind": "enum",
@@ -141830,7 +142480,7 @@
         "name": "TaskTypeAzureOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L76-L80"
+      "specLocation": "inference/_types/TaskType.ts#L77-L81"
     },
     {
       "kind": "enum",
@@ -141849,7 +142499,7 @@
         "name": "TaskTypeCohere",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L82-L86"
+      "specLocation": "inference/_types/TaskType.ts#L83-L87"
     },
     {
       "kind": "enum",
@@ -141862,7 +142512,7 @@
         "name": "TaskTypeContextualAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L88-L90"
+      "specLocation": "inference/_types/TaskType.ts#L89-L91"
     },
     {
       "kind": "enum",
@@ -141884,7 +142534,7 @@
         "name": "TaskTypeCustom",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L92-L97"
+      "specLocation": "inference/_types/TaskType.ts#L93-L98"
     },
     {
       "kind": "enum",
@@ -141900,7 +142550,7 @@
         "name": "TaskTypeDeepSeek",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L99-L102"
+      "specLocation": "inference/_types/TaskType.ts#L100-L103"
     },
     {
       "kind": "enum",
@@ -141913,7 +142563,7 @@
         "name": "TaskTypeELSER",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L110-L112"
+      "specLocation": "inference/_types/TaskType.ts#L111-L113"
     },
     {
       "kind": "enum",
@@ -141932,7 +142582,7 @@
         "name": "TaskTypeElasticsearch",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L104-L108"
+      "specLocation": "inference/_types/TaskType.ts#L105-L109"
     },
     {
       "kind": "enum",
@@ -141951,7 +142601,7 @@
         "name": "TaskTypeFireworksAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L175-L179"
+      "specLocation": "inference/_types/TaskType.ts#L176-L180"
     },
     {
       "kind": "enum",
@@ -141967,7 +142617,7 @@
         "name": "TaskTypeGoogleAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L114-L117"
+      "specLocation": "inference/_types/TaskType.ts#L115-L118"
     },
     {
       "kind": "enum",
@@ -141989,7 +142639,7 @@
         "name": "TaskTypeGoogleVertexAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L119-L124"
+      "specLocation": "inference/_types/TaskType.ts#L120-L125"
     },
     {
       "kind": "enum",
@@ -142002,7 +142652,7 @@
         "name": "TaskTypeGroq",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L126-L128"
+      "specLocation": "inference/_types/TaskType.ts#L127-L129"
     },
     {
       "kind": "enum",
@@ -142024,7 +142674,7 @@
         "name": "TaskTypeHuggingFace",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L130-L135"
+      "specLocation": "inference/_types/TaskType.ts#L131-L136"
     },
     {
       "kind": "enum",
@@ -142043,7 +142693,7 @@
         "name": "TaskTypeJinaAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L33-L37"
+      "specLocation": "inference/_types/TaskType.ts#L34-L38"
     },
     {
       "kind": "enum",
@@ -142062,7 +142712,7 @@
         "name": "TaskTypeLlama",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L137-L141"
+      "specLocation": "inference/_types/TaskType.ts#L138-L142"
     },
     {
       "kind": "enum",
@@ -142081,7 +142731,7 @@
         "name": "TaskTypeMistral",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L143-L147"
+      "specLocation": "inference/_types/TaskType.ts#L144-L148"
     },
     {
       "kind": "enum",
@@ -142103,7 +142753,7 @@
         "name": "TaskTypeNvidia",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L149-L154"
+      "specLocation": "inference/_types/TaskType.ts#L150-L155"
     },
     {
       "kind": "enum",
@@ -142125,7 +142775,7 @@
         "name": "TaskTypeOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L156-L161"
+      "specLocation": "inference/_types/TaskType.ts#L157-L162"
     },
     {
       "kind": "enum",
@@ -142147,7 +142797,7 @@
         "name": "TaskTypeOpenShiftAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L163-L168"
+      "specLocation": "inference/_types/TaskType.ts#L164-L169"
     },
     {
       "kind": "enum",
@@ -142163,7 +142813,7 @@
         "name": "TaskTypeVoyageAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L170-L173"
+      "specLocation": "inference/_types/TaskType.ts#L171-L174"
     },
     {
       "kind": "enum",
@@ -142182,7 +142832,7 @@
         "name": "TaskTypeWatsonx",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L181-L185"
+      "specLocation": "inference/_types/TaskType.ts#L182-L186"
     },
     {
       "kind": "enum",
@@ -142247,6 +142897,290 @@
         "namespace": "inference._types"
       },
       "specLocation": "inference/_types/CommonTypes.ts#L2468-L2473"
+    },
+    {
+      "codegenNames": [
+        "string",
+        "object"
+      ],
+      "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionInput",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L23-L29",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmbeddingContentObjectItem",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L42-L50",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "description": "A question answered with the probability that the statement in `instructions` is true.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PredicateDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L59-L64"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionQuestionBase",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "A description of what to decide. It must not be empty.",
+          "name": "instructions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L52-L57"
+    },
+    {
+      "description": "A question answered with one option out of a fixed set of choices.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+          "name": "choices",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "null",
+                    "namespace": "_builtins"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L66-L75"
+    },
+    {
+      "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+          "name": "levels",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionScoreLevel",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L77-L86"
+    },
+    {
+      "codegenNames": [
+        "label",
+        "object"
+      ],
+      "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionScoreLevel",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L88-L92",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionScoreLevelObject",
+              "namespace": "inference.decision"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionScoreLevelObject",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A description of the level.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L94-L103"
     },
     {
       "kind": "enum",
@@ -149457,7 +150391,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L168-L195",
       "variants": {
         "kind": "container"
       }
@@ -149475,7 +150409,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L152-L152"
     },
     {
       "inherits": {
@@ -149539,7 +150473,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L129-L148"
     },
     {
       "kind": "interface",
@@ -149617,7 +150551,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L117"
+      "specLocation": "_global/bulk/types.ts#L100-L127"
     },
     {
       "inherits": {
@@ -149632,7 +150566,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L150-L150"
     },
     {
       "inherits": {
@@ -149673,7 +150607,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L156-L166"
     },
     {
       "inherits": {
@@ -149688,7 +150622,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L154-L154"
     },
     {
       "description": "The source line that must follow an `update` action line.\nIt specifies the partial document, script, or upsert options to apply, plus optional update settings.",
@@ -149797,7 +150731,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L197-L236"
     },
     {
       "kind": "interface",
@@ -149976,7 +150910,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L36-L83"
+      "specLocation": "_global/bulk/types.ts#L37-L84"
     },
     {
       "attachedBehaviors": [
@@ -150092,7 +151026,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L349-L362"
+      "specLocation": "_types/common.ts#L355-L368"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -168001,6 +168935,95 @@
       "specLocation": "inference/_types/Results.ts#L93-L98"
     },
     {
+      "description": "The task settings of the `decision` task.",
+      "kind": "interface",
+      "name": {
+        "name": "DecisionTaskSettings",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+          "name": "questions",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionQuestion",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L31-L40"
+    },
+    {
+      "description": "Defines the response for a decision request.",
+      "kind": "interface",
+      "name": {
+        "name": "DecisionInferenceResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "decision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionResult",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L152-L157"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The answers, keyed by the name of the question they answer.",
+          "name": "answers",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionAnswer",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L159-L164"
+    },
+    {
       "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
       "inherits": {
         "type": {
@@ -168029,7 +169052,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L152-L157"
+      "specLocation": "inference/_types/Results.ts#L252-L257"
     },
     {
       "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
@@ -168633,7 +169656,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L326-L340",
+      "specLocation": "inference/_types/Results.ts#L426-L440",
       "variants": {
         "kind": "container"
       }
@@ -168787,7 +169810,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L299-L324"
+      "specLocation": "inference/_types/Results.ts#L399-L424"
     },
     {
       "description": "A single completion choice returned by the model.",
@@ -168834,7 +169857,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L227-L245"
+      "specLocation": "inference/_types/Results.ts#L327-L345"
     },
     {
       "description": "The message returned by the model.",
@@ -168923,7 +169946,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L195-L225"
+      "specLocation": "inference/_types/Results.ts#L295-L325"
     },
     {
       "description": "A tool call generated by the model.",
@@ -168982,7 +170005,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L173-L193"
+      "specLocation": "inference/_types/Results.ts#L273-L293"
     },
     {
       "description": "The function called by the tool.",
@@ -169017,7 +170040,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L159-L171"
+      "specLocation": "inference/_types/Results.ts#L259-L271"
     },
     {
       "description": "Token usage statistics for the request.",
@@ -169088,7 +170111,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L271-L297"
+      "specLocation": "inference/_types/Results.ts#L371-L397"
     },
     {
       "description": "Breakdown of tokens used in the prompt.",
@@ -169123,7 +170146,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L247-L259"
+      "specLocation": "inference/_types/Results.ts#L347-L359"
     },
     {
       "description": "Breakdown of tokens used in the request.",
@@ -169146,7 +170169,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L261-L269"
+      "specLocation": "inference/_types/Results.ts#L361-L369"
     },
     {
       "kind": "interface",
@@ -179667,7 +180690,7 @@
           }
         },
         {
-          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -179725,7 +180748,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L32-L55"
+      "specLocation": "_global/mget/types.ts#L33-L65"
     },
     {
       "kind": "interface",
@@ -184254,7 +185277,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L364-L396"
+      "specLocation": "_types/common.ts#L370-L402"
     },
     {
       "kind": "interface",
@@ -191224,7 +192247,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L80-L83"
+      "specLocation": "_global/msearch/types.ts#L82-L85"
     },
     {
       "kind": "interface",
@@ -191342,7 +192365,7 @@
           }
         },
         {
-          "description": "Custom value used to route operations to a specific shard.",
+          "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -191391,7 +192414,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L35-L94"
+      "specLocation": "_global/mtermvectors/types.ts#L36-L104"
     },
     {
       "kind": "interface",
@@ -191588,7 +192611,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L96-L104"
+      "specLocation": "_global/mtermvectors/types.ts#L106-L114"
     },
     {
       "kind": "interface",
@@ -192982,7 +194005,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L39-L76"
+      "specLocation": "_global/reindex/types.ts#L40-L78"
     },
     {
       "kind": "interface",
@@ -193104,7 +194127,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L78-L134"
+      "specLocation": "_global/reindex/types.ts#L80-L145"
     },
     {
       "kind": "interface",
@@ -193217,7 +194240,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L136-L172"
+      "specLocation": "_global/reindex/types.ts#L147-L183"
     },
     {
       "kind": "interface",

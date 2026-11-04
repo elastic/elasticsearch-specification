@@ -10427,7 +10427,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -22470,6 +22470,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-include_auto_calibration"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-vector_formats"
           }
         ],
         "responses": {
@@ -22506,6 +22512,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-include_auto_calibration"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-vector_formats"
           }
         ],
         "responses": {
@@ -23755,6 +23767,108 @@
           }
         },
         "x-state": "Generally available; Added in 8.11.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/decision/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform decision inference on the service",
+        "description": "Answer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionTaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DecisionRequestExample1": {
+                  "summary": "Decision task",
+                  "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+                  "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DecisionInferenceResult"
+                },
+                "examples": {
+                  "DecisionResponseExample1": {
+                    "summary": "Decision task",
+                    "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+                    "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -40821,7 +40935,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value that is used to route operations to a specific shard.",
+            "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -78977,7 +79091,7 @@
             ]
           },
           "routing": {
-            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "x-state": "Generally available",
             "type": "string"
           },
@@ -108288,7 +108402,19 @@
         "properties": {
           "node": {
             "description": "The node ID of the node that holds the shard.",
-            "type": "string"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "relocating_node": {
+            "description": "The node ID of the node the shard is relocating to. Only returned while the shard is relocating.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
           },
           "primary": {
             "description": "If `true`, the shard is a primary shard.",
@@ -108335,6 +108461,25 @@
             "description": "If `true`, the segment is searchable.\nIf `false`, the segment has most likely been written to disk but needs a refresh to be searchable.",
             "type": "boolean"
           },
+          "merge_id": {
+            "description": "The ID of the merge the segment is part of. Only returned while the segment is being merged.",
+            "type": "string"
+          },
+          "sort": {
+            "description": "The index sort of the segment. Only returned when the index is sorted.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices.segments.SegmentSort"
+            }
+          },
+          "size": {
+            "description": "Disk space used by the segment.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "size_in_bytes": {
             "description": "Disk space used by the segment, in bytes.",
             "type": "number"
@@ -108350,18 +108495,151 @@
                 "$ref": "#/components/schemas/_types.VersionString"
               }
             ]
+          },
+          "auto_calibration": {
+            "description": "The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.\nOnly returned when `include_auto_calibration` is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices.segments.SegmentAutoCalibration"
+            }
           }
         },
         "required": [
-          "attributes",
           "committed",
-          "compound",
           "deleted_docs",
           "generation",
           "search",
           "size_in_bytes",
-          "num_docs",
-          "version"
+          "num_docs"
+        ]
+      },
+      "indices.segments.SegmentSort": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The name of the sort field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "mode": {
+            "description": "The selector used to pick a value from multi-valued fields, such as `min` or `max`. Only returned for numeric and keyword fields.",
+            "type": "string"
+          },
+          "missing": {
+            "description": "The value used for documents that are missing the field.",
+            "type": "string"
+          },
+          "reverse": {
+            "description": "If `true`, the sort order is descending.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "field",
+          "reverse"
+        ]
+      },
+      "indices.segments.SegmentAutoCalibration": {
+        "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "osq": "#/components/schemas/indices.segments.OsqSegmentAutoCalibration"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/indices.segments.OsqSegmentAutoCalibration"
+          }
+        ]
+      },
+      "indices.segments.OsqSegmentAutoCalibration": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices.segments.SegmentAutoCalibrationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "osq"
+                ]
+              },
+              "parameters": {
+                "description": "The calibration parameters.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices.segments.OsqSegmentAutoCalibrationParameters"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "indices.segments.OsqSegmentAutoCalibrationParameters": {
+        "type": "object",
+        "properties": {
+          "bits": {
+            "description": "The number of bits used to quantize the vectors.",
+            "type": "number"
+          },
+          "query_bits": {
+            "description": "The number of bits used to quantize the query vectors.",
+            "type": "number"
+          },
+          "precondition": {
+            "description": "If `true`, the vectors are preconditioned before quantization.",
+            "type": "boolean"
+          },
+          "oversample": {
+            "description": "The oversampling factor applied when rescoring.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "bits",
+          "query_bits",
+          "precondition",
+          "oversample"
+        ]
+      },
+      "indices.segments.SegmentAutoCalibrationBase": {
+        "type": "object",
+        "properties": {
+          "calibrated": {
+            "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+            "type": "boolean"
+          },
+          "number_of_vectors": {
+            "description": "The number of vectors of the field in the segment.",
+            "type": "number"
+          },
+          "size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "size_in_bytes": {
+            "description": "The size of the vectors of the field in the segment, in bytes.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "calibrated",
+          "number_of_vectors",
+          "size_in_bytes"
         ]
       },
       "indices.shard_stores.ShardStoreStatus": {
@@ -110904,6 +111182,389 @@
           "result"
         ]
       },
+      "inference.decision.DecisionInput": {
+        "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
+          }
+        ]
+      },
+      "inference._types.EmbeddingContentObjectItem": {
+        "description": "An object containing the input data for a single item for the model to embed.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.decision.DecisionTaskSettings": {
+        "description": "The task settings of the `decision` task.",
+        "type": "object",
+        "properties": {
+          "questions": {
+            "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference.decision.DecisionQuestion"
+            }
+          }
+        }
+      },
+      "inference.decision.DecisionQuestion": {
+        "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference.decision.ChoiceDecisionQuestion",
+            "predicate": "#/components/schemas/inference.decision.PredicateDecisionQuestion",
+            "score": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.PredicateDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ChoiceDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        ]
+      },
+      "inference.decision.PredicateDecisionQuestion": {
+        "description": "A question answered with the probability that the statement in `instructions` is true.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "predicate"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionQuestionBase": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "description": "A description of what to decide. It must not be empty.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "instructions"
+        ]
+      },
+      "inference.decision.ChoiceDecisionQuestion": {
+        "description": "A question answered with one option out of a fixed set of choices.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "choice"
+                ]
+              },
+              "choices": {
+                "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+                "type": "object",
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "nullable": true,
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "type",
+              "choices"
+            ]
+          }
+        ]
+      },
+      "inference.decision.ScoreDecisionQuestion": {
+        "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "score"
+                ]
+              },
+              "levels": {
+                "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/inference.decision.DecisionScoreLevel"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "levels"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevel": {
+        "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionScoreLevelObject"
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevelObject": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the level.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      },
+      "inference._types.DecisionInferenceResult": {
+        "description": "Defines the response for a decision request.",
+        "type": "object",
+        "properties": {
+          "decision": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.DecisionResult"
+              }
+            ]
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "inference._types.DecisionResult": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "description": "The answers, keyed by the name of the question they answer.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference._types.DecisionAnswer"
+            }
+          }
+        },
+        "required": [
+          "answers"
+        ]
+      },
+      "inference._types.DecisionAnswer": {
+        "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference._types.ChoiceDecisionAnswer",
+            "predicate": "#/components/schemas/inference._types.PredicateDecisionAnswer",
+            "score": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.PredicateDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ChoiceDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        ]
+      },
+      "inference._types.PredicateDecisionAnswer": {
+        "description": "The answer to a `predicate` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "predicate"
+            ]
+          },
+          "probability": {
+            "description": "The probability that the statement in the question is true.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "probability"
+        ]
+      },
+      "inference._types.ChoiceDecisionAnswer": {
+        "description": "The answer to a `choice` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "choice"
+            ]
+          },
+          "choice": {
+            "description": "The chosen option.",
+            "type": "string"
+          },
+          "probabilities": {
+            "description": "The probability of each option.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ChoiceDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the chosen option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "choice",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ChoiceDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The option.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "probability"
+        ]
+      },
+      "inference._types.ScoreDecisionAnswer": {
+        "description": "The answer to a `score` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "score"
+            ]
+          },
+          "score": {
+            "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+            "type": "number"
+          },
+          "probabilities": {
+            "description": "The probability of each level, ordered from the lowest to the highest level.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ScoreDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the score.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "score",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ScoreDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The zero-based position of the level, which is also its position in the array.",
+            "type": "number"
+          },
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the level.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "label",
+          "probability"
+        ]
+      },
       "inference._types.TaskType": {
         "type": "string",
         "enum": [
@@ -110913,7 +111574,8 @@
           "completion",
           "chat_completion",
           "embedding",
-          "document_extraction"
+          "document_extraction",
+          "decision"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -111150,36 +111812,6 @@
               "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
             }
           }
-        ]
-      },
-      "inference._types.EmbeddingContentObjectItem": {
-        "description": "An object containing the input data for a single item for the model to embed.",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
-              }
-            ]
-          },
-          "format": {
-            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
-              }
-            ]
-          },
-          "value": {
-            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "value"
         ]
       },
       "inference._types.EmbeddingInferenceResult": {
@@ -119043,7 +119675,7 @@
             ]
           },
           "routing": {
-            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -126829,7 +127461,7 @@
             "type": "boolean"
           },
           "routing": {
-            "description": "Custom value used to route operations to a specific shard.",
+            "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -152916,7 +153548,7 @@
       "create-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -153777,6 +154409,7 @@
       "fleet.search-routing": {
         "in": "query",
         "name": "routing",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -156146,6 +156779,30 @@
           "default": false,
           "type": "boolean"
         },
+        "style": "form"
+      },
+      "indices.segments-include_auto_calibration": {
+        "in": "query",
+        "name": "include_auto_calibration",
+        "description": "If `true`, the response includes the auto-calibration information of each segment, for the `dense_vector` fields that support auto-calibration.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
+        "style": "form"
+      },
+      "indices.segments-vector_formats": {
+        "in": "query",
+        "name": "vector_formats",
+        "description": "If `true`, the response includes the vector formats used by the fields of each segment, in `attributes`.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 8.15.0",
         "style": "form"
       },
       "indices.shard_stores-index": {
@@ -160206,7 +160863,7 @@
       "search_template-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
