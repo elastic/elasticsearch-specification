@@ -4906,6 +4906,7 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
 
 export interface AggregationsTopMetricsValue {
   field: Field
+  missing?: AggregationsMissing
 }
 
 export interface AggregationsTrendChange {
@@ -16461,6 +16462,9 @@ export interface IngestNetworkDirectionProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
 }
 
+export interface IngestNormalizeForStreamProcessor extends IngestProcessorBase {
+}
+
 export interface IngestPipeline {
   description?: string
   on_failure?: IngestProcessorContainer[]
@@ -16536,7 +16540,9 @@ export interface IngestProcessorContainer {
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
   network_direction?: IngestNetworkDirectionProcessor
+  normalize_for_stream?: IngestNormalizeForStreamProcessor
   pipeline?: IngestPipelineProcessor
+  recover_failure_document?: IngestRecoverFailureDocumentProcessor
   redact?: IngestRedactProcessor
   registered_domain?: IngestRegisteredDomainProcessor
   remove?: IngestRemoveProcessor
@@ -16553,6 +16559,9 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRecoverFailureDocumentProcessor extends IngestProcessorBase {
 }
 
 export interface IngestRedact {
@@ -23004,9 +23013,11 @@ export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySetti
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 
@@ -23191,9 +23202,11 @@ export interface SnapshotSourceOnlyRepositorySettingsForAzure {
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 
