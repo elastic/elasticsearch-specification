@@ -4638,6 +4638,7 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
 
 export interface AggregationsTopMetricsValue {
   field: Field
+  missing?: AggregationsMissing
 }
 
 export interface AggregationsTrendChange {

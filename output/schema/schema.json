@@ -73445,9 +73445,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "The value to treat a document as having when it has no value for the field.\nBy default, a document that is missing any of the metrics or the sort value is ignored.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Missing",
+              "namespace": "_types.aggregations"
+            }
+          }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L454-L459"
+      "specLocation": "_types/aggregations/metric.ts#L454-L464"
     },
     {
       "kind": "interface",
@@ -73621,7 +73633,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L461-L461"
+      "specLocation": "_types/aggregations/metric.ts#L466-L466"
     },
     {
       "kind": "enum",
@@ -73661,7 +73673,7 @@
         "name": "ValueType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L463-L474"
+      "specLocation": "_types/aggregations/metric.ts#L468-L479"
     },
     {
       "kind": "interface",
@@ -73906,7 +73918,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L476-L490"
+      "specLocation": "_types/aggregations/metric.ts#L481-L495"
     },
     {
       "kind": "interface",
@@ -73951,7 +73963,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L492-L502"
+      "specLocation": "_types/aggregations/metric.ts#L497-L507"
     },
     {
       "kind": "interface",
