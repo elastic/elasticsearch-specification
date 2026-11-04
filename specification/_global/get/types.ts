@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { Id, IndexName, SequenceNumber, VersionNumber } from '@_types/common'
+import {
+  Id,
+  IndexName,
+  SequenceNumber,
+  SliceId,
+  VersionNumber
+} from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -49,6 +55,12 @@ export class GetResult<TDocument> {
    * The explicit routing, if set.
    */
   _routing?: string
+  /**
+   * The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).
+   * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+   */
+  _slice?: SliceId
   /**
    * The sequence number assigned to the document for the indexing operation.
    * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
