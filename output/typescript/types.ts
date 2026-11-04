@@ -15235,6 +15235,11 @@ export interface InferenceBaseReasoningDetail {
   index?: integer
 }
 
+export interface InferenceCacheControl {
+  type?: string
+  ttl?: Duration
+}
+
 export interface InferenceChatCompletionChoice {
   message: InferenceChatCompletionMessage
   finish_reason?: string
@@ -15955,6 +15960,8 @@ export interface InferenceRequestChatCompletion {
   model?: string
   max_completion_tokens?: long
   reasoning?: InferenceReasoning
+  cache_control?: InferenceCacheControl
+  session_id?: string
   stop?: string[]
   temperature?: float
   tool_choice?: InferenceCompletionToolType
