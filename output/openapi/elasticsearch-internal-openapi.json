@@ -25349,6 +25349,108 @@
         ]
       }
     },
+    "/_inference/decision/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform decision inference on the service",
+        "description": "Answer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionTaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DecisionRequestExample1": {
+                  "summary": "Decision task",
+                  "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+                  "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DecisionInferenceResult"
+                },
+                "examples": {
+                  "DecisionResponseExample1": {
+                    "summary": "Decision task",
+                    "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+                    "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/{inference_id}": {
       "get": {
         "tags": [
@@ -113556,6 +113658,389 @@
           "result"
         ]
       },
+      "inference.decision.DecisionInput": {
+        "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
+          }
+        ]
+      },
+      "inference._types.EmbeddingContentObjectItem": {
+        "description": "An object containing the input data for a single item for the model to embed.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.decision.DecisionTaskSettings": {
+        "description": "The task settings of the `decision` task.",
+        "type": "object",
+        "properties": {
+          "questions": {
+            "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference.decision.DecisionQuestion"
+            }
+          }
+        }
+      },
+      "inference.decision.DecisionQuestion": {
+        "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference.decision.ChoiceDecisionQuestion",
+            "predicate": "#/components/schemas/inference.decision.PredicateDecisionQuestion",
+            "score": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.PredicateDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ChoiceDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        ]
+      },
+      "inference.decision.PredicateDecisionQuestion": {
+        "description": "A question answered with the probability that the statement in `instructions` is true.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "predicate"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionQuestionBase": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "description": "A description of what to decide. It must not be empty.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "instructions"
+        ]
+      },
+      "inference.decision.ChoiceDecisionQuestion": {
+        "description": "A question answered with one option out of a fixed set of choices.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "choice"
+                ]
+              },
+              "choices": {
+                "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+                "type": "object",
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "nullable": true,
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "type",
+              "choices"
+            ]
+          }
+        ]
+      },
+      "inference.decision.ScoreDecisionQuestion": {
+        "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "score"
+                ]
+              },
+              "levels": {
+                "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/inference.decision.DecisionScoreLevel"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "levels"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevel": {
+        "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionScoreLevelObject"
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevelObject": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the level.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      },
+      "inference._types.DecisionInferenceResult": {
+        "description": "Defines the response for a decision request.",
+        "type": "object",
+        "properties": {
+          "decision": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.DecisionResult"
+              }
+            ]
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "inference._types.DecisionResult": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "description": "The answers, keyed by the name of the question they answer.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference._types.DecisionAnswer"
+            }
+          }
+        },
+        "required": [
+          "answers"
+        ]
+      },
+      "inference._types.DecisionAnswer": {
+        "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference._types.ChoiceDecisionAnswer",
+            "predicate": "#/components/schemas/inference._types.PredicateDecisionAnswer",
+            "score": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.PredicateDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ChoiceDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        ]
+      },
+      "inference._types.PredicateDecisionAnswer": {
+        "description": "The answer to a `predicate` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "predicate"
+            ]
+          },
+          "probability": {
+            "description": "The probability that the statement in the question is true.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "probability"
+        ]
+      },
+      "inference._types.ChoiceDecisionAnswer": {
+        "description": "The answer to a `choice` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "choice"
+            ]
+          },
+          "choice": {
+            "description": "The chosen option.",
+            "type": "string"
+          },
+          "probabilities": {
+            "description": "The probability of each option.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ChoiceDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the chosen option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "choice",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ChoiceDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The option.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "probability"
+        ]
+      },
+      "inference._types.ScoreDecisionAnswer": {
+        "description": "The answer to a `score` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "score"
+            ]
+          },
+          "score": {
+            "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+            "type": "number"
+          },
+          "probabilities": {
+            "description": "The probability of each level, ordered from the lowest to the highest level.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ScoreDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the score.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "score",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ScoreDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The zero-based position of the level, which is also its position in the array.",
+            "type": "number"
+          },
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the level.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "label",
+          "probability"
+        ]
+      },
       "inference._types.TaskType": {
         "type": "string",
         "enum": [
@@ -113565,7 +114050,8 @@
           "completion",
           "chat_completion",
           "embedding",
-          "document_extraction"
+          "document_extraction",
+          "decision"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -113802,36 +114288,6 @@
               "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
             }
           }
-        ]
-      },
-      "inference._types.EmbeddingContentObjectItem": {
-        "description": "An object containing the input data for a single item for the model to embed.",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
-              }
-            ]
-          },
-          "format": {
-            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
-              }
-            ]
-          },
-          "value": {
-            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "value"
         ]
       },
       "inference._types.EmbeddingInferenceResult": {

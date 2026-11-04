@@ -5680,6 +5680,53 @@
     {
       "availability": {
         "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "docId": "inference-api-post",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
+      "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
+      "name": "inference.decision",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_inference/decision/{inference_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -37830,6 +37877,116 @@
         "namespace": "inference.completion"
       },
       "specLocation": "inference/completion/CompletionResponse.ts#L22-L25"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionInput",
+                "namespace": "inference.decision"
+              }
+            }
+          },
+          {
+            "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+            "name": "task_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionTaskSettings",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "examples": {
+        "DecisionRequestExample1": {
+          "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+          "method_request": "POST _inference/decision/my-decision-endpoint",
+          "summary": "Decision task",
+          "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "path": [
+        {
+          "description": "The unique identifier for the inference endpoint.",
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The amount of time to wait for the inference request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/DecisionRequest.ts#L25-L88"
+    },
+    {
+      "body": {
+        "codegenName": "inference_result",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DecisionInferenceResult",
+            "namespace": "inference._types"
+          }
+        }
+      },
+      "examples": {
+        "DecisionResponseExample1": {
+          "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+          "summary": "Decision task",
+          "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/DecisionResponse.ts#L22-L25"
     },
     {
       "attachedBehaviors": [
@@ -139986,6 +140143,273 @@
       "specLocation": "inference/_types/CommonTypes.ts#L1472-L1477"
     },
     {
+      "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Results.ts#L166-L175",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "description": "The answer to a `predicate` question.",
+      "kind": "interface",
+      "name": {
+        "name": "PredicateDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        },
+        {
+          "description": "The probability that the statement in the question is true.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L177-L186"
+    },
+    {
+      "description": "The answer to a `choice` question.",
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The chosen option.",
+          "name": "choice",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of each option.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ChoiceDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the chosen option.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L188-L205"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The option.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the option.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L207-L216"
+    },
+    {
+      "description": "The answer to a `score` question.",
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+          "name": "score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The probability of each level, ordered from the lowest to the highest level.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScoreDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the score.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L218-L235"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The zero-based position of the level, which is also its position in the array.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the level.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L237-L250"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -141354,13 +141778,16 @@
         },
         {
           "name": "document_extraction"
+        },
+        {
+          "name": "decision"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L31"
+      "specLocation": "inference/_types/TaskType.ts#L20-L32"
     },
     {
       "kind": "enum",
@@ -141376,7 +141803,7 @@
         "name": "TaskTypeAi21",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L39-L42"
+      "specLocation": "inference/_types/TaskType.ts#L40-L43"
     },
     {
       "kind": "enum",
@@ -141398,7 +141825,7 @@
         "name": "TaskTypeAlibabaCloudAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L44-L49"
+      "specLocation": "inference/_types/TaskType.ts#L45-L50"
     },
     {
       "kind": "enum",
@@ -141417,7 +141844,7 @@
         "name": "TaskTypeAmazonBedrock",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L51-L55"
+      "specLocation": "inference/_types/TaskType.ts#L52-L56"
     },
     {
       "kind": "enum",
@@ -141442,7 +141869,7 @@
         "name": "TaskTypeAmazonSageMaker",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L57-L63"
+      "specLocation": "inference/_types/TaskType.ts#L58-L64"
     },
     {
       "kind": "enum",
@@ -141458,7 +141885,7 @@
         "name": "TaskTypeAnthropic",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L65-L68"
+      "specLocation": "inference/_types/TaskType.ts#L66-L69"
     },
     {
       "kind": "enum",
@@ -141477,7 +141904,7 @@
         "name": "TaskTypeAzureAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L70-L74"
+      "specLocation": "inference/_types/TaskType.ts#L71-L75"
     },
     {
       "kind": "enum",
@@ -141496,7 +141923,7 @@
         "name": "TaskTypeAzureOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L76-L80"
+      "specLocation": "inference/_types/TaskType.ts#L77-L81"
     },
     {
       "kind": "enum",
@@ -141515,7 +141942,7 @@
         "name": "TaskTypeCohere",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L82-L86"
+      "specLocation": "inference/_types/TaskType.ts#L83-L87"
     },
     {
       "kind": "enum",
@@ -141528,7 +141955,7 @@
         "name": "TaskTypeContextualAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L88-L90"
+      "specLocation": "inference/_types/TaskType.ts#L89-L91"
     },
     {
       "kind": "enum",
@@ -141550,7 +141977,7 @@
         "name": "TaskTypeCustom",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L92-L97"
+      "specLocation": "inference/_types/TaskType.ts#L93-L98"
     },
     {
       "kind": "enum",
@@ -141566,7 +141993,7 @@
         "name": "TaskTypeDeepSeek",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L99-L102"
+      "specLocation": "inference/_types/TaskType.ts#L100-L103"
     },
     {
       "kind": "enum",
@@ -141579,7 +142006,7 @@
         "name": "TaskTypeELSER",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L110-L112"
+      "specLocation": "inference/_types/TaskType.ts#L111-L113"
     },
     {
       "kind": "enum",
@@ -141598,7 +142025,7 @@
         "name": "TaskTypeElasticsearch",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L104-L108"
+      "specLocation": "inference/_types/TaskType.ts#L105-L109"
     },
     {
       "kind": "enum",
@@ -141617,7 +142044,7 @@
         "name": "TaskTypeFireworksAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L175-L179"
+      "specLocation": "inference/_types/TaskType.ts#L176-L180"
     },
     {
       "kind": "enum",
@@ -141633,7 +142060,7 @@
         "name": "TaskTypeGoogleAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L114-L117"
+      "specLocation": "inference/_types/TaskType.ts#L115-L118"
     },
     {
       "kind": "enum",
@@ -141655,7 +142082,7 @@
         "name": "TaskTypeGoogleVertexAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L119-L124"
+      "specLocation": "inference/_types/TaskType.ts#L120-L125"
     },
     {
       "kind": "enum",
@@ -141668,7 +142095,7 @@
         "name": "TaskTypeGroq",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L126-L128"
+      "specLocation": "inference/_types/TaskType.ts#L127-L129"
     },
     {
       "kind": "enum",
@@ -141690,7 +142117,7 @@
         "name": "TaskTypeHuggingFace",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L130-L135"
+      "specLocation": "inference/_types/TaskType.ts#L131-L136"
     },
     {
       "kind": "enum",
@@ -141709,7 +142136,7 @@
         "name": "TaskTypeJinaAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L33-L37"
+      "specLocation": "inference/_types/TaskType.ts#L34-L38"
     },
     {
       "kind": "enum",
@@ -141728,7 +142155,7 @@
         "name": "TaskTypeLlama",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L137-L141"
+      "specLocation": "inference/_types/TaskType.ts#L138-L142"
     },
     {
       "kind": "enum",
@@ -141747,7 +142174,7 @@
         "name": "TaskTypeMistral",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L143-L147"
+      "specLocation": "inference/_types/TaskType.ts#L144-L148"
     },
     {
       "kind": "enum",
@@ -141769,7 +142196,7 @@
         "name": "TaskTypeNvidia",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L149-L154"
+      "specLocation": "inference/_types/TaskType.ts#L150-L155"
     },
     {
       "kind": "enum",
@@ -141791,7 +142218,7 @@
         "name": "TaskTypeOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L156-L161"
+      "specLocation": "inference/_types/TaskType.ts#L157-L162"
     },
     {
       "kind": "enum",
@@ -141813,7 +142240,7 @@
         "name": "TaskTypeOpenShiftAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L163-L168"
+      "specLocation": "inference/_types/TaskType.ts#L164-L169"
     },
     {
       "kind": "enum",
@@ -141829,7 +142256,7 @@
         "name": "TaskTypeVoyageAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L170-L173"
+      "specLocation": "inference/_types/TaskType.ts#L171-L174"
     },
     {
       "kind": "enum",
@@ -141848,7 +142275,7 @@
         "name": "TaskTypeWatsonx",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L181-L185"
+      "specLocation": "inference/_types/TaskType.ts#L182-L186"
     },
     {
       "kind": "enum",
@@ -141913,6 +142340,290 @@
         "namespace": "inference._types"
       },
       "specLocation": "inference/_types/CommonTypes.ts#L2468-L2473"
+    },
+    {
+      "codegenNames": [
+        "string",
+        "object"
+      ],
+      "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionInput",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L23-L29",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmbeddingContentObjectItem",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L42-L50",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "description": "A question answered with the probability that the statement in `instructions` is true.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "PredicateDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L59-L64"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionQuestionBase",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "A description of what to decide. It must not be empty.",
+          "name": "instructions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L52-L57"
+    },
+    {
+      "description": "A question answered with one option out of a fixed set of choices.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+          "name": "choices",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "null",
+                    "namespace": "_builtins"
+                  }
+                }
+              ],
+              "kind": "union_of"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L66-L75"
+    },
+    {
+      "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+          "name": "levels",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionScoreLevel",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L77-L86"
+    },
+    {
+      "codegenNames": [
+        "label",
+        "object"
+      ],
+      "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+      "kind": "type_alias",
+      "name": {
+        "name": "DecisionScoreLevel",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L88-L92",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionScoreLevelObject",
+              "namespace": "inference.decision"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionScoreLevelObject",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A description of the level.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L94-L103"
     },
     {
       "kind": "enum",
@@ -167721,6 +168432,95 @@
       "specLocation": "inference/_types/Results.ts#L93-L98"
     },
     {
+      "description": "The task settings of the `decision` task.",
+      "kind": "interface",
+      "name": {
+        "name": "DecisionTaskSettings",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+          "name": "questions",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionQuestion",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L31-L40"
+    },
+    {
+      "description": "Defines the response for a decision request.",
+      "kind": "interface",
+      "name": {
+        "name": "DecisionInferenceResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "decision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionResult",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L152-L157"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The answers, keyed by the name of the question they answer.",
+          "name": "answers",
+          "required": true,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionAnswer",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L159-L164"
+    },
+    {
       "description": "Acknowledged response. For dry_run, contains the list of pipelines which reference the inference endpoint",
       "inherits": {
         "type": {
@@ -167749,7 +168549,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L152-L157"
+      "specLocation": "inference/_types/Results.ts#L252-L257"
     },
     {
       "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
@@ -168353,7 +169153,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L326-L340",
+      "specLocation": "inference/_types/Results.ts#L426-L440",
       "variants": {
         "kind": "container"
       }
@@ -168507,7 +169307,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L299-L324"
+      "specLocation": "inference/_types/Results.ts#L399-L424"
     },
     {
       "description": "A single completion choice returned by the model.",
@@ -168554,7 +169354,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L227-L245"
+      "specLocation": "inference/_types/Results.ts#L327-L345"
     },
     {
       "description": "The message returned by the model.",
@@ -168643,7 +169443,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L195-L225"
+      "specLocation": "inference/_types/Results.ts#L295-L325"
     },
     {
       "description": "A tool call generated by the model.",
@@ -168702,7 +169502,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L173-L193"
+      "specLocation": "inference/_types/Results.ts#L273-L293"
     },
     {
       "description": "The function called by the tool.",
@@ -168737,7 +169537,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L159-L171"
+      "specLocation": "inference/_types/Results.ts#L259-L271"
     },
     {
       "description": "Token usage statistics for the request.",
@@ -168808,7 +169608,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L271-L297"
+      "specLocation": "inference/_types/Results.ts#L371-L397"
     },
     {
       "description": "Breakdown of tokens used in the prompt.",
@@ -168843,7 +169643,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L247-L259"
+      "specLocation": "inference/_types/Results.ts#L347-L359"
     },
     {
       "description": "Breakdown of tokens used in the request.",
@@ -168866,7 +169666,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L261-L269"
+      "specLocation": "inference/_types/Results.ts#L361-L369"
     },
     {
       "kind": "interface",

@@ -15230,6 +15230,18 @@ export interface InferenceChatCompletionUsage {
   completion_tokens_details?: InferenceChatCompletionCompletionTokensDetails
 }
 
+export interface InferenceChoiceDecisionAnswer {
+  type: 'choice'
+  choice: string
+  probabilities: InferenceChoiceDecisionProbability[]
+  confidence: double
+}
+
+export interface InferenceChoiceDecisionProbability {
+  value: string
+  probability: double
+}
+
 export type InferenceCohereEmbeddingType = 'binary' | 'bit' | 'byte' | 'float' | 'int8'
 
 export type InferenceCohereInputType = 'classification' | 'clustering' | 'ingest' | 'search'
@@ -15347,6 +15359,16 @@ export interface InferenceCustomTaskSettings {
 }
 
 export type InferenceCustomTaskType = 'text_embedding' | 'sparse_embedding' | 'rerank' | 'completion'
+
+export type InferenceDecisionAnswer = InferencePredicateDecisionAnswer | InferenceChoiceDecisionAnswer | InferenceScoreDecisionAnswer
+
+export interface InferenceDecisionInferenceResult {
+  decision: InferenceDecisionResult
+}
+
+export interface InferenceDecisionResult {
+  answers: Record<string, InferenceDecisionAnswer>
+}
 
 export interface InferenceDeepSeekServiceSettings {
   api_key: string
@@ -15830,6 +15852,11 @@ export interface InferenceOpenShiftAiTaskSettings {
 
 export type InferenceOpenShiftAiTaskType = 'text_embedding' | 'completion' | 'chat_completion' | 'rerank'
 
+export interface InferencePredicateDecisionAnswer {
+  type: 'predicate'
+  probability: double
+}
+
 export interface InferenceRankedDocument {
   index: integer
   relevance_score: float
@@ -15888,6 +15915,19 @@ export interface InferenceRerankedInferenceResult {
   rerank: InferenceRankedDocument[]
 }
 
+export interface InferenceScoreDecisionAnswer {
+  type: 'score'
+  score: double
+  probabilities: InferenceScoreDecisionProbability[]
+  confidence: double
+}
+
+export interface InferenceScoreDecisionProbability {
+  value: integer
+  label: string
+  probability: double
+}
+
 export type InferenceServiceSettings = any
 
 export interface InferenceSparseEmbeddingInferenceResult {
@@ -15908,7 +15948,7 @@ export interface InferenceSummaryReasoningDetail extends InferenceBaseReasoningD
 
 export type InferenceTaskSettings = any
 
-export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction'
+export type InferenceTaskType = 'sparse_embedding' | 'text_embedding' | 'rerank' | 'completion' | 'chat_completion' | 'embedding' | 'document_extraction' | 'decision'
 
 export type InferenceTaskTypeAi21 = 'completion' | 'chat_completion'
 
@@ -16038,6 +16078,50 @@ export interface InferenceCompletionRequest extends RequestBase {
 }
 
 export type InferenceCompletionResponse = InferenceCompletionInferenceResult
+
+export interface InferenceDecisionChoiceDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'choice'
+  choices: Record<string, string | null>
+}
+
+export type InferenceDecisionDecisionInput = string | InferenceEmbeddingContentObjectItem
+
+export type InferenceDecisionDecisionQuestion = InferenceDecisionPredicateDecisionQuestion | InferenceDecisionChoiceDecisionQuestion | InferenceDecisionScoreDecisionQuestion
+
+export interface InferenceDecisionDecisionQuestionBase {
+  instructions: string
+}
+
+export type InferenceDecisionDecisionScoreLevel = string | InferenceDecisionDecisionScoreLevelObject
+
+export interface InferenceDecisionDecisionScoreLevelObject {
+  label: string
+  description?: string
+}
+
+export interface InferenceDecisionDecisionTaskSettings {
+  questions?: Record<string, InferenceDecisionDecisionQuestion>
+}
+
+export interface InferenceDecisionPredicateDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'predicate'
+}
+
+export interface InferenceDecisionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: {
+    input: InferenceDecisionDecisionInput
+    task_settings?: InferenceDecisionDecisionTaskSettings
+  }
+}
+
+export type InferenceDecisionResponse = InferenceDecisionInferenceResult
+
+export interface InferenceDecisionScoreDecisionQuestion extends InferenceDecisionDecisionQuestionBase {
+  type: 'score'
+  levels: InferenceDecisionDecisionScoreLevel[]
+}
 
 export interface InferenceDeleteRequest extends RequestBase {
   task_type?: InferenceTaskType
