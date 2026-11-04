@@ -282,7 +282,7 @@ export interface DeleteByQueryRequest extends RequestBase {
 export interface DeleteByQueryResponse {
   batches?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   requests_per_second?: float
   retries?: Retries
@@ -1272,7 +1272,7 @@ export interface ReindexResponse {
   batches?: long
   created?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   retries?: Retries
   requests_per_second?: float
@@ -1695,7 +1695,6 @@ export interface SearchFieldCollapse {
   field: Field
   inner_hits?: SearchInnerHits | SearchInnerHits[]
   max_concurrent_group_searches?: integer
-  collapse?: SearchFieldCollapse
 }
 
 export interface SearchFieldSuggester {
@@ -2460,7 +2459,7 @@ export interface UpdateByQueryRequest extends RequestBase {
 
 export interface UpdateByQueryResponse {
   batches?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   deleted?: long
   requests_per_second?: float
@@ -2564,6 +2563,8 @@ export interface AcknowledgedResponseBase {
 }
 
 export type AggregateName = string
+
+export type BulkByPaginatedSearchFailure = BulkIndexByScrollFailure | ShardFailure
 
 export interface BulkIndexByScrollFailure {
   cause: ErrorCause
@@ -3215,7 +3216,7 @@ export interface ReindexTaskResult {
   batches?: long
   created?: long
   deleted?: long
-  failures?: BulkIndexByScrollFailure[]
+  failures?: BulkByPaginatedSearchFailure[]
   noops?: long
   requests_per_second?: float
   retries?: Retries
@@ -3513,6 +3514,8 @@ export interface TextSimilarityReranker extends RetrieverBase {
   field: string
   chunk_rescorer?: ChunkRescorer
 }
+
+export type ThreadSortOrder = 'total' | 'cpu'
 
 export type ThreadType = 'cpu' | 'wait' | 'block' | 'gpu' | 'mem'
 
@@ -20981,7 +20984,7 @@ export interface NodesHotThreadsRequest extends RequestBase {
   threads?: long
   timeout?: Duration
   type?: ThreadType
-  sort?: ThreadType
+  sort?: ThreadSortOrder
 }
 
 export interface NodesHotThreadsResponse {
@@ -22457,7 +22460,7 @@ export interface SecurityCreateApiKeyRequest extends RequestBase {
   refresh?: Refresh
   body?: {
     expiration?: Duration
-    name?: Name
+    name: Name
     role_descriptors?: Record<string, SecurityRoleDescriptor>
     metadata?: Metadata
   }

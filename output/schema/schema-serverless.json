@@ -23813,7 +23813,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -63409,7 +63409,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -67875,9 +67875,9 @@
             }
           },
           {
-            "description": "A name for the API key.",
+            "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
             "name": "name",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -67995,7 +67995,7 @@
           }
         }
       ],
-      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L91"
+      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L94"
     },
     {
       "body": {
@@ -77196,7 +77196,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -85389,20 +85389,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "collapse",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldCollapse",
-              "namespace": "_global.search._types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L40"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -114182,6 +114171,91 @@
       }
     },
     {
+      "codegenNames": [
+        "bulk",
+        "search"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "BulkByPaginatedSearchFailure",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Errors.ts#L64-L67",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BulkIndexByScrollFailure",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardFailure",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BulkIndexByScrollFailure",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "cause",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Errors.ts#L69-L74"
+    },
+    {
       "docId": "byte-units",
       "docUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#byte-units",
       "kind": "type_alias",
@@ -114282,7 +114356,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L414-L420"
+      "specLocation": "_types/common.ts#L421-L427"
     },
     {
       "kind": "type_alias",
@@ -114290,7 +114364,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L422-L422",
+      "specLocation": "_types/common.ts#L429-L429",
       "type": {
         "items": [
           {
@@ -114410,7 +114484,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L424-L478"
+      "specLocation": "_types/common.ts#L431-L485"
     },
     {
       "kind": "type_alias",
@@ -114418,7 +114492,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L480-L480",
+      "specLocation": "_types/common.ts#L487-L487",
       "type": {
         "items": [
           {
@@ -115276,7 +115350,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L397-L402",
+      "specLocation": "_types/common.ts#L404-L409",
       "type": {
         "items": [
           {
@@ -115309,7 +115383,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L404-L412"
+      "specLocation": "_types/common.ts#L411-L419"
     },
     {
       "kind": "type_alias",
@@ -115340,6 +115414,24 @@
           "namespace": "_builtins"
         }
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Sort by the time the thread was runnable, then by CPU time.",
+          "name": "total"
+        },
+        {
+          "description": "Sort by CPU time only.",
+          "name": "cpu"
+        }
+      ],
+      "name": {
+        "name": "ThreadSortOrder",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L333-L338"
     },
     {
       "kind": "enum",
@@ -115563,7 +115655,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L337"
+      "specLocation": "_types/common.ts#L340-L344"
     },
     {
       "codegenNames": [
@@ -115622,7 +115714,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L339-L346"
+      "specLocation": "_types/common.ts#L346-L353"
     },
     {
       "kind": "type_alias",
@@ -150962,7 +151054,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L348-L361"
+      "specLocation": "_types/common.ts#L355-L368"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -151017,7 +151109,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "BulkIndexByScrollFailure",
+                "name": "BulkByPaginatedSearchFailure",
                 "namespace": "_types"
               }
             }
@@ -151172,60 +151264,6 @@
         }
       ],
       "specLocation": "_types/Reindex.ts#L90-L151"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "BulkIndexByScrollFailure",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "cause",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Errors.ts#L64-L69"
     },
     {
       "attachedBehaviors": [
@@ -180519,7 +180557,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L71-L76"
+      "specLocation": "_types/Errors.ts#L76-L81"
     },
     {
       "kind": "interface",
@@ -185344,7 +185382,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L363-L395"
+      "specLocation": "_types/common.ts#L370-L402"
     },
     {
       "kind": "interface",

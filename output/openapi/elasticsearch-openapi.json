@@ -10962,7 +10962,7 @@
                       "description": "An array of failures if there were any unrecoverable errors during the process.\nIf this array is not empty, the request ended abnormally because of those failures.\nDelete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -30812,7 +30812,7 @@
                       "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -58529,7 +58529,7 @@
                       "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -69492,13 +69492,6 @@
           "max_concurrent_group_searches": {
             "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
             "type": "number"
-          },
-          "collapse": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
           }
         },
         "required": [
@@ -79492,7 +79485,7 @@
             "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+              "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
             }
           },
           "noops": {
@@ -79552,6 +79545,16 @@
             "type": "number"
           }
         }
+      },
+      "_types.BulkByPaginatedSearchFailure": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+          },
+          {
+            "$ref": "#/components/schemas/_types.ShardFailure"
+          }
+        ]
       },
       "_types.BulkIndexByScrollFailure": {
         "type": "object",
@@ -128003,6 +128006,13 @@
           "mem"
         ]
       },
+      "_types.ThreadSortOrder": {
+        "type": "string",
+        "enum": [
+          "total",
+          "cpu"
+        ]
+      },
       "nodes.info.NodesInfoMetrics": {
         "oneOf": [
           {
@@ -159600,7 +159610,7 @@
           "default": "total",
           "allOf": [
             {
-              "$ref": "#/components/schemas/_types.ThreadType"
+              "$ref": "#/components/schemas/_types.ThreadSortOrder"
             }
           ]
         },
@@ -165969,7 +165979,7 @@
                   ]
                 },
                 "name": {
-                  "description": "A name for the API key.",
+                  "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Name"
@@ -165995,7 +166005,10 @@
                     }
                   ]
                 }
-              }
+              },
+              "required": [
+                "name"
+              ]
             },
             "examples": {
               "SecurityCreateApiKeyRequestExample1": {
