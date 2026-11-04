@@ -3501,7 +3501,7 @@
             "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
             "deprecated": false,
             "schema": {
-              "default": "ip,hp,rp,r,m,n,cpu,l",
+              "default": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
               "allOf": [
                 {
                   "$ref": "#/components/schemas/cat._types.CatNodeColumns"
@@ -12194,6 +12194,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "slice": {
                     "description": "Slice the request manually using the provided slice ID and total number of slices.",
                     "allOf": [
@@ -12258,7 +12269,7 @@
                       "description": "An array of failures if there were any unrecoverable errors during the process.\nIf this array is not empty, the request ended abnormally because of those failures.\nDelete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -13781,7 +13792,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/esql._types.EsqlResult"
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
                 }
               }
             }
@@ -14285,7 +14296,11 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view-1",
         "parameters": [
           {
@@ -14297,7 +14312,7 @@
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -14310,7 +14325,11 @@
           "esql"
         ],
         "summary": "Create or update an ES|QL view",
-        "description": "\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "description": "Stores an ES|QL query that runs whenever the view is referenced.\nA query that cannot be parsed is rejected. Replacing a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `create_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-put-view",
         "parameters": [
           {
@@ -14323,6 +14342,18 @@
               "$ref": "#/components/schemas/_types.Id"
             },
             "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "validate",
+            "description": "Whether to analyze the view query and return a warning when validation fails.\n\nValidation reports an unknown index or column, including an index the caller cannot read.\nThe view is saved even when validation reports a problem.\nFailures unrelated to the query, such as an overloaded cluster, produce no warning.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "x-state": "Generally available; Added in 9.7.0",
+            "style": "form"
           }
         ],
         "requestBody": {
@@ -14332,17 +14363,30 @@
                 "type": "object",
                 "properties": {
                   "query": {
-                    "description": "The ES|QL query string from which to create a view.",
+                    "description": "The ES|QL query string that defines the view. A query that cannot be parsed is rejected.",
                     "type": "string"
                   },
                   "description": {
                     "description": "A free-text description of the view.",
+                    "x-state": "Generally available; Added in 9.6.0",
                     "type": "string"
                   }
                 },
                 "required": [
                   "query"
                 ]
+              },
+              "examples": {
+                "PutViewRequestExample1": {
+                  "summary": "Create a view of country counts",
+                  "description": "Create a view that normalizes country names and counts addresses by country.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                },
+                "PutViewRequestExample2": {
+                  "summary": "Create a view and validate the query",
+                  "description": "Analyze the view query before saving it. When the query uses an unknown index or column, the response includes a warning and the view is still saved.\n",
+                  "value": "{\n  \"query\": \"\"\"\n    FROM addresses\n    | RENAME city.country.name AS country\n    | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n    | STATS count=COUNT() BY country\n  \"\"\",\n  \"description\": \"Address counts by country\"\n}"
+                }
               }
             }
           },
@@ -14355,12 +14399,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PutViewResponseExample1": {
+                    "summary": "View created",
+                    "description": "The view definition was stored successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -14373,7 +14424,11 @@
           "esql"
         ],
         "summary": "Delete an ES|QL view",
-        "description": "Deletes a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "description": "Deletes a stored ES|QL view. Deleting a reserved view fails.\n\n## Required authorization\n\n* Index privileges: `delete_view`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-delete-view",
         "parameters": [
           {
@@ -14395,12 +14450,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "DeleteViewResponseExample1": {
+                    "summary": "View deleted",
+                    "description": "The view definition was deleted successfully.",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
                 }
               }
             }
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -14562,14 +14624,18 @@
           "esql"
         ],
         "summary": "Get an ES|QL view",
-        "description": "Returns a stored ES|QL view.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "description": "Returns one or more stored views. A reserved view includes `reserved` set to `true`.\n\n## Required authorization\n\n* Index privileges: `read_view_metadata`\n",
+        "externalDocs": {
+          "description": "Define reusable queries with ES|QL views",
+          "url": "https://www.elastic.co/docs/reference/query-languages/esql/esql-views"
+        },
         "operationId": "esql-get-view",
         "responses": {
           "200": {
             "$ref": "#/components/responses/esql.get_view-200"
           }
         },
-        "x-state": "Experimental; Added in 9.4.0",
+        "x-state": "Generally available; Added in 9.4.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -19522,7 +19588,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19564,7 +19630,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19682,7 +19748,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -19724,7 +19790,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -24696,7 +24762,7 @@
           "indices"
         ],
         "summary": "Update aliases and delete indices atomically",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Applies one or more actions in a single request:\n\n- Add a data stream or index to an alias.\n- Remove a data stream or index from an alias.\n- Delete an index in that same request, so the deletion and the alias changes are applied together.\n\nFor example, you can replace an index with an alias of the same name.\n\nNOTE: Every `remove_index` action in the request runs first, before any `add` or `remove` actions, no matter where it sits in the `actions` array.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-update-aliases",
         "parameters": [
           {
@@ -24747,8 +24813,18 @@
               },
               "examples": {
                 "IndicesUpdateAliasesExample1": {
-                  "description": "An example body for a `POST _aliases` request.",
-                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                  "summary": "Add a data stream or index to an alias",
+                  "description": "If the alias does not exist, it is created.",
+                  "value": "{\n  \"actions\": [\n    {\n      \"add\": {\n        \"index\": \"logs-nginx.access-*\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample2": {
+                  "summary": "Remove a data stream or index from an alias",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove\": {\n        \"index\": \"logs-nginx.access-prod\",\n        \"alias\": \"logs\"\n      }\n    }\n  ]\n}"
+                },
+                "IndicesUpdateAliasesExample3": {
+                  "summary": "Remove an index and update an alias",
+                  "description": "First, remove the index `my-index-1` (which has the alias `my-alias`) and then add the index `my-index-2` to the alias in a single request.\n",
+                  "value": "{\n  \"actions\": [\n    {\n      \"remove_index\": {\n        \"index\": \"my-index-1\"\n      }\n    },\n    {\n      \"add\": {\n        \"index\": \"my-index-2\",\n        \"alias\": \"my-alias\"\n      }\n    }\n  ]\n}"
                 }
               }
             }
@@ -24761,7 +24837,14 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                  "$ref": "#/components/schemas/indices.update_aliases.IndicesUpdateAliasesResponseBody"
+                },
+                "examples": {
+                  "IndicesUpdateAliasesExample1": {
+                    "summary": "A partially successful response",
+                    "description": "When using multiple actions, if some succeed and some fail, the API returns a list of per-action results. For example, if the alias `logs-non-existing` does not exist, the API returns a 404 error for the `remove` action.",
+                    "value": "{\n  \"acknowledged\": true,\n  \"errors\": true,\n  \"action_results\": [\n    {\n      \"action\": {\n        \"type\": \"remove\",\n        \"indices\": [\n          \"logs-nginx.access-prod\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 404,\n      \"error\": {\n        \"type\": \"aliases_not_found_exception\",\n        \"reason\": \"aliases [logs-non-existing] missing\",\n        \"resource.type\": \"aliases\",\n        \"resource.id\": \"logs-non-existing\"\n      }\n    },\n    {\n      \"action\": {\n        \"type\": \"add\",\n        \"indices\": [\n          \"logs-nginx.access-default\"\n        ],\n        \"aliases\": [\n          \"logs-non-existing\"\n        ]\n      },\n      \"status\": 200\n    }\n  ]\n}"
+                  }
                 }
               }
             }
@@ -25662,6 +25745,113 @@
           }
         },
         "x-state": "Generally available; Added in 9.5.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_inference/document_extraction/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform document extraction inference on the service",
+        "description": "Extract the content of documents, such as PDFs or images of documents, into a textual format.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-document-extraction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "120s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The documents to extract the content from.\nEither a `content` object or an array of `content` objects.\n\n`content` object example:\n```\n\"input\": {\n  \"content\": {\n    \"type\": \"pdf\",\n    \"format\": \"base64\",\n    \"value\": \"data:application/pdf;base64,...\"\n  }\n}\n```\n`content` object array example:\n```\n\"input\": [\n  {\n    \"content\": {\n      \"type\": \"pdf\",\n      \"format\": \"base64\",\n      \"value\": \"data:application/pdf;base64,...\"\n    }\n  },\n  {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  }\n]\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DocumentExtractionRequestExample1": {
+                  "summary": "Document extraction task",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of the example PDF document",
+                  "value": "{\n  \"input\": [\n    {\n      \"content\": {\n        \"type\": \"pdf\",\n        \"format\": \"base64\",\n        \"value\": \"data:application/pdf;base64,...\"\n      }\n    }\n  ]\n}"
+                },
+                "DocumentExtractionRequestExample2": {
+                  "summary": "Document extraction task using the url format and task settings",
+                  "description": "Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a document referenced by URL as markdown.",
+                  "value": "{\n  \"input\": {\n    \"content\": {\n      \"type\": \"image\",\n      \"format\": \"url\",\n      \"value\": \"https://example.com/scanned-page.png\"\n    }\n  },\n  \"task_settings\": {\n    \"output_format\": \"markdown\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DocumentExtractionInferenceResult"
+                },
+                "examples": {
+                  "DocumentExtractionResponseExample1": {
+                    "summary": "Document extraction task",
+                    "description": "An abbreviated response from `POST _inference/document_extraction/my-document-extraction-endpoint`.\n",
+                    "value": "{\n  \"document_extraction\": [\n    {\n      \"content\": \"# Annual Report 2025\\n\\n...\",\n      \"format\": \"markdown\",\n      \"metadata\": {\n        \"title\": \"Annual Report 2025\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -32075,7 +32265,7 @@
                       "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -40133,11 +40323,18 @@
                     }
                   },
                   "detectors": {
-                    "description": "An array of detector update objects.",
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ml._types.DetectorUpdate"
-                    }
+                    "description": "A detector update object or an array of detector update objects.",
+                    "oneOf": [
+                      {
+                        "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/components/schemas/ml._types.DetectorUpdate"
+                        }
+                      }
+                    ]
                   },
                   "per_partition_categorization": {
                     "description": "Settings related to how categorization interacts with partition fields.",
@@ -49313,6 +49510,9 @@
           },
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -50144,6 +50344,9 @@
           },
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -50176,6 +50379,9 @@
         "parameters": [
           {
             "$ref": "#/components/parameters/security.get_service_accounts-type"
+          },
+          {
+            "$ref": "#/components/parameters/security.get_service_accounts-with_profile_uid"
           }
         ],
         "responses": {
@@ -51015,7 +51221,7 @@
           "security"
         ],
         "summary": "Grant an API key",
-        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
+        "description": "Create an API key on behalf of another user.\nThis API is similar to the create API keys API, however it creates the API key for a user that is different than the user that runs the API.\nThe caller must have authentication credentials for the user on whose behalf the API key will be created.\nIt is not possible to use this API to create an API key without that user's credentials.\nThe supported user authentication credential types are:\n\n* username and password\n* Elasticsearch access tokens\n* JWTs\n* service account tokens of user-managed service accounts\n\nThe user, for whom the authentication credentials is provided, can optionally \"run as\" (impersonate) another user.\nIn this case, the API key will be created on behalf of the impersonated user.\nRun as is not supported with the `_user_managed_service_account` grant type.\n\nThis API is intended be used by applications that need to create and manage API keys for end users, but cannot guarantee that those users have permission to create API keys on their own behalf.\nThe API keys are created by the Elasticsearch API key service, which is automatically enabled.\n\nA successful grant API key API call returns a JSON structure that contains the API key, its unique id, and its name.\nIf applicable, it also returns expiration information for the API key in milliseconds.\n\nBy default, API keys never expire. You can specify expiration information when you create the API keys.\n\n## Required authorization\n\n* Cluster privileges: `grant_api_key`\n",
         "operationId": "security-grant-api-key",
         "parameters": [
           {
@@ -51049,7 +51255,7 @@
                     ]
                   },
                   "grant_type": {
-                    "description": "The type of grant. Supported grant types are: `access_token`, `password`.",
+                    "description": "The type of grant. Supported grant types are: `access_token`, `password`, and `_user_managed_service_account`.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/security.grant_api_key.ApiKeyGrantType"
@@ -51058,6 +51264,20 @@
                   },
                   "access_token": {
                     "description": "The user's access token.\nIf you specify the `access_token` grant type, this parameter is required.\nIt is not valid with other grant types.",
+                    "type": "string"
+                  },
+                  "client_authentication": {
+                    "description": "The client authentication for a JWT that requires it, which is what is normally sent in the `ES-Client-Authentication` request header.\nIt is valid only with the `access_token` grant type, when the access token is a JWT.",
+                    "x-state": "Generally available; Added in 8.12.0",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthentication"
+                      }
+                    ]
+                  },
+                  "service_account_token": {
+                    "description": "The service account token of a user-managed service account, as returned by the create service account token API.\nIf you specify the `_user_managed_service_account` grant type, this parameter is required.\nIt is not valid with other grant types.",
+                    "x-state": "Generally available; Added in 9.6.0",
                     "type": "string"
                   },
                   "username": {
@@ -51077,7 +51297,7 @@
                     ]
                   },
                   "run_as": {
-                    "description": "The name of the user to be impersonated.",
+                    "description": "The name of the user to be impersonated.\nIt is not valid with the `_user_managed_service_account` grant type.",
                     "allOf": [
                       {
                         "$ref": "#/components/schemas/_types.Username"
@@ -51100,6 +51320,11 @@
                   "summary": "Grant an API key with run_as",
                   "description": "Run `POST /_security/api_key/grant`. The user (`test_admin`) whose credentials are provided can \"run as\" another user (`test_user`). The API key will be granted to the impersonated user (`test_user`).\n",
                   "value": "{\n  \"grant_type\": \"password\",\n  \"username\" : \"test_admin\",  \n  \"password\" : \"x-pack-test-password\",  \n  \"run_as\": \"test_user\",  \n  \"api_key\" : {\n    \"name\": \"another-api-key\"\n  }\n}"
+                },
+                "SecurityGrantApiKeyRequestExample3": {
+                  "summary": "Grant an API key to a user-managed service account",
+                  "description": "Run `POST /_security/api_key/grant` to create an API key on behalf of the `apps/worker` user-managed service account, by presenting one of its service account tokens. This request needs to be made by an authenticated user with the `grant_api_key` cluster privilege; the service account itself does not need any API key privileges. The API key is owned by the service account and is limited by the roles assigned to it.\n",
+                  "value": "{\n  \"grant_type\": \"_user_managed_service_account\",\n  \"service_account_token\": \"AAEAAWFwcHMvd29ya2VyL3Rva2VuLTE6cjVXYVYzYmFMU19pT0V4UW9FTkg3UQ\",\n  \"api_key\": {\n    \"name\": \"worker-key\",\n    \"expiration\": \"1d\"\n  }\n}"
                 }
               }
             }
@@ -51742,6 +51967,64 @@
           }
         },
         "x-state": "Generally available; Added in 8.15.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/_query/service": {
+      "get": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find user-managed service accounts with a query",
+        "description": "Get a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.\n\n## Required authorization\n\n* Cluster privileges: `read_security`,`manage_service_account`\n",
+        "operationId": "security-query-service-accounts",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_service_accounts-with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_service_accounts"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_service_accounts-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Find user-managed service accounts with a query",
+        "description": "Get a paginated list of user-managed service accounts and their information.\nYou can optionally filter the results with a query.\n\nNOTE: Built-in service accounts are not stored in the security index, so this API never returns them.\nUse the get service accounts API to list them.\n\n## Required authorization\n\n* Cluster privileges: `read_security`,`manage_service_account`\n",
+        "operationId": "security-query-service-accounts-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/security.query_service_accounts-with_profile_uid"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/security.query_service_accounts"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/security.query_service_accounts-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -55254,6 +55537,12 @@
                   "rename_replacement": {
                     "description": "The rename replacement string that is used with the `rename_pattern`.",
                     "type": "string"
+                  },
+                  "restore_over_existing": {
+                    "description": "If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.\nAn open destination index is closed and restored over in a single step.\nA destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.\n\nIt can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.",
+                    "default": false,
+                    "x-state": "Generally available; Added in 9.6.0",
+                    "type": "boolean"
                   }
                 }
               },
@@ -59204,6 +59493,17 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "initial_delay",
+            "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "x-state": "Generally available; Added in 9.6.0",
+            "style": "form"
           }
         ],
         "responses": {
@@ -59570,7 +59870,6 @@
                   },
                   "required": [
                     "create_time",
-                    "description",
                     "dest",
                     "id",
                     "settings",
@@ -60435,6 +60734,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "script": {
                     "description": "The script to run to update the document source or metadata when updating.",
                     "allOf": [
@@ -60503,7 +60813,7 @@
                       "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -61850,6 +62160,15 @@
                         }
                       ]
                     },
+                    "columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "data_frame": {
                       "allOf": [
                         {
@@ -61943,6 +62262,15 @@
                         }
                       ]
                     },
+                    "logsdb_columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "logstash": {
                       "allOf": [
                         {
@@ -62032,6 +62360,15 @@
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/xpack.usage.VectorDbDocument"
+                        }
+                      ]
+                    },
+                    "vectordb_columnar": {
+                      "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.VectorDbColumnar"
                         }
                       ]
                     },
@@ -66786,6 +67123,14 @@
               }
             ]
           },
+          "rescore": {
+            "description": "One entry per rescorer, in the order they ran. Omitted when the request has no rescorer.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.search._types.RescoreProfile"
+            }
+          },
           "searches": {
             "type": "array",
             "items": {
@@ -67440,6 +67785,191 @@
       "_types.NodeId": {
         "type": "string"
       },
+      "_global.search._types.RescoreProfile": {
+        "description": "Profile of a single rescorer.\n\nThe shape of `breakdown` depends on the type of rescorer: `query` and `script` do not report any steps,\n`learning_to_rank` does.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "learning_to_rank": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile",
+            "query": "#/components/schemas/_global.search._types.QueryRescoreProfile",
+            "script": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.QueryRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.ScriptRescoreProfile"
+          },
+          {
+            "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfile"
+          }
+        ]
+      },
+      "_global.search._types.QueryRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "query"
+                ]
+              },
+              "breakdown": {
+                "description": "The `query` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_types.EmptyObject": {
+        "description": "For empty Class assignments",
+        "type": "object"
+      },
+      "_global.search._types.RescoreProfileBase": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "description": "What the rescorer runs.",
+            "type": "string"
+          },
+          "time_in_nanos": {
+            "description": "The total time spent in the rescorer, including the time spent running its queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitNanos"
+              }
+            ]
+          },
+          "time": {
+            "description": "The time spent in the rescorer, in human-readable units. Only returned when `human` is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          },
+          "debug": {
+            "description": "Extra details about the rescorer.\n\nEvery rescorer reports `window_size`, the number of top documents it was configured to rescore. `timed_out` is\nset to `true` if the search timed out while the rescorer was running. Rescorers can add their own keys.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "description",
+          "time_in_nanos"
+        ]
+      },
+      "_global.search._types.ScriptRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "script"
+                ]
+              },
+              "breakdown": {
+                "description": "The `script` rescorer does not report any steps.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.EmptyObject"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfile": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.search._types.RescoreProfileBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "learning_to_rank"
+                ]
+              },
+              "breakdown": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.LearningToRankRescoreProfileBreakdown"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "breakdown"
+            ]
+          }
+        ]
+      },
+      "_global.search._types.LearningToRankRescoreProfileBreakdown": {
+        "type": "object",
+        "properties": {
+          "build_feature_extractors": {
+            "description": "The time spent turning the feature queries of the model into queries that can score documents.",
+            "type": "number"
+          },
+          "build_feature_extractors_count": {
+            "type": "number"
+          },
+          "feature_extraction": {
+            "description": "The time spent extracting the features of the top documents.",
+            "type": "number"
+          },
+          "feature_extraction_count": {
+            "type": "number"
+          },
+          "inference": {
+            "description": "The time spent running the model on the extracted features.",
+            "type": "number"
+          },
+          "inference_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "build_feature_extractors",
+          "build_feature_extractors_count",
+          "feature_extraction",
+          "feature_extraction_count",
+          "inference",
+          "inference_count"
+        ]
+      },
       "_global.search._types.SearchProfile": {
         "type": "object",
         "properties": {
@@ -67516,6 +68046,14 @@
           },
           "type": {
             "type": "string"
+          },
+          "debug": {
+            "description": "Extra details about the query.\n\nQueries run by a rescorer include a `rescorer` key with the position of that rescorer in the shard's `rescore` array.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
           },
           "children": {
             "type": "array",
@@ -70970,13 +71508,6 @@
           "max_concurrent_group_searches": {
             "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
             "type": "number"
-          },
-          "collapse": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
           }
         },
         "required": [
@@ -77316,10 +77847,6 @@
           }
         ]
       },
-      "_types.EmptyObject": {
-        "description": "For empty Class assignments",
-        "type": "object"
-      },
       "_types.aggregations.MovingAverageAggregationBase": {
         "allOf": [
           {
@@ -81284,7 +81811,7 @@
             "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+              "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
             }
           },
           "noops": {
@@ -81344,6 +81871,16 @@
             "type": "number"
           }
         }
+      },
+      "_types.BulkByPaginatedSearchFailure": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+          },
+          {
+            "$ref": "#/components/schemas/_types.ShardFailure"
+          }
+        ]
       },
       "_types.BulkIndexByScrollFailure": {
         "type": "object",
@@ -87050,8 +87587,12 @@
             ]
           },
           "max_result_window": {
-            "default": 10000.0,
-            "type": "number"
+            "default": "10000",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
+              }
+            ]
           },
           "max_inner_result_window": {
             "default": 100.0,
@@ -87689,6 +88230,14 @@
               }
             ]
           },
+          "require": {
+            "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexRoutingAllocationRequire"
+              }
+            ]
+          },
           "initial_recovery": {
             "allOf": [
               {
@@ -87727,6 +88276,22 @@
               }
             ]
           }
+        }
+      },
+      "indices._types.IndexRoutingAllocationRequire": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
       "indices._types.IndexRoutingAllocationInitialRecovery": {
@@ -93443,7 +94008,7 @@
           },
           "temporality_field": {
             "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
-            "x-state": "Generally available; Added in 9.4.0",
+            "x-state": "Generally available; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -94014,10 +94579,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "indices._types.StorageType": {
         "anyOf": [
@@ -96135,11 +96697,24 @@
                   }
                 ]
               },
+              "time_series_dimension": {
+                "type": "boolean"
+              },
               "analyzer": {
                 "type": "string"
               },
               "eager_global_ordinals": {
                 "type": "boolean"
+              },
+              "fielddata": {
+                "type": "boolean"
+              },
+              "fielddata_frequency_filter": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.FielddataFrequencyFilter"
+                  }
+                ]
               },
               "index": {
                 "type": "boolean"
@@ -96177,6 +96752,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "allOf": [
                   {
@@ -96192,6 +96778,13 @@
               },
               "locale": {
                 "type": "string"
+              },
+              "subobjects": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.Subobjects"
+                  }
+                ]
               }
             },
             "required": [
@@ -96208,6 +96801,25 @@
           "summary",
           "histogram",
           "position"
+        ]
+      },
+      "indices._types.FielddataFrequencyFilter": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "min_segment_size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "max",
+          "min",
+          "min_segment_size"
         ]
       },
       "_types.mapping.IndexOptions": {
@@ -96240,6 +96852,14 @@
           "with_positions_offsets",
           "with_positions_offsets_payloads",
           "with_positions_payloads"
+        ]
+      },
+      "_types.mapping.Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false",
+          "auto"
         ]
       },
       "_types.mapping.JoinProperty": {
@@ -96623,25 +97243,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "indices._types.FielddataFrequencyFilter": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "number"
-          },
-          "min": {
-            "type": "number"
-          },
-          "min_segment_size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "max",
-          "min",
-          "min_segment_size"
         ]
       },
       "_types.mapping.VersionProperty": {
@@ -97165,14 +97766,6 @@
               }
             }
           }
-        ]
-      },
-      "_types.mapping.Subobjects": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false",
-          "auto"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
@@ -105129,8 +105722,8 @@
             "description": "The declared column type.",
             "type": "string"
           },
-          "path": {
-            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.",
+          "rename_from": {
+            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
             "type": "string"
           },
           "format": {
@@ -105169,7 +105762,13 @@
           },
           "description": {
             "description": "A free-text description of the view.",
+            "x-state": "Generally available; Added in 9.6.0",
             "type": "string"
+          },
+          "reserved": {
+            "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           }
         },
         "required": [
@@ -106044,7 +106643,7 @@
               }
             ]
           },
-          "project_encryption_key": {
+          "cluster_state_encryption": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"
@@ -107417,6 +108016,20 @@
           },
           "force_merge_index": {
             "type": "boolean"
+          },
+          "total_shards_per_node": {
+            "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+            "x-state": "Generally available; Added in 8.16.0",
+            "type": "number"
+          },
+          "replicate_for": {
+            "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+            "x-state": "Generally available; Added in 8.18.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         },
         "required": [
@@ -107932,7 +108545,7 @@
           }
         ]
       },
-      "indices.delete_alias.IndicesAliasesResponseBody": {
+      "indices._types.AliasesResponseBody": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -107941,6 +108554,8 @@
             "type": "object",
             "properties": {
               "errors": {
+                "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+                "x-state": "Generally available; Added in 8.14.0",
                 "type": "boolean"
               }
             }
@@ -111981,7 +112596,7 @@
             ]
           },
           "index": {
-            "description": "Data stream or index for the action.\nSupports wildcards (`*`).",
+            "description": "Data stream or index for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.IndexName"
@@ -111989,7 +112604,7 @@
             ]
           },
           "indices": {
-            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).",
+            "description": "Data streams or indices for the action.\nSupports wildcards (`*`).\nWildcard patterns that match both data streams and indices return an error.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Indices"
@@ -112097,6 +112712,95 @@
             "type": "boolean"
           }
         }
+      },
+      "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action_results": {
+                "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
+                "x-state": "Generally available; Added in 8.14.0",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/indices.update_aliases.AliasActionResult"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "indices.update_aliases.AliasActionResult": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "description": "The action this result describes.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices.update_aliases.AliasActionSummary"
+              }
+            ]
+          },
+          "status": {
+            "description": "HTTP status for this action.\n`200` when the action succeeds.",
+            "type": "number"
+          },
+          "error": {
+            "description": "Cause of the failure.\nReturned only when this action fails.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "action",
+          "status"
+        ]
+      },
+      "indices.update_aliases.AliasActionSummary": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The action that was applied.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices.update_aliases.AliasActionType"
+              }
+            ]
+          },
+          "indices": {
+            "description": "Resolved data streams or indices for the action.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.IndexName"
+            }
+          },
+          "aliases": {
+            "description": "Aliases for the action.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.IndexAlias"
+            }
+          }
+        },
+        "required": [
+          "type",
+          "indices",
+          "aliases"
+        ]
+      },
+      "indices.update_aliases.AliasActionType": {
+        "type": "string",
+        "enum": [
+          "add",
+          "remove",
+          "remove_index"
+        ]
       },
       "indices.validate_query.IndicesValidationExplanation": {
         "type": "object",
@@ -112694,7 +113398,8 @@
           "rerank",
           "completion",
           "chat_completion",
-          "embedding"
+          "embedding",
+          "document_extraction"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -112717,6 +113422,122 @@
               "pipelines"
             ]
           }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionInput": {
+        "description": "The documents to extract the content from for the `document_extraction` task.\nEither a `content` object or an array of `content` objects.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObject"
+            }
+          }
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObject": {
+        "description": "A wrapper object which contains a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The document to extract the content from.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentObjectItem"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentObjectItem": {
+        "description": "An object describing a single document to extract the content from.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of the document. Not all services and models support all types.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the document. For the `base64` format, this must be a base64-encoded data URI, that is, \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the document, that is, \"https://example.com/document.pdf\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentType": {
+        "type": "string",
+        "enum": [
+          "image",
+          "pdf"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionContentFormat": {
+        "type": "string",
+        "enum": [
+          "base64",
+          "url"
+        ]
+      },
+      "inference._types.DocumentExtractionInferenceResult": {
+        "description": "Defines the response for a document extraction request.\nThe results are returned in the same order as the documents in the request.",
+        "type": "object",
+        "properties": {
+          "document_extraction": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.DocumentExtractionResult"
+            }
+          }
+        },
+        "required": [
+          "document_extraction"
+        ]
+      },
+      "inference._types.DocumentExtractionResult": {
+        "description": "The document extraction result object representing the content extracted from a single document.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The content extracted from the document.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The format of the extracted content, for example `markdown`.",
+            "type": "string"
+          },
+          "metadata": {
+            "description": "Additional information about the document, such as its title. The available fields depend on the service and model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          }
+        },
+        "required": [
+          "content",
+          "format"
         ]
       },
       "inference._types.RequestEmbedding": {
@@ -119320,6 +120141,11 @@
               },
               "ignore_missing": {
                 "description": "If `true` and `field` does not exist, the processor quietly exits without modifying the document.",
+                "default": false,
+                "type": "boolean"
+              },
+              "override": {
+                "description": "If `true`, the processor overwrites `target_field` if it already exists.\nIf `false`, the processor fails when `target_field` already exists.",
                 "default": false,
                 "type": "boolean"
               },
@@ -128719,6 +129545,13 @@
           "mem"
         ]
       },
+      "_types.ThreadSortOrder": {
+        "type": "string",
+        "enum": [
+          "total",
+          "cpu"
+        ]
+      },
       "nodes.info.NodesInfoMetrics": {
         "oneOf": [
           {
@@ -135098,16 +135931,14 @@
         "type": "object",
         "properties": {
           "manage": {
+            "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
               }
             ]
           }
-        },
-        "required": [
-          "manage"
-        ]
+        }
       },
       "security._types.ManageUserPrivileges": {
         "type": "object",
@@ -135789,19 +136620,11 @@
           },
           "global": {
             "x-state": "Generally available; Added in 8.0.0",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
-            }
+            ]
           }
         },
         "required": [
@@ -136148,12 +136971,117 @@
           "description": {
             "description": "A free-text description of the account, as sent on the last PUT of the account.\nIt has no meaning to Elasticsearch. Absent when the account has no description.",
             "type": "string"
+          },
+          "created_by": {
+            "description": "The user who created the account.\nAbsent for an account that was created before Elasticsearch recorded its creator.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthor"
+              }
+            ]
+          },
+          "created_at": {
+            "description": "When the account was created, in milliseconds since the Unix epoch.\nAbsent for an account that was created before Elasticsearch recorded its creation time.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "created_by_profile_uid": {
+            "description": "The profile UID of the user who created the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
+          },
+          "updated_by": {
+            "description": "The user who last replaced the account with the put user-managed service account API.\nAbsent until the account is first replaced.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthor"
+              }
+            ]
+          },
+          "updated_at": {
+            "description": "When the account was last replaced, in milliseconds since the Unix epoch.\nAbsent until the account is first replaced.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "updated_by_profile_uid": {
+            "description": "The profile UID of the user who last replaced the account.\nReturned only when `with_profile_uid` is `true` and that user has an activated user profile.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
           }
         },
         "required": [
           "type",
           "roles",
           "enabled"
+        ]
+      },
+      "security.get_service_accounts.ServiceAccountAuthor": {
+        "description": "The user who wrote a user-managed service account.\nIf the request ran as another user, that user is recorded.\nIf the request was made with an API key, the owner of the key is recorded, from the owner's own realm, together with the key itself.\nFor an older API key that does not record its owner's realm, the realm is the API key realm, `_es_api_key`.",
+        "type": "object",
+        "properties": {
+          "username": {
+            "description": "The username of the user.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Username"
+              }
+            ]
+          },
+          "realm": {
+            "description": "The name of the realm that authenticated the user.",
+            "type": "string"
+          },
+          "realm_type": {
+            "description": "The type of the realm that authenticated the user.",
+            "type": "string"
+          },
+          "api_key": {
+            "description": "The API key that the request was made with.\nAbsent when the request was not made with an API key, or when the API key ran as another user.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.get_service_accounts.ServiceAccountAuthorApiKey"
+              }
+            ]
+          }
+        },
+        "required": [
+          "username",
+          "realm",
+          "realm_type"
+        ]
+      },
+      "security.get_service_accounts.ServiceAccountAuthorApiKey": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the API key.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "name": {
+            "description": "The name that the API key had when the request was made.\nAbsent when the API key has no name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id"
         ]
       },
       "security.get_service_credentials.NodesCredentials": {
@@ -136361,6 +137289,22 @@
               },
               "authentication_type": {
                 "type": "string"
+              },
+              "api_key": {
+                "description": "Present when the authenticated user is an API key.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKey"
+                  }
+                ]
+              },
+              "token": {
+                "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.Token"
+                  }
+                ]
               }
             },
             "required": [
@@ -136656,7 +137600,35 @@
         "type": "string",
         "enum": [
           "access_token",
-          "password"
+          "password",
+          "_user_managed_service_account"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthentication": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "description": "The client authentication scheme.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security.grant_api_key.GrantApiKeyClientAuthenticationScheme"
+              }
+            ]
+          },
+          "value": {
+            "description": "The client authentication value, which is what normally follows the scheme in the `ES-Client-Authentication` request header.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "value"
+        ]
+      },
+      "security.grant_api_key.GrantApiKeyClientAuthenticationScheme": {
+        "type": "string",
+        "enum": [
+          "SharedSecret"
         ]
       },
       "security.has_privileges.ApplicationPrivilegesCheck": {
@@ -137203,6 +138175,137 @@
             },
             "required": [
               "name"
+            ]
+          }
+        ]
+      },
+      "security.query_service_accounts.ServiceAccountQueryContainer": {
+        "type": "object",
+        "properties": {
+          "bool": {
+            "description": "Matches service accounts matching boolean combinations of other queries.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.BoolQuery"
+              }
+            ]
+          },
+          "exists": {
+            "description": "Returns service accounts that contain an indexed value for a field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.ExistsQuery"
+              }
+            ]
+          },
+          "ids": {
+            "description": "Returns service accounts based on their IDs.\nThis query uses service account document IDs stored in the `_id` field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.IdsQuery"
+              }
+            ]
+          },
+          "match": {
+            "description": "Returns service accounts that match a provided text, number, date or boolean value.\nThe provided text is analyzed before matching.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.MatchQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "match_all": {
+            "description": "Matches all service accounts, giving them all a `_score` of 1.0.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.MatchAllQuery"
+              }
+            ]
+          },
+          "prefix": {
+            "description": "Returns service accounts that contain a specific prefix in a provided field.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.PrefixQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "range": {
+            "description": "Returns service accounts that contain terms within a provided range.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.RangeQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "simple_query_string": {
+            "description": "Returns service accounts based on a provided query string, using a parser with a limited but fault-tolerant syntax.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.SimpleQueryStringQuery"
+              }
+            ]
+          },
+          "term": {
+            "description": "Returns service accounts that contain an exact term in a provided field.\nTo return a document, the query term must exactly match the queried field's value, including whitespace and capitalization.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.TermQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          },
+          "terms": {
+            "description": "Returns service accounts that contain one or more exact terms in a provided field.\nTo return a document, one or more terms must exactly match a field value, including whitespace and capitalization.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.TermsQuery"
+              }
+            ]
+          },
+          "wildcard": {
+            "description": "Returns service accounts that contain terms matching a wildcard pattern.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/_types.query_dsl.WildcardQuery"
+            },
+            "minProperties": 1,
+            "maxProperties": 1
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "security.query_service_accounts.QueryServiceAccount": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/security.get_service_accounts.UserManagedServiceAccount"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "username": {
+                "description": "The name of the service account, as `namespace/service`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Username"
+                  }
+                ]
+              },
+              "_sort": {
+                "description": "The sort values of the service account, returned when the request has a `sort`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.SortResults"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "username"
             ]
           }
         ]
@@ -140667,7 +141770,7 @@
             "type": "boolean"
           },
           "dates_as_epoch_millis": {
-            "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+            "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
             "default": false,
             "type": "boolean"
           },
@@ -140702,6 +141805,19 @@
             "default": false,
             "x-state": "Generally available; Added in 8.5.0",
             "type": "boolean"
+          },
+          "indexer_request_timeout": {
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
+            "x-state": "Generally available; Added in 8.19.24",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
           }
         }
       },
@@ -143993,6 +145109,14 @@
               }
             ]
           },
+          "columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
           "data_streams": {
             "allOf": [
               {
@@ -144067,6 +145191,14 @@
             ]
           },
           "logsdb": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
+          "logsdb_columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/xpack.info.Feature"
@@ -144178,6 +145310,7 @@
           "aggregate_metric",
           "analytics",
           "ccr",
+          "columnar",
           "data_streams",
           "data_tiers",
           "enrich",
@@ -144189,6 +145322,7 @@
           "ilm",
           "logstash",
           "logsdb",
+          "logsdb_columnar",
           "ml",
           "monitoring",
           "rollup",
@@ -144582,6 +145716,56 @@
             "required": [
               "auto_follow_patterns_count",
               "follower_indices_count"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.IndexModeUsage": {
+        "description": "Usage of the indices with a given `index.mode`.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices in this index mode.",
+                "type": "number"
+              },
+              "indices_with_synthetic_source": {
+                "description": "The number of indices in this index mode that use synthetic `_source`.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The number of documents in the indices in this index mode.",
+                "type": "number"
+              },
+              "size_in_bytes": {
+                "description": "The size of the indices in this index mode, in bytes.",
+                "type": "number"
+              },
+              "data_streams_count": {
+                "description": "The number of data streams in this index mode.",
+                "type": "number"
+              },
+              "data_streams_managed_by_ilm": {
+                "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+                "type": "number"
+              },
+              "data_streams_managed_by_dlm": {
+                "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "indices_with_synthetic_source",
+              "num_docs",
+              "size_in_bytes",
+              "data_streams_count",
+              "data_streams_managed_by_ilm",
+              "data_streams_managed_by_dlm"
             ]
           }
         ]
@@ -146421,6 +147605,31 @@
             ]
           }
         ]
+      },
+      "xpack.usage.VectorDbColumnar": {
+        "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices using the `vectordb_columnar` index mode.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The total number of documents held across all `vectordb_columnar` indices.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "num_docs"
+            ]
+          }
+        ]
       }
     },
     "responses": {
@@ -147465,6 +148674,18 @@
               "required": [
                 "views"
               ]
+            },
+            "examples": {
+              "GetViewResponseExample1": {
+                "summary": "View definition",
+                "description": "The response contains the requested view.",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \"country_addresses\",\n      \"query\": \"\"\"\n        FROM addresses\n        | RENAME city.country.name AS country\n        | EVAL country = CASE(country == \"United States of America\", \"United States\", country)\n        | STATS count=COUNT() BY country\n      \"\"\",\n      \"description\": \"Address counts by country\"\n    }\n  ]\n}"
+              },
+              "GetViewResponseExample2": {
+                "summary": "Reserved view",
+                "description": "A reserved view includes reserved set to true. This view is created when anomaly detection results exist.\n",
+                "value": "{\n  \"views\": [\n    {\n      \"name\": \".ml-anomalies\",\n      \"query\": \"\"\"\n        FROM .ml-anomalies-* METADATA _index\n        | WHERE result_type IN (\"bucket\", \"record\", \"influencer\")\n        | EVAL score = COALESCE(anomaly_score, record_score, influencer_score),\n               initial_score = COALESCE(initial_anomaly_score, initial_record_score, initial_influencer_score)\n        | KEEP timestamp,\n               event.ingested,\n               job_id,\n               result_type,\n               is_interim,\n               score,\n               initial_score,\n               bucket_span,\n               function,\n               function_description,\n               field_name,\n               by_field_name,\n               by_field_value,\n               over_field_name,\n               over_field_value,\n               partition_field_name,\n               partition_field_value,\n               influencer_field_name,\n               influencer_field_value,\n               detector_index,\n               actual,\n               typical,\n               event_count,\n               processing_time_ms,\n               _index\n      \"\"\",\n      \"description\": \"View that contains the results of machine learning anomaly detection jobs.\",\n      \"reserved\": true\n    }\n  ]\n}"
+              }
             }
           }
         }
@@ -147968,7 +149189,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -148157,7 +149378,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -148944,6 +150165,17 @@
                       "$ref": "#/components/schemas/migration.deprecations.Deprecation"
                     }
                   }
+                },
+                "repositories": {
+                  "description": "Snapshot repository warnings are sectioned off per repository.",
+                  "x-state": "Generally available; Added in 9.6.0",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations.Deprecation"
+                    }
+                  }
                 }
               },
               "required": [
@@ -148953,7 +150185,8 @@
                 "node_settings",
                 "ml_settings",
                 "templates",
-                "ilm_policies"
+                "ilm_policies",
+                "repositories"
               ]
             },
             "examples": {
@@ -150390,8 +151623,8 @@
               },
               "GetServiceAccountsResponseExample2": {
                 "summary": "User-managed service accounts in a namespace",
-                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace.\n",
-                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true\n  }\n}"
+                "description": "A successful response from `GET /_security/service/my-namespace?type=user_managed`. The response contains the user-managed service accounts in the `my-namespace` namespace. The account was created by `alice` and last replaced by `bob` using an API key.\n",
+                "value": "{\n  \"my-namespace/my-service\": {\n    \"type\": \"user_managed\",\n    \"roles\": [\n      \"my_role\"\n    ],\n    \"enabled\": true,\n    \"created_by\": {\n      \"username\": \"alice\",\n      \"realm\": \"ldap1\",\n      \"realm_type\": \"ldap\"\n    },\n    \"created_at\": 1758585600000,\n    \"updated_by\": {\n      \"username\": \"bob\",\n      \"realm\": \"default_native\",\n      \"realm_type\": \"native\",\n      \"api_key\": {\n        \"id\": \"VuaCfGcBCdbkQm-e5aOx\",\n        \"name\": \"deploy-bot-key\"\n      }\n    },\n    \"updated_at\": 1758672000000\n  }\n}"
               }
             }
           }
@@ -150712,6 +151945,45 @@
                 "summary": "Query roles by description",
                 "description": "A successful response from `POST /_security/_query/role`.\n",
                 "value": "{\n    \"total\": 2,\n    \"count\": 1,\n    \"roles\": [\n        {\n          \"name\" : \"my_user_role\",\n          \"cluster\" : [ ],\n          \"indices\" : [\n            {\n              \"names\" : [\n                \"index1\",\n                \"index2\"\n              ],\n              \"privileges\" : [\n                \"all\"\n              ],\n              \"field_security\" : {\n                \"grant\" : [\n                  \"title\",\n                  \"body\"\n                ]\n              },\n              \"allow_restricted_indices\" : false\n            }\n          ],\n          \"applications\" : [ ],\n          \"run_as\" : [ ],\n          \"metadata\" : {\n            \"version\" : 1\n          },\n          \"transient_metadata\" : {\n            \"enabled\" : true\n          },\n          \"description\" : \"Grants user access to some indicies.\"\n        }\n    ]\n}"
+              }
+            }
+          }
+        }
+      },
+      "security.query_service_accounts-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "description": "The total number of service accounts found.",
+                  "type": "number"
+                },
+                "count": {
+                  "description": "The number of service accounts returned in the response.",
+                  "type": "number"
+                },
+                "service_accounts": {
+                  "description": "A list of service account information.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/security.query_service_accounts.QueryServiceAccount"
+                  }
+                }
+              },
+              "required": [
+                "total",
+                "count",
+                "service_accounts"
+              ]
+            },
+            "examples": {
+              "QueryServiceAccountsResponseExample1": {
+                "summary": "Query service accounts in a namespace",
+                "description": "A successful response from `POST /_security/_query/service?with_profile_uid=true`. The `apps/worker` account was created by `alice`, who has a user profile, and has not been replaced since.\n",
+                "value": "{\n  \"total\": 1,\n  \"count\": 1,\n  \"service_accounts\": [\n    {\n      \"username\": \"apps/worker\",\n      \"type\": \"user_managed\",\n      \"roles\": [\n        \"runner\"\n      ],\n      \"enabled\": true,\n      \"created_by\": {\n        \"username\": \"alice\",\n        \"realm\": \"ldap1\",\n        \"realm_type\": \"ldap\"\n      },\n      \"created_at\": 1758585600000,\n      \"created_by_profile_uid\": \"u_alice_0\",\n      \"_sort\": [\n        1758585600000\n      ]\n    }\n  ]\n}"
               }
             }
           }
@@ -152705,10 +153977,10 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.",
+        "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
         "deprecated": false,
         "schema": {
-          "default": "all",
+          "default": "open,closed",
           "allOf": [
             {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -152859,7 +154131,7 @@
         "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
-          "default": "['bc', 'id', 'sc', 's']",
+          "default": "id,state,buckets.count,search.count",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -153074,7 +154346,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSegmentsColumns"
@@ -153252,7 +154524,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSnapshotsColumns"
@@ -154558,7 +155830,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Id"
+          "$ref": "#/components/schemas/_types.Ids"
         },
         "style": "simple"
       },
@@ -160266,7 +161538,7 @@
           "default": "total",
           "allOf": [
             {
-              "$ref": "#/components/schemas/_types.ThreadType"
+              "$ref": "#/components/schemas/_types.ThreadSortOrder"
             }
           ]
         },
@@ -162104,6 +163376,18 @@
         "x-state": "Generally available; Added in 9.6.0",
         "style": "form"
       },
+      "security.get_service_accounts-with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If `true`, each user-managed service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
+        "style": "form"
+      },
       "security.get_user-username": {
         "in": "path",
         "name": "username",
@@ -162260,6 +163544,17 @@
           "type": "boolean"
         },
         "x-state": "Generally available; Added in 8.14.0",
+        "style": "form"
+      },
+      "security.query_service_accounts-with_profile_uid": {
+        "in": "query",
+        "name": "with_profile_uid",
+        "description": "If `true`, each service account also includes the profile UIDs of the users who created and last replaced it, under the `created_by_profile_uid` and `updated_by_profile_uid` fields.\nA profile UID is included only for a user who has an activated user profile.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
         "style": "form"
       },
       "security.query_user-with_profile_uid": {
@@ -166717,7 +168012,7 @@
                   ]
                 },
                 "name": {
-                  "description": "A name for the API key.",
+                  "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Name"
@@ -166743,7 +168038,10 @@
                     }
                   ]
                 }
-              }
+              },
+              "required": [
+                "name"
+              ]
             },
             "examples": {
               "SecurityCreateApiKeyRequestExample1": {
@@ -167272,6 +168570,64 @@
                 "summary": "Query roles by description",
                 "description": "Run `POST /_security/_query/role` to query only the user access role, given its description. It returns only the best matching role because `size` is set to `1`.\n",
                 "value": "{\n  \"query\": {\n    \"match\": {\n      \"description\": {\n        \"query\": \"user access\"\n      }\n    }\n  },\n  \"size\": 1 \n}"
+              }
+            }
+          }
+        }
+      },
+      "security.query_service_accounts": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "description": "A query to filter which service accounts to return.\nIf the query parameter is missing, it is equivalent to a `match_all` query.\nThe query supports a subset of query types, including `match_all`, `bool`, `term`, `terms`, `match`,\n`ids`, `prefix`, `wildcard`, `exists`, `range`, and `simple_query_string`.\nYou can query the following information associated with a service account: `username`, `roles`, `enabled`, `description`,\n`created_by.username`, `created_by.realm`, `created_by.realm_type`, `created_by.api_key.id`, `created_by.api_key.name`, `created_at`,\n`updated_by.username`, `updated_by.realm`, `updated_by.realm_type`, `updated_by.api_key.id`, `updated_by.api_key.name`, and `updated_at`.\n\nNOTE: The `username` of a service account is its `namespace/service` pair, so use a `prefix` query on `username` to select a namespace.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/security.query_service_accounts.ServiceAccountQueryContainer"
+                    }
+                  ]
+                },
+                "from": {
+                  "description": "The starting document offset.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 0.0,
+                  "type": "number"
+                },
+                "sort": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/sort-search-results"
+                  },
+                  "description": "The sort definition.\nAll the fields that you can query on, other than `description`, are eligible for sorting.\nIn addition, sort can also be applied to the `_doc` field to sort by index order.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Sort"
+                    }
+                  ]
+                },
+                "size": {
+                  "description": "The number of hits to return.\nIt must not be negative.\nBy default, you cannot page through more than 10,000 hits using the `from` and `size` parameters.\nTo page through more hits, use the `search_after` parameter.",
+                  "default": 10.0,
+                  "type": "number"
+                },
+                "search_after": {
+                  "externalDocs": {
+                    "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#search-after"
+                  },
+                  "description": "The search after definition.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.SortResults"
+                    }
+                  ]
+                }
+              }
+            },
+            "examples": {
+              "QueryServiceAccountsRequestExample1": {
+                "summary": "Query service accounts in a namespace",
+                "description": "Run `POST /_security/_query/service?with_profile_uid=true` to get the enabled service accounts in the `apps` namespace, sorted by when they were created, newest first. The response includes the profile UIDs of the users who created and last replaced each account.\n",
+                "value": "{\n  \"query\": {\n    \"bool\": {\n      \"filter\": [\n        { \"prefix\": { \"username\": \"apps/\" } },\n        { \"term\": { \"enabled\": true } }\n      ]\n    }\n  },\n  \"sort\": [\n    { \"created_at\": { \"order\": \"desc\" } }\n  ],\n  \"size\": 10\n}"
               }
             }
           }

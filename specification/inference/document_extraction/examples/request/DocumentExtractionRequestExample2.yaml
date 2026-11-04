@@ -1,0 +1,18 @@
+summary: Document extraction task using the url format and task settings
+description:
+  Run `POST _inference/document_extraction/my-document-extraction-endpoint` to extract the content of an image of a
+  document referenced by URL as markdown.
+method_request: 'POST _inference/document_extraction/my-document-extraction-endpoint'
+value: |-
+  {
+    "input": {
+      "content": {
+        "type": "image",
+        "format": "url",
+        "value": "https://example.com/scanned-page.png"
+      }
+    },
+    "task_settings": {
+      "output_format": "markdown"
+    }
+  }

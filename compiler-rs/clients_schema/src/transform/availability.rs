@@ -84,7 +84,24 @@ impl Availability {
         let ws = filter.worksheet.borrow();
         model.types.retain(|k, _| ws.was_visited(k));
 
+        // Remove urls that use an unavailable path part
+        for endpoint in &mut model.endpoints {
+            let Some(TypeDefinition::Request(request)) =
+                endpoint.request.as_ref().and_then(|name| model.types.get(name))
+            else {
+                continue;
+            };
+            endpoint.urls.retain(|url| {
+                Self::path_variables(&url.path).all(|variable| request.path.iter().any(|prop| prop.name == variable))
+            });
+        }
+
         Ok(model)
+    }
+
+    fn path_variables(path: &str) -> impl Iterator<Item = &str> {
+        path.split('/')
+            .filter_map(|segment| segment.strip_prefix('{').and_then(|s| s.strip_suffix('}')))
     }
 
     fn find_unavailable_internal_tag_variants(

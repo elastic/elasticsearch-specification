@@ -1,0 +1,3 @@
+summary: Delete a view
+method_request: DELETE /_query/view/country_addresses
+description: Delete the country_addresses view.

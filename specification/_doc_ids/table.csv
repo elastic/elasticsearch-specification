@@ -247,9 +247,10 @@ esql-returning-localized-results,https://www.elastic.co/docs/explore-analyze/que
 esql-timezones,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-timezones,[use-doc-url],,About using the ES|QL rest API
 esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-query,,About a specific running ES|QL
 esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-list-queries,,More about running ES|QL queries
-esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,About Elasticsearch API
-esql-put-view,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,About Elasticsearch API
-esql-delete-view,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,About Elasticsearch API
+esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-view,,Get an ES|QL view
+esql-put-view,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-put-view,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-put-view,,Create or update an ES|QL view
+esql-delete-view,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-delete-view,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-delete-view,,Delete an ES|QL view
+esql-views,https://www.elastic.co/docs/reference/query-languages/esql/esql-views,[use-doc-url],,Define reusable queries with ES|QL views
 esql-put-data-source,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-put-data-source,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-put-data-source,,About Elasticsearch API
 esql-get-data-source,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-data-source,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-data-source,,About Elasticsearch API
 esql-delete-data-source,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-delete-data-source,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-delete-data-source,,About Elasticsearch API
