@@ -45,6 +45,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=7.0.0 stability=stable
  * @doc_id voting-config-exclusions
  * @ext_doc_id add-nodes
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

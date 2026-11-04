@@ -141,7 +141,7 @@
           "search"
         ],
         "summary": "Delete an async search",
-        "description": "If the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.",
+        "description": "If the asynchronous search is still running, it is cancelled.\nOtherwise, the saved search results are deleted.\nIf the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the `cancel_task` cluster privilege.\n\n## Required authorization\n\n* Cluster privileges: `cancel_task`\n",
         "operationId": "async-search-delete",
         "parameters": [
           {
@@ -257,7 +257,7 @@
           "search"
         ],
         "summary": "Run an async search",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "async-search-submit",
         "parameters": [
           {
@@ -425,7 +425,7 @@
           "search"
         ],
         "summary": "Run an async search",
-        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.",
+        "description": "When the primary sort of the results is an indexed field, shards get sorted based on minimum and maximum value that they hold for that field. Partial results become available following the sort criteria that was requested.\n\nWarning: Asynchronous search does not support scroll or search requests that include only the suggest section.\n\nBy default, Elasticsearch does not allow you to store an async search response larger than 10Mb and an attempt to do this results in an error.\nThe maximum allowed size for a stored async search response can be set by changing the `search.max_async_search_response_size` cluster level setting.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "async-search-submit-1",
         "parameters": [
           {
@@ -596,7 +596,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`create`,`delete`,`index`,`write`\n",
         "externalDocs": {
           "description": "About tune for indexing speed",
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
@@ -656,7 +656,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`create`,`delete`,`index`,`write`\n",
         "externalDocs": {
           "description": "About tune for indexing speed",
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
@@ -718,7 +718,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`create`,`delete`,`index`,`write`\n",
         "externalDocs": {
           "description": "About tune for indexing speed",
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
@@ -781,7 +781,7 @@
           "document"
         ],
         "summary": "Bulk index or delete documents",
-        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.",
+        "description": "Perform multiple `index`, `create`, `delete`, and `update` actions in a single request.\nThis reduces overhead and can greatly increase indexing speed.\n\nIf the Elasticsearch security features are enabled, you must have the following index privileges for the target data stream, index, or index alias:\n\n* To use the `create` action, you must have the `create_doc`, `create`, `index`, or `write` index privilege. Data streams support only the `create` action.\n* To use the `index` action, you must have the `create`, `index`, or `write` index privilege.\n* To use the `delete` action, you must have the `delete` or `write` index privilege.\n* To use the `update` action, you must have the `index` or `write` index privilege.\n* To automatically create a data stream or index with a bulk API request, you must have the `auto_configure`, `create_index`, or `manage` index privilege.\n* To make the result of a bulk operation visible to search using the `refresh` parameter, you must have the `maintenance` or `manage` index privilege.\n\nAutomatic data stream creation requires a matching index template with data stream enabled.\n\nThe actions are specified in the request body using a newline delimited JSON (NDJSON) structure:\n\n```\naction_and_meta_data\\n\noptional_source\\n\naction_and_meta_data\\n\noptional_source\\n\n....\naction_and_meta_data\\n\noptional_source\\n\n```\n\nThe `index` and `create` actions expect a source on the next line and have the same semantics as the `op_type` parameter in the standard index API.\nA `create` action fails if a document with the same ID already exists in the target\nAn `index` action adds or replaces a document as necessary.\n\nNOTE: Data streams support only the `create` action.\nTo update or delete a document in a data stream, you must target the backing index containing the document.\n\nAn `update` action expects that the partial doc, upsert, and script and its options are specified on the next line.\n\nA `delete` action does not expect a source on the next line and has the same semantics as the standard delete API.\n\nNOTE: The final line of data must end with a newline character (`\\n`).\nEach newline character may be preceded by a carriage return (`\\r`).\nWhen sending NDJSON data to the `_bulk` endpoint, use a `Content-Type` header of `application/json` or `application/x-ndjson`.\nBecause this format uses literal newline characters (`\\n`) as delimiters, make sure that the JSON actions and sources are not pretty printed.\n\nIf you provide a target in the request path, it is used for any actions that don't explicitly specify an `_index` argument.\n\nA note on the format: the idea here is to make processing as fast as possible.\nAs some of the actions are redirected to other shards on other nodes, only `action_meta_data` is parsed on the receiving node side.\n\nClient libraries using this protocol should try and strive to do something similar on the client side, and reduce buffering as much as possible.\n\nThere is no \"correct\" number of actions to perform in a single bulk request.\nExperiment with different settings to find the optimal size for your particular workload.\nNote that Elasticsearch limits the maximum size of a HTTP request to 100mb by default so clients must ensure that no request exceeds this size.\nIt is not possible to index a single document that exceeds the size limit, so you must pre-process any such documents into smaller pieces before sending them to Elasticsearch.\nFor instance, split documents into pages or chapters before indexing them, or store raw binary data in a system outside Elasticsearch and replace the raw data with a link to the external system in the documents that you send to Elasticsearch.\n\n**Client suppport for bulk requests**\n\nSome of the officially supported clients provide helpers to assist with bulk requests and reindexing:\n\n* Go: Check out `esutil.BulkIndexer`\n* Perl: Check out `Search::Elasticsearch::Client::5_0::Bulk` and `Search::Elasticsearch::Client::5_0::Scroll`\n* Python: Check out `elasticsearch.helpers.*`\n* JavaScript: Check out `client.helpers.*`\n* Java: Check out `co.elastic.clients.elasticsearch._helpers.bulk.BulkIngester`\n* .NET: Check out `BulkAllObservable`\n* PHP: Check out bulk indexing.\n* Ruby: Check out `Elasticsearch::Helpers::BulkHelper`\n\n**Submitting bulk requests with cURL**\n\nIf you're providing text file input to `curl`, you must use the `--data-binary` flag instead of plain `-d`.\nThe latter doesn't preserve newlines. For example:\n\n```\n$ cat requests\n{ \"index\" : { \"_index\" : \"test\", \"_id\" : \"1\" } }\n{ \"field1\" : \"value1\" }\n$ curl -s -H \"Content-Type: application/x-ndjson\" -XPOST localhost:9200/_bulk --data-binary \"@requests\"; echo\n{\"took\":7, \"errors\": false, \"items\":[{\"index\":{\"_index\":\"test\",\"_id\":\"1\",\"_version\":1,\"result\":\"created\",\"forced_refresh\":false}}]}\n```\n\n**Optimistic concurrency control**\n\nEach `index` and `delete` action within a bulk API call may include the `if_seq_no` and `if_primary_term` parameters in their respective action and meta data lines.\nThe `if_seq_no` and `if_primary_term` parameters control how operations are run, based on the last modification to existing documents. See Optimistic concurrency control for more details.\n\n**Versioning**\n\nEach bulk item can include the version value using the `version` field.\nIt automatically follows the behavior of the index or delete operation based on the `_version` mapping.\nIt also support the `version_type`.\n\n**Routing**\n\nEach bulk item can include the routing value using the `routing` field.\nIt automatically follows the behavior of the index or delete operation based on the `_routing` mapping.\n\nNOTE: Data streams do not support custom routing unless they were created with the `allow_custom_routing` setting enabled in the template.\n\n**Refresh**\n\nControl when the changes made by this request are visible to search.\n\nNOTE: Only the shards that receive the bulk request will be affected by refresh.\nImagine a `_bulk?refresh=wait_for` request with three documents in it that happen to be routed to different shards in an index with five shards.\nThe request will only wait for those three shards to refresh.\nThe other two shards that make up the index do not participate in the `_bulk` request at all.\n\nYou might want to disable the refresh interval temporarily to improve indexing throughput for large bulk requests.\nRefer to the linked documentation for step-by-step instructions using the index settings API.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`create`,`delete`,`index`,`write`\n",
         "externalDocs": {
           "description": "About tune for indexing speed",
           "url": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
@@ -846,7 +846,7 @@
           "reindex"
         ],
         "summary": "Cancel an ongoing reindex task",
-        "description": "If `wait_for_completion` is `true` (the default), the response contains the final task state after cancellation.\nIf `wait_for_completion` is `false`, the response contains only `acknowledged: true`.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be cancelled (unknown ID, non-reindex task, sliced child, finished task, or node left with no stored result), the API returns the following response with a 404 status code:\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"reindex task [r1A2WoRbTwKZ516z6NEs5A:36619] either not found or completed\"\n  },\n  \"status\": 404\n}\n```\n\nDuring a brief handoff window of a node-shutdown relocation, you may receive the response below with a 503 status code.\nRetry with the same task ID; the retry follows the relocated task transparently.\n```\n{\n  \"error\": {\n    \"type\": \"status_exception\",\n    \"reason\": \"cannot cancel task [36619] because it is being relocated\"\n  },\n  \"status\": 503\n}\n```",
+        "description": "If `wait_for_completion` is `true` (the default), the response contains the final task state after cancellation.\nIf `wait_for_completion` is `false`, the response contains only `acknowledged: true`.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be cancelled (unknown ID, non-reindex task, sliced child, finished task, or node left with no stored result), the API returns the following response with a 404 status code:\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"reindex task [r1A2WoRbTwKZ516z6NEs5A:36619] either not found or completed\"\n  },\n  \"status\": 404\n}\n```\n\nDuring a brief handoff window of a node-shutdown relocation, you may receive the response below with a 503 status code.\nRetry with the same task ID; the retry follows the relocated task transparently.\n```\n{\n  \"error\": {\n    \"type\": \"status_exception\",\n    \"reason\": \"cannot cancel task [36619] because it is being relocated\"\n  },\n  \"status\": 503\n}\n```\n\n## Required authorization\n\n* Cluster privileges: `manage_reindex`\n",
         "operationId": "cancel-reindex",
         "parameters": [
           {
@@ -2581,7 +2581,7 @@
           "indices"
         ],
         "summary": "Check component templates",
-        "description": "Returns information about whether a particular component template exists.",
+        "description": "Returns information about whether a particular component template exists.\n\n## Required authorization\n\n* Cluster privileges: `monitor`,`manage_index_templates`\n",
         "operationId": "cluster-exists-component-template",
         "parameters": [
           {
@@ -2684,7 +2684,7 @@
           "cluster"
         ],
         "summary": "Get cluster subsystem info",
-        "description": "Returns basic information about the cluster.",
+        "description": "Returns basic information about the cluster.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "cluster-info",
         "parameters": [
           {
@@ -5491,7 +5491,7 @@
           "document"
         ],
         "summary": "Check a document",
-        "description": "Verify that a document exists.\nFor example, check to see if a document with the `_id` 0 exists:\n\n```\nHEAD my-index-000001/_doc/0\n```\n\nIf the document exists, the API returns a status code of `200 - OK`.\nIf the document doesn’t exist, the API returns `404 - Not Found`.\n\n**Versioning support**\n\nYou can use the `version` parameter to check the document only if its current version is equal to the specified one.\n\nInternally, Elasticsearch has marked the old document as deleted and added an entirely new document.\nThe old version of the document doesn't disappear immediately, although you won't be able to access it.\nElasticsearch cleans up deleted documents in the background as you continue to index more data.",
+        "description": "Verify that a document exists.\nFor example, check to see if a document with the `_id` 0 exists:\n\n```\nHEAD my-index-000001/_doc/0\n```\n\nIf the document exists, the API returns a status code of `200 - OK`.\nIf the document doesn’t exist, the API returns `404 - Not Found`.\n\n**Versioning support**\n\nYou can use the `version` parameter to check the document only if its current version is equal to the specified one.\n\nInternally, Elasticsearch has marked the old document as deleted and added an entirely new document.\nThe old version of the document doesn't disappear immediately, although you won't be able to access it.\nElasticsearch cleans up deleted documents in the background as you continue to index more data.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "exists",
         "parameters": [
           {
@@ -5551,7 +5551,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value used to route operations to a specific shard.",
+            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -6407,7 +6407,7 @@
           "enrich"
         ],
         "summary": "Get an enrich policy",
-        "description": "Returns information about an enrich policy.",
+        "description": "Returns information about an enrich policy.\n\n## Required authorization\n\n* Cluster privileges: `monitor_enrich`,`manage_enrich`\n",
         "operationId": "enrich-get-policy",
         "parameters": [
           {
@@ -6435,7 +6435,7 @@
           "enrich"
         ],
         "summary": "Create an enrich policy",
-        "description": "Creates an enrich policy.",
+        "description": "Creates an enrich policy.\n\n## Required authorization\n\n* Cluster privileges: `manage_enrich`\n",
         "operationId": "enrich-put-policy",
         "parameters": [
           {
@@ -6532,7 +6532,7 @@
           "enrich"
         ],
         "summary": "Delete an enrich policy",
-        "description": "Deletes an existing enrich policy and its enrich index.",
+        "description": "Deletes an existing enrich policy and its enrich index.\n\n## Required authorization\n\n* Cluster privileges: `manage_enrich`\n",
         "operationId": "enrich-delete-policy",
         "parameters": [
           {
@@ -6589,7 +6589,7 @@
           "enrich"
         ],
         "summary": "Run an enrich policy",
-        "description": "Create the enrich index for an existing enrich policy.",
+        "description": "Create the enrich index for an existing enrich policy.\n\n## Required authorization\n\n* Cluster privileges: `manage_enrich`\n",
         "operationId": "enrich-execute-policy",
         "parameters": [
           {
@@ -6673,7 +6673,7 @@
           "enrich"
         ],
         "summary": "Get an enrich policy",
-        "description": "Returns information about an enrich policy.",
+        "description": "Returns information about an enrich policy.\n\n## Required authorization\n\n* Cluster privileges: `monitor_enrich`,`manage_enrich`\n",
         "operationId": "enrich-get-policy-1",
         "parameters": [
           {
@@ -6765,7 +6765,7 @@
           "eql"
         ],
         "summary": "Delete an async EQL search",
-        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.",
+        "description": "Delete an async EQL search or a stored synchronous EQL search.\nThe API also deletes results for the search.\n\n## Required authorization\n\n* Cluster privileges: `cancel_task`\n",
         "operationId": "eql-delete",
         "parameters": [
           {
@@ -6807,7 +6807,7 @@
           "eql"
         ],
         "summary": "Get the async EQL status",
-        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.",
+        "description": "Get the current status for an async EQL search or a stored synchronous EQL search without returning results.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "eql-get-status",
         "parameters": [
           {
@@ -6898,7 +6898,7 @@
           "eql"
         ],
         "summary": "Get EQL search results",
-        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "Learn more about EQL",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql",
@@ -6958,7 +6958,7 @@
           "eql"
         ],
         "summary": "Get EQL search results",
-        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.",
+        "description": "Returns search results for an Event Query Language (EQL) query.\nEQL assumes each document in a data stream or index corresponds to an event.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "externalDocs": {
           "description": "Learn more about EQL",
           "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql",
@@ -8697,7 +8697,7 @@
           "reindex"
         ],
         "summary": "Get the status and progress of a specific reindex task",
-        "description": "This API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be resolved, the API returns the response below with a 404 status code.\nThis response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found\"\n  },\n  \"status\": 404\n}\n```",
+        "description": "This API follows reindex tasks across node-shutdown relocations, so callers can\nkeep using the original task ID throughout the lifetime of the operation.\nReturned task IDs and timings reflect the original task, not its relocated successor.\nRelocated task IDs are also supported. They are followed transparently and return the task ID and timings of the original task.\n\nWhen the task ID cannot be resolved, the API returns the response below with a 404 status code.\nThis response is used whether the ID is unknown, refers to a non-reindex task, refers to a sliced child subtask, or refers to a task whose node left the cluster with no stored result (e.g. a non-graceful shutdown).\n```\n{\n  \"error\": {\n    \"type\": \"resource_not_found_exception\",\n    \"reason\": \"Reindex operation [r1A2WoRbTwKZ516z6NEs5A:36619] not found\"\n  },\n  \"status\": 404\n}\n```\n\n## Required authorization\n\n* Cluster privileges: `monitor`,`monitor_reindex`,`manage_reindex`\n",
         "operationId": "get-reindex",
         "parameters": [
           {
@@ -8926,7 +8926,7 @@
           "indices"
         ],
         "summary": "Add an index block",
-        "description": "Add an index block to an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.",
+        "description": "Add an index block to an index.\nIndex blocks limit the operations allowed on an index by blocking specific operation types.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-add-block",
         "parameters": [
           {
@@ -9352,7 +9352,7 @@
           "migration"
         ],
         "summary": "Cancel a migration reindex operation",
-        "description": "Cancel a migration reindex attempt for a data stream or index.",
+        "description": "Cancel a migration reindex attempt for a data stream or index.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-cancel-migrate-reindex",
         "parameters": [
           {
@@ -9785,7 +9785,7 @@
           "indices"
         ],
         "summary": "Check indices",
-        "description": "Check if one or more indices, index aliases, or data streams exist.",
+        "description": "Check if one or more indices, index aliases, or data streams exist.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-exists",
         "parameters": [
           {
@@ -10072,7 +10072,7 @@
           "migration"
         ],
         "summary": "Create an index from a source index",
-        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Creating an index from source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
@@ -10107,7 +10107,7 @@
           "migration"
         ],
         "summary": "Create an index from a source index",
-        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.",
+        "description": "Copy the mappings and settings from the source index to a destination index while allowing request settings and mappings to override the source values.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Creating an index from source",
           "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source"
@@ -10305,7 +10305,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Check if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-exists-alias-1",
         "parameters": [
           {
@@ -10763,7 +10763,7 @@
           "indices"
         ],
         "summary": "Check aliases",
-        "description": "Check if one or more data stream or index aliases exist.",
+        "description": "Check if one or more data stream or index aliases exist.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-exists-alias",
         "parameters": [
           {
@@ -10802,7 +10802,7 @@
           "data stream"
         ],
         "summary": "Get the status for a data stream lifecycle",
-        "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.",
+        "description": "Get information about an index or data stream's current data stream lifecycle status, such as time since index creation, time since rollover, the lifecycle configuration managing the index, or any errors encountered during lifecycle execution.\n\n## Required authorization\n\n* Index privileges: `manage_data_stream_lifecycle`,`view_index_metadata`\n",
         "externalDocs": {
           "description": "About data stream lifecycle",
           "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
@@ -11466,7 +11466,7 @@
           "data stream"
         ],
         "summary": "Get data stream options",
-        "description": "Get the data stream options configuration of one or more data streams.",
+        "description": "Get the data stream options configuration of one or more data streams.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-get-data-stream-options",
         "parameters": [
           {
@@ -11547,7 +11547,7 @@
           "data stream"
         ],
         "summary": "Update data stream options",
-        "description": "Update the data stream options of the specified data streams.",
+        "description": "Update the data stream options of the specified data streams.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-put-data-stream-options",
         "parameters": [
           {
@@ -12074,7 +12074,7 @@
           "migration"
         ],
         "summary": "Get the migration reindexing status",
-        "description": "Get the status of a migration reindex attempt for a data stream or index.",
+        "description": "Get the status of a migration reindex attempt for a data stream or index.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-get-migrate-reindex-status",
         "parameters": [
           {
@@ -12547,7 +12547,7 @@
           "data stream"
         ],
         "summary": "Update data streams",
-        "description": "Performs one or more data stream modification actions in a single atomic operation.",
+        "description": "Performs one or more data stream modification actions in a single atomic operation.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "operationId": "indices-modify-data-stream",
         "requestBody": {
           "content": {
@@ -13235,7 +13235,7 @@
           "indices"
         ],
         "summary": "Validate a query",
-        "description": "Validates a query without running it.",
+        "description": "Validates a query without running it.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-validate-query",
         "parameters": [
           {
@@ -13299,7 +13299,7 @@
           "indices"
         ],
         "summary": "Validate a query",
-        "description": "Validates a query without running it.",
+        "description": "Validates a query without running it.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-validate-query-1",
         "parameters": [
           {
@@ -13365,7 +13365,7 @@
           "indices"
         ],
         "summary": "Validate a query",
-        "description": "Validates a query without running it.",
+        "description": "Validates a query without running it.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-validate-query-2",
         "parameters": [
           {
@@ -13432,7 +13432,7 @@
           "indices"
         ],
         "summary": "Validate a query",
-        "description": "Validates a query without running it.",
+        "description": "Validates a query without running it.\n\n## Required authorization\n\n* Index privileges: `view_index_metadata`,`manage`\n",
         "operationId": "indices-validate-query-3",
         "parameters": [
           {
@@ -13501,7 +13501,7 @@
           "inference"
         ],
         "summary": "Perform streaming chat completion inference on the service",
-        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-chat-completion-unified",
         "parameters": [
           {
@@ -13605,7 +13605,7 @@
           "inference"
         ],
         "summary": "Perform completion inference on the service",
-        "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "description": "Get responses for completion tasks.\nThis API works only with the completion task type.\n\nIMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.\n\nThis API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-completion",
         "parameters": [
           {
@@ -13707,13 +13707,115 @@
         ]
       }
     },
+    "/_inference/decision/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform decision inference on the service",
+        "description": "Answer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-decision",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The unique identifier for the inference endpoint.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionInput"
+                      }
+                    ]
+                  },
+                  "task_settings": {
+                    "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/inference.decision.DecisionTaskSettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "input"
+                ]
+              },
+              "examples": {
+                "DecisionRequestExample1": {
+                  "summary": "Decision task",
+                  "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+                  "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.DecisionInferenceResult"
+                },
+                "examples": {
+                  "DecisionResponseExample1": {
+                    "summary": "Decision task",
+                    "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+                    "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/{inference_id}": {
       "get": {
         "tags": [
           "inference"
         ],
         "summary": "Get an inference endpoint",
-        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-get-1",
         "parameters": [
           {
@@ -13800,7 +13902,7 @@
           "inference"
         ],
         "summary": "Delete an inference endpoint",
-        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-delete",
         "parameters": [
           {
@@ -13833,7 +13935,7 @@
           "inference"
         ],
         "summary": "Get an inference endpoint",
-        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-get-2",
         "parameters": [
           {
@@ -13929,7 +14031,7 @@
           "inference"
         ],
         "summary": "Delete an inference endpoint",
-        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).",
+        "description": "This API requires the manage_inference cluster privilege (the built-in `inference_admin` role grants this privilege).\n\n## Required authorization\n\n* Cluster privileges: `manage_inference`\n",
         "operationId": "inference-delete-1",
         "parameters": [
           {
@@ -14224,6 +14326,7 @@
           "inference"
         ],
         "summary": "Perform dense embedding inference on the service",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-embedding",
         "parameters": [
           {
@@ -14324,7 +14427,7 @@
           "inference"
         ],
         "summary": "Get an inference endpoint",
-        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-get",
         "responses": {
           "200": {
@@ -14346,7 +14449,7 @@
           "inference"
         ],
         "summary": "Get an inference endpoint",
-        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).",
+        "description": "This API requires the `monitor_inference` cluster privilege (the built-in `inference_admin` and `inference_user` roles grant this privilege).\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-get-3",
         "parameters": [
           {
@@ -14373,7 +14476,7 @@
           "inference"
         ],
         "summary": "Perform non-streaming chat completion inference on the service",
-        "description": "The chat completion inference API enables rich responses for chat completion tasks.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\nThese services support non-streaming chat completion inference:\n- AI21\n- Azure OpenAI\n- Deepseek\n- Elastic\n- FireworksAI\n- Groq\n- Huggingface\n- IBMWatsonX\n- Llama\n- Mistral\n- NVIDIA\n- OpenAI\n- OpenShiftAI",
+        "description": "The chat completion inference API enables rich responses for chat completion tasks.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\nThese services support non-streaming chat completion inference:\n- AI21\n- Azure OpenAI\n- Deepseek\n- Elastic\n- FireworksAI\n- Groq\n- Huggingface\n- IBMWatsonX\n- Llama\n- Mistral\n- NVIDIA\n- OpenAI\n- OpenShiftAI\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-non-streaming-chat-completion",
         "parameters": [
           {
@@ -18256,6 +18359,7 @@
           "inference"
         ],
         "summary": "Perform sparse embedding inference on the service",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-sparse-embedding",
         "parameters": [
           {
@@ -18464,6 +18568,7 @@
           "inference"
         ],
         "summary": "Perform text embedding inference on the service",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
         "operationId": "inference-text-embedding",
         "parameters": [
           {
@@ -18756,7 +18861,7 @@
           "ingest"
         ],
         "summary": "Get pipelines",
-        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.\n\n## Required authorization\n\n* Cluster privileges: `read_pipeline`,`manage_ingest_pipelines`\n",
         "externalDocs": {
           "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
@@ -18792,7 +18897,7 @@
           "ingest"
         ],
         "summary": "Create or update a pipeline",
-        "description": "Changes made using this API take effect immediately.",
+        "description": "Changes made using this API take effect immediately.\n\n## Required authorization\n\n* Cluster privileges: `manage_pipeline`,`manage_ingest_pipelines`\n",
         "externalDocs": {
           "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines"
@@ -18947,7 +19052,7 @@
           "ingest"
         ],
         "summary": "Delete pipelines",
-        "description": "Delete one or more ingest pipelines.",
+        "description": "Delete one or more ingest pipelines.\n\n## Required authorization\n\n* Cluster privileges: `manage_pipeline`,`manage_ingest_pipelines`\n",
         "externalDocs": {
           "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
@@ -19024,7 +19129,7 @@
           "ingest"
         ],
         "summary": "Get pipelines",
-        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.",
+        "description": "Get information about one or more ingest pipelines.\nThis API returns a local reference of the pipeline.\n\n## Required authorization\n\n* Cluster privileges: `read_pipeline`,`manage_ingest_pipelines`\n",
         "externalDocs": {
           "description": "About ingest pipelines",
           "url": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
@@ -19059,7 +19164,7 @@
           "ingest"
         ],
         "summary": "Run a grok processor",
-        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.",
+        "description": "Extract structured fields out of a single text field within a document.\nYou must choose which field to extract matched fields from, as well as the grok pattern you expect will match.\nA grok pattern is like a regular expression that supports aliased expressions that can be reused.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
         "externalDocs": {
           "description": "More about the Grok processor",
           "url": "https://www.elastic.co/docs/reference/enrich-processor/grok-processor"
@@ -19219,13 +19324,95 @@
         ]
       }
     },
+    "/{index}/_knn_eval": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Evaluate kNN search settings",
+        "description": "Estimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.\n\n## Required authorization\n\n* Index privileges: `read`,`view_index_metadata`\n",
+        "operationId": "knn-eval",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_eval-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-wait_for_completion"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_eval"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_eval-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Evaluate kNN search settings",
+        "description": "Estimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.\n\n## Required authorization\n\n* Index privileges: `read`,`view_index_metadata`\n",
+        "operationId": "knn-eval-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_eval-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-wait_for_completion"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_eval"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_eval-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_license": {
       "get": {
         "tags": [
           "license"
         ],
         "summary": "Get license information",
-        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\n>info\n> If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\n> If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.",
+        "description": "Get information about your Elastic license including its type, its status, when it was issued, and when it expires.\n\n>info\n> If the master node is generating a new cluster state, the get license API may return a `404 Not Found` response.\n> If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
         "operationId": "license-get",
         "parameters": [
           {
@@ -19296,7 +19483,7 @@
           "reindex"
         ],
         "summary": "Get information about all currently running reindex tasks",
-        "description": "Reindex tasks that are mid-relocation between nodes are reported once,\nunder their original task ID, so callers do not see duplicates across the relocation chain.\n\nIf the API returns a HTTP status of `200 OK`, but `node_failures` or `task_failures` are non-empty in the body, the listing is not a complete authoritative listing and may be missing tasks.",
+        "description": "Reindex tasks that are mid-relocation between nodes are reported once,\nunder their original task ID, so callers do not see duplicates across the relocation chain.\n\nIf the API returns a HTTP status of `200 OK`, but `node_failures` or `task_failures` are non-empty in the body, the listing is not a complete authoritative listing and may be missing tasks.\n\n## Required authorization\n\n* Cluster privileges: `monitor`,`monitor_reindex`,`manage_reindex`\n",
         "operationId": "list-reindex",
         "parameters": [
           {
@@ -20419,6 +20606,7 @@
           "ml anomaly"
         ],
         "summary": "Delete events from a calendar",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `manage_ml`\n",
         "operationId": "ml-delete-calendar-event",
         "parameters": [
           {
@@ -23695,6 +23883,7 @@
           "ml trained model"
         ],
         "summary": "Evaluate a trained model",
+        "description": "\n\n## Required authorization\n\n* Cluster privileges: `monitor_ml`\n",
         "operationId": "ml-infer-trained-model",
         "parameters": [
           {
@@ -26875,7 +27064,7 @@
           {
             "in": "query",
             "name": "routing",
-            "description": "A custom value that is used to route operations to a specific shard.",
+            "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Routing"
@@ -28153,7 +28342,7 @@
           "document"
         ],
         "summary": "Throttle a reindex operation",
-        "description": "Change the maximum number of documents to index per second for a particular reindex operation.\nFor example, to unthrottle to unlimited documents per second:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch of documents.\nThis behavior prevents scroll timeouts.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can keep using\nthe original task ID throughout the lifetime of the operation.\nThe relocated task ID is also accepted and is followed transparently.\nIn either case, returned task IDs and timings reflect the original task, not its relocated successor.\n\nThe rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains\nno successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default\n`group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with\n`group_by=none` or `group_by=parents`).",
+        "description": "Change the maximum number of documents to index per second for a particular reindex operation.\nFor example, to unthrottle to unlimited documents per second:\n\n```\nPOST _reindex/r1A2WoRbTwKZ516z6NEs5A:36619/_rethrottle?requests_per_second=-1\n```\n\nRethrottling that speeds up the query takes effect immediately.\nRethrottling that slows down the query will take effect after completing the current batch of documents.\nThis behavior prevents scroll timeouts.\n\nThis API follows reindex tasks across node-shutdown relocations, so callers can keep using\nthe original task ID throughout the lifetime of the operation.\nThe relocated task ID is also accepted and is followed transparently.\nIn either case, returned task IDs and timings reflect the original task, not its relocated successor.\n\nThe rethrottle may not have been applied to any tasks if either `node_failures` or `task_failures` are non-empty, or if the response contains\nno successfully rethrottled tasks — that is, no entries under `nodes` (returned with the default\n`group_by=nodes` in stack) or under `tasks` (returned in serverless, or in stack with\n`group_by=none` or `group_by=parents`).\n\n## Required authorization\n\n* Cluster privileges: `manage_reindex`\n",
         "operationId": "reindex-rethrottle",
         "parameters": [
           {
@@ -32312,7 +32501,7 @@
           "search"
         ],
         "summary": "Get terms in an index",
-        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
+        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "terms-enum",
         "parameters": [
           {
@@ -32340,7 +32529,7 @@
           "search"
         ],
         "summary": "Get terms in an index",
-        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.",
+        "description": "Discover terms that match a partial string in an index.\nThis API is designed for low-latency look-ups used in auto-complete scenarios.\n\n> info\n> The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "terms-enum-1",
         "parameters": [
           {
@@ -32948,7 +33137,7 @@
           "transform"
         ],
         "summary": "Get node stats",
-        "description": "Get per-node information about transform usage.",
+        "description": "Get per-node information about transform usage.\n\n## Required authorization\n\n* Cluster privileges: `manage_transform`\n",
         "operationId": "transform-get-node-stats",
         "responses": {
           "200": {
@@ -40371,6 +40560,12 @@
           "create_weight_count": {
             "type": "number"
           },
+          "into_bit_set": {
+            "type": "number"
+          },
+          "into_bit_set_count": {
+            "type": "number"
+          },
           "match": {
             "type": "number"
           },
@@ -40421,6 +40616,8 @@
           "build_scorer_count",
           "create_weight",
           "create_weight_count",
+          "into_bit_set",
+          "into_bit_set_count",
           "match",
           "match_count",
           "shallow_advance",
@@ -41746,6 +41943,17 @@
               }
             ]
           },
+          "dense_vector": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query"
+            },
+            "description": "Scores every document that has a value for a `dense_vector` field, with the exact similarity between its vector and a query vector.\nUnlike the `knn` query, it doesn't use an index structure, or a cutoff based on `k` or `num_candidates`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.DenseVectorQuery"
+              }
+            ]
+          },
           "dis_max": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query"
@@ -42666,6 +42874,252 @@
               "filter"
             ]
           }
+        ]
+      },
+      "_types.query_dsl.DenseVectorQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the `dense_vector` field to search against.\nThe field can be indexed, or not indexed (`index: false`).",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "query_vector": {
+                "description": "The query vector. It must have the same number of dimensions as the field.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "query_vector_builder": {
+                "description": "The configuration to build the query vector, for example by running a text embedding model.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+                  }
+                ]
+              },
+              "similarity_function": {
+                "description": "The similarity used for scoring, which overrides the similarity of the field for this query.\nIt defaults to the similarity of the field, or to `cosine` for a field that is not indexed.\nFor `bit` fields, only `l2_norm` is supported.\nIt can't be combined with `quantized: true`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.DenseVectorSimilarity"
+                  }
+                ]
+              },
+              "quantized": {
+                "description": "If `false`, the documents are scored with the full-precision vectors, regardless of the index options of the field.\nIf `true`, the documents are scored with the quantized vectors of a quantized field, which is faster but less accurate.\nFor a field that is not quantized, `true` has no effect.",
+                "default": false,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "_types.QueryVector": {
+        "description": "Both the float vector form and the base64 string form are accepted by the server",
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "_types.QueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Embedding"
+              }
+            ]
+          },
+          "text_embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TextEmbedding"
+              }
+            ]
+          },
+          "lookup": {
+            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.Embedding": {
+        "type": "object",
+        "properties": {
+          "inference_id": {
+            "type": "string"
+          },
+          "input": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
+              }
+            ]
+          },
+          "timeout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "_types.KnnEmbeddingInput": {
+        "description": "Knn embedding input.\nEither a string, an object or array of objects",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.InferenceStringGroup"
+          }
+        ]
+      },
+      "_types.InferenceStringGroup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.InferenceString"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.InferenceString"
+            }
+          }
+        ]
+      },
+      "_types.InferenceString": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of data that the value represents.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the data. If null, the default data format for the given type is used.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "value": {
+            "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference._types.EmbeddingContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ]
+      },
+      "inference._types.EmbeddingContentFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64",
+          "url"
+        ]
+      },
+      "_types.TextEmbedding": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "type": "string"
+          },
+          "model_text": {
+            "description": "The text to be converted into a vector by the specified model",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_text"
+        ]
+      },
+      "_types.LookupQueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the document to fetch the vector from",
+            "type": "string"
+          },
+          "index": {
+            "description": "The name of the index to fetch the document from",
+            "type": "string"
+          },
+          "path": {
+            "description": "The name of the field containing the vector",
+            "type": "string"
+          },
+          "routing": {
+            "description": "The routing value to use when fetching the document",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "index",
+          "path"
+        ]
+      },
+      "_types.mapping.DenseVectorSimilarity": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm",
+          "max_inner_product"
         ]
       },
       "_types.query_dsl.DisMaxQuery": {
@@ -44971,191 +45425,6 @@
               "field"
             ]
           }
-        ]
-      },
-      "_types.QueryVector": {
-        "description": "Both the float vector form and the base64 string form are accepted by the server",
-        "oneOf": [
-          {
-            "type": "array",
-            "items": {
-              "type": "number"
-            }
-          },
-          {
-            "type": "string"
-          }
-        ]
-      },
-      "_types.QueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Embedding"
-              }
-            ]
-          },
-          "text_embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TextEmbedding"
-              }
-            ]
-          },
-          "lookup": {
-            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.Embedding": {
-        "type": "object",
-        "properties": {
-          "inference_id": {
-            "type": "string"
-          },
-          "input": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
-              }
-            ]
-          },
-          "timeout": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          }
-        },
-        "required": [
-          "input"
-        ]
-      },
-      "_types.KnnEmbeddingInput": {
-        "description": "Knn embedding input.\nEither a string, an object or array of objects",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_types.InferenceStringGroup"
-          }
-        ]
-      },
-      "_types.InferenceStringGroup": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.InferenceString"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.InferenceString"
-            }
-          }
-        ]
-      },
-      "_types.InferenceString": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of data that the value represents.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
-              }
-            ]
-          },
-          "format": {
-            "description": "The format of the data. If null, the default data format for the given type is used.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
-          },
-          "value": {
-            "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "value"
-        ]
-      },
-      "inference._types.EmbeddingContentType": {
-        "type": "string",
-        "enum": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ]
-      },
-      "inference._types.EmbeddingContentFormat": {
-        "type": "string",
-        "enum": [
-          "text",
-          "base64",
-          "url"
-        ]
-      },
-      "_types.TextEmbedding": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
-            "type": "string"
-          },
-          "model_text": {
-            "description": "The text to be converted into a vector by the specified model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "model_text"
-        ]
-      },
-      "_types.LookupQueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The ID of the document to fetch the vector from",
-            "type": "string"
-          },
-          "index": {
-            "description": "The name of the index to fetch the document from",
-            "type": "string"
-          },
-          "path": {
-            "description": "The name of the field containing the vector",
-            "type": "string"
-          },
-          "routing": {
-            "description": "The routing value to use when fetching the document",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "index",
-          "path"
         ]
       },
       "_types.RescoreVector": {
@@ -65456,15 +65725,6 @@
           "oversample"
         ]
       },
-      "_types.mapping.DenseVectorSimilarity": {
-        "type": "string",
-        "enum": [
-          "cosine",
-          "dot_product",
-          "l2_norm",
-          "max_inner_product"
-        ]
-      },
       "_types.mapping.FlattenedProperty": {
         "allOf": [
           {
@@ -72546,6 +72806,389 @@
           "result"
         ]
       },
+      "inference.decision.DecisionInput": {
+        "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
+          }
+        ]
+      },
+      "inference._types.EmbeddingContentObjectItem": {
+        "description": "An object containing the input data for a single item for the model to embed.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              }
+            ]
+          },
+          "value": {
+            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference.decision.DecisionTaskSettings": {
+        "description": "The task settings of the `decision` task.",
+        "type": "object",
+        "properties": {
+          "questions": {
+            "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference.decision.DecisionQuestion"
+            }
+          }
+        }
+      },
+      "inference.decision.DecisionQuestion": {
+        "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference.decision.ChoiceDecisionQuestion",
+            "predicate": "#/components/schemas/inference.decision.PredicateDecisionQuestion",
+            "score": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.PredicateDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ChoiceDecisionQuestion"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.ScoreDecisionQuestion"
+          }
+        ]
+      },
+      "inference.decision.PredicateDecisionQuestion": {
+        "description": "A question answered with the probability that the statement in `instructions` is true.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "predicate"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionQuestionBase": {
+        "type": "object",
+        "properties": {
+          "instructions": {
+            "description": "A description of what to decide. It must not be empty.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "instructions"
+        ]
+      },
+      "inference.decision.ChoiceDecisionQuestion": {
+        "description": "A question answered with one option out of a fixed set of choices.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "choice"
+                ]
+              },
+              "choices": {
+                "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+                "type": "object",
+                "additionalProperties": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "nullable": true,
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "type",
+              "choices"
+            ]
+          }
+        ]
+      },
+      "inference.decision.ScoreDecisionQuestion": {
+        "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionQuestionBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "score"
+                ]
+              },
+              "levels": {
+                "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/inference.decision.DecisionScoreLevel"
+                }
+              }
+            },
+            "required": [
+              "type",
+              "levels"
+            ]
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevel": {
+        "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/inference.decision.DecisionScoreLevelObject"
+          }
+        ]
+      },
+      "inference.decision.DecisionScoreLevelObject": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A description of the level.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      },
+      "inference._types.DecisionInferenceResult": {
+        "description": "Defines the response for a decision request.",
+        "type": "object",
+        "properties": {
+          "decision": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.DecisionResult"
+              }
+            ]
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "inference._types.DecisionResult": {
+        "type": "object",
+        "properties": {
+          "answers": {
+            "description": "The answers, keyed by the name of the question they answer.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/inference._types.DecisionAnswer"
+            }
+          }
+        },
+        "required": [
+          "answers"
+        ]
+      },
+      "inference._types.DecisionAnswer": {
+        "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "choice": "#/components/schemas/inference._types.ChoiceDecisionAnswer",
+            "predicate": "#/components/schemas/inference._types.PredicateDecisionAnswer",
+            "score": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.PredicateDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ChoiceDecisionAnswer"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ScoreDecisionAnswer"
+          }
+        ]
+      },
+      "inference._types.PredicateDecisionAnswer": {
+        "description": "The answer to a `predicate` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "predicate"
+            ]
+          },
+          "probability": {
+            "description": "The probability that the statement in the question is true.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "probability"
+        ]
+      },
+      "inference._types.ChoiceDecisionAnswer": {
+        "description": "The answer to a `choice` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "choice"
+            ]
+          },
+          "choice": {
+            "description": "The chosen option.",
+            "type": "string"
+          },
+          "probabilities": {
+            "description": "The probability of each option.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ChoiceDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the chosen option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "choice",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ChoiceDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The option.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the option.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "probability"
+        ]
+      },
+      "inference._types.ScoreDecisionAnswer": {
+        "description": "The answer to a `score` question.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "score"
+            ]
+          },
+          "score": {
+            "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+            "type": "number"
+          },
+          "probabilities": {
+            "description": "The probability of each level, ordered from the lowest to the highest level.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ScoreDecisionProbability"
+            }
+          },
+          "confidence": {
+            "description": "The confidence in the score.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "type",
+          "score",
+          "probabilities",
+          "confidence"
+        ]
+      },
+      "inference._types.ScoreDecisionProbability": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "description": "The zero-based position of the level, which is also its position in the array.",
+            "type": "number"
+          },
+          "label": {
+            "description": "The label of the level.",
+            "type": "string"
+          },
+          "probability": {
+            "description": "The probability of the level.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "value",
+          "label",
+          "probability"
+        ]
+      },
       "inference._types.TaskType": {
         "type": "string",
         "enum": [
@@ -72555,7 +73198,8 @@
           "completion",
           "chat_completion",
           "embedding",
-          "document_extraction"
+          "document_extraction",
+          "decision"
         ]
       },
       "inference._types.DeleteInferenceEndpointResult": {
@@ -72792,36 +73436,6 @@
               "$ref": "#/components/schemas/inference._types.EmbeddingContentObjectItem"
             }
           }
-        ]
-      },
-      "inference._types.EmbeddingContentObjectItem": {
-        "description": "An object containing the input data for a single item for the model to embed.",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of input to embed. Not all models support all input types.\nThe `audio`, `video`, and `pdf` types are available in Elasticsearch 9.5.0 and later.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
-              }
-            ]
-          },
-          "format": {
-            "description": "The format of the input. For the `text` type this must be `text`. For all other types, this must be `base64` or `url`.\nIf not specified, this will default to `text` for the `text` type and `base64` for all other types.\nThe `url` format is available in Elasticsearch 9.6.0 and later.\nNot all services and models support all formats.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
-              }
-            ]
-          },
-          "value": {
-            "description": "The value of the input to embed. For the `base64` format, this must be a base64-encoded data URI, i.e. \"data:content/type;base64,...\".\nFor the `url` format, this must be a URL that points to the content, i.e. \"https://example.com/image.jpg\".",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "value"
         ]
       },
       "inference._types.EmbeddingInferenceResult": {
@@ -79741,6 +80355,238 @@
           "dropped"
         ]
       },
+      "_global.knn_eval.KnnEvalQuerySource": {
+        "description": "The source of the query vectors of a kNN evaluation.",
+        "discriminator": {
+          "propertyName": "from",
+          "mapping": {
+            "docs": "#/components/schemas/_global.knn_eval.KnnEvalDocsQuerySource",
+            "vectors": "#/components/schemas/_global.knn_eval.KnnEvalVectorsQuerySource"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalDocsQuerySource"
+          },
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalVectorsQuerySource"
+          }
+        ]
+      },
+      "_global.knn_eval.KnnEvalDocsQuerySource": {
+        "description": "Samples the query vectors from the stored documents.",
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "enum": [
+              "docs"
+            ]
+          },
+          "size": {
+            "description": "The number of documents to sample, from 1 to 1000.",
+            "type": "number"
+          },
+          "seed": {
+            "description": "The seed of the sampling, to sample the same documents across requests.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "from",
+          "size"
+        ]
+      },
+      "_global.knn_eval.KnnEvalVectorsQuerySource": {
+        "description": "Uses the query vectors in the request.",
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "enum": [
+              "vectors"
+            ]
+          },
+          "vectors": {
+            "description": "The query vectors, from 1 to 1000 entries with unique identifiers.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQueryVector"
+            }
+          }
+        },
+        "required": [
+          "from",
+          "vectors"
+        ]
+      },
+      "_global.knn_eval.KnnEvalQueryVector": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The identifier of the query, which identifies it in the `failures` of the response.",
+            "type": "string"
+          },
+          "query_vector": {
+            "description": "The query vector.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.QueryVector"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "query_vector"
+        ]
+      },
+      "_global.knn_eval.KnnEvalSettings": {
+        "type": "object",
+        "properties": {
+          "visit_percentage": {
+            "description": "The percentage of postings to visit, from 0 to 100.\n`0` selects the automatic visit calculation.",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard.\nIt can't be less than `k`, or more than 10000 (9999 with sampling).",
+            "type": "number"
+          },
+          "rescore_vector": {
+            "description": "The rescoring of the candidates. Only applies to quantized fields.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RescoreVector"
+              }
+            ]
+          },
+          "exact": {
+            "description": "If `true`, compares every vector at full precision.\nOnly applies to the `baseline`, requires `allow_exact_baseline`, and can't be combined with other settings.",
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "_global.knn_eval.KnnEvalQuerySourceSummary": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "description": "How the query vectors were chosen.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySourceType"
+              }
+            ]
+          }
+        },
+        "required": [
+          "from"
+        ]
+      },
+      "_global.knn_eval.KnnEvalQuerySourceType": {
+        "type": "string",
+        "enum": [
+          "docs",
+          "vectors"
+        ]
+      },
+      "_global.knn_eval.KnnEvalReportedSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rescore_window_capped": {
+                "description": "If `true`, the number of vectors to rescore exceeded the limit of 10000.",
+                "default": false,
+                "type": "boolean"
+              },
+              "quantized_scores": {
+                "description": "If `true`, the hits were not rescored, so their scores are estimates, and no query is excluded from the mean recall.",
+                "default": false,
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_global.knn_eval.KnnEvalVectorOpsKind": {
+        "type": "string",
+        "enum": [
+          "full_precision_scan",
+          "quantized_visit_plus_rescore"
+        ]
+      },
+      "_global.knn_eval.KnnEvalResult": {
+        "type": "object",
+        "properties": {
+          "knn_settings": {
+            "description": "The evaluated settings.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.knn_eval.KnnEvalReportedSettings"
+              }
+            ]
+          },
+          "recall": {
+            "description": "The mean recall of the included queries, or `null` if no query is included.",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "included_queries": {
+            "description": "The number of queries included in the mean recall.",
+            "type": "number"
+          },
+          "excluded_queries": {
+            "description": "The number of queries excluded from the mean recall, because the search found a document scoring above the baseline's lowest top `k` score.",
+            "type": "number"
+          },
+          "took_ms": {
+            "description": "The time the searches took, in milliseconds.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "vector_ops": {
+            "description": "The number of vector operations of the searches.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "knn_settings",
+          "recall",
+          "included_queries",
+          "excluded_queries",
+          "took_ms",
+          "vector_ops"
+        ]
+      },
+      "_global.knn_eval.KnnEvalFailure": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
       "license.get.LicenseInformation": {
         "type": "object",
         "properties": {
@@ -80098,7 +80944,7 @@
             ]
           },
           "routing": {
-            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+            "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -86589,7 +87435,7 @@
             "type": "boolean"
           },
           "routing": {
-            "description": "Custom value used to route operations to a specific shard.",
+            "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Routing"
@@ -87305,6 +88151,31 @@
               "maximum_relevance"
             ]
           }
+        ]
+      },
+      "_global.rank_eval.RankEvalTemplate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the template. A rated request refers to it by this ID in its `template_id`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "template": {
+            "description": "The search template, either an inline `source` or the `id` of a stored search template.\nIt must be a `mustache` template (the default `lang`), and it must render to a search request body.\nAny `params` set here are ignored: each rated request provides its own `params`, which are used to render the template.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "template"
         ]
       },
       "_global.rank_eval.RankEvalMetricDetail": {
@@ -91784,6 +92655,83 @@
           }
         }
       },
+      "knn_eval-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query_source": {
+                  "description": "The source of the query vectors.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySourceSummary"
+                    }
+                  ]
+                },
+                "baseline": {
+                  "description": "The settings of the baseline search.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalReportedSettings"
+                    }
+                  ]
+                },
+                "baseline_took_ms": {
+                  "description": "The time the baseline searches took, in milliseconds.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+                    }
+                  ]
+                },
+                "baseline_vector_ops": {
+                  "description": "The number of vector operations of the baseline searches.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "number"
+                },
+                "baseline_vector_ops_kind": {
+                  "description": "What `baseline_vector_ops` counts.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalVectorOpsKind"
+                    }
+                  ]
+                },
+                "results": {
+                  "description": "The results of each `knn_settings` entry, in the order of the request.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalResult"
+                  }
+                },
+                "failures": {
+                  "description": "The queries that failed, by query identifier.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalFailure"
+                  }
+                },
+                "task": {
+                  "description": "The identifier of the task that runs the evaluation.\nOnly returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.TaskId"
+                    }
+                  ]
+                }
+              }
+            },
+            "examples": {
+              "KnnEvalResponseExample1": {
+                "summary": "Evaluate kNN search settings",
+                "description": "A response from `POST my-index/_knn_eval`, with the recall of each `knn_settings` entry against the default baseline.\n",
+                "value": "{\n  \"query_source\": {\n    \"from\": \"docs\"\n  },\n  \"baseline\": {\n    \"visit_percentage\": 20.0,\n    \"rescore_vector\": {\n      \"oversample\": 100.0\n    }\n  },\n  \"baseline_took_ms\": 412,\n  \"baseline_vector_ops\": 2048000,\n  \"baseline_vector_ops_kind\": \"quantized_visit_plus_rescore\",\n  \"results\": [\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 1.0\n      },\n      \"recall\": 0.87,\n      \"included_queries\": 100,\n      \"excluded_queries\": 0,\n      \"took_ms\": 35,\n      \"vector_ops\": 102400\n    },\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 5.0\n      },\n      \"recall\": 0.97,\n      \"included_queries\": 99,\n      \"excluded_queries\": 1,\n      \"took_ms\": 96,\n      \"vector_ops\": 512000\n    }\n  ],\n  \"failures\": {}\n}"
+              }
+            }
+          }
+        }
+      },
       "logstash.get_pipeline-200": {
         "description": "",
         "content": {
@@ -94638,7 +95586,7 @@
       "create-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value that is used to route operations to a specific shard.",
+        "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -96777,6 +97725,65 @@
         },
         "style": "form"
       },
+      "knn_eval-index": {
+        "in": "path",
+        "name": "index",
+        "description": "A comma-separated list of index names to search.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Indices"
+        },
+        "style": "simple"
+      },
+      "knn_eval-ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "knn_eval-allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "deprecated": false,
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "knn_eval-expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "The type of index that wildcard patterns can match.\nIt supports comma-separated values, such as `open,hidden`.",
+        "deprecated": false,
+        "schema": {
+          "default": "open",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            }
+          ]
+        },
+        "style": "form"
+      },
+      "knn_eval-wait_for_completion": {
+        "in": "query",
+        "name": "wait_for_completion",
+        "description": "If `true`, the request waits for the evaluation to complete.\nA large evaluation can run for minutes, and closing the connection, for example because of a client or proxy timeout, cancels it.\nIf `false`, the request returns a task identifier, and stores the completed response for retrieval through the task management API.",
+        "deprecated": false,
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "logstash.get_pipeline-id": {
         "in": "path",
         "name": "id",
@@ -98791,7 +99798,7 @@
       "search_template-routing": {
         "in": "query",
         "name": "routing",
-        "description": "A custom value used to route operations to a specific shard.",
+        "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.Routing"
@@ -100574,6 +101581,71 @@
         },
         "required": true
       },
+      "knn_eval": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "description": "The `dense_vector` field to evaluate.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Field"
+                    }
+                  ]
+                },
+                "k": {
+                  "description": "The number of nearest neighbors to compute the recall for, from 1 to 1000.",
+                  "type": "number"
+                },
+                "query_source": {
+                  "description": "The source of the query vectors.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySource"
+                    }
+                  ]
+                },
+                "baseline": {
+                  "description": "The settings of the search that the `knn_settings` entries are compared with.\nIf not specified, it uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+                    }
+                  ]
+                },
+                "knn_settings": {
+                  "description": "The kNN search settings to evaluate, from 1 to 32 unique entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+                  }
+                },
+                "allow_exact_baseline": {
+                  "description": "If `true`, the `baseline` can be `exact`.\nAn exact baseline compares every vector at full precision, and can severely slow down other searches.",
+                  "default": false,
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "field",
+                "k",
+                "query_source",
+                "knn_settings"
+              ]
+            },
+            "examples": {
+              "KnnEvalRequestExample1": {
+                "summary": "Evaluate kNN search settings",
+                "description": "Run `POST my-index/_knn_eval` to compare the recall of two `visit_percentage` values on a `bbq_disk` field, using 100 query vectors sampled from the stored documents.\n",
+                "value": "{\n  \"field\": \"my_vector\",\n  \"k\": 10,\n  \"query_source\": {\n    \"from\": \"docs\",\n    \"size\": 100,\n    \"seed\": 42\n  },\n  \"knn_settings\": [\n    { \"visit_percentage\": 1 },\n    { \"visit_percentage\": 5 }\n  ]\n}"
+              }
+            }
+          }
+        },
+        "required": true
+      },
       "mget": {
         "content": {
           "application/json": {
@@ -100898,6 +101970,13 @@
                       "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetric"
                     }
                   ]
+                },
+                "templates": {
+                  "description": "Query templates that the rated requests can refer to by their `template_id`.\nThis way, queries that differ only in their parameters don't have to be repeated in `requests`.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.rank_eval.RankEvalTemplate"
+                  }
                 }
               },
               "required": [

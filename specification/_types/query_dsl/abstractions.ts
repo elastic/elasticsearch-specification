@@ -28,6 +28,7 @@ import {
   DisMaxQuery,
   FunctionScoreQuery
 } from './compound'
+import { DenseVectorQuery } from './DenseVectorQuery'
 import {
   CommonTermsQuery,
   IntervalsQuery,
@@ -126,6 +127,14 @@ export class QueryContainer {
    * @ext_doc_id query-dsl-constant-score-query
    */
   constant_score?: ConstantScoreQuery
+  /**
+   * Scores every document that has a value for a `dense_vector` field, with the exact similarity between its vector and a query vector.
+   * Unlike the `knn` query, it doesn't use an index structure, or a cutoff based on `k` or `num_candidates`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   * @ext_doc_id query-dsl-dense-vector-query
+   */
+  dense_vector?: DenseVectorQuery
   /**
    * Returns documents matching one or more wrapped queries, called query clauses or clauses.
    * If a returned document matches multiple query clauses, the `dis_max` query assigns the document the highest relevance score from any matching clause, plus a tie breaking increment for any additional matching subqueries.

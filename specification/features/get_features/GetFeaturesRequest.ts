@@ -37,6 +37,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=7.12.0 stability=stable
  * @doc_id get-features-api
  * @ext_doc_id snapshot-create
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [
