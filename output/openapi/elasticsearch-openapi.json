@@ -85114,7 +85114,7 @@
             ]
           },
           "number_of_shards": {
-            "default": "1",
+            "default": 1.0,
             "oneOf": [
               {
                 "type": "number"
@@ -85125,7 +85125,7 @@
             ]
           },
           "number_of_replicas": {
-            "default": "0",
+            "default": 0.0,
             "oneOf": [
               {
                 "type": "number"
@@ -85151,7 +85151,7 @@
             "type": "string"
           },
           "routing_partition_size": {
-            "default": "1",
+            "default": 1.0,
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
@@ -85163,7 +85163,7 @@
             "type": "boolean"
           },
           "hidden": {
-            "default": "false",
+            "default": false,
             "oneOf": [
               {
                 "type": "boolean"
@@ -85207,7 +85207,7 @@
             ]
           },
           "max_result_window": {
-            "default": "10000",
+            "default": 10000.0,
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
@@ -85796,7 +85796,7 @@
         "type": "object",
         "properties": {
           "max_token_count": {
-            "default": "10000",
+            "default": 10000.0,
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
@@ -86007,7 +86007,7 @@
           },
           "indexing_complete": {
             "description": "Indicates whether or not the index has been rolled over. Automatically set to true when ILM completes the rollover action.\nYou can explicitly set it to skip rollover.",
-            "default": "false",
+            "default": false,
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
@@ -86037,7 +86037,7 @@
           },
           "prefer_ilm": {
             "description": "Preference for the system that manages a data stream backing index (preferring ILM when both ILM and DLM are\napplicable for an index).",
-            "default": "true",
+            "default": true,
             "oneOf": [
               {
                 "type": "boolean"
@@ -92024,7 +92024,7 @@
         "properties": {
           "limit": {
             "description": "The maximum number of fields in an index. Field and object mappings, as well as field aliases count towards this limit.\nThe limit is in place to prevent mappings and searches from becoming too large. Higher values can lead to performance\ndegradations and memory issues, especially in clusters with a high load or few resources.",
-            "default": "1000",
+            "default": 1000.0,
             "oneOf": [
               {
                 "type": "number"
@@ -92036,7 +92036,7 @@
           },
           "ignore_dynamic_beyond_limit": {
             "description": "This setting determines what happens when a dynamically mapped field would exceed the total fields limit. When set\nto false (the default), the index request of the document that tries to add a dynamic field to the mapping will fail\nwith the message Limit of total fields [X] has been exceeded. When set to true, the index request will not fail.\nInstead, fields that would exceed the limit are not added to the mapping, similar to dynamic: false.\nThe fields that were not added to the mapping will be added to the _ignored field.",
-            "default": "false",
+            "default": false,
             "oneOf": [
               {
                 "type": "boolean"
@@ -97782,7 +97782,7 @@
         "properties": {
           "enabled": {
             "description": "If defined, it turns the failure store on/off (`true`/`false`) for this data stream. A data stream failure store\nthat's disabled (enabled: `false`) will redirect no new failed indices to the failure store; however, it will\nnot remove any existing data from the failure store.",
-            "default": "true",
+            "default": true,
             "oneOf": [
               {
                 "type": "boolean"
@@ -102972,7 +102972,7 @@
           },
           "column_metadata": {
             "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
-            "default": "false",
+            "default": false,
             "x-state": "Experimental; Added in 9.5.0",
             "allOf": [
               {
