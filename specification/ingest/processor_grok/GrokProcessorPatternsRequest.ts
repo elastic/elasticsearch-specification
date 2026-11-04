@@ -31,6 +31,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=6.1.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @ext_doc_id grok-processor
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

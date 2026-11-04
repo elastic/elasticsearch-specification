@@ -129,6 +129,16 @@ export class QueryBreakdown {
   build_scorer_count: long
   create_weight: long
   create_weight_count: long
+  /*
+  @availability stack since=9.6.0
+  @availability serverless
+  */
+  into_bit_set: long
+  /*
+  @availability stack since=9.6.0
+  @availability serverless
+  */
+  into_bit_set_count: long
   match: long
   match_count: long
   shallow_advance: long

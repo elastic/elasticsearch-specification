@@ -29,6 +29,7 @@ import { Duration } from '@_types/Time'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @doc_id geoip-delete-database
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [
