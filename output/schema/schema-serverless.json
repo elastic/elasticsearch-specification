@@ -25,6 +25,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.delete"
@@ -147,6 +152,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.submit",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.submit"
@@ -197,6 +207,15 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-bulk.html",
       "name": "bulk",
+      "privileges": {
+        "index": [
+          "create_doc",
+          "create",
+          "delete",
+          "index",
+          "write"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.bulk"
@@ -247,6 +266,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "cancel_reindex",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.cancel_reindex"
@@ -916,6 +940,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-component-template.html",
       "name": "cluster.exists_component_template",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage_index_templates"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.exists_component_template"
@@ -1004,6 +1034,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-info.html",
       "name": "cluster.info",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.info"
@@ -2293,6 +2328,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-delete-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.delete_policy"
@@ -2331,6 +2371,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-execute-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.execute_policy"
@@ -2369,6 +2414,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-get-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
+      "privileges": {
+        "cluster": [
+          "monitor_enrich",
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.get_policy"
@@ -2413,6 +2464,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-put-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.put_policy"
@@ -2454,6 +2510,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-async-eql-search-api.html",
       "name": "eql.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.delete"
@@ -2530,6 +2591,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-get-status",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-eql-status-api.html",
       "name": "eql.get_status",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.get_status"
@@ -2571,6 +2637,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/eql-search-api.html",
       "name": "eql.search",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.search"
@@ -3208,6 +3279,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html",
       "name": "exists",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.exists"
@@ -3440,6 +3516,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "get_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.get_reindex"
@@ -3622,6 +3705,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-add-block",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-add-block",
       "name": "indices.add_block",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.add_block"
@@ -3716,6 +3804,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-cancel-migrate-reindex",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-cancel-migrate-reindex",
       "name": "indices.cancel_migrate_reindex",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.cancel_migrate_reindex"
@@ -3850,6 +3943,11 @@
       "extDocId": "create_index_from_source_index",
       "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source",
       "name": "indices.create_from",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.create_from"
@@ -4068,6 +4166,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-exists.html",
       "name": "indices.exists",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists"
@@ -4105,6 +4209,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-alias",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-alias-exists.html",
       "name": "indices.exists_alias",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists_alias"
@@ -4194,6 +4304,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.explain_data_lifecycle"
@@ -4476,6 +4592,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-data-stream-options",
       "name": "indices.get_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_stream_options"
@@ -4656,6 +4777,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-migration",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/migration-api.html",
       "name": "indices.get_migrate_reindex_status",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_migrate_reindex_status"
@@ -4802,6 +4928,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-modify-data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/modify-data-streams-api.html",
       "name": "indices.modify_data_stream",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.modify_data_stream"
@@ -4993,6 +5124,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-data-stream-options",
       "name": "indices.put_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_stream_options"
@@ -5562,6 +5698,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-validate.html",
       "name": "indices.validate_query",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.validate_query"
@@ -5611,6 +5753,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-unified-inference",
       "docUrlServerless": "",
       "name": "inference.chat_completion_unified",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.chat_completion_unified"
@@ -5653,6 +5800,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.completion",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.completion"
@@ -5695,6 +5847,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-inference-api.html",
       "name": "inference.delete",
+      "privileges": {
+        "cluster": [
+          "manage_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.delete"
@@ -5830,6 +5987,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.embedding"
@@ -5872,6 +6034,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-inference-api.html",
       "name": "inference.get",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.get"
@@ -6024,6 +6191,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-non-streaming-chat-completion",
       "docUrlServerless": "",
       "name": "inference.non_streaming_chat_completion",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.non_streaming_chat_completion"
@@ -7429,6 +7601,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.sparse_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.sparse_embedding"
@@ -7518,6 +7695,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.text_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.text_embedding"
@@ -7661,6 +7843,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-pipeline-api.html",
       "name": "ingest.delete_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.delete_pipeline"
@@ -7702,6 +7890,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-pipeline-api.html",
       "name": "ingest.get_pipeline",
+      "privileges": {
+        "cluster": [
+          "read_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.get_pipeline"
@@ -7748,6 +7942,11 @@
       "extDocId": "grok-processor",
       "extDocUrl": "https://www.elastic.co/docs/reference/enrich-processor/grok-processor",
       "name": "ingest.processor_grok",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.processor_grok"
@@ -7788,6 +7987,12 @@
       "extDocId": "ingest",
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "name": "ingest.put_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.put_pipeline"
@@ -7931,6 +8136,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-license-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-license.html",
       "name": "license.get",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "license.get"
@@ -7970,6 +8180,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "list_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.list_reindex"
@@ -8302,6 +8519,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-delete-calendar-event",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_calendar_event"
@@ -9441,6 +9663,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-infer-trained-model",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/infer-trained-model.html",
       "name": "ml.infer_trained_model",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.infer_trained_model"
@@ -11784,6 +12011,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-reindex",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-reindex.html",
       "name": "reindex_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.reindex_rethrottle"
@@ -13779,6 +14011,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-terms-enum",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-terms-enum.html",
       "name": "terms_enum",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.terms_enum"
@@ -13920,6 +14157,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-node-stats",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-get-node-stats",
       "name": "transform.get_node_stats",
+      "privileges": {
+        "cluster": [
+          "manage_transform"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "transform.get_node_stats"
@@ -14548,7 +14790,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L47"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L48"
     },
     {
       "body": {
@@ -15980,7 +16222,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L440"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L441"
     },
     {
       "body": {
@@ -16398,7 +16640,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L271"
+      "specLocation": "_global/bulk/BulkRequest.ts#L33-L272"
     },
     {
       "body": {
@@ -16610,7 +16852,7 @@
           }
         }
       ],
-      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L84"
+      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L85"
     },
     {
       "body": {
@@ -18653,7 +18895,7 @@
           }
         }
       ],
-      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L65"
+      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L66"
     },
     {
       "body": {
@@ -18932,7 +19174,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L44"
+      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -23939,7 +24181,7 @@
           }
         }
       ],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L54"
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L55"
     },
     {
       "body": {
@@ -24056,7 +24298,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -24176,7 +24418,7 @@
           }
         }
       ],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -24328,7 +24570,7 @@
           }
         }
       ],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L70"
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L71"
     },
     {
       "body": {
@@ -24418,7 +24660,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L49"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L50"
     },
     {
       "body": {
@@ -24639,7 +24881,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L44"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L45"
     },
     {
       "body": {
@@ -25224,7 +25466,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L198"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L199"
     },
     {
       "body": {
@@ -27211,7 +27453,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L139"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L140"
     },
     {
       "body": {
@@ -28555,7 +28797,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L75"
+      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L76"
     },
     {
       "body": {
@@ -29537,7 +29779,7 @@
           }
         }
       ],
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L96"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L97"
     },
     {
       "body": {
@@ -30132,7 +30374,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L46"
+      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L47"
     },
     {
       "body": {
@@ -30638,7 +30880,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L53"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L54"
     },
     {
       "body": {
@@ -31353,7 +31595,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L87"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L88"
     },
     {
       "body": {
@@ -31500,7 +31742,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L88"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L89"
     },
     {
       "body": {
@@ -31696,7 +31938,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L59"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L60"
     },
     {
       "body": {
@@ -32652,7 +32894,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L63"
+      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -33210,7 +33452,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L46"
+      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L47"
     },
     {
       "body": {
@@ -33751,7 +33993,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L49"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L50"
     },
     {
       "body": {
@@ -34522,7 +34764,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L83"
+      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L84"
     },
     {
       "body": {
@@ -37357,7 +37599,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L146"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L147"
     },
     {
       "body": {
@@ -37645,7 +37887,7 @@
           }
         }
       ],
-      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L63"
+      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -37803,7 +38045,7 @@
           }
         }
       ],
-      "specLocation": "inference/completion/CompletionRequest.ts#L25-L72"
+      "specLocation": "inference/completion/CompletionRequest.ts#L25-L73"
     },
     {
       "body": {
@@ -37939,7 +38181,7 @@
           }
         }
       ],
-      "specLocation": "inference/delete/DeleteRequest.ts#L24-L69"
+      "specLocation": "inference/delete/DeleteRequest.ts#L24-L70"
     },
     {
       "body": {
@@ -38285,7 +38527,7 @@
           }
         }
       ],
-      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L57"
+      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L58"
     },
     {
       "body": {
@@ -38399,7 +38641,7 @@
         }
       ],
       "query": [],
-      "specLocation": "inference/get/GetRequest.ts#L24-L64"
+      "specLocation": "inference/get/GetRequest.ts#L24-L65"
     },
     {
       "body": {
@@ -38711,7 +38953,7 @@
           }
         }
       ],
-      "specLocation": "inference/non_streaming_chat_completion/UnifiedRequest.ts#L24-L78"
+      "specLocation": "inference/non_streaming_chat_completion/UnifiedRequest.ts#L24-L79"
     },
     {
       "body": {
@@ -46396,7 +46638,7 @@
           }
         }
       ],
-      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L66"
+      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L67"
     },
     {
       "body": {
@@ -46711,7 +46953,7 @@
           }
         }
       ],
-      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L79"
+      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L80"
     },
     {
       "body": {
@@ -47107,7 +47349,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L63"
+      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L64"
     },
     {
       "body": {
@@ -47224,7 +47466,7 @@
           }
         }
       ],
-      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L66"
+      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L67"
     },
     {
       "body": {
@@ -47318,7 +47560,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L43"
+      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L44"
     },
     {
       "body": {
@@ -47601,7 +47843,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L102"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L103"
     },
     {
       "body": {
@@ -48173,7 +48415,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L23-L60"
+      "specLocation": "license/get/GetLicenseRequest.ts#L23-L61"
     },
     {
       "body": {
@@ -48312,7 +48554,7 @@
           }
         }
       ],
-      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L51"
+      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L52"
     },
     {
       "body": {
@@ -49378,7 +49620,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L51"
+      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L52"
     },
     {
       "body": {
@@ -53205,7 +53447,7 @@
           }
         }
       ],
-      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L70"
+      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L71"
     },
     {
       "body": {
@@ -63363,7 +63605,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L84"
+      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L85"
     },
     {
       "body": {
@@ -72662,7 +72904,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L107"
+      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L108"
     },
     {
       "body": {
@@ -73532,7 +73774,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L40"
+      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L41"
     },
     {
       "body": {
@@ -139241,7 +139483,7 @@
         "name": "ModeEnum",
         "namespace": "indices.migrate_reindex"
       },
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L63-L65"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L64-L66"
     },
     {
       "kind": "enum",
@@ -143490,7 +143732,7 @@
         "name": "NodesInfoMetric",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L74-L89"
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L75-L90"
     },
     {
       "kind": "type_alias",
@@ -143498,7 +143740,7 @@
         "name": "NodesInfoMetrics",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L91-L91",
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L92-L92",
       "type": {
         "items": [
           {
@@ -164051,7 +164293,7 @@
           }
         }
       ],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L55-L69"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L56-L70"
     },
     {
       "inherits": {
