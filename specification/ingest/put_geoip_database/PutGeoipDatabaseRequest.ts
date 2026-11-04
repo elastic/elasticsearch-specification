@@ -30,6 +30,7 @@ import { Maxmind } from '@ingest/_types/Database'
  * @availability stack since=8.15.0 stability=stable
  * @availability serverless visibility=private
  * @doc_id geoip-put-database
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

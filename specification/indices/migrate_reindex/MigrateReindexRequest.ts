@@ -31,6 +31,7 @@ import { IndexName, MediaType } from '@_types/common'
  * @doc_id migration-api-reindex
  * @doc_tag migration
  * @ext_doc_id reindex_legacy_backing_indices
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

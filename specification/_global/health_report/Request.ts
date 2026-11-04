@@ -46,6 +46,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=8.7.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id health-api
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   urls: [
