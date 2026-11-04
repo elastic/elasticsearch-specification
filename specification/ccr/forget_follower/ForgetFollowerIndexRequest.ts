@@ -39,7 +39,6 @@ import { Duration } from '@_types/Time'
  * @availability stack since=6.7.0 stability=stable
  * @doc_id ccr-post-forget-follower
  * @ext_doc_id ccr
- * @cluster_privileges manage_ccr
  * @index_privileges manage_leader_index
  */
 export interface Request extends RequestBase {
