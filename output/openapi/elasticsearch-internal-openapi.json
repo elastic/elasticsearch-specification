@@ -114417,6 +114417,20 @@
               }
             ]
           },
+          "cache_control": {
+            "description": "The prompt caching configuration for the completion request.\nExample:\n```\n{\n  \"cache_control\": {\n    \"type\": \"ephemeral\",\n    \"ttl\": \"1h\"\n  }\n}\n```\nUnknown fields in the object and invalid `ttl` values return an error.\nCurrently supported only for `elastic` provider.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.CacheControl"
+              }
+            ]
+          },
+          "session_id": {
+            "description": "An identifier that groups related completion requests into a session.\nCurrently supported only for `elastic` provider.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
+          },
           "stop": {
             "description": "A sequence of strings to control when the model should stop generating additional tokens.",
             "type": "array",
@@ -114826,6 +114840,24 @@
           "concise",
           "detailed"
         ]
+      },
+      "inference._types.CacheControl": {
+        "description": "The prompt caching configuration to use for the completion request.\nCurrently supported only for `elastic` provider.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of cache control, for example `ephemeral`.",
+            "type": "string"
+          },
+          "ttl": {
+            "description": "The time to live of the cached content, for example `1h`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        }
       },
       "inference._types.CompletionToolType": {
         "oneOf": [
