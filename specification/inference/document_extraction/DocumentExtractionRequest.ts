@@ -20,7 +20,8 @@
 import { RequestBase } from '@_types/Base'
 import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
-import { TaskSettings } from '@inference/_types/Services'
+import { Dictionary } from '@spec_utils/Dictionary'
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 /**
  * Perform document extraction inference on the service.
@@ -95,8 +96,32 @@ export interface Request extends RequestBase {
      * Task settings for the individual inference request.
      * These settings are specific to the task type you specified and override the task settings specified when initializing the service.
      */
-    task_settings?: TaskSettings
+    task_settings?: DocumentExtractionTaskSettings
   }
+}
+
+/**
+ * Task settings for the `document_extraction` task type of the `elastic` service.
+ * They can be set when creating the inference endpoint and overridden per request.
+ * Request values take precedence, and `parameters` are merged per key.
+ */
+export class DocumentExtractionTaskSettings {
+  /**
+   * The output format of the extracted content. Only `markdown` is supported.
+   */
+  output_format?: DocumentExtractionOutputFormat
+  /**
+   * A free-form object of extraction options that is forwarded to the Elastic Inference Service as-is.
+   * The accepted parameters are defined by the Elastic Inference Service.
+   */
+  parameters?: Dictionary<string, UserDefinedValue>
+}
+
+/**
+ * The output format of the extracted content.
+ */
+export enum DocumentExtractionOutputFormat {
+  markdown
 }
 
 /**
@@ -126,7 +151,8 @@ export class DocumentExtractionContentObjectItem {
    */
   type: DocumentExtractionContentType
   /**
-   * The format of the document. If not specified, this defaults to `base64`.
+   * The format of the document. If not specified, this defaults to `base64` for `pdf` and `image`, and `url` for `html`.
+   * The `html` type supports `url` only.
    * Not all services and models support all formats.
    */
   format?: DocumentExtractionContentFormat
@@ -142,12 +168,13 @@ export class DocumentExtractionContentObjectItem {
  */
 export enum DocumentExtractionContentType {
   image,
-  pdf
+  pdf,
+  html
 }
 
 /**
  * The format of the document to extract the content from.
- * If not specified, this defaults to `base64`.
+ * If not specified, this defaults to `base64` for the `pdf` and `image` types, and `url` for the `html` type.
  */
 export enum DocumentExtractionContentFormat {
   base64,

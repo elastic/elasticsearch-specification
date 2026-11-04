@@ -200044,7 +200044,7 @@
         "name": "DocumentExtractionContentFormat",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L148-L155"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L175-L182"
     },
     {
       "kind": "interface",
@@ -200067,7 +200067,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L110-L118"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L135-L143"
     },
     {
       "kind": "interface",
@@ -200090,7 +200090,7 @@
           }
         },
         {
-          "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+          "description": "The format of the document. If not specified, this defaults to `base64` for `pdf` and `image`, and `url` for `html`.\nThe `html` type supports `url` only.\nNot all services and models support all formats.",
           "name": "format",
           "required": false,
           "type": {
@@ -200114,7 +200114,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L138"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L145-L164"
     },
     {
       "kind": "enum",
@@ -200124,13 +200124,16 @@
         },
         {
           "name": "pdf"
+        },
+        {
+          "name": "html"
         }
       ],
       "name": {
         "name": "DocumentExtractionContentType",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L140-L146"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L166-L173"
     },
     {
       "kind": "type_alias",
@@ -200139,7 +200142,7 @@
         "name": "DocumentExtractionInput",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L102-L108",
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L127-L133",
       "type": {
         "kind": "union_of",
         "items": [
@@ -200162,6 +200165,61 @@
           }
         ]
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "markdown"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionOutputFormat",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L125"
+    },
+    {
+      "kind": "interface",
+      "description": "Task settings for the `document_extraction` task type of the `elastic` service.\nThey can be set when creating the inference endpoint and overridden per request.\nRequest values take precedence, and `parameters` are merged per key.",
+      "name": {
+        "name": "DocumentExtractionTaskSettings",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The output format of the extracted content. Only `markdown` is supported.",
+          "name": "output_format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionOutputFormat",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "A free-form object of extraction options that is forwarded to the Elastic Inference Service as-is.\nThe accepted parameters are defined by the Elastic Inference Service.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L103-L118"
     },
     {
       "kind": "request",
@@ -200190,8 +200248,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TaskSettings",
-                "namespace": "inference._types"
+                "name": "DocumentExtractionTaskSettings",
+                "namespace": "inference.document_extraction"
               }
             }
           }
@@ -200251,7 +200309,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L25-L100"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L26-L101"
     },
     {
       "kind": "response",

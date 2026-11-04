@@ -16203,16 +16203,23 @@ export interface InferenceDocumentExtractionDocumentExtractionContentObjectItem 
   value: string
 }
 
-export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf'
+export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf' | 'html'
 
 export type InferenceDocumentExtractionDocumentExtractionInput = InferenceDocumentExtractionDocumentExtractionContentObject | InferenceDocumentExtractionDocumentExtractionContentObject[]
+
+export type InferenceDocumentExtractionDocumentExtractionOutputFormat = 'markdown'
+
+export interface InferenceDocumentExtractionDocumentExtractionTaskSettings {
+  output_format?: InferenceDocumentExtractionDocumentExtractionOutputFormat
+  parameters?: Record<string, any>
+}
 
 export interface InferenceDocumentExtractionRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
   body?: {
     input: InferenceDocumentExtractionDocumentExtractionInput
-    task_settings?: InferenceTaskSettings
+    task_settings?: InferenceDocumentExtractionDocumentExtractionTaskSettings
   }
 }
 
