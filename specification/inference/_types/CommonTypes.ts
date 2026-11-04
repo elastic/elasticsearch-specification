@@ -19,6 +19,7 @@
 
 import { Id } from '@_types/common'
 import { double, float, integer, long } from '@_types/Numeric'
+import { Duration } from '@_types/Time'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -73,6 +74,28 @@ export class RequestChatCompletion {
    * Currently supported only for `elastic` provider.
    */
   reasoning?: Reasoning
+  /**
+   * The prompt caching configuration for the completion request.
+   * Example:
+   * ```
+   * {
+   *   "cache_control": {
+   *     "type": "ephemeral",
+   *     "ttl": "1h"
+   *   }
+   * }
+   * ```
+   * Unknown fields in the object and invalid `ttl` values return an error.
+   * Currently supported only for `elastic` provider.
+   * @availability stack since=9.6.0
+   */
+  cache_control?: CacheControl
+  /**
+   * An identifier that groups related completion requests into a session.
+   * Currently supported only for `elastic` provider.
+   * @availability stack since=9.6.0
+   */
+  session_id?: string
   /**
    * A sequence of strings to control when the model should stop generating additional tokens.
    */
@@ -211,6 +234,21 @@ export interface FileContent {
    * The name of the file
    */
   filename: string
+}
+
+/**
+ * The prompt caching configuration to use for the completion request.
+ * Currently supported only for `elastic` provider.
+ */
+export interface CacheControl {
+  /**
+   * The type of cache control, for example `ephemeral`.
+   */
+  type?: string
+  /**
+   * The time to live of the cached content, for example `1h`.
+   */
+  ttl?: Duration
 }
 
 /**
