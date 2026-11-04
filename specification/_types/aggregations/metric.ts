@@ -456,6 +456,11 @@ export class TopMetricsValue {
    * A field to return as a metric.
    */
   field: Field
+  /**
+   * The value to treat a document as having when it has no value for the field.
+   * By default, a document that is missing any of the metrics or the sort value is ignored.
+   */
+  missing?: Missing
 }
 
 export class ValueCountAggregation extends FormattableMetricAggregation {}
