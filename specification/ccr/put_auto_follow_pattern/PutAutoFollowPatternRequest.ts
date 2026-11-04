@@ -43,6 +43,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * @availability stack since=6.5.0 stability=stable
  * @doc_id ccr-put-auto-follow-pattern
  * @ext_doc_id ccr-auto-follow
+ * @cluster_privileges manage_ccr
  */
 export interface Request extends RequestBase {
   urls: [
