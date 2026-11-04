@@ -24,6 +24,7 @@ import {
   IndexName,
   MediaType,
   Routing,
+  SliceId,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -54,11 +55,16 @@ import { SourceConfigParam } from '@global/search/_types/SourceFilter'
  * @availability serverless stability=stable visibility=public
  * @doc_tag document
  * @doc_id docs-get
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
     {
       path: '/{index}/_doc/{id}'
+      methods: ['HEAD']
+    },
+    {
+      path: '/{index}/{_slice}/_doc/{id}'
       methods: ['HEAD']
     }
   ]
@@ -72,6 +78,14 @@ export interface Request extends RequestBase {
      * It supports wildcards (`*`).
      */
     index: IndexName
+    /**
+     * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.
+     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: SliceId
   }
   response_media_type: MediaType.Json
   query_parameters: {
@@ -99,6 +113,7 @@ export interface Request extends RequestBase {
     refresh?: boolean
     /**
      * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      * @ext_doc_id routing
      */
     routing?: Routing
