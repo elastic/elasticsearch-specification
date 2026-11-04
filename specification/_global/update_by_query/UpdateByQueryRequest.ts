@@ -25,6 +25,7 @@ import {
   MediaType,
   Routing,
   SearchType,
+  SliceIds,
   Slices,
   WaitForActiveShards
 } from '@_types/common'
@@ -134,6 +135,10 @@ export interface Request extends RequestBase {
     {
       path: '/{index}/_update_by_query'
       methods: ['POST']
+    },
+    {
+      path: '/{index}/{_slice}/_update_by_query'
+      methods: ['POST']
     }
   ]
   path_parts: {
@@ -144,6 +149,13 @@ export interface Request extends RequestBase {
      * @ext_doc_id search-multiple-indices
      */
     index: Indices
+    /**
+     * The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: SliceIds
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
@@ -255,14 +267,6 @@ export interface Request extends RequestBase {
      * @availability stack stability=stable
      */
     routing?: Routing
-    /**
-     * The slice identifier used to route the operation to a specific slice.
-     * Use the special value `_all` to target all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
-     * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
-     * @codegen_name route_slice
-     */
-    _slice?: string
     /**
      * The period to retain the search context for scrolling.
      * @server_default 5m

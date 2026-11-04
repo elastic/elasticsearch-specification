@@ -69,6 +69,12 @@ export type ProjectRouting = string
  * Only to be used in query and path parameters, as the array form is actually a csv
  */
 export type Routing = string | string[]
+
+export type SliceId = string
+/**
+ * Only to be used in query and path parameters, as the array form is actually a csv
+ */
+export type SliceIds = SliceId | SliceId[]
 export type LongId = string
 
 export type ClusterAlias = string
