@@ -220,6 +220,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.delete"
@@ -342,6 +347,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.submit",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.submit"
@@ -547,6 +557,15 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-bulk.html",
       "name": "bulk",
+      "privileges": {
+        "index": [
+          "create_doc",
+          "create",
+          "delete",
+          "index",
+          "write"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.bulk"
@@ -597,6 +616,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "cancel_reindex",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.cancel_reindex"
@@ -1992,6 +2016,14 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-put-follow.html",
       "name": "ccr.follow",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ],
+        "index": [
+          "manage_follow_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.follow"
@@ -2116,6 +2148,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-post-forget-follower.html",
       "name": "ccr.forget_follower",
+      "privileges": {
+        "index": [
+          "manage_leader_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.forget_follower"
@@ -2285,6 +2322,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication/manage-auto-follow-patterns",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-put-auto-follow-pattern.html",
       "name": "ccr.put_auto_follow_pattern",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.put_auto_follow_pattern"
@@ -2367,6 +2409,14 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-post-resume-follow.html",
       "name": "ccr.resume_follow",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ],
+        "index": [
+          "manage_follow_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.resume_follow"
@@ -2590,6 +2640,12 @@
       "extDocUrl": "https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-allocation-explain.html",
       "name": "cluster.allocation_explain",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.allocation_explain"
@@ -2675,6 +2731,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/voting-config-exclusions.html",
       "name": "cluster.delete_voting_config_exclusions",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.delete_voting_config_exclusions"
@@ -2714,6 +2775,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-component-template.html",
       "name": "cluster.exists_component_template",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage_index_templates"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.exists_component_template"
@@ -2898,6 +2965,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-info.html",
       "name": "cluster.info",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.info"
@@ -2977,6 +3049,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/voting-config-exclusions.html",
       "name": "cluster.post_voting_config_exclusions",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.post_voting_config_exclusions"
@@ -3153,6 +3230,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-reroute.html",
       "name": "cluster.reroute",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.reroute"
@@ -4927,6 +5009,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query-rethrottle",
       "docUrlServerless": "",
       "name": "delete_by_query_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.delete_by_query_rethrottle"
@@ -5046,6 +5133,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-delete-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.delete_policy"
@@ -5084,6 +5176,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-execute-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.execute_policy"
@@ -5122,6 +5219,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-get-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
+      "privileges": {
+        "cluster": [
+          "monitor_enrich",
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.get_policy"
@@ -5166,6 +5269,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-put-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.put_policy"
@@ -5207,6 +5315,13 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/enrich-stats-api.html",
       "name": "enrich.stats",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_enrich",
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.stats"
@@ -5245,6 +5360,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-async-eql-search-api.html",
       "name": "eql.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.delete"
@@ -5321,6 +5441,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-get-status",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-eql-status-api.html",
       "name": "eql.get_status",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.get_status"
@@ -5362,6 +5487,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/eql-search-api.html",
       "name": "eql.search",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.search"
@@ -5450,6 +5580,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-delete-api.html",
       "name": "esql.async_query_delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "esql.async_query_delete"
@@ -6129,6 +6264,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html",
       "name": "exists",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.exists"
@@ -6260,6 +6400,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-features-api.html",
       "name": "features.get_features",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "features.get_features"
@@ -6454,6 +6599,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-fleet",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/fleet-apis.html",
       "name": "fleet.global_checkpoints",
+      "privileges": {
+        "index": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "fleet.global_checkpoints"
@@ -6671,6 +6821,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "get_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.get_reindex"
@@ -6878,6 +7035,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/visualize/graph",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/graph-explore-api.html",
       "name": "graph.explore",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "graph.explore"
@@ -6920,6 +7082,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/health-api.html",
       "name": "health_report",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.health_report"
@@ -7130,6 +7297,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ilm-migrate-to-data-tiers.html",
       "name": "ilm.migrate_to_data_tiers",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ilm.migrate_to_data_tiers"
@@ -7472,6 +7644,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-add-block",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-add-block",
       "name": "indices.add_block",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.add_block"
@@ -7566,6 +7743,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-cancel-migrate-reindex",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-cancel-migrate-reindex",
       "name": "indices.cancel_migrate_reindex",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.cancel_migrate_reindex"
@@ -7833,6 +8015,11 @@
       "extDocId": "create_index_from_source_index",
       "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source",
       "name": "indices.create_from",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.create_from"
@@ -8105,6 +8292,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream-options",
       "docUrlServerless": "",
       "name": "indices.delete_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete_data_stream_options"
@@ -8270,6 +8462,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-downsample-data-stream.html",
       "name": "indices.downsample",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.downsample"
@@ -8310,6 +8507,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-exists.html",
       "name": "indices.exists",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists"
@@ -8347,6 +8550,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-alias",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-alias-exists.html",
       "name": "indices.exists_alias",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists_alias"
@@ -8477,6 +8686,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.explain_data_lifecycle"
@@ -8947,6 +9162,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-data-stream-options",
       "name": "indices.get_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_stream_options"
@@ -9171,6 +9391,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-migration",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/migration-api.html",
       "name": "indices.get_migrate_reindex_status",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_migrate_reindex_status"
@@ -9322,6 +9547,11 @@
       "extDocId": "reindex_legacy_backing_indices",
       "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-data-stream",
       "name": "indices.migrate_reindex",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.migrate_reindex"
@@ -9408,6 +9638,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-modify-data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/modify-data-streams-api.html",
       "name": "indices.modify_data_stream",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.modify_data_stream"
@@ -9488,6 +9723,12 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/promote-data-stream-api.html",
       "name": "indices.promote_data_stream",
+      "privileges": {
+        "index": [
+          "manage_follow_index",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.promote_data_stream"
@@ -9671,6 +9912,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-data-stream-options",
       "name": "indices.put_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_stream_options"
@@ -10660,6 +10906,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-validate.html",
       "name": "indices.validate_query",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.validate_query"
@@ -10709,6 +10961,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-unified-inference",
       "docUrlServerless": "",
       "name": "inference.chat_completion_unified",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.chat_completion_unified"
@@ -10751,6 +11008,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.completion",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.completion"
@@ -10793,6 +11055,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-inference-api.html",
       "name": "inference.delete",
+      "privileges": {
+        "cluster": [
+          "manage_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.delete"
@@ -10881,6 +11148,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.embedding"
@@ -10923,6 +11195,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-inference-api.html",
       "name": "inference.get",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.get"
@@ -12439,6 +12716,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.sparse_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.sparse_embedding"
@@ -12528,6 +12810,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.text_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.text_embedding"
@@ -12666,6 +12953,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-delete-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.delete_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.delete_geoip_database"
@@ -12749,6 +13041,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-pipeline-api.html",
       "name": "ingest.delete_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.delete_pipeline"
@@ -12789,6 +13087,11 @@
       "extDocId": "geoip-processor",
       "extDocUrl": "https://www.elastic.co/docs/reference/enrich-processor/geoip-processor",
       "name": "ingest.geo_ip_stats",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.geo_ip_stats"
@@ -12825,6 +13128,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.get_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.get_geoip_database"
@@ -12920,6 +13228,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-pipeline-api.html",
       "name": "ingest.get_pipeline",
+      "privileges": {
+        "cluster": [
+          "read_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.get_pipeline"
@@ -12966,6 +13280,11 @@
       "extDocId": "grok-processor",
       "extDocUrl": "https://www.elastic.co/docs/reference/enrich-processor/grok-processor",
       "name": "ingest.processor_grok",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.processor_grok"
@@ -13002,6 +13321,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.put_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.put_geoip_database"
@@ -13090,6 +13414,12 @@
       "extDocId": "ingest",
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "name": "ingest.put_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.put_pipeline"
@@ -13266,6 +13596,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-license-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-license.html",
       "name": "license.get",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "license.get"
@@ -13503,6 +13838,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "list_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.list_reindex"
@@ -14011,6 +14353,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-delete-calendar-event",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_calendar_event"
@@ -15706,6 +16053,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-infer-trained-model",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/infer-trained-model.html",
       "name": "ml.infer_trained_model",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.infer_trained_model"
@@ -17709,6 +18061,12 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-nodes-info.html",
       "name": "nodes.info",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "nodes.info"
@@ -17762,6 +18120,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-nodes-reload-secure-settings.html",
       "name": "nodes.reload_secure_settings",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "nodes.reload_secure_settings"
@@ -18960,6 +19323,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-reindex",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-reindex.html",
       "name": "reindex_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.reindex_rethrottle"
@@ -20713,6 +21081,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-clear-cache.html",
       "name": "security.clear_cached_realms",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "security.clear_cached_realms"
@@ -23856,6 +24229,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/slm-api-stop.html",
       "name": "slm.stop",
+      "privileges": {
+        "cluster": [
+          "manage_slm"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "slm.stop"
@@ -25366,6 +25744,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-terms-enum",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-terms-enum.html",
       "name": "terms_enum",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.terms_enum"
@@ -25599,6 +25982,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/scripting/grok",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/test-grok-pattern.html",
       "name": "text_structure.test_grok_pattern",
+      "privileges": {
+        "cluster": [
+          "monitor_text_structure"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "text_structure.test_grok_pattern"
@@ -25683,6 +26071,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-node-stats",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-get-node-stats",
       "name": "transform.get_node_stats",
+      "privileges": {
+        "cluster": [
+          "manage_transform"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "transform.get_node_stats"
@@ -26346,6 +26739,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query-rethrottle",
       "docUrlServerless": "",
       "name": "update_by_query_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.update_by_query_rethrottle"
@@ -26603,6 +27001,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/watcher-api-get-settings.html",
       "name": "watcher.get_settings",
+      "privileges": {
+        "cluster": [
+          "manage_watcher"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "watcher.get_settings"
@@ -27645,7 +28048,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L274"
+      "specLocation": "_global/bulk/BulkRequest.ts#L33-L275"
     },
     {
       "kind": "response",
@@ -28250,7 +28653,7 @@
           }
         }
       ],
-      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L84"
+      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L85"
     },
     {
       "kind": "response",
@@ -30880,7 +31283,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query_rethrottle/DeleteByQueryRethrottleRequest.ts#L24-L56"
+      "specLocation": "_global/delete_by_query_rethrottle/DeleteByQueryRethrottleRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -31228,7 +31631,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L139"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L140"
     },
     {
       "kind": "response",
@@ -33122,7 +33525,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L75"
+      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L76"
     },
     {
       "kind": "response",
@@ -35229,7 +35632,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/Request.ts#L25-L84"
+      "specLocation": "_global/health_report/Request.ts#L25-L85"
     },
     {
       "kind": "response",
@@ -36602,7 +37005,7 @@
           }
         }
       ],
-      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L51"
+      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L52"
     },
     {
       "kind": "response",
@@ -42179,7 +42582,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L84"
+      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L85"
     },
     {
       "kind": "response",
@@ -52567,7 +52970,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L107"
+      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L108"
     },
     {
       "kind": "response",
@@ -55429,7 +55832,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query_rethrottle/UpdateByQueryRethrottleRequest.ts#L24-L56"
+      "specLocation": "_global/update_by_query_rethrottle/UpdateByQueryRethrottleRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -106538,7 +106941,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L47"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L48"
     },
     {
       "kind": "response",
@@ -108041,7 +108444,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L440"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L441"
     },
     {
       "kind": "response",
@@ -129432,7 +129835,7 @@
           }
         }
       ],
-      "specLocation": "ccr/follow/CreateFollowIndexRequest.ts#L31-L133"
+      "specLocation": "ccr/follow/CreateFollowIndexRequest.ts#L31-L135"
     },
     {
       "kind": "response",
@@ -130076,7 +130479,7 @@
           }
         }
       ],
-      "specLocation": "ccr/forget_follower/ForgetFollowerIndexRequest.ts#L24-L69"
+      "specLocation": "ccr/forget_follower/ForgetFollowerIndexRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -130851,7 +131254,7 @@
           }
         }
       ],
-      "specLocation": "ccr/put_auto_follow_pattern/PutAutoFollowPatternRequest.ts#L33-L142"
+      "specLocation": "ccr/put_auto_follow_pattern/PutAutoFollowPatternRequest.ts#L33-L143"
     },
     {
       "kind": "response",
@@ -131185,7 +131588,7 @@
           }
         }
       ],
-      "specLocation": "ccr/resume_follow/ResumeFollowIndexRequest.ts#L25-L69"
+      "specLocation": "ccr/resume_follow/ResumeFollowIndexRequest.ts#L25-L71"
     },
     {
       "kind": "response",
@@ -133086,7 +133489,7 @@
           }
         }
       ],
-      "specLocation": "cluster/allocation_explain/ClusterAllocationExplainRequest.ts#L25-L101"
+      "specLocation": "cluster/allocation_explain/ClusterAllocationExplainRequest.ts#L25-L102"
     },
     {
       "kind": "interface",
@@ -133794,7 +134197,7 @@
           }
         }
       ],
-      "specLocation": "cluster/delete_voting_config_exclusions/ClusterDeleteVotingConfigExclusionsRequest.ts#L24-L58"
+      "specLocation": "cluster/delete_voting_config_exclusions/ClusterDeleteVotingConfigExclusionsRequest.ts#L24-L59"
     },
     {
       "kind": "response",
@@ -133872,7 +134275,7 @@
           }
         }
       ],
-      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L65"
+      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L66"
     },
     {
       "kind": "response",
@@ -135087,7 +135490,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L44"
+      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L45"
     },
     {
       "kind": "response",
@@ -135443,7 +135846,7 @@
           }
         }
       ],
-      "specLocation": "cluster/post_voting_config_exclusions/ClusterPostVotingConfigExclusionsRequest.ts#L24-L82"
+      "specLocation": "cluster/post_voting_config_exclusions/ClusterPostVotingConfigExclusionsRequest.ts#L24-L83"
     },
     {
       "kind": "response",
@@ -136684,7 +137087,7 @@
           }
         }
       ],
-      "specLocation": "cluster/reroute/ClusterRerouteRequest.ts#L25-L94"
+      "specLocation": "cluster/reroute/ClusterRerouteRequest.ts#L25-L95"
     },
     {
       "kind": "interface",
@@ -148179,7 +148582,7 @@
           }
         }
       ],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L54"
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L55"
     },
     {
       "kind": "response",
@@ -148353,7 +148756,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -148473,7 +148876,7 @@
           }
         }
       ],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -148625,7 +149028,7 @@
           }
         }
       ],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L70"
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L71"
     },
     {
       "kind": "response",
@@ -148929,7 +149332,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L24-L48"
+      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L24-L49"
     },
     {
       "kind": "response",
@@ -149403,7 +149806,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L49"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L50"
     },
     {
       "kind": "response",
@@ -149624,7 +150027,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L44"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L45"
     },
     {
       "kind": "response",
@@ -150228,7 +150631,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L198"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L199"
     },
     {
       "kind": "response",
@@ -152122,7 +152525,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L54"
+      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L55"
     },
     {
       "kind": "response",
@@ -154196,7 +154599,7 @@
           }
         }
       ],
-      "specLocation": "features/get_features/GetFeaturesRequest.ts#L24-L56"
+      "specLocation": "features/get_features/GetFeaturesRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -154584,7 +154987,7 @@
           }
         }
       ],
-      "specLocation": "fleet/global_checkpoints/GlobalCheckpointsRequest.ts#L25-L77"
+      "specLocation": "fleet/global_checkpoints/GlobalCheckpointsRequest.ts#L25-L78"
     },
     {
       "kind": "response",
@@ -156691,7 +157094,7 @@
           }
         }
       ],
-      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L87"
+      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L88"
     },
     {
       "kind": "response",
@@ -158718,7 +159121,7 @@
           }
         }
       ],
-      "specLocation": "ilm/migrate_to_data_tiers/Request.ts#L24-L73"
+      "specLocation": "ilm/migrate_to_data_tiers/Request.ts#L24-L74"
     },
     {
       "kind": "response",
@@ -165382,7 +165785,7 @@
           }
         }
       ],
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L96"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L97"
     },
     {
       "kind": "response",
@@ -166395,7 +166798,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L46"
+      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -167677,7 +168080,7 @@
           }
         }
       ],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L55-L69"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L56-L70"
     },
     {
       "kind": "request",
@@ -167768,7 +168171,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L53"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L54"
     },
     {
       "kind": "response",
@@ -168713,7 +169116,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream_options/IndicesDeleteDataStreamOptionsRequest.ts#L24-L66"
+      "specLocation": "indices/delete_data_stream_options/IndicesDeleteDataStreamOptionsRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -169226,7 +169629,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/downsample/Request.ts#L24-L66"
+      "specLocation": "indices/downsample/Request.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -169391,7 +169794,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L87"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L88"
     },
     {
       "kind": "response",
@@ -169538,7 +169941,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L88"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L89"
     },
     {
       "kind": "response",
@@ -169987,7 +170390,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L59"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -172303,7 +172706,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L63"
+      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -173186,7 +173589,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L46"
+      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -173791,7 +174194,7 @@
           }
         }
       ],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L48-L57"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L49-L58"
     },
     {
       "kind": "enum",
@@ -173804,7 +174207,7 @@
         "name": "ModeEnum",
         "namespace": "indices.migrate_reindex"
       },
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L63-L65"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L64-L66"
     },
     {
       "kind": "request",
@@ -173872,7 +174275,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L23-L46"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -173912,7 +174315,7 @@
           }
         }
       ],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L59-L61"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L60-L62"
     },
     {
       "kind": "request",
@@ -174196,7 +174599,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L49"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L50"
     },
     {
       "kind": "response",
@@ -174493,7 +174896,7 @@
           }
         }
       ],
-      "specLocation": "indices/promote_data_stream/IndicesPromoteDataStreamRequest.ts#L24-L61"
+      "specLocation": "indices/promote_data_stream/IndicesPromoteDataStreamRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -175330,7 +175733,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L83"
+      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L84"
     },
     {
       "kind": "response",
@@ -184307,7 +184710,7 @@
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L146"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L147"
     },
     {
       "kind": "response",
@@ -192806,7 +193209,7 @@
           }
         }
       ],
-      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L63"
+      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -192964,7 +193367,7 @@
           }
         }
       ],
-      "specLocation": "inference/completion/CompletionRequest.ts#L25-L72"
+      "specLocation": "inference/completion/CompletionRequest.ts#L25-L73"
     },
     {
       "kind": "response",
@@ -193100,7 +193503,7 @@
           }
         }
       ],
-      "specLocation": "inference/delete/DeleteRequest.ts#L24-L69"
+      "specLocation": "inference/delete/DeleteRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -193324,7 +193727,7 @@
           }
         }
       ],
-      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L57"
+      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L58"
     },
     {
       "kind": "response",
@@ -193438,7 +193841,7 @@
         }
       ],
       "query": [],
-      "specLocation": "inference/get/GetRequest.ts#L24-L64"
+      "specLocation": "inference/get/GetRequest.ts#L24-L65"
     },
     {
       "kind": "response",
@@ -201502,7 +201905,7 @@
           }
         }
       ],
-      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L66"
+      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L67"
     },
     {
       "kind": "response",
@@ -201817,7 +202220,7 @@
           }
         }
       ],
-      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L79"
+      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L80"
     },
     {
       "kind": "response",
@@ -207600,7 +208003,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_geoip_database/DeleteGeoipDatabaseRequest.ts#L24-L58"
+      "specLocation": "ingest/delete_geoip_database/DeleteGeoipDatabaseRequest.ts#L24-L59"
     },
     {
       "kind": "response",
@@ -207834,7 +208237,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L63"
+      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -208065,7 +208468,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/geo_ip_stats/IngestGeoIpStatsRequest.ts#L23-L41"
+      "specLocation": "ingest/geo_ip_stats/IngestGeoIpStatsRequest.ts#L23-L42"
     },
     {
       "kind": "response",
@@ -208212,7 +208615,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ingest/get_geoip_database/GetGeoipDatabaseRequest.ts#L23-L52"
+      "specLocation": "ingest/get_geoip_database/GetGeoipDatabaseRequest.ts#L23-L53"
     },
     {
       "kind": "response",
@@ -208518,7 +208921,7 @@
           }
         }
       ],
-      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L66"
+      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -208612,7 +209015,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L43"
+      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L44"
     },
     {
       "kind": "response",
@@ -208736,7 +209139,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_geoip_database/PutGeoipDatabaseRequest.ts#L25-L69"
+      "specLocation": "ingest/put_geoip_database/PutGeoipDatabaseRequest.ts#L25-L70"
     },
     {
       "kind": "response",
@@ -209130,7 +209533,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L102"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L103"
     },
     {
       "kind": "response",
@@ -209915,7 +210318,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L23-L60"
+      "specLocation": "license/get/GetLicenseRequest.ts#L23-L61"
     },
     {
       "kind": "response",
@@ -225123,7 +225526,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L51"
+      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L52"
     },
     {
       "kind": "response",
@@ -232246,7 +232649,7 @@
           }
         }
       ],
-      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L70"
+      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L71"
     },
     {
       "kind": "response",
@@ -249803,7 +250206,7 @@
         "name": "NodesInfoMetric",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L74-L89"
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L75-L90"
     },
     {
       "kind": "type_alias",
@@ -249811,7 +250214,7 @@
         "name": "NodesInfoMetrics",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L91-L91",
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L92-L92",
       "type": {
         "kind": "union_of",
         "items": [
@@ -249978,7 +250381,7 @@
           }
         }
       ],
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L24-L72"
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L24-L73"
     },
     {
       "kind": "response",
@@ -250153,7 +250556,7 @@
           }
         }
       ],
-      "specLocation": "nodes/reload_secure_settings/ReloadSecureSettingsRequest.ts#L24-L72"
+      "specLocation": "nodes/reload_secure_settings/ReloadSecureSettingsRequest.ts#L24-L73"
     },
     {
       "kind": "response",
@@ -262411,7 +262814,7 @@
           }
         }
       ],
-      "specLocation": "security/clear_cached_realms/SecurityClearCachedRealmsRequest.ts#L23-L61"
+      "specLocation": "security/clear_cached_realms/SecurityClearCachedRealmsRequest.ts#L23-L62"
     },
     {
       "kind": "response",
@@ -278247,7 +278650,7 @@
           }
         }
       ],
-      "specLocation": "slm/stop/StopSnapshotLifecycleManagementRequest.ts#L24-L63"
+      "specLocation": "slm/stop/StopSnapshotLifecycleManagementRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -290788,7 +291191,7 @@
           }
         }
       ],
-      "specLocation": "text_structure/test_grok_pattern/TestGrokPatternRequest.ts#L23-L62"
+      "specLocation": "text_structure/test_grok_pattern/TestGrokPatternRequest.ts#L23-L63"
     },
     {
       "kind": "response",
@@ -291569,7 +291972,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L40"
+      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L41"
     },
     {
       "kind": "response",
@@ -300568,7 +300971,7 @@
           }
         }
       ],
-      "specLocation": "watcher/get_settings/WatcherGetSettingsRequest.ts#L24-L50"
+      "specLocation": "watcher/get_settings/WatcherGetSettingsRequest.ts#L24-L51"
     },
     {
       "kind": "response",
