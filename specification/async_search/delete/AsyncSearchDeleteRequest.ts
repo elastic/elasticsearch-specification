@@ -31,6 +31,7 @@ import { Id, MediaType } from '@_types/common'
  * @availability serverless stability=stable visibility=public
  * @doc_id async-search
  * @doc_tag search
+ * @cluster_privileges cancel_task
  */
 export interface Request extends RequestBase {
   urls: [

@@ -42,6 +42,7 @@ import { Command } from './types'
  * @availability stack since=5.0.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id cluster-reroute
+ * @cluster_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

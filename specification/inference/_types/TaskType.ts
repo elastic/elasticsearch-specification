@@ -27,7 +27,8 @@ export enum TaskType {
   completion,
   chat_completion,
   embedding,
-  document_extraction
+  document_extraction,
+  decision
 }
 
 export enum TaskTypeJinaAi {

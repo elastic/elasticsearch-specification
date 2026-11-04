@@ -25,7 +25,8 @@ import {
   MediaType,
   ProjectRouting,
   Routing,
-  SearchType
+  SearchType,
+  SliceIds
 } from '@_types/common'
 import { ScriptSource } from '@_types/Scripting'
 import { Duration } from '@_types/Time'
@@ -52,6 +53,10 @@ export interface Request extends RequestBase {
     {
       path: '/{index}/_search/template'
       methods: ['GET', 'POST']
+    },
+    {
+      path: '/{index}/{_slice}/_search/template'
+      methods: ['GET', 'POST']
     }
   ]
   path_parts: {
@@ -61,6 +66,14 @@ export interface Request extends RequestBase {
      * @ext_doc_id search-multiple-indices
      */
     index?: Indices
+    /**
+     * The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.
+     * When omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: SliceIds
   }
   request_media_type: MediaType.Json
   response_media_type: MediaType.Json
@@ -112,7 +125,10 @@ export interface Request extends RequestBase {
      * If `true`, the query execution is profiled.
      * @server_default false */
     profile?: boolean
-    /**  A custom value used to route operations to a specific shard. */
+    /**
+     * A custom value used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
+     */
     routing?: Routing
     /**
      * Specifies how long a consistent view of the index

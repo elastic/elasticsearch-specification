@@ -23,7 +23,8 @@ import {
   Indices,
   ProjectRouting,
   Routing,
-  SearchType
+  SearchType,
+  SliceId
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { SearchRequestBody } from '@global/search/_types/SearchRequestBody'
@@ -70,11 +71,12 @@ export class MultisearchHeader {
   /**
    * The slice identifier for routing the search to a specific slice.
    * Use the special value `_all` to query all slices without restricting to a routing value.
-   * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+   * When omitted, all slices are targeted.
    * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+   * @availability serverless visibility=feature_flag feature_flag=slice_indexing
    * @codegen_name route_slice
    */
-  _slice?: string
+  _slice?: SliceId
 }
 
 export class MultiSearchResult<TDocument> {

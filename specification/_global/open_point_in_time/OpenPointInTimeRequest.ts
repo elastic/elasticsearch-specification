@@ -23,7 +23,8 @@ import {
   Indices,
   MediaType,
   ProjectRouting,
-  Routing
+  Routing,
+  SliceIds
 } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -112,9 +113,18 @@ export interface Request extends RequestBase {
     preference?: string
     /**
      * A custom value that is used to route operations to a specific shard.
+     * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
      * @ext_doc_id search-shard-routing
      */
     routing?: Routing
+    /**
+     * The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the point in time to that slice.
+     * When omitted, the point in time covers all slices.
+     * @availability stack since=9.6.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
+     * @codegen_name route_slice
+     */
+    _slice?: SliceIds
     /**
      * The type of index that wildcard patterns can match.
      * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.

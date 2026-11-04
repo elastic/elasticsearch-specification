@@ -32,6 +32,7 @@ import { IndexSettings } from '@indices/_types/IndexSettings'
  * @doc_id migration-api-create-from
  * @doc_tag migration
  * @ext_doc_id create_index_from_source_index
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [
