@@ -2611,7 +2611,7 @@
             "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
             "deprecated": false,
             "schema": {
-              "default": "ip,hp,rp,r,m,n,cpu,l",
+              "default": "ip,heap.percent,ram.percent,cpu,load_1m,load_5m,load_15m,node.role,master,name",
               "allOf": [
                 {
                   "$ref": "#/components/schemas/cat._types.CatNodeColumns"
@@ -10887,6 +10887,17 @@
                       }
                     ]
                   },
+                  "runtime_mappings": {
+                    "externalDocs": {
+                      "url": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request"
+                    },
+                    "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.mapping.RuntimeFields"
+                      }
+                    ]
+                  },
                   "slice": {
                     "description": "Slice the request manually using the provided slice ID and total number of slices.",
                     "allOf": [
@@ -10951,7 +10962,7 @@
                       "description": "An array of failures if there were any unrecoverable errors during the process.\nIf this array is not empty, the request ended abnormally because of those failures.\nDelete by query is implemented using batches and any failures cause the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -12474,7 +12485,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/esql._types.EsqlResult"
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
                 }
               }
             }
@@ -18003,7 +18014,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -18045,7 +18056,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -18163,7 +18174,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -18205,7 +18216,7 @@
           "indices"
         ],
         "summary": "Create or update an alias",
-        "description": "Adds a data stream or index to an alias.",
+        "description": "Adds a data stream or index to an alias.\n\n## Required authorization\n\n* Index privileges: `manage`\n",
         "externalDocs": {
           "description": "Aliases",
           "url": "https://www.elastic.co/docs/manage-data/data-store/aliases",
@@ -29745,6 +29756,88 @@
         ]
       }
     },
+    "/{index}/_knn_eval": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Evaluate kNN search settings",
+        "description": "Estimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.\n\n## Required authorization\n\n* Index privileges: `read`,`view_index_metadata`\n",
+        "operationId": "knn-eval",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_eval-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-wait_for_completion"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_eval"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_eval-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Evaluate kNN search settings",
+        "description": "Estimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.\n\n## Required authorization\n\n* Index privileges: `read`,`view_index_metadata`\n",
+        "operationId": "knn-eval-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/knn_eval-index"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-allow_no_indices"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-expand_wildcards"
+          },
+          {
+            "$ref": "#/components/parameters/knn_eval-wait_for_completion"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/knn_eval"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/knn_eval-200"
+          }
+        },
+        "x-state": "Experimental; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_license": {
       "get": {
         "tags": [
@@ -30602,7 +30695,7 @@
                       "description": "If there were any unrecoverable errors during the process, it is an array of those failures.\nIf this array is not empty, the request ended because of those failures.\nReindex is implemented using batches and any failure causes the entire process to end but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent the reindex from ending on version conflicts.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -53087,6 +53180,12 @@
                   "rename_replacement": {
                     "description": "The rename replacement string that is used with the `rename_pattern`.",
                     "type": "string"
+                  },
+                  "restore_over_existing": {
+                    "description": "If `true`, the request can restore over destination indices and data streams that already exist, without closing or deleting them first.\nAn open destination index is closed and restored over in a single step.\nA destination data stream is deleted, together with its backing and failure store indices, and recreated from the snapshot.\n\nIt can't be combined with `rename_pattern`, `rename_replacement`, `include_global_state`, or `partial`.",
+                    "default": false,
+                    "x-state": "Generally available; Added in 9.6.0",
+                    "type": "boolean"
                   }
                 }
               },
@@ -57013,6 +57112,17 @@
               "type": "string"
             },
             "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "initial_delay",
+            "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "x-state": "Generally available; Added in 9.6.0",
+            "style": "form"
           }
         ],
         "responses": {
@@ -57379,7 +57489,6 @@
                   },
                   "required": [
                     "create_time",
-                    "description",
                     "dest",
                     "id",
                     "settings",
@@ -58301,7 +58410,7 @@
                       "description": "Array of failures if there were any unrecoverable errors during the process.\nIf this is non-empty then the request ended because of those failures.\nUpdate by query is implemented using batches.\nAny failure causes the entire process to end, but all failures in the current batch are collected into the array.\nYou can use the `conflicts` option to prevent reindex from ending when version conflicts occur.",
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+                        "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
                       }
                     },
                     "noops": {
@@ -59648,6 +59757,15 @@
                         }
                       ]
                     },
+                    "columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "data_frame": {
                       "allOf": [
                         {
@@ -59741,6 +59859,15 @@
                         }
                       ]
                     },
+                    "logsdb_columnar": {
+                      "description": "Usage of the indices with `index.mode` set to `logsdb_columnar`.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.IndexModeUsage"
+                        }
+                      ]
+                    },
                     "logstash": {
                       "allOf": [
                         {
@@ -59830,6 +59957,15 @@
                       "allOf": [
                         {
                           "$ref": "#/components/schemas/xpack.usage.VectorDbDocument"
+                        }
+                      ]
+                    },
+                    "vectordb_columnar": {
+                      "description": "The `vectordb_columnar` index mode is behind a feature flag.\nWithout the flag, this section is still returned, disabled and with zero counts.",
+                      "x-state": "Generally available; Added in 9.6.0",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.VectorDbColumnar"
                         }
                       ]
                     },
@@ -65551,6 +65687,12 @@
           "create_weight_count": {
             "type": "number"
           },
+          "into_bit_set": {
+            "type": "number"
+          },
+          "into_bit_set_count": {
+            "type": "number"
+          },
           "match": {
             "type": "number"
           },
@@ -65601,6 +65743,8 @@
           "build_scorer_count",
           "create_weight",
           "create_weight_count",
+          "into_bit_set",
+          "into_bit_set_count",
           "match",
           "match_count",
           "shallow_advance",
@@ -66949,6 +67093,18 @@
               }
             ]
           },
+          "dense_vector": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query"
+            },
+            "description": "Scores every document that has a value for a `dense_vector` field, with the exact similarity between its vector and a query vector.\nUnlike the `knn` query, it doesn't use an index structure, or a cutoff based on `k` or `num_candidates`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.DenseVectorQuery"
+              }
+            ]
+          },
           "dis_max": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query"
@@ -67874,6 +68030,254 @@
               "filter"
             ]
           }
+        ]
+      },
+      "_types.query_dsl.DenseVectorQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the `dense_vector` field to search against.\nThe field can be indexed, or not indexed (`index: false`).",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "query_vector": {
+                "description": "The query vector. It must have the same number of dimensions as the field.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVector"
+                  }
+                ]
+              },
+              "query_vector_builder": {
+                "description": "The configuration to build the query vector, for example by running a text embedding model.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.QueryVectorBuilder"
+                  }
+                ]
+              },
+              "similarity_function": {
+                "description": "The similarity used for scoring, which overrides the similarity of the field for this query.\nIt defaults to the similarity of the field, or to `cosine` for a field that is not indexed.\nFor `bit` fields, only `l2_norm` is supported.\nIt can't be combined with `quantized: true`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.DenseVectorSimilarity"
+                  }
+                ]
+              },
+              "quantized": {
+                "description": "If `false`, the documents are scored with the full-precision vectors, regardless of the index options of the field.\nIf `true`, the documents are scored with the quantized vectors of a quantized field, which is faster but less accurate.\nFor a field that is not quantized, `true` has no effect.",
+                "default": false,
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "field"
+            ]
+          }
+        ]
+      },
+      "_types.QueryVector": {
+        "description": "Both the float vector form and the base64 string form are accepted by the server",
+        "oneOf": [
+          {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "_types.QueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Embedding"
+              }
+            ]
+          },
+          "text_embedding": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.TextEmbedding"
+              }
+            ]
+          },
+          "lookup": {
+            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+            "x-state": "Generally available; Added in 9.4.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
+              }
+            ]
+          }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+      },
+      "_types.Embedding": {
+        "type": "object",
+        "properties": {
+          "inference_id": {
+            "type": "string"
+          },
+          "input": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
+              }
+            ]
+          },
+          "timeout": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
+          }
+        },
+        "required": [
+          "input"
+        ]
+      },
+      "_types.KnnEmbeddingInput": {
+        "description": "Knn embedding input.\nEither a string, an object or array of objects",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/_types.InferenceStringGroup"
+          }
+        ]
+      },
+      "_types.InferenceStringGroup": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.InferenceString"
+          },
+          {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_types.InferenceString"
+            }
+          }
+        ]
+      },
+      "_types.InferenceString": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The type of data that the value represents.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
+              }
+            ]
+          },
+          "format": {
+            "description": "The format of the data. If null, the default data format for the given type is used.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "value": {
+            "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "inference._types.EmbeddingContentType": {
+        "type": "string",
+        "enum": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ]
+      },
+      "inference._types.EmbeddingContentFormat": {
+        "type": "string",
+        "enum": [
+          "text",
+          "base64",
+          "url"
+        ]
+      },
+      "_types.TextEmbedding": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+            "x-state": "Generally available; Added in 8.18.0",
+            "type": "string"
+          },
+          "model_text": {
+            "description": "The text to be converted into a vector by the specified model",
+            "type": "string"
+          }
+        },
+        "required": [
+          "model_text"
+        ]
+      },
+      "_types.LookupQueryVectorBuilder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the document to fetch the vector from",
+            "type": "string"
+          },
+          "index": {
+            "description": "The name of the index to fetch the document from",
+            "type": "string"
+          },
+          "path": {
+            "description": "The name of the field containing the vector",
+            "type": "string"
+          },
+          "routing": {
+            "description": "The routing value to use when fetching the document",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "index",
+          "path"
+        ]
+      },
+      "_types.mapping.DenseVectorSimilarity": {
+        "type": "string",
+        "enum": [
+          "cosine",
+          "dot_product",
+          "l2_norm",
+          "max_inner_product"
         ]
       },
       "_types.query_dsl.DisMaxQuery": {
@@ -68969,13 +69373,6 @@
           "max_concurrent_group_searches": {
             "description": "The number of concurrent requests allowed to retrieve the inner_hits per group",
             "type": "number"
-          },
-          "collapse": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_global.search._types.FieldCollapse"
-              }
-            ]
           }
         },
         "required": [
@@ -70193,185 +70590,6 @@
               "field"
             ]
           }
-        ]
-      },
-      "_types.QueryVector": {
-        "type": "array",
-        "items": {
-          "type": "number"
-        }
-      },
-      "_types.QueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Embedding"
-              }
-            ]
-          },
-          "text_embedding": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.TextEmbedding"
-              }
-            ]
-          },
-          "lookup": {
-            "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
-            "x-state": "Generally available; Added in 9.4.0",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.LookupQueryVectorBuilder"
-              }
-            ]
-          }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
-      },
-      "_types.Embedding": {
-        "type": "object",
-        "properties": {
-          "inference_id": {
-            "type": "string"
-          },
-          "input": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.KnnEmbeddingInput"
-              }
-            ]
-          },
-          "timeout": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          }
-        },
-        "required": [
-          "input"
-        ]
-      },
-      "_types.KnnEmbeddingInput": {
-        "description": "Knn embedding input.\nEither a string, an object or array of objects",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "$ref": "#/components/schemas/_types.InferenceStringGroup"
-          }
-        ]
-      },
-      "_types.InferenceStringGroup": {
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/_types.InferenceString"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/_types.InferenceString"
-            }
-          }
-        ]
-      },
-      "_types.InferenceString": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of data that the value represents.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentType"
-              }
-            ]
-          },
-          "format": {
-            "description": "The format of the data. If null, the default data format for the given type is used.",
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.EmbeddingContentFormat"
-              },
-              {
-                "nullable": true,
-                "type": "string"
-              }
-            ]
-          },
-          "value": {
-            "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type",
-          "value"
-        ]
-      },
-      "inference._types.EmbeddingContentType": {
-        "type": "string",
-        "enum": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ]
-      },
-      "inference._types.EmbeddingContentFormat": {
-        "type": "string",
-        "enum": [
-          "text",
-          "base64",
-          "url"
-        ]
-      },
-      "_types.TextEmbedding": {
-        "type": "object",
-        "properties": {
-          "model_id": {
-            "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
-            "x-state": "Generally available; Added in 8.18.0",
-            "type": "string"
-          },
-          "model_text": {
-            "description": "The text to be converted into a vector by the specified model",
-            "type": "string"
-          }
-        },
-        "required": [
-          "model_text"
-        ]
-      },
-      "_types.LookupQueryVectorBuilder": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The ID of the document to fetch the vector from",
-            "type": "string"
-          },
-          "index": {
-            "description": "The name of the index to fetch the document from",
-            "type": "string"
-          },
-          "path": {
-            "description": "The name of the field containing the vector",
-            "type": "string"
-          },
-          "routing": {
-            "description": "The routing value to use when fetching the document",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "index",
-          "path"
         ]
       },
       "_types.RescoreVector": {
@@ -79140,7 +79358,7 @@
             "description": "Any failures encountered during the reindex. If non-empty, the reindex ended because of these failures.",
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+              "$ref": "#/components/schemas/_types.BulkByPaginatedSearchFailure"
             }
           },
           "noops": {
@@ -79200,6 +79418,16 @@
             "type": "number"
           }
         }
+      },
+      "_types.BulkByPaginatedSearchFailure": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_types.BulkIndexByScrollFailure"
+          },
+          {
+            "$ref": "#/components/schemas/_types.ShardFailure"
+          }
+        ]
       },
       "_types.BulkIndexByScrollFailure": {
         "type": "object",
@@ -84852,8 +85080,12 @@
             ]
           },
           "max_result_window": {
-            "default": 10000.0,
-            "type": "number"
+            "default": "10000",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedinteger"
+              }
+            ]
           },
           "max_inner_result_window": {
             "default": 100.0,
@@ -85491,6 +85723,14 @@
               }
             ]
           },
+          "require": {
+            "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.IndexRoutingAllocationRequire"
+              }
+            ]
+          },
           "initial_recovery": {
             "allOf": [
               {
@@ -85529,6 +85769,22 @@
               }
             ]
           }
+        }
+      },
+      "indices._types.IndexRoutingAllocationRequire": {
+        "type": "object",
+        "additionalProperties": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         }
       },
       "indices._types.IndexRoutingAllocationInitialRecovery": {
@@ -91245,7 +91501,7 @@
           },
           "temporality_field": {
             "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
-            "x-state": "Generally available; Added in 9.4.0",
+            "x-state": "Generally available; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.Field"
@@ -91816,10 +92072,7 @@
               }
             ]
           }
-        },
-        "required": [
-          "type"
-        ]
+        }
       },
       "indices._types.StorageType": {
         "anyOf": [
@@ -93937,11 +94190,24 @@
                   }
                 ]
               },
+              "time_series_dimension": {
+                "type": "boolean"
+              },
               "analyzer": {
                 "type": "string"
               },
               "eager_global_ordinals": {
                 "type": "boolean"
+              },
+              "fielddata": {
+                "type": "boolean"
+              },
+              "fielddata_frequency_filter": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices._types.FielddataFrequencyFilter"
+                  }
+                ]
               },
               "index": {
                 "type": "boolean"
@@ -93979,6 +94245,17 @@
               "search_quote_analyzer": {
                 "type": "string"
               },
+              "similarity": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              },
               "term_vector": {
                 "allOf": [
                   {
@@ -93994,6 +94271,13 @@
               },
               "locale": {
                 "type": "string"
+              },
+              "subobjects": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.mapping.Subobjects"
+                  }
+                ]
               }
             },
             "required": [
@@ -94010,6 +94294,25 @@
           "summary",
           "histogram",
           "position"
+        ]
+      },
+      "indices._types.FielddataFrequencyFilter": {
+        "type": "object",
+        "properties": {
+          "max": {
+            "type": "number"
+          },
+          "min": {
+            "type": "number"
+          },
+          "min_segment_size": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "max",
+          "min",
+          "min_segment_size"
         ]
       },
       "_types.mapping.IndexOptions": {
@@ -94042,6 +94345,13 @@
           "with_positions_offsets",
           "with_positions_offsets_payloads",
           "with_positions_payloads"
+        ]
+      },
+      "_types.mapping.Subobjects": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
         ]
       },
       "_types.mapping.JoinProperty": {
@@ -94427,25 +94737,6 @@
           }
         ]
       },
-      "indices._types.FielddataFrequencyFilter": {
-        "type": "object",
-        "properties": {
-          "max": {
-            "type": "number"
-          },
-          "min": {
-            "type": "number"
-          },
-          "min_segment_size": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "max",
-          "min",
-          "min_segment_size"
-        ]
-      },
       "_types.mapping.VersionProperty": {
         "allOf": [
           {
@@ -94829,15 +95120,6 @@
           "oversample"
         ]
       },
-      "_types.mapping.DenseVectorSimilarity": {
-        "type": "string",
-        "enum": [
-          "cosine",
-          "dot_product",
-          "l2_norm",
-          "max_inner_product"
-        ]
-      },
       "_types.mapping.FlattenedProperty": {
         "allOf": [
           {
@@ -94967,13 +95249,6 @@
               }
             }
           }
-        ]
-      },
-      "_types.mapping.Subobjects": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false"
         ]
       },
       "_types.mapping.PassthroughObjectProperty": {
@@ -99981,6 +100256,12 @@
           },
           "licensed": {
             "type": "boolean"
+          },
+          "native_controller_enabled_settings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
@@ -99992,7 +100273,8 @@
           "java_version",
           "name",
           "version",
-          "licensed"
+          "licensed",
+          "native_controller_enabled_settings"
         ]
       },
       "cluster.stats.ClusterProcess": {
@@ -103870,7 +104152,7 @@
               }
             ]
           },
-          "project_encryption_key": {
+          "cluster_state_encryption": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_global.health_report.ProjectEncryptionKeyIndicator"
@@ -105243,6 +105525,20 @@
           },
           "force_merge_index": {
             "type": "boolean"
+          },
+          "total_shards_per_node": {
+            "description": "The maximum number of shards, including primaries and replicas, that can be allocated to any single node for the mounted index.\nMust be at least 1.",
+            "x-state": "Generally available; Added in 8.16.0",
+            "type": "number"
+          },
+          "replicate_for": {
+            "description": "The period for which the mounted index keeps one replica before the replica is removed.\nBy default, the index is mounted without replicas.\nMust be positive.\nOnly the first `searchable_snapshot` action in a policy may set this.\nIt must fit before the next phase starts: for example, if this phase has a `min_age` of 5d and the next phase has 12d, it can be at most 7d.",
+            "x-state": "Generally available; Added in 8.18.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Duration"
+              }
+            ]
           }
         },
         "required": [
@@ -105758,7 +106054,7 @@
           }
         ]
       },
-      "indices.delete_alias.IndicesAliasesResponseBody": {
+      "indices._types.AliasesResponseBody": {
         "allOf": [
           {
             "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
@@ -105767,6 +106063,8 @@
             "type": "object",
             "properties": {
               "errors": {
+                "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
+                "x-state": "Generally available; Added in 8.14.0",
                 "type": "boolean"
               }
             }
@@ -109927,16 +110225,11 @@
       "indices.update_aliases.IndicesUpdateAliasesResponseBody": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+            "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
           },
           {
             "type": "object",
             "properties": {
-              "errors": {
-                "description": "If `true`, one or more actions failed.\nThe request still returns HTTP 200.",
-                "x-state": "Generally available; Added in 8.14.0",
-                "type": "boolean"
-              },
               "action_results": {
                 "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
                 "x-state": "Generally available; Added in 8.14.0",
@@ -109945,10 +110238,7 @@
                   "$ref": "#/components/schemas/indices.update_aliases.AliasActionResult"
                 }
               }
-            },
-            "required": [
-              "errors"
-            ]
+            }
           }
         ]
       },
@@ -118102,6 +118392,238 @@
           "error_ignored",
           "skipped",
           "dropped"
+        ]
+      },
+      "_global.knn_eval.KnnEvalQuerySource": {
+        "description": "The source of the query vectors of a kNN evaluation.",
+        "discriminator": {
+          "propertyName": "from",
+          "mapping": {
+            "docs": "#/components/schemas/_global.knn_eval.KnnEvalDocsQuerySource",
+            "vectors": "#/components/schemas/_global.knn_eval.KnnEvalVectorsQuerySource"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalDocsQuerySource"
+          },
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalVectorsQuerySource"
+          }
+        ]
+      },
+      "_global.knn_eval.KnnEvalDocsQuerySource": {
+        "description": "Samples the query vectors from the stored documents.",
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "enum": [
+              "docs"
+            ]
+          },
+          "size": {
+            "description": "The number of documents to sample, from 1 to 1000.",
+            "type": "number"
+          },
+          "seed": {
+            "description": "The seed of the sampling, to sample the same documents across requests.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "from",
+          "size"
+        ]
+      },
+      "_global.knn_eval.KnnEvalVectorsQuerySource": {
+        "description": "Uses the query vectors in the request.",
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "enum": [
+              "vectors"
+            ]
+          },
+          "vectors": {
+            "description": "The query vectors, from 1 to 1000 entries with unique identifiers.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQueryVector"
+            }
+          }
+        },
+        "required": [
+          "from",
+          "vectors"
+        ]
+      },
+      "_global.knn_eval.KnnEvalQueryVector": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The identifier of the query, which identifies it in the `failures` of the response.",
+            "type": "string"
+          },
+          "query_vector": {
+            "description": "The query vector.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.QueryVector"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "query_vector"
+        ]
+      },
+      "_global.knn_eval.KnnEvalSettings": {
+        "type": "object",
+        "properties": {
+          "visit_percentage": {
+            "description": "The percentage of postings to visit, from 0 to 100.\n`0` selects the automatic visit calculation.",
+            "type": "number"
+          },
+          "num_candidates": {
+            "description": "The number of nearest neighbor candidates to consider per shard.\nIt can't be less than `k`, or more than 10000 (9999 with sampling).",
+            "type": "number"
+          },
+          "rescore_vector": {
+            "description": "The rescoring of the candidates. Only applies to quantized fields.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.RescoreVector"
+              }
+            ]
+          },
+          "exact": {
+            "description": "If `true`, compares every vector at full precision.\nOnly applies to the `baseline`, requires `allow_exact_baseline`, and can't be combined with other settings.",
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "_global.knn_eval.KnnEvalQuerySourceSummary": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "description": "How the query vectors were chosen.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySourceType"
+              }
+            ]
+          }
+        },
+        "required": [
+          "from"
+        ]
+      },
+      "_global.knn_eval.KnnEvalQuerySourceType": {
+        "type": "string",
+        "enum": [
+          "docs",
+          "vectors"
+        ]
+      },
+      "_global.knn_eval.KnnEvalReportedSettings": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "rescore_window_capped": {
+                "description": "If `true`, the number of vectors to rescore exceeded the limit of 10000.",
+                "default": false,
+                "type": "boolean"
+              },
+              "quantized_scores": {
+                "description": "If `true`, the hits were not rescored, so their scores are estimates, and no query is excluded from the mean recall.",
+                "default": false,
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "_global.knn_eval.KnnEvalVectorOpsKind": {
+        "type": "string",
+        "enum": [
+          "full_precision_scan",
+          "quantized_visit_plus_rescore"
+        ]
+      },
+      "_global.knn_eval.KnnEvalResult": {
+        "type": "object",
+        "properties": {
+          "knn_settings": {
+            "description": "The evaluated settings.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_global.knn_eval.KnnEvalReportedSettings"
+              }
+            ]
+          },
+          "recall": {
+            "description": "The mean recall of the included queries, or `null` if no query is included.",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "nullable": true,
+                "type": "string"
+              }
+            ]
+          },
+          "included_queries": {
+            "description": "The number of queries included in the mean recall.",
+            "type": "number"
+          },
+          "excluded_queries": {
+            "description": "The number of queries excluded from the mean recall, because the search found a document scoring above the baseline's lowest top `k` score.",
+            "type": "number"
+          },
+          "took_ms": {
+            "description": "The time the searches took, in milliseconds.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+              }
+            ]
+          },
+          "vector_ops": {
+            "description": "The number of vector operations of the searches.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "knn_settings",
+          "recall",
+          "included_queries",
+          "excluded_queries",
+          "took_ms",
+          "vector_ops"
+        ]
+      },
+      "_global.knn_eval.KnnEvalFailure": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          }
+        },
+        "required": [
+          "error"
         ]
       },
       "license.get.LicenseInformation": {
@@ -126725,6 +127247,13 @@
           "mem"
         ]
       },
+      "_types.ThreadSortOrder": {
+        "type": "string",
+        "enum": [
+          "total",
+          "cpu"
+        ]
+      },
       "nodes.info.NodesInfoMetrics": {
         "oneOf": [
           {
@@ -130753,6 +131282,31 @@
           }
         ]
       },
+      "_global.rank_eval.RankEvalTemplate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The ID of the template. A rated request refers to it by this ID in its `template_id`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "template": {
+            "description": "The search template, either an inline `source` or the `id` of a stored search template.\nIt must be a `mustache` template (the default `lang`), and it must render to a search request body.\nAny `params` set here are ignored: each rated request provides its own `params`, which are used to render the template.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Script"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "template"
+        ]
+      },
       "_global.rank_eval.RankEvalMetricDetail": {
         "type": "object",
         "properties": {
@@ -133083,16 +133637,14 @@
         "type": "object",
         "properties": {
           "manage": {
+            "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/security._types.ManageUserPrivileges"
               }
             ]
           }
-        },
-        "required": [
-          "manage"
-        ]
+        }
       },
       "security._types.ManageUserPrivileges": {
         "type": "object",
@@ -133774,19 +134326,11 @@
           },
           "global": {
             "x-state": "Generally available; Added in 8.0.0",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/security._types.GlobalPrivilege"
               }
-            }
+            ]
           }
         },
         "required": [
@@ -134451,6 +134995,22 @@
               },
               "authentication_type": {
                 "type": "string"
+              },
+              "api_key": {
+                "description": "Present when the authenticated user is an API key.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.AuthenticateApiKey"
+                  }
+                ]
+              },
+              "token": {
+                "description": "Present when the authenticated user is a service account, or authenticated with a token.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/security.authenticate.Token"
+                  }
+                ]
               }
             },
             "required": [
@@ -138649,7 +139209,7 @@
             "type": "boolean"
           },
           "dates_as_epoch_millis": {
-            "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+            "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
             "default": false,
             "type": "boolean"
           },
@@ -138686,12 +139246,15 @@
             "type": "boolean"
           },
           "indexer_request_timeout": {
-            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
-            "default": "30s",
+            "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
             "x-state": "Generally available; Added in 8.19.24",
-            "allOf": [
+            "oneOf": [
               {
                 "$ref": "#/components/schemas/_types.Duration"
+              },
+              {
+                "nullable": true,
+                "type": "string"
               }
             ]
           }
@@ -141985,6 +142548,14 @@
               }
             ]
           },
+          "columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
           "data_streams": {
             "allOf": [
               {
@@ -142059,6 +142630,14 @@
             ]
           },
           "logsdb": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/xpack.info.Feature"
+              }
+            ]
+          },
+          "logsdb_columnar": {
+            "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/xpack.info.Feature"
@@ -142170,6 +142749,7 @@
           "aggregate_metric",
           "analytics",
           "ccr",
+          "columnar",
           "data_streams",
           "data_tiers",
           "enrich",
@@ -142181,6 +142761,7 @@
           "ilm",
           "logstash",
           "logsdb",
+          "logsdb_columnar",
           "ml",
           "monitoring",
           "rollup",
@@ -142574,6 +143155,56 @@
             "required": [
               "auto_follow_patterns_count",
               "follower_indices_count"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.IndexModeUsage": {
+        "description": "Usage of the indices with a given `index.mode`.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices in this index mode.",
+                "type": "number"
+              },
+              "indices_with_synthetic_source": {
+                "description": "The number of indices in this index mode that use synthetic `_source`.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The number of documents in the indices in this index mode.",
+                "type": "number"
+              },
+              "size_in_bytes": {
+                "description": "The size of the indices in this index mode, in bytes.",
+                "type": "number"
+              },
+              "data_streams_count": {
+                "description": "The number of data streams in this index mode.",
+                "type": "number"
+              },
+              "data_streams_managed_by_ilm": {
+                "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
+                "type": "number"
+              },
+              "data_streams_managed_by_dlm": {
+                "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "indices_with_synthetic_source",
+              "num_docs",
+              "size_in_bytes",
+              "data_streams_count",
+              "data_streams_managed_by_ilm",
+              "data_streams_managed_by_dlm"
             ]
           }
         ]
@@ -144413,6 +145044,31 @@
             ]
           }
         ]
+      },
+      "xpack.usage.VectorDbColumnar": {
+        "description": "Usage statistics for indices using the `vectordb_columnar` index mode.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "indices_count": {
+                "description": "The number of indices using the `vectordb_columnar` index mode.",
+                "type": "number"
+              },
+              "num_docs": {
+                "description": "The total number of documents held across all `vectordb_columnar` indices.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "indices_count",
+              "num_docs"
+            ]
+          }
+        ]
       }
     },
     "responses": {
@@ -145972,7 +146628,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/indices.delete_alias.IndicesAliasesResponseBody"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -146161,7 +146817,7 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+              "$ref": "#/components/schemas/indices._types.AliasesResponseBody"
             }
           }
         }
@@ -146749,6 +147405,83 @@
           }
         }
       },
+      "knn_eval-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "query_source": {
+                  "description": "The source of the query vectors.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySourceSummary"
+                    }
+                  ]
+                },
+                "baseline": {
+                  "description": "The settings of the baseline search.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalReportedSettings"
+                    }
+                  ]
+                },
+                "baseline_took_ms": {
+                  "description": "The time the baseline searches took, in milliseconds.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+                    }
+                  ]
+                },
+                "baseline_vector_ops": {
+                  "description": "The number of vector operations of the baseline searches.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "number"
+                },
+                "baseline_vector_ops_kind": {
+                  "description": "What `baseline_vector_ops` counts.\nNot returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalVectorOpsKind"
+                    }
+                  ]
+                },
+                "results": {
+                  "description": "The results of each `knn_settings` entry, in the order of the request.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalResult"
+                  }
+                },
+                "failures": {
+                  "description": "The queries that failed, by query identifier.\nNot returned when `wait_for_completion` is `false`.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalFailure"
+                  }
+                },
+                "task": {
+                  "description": "The identifier of the task that runs the evaluation.\nOnly returned when `wait_for_completion` is `false`.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.TaskId"
+                    }
+                  ]
+                }
+              }
+            },
+            "examples": {
+              "KnnEvalResponseExample1": {
+                "summary": "Evaluate kNN search settings",
+                "description": "A response from `POST my-index/_knn_eval`, with the recall of each `knn_settings` entry against the default baseline.\n",
+                "value": "{\n  \"query_source\": {\n    \"from\": \"docs\"\n  },\n  \"baseline\": {\n    \"visit_percentage\": 20.0,\n    \"rescore_vector\": {\n      \"oversample\": 100.0\n    }\n  },\n  \"baseline_took_ms\": 412,\n  \"baseline_vector_ops\": 2048000,\n  \"baseline_vector_ops_kind\": \"quantized_visit_plus_rescore\",\n  \"results\": [\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 1.0\n      },\n      \"recall\": 0.87,\n      \"included_queries\": 100,\n      \"excluded_queries\": 0,\n      \"took_ms\": 35,\n      \"vector_ops\": 102400\n    },\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 5.0\n      },\n      \"recall\": 0.97,\n      \"included_queries\": 99,\n      \"excluded_queries\": 1,\n      \"took_ms\": 96,\n      \"vector_ops\": 512000\n    }\n  ],\n  \"failures\": {}\n}"
+              }
+            }
+          }
+        }
+      },
       "license.post-200": {
         "description": "",
         "content": {
@@ -146895,6 +147628,17 @@
                       "$ref": "#/components/schemas/migration.deprecations.Deprecation"
                     }
                   }
+                },
+                "repositories": {
+                  "description": "Snapshot repository warnings are sectioned off per repository.",
+                  "x-state": "Generally available; Added in 9.6.0",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/migration.deprecations.Deprecation"
+                    }
+                  }
                 }
               },
               "required": [
@@ -146904,7 +147648,8 @@
                 "node_settings",
                 "ml_settings",
                 "templates",
-                "ilm_policies"
+                "ilm_policies",
+                "repositories"
               ]
             },
             "examples": {
@@ -150583,10 +151328,10 @@
       "cat.indices-expand_wildcards": {
         "in": "query",
         "name": "expand_wildcards",
-        "description": "The type of index that wildcard patterns can match.",
+        "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
         "deprecated": false,
         "schema": {
-          "default": "all",
+          "default": "open,closed",
           "allOf": [
             {
               "$ref": "#/components/schemas/_types.ExpandWildcards"
@@ -150737,7 +151482,7 @@
         "description": "Comma-separated list of column names to display.",
         "deprecated": false,
         "schema": {
-          "default": "['bc', 'id', 'sc', 's']",
+          "default": "id,state,buckets.count,search.count",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatDatafeedColumns"
@@ -150952,7 +151697,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "index,shard,prirep,ip,segment,generation,docs.count,docs.deleted,size,size.memory,committed,searchable,version,compound",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSegmentsColumns"
@@ -151130,7 +151875,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
+          "default": "id,repository,status,start_epoch,start_time,end_epoch,end_time,duration,indices,successful_shards,failed_shards,total_shards",
           "allOf": [
             {
               "$ref": "#/components/schemas/cat._types.CatSnapshotsColumns"
@@ -152425,7 +153170,7 @@
         "required": true,
         "deprecated": false,
         "schema": {
-          "$ref": "#/components/schemas/_types.Id"
+          "$ref": "#/components/schemas/_types.Ids"
         },
         "style": "simple"
       },
@@ -156202,6 +156947,65 @@
         },
         "style": "form"
       },
+      "knn_eval-index": {
+        "in": "path",
+        "name": "index",
+        "description": "A comma-separated list of index names to search.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.Indices"
+        },
+        "style": "simple"
+      },
+      "knn_eval-ignore_unavailable": {
+        "in": "query",
+        "name": "ignore_unavailable",
+        "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "knn_eval-allow_no_indices": {
+        "in": "query",
+        "name": "allow_no_indices",
+        "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+        "deprecated": false,
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
+      "knn_eval-expand_wildcards": {
+        "in": "query",
+        "name": "expand_wildcards",
+        "description": "The type of index that wildcard patterns can match.\nIt supports comma-separated values, such as `open,hidden`.",
+        "deprecated": false,
+        "schema": {
+          "default": "open",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/_types.ExpandWildcards"
+            }
+          ]
+        },
+        "style": "form"
+      },
+      "knn_eval-wait_for_completion": {
+        "in": "query",
+        "name": "wait_for_completion",
+        "description": "If `true`, the request waits for the evaluation to complete.\nA large evaluation can run for minutes, and closing the connection, for example because of a client or proxy timeout, cancels it.\nIf `false`, the request returns a task identifier, and stores the completed response for retrieval through the task management API.",
+        "deprecated": false,
+        "schema": {
+          "default": true,
+          "type": "boolean"
+        },
+        "style": "form"
+      },
       "license.post-acknowledge": {
         "in": "query",
         "name": "acknowledge",
@@ -158002,7 +158806,7 @@
           "default": "total",
           "allOf": [
             {
-              "$ref": "#/components/schemas/_types.ThreadType"
+              "$ref": "#/components/schemas/_types.ThreadSortOrder"
             }
           ]
         },
@@ -162799,6 +163603,71 @@
         },
         "required": true
       },
+      "knn_eval": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "description": "The `dense_vector` field to evaluate.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.Field"
+                    }
+                  ]
+                },
+                "k": {
+                  "description": "The number of nearest neighbors to compute the recall for, from 1 to 1000.",
+                  "type": "number"
+                },
+                "query_source": {
+                  "description": "The source of the query vectors.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalQuerySource"
+                    }
+                  ]
+                },
+                "baseline": {
+                  "description": "The settings of the search that the `knn_settings` entries are compared with.\nIf not specified, it uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+                    }
+                  ]
+                },
+                "knn_settings": {
+                  "description": "The kNN search settings to evaluate, from 1 to 32 unique entries.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.knn_eval.KnnEvalSettings"
+                  }
+                },
+                "allow_exact_baseline": {
+                  "description": "If `true`, the `baseline` can be `exact`.\nAn exact baseline compares every vector at full precision, and can severely slow down other searches.",
+                  "default": false,
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "field",
+                "k",
+                "query_source",
+                "knn_settings"
+              ]
+            },
+            "examples": {
+              "KnnEvalRequestExample1": {
+                "summary": "Evaluate kNN search settings",
+                "description": "Run `POST my-index/_knn_eval` to compare the recall of two `visit_percentage` values on a `bbq_disk` field, using 100 query vectors sampled from the stored documents.\n",
+                "value": "{\n  \"field\": \"my_vector\",\n  \"k\": 10,\n  \"query_source\": {\n    \"from\": \"docs\",\n    \"size\": 100,\n    \"seed\": 42\n  },\n  \"knn_settings\": [\n    { \"visit_percentage\": 1 },\n    { \"visit_percentage\": 5 }\n  ]\n}"
+              }
+            }
+          }
+        },
+        "required": true
+      },
       "license.post": {
         "content": {
           "application/json": {
@@ -163496,6 +164365,13 @@
                       "$ref": "#/components/schemas/_global.rank_eval.RankEvalMetric"
                     }
                   ]
+                },
+                "templates": {
+                  "description": "Query templates that the rated requests can refer to by their `template_id`.\nThis way, queries that differ only in their parameters don't have to be repeated in `requests`.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/_global.rank_eval.RankEvalTemplate"
+                  }
                 }
               },
               "required": [
@@ -164299,7 +165175,7 @@
                   ]
                 },
                 "name": {
-                  "description": "A name for the API key.",
+                  "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
                   "allOf": [
                     {
                       "$ref": "#/components/schemas/_types.Name"
@@ -164325,7 +165201,10 @@
                     }
                   ]
                 }
-              }
+              },
+              "required": [
+                "name"
+              ]
             },
             "examples": {
               "SecurityCreateApiKeyRequestExample1": {

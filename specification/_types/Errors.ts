@@ -61,6 +61,11 @@ export class ShardFailure {
   primary?: boolean
 }
 
+/** @codegen_names bulk, search */
+export type BulkByPaginatedSearchFailure =
+  | BulkIndexByScrollFailure
+  | ShardFailure
+
 export class BulkIndexByScrollFailure {
   cause: ErrorCause
   id: Id

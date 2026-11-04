@@ -4845,6 +4845,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/aliases",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-add-alias.html",
       "name": "indices.put_alias",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_alias"
@@ -7858,6 +7863,55 @@
             "POST"
           ],
           "path": "/_ingest/pipeline/{id}/_simulate"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Evaluate kNN search settings.\n\nEstimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.",
+      "docId": "knn-eval",
+      "docTag": "search",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-knn-eval",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-knn-eval",
+      "name": "knn_eval",
+      "privileges": {
+        "index": [
+          "read",
+          "view_index_metadata"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "_global.knn_eval"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "_global.knn_eval"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/_knn_eval"
         }
       ]
     },
@@ -17260,10 +17314,10 @@
       ],
       "query": [
         {
-          "description": "The type of index that wildcard patterns can match.",
+          "description": "The type of index that wildcard patterns can match.\nNote that `closed` also matches non-hidden data streams, so their open backing indices are returned as well.\nIt does not restrict the response to closed indices only.",
           "name": "expand_wildcards",
           "required": false,
-          "serverDefault": "all",
+          "serverDefault": "open,closed",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -17348,7 +17402,7 @@
           }
         }
       ],
-      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L111"
+      "specLocation": "cat/indices/CatIndicesRequest.ts#L30-L113"
     },
     {
       "body": {
@@ -17596,7 +17650,7 @@
           "description": "Comma-separated list of column names to display.",
           "name": "h",
           "required": false,
-          "serverDefault": "['bc', 'id', 'sc', 's']",
+          "serverDefault": "id,state,buckets.count,search.count",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -22864,6 +22918,20 @@
             }
           },
           {
+            "description": "One or more runtime fields in the search request.\nThese fields take precedence over mapped fields with the same name.",
+            "extDocId": "runtime-search-request",
+            "extDocUrl": "https://www.elastic.co/docs/manage-data/data-store/mapping/define-runtime-fields-in-search-request",
+            "name": "runtime_mappings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "RuntimeFields",
+                "namespace": "_types.mapping"
+              }
+            }
+          },
+          {
             "description": "Slice the request manually using the provided slice ID and total number of slices.",
             "name": "slice",
             "required": false,
@@ -23417,7 +23485,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L38-L342"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
     },
     {
       "body": {
@@ -23456,7 +23524,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -26012,7 +26080,7 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Id",
+              "name": "Ids",
               "namespace": "_types"
             }
           }
@@ -30891,8 +30959,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "IndicesAliasesResponseBody",
-            "namespace": "indices.delete_alias"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -33951,7 +34019,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L107"
+      "specLocation": "indices/put_alias/IndicesPutAliasRequest.ts#L25-L108"
     },
     {
       "body": {
@@ -33960,8 +34028,8 @@
         "value": {
           "kind": "instance_of",
           "type": {
-            "name": "AcknowledgedResponseBase",
-            "namespace": "_types"
+            "name": "AliasesResponseBody",
+            "namespace": "indices._types"
           }
         }
       },
@@ -47703,6 +47771,320 @@
         "namespace": "ingest.simulate"
       },
       "specLocation": "ingest/simulate/SimulatePipelineResponse.ts#L22-L24"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The `dense_vector` field to evaluate.",
+            "name": "field",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of nearest neighbors to compute the recall for, from 1 to 1000.",
+            "name": "k",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "integer",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The source of the query vectors.",
+            "name": "query_source",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQuerySource",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The settings of the search that the `knn_settings` entries are compared with.\nIf not specified, it uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.",
+            "name": "baseline",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalSettings",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The kNN search settings to evaluate, from 1 to 32 unique entries.",
+            "name": "knn_settings",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalSettings",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "If `true`, the `baseline` can be `exact`.\nAn exact baseline compares every vector at full precision, and can severely slow down other searches.",
+            "name": "allow_exact_baseline",
+            "required": false,
+            "serverDefault": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "boolean",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Evaluate kNN search settings.\n\nEstimate the recall and cost of approximate kNN search configurations on a `dense_vector` field against a more thorough baseline.\nThe field must use the `bbq_disk` index type, and must not be inside a nested object.\n\nEach `knn_settings` entry reports the mean recall of the baseline's top `k`, not of relevance judgments, plus included and excluded query counts and cost totals.\nA query is excluded from the mean recall when the candidate finds a document scoring above the baseline's lowest top `k` score.\nA baseline returning fewer than `k` hits fails that query, because recall at `k` is undefined.\nAll configurations run against one point in time.\n\nThe default baseline uses a `visit_percentage` of 20 and a `rescore_vector.oversample` of 100.\nAn exact full-precision baseline must be requested explicitly with `allow_exact_baseline`, and is limited to 100 million vector-by-query comparisons.\n\nThe request is refused when the `search.knn_eval.enabled` cluster setting or the `index.knn_eval.enabled` index setting is `false`.",
+      "examples": {
+        "KnnEvalRequestExample1": {
+          "description": "Run `POST my-index/_knn_eval` to compare the recall of two `visit_percentage` values on a `bbq_disk` field, using 100 query vectors sampled from the stored documents.\n",
+          "method_request": "POST my-index/_knn_eval",
+          "summary": "Evaluate kNN search settings",
+          "value": "{\n  \"field\": \"my_vector\",\n  \"k\": 10,\n  \"query_source\": {\n    \"from\": \"docs\",\n    \"size\": 100,\n    \"seed\": 42\n  },\n  \"knn_settings\": [\n    { \"visit_percentage\": 1 },\n    { \"visit_percentage\": 5 }\n  ]\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "_global.knn_eval"
+      },
+      "path": [
+        {
+          "description": "A comma-separated list of index names to search.",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Indices",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "If `false`, the request returns an error if it targets a missing or closed index.",
+          "name": "ignore_unavailable",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the request returns an error if any wildcard expression, index alias, or `_all` value targets only missing or closed indices.\nThis behavior applies even if the request targets other open indices.",
+          "name": "allow_no_indices",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The type of index that wildcard patterns can match.\nIt supports comma-separated values, such as `open,hidden`.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the request waits for the evaluation to complete.\nA large evaluation can run for minutes, and closing the connection, for example because of a client or proxy timeout, cancels it.\nIf `false`, the request returns a task identifier, and stores the completed response for retrieval through the task management API.",
+          "name": "wait_for_completion",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/KnnEvalRequest.ts#L25-L117"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The source of the query vectors.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "query_source",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQuerySourceSummary",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The settings of the baseline search.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalReportedSettings",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The time the baseline searches took, in milliseconds.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_took_ms",
+            "required": false,
+            "type": {
+              "generics": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "UnitMillis",
+                    "namespace": "_types"
+                  }
+                }
+              ],
+              "kind": "instance_of",
+              "type": {
+                "name": "DurationValue",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "The number of vector operations of the baseline searches.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_vector_ops",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "description": "What `baseline_vector_ops` counts.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "baseline_vector_ops_kind",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalVectorOpsKind",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          },
+          {
+            "description": "The results of each `knn_settings` entry, in the order of the request.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "results",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalResult",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "The queries that failed, by query identifier.\nNot returned when `wait_for_completion` is `false`.",
+            "name": "failures",
+            "required": false,
+            "type": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "KnnEvalFailure",
+                  "namespace": "_global.knn_eval"
+                }
+              }
+            }
+          },
+          {
+            "description": "The identifier of the task that runs the evaluation.\nOnly returned when `wait_for_completion` is `false`.",
+            "name": "task",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "TaskId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "KnnEvalResponseExample1": {
+          "description": "A response from `POST my-index/_knn_eval`, with the recall of each `knn_settings` entry against the default baseline.\n",
+          "summary": "Evaluate kNN search settings",
+          "value": "{\n  \"query_source\": {\n    \"from\": \"docs\"\n  },\n  \"baseline\": {\n    \"visit_percentage\": 20.0,\n    \"rescore_vector\": {\n      \"oversample\": 100.0\n    }\n  },\n  \"baseline_took_ms\": 412,\n  \"baseline_vector_ops\": 2048000,\n  \"baseline_vector_ops_kind\": \"quantized_visit_plus_rescore\",\n  \"results\": [\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 1.0\n      },\n      \"recall\": 0.87,\n      \"included_queries\": 100,\n      \"excluded_queries\": 0,\n      \"took_ms\": 35,\n      \"vector_ops\": 102400\n    },\n    {\n      \"knn_settings\": {\n        \"visit_percentage\": 5.0\n      },\n      \"recall\": 0.97,\n      \"included_queries\": 99,\n      \"excluded_queries\": 1,\n      \"took_ms\": 96,\n      \"vector_ops\": 512000\n    }\n  ],\n  \"failures\": {}\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/KnnEvalResponse.ts#L32-L75"
     },
     {
       "attachedBehaviors": [
@@ -61715,6 +62097,21 @@
                 "namespace": "_global.rank_eval"
               }
             }
+          },
+          {
+            "description": "Query templates that the rated requests can refer to by their `template_id`.\nThis way, queries that differ only in their parameters don't have to be repeated in `requests`.",
+            "name": "templates",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "RankEvalTemplate",
+                  "namespace": "_global.rank_eval"
+                }
+              }
+            }
           }
         ]
       },
@@ -61834,7 +62231,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L93"
+      "specLocation": "_global/rank_eval/RankEvalRequest.ts#L24-L98"
     },
     {
       "body": {
@@ -62613,7 +63010,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -67079,9 +67476,9 @@
             }
           },
           {
-            "description": "A name for the API key.",
+            "description": "A name for the API key.\nIt is required, and it cannot be longer than 256 characters, begin or end with whitespace, or begin with an underscore.",
             "name": "name",
-            "required": false,
+            "required": true,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -67199,7 +67596,7 @@
           }
         }
       ],
-      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L91"
+      "specLocation": "security/create_api_key/SecurityCreateApiKeyRequest.ts#L26-L94"
     },
     {
       "body": {
@@ -74403,9 +74800,27 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "A one-time, reduced sync delay that applies until the transform has processed its first document.\nIt then reverts to the `sync.time.delay` of the transform.\nOnly applicable for continuous transforms, and it can't be greater than `sync.time.delay`.",
+          "name": "initial_delay",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L73"
+      "specLocation": "transform/start_transform/StartTransformRequest.ts#L24-L81"
     },
     {
       "body": {
@@ -74847,7 +75262,7 @@
           },
           {
             "name": "description",
-            "required": true,
+            "required": false,
             "type": {
               "kind": "instance_of",
               "type": {
@@ -76382,7 +76797,7 @@
               "value": {
                 "kind": "instance_of",
                 "type": {
-                  "name": "BulkIndexByScrollFailure",
+                  "name": "BulkByPaginatedSearchFailure",
                   "namespace": "_types"
                 }
               }
@@ -76745,6 +77160,248 @@
         "namespace": "_global.health_report"
       },
       "specLocation": "_global/health_report/types.ts#L25-L31"
+    },
+    {
+      "description": "The source of the query vectors of a kNN evaluation.",
+      "kind": "type_alias",
+      "name": {
+        "name": "KnnEvalQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L25-L31",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalDocsQuerySource",
+              "namespace": "_global.knn_eval"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalVectorsQuerySource",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "from"
+      }
+    },
+    {
+      "description": "Samples the query vectors from the stored documents.",
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalDocsQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "docs"
+          }
+        },
+        {
+          "description": "The number of documents to sample, from 1 to 1000.",
+          "name": "size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The seed of the sampling, to sample the same documents across requests.",
+          "name": "seed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L33-L46"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "integer",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Numeric.ts#L22-L22",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "number",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "description": "Uses the query vectors in the request.",
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalVectorsQuerySource",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "vectors"
+          }
+        },
+        {
+          "description": "The query vectors, from 1 to 1000 entries with unique identifiers.",
+          "name": "vectors",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "KnnEvalQueryVector",
+                "namespace": "_global.knn_eval"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L48-L57"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalQueryVector",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The identifier of the query, which identifies it in the `failures` of the response.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The query vector.",
+          "name": "query_vector",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVector",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L59-L68"
+    },
+    {
+      "codegenNames": [
+        "float_array",
+        "base64"
+      ],
+      "description": "Both the float vector form and the base64 string form are accepted by the server",
+      "kind": "type_alias",
+      "name": {
+        "name": "QueryVector",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Knn.ts#L30-L34",
+      "type": {
+        "items": [
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "float",
+                "namespace": "_types"
+              }
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "float",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Numeric.ts#L26-L26",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "number",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "docs"
+        },
+        {
+          "name": "vectors"
+        }
+      ],
+      "name": {
+        "name": "KnnEvalQuerySourceType",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L100-L103"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Full-precision comparisons across all the matching vectors.",
+          "name": "full_precision_scan"
+        },
+        {
+          "description": "Quantized visits plus full-precision rescoring.",
+          "name": "quantized_visit_plus_rescore"
+        }
+      ],
+      "name": {
+        "name": "KnnEvalVectorOpsKind",
+        "namespace": "_global.knn_eval"
+      },
+      "specLocation": "_global/knn_eval/types.ts#L118-L127"
     },
     {
       "codegenNames": [
@@ -79480,6 +80137,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Scores every document that has a value for a `dense_vector` field, with the exact similarity between its vector and a query vector.\nUnlike the `knn` query, it doesn't use an index structure, or a cutoff based on `k` or `num_candidates`.",
+          "extDocId": "query-dsl-dense-vector-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query",
+          "name": "dense_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "Returns documents matching one or more wrapped queries, called query clauses or clauses.\nIf a returned document matches multiple query clauses, the `dis_max` query assigns the document the highest relevance score from any matching clause, plus a tie breaking increment for any additional matching subqueries.",
           "extDocId": "query-dsl-dis-max-query",
           "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dis-max-query",
@@ -80487,7 +81164,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L98-L437",
+      "specLocation": "_types/query_dsl/abstractions.ts#L99-L446",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -80666,22 +81343,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L462-L473"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "float",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Numeric.ts#L26-L26",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "number",
-          "namespace": "_builtins"
-        }
-      }
+      "specLocation": "_types/query_dsl/abstractions.ts#L471-L482"
     },
     {
       "description": "The minimum number of terms that should match as integer, percentage or range",
@@ -80711,21 +81373,6 @@
           }
         ],
         "kind": "union_of"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "integer",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Numeric.ts#L22-L22",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "number",
-          "namespace": "_builtins"
-        }
       }
     },
     {
@@ -81012,7 +81659,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L475-L509"
+      "specLocation": "_types/query_dsl/abstractions.ts#L484-L518"
     },
     {
       "kind": "enum",
@@ -81028,7 +81675,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L522-L525"
+      "specLocation": "_types/query_dsl/abstractions.ts#L531-L534"
     },
     {
       "kind": "enum",
@@ -81046,7 +81693,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L527-L536"
+      "specLocation": "_types/query_dsl/abstractions.ts#L536-L545"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -81077,6 +81724,502 @@
         }
       ],
       "specLocation": "_types/query_dsl/compound.ts#L76-L86"
+    },
+    {
+      "extDocId": "query-dsl-dense-vector-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-dense-vector-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "DenseVectorQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The name of the `dense_vector` field to search against.\nThe field can be indexed, or not indexed (`index: false`).",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The query vector. It must have the same number of dimensions as the field.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+          "name": "query_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVector",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The configuration to build the query vector, for example by running a text embedding model.\nYou must provide either `query_vector` or `query_vector_builder`, but not both.",
+          "name": "query_vector_builder",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "QueryVectorBuilder",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The similarity used for scoring, which overrides the similarity of the field for this query.\nIt defaults to the similarity of the field, or to `cosine` for a field that is not indexed.\nFor `bit` fields, only `l2_norm` is supported.\nIt can't be combined with `quantized: true`.",
+          "name": "similarity_function",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorSimilarity",
+              "namespace": "_types.mapping"
+            }
+          }
+        },
+        {
+          "description": "If `false`, the documents are scored with the full-precision vectors, regardless of the index options of the field.\nIf `true`, the documents are scored with the quantized vectors of a quantized field, which is faster but less accurate.\nFor a field that is not quantized, `true` has no effect.",
+          "name": "quantized",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/DenseVectorQuery.ts#L25-L58"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryVectorBuilder",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "embedding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Embedding",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "text_embedding",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextEmbedding",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.4.0"
+            }
+          },
+          "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
+          "name": "lookup",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "LookupQueryVectorBuilder",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Knn.ts#L115-L126",
+      "variants": {
+        "kind": "container"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Embedding",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "inference_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "input",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEmbeddingInput",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Knn.ts#L128-L132"
+    },
+    {
+      "codegenNames": [
+        "string",
+        "object"
+      ],
+      "description": "Knn embedding input.\nEither a string, an object or array of objects",
+      "kind": "type_alias",
+      "name": {
+        "name": "KnnEmbeddingInput",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Knn.ts#L134-L139",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceStringGroup",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "InferenceStringGroup",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Knn.ts#L141-L141",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "InferenceString",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "InferenceString",
+                "namespace": "_types"
+              }
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "InferenceString",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The type of data that the value represents.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmbeddingContentType",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The format of the data. If null, the default data format for the given type is used.",
+          "name": "format",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "EmbeddingContentFormat",
+                  "namespace": "inference._types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Knn.ts#L143-L158"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "text"
+        },
+        {
+          "name": "image"
+        },
+        {
+          "name": "audio"
+        },
+        {
+          "name": "video"
+        },
+        {
+          "name": "pdf"
+        }
+      ],
+      "name": {
+        "name": "EmbeddingContentType",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/CommonTypes.ts#L682-L692"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "text"
+        },
+        {
+          "name": "base64"
+        },
+        {
+          "name": "url"
+        }
+      ],
+      "name": {
+        "name": "EmbeddingContentFormat",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/CommonTypes.ts#L694-L703"
+    },
+    {
+      "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
+      "docId": "time-value",
+      "docUrl": "https://github.com/elastic/elasticsearch/blob/current/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java",
+      "extDocId": "time-units",
+      "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units",
+      "kind": "type_alias",
+      "name": {
+        "name": "Duration",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Time.ts#L52-L59",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "literal_value",
+            "value": -1
+          },
+          {
+            "kind": "literal_value",
+            "value": 0
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TextEmbedding",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.18.0"
+            }
+          },
+          "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
+          "name": "model_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The text to be converted into a vector by the specified model",
+          "name": "model_text",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Knn.ts#L160-L170"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "LookupQueryVectorBuilder",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "description": "The ID of the document to fetch the vector from",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The name of the index to fetch the document from",
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The name of the field containing the vector",
+          "name": "path",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The routing value to use when fetching the document",
+          "name": "routing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Knn.ts#L172-L181"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Computes the cosine similarity. During indexing Elasticsearch automatically normalizes vectors with `cosine`\nsimilarity to unit length. This allows to internally use `dot_product` for computing similarity, which is more\nefficient. Original un-normalized vectors can be still accessed through scripts.\n\nThe document `_score` is computed as `(1 + cosine(query, vector)) / 2`.\n\nThe `cosine` similarity does not allow vectors with zero magnitude, since cosine is not defined in this case.",
+          "name": "cosine"
+        },
+        {
+          "description": "Computes the dot product of two unit vectors. This option provides an optimized way to perform cosine similarity.\nThe constraints and computed score are defined by `element_type`.\n\nWhen `element_type` is `float`, all vectors must be unit length, including both document and query vectors.\n\nThe document `_score` is computed as `(1 + dot_product(query, vector)) / 2`.\n\nWhen `element_type` is `byte`, all vectors must have the same length including both document and query vectors or\nresults will be inaccurate.\n\nThe document `_score` is computed as `0.5 + (dot_product(query, vector) / (32768 * dims))` where `dims` is the\nnumber of dimensions per vector.",
+          "name": "dot_product"
+        },
+        {
+          "description": "Computes similarity based on the `L2` distance (also known as Euclidean distance) between the vectors.\n\nThe document `_score` is computed as `1 / (1 + l2_norm(query, vector)^2)`.\n\nFor `bit` vectors, instead of using `l2_norm`, the `hamming` distance between the vectors is used.\n\nThe `_score` transformation is `(numBits - hamming(a, b)) / numBits`.",
+          "name": "l2_norm"
+        },
+        {
+          "description": "Computes the maximum inner product of two vectors. This is similar to `dot_product`, but doesn't require vectors\nto be normalized. This means that each vector’s magnitude can significantly effect the score.\n\nThe document `_score` is adjusted to prevent negative values. For `max_inner_product` values `< 0`, the `_score`\nis `1 / (1 + -1 * max_inner_product(query, vector))`. For non-negative `max_inner_product` results the `_score`\nis calculated `max_inner_product(query, vector) + 1`.",
+          "name": "max_inner_product"
+        }
+      ],
+      "name": {
+        "name": "DenseVectorSimilarity",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L87-L132"
     },
     {
       "extDocId": "query-dsl-dis-max-query",
@@ -83413,7 +84556,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L439-L456"
+      "specLocation": "_types/query_dsl/abstractions.ts#L448-L465"
     },
     {
       "kind": "enum",
@@ -83847,20 +84990,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "collapse",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FieldCollapse",
-              "namespace": "_global.search._types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L41"
+      "specLocation": "_global/search/_types/FieldCollapse.ts#L24-L40"
     },
     {
       "description": "A reference to a field with formatting instructions on how to return the value",
@@ -83907,7 +85039,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L538-L552"
+      "specLocation": "_types/query_dsl/abstractions.ts#L547-L561"
     },
     {
       "inherits": {
@@ -86565,416 +87697,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L79-L109"
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "QueryVector",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Knn.ts#L30-L30",
-      "type": {
-        "kind": "array_of",
-        "value": {
-          "kind": "instance_of",
-          "type": {
-            "name": "float",
-            "namespace": "_types"
-          }
-        }
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "QueryVectorBuilder",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "embedding",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Embedding",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "text_embedding",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "TextEmbedding",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "9.4.0"
-            }
-          },
-          "description": "Lookup a vector from an existing document.\nMust reference a dense_vector field and a single value.",
-          "name": "lookup",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "LookupQueryVectorBuilder",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Knn.ts#L111-L122",
-      "variants": {
-        "kind": "container"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "Embedding",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "inference_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "name": "input",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "KnnEmbeddingInput",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "timeout",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Knn.ts#L124-L128"
-    },
-    {
-      "codegenNames": [
-        "string",
-        "object"
-      ],
-      "description": "Knn embedding input.\nEither a string, an object or array of objects",
-      "kind": "type_alias",
-      "name": {
-        "name": "KnnEmbeddingInput",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Knn.ts#L130-L135",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceStringGroup",
-              "namespace": "_types"
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "type_alias",
-      "name": {
-        "name": "InferenceStringGroup",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Knn.ts#L137-L137",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "InferenceString",
-              "namespace": "_types"
-            }
-          },
-          {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "InferenceString",
-                "namespace": "_types"
-              }
-            }
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "InferenceString",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The type of data that the value represents.",
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "EmbeddingContentType",
-              "namespace": "inference._types"
-            }
-          }
-        },
-        {
-          "description": "The format of the data. If null, the default data format for the given type is used.",
-          "name": "format",
-          "required": false,
-          "type": {
-            "items": [
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "EmbeddingContentFormat",
-                  "namespace": "inference._types"
-                }
-              },
-              {
-                "kind": "instance_of",
-                "type": {
-                  "name": "null",
-                  "namespace": "_builtins"
-                }
-              }
-            ],
-            "kind": "union_of"
-          }
-        },
-        {
-          "description": "String which may be raw text, the string representation of some other data such as an image in base64, or a URL that points to the data.",
-          "name": "value",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Knn.ts#L139-L154"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "text"
-        },
-        {
-          "name": "image"
-        },
-        {
-          "name": "audio"
-        },
-        {
-          "name": "video"
-        },
-        {
-          "name": "pdf"
-        }
-      ],
-      "name": {
-        "name": "EmbeddingContentType",
-        "namespace": "inference._types"
-      },
-      "specLocation": "inference/_types/CommonTypes.ts#L682-L692"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "text"
-        },
-        {
-          "name": "base64"
-        },
-        {
-          "name": "url"
-        }
-      ],
-      "name": {
-        "name": "EmbeddingContentFormat",
-        "namespace": "inference._types"
-      },
-      "specLocation": "inference/_types/CommonTypes.ts#L694-L703"
-    },
-    {
-      "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
-      "docId": "time-value",
-      "docUrl": "https://github.com/elastic/elasticsearch/blob/current/libs/core/src/main/java/org/elasticsearch/core/TimeValue.java",
-      "extDocId": "time-units",
-      "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#time-units",
-      "kind": "type_alias",
-      "name": {
-        "name": "Duration",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/Time.ts#L52-L59",
-      "type": {
-        "items": [
-          {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          },
-          {
-            "kind": "literal_value",
-            "value": -1
-          },
-          {
-            "kind": "literal_value",
-            "value": 0
-          }
-        ],
-        "kind": "union_of"
-      }
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "TextEmbedding",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "availability": {
-            "serverless": {},
-            "stack": {
-              "since": "8.18.0"
-            }
-          },
-          "description": "Model ID is required for all dense_vector fields but\nmay be inferred for semantic_text fields",
-          "name": "model_id",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The text to be converted into a vector by the specified model",
-          "name": "model_text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Knn.ts#L156-L166"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "LookupQueryVectorBuilder",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "description": "The ID of the document to fetch the vector from",
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The name of the index to fetch the document from",
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The name of the field containing the vector",
-          "name": "path",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The routing value to use when fetching the document",
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Knn.ts#L168-L177"
+      "specLocation": "_types/Knn.ts#L83-L113"
     },
     {
       "kind": "interface",
@@ -86996,7 +87719,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L35-L38"
+      "specLocation": "_types/Knn.ts#L39-L42"
     },
     {
       "description": "Returns documents matching a provided Kibana Query Language (KQL) expression.\nThe expression is parsed and rewritten into standard Query DSL.",
@@ -91778,7 +92501,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L511-L520"
+      "specLocation": "_types/query_dsl/abstractions.ts#L520-L529"
     },
     {
       "inherits": {
@@ -95749,7 +96472,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L107-L116"
+      "specLocation": "ml/_types/inference.ts#L101-L110"
     },
     {
       "kind": "interface",
@@ -95822,7 +96545,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L118-L133"
+      "specLocation": "ml/_types/inference.ts#L112-L127"
     },
     {
       "inherits": {
@@ -99426,7 +100149,7 @@
           }
         }
       ],
-      "specLocation": "_types/Knn.ts#L40-L77"
+      "specLocation": "_types/Knn.ts#L44-L81"
     },
     {
       "kind": "interface",
@@ -102766,7 +103489,7 @@
         "name": "OnScriptError",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L186-L189"
+      "specLocation": "_types/mapping/core.ts#L187-L190"
     },
     {
       "codegenNames": [
@@ -108922,7 +109645,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L229-L245"
+      "specLocation": "_global/search/_types/profile.ts#L239-L255"
     },
     {
       "kind": "interface",
@@ -109609,7 +110332,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L247-L250"
+      "specLocation": "_global/search/_types/profile.ts#L257-L260"
     },
     {
       "kind": "interface",
@@ -109715,7 +110438,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L252-L260"
+      "specLocation": "_global/search/_types/profile.ts#L262-L270"
     },
     {
       "kind": "interface",
@@ -109813,7 +110536,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L263-L272"
+      "specLocation": "_global/search/_types/profile.ts#L273-L282"
     },
     {
       "kind": "interface",
@@ -109873,7 +110596,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L274-L279"
+      "specLocation": "_global/search/_types/profile.ts#L284-L289"
     },
     {
       "kind": "interface",
@@ -109979,7 +110702,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L281-L289"
+      "specLocation": "_global/search/_types/profile.ts#L291-L299"
     },
     {
       "kind": "interface",
@@ -110209,7 +110932,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L292-L313"
+      "specLocation": "_global/search/_types/profile.ts#L302-L323"
     },
     {
       "kind": "interface",
@@ -110286,7 +111009,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L315-L321"
+      "specLocation": "_global/search/_types/profile.ts#L325-L331"
     },
     {
       "kind": "interface",
@@ -110374,7 +111097,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L323-L330"
+      "specLocation": "_global/search/_types/profile.ts#L333-L340"
     },
     {
       "kind": "interface",
@@ -110472,7 +111195,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L332-L341"
+      "specLocation": "_global/search/_types/profile.ts#L342-L351"
     },
     {
       "kind": "interface",
@@ -110507,7 +111230,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L343-L346"
+      "specLocation": "_global/search/_types/profile.ts#L353-L356"
     },
     {
       "kind": "type_alias",
@@ -110531,7 +111254,7 @@
         "name": "RescoreProfile",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/profile.ts#L164-L175",
+      "specLocation": "_global/search/_types/profile.ts#L174-L185",
       "type": {
         "items": [
           {
@@ -110598,7 +111321,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L193-L197"
+      "specLocation": "_global/search/_types/profile.ts#L203-L207"
     },
     {
       "kind": "interface",
@@ -110672,7 +111395,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L177-L191"
+      "specLocation": "_global/search/_types/profile.ts#L187-L201"
     },
     {
       "inherits": {
@@ -110708,7 +111431,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L199-L203"
+      "specLocation": "_global/search/_types/profile.ts#L209-L213"
     },
     {
       "inherits": {
@@ -110743,7 +111466,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L205-L208"
+      "specLocation": "_global/search/_types/profile.ts#L215-L218"
     },
     {
       "kind": "interface",
@@ -110822,7 +111545,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L211-L221"
+      "specLocation": "_global/search/_types/profile.ts#L221-L231"
     },
     {
       "kind": "interface",
@@ -110871,7 +111594,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L223-L227"
+      "specLocation": "_global/search/_types/profile.ts#L233-L237"
     },
     {
       "kind": "interface",
@@ -111039,7 +111762,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L148-L162"
+      "specLocation": "_global/search/_types/profile.ts#L158-L172"
     },
     {
       "kind": "interface",
@@ -111105,6 +111828,28 @@
         },
         {
           "name": "create_weight_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set_count",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -111269,7 +112014,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L125-L146"
+      "specLocation": "_global/search/_types/profile.ts#L125-L156"
     },
     {
       "description": "Coordinator snapshot of the original search request, serialized under `profile.request` when profiling is enabled.\nIntroduced in Elasticsearch 9.5; omitted when the cluster contains mixed-version nodes that do not serialize this metadata.",
@@ -113000,6 +113745,91 @@
       }
     },
     {
+      "codegenNames": [
+        "bulk",
+        "search"
+      ],
+      "kind": "type_alias",
+      "name": {
+        "name": "BulkByPaginatedSearchFailure",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/Errors.ts#L64-L67",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "BulkIndexByScrollFailure",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ShardFailure",
+              "namespace": "_types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BulkIndexByScrollFailure",
+        "namespace": "_types"
+      },
+      "properties": [
+        {
+          "name": "cause",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "index",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/Errors.ts#L69-L74"
+    },
+    {
       "docId": "byte-units",
       "docUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#byte-units",
       "kind": "type_alias",
@@ -113100,7 +113930,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L408-L414"
+      "specLocation": "_types/common.ts#L415-L421"
     },
     {
       "kind": "type_alias",
@@ -113108,7 +113938,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L416-L416",
+      "specLocation": "_types/common.ts#L423-L423",
       "type": {
         "items": [
           {
@@ -113228,7 +114058,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L418-L472"
+      "specLocation": "_types/common.ts#L425-L479"
     },
     {
       "kind": "type_alias",
@@ -113236,7 +114066,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L474-L474",
+      "specLocation": "_types/common.ts#L481-L481",
       "type": {
         "items": [
           {
@@ -114063,7 +114893,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L391-L396",
+      "specLocation": "_types/common.ts#L398-L403",
       "type": {
         "items": [
           {
@@ -114096,7 +114926,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L406"
+      "specLocation": "_types/common.ts#L405-L413"
     },
     {
       "kind": "type_alias",
@@ -114127,6 +114957,24 @@
           "namespace": "_builtins"
         }
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "Sort by the time the thread was runnable, then by CPU time.",
+          "name": "total"
+        },
+        {
+          "description": "Sort by CPU time only.",
+          "name": "cpu"
+        }
+      ],
+      "name": {
+        "name": "ThreadSortOrder",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L327-L332"
     },
     {
       "kind": "enum",
@@ -114350,7 +115198,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L331"
+      "specLocation": "_types/common.ts#L334-L338"
     },
     {
       "codegenNames": [
@@ -114409,7 +115257,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L340"
+      "specLocation": "_types/common.ts#L340-L347"
     },
     {
       "kind": "type_alias",
@@ -123645,32 +124493,6 @@
       "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
     },
     {
-      "kind": "enum",
-      "members": [
-        {
-          "description": "Computes the cosine similarity. During indexing Elasticsearch automatically normalizes vectors with `cosine`\nsimilarity to unit length. This allows to internally use `dot_product` for computing similarity, which is more\nefficient. Original un-normalized vectors can be still accessed through scripts.\n\nThe document `_score` is computed as `(1 + cosine(query, vector)) / 2`.\n\nThe `cosine` similarity does not allow vectors with zero magnitude, since cosine is not defined in this case.",
-          "name": "cosine"
-        },
-        {
-          "description": "Computes the dot product of two unit vectors. This option provides an optimized way to perform cosine similarity.\nThe constraints and computed score are defined by `element_type`.\n\nWhen `element_type` is `float`, all vectors must be unit length, including both document and query vectors.\n\nThe document `_score` is computed as `(1 + dot_product(query, vector)) / 2`.\n\nWhen `element_type` is `byte`, all vectors must have the same length including both document and query vectors or\nresults will be inaccurate.\n\nThe document `_score` is computed as `0.5 + (dot_product(query, vector) / (32768 * dims))` where `dims` is the\nnumber of dimensions per vector.",
-          "name": "dot_product"
-        },
-        {
-          "description": "Computes similarity based on the `L2` distance (also known as Euclidean distance) between the vectors.\n\nThe document `_score` is computed as `1 / (1 + l2_norm(query, vector)^2)`.\n\nFor `bit` vectors, instead of using `l2_norm`, the `hamming` distance between the vectors is used.\n\nThe `_score` transformation is `(numBits - hamming(a, b)) / numBits`.",
-          "name": "l2_norm"
-        },
-        {
-          "description": "Computes the maximum inner product of two vectors. This is similar to `dot_product`, but doesn't require vectors\nto be normalized. This means that each vector’s magnitude can significantly effect the score.\n\nThe document `_score` is adjusted to prevent negative values. For `max_inner_product` values `< 0`, the `_score`\nis `1 / (1 + -1 * max_inner_product(query, vector))`. For non-negative `max_inner_product` results the `_score`\nis calculated `max_inner_product(query, vector) + 1`.",
-          "name": "max_inner_product"
-        }
-      ],
-      "name": {
-        "name": "DenseVectorSimilarity",
-        "namespace": "_types.mapping"
-      },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L87-L132"
-    },
-    {
       "codegenNames": [
         "enabled",
         "config"
@@ -123681,7 +124503,7 @@
         "name": "DocValues",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L80-L84",
+      "specLocation": "_types/mapping/core.ts#L81-L85",
       "type": {
         "items": [
           {
@@ -123753,7 +124575,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L53-L78"
+      "specLocation": "_types/mapping/core.ts#L54-L79"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. Boolean values should be accepted on reading, and\ntrue and false must be serialized as JSON booleans, or it may break Kibana (see elasticsearch-java#139)",
@@ -123859,7 +124681,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L357-L362"
+      "specLocation": "_types/mapping/core.ts#L358-L363"
     },
     {
       "kind": "enum",
@@ -124305,7 +125127,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L90-L92"
+      "specLocation": "_types/mapping/core.ts#L91-L93"
     },
     {
       "inherits": {
@@ -124332,7 +125154,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L86-L88"
+      "specLocation": "_types/mapping/core.ts#L87-L89"
     },
     {
       "inherits": {
@@ -124370,7 +125192,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L48-L51"
+      "specLocation": "_types/mapping/core.ts#L49-L52"
     },
     {
       "kind": "interface",
@@ -124625,7 +125447,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L94-L109"
+      "specLocation": "_types/mapping/core.ts#L95-L110"
     },
     {
       "kind": "interface",
@@ -124774,6 +125596,17 @@
           }
         },
         {
+          "name": "time_series_dimension",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "name": "analyzer",
           "required": false,
           "type": {
@@ -124792,6 +125625,28 @@
             "type": {
               "name": "boolean",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "name": "fielddata_frequency_filter",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FielddataFrequencyFilter",
+              "namespace": "indices._types"
             }
           }
         },
@@ -124896,6 +125751,29 @@
           }
         },
         {
+          "name": "similarity",
+          "required": false,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
           "name": "term_vector",
           "required": false,
           "type": {
@@ -124938,9 +125816,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "subobjects",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Subobjects",
+              "namespace": "_types.mapping"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L401-L432"
+      "specLocation": "_types/mapping/core.ts#L402-L442"
     },
     {
       "kind": "enum",
@@ -124966,6 +125855,49 @@
         "namespace": "_types.mapping"
       },
       "specLocation": "_types/mapping/TimeSeriesMetricType.ts#L20-L26"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FielddataFrequencyFilter",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "max",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "min_segment_size",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/FielddataFrequencyFilter.ts#L22-L26"
     },
     {
       "kind": "interface",
@@ -124997,7 +125929,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L364-L367"
+      "specLocation": "_types/mapping/core.ts#L365-L368"
     },
     {
       "kind": "enum",
@@ -125029,6 +125961,23 @@
         "namespace": "_types.mapping"
       },
       "specLocation": "_types/mapping/TermVectorOption.ts#L20-L28"
+    },
+    {
+      "esQuirk": "This enum is a boolean that evolved into a tri-state enum. True and False have\nto be (de)serialized as JSON booleans.",
+      "kind": "enum",
+      "members": [
+        {
+          "name": "true"
+        },
+        {
+          "name": "false"
+        }
+      ],
+      "name": {
+        "name": "Subobjects",
+        "namespace": "_types.mapping"
+      },
+      "specLocation": "_types/mapping/TypeMapping.ts#L63-L74"
     },
     {
       "inherits": {
@@ -125100,7 +126049,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L137-L141"
+      "specLocation": "_types/mapping/core.ts#L138-L142"
     },
     {
       "inherits": {
@@ -125277,7 +126226,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L143-L162"
+      "specLocation": "_types/mapping/core.ts#L144-L163"
     },
     {
       "description": "A variant of text that trades scoring and efficiency of positional queries for space efficiency. This field\neffectively stores data the same way as a text field that only indexes documents (index_options: docs) and\ndisables norms (norms: false). Term queries perform as fast if not faster as on text fields, however queries\nthat need positions such as the match_phrase query perform slower as they need to look at the _source document\nto verify whether a phrase matches. All queries return constant scores that are equal to 1.0.",
@@ -125358,7 +126307,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L330-L355"
+      "specLocation": "_types/mapping/core.ts#L331-L356"
     },
     {
       "inherits": {
@@ -125382,7 +126331,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L237-L239"
+      "specLocation": "_types/mapping/core.ts#L238-L240"
     },
     {
       "inherits": {
@@ -125417,7 +126366,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L241-L244"
+      "specLocation": "_types/mapping/core.ts#L242-L245"
     },
     {
       "inherits": {
@@ -125452,7 +126401,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L246-L249"
+      "specLocation": "_types/mapping/core.ts#L247-L250"
     },
     {
       "inherits": {
@@ -125587,7 +126536,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L311-L322"
+      "specLocation": "_types/mapping/core.ts#L312-L323"
     },
     {
       "inherits": {
@@ -125800,50 +126749,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L369-L386"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FielddataFrequencyFilter",
-        "namespace": "indices._types"
-      },
-      "properties": [
-        {
-          "name": "max",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "double",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "min_segment_size",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "indices/_types/FielddataFrequencyFilter.ts#L22-L26"
+      "specLocation": "_types/mapping/core.ts#L370-L387"
     },
     {
       "inherits": {
@@ -125867,7 +126773,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L388-L390"
+      "specLocation": "_types/mapping/core.ts#L389-L391"
     },
     {
       "inherits": {
@@ -125908,7 +126814,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L392-L399"
+      "specLocation": "_types/mapping/core.ts#L393-L400"
     },
     {
       "inherits": {
@@ -126020,7 +126926,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L125-L135"
+      "specLocation": "_types/mapping/core.ts#L126-L136"
     },
     {
       "inherits": {
@@ -126154,7 +127060,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L111-L123"
+      "specLocation": "_types/mapping/core.ts#L112-L124"
     },
     {
       "inherits": {
@@ -126664,23 +127570,6 @@
       "specLocation": "_types/mapping/complex.ts#L58-L62"
     },
     {
-      "esQuirk": "This enum is a boolean that evolved into a tri-state enum. True and False have\nto be (de)serialized as JSON booleans.",
-      "kind": "enum",
-      "members": [
-        {
-          "name": "true"
-        },
-        {
-          "name": "false"
-        }
-      ],
-      "name": {
-        "name": "Subobjects",
-        "namespace": "_types.mapping"
-      },
-      "specLocation": "_types/mapping/TypeMapping.ts#L63-L74"
-    },
-    {
       "inherits": {
         "type": {
           "name": "CorePropertyBase",
@@ -126782,7 +127671,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L251-L258"
+      "specLocation": "_types/mapping/core.ts#L252-L259"
     },
     {
       "kind": "enum",
@@ -126801,7 +127690,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L434-L438"
+      "specLocation": "_types/mapping/core.ts#L444-L448"
     },
     {
       "kind": "interface",
@@ -126927,7 +127816,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L272-L309"
+      "specLocation": "_types/mapping/core.ts#L273-L310"
     },
     {
       "kind": "interface",
@@ -127171,7 +128060,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L260-L270"
+      "specLocation": "_types/mapping/core.ts#L261-L271"
     },
     {
       "inherits": {
@@ -128082,7 +128971,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L221-L224"
+      "specLocation": "_types/mapping/core.ts#L222-L225"
     },
     {
       "inherits": {
@@ -128205,7 +129094,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L164-L184"
+      "specLocation": "_types/mapping/core.ts#L165-L185"
     },
     {
       "inherits": {
@@ -128240,7 +129129,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L201-L204"
+      "specLocation": "_types/mapping/core.ts#L202-L205"
     },
     {
       "inherits": {
@@ -128275,7 +129164,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L191-L194"
+      "specLocation": "_types/mapping/core.ts#L192-L195"
     },
     {
       "inherits": {
@@ -128310,7 +129199,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L196-L199"
+      "specLocation": "_types/mapping/core.ts#L197-L200"
     },
     {
       "inherits": {
@@ -128345,7 +129234,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L206-L209"
+      "specLocation": "_types/mapping/core.ts#L207-L210"
     },
     {
       "inherits": {
@@ -128380,7 +129269,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L211-L214"
+      "specLocation": "_types/mapping/core.ts#L212-L215"
     },
     {
       "inherits": {
@@ -128426,7 +129315,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L231-L235"
+      "specLocation": "_types/mapping/core.ts#L232-L236"
     },
     {
       "inherits": {
@@ -128461,7 +129350,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L216-L219"
+      "specLocation": "_types/mapping/core.ts#L217-L220"
     },
     {
       "inherits": {
@@ -128496,7 +129385,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L226-L229"
+      "specLocation": "_types/mapping/core.ts#L227-L230"
     },
     {
       "inherits": {
@@ -137166,7 +138055,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L136-L142"
+      "specLocation": "ilm/_types/Phase.ts#L151-L157"
     },
     {
       "kind": "interface",
@@ -137187,7 +138076,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L152-L154"
+      "specLocation": "ilm/_types/Phase.ts#L167-L169"
     },
     {
       "kind": "interface",
@@ -137272,7 +138161,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L144-L146"
+      "specLocation": "ilm/_types/Phase.ts#L159-L161"
     },
     {
       "kind": "interface",
@@ -137450,7 +138339,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L131-L134"
+      "specLocation": "ilm/_types/Phase.ts#L131-L149"
     },
     {
       "kind": "interface",
@@ -137514,7 +138403,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L148-L150"
+      "specLocation": "ilm/_types/Phase.ts#L163-L165"
     },
     {
       "kind": "interface",
@@ -137607,7 +138496,48 @@
         "name": "IndexRoutingAllocationOptions",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexRouting.ts#L38-L43"
+      "specLocation": "indices/_types/IndexRouting.ts#L50-L55"
+    },
+    {
+      "kind": "type_alias",
+      "name": {
+        "name": "IndexRoutingAllocationRequire",
+        "namespace": "indices._types"
+      },
+      "specLocation": "indices/_types/IndexRouting.ts#L41-L44",
+      "type": {
+        "key": {
+          "kind": "instance_of",
+          "type": {
+            "name": "string",
+            "namespace": "_builtins"
+          }
+        },
+        "kind": "dictionary_of",
+        "singleKey": false,
+        "value": {
+          "items": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          ],
+          "kind": "union_of"
+        }
+      }
     },
     {
       "kind": "enum",
@@ -137629,7 +138559,7 @@
         "name": "IndexRoutingRebalanceOptions",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexRouting.ts#L45-L50"
+      "specLocation": "indices/_types/IndexRouting.ts#L57-L62"
     },
     {
       "kind": "enum",
@@ -138528,7 +139458,7 @@
         "name": "AliasActionType",
         "namespace": "indices.update_aliases"
       },
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L62-L66"
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L57-L61"
     },
     {
       "kind": "enum",
@@ -142169,7 +143099,7 @@
         "name": "FeatureExtractor",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L93-L96",
+      "specLocation": "ml/_types/inference.ts#L93-L93",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -142219,8 +143149,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L98-L105",
-      "variantName": "query_extractor"
+      "specLocation": "ml/_types/inference.ts#L95-L99"
     },
     {
       "kind": "enum",
@@ -142342,7 +143271,7 @@
         "name": "PredictedValue",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L480-L480",
+      "specLocation": "ml/_types/inference.ts#L474-L474",
       "type": {
         "items": [
           {
@@ -142453,7 +143382,7 @@
         "name": "TokenizationTruncate",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/inference.ts#L373-L377"
+      "specLocation": "ml/_types/inference.ts#L367-L371"
     },
     {
       "kind": "enum",
@@ -143181,7 +144110,7 @@
         "name": "DataSourcePrivilege",
         "namespace": "security._types"
       },
-      "specLocation": "security/_types/Privileges.ts#L489-L511"
+      "specLocation": "security/_types/Privileges.ts#L493-L515"
     },
     {
       "kind": "enum",
@@ -144322,7 +145251,7 @@
         "name": "AccessTokenGrantType",
         "namespace": "security.get_token"
       },
-      "specLocation": "security/get_token/types.ts#L23-L58"
+      "specLocation": "security/get_token/types.ts#L25-L60"
     },
     {
       "kind": "enum",
@@ -148921,7 +149850,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L342-L355"
+      "specLocation": "_types/common.ts#L349-L362"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -148976,7 +149905,7 @@
             "value": {
               "kind": "instance_of",
               "type": {
-                "name": "BulkIndexByScrollFailure",
+                "name": "BulkByPaginatedSearchFailure",
                 "namespace": "_types"
               }
             }
@@ -149131,60 +150060,6 @@
         }
       ],
       "specLocation": "_types/Reindex.ts#L90-L151"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "BulkIndexByScrollFailure",
-        "namespace": "_types"
-      },
-      "properties": [
-        {
-          "name": "cause",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ErrorCause",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "id",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Id",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "index",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "IndexName",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "status",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "integer",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/Errors.ts#L64-L69"
     },
     {
       "attachedBehaviors": [
@@ -154633,12 +155508,21 @@
         {
           "name": "max_result_window",
           "required": false,
-          "serverDefault": 10000,
+          "serverDefault": "10000",
           "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "integer",
+                  "namespace": "_types"
+                }
+              }
+            ],
             "kind": "instance_of",
             "type": {
-              "name": "integer",
-              "namespace": "_types"
+              "name": "Stringified",
+              "namespace": "_spec_utils"
             }
           }
         },
@@ -155770,7 +156654,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L22-L25"
+      "specLocation": "indices/_types/IndexRouting.ts#L23-L26"
     },
     {
       "kind": "interface",
@@ -155802,6 +156686,18 @@
           }
         },
         {
+          "description": "Assign the index to a node whose attribute has all of the given values.\nEach key is a node attribute: one of the built-in attributes `_name`, `_host_ip`, `_publish_ip`, `_ip`, `_host`, `_id` and `_tier`, or a custom node attribute.\nEach value is a comma-separated string or an array of strings, and can use wildcards.",
+          "name": "require",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexRoutingAllocationRequire",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
           "name": "initial_recovery",
           "required": false,
           "type": {
@@ -155824,7 +156720,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L27-L32"
+      "specLocation": "indices/_types/IndexRouting.ts#L28-L39"
     },
     {
       "kind": "interface",
@@ -155856,7 +156752,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L52-L55"
+      "specLocation": "indices/_types/IndexRouting.ts#L64-L67"
     },
     {
       "kind": "interface",
@@ -155877,7 +156773,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L57-L59"
+      "specLocation": "indices/_types/IndexRouting.ts#L69-L71"
     },
     {
       "kind": "interface",
@@ -155910,7 +156806,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L62-L65"
+      "specLocation": "indices/_types/IndexRouting.ts#L74-L77"
     },
     {
       "kind": "interface",
@@ -155931,7 +156827,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexRouting.ts#L34-L36"
+      "specLocation": "indices/_types/IndexRouting.ts#L46-L48"
     },
     {
       "kind": "interface",
@@ -156428,7 +157324,7 @@
           "availability": {
             "serverless": {},
             "stack": {
-              "since": "9.4.0"
+              "since": "9.5.0"
             }
           },
           "description": "The name of the field that stores the temporality of a metric.\nThe referenced field must be a `keyword` dimension field; if the setting is unset or the\nfield is missing or invalid, the metric temporality resolves to null.",
@@ -156935,7 +157831,7 @@
       "properties": [
         {
           "name": "type",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -163193,11 +164089,18 @@
       },
       "kind": "interface",
       "name": {
-        "name": "IndicesAliasesResponseBody",
-        "namespace": "indices.delete_alias"
+        "name": "AliasesResponseBody",
+        "namespace": "indices._types"
       },
       "properties": [
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "If `true`, at least one alias action failed.\nThe request still returns HTTP 200.",
           "name": "errors",
           "required": false,
           "type": {
@@ -163209,7 +164112,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_alias/IndicesDeleteAliasResponse.ts#L27-L29"
+      "specLocation": "indices/_types/AliasesResponseBody.ts#L22-L30"
     },
     {
       "kind": "interface",
@@ -166164,8 +167067,8 @@
     {
       "inherits": {
         "type": {
-          "name": "AcknowledgedResponseBase",
-          "namespace": "_types"
+          "name": "AliasesResponseBody",
+          "namespace": "indices._types"
         }
       },
       "kind": "interface",
@@ -166173,8 +167076,128 @@
         "name": "IndicesUpdateAliasesResponseBody",
         "namespace": "indices.update_aliases"
       },
-      "properties": [],
-      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L43"
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.14.0"
+            }
+          },
+          "description": "Results for each action in the request.\nReturned only when `errors` is `true`.",
+          "name": "action_results",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "AliasActionResult",
+                "namespace": "indices.update_aliases"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L30-L38"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionResult",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action this result describes.",
+          "name": "action",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionSummary",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "HTTP status for this action.\n`200` when the action succeeds.",
+          "name": "status",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Cause of the failure.\nReturned only when this action fails.",
+          "name": "error",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L40-L55"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "AliasActionSummary",
+        "namespace": "indices.update_aliases"
+      },
+      "properties": [
+        {
+          "description": "The action that was applied.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "AliasActionType",
+              "namespace": "indices.update_aliases"
+            }
+          }
+        },
+        {
+          "description": "Resolved data streams or indices for the action.",
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexName",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Aliases for the action.",
+          "name": "aliases",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "IndexAlias",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/update_aliases/IndicesUpdateAliasesResponse.ts#L63-L76"
     },
     {
       "kind": "interface",
@@ -177538,6 +178561,253 @@
     {
       "kind": "interface",
       "name": {
+        "name": "KnnEvalSettings",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The percentage of postings to visit, from 0 to 100.\n`0` selects the automatic visit calculation.",
+          "name": "visit_percentage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of nearest neighbor candidates to consider per shard.\nIt can't be less than `k`, or more than 10000 (9999 with sampling).",
+          "name": "num_candidates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The rescoring of the candidates. Only applies to quantized fields.",
+          "name": "rescore_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RescoreVector",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, compares every vector at full precision.\nOnly applies to the `baseline`, requires `allow_exact_baseline`, and can't be combined with other settings.",
+          "name": "exact",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L70-L91"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalQuerySourceSummary",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "How the query vectors were chosen.",
+          "name": "from",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalQuerySourceType",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L93-L98"
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "KnnEvalSettings",
+          "namespace": "_global.knn_eval"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalReportedSettings",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the number of vectors to rescore exceeded the limit of 10000.",
+          "name": "rescore_window_capped",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the hits were not rescored, so their scores are estimates, and no query is excluded from the mean recall.",
+          "name": "quantized_scores",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L105-L116"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalResult",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "description": "The evaluated settings.",
+          "name": "knn_settings",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "KnnEvalReportedSettings",
+              "namespace": "_global.knn_eval"
+            }
+          }
+        },
+        {
+          "description": "The mean recall of the included queries, or `null` if no query is included.",
+          "name": "recall",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "double",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        },
+        {
+          "description": "The number of queries included in the mean recall.",
+          "name": "included_queries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of queries excluded from the mean recall, because the search found a document scoring above the baseline's lowest top `k` score.",
+          "name": "excluded_queries",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The time the searches took, in milliseconds.",
+          "name": "took_ms",
+          "required": true,
+          "type": {
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "UnitMillis",
+                  "namespace": "_types"
+                }
+              }
+            ],
+            "kind": "instance_of",
+            "type": {
+              "name": "DurationValue",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of vector operations of the searches.",
+          "name": "vector_ops",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L129-L154"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "KnnEvalFailure",
+        "namespace": "_global.knn_eval"
+      },
+      "properties": [
+        {
+          "name": "error",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ErrorCause",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/knn_eval/types.ts#L156-L158"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "LicenseInformation",
         "namespace": "license.get"
       },
@@ -177917,7 +179187,7 @@
           }
         }
       ],
-      "specLocation": "_types/Errors.ts#L71-L76"
+      "specLocation": "_types/Errors.ts#L76-L81"
     },
     {
       "kind": "interface",
@@ -182742,7 +184012,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L357-L389"
+      "specLocation": "_types/common.ts#L364-L396"
     },
     {
       "kind": "interface",
@@ -184830,7 +186100,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L202-L214"
+      "specLocation": "ml/_types/inference.ts#L196-L208"
     },
     {
       "description": "Tokenization options stored in inference configuration",
@@ -184912,7 +186182,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L135-L158",
+      "specLocation": "ml/_types/inference.ts#L129-L152",
       "variants": {
         "kind": "container"
       }
@@ -184931,7 +186201,7 @@
         "namespace": "ml._types"
       },
       "properties": [],
-      "specLocation": "ml/_types/inference.ts#L188-L189"
+      "specLocation": "ml/_types/inference.ts#L182-L183"
     },
     {
       "kind": "interface",
@@ -185006,7 +186276,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L160-L186"
+      "specLocation": "ml/_types/inference.ts#L154-L180"
     },
     {
       "description": "RoBERTa tokenization configuration options",
@@ -185036,7 +186306,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L191-L198"
+      "specLocation": "ml/_types/inference.ts#L185-L192"
     },
     {
       "inherits": {
@@ -185051,7 +186321,7 @@
         "namespace": "ml._types"
       },
       "properties": [],
-      "specLocation": "ml/_types/inference.ts#L200-L200"
+      "specLocation": "ml/_types/inference.ts#L194-L194"
     },
     {
       "kind": "interface",
@@ -185072,7 +186342,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L250-L252"
+      "specLocation": "ml/_types/inference.ts#L244-L246"
     },
     {
       "description": "Zero shot classification configuration options",
@@ -185163,7 +186433,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L216-L239"
+      "specLocation": "ml/_types/inference.ts#L210-L233"
     },
     {
       "description": "Fill mask inference options",
@@ -185233,7 +186503,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L286-L303"
+      "specLocation": "ml/_types/inference.ts#L280-L297"
     },
     {
       "kind": "interface",
@@ -185358,7 +186628,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L275-L284"
+      "specLocation": "ml/_types/inference.ts#L269-L278"
     },
     {
       "description": "Pass through configuration options",
@@ -185404,7 +186674,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L241-L248"
+      "specLocation": "ml/_types/inference.ts#L235-L242"
     },
     {
       "description": "Text embedding inference options",
@@ -185462,7 +186732,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L254-L264"
+      "specLocation": "ml/_types/inference.ts#L248-L258"
     },
     {
       "description": "Text expansion inference options",
@@ -185508,7 +186778,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L266-L273"
+      "specLocation": "ml/_types/inference.ts#L260-L267"
     },
     {
       "description": "Question answering inference options",
@@ -185567,7 +186837,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L305-L315"
+      "specLocation": "ml/_types/inference.ts#L299-L309"
     },
     {
       "kind": "interface",
@@ -187096,7 +188366,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L319-L341",
+      "specLocation": "ml/_types/inference.ts#L313-L335",
       "variants": {
         "kind": "container"
       }
@@ -187160,7 +188430,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L386-L395"
+      "specLocation": "ml/_types/inference.ts#L380-L389"
     },
     {
       "kind": "interface",
@@ -187194,7 +188464,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L379-L384"
+      "specLocation": "ml/_types/inference.ts#L373-L378"
     },
     {
       "kind": "interface",
@@ -187255,7 +188525,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L397-L406"
+      "specLocation": "ml/_types/inference.ts#L391-L400"
     },
     {
       "kind": "interface",
@@ -187301,7 +188571,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L434-L441"
+      "specLocation": "ml/_types/inference.ts#L428-L435"
     },
     {
       "kind": "interface",
@@ -187335,7 +188605,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L427-L432"
+      "specLocation": "ml/_types/inference.ts#L421-L426"
     },
     {
       "kind": "interface",
@@ -187369,7 +188639,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L408-L413"
+      "specLocation": "ml/_types/inference.ts#L402-L407"
     },
     {
       "kind": "interface",
@@ -187402,7 +188672,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L415-L419"
+      "specLocation": "ml/_types/inference.ts#L409-L413"
     },
     {
       "kind": "interface",
@@ -187435,7 +188705,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L421-L425"
+      "specLocation": "ml/_types/inference.ts#L415-L419"
     },
     {
       "kind": "interface",
@@ -187505,7 +188775,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L443-L454"
+      "specLocation": "ml/_types/inference.ts#L437-L448"
     },
     {
       "kind": "interface",
@@ -187647,7 +188917,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L482-L530"
+      "specLocation": "ml/_types/inference.ts#L476-L524"
     },
     {
       "kind": "interface",
@@ -187712,7 +188982,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L456-L462"
+      "specLocation": "ml/_types/inference.ts#L450-L456"
     },
     {
       "kind": "interface",
@@ -187755,7 +189025,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L463-L467"
+      "specLocation": "ml/_types/inference.ts#L457-L461"
     },
     {
       "kind": "interface",
@@ -187801,7 +189071,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L474-L478"
+      "specLocation": "ml/_types/inference.ts#L468-L472"
     },
     {
       "kind": "interface",
@@ -187833,7 +189103,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/inference.ts#L469-L472"
+      "specLocation": "ml/_types/inference.ts#L463-L466"
     },
     {
       "kind": "interface",
@@ -190823,7 +192093,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L98-L109"
+      "specLocation": "_global/rank_eval/types.ts#L99-L110"
     },
     {
       "kind": "interface",
@@ -190856,7 +192126,7 @@
         }
       ],
       "shortcutProperty": "query",
-      "specLocation": "_global/rank_eval/types.ts#L111-L117"
+      "specLocation": "_global/rank_eval/types.ts#L123-L129"
     },
     {
       "kind": "interface",
@@ -190902,7 +192172,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L119-L126"
+      "specLocation": "_global/rank_eval/types.ts#L131-L138"
     },
     {
       "kind": "interface",
@@ -190967,7 +192237,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L90-L96"
+      "specLocation": "_global/rank_eval/types.ts#L91-L97"
     },
     {
       "description": "Precision at K (P@k)",
@@ -190999,7 +192269,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L42-L52"
+      "specLocation": "_global/rank_eval/types.ts#L43-L53"
     },
     {
       "inherits": {
@@ -191028,7 +192298,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L34-L40"
+      "specLocation": "_global/rank_eval/types.ts#L35-L41"
     },
     {
       "kind": "interface",
@@ -191051,7 +192321,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L26-L32"
+      "specLocation": "_global/rank_eval/types.ts#L27-L33"
     },
     {
       "description": "Recall at K (R@k)",
@@ -191069,7 +192339,7 @@
         "namespace": "_global.rank_eval"
       },
       "properties": [],
-      "specLocation": "_global/rank_eval/types.ts#L54-L58"
+      "specLocation": "_global/rank_eval/types.ts#L55-L59"
     },
     {
       "description": "Mean Reciprocal Rank",
@@ -191087,7 +192357,7 @@
         "namespace": "_global.rank_eval"
       },
       "properties": [],
-      "specLocation": "_global/rank_eval/types.ts#L60-L64"
+      "specLocation": "_global/rank_eval/types.ts#L61-L65"
     },
     {
       "description": "Discounted cumulative gain (DCG)",
@@ -191120,7 +192390,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L66-L77"
+      "specLocation": "_global/rank_eval/types.ts#L67-L78"
     },
     {
       "description": "Expected Reciprocal Rank (ERR)",
@@ -191151,7 +192421,41 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L79-L88"
+      "specLocation": "_global/rank_eval/types.ts#L80-L89"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RankEvalTemplate",
+        "namespace": "_global.rank_eval"
+      },
+      "properties": [
+        {
+          "description": "The ID of the template. A rated request refers to it by this ID in its `template_id`.",
+          "name": "id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The search template, either an inline `source` or the `id` of a stored search template.\nIt must be a `mustache` template (the default `lang`), and it must render to a search request body.\nAny `params` set here are ignored: each rated request provides its own `params`, which are used to render the template.",
+          "name": "template",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Script",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/rank_eval/types.ts#L112-L121"
     },
     {
       "kind": "interface",
@@ -191245,7 +192549,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L128-L139"
+      "specLocation": "_global/rank_eval/types.ts#L140-L151"
     },
     {
       "kind": "interface",
@@ -191277,7 +192581,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L152-L155"
+      "specLocation": "_global/rank_eval/types.ts#L164-L167"
     },
     {
       "kind": "interface",
@@ -191321,7 +192625,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L141-L144"
+      "specLocation": "_global/rank_eval/types.ts#L153-L156"
     },
     {
       "kind": "interface",
@@ -191364,7 +192668,7 @@
           }
         }
       ],
-      "specLocation": "_global/rank_eval/types.ts#L146-L150"
+      "specLocation": "_global/rank_eval/types.ts#L158-L162"
     },
     {
       "kind": "interface",
@@ -192463,7 +193767,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L513-L523"
+      "specLocation": "security/_types/Privileges.ts#L517-L527"
     },
     {
       "kind": "interface",
@@ -192526,7 +193830,7 @@
           }
         }
       ],
-      "specLocation": "security/_types/Privileges.ts#L525-L545"
+      "specLocation": "security/_types/Privileges.ts#L529-L549"
     },
     {
       "kind": "interface",
@@ -192655,51 +193959,15 @@
           "name": "global",
           "required": false,
           "type": {
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "kind": "dictionary_of",
-            "singleKey": false,
-            "value": {
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "kind": "dictionary_of",
-              "singleKey": false,
-              "value": {
-                "key": {
-                  "kind": "instance_of",
-                  "type": {
-                    "name": "string",
-                    "namespace": "_builtins"
-                  }
-                },
-                "kind": "dictionary_of",
-                "singleKey": false,
-                "value": {
-                  "kind": "array_of",
-                  "value": {
-                    "kind": "instance_of",
-                    "type": {
-                      "name": "string",
-                      "namespace": "_builtins"
-                    }
-                  }
-                }
-              }
+            "kind": "instance_of",
+            "type": {
+              "name": "GlobalPrivilege",
+              "namespace": "security._types"
             }
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L50-L72"
+      "specLocation": "security/get_role/types.ts#L51-L73"
     },
     {
       "attachedBehaviors": [
@@ -192816,7 +194084,7 @@
           }
         }
       ],
-      "specLocation": "security/get_role/types.ts#L33-L48"
+      "specLocation": "security/get_role/types.ts#L34-L49"
     },
     {
       "kind": "interface",
@@ -192849,6 +194117,205 @@
         }
       ],
       "specLocation": "security/_types/RoleTemplate.ts#L28-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "GlobalPrivilege",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "application",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ApplicationGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.",
+          "name": "profile",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "WriteProfileGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        },
+        {
+          "description": "A privilege that grants the ability to manage roles that are scoped to the specified indices.",
+          "name": "role",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesGlobalUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L422-L437"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ApplicationGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The applications for which application privileges can be managed.\nAbsent when the `application` section is present but grants no privileges.",
+          "name": "manage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L439-L445"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "applications",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L447-L449"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "WriteProfileGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The applications for which user profile data can be written.\nAbsent when the `profile` section is present but grants no privileges.",
+          "name": "write",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageUserPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L451-L457"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesGlobalUserPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "The index-scoped role management privileges.\nAbsent when the `role` section is present but grants no privileges.",
+          "name": "manage",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ManageRolesPrivileges",
+              "namespace": "security._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L459-L465"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesPrivileges",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "name": "indices",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ManageRolesIndexPermissions",
+                "namespace": "security._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L467-L469"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ManageRolesIndexPermissions",
+        "namespace": "security._types"
+      },
+      "properties": [
+        {
+          "description": "A list of indices (or index name patterns) that the owners of the role can manage roles for.",
+          "name": "names",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The index privileges that the managed roles are allowed to grant on the specified indices.",
+          "name": "privileges",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "security/_types/Privileges.ts#L471-L480"
     },
     {
       "kind": "interface",
@@ -194653,7 +196120,7 @@
           }
         },
         {
-          "description": "Defines if dates in the ouput should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
+          "description": "Defines if dates in the output should be written as ISO formatted string or as millis since epoch. epoch_millis was\nthe default for transforms created before version 7.11. For compatible output set this value to `true`.",
           "name": "dates_as_epoch_millis",
           "required": false,
           "serverDefault": false,
@@ -194761,20 +196228,31 @@
               "since": "8.19.24"
             }
           },
-          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`.",
+          "description": "The initial timeout for the requests the transform sends to nodes to retrieve checkpoint information.\nEach consecutive failure doubles the timeout, up to a maximum of `12h`. The minimum value is `1ms` and the\nmaximum is `12h`. Defaults to `30s`.",
           "name": "indexer_request_timeout",
           "required": false,
-          "serverDefault": "30s",
           "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Duration",
-              "namespace": "_types"
-            }
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "Duration",
+                  "namespace": "_types"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L129-L207"
+      "specLocation": "transform/_types/Transform.ts#L129-L206"
     },
     {
       "kind": "interface",
@@ -194826,7 +196304,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L209-L240"
+      "specLocation": "transform/_types/Transform.ts#L208-L239"
     },
     {
       "kind": "interface",
@@ -194848,7 +196326,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L244-L250",
+      "specLocation": "transform/_types/Transform.ts#L243-L249",
       "variants": {
         "kind": "container"
       }
@@ -194886,7 +196364,7 @@
           }
         }
       ],
-      "specLocation": "transform/_types/Transform.ts#L252-L264"
+      "specLocation": "transform/_types/Transform.ts#L251-L263"
     },
     {
       "kind": "interface",

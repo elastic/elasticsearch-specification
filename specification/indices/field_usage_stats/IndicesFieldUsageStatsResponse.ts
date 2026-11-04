@@ -63,6 +63,11 @@ export class FieldSummary {
   norms: uint
   term_vectors: uint
   knn_vectors: uint
+  /**
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  doc_values_skipper: uint
   inverted_index: InvertedIndex
 }
 
