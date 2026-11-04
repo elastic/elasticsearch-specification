@@ -32,6 +32,7 @@ import { MediaType } from '@_types/common'
  * @availability stack stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id get-license
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   urls: [

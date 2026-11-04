@@ -28,6 +28,7 @@ import { ClusterInfoTargets, MediaType } from '@_types/common'
  * @availability stack since=8.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id cluster-info
+ * @cluster_privileges monitor
  */
 export interface Request extends RequestBase {
   urls: [

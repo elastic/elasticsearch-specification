@@ -31,6 +31,7 @@ import { DataStreamFailureStore } from '@indices/_types/DataStreamFailureStore'
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
  * @doc_id data-stream-update-options
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [

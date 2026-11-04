@@ -35,6 +35,7 @@ import { MediaType } from '@_types/common'
  * @availability stack since=7.6.0 stability=stable
  * @availability serverless stability=stable visibility=private
  * @doc_id slm-api-stop
+ * @cluster_privileges manage_slm
  */
 export interface Request extends RequestBase {
   urls: [
