@@ -22470,6 +22470,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-include_auto_calibration"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-vector_formats"
           }
         ],
         "responses": {
@@ -22506,6 +22512,12 @@
           },
           {
             "$ref": "#/components/parameters/indices.segments-ignore_unavailable"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-include_auto_calibration"
+          },
+          {
+            "$ref": "#/components/parameters/indices.segments-vector_formats"
           }
         ],
         "responses": {
@@ -108382,7 +108394,19 @@
         "properties": {
           "node": {
             "description": "The node ID of the node that holds the shard.",
-            "type": "string"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "relocating_node": {
+            "description": "The node ID of the node the shard is relocating to. Only returned while the shard is relocating.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
           },
           "primary": {
             "description": "If `true`, the shard is a primary shard.",
@@ -108429,6 +108453,25 @@
             "description": "If `true`, the segment is searchable.\nIf `false`, the segment has most likely been written to disk but needs a refresh to be searchable.",
             "type": "boolean"
           },
+          "merge_id": {
+            "description": "The ID of the merge the segment is part of. Only returned while the segment is being merged.",
+            "type": "string"
+          },
+          "sort": {
+            "description": "The index sort of the segment. Only returned when the index is sorted.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/indices.segments.SegmentSort"
+            }
+          },
+          "size": {
+            "description": "Disk space used by the segment.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "size_in_bytes": {
             "description": "Disk space used by the segment, in bytes.",
             "type": "number"
@@ -108444,18 +108487,151 @@
                 "$ref": "#/components/schemas/_types.VersionString"
               }
             ]
+          },
+          "auto_calibration": {
+            "description": "The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.\nOnly returned when `include_auto_calibration` is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices.segments.SegmentAutoCalibration"
+            }
           }
         },
         "required": [
-          "attributes",
           "committed",
-          "compound",
           "deleted_docs",
           "generation",
           "search",
           "size_in_bytes",
-          "num_docs",
-          "version"
+          "num_docs"
+        ]
+      },
+      "indices.segments.SegmentSort": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The name of the sort field.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "mode": {
+            "description": "The selector used to pick a value from multi-valued fields, such as `min` or `max`. Only returned for numeric and keyword fields.",
+            "type": "string"
+          },
+          "missing": {
+            "description": "The value used for documents that are missing the field.",
+            "type": "string"
+          },
+          "reverse": {
+            "description": "If `true`, the sort order is descending.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "field",
+          "reverse"
+        ]
+      },
+      "indices.segments.SegmentAutoCalibration": {
+        "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "osq": "#/components/schemas/indices.segments.OsqSegmentAutoCalibration"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/indices.segments.OsqSegmentAutoCalibration"
+          }
+        ]
+      },
+      "indices.segments.OsqSegmentAutoCalibration": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices.segments.SegmentAutoCalibrationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "osq"
+                ]
+              },
+              "parameters": {
+                "description": "The calibration parameters.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices.segments.OsqSegmentAutoCalibrationParameters"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "indices.segments.OsqSegmentAutoCalibrationParameters": {
+        "type": "object",
+        "properties": {
+          "bits": {
+            "description": "The number of bits used to quantize the vectors.",
+            "type": "number"
+          },
+          "query_bits": {
+            "description": "The number of bits used to quantize the query vectors.",
+            "type": "number"
+          },
+          "precondition": {
+            "description": "If `true`, the vectors are preconditioned before quantization.",
+            "type": "boolean"
+          },
+          "oversample": {
+            "description": "The oversampling factor applied when rescoring.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "bits",
+          "query_bits",
+          "precondition",
+          "oversample"
+        ]
+      },
+      "indices.segments.SegmentAutoCalibrationBase": {
+        "type": "object",
+        "properties": {
+          "calibrated": {
+            "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+            "type": "boolean"
+          },
+          "number_of_vectors": {
+            "description": "The number of vectors of the field in the segment.",
+            "type": "number"
+          },
+          "size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "size_in_bytes": {
+            "description": "The size of the vectors of the field in the segment, in bytes.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "calibrated",
+          "number_of_vectors",
+          "size_in_bytes"
         ]
       },
       "indices.shard_stores.ShardStoreStatus": {
@@ -156588,6 +156764,30 @@
           "default": false,
           "type": "boolean"
         },
+        "style": "form"
+      },
+      "indices.segments-include_auto_calibration": {
+        "in": "query",
+        "name": "include_auto_calibration",
+        "description": "If `true`, the response includes the auto-calibration information of each segment, for the `dense_vector` fields that support auto-calibration.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
+        "style": "form"
+      },
+      "indices.segments-vector_formats": {
+        "in": "query",
+        "name": "vector_formats",
+        "description": "If `true`, the response includes the vector formats used by the fields of each segment, in `attributes`.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 8.15.0",
         "style": "form"
       },
       "indices.shard_stores-index": {

@@ -14618,11 +14618,25 @@ export interface IndicesSegmentsIndexSegment {
   shards: Record<string, IndicesSegmentsShardsSegment | IndicesSegmentsShardsSegment[]>
 }
 
+export interface IndicesSegmentsOsqSegmentAutoCalibration extends IndicesSegmentsSegmentAutoCalibrationBase {
+  type: 'osq'
+  parameters?: IndicesSegmentsOsqSegmentAutoCalibrationParameters
+}
+
+export interface IndicesSegmentsOsqSegmentAutoCalibrationParameters {
+  bits: integer
+  query_bits: integer
+  precondition: boolean
+  oversample: float
+}
+
 export interface IndicesSegmentsRequest extends RequestBase {
   index?: Indices
   allow_no_indices?: boolean
   expand_wildcards?: ExpandWildcards
   ignore_unavailable?: boolean
+  include_auto_calibration?: boolean
+  vector_formats?: boolean
 }
 
 export interface IndicesSegmentsResponse {
@@ -14631,19 +14645,40 @@ export interface IndicesSegmentsResponse {
 }
 
 export interface IndicesSegmentsSegment {
-  attributes: Record<string, string>
+  attributes?: Record<string, string>
   committed: boolean
-  compound: boolean
+  compound?: boolean
   deleted_docs: long
   generation: integer
   search: boolean
+  merge_id?: string
+  sort?: IndicesSegmentsSegmentSort[]
+  size?: ByteSize
   size_in_bytes: double
   num_docs: long
-  version: VersionString
+  version?: VersionString
+  auto_calibration?: Record<Field, IndicesSegmentsSegmentAutoCalibration>
+}
+
+export type IndicesSegmentsSegmentAutoCalibration = IndicesSegmentsOsqSegmentAutoCalibration
+
+export interface IndicesSegmentsSegmentAutoCalibrationBase {
+  calibrated: boolean
+  number_of_vectors: long
+  size?: ByteSize
+  size_in_bytes: long
+}
+
+export interface IndicesSegmentsSegmentSort {
+  field: Field
+  mode?: string
+  missing?: string
+  reverse: boolean
 }
 
 export interface IndicesSegmentsShardSegmentRouting {
-  node: string
+  node: NodeId
+  relocating_node?: NodeId
   primary: boolean
   state: string
 }

@@ -139467,6 +139467,183 @@
       "specLocation": "indices/recovery/types.ts#L140-L151"
     },
     {
+      "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+      "kind": "type_alias",
+      "name": {
+        "name": "SegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "specLocation": "indices/segments/types.ts#L88-L95",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibration",
+              "namespace": "indices.segments"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "inherits": {
+        "type": {
+          "name": "SegmentAutoCalibrationBase",
+          "namespace": "indices.segments"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "osq"
+          }
+        },
+        {
+          "description": "The calibration parameters.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibrationParameters",
+              "namespace": "indices.segments"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L107-L111"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentAutoCalibrationBase",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+          "name": "calibrated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The number of vectors of the field in the segment.",
+          "name": "number_of_vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the vectors of the field in the segment, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L97-L105"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibrationParameters",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The number of bits used to quantize the vectors.",
+          "name": "bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of bits used to quantize the query vectors.",
+          "name": "query_bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the vectors are preconditioned before quantization.",
+          "name": "precondition",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The oversampling factor applied when rescoring.",
+          "name": "oversample",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L113-L122"
+    },
+    {
       "kind": "enum",
       "members": [
         {

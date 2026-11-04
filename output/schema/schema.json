@@ -184639,6 +184639,100 @@
       "specLocation": "indices/segments/types.ts#L24-L26"
     },
     {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "SegmentAutoCalibrationBase",
+          "namespace": "indices.segments"
+        }
+      },
+      "name": {
+        "name": "OsqSegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "osq"
+          }
+        },
+        {
+          "description": "The calibration parameters.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibrationParameters",
+              "namespace": "indices.segments"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L107-L111"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibrationParameters",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The number of bits used to quantize the vectors.",
+          "name": "bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of bits used to quantize the query vectors.",
+          "name": "query_bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the vectors are preconditioned before quantization.",
+          "name": "precondition",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The oversampling factor applied when rescoring.",
+          "name": "oversample",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L113-L122"
+    },
+    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -184745,9 +184839,47 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the response includes the auto-calibration information of each segment, for the `dense_vector` fields that support auto-calibration.",
+          "name": "include_auto_calibration",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "If `true`, the response includes the vector formats used by the fields of each segment, in `attributes`.",
+          "name": "vector_formats",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/segments/IndicesSegmentsRequest.ts#L23-L80"
+      "specLocation": "indices/segments/IndicesSegmentsRequest.ts#L23-L94"
     },
     {
       "kind": "response",
@@ -184811,7 +184943,7 @@
         {
           "description": "Contains information about whether high compression was enabled and per-field vector formats.",
           "name": "attributes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "dictionary_of",
             "key": {
@@ -184846,7 +184978,7 @@
         {
           "description": "If `true`, Lucene merged all files from the segment into a single file to save file descriptors.",
           "name": "compound",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -184892,6 +185024,45 @@
           }
         },
         {
+          "description": "The ID of the merge the segment is part of. Only returned while the segment is being merged.",
+          "name": "merge_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The index sort of the segment. Only returned when the index is sorted.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SegmentSort",
+                "namespace": "indices.segments"
+              }
+            }
+          }
+        },
+        {
+          "description": "Disk space used by the segment.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Disk space used by the segment, in bytes.",
           "name": "size_in_bytes",
           "required": true,
@@ -184918,7 +185089,7 @@
         {
           "description": "Version of Lucene used to write the segment.",
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -184926,9 +185097,179 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.\nOnly returned when `include_auto_calibration` is `true`.",
+          "name": "auto_calibration",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SegmentAutoCalibration",
+                "namespace": "indices.segments"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L28-L62"
+      "specLocation": "indices/segments/types.ts#L28-L75"
+    },
+    {
+      "kind": "type_alias",
+      "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+      "name": {
+        "name": "SegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "specLocation": "indices/segments/types.ts#L88-L95",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibration",
+              "namespace": "indices.segments"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentAutoCalibrationBase",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+          "name": "calibrated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The number of vectors of the field in the segment.",
+          "name": "number_of_vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the vectors of the field in the segment, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L97-L105"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentSort",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The name of the sort field.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The selector used to pick a value from multi-valued fields, such as `min` or `max`. Only returned for numeric and keyword fields.",
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The value used for documents that are missing the field.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the sort order is descending.",
+          "name": "reverse",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L77-L86"
     },
     {
       "kind": "interface",
@@ -184944,8 +185285,20 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The node ID of the node the shard is relocating to. Only returned while the shard is relocating.",
+          "name": "relocating_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
             }
           }
         },
@@ -184974,7 +185327,7 @@
           }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L64-L71"
+      "specLocation": "indices/segments/types.ts#L124-L133"
     },
     {
       "kind": "interface",
@@ -185039,7 +185392,7 @@
           }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L73-L78"
+      "specLocation": "indices/segments/types.ts#L135-L140"
     },
     {
       "kind": "interface",
