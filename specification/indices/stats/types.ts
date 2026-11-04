@@ -46,12 +46,15 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { DenseVectorStats, SparseVectorStats } from '@cluster/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
 export class IndexStats {
   /** Contains statistics about completions across all shards assigned to the node. */
   completion?: CompletionStats
+  /** Contains statistics about the dense vectors in the index. */
+  dense_vector?: DenseVectorStats
   /** Contains statistics about documents across all primary shards assigned to the node. */
   docs?: DocStats
   /** Contains statistics about the field data cache across all shards assigned to the node. */
@@ -78,6 +81,8 @@ export class IndexStats {
   search?: SearchStats
   /** Contains statistics about segments across all shards assigned to the node. */
   segments?: SegmentsStats
+  /** Contains statistics about the sparse vectors in the index. */
+  sparse_vector?: SparseVectorStats
   /** Contains statistics about the size of shards assigned to the node. */
   store?: StoreStats
   /** Contains statistics about transaction log operations for the node. */
