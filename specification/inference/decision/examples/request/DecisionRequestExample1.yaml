@@ -1,0 +1,29 @@
+summary: Decision task
+description: Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message
+method_request: 'POST _inference/decision/my-decision-endpoint'
+value: |-
+  {
+    "input": "I was charged twice for my order and nobody answers my emails.",
+    "task_settings": {
+      "questions": {
+        "is_complaint": {
+          "type": "predicate",
+          "instructions": "Is the customer complaining?"
+        },
+        "team": {
+          "type": "choice",
+          "instructions": "Which team should handle this?",
+          "choices": {
+            "billing": "Charges, refunds, invoices",
+            "shipping": "Deliveries and returns",
+            "other": null
+          }
+        },
+        "anger": {
+          "type": "score",
+          "instructions": "How angry is the customer?",
+          "levels": ["calm", "annoyed", { "label": "furious", "description": "Threatens to leave" }]
+        }
+      }
+    }
+  }
