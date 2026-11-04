@@ -24,7 +24,8 @@ import {
   MediaType,
   ProjectRouting,
   Routing,
-  SearchType
+  SearchType,
+  SliceIds
 } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { RequestItem } from './types'
@@ -164,12 +165,13 @@ export interface Request extends RequestBase {
      * The slice identifier for routing the search to a specific slice.
      * When provided at the top level, all sub-searches are routed to shards matching the given slice value.
      * Use the special value `_all` to query all slices without restricting to a routing value.
-     * Required when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.
+     * When omitted, all slices are targeted.
      * Individual sub-search headers can also specify `_slice` to override the top-level setting.
      * @availability stack since=9.5.0 visibility=feature_flag feature_flag=slice_indexing
+     * @availability serverless visibility=feature_flag feature_flag=slice_indexing
      * @codegen_name route_slice
      */
-    _slice?: string
+    _slice?: SliceIds
     /**
      * Specifies whether aggregation and suggester names should be prefixed by their respective types in the response.
      */
