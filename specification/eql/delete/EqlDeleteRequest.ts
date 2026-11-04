@@ -29,6 +29,7 @@ import { Id, MediaType } from '@_types/common'
  * @availability stack since=7.9.0 stability=stable
  * @availability serverless stability=stable visibility=public
  * @doc_id eql-async-search-delete
+ * @cluster_privileges cancel_task
  */
 export interface Request extends RequestBase {
   urls: [

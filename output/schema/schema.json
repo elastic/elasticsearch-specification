@@ -220,6 +220,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.delete"
@@ -342,6 +347,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-async-search-submit",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/async-search.html",
       "name": "async_search.submit",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "async_search.submit"
@@ -547,6 +557,15 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/production-guidance/optimize-performance/indexing-speed#disable-refresh-interval",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-bulk.html",
       "name": "bulk",
+      "privileges": {
+        "index": [
+          "create_doc",
+          "create",
+          "delete",
+          "index",
+          "write"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.bulk"
@@ -576,6 +595,13 @@
             "PUT"
           ],
           "path": "/{index}/_bulk"
+        },
+        {
+          "methods": [
+            "POST",
+            "PUT"
+          ],
+          "path": "/{index}/{_slice}/_bulk"
         }
       ]
     },
@@ -597,6 +623,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "cancel_reindex",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.cancel_reindex"
@@ -1992,6 +2023,14 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-put-follow.html",
       "name": "ccr.follow",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ],
+        "index": [
+          "manage_follow_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.follow"
@@ -2116,6 +2155,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-post-forget-follower.html",
       "name": "ccr.forget_follower",
+      "privileges": {
+        "index": [
+          "manage_leader_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.forget_follower"
@@ -2285,6 +2329,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication/manage-auto-follow-patterns",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-put-auto-follow-pattern.html",
       "name": "ccr.put_auto_follow_pattern",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.put_auto_follow_pattern"
@@ -2367,6 +2416,14 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/cross-cluster-replication",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ccr-post-resume-follow.html",
       "name": "ccr.resume_follow",
+      "privileges": {
+        "cluster": [
+          "manage_ccr"
+        ],
+        "index": [
+          "manage_follow_index"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ccr.resume_follow"
@@ -2590,6 +2647,12 @@
       "extDocUrl": "https://www.elastic.co/docs/troubleshoot/elasticsearch/cluster-allocation-api-examples",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-allocation-explain.html",
       "name": "cluster.allocation_explain",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.allocation_explain"
@@ -2675,6 +2738,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/voting-config-exclusions.html",
       "name": "cluster.delete_voting_config_exclusions",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.delete_voting_config_exclusions"
@@ -2714,6 +2782,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-put-component-template",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-component-template.html",
       "name": "cluster.exists_component_template",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage_index_templates"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.exists_component_template"
@@ -2898,6 +2972,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-cluster-info",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-info.html",
       "name": "cluster.info",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.info"
@@ -2977,6 +3056,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/maintenance/add-and-remove-elasticsearch-nodes",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/voting-config-exclusions.html",
       "name": "cluster.post_voting_config_exclusions",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.post_voting_config_exclusions"
@@ -3153,6 +3237,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-reroute.html",
       "name": "cluster.reroute",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "cluster.reroute"
@@ -4645,6 +4734,13 @@
             "GET"
           ],
           "path": "/{index}/_count"
+        },
+        {
+          "methods": [
+            "POST",
+            "GET"
+          ],
+          "path": "/{index}/{_slice}/_count"
         }
       ]
     },
@@ -4696,6 +4792,13 @@
             "POST"
           ],
           "path": "/{index}/_create/{id}"
+        },
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_create/{id}"
         }
       ]
     },
@@ -5054,6 +5157,12 @@
             "DELETE"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "DELETE"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -5102,6 +5211,12 @@
             "POST"
           ],
           "path": "/{index}/_delete_by_query"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_delete_by_query"
         }
       ]
     },
@@ -5122,6 +5237,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query-rethrottle",
       "docUrlServerless": "",
       "name": "delete_by_query_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.delete_by_query_rethrottle"
@@ -5241,6 +5361,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-delete-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-enrich-policy-api.html",
       "name": "enrich.delete_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.delete_policy"
@@ -5279,6 +5404,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-execute-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/execute-enrich-policy-api.html",
       "name": "enrich.execute_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.execute_policy"
@@ -5317,6 +5447,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-get-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-enrich-policy-api.html",
       "name": "enrich.get_policy",
+      "privileges": {
+        "cluster": [
+          "monitor_enrich",
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.get_policy"
@@ -5361,6 +5497,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-enrich-put-policy",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-enrich-policy-api.html",
       "name": "enrich.put_policy",
+      "privileges": {
+        "cluster": [
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.put_policy"
@@ -5402,6 +5543,13 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/enrich-stats-api.html",
       "name": "enrich.stats",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_enrich",
+          "manage_enrich"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "enrich.stats"
@@ -5440,6 +5588,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-async-eql-search-api.html",
       "name": "eql.delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.delete"
@@ -5516,6 +5669,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-eql-get-status",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-async-eql-status-api.html",
       "name": "eql.get_status",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.get_status"
@@ -5557,6 +5715,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/eql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/eql-search-api.html",
       "name": "eql.search",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "eql.search"
@@ -5645,6 +5808,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-delete-api.html",
       "name": "esql.async_query_delete",
+      "privileges": {
+        "cluster": [
+          "cancel_task"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "esql.async_query_delete"
@@ -6412,6 +6580,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-get.html",
       "name": "exists",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.exists"
@@ -6430,6 +6603,12 @@
             "HEAD"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "HEAD"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -6524,6 +6703,13 @@
             "POST"
           ],
           "path": "/{index}/_explain/{id}"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_explain/{id}"
         }
       ]
     },
@@ -6543,6 +6729,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/tools/snapshot-and-restore/create-snapshots",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-features-api.html",
       "name": "features.get_features",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "features.get_features"
@@ -6737,6 +6928,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-fleet",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/fleet-apis.html",
       "name": "fleet.global_checkpoints",
+      "privileges": {
+        "index": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "fleet.global_checkpoints"
@@ -6890,6 +7086,13 @@
             "POST"
           ],
           "path": "/{index}/_fleet/_fleet_search"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_fleet/_fleet_search"
         }
       ]
     },
@@ -6933,6 +7136,12 @@
             "GET"
           ],
           "path": "/{index}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
         }
       ]
     },
@@ -6954,6 +7163,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "get_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.get_reindex"
@@ -7161,6 +7377,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/visualize/graph",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/graph-explore-api.html",
       "name": "graph.explore",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "graph.explore"
@@ -7203,6 +7424,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/health-api.html",
       "name": "health_report",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.health_report"
@@ -7413,6 +7639,11 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/index-lifecycle-management/migrate-index-allocation-filters-to-node-roles",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ilm-migrate-to-data-tiers.html",
       "name": "ilm.migrate_to_data_tiers",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ilm.migrate_to_data_tiers"
@@ -7736,6 +7967,19 @@
             "POST"
           ],
           "path": "/{index}/_doc"
+        },
+        {
+          "methods": [
+            "PUT",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_doc/{id}"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_doc"
         }
       ]
     },
@@ -7755,6 +7999,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-add-block",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-add-block",
       "name": "indices.add_block",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.add_block"
@@ -7849,6 +8098,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-cancel-migrate-reindex",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-cancel-migrate-reindex",
       "name": "indices.cancel_migrate_reindex",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.cancel_migrate_reindex"
@@ -8116,6 +8370,11 @@
       "extDocId": "create_index_from_source_index",
       "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source",
       "name": "indices.create_from",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.create_from"
@@ -8388,6 +8647,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-delete-data-stream-options",
       "docUrlServerless": "",
       "name": "indices.delete_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.delete_data_stream_options"
@@ -8553,6 +8817,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-downsample-data-stream.html",
       "name": "indices.downsample",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.downsample"
@@ -8593,6 +8862,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-exists.html",
       "name": "indices.exists",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists"
@@ -8630,6 +8905,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-exists-alias",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/indices-alias-exists.html",
       "name": "indices.exists_alias",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.exists_alias"
@@ -8760,6 +9041,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-explain-lifecycle.html",
       "name": "indices.explain_data_lifecycle",
+      "privileges": {
+        "index": [
+          "manage_data_stream_lifecycle",
+          "view_index_metadata"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.explain_data_lifecycle"
@@ -9230,6 +9517,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-get-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-get-data-stream-options",
       "name": "indices.get_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_data_stream_options"
@@ -9454,6 +9746,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-migration",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/migration-api.html",
       "name": "indices.get_migrate_reindex_status",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.get_migrate_reindex_status"
@@ -9605,6 +9902,11 @@
       "extDocId": "reindex_legacy_backing_indices",
       "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reindex-data-stream",
       "name": "indices.migrate_reindex",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.migrate_reindex"
@@ -9691,6 +9993,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-modify-data-stream",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/modify-data-streams-api.html",
       "name": "indices.modify_data_stream",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.modify_data_stream"
@@ -9771,6 +10078,12 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/promote-data-stream-api.html",
       "name": "indices.promote_data_stream",
+      "privileges": {
+        "index": [
+          "manage_follow_index",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.promote_data_stream"
@@ -9959,6 +10272,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-indices-put-data-stream-options",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-put-data-stream-options",
       "name": "indices.put_data_stream_options",
+      "privileges": {
+        "index": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.put_data_stream_options"
@@ -10953,6 +11271,12 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-indices-validate-query",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-validate.html",
       "name": "indices.validate_query",
+      "privileges": {
+        "index": [
+          "view_index_metadata",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "indices.validate_query"
@@ -11002,6 +11326,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-unified-inference",
       "docUrlServerless": "",
       "name": "inference.chat_completion_unified",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.chat_completion_unified"
@@ -11044,6 +11373,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.completion",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.completion"
@@ -11071,6 +11405,53 @@
     {
       "availability": {
         "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.6.0",
+          "stability": "experimental",
+          "visibility": "public"
+        }
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "docId": "inference-api-post",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-inference",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
+      "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
+      "name": "inference.decision",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/json"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_inference/decision/{inference_id}"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -11086,6 +11467,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-delete",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-inference-api.html",
       "name": "inference.delete",
+      "privileges": {
+        "cluster": [
+          "manage_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.delete"
@@ -11221,6 +11607,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.embedding"
@@ -11263,6 +11654,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-inference-api.html",
       "name": "inference.get",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.get"
@@ -11415,6 +11811,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-inference-non-streaming-chat-completion",
       "docUrlServerless": "",
       "name": "inference.non_streaming_chat_completion",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.non_streaming_chat_completion"
@@ -12820,6 +13221,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.sparse_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.sparse_embedding"
@@ -12909,6 +13315,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-inference-inference",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-inference-api.html",
       "name": "inference.text_embedding",
+      "privileges": {
+        "cluster": [
+          "monitor_inference"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "inference.text_embedding"
@@ -13047,6 +13458,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-delete-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.delete_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.delete_geoip_database"
@@ -13130,6 +13546,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/delete-pipeline-api.html",
       "name": "ingest.delete_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.delete_pipeline"
@@ -13170,6 +13592,11 @@
       "extDocId": "geoip-processor",
       "extDocUrl": "https://www.elastic.co/docs/reference/enrich-processor/geoip-processor",
       "name": "ingest.geo_ip_stats",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.geo_ip_stats"
@@ -13206,6 +13633,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-get-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.get_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.get_geoip_database"
@@ -13301,6 +13733,12 @@
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-pipeline-api.html",
       "name": "ingest.get_pipeline",
+      "privileges": {
+        "cluster": [
+          "read_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.get_pipeline"
@@ -13347,6 +13785,11 @@
       "extDocId": "grok-processor",
       "extDocUrl": "https://www.elastic.co/docs/reference/enrich-processor/grok-processor",
       "name": "ingest.processor_grok",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.processor_grok"
@@ -13383,6 +13826,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ingest-put-geoip-database",
       "docUrlServerless": "",
       "name": "ingest.put_geoip_database",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.put_geoip_database"
@@ -13471,6 +13919,12 @@
       "extDocId": "ingest",
       "extDocUrl": "https://www.elastic.co/docs/manage-data/ingest/transform-enrich/ingest-pipelines",
       "name": "ingest.put_pipeline",
+      "privileges": {
+        "cluster": [
+          "manage_pipeline",
+          "manage_ingest_pipelines"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ingest.put_pipeline"
@@ -13696,6 +14150,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-license-get",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/get-license.html",
       "name": "license.get",
+      "privileges": {
+        "cluster": [
+          "monitor"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "license.get"
@@ -13933,6 +14392,13 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "list_reindex",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "monitor_reindex",
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.list_reindex"
@@ -14153,6 +14619,13 @@
             "POST"
           ],
           "path": "/{index}/_mget"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_mget"
         }
       ]
     },
@@ -14441,6 +14914,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-delete-calendar-event",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-delete-calendar-event.html",
       "name": "ml.delete_calendar_event",
+      "privileges": {
+        "cluster": [
+          "manage_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.delete_calendar_event"
@@ -16136,6 +16614,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-infer-trained-model",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/infer-trained-model.html",
       "name": "ml.infer_trained_model",
+      "privileges": {
+        "cluster": [
+          "monitor_ml"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "ml.infer_trained_model"
@@ -17978,6 +18461,13 @@
             "POST"
           ],
           "path": "/{index}/_mtermvectors"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_mtermvectors"
         }
       ]
     },
@@ -18139,6 +18629,12 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-nodes-info.html",
       "name": "nodes.info",
+      "privileges": {
+        "cluster": [
+          "monitor",
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "nodes.info"
@@ -18192,6 +18688,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/cluster-nodes-reload-secure-settings.html",
       "name": "nodes.reload_secure_settings",
+      "privileges": {
+        "cluster": [
+          "manage"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "nodes.reload_secure_settings"
@@ -19390,6 +19891,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-reindex",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/docs-reindex.html",
       "name": "reindex_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.reindex_rethrottle"
@@ -19983,6 +20489,13 @@
             "POST"
           ],
           "path": "/{index}/_search"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_search"
         }
       ]
     },
@@ -20580,6 +21093,13 @@
             "POST"
           ],
           "path": "/{index}/_search/template"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_search/template"
         }
       ]
     },
@@ -21143,6 +21663,11 @@
       "extDocUrl": "https://www.elastic.co/docs/deploy-manage/users-roles/cluster-or-deployment-auth/controlling-user-cache",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/security-api-clear-cache.html",
       "name": "security.clear_cached_realms",
+      "privileges": {
+        "cluster": [
+          "manage_security"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "security.clear_cached_realms"
@@ -24413,6 +24938,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/slm-api-stop.html",
       "name": "slm.stop",
+      "privileges": {
+        "cluster": [
+          "manage_slm"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "slm.stop"
@@ -25923,6 +26453,11 @@
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-terms-enum",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/search-terms-enum.html",
       "name": "terms_enum",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.terms_enum"
@@ -26002,6 +26537,20 @@
             "POST"
           ],
           "path": "/{index}/_termvectors"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_termvectors/{id}"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_termvectors"
         }
       ]
     },
@@ -26156,6 +26705,11 @@
       "extDocUrl": "https://www.elastic.co/docs/explore-analyze/scripting/grok",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/test-grok-pattern.html",
       "name": "text_structure.test_grok_pattern",
+      "privileges": {
+        "cluster": [
+          "monitor_text_structure"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "text_structure.test_grok_pattern"
@@ -26240,6 +26794,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-node-stats",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-get-node-stats",
       "name": "transform.get_node_stats",
+      "privileges": {
+        "cluster": [
+          "manage_transform"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "transform.get_node_stats"
@@ -26832,6 +27391,12 @@
             "POST"
           ],
           "path": "/{index}/_update/{id}"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_update/{id}"
         }
       ]
     },
@@ -26883,6 +27448,12 @@
             "POST"
           ],
           "path": "/{index}/_update_by_query"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/{index}/{_slice}/_update_by_query"
         }
       ]
     },
@@ -26903,6 +27474,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query-rethrottle",
       "docUrlServerless": "",
       "name": "update_by_query_rethrottle",
+      "privileges": {
+        "cluster": [
+          "manage_reindex"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "_global.update_by_query_rethrottle"
@@ -27160,6 +27736,11 @@
       "docUrlServerless": "",
       "extPreviousVersionDocUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/watcher-api-get-settings.html",
       "name": "watcher.get_settings",
+      "privileges": {
+        "cluster": [
+          "manage_watcher"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "watcher.get_settings"
@@ -27570,7 +28151,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L150-L150"
     },
     {
       "kind": "interface",
@@ -27585,7 +28166,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L154-L154"
     },
     {
       "kind": "enum",
@@ -27607,7 +28188,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L85-L90"
+      "specLocation": "_global/bulk/types.ts#L86-L91"
     },
     {
       "kind": "interface",
@@ -27622,7 +28203,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L152-L152"
     },
     {
       "kind": "interface",
@@ -27661,7 +28242,7 @@
               "stability": "stable"
             }
           },
-          "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.",
+          "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -27669,6 +28250,30 @@
             "type": {
               "name": "string",
               "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         },
@@ -27717,7 +28322,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L117"
+      "specLocation": "_global/bulk/types.ts#L100-L127"
     },
     {
       "kind": "interface",
@@ -27776,7 +28381,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L168-L195",
       "variants": {
         "kind": "container"
       }
@@ -27801,7 +28406,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L92-L97"
+      "specLocation": "_global/bulk/types.ts#L93-L98"
     },
     {
       "kind": "request",
@@ -28020,6 +28625,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -28090,26 +28719,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -28205,7 +28814,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/BulkRequest.ts#L33-L271"
+      "specLocation": "_global/bulk/BulkRequest.ts#L34-L276"
     },
     {
       "kind": "response",
@@ -28474,7 +29083,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L36-L83"
+      "specLocation": "_global/bulk/types.ts#L37-L84"
     },
     {
       "kind": "interface",
@@ -28583,7 +29192,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L197-L236"
     },
     {
       "kind": "interface",
@@ -28624,7 +29233,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L156-L166"
     },
     {
       "kind": "interface",
@@ -28688,7 +29297,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L129-L148"
     },
     {
       "kind": "request",
@@ -28810,7 +29419,7 @@
           }
         }
       ],
-      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L84"
+      "specLocation": "_global/cancel_reindex/CancelReindexRequest.ts#L23-L85"
     },
     {
       "kind": "response",
@@ -29662,6 +30271,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -29848,26 +30481,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The maximum number of documents to collect for each shard.\nIf a query reaches this limit, Elasticsearch terminates the query early.\nElasticsearch collects documents before sorting.\n\nIMPORTANT: Use with caution.\nElasticsearch applies this parameter to each shard handling the request.\nWhen possible, let Elasticsearch perform early termination automatically.\nAvoid specifying this parameter for requests that target data streams with backing indices across multiple data tiers.",
           "name": "terminate_after",
           "required": false,
@@ -29892,7 +30505,7 @@
           }
         }
       ],
-      "specLocation": "_global/count/CountRequest.ts#L32-L194"
+      "specLocation": "_global/count/CountRequest.ts#L33-L199"
     },
     {
       "kind": "response",
@@ -30029,6 +30642,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30097,7 +30734,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -30164,7 +30801,7 @@
           }
         }
       ],
-      "specLocation": "_global/create/CreateRequest.ts#L33-L204"
+      "specLocation": "_global/create/CreateRequest.ts#L34-L218"
     },
     {
       "kind": "response",
@@ -30269,6 +30906,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30331,26 +30992,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to wait for active shards.\n\nThis parameter is useful for situations where the primary shard assigned to perform the delete operation might not be available when the delete operation runs.\nSome reasons for this might be that the primary shard is currently recovering from a store or undergoing relocation.\nBy default, the delete operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error.",
           "name": "timeout",
           "required": false,
@@ -30404,7 +31045,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete/DeleteRequest.ts#L35-L159"
+      "specLocation": "_global/delete/DeleteRequest.ts#L36-L164"
     },
     {
       "kind": "response",
@@ -30704,6 +31345,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -30917,26 +31582,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "A query in the Lucene query string syntax.",
           "name": "q",
           "required": false,
@@ -31113,7 +31758,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L39-L349"
+      "specLocation": "_global/delete_by_query/DeleteByQueryRequest.ts#L40-L353"
     },
     {
       "kind": "response",
@@ -31449,7 +32094,7 @@
           }
         }
       ],
-      "specLocation": "_global/delete_by_query_rethrottle/DeleteByQueryRethrottleRequest.ts#L24-L56"
+      "specLocation": "_global/delete_by_query_rethrottle/DeleteByQueryRethrottleRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -31665,6 +32310,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -31709,7 +32378,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "routing",
           "extDocUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get#get-routing",
           "name": "routing",
@@ -31797,7 +32466,7 @@
           }
         }
       ],
-      "specLocation": "_global/exists/DocumentExistsRequest.ts#L32-L139"
+      "specLocation": "_global/exists/DocumentExistsRequest.ts#L33-L154"
     },
     {
       "kind": "response",
@@ -32205,6 +32874,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -32296,26 +32989,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "`True` or `false` to return the `_source` field or not or a list of fields to return.",
           "name": "_source",
           "required": false,
@@ -32376,7 +33049,7 @@
           }
         }
       ],
-      "specLocation": "_global/explain/ExplainRequest.ts#L26-L137"
+      "specLocation": "_global/explain/ExplainRequest.ts#L33-L148"
     },
     {
       "kind": "response",
@@ -33196,6 +33869,29 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "The sequence number assigned to the document for the indexing operation.\nSequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.",
           "extDocId": "optimistic_concurrency",
           "name": "_seq_no",
@@ -33233,7 +33929,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/types.ts#L25-L67"
+      "specLocation": "_global/get/types.ts#L31-L79"
     },
     {
       "kind": "request",
@@ -33313,6 +34009,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -33386,26 +34106,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -33503,7 +34203,7 @@
           }
         }
       ],
-      "specLocation": "_global/get/GetRequest.ts#L32-L199"
+      "specLocation": "_global/get/GetRequest.ts#L33-L204"
     },
     {
       "kind": "response",
@@ -33727,7 +34427,7 @@
           }
         }
       ],
-      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L75"
+      "specLocation": "_global/get_reindex/GetReindexRequest.ts#L24-L76"
     },
     {
       "kind": "response",
@@ -36048,7 +36748,7 @@
           }
         }
       ],
-      "specLocation": "_global/health_report/Request.ts#L25-L84"
+      "specLocation": "_global/health_report/Request.ts#L25-L85"
     },
     {
       "kind": "response",
@@ -36624,6 +37324,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -36725,26 +37449,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period the request waits for the following operations: automatic index creation, dynamic mapping updates, waiting for active shards.\n\nThis parameter is useful for situations where the primary shard assigned to perform the operation might not be available when the operation runs.\nSome reasons for this might be that the primary shard is currently recovering from a gateway or undergoing relocation.\nBy default, the operation will wait on the primary shard to become available for at least 1 minute before failing and responding with an error.\nThe actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
@@ -36824,7 +37528,7 @@
           }
         }
       ],
-      "specLocation": "_global/index/IndexRequest.ts#L36-L290"
+      "specLocation": "_global/index/IndexRequest.ts#L37-L299"
     },
     {
       "kind": "response",
@@ -38162,7 +38866,7 @@
           }
         }
       ],
-      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L51"
+      "specLocation": "_global/list_reindex/ListReindexRequest.ts#L23-L52"
     },
     {
       "kind": "response",
@@ -38280,7 +38984,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L62-L66"
+      "specLocation": "_global/mget/types.ts#L72-L76"
     },
     {
       "kind": "interface",
@@ -38314,13 +39018,37 @@
           }
         },
         {
-          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.",
+          "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
               "namespace": "_types"
             }
           }
@@ -38372,7 +39100,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L32-L55"
+      "specLocation": "_global/mget/types.ts#L33-L65"
     },
     {
       "kind": "request",
@@ -38580,6 +39308,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -38655,26 +39407,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "True or false to return the `_source` field or not, or a list of fields to return.",
           "name": "_source",
           "required": false,
@@ -38728,7 +39460,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/MultiGetRequest.ts#L25-L138"
+      "specLocation": "_global/mget/MultiGetRequest.ts#L32-L148"
     },
     {
       "kind": "response",
@@ -38789,7 +39521,7 @@
         "name": "ResponseItem",
         "namespace": "_global.mget"
       },
-      "specLocation": "_global/mget/types.ts#L57-L60",
+      "specLocation": "_global/mget/types.ts#L67-L70",
       "type": {
         "kind": "union_of",
         "items": [
@@ -38859,7 +39591,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L90-L93"
+      "specLocation": "_global/msearch/types.ts#L92-L95"
     },
     {
       "kind": "interface",
@@ -38909,7 +39641,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L80-L83"
+      "specLocation": "_global/msearch/types.ts#L82-L85"
     },
     {
       "kind": "interface",
@@ -39056,6 +39788,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -39063,19 +39799,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier for routing the search to a specific slice.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L37-L78"
+      "specLocation": "_global/msearch/types.ts#L38-L80"
     },
     {
       "kind": "request",
@@ -39345,6 +40081,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -39352,14 +40092,14 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided at the top level, all sub-searches are routed to shards matching the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.\nIndividual sub-search headers can also specify `_slice` to override the top-level setting.",
+          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided at the top level, all sub-searches are routed to shards matching the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.\nIndividual sub-search headers can also specify `_slice` to override the top-level setting.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         },
@@ -39376,7 +40116,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/MultiSearchRequest.ts#L32-L180"
+      "specLocation": "_global/msearch/MultiSearchRequest.ts#L33-L182"
     },
     {
       "kind": "type_alias",
@@ -39388,7 +40128,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L32-L35",
+      "specLocation": "_global/msearch/types.ts#L33-L36",
       "type": {
         "kind": "union_of",
         "items": [
@@ -39459,7 +40199,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L85-L88",
+      "specLocation": "_global/msearch/types.ts#L87-L90",
       "type": {
         "kind": "union_of",
         "items": [
@@ -39914,13 +40654,37 @@
           }
         },
         {
-          "description": "Custom value used to route operations to a specific shard.",
+          "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).\nIt overrides the `_slice` set in the request path.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
               "namespace": "_types"
             }
           }
@@ -39963,7 +40727,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L35-L94"
+      "specLocation": "_global/mtermvectors/types.ts#L36-L104"
     },
     {
       "kind": "request",
@@ -40138,6 +40902,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The default slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), applied to the items that do not specify their own `_slice`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -40260,26 +41048,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "If true, the response includes term frequency and document frequency.",
           "name": "term_statistics",
           "required": false,
@@ -40317,7 +41085,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L32-L149"
+      "specLocation": "_global/mtermvectors/MultiTermVectorsRequest.ts#L33-L153"
     },
     {
       "kind": "response",
@@ -40442,7 +41210,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L96-L104"
+      "specLocation": "_global/mtermvectors/types.ts#L106-L114"
     },
     {
       "kind": "request",
@@ -40584,7 +41352,7 @@
           }
         },
         {
-          "description": "A custom value that is used to route operations to a specific shard.",
+          "description": "A custom value that is used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "extDocId": "search-shard-routing",
           "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing",
           "name": "routing",
@@ -40593,6 +41361,30 @@
             "kind": "instance_of",
             "type": {
               "name": "Routing",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the point in time to that slice.\nWhen omitted, the point in time covers all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
               "namespace": "_types"
             }
           }
@@ -40637,7 +41429,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L32-L156"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L166"
     },
     {
       "kind": "response",
@@ -41867,6 +42659,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -41874,14 +42670,14 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier used to route the reindexed documents to a specific slice of the destination index.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the destination index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier used to route the reindexed documents to a specific slice of the destination index.\nNot allowed when `index.slice.enabled` is `false` for the destination index.\nWhen `index.slice.enabled` is `true`, it is required unless the source is read with `_slice`, in which case each document keeps its source slice, or a script sets `ctx._slice`.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceId",
+              "namespace": "_types"
             }
           }
         },
@@ -41898,7 +42694,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L39-L76"
+      "specLocation": "_global/reindex/types.ts#L40-L78"
     },
     {
       "kind": "interface",
@@ -42011,7 +42807,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L136-L172"
+      "specLocation": "_global/reindex/types.ts#L147-L183"
     },
     {
       "kind": "request",
@@ -43037,6 +43833,30 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice of a slice-enabled source index (`index.slice.enabled` set to `true`) to read, or `_all` to read all slices.\nThe reindexed documents keep the slice they are read from, unless `_slice` is set in `dest`.\nNot supported when reindexing from a remote cluster.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "deprecation": {
             "description": "",
             "version": "7.6.0"
@@ -43078,7 +43898,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex/types.ts#L78-L134"
+      "specLocation": "_global/reindex/types.ts#L80-L145"
     },
     {
       "kind": "interface",
@@ -43754,7 +44574,7 @@
           }
         }
       ],
-      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L84"
+      "specLocation": "_global/reindex_rethrottle/ReindexRethrottleRequest.ts#L25-L85"
     },
     {
       "kind": "response",
@@ -45235,6 +46055,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -45500,26 +46344,6 @@
             "type": {
               "name": "Routing",
               "namespace": "_types"
-            }
-          }
-        },
-        {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
             }
           }
         },
@@ -45888,7 +46712,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/SearchRequest.ts#L55-L632"
+      "specLocation": "_global/search/SearchRequest.ts#L56-L637"
     },
     {
       "kind": "response",
@@ -48865,6 +49689,29 @@
           }
         },
         {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.5.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "description": "The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "_source",
           "required": false,
           "type": {
@@ -48931,7 +49778,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L40-L69"
+      "specLocation": "_global/search/_types/hits.ts#L41-L76"
     },
     {
       "kind": "interface",
@@ -49017,7 +49864,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L71-L81"
+      "specLocation": "_global/search/_types/hits.ts#L78-L88"
     },
     {
       "kind": "interface",
@@ -49241,7 +50088,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L115-L152"
+      "specLocation": "_global/search/_types/hits.ts#L122-L159"
     },
     {
       "kind": "interface",
@@ -49267,7 +50114,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L93-L95"
+      "specLocation": "_global/search/_types/hits.ts#L100-L102"
     },
     {
       "kind": "interface",
@@ -49943,7 +50790,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L97-L101"
+      "specLocation": "_global/search/_types/hits.ts#L104-L108"
     },
     {
       "kind": "interface",
@@ -50356,9 +51203,33 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers to search within the point in time: a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to search all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L26"
+      "specLocation": "_global/search/_types/PointInTimeReference.ts#L23-L33"
     },
     {
       "kind": "interface",
@@ -52746,7 +53617,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/hits.ts#L103-L106"
+      "specLocation": "_global/search/_types/hits.ts#L110-L113"
     },
     {
       "kind": "enum",
@@ -52764,7 +53635,7 @@
         "name": "TotalHitsRelation",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L108-L113"
+      "specLocation": "_global/search/_types/hits.ts#L115-L120"
     },
     {
       "kind": "type_alias",
@@ -52777,7 +53648,7 @@
         "name": "TrackHits",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/hits.ts#L154-L162",
+      "specLocation": "_global/search/_types/hits.ts#L161-L169",
       "type": {
         "kind": "union_of",
         "items": [
@@ -53489,6 +54360,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -53496,19 +54371,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided, the request is limited to shards that match the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier for routing the search to a specific slice.\nWhen provided, the request is limited to shards that match the given slice value.\nUse the special value `_all` to query all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "_global/search_shards/SearchShardsRequest.ts#L24-L116"
+      "specLocation": "_global/search_shards/SearchShardsRequest.ts#L30-L123"
     },
     {
       "kind": "response",
@@ -53915,6 +54790,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -54026,7 +54925,7 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.",
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -54094,7 +54993,7 @@
           }
         }
       ],
-      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L35-L179"
+      "specLocation": "_global/search_template/SearchTemplateRequest.ts#L36-L195"
     },
     {
       "kind": "response",
@@ -54500,7 +55399,7 @@
         }
       ],
       "query": [],
-      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L107"
+      "specLocation": "_global/terms_enum/TermsEnumRequest.ts#L26-L108"
     },
     {
       "kind": "response",
@@ -55100,6 +55999,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -55209,26 +56132,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "If `true`, the response includes:\n\n* The total term frequency (how often a term occurs in all documents).\n* The document frequency (the number of documents containing the current term).\n\nBy default these values are not returned since term statistics can have a serious performance impact.",
           "name": "term_statistics",
           "required": false,
@@ -55266,7 +56169,7 @@
           }
         }
       ],
-      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L34-L255"
+      "specLocation": "_global/termvectors/TermVectorsRequest.ts#L35-L264"
     },
     {
       "kind": "response",
@@ -56081,6 +56984,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifier for a slice-enabled index (`index.slice.enabled` set to `true`), which scopes the operation to that slice.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -56195,26 +57122,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to wait for the following operations: dynamic mapping updates and waiting for active shards.\nElasticsearch waits for at least the timeout period before failing.\nThe actual wait time could be longer, particularly when multiple waits occur.",
           "name": "timeout",
           "required": false,
@@ -56281,7 +57188,7 @@
           }
         }
       ],
-      "specLocation": "_global/update/UpdateRequest.ts#L39-L210"
+      "specLocation": "_global/update/UpdateRequest.ts#L40-L215"
     },
     {
       "kind": "response",
@@ -56622,6 +57529,30 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -56859,26 +57790,6 @@
           }
         },
         {
-          "availability": {
-            "stack": {
-              "featureFlag": "slice_indexing",
-              "since": "9.5.0",
-              "visibility": "feature_flag"
-            }
-          },
-          "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
-          "name": "_slice",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "The period to retain the search context for scrolling.",
           "extDocId": "search-scroll-results",
           "name": "scroll",
@@ -57051,7 +57962,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L39-L374"
+      "specLocation": "_global/update_by_query/UpdateByQueryRequest.ts#L40-L378"
     },
     {
       "kind": "response",
@@ -57382,7 +58293,7 @@
           }
         }
       ],
-      "specLocation": "_global/update_by_query_rethrottle/UpdateByQueryRethrottleRequest.ts#L24-L56"
+      "specLocation": "_global/update_by_query_rethrottle/UpdateByQueryRethrottleRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -58159,7 +59070,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L140-L144",
+      "specLocation": "_types/common.ts#L146-L150",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -58388,7 +59299,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L92-L93",
+      "specLocation": "_types/common.ts#L98-L99",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58441,7 +59352,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L164-L176"
+      "specLocation": "_types/common.ts#L170-L182"
     },
     {
       "kind": "interface",
@@ -58530,7 +59441,7 @@
         "name": "ClusterAlias",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L74-L74",
+      "specLocation": "_types/common.ts#L80-L80",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -58650,7 +59561,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L415-L421"
+      "specLocation": "_types/common.ts#L421-L427"
     },
     {
       "kind": "type_alias",
@@ -58658,7 +59569,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L423-L423",
+      "specLocation": "_types/common.ts#L429-L429",
       "type": {
         "kind": "union_of",
         "items": [
@@ -58901,7 +59812,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L425-L479"
+      "specLocation": "_types/common.ts#L431-L485"
     },
     {
       "kind": "type_alias",
@@ -58909,7 +59820,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L481-L481",
+      "specLocation": "_types/common.ts#L487-L487",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59005,7 +59916,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L178-L187"
+      "specLocation": "_types/common.ts#L184-L193"
     },
     {
       "kind": "interface",
@@ -59136,7 +60047,7 @@
         "name": "DataStreamName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L88-L88",
+      "specLocation": "_types/common.ts#L94-L94",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -59151,7 +60062,7 @@
         "name": "DataStreamNames",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L90-L90",
+      "specLocation": "_types/common.ts#L96-L96",
       "type": {
         "kind": "union_of",
         "items": [
@@ -59783,7 +60694,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L155-L156"
+      "specLocation": "_types/common.ts#L161-L162"
     },
     {
       "kind": "type_alias",
@@ -59992,7 +60903,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L196-L210"
+      "specLocation": "_types/common.ts#L202-L216"
     },
     {
       "kind": "type_alias",
@@ -60000,7 +60911,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L212-L212",
+      "specLocation": "_types/common.ts#L218-L218",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60031,7 +60942,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L134",
+      "specLocation": "_types/common.ts#L139-L140",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -60352,7 +61263,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L135-L135",
+      "specLocation": "_types/common.ts#L141-L141",
       "type": {
         "kind": "union_of",
         "items": [
@@ -60478,7 +61389,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L128-L129",
+      "specLocation": "_types/common.ts#L134-L135",
       "type": {
         "kind": "union_of",
         "items": [
@@ -61182,7 +62093,7 @@
         "name": "GrokPattern",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L83-L83",
+      "specLocation": "_types/common.ts#L89-L89",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -61226,7 +62137,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L214-L236"
+      "specLocation": "_types/common.ts#L220-L242"
     },
     {
       "kind": "type_alias",
@@ -61249,7 +62160,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L153-L153",
+      "specLocation": "_types/common.ts#L159-L159",
       "type": {
         "kind": "dictionary_of",
         "key": {
@@ -61759,7 +62670,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L364-L396"
+      "specLocation": "_types/common.ts#L370-L402"
     },
     {
       "kind": "interface",
@@ -61990,7 +62901,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L349-L362"
+      "specLocation": "_types/common.ts#L355-L368"
     },
     {
       "kind": "interface",
@@ -62600,7 +63511,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L260-L264"
+      "specLocation": "_types/common.ts#L266-L270"
     },
     {
       "kind": "enum",
@@ -62991,7 +63902,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L95-L95",
+      "specLocation": "_types/common.ts#L101-L101",
       "type": {
         "kind": "dictionary_of",
         "key": {
@@ -63016,7 +63927,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L158-L162",
+      "specLocation": "_types/common.ts#L164-L168",
       "type": {
         "kind": "union_of",
         "items": [
@@ -63045,7 +63956,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L130-L131",
+      "specLocation": "_types/common.ts#L136-L137",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63060,7 +63971,7 @@
         "name": "Name",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L76-L76",
+      "specLocation": "_types/common.ts#L82-L82",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63075,7 +63986,7 @@
         "name": "Names",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L77-L77",
+      "specLocation": "_types/common.ts#L83-L83",
       "type": {
         "kind": "union_of",
         "items": [
@@ -63105,7 +64016,7 @@
         "name": "Namespace",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L79-L79",
+      "specLocation": "_types/common.ts#L85-L85",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63302,7 +64213,7 @@
         "name": "NodeName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L85-L86",
+      "specLocation": "_types/common.ts#L91-L92",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63615,7 +64526,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L270"
+      "specLocation": "_types/common.ts#L272-L276"
     },
     {
       "kind": "enum",
@@ -63658,7 +64569,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L272-L281"
+      "specLocation": "_types/common.ts#L278-L287"
     },
     {
       "kind": "type_alias",
@@ -63666,7 +64577,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L190-L190",
+      "specLocation": "_types/common.ts#L196-L196",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63775,7 +64686,7 @@
         "name": "PipelineName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L82-L82",
+      "specLocation": "_types/common.ts#L88-L88",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -63892,9 +64803,23 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "native_controller_enabled_settings",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "_types/Stats.ts#L210-L220"
+      "specLocation": "_types/Stats.ts#L210-L225"
     },
     {
       "kind": "type_alias",
@@ -63917,7 +64842,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L125-L125",
+      "specLocation": "_types/common.ts#L131-L131",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -64030,7 +64955,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L222-L256"
+      "specLocation": "_types/Stats.ts#L227-L261"
     },
     {
       "kind": "type_alias",
@@ -64429,7 +65354,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L258-L279"
+      "specLocation": "_types/Stats.ts#L263-L284"
     },
     {
       "kind": "enum",
@@ -64449,7 +65374,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L283-L290"
+      "specLocation": "_types/common.ts#L289-L296"
     },
     {
       "kind": "interface",
@@ -64554,7 +65479,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L281-L289"
+      "specLocation": "_types/Stats.ts#L286-L294"
     },
     {
       "kind": "interface",
@@ -65102,7 +66027,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L126-L126",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -65215,7 +66140,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L291-L297"
+      "specLocation": "_types/Stats.ts#L296-L302"
     },
     {
       "kind": "interface",
@@ -66434,7 +67359,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L299-L321"
+      "specLocation": "_types/Stats.ts#L304-L326"
     },
     {
       "kind": "interface",
@@ -66484,7 +67409,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L292-L297"
+      "specLocation": "_types/common.ts#L298-L303"
     },
     {
       "kind": "interface",
@@ -66781,7 +67706,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L323-L418"
+      "specLocation": "_types/Stats.ts#L328-L423"
     },
     {
       "kind": "type_alias",
@@ -66789,7 +67714,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L123-L123",
+      "specLocation": "_types/common.ts#L129-L129",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -66804,7 +67729,7 @@
         "name": "Service",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L80-L80",
+      "specLocation": "_types/common.ts#L86-L86",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -66991,6 +67916,52 @@
       "specLocation": "_types/Base.ts#L150-L153"
     },
     {
+      "kind": "type_alias",
+      "name": {
+        "name": "SliceId",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L73-L73",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
+      "kind": "type_alias",
+      "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+      "name": {
+        "name": "SliceIds",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L74-L77",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceId",
+              "namespace": "_types"
+            }
+          },
+          {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SliceId",
+                "namespace": "_types"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "SlicedScroll",
@@ -67044,7 +68015,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L398-L403",
+      "specLocation": "_types/common.ts#L404-L409",
       "type": {
         "kind": "union_of",
         "items": [
@@ -67077,7 +68048,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L405-L413"
+      "specLocation": "_types/common.ts#L411-L419"
     },
     {
       "kind": "type_alias",
@@ -67479,7 +68450,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L420-L447"
+      "specLocation": "_types/Stats.ts#L425-L452"
     },
     {
       "kind": "interface",
@@ -67572,7 +68543,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L299-L312"
+      "specLocation": "_types/common.ts#L305-L318"
     },
     {
       "kind": "type_alias",
@@ -67581,7 +68552,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L146-L150",
+      "specLocation": "_types/common.ts#L152-L156",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -67650,7 +68621,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L127-L127",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -67812,7 +68783,7 @@
         "name": "ThreadSortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L327-L332"
+      "specLocation": "_types/common.ts#L333-L338"
     },
     {
       "kind": "enum",
@@ -67842,7 +68813,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L314-L325"
+      "specLocation": "_types/common.ts#L320-L331"
     },
     {
       "kind": "type_alias",
@@ -68160,7 +69131,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L449-L457"
+      "specLocation": "_types/Stats.ts#L454-L462"
     },
     {
       "kind": "type_alias",
@@ -68247,7 +69218,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L189-L189",
+      "specLocation": "_types/common.ts#L195-L195",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68262,7 +69233,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L120-L120",
+      "specLocation": "_types/common.ts#L126-L126",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68277,7 +69248,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L98-L98",
+      "specLocation": "_types/common.ts#L104-L104",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68292,7 +69263,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L100-L100",
+      "specLocation": "_types/common.ts#L106-L106",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -68321,7 +69292,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L102-L117"
+      "specLocation": "_types/common.ts#L108-L123"
     },
     {
       "kind": "enum",
@@ -68337,7 +69308,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L334-L338"
+      "specLocation": "_types/common.ts#L340-L344"
     },
     {
       "kind": "type_alias",
@@ -68349,7 +69320,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L137-L138",
+      "specLocation": "_types/common.ts#L143-L144",
       "type": {
         "kind": "union_of",
         "items": [
@@ -68396,7 +69367,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L340-L347"
+      "specLocation": "_types/common.ts#L346-L353"
     },
     {
       "kind": "interface",
@@ -68459,7 +69430,7 @@
           }
         }
       ],
-      "specLocation": "_types/Stats.ts#L459-L464"
+      "specLocation": "_types/Stats.ts#L464-L469"
     },
     {
       "kind": "interface",
@@ -108656,7 +109627,7 @@
         }
       ],
       "query": [],
-      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L47"
+      "specLocation": "async_search/delete/AsyncSearchDeleteRequest.ts#L23-L48"
     },
     {
       "kind": "response",
@@ -110159,7 +111130,7 @@
           }
         }
       ],
-      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L440"
+      "specLocation": "async_search/submit/AsyncSearchSubmitRequest.ts#L56-L441"
     },
     {
       "kind": "response",
@@ -131692,7 +132663,7 @@
           }
         }
       ],
-      "specLocation": "ccr/follow/CreateFollowIndexRequest.ts#L31-L134"
+      "specLocation": "ccr/follow/CreateFollowIndexRequest.ts#L31-L136"
     },
     {
       "kind": "response",
@@ -132339,7 +133310,7 @@
           }
         }
       ],
-      "specLocation": "ccr/forget_follower/ForgetFollowerIndexRequest.ts#L24-L69"
+      "specLocation": "ccr/forget_follower/ForgetFollowerIndexRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -133114,7 +134085,7 @@
           }
         }
       ],
-      "specLocation": "ccr/put_auto_follow_pattern/PutAutoFollowPatternRequest.ts#L33-L142"
+      "specLocation": "ccr/put_auto_follow_pattern/PutAutoFollowPatternRequest.ts#L33-L143"
     },
     {
       "kind": "response",
@@ -133448,7 +134419,7 @@
           }
         }
       ],
-      "specLocation": "ccr/resume_follow/ResumeFollowIndexRequest.ts#L25-L69"
+      "specLocation": "ccr/resume_follow/ResumeFollowIndexRequest.ts#L25-L71"
     },
     {
       "kind": "response",
@@ -135349,7 +136320,7 @@
           }
         }
       ],
-      "specLocation": "cluster/allocation_explain/ClusterAllocationExplainRequest.ts#L25-L101"
+      "specLocation": "cluster/allocation_explain/ClusterAllocationExplainRequest.ts#L25-L102"
     },
     {
       "kind": "interface",
@@ -136057,7 +137028,7 @@
           }
         }
       ],
-      "specLocation": "cluster/delete_voting_config_exclusions/ClusterDeleteVotingConfigExclusionsRequest.ts#L24-L58"
+      "specLocation": "cluster/delete_voting_config_exclusions/ClusterDeleteVotingConfigExclusionsRequest.ts#L24-L59"
     },
     {
       "kind": "response",
@@ -136135,7 +137106,7 @@
           }
         }
       ],
-      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L65"
+      "specLocation": "cluster/exists_component_template/ClusterComponentTemplateExistsRequest.ts#L24-L66"
     },
     {
       "kind": "response",
@@ -137353,7 +138324,7 @@
         }
       ],
       "query": [],
-      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L44"
+      "specLocation": "cluster/info/ClusterInfoRequest.ts#L23-L45"
     },
     {
       "kind": "response",
@@ -137709,7 +138680,7 @@
           }
         }
       ],
-      "specLocation": "cluster/post_voting_config_exclusions/ClusterPostVotingConfigExclusionsRequest.ts#L24-L82"
+      "specLocation": "cluster/post_voting_config_exclusions/ClusterPostVotingConfigExclusionsRequest.ts#L24-L83"
     },
     {
       "kind": "response",
@@ -138950,7 +139921,7 @@
           }
         }
       ],
-      "specLocation": "cluster/reroute/ClusterRerouteRequest.ts#L25-L94"
+      "specLocation": "cluster/reroute/ClusterRerouteRequest.ts#L25-L95"
     },
     {
       "kind": "interface",
@@ -151745,7 +152716,7 @@
           }
         }
       ],
-      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L54"
+      "specLocation": "enrich/delete_policy/DeleteEnrichPolicyRequest.ts#L24-L55"
     },
     {
       "kind": "response",
@@ -151919,7 +152890,7 @@
           }
         }
       ],
-      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/execute_policy/ExecuteEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -152039,7 +153010,7 @@
           }
         }
       ],
-      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L59"
+      "specLocation": "enrich/get_policy/GetEnrichPolicyRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -152191,7 +153162,7 @@
           }
         }
       ],
-      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L70"
+      "specLocation": "enrich/put_policy/PutEnrichPolicyRequest.ts#L25-L71"
     },
     {
       "kind": "response",
@@ -152495,7 +153466,7 @@
           }
         }
       ],
-      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L24-L48"
+      "specLocation": "enrich/stats/EnrichStatsRequest.ts#L24-L49"
     },
     {
       "kind": "response",
@@ -152969,7 +153940,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L49"
+      "specLocation": "eql/delete/EqlDeleteRequest.ts#L23-L50"
     },
     {
       "kind": "response",
@@ -153190,7 +154161,7 @@
         }
       ],
       "query": [],
-      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L44"
+      "specLocation": "eql/get_status/EqlGetStatusRequest.ts#L23-L45"
     },
     {
       "kind": "response",
@@ -153794,7 +154765,7 @@
           }
         }
       ],
-      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L198"
+      "specLocation": "eql/search/EqlSearchRequest.ts#L34-L199"
     },
     {
       "kind": "response",
@@ -155733,7 +156704,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L54"
+      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L55"
     },
     {
       "kind": "response",
@@ -158062,7 +159033,7 @@
           }
         }
       ],
-      "specLocation": "features/get_features/GetFeaturesRequest.ts#L24-L56"
+      "specLocation": "features/get_features/GetFeaturesRequest.ts#L24-L57"
     },
     {
       "kind": "response",
@@ -158450,7 +159421,7 @@
           }
         }
       ],
-      "specLocation": "fleet/global_checkpoints/GlobalCheckpointsRequest.ts#L25-L77"
+      "specLocation": "fleet/global_checkpoints/GlobalCheckpointsRequest.ts#L25-L78"
     },
     {
       "kind": "response",
@@ -159304,6 +160275,30 @@
               }
             ]
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
+            "stack": {
+              "featureFlag": "slice_indexing",
+              "since": "9.6.0",
+              "visibility": "feature_flag"
+            }
+          },
+          "codegenName": "route_slice",
+          "description": "The slice identifiers for a slice-enabled index (`index.slice.enabled` set to `true`): a single slice, a comma-separated list such as `tenant-a,tenant-b`, or `_all` to target all slices.\nWhen omitted, all slices are targeted. Indices that are not slice-enabled match no documents when a slice is specified.",
+          "name": "_slice",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SliceIds",
+              "namespace": "_types"
+            }
+          }
         }
       ],
       "query": [
@@ -159497,6 +160492,7 @@
           }
         },
         {
+          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
@@ -159809,7 +160805,7 @@
           }
         }
       ],
-      "specLocation": "fleet/search/SearchRequest.ts#L55-L284"
+      "specLocation": "fleet/search/SearchRequest.ts#L56-L301"
     },
     {
       "kind": "response",
@@ -160557,7 +161553,7 @@
           }
         }
       ],
-      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L87"
+      "specLocation": "graph/explore/GraphExploreRequest.ts#L28-L88"
     },
     {
       "kind": "response",
@@ -162584,7 +163580,7 @@
           }
         }
       ],
-      "specLocation": "ilm/migrate_to_data_tiers/Request.ts#L24-L73"
+      "specLocation": "ilm/migrate_to_data_tiers/Request.ts#L24-L74"
     },
     {
       "kind": "response",
@@ -169282,7 +170278,7 @@
           }
         }
       ],
-      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L96"
+      "specLocation": "indices/add_block/IndicesAddBlockRequest.ts#L25-L97"
     },
     {
       "kind": "response",
@@ -170295,7 +171291,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L46"
+      "specLocation": "indices/cancel_migrate_reindex/MigrateCancelReindexRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -171586,7 +172582,7 @@
           }
         }
       ],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L55-L69"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L56-L70"
     },
     {
       "kind": "request",
@@ -171677,7 +172673,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L53"
+      "specLocation": "indices/create_from/MigrateCreateFromRequest.ts#L25-L54"
     },
     {
       "kind": "response",
@@ -172595,7 +173591,7 @@
           }
         }
       ],
-      "specLocation": "indices/delete_data_stream_options/IndicesDeleteDataStreamOptionsRequest.ts#L24-L66"
+      "specLocation": "indices/delete_data_stream_options/IndicesDeleteDataStreamOptionsRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -173108,7 +174104,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/downsample/Request.ts#L24-L66"
+      "specLocation": "indices/downsample/Request.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -173273,7 +174269,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L87"
+      "specLocation": "indices/exists/IndicesExistsRequest.ts#L23-L88"
     },
     {
       "kind": "response",
@@ -173420,7 +174416,7 @@
           }
         }
       ],
-      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L88"
+      "specLocation": "indices/exists_alias/IndicesExistsAliasRequest.ts#L24-L89"
     },
     {
       "kind": "response",
@@ -173891,7 +174887,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L59"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleRequest.ts#L24-L60"
     },
     {
       "kind": "response",
@@ -176227,7 +177223,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L63"
+      "specLocation": "indices/get_data_stream_options/IndicesGetDataStreamOptionsRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -177110,7 +178106,7 @@
         }
       ],
       "query": [],
-      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L46"
+      "specLocation": "indices/get_migrate_reindex_status/MigrateGetReindexStatusRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -177715,7 +178711,7 @@
           }
         }
       ],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L48-L57"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L49-L58"
     },
     {
       "kind": "enum",
@@ -177728,7 +178724,7 @@
         "name": "ModeEnum",
         "namespace": "indices.migrate_reindex"
       },
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L63-L65"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L64-L66"
     },
     {
       "kind": "request",
@@ -177796,7 +178792,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L23-L46"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L23-L47"
     },
     {
       "kind": "response",
@@ -177836,7 +178832,7 @@
           }
         }
       ],
-      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L59-L61"
+      "specLocation": "indices/migrate_reindex/MigrateReindexRequest.ts#L60-L62"
     },
     {
       "kind": "request",
@@ -178120,7 +179116,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L49"
+      "specLocation": "indices/modify_data_stream/IndicesModifyDataStreamRequest.ts#L24-L50"
     },
     {
       "kind": "response",
@@ -178420,7 +179416,7 @@
           }
         }
       ],
-      "specLocation": "indices/promote_data_stream/IndicesPromoteDataStreamRequest.ts#L24-L61"
+      "specLocation": "indices/promote_data_stream/IndicesPromoteDataStreamRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -179257,7 +180253,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L83"
+      "specLocation": "indices/put_data_stream_options/IndicesPutDataStreamOptionsRequest.ts#L25-L84"
     },
     {
       "kind": "response",
@@ -184089,6 +185085,100 @@
       "specLocation": "indices/segments/types.ts#L24-L26"
     },
     {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "SegmentAutoCalibrationBase",
+          "namespace": "indices.segments"
+        }
+      },
+      "name": {
+        "name": "OsqSegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "osq"
+          }
+        },
+        {
+          "description": "The calibration parameters.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibrationParameters",
+              "namespace": "indices.segments"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L107-L111"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "OsqSegmentAutoCalibrationParameters",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The number of bits used to quantize the vectors.",
+          "name": "bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The number of bits used to quantize the query vectors.",
+          "name": "query_bits",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the vectors are preconditioned before quantization.",
+          "name": "precondition",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The oversampling factor applied when rescoring.",
+          "name": "oversample",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L113-L122"
+    },
+    {
       "kind": "request",
       "attachedBehaviors": [
         "CommonQueryParameters"
@@ -184195,9 +185285,47 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the response includes the auto-calibration information of each segment, for the `dense_vector` fields that support auto-calibration.",
+          "name": "include_auto_calibration",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.15.0"
+            }
+          },
+          "description": "If `true`, the response includes the vector formats used by the fields of each segment, in `attributes`.",
+          "name": "vector_formats",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/segments/IndicesSegmentsRequest.ts#L23-L80"
+      "specLocation": "indices/segments/IndicesSegmentsRequest.ts#L23-L94"
     },
     {
       "kind": "response",
@@ -184261,7 +185389,7 @@
         {
           "description": "Contains information about whether high compression was enabled and per-field vector formats.",
           "name": "attributes",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "dictionary_of",
             "key": {
@@ -184296,7 +185424,7 @@
         {
           "description": "If `true`, Lucene merged all files from the segment into a single file to save file descriptors.",
           "name": "compound",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -184342,6 +185470,45 @@
           }
         },
         {
+          "description": "The ID of the merge the segment is part of. Only returned while the segment is being merged.",
+          "name": "merge_id",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The index sort of the segment. Only returned when the index is sorted.",
+          "name": "sort",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SegmentSort",
+                "namespace": "indices.segments"
+              }
+            }
+          }
+        },
+        {
+          "description": "Disk space used by the segment.",
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Disk space used by the segment, in bytes.",
           "name": "size_in_bytes",
           "required": true,
@@ -184368,7 +185535,7 @@
         {
           "description": "Version of Lucene used to write the segment.",
           "name": "version",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -184376,9 +185543,179 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The auto-calibration information of the segment, per `dense_vector` field that supports auto-calibration.\nOnly returned when `include_auto_calibration` is `true`.",
+          "name": "auto_calibration",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Field",
+                "namespace": "_types"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "SegmentAutoCalibration",
+                "namespace": "indices.segments"
+              }
+            }
+          }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L28-L62"
+      "specLocation": "indices/segments/types.ts#L28-L75"
+    },
+    {
+      "kind": "type_alias",
+      "description": "The auto-calibration information of a `dense_vector` field in a segment.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+      "name": {
+        "name": "SegmentAutoCalibration",
+        "namespace": "indices.segments"
+      },
+      "specLocation": "indices/segments/types.ts#L88-L95",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibration",
+              "namespace": "indices.segments"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentAutoCalibrationBase",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+          "name": "calibrated",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The number of vectors of the field in the segment.",
+          "name": "number_of_vectors",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The size of the vectors of the field in the segment, in bytes.",
+          "name": "size_in_bytes",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L97-L105"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SegmentSort",
+        "namespace": "indices.segments"
+      },
+      "properties": [
+        {
+          "description": "The name of the sort field.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The selector used to pick a value from multi-valued fields, such as `min` or `max`. Only returned for numeric and keyword fields.",
+          "name": "mode",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The value used for documents that are missing the field.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `true`, the sort order is descending.",
+          "name": "reverse",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/segments/types.ts#L77-L86"
     },
     {
       "kind": "interface",
@@ -184394,8 +185731,20 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "NodeId",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The node ID of the node the shard is relocating to. Only returned while the shard is relocating.",
+          "name": "relocating_node",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NodeId",
+              "namespace": "_types"
             }
           }
         },
@@ -184424,7 +185773,7 @@
           }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L64-L71"
+      "specLocation": "indices/segments/types.ts#L124-L133"
     },
     {
       "kind": "interface",
@@ -184489,7 +185838,7 @@
           }
         }
       ],
-      "specLocation": "indices/segments/types.ts#L73-L78"
+      "specLocation": "indices/segments/types.ts#L135-L140"
     },
     {
       "kind": "interface",
@@ -188531,6 +189880,10 @@
         },
         {
           "availability": {
+            "serverless": {
+              "featureFlag": "slice_indexing",
+              "visibility": "feature_flag"
+            },
             "stack": {
               "featureFlag": "slice_indexing",
               "since": "9.5.0",
@@ -188538,19 +189891,19 @@
             }
           },
           "codegenName": "route_slice",
-          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nRequired when `index.slice.enabled` is `true` for the target index; not allowed when `index.slice.enabled` is `false`.",
+          "description": "The slice identifier used to route the operation to a specific slice.\nUse the special value `_all` to target all slices without restricting to a routing value.\nWhen omitted, all slices are targeted.",
           "name": "_slice",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "string",
-              "namespace": "_builtins"
+              "name": "SliceIds",
+              "namespace": "_types"
             }
           }
         }
       ],
-      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L25-L146"
+      "specLocation": "indices/validate_query/IndicesValidateQueryRequest.ts#L31-L154"
     },
     {
       "kind": "response",
@@ -190028,7 +191381,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L227-L245"
+      "specLocation": "inference/_types/Results.ts#L327-L345"
     },
     {
       "kind": "interface",
@@ -190051,7 +191404,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L261-L269"
+      "specLocation": "inference/_types/Results.ts#L361-L369"
     },
     {
       "kind": "interface",
@@ -190125,7 +191478,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L299-L324"
+      "specLocation": "inference/_types/Results.ts#L399-L424"
     },
     {
       "kind": "interface",
@@ -190214,7 +191567,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L195-L225"
+      "specLocation": "inference/_types/Results.ts#L295-L325"
     },
     {
       "kind": "interface",
@@ -190249,7 +191602,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L247-L259"
+      "specLocation": "inference/_types/Results.ts#L347-L359"
     },
     {
       "kind": "interface",
@@ -190308,7 +191661,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L173-L193"
+      "specLocation": "inference/_types/Results.ts#L273-L293"
     },
     {
       "kind": "interface",
@@ -190343,7 +191696,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L159-L171"
+      "specLocation": "inference/_types/Results.ts#L259-L271"
     },
     {
       "kind": "interface",
@@ -190414,7 +191767,99 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L271-L297"
+      "specLocation": "inference/_types/Results.ts#L371-L397"
+    },
+    {
+      "kind": "interface",
+      "description": "The answer to a `choice` question.",
+      "name": {
+        "name": "ChoiceDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The chosen option.",
+          "name": "choice",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of each option.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ChoiceDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the chosen option.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L188-L205"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ChoiceDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The option.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the option.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L207-L216"
     },
     {
       "kind": "enum",
@@ -191454,6 +192899,101 @@
       "specLocation": "inference/_types/CommonTypes.ts#L1472-L1477"
     },
     {
+      "kind": "type_alias",
+      "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
+      "name": {
+        "name": "DecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/Results.ts#L166-L175",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionAnswer",
+              "namespace": "inference._types"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "description": "Defines the response for a decision request.",
+      "name": {
+        "name": "DecisionInferenceResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "decision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionResult",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L152-L157"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionResult",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The answers, keyed by the name of the question they answer.",
+          "name": "answers",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionAnswer",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L159-L164"
+    },
+    {
       "kind": "interface",
       "name": {
         "name": "DeepSeekServiceSettings",
@@ -191543,7 +193083,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L152-L157"
+      "specLocation": "inference/_types/Results.ts#L252-L257"
     },
     {
       "kind": "type_alias",
@@ -194461,7 +196001,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Results.ts#L326-L340",
+      "specLocation": "inference/_types/Results.ts#L426-L440",
       "variants": {
         "kind": "container"
       }
@@ -195664,6 +197204,37 @@
     },
     {
       "kind": "interface",
+      "description": "The answer to a `predicate` question.",
+      "name": {
+        "name": "PredicateDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        },
+        {
+          "description": "The probability that the statement in the question is true.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L177-L186"
+    },
+    {
+      "kind": "interface",
       "description": "The rerank result object representing a single ranked document\nid: the original index of the document in the request\nrelevance_score: the relevance_score of the document relative to the query\ntext: Optional, the text of the document, if requested",
       "name": {
         "name": "RankedDocument",
@@ -196187,6 +197758,110 @@
       "specLocation": "inference/_types/Results.ts#L119-L124"
     },
     {
+      "kind": "interface",
+      "description": "The answer to a `score` question.",
+      "name": {
+        "name": "ScoreDecisionAnswer",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The probability-weighted position on the scale, from `0` for the lowest level.",
+          "name": "score",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The probability of each level, ordered from the lowest to the highest level.",
+          "name": "probabilities",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ScoreDecisionProbability",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The confidence in the score.",
+          "name": "confidence",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L218-L235"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ScoreDecisionProbability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The zero-based position of the level, which is also its position in the array.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The probability of the level.",
+          "name": "probability",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/Results.ts#L237-L250"
+    },
+    {
       "kind": "type_alias",
       "name": {
         "name": "ServiceSettings",
@@ -196353,13 +198028,16 @@
         },
         {
           "name": "document_extraction"
+        },
+        {
+          "name": "decision"
         }
       ],
       "name": {
         "name": "TaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L20-L31"
+      "specLocation": "inference/_types/TaskType.ts#L20-L32"
     },
     {
       "kind": "enum",
@@ -196375,7 +198053,7 @@
         "name": "TaskTypeAi21",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L39-L42"
+      "specLocation": "inference/_types/TaskType.ts#L40-L43"
     },
     {
       "kind": "enum",
@@ -196397,7 +198075,7 @@
         "name": "TaskTypeAlibabaCloudAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L44-L49"
+      "specLocation": "inference/_types/TaskType.ts#L45-L50"
     },
     {
       "kind": "enum",
@@ -196416,7 +198094,7 @@
         "name": "TaskTypeAmazonBedrock",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L51-L55"
+      "specLocation": "inference/_types/TaskType.ts#L52-L56"
     },
     {
       "kind": "enum",
@@ -196441,7 +198119,7 @@
         "name": "TaskTypeAmazonSageMaker",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L57-L63"
+      "specLocation": "inference/_types/TaskType.ts#L58-L64"
     },
     {
       "kind": "enum",
@@ -196457,7 +198135,7 @@
         "name": "TaskTypeAnthropic",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L65-L68"
+      "specLocation": "inference/_types/TaskType.ts#L66-L69"
     },
     {
       "kind": "enum",
@@ -196476,7 +198154,7 @@
         "name": "TaskTypeAzureAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L70-L74"
+      "specLocation": "inference/_types/TaskType.ts#L71-L75"
     },
     {
       "kind": "enum",
@@ -196495,7 +198173,7 @@
         "name": "TaskTypeAzureOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L76-L80"
+      "specLocation": "inference/_types/TaskType.ts#L77-L81"
     },
     {
       "kind": "enum",
@@ -196514,7 +198192,7 @@
         "name": "TaskTypeCohere",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L82-L86"
+      "specLocation": "inference/_types/TaskType.ts#L83-L87"
     },
     {
       "kind": "enum",
@@ -196527,7 +198205,7 @@
         "name": "TaskTypeContextualAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L88-L90"
+      "specLocation": "inference/_types/TaskType.ts#L89-L91"
     },
     {
       "kind": "enum",
@@ -196549,7 +198227,7 @@
         "name": "TaskTypeCustom",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L92-L97"
+      "specLocation": "inference/_types/TaskType.ts#L93-L98"
     },
     {
       "kind": "enum",
@@ -196565,7 +198243,7 @@
         "name": "TaskTypeDeepSeek",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L99-L102"
+      "specLocation": "inference/_types/TaskType.ts#L100-L103"
     },
     {
       "kind": "enum",
@@ -196578,7 +198256,7 @@
         "name": "TaskTypeELSER",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L110-L112"
+      "specLocation": "inference/_types/TaskType.ts#L111-L113"
     },
     {
       "kind": "enum",
@@ -196597,7 +198275,7 @@
         "name": "TaskTypeElasticsearch",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L104-L108"
+      "specLocation": "inference/_types/TaskType.ts#L105-L109"
     },
     {
       "kind": "enum",
@@ -196616,7 +198294,7 @@
         "name": "TaskTypeFireworksAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L175-L179"
+      "specLocation": "inference/_types/TaskType.ts#L176-L180"
     },
     {
       "kind": "enum",
@@ -196632,7 +198310,7 @@
         "name": "TaskTypeGoogleAIStudio",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L114-L117"
+      "specLocation": "inference/_types/TaskType.ts#L115-L118"
     },
     {
       "kind": "enum",
@@ -196654,7 +198332,7 @@
         "name": "TaskTypeGoogleVertexAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L119-L124"
+      "specLocation": "inference/_types/TaskType.ts#L120-L125"
     },
     {
       "kind": "enum",
@@ -196667,7 +198345,7 @@
         "name": "TaskTypeGroq",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L126-L128"
+      "specLocation": "inference/_types/TaskType.ts#L127-L129"
     },
     {
       "kind": "enum",
@@ -196689,7 +198367,7 @@
         "name": "TaskTypeHuggingFace",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L130-L135"
+      "specLocation": "inference/_types/TaskType.ts#L131-L136"
     },
     {
       "kind": "enum",
@@ -196708,7 +198386,7 @@
         "name": "TaskTypeJinaAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L33-L37"
+      "specLocation": "inference/_types/TaskType.ts#L34-L38"
     },
     {
       "kind": "enum",
@@ -196727,7 +198405,7 @@
         "name": "TaskTypeLlama",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L137-L141"
+      "specLocation": "inference/_types/TaskType.ts#L138-L142"
     },
     {
       "kind": "enum",
@@ -196746,7 +198424,7 @@
         "name": "TaskTypeMistral",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L143-L147"
+      "specLocation": "inference/_types/TaskType.ts#L144-L148"
     },
     {
       "kind": "enum",
@@ -196768,7 +198446,7 @@
         "name": "TaskTypeNvidia",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L149-L154"
+      "specLocation": "inference/_types/TaskType.ts#L150-L155"
     },
     {
       "kind": "enum",
@@ -196790,7 +198468,7 @@
         "name": "TaskTypeOpenAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L156-L161"
+      "specLocation": "inference/_types/TaskType.ts#L157-L162"
     },
     {
       "kind": "enum",
@@ -196812,7 +198490,7 @@
         "name": "TaskTypeOpenShiftAi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L163-L168"
+      "specLocation": "inference/_types/TaskType.ts#L164-L169"
     },
     {
       "kind": "enum",
@@ -196828,7 +198506,7 @@
         "name": "TaskTypeVoyageAI",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L170-L173"
+      "specLocation": "inference/_types/TaskType.ts#L171-L174"
     },
     {
       "kind": "enum",
@@ -196847,7 +198525,7 @@
         "name": "TaskTypeWatsonx",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/TaskType.ts#L181-L185"
+      "specLocation": "inference/_types/TaskType.ts#L182-L186"
     },
     {
       "kind": "interface",
@@ -197560,7 +199238,7 @@
           }
         }
       ],
-      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L63"
+      "specLocation": "inference/chat_completion_unified/UnifiedRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -197718,7 +199396,7 @@
           }
         }
       ],
-      "specLocation": "inference/completion/CompletionRequest.ts#L25-L72"
+      "specLocation": "inference/completion/CompletionRequest.ts#L25-L73"
     },
     {
       "kind": "response",
@@ -197745,6 +199423,434 @@
         "namespace": "inference.completion"
       },
       "specLocation": "inference/completion/CompletionResponse.ts#L22-L25"
+    },
+    {
+      "kind": "interface",
+      "description": "A question answered with one option out of a fixed set of choices.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "name": {
+        "name": "ChoiceDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "choice"
+          }
+        },
+        {
+          "description": "The options to choose from, each mapped to an optional description. At least two choices are required.",
+          "name": "choices",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "union_of",
+              "items": [
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "null",
+                    "namespace": "_builtins"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L66-L75"
+    },
+    {
+      "kind": "type_alias",
+      "codegenNames": [
+        "string",
+        "object"
+      ],
+      "description": "The input for the `decision` task.\nEither a string, or an object. The object form additionally allows specifying images.\nThe `decision` task currently only supports the `text` and `image` types.",
+      "name": {
+        "name": "DecisionInput",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L23-L29",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EmbeddingContentObjectItem",
+              "namespace": "inference._types"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "type_alias",
+      "description": "A question answered by the `decision` task.\nThe type of the question determines the type of its answer.",
+      "name": {
+        "name": "DecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L42-L50",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "PredicateDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ChoiceDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ScoreDecisionQuestion",
+              "namespace": "inference.decision"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionQuestionBase",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "A description of what to decide. It must not be empty.",
+          "name": "instructions",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L52-L57"
+    },
+    {
+      "kind": "type_alias",
+      "codegenNames": [
+        "label",
+        "object"
+      ],
+      "description": "A level of a `score` question: either a plain label, or an object with a label and an optional description.",
+      "name": {
+        "name": "DecisionScoreLevel",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/types.ts#L88-L92",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "DecisionScoreLevelObject",
+              "namespace": "inference.decision"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "DecisionScoreLevelObject",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The label of the level.",
+          "name": "label",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "A description of the level.",
+          "name": "description",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L94-L103"
+    },
+    {
+      "kind": "interface",
+      "description": "The task settings of the `decision` task.",
+      "name": {
+        "name": "DecisionTaskSettings",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "description": "The questions to answer, keyed by question name. The answers in the response use the same names.\nThe questions replace the ones of the inference endpoint as a whole. At least one question is required.",
+          "name": "questions",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionQuestion",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L31-L40"
+    },
+    {
+      "kind": "interface",
+      "description": "A question answered with the probability that the statement in `instructions` is true.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "name": {
+        "name": "PredicateDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "predicate"
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L59-L64"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The input to answer the questions about.\nIt can be specified as a string, or as an object.\nThe object form additionally allows specifying images.\n\nstring example:\n```\n\"input\": \"I was charged twice for my order and nobody answers my emails.\"\n```\nobject example:\n```\n\"input\": {\n  \"type\": \"image\",\n  \"format\": \"base64\",\n  \"value\": \"data:image/jpeg;base64,...\"\n}\n```",
+            "name": "input",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionInput",
+                "namespace": "inference.decision"
+              }
+            }
+          },
+          {
+            "description": "Task settings for the individual inference request.\nThese settings override the task settings specified when creating the inference endpoint.",
+            "name": "task_settings",
+            "required": false,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionTaskSettings",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        ]
+      },
+      "description": "Perform decision inference on the service.\n\nAnswer a set of named questions about an input, such as whether a customer is complaining, which team should handle a request, or how angry a customer is.\nThe questions are defined in the task settings of the inference endpoint, and can be replaced for a single request through `task_settings`.\n\n> info\n> Only the `elastic` service currently supports the `decision` task.",
+      "examples": {
+        "DecisionRequestExample1": {
+          "description": "Run `POST _inference/decision/my-decision-endpoint` to answer questions about a customer message",
+          "method_request": "POST _inference/decision/my-decision-endpoint",
+          "summary": "Decision task",
+          "value": "{\n  \"input\": \"I was charged twice for my order and nobody answers my emails.\",\n  \"task_settings\": {\n    \"questions\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"instructions\": \"Is the customer complaining?\"\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"instructions\": \"Which team should handle this?\",\n        \"choices\": {\n          \"billing\": \"Charges, refunds, invoices\",\n          \"shipping\": \"Deliveries and returns\",\n          \"other\": null\n        }\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"instructions\": \"How angry is the customer?\",\n        \"levels\": [\"calm\", \"annoyed\", { \"label\": \"furious\", \"description\": \"Threatens to leave\" }]\n      }\n    }\n  }\n}"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "inference.decision"
+      },
+      "path": [
+        {
+          "description": "The unique identifier for the inference endpoint.",
+          "name": "inference_id",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Id",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The amount of time to wait for the inference request to complete.",
+          "name": "timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/DecisionRequest.ts#L25-L88"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "value",
+        "codegenName": "inference_result",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "DecisionInferenceResult",
+            "namespace": "inference._types"
+          }
+        }
+      },
+      "examples": {
+        "DecisionResponseExample1": {
+          "description": "A response from `POST _inference/decision/my-decision-endpoint`, with an answer for each question.\n",
+          "summary": "Decision task",
+          "value": "{\n  \"decision\": {\n    \"answers\": {\n      \"is_complaint\": {\n        \"type\": \"predicate\",\n        \"probability\": 0.94\n      },\n      \"team\": {\n        \"type\": \"choice\",\n        \"choice\": \"billing\",\n        \"probabilities\": [\n          { \"value\": \"billing\", \"probability\": 0.91 },\n          { \"value\": \"shipping\", \"probability\": 0.04 },\n          { \"value\": \"other\", \"probability\": 0.05 }\n        ],\n        \"confidence\": 0.89\n      },\n      \"anger\": {\n        \"type\": \"score\",\n        \"score\": 1.4,\n        \"probabilities\": [\n          { \"value\": 0, \"label\": \"calm\", \"probability\": 0.1 },\n          { \"value\": 1, \"label\": \"annoyed\", \"probability\": 0.4 },\n          { \"value\": 2, \"label\": \"furious\", \"probability\": 0.5 }\n        ],\n        \"confidence\": 0.62\n      }\n    }\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "inference.decision"
+      },
+      "specLocation": "inference/decision/DecisionResponse.ts#L22-L25"
+    },
+    {
+      "kind": "interface",
+      "description": "A question answered with the probability-weighted position on an ordered scale of levels.",
+      "inherits": {
+        "type": {
+          "name": "DecisionQuestionBase",
+          "namespace": "inference.decision"
+        }
+      },
+      "name": {
+        "name": "ScoreDecisionQuestion",
+        "namespace": "inference.decision"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "score"
+          }
+        },
+        {
+          "description": "The levels of the scale, ordered from lowest to highest. At least two levels are required.",
+          "name": "levels",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DecisionScoreLevel",
+                "namespace": "inference.decision"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/decision/types.ts#L77-L86"
     },
     {
       "kind": "request",
@@ -197854,7 +199960,7 @@
           }
         }
       ],
-      "specLocation": "inference/delete/DeleteRequest.ts#L24-L69"
+      "specLocation": "inference/delete/DeleteRequest.ts#L24-L70"
     },
     {
       "kind": "response",
@@ -198333,7 +200439,7 @@
           }
         }
       ],
-      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L57"
+      "specLocation": "inference/embedding/EmbeddingRequest.ts#L25-L58"
     },
     {
       "kind": "response",
@@ -198447,7 +200553,7 @@
         }
       ],
       "query": [],
-      "specLocation": "inference/get/GetRequest.ts#L24-L64"
+      "specLocation": "inference/get/GetRequest.ts#L24-L65"
     },
     {
       "kind": "response",
@@ -198759,7 +200865,7 @@
           }
         }
       ],
-      "specLocation": "inference/non_streaming_chat_completion/UnifiedRequest.ts#L24-L78"
+      "specLocation": "inference/non_streaming_chat_completion/UnifiedRequest.ts#L24-L79"
     },
     {
       "kind": "response",
@@ -206652,7 +208758,7 @@
           }
         }
       ],
-      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L66"
+      "specLocation": "inference/sparse_embedding/SparseEmbeddingRequest.ts#L25-L67"
     },
     {
       "kind": "response",
@@ -206967,7 +209073,7 @@
           }
         }
       ],
-      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L79"
+      "specLocation": "inference/text_embedding/TextEmbeddingRequest.ts#L25-L80"
     },
     {
       "kind": "response",
@@ -212750,7 +214856,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_geoip_database/DeleteGeoipDatabaseRequest.ts#L24-L58"
+      "specLocation": "ingest/delete_geoip_database/DeleteGeoipDatabaseRequest.ts#L24-L59"
     },
     {
       "kind": "response",
@@ -212984,7 +215090,7 @@
           }
         }
       ],
-      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L63"
+      "specLocation": "ingest/delete_pipeline/DeletePipelineRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -213215,7 +215321,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/geo_ip_stats/IngestGeoIpStatsRequest.ts#L23-L41"
+      "specLocation": "ingest/geo_ip_stats/IngestGeoIpStatsRequest.ts#L23-L42"
     },
     {
       "kind": "response",
@@ -213362,7 +215468,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ingest/get_geoip_database/GetGeoipDatabaseRequest.ts#L23-L52"
+      "specLocation": "ingest/get_geoip_database/GetGeoipDatabaseRequest.ts#L23-L53"
     },
     {
       "kind": "response",
@@ -213668,7 +215774,7 @@
           }
         }
       ],
-      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L66"
+      "specLocation": "ingest/get_pipeline/GetPipelineRequest.ts#L24-L67"
     },
     {
       "kind": "response",
@@ -213762,7 +215868,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L43"
+      "specLocation": "ingest/processor_grok/GrokProcessorPatternsRequest.ts#L23-L44"
     },
     {
       "kind": "response",
@@ -213886,7 +215992,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_geoip_database/PutGeoipDatabaseRequest.ts#L25-L69"
+      "specLocation": "ingest/put_geoip_database/PutGeoipDatabaseRequest.ts#L25-L70"
     },
     {
       "kind": "response",
@@ -214280,7 +216386,7 @@
           }
         }
       ],
-      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L102"
+      "specLocation": "ingest/put_pipeline/PutPipelineRequest.ts#L27-L103"
     },
     {
       "kind": "response",
@@ -215065,7 +217171,7 @@
           }
         }
       ],
-      "specLocation": "license/get/GetLicenseRequest.ts#L23-L60"
+      "specLocation": "license/get/GetLicenseRequest.ts#L23-L61"
     },
     {
       "kind": "response",
@@ -230341,7 +232447,7 @@
         }
       ],
       "query": [],
-      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L51"
+      "specLocation": "ml/delete_calendar_event/MlDeleteCalendarEventRequest.ts#L23-L52"
     },
     {
       "kind": "response",
@@ -237464,7 +239570,7 @@
           }
         }
       ],
-      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L70"
+      "specLocation": "ml/infer_trained_model/MlInferTrainedModelRequest.ts#L27-L71"
     },
     {
       "kind": "response",
@@ -255112,7 +257218,7 @@
         "name": "NodesInfoMetric",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L74-L89"
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L75-L90"
     },
     {
       "kind": "type_alias",
@@ -255120,7 +257226,7 @@
         "name": "NodesInfoMetrics",
         "namespace": "nodes.info"
       },
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L91-L91",
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L92-L92",
       "type": {
         "kind": "union_of",
         "items": [
@@ -255287,7 +257393,7 @@
           }
         }
       ],
-      "specLocation": "nodes/info/NodesInfoRequest.ts#L24-L72"
+      "specLocation": "nodes/info/NodesInfoRequest.ts#L24-L73"
     },
     {
       "kind": "response",
@@ -255462,7 +257568,7 @@
           }
         }
       ],
-      "specLocation": "nodes/reload_secure_settings/ReloadSecureSettingsRequest.ts#L24-L72"
+      "specLocation": "nodes/reload_secure_settings/ReloadSecureSettingsRequest.ts#L24-L73"
     },
     {
       "kind": "response",
@@ -267850,7 +269956,7 @@
           }
         }
       ],
-      "specLocation": "security/clear_cached_realms/SecurityClearCachedRealmsRequest.ts#L23-L61"
+      "specLocation": "security/clear_cached_realms/SecurityClearCachedRealmsRequest.ts#L23-L62"
     },
     {
       "kind": "response",
@@ -284883,7 +286989,7 @@
           }
         }
       ],
-      "specLocation": "slm/stop/StopSnapshotLifecycleManagementRequest.ts#L24-L63"
+      "specLocation": "slm/stop/StopSnapshotLifecycleManagementRequest.ts#L24-L64"
     },
     {
       "kind": "response",
@@ -297443,7 +299549,7 @@
           }
         }
       ],
-      "specLocation": "text_structure/test_grok_pattern/TestGrokPatternRequest.ts#L23-L62"
+      "specLocation": "text_structure/test_grok_pattern/TestGrokPatternRequest.ts#L23-L63"
     },
     {
       "kind": "response",
@@ -298224,7 +300330,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L40"
+      "specLocation": "transform/get_node_stats/GetNodeStatsRequest.ts#L23-L41"
     },
     {
       "kind": "response",
@@ -307256,7 +309362,7 @@
           }
         }
       ],
-      "specLocation": "watcher/get_settings/WatcherGetSettingsRequest.ts#L24-L50"
+      "specLocation": "watcher/get_settings/WatcherGetSettingsRequest.ts#L24-L51"
     },
     {
       "kind": "response",

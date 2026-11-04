@@ -30,6 +30,7 @@ import { Duration } from '@_types/Time'
  * @availability serverless stability=stable visibility=public
  * @doc_tag data stream
  * @doc_id data-stream-get-options
+ * @index_privileges manage
  */
 export interface Request extends RequestBase {
   urls: [
