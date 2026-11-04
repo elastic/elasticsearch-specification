@@ -908,7 +908,8 @@ function hoistPropertyAnnotations (property: model.Property, jsDocs: JSDoc[]): v
         assert(jsDocs, isServerDefaultUnion(property.type.items), 'Default values in unions can only be configured for `T | T[]`, `T | null` or `T | string` unions')
       }
       const { type: defaultType, allowsString } = serverDefaultType(property.type)
-      if (defaultType.kind === 'array_of' || (property.type.kind === 'union_of' && value.startsWith('['))) {
+      if (defaultType.kind === 'array_of' ||
+        (property.type.kind === 'union_of' && property.type.items.some(item => item.kind === 'array_of') && value.startsWith('['))) {
         try {
           value = eval(value) // eslint-disable-line
         } catch (err) {

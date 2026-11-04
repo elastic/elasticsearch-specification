@@ -22,6 +22,7 @@ import test from 'ava'
 import Compiler from '../../src/compiler'
 
 const specsFolderUnionValue = join(__dirname, 'specification-union-value')
+const specsFolderUnionArrayValue = join(__dirname, 'specification-union-array-value')
 const specsFolderStringifiedValue = join(__dirname, 'specification-stringified-value')
 const specsFolderUnionShape = join(__dirname, 'specification-union-shape')
 const outputFolder = join(__dirname, 'output')
@@ -29,6 +30,10 @@ const outputFolder = join(__dirname, 'output')
 test('@server_default fails when the value does not match the union or Stringified member', t => {
   let compiler = new Compiler(specsFolderUnionValue, outputFolder)
   let error = t.throws(() => compiler.generateModel())
+  t.true(error?.message === 'The default value for value should be a number', error?.message)
+
+  compiler = new Compiler(specsFolderUnionArrayValue, outputFolder)
+  error = t.throws(() => compiler.generateModel())
   t.true(error?.message === 'The default value for value should be a number', error?.message)
 
   compiler = new Compiler(specsFolderStringifiedValue, outputFolder)
