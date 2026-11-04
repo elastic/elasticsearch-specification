@@ -14267,7 +14267,7 @@
                     "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionTaskSettings"
                       }
                     ]
                   }
@@ -51910,6 +51910,14 @@
                 "$ref": "#/components/schemas/_types.Field"
               }
             ]
+          },
+          "missing": {
+            "description": "The value to treat a document as having when it has no value for the field.\nBy default, a document that is missing any of the metrics or the sort value is ignored.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.aggregations.Missing"
+              }
+            ]
           }
         },
         "required": [
@@ -73260,7 +73268,7 @@
             ]
           },
           "format": {
-            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "description": "The format of the document. If not specified, this defaults to `base64` for `pdf` and `image`, and `url` for `html`.\nThe `html` type supports `url` only.\nNot all services and models support all formats.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
@@ -73281,7 +73289,8 @@
         "type": "string",
         "enum": [
           "image",
-          "pdf"
+          "pdf",
+          "html"
         ]
       },
       "inference.document_extraction.DocumentExtractionContentFormat": {
@@ -73289,6 +73298,33 @@
         "enum": [
           "base64",
           "url"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionTaskSettings": {
+        "description": "Task settings for the `document_extraction` task type of the `elastic` service.\nThey can be set when creating the inference endpoint and overridden per request.\nRequest values take precedence, and `parameters` are merged per key.",
+        "type": "object",
+        "properties": {
+          "output_format": {
+            "description": "The output format of the extracted content. Only `markdown` is supported.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionOutputFormat"
+              }
+            ]
+          },
+          "parameters": {
+            "description": "A free-form object of extraction options that is forwarded to the Elastic Inference Service as-is.\nThe accepted parameters are defined by the Elastic Inference Service.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "inference.document_extraction.DocumentExtractionOutputFormat": {
+        "type": "string",
+        "enum": [
+          "markdown"
         ]
       },
       "inference._types.DocumentExtractionInferenceResult": {
@@ -77607,6 +77643,14 @@
               }
             ]
           },
+          "recover_failure_document": {
+            "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.RecoverFailureDocumentProcessor"
+              }
+            ]
+          },
           "redact": {
             "description": "The Redact processor uses the Grok rules engine to obscure text in the input document matching the given Grok patterns.\nThe processor can be used to obscure Personal Identifying Information (PII) by configuring it to detect known patterns such as email or IP addresses.\nText that matches a Grok pattern is replaced with a configurable string such as `<EMAIL>` where an email address is matched or simply replace all matches with the text `<REDACTED>` if preferred.",
             "allOf": [
@@ -79450,6 +79494,16 @@
             "required": [
               "name"
             ]
+          }
+        ]
+      },
+      "ingest._types.RecoverFailureDocumentProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },

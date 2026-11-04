@@ -5063,6 +5063,7 @@ export interface AggregationsTopMetricsAggregation extends AggregationsMetricAgg
 
 export interface AggregationsTopMetricsValue {
   field: Field
+  missing?: AggregationsMissing
 }
 
 export interface AggregationsTrendChange {
@@ -14826,6 +14827,7 @@ export type IndicesStatsIndexMetadataState = 'open' | 'close'
 
 export interface IndicesStatsIndexStats {
   completion?: CompletionStats
+  dense_vector?: ClusterStatsDenseVectorStats
   docs?: DocStats
   fielddata?: FielddataStats
   flush?: FlushStats
@@ -14839,6 +14841,7 @@ export interface IndicesStatsIndexStats {
   request_cache?: RequestCacheStats
   search?: SearchStats
   segments?: SegmentsStats
+  sparse_vector?: ClusterStatsSparseVectorStats
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats
@@ -16207,16 +16210,23 @@ export interface InferenceDocumentExtractionDocumentExtractionContentObjectItem 
   value: string
 }
 
-export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf'
+export type InferenceDocumentExtractionDocumentExtractionContentType = 'image' | 'pdf' | 'html'
 
 export type InferenceDocumentExtractionDocumentExtractionInput = InferenceDocumentExtractionDocumentExtractionContentObject | InferenceDocumentExtractionDocumentExtractionContentObject[]
+
+export type InferenceDocumentExtractionDocumentExtractionOutputFormat = 'markdown'
+
+export interface InferenceDocumentExtractionDocumentExtractionTaskSettings {
+  output_format?: InferenceDocumentExtractionDocumentExtractionOutputFormat
+  parameters?: Record<string, any>
+}
 
 export interface InferenceDocumentExtractionRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
   body?: {
     input: InferenceDocumentExtractionDocumentExtractionInput
-    task_settings?: InferenceTaskSettings
+    task_settings?: InferenceDocumentExtractionDocumentExtractionTaskSettings
   }
 }
 
@@ -17039,6 +17049,9 @@ export interface IngestNetworkDirectionProcessor extends IngestProcessorBase {
   ignore_missing?: boolean
 }
 
+export interface IngestNormalizeForStreamProcessor extends IngestProcessorBase {
+}
+
 export interface IngestPipeline {
   description?: string
   on_failure?: IngestProcessorContainer[]
@@ -17114,7 +17127,9 @@ export interface IngestProcessorContainer {
   kv?: IngestKeyValueProcessor
   lowercase?: IngestLowercaseProcessor
   network_direction?: IngestNetworkDirectionProcessor
+  normalize_for_stream?: IngestNormalizeForStreamProcessor
   pipeline?: IngestPipelineProcessor
+  recover_failure_document?: IngestRecoverFailureDocumentProcessor
   redact?: IngestRedactProcessor
   registered_domain?: IngestRegisteredDomainProcessor
   remove?: IngestRemoveProcessor
@@ -17131,6 +17146,9 @@ export interface IngestProcessorContainer {
   urldecode?: IngestUrlDecodeProcessor
   uri_parts?: IngestUriPartsProcessor
   user_agent?: IngestUserAgentProcessor
+}
+
+export interface IngestRecoverFailureDocumentProcessor extends IngestProcessorBase {
 }
 
 export interface IngestRedact {
@@ -23712,9 +23730,11 @@ export interface SnapshotAzureRepositorySettings extends SnapshotRepositorySetti
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 
@@ -23899,9 +23919,11 @@ export interface SnapshotSourceOnlyRepositorySettingsForAzure {
   base_path?: string
   client?: string
   container?: string
+  data_access_tier?: string
   delete_objects_max_size?: integer
   location_mode?: string
   max_concurrent_batch_deletes?: integer
+  metadata_access_tier?: string
   readonly?: boolean
 }
 

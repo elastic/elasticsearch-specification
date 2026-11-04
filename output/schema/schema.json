@@ -82785,9 +82785,21 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "The value to treat a document as having when it has no value for the field.\nBy default, a document that is missing any of the metrics or the sort value is ignored.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Missing",
+              "namespace": "_types.aggregations"
+            }
+          }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L454-L459"
+      "specLocation": "_types/aggregations/metric.ts#L454-L464"
     },
     {
       "kind": "interface",
@@ -82961,7 +82973,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L461-L461"
+      "specLocation": "_types/aggregations/metric.ts#L466-L466"
     },
     {
       "kind": "enum",
@@ -83001,7 +83013,7 @@
         "name": "ValueType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L463-L474"
+      "specLocation": "_types/aggregations/metric.ts#L468-L479"
     },
     {
       "kind": "interface",
@@ -83246,7 +83258,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L476-L490"
+      "specLocation": "_types/aggregations/metric.ts#L481-L495"
     },
     {
       "kind": "interface",
@@ -83291,7 +83303,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L492-L502"
+      "specLocation": "_types/aggregations/metric.ts#L497-L507"
     },
     {
       "kind": "interface",
@@ -186906,7 +186918,7 @@
         "name": "IndexMetadataState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L232-L235"
+      "specLocation": "indices/stats/types.ts#L236-L239"
     },
     {
       "kind": "interface",
@@ -186924,6 +186936,18 @@
             "type": {
               "name": "CompletionStats",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Contains statistics about the dense vectors in the index.",
+          "name": "dense_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorStats",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -187084,6 +187108,18 @@
           }
         },
         {
+          "description": "Contains statistics about the sparse vectors in the index.",
+          "name": "sparse_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorStats",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
           "description": "Contains statistics about the size of shards assigned to the node.",
           "name": "store",
           "required": false,
@@ -187148,7 +187184,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L53-L94"
+      "specLocation": "indices/stats/types.ts#L53-L98"
     },
     {
       "kind": "interface",
@@ -187250,7 +187286,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L96-L111"
+      "specLocation": "indices/stats/types.ts#L100-L115"
     },
     {
       "kind": "interface",
@@ -187326,7 +187362,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L188-L195"
+      "specLocation": "indices/stats/types.ts#L192-L199"
     },
     {
       "kind": "request",
@@ -187660,7 +187696,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L113-L118"
+      "specLocation": "indices/stats/types.ts#L117-L122"
     },
     {
       "kind": "interface",
@@ -187736,7 +187772,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L125-L132"
+      "specLocation": "indices/stats/types.ts#L129-L136"
     },
     {
       "kind": "interface",
@@ -187790,7 +187826,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L134-L139"
+      "specLocation": "indices/stats/types.ts#L138-L143"
     },
     {
       "kind": "interface",
@@ -187833,7 +187869,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L141-L145"
+      "specLocation": "indices/stats/types.ts#L145-L149"
     },
     {
       "kind": "interface",
@@ -187931,7 +187967,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L147-L156"
+      "specLocation": "indices/stats/types.ts#L151-L160"
     },
     {
       "kind": "interface",
@@ -187977,7 +188013,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L158-L162"
+      "specLocation": "indices/stats/types.ts#L162-L166"
     },
     {
       "kind": "interface",
@@ -188043,7 +188079,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L164-L169"
+      "specLocation": "indices/stats/types.ts#L168-L173"
     },
     {
       "kind": "enum",
@@ -188065,7 +188101,7 @@
         "name": "ShardRoutingState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L171-L176"
+      "specLocation": "indices/stats/types.ts#L175-L180"
     },
     {
       "kind": "interface",
@@ -188108,7 +188144,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L178-L182"
+      "specLocation": "indices/stats/types.ts#L182-L186"
     },
     {
       "kind": "interface",
@@ -188450,7 +188486,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L197-L230"
+      "specLocation": "indices/stats/types.ts#L201-L234"
     },
     {
       "kind": "interface",
@@ -188471,7 +188507,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L184-L186"
+      "specLocation": "indices/stats/types.ts#L188-L190"
     },
     {
       "kind": "interface",
@@ -199667,7 +199703,7 @@
         "name": "DocumentExtractionContentFormat",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L148-L155"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L175-L182"
     },
     {
       "kind": "interface",
@@ -199690,7 +199726,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L110-L118"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L135-L143"
     },
     {
       "kind": "interface",
@@ -199713,7 +199749,7 @@
           }
         },
         {
-          "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+          "description": "The format of the document. If not specified, this defaults to `base64` for `pdf` and `image`, and `url` for `html`.\nThe `html` type supports `url` only.\nNot all services and models support all formats.",
           "name": "format",
           "required": false,
           "type": {
@@ -199737,7 +199773,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L138"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L145-L164"
     },
     {
       "kind": "enum",
@@ -199747,13 +199783,16 @@
         },
         {
           "name": "pdf"
+        },
+        {
+          "name": "html"
         }
       ],
       "name": {
         "name": "DocumentExtractionContentType",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L140-L146"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L166-L173"
     },
     {
       "kind": "type_alias",
@@ -199762,7 +199801,7 @@
         "name": "DocumentExtractionInput",
         "namespace": "inference.document_extraction"
       },
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L102-L108",
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L127-L133",
       "type": {
         "kind": "union_of",
         "items": [
@@ -199785,6 +199824,61 @@
           }
         ]
       }
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "markdown"
+        }
+      ],
+      "name": {
+        "name": "DocumentExtractionOutputFormat",
+        "namespace": "inference.document_extraction"
+      },
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L120-L125"
+    },
+    {
+      "kind": "interface",
+      "description": "Task settings for the `document_extraction` task type of the `elastic` service.\nThey can be set when creating the inference endpoint and overridden per request.\nRequest values take precedence, and `parameters` are merged per key.",
+      "name": {
+        "name": "DocumentExtractionTaskSettings",
+        "namespace": "inference.document_extraction"
+      },
+      "properties": [
+        {
+          "description": "The output format of the extracted content. Only `markdown` is supported.",
+          "name": "output_format",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DocumentExtractionOutputFormat",
+              "namespace": "inference.document_extraction"
+            }
+          }
+        },
+        {
+          "description": "A free-form object of extraction options that is forwarded to the Elastic Inference Service as-is.\nThe accepted parameters are defined by the Elastic Inference Service.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L103-L118"
     },
     {
       "kind": "request",
@@ -199813,8 +199907,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "TaskSettings",
-                "namespace": "inference._types"
+                "name": "DocumentExtractionTaskSettings",
+                "namespace": "inference.document_extraction"
               }
             }
           }
@@ -199874,7 +199968,7 @@
           }
         }
       ],
-      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L25-L100"
+      "specLocation": "inference/document_extraction/DocumentExtractionRequest.ts#L26-L101"
     },
     {
       "kind": "response",
@@ -208951,7 +209045,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L334-L366"
+      "specLocation": "ingest/_types/Processors.ts#L347-L379"
     },
     {
       "kind": "interface",
@@ -209090,7 +209184,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L368-L419"
+      "specLocation": "ingest/_types/Processors.ts#L381-L432"
     },
     {
       "kind": "interface",
@@ -209144,7 +209238,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L588-L604"
+      "specLocation": "ingest/_types/Processors.ts#L601-L617"
     },
     {
       "kind": "interface",
@@ -209224,7 +209318,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L606-L632"
+      "specLocation": "ingest/_types/Processors.ts#L619-L645"
     },
     {
       "kind": "interface",
@@ -209301,7 +209395,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L634-L657"
+      "specLocation": "ingest/_types/Processors.ts#L647-L670"
     },
     {
       "kind": "interface",
@@ -209460,7 +209554,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L659-L720"
+      "specLocation": "ingest/_types/Processors.ts#L672-L733"
     },
     {
       "kind": "interface",
@@ -209526,7 +209620,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L733-L753"
+      "specLocation": "ingest/_types/Processors.ts#L746-L766"
     },
     {
       "kind": "enum",
@@ -209560,7 +209654,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L722-L731"
+      "specLocation": "ingest/_types/Processors.ts#L735-L744"
     },
     {
       "kind": "interface",
@@ -209658,7 +209752,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L755-L788"
+      "specLocation": "ingest/_types/Processors.ts#L768-L801"
     },
     {
       "kind": "interface",
@@ -209883,7 +209977,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L790-L828"
+      "specLocation": "ingest/_types/Processors.ts#L803-L841"
     },
     {
       "kind": "interface",
@@ -209978,7 +210072,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L830-L863"
+      "specLocation": "ingest/_types/Processors.ts#L843-L876"
     },
     {
       "kind": "interface",
@@ -210044,7 +210138,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L865-L884"
+      "specLocation": "ingest/_types/Processors.ts#L878-L897"
     },
     {
       "kind": "interface",
@@ -210279,7 +210373,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L886-L904"
+      "specLocation": "ingest/_types/Processors.ts#L899-L917"
     },
     {
       "kind": "interface",
@@ -210294,7 +210388,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L906-L906"
+      "specLocation": "ingest/_types/Processors.ts#L919-L919"
     },
     {
       "kind": "interface",
@@ -210398,7 +210492,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L908-L947"
+      "specLocation": "ingest/_types/Processors.ts#L921-L960"
     },
     {
       "kind": "interface",
@@ -210426,7 +210520,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L949-L955"
+      "specLocation": "ingest/_types/Processors.ts#L962-L968"
     },
     {
       "kind": "enum",
@@ -210472,7 +210566,7 @@
         "name": "FingerprintDigest",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L957-L963"
+      "specLocation": "ingest/_types/Processors.ts#L970-L976"
     },
     {
       "kind": "interface",
@@ -210551,7 +210645,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L965-L993"
+      "specLocation": "ingest/_types/Processors.ts#L978-L1006"
     },
     {
       "kind": "interface",
@@ -210604,7 +210698,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L995-L1009"
+      "specLocation": "ingest/_types/Processors.ts#L1008-L1022"
     },
     {
       "kind": "interface",
@@ -210731,7 +210825,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L421-L462"
+      "specLocation": "ingest/_types/Processors.ts#L434-L475"
     },
     {
       "kind": "enum",
@@ -210747,7 +210841,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L470-L473"
+      "specLocation": "ingest/_types/Processors.ts#L483-L486"
     },
     {
       "kind": "enum",
@@ -210766,7 +210860,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L464-L468"
+      "specLocation": "ingest/_types/Processors.ts#L477-L481"
     },
     {
       "kind": "interface",
@@ -210873,7 +210967,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L475-L509"
+      "specLocation": "ingest/_types/Processors.ts#L488-L522"
     },
     {
       "kind": "interface",
@@ -210997,7 +211091,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1011-L1049"
+      "specLocation": "ingest/_types/Processors.ts#L1024-L1062"
     },
     {
       "kind": "interface",
@@ -211075,7 +211169,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1051-L1075"
+      "specLocation": "ingest/_types/Processors.ts#L1064-L1088"
     },
     {
       "kind": "interface",
@@ -211129,7 +211223,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1077-L1093"
+      "specLocation": "ingest/_types/Processors.ts#L1090-L1106"
     },
     {
       "kind": "interface",
@@ -211163,7 +211257,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1134-L1146",
+      "specLocation": "ingest/_types/Processors.ts#L1147-L1159",
       "variants": {
         "kind": "container"
       }
@@ -211240,7 +211334,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1161-L1187"
+      "specLocation": "ingest/_types/Processors.ts#L1174-L1200"
     },
     {
       "kind": "interface",
@@ -211276,7 +211370,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1148-L1159"
+      "specLocation": "ingest/_types/Processors.ts#L1161-L1172"
     },
     {
       "kind": "interface",
@@ -211387,7 +211481,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1095-L1127"
+      "specLocation": "ingest/_types/Processors.ts#L1108-L1140"
     },
     {
       "kind": "interface",
@@ -211468,7 +211562,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1129-L1132"
+      "specLocation": "ingest/_types/Processors.ts#L1142-L1145"
     },
     {
       "kind": "interface",
@@ -211575,7 +211669,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L511-L545"
+      "specLocation": "ingest/_types/Processors.ts#L524-L558"
     },
     {
       "kind": "interface",
@@ -211637,7 +211731,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1189-L1204"
+      "specLocation": "ingest/_types/Processors.ts#L1202-L1217"
     },
     {
       "kind": "interface",
@@ -211716,7 +211810,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1206-L1235"
+      "specLocation": "ingest/_types/Processors.ts#L1219-L1248"
     },
     {
       "kind": "enum",
@@ -211734,7 +211828,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1237-L1242"
+      "specLocation": "ingest/_types/Processors.ts#L1250-L1255"
     },
     {
       "kind": "interface",
@@ -211891,7 +211985,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1244-L1296"
+      "specLocation": "ingest/_types/Processors.ts#L1257-L1309"
     },
     {
       "kind": "interface",
@@ -211966,7 +212060,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1298-L1314"
+      "specLocation": "ingest/_types/Processors.ts#L1311-L1327"
     },
     {
       "kind": "interface",
@@ -212082,7 +212176,22 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1316-L1350"
+      "specLocation": "ingest/_types/Processors.ts#L1329-L1363"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "name": {
+        "name": "NormalizeForStreamProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L1365-L1365"
     },
     {
       "kind": "interface",
@@ -212370,7 +212479,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1352-L1363"
+      "specLocation": "ingest/_types/Processors.ts#L1367-L1378"
     },
     {
       "kind": "interface",
@@ -212555,7 +212664,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L309-L332"
+      "specLocation": "ingest/_types/Processors.ts#L322-L345"
     },
     {
       "kind": "interface",
@@ -212968,6 +213077,26 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.1.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Detects whether a document is OpenTelemetry-compliant and, if not, normalizes it so that it can be queried by clients that expect either ECS or OpenTelemetry Semantic Conventions formats.",
+          "docId": "normalize-for-stream-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/normalize-for-stream",
+          "name": "normalize_for_stream",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NormalizeForStreamProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Executes another pipeline.",
           "docId": "pipeline-processor",
           "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/pipeline-processor",
@@ -212977,6 +213106,26 @@
             "kind": "instance_of",
             "type": {
               "name": "PipelineProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.2.0"
+            }
+          },
+          "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+          "docId": "recover-failure-document-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/recover-failure-document-processor",
+          "name": "recover_failure_document",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoverFailureDocumentProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -213205,11 +213354,26 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L28-L307",
+      "specLocation": "ingest/_types/Processors.ts#L28-L320",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
       }
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "name": {
+        "name": "RecoverFailureDocumentProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L1380-L1380"
     },
     {
       "kind": "interface",
@@ -213367,7 +213531,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1365-L1406"
+      "specLocation": "ingest/_types/Processors.ts#L1382-L1423"
     },
     {
       "kind": "interface",
@@ -213420,7 +213584,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1408-L1424"
+      "specLocation": "ingest/_types/Processors.ts#L1425-L1441"
     },
     {
       "kind": "interface",
@@ -213473,7 +213637,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1426-L1440"
+      "specLocation": "ingest/_types/Processors.ts#L1443-L1457"
     },
     {
       "kind": "interface",
@@ -213539,7 +213703,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1442-L1464"
+      "specLocation": "ingest/_types/Processors.ts#L1459-L1481"
     },
     {
       "kind": "interface",
@@ -213621,7 +213785,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1466-L1494"
+      "specLocation": "ingest/_types/Processors.ts#L1483-L1511"
     },
     {
       "kind": "interface",
@@ -213693,7 +213857,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1496-L1516"
+      "specLocation": "ingest/_types/Processors.ts#L1513-L1533"
     },
     {
       "kind": "interface",
@@ -213780,7 +213944,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1518-L1553"
+      "specLocation": "ingest/_types/Processors.ts#L1535-L1570"
     },
     {
       "kind": "interface",
@@ -213823,7 +213987,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1555-L1564"
+      "specLocation": "ingest/_types/Processors.ts#L1572-L1581"
     },
     {
       "kind": "enum",
@@ -213839,7 +214003,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1566-L1569"
+      "specLocation": "ingest/_types/Processors.ts#L1583-L1586"
     },
     {
       "kind": "interface",
@@ -213938,7 +214102,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1571-L1587"
+      "specLocation": "ingest/_types/Processors.ts#L1588-L1604"
     },
     {
       "kind": "interface",
@@ -214017,7 +214181,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1589-L1614"
+      "specLocation": "ingest/_types/Processors.ts#L1606-L1631"
     },
     {
       "kind": "interface",
@@ -214032,7 +214196,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1616-L1616"
+      "specLocation": "ingest/_types/Processors.ts#L1633-L1633"
     },
     {
       "kind": "interface",
@@ -214086,7 +214250,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1618-L1634"
+      "specLocation": "ingest/_types/Processors.ts#L1635-L1651"
     },
     {
       "kind": "interface",
@@ -214140,7 +214304,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1636-L1652"
+      "specLocation": "ingest/_types/Processors.ts#L1653-L1669"
     },
     {
       "kind": "interface",
@@ -214220,7 +214384,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1672-L1698"
+      "specLocation": "ingest/_types/Processors.ts#L1689-L1715"
     },
     {
       "kind": "interface",
@@ -214274,7 +214438,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1654-L1670"
+      "specLocation": "ingest/_types/Processors.ts#L1671-L1687"
     },
     {
       "kind": "interface",
@@ -214382,7 +214546,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L547-L578"
+      "specLocation": "ingest/_types/Processors.ts#L560-L591"
     },
     {
       "kind": "enum",
@@ -214407,7 +214571,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L580-L586"
+      "specLocation": "ingest/_types/Processors.ts#L593-L599"
     },
     {
       "kind": "interface",
@@ -286724,6 +286888,23 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The Azure access tier applied to the data blobs of the repository, which hold the files that make up each snapshotted shard.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+          "name": "data_access_tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
           "name": "delete_objects_max_size",
           "required": false,
@@ -286763,6 +286944,23 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The Azure access tier applied to the metadata blobs of the repository.\nThese are generally smaller than the data blobs but can be read more often, for example to list the repository contents or to take snapshots.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+          "name": "metadata_access_tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
           "name": "readonly",
           "required": false,
@@ -286776,7 +286974,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L146-L197"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L146-L212"
     },
     {
       "kind": "interface",
@@ -286929,7 +287127,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L199-L236"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L214-L251"
     },
     {
       "kind": "interface",
@@ -287121,7 +287319,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L378-L413"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L393-L428"
     },
     {
       "kind": "type_alias",
@@ -287517,7 +287715,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L238-L347"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L253-L362"
     },
     {
       "kind": "interface",
@@ -287837,7 +288035,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L349-L376"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L364-L391"
     },
     {
       "kind": "interface",
@@ -288516,7 +288714,7 @@
         "name": "SourceOnlyRepositorySettings",
         "namespace": "snapshot._types"
       },
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L415-L426",
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L430-L441",
       "type": {
         "kind": "union_of",
         "items": [
@@ -288636,6 +288834,23 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The Azure access tier applied to the data blobs of the repository, which hold the files that make up each snapshotted shard.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+          "name": "data_access_tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.\nDefaults to 256 which is the maximum number supported by the Azure blob batch API.",
           "name": "delete_objects_max_size",
           "required": false,
@@ -288675,6 +288890,23 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The Azure access tier applied to the metadata blobs of the repository.\nThese are generally smaller than the data blobs but can be read more often, for example to list the repository contents or to take snapshots.\nAccepted values are `hot`, `cool` and `cold`, in any letter case.\nIf not set, no access tier is requested and Azure applies the default tier of the storage account.",
+          "name": "metadata_access_tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If `true`, the repository is read-only.\nThe cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.\n\nOnly a cluster with write access can create snapshots in the repository.\nAll other clusters connected to the repository should have the `readonly` parameter set to `true`.\nIf `false`, the cluster can write to the repository and create snapshots in it.\n\nIMPORTANT: If you register the same snapshot repository with multiple clusters, only one cluster should have write access to the repository.\nHaving multiple clusters write to the repository at the same time risks corrupting the contents of the repository.",
           "name": "readonly",
           "required": false,
@@ -288688,7 +288920,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L440-L444"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L455-L459"
     },
     {
       "kind": "interface",
@@ -288792,7 +289024,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L446-L450"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L461-L465"
     },
     {
       "kind": "interface",
@@ -288881,7 +289113,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L434-L438"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L449-L453"
     },
     {
       "kind": "interface",
@@ -289120,7 +289352,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L452-L456"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L467-L471"
     },
     {
       "kind": "interface",
@@ -289196,7 +289428,7 @@
           }
         }
       ],
-      "specLocation": "snapshot/_types/SnapshotRepository.ts#L428-L432"
+      "specLocation": "snapshot/_types/SnapshotRepository.ts#L443-L447"
     },
     {
       "kind": "interface",
