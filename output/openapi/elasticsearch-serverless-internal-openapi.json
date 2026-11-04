@@ -21224,7 +21224,7 @@
                     "description": "Task settings for the individual inference request.\nThese settings are specific to the task type you specified and override the task settings specified when initializing the service.",
                     "allOf": [
                       {
-                        "$ref": "#/components/schemas/inference._types.TaskSettings"
+                        "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionTaskSettings"
                       }
                     ]
                   }
@@ -101155,7 +101155,7 @@
             ]
           },
           "format": {
-            "description": "The format of the document. If not specified, this defaults to `base64`.\nNot all services and models support all formats.",
+            "description": "The format of the document. If not specified, this defaults to `base64` for `pdf` and `image`, and `url` for `html`.\nThe `html` type supports `url` only.\nNot all services and models support all formats.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionContentFormat"
@@ -101176,7 +101176,8 @@
         "type": "string",
         "enum": [
           "image",
-          "pdf"
+          "pdf",
+          "html"
         ]
       },
       "inference.document_extraction.DocumentExtractionContentFormat": {
@@ -101184,6 +101185,33 @@
         "enum": [
           "base64",
           "url"
+        ]
+      },
+      "inference.document_extraction.DocumentExtractionTaskSettings": {
+        "description": "Task settings for the `document_extraction` task type of the `elastic` service.\nThey can be set when creating the inference endpoint and overridden per request.\nRequest values take precedence, and `parameters` are merged per key.",
+        "type": "object",
+        "properties": {
+          "output_format": {
+            "description": "The output format of the extracted content. Only `markdown` is supported.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference.document_extraction.DocumentExtractionOutputFormat"
+              }
+            ]
+          },
+          "parameters": {
+            "description": "A free-form object of extraction options that is forwarded to the Elastic Inference Service as-is.\nThe accepted parameters are defined by the Elastic Inference Service.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "inference.document_extraction.DocumentExtractionOutputFormat": {
+        "type": "string",
+        "enum": [
+          "markdown"
         ]
       },
       "inference._types.DocumentExtractionInferenceResult": {
