@@ -1,7 +1,14 @@
 name: Build OpenAPI docs specs
 description: >
-  Install dependencies and build the overlayed docs-ready OpenAPI spec at
-  output/openapi/elasticsearch-openapi-docs-final.json.
+  Install dependencies and build the overlayed docs-ready OpenAPI spec. The default `overlay-docs` target writes
+  the Bump.sh spec to output/openapi/elasticsearch-openapi-docs-final.json; `overlay-api-explorer` writes the API
+  Explorer spec to output/openapi/elasticsearch-openapi-docs-api-explorer.json.
+
+inputs:
+  overlay-target:
+    description: 'The make target that applies the overlays: overlay-docs (Bump.sh) or overlay-api-explorer'
+    required: false
+    default: 'overlay-docs'
 
 runs:
   using: composite
@@ -23,4 +30,6 @@ runs:
 
     - name: Apply OpenAPI overlays
       shell: bash
-      run: make overlay-docs
+      env:
+        OVERLAY_TARGET: ${{ inputs.overlay-target }}
+      run: make "$OVERLAY_TARGET"
