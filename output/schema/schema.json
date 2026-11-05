@@ -177437,7 +177437,7 @@
         "name": "IndexMetadataState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L225-L228"
+      "specLocation": "indices/stats/types.ts#L230-L233"
     },
     {
       "kind": "interface",
@@ -177455,6 +177455,18 @@
             "type": {
               "name": "CompletionStats",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Contains statistics about the dense vectors in the index.",
+          "name": "dense_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorStats",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -177615,6 +177627,18 @@
           }
         },
         {
+          "description": "Contains statistics about the sparse vectors in the index.",
+          "name": "sparse_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorStats",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
           "description": "Contains statistics about the size of shards assigned to the node.",
           "name": "store",
           "required": false,
@@ -177679,7 +177703,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L52-L93"
+      "specLocation": "indices/stats/types.ts#L53-L98"
     },
     {
       "kind": "interface",
@@ -177781,7 +177805,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L95-L110"
+      "specLocation": "indices/stats/types.ts#L100-L115"
     },
     {
       "kind": "interface",
@@ -177824,7 +177848,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L186-L190"
+      "specLocation": "indices/stats/types.ts#L191-L195"
     },
     {
       "kind": "request",
@@ -178154,7 +178178,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L112-L117"
+      "specLocation": "indices/stats/types.ts#L117-L122"
     },
     {
       "kind": "interface",
@@ -178230,7 +178254,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L124-L131"
+      "specLocation": "indices/stats/types.ts#L129-L136"
     },
     {
       "kind": "interface",
@@ -178284,7 +178308,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L133-L138"
+      "specLocation": "indices/stats/types.ts#L138-L143"
     },
     {
       "kind": "interface",
@@ -178327,7 +178351,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L140-L144"
+      "specLocation": "indices/stats/types.ts#L145-L149"
     },
     {
       "kind": "interface",
@@ -178414,7 +178438,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L146-L154"
+      "specLocation": "indices/stats/types.ts#L151-L159"
     },
     {
       "kind": "interface",
@@ -178460,7 +178484,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L156-L160"
+      "specLocation": "indices/stats/types.ts#L161-L165"
     },
     {
       "kind": "interface",
@@ -178526,7 +178550,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L162-L167"
+      "specLocation": "indices/stats/types.ts#L167-L172"
     },
     {
       "kind": "enum",
@@ -178548,7 +178572,7 @@
         "name": "ShardRoutingState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L169-L174"
+      "specLocation": "indices/stats/types.ts#L174-L179"
     },
     {
       "kind": "interface",
@@ -178591,7 +178615,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L176-L180"
+      "specLocation": "indices/stats/types.ts#L181-L185"
     },
     {
       "kind": "interface",
@@ -178900,7 +178924,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L192-L223"
+      "specLocation": "indices/stats/types.ts#L197-L228"
     },
     {
       "kind": "interface",
@@ -178921,7 +178945,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L182-L184"
+      "specLocation": "indices/stats/types.ts#L187-L189"
     },
     {
       "kind": "interface",
@@ -196050,7 +196074,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L334-L366"
+      "specLocation": "ingest/_types/Processors.ts#L347-L379"
     },
     {
       "kind": "interface",
@@ -196170,7 +196194,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L368-L409"
+      "specLocation": "ingest/_types/Processors.ts#L381-L422"
     },
     {
       "kind": "interface",
@@ -196224,7 +196248,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L578-L594"
+      "specLocation": "ingest/_types/Processors.ts#L591-L607"
     },
     {
       "kind": "interface",
@@ -196304,7 +196328,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L596-L622"
+      "specLocation": "ingest/_types/Processors.ts#L609-L635"
     },
     {
       "kind": "interface",
@@ -196381,7 +196405,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L624-L647"
+      "specLocation": "ingest/_types/Processors.ts#L637-L660"
     },
     {
       "kind": "interface",
@@ -196540,7 +196564,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L649-L710"
+      "specLocation": "ingest/_types/Processors.ts#L662-L723"
     },
     {
       "kind": "interface",
@@ -196606,7 +196630,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L723-L743"
+      "specLocation": "ingest/_types/Processors.ts#L736-L756"
     },
     {
       "kind": "enum",
@@ -196640,7 +196664,7 @@
         "name": "ConvertType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L712-L721"
+      "specLocation": "ingest/_types/Processors.ts#L725-L734"
     },
     {
       "kind": "interface",
@@ -196738,7 +196762,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L745-L778"
+      "specLocation": "ingest/_types/Processors.ts#L758-L791"
     },
     {
       "kind": "interface",
@@ -196963,7 +196987,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L780-L818"
+      "specLocation": "ingest/_types/Processors.ts#L793-L831"
     },
     {
       "kind": "interface",
@@ -197058,7 +197082,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L820-L853"
+      "specLocation": "ingest/_types/Processors.ts#L833-L866"
     },
     {
       "kind": "interface",
@@ -197124,7 +197148,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L855-L874"
+      "specLocation": "ingest/_types/Processors.ts#L868-L887"
     },
     {
       "kind": "interface",
@@ -197359,7 +197383,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L876-L894"
+      "specLocation": "ingest/_types/Processors.ts#L889-L907"
     },
     {
       "kind": "interface",
@@ -197374,7 +197398,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L896-L896"
+      "specLocation": "ingest/_types/Processors.ts#L909-L909"
     },
     {
       "kind": "interface",
@@ -197478,7 +197502,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L898-L937"
+      "specLocation": "ingest/_types/Processors.ts#L911-L950"
     },
     {
       "kind": "interface",
@@ -197506,7 +197530,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L939-L945"
+      "specLocation": "ingest/_types/Processors.ts#L952-L958"
     },
     {
       "kind": "enum",
@@ -197552,7 +197576,7 @@
         "name": "FingerprintDigest",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L947-L953"
+      "specLocation": "ingest/_types/Processors.ts#L960-L966"
     },
     {
       "kind": "interface",
@@ -197631,7 +197655,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L955-L983"
+      "specLocation": "ingest/_types/Processors.ts#L968-L996"
     },
     {
       "kind": "interface",
@@ -197684,7 +197708,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L985-L999"
+      "specLocation": "ingest/_types/Processors.ts#L998-L1012"
     },
     {
       "kind": "interface",
@@ -197811,7 +197835,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L411-L452"
+      "specLocation": "ingest/_types/Processors.ts#L424-L465"
     },
     {
       "kind": "enum",
@@ -197827,7 +197851,7 @@
         "name": "GeoGridTargetFormat",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L460-L463"
+      "specLocation": "ingest/_types/Processors.ts#L473-L476"
     },
     {
       "kind": "enum",
@@ -197846,7 +197870,7 @@
         "name": "GeoGridTileType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L454-L458"
+      "specLocation": "ingest/_types/Processors.ts#L467-L471"
     },
     {
       "kind": "interface",
@@ -197953,7 +197977,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L465-L499"
+      "specLocation": "ingest/_types/Processors.ts#L478-L512"
     },
     {
       "kind": "interface",
@@ -198077,7 +198101,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1001-L1039"
+      "specLocation": "ingest/_types/Processors.ts#L1014-L1052"
     },
     {
       "kind": "interface",
@@ -198155,7 +198179,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1041-L1065"
+      "specLocation": "ingest/_types/Processors.ts#L1054-L1078"
     },
     {
       "kind": "interface",
@@ -198209,7 +198233,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1067-L1083"
+      "specLocation": "ingest/_types/Processors.ts#L1080-L1096"
     },
     {
       "kind": "interface",
@@ -198243,7 +198267,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1124-L1136",
+      "specLocation": "ingest/_types/Processors.ts#L1137-L1149",
       "variants": {
         "kind": "container"
       }
@@ -198320,7 +198344,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1151-L1177"
+      "specLocation": "ingest/_types/Processors.ts#L1164-L1190"
     },
     {
       "kind": "interface",
@@ -198356,7 +198380,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1138-L1149"
+      "specLocation": "ingest/_types/Processors.ts#L1151-L1162"
     },
     {
       "kind": "interface",
@@ -198467,7 +198491,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1085-L1117"
+      "specLocation": "ingest/_types/Processors.ts#L1098-L1130"
     },
     {
       "kind": "interface",
@@ -198548,7 +198572,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1119-L1122"
+      "specLocation": "ingest/_types/Processors.ts#L1132-L1135"
     },
     {
       "kind": "interface",
@@ -198655,7 +198679,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L501-L535"
+      "specLocation": "ingest/_types/Processors.ts#L514-L548"
     },
     {
       "kind": "interface",
@@ -198717,7 +198741,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1179-L1194"
+      "specLocation": "ingest/_types/Processors.ts#L1192-L1207"
     },
     {
       "kind": "interface",
@@ -198796,7 +198820,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1196-L1225"
+      "specLocation": "ingest/_types/Processors.ts#L1209-L1238"
     },
     {
       "kind": "enum",
@@ -198814,7 +198838,7 @@
         "name": "JsonProcessorConflictStrategy",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1227-L1232"
+      "specLocation": "ingest/_types/Processors.ts#L1240-L1245"
     },
     {
       "kind": "interface",
@@ -198971,7 +198995,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1234-L1286"
+      "specLocation": "ingest/_types/Processors.ts#L1247-L1299"
     },
     {
       "kind": "interface",
@@ -199046,7 +199070,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1288-L1304"
+      "specLocation": "ingest/_types/Processors.ts#L1301-L1317"
     },
     {
       "kind": "interface",
@@ -199162,7 +199186,22 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1306-L1340"
+      "specLocation": "ingest/_types/Processors.ts#L1319-L1353"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "name": {
+        "name": "NormalizeForStreamProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L1355-L1355"
     },
     {
       "kind": "interface",
@@ -199450,7 +199489,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1342-L1353"
+      "specLocation": "ingest/_types/Processors.ts#L1357-L1368"
     },
     {
       "kind": "interface",
@@ -199635,7 +199674,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L309-L332"
+      "specLocation": "ingest/_types/Processors.ts#L322-L345"
     },
     {
       "kind": "interface",
@@ -200048,6 +200087,26 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.1.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Detects whether a document is OpenTelemetry-compliant and, if not, normalizes it so that it can be queried by clients that expect either ECS or OpenTelemetry Semantic Conventions formats.",
+          "docId": "normalize-for-stream-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/normalize-for-stream",
+          "name": "normalize_for_stream",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "NormalizeForStreamProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
           "description": "Executes another pipeline.",
           "docId": "pipeline-processor",
           "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/pipeline-processor",
@@ -200057,6 +200116,26 @@
             "kind": "instance_of",
             "type": {
               "name": "PipelineProcessor",
+              "namespace": "ingest._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.2.0"
+            }
+          },
+          "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+          "docId": "recover-failure-document-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/enrich-processor/recover-failure-document-processor",
+          "name": "recover_failure_document",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RecoverFailureDocumentProcessor",
               "namespace": "ingest._types"
             }
           }
@@ -200285,11 +200364,26 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L28-L307",
+      "specLocation": "ingest/_types/Processors.ts#L28-L320",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
       }
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "ProcessorBase",
+          "namespace": "ingest._types"
+        }
+      },
+      "name": {
+        "name": "RecoverFailureDocumentProcessor",
+        "namespace": "ingest._types"
+      },
+      "properties": [],
+      "specLocation": "ingest/_types/Processors.ts#L1370-L1370"
     },
     {
       "kind": "interface",
@@ -200447,7 +200541,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1355-L1396"
+      "specLocation": "ingest/_types/Processors.ts#L1372-L1413"
     },
     {
       "kind": "interface",
@@ -200500,7 +200594,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1398-L1414"
+      "specLocation": "ingest/_types/Processors.ts#L1415-L1431"
     },
     {
       "kind": "interface",
@@ -200553,7 +200647,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1416-L1430"
+      "specLocation": "ingest/_types/Processors.ts#L1433-L1447"
     },
     {
       "kind": "interface",
@@ -200619,7 +200713,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1432-L1454"
+      "specLocation": "ingest/_types/Processors.ts#L1449-L1471"
     },
     {
       "kind": "interface",
@@ -200701,7 +200795,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1456-L1484"
+      "specLocation": "ingest/_types/Processors.ts#L1473-L1501"
     },
     {
       "kind": "interface",
@@ -200773,7 +200867,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1486-L1506"
+      "specLocation": "ingest/_types/Processors.ts#L1503-L1523"
     },
     {
       "kind": "interface",
@@ -200860,7 +200954,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1508-L1543"
+      "specLocation": "ingest/_types/Processors.ts#L1525-L1560"
     },
     {
       "kind": "interface",
@@ -200903,7 +200997,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1545-L1554"
+      "specLocation": "ingest/_types/Processors.ts#L1562-L1571"
     },
     {
       "kind": "enum",
@@ -200919,7 +201013,7 @@
         "name": "ShapeType",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L1556-L1559"
+      "specLocation": "ingest/_types/Processors.ts#L1573-L1576"
     },
     {
       "kind": "interface",
@@ -201018,7 +201112,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1561-L1577"
+      "specLocation": "ingest/_types/Processors.ts#L1578-L1594"
     },
     {
       "kind": "interface",
@@ -201097,7 +201191,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1579-L1604"
+      "specLocation": "ingest/_types/Processors.ts#L1596-L1621"
     },
     {
       "kind": "interface",
@@ -201112,7 +201206,7 @@
         "namespace": "ingest._types"
       },
       "properties": [],
-      "specLocation": "ingest/_types/Processors.ts#L1606-L1606"
+      "specLocation": "ingest/_types/Processors.ts#L1623-L1623"
     },
     {
       "kind": "interface",
@@ -201166,7 +201260,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1608-L1624"
+      "specLocation": "ingest/_types/Processors.ts#L1625-L1641"
     },
     {
       "kind": "interface",
@@ -201220,7 +201314,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1626-L1642"
+      "specLocation": "ingest/_types/Processors.ts#L1643-L1659"
     },
     {
       "kind": "interface",
@@ -201300,7 +201394,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1662-L1688"
+      "specLocation": "ingest/_types/Processors.ts#L1679-L1705"
     },
     {
       "kind": "interface",
@@ -201354,7 +201448,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L1644-L1660"
+      "specLocation": "ingest/_types/Processors.ts#L1661-L1677"
     },
     {
       "kind": "interface",
@@ -201462,7 +201556,7 @@
           }
         }
       ],
-      "specLocation": "ingest/_types/Processors.ts#L537-L568"
+      "specLocation": "ingest/_types/Processors.ts#L550-L581"
     },
     {
       "kind": "enum",
@@ -201487,7 +201581,7 @@
         "name": "UserAgentProperty",
         "namespace": "ingest._types"
       },
-      "specLocation": "ingest/_types/Processors.ts#L570-L576"
+      "specLocation": "ingest/_types/Processors.ts#L583-L589"
     },
     {
       "kind": "interface",

@@ -102778,6 +102778,14 @@
               }
             ]
           },
+          "dense_vector": {
+            "description": "Contains statistics about the dense vectors in the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/cluster.stats.DenseVectorStats"
+              }
+            ]
+          },
           "docs": {
             "description": "Contains statistics about documents across all primary shards assigned to the node.",
             "allOf": [
@@ -102879,6 +102887,14 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.SegmentsStats"
+              }
+            ]
+          },
+          "sparse_vector": {
+            "description": "Contains statistics about the sparse vectors in the index.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/cluster.stats.SparseVectorStats"
               }
             ]
           },
@@ -108920,11 +108936,29 @@
               }
             ]
           },
+          "normalize_for_stream": {
+            "description": "Detects whether a document is OpenTelemetry-compliant and, if not, normalizes it so that it can be queried by clients that expect either ECS or OpenTelemetry Semantic Conventions formats.",
+            "x-state": "Technical preview; Added in 9.1.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.NormalizeForStreamProcessor"
+              }
+            ]
+          },
           "pipeline": {
             "description": "Executes another pipeline.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/ingest._types.PipelineProcessor"
+              }
+            ]
+          },
+          "recover_failure_document": {
+            "description": "Recovers documents that have been stored in a data stream's failure store by restoring them to their original format.",
+            "x-state": "Generally available; Added in 9.2.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ingest._types.RecoverFailureDocumentProcessor"
               }
             ]
           },
@@ -110738,6 +110772,16 @@
           }
         ]
       },
+      "ingest._types.NormalizeForStreamProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
       "ingest._types.PipelineProcessor": {
         "allOf": [
           {
@@ -110763,6 +110807,16 @@
             "required": [
               "name"
             ]
+          }
+        ]
+      },
+      "ingest._types.RecoverFailureDocumentProcessor": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/ingest._types.ProcessorBase"
+          },
+          {
+            "type": "object"
           }
         ]
       },
