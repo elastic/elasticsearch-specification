@@ -13695,6 +13695,7 @@ export type IndicesStatsIndexMetadataState = 'open' | 'close'
 
 export interface IndicesStatsIndexStats {
   completion?: CompletionStats
+  dense_vector?: ClusterStatsDenseVectorStats
   docs?: DocStats
   fielddata?: FielddataStats
   flush?: FlushStats
@@ -13708,6 +13709,7 @@ export interface IndicesStatsIndexStats {
   request_cache?: RequestCacheStats
   search?: SearchStats
   segments?: SegmentsStats
+  sparse_vector?: ClusterStatsSparseVectorStats
   store?: StoreStats
   translog?: TranslogStats
   warmer?: WarmerStats

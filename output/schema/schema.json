@@ -167513,7 +167513,7 @@
         "name": "IndexMetadataState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L225-L232"
+      "specLocation": "indices/stats/types.ts#L230-L237"
     },
     {
       "kind": "interface",
@@ -167531,6 +167531,18 @@
             "type": {
               "name": "CompletionStats",
               "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Contains statistics about the dense vectors in the index.",
+          "name": "dense_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DenseVectorStats",
+              "namespace": "cluster.stats"
             }
           }
         },
@@ -167691,6 +167703,18 @@
           }
         },
         {
+          "description": "Contains statistics about the sparse vectors in the index.",
+          "name": "sparse_vector",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SparseVectorStats",
+              "namespace": "cluster.stats"
+            }
+          }
+        },
+        {
           "description": "Contains statistics about the size of shards assigned to the node.",
           "name": "store",
           "required": false,
@@ -167755,7 +167779,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L52-L93"
+      "specLocation": "indices/stats/types.ts#L53-L98"
     },
     {
       "kind": "interface",
@@ -167857,7 +167881,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L95-L110"
+      "specLocation": "indices/stats/types.ts#L100-L115"
     },
     {
       "kind": "interface",
@@ -167900,7 +167924,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L186-L190"
+      "specLocation": "indices/stats/types.ts#L191-L195"
     },
     {
       "kind": "request",
@@ -168234,7 +168258,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L112-L117"
+      "specLocation": "indices/stats/types.ts#L117-L122"
     },
     {
       "kind": "interface",
@@ -168310,7 +168334,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L124-L131"
+      "specLocation": "indices/stats/types.ts#L129-L136"
     },
     {
       "kind": "interface",
@@ -168364,7 +168388,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L133-L138"
+      "specLocation": "indices/stats/types.ts#L138-L143"
     },
     {
       "kind": "interface",
@@ -168407,7 +168431,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L140-L144"
+      "specLocation": "indices/stats/types.ts#L145-L149"
     },
     {
       "kind": "interface",
@@ -168494,7 +168518,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L146-L154"
+      "specLocation": "indices/stats/types.ts#L151-L159"
     },
     {
       "kind": "interface",
@@ -168540,7 +168564,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L156-L160"
+      "specLocation": "indices/stats/types.ts#L161-L165"
     },
     {
       "kind": "interface",
@@ -168606,7 +168630,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L162-L167"
+      "specLocation": "indices/stats/types.ts#L167-L172"
     },
     {
       "kind": "enum",
@@ -168628,7 +168652,7 @@
         "name": "ShardRoutingState",
         "namespace": "indices.stats"
       },
-      "specLocation": "indices/stats/types.ts#L169-L174"
+      "specLocation": "indices/stats/types.ts#L174-L179"
     },
     {
       "kind": "interface",
@@ -168671,7 +168695,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L176-L180"
+      "specLocation": "indices/stats/types.ts#L181-L185"
     },
     {
       "kind": "interface",
@@ -168980,7 +169004,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L192-L223"
+      "specLocation": "indices/stats/types.ts#L197-L228"
     },
     {
       "kind": "interface",
@@ -169001,7 +169025,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/types.ts#L182-L184"
+      "specLocation": "indices/stats/types.ts#L187-L189"
     },
     {
       "kind": "request",
