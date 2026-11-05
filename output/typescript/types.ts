@@ -10804,6 +10804,18 @@ export interface ClusterStatsClusterSnapshotStats {
   repositories: Record<Name, ClusterStatsPerRepositoryStats>
 }
 
+export type ClusterStatsDenseVectorAutoCalibration = ClusterStatsOsqDenseVectorAutoCalibration
+
+export interface ClusterStatsDenseVectorAutoCalibrationBase extends IndicesSegmentsSegmentAutoCalibrationBase {
+  number_of_segments: integer
+}
+
+export interface ClusterStatsDenseVectorFieldOffHeapStatsKeys {
+  auto_calibration?: ClusterStatsDenseVectorAutoCalibration[]
+}
+export type ClusterStatsDenseVectorFieldOffHeapStats = ClusterStatsDenseVectorFieldOffHeapStatsKeys
+  & { [property: string]: long | ClusterStatsDenseVectorAutoCalibration[] }
+
 export interface ClusterStatsDenseVectorOffHeapStats {
   total_size_bytes: long
   total_size?: ByteSize
@@ -10819,7 +10831,7 @@ export interface ClusterStatsDenseVectorOffHeapStats {
   total_cenivf_size?: ByteSize
   total_clivf_size_bytes: long
   total_clivf_size?: ByteSize
-  fielddata?: Record<string, Record<string, long>>
+  fielddata?: Record<string, ClusterStatsDenseVectorFieldOffHeapStats>
 }
 
 export interface ClusterStatsDenseVectorStats {
@@ -10901,6 +10913,11 @@ export interface ClusterStatsOperatingSystemMemoryInfo {
   used_in_bytes: long
   used?: ByteSize
   used_percent: integer
+}
+
+export interface ClusterStatsOsqDenseVectorAutoCalibration extends ClusterStatsDenseVectorAutoCalibrationBase {
+  type: 'osq'
+  parameters?: IndicesSegmentsOsqSegmentAutoCalibrationParameters
 }
 
 export interface ClusterStatsPerRepositoryStats {
@@ -14879,6 +14896,7 @@ export interface IndicesStatsRequest extends RequestBase {
   fields?: Fields
   forbid_closed_indices?: boolean
   groups?: string | string[]
+  include_auto_calibration?: boolean
   include_segment_file_sizes?: boolean
   include_unloaded_segments?: boolean
   level?: Level

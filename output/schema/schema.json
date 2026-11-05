@@ -140478,7 +140478,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L815-L830"
+      "specLocation": "cluster/stats/types.ts#L857-L872"
     },
     {
       "kind": "interface",
@@ -140524,7 +140524,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L901-L908"
+      "specLocation": "cluster/stats/types.ts#L943-L950"
     },
     {
       "kind": "interface",
@@ -140722,7 +140722,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L865-L890"
+      "specLocation": "cluster/stats/types.ts#L907-L932"
     },
     {
       "kind": "interface",
@@ -140795,7 +140795,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L892-L899"
+      "specLocation": "cluster/stats/types.ts#L934-L941"
     },
     {
       "kind": "interface",
@@ -140959,7 +140959,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L346-L385"
+      "specLocation": "cluster/stats/types.ts#L388-L427"
     },
     {
       "kind": "interface",
@@ -141162,7 +141162,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L35-L75"
+      "specLocation": "cluster/stats/types.ts#L40-L80"
     },
     {
       "kind": "interface",
@@ -141347,7 +141347,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L100-L147"
+      "specLocation": "cluster/stats/types.ts#L105-L152"
     },
     {
       "kind": "interface",
@@ -141406,7 +141406,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L86-L98"
+      "specLocation": "cluster/stats/types.ts#L91-L103"
     },
     {
       "kind": "interface",
@@ -141452,7 +141452,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L77-L84"
+      "specLocation": "cluster/stats/types.ts#L82-L89"
     },
     {
       "kind": "interface",
@@ -141495,7 +141495,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L413-L416"
+      "specLocation": "cluster/stats/types.ts#L455-L458"
     },
     {
       "kind": "interface",
@@ -141577,7 +141577,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L418-L439"
+      "specLocation": "cluster/stats/types.ts#L460-L481"
     },
     {
       "kind": "interface",
@@ -141635,7 +141635,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L441-L458"
+      "specLocation": "cluster/stats/types.ts#L483-L500"
     },
     {
       "kind": "interface",
@@ -141729,7 +141729,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L460-L490"
+      "specLocation": "cluster/stats/types.ts#L502-L532"
     },
     {
       "kind": "interface",
@@ -141785,7 +141785,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L492-L501"
+      "specLocation": "cluster/stats/types.ts#L534-L543"
     },
     {
       "kind": "interface",
@@ -141977,7 +141977,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L503-L524"
+      "specLocation": "cluster/stats/types.ts#L545-L566"
     },
     {
       "kind": "interface",
@@ -142157,7 +142157,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L526-L559"
+      "specLocation": "cluster/stats/types.ts#L568-L601"
     },
     {
       "kind": "interface",
@@ -142248,7 +142248,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L572-L599"
+      "specLocation": "cluster/stats/types.ts#L614-L641"
     },
     {
       "kind": "interface",
@@ -142282,7 +142282,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L561-L570"
+      "specLocation": "cluster/stats/types.ts#L603-L612"
     },
     {
       "kind": "interface",
@@ -142316,7 +142316,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L601-L610"
+      "specLocation": "cluster/stats/types.ts#L643-L652"
     },
     {
       "kind": "interface",
@@ -142350,7 +142350,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L612-L621"
+      "specLocation": "cluster/stats/types.ts#L654-L663"
     },
     {
       "kind": "interface",
@@ -142384,7 +142384,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L623-L632"
+      "specLocation": "cluster/stats/types.ts#L665-L674"
     },
     {
       "kind": "interface",
@@ -142406,7 +142406,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L634-L640"
+      "specLocation": "cluster/stats/types.ts#L676-L682"
     },
     {
       "kind": "interface",
@@ -142452,7 +142452,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L642-L658"
+      "specLocation": "cluster/stats/types.ts#L684-L700"
     },
     {
       "kind": "interface",
@@ -142526,7 +142526,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L660-L666"
+      "specLocation": "cluster/stats/types.ts#L702-L708"
     },
     {
       "kind": "interface",
@@ -142572,7 +142572,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L668-L681"
+      "specLocation": "cluster/stats/types.ts#L710-L723"
     },
     {
       "kind": "interface",
@@ -142615,7 +142615,124 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L683-L686"
+      "specLocation": "cluster/stats/types.ts#L725-L728"
+    },
+    {
+      "kind": "type_alias",
+      "description": "The auto-calibration information of a `dense_vector` field, aggregated over the segments that share the same parameters.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+      "name": {
+        "name": "DenseVectorAutoCalibration",
+        "namespace": "cluster.stats"
+      },
+      "specLocation": "cluster/stats/types.ts#L233-L240",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqDenseVectorAutoCalibration",
+              "namespace": "cluster.stats"
+            }
+          }
+        ]
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "nonExhaustive": true,
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "SegmentAutoCalibrationBase",
+          "namespace": "indices.segments"
+        }
+      },
+      "name": {
+        "name": "DenseVectorAutoCalibrationBase",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "description": "The number of segments that share these parameters.",
+          "name": "number_of_segments",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "cluster/stats/types.ts#L242-L245"
+    },
+    {
+      "kind": "interface",
+      "attachedBehaviors": [
+        "AdditionalProperties"
+      ],
+      "behaviors": [
+        {
+          "generics": [
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          ],
+          "meta": {
+            "description": "The off-heap sizes of the field, keyed by file extension, such as `vec_size_bytes`.",
+            "fieldname": "sizes"
+          },
+          "type": {
+            "name": "AdditionalProperties",
+            "namespace": "_spec_utils"
+          }
+        }
+      ],
+      "description": "The off-heap stats of a `dense_vector` field.",
+      "name": {
+        "name": "DenseVectorFieldOffHeapStats",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The auto-calibration information of the field, aggregated by distinct set of parameters.\nOnly returned when `include_auto_calibration` is `true`.",
+          "name": "auto_calibration",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "DenseVectorAutoCalibration",
+                "namespace": "cluster.stats"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "cluster/stats/types.ts#L216-L231"
     },
     {
       "kind": "interface",
@@ -142792,27 +142909,16 @@
             },
             "singleKey": false,
             "value": {
-              "kind": "dictionary_of",
-              "key": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "string",
-                  "namespace": "_builtins"
-                }
-              },
-              "singleKey": false,
-              "value": {
-                "kind": "instance_of",
-                "type": {
-                  "name": "long",
-                  "namespace": "_types"
-                }
+              "kind": "instance_of",
+              "type": {
+                "name": "DenseVectorFieldOffHeapStats",
+                "namespace": "cluster.stats"
               }
             }
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L193-L209"
+      "specLocation": "cluster/stats/types.ts#L198-L214"
     },
     {
       "kind": "interface",
@@ -142844,7 +142950,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L184-L187"
+      "specLocation": "cluster/stats/types.ts#L189-L192"
     },
     {
       "kind": "interface",
@@ -142865,7 +142971,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L164-L166"
+      "specLocation": "cluster/stats/types.ts#L169-L171"
     },
     {
       "kind": "interface",
@@ -142897,7 +143003,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L159-L162"
+      "specLocation": "cluster/stats/types.ts#L164-L167"
     },
     {
       "kind": "interface",
@@ -142929,7 +143035,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L172-L174"
+      "specLocation": "cluster/stats/types.ts#L177-L179"
     },
     {
       "kind": "interface",
@@ -142950,7 +143056,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L168-L170"
+      "specLocation": "cluster/stats/types.ts#L173-L175"
     },
     {
       "kind": "interface",
@@ -143119,7 +143225,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L242-L285"
+      "specLocation": "cluster/stats/types.ts#L284-L327"
     },
     {
       "kind": "interface",
@@ -143230,7 +143336,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L211-L240"
+      "specLocation": "cluster/stats/types.ts#L253-L282"
     },
     {
       "kind": "interface",
@@ -143251,7 +143357,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L811-L813"
+      "specLocation": "cluster/stats/types.ts#L853-L855"
     },
     {
       "kind": "interface",
@@ -143316,7 +143422,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L405-L411"
+      "specLocation": "cluster/stats/types.ts#L447-L453"
     },
     {
       "kind": "interface",
@@ -143352,7 +143458,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L387-L398"
+      "specLocation": "cluster/stats/types.ts#L429-L440"
     },
     {
       "kind": "interface",
@@ -143398,7 +143504,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L746-L759"
+      "specLocation": "cluster/stats/types.ts#L788-L801"
     },
     {
       "kind": "interface",
@@ -143540,7 +143646,43 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L761-L809"
+      "specLocation": "cluster/stats/types.ts#L803-L851"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "DenseVectorAutoCalibrationBase",
+          "namespace": "cluster.stats"
+        }
+      },
+      "name": {
+        "name": "OsqDenseVectorAutoCalibration",
+        "namespace": "cluster.stats"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "osq"
+          }
+        },
+        {
+          "description": "The calibration parameters.",
+          "name": "parameters",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OsqSegmentAutoCalibrationParameters",
+              "namespace": "indices.segments"
+            }
+          }
+        }
+      ],
+      "specLocation": "cluster/stats/types.ts#L247-L251"
     },
     {
       "kind": "interface",
@@ -143594,7 +143736,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L711-L716"
+      "specLocation": "cluster/stats/types.ts#L753-L758"
     },
     {
       "kind": "interface",
@@ -143787,7 +143929,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L832-L863"
+      "specLocation": "cluster/stats/types.ts#L874-L905"
     },
     {
       "kind": "interface",
@@ -143874,7 +144016,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L718-L726"
+      "specLocation": "cluster/stats/types.ts#L760-L768"
     },
     {
       "kind": "interface",
@@ -143939,7 +144081,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L728-L733"
+      "specLocation": "cluster/stats/types.ts#L770-L775"
     },
     {
       "kind": "request",
@@ -144236,7 +144378,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L287-L344"
+      "specLocation": "cluster/stats/types.ts#L329-L386"
     },
     {
       "kind": "interface",
@@ -144356,7 +144498,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L149-L157"
+      "specLocation": "cluster/stats/types.ts#L154-L162"
     },
     {
       "kind": "enum",
@@ -144390,7 +144532,7 @@
         "name": "ShardState",
         "namespace": "cluster.stats"
       },
-      "specLocation": "cluster/stats/types.ts#L735-L744"
+      "specLocation": "cluster/stats/types.ts#L777-L786"
     },
     {
       "kind": "interface",
@@ -144460,7 +144602,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L688-L709"
+      "specLocation": "cluster/stats/types.ts#L730-L751"
     },
     {
       "kind": "enum",
@@ -144485,7 +144627,7 @@
         "name": "SortType",
         "namespace": "cluster.stats"
       },
-      "specLocation": "cluster/stats/types.ts#L176-L182"
+      "specLocation": "cluster/stats/types.ts#L181-L187"
     },
     {
       "kind": "interface",
@@ -144506,7 +144648,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L189-L191"
+      "specLocation": "cluster/stats/types.ts#L194-L196"
     },
     {
       "kind": "interface",
@@ -144686,7 +144828,7 @@
           }
         }
       ],
-      "specLocation": "cluster/stats/types.ts#L400-L403"
+      "specLocation": "cluster/stats/types.ts#L442-L445"
     },
     {
       "kind": "interface",
@@ -187981,6 +188123,25 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the response includes the auto-calibration information of each `dense_vector` field that supports auto-calibration.\nOnly applies at the `indices` and `shards` levels.",
+          "name": "include_auto_calibration",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).",
           "name": "include_segment_file_sizes",
           "required": false,
@@ -188020,7 +188181,7 @@
           }
         }
       ],
-      "specLocation": "indices/stats/IndicesStatsRequest.ts#L30-L120"
+      "specLocation": "indices/stats/IndicesStatsRequest.ts#L30-L128"
     },
     {
       "kind": "response",

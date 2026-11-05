@@ -23006,6 +23006,9 @@
             "$ref": "#/components/parameters/indices.stats-groups"
           },
           {
+            "$ref": "#/components/parameters/indices.stats-include_auto_calibration"
+          },
+          {
             "$ref": "#/components/parameters/indices.stats-include_segment_file_sizes"
           },
           {
@@ -23060,6 +23063,9 @@
             "$ref": "#/components/parameters/indices.stats-groups"
           },
           {
+            "$ref": "#/components/parameters/indices.stats-include_auto_calibration"
+          },
+          {
             "$ref": "#/components/parameters/indices.stats-include_segment_file_sizes"
           },
           {
@@ -23112,6 +23118,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.stats-groups"
+          },
+          {
+            "$ref": "#/components/parameters/indices.stats-include_auto_calibration"
           },
           {
             "$ref": "#/components/parameters/indices.stats-include_segment_file_sizes"
@@ -23169,6 +23178,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.stats-groups"
+          },
+          {
+            "$ref": "#/components/parameters/indices.stats-include_auto_calibration"
           },
           {
             "$ref": "#/components/parameters/indices.stats-include_segment_file_sizes"
@@ -99515,10 +99527,7 @@
           "fielddata": {
             "type": "object",
             "additionalProperties": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "number"
-              }
+              "$ref": "#/components/schemas/cluster.stats.DenseVectorFieldOffHeapStats"
             }
           }
         },
@@ -99530,6 +99539,138 @@
           "total_vex_size_bytes",
           "total_cenivf_size_bytes",
           "total_clivf_size_bytes"
+        ]
+      },
+      "cluster.stats.DenseVectorFieldOffHeapStats": {
+        "description": "The off-heap stats of a `dense_vector` field.",
+        "type": "object",
+        "properties": {
+          "auto_calibration": {
+            "description": "The auto-calibration information of the field, aggregated by distinct set of parameters.\nOnly returned when `include_auto_calibration` is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/cluster.stats.DenseVectorAutoCalibration"
+            }
+          }
+        }
+      },
+      "cluster.stats.DenseVectorAutoCalibration": {
+        "description": "The auto-calibration information of a `dense_vector` field, aggregated over the segments that share the same parameters.\n\nThe shape of `parameters` depends on the quantization method of the field.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "osq": "#/components/schemas/cluster.stats.OsqDenseVectorAutoCalibration"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/cluster.stats.OsqDenseVectorAutoCalibration"
+          }
+        ]
+      },
+      "cluster.stats.OsqDenseVectorAutoCalibration": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/cluster.stats.DenseVectorAutoCalibrationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "osq"
+                ]
+              },
+              "parameters": {
+                "description": "The calibration parameters.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/indices.segments.OsqSegmentAutoCalibrationParameters"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        ]
+      },
+      "indices.segments.OsqSegmentAutoCalibrationParameters": {
+        "type": "object",
+        "properties": {
+          "bits": {
+            "description": "The number of bits used to quantize the vectors.",
+            "type": "number"
+          },
+          "query_bits": {
+            "description": "The number of bits used to quantize the query vectors.",
+            "type": "number"
+          },
+          "precondition": {
+            "description": "If `true`, the vectors are preconditioned before quantization.",
+            "type": "boolean"
+          },
+          "oversample": {
+            "description": "The oversampling factor applied when rescoring.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "bits",
+          "query_bits",
+          "precondition",
+          "oversample"
+        ]
+      },
+      "cluster.stats.DenseVectorAutoCalibrationBase": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/indices.segments.SegmentAutoCalibrationBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "number_of_segments": {
+                "description": "The number of segments that share these parameters.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "number_of_segments"
+            ]
+          }
+        ]
+      },
+      "indices.segments.SegmentAutoCalibrationBase": {
+        "type": "object",
+        "properties": {
+          "calibrated": {
+            "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
+            "type": "boolean"
+          },
+          "number_of_vectors": {
+            "description": "The number of vectors of the field in the segment.",
+            "type": "number"
+          },
+          "size": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "size_in_bytes": {
+            "description": "The size of the vectors of the field in the segment, in bytes.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "calibrated",
+          "number_of_vectors",
+          "size_in_bytes"
         ]
       },
       "cluster.stats.SparseVectorStats": {
@@ -108592,62 +108733,6 @@
               "type"
             ]
           }
-        ]
-      },
-      "indices.segments.OsqSegmentAutoCalibrationParameters": {
-        "type": "object",
-        "properties": {
-          "bits": {
-            "description": "The number of bits used to quantize the vectors.",
-            "type": "number"
-          },
-          "query_bits": {
-            "description": "The number of bits used to quantize the query vectors.",
-            "type": "number"
-          },
-          "precondition": {
-            "description": "If `true`, the vectors are preconditioned before quantization.",
-            "type": "boolean"
-          },
-          "oversample": {
-            "description": "The oversampling factor applied when rescoring.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "bits",
-          "query_bits",
-          "precondition",
-          "oversample"
-        ]
-      },
-      "indices.segments.SegmentAutoCalibrationBase": {
-        "type": "object",
-        "properties": {
-          "calibrated": {
-            "description": "If `true`, the segment has been calibrated, and `parameters` is present.",
-            "type": "boolean"
-          },
-          "number_of_vectors": {
-            "description": "The number of vectors of the field in the segment.",
-            "type": "number"
-          },
-          "size": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.ByteSize"
-              }
-            ]
-          },
-          "size_in_bytes": {
-            "description": "The size of the vectors of the field in the segment, in bytes.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "calibrated",
-          "number_of_vectors",
-          "size_in_bytes"
         ]
       },
       "indices.shard_stores.ShardStoreStatus": {
@@ -157304,6 +157389,18 @@
             }
           ]
         },
+        "style": "form"
+      },
+      "indices.stats-include_auto_calibration": {
+        "in": "query",
+        "name": "include_auto_calibration",
+        "description": "If `true`, the response includes the auto-calibration information of each `dense_vector` field that supports auto-calibration.\nOnly applies at the `indices` and `shards` levels.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
         "style": "form"
       },
       "indices.stats-include_segment_file_sizes": {
