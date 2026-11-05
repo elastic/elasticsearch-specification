@@ -102,6 +102,14 @@ export interface Request extends RequestBase {
      */
     groups?: string | string[]
     /**
+     * If `true`, the response includes the auto-calibration information of each `dense_vector` field that supports auto-calibration.
+     * Only applies at the `indices` and `shards` levels.
+     * @server_default false
+     * @availability stack since=9.6.0
+     * @availability serverless
+     */
+    include_auto_calibration?: boolean
+    /**
      * If true, the call reports the aggregated disk usage of each one of the Lucene index files (only applies if segment stats are requested).
      * @server_default false
      */
