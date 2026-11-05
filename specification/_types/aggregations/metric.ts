@@ -435,7 +435,7 @@ export class TopHitsAggregation extends MetricAggregationBase {
 /**
  * @ext_doc_id search-aggregations-metrics-top-metrics
  */
-export class TopMetricsAggregation extends MetricAggregationBase {
+export class TopMetricsAggregation extends Aggregation {
   /**
    * The fields of the top document to return.
    */
