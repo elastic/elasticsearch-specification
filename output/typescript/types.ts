@@ -5058,7 +5058,7 @@ export interface AggregationsTopMetricsAggregate extends AggregationsAggregateBa
   top: AggregationsTopMetrics[]
 }
 
-export interface AggregationsTopMetricsAggregation extends AggregationsMetricAggregationBase {
+export interface AggregationsTopMetricsAggregation {
   metrics?: AggregationsTopMetricsValue | AggregationsTopMetricsValue[]
   size?: integer
   sort?: Sort

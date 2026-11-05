@@ -83149,7 +83149,7 @@
       "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-top-metrics",
       "inherits": {
         "type": {
-          "name": "MetricAggregationBase",
+          "name": "Aggregation",
           "namespace": "_types.aggregations"
         }
       },
