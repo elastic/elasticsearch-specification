@@ -29,7 +29,12 @@ import {
   StoreStats
 } from '@_types/Stats'
 import { DateFormat, Duration, DurationValue, UnitMillis } from '@_types/Time'
+import {
+  OsqSegmentAutoCalibrationParameters,
+  SegmentAutoCalibrationBase
+} from '@indices/segments/types'
 import { IndexingPressureMemory } from '@nodes/_types/Stats'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class ClusterFileSystem {
@@ -205,7 +210,44 @@ export class DenseVectorOffHeapStats {
   total_cenivf_size?: ByteSize
   total_clivf_size_bytes: long
   total_clivf_size?: ByteSize
-  fielddata?: Dictionary<string, Dictionary<string, long>>
+  fielddata?: Dictionary<string, DenseVectorFieldOffHeapStats>
+}
+
+/**
+ * The off-heap stats of a `dense_vector` field.
+ *
+ * @behavior_meta AdditionalProperties fieldname=sizes description="The off-heap sizes of the field, keyed by file extension, such as `vec_size_bytes`."
+ */
+export class DenseVectorFieldOffHeapStats
+  implements AdditionalProperties<string, long>
+{
+  /**
+   * The auto-calibration information of the field, aggregated by distinct set of parameters.
+   * Only returned when `include_auto_calibration` is `true`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  auto_calibration?: DenseVectorAutoCalibration[]
+}
+
+/**
+ * The auto-calibration information of a `dense_vector` field, aggregated over the segments that share the same parameters.
+ *
+ * The shape of `parameters` depends on the quantization method of the field.
+ * @variants internal tag='type'
+ * @non_exhaustive
+ */
+export type DenseVectorAutoCalibration = OsqDenseVectorAutoCalibration
+
+export class DenseVectorAutoCalibrationBase extends SegmentAutoCalibrationBase {
+  /** The number of segments that share these parameters. */
+  number_of_segments: integer
+}
+
+export class OsqDenseVectorAutoCalibration extends DenseVectorAutoCalibrationBase {
+  type: 'osq'
+  /** The calibration parameters. */
+  parameters?: OsqSegmentAutoCalibrationParameters
 }
 
 export class FieldTypesMappings {
