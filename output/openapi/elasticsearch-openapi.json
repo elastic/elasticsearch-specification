@@ -77193,7 +77193,7 @@
       "_types.aggregations.TopMetricsAggregation": {
         "allOf": [
           {
-            "$ref": "#/components/schemas/_types.aggregations.MetricAggregationBase"
+            "$ref": "#/components/schemas/_types.aggregations.Aggregation"
           },
           {
             "type": "object",
