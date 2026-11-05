@@ -1,0 +1,16 @@
+# Overlays for the Bump.sh build of the Elasticsearch OpenAPI document.
+# They remove or simplify schema detail that Bump.sh cannot render. `make overlay-docs` applies them after
+# elasticsearch-openapi-overlays.yaml; `make overlay-api-explorer` skips them, because API Explorer renders that detail.
+overlay: 1.0.0
+info:
+  title: Bump.sh-only overlays for the Elasticsearch OpenAPI document
+  version: 0.0.1
+actions:
+# Remove long lists of enum values
+  - target: "$.components['schemas']['cat._types.CatNodeColumn'].anyOf"
+    description: Remove anyOf from cat nodes
+    remove: true
+  - target: "$.components['schemas']['cat._types.CatNodeColumn']"
+    description: Add basic string data type for cat node columns
+    update:
+      type: string
