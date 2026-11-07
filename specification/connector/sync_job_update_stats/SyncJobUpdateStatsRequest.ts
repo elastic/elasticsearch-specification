@@ -32,6 +32,7 @@ import { Duration } from '@_types/Time'
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.sync_job_update_stats
  * @availability stack stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id connector-sync-job-stats
  */
 export interface Request extends RequestBase {

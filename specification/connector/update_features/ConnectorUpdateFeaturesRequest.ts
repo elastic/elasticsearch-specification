@@ -38,6 +38,7 @@ import { ConnectorFeatures } from '../_types/Connector'
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.update_features
  * @availability stack stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id connector-features
  */
 export interface Request extends RequestBase {
