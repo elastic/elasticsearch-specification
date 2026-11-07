@@ -28,6 +28,7 @@ import { StreamType } from '@streams/_types/StreamType'
  * Turn off the named stream feature for this cluster.
  * @rest_spec_name streams.logs_disable
  * @availability stack since=9.1.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id streams-logs-disable
  * @doc_tag streams
