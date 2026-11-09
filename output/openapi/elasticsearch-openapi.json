@@ -78184,6 +78184,13 @@
               }
             ]
           },
+          "requests": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.Requests"
+              }
+            ]
+          },
           "similarity": {
             "description": "Configure custom similarity settings to customize how search results are scored.",
             "type": "object",
@@ -84363,6 +84370,32 @@
         "required": [
           "enabled"
         ]
+      },
+      "indices._types.Requests": {
+        "type": "object",
+        "properties": {
+          "cache": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.CacheRequests"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.CacheRequests": {
+        "type": "object",
+        "properties": {
+          "enable": {
+            "description": "Whether the shard request cache is enabled for the index.\nThis setting is dynamic and can be updated on an existing index.",
+            "default": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            ]
+          }
+        }
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
