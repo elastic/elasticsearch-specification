@@ -33,6 +33,7 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
  * This service runs automatically on Elastic Cloud for Elastic managed connectors.
  * @rest_spec_name connector.sync_job_claim
  * @availability stack stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @doc_id connector-sync-job-claim
  */
 export interface Request extends RequestBase {

@@ -32,6 +32,7 @@ import { Id, MediaType } from '@_types/common'
  * * Users with the `cancel_task` cluster privilege
  * @rest_spec_name esql.async_query_delete
  * @availability stack since=8.13.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id esql-async-query-delete
  * @ext_doc_id esql
  * @cluster_privileges cancel_task
