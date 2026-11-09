@@ -15380,14 +15380,7 @@ export interface InferenceCompletionToolFunction {
 
 export type InferenceCompletionToolType = string | InferenceCompletionToolChoice
 
-export interface InferenceContentObject {
-  type: InferenceContentType
-  text: string
-  image_url: InferenceImageUrl
-  file: InferenceFileContent
-}
-
-export type InferenceContentType = 'text' | 'image_url' | 'file'
+export type InferenceContentObject = InferenceTextContent | InferenceImageUrlContent | InferenceFileContentPart
 
 export interface InferenceContextualAIServiceSettings {
   api_key: string
@@ -15550,6 +15543,11 @@ export interface InferenceFileContent {
   filename: string
 }
 
+export interface InferenceFileContentPart {
+  type: 'file'
+  file: InferenceFileContent
+}
+
 export interface InferenceFireworksAIServiceSettings {
   api_key: string
   model_id: string
@@ -15635,6 +15633,11 @@ export type InferenceHuggingFaceTaskType = 'chat_completion' | 'completion' | 'r
 export interface InferenceImageUrl {
   url: string
   detail?: InferenceImageUrlDetail
+}
+
+export interface InferenceImageUrlContent {
+  type: 'image_url'
+  image_url: InferenceImageUrl
 }
 
 export type InferenceImageUrlDetail = 'auto' | 'low' | 'high'
@@ -16083,6 +16086,11 @@ export type InferenceTaskTypeOpenShiftAi = 'text_embedding' | 'chat_completion' 
 export type InferenceTaskTypeVoyageAI = 'text_embedding' | 'rerank'
 
 export type InferenceTaskTypeWatsonx = 'text_embedding' | 'chat_completion' | 'completion'
+
+export interface InferenceTextContent {
+  type: 'text'
+  text: string
+}
 
 export interface InferenceTextEmbeddingInferenceResult {
   text_embedding_bytes?: InferenceDenseEmbeddingByteResult[]
