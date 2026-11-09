@@ -47,6 +47,7 @@ import { Dictionary } from '@spec_utils/Dictionary'
  * These will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.
  * @rest_spec_name simulate.ingest
  * @availability stack since=8.12.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @index_privileges index
  * @doc_tag ingest
  * @doc_id simulate-ingest-api

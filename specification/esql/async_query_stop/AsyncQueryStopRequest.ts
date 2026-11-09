@@ -27,6 +27,7 @@ import { Id, MediaType } from '@_types/common'
  * If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.
  * @rest_spec_name esql.async_query_stop
  * @availability stack since=8.18.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id esql-async-query-stop
  * @ext_doc_id esql
  * @index_privileges read
