@@ -158,6 +158,12 @@ export class DataStreamLifecycleUsage extends Base {
    * Statistics about the cluster's global default and maximum retention settings.
    */
   global_retention?: DataStreamLifecycleGlobalRetention
+  /**
+   * The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.
+   * Not reported in serverless.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  minimum_lifecycle_count?: long
 }
 
 /**
@@ -703,9 +709,15 @@ export class IndexModeUsage extends Base {
   /** The number of data streams in this index mode. */
   data_streams_count: long
   /** The number of data streams in this index mode that are managed by index lifecycle management. */
-  data_streams_managed_by_ilm: long
+  data_streams_managed_by_ilm?: long
   /** The number of data streams in this index mode that are managed by data stream lifecycle. */
   data_streams_managed_by_dlm: long
+  /**
+   * The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.
+   * Not reported when index lifecycle management is unavailable.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  data_streams_managed_by_minimum_lifecycle?: long
 }
 
 /**
