@@ -157,32 +157,35 @@ export class AdaptiveAllocations {
 export type CompletionToolType = string | CompletionToolChoice
 
 /**
- * An object style representation of a single portion of a conversation.
+ * One part of a chat message.
+ * The `type` field selects which property is present.
+ * Not all services and models support content types other than `text`.
+ * @variants internal tag='type'
  */
-export interface ContentObject {
+export type ContentObject = TextContent | ImageUrlContent | FileContentPart
+
+export interface TextContent {
+  type: 'text'
   /**
-   * The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content
-   * types other than "text"
-   */
-  type: ContentType
-  /**
-   * The text content. Only applicable for the `text` type
+   * The text content.
    */
   text: string
-  /**
-   * The image content. Only applicable for the `image_url` type
-   */
-  image_url: ImageUrl
-  /**
-   * The file content. Only applicable for the `file` type
-   */
-  file: FileContent
 }
 
-export enum ContentType {
-  text,
-  image_url,
-  file
+export interface ImageUrlContent {
+  type: 'image_url'
+  /**
+   * The image content.
+   */
+  image_url: ImageUrl
+}
+
+export interface FileContentPart {
+  type: 'file'
+  /**
+   * The file content.
+   */
+  file: FileContent
 }
 
 export interface ImageUrl {
