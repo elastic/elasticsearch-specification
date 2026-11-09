@@ -54,7 +54,7 @@ export interface Request extends RequestBase {
     /**
      * Simulate the update
      */
-    dry_run?: Stringified<boolean>
+    dry_run?: boolean
     /**
      * Period to wait for a connection to the master node.
      * @server_default 30s
