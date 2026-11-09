@@ -53882,51 +53882,84 @@
       "path": [],
       "query": [
         {
-          "description": "A comma-separated list of node names to prevalidate",
+          "description": "A comma-separated list of node names to prevalidate.\nDefaults to an empty array.",
           "name": "names",
           "required": false,
-          "serverDefault": [],
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
               }
-            }
+            ]
           }
         },
         {
-          "description": "A comma-separated list of node IDs to prevalidate",
+          "description": "A comma-separated list of node IDs to prevalidate\nDefaults to an empty array.",
           "name": "ids",
           "required": false,
-          "serverDefault": [],
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
               }
-            }
+            ]
           }
         },
         {
-          "description": "A comma-separated list of node external IDs to prevalidate",
+          "description": "A comma-separated list of node external IDs to prevalidate\nDefaults to an empty array.",
           "name": "external_ids",
           "required": false,
-          "serverDefault": [],
           "type": {
-            "kind": "array_of",
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
+            "kind": "union_of",
+            "items": [
+              {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
               }
-            }
+            ]
           }
         },
         {
