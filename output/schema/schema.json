@@ -3817,6 +3817,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -3851,6 +3855,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -3926,6 +3934,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -4080,6 +4092,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -4281,6 +4297,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -5747,6 +5767,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.13.0",
           "stability": "stable",
@@ -5793,6 +5817,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.13.0",
           "stability": "stable",
@@ -5836,6 +5864,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.13.0",
           "stability": "stable",
@@ -5879,6 +5911,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.18.0",
           "stability": "stable",
@@ -9365,6 +9401,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.12.0",
           "stability": "stable"
@@ -20725,6 +20765,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "stability": "experimental",
           "visibility": "public"
@@ -21473,6 +21517,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "stable",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.5.0",
           "stability": "stable",
@@ -24515,6 +24563,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "since": "8.12.0",
           "stability": "experimental",
@@ -25864,6 +25916,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "since": "9.1.0",
           "stability": "experimental",
@@ -25905,6 +25961,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "since": "9.1.0",
           "stability": "experimental",
@@ -25946,6 +26006,10 @@
     },
     {
       "availability": {
+        "serverless": {
+          "stability": "experimental",
+          "visibility": "public"
+        },
         "stack": {
           "since": "9.1.0",
           "stability": "experimental",
@@ -148374,7 +148438,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_check_in/SyncJobCheckInRequest.ts#L22-L47"
+      "specLocation": "connector/sync_job_check_in/SyncJobCheckInRequest.ts#L22-L48"
     },
     {
       "kind": "response",
@@ -148477,7 +148541,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_claim/SyncJobClaimRequest.ts#L23-L64"
+      "specLocation": "connector/sync_job_claim/SyncJobClaimRequest.ts#L23-L65"
     },
     {
       "kind": "response",
@@ -148662,7 +148726,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_error/SyncJobErrorRequest.ts#L23-L55"
+      "specLocation": "connector/sync_job_error/SyncJobErrorRequest.ts#L23-L56"
     },
     {
       "kind": "response",
@@ -149188,7 +149252,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/sync_job_update_stats/SyncJobUpdateStatsRequest.ts#L24-L81"
+      "specLocation": "connector/sync_job_update_stats/SyncJobUpdateStatsRequest.ts#L24-L82"
     },
     {
       "kind": "response",
@@ -149769,7 +149833,7 @@
         }
       ],
       "query": [],
-      "specLocation": "connector/update_features/ConnectorUpdateFeaturesRequest.ts#L23-L64"
+      "specLocation": "connector/update_features/ConnectorUpdateFeaturesRequest.ts#L23-L65"
     },
     {
       "kind": "response",
@@ -156772,7 +156836,7 @@
           }
         }
       ],
-      "specLocation": "esql/async_query/AsyncQueryRequest.ts#L29-L183"
+      "specLocation": "esql/async_query/AsyncQueryRequest.ts#L29-L184"
     },
     {
       "kind": "response",
@@ -156858,7 +156922,7 @@
         }
       ],
       "query": [],
-      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L55"
+      "specLocation": "esql/async_query_delete/AsyncQueryDeleteRequest.ts#L23-L56"
     },
     {
       "kind": "response",
@@ -156994,7 +157058,7 @@
           }
         }
       ],
-      "specLocation": "esql/async_query_get/AsyncQueryGetRequest.ts#L25-L76"
+      "specLocation": "esql/async_query_get/AsyncQueryGetRequest.ts#L25-L77"
     },
     {
       "kind": "response",
@@ -157094,7 +157158,7 @@
           }
         }
       ],
-      "specLocation": "esql/async_query_stop/AsyncQueryStopRequest.ts#L23-L58"
+      "specLocation": "esql/async_query_stop/AsyncQueryStopRequest.ts#L23-L59"
     },
     {
       "kind": "response",
@@ -176859,7 +176923,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "indices/get_data_lifecycle_stats/IndicesGetDataLifecycleStatsRequest.ts#L23-L42"
+      "specLocation": "indices/get_data_lifecycle_stats/IndicesGetDataLifecycleStatsRequest.ts#L23-L43"
     },
     {
       "kind": "response",
@@ -263972,7 +264036,7 @@
           }
         }
       ],
-      "specLocation": "search_application/post_behavioral_analytics_event/BehavioralAnalyticsEventPostRequest.ts#L24-L61"
+      "specLocation": "search_application/post_behavioral_analytics_event/BehavioralAnalyticsEventPostRequest.ts#L24-L62"
     },
     {
       "kind": "response",
@@ -269823,7 +269887,7 @@
       },
       "path": [],
       "query": [],
-      "specLocation": "security/bulk_update_api_keys/SecurityBulkUpdateApiKeysRequest.ts#L26-L86"
+      "specLocation": "security/bulk_update_api_keys/SecurityBulkUpdateApiKeysRequest.ts#L26-L87"
     },
     {
       "kind": "response",
@@ -285169,7 +285233,7 @@
         "name": "MergeType",
         "namespace": "simulate.ingest"
       },
-      "specLocation": "simulate/ingest/SimulateIngestRequest.ts#L113-L116"
+      "specLocation": "simulate/ingest/SimulateIngestRequest.ts#L114-L117"
     },
     {
       "kind": "request",
@@ -285474,7 +285538,7 @@
           }
         }
       ],
-      "specLocation": "simulate/ingest/SimulateIngestRequest.ts#L29-L111"
+      "specLocation": "simulate/ingest/SimulateIngestRequest.ts#L29-L112"
     },
     {
       "kind": "response",
@@ -295650,7 +295714,7 @@
           }
         }
       ],
-      "specLocation": "streams/logs_disable/StreamsDisableRequest.ts#L25-L63"
+      "specLocation": "streams/logs_disable/StreamsDisableRequest.ts#L25-L64"
     },
     {
       "kind": "response",
@@ -295775,7 +295839,7 @@
           }
         }
       ],
-      "specLocation": "streams/logs_enable/StreamsEnableRequest.ts#L25-L68"
+      "specLocation": "streams/logs_enable/StreamsEnableRequest.ts#L25-L69"
     },
     {
       "kind": "response",
@@ -295899,7 +295963,7 @@
           }
         }
       ],
-      "specLocation": "streams/status/StreamsStatusRequest.ts#L24-L50"
+      "specLocation": "streams/status/StreamsStatusRequest.ts#L24-L51"
     },
     {
       "kind": "response",

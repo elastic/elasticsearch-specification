@@ -6268,6 +6268,119 @@
         ]
       }
     },
+    "/_connector/_sync_job/{connector_sync_job_id}/_check_in": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Check in a connector sync job",
+        "description": "Check in a connector sync job and set the `last_seen` field to the current time before updating it in the internal index.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-check-in",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job to be checked in.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_claim": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Claim a connector sync job",
+        "description": "This action updates the job status to `in_progress` and sets the `last_seen` and `started_at` timestamps to the current time.\nAdditionally, it can set the `sync_cursor` property for the sync job.\n\nThis API is not intended for direct connector management by users.\nIt supports the implementation of services that utilize the connector protocol to communicate with Elasticsearch.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-claim",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sync_cursor": {
+                    "description": "The cursor object from the last incremental sync job.\nThis should reference the `sync_cursor` field in the connector state for which the job runs.",
+                    "type": "object"
+                  },
+                  "worker_hostname": {
+                    "description": "The host name of the current system that will run the job.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "worker_hostname"
+                ]
+              },
+              "examples": {
+                "ConnectorSyncJobClaimExample1": {
+                  "description": "An example body for a `PUT _connector/_sync_job/my-connector-sync-job-id/_claim` request.",
+                  "value": "{\n  \"worker_hostname\": \"some-machine\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_connector/_sync_job/{connector_sync_job_id}": {
       "get": {
         "tags": [
@@ -6346,6 +6459,72 @@
           }
         },
         "x-state": "Beta",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_error": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set a connector sync job error",
+        "description": "Set the `error` field for a connector sync job and set its `status` to `error`.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-error",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier for the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error": {
+                    "description": "The error for the connector sync job error field.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "error"
+                ]
+              },
+              "examples": {
+                "SyncJobErrorRequestExample1": {
+                  "value": "{\n    \"error\": \"some-error\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6535,6 +6714,103 @@
           }
         },
         "x-state": "Beta",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/_sync_job/{connector_sync_job_id}/_stats": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Set the connector sync job stats",
+        "description": "Stats include: `deleted_document_count`, `indexed_document_count`, `indexed_document_volume`, and `total_document_count`.\nYou can also update `last_seen`.\nThis API is mainly used by the connector service for updating sync job information.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-sync-job-update-stats",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_sync_job_id",
+            "description": "The unique identifier of the connector sync job.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deleted_document_count": {
+                    "description": "The number of documents the sync job deleted.",
+                    "type": "number"
+                  },
+                  "indexed_document_count": {
+                    "description": "The number of documents the sync job indexed.",
+                    "type": "number"
+                  },
+                  "indexed_document_volume": {
+                    "description": "The total size of the data (in MiB) the sync job indexed.",
+                    "type": "number"
+                  },
+                  "last_seen": {
+                    "description": "The timestamp to use in the `last_seen` property for the connector sync job.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "description": "The connector-specific metadata.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Metadata"
+                      }
+                    ]
+                  },
+                  "total_document_count": {
+                    "description": "The total number of documents in the target index after the sync job finished.",
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "deleted_document_count",
+                  "indexed_document_count",
+                  "indexed_document_volume"
+                ]
+              },
+              "examples": {
+                "ConnectorSyncJobUpdateStatsExample1": {
+                  "description": "An example body for a `PUT _connector/_sync_job/my-connector-sync-job/_stats` request.",
+                  "value": "{\n    \"deleted_document_count\": 10,\n    \"indexed_document_count\": 20,\n    \"indexed_document_volume\": 1000,\n    \"total_document_count\": 2000,\n    \"last_seen\": \"2023-01-02T10:00:00Z\"\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -6844,6 +7120,95 @@
                 },
                 "examples": {
                   "ConnectorUpdateErrorResponseExample1": {
+                    "value": "{\n  \"result\": \"updated\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_connector/{connector_id}/_features": {
+      "put": {
+        "tags": [
+          "connector"
+        ],
+        "summary": "Update the connector features",
+        "description": "Update the connector features in the connector document.\nThis API can be used to control the following aspects of a connector:\n\n* document-level security\n* incremental syncs\n* advanced sync rules\n* basic sync rules\n\nNormally, the running connector service automatically manages these features.\nHowever, you can use this API to override the default behavior.\n\nTo sync data using self-managed connectors, you need to deploy the Elastic connector service on your own infrastructure.\nThis service runs automatically on Elastic Cloud for Elastic managed connectors.",
+        "operationId": "connector-update-features",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "connector_id",
+            "description": "The unique identifier of the connector to be updated.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "features": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/connector._types.ConnectorFeatures"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "features"
+                ]
+              },
+              "examples": {
+                "ConnectorUpdateFeaturesRequestExample1": {
+                  "value": "{\n  \"features\": {\n    \"document_level_security\": {\n      \"enabled\": true\n    },\n    \"incremental_sync\": {\n      \"enabled\": true\n    },\n    \"sync_rules\": {\n      \"advanced\": {\n        \"enabled\": false\n      },\n      \"basic\": {\n        \"enabled\": true\n      }\n    }\n  }\n}"
+                },
+                "ConnectorUpdateFeaturesRequestExample2": {
+                  "value": "{\n  \"features\": {\n    \"document_level_security\": {\n      \"enabled\": true\n    }\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.Result"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ]
+                },
+                "examples": {
+                  "ConnectorUpdateFeaturesResponseExample1": {
                     "value": "{\n  \"result\": \"updated\"\n}"
                   }
                 }
@@ -10874,6 +11239,393 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/eql.search-200"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/async": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Run an async ES|QL query",
+        "description": "Asynchronously run an ES|QL (Elasticsearch query language) query, monitor its progress, and retrieve results when they become available.\n\nThe API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "More about ES|QL reference",
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-api.html"
+        },
+        "operationId": "esql-async-query",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "allow_partial_results",
+            "description": "If `true`, partial results will be returned if there are shard failures, but the query can continue to execute on other clusters and shards.\nIf `false`, the query will fail if there are any failures.\n\nTo override the default behavior, you can set the `esql.query.allow_partial_results` cluster setting to `false`.",
+            "deprecated": false,
+            "schema": {
+              "default": true,
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "delimiter",
+            "description": "The character to use between values within a CSV row.\nIt is valid only for the CSV format.",
+            "deprecated": false,
+            "schema": {
+              "default": ",",
+              "type": "string"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "A short version of the Accept header, e.g. json, yaml.\n\n`csv`, `tsv`, and `txt` formats will return results in a tabular format, excluding other metadata fields from the response.\n\nFor async requests, nothing will be returned if the async query doesn't finish within the timeout.\nThe query ID and running status are available in the `X-Elasticsearch-Async-Id` and `X-Elasticsearch-Async-Is-Running` HTTP headers of the response, respectively.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/esql._types.EsqlFormat"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "columnar": {
+                    "description": "By default, ES|QL returns results as rows. For example, FROM returns each individual document as one row. For the JSON, YAML, CBOR and smile formats, ES|QL can return the results in a columnar fashion where one row represents all the values of a certain column in the results.",
+                    "type": "boolean"
+                  },
+                  "filter": {
+                    "description": "Specify a Query DSL query in the filter parameter to filter the set of documents that an ES|QL query runs on.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.query_dsl.QueryContainer"
+                      }
+                    ]
+                  },
+                  "time_zone": {
+                    "description": "Sets the default timezone of the query.",
+                    "x-state": "Generally available",
+                    "type": "string"
+                  },
+                  "locale": {
+                    "description": "Returns results (especially dates) formatted per the conventions of the locale.",
+                    "type": "string"
+                  },
+                  "params": {
+                    "description": "To avoid any attempts of hacking or code injection, extract the values in a separate list of parameters. Use question mark placeholders (?) in the query string for each of the parameters.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/esql._types.ESQLParams"
+                      }
+                    ]
+                  },
+                  "profile": {
+                    "description": "If provided and `true` the response will include an extra `profile` object\nwith information on how the query was executed. This information is for human debugging\nand its format can change at any time but it can give some insight into the performance\nof each part of the query.",
+                    "type": "boolean"
+                  },
+                  "query": {
+                    "description": "The ES|QL query API accepts an ES|QL query string in the query parameter, runs it, and returns the results.",
+                    "type": "string"
+                  },
+                  "tables": {
+                    "description": "Tables to use with the LOOKUP operation. The top level key is the table\nname and the next level key is the column name.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "$ref": "#/components/schemas/esql._types.TableValuesContainer"
+                      }
+                    }
+                  },
+                  "include_ccs_metadata": {
+                    "description": "When set to `true` and performing a cross-cluster/cross-project query, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "include_execution_metadata": {
+                    "description": "When set to `true`, the response will include an extra `_clusters`\nobject with information about the clusters that participated in the search along with info such as shards\ncount.\nThis is similar to `include_ccs_metadata`, but it also returns metadata when the query is not CCS/CPS",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "wait_for_completion_timeout": {
+                    "description": "The period to wait for the request to finish.\nBy default, the request waits for 1 second for the query results.\nIf the query completes during this period, results are returned\nOtherwise, a query ID is returned that can later be used to retrieve the results.",
+                    "default": "1s",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "keep_alive": {
+                    "description": "The period for which the query and its results are stored in the cluster.\nThe default period is five days.\nWhen this period expires, the query and its results are deleted, even if the query is still ongoing.\nIf the `keep_on_completion` parameter is false, Elasticsearch only stores async queries that do not complete within the period set by the `wait_for_completion_timeout` parameter, regardless of this value.",
+                    "default": "5d",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "keep_on_completion": {
+                    "description": "Indicates whether the query and its results are stored in the cluster.\nIf false, the query and its results are stored in the cluster only if the request does not complete during the period set by the `wait_for_completion_timeout` parameter.",
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "project_routing": {
+                    "description": "Specifies a subset of projects to target using project\nmetadata tags in a subset of Lucene query syntax.\nAllowed Lucene queries: the _alias tag and a single value (possibly wildcarded).\nExamples:\n _alias:my-project\n _alias:_origin\n _alias:*pr*\nSupported in serverless only.",
+                    "x-state": "Generally available",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.ProjectRouting"
+                      }
+                    ]
+                  },
+                  "settings": {
+                    "description": "Per-query settings, the request-body equivalent of the in-query `SET` command.\nFor example, `time_zone` can be supplied here instead of as a top-level field.",
+                    "x-state": "Generally available",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/esql._types.EsqlQuerySettings"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "query"
+                ]
+              },
+              "examples": {
+                "AsyncQueryRequestExample1": {
+                  "value": "{\n  \"query\": \"\"\"\n    FROM library,remote-*:library\n    | EVAL year = DATE_TRUNC(1 YEARS, release_date)\n    | STATS MAX(page_count) BY year\n    | SORT year\n    | LIMIT 5\n  \"\"\",\n  \"wait_for_completion_timeout\": \"2s\",\n  \"include_ccs_metadata\": true\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/async/{id}": {
+      "get": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Get async ES|QL query results",
+        "description": "Get the current status and available results or stored results for an ES|QL asynchronous query.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "More about ES|QL reference",
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-get-api.html"
+        },
+        "operationId": "esql-async-query-get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "format",
+            "description": "A short version of the Accept header, for example `json` or `yaml`.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/esql._types.EsqlFormat"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "keep_alive",
+            "description": "The period for which the query and its results are stored in the cluster.\nWhen this period expires, the query and its results are deleted, even if the query is still ongoing.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "wait_for_completion_timeout",
+            "description": "The period to wait for the request to finish.\nBy default, the request waits for complete query results.\nIf the request completes during the period specified in this parameter, complete query results are returned.\nOtherwise, the response returns an `is_running` value of `true` and no results.",
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Duration"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Delete an async ES|QL query",
+        "description": "If the query is still running, it is cancelled.\nOtherwise, the stored results are deleted.\n\nIf the Elasticsearch security features are enabled, only the following users can use this API to delete a query:\n\n* The authenticated user that submitted the original query request\n* Users with the `cancel_task` cluster privilege\n\n## Required authorization\n\n* Cluster privileges: `cancel_task`\n",
+        "externalDocs": {
+          "description": "More about ES|QL reference",
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/esql-async-query-delete-api.html"
+        },
+        "operationId": "esql-async-query-delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_query/async/{id}/stop": {
+      "post": {
+        "tags": [
+          "esql"
+        ],
+        "summary": "Stop async ES|QL query",
+        "description": "This API interrupts the query execution and returns the results so far.\nIf the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "externalDocs": {
+          "description": "More about ES|QL reference",
+          "url": "https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql"
+        },
+        "operationId": "esql-async-query-stop",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The unique identifier of the query.\nA query ID is provided in the ES|QL async query API response for a query that does not complete in the designated time.\nA query ID is also provided when the request was submitted with the `keep_on_completion` parameter set to `true`.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "drop_null_columns",
+            "description": "Indicates whether columns that are entirely `null` will be removed from the `columns` and `values` portion of the results.\nIf `true`, the response will include an extra section under the name `all_columns` which has the name of all the columns.",
+            "deprecated": false,
+            "schema": {
+              "default": false,
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/esql._types.AsyncEsqlResult"
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -17845,6 +18597,79 @@
           },
           "404": {
             "$ref": "#/components/responses/indices.get_alias-404"
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_lifecycle/stats": {
+      "get": {
+        "tags": [
+          "data stream"
+        ],
+        "summary": "Get data stream lifecycle stats",
+        "description": "Get statistics about the data streams that are managed by a data stream lifecycle.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "externalDocs": {
+          "description": "About data stream lifecycle",
+          "url": "https://www.elastic.co/docs/manage-data/lifecycle/data-stream",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/data-streams-get-lifecycle-stats.html"
+        },
+        "operationId": "indices-get-data-lifecycle-stats",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data_stream_count": {
+                      "description": "The count of data streams currently being managed by the data stream lifecycle.",
+                      "type": "number"
+                    },
+                    "data_streams": {
+                      "description": "Information about the data streams that are managed by the data stream lifecycle.",
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/indices.get_data_lifecycle_stats.DataStreamStats"
+                      }
+                    },
+                    "last_run_duration_in_millis": {
+                      "description": "The duration of the last data stream lifecycle execution.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+                        }
+                      ]
+                    },
+                    "time_between_starts_in_millis": {
+                      "description": "The time that passed between the start of the last two data stream lifecycle executions.\nThis value should amount approximately to `data_streams.lifecycle.poll_interval`.",
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/_types.DurationValueUnitMillis"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "data_stream_count",
+                    "data_streams"
+                  ]
+                },
+                "examples": {
+                  "IndicesGetDataLifecycleStatsResponseExample1": {
+                    "description": "A successful response for `GET _lifecycle/stats?human&pretty`",
+                    "value": "{\n  \"last_run_duration_in_millis\": 2,\n  \"last_run_duration\": \"2ms\",\n  \"time_between_starts_in_millis\": 9998,\n  \"time_between_starts\": \"9.99s\",\n  \"data_streams_count\": 2,\n  \"data_streams\": [\n    {\n      \"name\": \"my-data-stream\",\n      \"backing_indices_in_total\": 2,\n      \"backing_indices_in_error\": 0\n    },\n    {\n      \"name\": \"my-other-stream\",\n      \"backing_indices_in_total\": 2,\n      \"backing_indices_in_error\": 1\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
           }
         },
         "x-state": "Generally available",
@@ -40329,6 +41154,110 @@
         ]
       }
     },
+    "/_application/analytics/{collection_name}/event/{event_type}": {
+      "post": {
+        "tags": [
+          "analytics"
+        ],
+        "summary": "Create a behavioral analytics collection event",
+        "externalDocs": {
+          "description": "About behavioral analytics events",
+          "url": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/behavioral-analytics-event-reference.html",
+          "x-previousVersionUrl": "https://www.elastic.co/guide/en/elasticsearch/reference/8.19/post-analytics-collection-event.html"
+        },
+        "operationId": "search-application-post-behavioral-analytics-event",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "collection_name",
+            "description": "The name of the behavioral analytics collection.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Name"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "path",
+            "name": "event_type",
+            "description": "The analytics event type.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/search_application._types.EventType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "debug",
+            "description": "Whether the response type has to include more details",
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "examples": {
+                "BehavioralAnalyticsEventPostRequestExample1": {
+                  "description": "Run `POST _application/analytics/my_analytics_collection/event/search_click` to send a `search_click` event to an analytics collection called `my_analytics_collection`.",
+                  "value": "{\n  \"session\": {\n    \"id\": \"1797ca95-91c9-4e2e-b1bd-9c38e6f386a9\"\n  },\n  \"user\": {\n    \"id\": \"5f26f01a-bbee-4202-9298-81261067abbd\"\n  },\n  \"search\":{\n    \"query\": \"search term\",\n    \"results\": {\n      \"items\": [\n        {\n          \"document\": {\n            \"id\": \"123\",\n            \"index\": \"products\"\n          }\n        }\n      ],\n      \"total_results\": 10\n    },\n    \"sort\": {\n      \"name\": \"relevance\"\n    },\n    \"search_application\": \"website\"\n  },\n  \"document\":{\n    \"id\": \"123\",\n    \"index\": \"products\"\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accepted": {
+                      "type": "boolean"
+                    },
+                    "event": {
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "accepted"
+                  ]
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "\nEvent has been accepted and will be ingested."
+          },
+          "400": {
+            "description": "\nEither the event type is unknown or the event payload contains invalid data."
+          },
+          "404": {
+            "description": "\nAnalytics collection does not exist."
+          }
+        },
+        "deprecated": true,
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_application/search_application/{name}/_search": {
       "get": {
         "tags": [
@@ -41419,6 +42348,128 @@
                     "summary": "A response with errors",
                     "description": "A partially successful response from `DELETE /_security/role`. If part of a request fails or is invalid, the response includes `errors`.\n",
                     "value": "{\n  \"deleted\": [\n      \"my_admin_role\"\n  ],\n  \"errors\": {\n      \"count\": 1,\n      \"details\": {\n          \"superuser\": {\n              \"type\": \"illegal_argument_exception\",\n              \"reason\": \"role [superuser] is reserved and cannot be deleted\"\n          }\n      }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_security/api_key/_bulk_update": {
+      "post": {
+        "tags": [
+          "security"
+        ],
+        "summary": "Bulk update API keys",
+        "description": "Update the attributes for multiple API keys.\n\nIMPORTANT: It is not possible to use an API key as the authentication credential for this API. To update API keys, the owner user's credentials are required.\n\nThis API is similar to the update API key API but enables you to apply the same update to multiple API keys in one API call. This operation can greatly improve performance over making individual updates.\n\nIt is not possible to update expired or invalidated API keys.\n\nThis API supports updates to API key access scope, metadata and expiration.\nThe access scope of each API key is derived from the `role_descriptors` you specify in the request and a snapshot of the owner user's permissions at the time of the request.\nThe snapshot of the owner's permissions is updated automatically on every call.\n\nIMPORTANT: If you don't specify `role_descriptors` in the request, a call to this API might still change an API key's access scope. This change can occur if the owner user's permissions have changed since the API key was created or last modified.\n\nA successful request returns a JSON structure that contains the IDs of all updated API keys, the IDs of API keys that already had the requested changes and did not require an update, and error details for any failed update.\n\n## Required authorization\n\n* Cluster privileges: `manage_own_api_key`\n",
+        "operationId": "security-bulk-update-api-keys",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expiration": {
+                    "description": "Expiration time for the API keys.\nBy default, API keys never expire.\nThis property can be omitted to leave the value unchanged.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Duration"
+                      }
+                    ]
+                  },
+                  "ids": {
+                    "description": "The API key identifiers.",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "metadata": {
+                    "description": "Arbitrary nested metadata to associate with the API keys.\nWithin the `metadata` object, top-level keys beginning with an underscore (`_`) are reserved for system usage.\nAny information specified with this parameter fully replaces metadata previously associated with the API key.",
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/_types.Metadata"
+                      }
+                    ]
+                  },
+                  "role_descriptors": {
+                    "description": "The role descriptors to assign to the API keys.\nAn API key's effective permissions are an intersection of its assigned privileges and the point-in-time snapshot of permissions of the owner user.\nYou can assign new privileges by specifying them in this parameter.\nTo remove assigned privileges, supply the `role_descriptors` parameter as an empty object `{}`.\nIf an API key has no assigned privileges, it inherits the owner user's full permissions.\nThe snapshot of the owner's permissions is always updated, whether you supply the `role_descriptors` parameter.\nThe structure of a role descriptor is the same as the request for the create API keys API.",
+                    "type": "object",
+                    "additionalProperties": {
+                      "$ref": "#/components/schemas/security._types.RoleDescriptor"
+                    }
+                  }
+                },
+                "required": [
+                  "ids"
+                ]
+              },
+              "examples": {
+                "SecurityBulkUpdateApiKeysRequestExample1": {
+                  "description": "Assign new role descriptors and metadata and update the expiration time for two API keys.",
+                  "value": "{\n  \"ids\": [\n    \"VuaCfGcBCdbkQm-e5aOx\",\n    \"H3_AhoIBA9hmeQJdg7ij\"\n  ],\n  \"role_descriptors\": {\n    \"role-a\": {\n      \"indices\": [\n        {\n          \"names\": [\n            \"*\"\n          ],\n          \"privileges\": [\n            \"write\"\n          ]\n        }\n      ]\n    }\n  },\n  \"metadata\": {\n    \"environment\": {\n      \"level\": 2,\n      \"trusted\": true,\n      \"tags\": [\n        \"production\"\n      ]\n    }\n  },\n  \"expiration\": \"30d\"\n}"
+                },
+                "SecurityBulkUpdateApiKeysRequestExample2": {
+                  "description": "Remove the previously assigned permissions for two API keys, making them inherit the owner user's full permissions.",
+                  "value": "{\n  \"ids\": [\n    \"VuaCfGcBCdbkQm-e5aOx\",\n    \"H3_AhoIBA9hmeQJdg7ij\"\n  ],\n  \"role_descriptors\": {}\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "errors": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/security._types.BulkError"
+                        }
+                      ]
+                    },
+                    "noops": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "updated": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "noops",
+                    "updated"
+                  ]
+                },
+                "examples": {
+                  "SecurityBulkUpdateApiKeysResponseExample1": {
+                    "description": "A successful response from updating two API keys.",
+                    "value": "{\n  \"updated\": [\n    \"VuaCfGcBCdbkQm-e5aOx\",\n    \"H3_AhoIBA9hmeQJdg7ij\"\n  ],\n  \"noops\": []\n}"
                   }
                 }
               }
@@ -45224,6 +46275,140 @@
         ]
       }
     },
+    "/_ingest/_simulate": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "operationId": "simulate-ingest",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest-pipeline"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-merge_type"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "operationId": "simulate-ingest-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest-pipeline"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-merge_type"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_ingest/{index}/_simulate": {
+      "get": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "operationId": "simulate-ingest-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest-index"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-pipeline"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-merge_type"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "ingest"
+        ],
+        "summary": "Simulate data ingestion",
+        "description": "Run ingest pipelines against a set of provided documents, optionally with substitute pipeline definitions, to simulate ingesting data into an index.\n\nThis API is meant to be used for troubleshooting or pipeline development, as it does not actually index any data into Elasticsearch.\n\nThe API runs the default and final pipeline for that index against a set of documents provided in the body of the request.\nIf a pipeline contains a reroute processor, it follows that reroute processor to the new index, running that index's pipelines as well the same way that a non-simulated ingest would.\nNo data is indexed into Elasticsearch.\nInstead, the transformed document is returned, along with the list of pipelines that have been run and the name of the index where the document would have been indexed if this were not a simulation.\nThe transformed document is validated against the mappings that would apply to this index, and any validation error is reported in the result.\n\nThis API differs from the simulate pipeline API in that you specify a single pipeline for that API, and it runs only that one pipeline.\nThe simulate pipeline API is more useful for developing a single pipeline, while the simulate ingest API is more useful for troubleshooting the interaction of the various pipelines that get applied when ingesting into an index.\n\nBy default, the pipeline definitions that are currently in the system are used.\nHowever, you can supply substitute pipeline definitions in the body of the request.\nThese will be used in place of the pipeline definitions that are already in the system. This can be used to replace existing pipeline definitions or to create new ones. The pipeline substitutions are used only within this request.\n\n## Required authorization\n\n* Index privileges: `index`\n",
+        "operationId": "simulate-ingest-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/simulate.ingest-index"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-pipeline"
+          },
+          {
+            "$ref": "#/components/parameters/simulate.ingest-merge_type"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/simulate.ingest"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/simulate.ingest-200"
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_slm/policy/{policy_id}": {
       "get": {
         "tags": [
@@ -47649,6 +48834,261 @@
           }
         },
         "x-state": "Generally available",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_streams/{name}/_disable": {
+      "post": {
+        "tags": [
+          "streams"
+        ],
+        "summary": "Disable a named stream",
+        "description": "Turn off the named stream feature for this cluster.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "streams-logs-disable",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The stream type to disable.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/streams._types.StreamType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PostStreamsLogsDisableResponseExample1": {
+                    "summary": "Disable logs.otel streams",
+                    "description": "A successful response from `POST _streams/logs.otel/_disable` endpoint\n",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_streams/{name}/_enable": {
+      "post": {
+        "tags": [
+          "streams"
+        ],
+        "summary": "Enable a named stream",
+        "description": "Turn on the named stream feature for this cluster.\n\nNOTE: To protect existing data, this feature can be turned on only if the cluster does not have\nexisting indices or data streams that match the pattern `<name>|<name>.*` for the enabled stream\ntype name. If those indices or data streams exist, a `409 - Conflict` response and error is\nreturned.\n\n## Required authorization\n\n* Cluster privileges: `manage`\n",
+        "operationId": "streams-logs-enable",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "description": "The stream type to enable.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/streams._types.StreamType"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "The period to wait for a connection to the master node.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "The period to wait for a response.\nIf no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.AcknowledgedResponseBase"
+                },
+                "examples": {
+                  "PostStreamsEnableResponseExample1": {
+                    "summary": "Enable logs streams",
+                    "description": "A successful response from `POST _streams/logs.otel/_enable` endpoint\n",
+                    "value": "{\n  \"acknowledged\": true\n}"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "\nAn index named `logs.otel`, or starting with `logs.otel.`, already exists.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/_types.ErrorResponseBase"
+                },
+                "examples": {
+                  "PostStreamsEnableResponseExample2": {
+                    "summary": "Enable logs streams - Failure due to conflicting index",
+                    "description": "An error response from the `POST _streams/logs.otel/_enable` endpoint caused by attempting to enable logs.otel streams when an existing index with the name `logs.otel` already exists\n",
+                    "value": "{\n  \"error\": {\n    \"root_cause\": [\n      {\n        \"type\": \"status_exception\",\n        \"reason\": \"Cannot enable logs.otel streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n      }\n    ],\n    \"type\": \"status_exception\",\n    \"reason\": \"Cannot enable logs streams: indices named 'logs.otel' or starting with 'logs.otel.' already exist.\"\n  },\n  \"status\": 409\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_streams/status": {
+      "get": {
+        "tags": [
+          "streams"
+        ],
+        "summary": "Get the status of streams",
+        "description": "Get the current status for all types of streams.\n\n## Required authorization\n\n* Cluster privileges: `monitor`\n",
+        "operationId": "streams-status",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "master_timeout",
+            "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
+            "deprecated": false,
+            "schema": {
+              "default": "30s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "logs": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/streams.status.StreamStatus"
+                        }
+                      ]
+                    },
+                    "logs.otel": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/streams.status.StreamStatus"
+                        }
+                      ]
+                    },
+                    "logs.ecs": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/streams.status.StreamStatus"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "logs",
+                    "logs.otel",
+                    "logs.ecs"
+                  ]
+                },
+                "examples": {
+                  "GetStreamsStatusResponseExample1": {
+                    "summary": "Get Streams Status A successful response from `GET _streams/status` that outlines the current state of all wired streams in the cluster.",
+                    "value": "{\n  \"logs\": {\n    \"enabled\": false\n  }\n  \"logs.ecs\": {\n    \"enabled\": true\n  }\n  \"logs.otel\": {\n    \"enabled\": true\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Experimental",
         "x-metaTags": [
           {
             "content": "Elasticsearch",
@@ -93720,220 +95160,6 @@
           "head"
         ]
       },
-      "esql._types.ESQLDataSource": {
-        "description": "Represents a data source definition stored in cluster state. A data source holds\nconnection settings (credentials, endpoints, auth) for an external data provider.",
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The data source name.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Name"
-              }
-            ]
-          },
-          "type": {
-            "description": "The data source type. Currently, `s3` is supported.",
-            "type": "string"
-          },
-          "description": {
-            "description": "A free-text description.",
-            "type": "string"
-          },
-          "settings": {
-            "description": "Type-specific connection and authentication settings.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          }
-        },
-        "required": [
-          "name",
-          "type",
-          "settings"
-        ]
-      },
-      "esql._types.ESQLDataset": {
-        "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The dataset name.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Name"
-              }
-            ]
-          },
-          "data_source": {
-            "description": "The name of the referenced data source.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Name"
-              }
-            ]
-          },
-          "resource": {
-            "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns, for example a recursive pattern that matches\nParquet files under `s3://logs-bucket/access`.",
-            "type": "string"
-          },
-          "description": {
-            "description": "A free-text description.",
-            "type": "string"
-          },
-          "settings": {
-            "description": "Format- and parsing-specific settings that configure how the resource is read.\nCommon keys include `format` and `partition_detection`. Additional keys depend on the format reader;\ncompression can be inferred from the resource URI.",
-            "type": "object",
-            "additionalProperties": {
-              "type": "object"
-            }
-          },
-          "mappings": {
-            "description": "The user-declared mapping on the dataset definition.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/esql._types.DatasetMapping"
-              }
-            ]
-          }
-        },
-        "required": [
-          "name",
-          "data_source",
-          "resource"
-        ]
-      },
-      "esql._types.DatasetMapping": {
-        "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
-        "type": "object",
-        "properties": {
-          "dynamic": {
-            "description": "The policy for columns that are not declared in `properties`.\n`true` (the default) infers undeclared columns and overlays the declarations; `false` makes the declaration the entire schema, so undeclared columns are not queryable.",
-            "default": "true",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/esql._types.Dynamic"
-              }
-            ]
-          },
-          "properties": {
-            "description": "The per-column declarations, keyed by logical column name.",
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/esql._types.DatasetFieldMapping"
-            }
-          },
-          "_id": {
-            "description": "The `_id` meta-field configuration, sourcing the document identity from a column.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/esql._types.IdPath"
-              }
-            ]
-          }
-        }
-      },
-      "esql._types.Dynamic": {
-        "type": "string",
-        "enum": [
-          "true",
-          "false"
-        ]
-      },
-      "esql._types.DatasetFieldMapping": {
-        "description": "A per-column declaration inside a dataset mapping's `properties`.",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The declared column type.",
-            "type": "string"
-          },
-          "rename_from": {
-            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
-            "type": "string"
-          },
-          "format": {
-            "description": "The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "type"
-        ]
-      },
-      "esql._types.IdPath": {
-        "description": "The `_id` meta-field of a dataset mapping.",
-        "type": "object",
-        "properties": {
-          "path": {
-            "description": "The name of the column that provides the document identity.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "path"
-        ]
-      },
-      "esql._types.ESQLView": {
-        "description": "A non-materialized ES|QL view.",
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the ES|QL view",
-            "type": "string"
-          },
-          "query": {
-            "description": "The ES|QL query",
-            "type": "string"
-          },
-          "description": {
-            "description": "A free-text description of the view.",
-            "x-state": "Generally available",
-            "type": "string"
-          },
-          "reserved": {
-            "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
-            "x-state": "Generally available",
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "name",
-          "query"
-        ]
-      },
-      "esql.list_queries.Body": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "node": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.NodeId"
-              }
-            ]
-          },
-          "start_time_millis": {
-            "type": "number"
-          },
-          "running_time_nanos": {
-            "type": "number"
-          },
-          "query": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "node",
-          "start_time_millis",
-          "running_time_nanos",
-          "query"
-        ]
-      },
       "esql._types.EsqlFormat": {
         "type": "string",
         "enum": [
@@ -94166,6 +95392,29 @@
           }
         }
       },
+      "esql._types.AsyncEsqlResult": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/esql._types.EsqlResult"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The ID of the async query, to be used in subsequent requests to check the status or retrieve results.\n\nAlso available in the `X-Elasticsearch-Async-Id` HTTP header.",
+                "type": "string"
+              },
+              "is_running": {
+                "description": "Indicates whether the async query is still running or has completed.\n\nAlso available in the `X-Elasticsearch-Async-Is-Running` HTTP header.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "is_running"
+            ]
+          }
+        ]
+      },
       "esql._types.EsqlResult": {
         "type": "object",
         "properties": {
@@ -94376,6 +95625,220 @@
           "shard",
           "index",
           "reason"
+        ]
+      },
+      "esql._types.ESQLDataSource": {
+        "description": "Represents a data source definition stored in cluster state. A data source holds\nconnection settings (credentials, endpoints, auth) for an external data provider.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The data source name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "type": {
+            "description": "The data source type. Currently, `s3` is supported.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "Type-specific connection and authentication settings.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "settings"
+        ]
+      },
+      "esql._types.ESQLDataset": {
+        "description": "Represents a dataset definition stored in cluster state. A dataset is a named reference\nto external data that participates in the index namespace alongside indices, aliases, and views.\nDatasets inherit credentials from their referenced data source at query time.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The dataset name.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "data_source": {
+            "description": "The name of the referenced data source.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Name"
+              }
+            ]
+          },
+          "resource": {
+            "description": "The URI that identifies the data to read, resolved against the referenced data source.\nIt can include glob patterns, for example a recursive pattern that matches\nParquet files under `s3://logs-bucket/access`.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description.",
+            "type": "string"
+          },
+          "settings": {
+            "description": "Format- and parsing-specific settings that configure how the resource is read.\nCommon keys include `format` and `partition_detection`. Additional keys depend on the format reader;\ncompression can be inferred from the resource URI.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "mappings": {
+            "description": "The user-declared mapping on the dataset definition.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.DatasetMapping"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "data_source",
+          "resource"
+        ]
+      },
+      "esql._types.DatasetMapping": {
+        "description": "A user-declared mapping (the `mappings` block) attached to a dataset.\nIt is entirely optional: a dataset with no declared mapping relies on inference.",
+        "type": "object",
+        "properties": {
+          "dynamic": {
+            "description": "The policy for columns that are not declared in `properties`.\n`true` (the default) infers undeclared columns and overlays the declarations; `false` makes the declaration the entire schema, so undeclared columns are not queryable.",
+            "default": "true",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.Dynamic"
+              }
+            ]
+          },
+          "properties": {
+            "description": "The per-column declarations, keyed by logical column name.",
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/esql._types.DatasetFieldMapping"
+            }
+          },
+          "_id": {
+            "description": "The `_id` meta-field configuration, sourcing the document identity from a column.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.IdPath"
+              }
+            ]
+          }
+        }
+      },
+      "esql._types.Dynamic": {
+        "type": "string",
+        "enum": [
+          "true",
+          "false"
+        ]
+      },
+      "esql._types.DatasetFieldMapping": {
+        "description": "A per-column declaration inside a dataset mapping's `properties`.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The declared column type.",
+            "type": "string"
+          },
+          "rename_from": {
+            "description": "The underlying file column that this logical column reads from.\nThis is a read-path rename: the physical column becomes this single logical column.\nResponses always use `rename_from`. `path`, the former name for this field, is still\naccepted in requests and means the same thing.",
+            "type": "string"
+          },
+          "format": {
+            "description": "The date-parse pattern for a declared `date` column, mirroring the index date-field `format`.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "esql._types.IdPath": {
+        "description": "The `_id` meta-field of a dataset mapping.",
+        "type": "object",
+        "properties": {
+          "path": {
+            "description": "The name of the column that provides the document identity.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ]
+      },
+      "esql._types.ESQLView": {
+        "description": "A non-materialized ES|QL view.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the ES|QL view",
+            "type": "string"
+          },
+          "query": {
+            "description": "The ES|QL query",
+            "type": "string"
+          },
+          "description": {
+            "description": "A free-text description of the view.",
+            "x-state": "Generally available",
+            "type": "string"
+          },
+          "reserved": {
+            "description": "Whether this view is reserved.\n\nElasticsearch creates reserved views. They can be queried and read like any other view.\nThey cannot be created, updated, or deleted through the views API.\nThe response includes this field only when the value is `true`.",
+            "x-state": "Generally available",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "query"
+        ]
+      },
+      "esql.list_queries.Body": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "node": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.NodeId"
+              }
+            ]
+          },
+          "start_time_millis": {
+            "type": "number"
+          },
+          "running_time_nanos": {
+            "type": "number"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "node",
+          "start_time_millis",
+          "running_time_nanos",
+          "query"
         ]
       },
       "esql.test_data_source_connection.DataSourceTestStatus": {
@@ -96508,6 +97971,32 @@
             ]
           }
         }
+      },
+      "indices.get_data_lifecycle_stats.DataStreamStats": {
+        "type": "object",
+        "properties": {
+          "backing_indices_in_error": {
+            "description": "The count of the backing indices for the data stream.",
+            "type": "number"
+          },
+          "backing_indices_in_total": {
+            "description": "The count of the backing indices for the data stream that have encountered an error.",
+            "type": "number"
+          },
+          "name": {
+            "description": "The name of the data stream.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DataStreamName"
+              }
+            ]
+          }
+        },
+        "required": [
+          "backing_indices_in_error",
+          "backing_indices_in_total",
+          "name"
+        ]
       },
       "indices._types.DataStream": {
         "type": "object",
@@ -121840,6 +123329,14 @@
           "name"
         ]
       },
+      "search_application._types.EventType": {
+        "type": "string",
+        "enum": [
+          "page_view",
+          "search",
+          "search_click"
+        ]
+      },
       "search_application.put_behavioral_analytics.AnalyticsAcknowledgeResponseBase": {
         "allOf": [
           {
@@ -124521,6 +126018,219 @@
           "relation"
         ]
       },
+      "simulate.ingest.MergeType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "template"
+        ]
+      },
+      "cluster._types.ComponentTemplateNode": {
+        "type": "object",
+        "properties": {
+          "template": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/cluster._types.ComponentTemplateSummary"
+              }
+            ]
+          },
+          "version": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionNumber"
+              }
+            ]
+          },
+          "_meta": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "created_date": {
+            "description": "Date and time when the component template was created. Only returned if the `human` query parameter is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "created_date_millis": {
+            "description": "Date and time when the component template was created, in milliseconds since the epoch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "modified_date": {
+            "description": "Date and time when the component template was last modified. Only returned if the `human` query parameter is `true`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
+          "modified_date_millis": {
+            "description": "Date and time when the component template was last modified, in milliseconds since the epoch.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          }
+        },
+        "required": [
+          "template"
+        ]
+      },
+      "cluster._types.ComponentTemplateSummary": {
+        "type": "object",
+        "properties": {
+          "_meta": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Metadata"
+              }
+            ]
+          },
+          "version": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionNumber"
+              }
+            ]
+          },
+          "settings": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.IndexSettings"
+            }
+          },
+          "mappings": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          },
+          "aliases": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/indices._types.AliasDefinition"
+            }
+          },
+          "lifecycle": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamLifecycle"
+              }
+            ]
+          },
+          "data_stream_options": {
+            "x-state": "Generally available",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.DataStreamOptions"
+              }
+            ]
+          }
+        }
+      },
+      "simulate.ingest.SimulateIngestDocumentResult": {
+        "type": "object",
+        "properties": {
+          "doc": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/simulate.ingest.IngestDocumentSimulation"
+              }
+            ]
+          }
+        }
+      },
+      "simulate.ingest.IngestDocumentSimulation": {
+        "description": "The results of ingest simulation on a single document. The _source of the document contains\nthe results after running all pipelines listed in executed_pipelines on the document. The\nlist of executed pipelines is derived from the pipelines that would be executed if this\ndocument had been ingested into _index.",
+        "type": "object",
+        "properties": {
+          "_id": {
+            "description": "Identifier for the document.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Id"
+              }
+            ]
+          },
+          "_index": {
+            "description": "Name of the index that the document would be indexed into if this were not a simulation.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.IndexName"
+              }
+            ]
+          },
+          "_source": {
+            "description": "JSON body for the document.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "_version": {
+            "description": "",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.StringifiedVersionNumber"
+              }
+            ]
+          },
+          "executed_pipelines": {
+            "description": "A list of the names of the pipelines executed on this document.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ignored_fields": {
+            "description": "A list of the fields that would be ignored at the indexing step. For example, a field whose\nvalue is larger than the allowed limit would make it through all of the pipelines, but\nwould not be indexed into Elasticsearch.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          },
+          "error": {
+            "description": "Any error resulting from simulatng ingest on this doc. This can be an error generated by\nexecuting a processor, or a mapping validation error when simulating indexing the resulting\ndoc.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ErrorCause"
+              }
+            ]
+          },
+          "effective_mapping": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+              }
+            ]
+          }
+        },
+        "required": [
+          "_id",
+          "_index",
+          "_source",
+          "_version",
+          "executed_pipelines"
+        ]
+      },
       "slm._types.SnapshotLifecycle": {
         "type": "object",
         "properties": {
@@ -126417,6 +128127,26 @@
           "path",
           "serial_number",
           "subject_dn"
+        ]
+      },
+      "streams._types.StreamType": {
+        "type": "string",
+        "enum": [
+          "logs",
+          "logs.otel",
+          "logs.ecs"
+        ]
+      },
+      "streams.status.StreamStatus": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "description": "If true, the stream feature is enabled.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
         ]
       },
       "synonyms._types.SynonymsUpdateResult": {
@@ -133800,6 +135530,44 @@
               "UpdateUserProfileDataResponseExample1": {
                 "description": "A successful response from `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data`, which indicates that the request is acknowledged.\n",
                 "value": "{\n  \"acknowledged\": true\n}"
+              }
+            }
+          }
+        }
+      },
+      "simulate.ingest-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "docs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/simulate.ingest.SimulateIngestDocumentResult"
+                  }
+                }
+              },
+              "required": [
+                "docs"
+              ]
+            },
+            "examples": {
+              "SimulateIngestResponseExample1": {
+                "summary": "Use an existing pipeline definition",
+                "description": "A successful response when the simulation uses pipeline definitions that are already in the system.",
+                "value": "{\n  \"docs\": [\n    {\n      \"doc\": null,\n      \"_id\": 123,\n      \"_index\": \"my-index\",\n      \"_version\": -3,\n      \"_source\": {\n        \"field1\": \"value1\",\n        \"field2\": \"value2\",\n        \"foo\": \"bar\"\n      },\n      \"executed_pipelines\": [\n        \"my-pipeline\",\n        \"my-final-pipeline\"\n      ]\n    },\n    {\n      \"doc\": null,\n      \"_id\": 456,\n      \"_index\": \"my-index\",\n      \"_version\": \"-3,\",\n      \"_source\": {\n        \"field1\": \"value1\",\n        \"field2\": \"value2\",\n        \"foo\": \"rab\"\n      },\n      \"executed_pipelines\": [\n        \"my-pipeline\",\n        \"my-final-pipeline\"\n      ]\n    }\n  ]\n}"
+              },
+              "SimulateIngestResponseExample2": {
+                "summary": "Use pipeline substitutions",
+                "description": "A successful response when the simulation uses pipeline substitutions.",
+                "value": "{\n  \"docs\": [\n    {\n      \"doc\": null,\n      \"_id\": 123,\n      \"_index\": \"my-index\",\n      \"_version\": -3,\n      \"_source\": {\n        \"field2\": \"value2\",\n        \"foo\": \"BAR\"\n      },\n      \"executed_pipelines\": [\n        \"my-pipeline\",\n        \"my-final-pipeline\"\n      ]\n    },\n    {\n      \"doc\": null,\n      \"_id\": 456,\n      \"_index\": \"my-index\",\n      \"_version\": -3,\n      \"_source\": {\n        \"field2\": \"value2\",\n        \"foo\": \"RAB\"\n      },\n      \"executed_pipelines\": [\n        \"my-pipeline\",\n        \"my-final-pipeline\"\n      ]\n    }\n  ]\n}"
+              },
+              "SimulateIngestResponseExample3": {
+                "summary": "Use pipeline substitutions",
+                "description": "A successful response when the simulation uses pipeline substitutions.",
+                "value": "{\n  \"docs\": [\n    {\n      \"doc\": {\n        \"_id\": \"123\",\n        \"_index\": \"my-index\",\n        \"_version\": -3,\n        \"_source\": {\n          \"foo\": \"foo\"\n        },\n        \"executed_pipelines\": [],\n        \"effective_mapping\": {\n          \"_doc\": {\n            \"properties\": {\n              \"foo\": {\n                \"type\": \"keyword\"\n              }\n            }\n          }\n        }\n      }\n    },\n    {\n      \"doc\": {\n        \"_id\": \"456\",\n        \"_index\": \"my-index\",\n        \"_version\": -3,\n        \"_source\": {\n          \"bar\": \"rab\"\n        },\n      \"executed_pipelines\": [],\n        \"effective_mapping\": {\n          \"_doc\": {\n            \"properties\": {\n              \"bar\": {\n                \"type\": \"keyword\"\n              }\n            }\n          }\n        }\n      }\n    }\n  ]\n}"
               }
             }
           }
@@ -144626,6 +146394,42 @@
         },
         "style": "form"
       },
+      "simulate.ingest-index": {
+        "in": "path",
+        "name": "index",
+        "description": "The index to simulate ingesting into.\nThis value can be overridden by specifying an index on each document.\nIf you specify this parameter in the request path, it is used for any documents that do not explicitly specify an index argument.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "simulate.ingest-pipeline": {
+        "in": "query",
+        "name": "pipeline",
+        "description": "The pipeline to use as the default pipeline.\nThis value can be used to override the default pipeline of the index.",
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.PipelineName"
+        },
+        "style": "form"
+      },
+      "simulate.ingest-merge_type": {
+        "in": "query",
+        "name": "merge_type",
+        "description": "The mapping merge type if mapping overrides are being provided in mapping_addition.\nThe allowed values are one of index or template.\nThe index option merges mappings the way they would be merged into an existing index.\nThe template option merges mappings the way they would be merged into a template.",
+        "deprecated": false,
+        "schema": {
+          "default": "index",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/simulate.ingest.MergeType"
+            }
+          ]
+        },
+        "style": "form"
+      },
       "slm.get_lifecycle-policy_id": {
         "in": "path",
         "name": "policy_id",
@@ -149584,6 +151388,78 @@
               "UpdateUserProfileDataRequestExample1": {
                 "description": "Run `POST /_security/profile/u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0/_data` to update a profile document for the `u_P_0BMHgaOK3p7k-PFWUCbw9dQ-UFjt01oWJ_Dp2PmPc_0` user profile.\n",
                 "value": "{\n  \"labels\": {\n    \"direction\": \"east\"\n  },\n  \"data\": {\n    \"app1\": {\n      \"theme\": \"default\"\n    }\n  }\n}"
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "simulate.ingest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "docs": {
+                  "description": "Sample documents to test in the pipeline.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ingest._types.Document"
+                  }
+                },
+                "component_template_substitutions": {
+                  "description": "A map of component template names to substitute component template definition objects.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/cluster._types.ComponentTemplateNode"
+                  }
+                },
+                "index_template_substitutions": {
+                  "description": "A map of index template names to substitute index template definition objects.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/indices._types.IndexTemplate"
+                  }
+                },
+                "mapping_addition": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/_types.mapping.TypeMapping"
+                    }
+                  ]
+                },
+                "pipeline_substitutions": {
+                  "description": "Pipelines to test.\nIf you don’t specify the `pipeline` request path parameter, this parameter is required.\nIf you specify both this and the request path parameter, the API only uses the request path parameter.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "$ref": "#/components/schemas/ingest._types.Pipeline"
+                  }
+                }
+              },
+              "required": [
+                "docs"
+              ]
+            },
+            "examples": {
+              "SimulateIngestRequestExample1": {
+                "summary": "Existing pipeline definitions",
+                "description": "In this example the index `my-index` has a default pipeline called `my-pipeline` and a final pipeline called `my-final-pipeline`. Since both documents are being ingested into `my-index`, both pipelines are run using the pipeline definitions that are already in the system.",
+                "value": "{\n  \"docs\": [\n    {\n      \"_id\": \"123\",\n      \"_index\": \"my-index\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_id\": \"456\",\n      \"_index\": \"my-index\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ]\n}"
+              },
+              "SimulateIngestRequestExample2": {
+                "summary": "Pipeline substitions",
+                "description": "In this example the index `my-index` has a default pipeline called `my-pipeline` and a final pipeline called `my-final-pipeline`. But a substitute definition of `my-pipeline` is provided in `pipeline_substitutions`. The substitute `my-pipeline` will be used in place of the `my-pipeline` that is in the system, and then the `my-final-pipeline` that is already defined in the system will run.",
+                "value": "{\n  \"docs\": [\n    {\n      \"_index\": \"my-index\",\n      \"_id\": \"123\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_index\": \"my-index\",\n      \"_id\": \"456\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ],\n  \"pipeline_substitutions\": {\n    \"my-pipeline\": {\n      \"processors\": [\n        {\n          \"uppercase\": {\n            \"field\": \"foo\"\n          }\n        }\n      ]\n    }\n  }\n}"
+              },
+              "SimulateIngestRequestExample3": {
+                "summary": "Component template substitutions",
+                "description": "In this example, imagine that the index `my-index` has a strict mapping with only the `foo` keyword field defined. Say that field mapping came from a component template named `my-mappings-template`. You want to test adding a new field, `bar`. So a substitute definition of `my-mappings-template` is provided in `component_template_substitutions`. The substitute `my-mappings-template` will be used in place of the existing mapping for `my-index` and in place of the `my-mappings-template` that is in the system.\n",
+                "value": "{\n  \"docs\": [\n    {\n      \"_index\": \"my-index\",\n      \"_id\": \"123\",\n      \"_source\": {\n        \"foo\": \"foo\"\n      }\n    },\n    {\n      \"_index\": \"my-index\",\n      \"_id\": \"456\",\n      \"_source\": {\n        \"bar\": \"rab\"\n      }\n    }\n  ],\n  \"component_template_substitutions\": {\n    \"my-mappings_template\": {\n      \"template\": {\n        \"mappings\": {\n          \"dynamic\": \"strict\",\n          \"properties\": {\n            \"foo\": {\n              \"type\": \"keyword\"\n            },\n            \"bar\": {\n              \"type\": \"keyword\"\n            }\n          }\n        }\n      }\n    }\n  }\n}"
+              },
+              "SimulateIngestRequestExample4": {
+                "summary": "Multiple substitutions",
+                "description": "The pipeline, component template, and index template substitutions replace the existing pipeline details for the duration of this request.",
+                "value": "{\n  \"docs\": [\n    {\n      \"_id\": \"id\",\n      \"_index\": \"my-index\",\n      \"_source\": {\n        \"foo\": \"bar\"\n      }\n    },\n    {\n      \"_id\": \"id\",\n      \"_index\": \"my-index\",\n      \"_source\": {\n        \"foo\": \"rab\"\n      }\n    }\n  ],\n  \"pipeline_substitutions\": {\n    \"my-pipeline\": {\n      \"processors\": [\n        {\n          \"set\": {\n            \"field\": \"field3\",\n            \"value\": \"value3\"\n          }\n        }\n      ]\n    }\n  },\n  \"component_template_substitutions\": {\n    \"my-component-template\": {\n      \"template\": {\n        \"mappings\": {\n          \"dynamic\": true,\n          \"properties\": {\n            \"field3\": {\n              \"type\": \"keyword\"\n            }\n          }\n        },\n        \"settings\": {\n          \"index\": {\n            \"default_pipeline\": \"my-pipeline\"\n          }\n        }\n      }\n    }\n  },\n  \"index_template_substitutions\": {\n    \"my-index-template\": {\n      \"index_patterns\": [\n        \"my-index-*\"\n      ],\n      \"composed_of\": [\n        \"component_template_1\",\n        \"component_template_2\"\n      ]\n    }\n  },\n  \"mapping_addition\": {\n    \"dynamic\": \"strict\",\n    \"properties\": {\n      \"foo\": {\n        \"type\": \"keyword\"\n      }\n    }\n  }\n}"
               }
             }
           }
