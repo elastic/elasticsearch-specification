@@ -153047,7 +153047,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L151-L157"
+      "specLocation": "ilm/_types/Phase.ts#L162-L168"
     },
     {
       "kind": "interface",
@@ -153068,7 +153068,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L167-L169"
+      "specLocation": "ilm/_types/Phase.ts#L178-L180"
     },
     {
       "kind": "interface",
@@ -153153,7 +153153,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L159-L161"
+      "specLocation": "ilm/_types/Phase.ts#L170-L172"
     },
     {
       "kind": "interface",
@@ -153431,6 +153431,25 @@
         {
           "name": "force_merge_index",
           "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.2.1"
+            }
+          },
+          "description": "If `true`, and the index has replicas, ILM first clones the index with zero replicas and force merges the clone, so that replicas are not merged redundantly.\nIf `false`, the managed index is force merged directly.\nNot allowed when `force_merge_index` is `false`.",
+          "name": "force_merge_on_clone",
+          "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -153474,7 +153493,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L131-L149"
+      "specLocation": "ilm/_types/Phase.ts#L131-L160"
     },
     {
       "kind": "interface",
@@ -153559,7 +153578,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L163-L165"
+      "specLocation": "ilm/_types/Phase.ts#L174-L176"
     },
     {
       "kind": "request",
