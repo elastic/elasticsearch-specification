@@ -2516,9 +2516,9 @@ export interface InternalGetDesiredNodesRequest extends RequestBase {
 export type InternalGetDesiredNodesResponse = any
 
 export interface InternalPrevalidateNodeRemovalRequest extends RequestBase {
-  names?: string[]
-  ids?: string[]
-  external_ids?: string[]
+  names?: string[] | string
+  ids?: string[] | string
+  external_ids?: string[] | string
   master_timeout?: Duration
   timeout?: Duration
 }

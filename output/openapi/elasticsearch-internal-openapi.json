@@ -205,42 +205,60 @@
           {
             "in": "query",
             "name": "names",
-            "description": "A comma-separated list of node names to prevalidate",
+            "description": "A comma-separated list of node names to prevalidate.\nDefaults to an empty array.",
             "deprecated": false,
             "schema": {
-              "default": [],
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
             },
             "style": "form"
           },
           {
             "in": "query",
             "name": "ids",
-            "description": "A comma-separated list of node IDs to prevalidate",
+            "description": "A comma-separated list of node IDs to prevalidate\nDefaults to an empty array.",
             "deprecated": false,
             "schema": {
-              "default": [],
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
             },
             "style": "form"
           },
           {
             "in": "query",
             "name": "external_ids",
-            "description": "A comma-separated list of node external IDs to prevalidate",
+            "description": "A comma-separated list of node external IDs to prevalidate\nDefaults to an empty array.",
             "deprecated": false,
             "schema": {
-              "default": [],
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "string"
+                }
+              ]
             },
             "style": "form"
           },
