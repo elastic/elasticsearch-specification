@@ -33,6 +33,7 @@ import { StreamType } from '@streams/_types/StreamType'
  * returned.
  * @rest_spec_name streams.logs_enable
  * @availability stack since=9.1.0 stability=experimental visibility=public
+ * @availability serverless stability=experimental visibility=public
  * @cluster_privileges manage
  * @doc_id streams-logs-enable
  * @doc_tag streams

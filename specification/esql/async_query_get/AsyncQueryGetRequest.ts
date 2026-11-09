@@ -29,6 +29,7 @@ import { EsqlFormat } from '@esql/_types/QueryParameters'
  * If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.
  * @rest_spec_name esql.async_query_get
  * @availability stack since=8.13.0 stability=stable visibility=public
+ * @availability serverless stability=stable visibility=public
  * @doc_id esql-async-query-get
  * @ext_doc_id esql
  * @index_privileges read
