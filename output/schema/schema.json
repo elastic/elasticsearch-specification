@@ -164911,7 +164911,41 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L464-L466"
+      "specLocation": "indices/_types/IndexSettings.ts#L465-L467"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "CacheRequests",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "description": "Whether the shard request cache is enabled for the index.\nThis setting is dynamic and can be updated on an existing index.",
+          "docId": "shard-request-cache",
+          "docUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/shard-request-cache",
+          "name": "enable",
+          "required": false,
+          "serverDefault": true,
+          "type": {
+            "kind": "instance_of",
+            "generics": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "boolean",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "type": {
+              "name": "Stringified",
+              "namespace": "_spec_utils"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/IndexSettings.ts#L473-L481"
     },
     {
       "kind": "interface",
@@ -165998,7 +166032,7 @@
         "name": "IndexCheckOnStartup",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L291-L298"
+      "specLocation": "indices/_types/IndexSettings.ts#L292-L299"
     },
     {
       "kind": "enum",
@@ -166519,7 +166553,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L272-L278"
+      "specLocation": "indices/_types/IndexSettings.ts#L273-L279"
     },
     {
       "kind": "interface",
@@ -167294,6 +167328,17 @@
           }
         },
         {
+          "name": "requests",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Requests",
+              "namespace": "indices._types"
+            }
+          }
+        },
+        {
           "description": "Configure custom similarity settings to customize how search results are scored.",
           "name": "similarity",
           "required": false,
@@ -167364,7 +167409,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L71-L186"
+      "specLocation": "indices/_types/IndexSettings.ts#L71-L187"
     },
     {
       "kind": "interface",
@@ -167484,7 +167529,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L368-L374"
+      "specLocation": "indices/_types/IndexSettings.ts#L369-L375"
     },
     {
       "kind": "interface",
@@ -167602,7 +167647,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L305-L345"
+      "specLocation": "indices/_types/IndexSettings.ts#L306-L346"
     },
     {
       "kind": "interface",
@@ -167624,7 +167669,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L347-L353"
+      "specLocation": "indices/_types/IndexSettings.ts#L348-L354"
     },
     {
       "kind": "interface",
@@ -167674,7 +167719,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L376-L387"
+      "specLocation": "indices/_types/IndexSettings.ts#L377-L388"
     },
     {
       "kind": "interface",
@@ -167695,7 +167740,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L355-L357"
+      "specLocation": "indices/_types/IndexSettings.ts#L356-L358"
     },
     {
       "kind": "interface",
@@ -167718,7 +167763,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L359-L366"
+      "specLocation": "indices/_types/IndexSettings.ts#L360-L367"
     },
     {
       "kind": "interface",
@@ -168590,7 +168635,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L300-L303"
+      "specLocation": "indices/_types/IndexSettings.ts#L301-L304"
     },
     {
       "kind": "interface",
@@ -168611,7 +168656,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L623-L625"
+      "specLocation": "indices/_types/IndexSettings.ts#L638-L640"
     },
     {
       "kind": "interface",
@@ -168633,7 +168678,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L627-L634"
+      "specLocation": "indices/_types/IndexSettings.ts#L642-L649"
     },
     {
       "kind": "interface",
@@ -168687,7 +168732,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L636-L641"
+      "specLocation": "indices/_types/IndexSettings.ts#L651-L656"
     },
     {
       "kind": "interface",
@@ -168711,7 +168756,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L643-L650"
+      "specLocation": "indices/_types/IndexSettings.ts#L658-L665"
     },
     {
       "kind": "enum",
@@ -168737,7 +168782,7 @@
         "name": "IndicesBlockOptions",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L280-L289"
+      "specLocation": "indices/_types/IndexSettings.ts#L281-L290"
     },
     {
       "kind": "enum",
@@ -168883,7 +168928,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L468-L483"
+      "specLocation": "indices/_types/IndexSettings.ts#L483-L498"
     },
     {
       "kind": "interface",
@@ -168906,7 +168951,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L506-L513"
+      "specLocation": "indices/_types/IndexSettings.ts#L521-L528"
     },
     {
       "kind": "interface",
@@ -168928,7 +168973,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L543-L549"
+      "specLocation": "indices/_types/IndexSettings.ts#L558-L564"
     },
     {
       "kind": "interface",
@@ -168950,7 +168995,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L534-L541"
+      "specLocation": "indices/_types/IndexSettings.ts#L549-L556"
     },
     {
       "kind": "interface",
@@ -168973,7 +169018,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L515-L523"
+      "specLocation": "indices/_types/IndexSettings.ts#L530-L538"
     },
     {
       "kind": "interface",
@@ -168996,7 +169041,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L525-L532"
+      "specLocation": "indices/_types/IndexSettings.ts#L540-L547"
     },
     {
       "kind": "interface",
@@ -169017,7 +169062,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L551-L553"
+      "specLocation": "indices/_types/IndexSettings.ts#L566-L568"
     },
     {
       "kind": "interface",
@@ -169077,7 +169122,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L485-L504"
+      "specLocation": "indices/_types/IndexSettings.ts#L500-L519"
     },
     {
       "kind": "interface",
@@ -169098,7 +169143,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L389-L391"
+      "specLocation": "indices/_types/IndexSettings.ts#L390-L392"
     },
     {
       "kind": "interface",
@@ -169148,7 +169193,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L393-L396"
+      "specLocation": "indices/_types/IndexSettings.ts#L394-L397"
     },
     {
       "kind": "interface",
@@ -169206,7 +169251,28 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L460-L462"
+      "specLocation": "indices/_types/IndexSettings.ts#L461-L463"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Requests",
+        "namespace": "indices._types"
+      },
+      "properties": [
+        {
+          "name": "cache",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "CacheRequests",
+              "namespace": "indices._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "indices/_types/IndexSettings.ts#L469-L471"
     },
     {
       "kind": "interface",
@@ -169287,7 +169353,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L263-L266"
+      "specLocation": "indices/_types/IndexSettings.ts#L264-L267"
     },
     {
       "kind": "enum",
@@ -169380,7 +169446,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L253-L256"
+      "specLocation": "indices/_types/IndexSettings.ts#L254-L257"
     },
     {
       "kind": "interface",
@@ -169402,7 +169468,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L248-L251"
+      "specLocation": "indices/_types/IndexSettings.ts#L249-L252"
     },
     {
       "kind": "interface",
@@ -169432,7 +169498,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L268-L270"
+      "specLocation": "indices/_types/IndexSettings.ts#L269-L271"
     },
     {
       "kind": "interface",
@@ -169464,7 +169530,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L258-L261"
+      "specLocation": "indices/_types/IndexSettings.ts#L259-L262"
     },
     {
       "kind": "type_alias",
@@ -169472,7 +169538,7 @@
         "name": "SettingsSimilarity",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L188-L200",
+      "specLocation": "indices/_types/IndexSettings.ts#L189-L201",
       "type": {
         "kind": "union_of",
         "items": [
@@ -169589,7 +169655,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L206-L211"
+      "specLocation": "indices/_types/IndexSettings.ts#L207-L212"
     },
     {
       "kind": "interface",
@@ -169607,7 +169673,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L202-L204"
+      "specLocation": "indices/_types/IndexSettings.ts#L203-L205"
     },
     {
       "kind": "interface",
@@ -169636,7 +169702,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L213-L216"
+      "specLocation": "indices/_types/IndexSettings.ts#L214-L217"
     },
     {
       "kind": "interface",
@@ -169687,7 +169753,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L218-L223"
+      "specLocation": "indices/_types/IndexSettings.ts#L219-L224"
     },
     {
       "kind": "interface",
@@ -169738,7 +169804,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L225-L230"
+      "specLocation": "indices/_types/IndexSettings.ts#L226-L231"
     },
     {
       "kind": "interface",
@@ -169767,7 +169833,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L232-L235"
+      "specLocation": "indices/_types/IndexSettings.ts#L233-L236"
     },
     {
       "kind": "interface",
@@ -169796,7 +169862,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L237-L240"
+      "specLocation": "indices/_types/IndexSettings.ts#L238-L241"
     },
     {
       "kind": "interface",
@@ -169836,7 +169902,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L242-L246"
+      "specLocation": "indices/_types/IndexSettings.ts#L243-L247"
     },
     {
       "kind": "interface",
@@ -169890,7 +169956,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L561-L566"
+      "specLocation": "indices/_types/IndexSettings.ts#L576-L581"
     },
     {
       "kind": "interface",
@@ -169944,7 +170010,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L573-L578"
+      "specLocation": "indices/_types/IndexSettings.ts#L588-L593"
     },
     {
       "kind": "interface",
@@ -169976,7 +170042,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L568-L571"
+      "specLocation": "indices/_types/IndexSettings.ts#L583-L586"
     },
     {
       "kind": "interface",
@@ -170030,7 +170096,7 @@
         "name": "SourceMode",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L555-L559"
+      "specLocation": "indices/_types/IndexSettings.ts#L570-L574"
     },
     {
       "kind": "interface",
@@ -170075,7 +170141,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L580-L591"
+      "specLocation": "indices/_types/IndexSettings.ts#L595-L606"
     },
     {
       "kind": "enum",
@@ -170102,7 +170168,7 @@
         "name": "StorageType",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L593-L621"
+      "specLocation": "indices/_types/IndexSettings.ts#L608-L636"
     },
     {
       "kind": "interface",
@@ -170259,7 +170325,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L398-L420"
+      "specLocation": "indices/_types/IndexSettings.ts#L399-L421"
     },
     {
       "kind": "enum",
@@ -170283,7 +170349,7 @@
         "name": "TranslogDurability",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L422-L437"
+      "specLocation": "indices/_types/IndexSettings.ts#L423-L438"
     },
     {
       "kind": "interface",
@@ -170319,7 +170385,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L439-L458"
+      "specLocation": "indices/_types/IndexSettings.ts#L440-L459"
     },
     {
       "kind": "interface",

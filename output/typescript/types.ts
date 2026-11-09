@@ -12874,6 +12874,10 @@ export interface IndicesCacheQueries {
   enabled: boolean
 }
 
+export interface IndicesCacheRequests {
+  enable?: SpecUtilsStringified<boolean>
+}
+
 export interface IndicesDataStream {
   _meta?: Metadata
   allow_custom_routing?: boolean
@@ -13101,6 +13105,7 @@ export interface IndicesIndexSettingsKeys {
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
   queries?: IndicesQueries
+  requests?: IndicesRequests
   similarity?: Record<string, IndicesSettingsSimilarity>
   mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesIndexingSlowlogSettings
@@ -13296,6 +13301,10 @@ export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
 export interface IndicesQueries {
   cache?: IndicesCacheQueries
+}
+
+export interface IndicesRequests {
+  cache?: IndicesCacheRequests
 }
 
 export interface IndicesRetentionLease {
