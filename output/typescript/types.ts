@@ -12669,6 +12669,7 @@ export interface IlmRolloverAction {
 export interface IlmSearchableSnapshotAction {
   snapshot_repository: string
   force_merge_index?: boolean
+  force_merge_on_clone?: boolean
   total_shards_per_node?: integer
   replicate_for?: Duration
 }

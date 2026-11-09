@@ -105825,6 +105825,13 @@
             "type": "string"
           },
           "force_merge_index": {
+            "default": true,
+            "type": "boolean"
+          },
+          "force_merge_on_clone": {
+            "description": "If `true`, and the index has replicas, ILM first clones the index with zero replicas and force merges the clone, so that replicas are not merged redundantly.\nIf `false`, the managed index is force merged directly.\nNot allowed when `force_merge_index` is `false`.",
+            "default": true,
+            "x-state": "Generally available; Added in 9.2.1",
             "type": "boolean"
           },
           "total_shards_per_node": {

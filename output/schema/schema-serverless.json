@@ -141972,7 +141972,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L151-L157"
+      "specLocation": "ilm/_types/Phase.ts#L162-L168"
     },
     {
       "kind": "interface",
@@ -141993,7 +141993,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L167-L169"
+      "specLocation": "ilm/_types/Phase.ts#L178-L180"
     },
     {
       "kind": "interface",
@@ -142078,7 +142078,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L159-L161"
+      "specLocation": "ilm/_types/Phase.ts#L170-L172"
     },
     {
       "kind": "interface",
@@ -142247,6 +142247,7 @@
         {
           "name": "force_merge_index",
           "required": false,
+          "serverDefault": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -142256,7 +142257,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L131-L149"
+      "specLocation": "ilm/_types/Phase.ts#L131-L160"
     },
     {
       "kind": "interface",
@@ -142320,7 +142321,7 @@
           }
         }
       ],
-      "specLocation": "ilm/_types/Phase.ts#L163-L165"
+      "specLocation": "ilm/_types/Phase.ts#L174-L176"
     },
     {
       "kind": "interface",
