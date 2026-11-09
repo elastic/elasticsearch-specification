@@ -89213,6 +89213,13 @@
               }
             ]
           },
+          "requests": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.Requests"
+              }
+            ]
+          },
           "similarity": {
             "description": "Configure custom similarity settings to customize how search results are scored.",
             "type": "object",
@@ -95440,6 +95447,32 @@
         "required": [
           "enabled"
         ]
+      },
+      "indices._types.Requests": {
+        "type": "object",
+        "properties": {
+          "cache": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/indices._types.CacheRequests"
+              }
+            ]
+          }
+        }
+      },
+      "indices._types.CacheRequests": {
+        "type": "object",
+        "properties": {
+          "enable": {
+            "description": "Whether the shard request cache is enabled for the index.\nThis setting is dynamic and can be updated on an existing index.",
+            "default": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            ]
+          }
+        }
       },
       "indices._types.SettingsSimilarity": {
         "discriminator": {
@@ -109570,6 +109603,13 @@
             "type": "string"
           },
           "force_merge_index": {
+            "default": true,
+            "type": "boolean"
+          },
+          "force_merge_on_clone": {
+            "description": "If `true`, and the index has replicas, ILM first clones the index with zero replicas and force merges the clone, so that replicas are not merged redundantly.\nIf `false`, the managed index is force merged directly.\nNot allowed when `force_merge_index` is `false`.",
+            "default": true,
+            "x-state": "Generally available; Added in 9.2.1",
             "type": "boolean"
           },
           "total_shards_per_node": {

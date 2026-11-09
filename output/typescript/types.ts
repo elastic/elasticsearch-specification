@@ -12669,6 +12669,7 @@ export interface IlmRolloverAction {
 export interface IlmSearchableSnapshotAction {
   snapshot_repository: string
   force_merge_index?: boolean
+  force_merge_on_clone?: boolean
   total_shards_per_node?: integer
   replicate_for?: Duration
 }
@@ -12872,6 +12873,10 @@ export interface IndicesAliasesResponseBody extends AcknowledgedResponseBase {
 
 export interface IndicesCacheQueries {
   enabled: boolean
+}
+
+export interface IndicesCacheRequests {
+  enable?: SpecUtilsStringified<boolean>
 }
 
 export interface IndicesDataStream {
@@ -13101,6 +13106,7 @@ export interface IndicesIndexSettingsKeys {
   settings?: IndicesIndexSettings
   time_series?: IndicesIndexSettingsTimeSeries
   queries?: IndicesQueries
+  requests?: IndicesRequests
   similarity?: Record<string, IndicesSettingsSimilarity>
   mapping?: IndicesMappingLimitSettings
   'indexing.slowlog'?: IndicesIndexingSlowlogSettings
@@ -13296,6 +13302,10 @@ export type IndicesNumericFielddataFormat = 'array' | 'disabled'
 
 export interface IndicesQueries {
   cache?: IndicesCacheQueries
+}
+
+export interface IndicesRequests {
+  cache?: IndicesCacheRequests
 }
 
 export interface IndicesRetentionLease {
