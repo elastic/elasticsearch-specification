@@ -4698,7 +4698,6 @@
       "name": "indices.explain_data_lifecycle",
       "privileges": {
         "index": [
-          "manage_data_stream_lifecycle",
           "view_index_metadata"
         ]
       },
@@ -4849,7 +4848,7 @@
       "name": "indices.get_data_lifecycle",
       "privileges": {
         "index": [
-          "manage_data_stream_lifecycle"
+          "view_index_metadata"
         ]
       },
       "request": {
