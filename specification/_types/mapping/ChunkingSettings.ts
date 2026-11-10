@@ -29,5 +29,11 @@ export class ChunkingSettings implements OverloadOf<InferenceChunkingSettings> {
 export class ChunkRescorerChunkingSettings
   implements OverloadOf<InferenceChunkingSettings>
 {
-  max_chunk_size: integer
+  /**
+   * The maximum size of a chunk in words.
+   * It is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.
+   * If it is the only setting, the documents are chunked by sentence, without overlap.
+   * If no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.
+   */
+  max_chunk_size?: integer
 }
