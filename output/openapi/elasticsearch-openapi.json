@@ -79247,7 +79247,7 @@
         "type": "object",
         "properties": {
           "_id": {
-            "description": "The document ID associated with the operation.",
+            "description": "The document ID associated with the operation.\nIt is `null` when an `index` or `create` operation without an explicit `_id` fails before Elasticsearch generates an ID for the document.\nElasticsearch generates the ID when it routes the document to a shard, so the ID is still `null` for failures that happen earlier, such as an ingest pipeline error, a missing or closed target index, a failed `require_alias` or `require_data_stream` check, or missing required routing.\n`update` and `delete` operations always include an ID.",
             "oneOf": [
               {
                 "type": "string"
