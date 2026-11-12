@@ -45,6 +45,7 @@ import {
   TaskTypeNvidia,
   TaskTypeOpenAI,
   TaskTypeOpenShiftAi,
+  TaskTypeTencentCloud,
   TaskTypeVoyageAI,
   TaskTypeWatsonx
 } from '../_types/TaskType'
@@ -348,6 +349,17 @@ export class InferenceEndpointInfoOpenShiftAi extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskTypeOpenShiftAi
+}
+
+export class InferenceEndpointInfoTencentCloud extends InferenceEndpoint {
+  /**
+   * The inference Id
+   */
+  inference_id: string
+  /**
+   * The task type
+   */
+  task_type: TaskTypeTencentCloud
 }
 
 export class InferenceEndpointInfoVoyageAI extends InferenceEndpoint {
