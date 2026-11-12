@@ -122,11 +122,20 @@ export class OperationBase {
   _slice?: SliceId
   if_primary_term?: long
   if_seq_no?: SequenceNumber
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export class WriteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
   /**
    * A map from the full name of fields to the name of dynamic templates.
    * It defaults to an empty map.
@@ -151,7 +160,19 @@ export class CreateOperation extends WriteOperation {}
 
 export class IndexOperation extends WriteOperation {}
 
-export class DeleteOperation extends OperationBase {}
+export class DeleteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
+}
 
 export class UpdateOperation extends OperationBase {
   /**
