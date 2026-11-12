@@ -1,0 +1,8 @@
+summary: List recoveries from a period
+method_request: GET _data_recovery/recoveries?started_at_gte=2026-10-01T00:00:00Z&started_at_lt=2026-11-01T00:00:00Z
+description: >
+  Run `GET _data_recovery/recoveries?started_at_gte=2026-10-01T00:00:00Z&started_at_lt=2026-11-01T00:00:00Z` to list the
+  recoveries that started during October 2026. The lower bound is inclusive and the upper bound is exclusive, so adjacent
+  periods neither overlap nor leave a gap.
+# type: request
+value: ''
