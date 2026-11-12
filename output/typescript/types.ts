@@ -21,11 +21,14 @@ export interface BulkCreateOperation extends BulkWriteOperation {
 }
 
 export interface BulkDeleteOperation extends BulkOperationBase {
+  version?: VersionNumber
+  version_type?: VersionType
 }
 
 export type BulkFailureStoreStatus = 'not_applicable_or_unknown' | 'used' | 'not_enabled' | 'failed'
 
 export interface BulkIndexOperation extends BulkWriteOperation {
+  op_type?: OpType
 }
 
 export interface BulkOperationBase {
@@ -34,8 +37,6 @@ export interface BulkOperationBase {
   routing?: Routing
   if_primary_term?: long
   if_seq_no?: SequenceNumber
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export interface BulkOperationContainer {
@@ -92,6 +93,8 @@ export interface BulkUpdateAction<TDocument = unknown, TPartialDocument = unknow
   doc_as_upsert?: boolean
   script?: Script | string
   scripted_upsert?: boolean
+  if_seq_no?: SequenceNumber
+  if_primary_term?: long
   _source?: SearchSourceConfig
   upsert?: TDocument
 }
@@ -99,12 +102,19 @@ export interface BulkUpdateAction<TDocument = unknown, TPartialDocument = unknow
 export interface BulkUpdateOperation extends BulkOperationBase {
   require_alias?: boolean
   retry_on_conflict?: integer
+  pipeline?: string
+  list_executed_pipelines?: boolean
+  _source?: SearchSourceConfig
 }
 
 export interface BulkWriteOperation extends BulkOperationBase {
+  version?: VersionNumber
+  version_type?: VersionType
   dynamic_templates?: Record<string, string>
   pipeline?: string
   require_alias?: boolean
+  require_data_stream?: boolean
+  list_executed_pipelines?: boolean
 }
 
 export interface CapabilitiesFailedNodeException {
