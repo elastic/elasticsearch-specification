@@ -33,6 +33,7 @@ import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only
 import noDeprecatedAvailabilityOnTypes from './rules/no-deprecated-availability-on-types.js'
 import validRequestUrls from './rules/valid-request-urls.js'
 import binaryRequiresAlias from './rules/binary-requires-alias.js'
+import docIdExists from './rules/doc-id-exists.js'
 
 export default {
   rules: {
@@ -52,6 +53,7 @@ export default {
     'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly,
     'no-deprecated-availability-on-types': noDeprecatedAvailabilityOnTypes,
     'valid-request-urls': validRequestUrls,
-    'binary-requires-alias': binaryRequiresAlias
+    'binary-requires-alias': binaryRequiresAlias,
+    'doc-id-exists': docIdExists
   }
 }
