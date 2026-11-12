@@ -21,6 +21,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   | 
 | `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 | `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                                                                   |
+| `prefer-time-types`                   | Dates, times and durations must use `DateTime`, `Duration`, `DurationValue<Unit>` or `EpochTime<Unit>`. The rule finds the properties by name, such as `took_in_millis`, `timestamp` and `timeout`. |
 
 ## Usage
 
