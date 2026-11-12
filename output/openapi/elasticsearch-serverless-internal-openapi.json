@@ -38657,6 +38657,55 @@
         ]
       }
     },
+    "/_prometheus/api/v1/status/buildinfo": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus build information",
+        "description": "Get Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
+        "operationId": "prometheus-status-buildinfo",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.status_buildinfo-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/status/buildinfo": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus build information",
+        "description": "Get Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
+        "operationId": "prometheus-status-buildinfo-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.status_buildinfo-index"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.status_buildinfo-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_scripts/{id}/{context}": {
       "put": {
         "tags": [
@@ -122284,6 +122333,41 @@
           "_organisation"
         ]
       },
+      "prometheus.status_buildinfo.BuildInfo": {
+        "type": "object",
+        "properties": {
+          "application": {
+            "description": "The name of the application. It is always `Elasticsearch`.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The Elasticsearch version.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.VersionString"
+              }
+            ]
+          },
+          "revision": {
+            "description": "The commit hash of the Elasticsearch build.",
+            "type": "string"
+          },
+          "buildDate": {
+            "description": "The date of the Elasticsearch build.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          }
+        },
+        "required": [
+          "application",
+          "version",
+          "revision",
+          "buildDate"
+        ]
+      },
       "query_rules._types.QueryRule": {
         "type": "object",
         "properties": {
@@ -134762,6 +134846,41 @@
           }
         }
       },
+      "prometheus.status_buildinfo-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request. It is always `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The Elasticsearch build information.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/prometheus.status_buildinfo.BuildInfo"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusStatusBuildinfoResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/status/buildinfo`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"application\": \"Elasticsearch\",\n    \"version\": \"9.5.0\",\n    \"revision\": \"00000000\",\n    \"buildDate\": \"2026-07-09T22:10:13.578182715Z\"\n  }\n}"
+              }
+            }
+          }
+        }
+      },
       "put_script-200": {
         "description": "",
         "content": {
@@ -145060,6 +145179,17 @@
           ]
         },
         "style": "form"
+      },
+      "prometheus.status_buildinfo-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index pattern, accepted for consistency with the other Prometheus endpoints.\nThe response doesn't depend on it.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
       },
       "put_script-id": {
         "in": "path",
