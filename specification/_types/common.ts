@@ -363,7 +363,7 @@ export class InlineGet<TDocument>
   found: boolean
   _seq_no?: SequenceNumber
   _primary_term?: long
-  _routing?: Routing
+  _routing?: string
   _source?: TDocument
 }
 
