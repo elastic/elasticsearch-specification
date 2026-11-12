@@ -251,7 +251,7 @@ export interface Request<TDocument> extends RequestBase {
      * A custom value that is used to route operations to a specific shard.
      * @ext_doc_id search-shard-routing
      */
-    routing?: Routing
+    routing?: string
     /**
      * If `true`, returns the document version as part of a hit.
      */

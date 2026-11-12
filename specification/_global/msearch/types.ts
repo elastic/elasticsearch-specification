@@ -22,7 +22,6 @@ import {
   ExpandWildcards,
   Indices,
   ProjectRouting,
-  Routing,
   SearchType,
   SliceId
 } from '@_types/common'
@@ -60,10 +59,10 @@ export class MultisearchHeader {
   project_routing?: ProjectRouting
   request_cache?: boolean
   /**
-   * A custom value used to route operations to a specific shard.
+   * A custom value used to route operations to a specific shard, or multiple comma separated values.
    * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
    */
-  routing?: Routing
+  routing?: string
   search_type?: SearchType
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
