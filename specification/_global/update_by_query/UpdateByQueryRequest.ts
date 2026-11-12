@@ -270,7 +270,7 @@ export interface Request extends RequestBase {
     /**
      * The period to retain the search context for scrolling.
      * @server_default 5m
-     * @ext_doc_id search-scroll-results
+     * @ext_doc_id scroll-search-results
      */
     scroll?: Duration
     /**

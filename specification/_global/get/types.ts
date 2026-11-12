@@ -48,7 +48,7 @@ export class GetResult<TDocument> {
   _id: Id
   /**
    * The primary term assigned to the document for the indexing operation.
-   * @ext_doc_id optimistic_concurrency
+   * @ext_doc_id optimistic-concurrency
    */
   _primary_term?: long
   /**
@@ -64,7 +64,7 @@ export class GetResult<TDocument> {
   /**
    * The sequence number assigned to the document for the indexing operation.
    * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.
-   * @ext_doc_id optimistic_concurrency
+   * @ext_doc_id optimistic-concurrency
    */
   _seq_no?: SequenceNumber
   /**
