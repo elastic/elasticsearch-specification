@@ -19375,6 +19375,50 @@
     {
       "availability": {
         "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
+      "docId": "prometheus-status-buildinfo",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.status_buildinfo",
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.status_buildinfo"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.status_buildinfo"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/status/buildinfo"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/status/buildinfo"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
           "stability": "stable",
           "visibility": "public"
         },
@@ -260182,6 +260226,149 @@
         }
       ],
       "specLocation": "project/tags/TagsResponse.ts#L23-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "BuildInfo",
+        "namespace": "prometheus.status_buildinfo"
+      },
+      "properties": [
+        {
+          "description": "The name of the application. It is always `Elasticsearch`.",
+          "name": "application",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The Elasticsearch version.",
+          "name": "version",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionString",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The commit hash of the Elasticsearch build.",
+          "name": "revision",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The date of the Elasticsearch build.",
+          "name": "buildDate",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "DateTime",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/status_buildinfo/types.ts#L23-L40"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
+      "examples": {
+        "PrometheusStatusBuildinfoRequestExample1": {
+          "method_request": "GET /_prometheus/api/v1/status/buildinfo"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.status_buildinfo"
+      },
+      "path": [
+        {
+          "description": "An index pattern, accepted for consistency with the other Prometheus endpoints.\nThe response doesn't depend on it.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoRequest.ts#L23-L52"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request. It is always `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The Elasticsearch build information.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "BuildInfo",
+                "namespace": "prometheus.status_buildinfo"
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusStatusBuildinfoResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/status/buildinfo`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"application\": \"Elasticsearch\",\n    \"version\": \"9.5.0\",\n    \"revision\": \"00000000\",\n    \"buildDate\": \"2026-07-09T22:10:13.578182715Z\"\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.status_buildinfo"
+      },
+      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoResponse.ts#L22-L33"
     },
     {
       "kind": "interface",

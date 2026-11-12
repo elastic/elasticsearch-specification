@@ -21556,6 +21556,22 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export interface PrometheusStatusBuildinfoBuildInfo {
+  application: string
+  version: VersionString
+  revision: string
+  buildDate: DateTime
+}
+
+export interface PrometheusStatusBuildinfoRequest extends RequestBase {
+  index?: IndexName
+}
+
+export interface PrometheusStatusBuildinfoResponse {
+  status: string
+  data: PrometheusStatusBuildinfoBuildInfo
+}
+
 export interface QueryRulesQueryRule {
   rule_id: Id
   type: QueryRulesQueryRuleType
