@@ -37,6 +37,7 @@ import docIdExists from './rules/doc-id-exists.js'
 import noContainerPropertyOutsideContainer from './rules/no-container-property-outside-container.js'
 import noDuplicateJsdocTags from './rules/no-duplicate-jsdoc-tags.js'
 import noDuplicateVariantNames from './rules/no-duplicate-variant-names.js'
+import noObjectUrlParameters from './rules/no-object-url-parameters.js'
 
 export default {
   rules: {
@@ -60,6 +61,7 @@ export default {
     'doc-id-exists': docIdExists,
     'no-container-property-outside-container': noContainerPropertyOutsideContainer,
     'no-duplicate-jsdoc-tags': noDuplicateJsdocTags,
-    'no-duplicate-variant-names': noDuplicateVariantNames
+    'no-duplicate-variant-names': noDuplicateVariantNames,
+    'no-object-url-parameters': noObjectUrlParameters
   }
 }
