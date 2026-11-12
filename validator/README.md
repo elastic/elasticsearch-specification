@@ -32,6 +32,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-stringified-in-requests`          | `Stringified<T>` is for values in responses and is not allowed in a request definition. Path parts and query parameters are also checked through their type aliases.                       |
 | `prefer-generic-array-for-unions`     | A list of a union is written as `Array<A \| B>` and not as `(A \| B)[]`. Can be fixed with `--fix`.                                                                                        |
 | `prefer-internal-variants`            | A union of classes that all have the same property with a literal type must use `@variants internal`.                                                                                      |
+| `request-path-parts-match-urls`       | A path part that all URLs of a request contain must be required. A path part that one of the URLs does not contain must be optional.                                                       |
 
 ## Usage
 
