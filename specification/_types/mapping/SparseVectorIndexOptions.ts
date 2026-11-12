@@ -26,7 +26,6 @@ export class SparseVectorIndexOptions {
    * Default: false
    * @availability stack since=8.19.0
    * @availability serverless
-   * @variant container_property
    */
   prune?: boolean
   /**
@@ -36,7 +35,6 @@ export class SparseVectorIndexOptions {
    * If prune is set to true but pruning_config is not specified, default values will be used.
    * @availability stack since=8.19.0
    * @availability serverless
-   * @variant container_property
    */
   pruning_config?: TokenPruningConfig
 }
