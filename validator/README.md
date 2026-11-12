@@ -49,6 +49,18 @@ To get a familiar the different node types possible within a TypeScript AST, pas
 To add your rule to the spec validator ESLint plugin, import it into [the plugin file](./eslint-plugin-es-spec.js) and add it to the `rules` object with an appropriate key.
 To enable your rule so that it runs against the spec, add it to [the spec's ESLint config](../specification/eslint.config.js).
 
+### Shared helpers
+
+The `utils/` directory has helpers for the tasks that most rules share. `jsdoc.js` reads the description and the tags
+of the JSDoc block of a node. `spec.js` reads the layout of the specification: the properties of a class, the sections
+and URLs of a request, the members of an enum. `types.js` resolves types through the type checker, for rules that
+follow a type into another file.
+
+A rule that needs type information must use `types.js` or the methods of the type checker. It must not use the
+`ts.is*` functions or `ts.SyntaxKind` of its own `typescript` import. `specification/` and `validator/` each install
+their own TypeScript, and the numbers of the syntax kinds change between versions. A check of a node kind then passes
+in the unit tests and gives wrong results on the specification.
+
 ### Unit testing rules
 
 Add a file `<your rule name>.test.js` to the `test/` directory, and construct your test using the [typescript-eslint `RuleTester`](https://typescript-eslint.io/packages/rule-tester/) format.
