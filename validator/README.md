@@ -21,6 +21,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-all-string-literal-unions         | Unions consisting entirely of string literals (e.g., `"green" \| "yellow" \| "red"`) are not allowed, use enums instead.                                                                   | 
 | `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 | `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                                                                   |
+| `no-enum-identifier-recasing`         | An enum identifier must not differ from its value by case or underscores only (`FOO = 'foo'`). A value that repeats the identifier can be fixed with `--fix`.                              |
 
 ## Usage
 
