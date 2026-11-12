@@ -23,7 +23,6 @@ import {
   Id,
   IndexName,
   MinimumShouldMatch,
-  Routing,
   VersionNumber,
   VersionType
 } from '@_types/common'
@@ -189,7 +188,7 @@ export class LikeDocument {
    * Overrides the default analyzer.
    */
   per_field_analyzer?: Dictionary<Field, string>
-  routing?: Routing
+  routing?: string
   version?: VersionNumber
   /** @server_default 'internal' */
   version_type?: VersionType
