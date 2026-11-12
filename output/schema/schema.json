@@ -163418,6 +163418,19 @@
           }
         },
         {
+          "description": "Type of index that wildcard patterns can match.\nIf the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.\nSupports comma-separated values, such as `open,hidden`.",
+          "name": "expand_wildcards",
+          "required": false,
+          "serverDefault": "open",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ExpandWildcards",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.",
           "name": "master_timeout",
           "required": false,
@@ -163431,7 +163444,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/ExplainLifecycleRequest.ts#L24-L67"
+      "specLocation": "ilm/explain_lifecycle/ExplainLifecycleRequest.ts#L24-L74"
     },
     {
       "kind": "response",
@@ -165230,9 +165243,9 @@
           }
         },
         {
-          "description": "Name of the index template used to create the data stream’s backing indices.\nThe template’s index pattern must match the name of this data stream.",
+          "description": "Name of the index template used to create the data stream’s backing indices.\nThe template’s index pattern must match the name of this data stream.\nThis property is omitted if no index template currently matches the data stream, for example on a cross-cluster replication follower cluster that has no matching local template.\nFor replicated data streams (`replicated` is `true`), the value is the local index template that matches the data stream name, which might not be the template that created the backing indices on the leader cluster.",
           "name": "template",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -165266,7 +165279,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L151"
+      "specLocation": "indices/_types/DataStream.ts#L55-L153"
     },
     {
       "kind": "interface",
@@ -165444,7 +165457,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L160-L185"
+      "specLocation": "indices/_types/DataStream.ts#L162-L187"
     },
     {
       "kind": "interface",
@@ -165779,7 +165792,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L153-L158"
+      "specLocation": "indices/_types/DataStream.ts#L155-L160"
     },
     {
       "kind": "interface",
@@ -165822,7 +165835,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L187-L191"
+      "specLocation": "indices/_types/DataStream.ts#L189-L193"
     },
     {
       "kind": "interface",

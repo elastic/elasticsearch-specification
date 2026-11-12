@@ -12746,6 +12746,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
+  expand_wildcards?: ExpandWildcards
   master_timeout?: Duration
 }
 
@@ -12897,7 +12898,7 @@ export interface IndicesDataStream {
   mappings?: MappingTypeMapping
   status: HealthStatus
   system?: boolean
-  template: Name
+  template?: Name
   timestamp_field: IndicesDataStreamTimestampField
   index_mode?: IndicesIndexMode
 }

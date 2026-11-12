@@ -169441,9 +169441,9 @@
           }
         },
         {
-          "description": "Name of the index template used to create the data stream’s backing indices.\nThe template’s index pattern must match the name of this data stream.",
+          "description": "Name of the index template used to create the data stream’s backing indices.\nThe template’s index pattern must match the name of this data stream.\nThis property is omitted if no index template currently matches the data stream, for example on a cross-cluster replication follower cluster that has no matching local template.\nFor replicated data streams (`replicated` is `true`), the value is the local index template that matches the data stream name, which might not be the template that created the backing indices on the leader cluster.",
           "name": "template",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -169477,7 +169477,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L151"
+      "specLocation": "indices/_types/DataStream.ts#L55-L153"
     },
     {
       "kind": "interface",
@@ -169605,7 +169605,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L160-L185"
+      "specLocation": "indices/_types/DataStream.ts#L162-L187"
     },
     {
       "kind": "interface",
@@ -169627,7 +169627,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L153-L158"
+      "specLocation": "indices/_types/DataStream.ts#L155-L160"
     },
     {
       "kind": "interface",
@@ -170985,7 +170985,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L187-L191"
+      "specLocation": "indices/_types/DataStream.ts#L189-L193"
     },
     {
       "kind": "interface",
