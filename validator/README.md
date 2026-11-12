@@ -29,6 +29,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-duplicate-variant-names`          | The members of a union with `@variants typed_keys_quirk` must have different `@variant name` values.                                                                                       |
 | `no-object-url-parameters`            | Path parts and query parameters must not have an object type.                                                                                                                              |
 | `no-similar-property-names`           | Two properties of one type must not differ only by case or by leading and trailing underscores, unless a `@codegen_name` sets them apart.                                                  |
+| `no-stringified-in-requests`          | `Stringified<T>` is for values in responses and is not allowed in a request definition. Path parts and query parameters are also checked through their type aliases.                       |
 
 ## Usage
 

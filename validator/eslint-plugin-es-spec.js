@@ -39,6 +39,7 @@ import noDuplicateJsdocTags from './rules/no-duplicate-jsdoc-tags.js'
 import noDuplicateVariantNames from './rules/no-duplicate-variant-names.js'
 import noObjectUrlParameters from './rules/no-object-url-parameters.js'
 import noSimilarPropertyNames from './rules/no-similar-property-names.js'
+import noStringifiedInRequests from './rules/no-stringified-in-requests.js'
 
 export default {
   rules: {
@@ -64,6 +65,7 @@ export default {
     'no-duplicate-jsdoc-tags': noDuplicateJsdocTags,
     'no-duplicate-variant-names': noDuplicateVariantNames,
     'no-object-url-parameters': noObjectUrlParameters,
-    'no-similar-property-names': noSimilarPropertyNames
+    'no-similar-property-names': noSimilarPropertyNames,
+    'no-stringified-in-requests': noStringifiedInRequests
   }
 }
