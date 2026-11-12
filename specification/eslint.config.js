@@ -109,6 +109,10 @@ export default defineConfig([
         }
       ],
       'es-spec-validator/no-all-string-literal-unions': 'error',
+      'es-spec-validator/no-typed-keys-quirk': [
+        'error',
+        { allow: ['Aggregate', 'ApiKeyAggregate', 'Suggest'] }
+      ],
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
