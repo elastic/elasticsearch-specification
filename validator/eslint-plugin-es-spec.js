@@ -38,6 +38,7 @@ import noContainerPropertyOutsideContainer from './rules/no-container-property-o
 import noDuplicateJsdocTags from './rules/no-duplicate-jsdoc-tags.js'
 import noDuplicateVariantNames from './rules/no-duplicate-variant-names.js'
 import noObjectUrlParameters from './rules/no-object-url-parameters.js'
+import noSimilarPropertyNames from './rules/no-similar-property-names.js'
 
 export default {
   rules: {
@@ -62,6 +63,7 @@ export default {
     'no-container-property-outside-container': noContainerPropertyOutsideContainer,
     'no-duplicate-jsdoc-tags': noDuplicateJsdocTags,
     'no-duplicate-variant-names': noDuplicateVariantNames,
-    'no-object-url-parameters': noObjectUrlParameters
+    'no-object-url-parameters': noObjectUrlParameters,
+    'no-similar-property-names': noSimilarPropertyNames
   }
 }
