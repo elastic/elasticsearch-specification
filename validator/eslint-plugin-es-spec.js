@@ -34,6 +34,7 @@ import noDeprecatedAvailabilityOnTypes from './rules/no-deprecated-availability-
 import validRequestUrls from './rules/valid-request-urls.js'
 import binaryRequiresAlias from './rules/binary-requires-alias.js'
 import docIdExists from './rules/doc-id-exists.js'
+import noContainerPropertyOutsideContainer from './rules/no-container-property-outside-container.js'
 
 export default {
   rules: {
@@ -54,6 +55,7 @@ export default {
     'no-deprecated-availability-on-types': noDeprecatedAvailabilityOnTypes,
     'valid-request-urls': validRequestUrls,
     'binary-requires-alias': binaryRequiresAlias,
-    'doc-id-exists': docIdExists
+    'doc-id-exists': docIdExists,
+    'no-container-property-outside-container': noContainerPropertyOutsideContainer
   }
 }
