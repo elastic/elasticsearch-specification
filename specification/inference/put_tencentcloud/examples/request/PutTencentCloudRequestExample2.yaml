@@ -11,7 +11,7 @@ value: |-
           "region": "bj"
       },
       "task_settings": {
-          "top_n": 3,
+          "top_n": 10,
           "return_documents": true
       }
   }

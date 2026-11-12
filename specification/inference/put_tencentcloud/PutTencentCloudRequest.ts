@@ -21,11 +21,11 @@ import { RequestBase } from '@_types/Base'
 import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 import { InferenceChunkingSettings } from '@inference/_types/Services'
+import { TaskTypeTencentCloud } from '@inference/_types/TaskType'
 import {
   TencentCloudServiceSettings,
   TencentCloudServiceType,
-  TencentCloudTaskSettings,
-  TencentCloudTaskType
+  TencentCloudTaskSettings
 } from '@inference/_types/TencentCloudTypes'
 
 /**
@@ -50,7 +50,7 @@ export interface Request extends RequestBase {
      * The type of the inference task that the model will perform.
      * NOTE: The `chat_completion` task type only supports streaming and only through the _stream API.
      */
-    task_type: TencentCloudTaskType
+    task_type: TaskTypeTencentCloud
     /**
      * The unique identifier of the inference endpoint.
      */
@@ -61,7 +61,7 @@ export interface Request extends RequestBase {
   query_parameters: {
     /**
      * Specifies the amount of time to wait for the inference endpoint to be created.
-     * @server_default 30s
+     * The default depends on the task type: 120s for `completion` and `chat_completion`, and 30s for all other task types.
      */
     timeout?: Duration
   }

@@ -476,6 +476,8 @@ export class RateLimitSetting {
    * * `openai` service and task type `text_embedding`: `3000`
    * * `openai` service and task type `completion`: `500`
    * * `openshift_ai` service: `3000`
+   * * `tencentcloud` service and task types `text_embedding` or `rerank`: `20`
+   * * `tencentcloud` service and task types `completion` or `chat_completion`: `5`
    * * `voyageai` service: `2000`
    * * `watsonxai` service: `120`
    */

@@ -44,6 +44,7 @@ export class TencentCloudServiceSettings {
   max_input_tokens?: integer
   /**
    * For a `text_embedding` task, the similarity measure. One of `cosine`, `dot_product`, `l2_norm`.
+   * @server_default cosine
    */
   similarity?: TencentCloudSimilarityType
   /**
@@ -51,13 +52,6 @@ export class TencentCloudServiceSettings {
    * By default, the `tencentcloud` service sets the number of requests allowed per minute to 20 for the `text_embedding` and `rerank` tasks, and to 5 for the `completion` and `chat_completion` tasks.
    */
   rate_limit?: RateLimitSetting
-}
-
-export enum TencentCloudTaskType {
-  chat_completion,
-  completion,
-  rerank,
-  text_embedding
 }
 
 export enum TencentCloudServiceType {
@@ -74,6 +68,7 @@ export class TencentCloudTaskSettings {
   /**
    * For a `rerank` task, the number of most relevant documents to return.
    * It must be a positive integer.
+   * If this inference endpoint is used in a `text_similarity_reranker` retriever query and `top_n` is set, it must be greater than or equal to `rank_window_size` in the query.
    */
   top_n?: integer
   /**
