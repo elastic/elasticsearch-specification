@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { VersionString } from '@_types/common'
+import { DateTime } from '@_types/Time'
+
 export class BuildInfo {
   /**
    * The name of the application. It is always `Elasticsearch`.
@@ -25,7 +28,7 @@ export class BuildInfo {
   /**
    * The Elasticsearch version.
    */
-  version: string
+  version: VersionString
   /**
    * The commit hash of the Elasticsearch build.
    */
@@ -33,5 +36,5 @@ export class BuildInfo {
   /**
    * The date of the Elasticsearch build.
    */
-  buildDate: string
+  buildDate: DateTime
 }
