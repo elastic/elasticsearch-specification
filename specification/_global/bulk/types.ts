@@ -37,6 +37,9 @@ import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 export class ResponseItem {
   /**
    * The document ID associated with the operation.
+   * It is `null` when an `index` or `create` operation without an explicit `_id` fails before Elasticsearch generates an ID for the document.
+   * Elasticsearch generates the ID when it routes the document to a shard, so the ID is still `null` for failures that happen earlier, such as an ingest pipeline error, a missing or closed target index, a failed `require_alias` or `require_data_stream` check, or missing required routing.
+   * `update` and `delete` operations always include an ID.
    */
   _id?: string | null
   /**
