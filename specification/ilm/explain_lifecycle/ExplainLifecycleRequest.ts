@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { IndexName, MediaType } from '@_types/common'
+import { ExpandWildcards, IndexName, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
 
 /**
@@ -58,6 +58,13 @@ export interface Request extends RequestBase {
      * Filters the returned indices to only indices that are managed by ILM.
      */
     only_managed?: boolean
+    /**
+     * Type of index that wildcard patterns can match.
+     * If the request can target data streams, this argument determines whether wildcard expressions match hidden data streams.
+     * Supports comma-separated values, such as `open,hidden`.
+     * @server_default open
+     */
+    expand_wildcards?: ExpandWildcards
     /**
      * Period to wait for a connection to the master node. If no response is received before the timeout expires, the request fails and returns an error.
      * @server_default 30s
