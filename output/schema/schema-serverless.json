@@ -80692,7 +80692,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L89-L94"
+      "specLocation": "_global/bulk/types.ts#L90-L95"
     },
     {
       "kind": "enum",
@@ -80714,7 +80714,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L96-L101"
+      "specLocation": "_global/bulk/types.ts#L97-L102"
     },
     {
       "kind": "enum",
@@ -153815,7 +153815,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L171-L198",
+      "specLocation": "_global/bulk/types.ts#L246-L273",
       "variants": {
         "kind": "container"
       }
@@ -153832,8 +153832,22 @@
         "name": "IndexOperation",
         "namespace": "_global.bulk"
       },
-      "properties": [],
-      "specLocation": "_global/bulk/types.ts#L155-L155"
+      "properties": [
+        {
+          "description": "Set to `create` to only index the document if it does not already exist.",
+          "name": "op_type",
+          "required": false,
+          "serverDefault": "index",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "OpType",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/bulk/types.ts#L191-L197"
     },
     {
       "inherits": {
@@ -153849,6 +153863,36 @@
       },
       "properties": [
         {
+          "description": "The explicit version number for concurrency control.\nIt must be a non-negative long number.\nThis parameter is not supported for `update` actions.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The version type.\nThis parameter is not supported for `update` actions.",
+          "name": "version_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionType",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.13.0"
+            }
+          },
           "description": "A map from the full name of fields to the name of dynamic templates.\nIt defaults to an empty map.\nIf a name matches a dynamic template, that template will be applied regardless of other match predicates defined in the template.\nIf a field is already defined in the mapping, then this parameter won't be used.",
           "name": "dynamic_templates",
           "required": false,
@@ -153872,6 +153916,46 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.3.0"
+            }
+          },
+          "description": "A map from the full name of fields to the parameters to pass to the dynamic template selected for that field in `dynamic_templates`.\nEach value is a map from parameter names to parameter values.\nThe dynamic template can reference a parameter with a placeholder such as `{unit:}`, where the text after the colon is the default value.",
+          "name": "dynamic_template_params",
+          "required": false,
+          "type": {
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "kind": "dictionary_of",
+            "singleKey": false,
+            "value": {
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "kind": "dictionary_of",
+              "singleKey": false,
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        },
+        {
           "description": "The ID of the pipeline to use to preprocess incoming documents.\nIf the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.\nIf a final pipeline is configured, it will always run regardless of the value of this parameter.",
           "name": "pipeline",
           "required": false,
@@ -153884,6 +153968,12 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.10.0"
+            }
+          },
           "description": "If `true`, the request's actions must target an index alias.",
           "name": "require_alias",
           "required": false,
@@ -153895,9 +153985,47 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.13.0"
+            }
+          },
+          "description": "If `true`, the action must target a data stream (existing or to be created).",
+          "name": "require_data_stream",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "If `true`, the response includes the ingest pipelines that were run for this action.",
+          "name": "list_executed_pipelines",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L132-L151"
+      "specLocation": "_global/bulk/types.ts#L131-L187"
     },
     {
       "kind": "interface",
@@ -153951,31 +154079,9 @@
               "namespace": "_types"
             }
           }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L103-L130"
+      "specLocation": "_global/bulk/types.ts#L104-L129"
     },
     {
       "inherits": {
@@ -153990,7 +154096,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L153-L153"
+      "specLocation": "_global/bulk/types.ts#L189-L189"
     },
     {
       "inherits": {
@@ -154006,6 +154112,12 @@
       },
       "properties": [
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "7.10.0"
+            }
+          },
           "description": "If `true`, the request's actions must target an index alias.",
           "name": "require_alias",
           "required": false,
@@ -154029,9 +154141,52 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "description": "The ID of the pipeline to use to preprocess the `upsert` document, if one is created.\nIf the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.\nIf a final pipeline is configured, it will always run regardless of the value of this parameter.",
+          "name": "pipeline",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "8.12.0"
+            }
+          },
+          "description": "If `true`, the response includes the ingest pipelines that were run for the `upsert` document, if one is created.",
+          "name": "list_executed_pipelines",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "If `false`, source retrieval is turned off.\nYou can also specify a comma-separated list of the fields you want to retrieve.\nIf set, it overrides the `_source` value in the update source line.",
+          "name": "_source",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SourceConfig",
+              "namespace": "_global.search._types"
+            }
+          }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L159-L169"
+      "specLocation": "_global/bulk/types.ts#L213-L244"
     },
     {
       "inherits": {
@@ -154045,8 +154200,33 @@
         "name": "DeleteOperation",
         "namespace": "_global.bulk"
       },
-      "properties": [],
-      "specLocation": "_global/bulk/types.ts#L157-L157"
+      "properties": [
+        {
+          "description": "The explicit version number for concurrency control.\nIt must be a non-negative long number.\nThis parameter is not supported for `update` actions.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The version type.\nThis parameter is not supported for `update` actions.",
+          "name": "version_type",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "VersionType",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_global/bulk/types.ts#L199-L211"
     },
     {
       "description": "The source line that must follow an `update` action line.\nIt specifies the partial document, script, or upsert options to apply, plus optional update settings.",
@@ -154130,6 +154310,30 @@
           }
         },
         {
+          "description": "Only perform the update if the document has this sequence number.",
+          "name": "if_seq_no",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "SequenceNumber",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Only perform the update if the document has this primary term.",
+          "name": "if_primary_term",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If `false`, source retrieval is turned off.\nYou can also specify a comma-separated list of the fields you want to retrieve.",
           "name": "_source",
           "required": false,
@@ -154155,7 +154359,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L200-L239"
+      "specLocation": "_global/bulk/types.ts#L275-L322"
     },
     {
       "kind": "interface",
@@ -154334,7 +154538,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L37-L87"
+      "specLocation": "_global/bulk/types.ts#L38-L88"
     },
     {
       "attachedBehaviors": [

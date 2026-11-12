@@ -82798,8 +82798,26 @@
             "$ref": "#/components/schemas/_global.bulk.WriteOperation"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "op_type": {
+                "description": "Set to `create` to only index the document if it does not already exist.",
+                "default": "index",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.OpType"
+                  }
+                ]
+              }
+            }
           }
+        ]
+      },
+      "_types.OpType": {
+        "type": "string",
+        "enum": [
+          "index",
+          "create"
         ]
       },
       "_global.bulk.WriteOperation": {
@@ -82810,11 +82828,39 @@
           {
             "type": "object",
             "properties": {
+              "version": {
+                "description": "The explicit version number for concurrency control.\nIt must be a non-negative long number.\nThis parameter is not supported for `update` actions.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.VersionNumber"
+                  }
+                ]
+              },
+              "version_type": {
+                "description": "The version type.\nThis parameter is not supported for `update` actions.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.VersionType"
+                  }
+                ]
+              },
               "dynamic_templates": {
                 "description": "A map from the full name of fields to the name of dynamic templates.\nIt defaults to an empty map.\nIf a name matches a dynamic template, that template will be applied regardless of other match predicates defined in the template.\nIf a field is already defined in the mapping, then this parameter won't be used.",
+                "x-state": "Generally available; Added in 7.13.0",
                 "type": "object",
                 "additionalProperties": {
                   "type": "string"
+                }
+              },
+              "dynamic_template_params": {
+                "description": "A map from the full name of fields to the parameters to pass to the dynamic template selected for that field in `dynamic_templates`.\nEach value is a map from parameter names to parameter values.\nThe dynamic template can reference a parameter with a placeholder such as `{unit:}`, where the text after the colon is the default value.",
+                "x-state": "Generally available; Added in 9.3.0",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
                 }
               },
               "pipeline": {
@@ -82824,6 +82870,19 @@
               "require_alias": {
                 "description": "If `true`, the request's actions must target an index alias.",
                 "default": false,
+                "x-state": "Generally available; Added in 7.10.0",
+                "type": "boolean"
+              },
+              "require_data_stream": {
+                "description": "If `true`, the action must target a data stream (existing or to be created).",
+                "default": false,
+                "x-state": "Generally available; Added in 8.13.0",
+                "type": "boolean"
+              },
+              "list_executed_pipelines": {
+                "description": "If `true`, the response includes the ingest pipelines that were run for this action.",
+                "default": false,
+                "x-state": "Generally available; Added in 8.12.0",
                 "type": "boolean"
               }
             }
@@ -82872,20 +82931,6 @@
                 "$ref": "#/components/schemas/_types.SequenceNumber"
               }
             ]
-          },
-          "version": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.VersionNumber"
-              }
-            ]
-          },
-          "version_type": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.VersionType"
-              }
-            ]
           }
         }
       },
@@ -82910,11 +82955,30 @@
               "require_alias": {
                 "description": "If `true`, the request's actions must target an index alias.",
                 "default": false,
+                "x-state": "Generally available; Added in 7.10.0",
                 "type": "boolean"
               },
               "retry_on_conflict": {
                 "description": "The number of times an update should be retried in the case of a version conflict.",
                 "type": "number"
+              },
+              "pipeline": {
+                "description": "The ID of the pipeline to use to preprocess the `upsert` document, if one is created.\nIf the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.\nIf a final pipeline is configured, it will always run regardless of the value of this parameter.",
+                "type": "string"
+              },
+              "list_executed_pipelines": {
+                "description": "If `true`, the response includes the ingest pipelines that were run for the `upsert` document, if one is created.",
+                "default": false,
+                "x-state": "Generally available; Added in 8.12.0",
+                "type": "boolean"
+              },
+              "_source": {
+                "description": "If `false`, source retrieval is turned off.\nYou can also specify a comma-separated list of the fields you want to retrieve.\nIf set, it overrides the `_source` value in the update source line.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_global.search._types.SourceConfig"
+                  }
+                ]
               }
             }
           }
@@ -82926,7 +82990,25 @@
             "$ref": "#/components/schemas/_global.bulk.OperationBase"
           },
           {
-            "type": "object"
+            "type": "object",
+            "properties": {
+              "version": {
+                "description": "The explicit version number for concurrency control.\nIt must be a non-negative long number.\nThis parameter is not supported for `update` actions.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.VersionNumber"
+                  }
+                ]
+              },
+              "version_type": {
+                "description": "The version type.\nThis parameter is not supported for `update` actions.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.VersionType"
+                  }
+                ]
+              }
+            }
           }
         ]
       },
@@ -82960,6 +83042,18 @@
             "description": "Set to `true` to run the script whether or not the document exists.",
             "default": false,
             "type": "boolean"
+          },
+          "if_seq_no": {
+            "description": "Only perform the update if the document has this sequence number.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.SequenceNumber"
+              }
+            ]
+          },
+          "if_primary_term": {
+            "description": "Only perform the update if the document has this primary term.",
+            "type": "number"
           },
           "_source": {
             "description": "If `false`, source retrieval is turned off.\nYou can also specify a comma-separated list of the fields you want to retrieve.",
@@ -109826,13 +109920,6 @@
         },
         "required": [
           "phase"
-        ]
-      },
-      "_types.OpType": {
-        "type": "string",
-        "enum": [
-          "index",
-          "create"
         ]
       },
       "indices._types.IndicesBlockOptions": {
