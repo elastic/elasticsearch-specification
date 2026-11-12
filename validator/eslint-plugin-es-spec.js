@@ -40,6 +40,7 @@ import noDuplicateVariantNames from './rules/no-duplicate-variant-names.js'
 import noObjectUrlParameters from './rules/no-object-url-parameters.js'
 import noSimilarPropertyNames from './rules/no-similar-property-names.js'
 import noStringifiedInRequests from './rules/no-stringified-in-requests.js'
+import preferGenericArrayForUnions from './rules/prefer-generic-array-for-unions.js'
 
 export default {
   rules: {
@@ -66,6 +67,7 @@ export default {
     'no-duplicate-variant-names': noDuplicateVariantNames,
     'no-object-url-parameters': noObjectUrlParameters,
     'no-similar-property-names': noSimilarPropertyNames,
-    'no-stringified-in-requests': noStringifiedInRequests
+    'no-stringified-in-requests': noStringifiedInRequests,
+    'prefer-generic-array-for-unions': preferGenericArrayForUnions
   }
 }
