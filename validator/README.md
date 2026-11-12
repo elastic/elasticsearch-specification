@@ -36,6 +36,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `rest-spec-name-matches-location`     | The `@rest_spec_name` of a request must match the namespace and API folders of its file.                                                                                                   |
 | `shortcut-property-exists`            | `@shortcut_property` must name a property of the class or of one of its parents.                                                                                                           |
 | `prefer-alias-imports`                | An import of a shared folder (`_global`, `_internal`, `_spec_utils`, `_types`) from another namespace must use the path alias, such as `@_types/common`. Can be fixed with `--fix`.        |
+| `prefer-user-defined-value`           | `any`, `unknown` and `object` are not allowed. Use `UserDefinedValue`.                                                                                                                     |
 
 ## Usage
 

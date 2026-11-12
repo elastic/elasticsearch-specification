@@ -46,6 +46,7 @@ import requestPathPartsMatchUrls from './rules/request-path-parts-match-urls.js'
 import restSpecNameMatchesLocation from './rules/rest-spec-name-matches-location.js'
 import shortcutPropertyExists from './rules/shortcut-property-exists.js'
 import preferAliasImports from './rules/prefer-alias-imports.js'
+import preferUserDefinedValue from './rules/prefer-user-defined-value.js'
 
 export default {
   rules: {
@@ -78,6 +79,7 @@ export default {
     'request-path-parts-match-urls': requestPathPartsMatchUrls,
     'rest-spec-name-matches-location': restSpecNameMatchesLocation,
     'shortcut-property-exists': shortcutPropertyExists,
-    'prefer-alias-imports': preferAliasImports
+    'prefer-alias-imports': preferAliasImports,
+    'prefer-user-defined-value': preferUserDefinedValue
   }
 }

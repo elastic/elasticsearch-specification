@@ -128,6 +128,7 @@ export default defineConfig([
       'es-spec-validator/rest-spec-name-matches-location': 'error',
       'es-spec-validator/shortcut-property-exists': 'error',
       'es-spec-validator/prefer-alias-imports': 'error',
+      'es-spec-validator/prefer-user-defined-value': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
