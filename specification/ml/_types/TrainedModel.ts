@@ -152,6 +152,21 @@ export class TrainedModelSizeStats {
   model_size_bytes: ByteSize
   /** The amount of memory required to load the model in bytes. */
   required_native_memory_bytes: ByteSize
+  /**
+   * The native memory (resident set size) that the native process of the deployed model currently uses, as reported by the operating system and summed across all of its allocations.
+   * Unlike `required_native_memory_bytes`, which is an estimate, this is a measured value.
+   * It is returned only after the native process has reported a measurement.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  runtime_native_memory_bytes?: ByteSize
+  /**
+   * The peak value of `runtime_native_memory_bytes` since the deployment started.
+   * It is returned only after the native process has reported a measurement.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  peak_runtime_native_memory_bytes?: ByteSize
 }
 
 export class TrainedModelDeploymentNodesStats {
@@ -164,6 +179,13 @@ export class TrainedModelDeploymentNodesStats {
   average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
 
   average_inference_process_memory_rss_bytes?: ByteSize
+
+  /**
+   * The peak native memory (resident set size) of the inference process on this node.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  peak_inference_process_memory_rss_bytes?: ByteSize
 
   /** The number of errors when evaluating the trained model. */
   error_count?: integer
