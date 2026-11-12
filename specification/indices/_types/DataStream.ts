@@ -138,8 +138,10 @@ export class DataStream {
   /**
    * Name of the index template used to create the data stream’s backing indices.
    * The template’s index pattern must match the name of this data stream.
+   * This property is omitted if no index template currently matches the data stream, for example on a cross-cluster replication follower cluster that has no matching local template.
+   * For replicated data streams (`replicated` is `true`), the value is the local index template that matches the data stream name, which might not be the template that created the backing indices on the leader cluster.
    */
-  template: Name
+  template?: Name
   /**
    * Information about the `@timestamp` field in the data stream.
    */
