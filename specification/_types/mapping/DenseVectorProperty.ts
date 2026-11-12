@@ -178,6 +178,15 @@ export class DenseVectorIndexOptions {
    */
   on_disk_rescore?: boolean
   /**
+   * If `true`, direct I/O is used where possible while merging the vector data of the field, so that a merge does not displace what searches keep in memory.
+   * It can be changed with a mapping update, which applies to later merges.
+   *
+   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk`
+   * @server_default false
+   * @availability stack since=9.6.0 stability=experimental
+   */
+  on_disk_merge?: boolean
+  /**
    * The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat
    * search. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and
    * `int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.
