@@ -2411,7 +2411,6 @@ export class VoyageAIServiceSettings {
   /**
    * The name of the model to use for the inference task.
    * Refer to the VoyageAI documentation for the list of available text embedding and rerank models.
-   * @ext_doc_id voyageai-embeddings
    * @ext_doc_id voyageai-rerank
    */
   model_id: string
