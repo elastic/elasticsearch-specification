@@ -26,6 +26,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `doc-id-exists`                       | A `@doc_id` or `@ext_doc_id` on a property must exist in `specification/_doc_ids/table.csv`.                                                                                               |
 | `no-container-property-outside-container` | `@variant container_property` is only allowed in a class with `@variants container`.                                                                                                   |
 | `no-duplicate-jsdoc-tags`             | A JSDoc block must not repeat a tag, because the compiler keeps the last value only. `@availability` and `@UpdateForV10` are exempt.                                                       |
+| `no-duplicate-variant-names`          | The members of a union with `@variants typed_keys_quirk` must have different `@variant name` values.                                                                                       |
 
 ## Usage
 

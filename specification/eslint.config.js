@@ -118,6 +118,7 @@ export default defineConfig([
       ],
       'es-spec-validator/no-container-property-outside-container': 'error',
       'es-spec-validator/no-duplicate-jsdoc-tags': 'error',
+      'es-spec-validator/no-duplicate-variant-names': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
