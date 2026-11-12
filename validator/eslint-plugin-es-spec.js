@@ -44,6 +44,7 @@ import preferGenericArrayForUnions from './rules/prefer-generic-array-for-unions
 import preferInternalVariants from './rules/prefer-internal-variants.js'
 import requestPathPartsMatchUrls from './rules/request-path-parts-match-urls.js'
 import restSpecNameMatchesLocation from './rules/rest-spec-name-matches-location.js'
+import shortcutPropertyExists from './rules/shortcut-property-exists.js'
 
 export default {
   rules: {
@@ -74,6 +75,7 @@ export default {
     'prefer-generic-array-for-unions': preferGenericArrayForUnions,
     'prefer-internal-variants': preferInternalVariants,
     'request-path-parts-match-urls': requestPathPartsMatchUrls,
-    'rest-spec-name-matches-location': restSpecNameMatchesLocation
+    'rest-spec-name-matches-location': restSpecNameMatchesLocation,
+    'shortcut-property-exists': shortcutPropertyExists
   }
 }
