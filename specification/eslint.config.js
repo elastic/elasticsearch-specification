@@ -123,6 +123,7 @@ export default defineConfig([
       'es-spec-validator/no-similar-property-names': 'error',
       'es-spec-validator/no-stringified-in-requests': 'error',
       'es-spec-validator/prefer-generic-array-for-unions': 'error',
+      'es-spec-validator/prefer-internal-variants': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
