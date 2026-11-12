@@ -37,6 +37,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `shortcut-property-exists`            | `@shortcut_property` must name a property of the class or of one of its parents.                                                                                                           |
 | `prefer-alias-imports`                | An import of a shared folder (`_global`, `_internal`, `_spec_utils`, `_types`) from another namespace must use the path alias, such as `@_types/common`. Can be fixed with `--fix`.        |
 | `prefer-user-defined-value`           | `any`, `unknown` and `object` are not allowed. Use `UserDefinedValue`.                                                                                                                     |
+| `union-requires-codegen-names`        | A union type alias without `@variants` needs `@codegen_names`. `T \| T[]` and `T \| null` are exempt.                                                                                      |
 
 ## Usage
 

@@ -129,6 +129,7 @@ export default defineConfig([
       'es-spec-validator/shortcut-property-exists': 'error',
       'es-spec-validator/prefer-alias-imports': 'error',
       'es-spec-validator/prefer-user-defined-value': 'error',
+      'es-spec-validator/union-requires-codegen-names': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
