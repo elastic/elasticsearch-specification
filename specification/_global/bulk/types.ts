@@ -21,6 +21,7 @@ import {
   Id,
   IndexName,
   InlineGet,
+  OpType,
   SequenceNumber,
   VersionNumber,
   VersionType
@@ -115,18 +116,37 @@ export class OperationBase {
   routing?: string
   if_primary_term?: long
   if_seq_no?: SequenceNumber
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export class WriteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
   /**
    * A map from the full name of fields to the name of dynamic templates.
    * It defaults to an empty map.
    * If a name matches a dynamic template, that template will be applied regardless of other match predicates defined in the template.
    * If a field is already defined in the mapping, then this parameter won't be used.
+   * @availability stack since=7.13.0
+   * @availability serverless
    */
   dynamic_templates?: Dictionary<string, string>
+  /**
+   * A map from the full name of fields to the parameters to pass to the dynamic template selected for that field in `dynamic_templates`.
+   * Each value is a map from parameter names to parameter values.
+   * The dynamic template can reference a parameter with a placeholder such as `{unit:}`, where the text after the colon is the default value.
+   * @availability stack since=9.3.0
+   * @availability serverless
+   */
+  dynamic_template_params?: Dictionary<string, Dictionary<string, string>>
   /**
    * The ID of the pipeline to use to preprocess incoming documents.
    * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
@@ -136,26 +156,81 @@ export class WriteOperation extends OperationBase {
   /**
    * If `true`, the request's actions must target an index alias.
    * @server_default false
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   require_alias?: boolean
+  /**
+   * If `true`, the action must target a data stream (existing or to be created).
+   * @server_default false
+   * @availability stack since=8.13.0
+   * @availability serverless
+   */
+  require_data_stream?: boolean
+  /**
+   * If `true`, the response includes the ingest pipelines that were run for this action.
+   * @server_default false
+   * @availability stack since=8.12.0
+   * @availability serverless
+   */
+  list_executed_pipelines?: boolean
 }
 
 export class CreateOperation extends WriteOperation {}
 
-export class IndexOperation extends WriteOperation {}
+export class IndexOperation extends WriteOperation {
+  /**
+   * Set to `create` to only index the document if it does not already exist.
+   * @server_default index
+   */
+  op_type?: OpType
+}
 
-export class DeleteOperation extends OperationBase {}
+export class DeleteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
+}
 
 export class UpdateOperation extends OperationBase {
   /**
    * If `true`, the request's actions must target an index alias.
    * @server_default false
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   require_alias?: boolean
   /**
    * The number of times an update should be retried in the case of a version conflict.
    */
   retry_on_conflict?: integer
+  /**
+   * The ID of the pipeline to use to preprocess the `upsert` document, if one is created.
+   * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
+   * If a final pipeline is configured, it will always run regardless of the value of this parameter.
+   */
+  pipeline?: string
+  /**
+   * If `true`, the response includes the ingest pipelines that were run for the `upsert` document, if one is created.
+   * @server_default false
+   * @availability stack since=8.12.0
+   * @availability serverless
+   */
+  list_executed_pipelines?: boolean
+  /**
+   * If `false`, source retrieval is turned off.
+   * You can also specify a comma-separated list of the fields you want to retrieve.
+   * If set, it overrides the `_source` value in the update source line.
+   */
+  _source?: SourceConfig
 }
 
 /**
@@ -215,6 +290,14 @@ export class UpdateAction<TDocument, TPartialDocument> {
    * @server_default false
    */
   scripted_upsert?: boolean
+  /**
+   * Only perform the update if the document has this sequence number.
+   */
+  if_seq_no?: SequenceNumber
+  /**
+   * Only perform the update if the document has this primary term.
+   */
+  if_primary_term?: long
   /**
    * If `false`, source retrieval is turned off.
    * You can also specify a comma-separated list of the fields you want to retrieve.
