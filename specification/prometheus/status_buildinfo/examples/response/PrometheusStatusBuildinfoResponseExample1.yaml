@@ -1,0 +1,11 @@
+summary: A successful response
+description: A successful response from `GET /_prometheus/api/v1/status/buildinfo`.
+# type: response
+# response_code: 200
+value:
+  status: success
+  data:
+    application: Elasticsearch
+    version: '9.5.0'
+    revision: '00000000'
+    buildDate: '2026-07-09T22:10:13.578182715Z'
