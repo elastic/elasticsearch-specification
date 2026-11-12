@@ -943,7 +943,7 @@ export interface MgetMultiGetError {
 export interface MgetOperation {
   _id: Id
   _index?: IndexName
-  routing?: Routing
+  routing?: string
   _slice?: SliceId
   _source?: SearchSourceConfig
   stored_fields?: Fields
@@ -992,7 +992,7 @@ export interface MsearchMultisearchHeader {
   preference?: string
   project_routing?: ProjectRouting
   request_cache?: boolean
-  routing?: Routing
+  routing?: string
   search_type?: SearchType
   ccs_minimize_roundtrips?: boolean
   allow_partial_search_results?: boolean
@@ -1059,7 +1059,7 @@ export interface MtermvectorsOperation {
   offsets?: boolean
   payloads?: boolean
   positions?: boolean
-  routing?: Routing
+  routing?: string
   _slice?: SliceId
   term_statistics?: boolean
   version?: VersionNumber
@@ -2355,7 +2355,7 @@ export interface TermvectorsRequest<TDocument = unknown> extends RequestBase {
     payloads?: boolean
     positions?: boolean
     term_statistics?: boolean
-    routing?: Routing
+    routing?: string
     version?: VersionNumber
     version_type?: VersionType
   }
@@ -2938,7 +2938,7 @@ export interface InlineGetKeys<TDocument = unknown> {
   found: boolean
   _seq_no?: SequenceNumber
   _primary_term?: long
-  _routing?: Routing
+  _routing?: string
   _source?: TDocument
 }
 export type InlineGet<TDocument = unknown> = InlineGetKeys<TDocument>
@@ -7136,7 +7136,7 @@ export interface QueryDslLikeDocument {
   _id?: Id
   _index?: IndexName
   per_field_analyzer?: Record<Field, string>
-  routing?: Routing
+  routing?: string
   version?: VersionNumber
   version_type?: VersionType
 }

@@ -47427,11 +47427,7 @@
             }
           },
           "routing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "version": {
             "allOf": [
@@ -47449,20 +47445,6 @@
             ]
           }
         }
-      },
-      "_types.Routing": {
-        "description": "Only to be used in query and path parameters, as the array form is actually a csv",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ]
       },
       "_types.VersionType": {
         "type": "string",
@@ -55066,6 +55048,20 @@
           "none"
         ]
       },
+      "_types.Routing": {
+        "description": "Only to be used in query and path parameters, as the array form is actually a csv",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      },
       "_types.SearchType": {
         "type": "string",
         "enum": [
@@ -55515,11 +55511,7 @@
             "type": "number"
           },
           "_routing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "_source": {
             "type": "object",
@@ -71646,11 +71638,7 @@
             "type": "number"
           },
           "_routing": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "_source": {
             "type": "object"
@@ -82679,11 +82667,7 @@
           },
           "routing": {
             "description": "The key for the primary shard the document resides on. Required if routing is used during indexing.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "_source": {
             "description": "If `false`, excludes all _source fields.",
@@ -88895,12 +88879,8 @@
             "type": "boolean"
           },
           "routing": {
-            "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
+            "type": "string"
           },
           "search_type": {
             "allOf": [
@@ -89170,11 +89150,7 @@
           },
           "routing": {
             "description": "Custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Routing"
-              }
-            ]
+            "type": "string"
           },
           "term_statistics": {
             "description": "If true, the response includes term frequency and document frequency.",
@@ -105491,11 +105467,7 @@
                     "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/search-shard-routing"
                   },
                   "description": "A custom value that is used to route operations to a specific shard.",
-                  "allOf": [
-                    {
-                      "$ref": "#/components/schemas/_types.Routing"
-                    }
-                  ]
+                  "type": "string"
                 },
                 "version": {
                   "description": "If `true`, returns the document version as part of a hit.",

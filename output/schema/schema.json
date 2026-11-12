@@ -39295,7 +39295,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L72-L76"
+      "specLocation": "_global/mget/types.ts#L71-L75"
     },
     {
       "kind": "interface",
@@ -39335,8 +39335,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Routing",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -39411,7 +39411,7 @@
           }
         }
       ],
-      "specLocation": "_global/mget/types.ts#L33-L65"
+      "specLocation": "_global/mget/types.ts#L32-L64"
     },
     {
       "kind": "request",
@@ -39832,7 +39832,7 @@
         "name": "ResponseItem",
         "namespace": "_global.mget"
       },
-      "specLocation": "_global/mget/types.ts#L67-L70",
+      "specLocation": "_global/mget/types.ts#L66-L69",
       "type": {
         "kind": "union_of",
         "items": [
@@ -39902,7 +39902,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L92-L95"
+      "specLocation": "_global/msearch/types.ts#L91-L94"
     },
     {
       "kind": "interface",
@@ -39952,7 +39952,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L82-L85"
+      "specLocation": "_global/msearch/types.ts#L81-L84"
     },
     {
       "kind": "interface",
@@ -40042,14 +40042,14 @@
           }
         },
         {
-          "description": "A custom value used to route operations to a specific shard.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
+          "description": "A custom value used to route operations to a specific shard, or multiple comma separated values.\nNot allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.",
           "name": "routing",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Routing",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -40122,7 +40122,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L38-L80"
+      "specLocation": "_global/msearch/types.ts#L37-L79"
     },
     {
       "kind": "request",
@@ -40439,7 +40439,7 @@
         "name": "RequestItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L33-L36",
+      "specLocation": "_global/msearch/types.ts#L32-L35",
       "type": {
         "kind": "union_of",
         "items": [
@@ -40510,7 +40510,7 @@
         "name": "ResponseItem",
         "namespace": "_global.msearch"
       },
-      "specLocation": "_global/msearch/types.ts#L87-L90",
+      "specLocation": "_global/msearch/types.ts#L86-L89",
       "type": {
         "kind": "union_of",
         "items": [
@@ -40971,8 +40971,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Routing",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -41038,7 +41038,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L36-L104"
+      "specLocation": "_global/mtermvectors/types.ts#L35-L103"
     },
     {
       "kind": "request",
@@ -41521,7 +41521,7 @@
           }
         }
       ],
-      "specLocation": "_global/mtermvectors/types.ts#L106-L114"
+      "specLocation": "_global/mtermvectors/types.ts#L105-L113"
     },
     {
       "kind": "request",
@@ -56056,8 +56056,8 @@
             "type": {
               "kind": "instance_of",
               "type": {
-                "name": "Routing",
-                "namespace": "_types"
+                "name": "string",
+                "namespace": "_builtins"
               }
             }
           },
@@ -63228,8 +63228,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Routing",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -100735,7 +100735,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L71-L74"
+      "specLocation": "_types/query_dsl/specialized.ts#L70-L73"
     },
     {
       "kind": "interface",
@@ -101128,7 +101128,7 @@
         "name": "DistanceFeatureQuery",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L76-L85",
+      "specLocation": "_types/query_dsl/specialized.ts#L75-L84",
       "type": {
         "kind": "union_of",
         "items": [
@@ -101223,7 +101223,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L39-L59"
+      "specLocation": "_types/query_dsl/specialized.ts#L38-L58"
     },
     {
       "kind": "interface",
@@ -102032,7 +102032,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L66-L69"
+      "specLocation": "_types/query_dsl/specialized.ts#L65-L68"
     },
     {
       "kind": "interface",
@@ -103576,7 +103576,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L198-L203",
+      "specLocation": "_types/query_dsl/specialized.ts#L197-L202",
       "type": {
         "kind": "union_of",
         "items": [
@@ -103679,8 +103679,8 @@
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "Routing",
-              "namespace": "_types"
+              "name": "string",
+              "namespace": "_builtins"
             }
           }
         },
@@ -103708,7 +103708,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L174-L196"
+      "specLocation": "_types/query_dsl/specialized.ts#L173-L195"
     },
     {
       "kind": "interface",
@@ -104549,7 +104549,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L87-L172"
+      "specLocation": "_types/query_dsl/specialized.ts#L86-L171"
     },
     {
       "kind": "interface",
@@ -105158,7 +105158,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L205-L245"
+      "specLocation": "_types/query_dsl/specialized.ts#L204-L244"
     },
     {
       "kind": "interface",
@@ -105192,7 +105192,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L269-L278"
+      "specLocation": "_types/query_dsl/specialized.ts#L268-L277"
     },
     {
       "kind": "interface",
@@ -105253,7 +105253,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L247-L267",
+      "specLocation": "_types/query_dsl/specialized.ts#L246-L266",
       "variants": {
         "kind": "container"
       }
@@ -107052,7 +107052,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L280-L280"
+      "specLocation": "_types/query_dsl/specialized.ts#L279-L279"
     },
     {
       "kind": "interface",
@@ -107067,7 +107067,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L282-L282"
+      "specLocation": "_types/query_dsl/specialized.ts#L281-L281"
     },
     {
       "kind": "interface",
@@ -107095,7 +107095,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
+      "specLocation": "_types/query_dsl/specialized.ts#L283-L288"
     },
     {
       "kind": "interface",
@@ -107123,7 +107123,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L291-L296"
+      "specLocation": "_types/query_dsl/specialized.ts#L290-L295"
     },
     {
       "kind": "interface",
@@ -107163,7 +107163,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L298-L307"
+      "specLocation": "_types/query_dsl/specialized.ts#L297-L306"
     },
     {
       "kind": "interface",
@@ -107241,7 +107241,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L309-L335"
+      "specLocation": "_types/query_dsl/specialized.ts#L308-L334"
     },
     {
       "kind": "interface",
@@ -107407,7 +107407,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L398-L406"
+      "specLocation": "_types/query_dsl/specialized.ts#L397-L405"
     },
     {
       "kind": "interface",
@@ -107437,7 +107437,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L337-L346"
+      "specLocation": "_types/query_dsl/specialized.ts#L336-L345"
     },
     {
       "kind": "interface",
@@ -107513,7 +107513,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L348-L365"
+      "specLocation": "_types/query_dsl/specialized.ts#L347-L364"
     },
     {
       "kind": "interface",
@@ -107601,7 +107601,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L383-L396"
+      "specLocation": "_types/query_dsl/specialized.ts#L382-L395"
     },
     {
       "kind": "interface",
@@ -107662,7 +107662,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L367-L381"
+      "specLocation": "_types/query_dsl/specialized.ts#L366-L380"
     },
     {
       "kind": "enum",
@@ -109087,7 +109087,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L61-L64"
+      "specLocation": "_types/query_dsl/specialized.ts#L60-L63"
     },
     {
       "kind": "interface",
