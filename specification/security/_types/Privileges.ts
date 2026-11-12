@@ -392,15 +392,58 @@ export enum IndexPrivilege {
 }
 
 export class GlobalPrivilege {
-  application: ApplicationGlobalUserPrivileges
+  application?: ApplicationGlobalUserPrivileges
+  /**
+   * A privilege that grants the ability to write the `data` and `access` sections of user profiles for the specified applications.
+   */
+  profile?: WriteProfileGlobalUserPrivileges
+  /**
+   * A privilege that grants the ability to manage roles that are scoped to the specified indices.
+   */
+  role?: ManageRolesGlobalUserPrivileges
 }
 
 export class ApplicationGlobalUserPrivileges {
-  manage: ManageUserPrivileges
+  /**
+   * The applications for which application privileges can be managed.
+   * Absent when the `application` section is present but grants no privileges.
+   */
+  manage?: ManageUserPrivileges
 }
 
 export class ManageUserPrivileges {
   applications: string[]
+}
+
+export class WriteProfileGlobalUserPrivileges {
+  /**
+   * The applications for which user profile data can be written.
+   * Absent when the `profile` section is present but grants no privileges.
+   */
+  write?: ManageUserPrivileges
+}
+
+export class ManageRolesGlobalUserPrivileges {
+  /**
+   * The index-scoped role management privileges.
+   * Absent when the `role` section is present but grants no privileges.
+   */
+  manage?: ManageRolesPrivileges
+}
+
+export class ManageRolesPrivileges {
+  indices: ManageRolesIndexPermissions[]
+}
+
+export class ManageRolesIndexPermissions {
+  /**
+   * A list of indices (or index name patterns) that the owners of the role can manage roles for.
+   */
+  names: string[]
+  /**
+   * The index privileges that the managed roles are allowed to grant on the specified indices.
+   */
+  privileges: string[]
 }
 
 export class ReplicationAccess {
