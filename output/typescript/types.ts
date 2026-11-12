@@ -11890,7 +11890,7 @@ export interface IndicesDataStream {
   settings: IndicesIndexSettings
   status: HealthStatus
   system?: boolean
-  template: Name
+  template?: Name
   timestamp_field: IndicesDataStreamTimestampField
 }
 
