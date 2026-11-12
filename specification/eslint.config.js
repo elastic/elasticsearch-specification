@@ -109,6 +109,7 @@ export default defineConfig([
         }
       ],
       'es-spec-validator/no-all-string-literal-unions': 'error',
+      'es-spec-validator/prefer-enum-for-documented-values': 'warn',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
