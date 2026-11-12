@@ -38,6 +38,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `prefer-alias-imports`                | An import of a shared folder (`_global`, `_internal`, `_spec_utils`, `_types`) from another namespace must use the path alias, such as `@_types/common`. Can be fixed with `--fix`.        |
 | `prefer-user-defined-value`           | `any`, `unknown` and `object` are not allowed. Use `UserDefinedValue`.                                                                                                                     |
 | `union-requires-codegen-names`        | A union type alias without `@variants` needs `@codegen_names`. `T \| T[]` and `T \| null` are exempt.                                                                                      |
+| `valid-internal-variant-tags`         | In a union with `@variants internal`, the tag of each member must be a string or boolean literal that no other member uses. The tag can be optional only on the default member.            |
 
 ## Usage
 
