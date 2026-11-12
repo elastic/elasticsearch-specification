@@ -21,6 +21,7 @@ import {
   Id,
   IndexName,
   InlineGet,
+  OpType,
   Routing,
   SequenceNumber,
   VersionNumber,
@@ -113,11 +114,20 @@ export class OperationBase {
   routing?: Routing
   if_primary_term?: long
   if_seq_no?: SequenceNumber
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export class WriteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
   /**
    * A map from the full name of fields to the name of dynamic templates.
    * It defaults to an empty map.
@@ -136,13 +146,41 @@ export class WriteOperation extends OperationBase {
    * @server_default false
    */
   require_alias?: boolean
+  /**
+   * If `true`, the action must target a data stream (existing or to be created).
+   * @server_default false
+   */
+  require_data_stream?: boolean
+  /**
+   * If `true`, the response includes the ingest pipelines that were run for this action.
+   * @server_default false
+   */
+  list_executed_pipelines?: boolean
 }
 
 export class CreateOperation extends WriteOperation {}
 
-export class IndexOperation extends WriteOperation {}
+export class IndexOperation extends WriteOperation {
+  /**
+   * Set to `create` to only index the document if it does not already exist.
+   * @server_default index
+   */
+  op_type?: OpType
+}
 
-export class DeleteOperation extends OperationBase {}
+export class DeleteOperation extends OperationBase {
+  /**
+   * The explicit version number for concurrency control.
+   * It must be a non-negative long number.
+   * This parameter is not supported for `update` actions.
+   */
+  version?: VersionNumber
+  /**
+   * The version type.
+   * This parameter is not supported for `update` actions.
+   */
+  version_type?: VersionType
+}
 
 export class UpdateOperation extends OperationBase {
   /**
@@ -154,6 +192,23 @@ export class UpdateOperation extends OperationBase {
    * The number of times an update should be retried in the case of a version conflict.
    */
   retry_on_conflict?: integer
+  /**
+   * The ID of the pipeline to use to preprocess the `upsert` document, if one is created.
+   * If the index has a default ingest pipeline specified, setting the value to `_none` turns off the default ingest pipeline for this request.
+   * If a final pipeline is configured, it will always run regardless of the value of this parameter.
+   */
+  pipeline?: string
+  /**
+   * If `true`, the response includes the ingest pipelines that were run for the `upsert` document, if one is created.
+   * @server_default false
+   */
+  list_executed_pipelines?: boolean
+  /**
+   * If `false`, source retrieval is turned off.
+   * You can also specify a comma-separated list of the fields you want to retrieve.
+   * If set, it overrides the `_source` value in the update source line.
+   */
+  _source?: SourceConfig
 }
 
 /**
@@ -213,6 +268,14 @@ export class UpdateAction<TDocument, TPartialDocument> {
    * @server_default false
    */
   scripted_upsert?: boolean
+  /**
+   * Only perform the update if the document has this sequence number.
+   */
+  if_seq_no?: SequenceNumber
+  /**
+   * Only perform the update if the document has this primary term.
+   */
+  if_primary_term?: long
   /**
    * If `false`, source retrieval is turned off.
    * You can also specify a comma-separated list of the fields you want to retrieve.
