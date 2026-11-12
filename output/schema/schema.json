@@ -27416,7 +27416,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L140-L140"
+      "specLocation": "_global/bulk/types.ts#L143-L143"
     },
     {
       "kind": "interface",
@@ -27431,7 +27431,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L144-L144"
+      "specLocation": "_global/bulk/types.ts#L147-L147"
     },
     {
       "kind": "enum",
@@ -27453,7 +27453,7 @@
         "name": "FailureStoreStatus",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L85-L90"
+      "specLocation": "_global/bulk/types.ts#L88-L93"
     },
     {
       "kind": "interface",
@@ -27468,7 +27468,7 @@
         "namespace": "_global.bulk"
       },
       "properties": [],
-      "specLocation": "_global/bulk/types.ts#L142-L142"
+      "specLocation": "_global/bulk/types.ts#L145-L145"
     },
     {
       "kind": "interface",
@@ -27563,7 +27563,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L99-L117"
+      "specLocation": "_global/bulk/types.ts#L102-L120"
     },
     {
       "kind": "interface",
@@ -27622,7 +27622,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L158-L185",
+      "specLocation": "_global/bulk/types.ts#L161-L188",
       "variants": {
         "kind": "container"
       }
@@ -27647,7 +27647,7 @@
         "name": "OperationType",
         "namespace": "_global.bulk"
       },
-      "specLocation": "_global/bulk/types.ts#L92-L97"
+      "specLocation": "_global/bulk/types.ts#L95-L100"
     },
     {
       "kind": "request",
@@ -28148,7 +28148,7 @@
       },
       "properties": [
         {
-          "description": "The document ID associated with the operation.",
+          "description": "The document ID associated with the operation.\nIt is `null` when an `index` or `create` operation without an explicit `_id` fails before Elasticsearch generates an ID for the document.\nElasticsearch generates the ID when it routes the document to a shard, so the ID is still `null` for failures that happen earlier, such as an ingest pipeline error, a missing or closed target index, a failed `require_alias` or `require_data_stream` check, or missing required routing.\n`update` and `delete` operations always include an ID.",
           "name": "_id",
           "required": false,
           "type": {
@@ -28317,7 +28317,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L36-L83"
+      "specLocation": "_global/bulk/types.ts#L36-L86"
     },
     {
       "kind": "interface",
@@ -28426,7 +28426,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L187-L226"
+      "specLocation": "_global/bulk/types.ts#L190-L229"
     },
     {
       "kind": "interface",
@@ -28467,7 +28467,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L146-L156"
+      "specLocation": "_global/bulk/types.ts#L149-L159"
     },
     {
       "kind": "interface",
@@ -28531,7 +28531,7 @@
           }
         }
       ],
-      "specLocation": "_global/bulk/types.ts#L119-L138"
+      "specLocation": "_global/bulk/types.ts#L122-L141"
     },
     {
       "kind": "request",
