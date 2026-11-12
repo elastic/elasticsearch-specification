@@ -11744,6 +11744,7 @@ export interface IlmExplainLifecycleRequest extends RequestBase {
   index: IndexName
   only_errors?: boolean
   only_managed?: boolean
+  expand_wildcards?: ExpandWildcards
   master_timeout?: Duration
 }
 
