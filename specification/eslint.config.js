@@ -109,6 +109,7 @@ export default defineConfig([
         }
       ],
       'es-spec-validator/no-all-string-literal-unions': 'error',
+      'es-spec-validator/enum-boolean-requires-quirk': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
