@@ -142,6 +142,8 @@ export class WriteOperation extends OperationBase {
    * It defaults to an empty map.
    * If a name matches a dynamic template, that template will be applied regardless of other match predicates defined in the template.
    * If a field is already defined in the mapping, then this parameter won't be used.
+   * @availability stack since=7.13.0
+   * @availability serverless
    */
   dynamic_templates?: Dictionary<string, string>
   /**
@@ -161,16 +163,22 @@ export class WriteOperation extends OperationBase {
   /**
    * If `true`, the request's actions must target an index alias.
    * @server_default false
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   require_alias?: boolean
   /**
    * If `true`, the action must target a data stream (existing or to be created).
    * @server_default false
+   * @availability stack since=8.13.0
+   * @availability serverless
    */
   require_data_stream?: boolean
   /**
    * If `true`, the response includes the ingest pipelines that were run for this action.
    * @server_default false
+   * @availability stack since=8.12.0
+   * @availability serverless
    */
   list_executed_pipelines?: boolean
 }
@@ -203,6 +211,8 @@ export class UpdateOperation extends OperationBase {
   /**
    * If `true`, the request's actions must target an index alias.
    * @server_default false
+   * @availability stack since=7.10.0
+   * @availability serverless
    */
   require_alias?: boolean
   /**
@@ -218,6 +228,8 @@ export class UpdateOperation extends OperationBase {
   /**
    * If `true`, the response includes the ingest pipelines that were run for the `upsert` document, if one is created.
    * @server_default false
+   * @availability stack since=8.12.0
+   * @availability serverless
    */
   list_executed_pipelines?: boolean
   /**
