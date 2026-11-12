@@ -802,6 +802,7 @@ search-aggregations-metrics-rate-aggregation,https://www.elastic.co/docs/referen
 search-aggregations-bucket-reverse-nested-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation,[use-doc-url],,About the reverse nested
 search-aggregations-bucket-sampler-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-sampler-aggregation,[use-doc-url],,About the sampler aggregation
 search-aggregations-random-sampler-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-random-sampler-aggregation,[use-doc-url],,About the random sampler
+search-aggregations-metrics-roaring-bitmap-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation,[use-doc-url],,About the roaring bitmap aggregation
 search-aggregations-metrics-scripted-metric-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-scripted-metric-aggregation,[use-doc-url],,About the scripted metric
 search-aggregations-pipeline-serialdiff-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-pipeline-serialdiff-aggregation,[use-doc-url],,About the serial differencing
 search-aggregations-bucket-significantterms-aggregation,https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-significantterms-aggregation,[use-doc-url],,About the significant terms
