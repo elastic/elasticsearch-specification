@@ -85,6 +85,13 @@ export class IndexTemplate {
    */
   ignore_missing_component_templates?: Names
   /**
+   * Marks an index template that was installed by one of the internal registries.
+   * This field is returned only when the get index template API is called with `include_managed_fields` set to `true`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  registry_installed?: boolean
+  /**
    * Date and time when the index template was created. Only returned if the `human` query parameter is `true`.
    * @availability stack since=9.2.0
    * @availability serverless
