@@ -12,7 +12,9 @@ value: |-
       "region": "bj",
       "rate_limit": {
         "requests_per_minute": 20
-      }
+      },
+      "similarity": "cosine",
+      "dimensions": 1024
     },
     "chunking_settings": {
       "strategy": "sentence",
