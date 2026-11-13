@@ -30,7 +30,8 @@ import { RecoveryRunStatus } from '../_types/RecoveryRunStatus'
  * List the recoveries that were started with the start recovery API, including those that have finished.
  * This API is intended for internal operator use.
  * Recoveries are ordered by start time, and the most recent are returned first by default.
- * To retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.
+ * To retrieve further pages, pass the identifier of the last recovery of a page as `search_after_recovery_id`.
+ * To restrict the results to a period instead, use `started_at_gte` and `started_at_lt`.
  * @rest_spec_name data_recovery.list_recoveries
  * @availability serverless visibility=private
  * @doc_id data-recovery-list-recoveries
@@ -59,13 +60,11 @@ export interface Request extends RequestBase {
      */
     order?: SortOrder
     /**
-     * Return only recoveries after this start time in the sort order, to retrieve the next page.
-     * It must be provided together with `search_after_recovery_id`.
-     */
-    search_after_started_at?: DateTime
-    /**
-     * Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.
-     * It must be provided together with `search_after_started_at`.
+     * Return only the recoveries that follow this one in the sort order, to retrieve the next page.
+     * Pass the identifier of the last recovery of the previous page.
+     * The recovery it names must still be present in the recovery history; if it is not, the request fails rather than
+     * returning the first page again.
+     * To restrict the results to a period, use `started_at_gte` and `started_at_lt` instead.
      */
     search_after_recovery_id?: Id
     /**
