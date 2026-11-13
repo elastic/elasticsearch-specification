@@ -1,0 +1,21 @@
+summary: A rerank task
+description: A successful response when creating a Tencent Cloud `rerank` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "tencentcloud-rerank",
+    "task_type": "rerank",
+    "service": "tencentcloud",
+    "service_settings": {
+      "model_id": "bge-reranker-v2-m3",
+      "region": "bj",
+      "rate_limit": {
+        "requests_per_minute": 20
+      }
+    },
+    "task_settings": {
+      "top_n": 10,
+      "return_documents": true
+    }
+  }

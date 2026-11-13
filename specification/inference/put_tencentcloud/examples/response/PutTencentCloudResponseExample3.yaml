@@ -1,0 +1,17 @@
+summary: A completion task
+description: A successful response when creating a Tencent Cloud `completion` inference endpoint.
+# type: response
+# response_code:
+value: |-
+  {
+    "inference_id": "tencentcloud-completion",
+    "task_type": "completion",
+    "service": "tencentcloud",
+    "service_settings": {
+      "model_id": "deepseek-v3",
+      "region": "bj",
+      "rate_limit": {
+        "requests_per_minute": 5
+      }
+    }
+  }

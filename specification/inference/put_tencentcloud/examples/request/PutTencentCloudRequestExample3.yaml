@@ -1,0 +1,13 @@
+summary: A completion task
+description: Run `PUT _inference/completion/tencentcloud-completion` to create an inference endpoint that performs a `completion` task.
+method_request: 'PUT _inference/completion/tencentcloud-completion'
+# type: "request"
+value: |-
+  {
+      "service": "tencentcloud",
+      "service_settings": {
+          "api_key": "tencentcloud-api-key",
+          "model_id": "deepseek-v3",
+          "region": "bj"
+      }
+  }
