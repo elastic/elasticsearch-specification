@@ -138,6 +138,33 @@ export enum ScriptLanguage {
 }
 ```
 
+#### Letter case of enum values
+
+Elasticsearch reads many enum values without regard to their letter case and writes one spelling, in most cases the
+lower-case one. Use the spelling that Elasticsearch writes as the enum member. When Elasticsearch also accepts or
+returns a second spelling that users are likely to send or to see, such as the upper-case name, add that spelling with
+`@aliases`:
+
+```ts
+export enum Operator {
+  /** @aliases AND */
+  and,
+  /** @aliases OR */
+  or
+}
+```
+
+An alias is one exact spelling, so the specification cannot list each mix of upper-case and lower-case letters. Some
+values come back in the spelling of the request. Index settings are an example: Elasticsearch accepts
+`index.translog.durability` in any letter case, stores the text of the request and returns that text. A response can
+then contain a member of an enum in a spelling such as `ReQuEsT`, which matches no member and no alias. The
+specification does not mark the enums that can come back this way. The letter case alone is no reason for
+`@non_exhaustive` or for a `string` type, because the set of values is still closed.
+
+Code generators and other consumers of the specification must expect such a value for each enum, also for an exhaustive
+one. A consumer that compares the enum value of a response with the members and their aliases without regard to letter
+case reads it correctly.
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.
@@ -180,6 +207,28 @@ type Indices = string | string[]
 
 You can find the full list [here](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts),
 feel free to add more if it feels appropriate!
+
+An alias says what the value is, so use an alias only when the value is what the name says. `Id` is the ID of a
+document. For another identifier, use the alias of that kind, such as `NodeId` or `TaskId`, or a plain `string`. The
+specification has older uses of `Id` for other identifiers. Do not add new ones.
+
+Two types can have the same form on the wire and a different meaning. Choose the type by the meaning, because the
+clients give some aliases a behavior of their own.
+
+`Indices` is a multi-target expression. Elasticsearch resolves it against the data streams, indices and aliases of the
+cluster, and the constant `_all` selects all of them. Use `Indices` only for a path part, a query parameter or a body
+property where Elasticsearch accepts `_all`.
+
+`IndexName[]` is a list of index names or name patterns that is not such an expression, and `_all` has no special
+meaning there. The index privileges of the security APIs are an example: they do not accept `_all` and need the pattern
+`*` to match all indices. When such a property also accepts one string in place of the array, write
+`IndexName | IndexName[]` in full and do not use `Indices`.
+
+The .NET client has an `Indices` type that writes `*` as `_all`. With `Indices` on the index privileges, it sent `_all`
+where the security APIs need `*`.
+
+The other plural aliases, such as `Fields`, `Ids` and `Names`, are a union of one value and an array. Use them only
+where Elasticsearch accepts the one value, and use an array such as `Field[]` where it accepts an array only.
 
 ### Dates
 
