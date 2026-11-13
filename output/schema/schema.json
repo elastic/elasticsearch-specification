@@ -99288,7 +99288,6 @@
               "since": "8.19.0"
             }
           },
-          "containerProperty": true,
           "description": "Whether to perform pruning, omitting the non-significant tokens from the query to improve query performance.\nIf prune is true but the pruning_config is not specified, pruning will occur but default values will be used.\nDefault: false",
           "name": "prune",
           "required": false,
@@ -99307,7 +99306,6 @@
               "since": "8.19.0"
             }
           },
-          "containerProperty": true,
           "description": "Optional pruning configuration.\nIf enabled, this will omit non-significant tokens from the query in order to improve query performance.\nThis is only used if prune is set to true.\nIf prune is set to true but pruning_config is not specified, default values will be used.",
           "name": "pruning_config",
           "required": false,
@@ -99320,7 +99318,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/SparseVectorIndexOptions.ts#L22-L42"
+      "specLocation": "_types/mapping/SparseVectorIndexOptions.ts#L22-L40"
     },
     {
       "kind": "interface",
