@@ -87571,6 +87571,14 @@
               }
             ]
           },
+          "peak_inference_process_memory_rss_bytes": {
+            "description": "The peak native memory (resident set size) of the inference process on this node.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -87737,6 +87745,22 @@
           },
           "required_native_memory_bytes": {
             "description": "The amount of memory required to load the model in bytes.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.\nUnlike `required_native_memory_bytes`, which is an estimate, this is a measured value.\nIt is returned only after the native process has reported a measurement.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "peak_runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.\nIt is returned only after the native process has reported a measurement.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"

@@ -226207,7 +226207,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L334-L347"
+      "specLocation": "ml/_types/TrainedModel.ts#L356-L369"
     },
     {
       "kind": "enum",
@@ -226233,7 +226233,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L349-L366"
+      "specLocation": "ml/_types/TrainedModel.ts#L371-L388"
     },
     {
       "kind": "interface",
@@ -227291,7 +227291,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L277-L291"
+      "specLocation": "ml/_types/TrainedModel.ts#L299-L313"
     },
     {
       "kind": "interface",
@@ -229453,7 +229453,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L260-L275"
+      "specLocation": "ml/_types/TrainedModel.ts#L282-L297"
     },
     {
       "kind": "interface",
@@ -230789,7 +230789,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L411-L432"
+      "specLocation": "ml/_types/TrainedModel.ts#L433-L454"
     },
     {
       "kind": "enum",
@@ -231506,7 +231506,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L293-L300"
+      "specLocation": "ml/_types/TrainedModel.ts#L315-L322"
     },
     {
       "kind": "interface",
@@ -231543,7 +231543,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L302-L307"
+      "specLocation": "ml/_types/TrainedModel.ts#L324-L329"
     },
     {
       "kind": "interface",
@@ -231589,7 +231589,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L309-L316"
+      "specLocation": "ml/_types/TrainedModel.ts#L331-L338"
     },
     {
       "kind": "interface",
@@ -231702,7 +231702,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L475-L492"
+      "specLocation": "ml/_types/TrainedModel.ts#L497-L514"
     },
     {
       "kind": "interface",
@@ -231736,7 +231736,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L434-L444"
+      "specLocation": "ml/_types/TrainedModel.ts#L456-L466"
     },
     {
       "kind": "interface",
@@ -231794,7 +231794,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L446-L464"
+      "specLocation": "ml/_types/TrainedModel.ts#L468-L486"
     },
     {
       "kind": "interface",
@@ -231927,7 +231927,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L373-L409"
+      "specLocation": "ml/_types/TrainedModel.ts#L395-L431"
     },
     {
       "kind": "interface",
@@ -232197,7 +232197,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L206-L243"
+      "specLocation": "ml/_types/TrainedModel.ts#L228-L265"
     },
     {
       "kind": "interface",
@@ -232222,7 +232222,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L245-L248"
+      "specLocation": "ml/_types/TrainedModel.ts#L267-L270"
     },
     {
       "kind": "interface",
@@ -232299,7 +232299,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L250-L258"
+      "specLocation": "ml/_types/TrainedModel.ts#L272-L280"
     },
     {
       "kind": "interface",
@@ -232345,7 +232345,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L466-L473"
+      "specLocation": "ml/_types/TrainedModel.ts#L488-L495"
     },
     {
       "kind": "interface",
@@ -232418,6 +232418,24 @@
         },
         {
           "name": "average_inference_process_memory_rss_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The peak native memory (resident set size) of the inference process on this node.",
+          "name": "peak_inference_process_memory_rss_bytes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -232625,7 +232643,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L157-L204"
+      "specLocation": "ml/_types/TrainedModel.ts#L172-L226"
     },
     {
       "kind": "interface",
@@ -233104,7 +233122,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L494-L496"
+      "specLocation": "ml/_types/TrainedModel.ts#L516-L518"
     },
     {
       "kind": "interface",
@@ -233125,7 +233143,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L498-L500"
+      "specLocation": "ml/_types/TrainedModel.ts#L520-L522"
     },
     {
       "kind": "interface",
@@ -233159,7 +233177,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L502-L511"
+      "specLocation": "ml/_types/TrainedModel.ts#L524-L533"
     },
     {
       "kind": "interface",
@@ -233191,9 +233209,45 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.\nUnlike `required_native_memory_bytes`, which is an estimate, this is a measured value.\nIt is returned only after the native process has reported a measurement.",
+          "name": "runtime_native_memory_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.\nIt is returned only after the native process has reported a measurement.",
+          "name": "peak_runtime_native_memory_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L150-L155"
+      "specLocation": "ml/_types/TrainedModel.ts#L150-L170"
     },
     {
       "kind": "interface",
@@ -233306,7 +233360,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L318-L332"
+      "specLocation": "ml/_types/TrainedModel.ts#L340-L354"
     },
     {
       "kind": "enum",
@@ -233322,7 +233376,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L368-L371"
+      "specLocation": "ml/_types/TrainedModel.ts#L390-L393"
     },
     {
       "kind": "interface",
