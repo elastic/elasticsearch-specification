@@ -84,14 +84,6 @@ export enum AlibabaCloudInputType {
    */
   ingest,
   /**
-   * The value that Elasticsearch uses for its own ingest requests. It has the same effect as `ingest`.
-   */
-  internal_ingest,
-  /**
-   * The value that Elasticsearch uses for its own search requests. It has the same effect as `search`.
-   */
-  internal_search,
-  /**
    * For storing embeddings of search queries run against a vector database to find relevant documents.
    */
   search
