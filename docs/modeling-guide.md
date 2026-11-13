@@ -212,17 +212,23 @@ An alias says what the value is, so use an alias only when the value is what the
 document. For another identifier, use the alias of that kind, such as `NodeId` or `TaskId`, or a plain `string`. The
 specification has older uses of `Id` for other identifiers. Do not add new ones.
 
-Some plural aliases are a union of one value and an array: `Indices` is `IndexName | IndexName[]`, and
-`DataStreamNames`, `Fields`, `Ids`, `Names` and `NodeIds` have the same form. The place of the property gives the union
-its meaning:
+Two types can have the same form on the wire and a different meaning. Choose the type by the meaning, because the
+clients give some aliases a behavior of their own.
 
-* In a path part or a query parameter, the value is a comma-separated list, and the clients join the array form with
-  commas. [`add-new-api.md`](add-new-api.md) has more on these parameters.
-* In a body, the value is one string or a JSON array. Use the union there only when Elasticsearch accepts the one string
-  in place of the array.
+`Indices` is a multi-target expression. Elasticsearch resolves it against the data streams, indices and aliases of the
+cluster, and the constant `_all` selects all of them. Use `Indices` only for a path part, a query parameter or a body
+property where Elasticsearch accepts `_all`.
 
-An array such as `IndexName[]` is always a JSON array. Use it for a response property that Elasticsearch writes as an
-array, and for a request property where Elasticsearch accepts an array only.
+`IndexName[]` is a list of index names or name patterns that is not such an expression, and `_all` has no special
+meaning there. The index privileges of the security APIs are an example: they do not accept `_all` and need the pattern
+`*` to match all indices. When such a property also accepts one string in place of the array, write
+`IndexName | IndexName[]` in full and do not use `Indices`.
+
+The .NET client has an `Indices` type that writes `*` as `_all`. With `Indices` on the index privileges, it sent `_all`
+where the security APIs need `*`.
+
+The other plural aliases, such as `Fields`, `Ids` and `Names`, are a union of one value and an array. Use them only
+where Elasticsearch accepts the one value, and use an array such as `Field[]` where it accepts an array only.
 
 ### Dates
 

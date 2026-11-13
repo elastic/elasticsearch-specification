@@ -105,12 +105,13 @@ parser that accepts an array only gives `T[]`. Do not add the single-value form 
 
 **Shared aliases.** Use an alias of `specification/_types/common.ts` only when the source shows that the value is what
 the alias names. `Id` is the ID of a document. For another identifier, use the alias of that kind, such as `NodeId` or
-`TaskId`, or a `string`, and do not add to the older uses of `Id` for other identifiers. `Indices`, `Fields`, `Ids`,
-`Names` and `NodeIds` are unions of one value and an array. In a path part or a query parameter, such a union is a
-comma-separated list, and the clients join the array form with commas. In a body, it is one string or a JSON array, so
-use it only when the parser accepts the one string. `IndexName[]` and the other arrays are always a JSON array. Use an
-array for a response property that `toXContent` writes as an array, and for a request property whose parser accepts an
-array only.
+`TaskId`, or a `string`, and do not add to the older uses of `Id` for other identifiers. `Indices` is a multi-target
+expression that accepts the constant `_all`. Use it only where the source resolves the value as such an expression, for
+example with `IndexNameExpressionResolver`. For a list of names or patterns where `_all` has no special meaning, such as
+the index privileges of the security APIs, use `IndexName[]`, or `IndexName | IndexName[]` in full when the parser also
+accepts one string. The form on the wire is the same, but the clients give `Indices` a behavior of its own: the .NET
+client writes `*` as `_all`. `Fields`, `Ids`, `Names` and the other plural aliases are unions of one value and an array,
+so use them only where the parser accepts the one value.
 
 **Null.** Add `| null` only when the parser accepts an explicit null with a meaning, such as a reset to the default,
 or when `toXContent` writes a null value. An absent field is an optional property.
