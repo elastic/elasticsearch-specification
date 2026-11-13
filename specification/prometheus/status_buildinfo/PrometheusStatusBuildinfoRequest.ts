@@ -29,6 +29,7 @@ import { IndexName, MediaType } from '@_types/common'
  * @availability stack since=9.5.0 stability=tech_preview visibility=public
  * @availability serverless stability=tech_preview visibility=public
  * @doc_id prometheus-status-buildinfo
+ * @doc_tag prometheus
  */
 export interface Request extends RequestBase {
   urls: [
