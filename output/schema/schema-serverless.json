@@ -62834,7 +62834,7 @@
           }
         }
       ],
-      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L166"
+      "specLocation": "_global/open_point_in_time/OpenPointInTimeRequest.ts#L33-L165"
     },
     {
       "body": {
@@ -146387,7 +146387,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
+      "specLocation": "inference/_types/CommonTypes.ts#L2466-L2468"
     },
     {
       "kind": "enum",
@@ -146403,7 +146403,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
+      "specLocation": "inference/_types/CommonTypes.ts#L2461-L2464"
     },
     {
       "kind": "enum",
@@ -146416,7 +146416,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
+      "specLocation": "inference/_types/CommonTypes.ts#L2515-L2517"
     },
     {
       "kind": "enum",
@@ -146438,7 +146438,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
+      "specLocation": "inference/_types/CommonTypes.ts#L2508-L2513"
     },
     {
       "codegenNames": [
@@ -178192,7 +178192,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2403-L2434"
+      "specLocation": "inference/_types/CommonTypes.ts#L2403-L2433"
     },
     {
       "kind": "interface",
@@ -178252,7 +178252,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
+      "specLocation": "inference/_types/CommonTypes.ts#L2435-L2459"
     },
     {
       "inherits": {
@@ -178380,7 +178380,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
+      "specLocation": "inference/_types/CommonTypes.ts#L2470-L2506"
     },
     {
       "inherits": {
