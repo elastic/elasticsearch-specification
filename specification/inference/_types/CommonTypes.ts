@@ -21,6 +21,7 @@ import { Id } from '@_types/common'
 import { double, float, integer, long } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { RateLimitSetting, TaskSettings } from '@inference/_types/Services'
+import { AdditionalProperties } from '@spec_utils/behaviors'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -828,7 +829,7 @@ export enum AmazonSageMakerElementType {
   bit
 }
 
-export interface AmazonSageMakerTaskSettings {
+export class AmazonSageMakerTaskSettings {
   /**
    * The AWS custom attributes passed verbatim through to the model running in the SageMaker Endpoint.
    * Values will be returned in the `X-elastic-sagemaker-custom-attributes` header.
@@ -862,12 +863,11 @@ export interface AmazonSageMakerTaskSettings {
 /**
  * `elastic` API allows any key value pair in the task settings when calling the inference endpoint, but it cannot
  * be used when creating the inference endpoint.
+ * @behavior_meta AdditionalProperties fieldname=passthrough_settings description="Settings that Elasticsearch sends to SageMaker as they are"
  */
 export class AmazonSageMakerElasticTaskSettings
-  implements AmazonSageMakerTaskSettings
-{
-  [key: string]: unknown
-}
+  extends AmazonSageMakerTaskSettings
+  implements AdditionalProperties<string, UserDefinedValue> {}
 
 /**
  * `openai` API-specific task settings for Amazon SageMaker.
