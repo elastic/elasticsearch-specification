@@ -50,6 +50,7 @@ import preferUserDefinedValue from './rules/prefer-user-defined-value.js'
 import unionRequiresCodegenNames from './rules/union-requires-codegen-names.js'
 import validInternalVariantTags from './rules/valid-internal-variant-tags.js'
 import validServerDefault from './rules/valid-server-default.js'
+import noIndexSignatures from './rules/no-index-signatures.js'
 
 export default {
   rules: {
@@ -86,6 +87,7 @@ export default {
     'prefer-user-defined-value': preferUserDefinedValue,
     'union-requires-codegen-names': unionRequiresCodegenNames,
     'valid-internal-variant-tags': validInternalVariantTags,
-    'valid-server-default': validServerDefault
+    'valid-server-default': validServerDefault,
+    'no-index-signatures': noIndexSignatures
   }
 }
