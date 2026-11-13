@@ -62,7 +62,7 @@ export class ObjectProperty extends CorePropertyBase {
 }
 
 export class PassthroughObjectProperty extends CorePropertyBase {
-  type?: 'passthrough'
+  type: 'passthrough'
   enabled?: boolean
   priority?: integer
   time_series_dimension?: boolean
