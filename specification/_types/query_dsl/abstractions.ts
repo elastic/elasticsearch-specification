@@ -21,6 +21,7 @@ import { Field, Id, IndexName, MinimumShouldMatch } from '@_types/common'
 import { KnnQuery } from '@_types/Knn'
 import { float } from '@_types/Numeric'
 import { SingleKeyDictionary } from '@spec_utils/Dictionary'
+import { BitmapTermsQuery } from './BitmapTermsQuery'
 import {
   BoolQuery,
   BoostingQuery,
@@ -103,6 +104,14 @@ import { WeightedTokensQuery } from './WeightedTokensQuery'
  * @ext_doc_id query-dsl
  */
 export class QueryContainer {
+  /**
+   * Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.
+   * It is the counterpart of the `terms` query for very large sets of numeric values.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   * @ext_doc_id query-dsl-bitmap-terms-query
+   */
+  bitmap_terms?: BitmapTermsQuery
   /**
    * matches documents matching boolean combinations of other queries.
    * @ext_doc_id query-dsl-bool-query
