@@ -105699,7 +105699,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L95-L101"
+      "specLocation": "_global/search/_types/suggester.ts#L96-L102"
     },
     {
       "kind": "interface",
@@ -105784,7 +105784,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L103-L136",
+      "specLocation": "_global/search/_types/suggester.ts#L104-L137",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -105879,7 +105879,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L157-L175"
+      "specLocation": "_global/search/_types/suggester.ts#L158-L176"
     },
     {
       "kind": "interface",
@@ -105925,7 +105925,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L138-L153"
+      "specLocation": "_global/search/_types/suggester.ts#L139-L154"
     },
     {
       "kind": "interface",
@@ -106001,7 +106001,7 @@
         }
       ],
       "shortcutProperty": "context",
-      "specLocation": "_global/search/_types/suggester.ts#L230-L259"
+      "specLocation": "_global/search/_types/suggester.ts#L231-L260"
     },
     {
       "codegenNames": [
@@ -106016,7 +106016,7 @@
         "name": "Context",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L223-L228",
+      "specLocation": "_global/search/_types/suggester.ts#L224-L229",
       "type": {
         "items": [
           {
@@ -106112,7 +106112,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L191-L219"
+      "specLocation": "_global/search/_types/suggester.ts#L192-L220"
     },
     {
       "kind": "interface",
@@ -106161,7 +106161,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L177-L189"
+      "specLocation": "_global/search/_types/suggester.ts#L178-L190"
     },
     {
       "inherits": {
@@ -106326,7 +106326,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L354-L408"
+      "specLocation": "_global/search/_types/suggester.ts#L355-L409"
     },
     {
       "kind": "interface",
@@ -106379,7 +106379,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L328-L341"
+      "specLocation": "_global/search/_types/suggester.ts#L329-L342"
     },
     {
       "kind": "interface",
@@ -106413,7 +106413,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L343-L352"
+      "specLocation": "_global/search/_types/suggester.ts#L344-L353"
     },
     {
       "kind": "interface",
@@ -106562,7 +106562,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L263-L326"
+      "specLocation": "_global/search/_types/suggester.ts#L264-L327"
     },
     {
       "kind": "enum",
@@ -106618,7 +106618,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L410-L419"
+      "specLocation": "_global/search/_types/suggester.ts#L411-L420"
     },
     {
       "kind": "interface",
@@ -106664,7 +106664,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L436-L452",
+      "specLocation": "_global/search/_types/suggester.ts#L437-L453",
       "variants": {
         "kind": "container"
       }
@@ -106689,7 +106689,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L421-L426"
+      "specLocation": "_global/search/_types/suggester.ts#L422-L427"
     },
     {
       "kind": "interface",
@@ -106732,7 +106732,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L428-L432"
+      "specLocation": "_global/search/_types/suggester.ts#L429-L433"
     },
     {
       "kind": "interface",
@@ -106754,7 +106754,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L454-L459"
+      "specLocation": "_global/search/_types/suggester.ts#L455-L460"
     },
     {
       "inherits": {
@@ -106908,7 +106908,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L497-L554"
+      "specLocation": "_global/search/_types/suggester.ts#L498-L555"
     },
     {
       "kind": "enum",
@@ -106926,7 +106926,7 @@
         "name": "SuggestSort",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L486-L495"
+      "specLocation": "_global/search/_types/suggester.ts#L487-L496"
     },
     {
       "kind": "enum",
@@ -106956,7 +106956,7 @@
         "name": "StringDistance",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/suggester.ts#L463-L484"
+      "specLocation": "_global/search/_types/suggester.ts#L464-L485"
     },
     {
       "kind": "interface",
@@ -116175,7 +116175,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L67-L78"
+      "specLocation": "_global/search/_types/suggester.ts#L67-L79"
     },
     {
       "inherits": {
@@ -116272,7 +116272,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L80-L85"
+      "specLocation": "_global/search/_types/suggester.ts#L81-L86"
     },
     {
       "inherits": {
@@ -116380,7 +116380,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/suggester.ts#L87-L93"
+      "specLocation": "_global/search/_types/suggester.ts#L88-L94"
     },
     {
       "description": "The response returned by Elasticsearch when request execution did not succeed.",
