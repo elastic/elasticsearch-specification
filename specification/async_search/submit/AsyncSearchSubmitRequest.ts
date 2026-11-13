@@ -386,7 +386,7 @@ export interface Request extends RequestBase {
      * is received before the timeout expires, the request fails and returns an error.
      * Defaults to no timeout.
      */
-    timeout?: string
+    timeout?: Duration
     /**
      * If true, calculate and return document scores, even if the scores are not used for sorting.
      * @server_default false

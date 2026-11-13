@@ -187,7 +187,7 @@ export class WriteSummaryInfo {
   /**
    * The total time spent waiting due to the `max_snapshot_bytes_per_sec` throttle, in nanoseconds.
    */
-  total_throttled_nanos: long
+  total_throttled_nanos: DurationValue<UnitNanos>
 }
 
 export class SummaryInfo {

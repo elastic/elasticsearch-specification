@@ -18,6 +18,7 @@
  */
 
 import { Id, NodeId, VersionString } from '@_types/common'
+import { TimeOfDay } from '@_types/Time'
 
 export class TasksRecord {
   /**
@@ -53,7 +54,7 @@ export class TasksRecord {
    * The start time in `HH:MM:SS` format.
    * @aliases ts,hms,hhmmss
    */
-  'timestamp'?: string
+  'timestamp'?: TimeOfDay
   /**
    * The running time in nanoseconds.
    */

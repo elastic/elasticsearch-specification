@@ -19,6 +19,7 @@
 
 import { HealthStatus, Name, Uuid } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
 import { NodesResponseBase } from '@nodes/_types/NodesResponseBase'
 import { Dictionary } from '@spec_utils/Dictionary'
 import {
@@ -61,7 +62,7 @@ export class StatsResponseBase extends NodesResponseBase {
   /**
    * Unix timestamp, in milliseconds, for the last time the cluster statistics were refreshed.
    */
-  timestamp: long
+  timestamp: EpochTime<UnitMillis>
   /**
    * Cross-cluster stats
    */
