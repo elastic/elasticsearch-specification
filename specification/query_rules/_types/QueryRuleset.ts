@@ -19,8 +19,8 @@
 
 import { Id } from '@_types/common'
 import { integer } from '@_types/Numeric'
+import { PinnedDoc } from '@_types/query_dsl/specialized'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { PinnedDoc } from '../../_types/query_dsl/specialized'
 
 export class QueryRuleset {
   /**

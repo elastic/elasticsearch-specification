@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { NodeStatistics } from '../../_types/Node'
+import { NodeStatistics } from '@_types/Node'
 
 export class NodesResponseBase {
   /**
