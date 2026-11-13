@@ -16172,6 +16172,22 @@ export type InferenceWatsonxServiceType = 'watsonxai'
 
 export type InferenceWatsonxTaskType = 'text_embedding' | 'rerank' | 'chat_completion' | 'completion'
 
+export interface InferenceChatCompletionRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestChatCompletion
+}
+
+export type InferenceChatCompletionResponse = InferenceChatCompletionInferenceResult
+
+export interface InferenceChatCompletionStreamingRequest extends RequestBase {
+  inference_id: Id
+  timeout?: Duration
+  body?: InferenceRequestChatCompletion
+}
+
+export type InferenceChatCompletionStreamingResponse = StreamResult
+
 export interface InferenceChatCompletionUnifiedRequest extends RequestBase {
   inference_id: Id
   timeout?: Duration
@@ -16318,14 +16334,6 @@ export interface InferenceInferenceRequest extends RequestBase {
 }
 
 export type InferenceInferenceResponse = InferenceInferenceResult
-
-export interface InferenceNonStreamingChatCompletionRequest extends RequestBase {
-  inference_id: Id
-  timeout?: Duration
-  body?: InferenceRequestChatCompletion
-}
-
-export type InferenceNonStreamingChatCompletionResponse = InferenceChatCompletionInferenceResult
 
 export interface InferencePutRequest extends RequestBase {
   task_type?: InferenceTaskType
