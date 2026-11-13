@@ -128643,7 +128643,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L237-L291"
     },
     {
       "codegenNames": [
@@ -128834,7 +128834,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L358-L363"
+      "specLocation": "_types/mapping/core.ts#L376-L381"
     },
     {
       "kind": "enum",
@@ -129982,7 +129982,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L402-L442"
+      "specLocation": "_types/mapping/core.ts#L420-L460"
     },
     {
       "kind": "enum",
@@ -130082,7 +130082,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L365-L368"
+      "specLocation": "_types/mapping/core.ts#L383-L386"
     },
     {
       "kind": "enum",
@@ -130460,7 +130460,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L331-L356"
+      "specLocation": "_types/mapping/core.ts#L349-L374"
     },
     {
       "inherits": {
@@ -130484,7 +130484,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L238-L240"
+      "specLocation": "_types/mapping/core.ts#L256-L258"
     },
     {
       "inherits": {
@@ -130519,7 +130519,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L242-L245"
+      "specLocation": "_types/mapping/core.ts#L260-L263"
     },
     {
       "inherits": {
@@ -130554,7 +130554,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L247-L250"
+      "specLocation": "_types/mapping/core.ts#L265-L268"
     },
     {
       "inherits": {
@@ -130689,7 +130689,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L312-L323"
+      "specLocation": "_types/mapping/core.ts#L330-L341"
     },
     {
       "inherits": {
@@ -130902,7 +130902,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L370-L387"
+      "specLocation": "_types/mapping/core.ts#L388-L405"
     },
     {
       "inherits": {
@@ -130926,7 +130926,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L389-L391"
+      "specLocation": "_types/mapping/core.ts#L407-L409"
     },
     {
       "inherits": {
@@ -130967,7 +130967,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L393-L400"
+      "specLocation": "_types/mapping/core.ts#L411-L418"
     },
     {
       "inherits": {
@@ -131446,7 +131446,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L228"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L235"
     },
     {
       "kind": "interface",
@@ -131468,7 +131468,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L286-L294"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L293-L301"
     },
     {
       "inherits": {
@@ -131824,7 +131824,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L252-L259"
+      "specLocation": "_types/mapping/core.ts#L270-L277"
     },
     {
       "kind": "enum",
@@ -131843,7 +131843,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L444-L448"
+      "specLocation": "_types/mapping/core.ts#L462-L466"
     },
     {
       "kind": "interface",
@@ -131969,7 +131969,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L273-L310"
+      "specLocation": "_types/mapping/core.ts#L291-L328"
     },
     {
       "kind": "interface",
@@ -132214,7 +132214,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L261-L271"
+      "specLocation": "_types/mapping/core.ts#L279-L289"
     },
     {
       "inherits": {
@@ -133125,7 +133125,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L222-L225"
+      "specLocation": "_types/mapping/core.ts#L240-L243"
     },
     {
       "inherits": {
@@ -133386,9 +133386,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L207-L210"
+      "specLocation": "_types/mapping/core.ts#L207-L219"
     },
     {
       "inherits": {
@@ -133421,9 +133440,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L212-L215"
+      "specLocation": "_types/mapping/core.ts#L221-L233"
     },
     {
       "inherits": {
@@ -133469,7 +133507,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L232-L236"
+      "specLocation": "_types/mapping/core.ts#L250-L254"
     },
     {
       "inherits": {
@@ -133504,7 +133542,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L217-L220"
+      "specLocation": "_types/mapping/core.ts#L235-L238"
     },
     {
       "inherits": {
@@ -133539,7 +133577,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L227-L230"
+      "specLocation": "_types/mapping/core.ts#L245-L248"
     },
     {
       "inherits": {

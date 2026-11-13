@@ -99274,6 +99274,12 @@
             "x-state": "Experimental; Added in 9.3.0",
             "type": "boolean"
           },
+          "on_disk_merge": {
+            "description": "If `true`, direct I/O is used where possible while merging the vector data of the field, so that a merge does not displace what searches keep in memory.\nIt can be changed with a mapping update, which applies to later merges.",
+            "default": false,
+            "x-state": "Experimental; Added in 9.6.0",
+            "type": "boolean"
+          },
           "flat_index_threshold": {
             "description": "The segment document count threshold below which HNSW graph construction is skipped in favor of brute-force flat\nsearch. `-1` (default) defers to format defaults: `300` for `bbq_hnsw`, `150` for `hnsw`, `int8_hnsw`, and\n`int4_hnsw`. `0` always builds the graph. A positive value overrides the format default.\n\nOnly applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk` index types.",
             "default": -1.0,
@@ -100415,6 +100421,12 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "boolean"
               }
             },
             "required": [
@@ -100439,6 +100451,12 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "boolean"
               }
             },
             "required": [

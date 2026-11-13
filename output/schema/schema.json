@@ -93940,7 +93940,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L222-L225"
+      "specLocation": "_types/mapping/core.ts#L240-L243"
     },
     {
       "kind": "interface",
@@ -94810,6 +94810,25 @@
         {
           "availability": {
             "stack": {
+              "since": "9.6.0",
+              "stability": "experimental"
+            }
+          },
+          "description": "If `true`, direct I/O is used where possible while merging the vector data of the field, so that a merge does not displace what searches keep in memory.\nIt can be changed with a mapping update, which applies to later merges.",
+          "name": "on_disk_merge",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
               "since": "9.4.0",
               "stability": "stable"
             }
@@ -94922,7 +94941,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L228"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L235"
     },
     {
       "kind": "interface",
@@ -94944,7 +94963,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L286-L294"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L293-L301"
     },
     {
       "kind": "enum",
@@ -94996,7 +95015,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L237-L291"
     },
     {
       "kind": "interface",
@@ -95647,7 +95666,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L402-L442"
+      "specLocation": "_types/mapping/core.ts#L420-L460"
     },
     {
       "kind": "interface",
@@ -96936,7 +96955,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L358-L363"
+      "specLocation": "_types/mapping/core.ts#L376-L381"
     },
     {
       "kind": "interface",
@@ -96969,9 +96988,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L207-L210"
+      "specLocation": "_types/mapping/core.ts#L207-L219"
     },
     {
       "kind": "interface",
@@ -97411,9 +97449,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L212-L215"
+      "specLocation": "_types/mapping/core.ts#L221-L233"
     },
     {
       "kind": "interface",
@@ -97518,7 +97575,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L331-L356"
+      "specLocation": "_types/mapping/core.ts#L349-L374"
     },
     {
       "kind": "enum",
@@ -97881,7 +97938,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L238-L240"
+      "specLocation": "_types/mapping/core.ts#L256-L258"
     },
     {
       "kind": "interface",
@@ -98540,7 +98597,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L242-L245"
+      "specLocation": "_types/mapping/core.ts#L260-L263"
     },
     {
       "kind": "interface",
@@ -98575,7 +98632,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L247-L250"
+      "specLocation": "_types/mapping/core.ts#L265-L268"
     },
     {
       "kind": "enum",
@@ -98594,7 +98651,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L444-L448"
+      "specLocation": "_types/mapping/core.ts#L462-L466"
     },
     {
       "kind": "interface",
@@ -98641,7 +98698,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L252-L259"
+      "specLocation": "_types/mapping/core.ts#L270-L277"
     },
     {
       "kind": "interface",
@@ -98940,7 +98997,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L232-L236"
+      "specLocation": "_types/mapping/core.ts#L250-L254"
     },
     {
       "kind": "interface",
@@ -99075,7 +99132,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L312-L323"
+      "specLocation": "_types/mapping/core.ts#L330-L341"
     },
     {
       "kind": "interface",
@@ -99236,7 +99293,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L273-L310"
+      "specLocation": "_types/mapping/core.ts#L291-L328"
     },
     {
       "kind": "interface",
@@ -99342,7 +99399,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L217-L220"
+      "specLocation": "_types/mapping/core.ts#L235-L238"
     },
     {
       "kind": "interface",
@@ -99551,7 +99608,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L261-L271"
+      "specLocation": "_types/mapping/core.ts#L279-L289"
     },
     {
       "kind": "enum",
@@ -99729,7 +99786,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L365-L368"
+      "specLocation": "_types/mapping/core.ts#L383-L386"
     },
     {
       "kind": "interface",
@@ -99942,7 +99999,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L370-L387"
+      "specLocation": "_types/mapping/core.ts#L388-L405"
     },
     {
       "kind": "enum",
@@ -100325,7 +100382,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L227-L230"
+      "specLocation": "_types/mapping/core.ts#L245-L248"
     },
     {
       "kind": "interface",
@@ -100349,7 +100406,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L389-L391"
+      "specLocation": "_types/mapping/core.ts#L407-L409"
     },
     {
       "kind": "interface",
@@ -100390,7 +100447,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L393-L400"
+      "specLocation": "_types/mapping/core.ts#L411-L418"
     },
     {
       "kind": "interface",

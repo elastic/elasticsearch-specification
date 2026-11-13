@@ -6287,6 +6287,7 @@ export interface MappingDenseVectorIndexOptions {
   type: MappingDenseVectorIndexOptionsType
   rescore_vector?: MappingDenseVectorIndexOptionsRescoreVector
   on_disk_rescore?: boolean
+  on_disk_merge?: boolean
   flat_index_threshold?: integer
   cluster_size?: integer
   default_visit_percentage?: float
@@ -6489,6 +6490,7 @@ export type MappingIndexOptions = 'docs' | 'freqs' | 'positions' | 'offsets'
 export interface MappingIntegerNumberProperty extends MappingNumberPropertyBase {
   type: 'integer'
   null_value?: integer
+  index_terms?: boolean
 }
 
 export interface MappingIntegerRangeProperty extends MappingRangePropertyBase {
@@ -6535,6 +6537,7 @@ export interface MappingKeywordProperty extends MappingDocValuesPropertyBase {
 export interface MappingLongNumberProperty extends MappingNumberPropertyBase {
   type: 'long'
   null_value?: long
+  index_terms?: boolean
 }
 
 export interface MappingLongRangeProperty extends MappingRangePropertyBase {
