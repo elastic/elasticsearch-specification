@@ -47419,9 +47419,6 @@
                 "default": 0.0,
                 "type": "number"
               },
-              "routing": {
-                "type": "string"
-              },
               "stop_words": {
                 "description": "An array of stop words.\nAny word in this set is ignored.",
                 "allOf": [
@@ -47441,21 +47438,6 @@
                     "items": {
                       "$ref": "#/components/schemas/_types.query_dsl.Like"
                     }
-                  }
-                ]
-              },
-              "version": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionNumber"
-                  }
-                ]
-              },
-              "version_type": {
-                "default": "'internal'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionType"
                   }
                 ]
               }
@@ -67711,7 +67693,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.mapping.SparseVectorIndexOptions": {
         "type": "object",

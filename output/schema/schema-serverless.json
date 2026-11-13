@@ -92555,17 +92555,6 @@
           }
         },
         {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "An array of stop words.\nAny word in this set is ignored.",
           "name": "stop_words",
           "required": false,
@@ -92603,32 +92592,9 @@
             ],
             "kind": "union_of"
           }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "serverDefault": "'internal'",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L86-L171"
+      "specLocation": "_types/query_dsl/specialized.ts#L86-L166"
     },
     {
       "codegenNames": [
@@ -92643,7 +92609,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L197-L202",
+      "specLocation": "_types/query_dsl/specialized.ts#L192-L197",
       "type": {
         "items": [
           {
@@ -92775,7 +92741,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L173-L195"
+      "specLocation": "_types/query_dsl/specialized.ts#L168-L190"
     },
     {
       "kind": "enum",
@@ -93486,7 +93452,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L204-L244"
+      "specLocation": "_types/query_dsl/specialized.ts#L199-L239"
     },
     {
       "extDocId": "query-dsl-pinned-query",
@@ -93547,7 +93513,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L246-L266",
+      "specLocation": "_types/query_dsl/specialized.ts#L241-L261",
       "variants": {
         "kind": "container"
       }
@@ -93584,7 +93550,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L268-L277"
+      "specLocation": "_types/query_dsl/specialized.ts#L263-L272"
     },
     {
       "extDocId": "query-dsl-prefix-query",
@@ -94421,7 +94387,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L308-L334"
+      "specLocation": "_types/query_dsl/specialized.ts#L303-L329"
     },
     {
       "inherits": {
@@ -94449,7 +94415,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L290-L295"
+      "specLocation": "_types/query_dsl/specialized.ts#L285-L290"
     },
     {
       "kind": "interface",
@@ -94458,7 +94424,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L279-L279"
+      "specLocation": "_types/query_dsl/specialized.ts#L274-L274"
     },
     {
       "inherits": {
@@ -94486,7 +94452,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L283-L288"
+      "specLocation": "_types/query_dsl/specialized.ts#L278-L283"
     },
     {
       "inherits": {
@@ -94501,7 +94467,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L281-L281"
+      "specLocation": "_types/query_dsl/specialized.ts#L276-L276"
     },
     {
       "inherits": {
@@ -94541,7 +94507,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L297-L306"
+      "specLocation": "_types/query_dsl/specialized.ts#L292-L301"
     },
     {
       "extDocId": "query-dsl-regexp-query",
@@ -94707,7 +94673,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L397-L405"
+      "specLocation": "_types/query_dsl/specialized.ts#L392-L400"
     },
     {
       "extDocId": "query-dsl-script-query",
@@ -94737,7 +94703,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L336-L345"
+      "specLocation": "_types/query_dsl/specialized.ts#L331-L340"
     },
     {
       "extDocId": "query-dsl-script-score-query",
@@ -94791,7 +94757,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L347-L364"
+      "specLocation": "_types/query_dsl/specialized.ts#L342-L359"
     },
     {
       "extDocId": "query-dsl-semantic-query",
@@ -94894,7 +94860,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L366-L380"
+      "specLocation": "_types/query_dsl/specialized.ts#L361-L375"
     },
     {
       "kind": "interface",
@@ -94940,7 +94906,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L382-L395"
+      "specLocation": "_types/query_dsl/specialized.ts#L377-L390"
     },
     {
       "extDocId": "query-dsl-simple-query-string-query",
@@ -132013,7 +131979,10 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L26"
+      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L29",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
