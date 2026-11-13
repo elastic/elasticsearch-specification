@@ -125,6 +125,7 @@ export default defineConfig([
       'es-spec-validator/prefer-generic-array-for-unions': 'error',
       'es-spec-validator/prefer-internal-variants': 'error',
       'es-spec-validator/request-path-parts-match-urls': 'error',
+      'es-spec-validator/rest-spec-name-matches-location': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {

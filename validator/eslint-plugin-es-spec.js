@@ -43,6 +43,7 @@ import noStringifiedInRequests from './rules/no-stringified-in-requests.js'
 import preferGenericArrayForUnions from './rules/prefer-generic-array-for-unions.js'
 import preferInternalVariants from './rules/prefer-internal-variants.js'
 import requestPathPartsMatchUrls from './rules/request-path-parts-match-urls.js'
+import restSpecNameMatchesLocation from './rules/rest-spec-name-matches-location.js'
 
 export default {
   rules: {
@@ -72,6 +73,7 @@ export default {
     'no-stringified-in-requests': noStringifiedInRequests,
     'prefer-generic-array-for-unions': preferGenericArrayForUnions,
     'prefer-internal-variants': preferInternalVariants,
-    'request-path-parts-match-urls': requestPathPartsMatchUrls
+    'request-path-parts-match-urls': requestPathPartsMatchUrls,
+    'rest-spec-name-matches-location': restSpecNameMatchesLocation
   }
 }
