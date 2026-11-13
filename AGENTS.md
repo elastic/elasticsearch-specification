@@ -102,9 +102,10 @@ case. Use the spelling that Elasticsearch writes as the member, in most cases th
 with `@aliases` when the source or the documentation shows that users send it or that Elasticsearch returns it, for
 example the upper-case name. An alias is one exact spelling, and some values come back in the spelling of the request:
 settings are stored as text, so `ReQuEsT` in a request is `ReQuEsT` in the response. No member and no alias matches that
-text. Code that reads the specification, and each client made from it, must expect such a value for each enum, also for
-an exhaustive one, and must compare the enum values of a response without regard to letter case.
-`docs/modeling-guide.md` has the same rule in its Enum section.
+text. Do not add `@non_exhaustive` and do not keep a `string` because of the letter case alone. Code that reads the
+specification, and each client made from it, must expect such a value for each enum, also for an exhaustive one, and
+must compare the enum values of a response without regard to letter case. `docs/modeling-guide.md` has the same rule in
+its Enum section.
 
 **One value or a list.** A parser that accepts a single value where it declares an array gives a `T | T[]` union. A
 parser that accepts an array only gives `T[]`. Do not add the single-value form because other properties have it.

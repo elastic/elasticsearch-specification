@@ -158,7 +158,8 @@ An alias is one exact spelling, so the specification cannot list each mix of upp
 values come back in the spelling of the request. Index settings are an example: Elasticsearch accepts
 `index.translog.durability` in any letter case, stores the text of the request and returns that text. A response can
 then contain a member of an enum in a spelling such as `ReQuEsT`, which matches no member and no alias. The
-specification does not mark the enums that can come back this way.
+specification does not mark the enums that can come back this way. The letter case alone is no reason for
+`@non_exhaustive` or for a `string` type, because the set of values is still closed.
 
 Code generators and other consumers of the specification must expect such a value for each enum, also for an exhaustive
 one. A consumer that compares the enum value of a response with the members and their aliases without regard to letter
