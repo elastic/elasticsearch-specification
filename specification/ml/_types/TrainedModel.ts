@@ -153,7 +153,7 @@ export class TrainedModelSizeStats {
   /** The amount of memory required to load the model in bytes. */
   required_native_memory_bytes: ByteSize
   /**
-   * The native memory (resident set size) that the native process of the deployed model currently uses, as reported by the operating system and summed across all of its allocations.
+   * The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.
    * Unlike `required_native_memory_bytes`, which is an estimate, this is a measured value.
    * It is returned only after the native process has reported a measurement.
    * @availability stack since=9.6.0
