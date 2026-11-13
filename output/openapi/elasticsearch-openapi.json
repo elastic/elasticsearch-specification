@@ -133451,7 +133451,10 @@
               }
             ]
           }
-        }
+        },
+        "required": [
+          "date_histogram"
+        ]
       },
       "rollup._types.DateHistogramGrouping": {
         "type": "object",

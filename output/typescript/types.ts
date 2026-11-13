@@ -21772,7 +21772,7 @@ export interface RollupFieldMetric {
 }
 
 export interface RollupGroupings {
-  date_histogram?: RollupDateHistogramGrouping
+  date_histogram: RollupDateHistogramGrouping
   histogram?: RollupHistogramGrouping
   terms?: RollupTermsGrouping
 }
