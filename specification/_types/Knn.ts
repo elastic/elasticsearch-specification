@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Field } from '@_types/common'
+import { Field, IndexName } from '@_types/common'
 import { float, integer } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
 import { InnerHits } from '@global/search/_types/hits'
@@ -173,7 +173,7 @@ export interface LookupQueryVectorBuilder {
   /** The ID of the document to fetch the vector from */
   id: string
   /** The name of the index to fetch the document from */
-  index: string
+  index: IndexName
   /** The name of the field containing the vector */
   path: string
   /** The routing value to use when fetching the document */

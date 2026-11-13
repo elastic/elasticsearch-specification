@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { ByteSize, NodeId } from '@_types/common'
+import { ByteSize, NodeId, NodeName } from '@_types/common'
 
 export class CircuitBreakerRecord {
   /**
@@ -29,7 +29,7 @@ export class CircuitBreakerRecord {
    * Node name
    * @aliases nn
    */
-  node_name?: string
+  node_name?: NodeName
   /**
    * Breaker name
    * @aliases br

@@ -17,14 +17,15 @@
  * under the License.
  */
 
-import { NodeId } from '@_types/common'
+import { NodeId, NodeName } from '@_types/common'
+import { Host, Ip } from '@_types/Networking'
 
 export class ThreadPoolRecord {
   /**
    * The node name.
    * @aliases nn
    */
-  'node_name'?: string
+  'node_name'?: NodeName
   /**
    * The persistent node identifier.
    * @aliases id
@@ -44,12 +45,12 @@ export class ThreadPoolRecord {
    * The host name for the current node.
    * @aliases h
    */
-  'host'?: string
+  'host'?: Host
   /**
    * The IP address for the current node.
    * @aliases i
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * The bound transport port for the current node.
    * @aliases po

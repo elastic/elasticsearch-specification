@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Host, Ip } from '@_types/Networking'
+
 export class NodeAttributesRecord {
   /**
    * The node name.
@@ -34,12 +36,12 @@ export class NodeAttributesRecord {
    * The host name.
    * @aliases h
    */
-  'host'?: string
+  'host'?: Host
   /**
    * The IP address.
    * @aliases i
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * The bound transport port.
    */

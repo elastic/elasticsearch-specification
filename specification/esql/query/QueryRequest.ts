@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { MediaType, ProjectRouting } from '@_types/common'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
+import { TimeZone } from '@_types/Time'
 import { EsqlFormat } from '@esql/_types/QueryParameters'
 import { TableValuesContainer } from '@esql/_types/TableValuesContainer'
 import { ESQLParams, EsqlQuerySettings } from '@esql/_types/types'
@@ -90,7 +91,7 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable
      * @doc_id esql-timezones
      */
-    time_zone?: string
+    time_zone?: TimeZone
     /**
      * Returns results (especially dates) formatted per the conventions of the locale.
      * @doc_id esql-returning-localized-results

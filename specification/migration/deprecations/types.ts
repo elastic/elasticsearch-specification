@@ -17,8 +17,7 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
-import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+import { Metadata } from '@_types/common'
 
 export enum DeprecationLevel {
   none,
@@ -43,5 +42,5 @@ export class Deprecation {
    */
   url: string
   resolve_during_rolling_upgrade: boolean
-  _meta?: Dictionary<string, UserDefinedValue>
+  _meta?: Metadata
 }

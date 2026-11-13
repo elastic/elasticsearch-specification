@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Username } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
 
@@ -84,5 +85,5 @@ export class Pipeline {
   /**
    * The user who last updated the pipeline.
    */
-  username: string
+  username: Username
 }

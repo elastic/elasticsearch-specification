@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, Indices } from '@_types/common'
+import { IndexName, Indices, NodeId } from '@_types/common'
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -106,7 +106,7 @@ export class MasterIsStableIndicatorExceptionFetchingHistory {
 }
 export class MasterIsStableIndicatorClusterFormationNode {
   name?: string
-  node_id: string
+  node_id: NodeId
   cluster_formation_message: string
 }
 
