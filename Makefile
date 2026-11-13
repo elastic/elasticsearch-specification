@@ -73,15 +73,28 @@ filter-for-serverless: ## Generate the serverless version from the compiled sche
 dump-routes: ## Create a new schema with all generics expanded
 	@npm run dump-routes --prefix compiler
 
-overlay-docs: ## Apply overlays to OpenAPI documents
+overlay-docs: ## Apply overlays to OpenAPI documents for Bump.sh
 	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi-docs.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi-docs.tmp1.json"
 	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi-docs.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi-docs.tmp2.json"
-	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi-docs.tmp2.json --ext json -o output/openapi/elasticsearch-serverless-openapi-docs-final.json
+	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi-docs.tmp2.json" "docs/overlays/elasticsearch-shared-bump-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi-docs.tmp3.json"
+	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi-docs.tmp3.json --ext json -o output/openapi/elasticsearch-serverless-openapi-docs-final.json
 	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.json" "docs/overlays/elasticsearch-openapi-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.tmp1.json"
 	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.tmp2.json"
-	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi-docs.tmp2.json --ext json -o output/openapi/elasticsearch-openapi-docs-final.json
+	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.tmp2.json" "docs/overlays/elasticsearch-openapi-bump-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.tmp3.json"
+	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.tmp3.json" "docs/overlays/elasticsearch-shared-bump-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.tmp4.json"
+	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi-docs.tmp4.json --ext json -o output/openapi/elasticsearch-openapi-docs-final.json
 	rm output/openapi/elasticsearch-serverless-openapi-docs.tmp*.json
 	rm output/openapi/elasticsearch-openapi-docs.tmp*.json
+
+overlay-api-explorer: ## Apply overlays to OpenAPI documents for API Explorer, keeping the schema detail the Bump.sh-only overlays remove
+	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi-docs.json" "docs/overlays/elasticsearch-serverless-openapi-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp1.json"
+	@npx bump overlay "output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp2.json"
+	@npx @redocly/cli bundle output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp2.json --ext json -o output/openapi/elasticsearch-serverless-openapi-docs-api-explorer.json
+	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.json" "docs/overlays/elasticsearch-openapi-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.ae-tmp1.json"
+	@npx bump overlay "output/openapi/elasticsearch-openapi-docs.ae-tmp1.json" "docs/overlays/elasticsearch-shared-overlays.yaml" > "output/openapi/elasticsearch-openapi-docs.ae-tmp2.json"
+	@npx @redocly/cli bundle output/openapi/elasticsearch-openapi-docs.ae-tmp2.json --ext json -o output/openapi/elasticsearch-openapi-docs-api-explorer.json
+	rm output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp*.json
+	rm output/openapi/elasticsearch-openapi-docs.ae-tmp*.json
 
 generate-language-examples:
 	@npm update --prefix docs/examples @elastic/request-converter @elastic/request-converter-dotnet
