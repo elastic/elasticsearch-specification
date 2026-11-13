@@ -161,7 +161,7 @@ export class TrainedModelSizeStats {
    */
   runtime_native_memory_bytes?: ByteSize
   /**
-   * The peak value of `runtime_native_memory_bytes` since the deployment started.
+   * The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.
    * It is returned only after the native process has reported a measurement.
    * @availability stack since=9.6.0
    * @availability serverless
