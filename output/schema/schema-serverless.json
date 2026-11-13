@@ -114891,6 +114891,28 @@
           }
         },
         {
+          "name": "into_bit_set",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "match",
           "required": true,
           "type": {
@@ -115001,7 +115023,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L302-L323"
+      "specLocation": "_global/search/_types/profile.ts#L302-L325"
     },
     {
       "kind": "interface",
@@ -115078,7 +115100,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L325-L331"
+      "specLocation": "_global/search/_types/profile.ts#L327-L333"
     },
     {
       "kind": "interface",
@@ -115166,7 +115188,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L333-L340"
+      "specLocation": "_global/search/_types/profile.ts#L335-L342"
     },
     {
       "kind": "interface",
@@ -115264,7 +115286,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L342-L351"
+      "specLocation": "_global/search/_types/profile.ts#L344-L353"
     },
     {
       "kind": "interface",
@@ -115299,7 +115321,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L353-L356"
+      "specLocation": "_global/search/_types/profile.ts#L355-L358"
     },
     {
       "kind": "type_alias",
