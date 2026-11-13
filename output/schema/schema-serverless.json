@@ -81588,7 +81588,7 @@
         "name": "SequenceNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L129-L129",
+      "specLocation": "_types/common.ts#L130-L130",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -81603,7 +81603,7 @@
         "name": "VersionNumber",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L104-L104",
+      "specLocation": "_types/common.ts#L105-L105",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -81983,7 +81983,7 @@
         "name": "ExpandWildcards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L218-L218",
+      "specLocation": "_types/common.ts#L221-L221",
       "type": {
         "items": [
           {
@@ -82035,7 +82035,7 @@
         "name": "ExpandWildcard",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L202-L216"
+      "specLocation": "_types/common.ts#L205-L219"
     },
     {
       "kind": "type_alias",
@@ -82098,7 +82098,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L298-L303"
+      "specLocation": "_types/common.ts#L301-L306"
     },
     {
       "kind": "interface",
@@ -83876,7 +83876,7 @@
         "name": "Metadata",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L101-L101",
+      "specLocation": "_types/common.ts#L102-L102",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -85204,7 +85204,7 @@
         "name": "Field",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L139-L140",
+      "specLocation": "_types/common.ts#L141-L142",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -85362,7 +85362,7 @@
         "name": "MinimumShouldMatch",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L164-L168",
+      "specLocation": "_types/common.ts#L166-L171",
       "type": {
         "items": [
           {
@@ -86067,7 +86067,7 @@
         "name": "Duration",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L52-L59",
+      "specLocation": "_types/Time.ts#L53-L61",
       "type": {
         "items": [
           {
@@ -87584,7 +87584,7 @@
         "name": "MultiTermQueryRewrite",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L136-L137",
+      "specLocation": "_types/common.ts#L138-L139",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -87601,7 +87601,7 @@
         "name": "Fuzziness",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L134-L135",
+      "specLocation": "_types/common.ts#L135-L137",
       "type": {
         "items": [
           {
@@ -89540,7 +89540,7 @@
         "name": "Fields",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L141-L141",
+      "specLocation": "_types/common.ts#L143-L143",
       "type": {
         "items": [
           {
@@ -89841,7 +89841,7 @@
         "name": "Missing",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L567-L567",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L568-L568",
       "type": {
         "items": [
           {
@@ -90541,7 +90541,7 @@
         "name": "RelationName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L132-L132",
+      "specLocation": "_types/common.ts#L133-L133",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -91787,7 +91787,7 @@
         "name": "TimeZone",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L47-L47",
+      "specLocation": "_types/Time.ts#L48-L48",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -92764,7 +92764,7 @@
         "name": "VersionType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L108-L123"
+      "specLocation": "_types/common.ts#L109-L124"
     },
     {
       "description": "Language value, such as _arabic_ or _thai_. Defaults to _english_.\nEach language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.\nAlso accepts an array of stop words.",
@@ -92773,7 +92773,7 @@
         "name": "StopWords",
         "namespace": "_types.analysis"
       },
-      "specLocation": "_types/analysis/StopWords.ts#L60-L66",
+      "specLocation": "_types/analysis/StopWords.ts#L60-L67",
       "type": {
         "items": [
           {
@@ -94182,7 +94182,7 @@
         "name": "DateFormat",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L49-L50",
+      "specLocation": "_types/Time.ts#L50-L51",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -96667,7 +96667,7 @@
         "name": "DateTime",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L22-L27",
+      "specLocation": "_types/Time.ts#L22-L28",
       "type": {
         "items": [
           {
@@ -96709,7 +96709,7 @@
         "name": "EpochTime",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L40-L40",
+      "specLocation": "_types/Time.ts#L41-L41",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -97996,7 +97996,7 @@
         "name": "MissingOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L568-L572"
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L569-L573"
     },
     {
       "kind": "enum",
@@ -98145,7 +98145,7 @@
         "name": "DurationLarge",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L61-L66",
+      "specLocation": "_types/Time.ts#L63-L68",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -98773,7 +98773,7 @@
         "name": "DateMath",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L42-L42",
+      "specLocation": "_types/Time.ts#L43-L43",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -100876,7 +100876,7 @@
         "namespace": "_types"
       },
       "properties": [],
-      "specLocation": "_types/common.ts#L161-L162"
+      "specLocation": "_types/common.ts#L163-L164"
     },
     {
       "inherits": {
@@ -106820,7 +106820,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L305-L318"
+      "specLocation": "_types/common.ts#L308-L321"
     },
     {
       "kind": "interface",
@@ -108621,7 +108621,7 @@
         "name": "AggregateName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L146-L150",
+      "specLocation": "_types/common.ts#L148-L152",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -113536,7 +113536,7 @@
         "name": "DurationValue",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L68-L68",
+      "specLocation": "_types/Time.ts#L70-L70",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -116168,7 +116168,7 @@
         "name": "SuggestionName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L152-L156",
+      "specLocation": "_types/common.ts#L154-L158",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -117514,7 +117514,7 @@
         "name": "HttpHeaders",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L159-L159",
+      "specLocation": "_types/common.ts#L161-L161",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -117929,7 +117929,7 @@
         "name": "ByteSize",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L98-L99",
+      "specLocation": "_types/common.ts#L98-L100",
       "type": {
         "items": [
           {
@@ -117982,7 +117982,7 @@
         "name": "Bytes",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L170-L182"
+      "specLocation": "_types/common.ts#L173-L185"
     },
     {
       "kind": "type_alias",
@@ -118022,7 +118022,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L421-L427"
+      "specLocation": "_types/common.ts#L424-L430"
     },
     {
       "kind": "type_alias",
@@ -118030,7 +118030,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L429-L429",
+      "specLocation": "_types/common.ts#L432-L432",
       "type": {
         "items": [
           {
@@ -118150,7 +118150,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L431-L485"
+      "specLocation": "_types/common.ts#L434-L488"
     },
     {
       "kind": "type_alias",
@@ -118158,7 +118158,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L487-L487",
+      "specLocation": "_types/common.ts#L490-L490",
       "type": {
         "items": [
           {
@@ -118198,7 +118198,7 @@
         "name": "Conflicts",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L184-L193"
+      "specLocation": "_types/common.ts#L187-L196"
     },
     {
       "kind": "enum",
@@ -118364,7 +118364,7 @@
         "name": "HealthStatus",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L220-L242"
+      "specLocation": "_types/common.ts#L223-L245"
     },
     {
       "kind": "type_alias",
@@ -118493,7 +118493,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L266-L270"
+      "specLocation": "_types/common.ts#L269-L273"
     },
     {
       "kind": "enum",
@@ -118710,7 +118710,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L272-L276"
+      "specLocation": "_types/common.ts#L275-L279"
     },
     {
       "kind": "enum",
@@ -118753,7 +118753,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L278-L287"
+      "specLocation": "_types/common.ts#L281-L290"
     },
     {
       "kind": "type_alias",
@@ -118761,7 +118761,7 @@
         "name": "Password",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L196-L196",
+      "specLocation": "_types/common.ts#L199-L199",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -118776,7 +118776,7 @@
         "name": "Percentage",
         "namespace": "_types"
       },
-      "specLocation": "_types/Numeric.ts#L28-L28",
+      "specLocation": "_types/Numeric.ts#L29-L29",
       "type": {
         "items": [
           {
@@ -118818,7 +118818,7 @@
         "name": "PropertyName",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L131-L131",
+      "specLocation": "_types/common.ts#L132-L132",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -118845,7 +118845,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L289-L296"
+      "specLocation": "_types/common.ts#L292-L299"
     },
     {
       "kind": "enum",
@@ -119047,7 +119047,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L404-L409",
+      "specLocation": "_types/common.ts#L407-L412",
       "type": {
         "items": [
           {
@@ -119080,7 +119080,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L411-L419"
+      "specLocation": "_types/common.ts#L414-L422"
     },
     {
       "kind": "type_alias",
@@ -119103,7 +119103,7 @@
         "name": "TaskId",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L133-L133",
+      "specLocation": "_types/common.ts#L134-L134",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119128,7 +119128,7 @@
         "name": "ThreadSortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L333-L338"
+      "specLocation": "_types/common.ts#L336-L341"
     },
     {
       "kind": "enum",
@@ -119158,7 +119158,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L320-L331"
+      "specLocation": "_types/common.ts#L323-L334"
     },
     {
       "description": "Time of day, expressed as HH:MM:SS",
@@ -119167,7 +119167,7 @@
         "name": "TimeOfDay",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L44-L45",
+      "specLocation": "_types/Time.ts#L45-L46",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119212,7 +119212,7 @@
         "name": "TimeUnit",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L70-L78"
+      "specLocation": "_types/Time.ts#L72-L80"
     },
     {
       "kind": "type_alias",
@@ -119236,7 +119236,7 @@
         "name": "UnitFloatMillis",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L37-L38",
+      "specLocation": "_types/Time.ts#L38-L39",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119252,7 +119252,7 @@
         "name": "UnitMillis",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L33-L34",
+      "specLocation": "_types/Time.ts#L34-L35",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119268,7 +119268,7 @@
         "name": "UnitNanos",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L35-L36",
+      "specLocation": "_types/Time.ts#L36-L37",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119284,7 +119284,7 @@
         "name": "UnitSeconds",
         "namespace": "_types"
       },
-      "specLocation": "_types/Time.ts#L29-L30",
+      "specLocation": "_types/Time.ts#L30-L31",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119299,7 +119299,7 @@
         "name": "Username",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L195-L195",
+      "specLocation": "_types/common.ts#L198-L198",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119314,7 +119314,7 @@
         "name": "Uuid",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L126-L126",
+      "specLocation": "_types/common.ts#L127-L127",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119329,7 +119329,7 @@
         "name": "VersionString",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L106-L106",
+      "specLocation": "_types/common.ts#L107-L107",
       "type": {
         "kind": "instance_of",
         "type": {
@@ -119352,7 +119352,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L340-L344"
+      "specLocation": "_types/common.ts#L343-L347"
     },
     {
       "codegenNames": [
@@ -119364,7 +119364,7 @@
         "name": "WaitForActiveShards",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L143-L144",
+      "specLocation": "_types/common.ts#L145-L146",
       "type": {
         "items": [
           {
@@ -119411,7 +119411,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L346-L353"
+      "specLocation": "_types/common.ts#L349-L356"
     },
     {
       "kind": "type_alias",
@@ -139637,7 +139637,7 @@
         "name": "WaitForNodes",
         "namespace": "cluster.health"
       },
-      "specLocation": "cluster/health/types.ts#L47-L47",
+      "specLocation": "cluster/health/types.ts#L48-L48",
       "type": {
         "items": [
           {
@@ -144612,7 +144612,7 @@
         "name": "ContextualAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1545-L1547"
+      "specLocation": "inference/_types/CommonTypes.ts#L1546-L1548"
     },
     {
       "kind": "enum",
@@ -144673,7 +144673,7 @@
         "name": "CustomTaskParameter",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1524-L1524",
+      "specLocation": "inference/_types/CommonTypes.ts#L1525-L1525",
       "type": {
         "items": [
           {
@@ -145015,7 +145015,7 @@
         "name": "DeepSeekServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1608-L1610"
+      "specLocation": "inference/_types/CommonTypes.ts#L1609-L1611"
     },
     {
       "description": "Dense Embedding results containing bytes are represented as Dense\nVectors of bytes.",
@@ -145066,7 +145066,7 @@
         "name": "ElasticsearchServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1684-L1686"
+      "specLocation": "inference/_types/CommonTypes.ts#L1685-L1687"
     },
     {
       "kind": "enum",
@@ -145085,7 +145085,7 @@
         "name": "ElasticsearchTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1678-L1682"
+      "specLocation": "inference/_types/CommonTypes.ts#L1679-L1683"
     },
     {
       "kind": "enum",
@@ -145098,7 +145098,7 @@
         "name": "ElserServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1720-L1722"
+      "specLocation": "inference/_types/CommonTypes.ts#L1721-L1723"
     },
     {
       "kind": "enum",
@@ -145111,7 +145111,7 @@
         "name": "ElserTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1716-L1718"
+      "specLocation": "inference/_types/CommonTypes.ts#L1717-L1719"
     },
     {
       "description": "Allows specifying multimodal inputs for the `embedding` task.",
@@ -145354,7 +145354,7 @@
         "name": "FireworksAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2186-L2188"
+      "specLocation": "inference/_types/CommonTypes.ts#L2187-L2189"
     },
     {
       "kind": "enum",
@@ -145373,7 +145373,7 @@
         "name": "FireworksAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2190-L2194"
+      "specLocation": "inference/_types/CommonTypes.ts#L2191-L2195"
     },
     {
       "kind": "enum",
@@ -145392,7 +145392,7 @@
         "name": "FireworksAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2180-L2184"
+      "specLocation": "inference/_types/CommonTypes.ts#L2181-L2185"
     },
     {
       "kind": "enum",
@@ -145405,7 +145405,7 @@
         "name": "GoogleAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1747-L1749"
+      "specLocation": "inference/_types/CommonTypes.ts#L1748-L1750"
     },
     {
       "kind": "enum",
@@ -145421,7 +145421,7 @@
         "name": "GoogleAiStudioTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1742-L1745"
+      "specLocation": "inference/_types/CommonTypes.ts#L1743-L1746"
     },
     {
       "kind": "enum",
@@ -145449,7 +145449,7 @@
         "name": "GoogleModelGardenProvider",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1840-L1847"
+      "specLocation": "inference/_types/CommonTypes.ts#L1841-L1848"
     },
     {
       "kind": "enum",
@@ -145462,7 +145462,7 @@
         "name": "GoogleVertexAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1888-L1890"
+      "specLocation": "inference/_types/CommonTypes.ts#L1889-L1891"
     },
     {
       "kind": "enum",
@@ -145484,7 +145484,7 @@
         "name": "GoogleVertexAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1881-L1886"
+      "specLocation": "inference/_types/CommonTypes.ts#L1882-L1887"
     },
     {
       "kind": "enum",
@@ -145497,7 +145497,7 @@
         "name": "GroqServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1920-L1922"
+      "specLocation": "inference/_types/CommonTypes.ts#L1921-L1923"
     },
     {
       "kind": "enum",
@@ -145510,7 +145510,7 @@
         "name": "GroqTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1916-L1918"
+      "specLocation": "inference/_types/CommonTypes.ts#L1917-L1919"
     },
     {
       "kind": "enum",
@@ -145523,7 +145523,7 @@
         "name": "HuggingFaceServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1975-L1977"
+      "specLocation": "inference/_types/CommonTypes.ts#L1976-L1978"
     },
     {
       "kind": "enum",
@@ -145545,7 +145545,7 @@
         "name": "HuggingFaceTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1968-L1973"
+      "specLocation": "inference/_types/CommonTypes.ts#L1969-L1974"
     },
     {
       "kind": "enum",
@@ -145564,7 +145564,7 @@
         "name": "JinaAIElementType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2084-L2088"
+      "specLocation": "inference/_types/CommonTypes.ts#L2085-L2089"
     },
     {
       "kind": "enum",
@@ -145577,7 +145577,7 @@
         "name": "JinaAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2067-L2069"
+      "specLocation": "inference/_types/CommonTypes.ts#L2068-L2070"
     },
     {
       "kind": "enum",
@@ -145596,7 +145596,7 @@
         "name": "JinaAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2071-L2075"
+      "specLocation": "inference/_types/CommonTypes.ts#L2072-L2076"
     },
     {
       "kind": "enum",
@@ -145615,7 +145615,7 @@
         "name": "JinaAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2061-L2065"
+      "specLocation": "inference/_types/CommonTypes.ts#L2062-L2066"
     },
     {
       "kind": "enum",
@@ -145637,7 +145637,7 @@
         "name": "JinaAITextEmbeddingTask",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2077-L2082"
+      "specLocation": "inference/_types/CommonTypes.ts#L2078-L2083"
     },
     {
       "kind": "enum",
@@ -145650,7 +145650,7 @@
         "name": "LlamaServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2128-L2130"
+      "specLocation": "inference/_types/CommonTypes.ts#L2129-L2131"
     },
     {
       "kind": "enum",
@@ -145669,7 +145669,7 @@
         "name": "LlamaSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2132-L2136"
+      "specLocation": "inference/_types/CommonTypes.ts#L2133-L2137"
     },
     {
       "kind": "enum",
@@ -145688,7 +145688,7 @@
         "name": "LlamaTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2122-L2126"
+      "specLocation": "inference/_types/CommonTypes.ts#L2123-L2127"
     },
     {
       "codegenNames": [
@@ -145837,7 +145837,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2336-L2338"
+      "specLocation": "inference/_types/CommonTypes.ts#L2337-L2339"
     },
     {
       "kind": "enum",
@@ -145856,7 +145856,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2304-L2308"
+      "specLocation": "inference/_types/CommonTypes.ts#L2305-L2309"
     },
     {
       "kind": "enum",
@@ -145878,7 +145878,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2329-L2334"
+      "specLocation": "inference/_types/CommonTypes.ts#L2330-L2335"
     },
     {
       "kind": "enum",
@@ -145891,7 +145891,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2382-L2384"
+      "specLocation": "inference/_types/CommonTypes.ts#L2383-L2385"
     },
     {
       "kind": "enum",
@@ -145910,7 +145910,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2386-L2390"
+      "specLocation": "inference/_types/CommonTypes.ts#L2387-L2391"
     },
     {
       "kind": "enum",
@@ -145932,7 +145932,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2375-L2380"
+      "specLocation": "inference/_types/CommonTypes.ts#L2376-L2381"
     },
     {
       "description": "Type representing the different types of reasoning details that can be included in the response from the model.\nCurrently supported only for `elastic` provider.",
@@ -146772,7 +146772,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2466-L2468"
+      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
     },
     {
       "kind": "enum",
@@ -146788,7 +146788,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2461-L2464"
+      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
     },
     {
       "kind": "enum",
@@ -146801,7 +146801,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2515-L2517"
+      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
     },
     {
       "kind": "enum",
@@ -146823,7 +146823,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2508-L2513"
+      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
     },
     {
       "codegenNames": [
@@ -155173,7 +155173,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L355-L368"
+      "specLocation": "_types/common.ts#L358-L371"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -176558,7 +176558,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1549-L1570"
+      "specLocation": "inference/_types/CommonTypes.ts#L1550-L1571"
     },
     {
       "kind": "interface",
@@ -176592,7 +176592,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1572-L1584"
+      "specLocation": "inference/_types/CommonTypes.ts#L1573-L1585"
     },
     {
       "inherits": {
@@ -176864,7 +176864,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1526-L1543"
+      "specLocation": "inference/_types/CommonTypes.ts#L1527-L1544"
     },
     {
       "inherits": {
@@ -176952,7 +176952,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1586-L1606"
+      "specLocation": "inference/_types/CommonTypes.ts#L1587-L1607"
     },
     {
       "inherits": {
@@ -177108,7 +177108,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1612-L1668"
+      "specLocation": "inference/_types/CommonTypes.ts#L1613-L1669"
     },
     {
       "kind": "interface",
@@ -177178,7 +177178,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1670-L1676"
+      "specLocation": "inference/_types/CommonTypes.ts#L1671-L1677"
     },
     {
       "inherits": {
@@ -177264,7 +177264,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1688-L1714"
+      "specLocation": "inference/_types/CommonTypes.ts#L1689-L1715"
     },
     {
       "inherits": {
@@ -177395,7 +177395,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2138-L2178"
+      "specLocation": "inference/_types/CommonTypes.ts#L2139-L2179"
     },
     {
       "kind": "interface",
@@ -177440,7 +177440,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2196-L2213"
+      "specLocation": "inference/_types/CommonTypes.ts#L2197-L2214"
     },
     {
       "inherits": {
@@ -177528,7 +177528,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1724-L1740"
+      "specLocation": "inference/_types/CommonTypes.ts#L1725-L1741"
     },
     {
       "inherits": {
@@ -177705,7 +177705,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1751-L1838"
+      "specLocation": "inference/_types/CommonTypes.ts#L1752-L1839"
     },
     {
       "kind": "interface",
@@ -177767,7 +177767,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1849-L1872"
+      "specLocation": "inference/_types/CommonTypes.ts#L1850-L1873"
     },
     {
       "kind": "interface",
@@ -177789,7 +177789,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1874-L1879"
+      "specLocation": "inference/_types/CommonTypes.ts#L1875-L1880"
     },
     {
       "inherits": {
@@ -177879,7 +177879,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1892-L1914"
+      "specLocation": "inference/_types/CommonTypes.ts#L1893-L1915"
     },
     {
       "inherits": {
@@ -177981,7 +177981,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1924-L1954"
+      "specLocation": "inference/_types/CommonTypes.ts#L1925-L1955"
     },
     {
       "kind": "interface",
@@ -178015,7 +178015,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1956-L1966"
+      "specLocation": "inference/_types/CommonTypes.ts#L1957-L1967"
     },
     {
       "inherits": {
@@ -178157,7 +178157,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1979-L2027"
+      "specLocation": "inference/_types/CommonTypes.ts#L1980-L2028"
     },
     {
       "kind": "interface",
@@ -178215,7 +178215,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2029-L2059"
+      "specLocation": "inference/_types/CommonTypes.ts#L2030-L2060"
     },
     {
       "inherits": {
@@ -178327,7 +178327,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2090-L2120"
+      "specLocation": "inference/_types/CommonTypes.ts#L2091-L2121"
     },
     {
       "inherits": {
@@ -178774,7 +178774,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2215-L2302"
+      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2303"
     },
     {
       "kind": "interface",
@@ -178819,7 +178819,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2310-L2327"
+      "specLocation": "inference/_types/CommonTypes.ts#L2311-L2328"
     },
     {
       "inherits": {
@@ -178941,7 +178941,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2340-L2373"
+      "specLocation": "inference/_types/CommonTypes.ts#L2341-L2374"
     },
     {
       "kind": "interface",
@@ -178975,7 +178975,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2392-L2401"
+      "specLocation": "inference/_types/CommonTypes.ts#L2393-L2402"
     },
     {
       "inherits": {
@@ -179079,7 +179079,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2403-L2433"
+      "specLocation": "inference/_types/CommonTypes.ts#L2404-L2434"
     },
     {
       "kind": "interface",
@@ -179139,7 +179139,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2435-L2459"
+      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
     },
     {
       "inherits": {
@@ -179267,7 +179267,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2470-L2506"
+      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
     },
     {
       "inherits": {
@@ -190160,7 +190160,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L370-L402"
+      "specLocation": "_types/common.ts#L373-L405"
     },
     {
       "kind": "interface",
