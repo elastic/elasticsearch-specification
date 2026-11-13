@@ -180,8 +180,6 @@ export class DenseVectorIndexOptions {
   /**
    * If `true`, direct I/O is used where possible while merging the vector data of the field, so that a merge does not displace what searches keep in memory.
    * It can be changed with a mapping update, which applies to later merges.
-   *
-   * Only applicable to `hnsw`, `int8_hnsw`, `int4_hnsw`, `bbq_hnsw`, and `bbq_disk`
    * @server_default false
    * @availability stack since=9.6.0 stability=experimental
    */

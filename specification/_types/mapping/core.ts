@@ -209,7 +209,7 @@ export class IntegerNumberProperty extends NumberPropertyBase {
   null_value?: integer
   /**
    * If `true`, the field's values are indexed in an inverted index instead of a BKD tree.
-   * This speeds up queries that match a field against many values, such as `terms` queries, but it makes range queries slower.
+   * This speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.
    * Requires `index` to be `true`.
    * @server_default false
    * @availability stack since=9.6.0
@@ -223,7 +223,7 @@ export class LongNumberProperty extends NumberPropertyBase {
   null_value?: long
   /**
    * If `true`, the field's values are indexed in an inverted index instead of a BKD tree.
-   * This speeds up queries that match a field against many values, such as `terms` queries, but it makes range queries slower.
+   * This speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.
    * Requires `index` to be `true`.
    * @server_default false
    * @availability stack since=9.6.0
