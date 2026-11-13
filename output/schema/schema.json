@@ -19436,6 +19436,7 @@
       },
       "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
       "docId": "prometheus-status-buildinfo",
+      "docTag": "prometheus",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "prometheus.status_buildinfo",
@@ -261351,7 +261352,7 @@
         }
       ],
       "query": [],
-      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoRequest.ts#L23-L52"
+      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoRequest.ts#L23-L53"
     },
     {
       "kind": "response",
