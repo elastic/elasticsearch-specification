@@ -100264,6 +100264,48 @@
     },
     {
       "kind": "interface",
+      "extDocId": "query-dsl-bitmap-terms-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "name": {
+        "name": "BitmapTermsQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/BitmapTermsQuery.ts#L23-L38"
+    },
+    {
+      "kind": "interface",
       "extDocId": "query-dsl-bool-query",
       "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query",
       "inherits": {
@@ -100495,7 +100537,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L531-L534"
+      "specLocation": "_types/query_dsl/abstractions.ts#L540-L543"
     },
     {
       "kind": "interface",
@@ -100591,7 +100633,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L484-L518"
+      "specLocation": "_types/query_dsl/abstractions.ts#L493-L527"
     },
     {
       "kind": "enum",
@@ -100609,7 +100651,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L536-L545"
+      "specLocation": "_types/query_dsl/abstractions.ts#L545-L554"
     },
     {
       "kind": "interface",
@@ -101352,7 +101394,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L547-L561"
+      "specLocation": "_types/query_dsl/abstractions.ts#L556-L570"
     },
     {
       "kind": "interface",
@@ -101410,7 +101452,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L448-L465"
+      "specLocation": "_types/query_dsl/abstractions.ts#L457-L474"
     },
     {
       "kind": "enum",
@@ -105407,7 +105449,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L471-L482"
+      "specLocation": "_types/query_dsl/abstractions.ts#L480-L491"
     },
     {
       "kind": "interface",
@@ -105419,6 +105461,26 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+          "extDocId": "query-dsl-bitmap-terms-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+          "name": "bitmap_terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BitmapTermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
         {
           "description": "matches documents matching boolean combinations of other queries.",
           "extDocId": "query-dsl-bool-query",
@@ -106535,7 +106597,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L99-L446",
+      "specLocation": "_types/query_dsl/abstractions.ts#L100-L455",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -109368,7 +109430,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L520-L529"
+      "specLocation": "_types/query_dsl/abstractions.ts#L529-L538"
     },
     {
       "kind": "enum",
@@ -161345,6 +161407,19 @@
           }
         },
         {
+          "description": "The maximum time to wait for the checkpoints specified in `wait_for_checkpoints` to become visible for search.",
+          "name": "wait_for_checkpoints_timeout",
+          "required": false,
+          "serverDefault": "30s",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Duration",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "description": "If true, returns partial results if there are shard request timeouts or shard failures.\nIf false, returns an error with no partial results.\nDefaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.",
           "name": "allow_partial_search_results",
           "required": false,
@@ -161357,7 +161432,7 @@
           }
         }
       ],
-      "specLocation": "fleet/search/SearchRequest.ts#L56-L301"
+      "specLocation": "fleet/search/SearchRequest.ts#L56-L306"
     },
     {
       "kind": "response",
