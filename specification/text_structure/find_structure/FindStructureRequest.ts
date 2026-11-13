@@ -20,6 +20,7 @@
 import { Field, GrokPattern, MediaType } from '@_types/common'
 import { uint } from '@_types/Numeric'
 import { Duration } from '@_types/Time'
+import { EcsCompatibilityType } from '../_types/Structure'
 
 /**
  * Find the structure of a text file.
@@ -81,12 +82,11 @@ export interface Request<TJsonDocument> {
     /**
      * The mode of compatibility with ECS compliant Grok patterns.
      * Use this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.
-     * Valid values are `disabled` and `v1`.
      * This setting primarily has an impact when a whole message Grok pattern such as `%{CATALINALOG}` matches the input.
      * If the structure finder identifies a common structure but has no idea of meaning then generic field names such as `path`, `ipaddress`, `field1`, and `field2` are used in the `grok_pattern` output, with the intention that a user who knows the meanings rename these fields before using it.
      * @server_default disabled
      */
-    ecs_compatibility?: string
+    ecs_compatibility?: EcsCompatibilityType
     /**
      * If this parameter is set to `true`, the response includes a field named explanation, which is an array of strings that indicate how the structure finder produced its result.
      * If the structure finder produces unexpected results for some text, use this query parameter to help you determine why the returned structure was chosen.

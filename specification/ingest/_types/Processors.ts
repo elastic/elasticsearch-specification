@@ -357,10 +357,9 @@ export class AppendProcessor extends ProcessorBase {
   /**
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
-   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
-   * @server_default "application/json"
+   * @server_default application/json
    */
-  media_type?: string
+  media_type?: TemplateMediaType
   /**
    * The origin field which will be appended to `field`, cannot set `value` simultaneously.
    */
@@ -376,6 +375,12 @@ export class AppendProcessor extends ProcessorBase {
    * @server_default false
    */
   ignore_empty_values?: boolean
+}
+
+export enum TemplateMediaType {
+  json = 'application/json',
+  form_urlencoded = 'application/x-www-form-urlencoded',
+  text = 'text/plain'
 }
 
 export class AttachmentProcessor extends ProcessorBase {
@@ -1194,9 +1199,14 @@ export class InferenceConfigClassification {
   top_classes_results_field?: Field
   /**
    * Specifies the type of the predicted field to write.
-   * Valid values are: `string`, `number`, `boolean`.
    */
-  prediction_field_type?: string
+  prediction_field_type?: PredictionFieldType
+}
+
+export enum PredictionFieldType {
+  boolean,
+  number,
+  string
 }
 
 export class JoinProcessor extends ProcessorBase {
@@ -1551,10 +1561,9 @@ export class SetProcessor extends ProcessorBase {
   /**
    * The media type for encoding `value`.
    * Applies only when value is a template snippet.
-   * Must be one of `application/json`, `text/plain`, or `application/x-www-form-urlencoded`.
-   * @server_default "application/json"
+   * @server_default application/json
    */
-  media_type?: string
+  media_type?: TemplateMediaType
   /**
    * If `true` processor will update fields with pre-existing non-null-valued field.
    * When set to `false`, such fields will not be touched.

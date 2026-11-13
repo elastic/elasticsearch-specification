@@ -69,17 +69,24 @@ export class AlibabaCloudServiceSettings {
 export class AlibabaCloudTaskSettings {
   /**
    * For a `sparse_embedding` or `text_embedding` task, specify the type of input passed to the model.
-   * Valid values are:
-   *
-   * * `ingest` for storing document embeddings in a vector database.
-   * * `search` for storing embeddings of search queries run against a vector database to find relevant documents.
    */
-  input_type?: string
+  input_type?: AlibabaCloudInputType
   /**
    * For a `sparse_embedding` task, it affects whether the token name will be returned in the response.
    * It defaults to `false`, which means only the token ID will be returned in the response.
    */
   return_token?: boolean
+}
+
+export enum AlibabaCloudInputType {
+  /**
+   * For storing document embeddings in a vector database.
+   */
+  ingest,
+  /**
+   * For storing embeddings of search queries run against a vector database to find relevant documents.
+   */
+  search
 }
 
 export enum AlibabaCloudTaskType {
