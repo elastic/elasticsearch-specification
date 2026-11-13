@@ -47,7 +47,7 @@ export class ResponseItem {
    * The name of the index associated with the operation.
    * If the operation targeted a data stream, this is the backing index into which the document was written.
    */
-  _index: string
+  _index: IndexName
   /**
    * The HTTP status code returned for the operation.
    */

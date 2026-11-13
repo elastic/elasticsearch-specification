@@ -18,7 +18,7 @@
  */
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { Id, Indices, IndicesOptions } from '@_types/common'
+import { Id, IndexName, Indices, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer, long } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -47,7 +47,7 @@ export class Datafeed {
    * The interval at which scheduled queries are made while the datafeed runs in real time. The default value is either the bucket span for short bucket spans, or, for longer bucket spans, a sensible fraction of the bucket span. For example: `150s`. When `frequency` is shorter than the bucket span, interim results for the last (partial) bucket are written then eventually overwritten by the full bucket results. If the datafeed uses aggregations, this value must be divisible by the interval of the date histogram aggregation.
    */
   frequency?: Duration
-  indices: string[]
+  indices: IndexName[]
   indexes?: string[]
   job_id: Id
   max_empty_searches?: integer

@@ -68,7 +68,7 @@ export class CompletionSuggestOption<TDocument> {
   collate_match?: boolean
   contexts?: Dictionary<string, Context[]>
   fields?: Dictionary<string, UserDefinedValue>
-  _id?: string
+  _id?: Id
   _index?: IndexName
   _routing?: string
   _score?: double

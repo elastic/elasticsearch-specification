@@ -19,7 +19,13 @@
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
 import { RequestBase } from '@_types/Base'
-import { ExpandWildcards, Id, IndicesOptions, MediaType } from '@_types/common'
+import {
+  ExpandWildcards,
+  Id,
+  Indices,
+  IndicesOptions,
+  MediaType
+} from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -123,7 +129,7 @@ export interface Request extends RequestBase {
      * learning nodes must have the `remote_cluster_client` role.
      * @aliases indexes
      * */
-    indices?: string[]
+    indices?: Indices
     /**
      * Specifies index expansion options that are used during search.
      */

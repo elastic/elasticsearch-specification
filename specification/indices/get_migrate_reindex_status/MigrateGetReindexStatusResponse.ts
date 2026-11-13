@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
 import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 
@@ -36,12 +37,12 @@ export class Response {
 }
 
 export class StatusInProgress {
-  index: string
+  index: IndexName
   total_doc_count: long
   reindexed_doc_count: long
 }
 
 export class StatusError {
-  index: string
+  index: IndexName
   message: string
 }

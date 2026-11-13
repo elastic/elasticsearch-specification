@@ -19,6 +19,7 @@
 
 import { FieldValue, Name, ProjectRouting } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
+import { TimeZone } from '@_types/Time'
 import { Dictionary, SingleKeyDictionary } from '@spec_utils/Dictionary'
 import { Stringified } from '@spec_utils/Stringified'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -207,7 +208,7 @@ export class EsqlQuerySettings {
    * @availability stack since=9.4.0 stability=stable
    * @availability serverless stability=stable
    */
-  time_zone?: string
+  time_zone?: TimeZone
   /**
    * Enables query approximation if possible for the query.
    * `false` (the default) disables query approximation and `true` enables it with default settings.

@@ -18,6 +18,7 @@
  */
 
 import { Id, NodeId, VersionString } from '@_types/common'
+import { Ip } from '@_types/Networking'
 
 export class TasksRecord {
   /**
@@ -72,7 +73,7 @@ export class TasksRecord {
    * The IP address for the node.
    * @aliases i
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * The bound transport port for the node.
    * @aliases po

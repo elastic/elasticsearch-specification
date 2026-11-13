@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { IndexName, Name } from '@_types/common'
+import { IndexName, IndexPatterns, Name } from '@_types/common'
 import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { Alias } from '@indices/_types/Alias'
 import { IndexSettings } from '@indices/_types/IndexSettings'
@@ -38,5 +38,5 @@ export class Template {
 
 export class Overlapping {
   name: Name
-  index_patterns: string[]
+  index_patterns: IndexPatterns
 }

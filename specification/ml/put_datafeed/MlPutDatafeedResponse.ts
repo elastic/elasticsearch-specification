@@ -18,7 +18,7 @@
  */
 
 import { AggregationContainer } from '@_types/aggregations/AggregationContainer'
-import { Id, IndicesOptions } from '@_types/common'
+import { Id, IndexName, IndicesOptions } from '@_types/common'
 import { RuntimeFields } from '@_types/mapping/RuntimeFields'
 import { integer } from '@_types/Numeric'
 import { QueryContainer } from '@_types/query_dsl/abstractions'
@@ -36,7 +36,7 @@ export class Response {
     delayed_data_check_config?: DelayedDataCheckConfig
     datafeed_id: Id
     frequency?: Duration
-    indices: string[]
+    indices: IndexName[]
     job_id: Id
     indices_options?: IndicesOptions
     max_empty_searches?: integer

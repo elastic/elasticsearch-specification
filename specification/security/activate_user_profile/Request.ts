@@ -18,7 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
-import { MediaType } from '@_types/common'
+import { MediaType, Password, Username } from '@_types/common'
 import { GrantType } from '@security/_types/GrantType'
 
 /**
@@ -68,12 +68,12 @@ export interface Request extends RequestBase {
      * If you specify the `password` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
-    password?: string
+    password?: Password
     /**
      * The username that identifies the user.
      * If you specify the `password` grant type, this parameter is required.
      * It is not valid with other grant types.
      */
-    username?: string
+    username?: Username
   }
 }

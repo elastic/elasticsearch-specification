@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Metadata } from '@_types/common'
+import { Metadata, Username } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -41,7 +41,7 @@ export class Response {
 }
 
 export class Authentication {
-  username: string
+  username: Username
   roles: string[]
   full_name: string | null
   email: string | null

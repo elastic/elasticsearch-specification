@@ -18,6 +18,7 @@
  */
 
 import { ByteSize, Id, Name, VersionString } from '@_types/common'
+import { Ip } from '@_types/Networking'
 import { Percentage } from '@_types/Numeric'
 
 export class NodesRecord {
@@ -35,7 +36,7 @@ export class NodesRecord {
    * The IP address.
    * @aliases i
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * The bound transport port.
    * @aliases po
