@@ -11798,7 +11798,6 @@ export interface DataRecoveryListRecoveriesRequest extends RequestBase {
   started_at_gte?: DateTime
   started_at_lt?: DateTime
   order?: SortOrder
-  search_after_started_at?: DateTime
   search_after_recovery_id?: Id
   status?: DataRecoveryRecoveryRunStatus | DataRecoveryRecoveryRunStatus[]
 }

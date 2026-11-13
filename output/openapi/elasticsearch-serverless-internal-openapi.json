@@ -9077,7 +9077,7 @@
           "data_recovery"
         ],
         "summary": "List recoveries",
-        "description": "List the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+        "description": "List the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the identifier of the last recovery of a page as `search_after_recovery_id`.\nTo restrict the results to a period instead, use `started_at_gte` and `started_at_lt`.",
         "operationId": "data-recovery-list-recoveries",
         "parameters": [
           {
@@ -9128,18 +9128,8 @@
           },
           {
             "in": "query",
-            "name": "search_after_started_at",
-            "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.DateTime"
-            },
-            "style": "form"
-          },
-          {
-            "in": "query",
             "name": "search_after_recovery_id",
-            "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+            "description": "Return only the recoveries that follow this one in the sort order, to retrieve the next page.\nPass the identifier of the last recovery of the previous page.\nThe recovery it names must still be present in the recovery history; if it is not, the request fails rather than\nreturning the first page again.\nTo restrict the results to a period, use `started_at_gte` and `started_at_lt` instead.",
             "deprecated": false,
             "schema": {
               "$ref": "#/components/schemas/_types.Id"

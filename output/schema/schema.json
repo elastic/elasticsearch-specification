@@ -5076,7 +5076,7 @@
           "visibility": "private"
         }
       },
-      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the identifier of the last recovery of a page as `search_after_recovery_id`.\nTo restrict the results to a period instead, use `started_at_gte` and `started_at_lt`.",
       "docId": "data-recovery-list-recoveries",
       "docUrl": "",
       "docUrlServerless": "",
@@ -152765,7 +152765,7 @@
       "body": {
         "kind": "no_body"
       },
-      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the start time and identifier of the last recovery of a page as `search_after_started_at` and `search_after_recovery_id`.",
+      "description": "List recoveries.\n\nList the recoveries that were started with the start recovery API, including those that have finished.\nThis API is intended for internal operator use.\nRecoveries are ordered by start time, and the most recent are returned first by default.\nTo retrieve further pages, pass the identifier of the last recovery of a page as `search_after_recovery_id`.\nTo restrict the results to a period instead, use `started_at_gte` and `started_at_lt`.",
       "examples": {
         "DataRecoveryListRecoveriesRequestExample1": {
           "description": "Run `GET _data_recovery/recoveries?status=failed&size=2` to list the two most recent failed recoveries.",
@@ -152774,9 +152774,15 @@
           "value": ""
         },
         "DataRecoveryListRecoveriesRequestExample2": {
-          "description": "Run `GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e` to retrieve the page after a recovery that started at the given time. Pass the start time and identifier of the last recovery of the previous page.\n",
-          "method_request": "GET _data_recovery/recoveries?size=2&search_after_started_at=2026-10-22T08:30:00Z&search_after_recovery_id=rec-0f3a9c1e",
+          "description": "Run `GET _data_recovery/recoveries?size=2&search_after_recovery_id=rec-0f3a9c1e` to retrieve the page that follows the recovery `rec-0f3a9c1e`. Pass the identifier of the last recovery of the previous page.\n",
+          "method_request": "GET _data_recovery/recoveries?size=2&search_after_recovery_id=rec-0f3a9c1e",
           "summary": "Get the next page",
+          "value": ""
+        },
+        "DataRecoveryListRecoveriesRequestExample3": {
+          "description": "Run `GET _data_recovery/recoveries?started_at_gte=2026-10-01T00:00:00Z&started_at_lt=2026-11-01T00:00:00Z` to list the recoveries that started during October 2026. The lower bound is inclusive and the upper bound is exclusive, so adjacent periods neither overlap nor leave a gap.\n",
+          "method_request": "GET _data_recovery/recoveries?started_at_gte=2026-10-01T00:00:00Z&started_at_lt=2026-11-01T00:00:00Z",
+          "summary": "List recoveries from a period",
           "value": ""
         }
       },
@@ -152843,19 +152849,7 @@
           }
         },
         {
-          "description": "Return only recoveries after this start time in the sort order, to retrieve the next page.\nIt must be provided together with `search_after_recovery_id`.",
-          "name": "search_after_started_at",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "DateTime",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Return only recoveries after this identifier in the sort order for recoveries with the same start time, to retrieve the next page.\nIt must be provided together with `search_after_started_at`.",
+          "description": "Return only the recoveries that follow this one in the sort order, to retrieve the next page.\nPass the identifier of the last recovery of the previous page.\nThe recovery it names must still be present in the recovery history; if it is not, the request fails rather than\nreturning the first page again.\nTo restrict the results to a period, use `started_at_gte` and `started_at_lt` instead.",
           "name": "search_after_recovery_id",
           "required": false,
           "type": {
@@ -152894,7 +152888,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesRequest.ts#L27-L76"
+      "specLocation": "data_recovery/list_recoveries/DataRecoveryListRecoveriesRequest.ts#L27-L75"
     },
     {
       "kind": "response",
