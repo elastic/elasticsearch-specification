@@ -88406,7 +88406,10 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L22-L24"
+      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L22-L27",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
