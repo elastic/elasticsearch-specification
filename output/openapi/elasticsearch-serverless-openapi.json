@@ -68501,6 +68501,11 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "type": "boolean"
               }
             },
             "required": [
@@ -68525,6 +68530,11 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "type": "boolean"
               }
             },
             "required": [
