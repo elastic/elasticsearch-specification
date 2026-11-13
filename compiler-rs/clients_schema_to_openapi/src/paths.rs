@@ -436,9 +436,33 @@ pub fn add_endpoint(
             if operation_counter != 0 {
                 write!(&mut operation_id, "-{}", operation_counter)?;
             }
-            operation.operation_id = Some(operation_id);
+            operation.operation_id = Some(operation_id.clone());
 
             operation_counter += 1;
+
+            // An operation is identified by its path and method: when endpoints share them (e.g. a deprecated
+            // alias of an endpoint), only the one that isn't deprecated is kept, and the other one redirects to it.
+            if let Some(existing) = method_field.as_ref() {
+                let existing_id = existing.operation_id.clone().unwrap_or_default();
+                let keep_existing = match (existing.deprecated, operation.deprecated) {
+                    (false, true) => true,
+                    (true, false) => false,
+                    _ => bail!(
+                        "Operations {existing_id} and {operation_id} both define {method} {}, and only one of them can be kept unless the other one is deprecated",
+                        url_template.path
+                    ),
+                };
+                if let Some(ref mut map) = &mut tac.redirects {
+                    if keep_existing {
+                        map.insert(operation_id, existing_id);
+                    } else {
+                        map.insert(existing_id, operation_id);
+                    }
+                }
+                if keep_existing {
+                    continue;
+                }
+            }
             *method_field = Some(operation);
         }
     }
