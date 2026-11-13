@@ -19,6 +19,9 @@
 
 import { DenseVectorIndexOptions } from './DenseVectorProperty'
 
+/**
+ * @variants container
+ */
 export class SemanticTextIndexOptions {
   dense_vector?: DenseVectorIndexOptions
 }
