@@ -42,6 +42,7 @@ import noSimilarPropertyNames from './rules/no-similar-property-names.js'
 import noStringifiedInRequests from './rules/no-stringified-in-requests.js'
 import preferGenericArrayForUnions from './rules/prefer-generic-array-for-unions.js'
 import preferInternalVariants from './rules/prefer-internal-variants.js'
+import requestPathPartsMatchUrls from './rules/request-path-parts-match-urls.js'
 
 export default {
   rules: {
@@ -70,6 +71,7 @@ export default {
     'no-similar-property-names': noSimilarPropertyNames,
     'no-stringified-in-requests': noStringifiedInRequests,
     'prefer-generic-array-for-unions': preferGenericArrayForUnions,
-    'prefer-internal-variants': preferInternalVariants
+    'prefer-internal-variants': preferInternalVariants,
+    'request-path-parts-match-urls': requestPathPartsMatchUrls
   }
 }
