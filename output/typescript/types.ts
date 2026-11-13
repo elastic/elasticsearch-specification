@@ -6723,11 +6723,8 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  routing?: Routing
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export interface QueryDslMultiMatchQuery extends QueryDslQueryBase {

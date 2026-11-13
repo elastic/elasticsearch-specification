@@ -92895,7 +92895,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L198-L203",
+      "specLocation": "_types/query_dsl/specialized.ts#L193-L198",
       "type": {
         "kind": "union_of",
         "items": [
@@ -93027,7 +93027,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L174-L196"
+      "specLocation": "_types/query_dsl/specialized.ts#L169-L191"
     },
     {
       "kind": "interface",
@@ -93795,17 +93795,6 @@
           }
         },
         {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "Routing",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
           "description": "An array of stop words.\nAny word in this set is ignored.",
           "name": "stop_words",
           "required": false,
@@ -93843,32 +93832,9 @@
               }
             ]
           }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "serverDefault": "'internal'",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L87-L172"
+      "specLocation": "_types/query_dsl/specialized.ts#L87-L167"
     },
     {
       "kind": "interface",
@@ -94475,7 +94441,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L205-L245"
+      "specLocation": "_types/query_dsl/specialized.ts#L200-L240"
     },
     {
       "kind": "interface",
@@ -94509,7 +94475,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L269-L278"
+      "specLocation": "_types/query_dsl/specialized.ts#L264-L273"
     },
     {
       "kind": "interface",
@@ -94570,7 +94536,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L247-L267",
+      "specLocation": "_types/query_dsl/specialized.ts#L242-L262",
       "variants": {
         "kind": "container"
       }
@@ -96383,7 +96349,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L280-L280"
+      "specLocation": "_types/query_dsl/specialized.ts#L275-L275"
     },
     {
       "kind": "interface",
@@ -96398,7 +96364,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L282-L282"
+      "specLocation": "_types/query_dsl/specialized.ts#L277-L277"
     },
     {
       "kind": "interface",
@@ -96426,7 +96392,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
+      "specLocation": "_types/query_dsl/specialized.ts#L279-L284"
     },
     {
       "kind": "interface",
@@ -96454,7 +96420,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L291-L296"
+      "specLocation": "_types/query_dsl/specialized.ts#L286-L291"
     },
     {
       "kind": "interface",
@@ -96494,7 +96460,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L298-L307"
+      "specLocation": "_types/query_dsl/specialized.ts#L293-L302"
     },
     {
       "kind": "interface",
@@ -96572,7 +96538,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L309-L335"
+      "specLocation": "_types/query_dsl/specialized.ts#L304-L330"
     },
     {
       "kind": "interface",
@@ -96738,7 +96704,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L398-L406"
+      "specLocation": "_types/query_dsl/specialized.ts#L393-L401"
     },
     {
       "kind": "interface",
@@ -96768,7 +96734,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L337-L346"
+      "specLocation": "_types/query_dsl/specialized.ts#L332-L341"
     },
     {
       "kind": "interface",
@@ -96844,7 +96810,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L348-L365"
+      "specLocation": "_types/query_dsl/specialized.ts#L343-L360"
     },
     {
       "kind": "interface",
@@ -96932,7 +96898,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L383-L396"
+      "specLocation": "_types/query_dsl/specialized.ts#L378-L391"
     },
     {
       "kind": "interface",
@@ -96993,7 +96959,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L367-L381"
+      "specLocation": "_types/query_dsl/specialized.ts#L362-L376"
     },
     {
       "kind": "enum",
