@@ -12,13 +12,6 @@ the comments.
 Run `make setup` one time, then `make lint` after each change. The lint rules are in `validator/`, and
 `validator/README.md` has one line for each rule. Run `make contrib` before you open a pull request.
 
-## Lint rules that need a second look
-
-Five rules are set to `warn` because they find their targets by name, by shape or by description:
-`prefer-common-aliases`, `prefer-container-variants`, `prefer-enum-for-documented-values`, `prefer-shortcut-property`
-and `prefer-time-types`. A finding of one of these rules is a question. Answer it with the Elasticsearch source before
-you change the type, and leave the type alone when the source says that the current model is correct.
-
 ## Checks that need the Elasticsearch source
 
 The linter sees the specification only. It cannot know what Elasticsearch accepts and returns. Do the checks below for
