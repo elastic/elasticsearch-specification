@@ -554,6 +554,7 @@ export class AggregationContainer {
   variable_width_histogram?: VariableWidthHistogramAggregation
 }
 
+/** @codegen_names string, integer, double, boolean */
 export type Missing = string | integer | double | boolean
 export enum MissingOrder {
   first,

@@ -95,7 +95,10 @@ export type DataStreamName = string
 
 export type DataStreamNames = DataStreamName | DataStreamName[]
 
-/** @doc_id byte-units */
+/**
+ * @doc_id byte-units
+ * @codegen_names bytes, string
+ */
 export type ByteSize = long | string
 
 export type Metadata = Dictionary<string, UserDefinedValue>
@@ -131,7 +134,10 @@ export type SequenceNumber = long
 export type PropertyName = string
 export type RelationName = string
 export type TaskId = string
-/** @doc_id fuzziness */
+/**
+ * @doc_id fuzziness
+ * @codegen_names string, edits
+ */
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */
 export type MultiTermQueryRewrite = string
@@ -164,6 +170,7 @@ export class EmptyObject {}
 /**
  * The minimum number of terms that should match as integer, percentage or range
  * @doc_id query-dsl-minimum-should-match
+ * @codegen_names count, expression
  */
 export type MinimumShouldMatch = integer | string
 

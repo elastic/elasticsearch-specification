@@ -44,4 +44,5 @@ export class ShardHealthStats {
   unassigned_primary_shards: integer
 }
 
+/** @codegen_names expression, count */
 export type WaitForNodes = string | integer
