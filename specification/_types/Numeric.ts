@@ -25,4 +25,5 @@ export type long = number
 export type ulong = number
 export type float = number
 export type double = number
+/** @codegen_names string, value */
 export type Percentage = string | float

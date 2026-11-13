@@ -62,5 +62,6 @@ export enum StopWordLanguage {
  * Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.
  * Also accepts an array of stop words.
  * @class_serializer StopWordsFormatter
+ * @codegen_names language, words
  */
 export type StopWords = StopWordLanguage | string[]

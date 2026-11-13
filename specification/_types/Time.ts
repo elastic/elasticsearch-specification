@@ -23,6 +23,7 @@ import { double, long } from './Numeric'
  * A date and time, either as a string whose format can depend on the context (defaulting to ISO 8601), or a
  * number of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string
  * representation.
+ * @codegen_names string, epoch_millis
  */
 export type DateTime = string | EpochTime<UnitMillis>
 
@@ -54,6 +55,7 @@ export type DateFormat = string
  * `d` (days). Also accepts "0" without a unit and "-1" to indicate an unspecified value.
  * @doc_id time-value
  * @ext_doc_id time-units
+ * @codegen_names time, minus_one, zero
  */
 // Used to be Time, see ES TimeValue
 export type Duration = string | -1 | 0

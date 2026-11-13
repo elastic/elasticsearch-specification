@@ -1521,6 +1521,7 @@ export enum CustomServiceType {
   custom
 }
 
+/** @codegen_names string, integer, double, float, boolean */
 export type CustomTaskParameter = string | integer | double | float | boolean
 
 export class CustomTaskSettings {
