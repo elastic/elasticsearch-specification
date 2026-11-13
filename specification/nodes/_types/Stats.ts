@@ -21,7 +21,13 @@ import { ByteSize, Field, Name } from '@_types/common'
 import { Host, Ip, TransportAddress } from '@_types/Networking'
 import { NodeRoles } from '@_types/Node'
 import { double, float, integer, long } from '@_types/Numeric'
-import { Duration, DurationValue, UnitMillis, UnitNanos } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  EpochTime,
+  UnitMillis,
+  UnitNanos
+} from '@_types/Time'
 import { ShardStats } from '@indices/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -90,7 +96,7 @@ export class Stats {
    * Statistics about each thread pool, including current size, queue and rejected tasks.
    */
   thread_pool?: Dictionary<string, ThreadCount>
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
   /**
    * Transport statistics about sent and received bytes in cluster communication.
    */
@@ -888,9 +894,9 @@ export class HttpRouteResponses {
 export class TimeHttpHistogram {
   count: long
   ge?: Duration
-  ge_millis?: long
+  ge_millis?: DurationValue<UnitMillis>
   lt?: Duration
-  lt_millis?: long
+  lt_millis?: DurationValue<UnitMillis>
 }
 
 export class SizeHttpHistogram {
@@ -930,7 +936,7 @@ export class Client {
   /**
    * Time at which the client opened the connection.
    */
-  opened_time_millis?: long
+  opened_time_millis?: EpochTime<UnitMillis>
   /**
    * Time at which the client closed the connection if the connection is closed.
    */
@@ -938,7 +944,7 @@ export class Client {
   /**
    * Time at which the client closed the connection if the connection is closed.
    */
-  closed_time_millis?: long
+  closed_time_millis?: EpochTime<UnitMillis>
   /**
    * Time of the most recent request from this client.
    */
@@ -971,7 +977,7 @@ export class FileSystem {
    * Last time the file stores statistics were refreshed.
    * Recorded in milliseconds since the Unix Epoch.
    */
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
   /**
    * Contains statistics for all file stores of the node.
    */
@@ -1099,7 +1105,7 @@ export class Jvm {
   /**
    * Last time JVM statistics were refreshed.
    */
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
   /**
    * Human-readable JVM uptime.
    * Only returned if the `human` query parameter is `true`.
@@ -1108,7 +1114,7 @@ export class Jvm {
   /**
    * JVM uptime in milliseconds.
    */
-  uptime_in_millis?: long
+  uptime_in_millis?: DurationValue<UnitMillis>
 }
 
 export class JvmMemoryStats {
@@ -1243,7 +1249,7 @@ export class GarbageCollectorTotal {
   /**
    * Total time, in milliseconds, spent by JVM collecting objects.
    */
-  collection_time_in_millis?: long
+  collection_time_in_millis?: DurationValue<UnitMillis>
 }
 
 export class OperatingSystem {
@@ -1251,7 +1257,7 @@ export class OperatingSystem {
   mem?: ExtendedMemoryStats
   swap?: MemoryStats
   cgroup?: Cgroup
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
 }
 
 export class Process {
@@ -1275,7 +1281,7 @@ export class Process {
    * Last time the statistics were refreshed.
    * Recorded in milliseconds since the Unix Epoch.
    */
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
 }
 
 export class Scripting {
@@ -1469,7 +1475,7 @@ export class TransportHistogram {
    * The exclusive upper bound of the bucket in milliseconds.
    * May be omitted on the last bucket if this bucket has no upper bound.
    */
-  lt_millis?: long
+  lt_millis?: DurationValue<UnitMillis>
   /**
    * The inclusive lower bound of the bucket. May be omitted on the first bucket if this bucket has no lower bound.
    */
@@ -1477,5 +1483,5 @@ export class TransportHistogram {
   /**
    * The inclusive lower bound of the bucket in milliseconds. May be omitted on the first bucket if this bucket has no lower bound.
    */
-  ge_millis?: long
+  ge_millis?: DurationValue<UnitMillis>
 }

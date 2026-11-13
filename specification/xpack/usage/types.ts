@@ -19,7 +19,12 @@
 
 import { ByteSize, Field, Name } from '@_types/common'
 import { double, integer, long, uint, ulong } from '@_types/Numeric'
-import { Duration, DurationValue, UnitMillis } from '@_types/Time'
+import {
+  Duration,
+  DurationValue,
+  UnitFloatMillis,
+  UnitMillis
+} from '@_types/Time'
 import { JobStatistics } from '@ml/_types/Job'
 import { Statistics } from '@slm/_types/SnapshotLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
@@ -167,15 +172,15 @@ export class DataStreamLifecycleThresholdStats {
   /**
    * The smallest configured value in milliseconds.
    */
-  minimum_millis?: long
+  minimum_millis?: DurationValue<UnitMillis>
   /**
    * The largest configured value in milliseconds.
    */
-  maximum_millis?: long
+  maximum_millis?: DurationValue<UnitMillis>
   /**
    * The average configured value in milliseconds.
    */
-  average_millis?: double
+  average_millis?: DurationValue<UnitFloatMillis>
 }
 
 export class DataStreamLifecycleRetentionStats extends DataStreamLifecycleThresholdStats {
@@ -218,7 +223,7 @@ export class DataStreamLifecycleGlobalRetentionStats {
   /**
    * The global retention period in milliseconds.
    */
-  retention_millis?: long
+  retention_millis?: DurationValue<UnitMillis>
 }
 
 export class DataTierPhaseStatistics {

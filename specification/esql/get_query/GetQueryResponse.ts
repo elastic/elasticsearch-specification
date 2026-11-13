@@ -19,13 +19,14 @@
 
 import { NodeId } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
 
 export class Response {
   body: {
     id: long
     node: NodeId
-    start_time_millis: long
-    running_time_nanos: long
+    start_time_millis: EpochTime<UnitMillis>
+    running_time_nanos: DurationValue<UnitNanos>
     query: string
     coordinating_node: NodeId
     data_nodes: NodeId[]
