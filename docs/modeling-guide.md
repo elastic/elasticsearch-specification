@@ -138,6 +138,32 @@ export enum ScriptLanguage {
 }
 ```
 
+#### Letter case of enum values
+
+Elasticsearch reads many enum values without regard to their letter case and writes one spelling, in most cases the
+lower-case one. Use the spelling that Elasticsearch writes as the enum member. When Elasticsearch also accepts or
+returns a second spelling that users are likely to send or to see, such as the upper-case name, add that spelling with
+`@aliases`:
+
+```ts
+export enum Operator {
+  /** @aliases AND */
+  and,
+  /** @aliases OR */
+  or
+}
+```
+
+An alias is one exact spelling, so the specification cannot list each mix of upper-case and lower-case letters. Some
+values come back in the spelling of the request. Index settings are an example: Elasticsearch accepts
+`index.translog.durability` in any letter case, stores the text of the request and returns that text. A response can
+then contain a member of an enum in a spelling such as `ReQuEsT`, which matches no member and no alias. The
+specification does not mark the enums that can come back this way.
+
+Code generators and other consumers of the specification must expect such a value for each enum, also for an exhaustive
+one. A consumer that compares the enum value of a response with the members and their aliases without regard to letter
+case reads it correctly.
+
 ### User defined value
 
 Represents a value that will be defined by the user and has no specific type.

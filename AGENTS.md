@@ -97,6 +97,15 @@ as optional.
 `@non_exhaustive` when a plugin or a later version can add values, for example when the values come from a registry.
 A string that accepts a fixed set of values and also free text stays a `string`.
 
+**Letter case of enum values.** A parser that converts the value to upper case before the lookup accepts each letter
+case. Use the spelling that Elasticsearch writes as the member, in most cases the lower-case one. Add a second spelling
+with `@aliases` when the source or the documentation shows that users send it or that Elasticsearch returns it, for
+example the upper-case name. An alias is one exact spelling, and some values come back in the spelling of the request:
+settings are stored as text, so `ReQuEsT` in a request is `ReQuEsT` in the response. No member and no alias matches that
+text. Code that reads the specification, and each client made from it, must expect such a value for each enum, also for
+an exhaustive one, and must compare the enum values of a response without regard to letter case.
+`docs/modeling-guide.md` has the same rule in its Enum section.
+
 **One value or a list.** A parser that accepts a single value where it declares an array gives a `T | T[]` union. A
 parser that accepts an array only gives `T[]`. Do not add the single-value form because other properties have it.
 
