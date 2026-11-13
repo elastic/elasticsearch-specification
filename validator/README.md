@@ -30,6 +30,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `no-object-url-parameters`            | Path parts and query parameters must not have an object type.                                                                                                                              |
 | `no-similar-property-names`           | Two properties of one type must not differ only by case or by leading and trailing underscores, unless a `@codegen_name` sets them apart.                                                  |
 | `no-stringified-in-requests`          | `Stringified<T>` is for values in responses and is not allowed in a request definition. Path parts and query parameters are also checked through their type aliases.                       |
+| `prefer-generic-array-for-unions`     | A list of a union is written as `Array<A \| B>` and not as `(A \| B)[]`. Can be fixed with `--fix`.                                                                                        |
 
 ## Usage
 
