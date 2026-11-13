@@ -155,6 +155,8 @@ connector-update-pipeline,https://www.elastic.co/docs/api/doc/elasticsearch/oper
 connector-update-scheduling,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-scheduling,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-connector-update-scheduling,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-connector-scheduling-api.html,Updating connector scheduling
 connector-update-service-type,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-service-type,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-connector-update-service-type,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-connector-service-type-api.html,Updating connector service type
 connector-update-status,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-connector-update-status,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-connector-update-status,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-connector-status-api.html,Updating connector status
+contextualai-api-keys,https://docs.contextual.ai/quickstarts/platform-api#api-authentication-setup,[use-doc-url],,Learn more about Contextual AI API keys
+contextualai-rerank,https://docs.contextual.ai/api-reference/rerank/rerank#body-model,[use-doc-url],,Learn more about Contextual AI rerank models
 convert-processor,https://www.elastic.co/docs/reference/enrich-processor/convert-processor,[use-doc-url],,More about the convert processor
 create_index_from_source_index,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/create-index-from-source,[use-doc-url],,Creating an index from source
 cron-expressions,https://www.elastic.co/docs/reference/elasticsearch/rest-apis/api-conventions#api-cron-expressions,[use-doc-url],,About API cron expressions
@@ -322,6 +324,7 @@ groq-api-models,https://console.groq.com/docs/models,[use-doc-url],,Learn more a
 groq-rate-limit,https://console.groq.com/docs/rate-limits,[use-doc-url],,More about Groq rate limit
 gsub-processor,https://www.elastic.co/docs/reference/enrich-processor/gsub-processor,[use-doc-url],,More about the gsub processor
 health-api,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/health-api.html,More about the cluster health
+htmlstrip-processor,https://www.elastic.co/docs/reference/ingest-processor/htmlstrip-processor,[use-doc-url],,More about HTML strip processor
 huggingface-chat-completion-interface,https://huggingface.co/docs/inference-providers/en/tasks/chat-completion#conversational-large-language-models-llms,[use-doc-url],,More about chat completion
 huggingface-tokens,https://huggingface.co/settings/tokens,[use-doc-url],,Learn more about Hugging Face
 ilm-delete-lifecycle,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ilm-delete-lifecycle,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ilm-delete-lifecycle.html,About deleting a lifecycle policy
@@ -553,7 +556,9 @@ ml-update-filter,https://www.elastic.co/docs/api/doc/elasticsearch/operation/ope
 ml-update-job,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-job,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-ml-update-job,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-update-job.html,Updating an anomaly detection job
 ml-update-snapshot,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-update-model-snapshot,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-update-snapshot.html,More about updating a snapshot
 ml-upgrade-job-model-snapshot,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-ml-upgrade-job-snapshot,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/ml-upgrade-job-model-snapshot.html,More about upgrading a snapshot
+ml.customUrls,https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-configuring-url,[use-doc-url],,Adding custom URLs to machine learning results
 modules-cluster,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/cluster-level-shard-allocation-routing-settings,[use-doc-url],,About cluster-level shard
+modules-cross-cluster-optional,https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters,[use-doc-url],,More about cross-cluster search
 modules-cross-cluster-search,https://www.elastic.co/docs/solutions/search/cross-cluster-search,[use-doc-url],,More about cross-cluster search
 modules-discovery-hosts-providers,https://www.elastic.co/docs/deploy-manage/distributed-architecture/discovery-cluster-formation/discovery-hosts-providers,[use-doc-url],,Learn more about discovery
 modules-fielddata,https://www.elastic.co/docs/reference/elasticsearch/configuration-reference/field-data-cache-settings,[use-doc-url],,About field data cache settings
@@ -1023,6 +1028,7 @@ update-trained-model-deployment,https://www.elastic.co/docs/api/doc/elasticsearc
 update-transform,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-transform-update-transform,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/update-transform.html,More about updating a transform
 upgrade-transforms,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-upgrade-transforms,,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/upgrade-transforms.html,About upgrading all transforms
 uppercase-processor,https://www.elastic.co/docs/reference/enrich-processor/uppercase-processor,[use-doc-url],,More about uppercase processor
+uri-parts-processor,https://www.elastic.co/docs/reference/ingest-processor/uri-parts-processor,[use-doc-url],,More about URI parts processor
 urldecode-processor,https://www.elastic.co/docs/reference/enrich-processor/urldecode-processor,[use-doc-url],,More about url decode processor
 usage-api,https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-xpack,[use-doc-url],https://www.elastic.co/guide/en/elasticsearch/reference/8.19/usage-api.html,Learn more about usage
 user-agent-processor,https://www.elastic.co/docs/reference/enrich-processor/user-agent-processor,[use-doc-url],,More about user agent processor

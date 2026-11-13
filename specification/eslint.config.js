@@ -20,6 +20,7 @@ import parser from '@typescript-eslint/parser'
 import validator from 'eslint-plugin-es-spec'
 import { jsdoc } from 'eslint-plugin-jsdoc'
 import { defineConfig } from 'eslint/config'
+import { join } from 'node:path'
 
 export default defineConfig([
   {
@@ -111,6 +112,10 @@ export default defineConfig([
       'es-spec-validator/no-all-string-literal-unions': 'error',
       'es-spec-validator/valid-request-urls': 'error',
       'es-spec-validator/binary-requires-alias': 'error',
+      'es-spec-validator/doc-id-exists': [
+        'error',
+        { table: join(import.meta.dirname, '_doc_ids', 'table.csv') }
+      ],
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {

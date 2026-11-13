@@ -889,7 +889,7 @@ export class AnthropicServiceSettings {
   /**
    * The name of the model to use for the inference task.
    * Refer to the Anthropic documentation for the list of supported models.
-   * @ext_doc_id anothropic-models
+   * @ext_doc_id anthropic-models
    */
   model_id: string
   /**

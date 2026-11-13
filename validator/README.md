@@ -23,6 +23,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                                                                   |
 | `valid-request-urls`                  | The `urls` of a request must not repeat a path or a method, and each method must be `DELETE`, `GET`, `HEAD`, `POST` or `PUT`.                                                              |
 | `binary-requires-alias`               | `ArrayBuffer` is only allowed as the type of a type alias. Give binary data an alias with a name and use that alias.                                                                       |
+| `doc-id-exists`                       | A `@doc_id` or `@ext_doc_id` on a property must exist in `specification/_doc_ids/table.csv`.                                                                                               |
 
 ## Usage
 
