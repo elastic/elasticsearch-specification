@@ -34,6 +34,7 @@ It is configured [in the specification directory](../specification/eslint.config
 | `prefer-internal-variants`            | A union of classes that all have the same property with a literal type must use `@variants internal`.                                                                                      |
 | `request-path-parts-match-urls`       | A path part that all URLs of a request contain must be required. A path part that one of the URLs does not contain must be optional.                                                       |
 | `rest-spec-name-matches-location`     | The `@rest_spec_name` of a request must match the namespace and API folders of its file.                                                                                                   |
+| `shortcut-property-exists`            | `@shortcut_property` must name a property of the class or of one of its parents.                                                                                                           |
 
 ## Usage
 
