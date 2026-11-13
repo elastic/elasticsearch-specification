@@ -67,14 +67,14 @@ class DataStreamLifecycleExplain {
    * The status of the frozen transition.
    */
   frozen_transition_status?: string
-  /*
-   * @availability stack since=9.6.0 stability=stable
+  /**
    * The date the index tail was last merged, in milliseconds since the epoch.
+   * @availability stack since=9.6.0 stability=stable
    */
   tail_merge_date_millis?: EpochTime<UnitMillis>
-  /*
-   * @availability stack since=9.6.0 stability=stable
+  /**
    * The date the index tail was last merged. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.6.0 stability=stable
    */
   tail_merge_date?: DateTime
   /*
