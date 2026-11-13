@@ -1755,7 +1755,7 @@ export type SearchHighlighterEncoder = 'default' | 'html'
 
 export type SearchHighlighterFragmenter = 'simple' | 'span'
 
-export type SearchHighlighterOrder = 'score'
+export type SearchHighlighterOrder = 'none' | 'score'
 
 export type SearchHighlighterTagsSchema = 'styled'
 

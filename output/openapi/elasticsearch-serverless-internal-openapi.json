@@ -62309,7 +62309,7 @@
               },
               "validation_method": {
                 "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
-                "default": "'strict'",
+                "default": "strict",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
@@ -62358,7 +62358,7 @@
               },
               "distance_type": {
                 "description": "How to compute the distance.\nSet to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.",
-                "default": "'arc'",
+                "default": "arc",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.GeoDistanceType"
@@ -62367,7 +62367,7 @@
               },
               "validation_method": {
                 "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
-                "default": "'strict'",
+                "default": "strict",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
@@ -62437,7 +62437,7 @@
             "type": "object",
             "properties": {
               "validation_method": {
-                "default": "'strict'",
+                "default": "strict",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.GeoValidationMethod"
@@ -62510,7 +62510,7 @@
               },
               "score_mode": {
                 "description": "Indicates how scores for matching child documents affect the root parent document’s relevance score.",
-                "default": "'none'",
+                "default": "none",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.ChildScoreMode"
@@ -62941,6 +62941,7 @@
       "_global.search._types.HighlighterOrder": {
         "type": "string",
         "enum": [
+          "none",
           "score"
         ]
       },
@@ -63998,7 +63999,7 @@
               },
               "operator": {
                 "description": "Boolean logic used to interpret text in the query value.",
-                "default": "'or'",
+                "default": "or",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -64026,7 +64027,7 @@
               },
               "zero_terms_query": {
                 "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
-                "default": "'none'",
+                "default": "none",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.ZeroTermsQuery"
@@ -64105,7 +64106,7 @@
               },
               "operator": {
                 "description": "Boolean logic used to interpret text in the query value.\nApplied to the constructed bool query.",
-                "default": "'or'",
+                "default": "or",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -64161,7 +64162,7 @@
               },
               "zero_terms_query": {
                 "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
-                "default": "'none'",
+                "default": "none",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.ZeroTermsQuery"
@@ -64392,7 +64393,7 @@
             ]
           },
           "version_type": {
-            "default": "'internal'",
+            "default": "internal",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.VersionType"
@@ -64535,7 +64536,7 @@
               },
               "operator": {
                 "description": "Boolean logic used to interpret text in the query value.",
-                "default": "'or'",
+                "default": "or",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -64563,7 +64564,7 @@
               },
               "type": {
                 "description": "How `the` multi_match query is executed internally.",
-                "default": "'best_fields'",
+                "default": "best_fields",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.TextQueryType"
@@ -64572,7 +64573,7 @@
               },
               "zero_terms_query": {
                 "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
-                "default": "'none'",
+                "default": "none",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.ZeroTermsQuery"
@@ -64639,7 +64640,7 @@
               },
               "score_mode": {
                 "description": "How scores for matching child objects affect the root parent document’s relevance score.",
-                "default": "'avg'",
+                "default": "avg",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.ChildScoreMode"
@@ -64901,7 +64902,7 @@
               },
               "default_operator": {
                 "description": "Default boolean logic used to interpret text in the query string if no operators are specified.",
-                "default": "'or'",
+                "default": "or",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -65012,7 +65013,7 @@
               },
               "type": {
                 "description": "Determines how the query matches and scores documents.",
-                "default": "'best_fields'",
+                "default": "best_fields",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.TextQueryType"
@@ -65679,7 +65680,7 @@
               },
               "default_operator": {
                 "description": "Default boolean logic used to interpret text in the query string if no operators are specified.",
-                "default": "'or'",
+                "default": "or",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.query_dsl.Operator"
@@ -79907,7 +79908,7 @@
           },
           "origination_date": {
             "description": "If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting\nif you create a new index that contains old data and want to use the original creation date to calculate the index\nage. Specified as a Unix epoch value in milliseconds.",
-            "default": 0.0,
+            "default": -1.0,
             "type": "number"
           },
           "parse_origination_date": {
@@ -79923,7 +79924,6 @@
           },
           "rollover_alias": {
             "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
-            "default": "",
             "type": "string"
           },
           "prefer_ilm": {
@@ -79996,7 +79996,7 @@
           },
           "durability": {
             "description": "Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.",
-            "default": "string",
+            "default": "request",
             "allOf": [
               {
                 "$ref": "#/components/schemas/indices._types.TranslogDurability"
@@ -108844,7 +108844,7 @@
               },
               "shape_relation": {
                 "description": "A spatial relation operator used to match the geoshape of incoming documents to documents in the enrich index.\nThis option is only used for `geo_match` enrich policy types.",
-                "default": "INTERSECTS",
+                "default": "intersects",
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.GeoShapeRelation"
@@ -138115,12 +138115,7 @@
         "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
         "deprecated": false,
         "schema": {
-          "default": "ip,hp,rp,r,m,n,cpu,l",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/cat._types.CatRecoveryColumns"
-            }
-          ]
+          "$ref": "#/components/schemas/cat._types.CatRecoveryColumns"
         },
         "style": "form"
       },

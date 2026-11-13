@@ -49718,7 +49718,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/highlighting.ts#L194-L197"
+      "specLocation": "_global/search/_types/highlighting.ts#L195-L198"
     },
     {
       "kind": "enum",
@@ -49756,6 +49756,9 @@
       "kind": "enum",
       "members": [
         {
+          "name": "none"
+        },
+        {
           "name": "score"
         }
       ],
@@ -49763,7 +49766,7 @@
         "name": "HighlighterOrder",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L169-L171"
+      "specLocation": "_global/search/_types/highlighting.ts#L169-L172"
     },
     {
       "kind": "enum",
@@ -49776,7 +49779,7 @@
         "name": "HighlighterTagsSchema",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L173-L175"
+      "specLocation": "_global/search/_types/highlighting.ts#L174-L176"
     },
     {
       "kind": "enum",
@@ -49800,7 +49803,7 @@
         "name": "HighlighterType",
         "namespace": "_global.search._types"
       },
-      "specLocation": "_global/search/_types/highlighting.ts#L177-L192"
+      "specLocation": "_global/search/_types/highlighting.ts#L178-L193"
     },
     {
       "kind": "interface",
@@ -102226,7 +102229,7 @@
           "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
           "name": "validation_method",
           "required": false,
-          "serverDefault": "'strict'",
+          "serverDefault": "strict",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102380,7 +102383,7 @@
           "description": "How to compute the distance.\nSet to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.",
           "name": "distance_type",
           "required": false,
-          "serverDefault": "'arc'",
+          "serverDefault": "arc",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102393,7 +102396,7 @@
           "description": "Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.\nSet to `COERCE` to also try to infer correct latitude or longitude.",
           "name": "validation_method",
           "required": false,
-          "serverDefault": "'strict'",
+          "serverDefault": "strict",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102559,7 +102562,7 @@
         {
           "name": "validation_method",
           "required": false,
-          "serverDefault": "'strict'",
+          "serverDefault": "strict",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -102795,7 +102798,7 @@
           "description": "Indicates how scores for matching child documents affect the root parent document’s relevance score.",
           "name": "score_mode",
           "required": false,
-          "serverDefault": "'none'",
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -103980,7 +103983,7 @@
         {
           "name": "version_type",
           "required": false,
-          "serverDefault": "'internal'",
+          "serverDefault": "internal",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104134,7 +104137,7 @@
           "description": "Boolean logic used to interpret text in the query value.\nApplied to the constructed bool query.",
           "name": "operator",
           "required": false,
-          "serverDefault": "'or'",
+          "serverDefault": "or",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104331,7 +104334,7 @@
           "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
           "name": "zero_terms_query",
           "required": false,
-          "serverDefault": "'none'",
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104486,7 +104489,7 @@
           "description": "Boolean logic used to interpret text in the query value.",
           "name": "operator",
           "required": false,
-          "serverDefault": "'or'",
+          "serverDefault": "or",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104543,7 +104546,7 @@
           "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
           "name": "zero_terms_query",
           "required": false,
-          "serverDefault": "'none'",
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -104953,7 +104956,7 @@
           "description": "Boolean logic used to interpret text in the query value.",
           "name": "operator",
           "required": false,
-          "serverDefault": "'or'",
+          "serverDefault": "or",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105017,7 +105020,7 @@
           "description": "How `the` multi_match query is executed internally.",
           "name": "type",
           "required": false,
-          "serverDefault": "'best_fields'",
+          "serverDefault": "best_fields",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105030,7 +105033,7 @@
           "description": "Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.",
           "name": "zero_terms_query",
           "required": false,
-          "serverDefault": "'none'",
+          "serverDefault": "none",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -105140,7 +105143,7 @@
           "description": "How scores for matching child objects affect the root parent document’s relevance score.",
           "name": "score_mode",
           "required": false,
-          "serverDefault": "'avg'",
+          "serverDefault": "avg",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -106841,7 +106844,7 @@
           "description": "Default boolean logic used to interpret text in the query string if no operators are specified.",
           "name": "default_operator",
           "required": false,
-          "serverDefault": "'or'",
+          "serverDefault": "or",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107088,7 +107091,7 @@
           "description": "Determines how the query matches and scores documents.",
           "name": "type",
           "required": false,
-          "serverDefault": "'best_fields'",
+          "serverDefault": "best_fields",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -108080,7 +108083,7 @@
           "description": "Default boolean logic used to interpret text in the query string if no operators are specified.",
           "name": "default_operator",
           "required": false,
-          "serverDefault": "'or'",
+          "serverDefault": "or",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127944,7 +127947,6 @@
           "description": "A comma-separated list of columns names to display.\nIt supports simple wildcards.",
           "name": "h",
           "required": false,
-          "serverDefault": "ip,hp,rp,r,m,n,cpu,l",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -127966,7 +127968,7 @@
           }
         }
       ],
-      "specLocation": "cat/recovery/CatRecoveryRequest.ts#L23-L84"
+      "specLocation": "cat/recovery/CatRecoveryRequest.ts#L23-L83"
     },
     {
       "kind": "response",
@@ -165500,7 +165502,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L465-L467"
+      "specLocation": "indices/_types/IndexSettings.ts#L464-L466"
     },
     {
       "kind": "interface",
@@ -165534,7 +165536,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L473-L481"
+      "specLocation": "indices/_types/IndexSettings.ts#L472-L480"
     },
     {
       "kind": "interface",
@@ -168118,7 +168120,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L369-L375"
+      "specLocation": "indices/_types/IndexSettings.ts#L368-L374"
     },
     {
       "kind": "interface",
@@ -168165,7 +168167,7 @@
           "description": "If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting\nif you create a new index that contains old data and want to use the original creation date to calculate the index\nage. Specified as a Unix epoch value in milliseconds.",
           "name": "origination_date",
           "required": false,
-          "serverDefault": 0,
+          "serverDefault": -1,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -168201,7 +168203,6 @@
           "description": "The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.\nWhen the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more\ninformation about rolling indices, see Rollover.",
           "name": "rollover_alias",
           "required": false,
-          "serverDefault": "",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -168236,7 +168237,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L306-L346"
+      "specLocation": "indices/_types/IndexSettings.ts#L306-L345"
     },
     {
       "kind": "interface",
@@ -168258,7 +168259,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L348-L354"
+      "specLocation": "indices/_types/IndexSettings.ts#L347-L353"
     },
     {
       "kind": "interface",
@@ -168308,7 +168309,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L377-L388"
+      "specLocation": "indices/_types/IndexSettings.ts#L376-L387"
     },
     {
       "kind": "interface",
@@ -168329,7 +168330,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L356-L358"
+      "specLocation": "indices/_types/IndexSettings.ts#L355-L357"
     },
     {
       "kind": "interface",
@@ -168352,7 +168353,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L360-L367"
+      "specLocation": "indices/_types/IndexSettings.ts#L359-L366"
     },
     {
       "kind": "interface",
@@ -169263,7 +169264,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L638-L640"
+      "specLocation": "indices/_types/IndexSettings.ts#L637-L639"
     },
     {
       "kind": "interface",
@@ -169285,7 +169286,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L642-L649"
+      "specLocation": "indices/_types/IndexSettings.ts#L641-L648"
     },
     {
       "kind": "interface",
@@ -169339,7 +169340,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L651-L656"
+      "specLocation": "indices/_types/IndexSettings.ts#L650-L655"
     },
     {
       "kind": "interface",
@@ -169363,7 +169364,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L658-L665"
+      "specLocation": "indices/_types/IndexSettings.ts#L657-L664"
     },
     {
       "kind": "enum",
@@ -169535,7 +169536,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L483-L498"
+      "specLocation": "indices/_types/IndexSettings.ts#L482-L497"
     },
     {
       "kind": "interface",
@@ -169558,7 +169559,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L521-L528"
+      "specLocation": "indices/_types/IndexSettings.ts#L520-L527"
     },
     {
       "kind": "interface",
@@ -169580,7 +169581,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L558-L564"
+      "specLocation": "indices/_types/IndexSettings.ts#L557-L563"
     },
     {
       "kind": "interface",
@@ -169602,7 +169603,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L549-L556"
+      "specLocation": "indices/_types/IndexSettings.ts#L548-L555"
     },
     {
       "kind": "interface",
@@ -169625,7 +169626,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L530-L538"
+      "specLocation": "indices/_types/IndexSettings.ts#L529-L537"
     },
     {
       "kind": "interface",
@@ -169648,7 +169649,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L540-L547"
+      "specLocation": "indices/_types/IndexSettings.ts#L539-L546"
     },
     {
       "kind": "interface",
@@ -169669,7 +169670,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L566-L568"
+      "specLocation": "indices/_types/IndexSettings.ts#L565-L567"
     },
     {
       "kind": "interface",
@@ -169729,7 +169730,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L500-L519"
+      "specLocation": "indices/_types/IndexSettings.ts#L499-L518"
     },
     {
       "kind": "interface",
@@ -169750,7 +169751,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L390-L392"
+      "specLocation": "indices/_types/IndexSettings.ts#L389-L391"
     },
     {
       "kind": "interface",
@@ -169800,7 +169801,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L394-L397"
+      "specLocation": "indices/_types/IndexSettings.ts#L393-L396"
     },
     {
       "kind": "interface",
@@ -169858,7 +169859,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L461-L463"
+      "specLocation": "indices/_types/IndexSettings.ts#L460-L462"
     },
     {
       "kind": "interface",
@@ -169879,7 +169880,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L469-L471"
+      "specLocation": "indices/_types/IndexSettings.ts#L468-L470"
     },
     {
       "kind": "interface",
@@ -170563,7 +170564,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L576-L581"
+      "specLocation": "indices/_types/IndexSettings.ts#L575-L580"
     },
     {
       "kind": "interface",
@@ -170617,7 +170618,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L588-L593"
+      "specLocation": "indices/_types/IndexSettings.ts#L587-L592"
     },
     {
       "kind": "interface",
@@ -170649,7 +170650,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L583-L586"
+      "specLocation": "indices/_types/IndexSettings.ts#L582-L585"
     },
     {
       "kind": "interface",
@@ -170703,7 +170704,7 @@
         "name": "SourceMode",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L570-L574"
+      "specLocation": "indices/_types/IndexSettings.ts#L569-L573"
     },
     {
       "kind": "interface",
@@ -170748,7 +170749,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L595-L606"
+      "specLocation": "indices/_types/IndexSettings.ts#L594-L605"
     },
     {
       "kind": "enum",
@@ -170775,7 +170776,7 @@
         "name": "StorageType",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L608-L636"
+      "specLocation": "indices/_types/IndexSettings.ts#L607-L635"
     },
     {
       "kind": "interface",
@@ -170898,7 +170899,7 @@
           "description": "Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.",
           "name": "durability",
           "required": false,
-          "serverDefault": "string",
+          "serverDefault": "request",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -170932,7 +170933,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L399-L421"
+      "specLocation": "indices/_types/IndexSettings.ts#L398-L420"
     },
     {
       "kind": "enum",
@@ -170956,7 +170957,7 @@
         "name": "TranslogDurability",
         "namespace": "indices._types"
       },
-      "specLocation": "indices/_types/IndexSettings.ts#L423-L438"
+      "specLocation": "indices/_types/IndexSettings.ts#L422-L437"
     },
     {
       "kind": "interface",
@@ -170992,7 +170993,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexSettings.ts#L440-L459"
+      "specLocation": "indices/_types/IndexSettings.ts#L439-L458"
     },
     {
       "kind": "interface",
@@ -182835,7 +182836,6 @@
           "description": "User defined reason for creating or updating the index template",
           "name": "cause",
           "required": false,
-          "serverDefault": "",
           "type": {
             "kind": "instance_of",
             "type": {
@@ -182845,7 +182845,7 @@
           }
         }
       ],
-      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L131"
+      "specLocation": "indices/put_template/IndicesPutTemplateRequest.ts#L29-L130"
     },
     {
       "kind": "response",
@@ -212535,7 +212535,7 @@
           "description": "A spatial relation operator used to match the geoshape of incoming documents to documents in the enrich index.\nThis option is only used for `geo_match` enrich policy types.",
           "name": "shape_relation",
           "required": false,
-          "serverDefault": "INTERSECTS",
+          "serverDefault": "intersects",
           "type": {
             "kind": "instance_of",
             "type": {
