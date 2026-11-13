@@ -35427,9 +35427,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
+          "name": "include_managed_fields",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L75"
+      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L82"
     },
     {
       "body": {
@@ -83547,6 +83569,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.\nThe result can be passed to the `bitmap_terms` query.\nIt can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.",
+          "extDocId": "search-aggregations-metrics-roaring-bitmap-aggregation",
+          "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation",
+          "name": "roaring_bitmap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoaringBitmapAggregation",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
           "description": "A special single bucket aggregation that enables aggregating on parent documents from nested documents.\nShould only be defined inside a `nested` aggregation.",
           "extDocId": "search-aggregations-bucket-reverse-nested-aggregation",
           "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation",
@@ -83821,7 +83863,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L110-L555",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L111-L565",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -89798,7 +89840,7 @@
         "name": "Missing",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L557-L557",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L567-L567",
       "type": {
         "items": [
           {
@@ -97987,7 +98029,7 @@
         "name": "MissingOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L558-L562"
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L568-L572"
     },
     {
       "kind": "enum",
@@ -98027,7 +98069,7 @@
         "name": "ValueType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L468-L479"
+      "specLocation": "_types/aggregations/metric.ts#L482-L493"
     },
     {
       "inherits": {
@@ -99271,7 +99313,7 @@
         "name": "Buckets",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L362-L371",
+      "specLocation": "_types/aggregations/Aggregate.ts#L363-L372",
       "type": {
         "items": [
           {
@@ -102057,7 +102099,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L266-L277"
+      "specLocation": "_types/aggregations/metric.ts#L280-L291"
     },
     {
       "kind": "enum",
@@ -102075,7 +102117,41 @@
         "name": "RateMode",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L279-L288"
+      "specLocation": "_types/aggregations/metric.ts#L293-L302"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoaringBitmapAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The `integer` or `long` field from which to collect the distinct values.\nScripts are not supported, so the field must be mapped.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The value to use for documents that do not have a value for the field.\nIt must be non-negative and fit the `integer` or `long` type of the field.\nBy default, documents without a value are ignored.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/metric.ts#L266-L278"
     },
     {
       "inherits": {
@@ -102259,7 +102335,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L290-L316"
+      "specLocation": "_types/aggregations/metric.ts#L304-L330"
     },
     {
       "extDocId": "search-aggregations-pipeline-serialdiff-aggregation",
@@ -102914,7 +102990,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L318-L318"
+      "specLocation": "_types/aggregations/metric.ts#L332-L332"
     },
     {
       "inherits": {
@@ -102958,7 +103034,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L320-L326"
+      "specLocation": "_types/aggregations/metric.ts#L334-L340"
     },
     {
       "inherits": {
@@ -102973,7 +103049,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L328-L328"
+      "specLocation": "_types/aggregations/metric.ts#L342-L342"
     },
     {
       "extDocId": "search-aggregations-pipeline-sum-bucket-aggregation",
@@ -103447,7 +103523,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L373-L433"
+      "specLocation": "_types/aggregations/metric.ts#L387-L447"
     },
     {
       "inherits": {
@@ -103500,7 +103576,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L330-L344"
+      "specLocation": "_types/aggregations/metric.ts#L344-L358"
     },
     {
       "kind": "interface",
@@ -103545,7 +103621,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L346-L356"
+      "specLocation": "_types/aggregations/metric.ts#L360-L370"
     },
     {
       "kind": "enum",
@@ -103567,7 +103643,7 @@
         "name": "TTestType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L358-L371"
+      "specLocation": "_types/aggregations/metric.ts#L372-L385"
     },
     {
       "extDocId": "search-aggregations-metrics-top-metrics",
@@ -103637,7 +103713,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L435-L452"
+      "specLocation": "_types/aggregations/metric.ts#L449-L466"
     },
     {
       "kind": "interface",
@@ -103671,7 +103747,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L454-L464"
+      "specLocation": "_types/aggregations/metric.ts#L468-L478"
     },
     {
       "inherits": {
@@ -103686,7 +103762,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L466-L466"
+      "specLocation": "_types/aggregations/metric.ts#L480-L480"
     },
     {
       "inherits": {
@@ -103776,7 +103852,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L481-L495"
+      "specLocation": "_types/aggregations/metric.ts#L495-L509"
     },
     {
       "kind": "interface",
@@ -103821,7 +103897,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L497-L507"
+      "specLocation": "_types/aggregations/metric.ts#L511-L521"
     },
     {
       "extDocId": "search-aggregations-bucket-variablewidthhistogram-aggregation",
@@ -105297,7 +105373,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L375-L434"
+      "specLocation": "inference/_types/Services.ts#L383-L442"
     },
     {
       "inherits": {
@@ -108595,7 +108671,7 @@
         "name": "Aggregate",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L40-L130",
+      "specLocation": "_types/aggregations/Aggregate.ts#L40-L131",
       "type": {
         "items": [
           {
@@ -109091,6 +109167,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "RoaringBitmapAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "CumulativeCardinalityAggregate",
               "namespace": "_types.aggregations"
             }
@@ -109142,7 +109225,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L145-L148",
+      "specLocation": "_types/aggregations/Aggregate.ts#L146-L149",
       "variantName": "cardinality"
     },
     {
@@ -109164,7 +109247,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L141-L143"
+      "specLocation": "_types/aggregations/Aggregate.ts#L142-L144"
     },
     {
       "inherits": {
@@ -109179,7 +109262,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L173-L174",
+      "specLocation": "_types/aggregations/Aggregate.ts#L174-L175",
       "variantName": "hdr_percentiles"
     },
     {
@@ -109207,7 +109290,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L153-L155"
+      "specLocation": "_types/aggregations/Aggregate.ts#L154-L156"
     },
     {
       "codegenNames": [
@@ -109219,7 +109302,7 @@
         "name": "Percentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L157-L158",
+      "specLocation": "_types/aggregations/Aggregate.ts#L158-L159",
       "type": {
         "items": [
           {
@@ -109249,7 +109332,7 @@
         "name": "KeyedPercentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L165-L165",
+      "specLocation": "_types/aggregations/Aggregate.ts#L166-L166",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -109341,7 +109424,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L167-L171"
+      "specLocation": "_types/aggregations/Aggregate.ts#L168-L172"
     },
     {
       "inherits": {
@@ -109356,7 +109439,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L176-L177",
+      "specLocation": "_types/aggregations/Aggregate.ts#L177-L178",
       "variantName": "hdr_percentile_ranks"
     },
     {
@@ -109372,7 +109455,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L179-L180",
+      "specLocation": "_types/aggregations/Aggregate.ts#L180-L181",
       "variantName": "tdigest_percentiles"
     },
     {
@@ -109388,7 +109471,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L182-L183",
+      "specLocation": "_types/aggregations/Aggregate.ts#L183-L184",
       "variantName": "tdigest_percentile_ranks"
     },
     {
@@ -109404,7 +109487,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L185-L186",
+      "specLocation": "_types/aggregations/Aggregate.ts#L186-L187",
       "variantName": "percentiles_bucket"
     },
     {
@@ -109420,7 +109503,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L201-L202",
+      "specLocation": "_types/aggregations/Aggregate.ts#L202-L203",
       "variantName": "median_absolute_deviation"
     },
     {
@@ -109472,7 +109555,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L190-L199"
+      "specLocation": "_types/aggregations/Aggregate.ts#L191-L200"
     },
     {
       "extDocId": "search-aggregations-metrics-min-aggregation",
@@ -109489,7 +109572,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L204-L208",
+      "specLocation": "_types/aggregations/Aggregate.ts#L205-L209",
       "variantName": "min"
     },
     {
@@ -109507,7 +109590,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L210-L214",
+      "specLocation": "_types/aggregations/Aggregate.ts#L211-L215",
       "variantName": "max"
     },
     {
@@ -109526,7 +109609,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L216-L221",
+      "specLocation": "_types/aggregations/Aggregate.ts#L217-L222",
       "variantName": "sum"
     },
     {
@@ -109544,7 +109627,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L223-L227",
+      "specLocation": "_types/aggregations/Aggregate.ts#L224-L228",
       "variantName": "avg"
     },
     {
@@ -109563,7 +109646,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L229-L234",
+      "specLocation": "_types/aggregations/Aggregate.ts#L230-L235",
       "variantName": "weighted_avg"
     },
     {
@@ -109582,7 +109665,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L236-L241",
+      "specLocation": "_types/aggregations/Aggregate.ts#L237-L242",
       "variantName": "value_count"
     },
     {
@@ -109598,7 +109681,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L243-L244",
+      "specLocation": "_types/aggregations/Aggregate.ts#L244-L245",
       "variantName": "simple_value"
     },
     {
@@ -109639,7 +109722,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L246-L253",
+      "specLocation": "_types/aggregations/Aggregate.ts#L247-L254",
       "variantName": "derivative"
     },
     {
@@ -109670,7 +109753,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L255-L258",
+      "specLocation": "_types/aggregations/Aggregate.ts#L256-L259",
       "variantName": "bucket_metric_value"
     },
     {
@@ -109709,7 +109792,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L388-L392",
+      "specLocation": "_types/aggregations/Aggregate.ts#L389-L393",
       "variantName": "change_point"
     },
     {
@@ -109808,7 +109891,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L398-L410",
+      "specLocation": "_types/aggregations/Aggregate.ts#L399-L411",
       "variants": {
         "kind": "container"
       }
@@ -109826,7 +109909,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L417-L417"
+      "specLocation": "_types/aggregations/Aggregate.ts#L418-L418"
     },
     {
       "kind": "interface",
@@ -109858,7 +109941,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L412-L415"
+      "specLocation": "_types/aggregations/Aggregate.ts#L413-L416"
     },
     {
       "inherits": {
@@ -109873,7 +109956,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L419-L419"
+      "specLocation": "_types/aggregations/Aggregate.ts#L420-L420"
     },
     {
       "kind": "interface",
@@ -109894,7 +109977,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L425-L427"
+      "specLocation": "_types/aggregations/Aggregate.ts#L426-L428"
     },
     {
       "kind": "interface",
@@ -109937,7 +110020,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L429-L433"
+      "specLocation": "_types/aggregations/Aggregate.ts#L430-L434"
     },
     {
       "inherits": {
@@ -109952,7 +110035,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L421-L421"
+      "specLocation": "_types/aggregations/Aggregate.ts#L422-L422"
     },
     {
       "kind": "interface",
@@ -109961,7 +110044,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L435-L435"
+      "specLocation": "_types/aggregations/Aggregate.ts#L436-L436"
     },
     {
       "inherits": {
@@ -109976,7 +110059,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L423-L423"
+      "specLocation": "_types/aggregations/Aggregate.ts#L424-L424"
     },
     {
       "kind": "interface",
@@ -110019,7 +110102,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L437-L441"
+      "specLocation": "_types/aggregations/Aggregate.ts#L438-L442"
     },
     {
       "attachedBehaviors": [
@@ -110049,7 +110132,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L394-L396"
+      "specLocation": "_types/aggregations/Aggregate.ts#L395-L397"
     },
     {
       "attachedBehaviors": [
@@ -110102,7 +110185,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L377-L386"
+      "specLocation": "_types/aggregations/Aggregate.ts#L378-L387"
     },
     {
       "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
@@ -110256,7 +110339,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L262-L278",
+      "specLocation": "_types/aggregations/Aggregate.ts#L263-L279",
       "variantName": "stats"
     },
     {
@@ -110274,7 +110357,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L280-L284",
+      "specLocation": "_types/aggregations/Aggregate.ts#L281-L285",
       "variantName": "stats_bucket"
     },
     {
@@ -110531,7 +110614,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L304-L325",
+      "specLocation": "_types/aggregations/Aggregate.ts#L305-L326",
       "variantName": "extended_stats"
     },
     {
@@ -110680,7 +110763,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L286-L293"
+      "specLocation": "_types/aggregations/Aggregate.ts#L287-L294"
     },
     {
       "kind": "interface",
@@ -110756,7 +110839,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L295-L302"
+      "specLocation": "_types/aggregations/Aggregate.ts#L296-L303"
     },
     {
       "inherits": {
@@ -110771,7 +110854,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L327-L328",
+      "specLocation": "_types/aggregations/Aggregate.ts#L328-L329",
       "variantName": "extended_stats_bucket"
     },
     {
@@ -110799,7 +110882,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L330-L333",
+      "specLocation": "_types/aggregations/Aggregate.ts#L331-L334",
       "variantName": "cartesian_bounds"
     },
     {
@@ -110838,7 +110921,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L335-L339",
+      "specLocation": "_types/aggregations/Aggregate.ts#L336-L340",
       "variantName": "cartesian_centroid"
     },
     {
@@ -110900,7 +110983,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L343-L349",
+      "specLocation": "_types/aggregations/Aggregate.ts#L344-L350",
       "variantName": "geo_bounds"
     },
     {
@@ -110941,7 +111024,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L351-L358",
+      "specLocation": "_types/aggregations/Aggregate.ts#L352-L359",
       "variantName": "geo_centroid"
     },
     {
@@ -110968,7 +111051,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L443-L447",
+      "specLocation": "_types/aggregations/Aggregate.ts#L444-L448",
       "variantName": "histogram"
     },
     {
@@ -111011,7 +111094,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L373-L375"
+      "specLocation": "_types/aggregations/Aggregate.ts#L374-L376"
     },
     {
       "extDocId": "search-aggregations-bucket-datehistogram-aggregation",
@@ -111037,7 +111120,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L454-L458",
+      "specLocation": "_types/aggregations/Aggregate.ts#L455-L459",
       "variantName": "date_histogram"
     },
     {
@@ -111076,7 +111159,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L465-L472",
+      "specLocation": "_types/aggregations/Aggregate.ts#L466-L473",
       "variantName": "auto_date_histogram"
     },
     {
@@ -111101,7 +111184,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L474-L476",
+      "specLocation": "_types/aggregations/Aggregate.ts#L475-L477",
       "variantName": "variable_width_histogram"
     },
     {
@@ -111127,7 +111210,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L496-L501",
+      "specLocation": "_types/aggregations/Aggregate.ts#L497-L502",
       "variantName": "sterms"
     },
     {
@@ -111181,7 +111264,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L489-L494"
+      "specLocation": "_types/aggregations/Aggregate.ts#L490-L495"
     },
     {
       "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
@@ -111206,7 +111289,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L511-L516",
+      "specLocation": "_types/aggregations/Aggregate.ts#L512-L517",
       "variantName": "lterms"
     },
     {
@@ -111232,7 +111315,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L523-L528",
+      "specLocation": "_types/aggregations/Aggregate.ts#L524-L529",
       "variantName": "dterms"
     },
     {
@@ -111258,7 +111341,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L535-L541",
+      "specLocation": "_types/aggregations/Aggregate.ts#L536-L542",
       "variantName": "umterms"
     },
     {
@@ -111284,7 +111367,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L543-L548",
+      "specLocation": "_types/aggregations/Aggregate.ts#L544-L549",
       "variantName": "lrareterms"
     },
     {
@@ -111310,7 +111393,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L555-L559",
+      "specLocation": "_types/aggregations/Aggregate.ts#L556-L560",
       "variantName": "srareterms"
     },
     {
@@ -111336,7 +111419,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L565-L571",
+      "specLocation": "_types/aggregations/Aggregate.ts#L566-L572",
       "variantName": "umrareterms"
     },
     {
@@ -111363,7 +111446,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L573-L578",
+      "specLocation": "_types/aggregations/Aggregate.ts#L574-L579",
       "variantName": "multi_terms"
     },
     {
@@ -111384,7 +111467,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L600-L604",
+      "specLocation": "_types/aggregations/Aggregate.ts#L601-L605",
       "variantName": "missing"
     },
     {
@@ -111444,7 +111527,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L588-L598"
+      "specLocation": "_types/aggregations/Aggregate.ts#L589-L599"
     },
     {
       "attachedBehaviors": [
@@ -111464,7 +111547,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L606-L610",
+      "specLocation": "_types/aggregations/Aggregate.ts#L607-L611",
       "variantName": "nested"
     },
     {
@@ -111485,7 +111568,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L612-L616",
+      "specLocation": "_types/aggregations/Aggregate.ts#L613-L617",
       "variantName": "reverse_nested"
     },
     {
@@ -111506,7 +111589,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L618-L622",
+      "specLocation": "_types/aggregations/Aggregate.ts#L619-L623",
       "variantName": "global"
     },
     {
@@ -111527,7 +111610,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L624-L628",
+      "specLocation": "_types/aggregations/Aggregate.ts#L625-L629",
       "variantName": "filter"
     },
     {
@@ -111548,7 +111631,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L962-L966",
+      "specLocation": "_types/aggregations/Aggregate.ts#L976-L980",
       "variantName": "children"
     },
     {
@@ -111569,7 +111652,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L968-L972",
+      "specLocation": "_types/aggregations/Aggregate.ts#L982-L986",
       "variantName": "parent"
     },
     {
@@ -111588,7 +111671,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L630-L631",
+      "specLocation": "_types/aggregations/Aggregate.ts#L631-L632",
       "variantName": "sampler"
     },
     {
@@ -111607,7 +111690,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L633-L634",
+      "specLocation": "_types/aggregations/Aggregate.ts#L634-L635",
       "variantName": "unmapped_sampler"
     },
     {
@@ -111632,7 +111715,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L638-L640",
+      "specLocation": "_types/aggregations/Aggregate.ts#L639-L641",
       "variantName": "geohash_grid"
     },
     {
@@ -111659,7 +111742,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L646-L651",
+      "specLocation": "_types/aggregations/Aggregate.ts#L647-L652",
       "variantName": "geotile_grid"
     },
     {
@@ -111684,7 +111767,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L657-L658",
+      "specLocation": "_types/aggregations/Aggregate.ts#L658-L659",
       "variantName": "geohex_grid"
     },
     {
@@ -111711,7 +111794,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L666-L670",
+      "specLocation": "_types/aggregations/Aggregate.ts#L667-L671",
       "variantName": "range"
     },
     {
@@ -111730,7 +111813,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L681-L687",
+      "specLocation": "_types/aggregations/Aggregate.ts#L682-L688",
       "variantName": "date_range"
     },
     {
@@ -111749,7 +111832,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L689-L694",
+      "specLocation": "_types/aggregations/Aggregate.ts#L690-L695",
       "variantName": "geo_distance"
     },
     {
@@ -111776,7 +111859,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L696-L701",
+      "specLocation": "_types/aggregations/Aggregate.ts#L697-L702",
       "variantName": "ip_range"
     },
     {
@@ -111803,7 +111886,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L783-L787",
+      "specLocation": "_types/aggregations/Aggregate.ts#L784-L788",
       "variantName": "ip_prefix"
     },
     {
@@ -111830,7 +111913,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L711-L715",
+      "specLocation": "_types/aggregations/Aggregate.ts#L712-L716",
       "variantName": "filters"
     },
     {
@@ -111857,7 +111940,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L721-L726",
+      "specLocation": "_types/aggregations/Aggregate.ts#L722-L727",
       "variantName": "adjacency_matrix"
     },
     {
@@ -111882,7 +111965,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L742-L744",
+      "specLocation": "_types/aggregations/Aggregate.ts#L743-L745",
       "variantName": "siglterms"
     },
     {
@@ -111938,7 +112021,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L732-L740"
+      "specLocation": "_types/aggregations/Aggregate.ts#L733-L741"
     },
     {
       "inherits": {
@@ -111962,7 +112045,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L756-L758",
+      "specLocation": "_types/aggregations/Aggregate.ts#L757-L759",
       "variantName": "sigsterms"
     },
     {
@@ -111988,7 +112071,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L764-L770",
+      "specLocation": "_types/aggregations/Aggregate.ts#L765-L771",
       "variantName": "umsigterms"
     },
     {
@@ -112025,7 +112108,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L772-L777",
+      "specLocation": "_types/aggregations/Aggregate.ts#L773-L778",
       "variantName": "composite"
     },
     {
@@ -112050,7 +112133,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L796-L797",
+      "specLocation": "_types/aggregations/Aggregate.ts#L797-L798",
       "variantName": "frequent_item_sets"
     },
     {
@@ -112075,7 +112158,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L804-L805",
+      "specLocation": "_types/aggregations/Aggregate.ts#L805-L806",
       "variantName": "time_series"
     },
     {
@@ -112101,7 +112184,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L813-L819",
+      "specLocation": "_types/aggregations/Aggregate.ts#L814-L820",
       "variantName": "scripted_metric"
     },
     {
@@ -112136,7 +112219,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L821-L827",
+      "specLocation": "_types/aggregations/Aggregate.ts#L822-L828",
       "variantName": "top_hits"
     },
     {
@@ -112232,7 +112315,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L829-L844",
+      "specLocation": "_types/aggregations/Aggregate.ts#L830-L845",
       "variantName": "inference"
     },
     {
@@ -112279,7 +112362,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L852-L856"
+      "specLocation": "_types/aggregations/Aggregate.ts#L853-L857"
     },
     {
       "kind": "interface",
@@ -112311,7 +112394,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L858-L861"
+      "specLocation": "_types/aggregations/Aggregate.ts#L859-L862"
     },
     {
       "kind": "interface",
@@ -112354,7 +112437,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L846-L850"
+      "specLocation": "_types/aggregations/Aggregate.ts#L847-L851"
     },
     {
       "inherits": {
@@ -112540,7 +112623,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L867-L878",
+      "specLocation": "_types/aggregations/Aggregate.ts#L868-L879",
       "variantName": "string_stats"
     },
     {
@@ -112713,7 +112796,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L880-L899",
+      "specLocation": "_types/aggregations/Aggregate.ts#L881-L900",
       "variantName": "boxplot"
     },
     {
@@ -112744,7 +112827,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L901-L904",
+      "specLocation": "_types/aggregations/Aggregate.ts#L902-L905",
       "variantName": "top_metrics"
     },
     {
@@ -112815,7 +112898,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L906-L910"
+      "specLocation": "_types/aggregations/Aggregate.ts#L907-L911"
     },
     {
       "extDocId": "search-aggregations-metrics-ttest-aggregation",
@@ -112867,7 +112950,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L912-L919",
+      "specLocation": "_types/aggregations/Aggregate.ts#L913-L920",
       "variantName": "t_test"
     },
     {
@@ -112908,8 +112991,52 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L921-L928",
+      "specLocation": "_types/aggregations/Aggregate.ts#L922-L929",
       "variantName": "rate"
+    },
+    {
+      "description": "Result of the `roaring_bitmap` aggregation.",
+      "extDocId": "search-aggregations-metrics-roaring-bitmap-aggregation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation",
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RoaringBitmapAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The distinct values of the field, as a base64-encoded portable roaring bitmap.\nIt is `null` if the field is unmapped.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/Aggregate.ts#L931-L942",
+      "variantName": "roaring_bitmap"
     },
     {
       "description": "Result of the `cumulative_cardinality` aggregation",
@@ -112948,7 +113075,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L930-L938",
+      "specLocation": "_types/aggregations/Aggregate.ts#L944-L952",
       "variantName": "simple_long_value"
     },
     {
@@ -112992,7 +113119,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L940-L947",
+      "specLocation": "_types/aggregations/Aggregate.ts#L954-L961",
       "variantName": "matrix_stats"
     },
     {
@@ -113113,7 +113240,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L949-L958"
+      "specLocation": "_types/aggregations/Aggregate.ts#L963-L972"
     },
     {
       "extDocId": "search-aggregations-metrics-geo-line",
@@ -113160,7 +113287,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L976-L986",
+      "specLocation": "_types/aggregations/Aggregate.ts#L990-L1000",
       "variantName": "geo_line"
     },
     {
@@ -145155,6 +145282,41 @@
       "kind": "enum",
       "members": [
         {
+          "name": "beta"
+        },
+        {
+          "name": "preview"
+        },
+        {
+          "name": "ga"
+        },
+        {
+          "name": "deprecated"
+        }
+      ],
+      "name": {
+        "name": "EndpointMetadataStatus",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/EndpointMetadata.ts#L63-L68"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "required"
+        }
+      ],
+      "name": {
+        "name": "EndpointMetadataTemplatePolicy",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/EndpointMetadata.ts#L179-L181"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "fireworksai"
         }
       ],
@@ -146004,7 +146166,7 @@
         "name": "ServiceSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L436-L436",
+      "specLocation": "inference/_types/Services.ts#L444-L444",
       "type": {
         "kind": "user_defined_value"
       }
@@ -146042,7 +146204,7 @@
         "name": "TaskSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L438-L438",
+      "specLocation": "inference/_types/Services.ts#L446-L446",
       "type": {
         "kind": "user_defined_value"
       }
@@ -169498,7 +169660,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
     },
     {
       "kind": "interface",
@@ -170356,6 +170518,24 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+          "name": "registry_installed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
           "name": "index_patterns",
           "required": true,
@@ -170570,7 +170750,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L161-L163"
+      "specLocation": "indices/_types/IndexTemplate.ts#L161-L171"
     },
     {
       "kind": "interface",
@@ -173891,9 +174071,27 @@
               "namespace": "inference._types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.4.0"
+            }
+          },
+          "description": "Metadata about the endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadata",
+              "namespace": "inference._types"
+            }
+          }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L76-L88"
+      "specLocation": "inference/_types/Services.ts#L77-L96"
     },
     {
       "description": "Configuration options when storing the inference endpoint",
@@ -173952,7 +174150,473 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L52-L74"
+      "specLocation": "inference/_types/Services.ts#L53-L75"
+    },
+    {
+      "description": "Metadata about an inference endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.\nThe internal fields that Elasticsearch uses to track the metadata are not part of the response.",
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadata",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Properties of the endpoint that help clients to determine which model to use.",
+          "name": "heuristics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataHeuristics",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "Information to display for the endpoint.",
+          "name": "display",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataDisplay",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The identity of the model that the endpoint serves.",
+          "name": "model_identity",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataModelIdentity",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The regions in which the endpoint is available.",
+          "name": "regions",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EndpointMetadataRegion",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "If `true`, the region policy of the caller prohibits access to the endpoint.",
+          "name": "denied_by_region_policy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The capabilities of the endpoint.",
+          "name": "capabilities",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataCapabilities",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L23-L61"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataHeuristics",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Tags that describe the properties of the model, for example `multilingual`, `english` or `multimodal`.",
+          "name": "properties",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The release status of the model.",
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataStatus",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The date on which the model was released, in `yyyy-MM-dd` format.",
+          "name": "release_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The date on which the model reaches the end of its life, in `yyyy-MM-dd` format.",
+          "name": "end_of_life_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L70-L87"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataDisplay",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The name to display for the endpoint.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The creator of the model, for display purposes.",
+          "name": "model_creator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L89-L98"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataModelIdentity",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The model creator or lab, for example `anthropic`, `openai` or `jina`.",
+          "name": "creator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The model family within the creator, for example `claude`, `gpt` or `gemini`.",
+          "name": "family",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The performance or size tier within the family, for example `sonnet` or `mini`.\nIt is not set if the model has no tier variants.",
+          "name": "tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The version of the model.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L100-L118"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataRegion",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The cloud service provider, for example `aws`, `gcp` or `azure`.",
+          "name": "csp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The region of the cloud service provider, for example `us-east-1`.",
+          "name": "region",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The geographic area, for example `us` or `eu`.",
+          "name": "geo",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The human-readable name of the region.",
+          "name": "region_display_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L120-L139"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataCapabilities",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The reasoning support of the endpoint.",
+          "name": "reasoning",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataReasoningCapability",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The context window of the model.",
+          "name": "context_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataContextWindow",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The prompt template support of the endpoint.\nIt is returned only for chat completion endpoints that require a template instead of caller-authored messages.",
+          "name": "templates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataTemplatesCapability",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L141-L155"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataReasoningCapability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The reasoning effort levels that the endpoint supports.",
+          "name": "supported_effort_levels",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ReasoningEffort",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The reasoning effort level that the endpoint uses by default.",
+          "name": "default_effort_level",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ReasoningEffort",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L157-L166"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataContextWindow",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The maximum number of input tokens that the model accepts.",
+          "name": "max_input_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of output tokens that the model generates.",
+          "name": "max_output_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L168-L177"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataTemplatesCapability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Whether the endpoint requires chat completion requests to carry a prompt template.\nElasticsearch displays the policy so that clients can choose the request shape, but it doesn't enforce it.",
+          "name": "policy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataTemplatePolicy",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L183-L189"
     },
     {
       "description": "The stored region policy document.",
@@ -174391,7 +175055,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L440-L471"
+      "specLocation": "inference/_types/Services.ts#L448-L479"
     },
     {
       "inherits": {
@@ -174431,7 +175095,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L90-L99"
+      "specLocation": "inference/_types/Services.ts#L98-L107"
     },
     {
       "kind": "interface",
@@ -174577,7 +175241,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L101-L110"
+      "specLocation": "inference/_types/Services.ts#L109-L118"
     },
     {
       "kind": "interface",
@@ -174764,7 +175428,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L112-L121"
+      "specLocation": "inference/_types/Services.ts#L120-L129"
     },
     {
       "kind": "interface",
@@ -175051,7 +175715,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L123-L132"
+      "specLocation": "inference/_types/Services.ts#L131-L140"
     },
     {
       "kind": "interface",
@@ -175199,7 +175863,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L134-L143"
+      "specLocation": "inference/_types/Services.ts#L142-L151"
     },
     {
       "kind": "interface",
@@ -175407,7 +176071,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L145-L154"
+      "specLocation": "inference/_types/Services.ts#L153-L162"
     },
     {
       "kind": "interface",
@@ -175643,7 +176307,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L156-L165"
+      "specLocation": "inference/_types/Services.ts#L164-L173"
     },
     {
       "kind": "interface",
@@ -175814,7 +176478,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L167-L176"
+      "specLocation": "inference/_types/Services.ts#L175-L184"
     },
     {
       "kind": "interface",
@@ -175938,7 +176602,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L178-L187"
+      "specLocation": "inference/_types/Services.ts#L186-L195"
     },
     {
       "kind": "interface",
@@ -176210,7 +176874,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L189-L198"
+      "specLocation": "inference/_types/Services.ts#L197-L206"
     },
     {
       "kind": "interface",
@@ -176298,7 +176962,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L199-L208"
+      "specLocation": "inference/_types/Services.ts#L207-L216"
     },
     {
       "kind": "interface",
@@ -176524,7 +177188,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L210-L219"
+      "specLocation": "inference/_types/Services.ts#L218-L227"
     },
     {
       "kind": "interface",
@@ -176610,7 +177274,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L221-L230"
+      "specLocation": "inference/_types/Services.ts#L229-L238"
     },
     {
       "kind": "interface",
@@ -176786,7 +177450,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L320-L329"
+      "specLocation": "inference/_types/Services.ts#L328-L337"
     },
     {
       "kind": "interface",
@@ -176874,7 +177538,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L232-L241"
+      "specLocation": "inference/_types/Services.ts#L240-L249"
     },
     {
       "kind": "interface",
@@ -177135,7 +177799,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L243-L252"
+      "specLocation": "inference/_types/Services.ts#L251-L260"
     },
     {
       "kind": "interface",
@@ -177225,7 +177889,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L254-L263"
+      "specLocation": "inference/_types/Services.ts#L262-L271"
     },
     {
       "kind": "interface",
@@ -177361,7 +178025,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L265-L274"
+      "specLocation": "inference/_types/Services.ts#L273-L282"
     },
     {
       "kind": "interface",
@@ -177561,7 +178225,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L276-L285"
+      "specLocation": "inference/_types/Services.ts#L284-L293"
     },
     {
       "kind": "interface",
@@ -177673,7 +178337,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L287-L296"
+      "specLocation": "inference/_types/Services.ts#L295-L304"
     },
     {
       "kind": "interface",
@@ -177775,7 +178439,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L298-L307"
+      "specLocation": "inference/_types/Services.ts#L306-L315"
     },
     {
       "kind": "interface",
@@ -177931,7 +178595,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L309-L318"
+      "specLocation": "inference/_types/Services.ts#L317-L326"
     },
     {
       "kind": "interface",
@@ -178165,7 +178829,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L331-L340"
+      "specLocation": "inference/_types/Services.ts#L339-L348"
     },
     {
       "kind": "interface",
@@ -178321,7 +178985,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L342-L351"
+      "specLocation": "inference/_types/Services.ts#L350-L359"
     },
     {
       "kind": "interface",
@@ -178485,7 +179149,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L353-L362"
+      "specLocation": "inference/_types/Services.ts#L361-L370"
     },
     {
       "kind": "interface",
@@ -178613,7 +179277,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L364-L373"
+      "specLocation": "inference/_types/Services.ts#L372-L381"
     },
     {
       "description": "Defines the response for a rerank request.",
