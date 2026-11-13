@@ -3652,7 +3652,7 @@ export interface AggregationsAdjacencyMatrixBucketKeys extends AggregationsMulti
 export type AggregationsAdjacencyMatrixBucket = AggregationsAdjacencyMatrixBucketKeys
   & { [property: string]: AggregationsAggregate | string | long }
 
-export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsChangePointAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsCartesianBoundsAggregate | AggregationsCartesianCentroidAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsGeoHexGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsIpPrefixAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsFrequentItemSetsAggregate | AggregationsTimeSeriesAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
+export type AggregationsAggregate = AggregationsCardinalityAggregate | AggregationsHdrPercentilesAggregate | AggregationsHdrPercentileRanksAggregate | AggregationsTDigestPercentilesAggregate | AggregationsTDigestPercentileRanksAggregate | AggregationsPercentilesBucketAggregate | AggregationsMedianAbsoluteDeviationAggregate | AggregationsMinAggregate | AggregationsMaxAggregate | AggregationsSumAggregate | AggregationsAvgAggregate | AggregationsWeightedAvgAggregate | AggregationsValueCountAggregate | AggregationsSimpleValueAggregate | AggregationsDerivativeAggregate | AggregationsBucketMetricValueAggregate | AggregationsChangePointAggregate | AggregationsStatsAggregate | AggregationsStatsBucketAggregate | AggregationsExtendedStatsAggregate | AggregationsExtendedStatsBucketAggregate | AggregationsCartesianBoundsAggregate | AggregationsCartesianCentroidAggregate | AggregationsGeoBoundsAggregate | AggregationsGeoCentroidAggregate | AggregationsHistogramAggregate | AggregationsDateHistogramAggregate | AggregationsAutoDateHistogramAggregate | AggregationsVariableWidthHistogramAggregate | AggregationsStringTermsAggregate | AggregationsLongTermsAggregate | AggregationsDoubleTermsAggregate | AggregationsUnmappedTermsAggregate | AggregationsLongRareTermsAggregate | AggregationsStringRareTermsAggregate | AggregationsUnmappedRareTermsAggregate | AggregationsMultiTermsAggregate | AggregationsMissingAggregate | AggregationsNestedAggregate | AggregationsReverseNestedAggregate | AggregationsGlobalAggregate | AggregationsFilterAggregate | AggregationsChildrenAggregate | AggregationsParentAggregate | AggregationsSamplerAggregate | AggregationsUnmappedSamplerAggregate | AggregationsGeoHashGridAggregate | AggregationsGeoTileGridAggregate | AggregationsGeoHexGridAggregate | AggregationsRangeAggregate | AggregationsDateRangeAggregate | AggregationsGeoDistanceAggregate | AggregationsIpRangeAggregate | AggregationsIpPrefixAggregate | AggregationsFiltersAggregate | AggregationsAdjacencyMatrixAggregate | AggregationsSignificantLongTermsAggregate | AggregationsSignificantStringTermsAggregate | AggregationsUnmappedSignificantTermsAggregate | AggregationsCompositeAggregate | AggregationsFrequentItemSetsAggregate | AggregationsTimeSeriesAggregate | AggregationsScriptedMetricAggregate | AggregationsTopHitsAggregate | AggregationsInferenceAggregate | AggregationsStringStatsAggregate | AggregationsBoxPlotAggregate | AggregationsTopMetricsAggregate | AggregationsTTestAggregate | AggregationsRateAggregate | AggregationsRoaringBitmapAggregate | AggregationsCumulativeCardinalityAggregate | AggregationsMatrixStatsAggregate | AggregationsGeoLineAggregate
 
 export interface AggregationsAggregateBase {
   meta?: Metadata
@@ -3730,6 +3730,7 @@ export interface AggregationsAggregationContainer {
   range?: AggregationsRangeAggregation
   rare_terms?: AggregationsRareTermsAggregation
   rate?: AggregationsRateAggregation
+  roaring_bitmap?: AggregationsRoaringBitmapAggregation
   reverse_nested?: AggregationsReverseNestedAggregation
   random_sampler?: AggregationsRandomSamplerAggregation
   sampler?: AggregationsSamplerAggregation
@@ -4742,6 +4743,15 @@ export type AggregationsReverseNestedAggregate = AggregationsReverseNestedAggreg
 
 export interface AggregationsReverseNestedAggregation extends AggregationsBucketAggregationBase {
   path?: Field
+}
+
+export interface AggregationsRoaringBitmapAggregate extends AggregationsAggregateBase {
+  value: string | null
+}
+
+export interface AggregationsRoaringBitmapAggregation {
+  field: Field
+  missing?: long
 }
 
 export interface AggregationsSamplerAggregateKeys extends AggregationsSingleBucketAggregateBase {
@@ -15574,6 +15584,65 @@ export interface InferenceEncryptedReasoningDetail extends InferenceBaseReasonin
   data: string
 }
 
+export interface InferenceEndpointMetadata {
+  heuristics: InferenceEndpointMetadataHeuristics
+  display: InferenceEndpointMetadataDisplay
+  model_identity?: InferenceEndpointMetadataModelIdentity
+  regions?: InferenceEndpointMetadataRegion[]
+  denied_by_region_policy?: boolean
+  capabilities?: InferenceEndpointMetadataCapabilities
+}
+
+export interface InferenceEndpointMetadataCapabilities {
+  reasoning?: InferenceEndpointMetadataReasoningCapability
+  context_window?: InferenceEndpointMetadataContextWindow
+  templates?: InferenceEndpointMetadataTemplatesCapability
+}
+
+export interface InferenceEndpointMetadataContextWindow {
+  max_input_tokens?: integer
+  max_output_tokens?: integer
+}
+
+export interface InferenceEndpointMetadataDisplay {
+  name?: string
+  model_creator?: string
+}
+
+export interface InferenceEndpointMetadataHeuristics {
+  properties: string[]
+  status?: InferenceEndpointMetadataStatus
+  release_date?: string
+  end_of_life_date?: string
+}
+
+export interface InferenceEndpointMetadataModelIdentity {
+  creator?: string
+  family?: string
+  tier?: string
+  version?: string
+}
+
+export interface InferenceEndpointMetadataReasoningCapability {
+  supported_effort_levels: InferenceReasoningEffort[]
+  default_effort_level?: InferenceReasoningEffort
+}
+
+export interface InferenceEndpointMetadataRegion {
+  csp?: string
+  region?: string
+  geo?: string
+  region_display_name?: string
+}
+
+export type InferenceEndpointMetadataStatus = 'beta' | 'preview' | 'ga' | 'deprecated'
+
+export type InferenceEndpointMetadataTemplatePolicy = 'required'
+
+export interface InferenceEndpointMetadataTemplatesCapability {
+  policy: InferenceEndpointMetadataTemplatePolicy
+}
+
 export interface InferenceFileContent {
   file_data: string
   filename: string
@@ -15687,6 +15756,7 @@ export interface InferenceInferenceEndpoint {
 export interface InferenceInferenceEndpointInfo extends InferenceInferenceEndpoint {
   inference_id: string
   task_type: InferenceTaskType
+  metadata?: InferenceEndpointMetadata
 }
 
 export interface InferenceInferenceEndpointInfoAi21 extends InferenceInferenceEndpoint {

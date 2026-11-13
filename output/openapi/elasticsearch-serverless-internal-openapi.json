@@ -53622,6 +53622,9 @@
             "$ref": "#/components/schemas/_types.aggregations.RateAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.CumulativeCardinalityAggregate"
           },
           {
@@ -57520,6 +57523,34 @@
           }
         ]
       },
+      "_types.aggregations.RoaringBitmapAggregate": {
+        "description": "Result of the `roaring_bitmap` aggregation.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "The distinct values of the field, as a base64-encoded portable roaring bitmap.\nIt is `null` if the field is unmapped.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      },
       "_types.aggregations.CumulativeCardinalityAggregate": {
         "description": "Result of the `cumulative_cardinality` aggregation",
         "allOf": [
@@ -60009,6 +60040,17 @@
                 "allOf": [
                   {
                     "$ref": "#/components/schemas/_types.aggregations.RateAggregation"
+                  }
+                ]
+              },
+              "roaring_bitmap": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation"
+                },
+                "description": "Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.\nThe result can be passed to the `bitmap_terms` query.\nIt can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregation"
                   }
                 ]
               },
@@ -69465,6 +69507,26 @@
         "enum": [
           "sum",
           "value_count"
+        ]
+      },
+      "_types.aggregations.RoaringBitmapAggregation": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The `integer` or `long` field from which to collect the distinct values.\nScripts are not supported, so the field must be mapped.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "missing": {
+            "description": "The value to use for documents that do not have a value for the field.\nIt must be non-negative and fit the `integer` or `long` type of the field.\nBy default, documents without a value are ignored.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "field"
         ]
       },
       "_types.aggregations.ReverseNestedAggregation": {
@@ -103230,6 +103292,14 @@
                     "$ref": "#/components/schemas/inference._types.TaskType"
                   }
                 ]
+              },
+              "metadata": {
+                "description": "Metadata about the endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.EndpointMetadata"
+                  }
+                ]
               }
             },
             "required": [
@@ -103237,6 +103307,241 @@
               "task_type"
             ]
           }
+        ]
+      },
+      "inference._types.EndpointMetadata": {
+        "description": "Metadata about an inference endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.\nThe internal fields that Elasticsearch uses to track the metadata are not part of the response.",
+        "type": "object",
+        "properties": {
+          "heuristics": {
+            "description": "Properties of the endpoint that help clients to determine which model to use.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataHeuristics"
+              }
+            ]
+          },
+          "display": {
+            "description": "Information to display for the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataDisplay"
+              }
+            ]
+          },
+          "model_identity": {
+            "description": "The identity of the model that the endpoint serves.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataModelIdentity"
+              }
+            ]
+          },
+          "regions": {
+            "description": "The regions in which the endpoint is available.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.EndpointMetadataRegion"
+            }
+          },
+          "denied_by_region_policy": {
+            "description": "If `true`, the region policy of the caller prohibits access to the endpoint.",
+            "type": "boolean"
+          },
+          "capabilities": {
+            "description": "The capabilities of the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataCapabilities"
+              }
+            ]
+          }
+        },
+        "required": [
+          "heuristics",
+          "display"
+        ]
+      },
+      "inference._types.EndpointMetadataHeuristics": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "description": "Tags that describe the properties of the model, for example `multilingual`, `english` or `multimodal`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "description": "The release status of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataStatus"
+              }
+            ]
+          },
+          "release_date": {
+            "description": "The date on which the model was released, in `yyyy-MM-dd` format.",
+            "type": "string"
+          },
+          "end_of_life_date": {
+            "description": "The date on which the model reaches the end of its life, in `yyyy-MM-dd` format.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "inference._types.EndpointMetadataStatus": {
+        "type": "string",
+        "enum": [
+          "beta",
+          "preview",
+          "ga",
+          "deprecated"
+        ]
+      },
+      "inference._types.EndpointMetadataDisplay": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name to display for the endpoint.",
+            "type": "string"
+          },
+          "model_creator": {
+            "description": "The creator of the model, for display purposes.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataModelIdentity": {
+        "type": "object",
+        "properties": {
+          "creator": {
+            "description": "The model creator or lab, for example `anthropic`, `openai` or `jina`.",
+            "type": "string"
+          },
+          "family": {
+            "description": "The model family within the creator, for example `claude`, `gpt` or `gemini`.",
+            "type": "string"
+          },
+          "tier": {
+            "description": "The performance or size tier within the family, for example `sonnet` or `mini`.\nIt is not set if the model has no tier variants.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The version of the model.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataRegion": {
+        "type": "object",
+        "properties": {
+          "csp": {
+            "description": "The cloud service provider, for example `aws`, `gcp` or `azure`.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The region of the cloud service provider, for example `us-east-1`.",
+            "type": "string"
+          },
+          "geo": {
+            "description": "The geographic area, for example `us` or `eu`.",
+            "type": "string"
+          },
+          "region_display_name": {
+            "description": "The human-readable name of the region.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataCapabilities": {
+        "type": "object",
+        "properties": {
+          "reasoning": {
+            "description": "The reasoning support of the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataReasoningCapability"
+              }
+            ]
+          },
+          "context_window": {
+            "description": "The context window of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataContextWindow"
+              }
+            ]
+          },
+          "templates": {
+            "description": "The prompt template support of the endpoint.\nIt is returned only for chat completion endpoints that require a template instead of caller-authored messages.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatesCapability"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.EndpointMetadataReasoningCapability": {
+        "type": "object",
+        "properties": {
+          "supported_effort_levels": {
+            "description": "The reasoning effort levels that the endpoint supports.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+            }
+          },
+          "default_effort_level": {
+            "description": "The reasoning effort level that the endpoint uses by default.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+              }
+            ]
+          }
+        },
+        "required": [
+          "supported_effort_levels"
+        ]
+      },
+      "inference._types.EndpointMetadataContextWindow": {
+        "type": "object",
+        "properties": {
+          "max_input_tokens": {
+            "description": "The maximum number of input tokens that the model accepts.",
+            "type": "number"
+          },
+          "max_output_tokens": {
+            "description": "The maximum number of output tokens that the model generates.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataTemplatesCapability": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "description": "Whether the endpoint requires chat completion requests to carry a prompt template.\nElasticsearch displays the policy so that clients can choose the request shape, but it doesn't enforce it.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatePolicy"
+              }
+            ]
+          }
+        },
+        "required": [
+          "policy"
+        ]
+      },
+      "inference._types.EndpointMetadataTemplatePolicy": {
+        "type": "string",
+        "enum": [
+          "required"
         ]
       },
       "inference._types.InferenceEndpoint": {
