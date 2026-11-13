@@ -28,6 +28,7 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * It only works with the `chat_completion` task type.
  *
  * NOTE: The `chat_completion` task type supports both streaming and non-streaming.
+ * To stream the response, use the streaming chat completion API (`POST _inference/chat_completion/{inference_id}/_stream`).
  * The Chat completion inference API provides more comprehensive customization options through more fields and function calling support.
  * To determine whether a given inference service supports this task type, please see the page for that service.
  *
@@ -46,7 +47,7 @@ import { RequestChatCompletion } from '@inference/_types/CommonTypes'
  * - OpenAI
  * - OpenShiftAI
  *
- * @rest_spec_name inference.non_streaming_chat_completion
+ * @rest_spec_name inference.chat_completion
  * @availability stack since=9.6.0 stability=stable visibility=public
  * @availability serverless stability=stable visibility=public
  * @doc_id inference-api-non-streaming-chat-completion

@@ -22,6 +22,19 @@ It is configured [in the specification directory](../specification/eslint.config
 | `jsdoc-endpoint-check`                | Validates JSDoc on endpoints in the specification. Ensuring consistent formatting. Some errors can be fixed with `--fix`.                                                                  |
 | `codegen-exclude-on-request-only`     | Ensures `@codegen_exclude` is only used on request definitions located in namespaced `specification/` files (i.e. files.                                                                   |
 | `valid-request-urls`                  | The `urls` of a request must not repeat a path or a method, and each method must be `DELETE`, `GET`, `HEAD`, `POST` or `PUT`.                                                              |
+| `binary-requires-alias`               | `ArrayBuffer` is only allowed as the type of a type alias. Give binary data an alias with a name and use that alias.                                                                       |
+| `doc-id-exists`                       | A `@doc_id` or `@ext_doc_id` on a property must exist in `specification/_doc_ids/table.csv`.                                                                                               |
+| `no-container-property-outside-container` | `@variant container_property` is only allowed in a class with `@variants container`.                                                                                                   |
+| `no-duplicate-jsdoc-tags`             | A JSDoc block must not repeat a tag, because the compiler keeps the last value only. `@availability` and `@UpdateForV10` are exempt.                                                       |
+| `no-duplicate-variant-names`          | The members of a union with `@variants typed_keys_quirk` must have different `@variant name` values.                                                                                       |
+| `no-object-url-parameters`            | Path parts and query parameters must not have an object type.                                                                                                                              |
+| `no-similar-property-names`           | Two properties of one type must not differ only by case or by leading and trailing underscores, unless a `@codegen_name` sets them apart.                                                  |
+| `no-stringified-in-requests`          | `Stringified<T>` is for values in responses and is not allowed in a request definition. Path parts and query parameters are also checked through their type aliases.                       |
+| `prefer-generic-array-for-unions`     | A list of a union is written as `Array<A \| B>` and not as `(A \| B)[]`. Can be fixed with `--fix`.                                                                                        |
+| `prefer-internal-variants`            | A union of classes that all have the same property with a literal type must use `@variants internal`.                                                                                      |
+| `request-path-parts-match-urls`       | A path part that all URLs of a request contain must be required. A path part that one of the URLs does not contain must be optional.                                                       |
+| `rest-spec-name-matches-location`     | The `@rest_spec_name` of a request must match the namespace and API folders of its file.                                                                                                   |
+| `shortcut-property-exists`            | `@shortcut_property` must name a property of the class or of one of its parents.                                                                                                           |
 
 ## Usage
 

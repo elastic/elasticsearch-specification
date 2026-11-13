@@ -77,7 +77,6 @@ import { Duration } from '@_types/Time'
  * @doc_id point-in-time-api
  * @index_privileges read
  * @doc_tag search
- * @doc_id point-in-time-api
  */
 export interface Request extends RequestBase {
   urls: [

@@ -18,7 +18,7 @@
  */
 
 import { IndexName } from '@_types/common'
-import { Duration, EpochTime, UnitMillis } from '@_types/Time'
+import { DateTime, Duration, EpochTime, UnitMillis } from '@_types/Time'
 import { DataStreamLifecycleWithRollover } from '@indices/_types/DataStreamLifecycle'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -67,6 +67,16 @@ class DataStreamLifecycleExplain {
    * The status of the frozen transition.
    */
   frozen_transition_status?: string
+  /**
+   * The date the index tail was last merged, in milliseconds since the epoch.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  tail_merge_date_millis?: EpochTime<UnitMillis>
+  /**
+   * The date the index tail was last merged. Only returned if the `human` query parameter is `true`.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  tail_merge_date?: DateTime
   /*
    * @availability stack since=9.6.0 stability=stable
    * @availability serverless

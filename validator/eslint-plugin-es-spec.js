@@ -32,6 +32,19 @@ import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only.js'
 import noDeprecatedAvailabilityOnTypes from './rules/no-deprecated-availability-on-types.js'
 import validRequestUrls from './rules/valid-request-urls.js'
+import binaryRequiresAlias from './rules/binary-requires-alias.js'
+import docIdExists from './rules/doc-id-exists.js'
+import noContainerPropertyOutsideContainer from './rules/no-container-property-outside-container.js'
+import noDuplicateJsdocTags from './rules/no-duplicate-jsdoc-tags.js'
+import noDuplicateVariantNames from './rules/no-duplicate-variant-names.js'
+import noObjectUrlParameters from './rules/no-object-url-parameters.js'
+import noSimilarPropertyNames from './rules/no-similar-property-names.js'
+import noStringifiedInRequests from './rules/no-stringified-in-requests.js'
+import preferGenericArrayForUnions from './rules/prefer-generic-array-for-unions.js'
+import preferInternalVariants from './rules/prefer-internal-variants.js'
+import requestPathPartsMatchUrls from './rules/request-path-parts-match-urls.js'
+import restSpecNameMatchesLocation from './rules/rest-spec-name-matches-location.js'
+import shortcutPropertyExists from './rules/shortcut-property-exists.js'
 
 export default {
   rules: {
@@ -50,6 +63,19 @@ export default {
     'jsdoc-endpoint-check': jsdocEndpointCheck,
     'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly,
     'no-deprecated-availability-on-types': noDeprecatedAvailabilityOnTypes,
-    'valid-request-urls': validRequestUrls
+    'valid-request-urls': validRequestUrls,
+    'binary-requires-alias': binaryRequiresAlias,
+    'doc-id-exists': docIdExists,
+    'no-container-property-outside-container': noContainerPropertyOutsideContainer,
+    'no-duplicate-jsdoc-tags': noDuplicateJsdocTags,
+    'no-duplicate-variant-names': noDuplicateVariantNames,
+    'no-object-url-parameters': noObjectUrlParameters,
+    'no-similar-property-names': noSimilarPropertyNames,
+    'no-stringified-in-requests': noStringifiedInRequests,
+    'prefer-generic-array-for-unions': preferGenericArrayForUnions,
+    'prefer-internal-variants': preferInternalVariants,
+    'request-path-parts-match-urls': requestPathPartsMatchUrls,
+    'rest-spec-name-matches-location': restSpecNameMatchesLocation,
+    'shortcut-property-exists': shortcutPropertyExists
   }
 }

@@ -402,6 +402,68 @@ mod tests {
         );
     }
 
+    // A schema with the endpoints `test.first` and `test.second`, that both define `POST /_test`.
+    fn schema_with_shared_path(first_deprecated: bool, second_deprecated: bool) -> IndexedModel {
+        let endpoint = |name: &str, deprecated: bool| {
+            let deprecation = if deprecated {
+                r#""deprecation": { "version": "9.6.0", "description": "Use test.other instead" },"#
+            } else {
+                ""
+            };
+            format!(r#"{{
+              "name": "{name}",
+              "description": "An endpoint",
+              "requestBodyRequired": false,
+              {deprecation}
+              "urls": [{{ "path": "/_test", "methods": ["POST"] }}],
+              "request": {{ "name": "Request", "namespace": "test" }},
+              "response": {{ "name": "Response", "namespace": "test" }}
+            }}"#)
+        };
+        let schema_json = format!(r#"{{
+          "endpoints": [{}, {}],
+          "types": [{{
+            "kind": "request",
+            "name": {{ "name": "Request", "namespace": "test" }},
+            "path": [],
+            "query": [],
+            "body": {{ "kind": "no_body" }}
+          }}, {{
+            "kind": "response",
+            "name": {{ "name": "Response", "namespace": "test" }},
+            "body": {{ "kind": "no_body" }}
+          }}]
+        }}"#, endpoint("test.first", first_deprecated), endpoint("test.second", second_deprecated));
+        IndexedModel::from_reader(schema_json.as_bytes()).unwrap()
+    }
+
+    fn shared_path_operation(first_deprecated: bool, second_deprecated: bool) -> (String, Option<String>) {
+        let config = Configuration { merge_multipath_endpoints: true, multipath_redirects: true, ..default_config() };
+        let result = convert_schema(schema_with_shared_path(first_deprecated, second_deprecated), config, IndexMap::new()).unwrap();
+        let path = result.openapi.paths.paths["/_test"].as_item().unwrap();
+        (path.post.as_ref().unwrap().operation_id.clone().unwrap(), result.redirects)
+    }
+
+    #[test]
+    fn shared_path_keeps_the_endpoint_that_is_not_deprecated() {
+        let (operation_id, redirects) = shared_path_operation(false, true);
+        assert_eq!(operation_id, "test-first");
+        assert_eq!(redirects.unwrap(), "test-second,test-first\n");
+
+        let (operation_id, redirects) = shared_path_operation(true, false);
+        assert_eq!(operation_id, "test-second");
+        assert_eq!(redirects.unwrap(), "test-first,test-second\n");
+    }
+
+    #[test]
+    fn shared_path_fails_unless_one_endpoint_is_deprecated() {
+        for (first_deprecated, second_deprecated) in [(false, false), (true, true)] {
+            let model = schema_with_shared_path(first_deprecated, second_deprecated);
+            let error = convert_schema(model, default_config(), IndexMap::new()).err().unwrap();
+            assert!(error.to_string().contains("test-first and test-second both define POST /_test"), "{error}");
+        }
+    }
+
     #[test]
     fn code_samples_cover_all_examples() {
         let schema_json = r#"{

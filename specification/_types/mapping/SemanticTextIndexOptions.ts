@@ -20,6 +20,9 @@
 import { DenseVectorIndexOptions } from './DenseVectorProperty'
 import { SparseVectorIndexOptions } from './SparseVectorIndexOptions'
 
+/**
+ * @variants container
+ */
 export class SemanticTextIndexOptions {
   dense_vector?: DenseVectorIndexOptions
   sparse_vector?: SparseVectorIndexOptions

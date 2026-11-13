@@ -16609,6 +16609,9 @@
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
           }
         ],
@@ -16764,6 +16767,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
@@ -16928,6 +16934,9 @@
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
           }
         ],
@@ -17086,6 +17095,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
@@ -21140,6 +21152,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -23054,6 +23069,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -25781,14 +25799,125 @@
         ]
       }
     },
+    "/_inference/chat_completion/{inference_id}": {
+      "post": {
+        "tags": [
+          "inference"
+        ],
+        "summary": "Perform non-streaming chat completion inference on the service",
+        "description": "The chat completion inference API enables rich responses for chat completion tasks.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nTo stream the response, use the streaming chat completion API (`POST _inference/chat_completion/{inference_id}/_stream`).\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\nThese services support non-streaming chat completion inference:\n- AI21\n- Azure OpenAI\n- Deepseek\n- Elastic\n- FireworksAI\n- Groq\n- Huggingface\n- IBMWatsonX\n- Llama\n- Mistral\n- NVIDIA\n- OpenAI\n- OpenShiftAI\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-chat-completion",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "inference_id",
+            "description": "The inference Id",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "$ref": "#/components/schemas/_types.Id"
+            },
+            "style": "simple"
+          },
+          {
+            "in": "query",
+            "name": "timeout",
+            "description": "Specifies the amount of time to wait for the inference request to complete.",
+            "deprecated": false,
+            "schema": {
+              "default": "120s",
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/_types.Duration"
+                }
+              ]
+            },
+            "style": "form"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/inference._types.RequestChatCompletion"
+              },
+              "examples": {
+                "PostChatCompletionRequestExample1": {
+                  "summary": "A non-streaming chat completion task",
+                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a chat completion on the example question with non-streaming.",
+                  "value": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": \"What is Elastic?\"\n      }\n  ]\n}"
+                },
+                "PostChatCompletionRequestExample2": {
+                  "summary": "A non-streaming chat completion task with tool_calls",
+                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a non-streaming chat completion using an Assistant message with `tool_calls`.",
+                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"assistant\",\n          \"content\": \"Let's find out what the weather is\",\n          \"tool_calls\": [ \n              {\n                  \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n                  \"type\": \"function\",\n                  \"function\": {\n                      \"name\": \"get_current_weather\",\n                      \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n                  }\n              }\n          ]\n      },\n      { \n          \"role\": \"tool\",\n          \"content\": \"The weather is cold\",\n          \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n      }\n  ]\n}"
+                },
+                "PostChatCompletionRequestExample3": {
+                  "summary": "A non-streaming chat completion task with tools and tool_calls",
+                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a non-streaming chat completion using a User message with `tools` and `tool_choice`.",
+                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": [\n              {\n                  \"type\": \"text\",\n                  \"text\": \"What's the price of a scarf?\"\n              }\n          ]\n      }\n  ],\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_price\",\n              \"description\": \"Get the current price of a item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"123\"\n                      }\n                  }\n              }\n          }\n      }\n  ],\n  \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n          \"name\": \"get_current_price\"\n      }\n  }\n}"
+                },
+                "PostChatCompletionRequestExample4": {
+                  "summary": "A non-streaming chat completion task with `effort` parameter defined reasoning",
+                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion` to perform a non-streaming chat completion task, using both `effort` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
+                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"effort\": \"high\",\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
+                },
+                "PostChatCompletionRequestExample5": {
+                  "summary": "A non-streaming chat completion task with `enabled` parameter defined reasoning",
+                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion` to perform a non-streaming chat completion task, using both `enabled` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
+                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"enabled\": true,\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inference._types.ChatCompletionInferenceResult"
+                },
+                "examples": {
+                  "PostChatCompletionResponseExample1": {
+                    "summary": "A non-streaming chat completion response",
+                    "description": "A successful response from `POST _inference/chat_completion/openai-completion` for a plain user message. The `object` field is `chat.completion` (as opposed to `chat.completion.chunk` in streaming responses). The `message` wrapper contains the model-generated text. Usage statistics include per-category token breakdowns when available.\n",
+                    "value": "{\n  \"id\": \"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"content\": \"Elastic is a company that provides a range of software solutions for search, logging, security, and analytics, built around the open-source Elasticsearch engine.\",\n        \"role\": \"assistant\"\n      },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"gpt-4o-2024-08-06\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 34,\n    \"prompt_tokens\": 14,\n    \"total_tokens\": 48,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}"
+                  },
+                  "PostChatCompletionResponseExample2": {
+                    "summary": "A non-streaming chat completion response with tool calls",
+                    "description": "A successful response from `POST _inference/chat_completion/openai-completion` when the model decides to call a tool. The `message` contains `tool_calls` instead of `content`, and `finish_reason` is `tool_calls`. Each tool call includes an `index`, an `id`, the function `name` and `arguments` (as a JSON string), and a `type`.\n",
+                    "value": "{\n  \"id\": \"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"assistant\",\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n            \"function\": {\n              \"arguments\": \"{\\\"item\\\":\\\"scarf\\\"}\",\n              \"name\": \"get_current_price\"\n            },\n            \"type\": \"function\"\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"gpt-4o-2024-08-06\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 19,\n    \"prompt_tokens\": 135,\n    \"total_tokens\": 154,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}"
+                  },
+                  "PostChatCompletionResponseExample3": {
+                    "summary": "A non-streaming chat completion response with reasoning details",
+                    "description": "A successful response from `POST _inference/chat_completion/reasoning-chat-completion` when the model returns structured reasoning data alongside its answer. The `message` includes a `reasoning` plaintext summary and a `reasoning_details` array covering all three detail types: `reasoning.encrypted` (opaque data), `reasoning.summary` (human-readable summary), and `reasoning.text` (full reasoning text with a verification signature). Currently supported only for the `elastic` provider.\n",
+                    "value": "{\n  \"id\": \"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"content\": \"With two barbers, the paradox disappears — each barber can shave the other.\",\n        \"role\": \"assistant\",\n        \"reasoning\": \"The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Two barbers can shave each other, avoiding the self-reference paradox.\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.\",\n            \"signature\": \"sig_example\"\n          }\n        ]\n      },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"openai-gpt-oss-120b\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 38,\n    \"prompt_tokens\": 74,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 10\n    }\n  }\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-state": "Generally available; Added in 9.6.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch, Machine Learning",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_inference/chat_completion/{inference_id}/_stream": {
       "post": {
         "tags": [
           "inference"
         ],
         "summary": "Perform streaming chat completion inference on the service",
-        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
-        "operationId": "inference-chat-completion-unified",
+        "description": "The chat completion inference API enables real-time responses for chat completion tasks by delivering answers incrementally, reducing response times during computation.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nFor a single, non-streamed response, use the chat completion API (`POST _inference/chat_completion/{inference_id}`).\nThe Chat completion inference API and the Stream inference API differ in their response structure and capabilities.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
+        "operationId": "inference-chat-completion-streaming",
         "parameters": [
           {
             "in": "path",
@@ -25876,7 +26005,7 @@
             }
           }
         },
-        "x-state": "Generally available; Added in 8.18.0",
+        "x-state": "Generally available; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -26748,117 +26877,6 @@
           }
         },
         "x-state": "Generally available; Added in 8.11.0",
-        "x-metaTags": [
-          {
-            "content": "Elasticsearch, Machine Learning",
-            "name": "product_name"
-          }
-        ]
-      }
-    },
-    "/_inference/chat_completion/{inference_id}": {
-      "post": {
-        "tags": [
-          "inference"
-        ],
-        "summary": "Perform non-streaming chat completion inference on the service",
-        "description": "The chat completion inference API enables rich responses for chat completion tasks.\nIt only works with the `chat_completion` task type.\n\nNOTE: The `chat_completion` task type supports both streaming and non-streaming.\nThe Chat completion inference API provides more comprehensive customization options through more fields and function calling support.\nTo determine whether a given inference service supports this task type, please see the page for that service.\n\nThese services support non-streaming chat completion inference:\n- AI21\n- Azure OpenAI\n- Deepseek\n- Elastic\n- FireworksAI\n- Groq\n- Huggingface\n- IBMWatsonX\n- Llama\n- Mistral\n- NVIDIA\n- OpenAI\n- OpenShiftAI\n\n## Required authorization\n\n* Cluster privileges: `monitor_inference`\n",
-        "operationId": "inference-non-streaming-chat-completion",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "inference_id",
-            "description": "The inference Id",
-            "required": true,
-            "deprecated": false,
-            "schema": {
-              "$ref": "#/components/schemas/_types.Id"
-            },
-            "style": "simple"
-          },
-          {
-            "in": "query",
-            "name": "timeout",
-            "description": "Specifies the amount of time to wait for the inference request to complete.",
-            "deprecated": false,
-            "schema": {
-              "default": "120s",
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/_types.Duration"
-                }
-              ]
-            },
-            "style": "form"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/inference._types.RequestChatCompletion"
-              },
-              "examples": {
-                "PostChatCompletionRequestExample1": {
-                  "summary": "A non-streaming chat completion task",
-                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a chat completion on the example question with non-streaming.",
-                  "value": "{\n  \"model\": \"gpt-4o\",\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": \"What is Elastic?\"\n      }\n  ]\n}"
-                },
-                "PostChatCompletionRequestExample2": {
-                  "summary": "A non-streaming chat completion task with tool_calls",
-                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a non-streaming chat completion using an Assistant message with `tool_calls`.",
-                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"assistant\",\n          \"content\": \"Let's find out what the weather is\",\n          \"tool_calls\": [ \n              {\n                  \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n                  \"type\": \"function\",\n                  \"function\": {\n                      \"name\": \"get_current_weather\",\n                      \"arguments\": \"{\\\"location\\\":\\\"Boston, MA\\\"}\"\n                  }\n              }\n          ]\n      },\n      { \n          \"role\": \"tool\",\n          \"content\": \"The weather is cold\",\n          \"tool_call_id\": \"call_KcAjWtAww20AihPHphUh46Gd\"\n      }\n  ]\n}"
-                },
-                "PostChatCompletionRequestExample3": {
-                  "summary": "A non-streaming chat completion task with tools and tool_calls",
-                  "description": "Run `POST _inference/chat_completion/openai-completion` to perform a non-streaming chat completion using a User message with `tools` and `tool_choice`.",
-                  "value": "{\n  \"messages\": [\n      {\n          \"role\": \"user\",\n          \"content\": [\n              {\n                  \"type\": \"text\",\n                  \"text\": \"What's the price of a scarf?\"\n              }\n          ]\n      }\n  ],\n  \"tools\": [\n      {\n          \"type\": \"function\",\n          \"function\": {\n              \"name\": \"get_current_price\",\n              \"description\": \"Get the current price of a item\",\n              \"parameters\": {\n                  \"type\": \"object\",\n                  \"properties\": {\n                      \"item\": {\n                          \"id\": \"123\"\n                      }\n                  }\n              }\n          }\n      }\n  ],\n  \"tool_choice\": {\n      \"type\": \"function\",\n      \"function\": {\n          \"name\": \"get_current_price\"\n      }\n  }\n}"
-                },
-                "PostChatCompletionRequestExample4": {
-                  "summary": "A non-streaming chat completion task with `effort` parameter defined reasoning",
-                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion` to perform a non-streaming chat completion task, using both `effort` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
-                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"effort\": \"high\",\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
-                },
-                "PostChatCompletionRequestExample5": {
-                  "summary": "A non-streaming chat completion task with `enabled` parameter defined reasoning",
-                  "description": "Run `POST _inference/chat_completion/reasoning-chat-completion` to perform a non-streaming chat completion task, using both `enabled` parameter based reasoning configuration and including reasoning generated by the model on previous step.",
-                  "value": "{\n  \"messages\": [{\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"Barber shaves all those, who do not shave themselves. Who shaves the barber?\"\n        }\n      ]\n    }, {\n      \"role\": \"assistant\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"This is the barber paradox. Such a barber cannot logically exist.\"\n        }\n      ],\n      \"reasoning\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n      \"reasoning_details\": [{\n          \"type\": \"reasoning.encrypted\",\n          \"data\": \"[REDACTED]\"\n        }, {\n          \"type\": \"reasoning.summary\",\n          \"summary\": \"Barber shaving himself creates contradiction\"\n        }, {\n          \"type\": \"reasoning.text\",\n          \"text\": \"If the barber shaves himself, he should not; if he does not, he should.\",\n          \"signature\": \"sig_123\"\n        }\n      ]\n    }, {\n      \"role\": \"user\",\n      \"content\": [{\n          \"type\": \"text\",\n          \"text\": \"What if there are 2 barbers?\"\n        }\n      ]\n    }\n  ],\n  \"reasoning\": {\n    \"enabled\": true,\n    \"summary\": \"detailed\",\n    \"exclude\": false\n  }\n}"
-                }
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/inference._types.ChatCompletionInferenceResult"
-                },
-                "examples": {
-                  "PostChatCompletionResponseExample1": {
-                    "summary": "A non-streaming chat completion response",
-                    "description": "A successful response from `POST _inference/chat_completion/openai-completion` for a plain user message. The `object` field is `chat.completion` (as opposed to `chat.completion.chunk` in streaming responses). The `message` wrapper contains the model-generated text. Usage statistics include per-category token breakdowns when available.\n",
-                    "value": "{\n  \"id\": \"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"content\": \"Elastic is a company that provides a range of software solutions for search, logging, security, and analytics, built around the open-source Elasticsearch engine.\",\n        \"role\": \"assistant\"\n      },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"gpt-4o-2024-08-06\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 34,\n    \"prompt_tokens\": 14,\n    \"total_tokens\": 48,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}"
-                  },
-                  "PostChatCompletionResponseExample2": {
-                    "summary": "A non-streaming chat completion response with tool calls",
-                    "description": "A successful response from `POST _inference/chat_completion/openai-completion` when the model decides to call a tool. The `message` contains `tool_calls` instead of `content`, and `finish_reason` is `tool_calls`. Each tool call includes an `index`, an `id`, the function `name` and `arguments` (as a JSON string), and a `type`.\n",
-                    "value": "{\n  \"id\": \"chatcmpl-Ae0TWsy2VPnSfBbv5UztnSdYUMFP3\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"role\": \"assistant\",\n        \"tool_calls\": [\n          {\n            \"index\": 0,\n            \"id\": \"call_KcAjWtAww20AihPHphUh46Gd\",\n            \"function\": {\n              \"arguments\": \"{\\\"item\\\":\\\"scarf\\\"}\",\n              \"name\": \"get_current_price\"\n            },\n            \"type\": \"function\"\n          }\n        ]\n      },\n      \"finish_reason\": \"tool_calls\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"gpt-4o-2024-08-06\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 19,\n    \"prompt_tokens\": 135,\n    \"total_tokens\": 154,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 0\n    }\n  }\n}"
-                  },
-                  "PostChatCompletionResponseExample3": {
-                    "summary": "A non-streaming chat completion response with reasoning details",
-                    "description": "A successful response from `POST _inference/chat_completion/reasoning-chat-completion` when the model returns structured reasoning data alongside its answer. The `message` includes a `reasoning` plaintext summary and a `reasoning_details` array covering all three detail types: `reasoning.encrypted` (opaque data), `reasoning.summary` (human-readable summary), and `reasoning.text` (full reasoning text with a verification signature). Currently supported only for the `elastic` provider.\n",
-                    "value": "{\n  \"id\": \"chatcmpl-910TWsy2VPnSfBbv5UztnSdYUJA10\",\n  \"choices\": [\n    {\n      \"message\": {\n        \"content\": \"With two barbers, the paradox disappears — each barber can shave the other.\",\n        \"role\": \"assistant\",\n        \"reasoning\": \"The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.\",\n        \"reasoning_details\": [\n          {\n            \"type\": \"reasoning.encrypted\",\n            \"data\": \"[REDACTED]\"\n          },\n          {\n            \"type\": \"reasoning.summary\",\n            \"summary\": \"Two barbers can shave each other, avoiding the self-reference paradox.\"\n          },\n          {\n            \"type\": \"reasoning.text\",\n            \"text\": \"The contradiction only arises when a single barber must decide whether to shave himself. Two barbers eliminate the self-reference.\",\n            \"signature\": \"sig_example\"\n          }\n        ]\n      },\n      \"finish_reason\": \"stop\",\n      \"index\": 0\n    }\n  ],\n  \"model\": \"openai-gpt-oss-120b\",\n  \"object\": \"chat.completion\",\n  \"usage\": {\n    \"completion_tokens\": 38,\n    \"prompt_tokens\": 74,\n    \"total_tokens\": 112,\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 10\n    }\n  }\n}"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-state": "Generally available; Added in 9.6.0",
         "x-metaTags": [
           {
             "content": "Elasticsearch, Machine Learning",
@@ -64149,6 +64167,9 @@
             "$ref": "#/components/schemas/_types.aggregations.RateAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.CumulativeCardinalityAggregate"
           },
           {
@@ -68048,6 +68069,34 @@
           }
         ]
       },
+      "_types.aggregations.RoaringBitmapAggregate": {
+        "description": "Result of the `roaring_bitmap` aggregation.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "The distinct values of the field, as a base64-encoded portable roaring bitmap.\nIt is `null` if the field is unmapped.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      },
       "_types.aggregations.CumulativeCardinalityAggregate": {
         "description": "Result of the `cumulative_cardinality` aggregation",
         "allOf": [
@@ -68973,6 +69022,12 @@
           "create_weight_count": {
             "type": "number"
           },
+          "into_bit_set": {
+            "type": "number"
+          },
+          "into_bit_set_count": {
+            "type": "number"
+          },
           "match": {
             "type": "number"
           },
@@ -69015,6 +69070,8 @@
           "count_weight_count",
           "create_weight",
           "create_weight_count",
+          "into_bit_set",
+          "into_bit_set_count",
           "match",
           "match_count",
           "next_doc",
@@ -70552,6 +70609,18 @@
                   }
                 ]
               },
+              "roaring_bitmap": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation"
+                },
+                "description": "Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.\nThe result can be passed to the `bitmap_terms` query.\nIt can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.",
+                "x-state": "Generally available; Added in 9.6.0",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregation"
+                  }
+                ]
+              },
               "reverse_nested": {
                 "externalDocs": {
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation"
@@ -70810,6 +70879,18 @@
         "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
         "properties": {
+          "bitmap_terms": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query"
+            },
+            "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.BitmapTermsQuery"
+              }
+            ]
+          },
           "bool": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query"
@@ -71514,6 +71595,47 @@
         "minProperties": 1,
         "maxProperties": 1
       },
+      "_types.query_dsl.BitmapTermsQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "value": {
+                "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "value"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl.QueryBase": {
+        "type": "object",
+        "properties": {
+          "boost": {
+            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "_name": {
+            "type": "string"
+          }
+        }
+      },
       "_types.query_dsl.BoolQuery": {
         "allOf": [
           {
@@ -71600,19 +71722,6 @@
             "type": "string"
           }
         ]
-      },
-      "_types.query_dsl.QueryBase": {
-        "type": "object",
-        "properties": {
-          "boost": {
-            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "_name": {
-            "type": "string"
-          }
-        }
       },
       "_types.query_dsl.BoostingQuery": {
         "allOf": [
@@ -74788,9 +74897,6 @@
                 "default": 0.0,
                 "type": "number"
               },
-              "routing": {
-                "type": "string"
-              },
               "stop_words": {
                 "description": "An array of stop words.\nAny word in this set is ignored.",
                 "allOf": [
@@ -74810,21 +74916,6 @@
                     "items": {
                       "$ref": "#/components/schemas/_types.query_dsl.Like"
                     }
-                  }
-                ]
-              },
-              "version": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionNumber"
-                  }
-                ]
-              },
-              "version_type": {
-                "default": "'internal'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionType"
                   }
                 ]
               }
@@ -79983,6 +80074,26 @@
         "enum": [
           "sum",
           "value_count"
+        ]
+      },
+      "_types.aggregations.RoaringBitmapAggregation": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The `integer` or `long` field from which to collect the distinct values.\nScripts are not supported, so the field must be mapped.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "missing": {
+            "description": "The value to use for documents that do not have a value for the field.\nIt must be non-negative and fit the `integer` or `long` type of the field.\nBy default, documents without a value are ignored.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "field"
         ]
       },
       "_types.aggregations.ReverseNestedAggregation": {
@@ -85807,7 +85918,7 @@
           "mdcc",
           "modelDeadCategoryCount",
           "model.failed_category_count",
-          "mdcc",
+          "mfcc",
           "modelFailedCategoryCount",
           "model.frequent_category_count",
           "mfcc",
@@ -99509,7 +99620,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.mapping.SparseVectorIndexOptions": {
         "type": "object",
@@ -101861,6 +101974,9 @@
             ]
           },
           "skip_unavailable": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters"
+            },
             "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
@@ -101905,6 +102021,9 @@
             ]
           },
           "skip_unavailable": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters"
+            },
             "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
@@ -107970,6 +108089,9 @@
             ]
           },
           "_primary_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
+            },
             "description": "The primary term assigned to the document for the indexing operation.",
             "type": "number"
           },
@@ -107987,6 +108109,9 @@
             ]
           },
           "_seq_no": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
+            },
             "description": "The sequence number assigned to the document for the indexing operation.\nSequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.",
             "allOf": [
               {
@@ -110408,6 +110533,24 @@
           "frozen_transition_status": {
             "type": "string"
           },
+          "tail_merge_date_millis": {
+            "description": "The date the index tail was last merged, in milliseconds since the epoch.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.EpochTimeUnitMillis"
+              }
+            ]
+          },
+          "tail_merge_date": {
+            "description": "The date the index tail was last merged. Only returned if the `human` query parameter is `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.DateTime"
+              }
+            ]
+          },
           "unmanaged_reason": {
             "type": "string"
           }
@@ -111021,6 +111164,11 @@
                 "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
               }
             ]
+          },
+          "registry_installed": {
+            "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
@@ -115299,6 +115447,213 @@
           "name"
         ]
       },
+      "inference._types.ChatCompletionInferenceResult": {
+        "description": "The response format for the non-streaming unified chat completion request.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The unique identifier for the completion.",
+            "type": "string"
+          },
+          "choices": {
+            "description": "The list of completion choices the model generated for the input message.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ChatCompletionChoice"
+            }
+          },
+          "model": {
+            "description": "The model used to generate the completion.",
+            "type": "string"
+          },
+          "object": {
+            "description": "The object type.",
+            "type": "string"
+          },
+          "usage": {
+            "description": "The token usage statistics for the completion request.\nOmitted when usage information is not available.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ChatCompletionUsage"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "model",
+          "object"
+        ]
+      },
+      "inference._types.ChatCompletionChoice": {
+        "description": "A single completion choice returned by the model.",
+        "type": "object",
+        "properties": {
+          "message": {
+            "description": "The message generated by the model for this choice.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ChatCompletionMessage"
+              }
+            ]
+          },
+          "finish_reason": {
+            "description": "The reason the model stopped generating tokens.\nCommon values are `stop` (natural stopping point) and `tool_calls` (the model called a tool).\nOmitted when the reason is not available.",
+            "type": "string"
+          },
+          "index": {
+            "description": "The index of this choice in the list of choices.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "message",
+          "index"
+        ]
+      },
+      "inference._types.ChatCompletionMessage": {
+        "description": "The message returned by the model.",
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "The content of the message.",
+            "type": "string"
+          },
+          "refusal": {
+            "description": "The refusal message generated by the model.",
+            "type": "string"
+          },
+          "role": {
+            "description": "The role of the message author.",
+            "type": "string"
+          },
+          "reasoning": {
+            "description": "The reasoning generated by the model as plaintext.\nCurrently supported only for the `elastic` provider.",
+            "type": "string"
+          },
+          "tool_calls": {
+            "description": "The tool calls generated by the model.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ChatCompletionToolCall"
+            }
+          },
+          "reasoning_details": {
+            "description": "The reasoning details generated by the model as structured data.\nCurrently supported only for the `elastic` provider.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ReasoningDetail"
+            }
+          }
+        }
+      },
+      "inference._types.ChatCompletionToolCall": {
+        "description": "A tool call generated by the model.",
+        "type": "object",
+        "properties": {
+          "index": {
+            "description": "The index of the tool call in the list of tool calls generated by the model.",
+            "type": "number"
+          },
+          "id": {
+            "description": "The identifier of the tool call.",
+            "type": "string"
+          },
+          "function": {
+            "description": "The function that the model called.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ChatCompletionToolCallFunction"
+              }
+            ]
+          },
+          "type": {
+            "description": "The type of the tool call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "index",
+          "type"
+        ]
+      },
+      "inference._types.ChatCompletionToolCallFunction": {
+        "description": "The function called by the tool.",
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "description": "The arguments to call the function with, as a JSON string.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the function.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.ChatCompletionUsage": {
+        "description": "Token usage statistics for the request.",
+        "type": "object",
+        "properties": {
+          "completion_tokens": {
+            "description": "The number of tokens in the generated completion.",
+            "type": "number"
+          },
+          "prompt_tokens": {
+            "description": "The number of tokens in the prompt.",
+            "type": "number"
+          },
+          "total_tokens": {
+            "description": "The total number of tokens used (prompt + completion).",
+            "type": "number"
+          },
+          "prompt_tokens_details": {
+            "description": "Breakdown of the tokens used in the prompt.\nOmitted when no details are available.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ChatCompletionPromptTokensDetails"
+              }
+            ]
+          },
+          "completion_tokens_details": {
+            "description": "Breakdown of the tokens used in the completion.\nOmitted when no details are available.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ChatCompletionCompletionTokensDetails"
+              }
+            ]
+          }
+        },
+        "required": [
+          "completion_tokens",
+          "prompt_tokens",
+          "total_tokens"
+        ]
+      },
+      "inference._types.ChatCompletionPromptTokensDetails": {
+        "description": "Breakdown of tokens used in the prompt.",
+        "type": "object",
+        "properties": {
+          "cached_tokens": {
+            "description": "The number of tokens that were cached from a previous request.",
+            "type": "number"
+          },
+          "cache_write_tokens": {
+            "description": "The number of tokens written to the cache.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.ChatCompletionCompletionTokensDetails": {
+        "description": "Breakdown of tokens used in the request.",
+        "type": "object",
+        "properties": {
+          "reasoning_tokens": {
+            "description": "The number of tokens used for reasoning by the model.",
+            "type": "number"
+          }
+        }
+      },
       "_types.StreamResult": {
         "type": "object"
       },
@@ -116084,6 +116439,15 @@
                     "$ref": "#/components/schemas/inference._types.TaskType"
                   }
                 ]
+              },
+              "metadata": {
+                "description": "Metadata about the endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.",
+                "x-state": "Generally available; Added in 9.4.0",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.EndpointMetadata"
+                  }
+                ]
               }
             },
             "required": [
@@ -116091,6 +116455,246 @@
               "task_type"
             ]
           }
+        ]
+      },
+      "inference._types.EndpointMetadata": {
+        "description": "Metadata about an inference endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.\nThe internal fields that Elasticsearch uses to track the metadata are not part of the response.",
+        "type": "object",
+        "properties": {
+          "heuristics": {
+            "description": "Properties of the endpoint that help clients to determine which model to use.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataHeuristics"
+              }
+            ]
+          },
+          "display": {
+            "description": "Information to display for the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataDisplay"
+              }
+            ]
+          },
+          "model_identity": {
+            "description": "The identity of the model that the endpoint serves.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataModelIdentity"
+              }
+            ]
+          },
+          "regions": {
+            "description": "The regions in which the endpoint is available.",
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.EndpointMetadataRegion"
+            }
+          },
+          "denied_by_region_policy": {
+            "description": "If `true`, the region policy of the caller prohibits access to the endpoint.",
+            "x-state": "Generally available; Added in 9.5.0",
+            "type": "boolean"
+          },
+          "capabilities": {
+            "description": "The capabilities of the endpoint.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataCapabilities"
+              }
+            ]
+          }
+        },
+        "required": [
+          "heuristics",
+          "display"
+        ]
+      },
+      "inference._types.EndpointMetadataHeuristics": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "description": "Tags that describe the properties of the model, for example `multilingual`, `english` or `multimodal`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "description": "The release status of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataStatus"
+              }
+            ]
+          },
+          "release_date": {
+            "description": "The date on which the model was released, in `yyyy-MM-dd` format.",
+            "type": "string"
+          },
+          "end_of_life_date": {
+            "description": "The date on which the model reaches the end of its life, in `yyyy-MM-dd` format.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "inference._types.EndpointMetadataStatus": {
+        "type": "string",
+        "enum": [
+          "beta",
+          "preview",
+          "ga",
+          "deprecated"
+        ]
+      },
+      "inference._types.EndpointMetadataDisplay": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name to display for the endpoint.",
+            "type": "string"
+          },
+          "model_creator": {
+            "description": "The creator of the model, for display purposes.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataModelIdentity": {
+        "type": "object",
+        "properties": {
+          "creator": {
+            "description": "The model creator or lab, for example `anthropic`, `openai` or `jina`.",
+            "type": "string"
+          },
+          "family": {
+            "description": "The model family within the creator, for example `claude`, `gpt` or `gemini`.",
+            "type": "string"
+          },
+          "tier": {
+            "description": "The performance or size tier within the family, for example `sonnet` or `mini`.\nIt is not set if the model has no tier variants.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The version of the model.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataRegion": {
+        "type": "object",
+        "properties": {
+          "csp": {
+            "description": "The cloud service provider, for example `aws`, `gcp` or `azure`.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The region of the cloud service provider, for example `us-east-1`.",
+            "type": "string"
+          },
+          "geo": {
+            "description": "The geographic area, for example `us` or `eu`.",
+            "type": "string"
+          },
+          "region_display_name": {
+            "description": "The human-readable name of the region.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataCapabilities": {
+        "type": "object",
+        "properties": {
+          "reasoning": {
+            "description": "The reasoning support of the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataReasoningCapability"
+              }
+            ]
+          },
+          "context_window": {
+            "description": "The context window of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataContextWindow"
+              }
+            ]
+          },
+          "templates": {
+            "description": "The prompt template support of the endpoint.\nIt is returned only for chat completion endpoints that require a template instead of caller-authored messages.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatesCapability"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.EndpointMetadataReasoningCapability": {
+        "type": "object",
+        "properties": {
+          "supported_effort_levels": {
+            "description": "The reasoning effort levels that the endpoint supports.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+            }
+          },
+          "default_effort_level": {
+            "description": "The reasoning effort level that the endpoint uses by default.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+              }
+            ]
+          }
+        },
+        "required": [
+          "supported_effort_levels"
+        ]
+      },
+      "inference._types.EndpointMetadataContextWindow": {
+        "type": "object",
+        "properties": {
+          "max_input_tokens": {
+            "description": "The maximum number of input tokens that the model accepts.",
+            "type": "number"
+          },
+          "max_output_tokens": {
+            "description": "The maximum number of output tokens that the model generates.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataTemplatesCapability": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "description": "Whether the endpoint requires chat completion requests to carry a prompt template.\nElasticsearch displays the policy so that clients can choose the request shape, but it doesn't enforce it.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatePolicy"
+              }
+            ]
+          }
+        },
+        "required": [
+          "policy"
+        ]
+      },
+      "inference._types.EndpointMetadataTemplatePolicy": {
+        "type": "string",
+        "enum": [
+          "required"
         ]
       },
       "inference._types.InferenceEndpoint": {
@@ -116362,213 +116966,6 @@
           "index",
           "relevance_score"
         ]
-      },
-      "inference._types.ChatCompletionInferenceResult": {
-        "description": "The response format for the non-streaming unified chat completion request.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "description": "The unique identifier for the completion.",
-            "type": "string"
-          },
-          "choices": {
-            "description": "The list of completion choices the model generated for the input message.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/inference._types.ChatCompletionChoice"
-            }
-          },
-          "model": {
-            "description": "The model used to generate the completion.",
-            "type": "string"
-          },
-          "object": {
-            "description": "The object type.",
-            "type": "string"
-          },
-          "usage": {
-            "description": "The token usage statistics for the completion request.\nOmitted when usage information is not available.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ChatCompletionUsage"
-              }
-            ]
-          }
-        },
-        "required": [
-          "id",
-          "model",
-          "object"
-        ]
-      },
-      "inference._types.ChatCompletionChoice": {
-        "description": "A single completion choice returned by the model.",
-        "type": "object",
-        "properties": {
-          "message": {
-            "description": "The message generated by the model for this choice.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ChatCompletionMessage"
-              }
-            ]
-          },
-          "finish_reason": {
-            "description": "The reason the model stopped generating tokens.\nCommon values are `stop` (natural stopping point) and `tool_calls` (the model called a tool).\nOmitted when the reason is not available.",
-            "type": "string"
-          },
-          "index": {
-            "description": "The index of this choice in the list of choices.",
-            "type": "number"
-          }
-        },
-        "required": [
-          "message",
-          "index"
-        ]
-      },
-      "inference._types.ChatCompletionMessage": {
-        "description": "The message returned by the model.",
-        "type": "object",
-        "properties": {
-          "content": {
-            "description": "The content of the message.",
-            "type": "string"
-          },
-          "refusal": {
-            "description": "The refusal message generated by the model.",
-            "type": "string"
-          },
-          "role": {
-            "description": "The role of the message author.",
-            "type": "string"
-          },
-          "reasoning": {
-            "description": "The reasoning generated by the model as plaintext.\nCurrently supported only for the `elastic` provider.",
-            "type": "string"
-          },
-          "tool_calls": {
-            "description": "The tool calls generated by the model.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/inference._types.ChatCompletionToolCall"
-            }
-          },
-          "reasoning_details": {
-            "description": "The reasoning details generated by the model as structured data.\nCurrently supported only for the `elastic` provider.",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/inference._types.ReasoningDetail"
-            }
-          }
-        }
-      },
-      "inference._types.ChatCompletionToolCall": {
-        "description": "A tool call generated by the model.",
-        "type": "object",
-        "properties": {
-          "index": {
-            "description": "The index of the tool call in the list of tool calls generated by the model.",
-            "type": "number"
-          },
-          "id": {
-            "description": "The identifier of the tool call.",
-            "type": "string"
-          },
-          "function": {
-            "description": "The function that the model called.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ChatCompletionToolCallFunction"
-              }
-            ]
-          },
-          "type": {
-            "description": "The type of the tool call.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "index",
-          "type"
-        ]
-      },
-      "inference._types.ChatCompletionToolCallFunction": {
-        "description": "The function called by the tool.",
-        "type": "object",
-        "properties": {
-          "arguments": {
-            "description": "The arguments to call the function with, as a JSON string.",
-            "type": "string"
-          },
-          "name": {
-            "description": "The name of the function.",
-            "type": "string"
-          }
-        }
-      },
-      "inference._types.ChatCompletionUsage": {
-        "description": "Token usage statistics for the request.",
-        "type": "object",
-        "properties": {
-          "completion_tokens": {
-            "description": "The number of tokens in the generated completion.",
-            "type": "number"
-          },
-          "prompt_tokens": {
-            "description": "The number of tokens in the prompt.",
-            "type": "number"
-          },
-          "total_tokens": {
-            "description": "The total number of tokens used (prompt + completion).",
-            "type": "number"
-          },
-          "prompt_tokens_details": {
-            "description": "Breakdown of the tokens used in the prompt.\nOmitted when no details are available.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ChatCompletionPromptTokensDetails"
-              }
-            ]
-          },
-          "completion_tokens_details": {
-            "description": "Breakdown of the tokens used in the completion.\nOmitted when no details are available.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ChatCompletionCompletionTokensDetails"
-              }
-            ]
-          }
-        },
-        "required": [
-          "completion_tokens",
-          "prompt_tokens",
-          "total_tokens"
-        ]
-      },
-      "inference._types.ChatCompletionPromptTokensDetails": {
-        "description": "Breakdown of tokens used in the prompt.",
-        "type": "object",
-        "properties": {
-          "cached_tokens": {
-            "description": "The number of tokens that were cached from a previous request.",
-            "type": "number"
-          },
-          "cache_write_tokens": {
-            "description": "The number of tokens written to the cache.",
-            "type": "number"
-          }
-        }
-      },
-      "inference._types.ChatCompletionCompletionTokensDetails": {
-        "description": "Breakdown of tokens used in the request.",
-        "type": "object",
-        "properties": {
-          "reasoning_tokens": {
-            "description": "The number of tokens used for reasoning by the model.",
-            "type": "number"
-          }
-        }
       },
       "inference._types.Ai21TaskType": {
         "type": "string",
@@ -117100,6 +117497,9 @@
             "type": "string"
           },
           "model_id": {
+            "externalDocs": {
+              "url": "https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-names"
+            },
             "description": "The name of the model to use for the inference task.\nRefer to the Anthropic documentation for the list of supported models.",
             "type": "string"
           },
@@ -117631,10 +118031,16 @@
         "type": "object",
         "properties": {
           "api_key": {
+            "externalDocs": {
+              "url": "https://docs.contextual.ai/quickstarts/platform-api#api-authentication-setup"
+            },
             "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
+            "externalDocs": {
+              "url": "https://docs.contextual.ai/api-reference/rerank/rerank#body-model"
+            },
             "description": "The name of the model to use for the inference task.\nRefer to the Contextual AI documentation for the list of available rerank models.",
             "type": "string"
           },
@@ -129879,6 +130285,15 @@
               }
             ]
           },
+          "peak_inference_process_memory_rss_bytes": {
+            "description": "The peak native memory (resident set size) of the inference process on this node.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -130053,6 +130468,24 @@
           },
           "required_native_memory_bytes": {
             "description": "The amount of memory required to load the model in bytes.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.\nUnlike `required_native_memory_bytes`, which is an estimate, this is a measured value.\nIt is returned only after the native process has reported a measurement.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "peak_runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.\nIt is returned only after the native process has reported a measurement.",
+            "x-state": "Generally available; Added in 9.6.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -136982,7 +137415,10 @@
               }
             ]
           }
-        }
+        },
+        "required": [
+          "date_histogram"
+        ]
       },
       "rollup._types.DateHistogramGrouping": {
         "type": "object",
@@ -160474,6 +160910,21 @@
         },
         "style": "form"
       },
+      "fleet.search-wait_for_checkpoints_timeout": {
+        "in": "query",
+        "name": "wait_for_checkpoints_timeout",
+        "description": "The maximum time to wait for the checkpoints specified in `wait_for_checkpoints` to become visible for search.",
+        "deprecated": false,
+        "schema": {
+          "default": "30s",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/_types.Duration"
+            }
+          ]
+        },
+        "style": "form"
+      },
       "fleet.search-allow_partial_search_results": {
         "in": "query",
         "name": "allow_partial_search_results",
@@ -161736,6 +162187,18 @@
           "type": "boolean"
         },
         "x-state": "Generally available; Added in 8.11.0",
+        "style": "form"
+      },
+      "indices.get_index_template-include_managed_fields": {
+        "in": "query",
+        "name": "include_managed_fields",
+        "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available; Added in 9.6.0",
         "style": "form"
       },
       "indices.get_mapping-index": {

@@ -48,6 +48,7 @@ import {
   TaskTypeVoyageAI,
   TaskTypeWatsonx
 } from '../_types/TaskType'
+import { EndpointMetadata } from './EndpointMetadata'
 
 /**
  * Configuration options when storing the inference endpoint
@@ -85,6 +86,13 @@ export class InferenceEndpointInfo extends InferenceEndpoint {
    * The task type
    */
   task_type: TaskType
+  /**
+   * Metadata about the endpoint, such as the model it serves, where it is available and what it supports.
+   * It is returned for the endpoints of the Elastic Inference Service.
+   * @availability stack since=9.4.0
+   * @availability serverless
+   */
+  metadata?: EndpointMetadata
 }
 
 export class InferenceEndpointInfoAi21 extends InferenceEndpoint {
