@@ -35376,9 +35376,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
+          "name": "include_managed_fields",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L75"
+      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L82"
     },
     {
       "body": {
@@ -92428,17 +92450,6 @@
           }
         },
         {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "An array of stop words.\nAny word in this set is ignored.",
           "name": "stop_words",
           "required": false,
@@ -92476,32 +92487,9 @@
             ],
             "kind": "union_of"
           }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "serverDefault": "'internal'",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L87-L172"
+      "specLocation": "_types/query_dsl/specialized.ts#L87-L167"
     },
     {
       "codegenNames": [
@@ -92516,7 +92504,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L198-L203",
+      "specLocation": "_types/query_dsl/specialized.ts#L193-L198",
       "type": {
         "items": [
           {
@@ -92648,7 +92636,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L174-L196"
+      "specLocation": "_types/query_dsl/specialized.ts#L169-L191"
     },
     {
       "kind": "enum",
@@ -93359,7 +93347,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L205-L245"
+      "specLocation": "_types/query_dsl/specialized.ts#L200-L240"
     },
     {
       "extDocId": "query-dsl-pinned-query",
@@ -93420,7 +93408,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L247-L267",
+      "specLocation": "_types/query_dsl/specialized.ts#L242-L262",
       "variants": {
         "kind": "container"
       }
@@ -93457,7 +93445,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L269-L278"
+      "specLocation": "_types/query_dsl/specialized.ts#L264-L273"
     },
     {
       "extDocId": "query-dsl-prefix-query",
@@ -94294,7 +94282,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L309-L335"
+      "specLocation": "_types/query_dsl/specialized.ts#L304-L330"
     },
     {
       "inherits": {
@@ -94322,7 +94310,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L291-L296"
+      "specLocation": "_types/query_dsl/specialized.ts#L286-L291"
     },
     {
       "kind": "interface",
@@ -94331,7 +94319,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L280-L280"
+      "specLocation": "_types/query_dsl/specialized.ts#L275-L275"
     },
     {
       "inherits": {
@@ -94359,7 +94347,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
+      "specLocation": "_types/query_dsl/specialized.ts#L279-L284"
     },
     {
       "inherits": {
@@ -94374,7 +94362,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L282-L282"
+      "specLocation": "_types/query_dsl/specialized.ts#L277-L277"
     },
     {
       "inherits": {
@@ -94414,7 +94402,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L298-L307"
+      "specLocation": "_types/query_dsl/specialized.ts#L293-L302"
     },
     {
       "extDocId": "query-dsl-regexp-query",
@@ -94580,7 +94568,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L398-L406"
+      "specLocation": "_types/query_dsl/specialized.ts#L393-L401"
     },
     {
       "extDocId": "query-dsl-script-query",
@@ -94610,7 +94598,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L337-L346"
+      "specLocation": "_types/query_dsl/specialized.ts#L332-L341"
     },
     {
       "extDocId": "query-dsl-script-score-query",
@@ -94664,7 +94652,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L348-L365"
+      "specLocation": "_types/query_dsl/specialized.ts#L343-L360"
     },
     {
       "extDocId": "query-dsl-semantic-query",
@@ -94767,7 +94755,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L367-L381"
+      "specLocation": "_types/query_dsl/specialized.ts#L362-L376"
     },
     {
       "kind": "interface",
@@ -94813,7 +94801,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L383-L396"
+      "specLocation": "_types/query_dsl/specialized.ts#L378-L391"
     },
     {
       "extDocId": "query-dsl-simple-query-string-query",
@@ -131855,7 +131843,10 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L26"
+      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L29",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -169451,7 +169442,7 @@
           }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
     },
     {
       "kind": "interface",
@@ -170309,6 +170300,24 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+          "name": "registry_installed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
           "name": "index_patterns",
           "required": true,
@@ -170523,7 +170532,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L161-L163"
+      "specLocation": "indices/_types/IndexTemplate.ts#L161-L171"
     },
     {
       "kind": "interface",

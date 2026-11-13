@@ -7222,11 +7222,8 @@ export interface QueryDslMoreLikeThisQuery extends QueryDslQueryBase {
   minimum_should_match?: MinimumShouldMatch
   min_term_freq?: integer
   min_word_length?: integer
-  routing?: string
   stop_words?: AnalysisStopWords
   unlike?: QueryDslLike | QueryDslLike[]
-  version?: VersionNumber
-  version_type?: VersionType
 }
 
 export interface QueryDslMultiMatchQuery extends QueryDslQueryBase {
@@ -13230,6 +13227,7 @@ export interface IndicesIndexTemplateSummaryWithRollover {
 
 export interface IndicesIndexTemplateWithRollover {
   template?: IndicesIndexTemplateSummaryWithRollover
+  registry_installed?: boolean
   index_patterns: Names
   composed_of: Name[]
   version?: VersionNumber
@@ -13827,6 +13825,8 @@ export interface IndicesExplainDataLifecycleDataStreamLifecycleExplain {
   generation_time?: Duration
   error?: string
   frozen_transition_status?: string
+  tail_merge_date_millis?: EpochTime<UnitMillis>
+  tail_merge_date?: DateTime
   unmanaged_reason?: string
 }
 
@@ -14083,6 +14083,7 @@ export interface IndicesGetIndexTemplateRequest extends RequestBase {
   flat_settings?: boolean
   master_timeout?: Duration
   include_defaults?: boolean
+  include_managed_fields?: boolean
 }
 
 export interface IndicesGetIndexTemplateResponse {

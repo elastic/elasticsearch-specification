@@ -11227,6 +11227,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -12685,6 +12688,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -47413,9 +47419,6 @@
                 "default": 0.0,
                 "type": "number"
               },
-              "routing": {
-                "type": "string"
-              },
               "stop_words": {
                 "description": "An array of stop words.\nAny word in this set is ignored.",
                 "allOf": [
@@ -47435,21 +47438,6 @@
                     "items": {
                       "$ref": "#/components/schemas/_types.query_dsl.Like"
                     }
-                  }
-                ]
-              },
-              "version": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionNumber"
-                  }
-                ]
-              },
-              "version_type": {
-                "default": "'internal'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionType"
                   }
                 ]
               }
@@ -67713,7 +67701,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.mapping.SparseVectorIndexOptions": {
         "type": "object",
@@ -72863,6 +72853,10 @@
                 "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
               }
             ]
+          },
+          "registry_installed": {
+            "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+            "type": "boolean"
           },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
@@ -99008,6 +99002,18 @@
         "in": "query",
         "name": "include_defaults",
         "description": "If true, returns all relevant default configurations for the index template.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available",
+        "style": "form"
+      },
+      "indices.get_index_template-include_managed_fields": {
+        "in": "query",
+        "name": "include_managed_fields",
+        "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
         "deprecated": false,
         "schema": {
           "default": false,
