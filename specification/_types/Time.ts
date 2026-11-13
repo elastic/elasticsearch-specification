@@ -24,6 +24,7 @@ import { double, long } from './Numeric'
  * number of milliseconds since the Epoch. Elasticsearch accepts both as input, but will generally output a string
  * representation.
  */
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type DateTime = string | EpochTime<UnitMillis>
 
 /** Time unit for seconds */
@@ -56,6 +57,7 @@ export type DateFormat = string
  * @ext_doc_id time-units
  */
 // Used to be Time, see ES TimeValue
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type Duration = string | -1 | 0
 
 /**

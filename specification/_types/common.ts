@@ -96,6 +96,7 @@ export type DataStreamName = string
 export type DataStreamNames = DataStreamName | DataStreamName[]
 
 /** @doc_id byte-units */
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type ByteSize = long | string
 
 export type Metadata = Dictionary<string, UserDefinedValue>
@@ -132,6 +133,7 @@ export type PropertyName = string
 export type RelationName = string
 export type TaskId = string
 /** @doc_id fuzziness */
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type Fuzziness = string | integer
 /** @doc_id query-dsl-multi-term-rewrite */
 export type MultiTermQueryRewrite = string
@@ -165,6 +167,7 @@ export class EmptyObject {}
  * The minimum number of terms that should match as integer, percentage or range
  * @doc_id query-dsl-minimum-should-match
  */
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type MinimumShouldMatch = integer | string
 
 /**

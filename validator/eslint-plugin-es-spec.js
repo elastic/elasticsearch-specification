@@ -47,6 +47,7 @@ import restSpecNameMatchesLocation from './rules/rest-spec-name-matches-location
 import shortcutPropertyExists from './rules/shortcut-property-exists.js'
 import preferAliasImports from './rules/prefer-alias-imports.js'
 import preferUserDefinedValue from './rules/prefer-user-defined-value.js'
+import unionRequiresCodegenNames from './rules/union-requires-codegen-names.js'
 
 export default {
   rules: {
@@ -80,6 +81,7 @@ export default {
     'rest-spec-name-matches-location': restSpecNameMatchesLocation,
     'shortcut-property-exists': shortcutPropertyExists,
     'prefer-alias-imports': preferAliasImports,
-    'prefer-user-defined-value': preferUserDefinedValue
+    'prefer-user-defined-value': preferUserDefinedValue,
+    'union-requires-codegen-names': unionRequiresCodegenNames
   }
 }

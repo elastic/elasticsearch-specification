@@ -44,4 +44,5 @@ export class ShardHealthStats {
   unassigned_primary_shards: integer
 }
 
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type WaitForNodes = string | integer

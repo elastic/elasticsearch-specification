@@ -63,4 +63,5 @@ export enum StopWordLanguage {
  * Also accepts an array of stop words.
  * @class_serializer StopWordsFormatter
  */
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type StopWords = StopWordLanguage | string[]
