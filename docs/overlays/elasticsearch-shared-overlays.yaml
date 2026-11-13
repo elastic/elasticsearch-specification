@@ -231,6 +231,14 @@ actions:
           # externalDocs:
             # url: 
             # description:
+        - name: prometheus
+          x-displayName: Prometheus
+          description: >
+            The Prometheus Query Language (PromQL) is a functional query language to select and aggregate metrics.
+            Elasticsearch supports PromQL through a Prometheus-compatible HTTP API for Prometheus-compatible clients.
+          externalDocs:
+            url: https://www.elastic.co/docs/reference/query-languages/promql
+            description: Learn more about PromQL in Elasticsearch.
       # Q
         - name: query_rules
           x-displayName: Query rules
