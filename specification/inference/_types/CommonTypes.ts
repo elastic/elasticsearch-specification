@@ -641,11 +641,7 @@ export class RequestEmbedding {
    */
   input: EmbeddingInput
   /**
-   * The input data type for the embedding model. Possible values include:
-   * * `SEARCH`
-   * * `INGEST`
-   * * `CLASSIFICATION`
-   * * `CLUSTERING`
+   * The input data type for the embedding model.
    *
    * Not all models support all values. Unsupported values will trigger a validation exception.
    * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
@@ -653,11 +649,23 @@ export class RequestEmbedding {
    * > info
    * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
    */
-  input_type?: string
+  input_type?: InferenceInputType
   /**
    * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
    */
   task_settings?: TaskSettings
+}
+
+export enum InferenceInputType {
+  /** @aliases CLASSIFICATION */
+  classification,
+  /** @aliases CLUSTERING */
+  clustering,
+  /** @aliases INGEST */
+  ingest,
+  /** @aliases SEARCH */
+  search,
+  unspecified
 }
 
 /**

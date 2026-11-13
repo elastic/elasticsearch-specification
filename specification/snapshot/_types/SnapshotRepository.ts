@@ -164,11 +164,11 @@ export class AzureRepositorySettings extends RepositorySettingsBase {
   container?: string
   /**
    * The Azure access tier applied to the data blobs of the repository, which hold the files that make up each snapshotted shard.
-   * Accepted values are `hot`, `cool` and `cold`, in any letter case.
+   * Elasticsearch accepts the value in any letter case.
    * If not set, no access tier is requested and Azure applies the default tier of the storage account.
    * @availability stack since=9.5.0
    */
-  data_access_tier?: string
+  data_access_tier?: AzureAccessTier
   /**
    * The maxmimum batch size, between 1 and 256, used for `BlobBatch` requests.
    * Defaults to 256 which is the maximum number supported by the Azure blob batch API.
@@ -191,11 +191,11 @@ export class AzureRepositorySettings extends RepositorySettingsBase {
   /**
    * The Azure access tier applied to the metadata blobs of the repository.
    * These are generally smaller than the data blobs but can be read more often, for example to list the repository contents or to take snapshots.
-   * Accepted values are `hot`, `cool` and `cold`, in any letter case.
+   * Elasticsearch accepts the value in any letter case.
    * If not set, no access tier is requested and Azure applies the default tier of the storage account.
    * @availability stack since=9.5.0
    */
-  metadata_access_tier?: string
+  metadata_access_tier?: AzureAccessTier
   /**
    * If `true`, the repository is read-only.
    * The cluster can retrieve and restore snapshots from the repository but not write to the repository or create snapshots in it.
@@ -209,6 +209,12 @@ export class AzureRepositorySettings extends RepositorySettingsBase {
    * @server_default false
    */
   readonly?: boolean
+}
+
+export enum AzureAccessTier {
+  cold,
+  cool,
+  hot
 }
 
 export class GcsRepositorySettings extends RepositorySettingsBase {
