@@ -49,6 +49,7 @@ import preferAliasImports from './rules/prefer-alias-imports.js'
 import preferUserDefinedValue from './rules/prefer-user-defined-value.js'
 import unionRequiresCodegenNames from './rules/union-requires-codegen-names.js'
 import validInternalVariantTags from './rules/valid-internal-variant-tags.js'
+import validServerDefault from './rules/valid-server-default.js'
 
 export default {
   rules: {
@@ -84,6 +85,7 @@ export default {
     'prefer-alias-imports': preferAliasImports,
     'prefer-user-defined-value': preferUserDefinedValue,
     'union-requires-codegen-names': unionRequiresCodegenNames,
-    'valid-internal-variant-tags': validInternalVariantTags
+    'valid-internal-variant-tags': validInternalVariantTags,
+    'valid-server-default': validServerDefault
   }
 }

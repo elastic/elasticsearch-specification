@@ -70,7 +70,7 @@ export class HasChildQuery extends QueryBase {
   query: QueryContainer
   /**
    * Indicates how scores for matching child documents affect the root parent document’s relevance score.
-   * @server_default 'none'
+   * @server_default none
    */
   score_mode?: ChildScoreMode
   /**
@@ -136,7 +136,7 @@ export class NestedQuery extends QueryBase {
   query: QueryContainer
   /**
    * How scores for matching child objects affect the root parent document’s relevance score.
-   * @server_default 'avg'
+   * @server_default avg
    */
   score_mode?: ChildScoreMode
 }

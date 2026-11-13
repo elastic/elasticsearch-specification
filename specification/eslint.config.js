@@ -131,6 +131,7 @@ export default defineConfig([
       'es-spec-validator/prefer-user-defined-value': 'error',
       'es-spec-validator/union-requires-codegen-names': 'error',
       'es-spec-validator/valid-internal-variant-tags': 'error',
+      'es-spec-validator/valid-server-default': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {

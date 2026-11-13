@@ -382,7 +382,7 @@ export class MatchQuery extends QueryBase {
   minimum_should_match?: MinimumShouldMatch
   /**
    * Boolean logic used to interpret text in the query value.
-   * @server_default 'or'
+   * @server_default or
    */
   operator?: Operator
   /**
@@ -399,7 +399,7 @@ export class MatchQuery extends QueryBase {
   query: string | float | boolean
   /**
    * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
-   * @server_default 'none'
+   * @server_default none
    */
   zero_terms_query?: ZeroTermsQuery
 }
@@ -447,7 +447,7 @@ export class MatchBoolPrefixQuery extends QueryBase {
   /**
    * Boolean logic used to interpret text in the query value.
    * Applied to the constructed bool query.
-   * @server_default 'or'
+   * @server_default or
    */
   operator?: Operator
   /**
@@ -484,7 +484,7 @@ export class MatchPhraseQuery extends QueryBase {
   slop?: integer
   /**
    * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
-   * @server_default 'none'
+   * @server_default none
    */
   zero_terms_query?: ZeroTermsQuery
 }
@@ -574,7 +574,7 @@ export class MultiMatchQuery extends QueryBase {
   minimum_should_match?: MinimumShouldMatch
   /**
    * Boolean logic used to interpret text in the query value.
-   * @server_default 'or'
+   * @server_default or
    */
   operator?: Operator
   /**
@@ -598,12 +598,12 @@ export class MultiMatchQuery extends QueryBase {
   tie_breaker?: double
   /**
    * How `the` multi_match query is executed internally.
-   * @server_default 'best_fields'
+   * @server_default best_fields
    */
   type?: TextQueryType
   /**
    * Indicates whether no documents are returned if the `analyzer` removes all tokens, such as when using a `stop` filter.
-   * @server_default 'none'
+   * @server_default none
    */
   zero_terms_query?: ZeroTermsQuery
 }
@@ -679,7 +679,7 @@ export class QueryStringQuery extends QueryBase {
   default_field?: Field
   /**
    * Default boolean logic used to interpret text in the query string if no operators are specified.
-   * @server_default 'or'
+   * @server_default or
    */
   default_operator?: Operator
   /**
@@ -767,7 +767,7 @@ export class QueryStringQuery extends QueryBase {
   time_zone?: TimeZone
   /**
    * Determines how the query matches and scores documents.
-   * @server_default 'best_fields'
+   * @server_default best_fields
    * */
   type?: TextQueryType
 }
@@ -856,7 +856,7 @@ export class SimpleQueryStringQuery extends QueryBase {
   auto_generate_synonyms_phrase_query?: boolean
   /**
    * Default boolean logic used to interpret text in the query string if no operators are specified.
-   * @server_default 'or'
+   * @server_default or
    */
   default_operator?: Operator
   /**
