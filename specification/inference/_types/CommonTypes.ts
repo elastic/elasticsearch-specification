@@ -1521,6 +1521,7 @@ export enum CustomServiceType {
   custom
 }
 
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type CustomTaskParameter = string | integer | double | float | boolean
 
 export class CustomTaskSettings {

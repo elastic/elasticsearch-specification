@@ -564,6 +564,7 @@ export class AggregationContainer {
   variable_width_histogram?: VariableWidthHistogramAggregation
 }
 
+// eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
 export type Missing = string | integer | double | boolean
 export enum MissingOrder {
   first,
