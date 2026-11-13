@@ -18975,6 +18975,7 @@ export interface MlTrainedModelDeploymentNodesStats {
   average_inference_time_ms_last_minute?: DurationValue<UnitFloatMillis>
   average_inference_time_ms_excluding_cache_hits?: DurationValue<UnitFloatMillis>
   average_inference_process_memory_rss_bytes?: ByteSize
+  peak_inference_process_memory_rss_bytes?: ByteSize
   error_count?: integer
   inference_count?: long
   inference_cache_hit_count?: long
@@ -19056,6 +19057,8 @@ export interface MlTrainedModelPrefixStrings {
 export interface MlTrainedModelSizeStats {
   model_size_bytes: ByteSize
   required_native_memory_bytes: ByteSize
+  runtime_native_memory_bytes?: ByteSize
+  peak_runtime_native_memory_bytes?: ByteSize
 }
 
 export interface MlTrainedModelStats {
