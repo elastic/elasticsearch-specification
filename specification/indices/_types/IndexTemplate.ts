@@ -160,4 +160,12 @@ export class IndexTemplateSummaryWithRollover
 
 export class IndexTemplateWithRollover implements OverloadOf<IndexTemplate> {
   template?: IndexTemplateSummaryWithRollover
+  /**
+   * Marks an index template that was installed by one of the internal registries.
+   * This field is returned only when the get index template API is called with `include_managed_fields` set to `true`.
+   * It can't be set in a request: the create and simulate index template APIs reject it.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   */
+  registry_installed?: boolean
 }
