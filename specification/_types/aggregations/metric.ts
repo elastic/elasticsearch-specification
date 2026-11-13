@@ -263,6 +263,20 @@ export enum TDigestExecutionHint {
   high_accuracy
 }
 
+export class RoaringBitmapAggregation {
+  /**
+   * The `integer` or `long` field from which to collect the distinct values.
+   * Scripts are not supported, so the field must be mapped.
+   */
+  field: Field
+  /**
+   * The value to use for documents that do not have a value for the field.
+   * It must be non-negative and fit the `integer` or `long` type of the field.
+   * By default, documents without a value are ignored.
+   */
+  missing?: long
+}
+
 export class RateAggregation extends FormatMetricAggregationBase {
   /**
    * The interval used to calculate the rate.

@@ -125,6 +125,7 @@ export type Aggregate =
   | TopMetricsAggregate
   | TTestAggregate
   | RateAggregate
+  | RoaringBitmapAggregate
   | CumulativeCardinalityAggregate
   | MatrixStatsAggregate
   | GeoLineAggregate
@@ -925,6 +926,19 @@ export class TTestAggregate extends AggregateBase {
 export class RateAggregate extends AggregateBase {
   value: double
   value_as_string?: string
+}
+
+/**
+ * Result of the `roaring_bitmap` aggregation.
+ * @variant name=roaring_bitmap
+ * @ext_doc_id search-aggregations-metrics-roaring-bitmap-aggregation
+ */
+export class RoaringBitmapAggregate extends AggregateBase {
+  /**
+   * The distinct values of the field, as a base64-encoded portable roaring bitmap.
+   * It is `null` if the field is unmapped.
+   */
+  value: string | null
 }
 
 /**
