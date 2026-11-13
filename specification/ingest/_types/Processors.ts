@@ -949,7 +949,7 @@ export class EnrichProcessor extends ProcessorBase {
   /**
    * A spatial relation operator used to match the geoshape of incoming documents to documents in the enrich index.
    * This option is only used for `geo_match` enrich policy types.
-   * @server_default INTERSECTS
+   * @server_default intersects
    */
   shape_relation?: GeoShapeRelation
   /**

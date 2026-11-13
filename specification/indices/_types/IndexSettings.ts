@@ -318,7 +318,7 @@ export class IndexSettingsLifecycle {
    * If specified, this is the timestamp used to calculate the index age for its phase transitions. Use this setting
    * if you create a new index that contains old data and want to use the original creation date to calculate the index
    * age. Specified as a Unix epoch value in milliseconds.
-   * @server_default
+   * @server_default -1
    */
   origination_date?: long
   /**
@@ -333,7 +333,6 @@ export class IndexSettingsLifecycle {
    * The index alias to update when the index rolls over. Specify when using a policy that contains a rollover action.
    * When the index rolls over, the alias is updated to reflect that the index is no longer the write index. For more
    * information about rolling indices, see Rollover.
-   * @server_default
    */
   rollover_alias?: string
   /**
@@ -405,7 +404,7 @@ export class Translog {
   sync_interval?: Duration
   /**
    * Whether or not to `fsync` and commit the translog after every index, delete, update, or bulk request.
-   * @server_default string
+   * @server_default request
    */
   durability?: TranslogDurability
   /**

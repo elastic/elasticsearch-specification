@@ -167,6 +167,7 @@ export enum HighlighterFragmenter {
 }
 
 export enum HighlighterOrder {
+  none,
   score
 }
 

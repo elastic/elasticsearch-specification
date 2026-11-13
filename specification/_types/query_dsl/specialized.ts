@@ -185,7 +185,7 @@ export class LikeDocument {
   per_field_analyzer?: Dictionary<Field, string>
   routing?: string
   version?: VersionNumber
-  /** @server_default 'internal' */
+  /** @server_default internal */
   version_type?: VersionType
 }
 

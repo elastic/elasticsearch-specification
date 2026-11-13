@@ -45,7 +45,7 @@ export class GeoBoundingBoxQuery
   /**
    * Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.
    * Set to `COERCE` to also try to infer correct latitude or longitude.
-   * @server_default 'strict'
+   * @server_default strict
    */
   validation_method?: GeoValidationMethod
   /**
@@ -78,13 +78,13 @@ export class GeoDistanceQuery
   /**
    * How to compute the distance.
    * Set to `plane` for a faster calculation that's inaccurate on long distances and close to the poles.
-   * @server_default 'arc'
+   * @server_default arc
    */
   distance_type?: GeoDistanceType
   /**
    * Set to `IGNORE_MALFORMED` to accept geo points with invalid latitude or longitude.
    * Set to `COERCE` to also try to infer correct latitude or longitude.
-   * @server_default 'strict'
+   * @server_default strict
    */
   validation_method?: GeoValidationMethod
   /**
@@ -114,7 +114,7 @@ export class GeoPolygonQuery
   extends QueryBase
   implements AdditionalProperty<Field, GeoPolygonPoints>
 {
-  /** @server_default 'strict' */
+  /** @server_default strict */
   validation_method?: GeoValidationMethod
   ignore_unmapped?: boolean
 }

@@ -91,7 +91,6 @@ export interface Request extends RequestBase {
     order?: integer
     /**
      * User defined reason for creating or updating the index template
-     * @server_default
      */
     cause?: string
   }
