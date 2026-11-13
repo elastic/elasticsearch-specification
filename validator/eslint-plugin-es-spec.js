@@ -32,6 +32,7 @@ import jsdocEndpointCheck from './rules/jsdoc-endpoint-check.js'
 import codegenExcludeOnRequestOnly from './rules/codegen-exclude-on-request-only.js'
 import noDeprecatedAvailabilityOnTypes from './rules/no-deprecated-availability-on-types.js'
 import validRequestUrls from './rules/valid-request-urls.js'
+import binaryRequiresAlias from './rules/binary-requires-alias.js'
 
 export default {
   rules: {
@@ -50,6 +51,7 @@ export default {
     'jsdoc-endpoint-check': jsdocEndpointCheck,
     'codegen-exclude-on-request-only': codegenExcludeOnRequestOnly,
     'no-deprecated-availability-on-types': noDeprecatedAvailabilityOnTypes,
-    'valid-request-urls': validRequestUrls
+    'valid-request-urls': validRequestUrls,
+    'binary-requires-alias': binaryRequiresAlias
   }
 }
