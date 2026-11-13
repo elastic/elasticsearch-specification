@@ -31,4 +31,9 @@ export class Response {
 class DataStreamWithLifecycle {
   name: DataStreamName
   lifecycle?: DataStreamLifecycleWithRollover
+  /**
+   * If `true`, the data stream is managed by the minimum data stream lifecycle. Only present when `true`.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  minimum_lifecycle_enabled?: boolean
 }
