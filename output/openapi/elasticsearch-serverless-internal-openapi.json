@@ -14152,6 +14152,9 @@
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
           }
         ],
@@ -14307,6 +14310,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
@@ -14471,6 +14477,9 @@
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
           },
           {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
+          },
+          {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
           }
         ],
@@ -14629,6 +14638,9 @@
           },
           {
             "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints"
+          },
+          {
+            "$ref": "#/components/parameters/fleet.search-wait_for_checkpoints_timeout"
           },
           {
             "$ref": "#/components/parameters/fleet.search-allow_partial_search_results"
@@ -60246,6 +60258,17 @@
         "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
         "properties": {
+          "bitmap_terms": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query"
+            },
+            "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.BitmapTermsQuery"
+              }
+            ]
+          },
           "bool": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query"
@@ -60943,6 +60966,47 @@
         "minProperties": 1,
         "maxProperties": 1
       },
+      "_types.query_dsl.BitmapTermsQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "value": {
+                "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "value"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl.QueryBase": {
+        "type": "object",
+        "properties": {
+          "boost": {
+            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "_name": {
+            "type": "string"
+          }
+        }
+      },
       "_types.query_dsl.BoolQuery": {
         "allOf": [
           {
@@ -61029,19 +61093,6 @@
             "type": "string"
           }
         ]
-      },
-      "_types.query_dsl.QueryBase": {
-        "type": "object",
-        "properties": {
-          "boost": {
-            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "_name": {
-            "type": "string"
-          }
-        }
       },
       "_types.query_dsl.BoostingQuery": {
         "allOf": [
@@ -140606,6 +140657,21 @@
           "items": {
             "$ref": "#/components/schemas/fleet._types.Checkpoint"
           }
+        },
+        "style": "form"
+      },
+      "fleet.search-wait_for_checkpoints_timeout": {
+        "in": "query",
+        "name": "wait_for_checkpoints_timeout",
+        "description": "The maximum time to wait for the checkpoints specified in `wait_for_checkpoints` to become visible for search.",
+        "deprecated": false,
+        "schema": {
+          "default": "30s",
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/_types.Duration"
+            }
+          ]
         },
         "style": "form"
       },

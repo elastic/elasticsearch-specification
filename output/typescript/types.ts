@@ -6801,6 +6801,11 @@ export interface MappingWildcardProperty extends MappingDocValuesPropertyBase {
   null_value?: string
 }
 
+export interface QueryDslBitmapTermsQuery extends QueryDslQueryBase {
+  field: Field
+  value: string
+}
+
 export interface QueryDslBoolQuery extends QueryDslQueryBase {
   filter?: QueryDslQueryContainer | QueryDslQueryContainer[]
   minimum_should_match?: MinimumShouldMatch
@@ -7295,6 +7300,7 @@ export interface QueryDslQueryBase {
 }
 
 export interface QueryDslQueryContainer {
+  bitmap_terms?: QueryDslBitmapTermsQuery
   bool?: QueryDslBoolQuery
   boosting?: QueryDslBoostingQuery
   common?: Partial<Record<Field, QueryDslCommonTermsQuery | string>>
@@ -12484,6 +12490,7 @@ export interface FleetSearchRequest extends RequestBase {
   from?: integer
   sort?: string | string[]
   wait_for_checkpoints?: FleetCheckpoint[]
+  wait_for_checkpoints_timeout?: Duration
   allow_partial_search_results?: boolean
   body?: {
     aggregations?: Record<string, AggregationsAggregationContainer>

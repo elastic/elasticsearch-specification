@@ -83831,6 +83831,26 @@
       },
       "properties": [
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+          "extDocId": "query-dsl-bitmap-terms-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+          "name": "bitmap_terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BitmapTermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
+        {
           "description": "matches documents matching boolean combinations of other queries.",
           "extDocId": "query-dsl-bool-query",
           "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query",
@@ -84946,10 +84966,103 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L99-L446",
+      "specLocation": "_types/query_dsl/abstractions.ts#L100-L455",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
+      }
+    },
+    {
+      "extDocId": "query-dsl-bitmap-terms-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "BitmapTermsQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/BitmapTermsQuery.ts#L23-L38"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryBase",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+          "name": "boost",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "codegenName": "query_name",
+          "name": "_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/abstractions.ts#L480-L491"
+    },
+    {
+      "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
+      "kind": "type_alias",
+      "name": {
+        "name": "Field",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L139-L140",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
       }
     },
     {
@@ -85093,41 +85206,6 @@
       "specLocation": "_types/query_dsl/compound.ts#L29-L56"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "QueryBase",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
-          "name": "boost",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "codegenName": "query_name",
-          "name": "_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L471-L482"
-    },
-    {
       "description": "The minimum number of terms that should match as integer, percentage or range",
       "docId": "query-dsl-minimum-should-match",
       "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-minimum-should-match",
@@ -85222,22 +85300,6 @@
         "kind": "instance_of",
         "type": {
           "name": "number",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
-      "kind": "type_alias",
-      "name": {
-        "name": "Field",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L139-L140",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
           "namespace": "_builtins"
         }
       }
@@ -85441,7 +85503,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L484-L518"
+      "specLocation": "_types/query_dsl/abstractions.ts#L493-L527"
     },
     {
       "kind": "enum",
@@ -85457,7 +85519,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L531-L534"
+      "specLocation": "_types/query_dsl/abstractions.ts#L540-L543"
     },
     {
       "kind": "enum",
@@ -85475,7 +85537,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L536-L545"
+      "specLocation": "_types/query_dsl/abstractions.ts#L545-L554"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -88338,7 +88400,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L448-L465"
+      "specLocation": "_types/query_dsl/abstractions.ts#L457-L474"
     },
     {
       "kind": "enum",
@@ -88821,7 +88883,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L547-L561"
+      "specLocation": "_types/query_dsl/abstractions.ts#L556-L570"
     },
     {
       "inherits": {
@@ -96283,7 +96345,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L520-L529"
+      "specLocation": "_types/query_dsl/abstractions.ts#L529-L538"
     },
     {
       "inherits": {
