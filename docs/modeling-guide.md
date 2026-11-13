@@ -208,6 +208,22 @@ type Indices = string | string[]
 You can find the full list [here](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/common.ts),
 feel free to add more if it feels appropriate!
 
+An alias says what the value is, so use an alias only when the value is what the name says. `Id` is the ID of a
+document. For another identifier, use the alias of that kind, such as `NodeId` or `TaskId`, or a plain `string`. The
+specification has older uses of `Id` for other identifiers. Do not add new ones.
+
+Some plural aliases are a union of one value and an array: `Indices` is `IndexName | IndexName[]`, and
+`DataStreamNames`, `Fields`, `Ids`, `Names` and `NodeIds` have the same form. The place of the property gives the union
+its meaning:
+
+* In a path part or a query parameter, the value is a comma-separated list, and the clients join the array form with
+  commas. [`add-new-api.md`](add-new-api.md) has more on these parameters.
+* In a body, the value is one string or a JSON array. Use the union there only when Elasticsearch accepts the one string
+  in place of the array.
+
+An array such as `IndexName[]` is always a JSON array. Use it for a response property that Elasticsearch writes as an
+array, and for a request property where Elasticsearch accepts an array only.
+
 ### Dates
 
 Elasticsearch uses a lot of dates, times and durations. There are various types available to capture the variety of types and representations in the specification:

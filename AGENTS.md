@@ -103,6 +103,15 @@ its Enum section.
 **One value or a list.** A parser that accepts a single value where it declares an array gives a `T | T[]` union. A
 parser that accepts an array only gives `T[]`. Do not add the single-value form because other properties have it.
 
+**Shared aliases.** Use an alias of `specification/_types/common.ts` only when the source shows that the value is what
+the alias names. `Id` is the ID of a document. For another identifier, use the alias of that kind, such as `NodeId` or
+`TaskId`, or a `string`, and do not add to the older uses of `Id` for other identifiers. `Indices`, `Fields`, `Ids`,
+`Names` and `NodeIds` are unions of one value and an array. In a path part or a query parameter, such a union is a
+comma-separated list, and the clients join the array form with commas. In a body, it is one string or a JSON array, so
+use it only when the parser accepts the one string. `IndexName[]` and the other arrays are always a JSON array. Use an
+array for a response property that `toXContent` writes as an array, and for a request property whose parser accepts an
+array only.
+
 **Null.** Add `| null` only when the parser accepts an explicit null with a meaning, such as a reset to the default,
 or when `toXContent` writes a null value. An absent field is an optional property.
 
