@@ -101861,6 +101861,9 @@
             ]
           },
           "skip_unavailable": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters"
+            },
             "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
@@ -101905,6 +101908,9 @@
             ]
           },
           "skip_unavailable": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters"
+            },
             "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
             "type": "boolean"
           },
@@ -107970,6 +107976,9 @@
             ]
           },
           "_primary_term": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
+            },
             "description": "The primary term assigned to the document for the indexing operation.",
             "type": "number"
           },
@@ -107987,6 +107996,9 @@
             ]
           },
           "_seq_no": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control"
+            },
             "description": "The sequence number assigned to the document for the indexing operation.\nSequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.",
             "allOf": [
               {
@@ -117100,6 +117112,9 @@
             "type": "string"
           },
           "model_id": {
+            "externalDocs": {
+              "url": "https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-names"
+            },
             "description": "The name of the model to use for the inference task.\nRefer to the Anthropic documentation for the list of supported models.",
             "type": "string"
           },
@@ -117631,10 +117646,16 @@
         "type": "object",
         "properties": {
           "api_key": {
+            "externalDocs": {
+              "url": "https://docs.contextual.ai/quickstarts/platform-api#api-authentication-setup"
+            },
             "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
             "type": "string"
           },
           "model_id": {
+            "externalDocs": {
+              "url": "https://docs.contextual.ai/api-reference/rerank/rerank#body-model"
+            },
             "description": "The name of the model to use for the inference task.\nRefer to the Contextual AI documentation for the list of available rerank models.",
             "type": "string"
           },

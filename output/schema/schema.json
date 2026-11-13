@@ -34156,7 +34156,8 @@
         },
         {
           "description": "The primary term assigned to the document for the indexing operation.",
-          "extDocId": "optimistic_concurrency",
+          "extDocId": "optimistic-concurrency",
+          "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control",
           "name": "_primary_term",
           "required": false,
           "type": {
@@ -34204,7 +34205,8 @@
         },
         {
           "description": "The sequence number assigned to the document for the indexing operation.\nSequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.",
-          "extDocId": "optimistic_concurrency",
+          "extDocId": "optimistic-concurrency",
+          "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/optimistic-concurrency-control",
           "name": "_seq_no",
           "required": false,
           "type": {
@@ -35473,7 +35475,8 @@
         },
         {
           "description": "If `true`, the request is real-time as opposed to near-real-time.",
-          "docId": "realtiime",
+          "docId": "realtime",
+          "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get",
           "name": "realtime",
           "required": false,
           "serverDefault": true,
@@ -58102,7 +58105,8 @@
         },
         {
           "description": "The period to retain the search context for scrolling.",
-          "extDocId": "search-scroll-results",
+          "extDocId": "scroll-search-results",
+          "extDocUrl": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/paginate-search-results#scroll-search-results",
           "name": "scroll",
           "required": false,
           "serverDefault": "5m",
@@ -139578,6 +139582,7 @@
         {
           "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
           "extDocId": "modules-cross-cluster-optional",
+          "extDocUrl": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters",
           "name": "skip_unavailable",
           "required": true,
           "type": {
@@ -139717,6 +139722,7 @@
         {
           "description": "If `true`, cross-cluster search skips the remote cluster when its nodes are unavailable during the search and ignores errors returned by the remote cluster.",
           "extDocId": "modules-cross-cluster-optional",
+          "extDocUrl": "https://www.elastic.co/docs/explore-analyze/cross-cluster-search#skip-unavailable-clusters",
           "name": "skip_unavailable",
           "required": true,
           "type": {
@@ -191385,7 +191391,8 @@
         },
         {
           "description": "The name of the model to use for the inference task.\nRefer to the Anthropic documentation for the list of supported models.",
-          "extDocId": "anothropic-models",
+          "extDocId": "anthropic-models",
+          "extDocUrl": "https://docs.anthropic.com/en/docs/about-claude/models/all-models#model-names",
           "name": "model_id",
           "required": true,
           "type": {
@@ -193058,6 +193065,7 @@
         {
           "description": "A valid API key for your Contexutual AI account.\n\nIMPORTANT: You need to provide the API key only once, during the inference model creation.\nThe get inference endpoint API does not retrieve your API key.",
           "extDocId": "contextualai-api-keys",
+          "extDocUrl": "https://docs.contextual.ai/quickstarts/platform-api#api-authentication-setup",
           "name": "api_key",
           "required": true,
           "type": {
@@ -193071,6 +193079,7 @@
         {
           "description": "The name of the model to use for the inference task.\nRefer to the Contextual AI documentation for the list of available rerank models.",
           "extDocId": "contextualai-rerank",
+          "extDocUrl": "https://docs.contextual.ai/api-reference/rerank/rerank#body-model",
           "name": "model_id",
           "required": true,
           "type": {
@@ -214082,6 +214091,7 @@
         {
           "description": "Removes HTML tags from the field.\nIf the field is an array of strings, HTML tags will be removed from all members of the array.",
           "docId": "htmlstrip-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/ingest-processor/htmlstrip-processor",
           "name": "html_strip",
           "required": false,
           "type": {
@@ -214429,6 +214439,7 @@
         {
           "description": "Parses a Uniform Resource Identifier (URI) string and extracts its components as an object.\nThis URI object includes properties for the URI’s domain, path, fragment, port, query, scheme, user info, username, and password.",
           "docId": "uri-parts-processor",
+          "docUrl": "https://www.elastic.co/docs/reference/ingest-processor/uri-parts-processor",
           "name": "uri_parts",
           "required": false,
           "type": {
@@ -247610,6 +247621,7 @@
           {
             "description": "Advanced configuration option. Contains custom meta data about the job.\nFor example, it can contain custom URL information as shown in Adding\ncustom URLs to machine learning results.",
             "docId": "ml.customUrls",
+            "docUrl": "https://www.elastic.co/docs/explore-analyze/machine-learning/anomaly-detection/ml-configuring-url",
             "name": "custom_settings",
             "required": false,
             "type": {
