@@ -116,6 +116,7 @@ export default defineConfig([
         'error',
         { table: join(import.meta.dirname, '_doc_ids', 'table.csv') }
       ],
+      'es-spec-validator/no-container-property-outside-container': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {
