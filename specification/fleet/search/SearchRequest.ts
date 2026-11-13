@@ -165,6 +165,11 @@ export interface Request extends RequestBase {
      */
     wait_for_checkpoints?: Checkpoint[]
     /**
+     * The maximum time to wait for the checkpoints specified in `wait_for_checkpoints` to become visible for search.
+     * @server_default 30s
+     */
+    wait_for_checkpoints_timeout?: Duration
+    /**
      * If true, returns partial results if there are shard request timeouts or shard failures.
      * If false, returns an error with no partial results.
      * Defaults to the configured cluster setting `search.default_allow_partial_results`, which is true by default.
