@@ -6584,7 +6584,7 @@ export interface MappingObjectProperty extends MappingCorePropertyBase {
 export type MappingOnScriptError = 'fail' | 'continue'
 
 export interface MappingPassthroughObjectProperty extends MappingCorePropertyBase {
-  type?: 'passthrough'
+  type: 'passthrough'
   enabled?: boolean
   priority?: integer
   time_series_dimension?: boolean

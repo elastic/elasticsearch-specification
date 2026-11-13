@@ -131738,7 +131738,7 @@
       "properties": [
         {
           "name": "type",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "literal_value",
             "value": "passthrough"

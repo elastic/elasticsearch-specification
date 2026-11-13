@@ -99501,7 +99501,10 @@
               "time_series_dimension": {
                 "type": "boolean"
               }
-            }
+            },
+            "required": [
+              "type"
+            ]
           }
         ]
       },
