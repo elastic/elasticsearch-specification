@@ -22,6 +22,7 @@ import { GeoShapeRelation } from '@_types/Geo'
 import { double, integer, long } from '@_types/Numeric'
 import { Script, ScriptLanguage, ScriptSource } from '@_types/Scripting'
 import { SortOrder } from '@_types/sort'
+import { TimeZone } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 
@@ -436,7 +437,7 @@ export class GeoGridProcessor extends ProcessorBase {
    * The field to interpret as a geo-tile.=
    * The field format is determined by the `tile_type`.
    */
-  field: string
+  field: Field
   /**
    * Three tile formats are understood: geohash, geotile and geohex.
    */
@@ -641,7 +642,7 @@ export class CefProcessor extends ProcessorBase {
    * The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.
    * @server_default UTC
    */
-  timezone?: string
+  timezone?: TimeZone
 }
 
 export class CircleProcessor extends ProcessorBase {
@@ -837,7 +838,7 @@ export class DateIndexNameProcessor extends ProcessorBase {
    * The timezone to use when parsing the date and when date math index supports resolves expressions into concrete index names.
    * @server_default UTC
    */
-  timezone?: string
+  timezone?: TimeZone
 }
 
 export class DateProcessor extends ProcessorBase {
@@ -866,7 +867,7 @@ export class DateProcessor extends ProcessorBase {
    * Supports template snippets.
    * @server_default UTC
    */
-  timezone?: string
+  timezone?: TimeZone
   /**
    * The format to use when writing the date to target_field. Must be a valid
    * java time pattern.

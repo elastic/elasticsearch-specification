@@ -18,6 +18,7 @@
  */
 
 import { ByteSize, IndexName, NodeId, VersionString } from '@_types/common'
+import { Ip } from '@_types/Networking'
 
 export class SegmentsRecord {
   /**
@@ -38,7 +39,7 @@ export class SegmentsRecord {
   /**
    * The IP address of the node where it lives.
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * The unique identifier of the node where it lives.
    */

@@ -16,10 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import { Id } from '@_types/common'
+import { Id, IndexName, Metadata } from '@_types/common'
 import { long } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
-import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
 import {
   ConnectorConfiguration,
@@ -32,7 +31,7 @@ interface SyncJobConnectorReference {
   configuration: ConnectorConfiguration
   filtering: FilteringRules
   id: Id
-  index_name: string
+  index_name: IndexName
   language?: string
   pipeline?: IngestPipelineParams
   service_type: string
@@ -63,7 +62,7 @@ export interface ConnectorSyncJob {
   indexed_document_volume: long
   job_type: SyncJobType
   last_seen?: DateTime
-  metadata: Dictionary<string, UserDefinedValue>
+  metadata: Metadata
   started_at?: DateTime
   status: SyncStatus
   total_document_count: long

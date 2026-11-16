@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { IndexName, Uuid } from '@_types/common'
+
 export class IndicesRecord {
   /**
    * current health status
@@ -34,13 +36,13 @@ export class IndicesRecord {
    * index name
    * @aliases i,idx
    */
-  'index'?: string
+  'index'?: IndexName
 
   /**
    * index uuid
    * @aliases id
    */
-  'uuid'?: string
+  'uuid'?: Uuid
 
   /**
    * number of primary shards

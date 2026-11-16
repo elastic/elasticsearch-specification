@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Names } from '@_types/common'
+import { Field, Names } from '@_types/common'
 import { double, integer } from '@_types/Numeric'
 import { Dictionary } from '@spec_utils/Dictionary'
 
@@ -36,18 +36,18 @@ export class Preprocessor {
 }
 
 export class FrequencyEncodingPreprocessor {
-  field: string
+  field: Field
   feature_name: string
   frequency_map: Dictionary<string, double>
 }
 
 export class OneHotEncodingPreprocessor {
-  field: string
+  field: Field
   hot_map: Dictionary<string, string>
 }
 
 export class TargetMeanEncodingPreprocessor {
-  field: string
+  field: Field
   feature_name: string
   target_map: Dictionary<string, double>
   default_value: double

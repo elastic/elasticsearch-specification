@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Field } from '@_types/common'
 import { QueryBase } from './abstractions'
 
 /**
@@ -24,7 +25,7 @@ import { QueryBase } from './abstractions'
  */
 export class SemanticQuery extends QueryBase {
   /** The field to query, which must be a semantic_text field type */
-  field: string
+  field: Field
   /** The query text */
   query: string
 }

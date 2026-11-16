@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { Field } from '@_types/common'
+import { Host, Ip } from '@_types/Networking'
+
 export class FielddataRecord {
   /**
    * node id
@@ -26,11 +29,11 @@ export class FielddataRecord {
    * host name
    * @aliases h
    */
-  'host'?: string
+  'host'?: Host
   /**
    * ip address
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * node name
    * @aliases n
@@ -40,7 +43,7 @@ export class FielddataRecord {
    * field name
    * @aliases f
    */
-  'field'?: string
+  'field'?: Field
   /**
    * field data usage
    */

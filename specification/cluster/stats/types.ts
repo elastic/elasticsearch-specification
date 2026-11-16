@@ -17,7 +17,13 @@
  * under the License.
  */
 
-import { ByteSize, HealthStatus, Name, VersionString } from '@_types/common'
+import {
+  ByteSize,
+  HealthStatus,
+  Name,
+  Uuid,
+  VersionString
+} from '@_types/common'
 import { double, integer, long } from '@_types/Numeric'
 import {
   CompletionStats,
@@ -873,7 +879,7 @@ export class CCSStats {
 
 export class RemoteClusterInfo {
   /** The UUID of the remote cluster. */
-  cluster_uuid: string
+  cluster_uuid: Uuid
   /** The connection mode used to communicate with the remote cluster. */
   mode: string
   /** The `skip_unavailable` setting used for this remote cluster. */

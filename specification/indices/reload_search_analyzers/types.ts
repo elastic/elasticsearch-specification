@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
 import { ShardStatistics } from '@_types/Stats'
 
 export class ReloadResult {
@@ -25,7 +26,7 @@ export class ReloadResult {
 }
 
 export class ReloadDetails {
-  index: string
+  index: IndexName
   reloaded_analyzers: string[]
   reloaded_node_ids: string[]
 }

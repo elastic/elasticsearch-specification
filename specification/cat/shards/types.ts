@@ -17,12 +17,14 @@
  * under the License.
  */
 
+import { IndexName } from '@_types/common'
+
 export class ShardsRecord {
   /**
    * The index name.
    * @aliases i,idx
    */
-  'index'?: string
+  'index'?: IndexName
   /**
    * The shard name.
    * @aliases s,sh

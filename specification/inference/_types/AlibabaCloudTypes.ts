@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Host } from '@_types/Networking'
 import { RateLimitSetting } from '@inference/_types/Services'
 
 export class AlibabaCloudServiceSettings {
@@ -29,7 +30,7 @@ export class AlibabaCloudServiceSettings {
    * You can find the host address in the API keys section of the documentation.
    * @ext_doc_id alibabacloud-api-keys
    */
-  host: string
+  host: Host
   /**
    * This setting helps to minimize the number of rate limit errors returned from AlibabaCloud AI Search.
    * By default, the `alibabacloud-ai-search` service sets the number of requests allowed per minute to `1000`.

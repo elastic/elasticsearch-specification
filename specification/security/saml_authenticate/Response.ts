@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { Username } from '@_types/common'
 import { integer } from '@_types/Numeric'
 
 export class Response {
@@ -28,7 +29,7 @@ export class Response {
     /**
      * The authenticated user's name.
      */
-    username: string
+    username: Username
     /**
      * The amount of time (in seconds) left until the token expires.
      */

@@ -18,7 +18,7 @@
  */
 
 import { integer, long } from '@_types/Numeric'
-import { DateTime, Duration } from '@_types/Time'
+import { DateTime, Duration, TimeZone } from '@_types/Time'
 
 // TODO remove
 // export class Schedule {}
@@ -81,7 +81,7 @@ export enum Month {
  * @variants container
  */
 export class ScheduleContainer {
-  timezone?: string
+  timezone?: TimeZone
   cron?: CronExpression
   daily?: DailySchedule
   hourly?: HourlySchedule

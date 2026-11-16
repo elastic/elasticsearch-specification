@@ -22,7 +22,7 @@ import { Sort, SortResults } from '@_types/sort'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Rescore } from '@global/search/_types/rescoring'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
-import { Id, IndexName } from './common'
+import { Field, Fields, Id, IndexName } from './common'
 import { ChunkRescorerChunkingSettings } from './mapping/ChunkingSettings'
 import { QueryContainer } from './query_dsl/abstractions'
 
@@ -73,7 +73,7 @@ export class LinearRetriever extends RetrieverBase {
   retrievers?: InnerRetriever[]
   rank_window_size?: integer
   query?: string
-  fields?: string[]
+  fields?: Fields
   normalizer?: ScoreNormalizer
 }
 
@@ -129,7 +129,7 @@ export class StandardRetriever extends RetrieverBase {
 
 export class KnnRetriever extends RetrieverBase {
   /** The name of the vector field to search against. */
-  field: string
+  field: Field
   /** Query vector. Must have the same number of dimensions as the vector field you are searching against. You must provide a query_vector_builder or query_vector, but not both. */
   query_vector?: QueryVector
   /** Defines a model to build a query vector. */
@@ -181,7 +181,7 @@ export class RRFRetriever extends RetrieverBase {
   /** This value determines the size of the individual result sets per query.  */
   rank_window_size?: integer
   query?: string
-  fields?: string[]
+  fields?: Fields
 }
 
 export class TextSimilarityReranker extends RetrieverBase {
@@ -194,7 +194,7 @@ export class TextSimilarityReranker extends RetrieverBase {
   /** The text snippet used as the basis for similarity comparison. */
   inference_text: string
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
-  field: string
+  field: Field
   /**
    * Whether to rescore on only the best matching chunks.
    * @availability stack since=9.2.0 stability=stable
@@ -229,7 +229,7 @@ export class DiversifyRetriever extends RetrieverBase {
   /** The diversification strategy to apply. */
   type: DiversifyRetrieverTypes
   /** The document field on which to diversify results on. */
-  field: string
+  field: Field
   /** The nested retriever whose results will be diversified. */
   retriever: RetrieverContainer
   /** The number of top documents to return after diversification. */

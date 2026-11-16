@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Ids } from '@_types/common'
+import { Ids, IndexName, Uuid } from '@_types/common'
 import { EpochTime, UnitMillis } from '@_types/Time'
 
 export class Response {
@@ -27,8 +27,8 @@ export class Response {
 }
 
 export class DanglingIndex {
-  index_name: string
-  index_uuid: string
+  index_name: IndexName
+  index_uuid: Uuid
   creation_date_millis: EpochTime<UnitMillis>
   node_ids: Ids
 }

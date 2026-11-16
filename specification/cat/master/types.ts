@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { Host, Ip } from '@_types/Networking'
+
 export class MasterRecord {
   /**
    * node id
@@ -26,11 +28,11 @@ export class MasterRecord {
    * host name
    * @aliases h
    */
-  'host'?: string
+  'host'?: Host
   /**
    * ip address
    */
-  'ip'?: string
+  'ip'?: Ip
   /**
    * node name
    * @aliases n
