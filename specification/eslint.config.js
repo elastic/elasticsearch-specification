@@ -133,6 +133,7 @@ export default defineConfig([
       'es-spec-validator/valid-internal-variant-tags': 'error',
       'es-spec-validator/valid-server-default': 'error',
       'es-spec-validator/no-index-signatures': 'error',
+      'es-spec-validator/implements-only-behaviors': 'error',
       'es-spec-validator/jsdoc-endpoint-check': [
         'error',
         {

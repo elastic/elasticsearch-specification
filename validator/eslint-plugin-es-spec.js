@@ -51,6 +51,7 @@ import unionRequiresCodegenNames from './rules/union-requires-codegen-names.js'
 import validInternalVariantTags from './rules/valid-internal-variant-tags.js'
 import validServerDefault from './rules/valid-server-default.js'
 import noIndexSignatures from './rules/no-index-signatures.js'
+import implementsOnlyBehaviors from './rules/implements-only-behaviors.js'
 
 export default {
   rules: {
@@ -88,6 +89,7 @@ export default {
     'union-requires-codegen-names': unionRequiresCodegenNames,
     'valid-internal-variant-tags': validInternalVariantTags,
     'valid-server-default': validServerDefault,
-    'no-index-signatures': noIndexSignatures
+    'no-index-signatures': noIndexSignatures,
+    'implements-only-behaviors': implementsOnlyBehaviors
   }
 }
