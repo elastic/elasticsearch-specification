@@ -23,6 +23,7 @@ import { IcuAnalyzer } from './icu-plugin'
 import { KuromojiAnalyzer } from './kuromoji-plugin'
 import { SnowballLanguage } from './languages'
 import { NoriDecompoundMode } from './nori-plugin'
+import { SmartcnAnalyzer } from './smartcn-plugin'
 import { StopWords } from './StopWords'
 
 export class CustomAnalyzer {
@@ -440,6 +441,7 @@ export type Analyzer =
   | WhitespaceAnalyzer
   | IcuAnalyzer
   | KuromojiAnalyzer
+  | SmartcnAnalyzer
   | SnowballAnalyzer
   | ArabicAnalyzer
   | ArmenianAnalyzer
