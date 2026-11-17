@@ -53,6 +53,7 @@ import { TaskType } from '@inference/_types/TaskType'
  * * Nvidia (`chat_completion`, `completion`, `text_embedding`, `rerank`)
  * * OpenAI (`chat_completion`, `completion`, `text_embedding`)
  * * OpenShift AI (`chat_completion`, `completion`, `rerank`, `text_embedding`)
+ * * Tencent Cloud (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * * VoyageAI (`rerank`, `text_embedding`)
  * * Watsonx (`chat_completion`, `completion`, `rerank`, `text_embedding`)
  * @rest_spec_name inference.put

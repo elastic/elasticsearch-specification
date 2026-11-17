@@ -1,0 +1,17 @@
+summary: A rerank task
+description: Run `PUT _inference/rerank/tencentcloud-rerank` to create an inference endpoint that performs a `rerank` task.
+method_request: 'PUT _inference/rerank/tencentcloud-rerank'
+# type: "request"
+value: |-
+  {
+      "service": "tencentcloud",
+      "service_settings": {
+          "api_key": "tencentcloud-api-key",
+          "model_id": "bge-reranker-v2-m3",
+          "region": "bj"
+      },
+      "task_settings": {
+          "top_n": 10,
+          "return_documents": true
+      }
+  }
