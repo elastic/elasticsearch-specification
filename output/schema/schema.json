@@ -137274,7 +137274,7 @@
           }
         },
         {
-          "name": "total_cenif_size_bytes",
+          "name": "total_cenivf_size_bytes",
           "required": true,
           "type": {
             "kind": "instance_of",
@@ -137285,7 +137285,7 @@
           }
         },
         {
-          "name": "total_cenif_size",
+          "name": "total_cenivf_size",
           "required": false,
           "type": {
             "kind": "instance_of",

@@ -10577,8 +10577,8 @@ export interface ClusterStatsDenseVectorOffHeapStats {
   total_veq_size?: ByteSize
   total_vex_size_bytes: long
   total_vex_size?: ByteSize
-  total_cenif_size_bytes: long
-  total_cenif_size?: ByteSize
+  total_cenivf_size_bytes: long
+  total_cenivf_size?: ByteSize
   total_clivf_size_bytes: long
   total_clivf_size?: ByteSize
   fielddata?: Record<string, Record<string, long>>

@@ -93832,10 +93832,10 @@
               }
             ]
           },
-          "total_cenif_size_bytes": {
+          "total_cenivf_size_bytes": {
             "type": "number"
           },
-          "total_cenif_size": {
+          "total_cenivf_size": {
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -93868,7 +93868,7 @@
           "total_vec_size_bytes",
           "total_veq_size_bytes",
           "total_vex_size_bytes",
-          "total_cenif_size_bytes",
+          "total_cenivf_size_bytes",
           "total_clivf_size_bytes"
         ]
       },
