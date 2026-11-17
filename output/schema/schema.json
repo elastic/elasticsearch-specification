@@ -307495,7 +307495,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
+      "specLocation": "watcher/_types/Schedule.ts#L110-L113"
     },
     {
       "kind": "interface",
@@ -308916,6 +308916,8 @@
       },
       "properties": [
         {
+          "containerProperty": true,
+          "description": "The time zone to use for the schedule. Not supported for `interval` schedules.",
           "name": "timezone",
           "required": false,
           "type": {
@@ -309049,7 +309051,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L80-L92",
+      "specLocation": "watcher/_types/Schedule.ts#L80-L96",
       "variants": {
         "kind": "container"
       }
@@ -309065,7 +309067,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
+      "specLocation": "watcher/_types/Schedule.ts#L103-L108",
       "type": {
         "kind": "union_of",
         "items": [
@@ -309116,7 +309118,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L94-L97"
+      "specLocation": "watcher/_types/Schedule.ts#L98-L101"
     },
     {
       "kind": "interface",
@@ -309913,7 +309915,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L111-L114"
+      "specLocation": "watcher/_types/Schedule.ts#L115-L118"
     },
     {
       "kind": "interface",
@@ -309951,7 +309953,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L116-L119"
+      "specLocation": "watcher/_types/Schedule.ts#L120-L123"
     },
     {
       "kind": "interface",
@@ -310003,7 +310005,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L121-L125"
+      "specLocation": "watcher/_types/Schedule.ts#L125-L129"
     },
     {
       "kind": "interface",
