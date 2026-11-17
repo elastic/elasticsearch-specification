@@ -36,6 +36,10 @@ import {
 import { SnowballLanguage } from './languages'
 import { NoriPartOfSpeechTokenFilter } from './nori-plugin'
 import { PhoneticTokenFilter } from './phonetic-plugin'
+import {
+  SmartcnStopTokenFilter,
+  SmartcnWordTokenFilter
+} from './smartcn-plugin'
 import { StopWords } from './StopWords'
 
 export class TokenFilterBase {
@@ -695,3 +699,5 @@ export type TokenFilterDefinition =
   | IcuTransformTokenFilter
   | PhoneticTokenFilter
   | DictionaryDecompounderTokenFilter
+  | SmartcnStopTokenFilter
+  | SmartcnWordTokenFilter
