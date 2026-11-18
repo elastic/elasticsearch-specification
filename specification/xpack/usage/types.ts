@@ -537,6 +537,28 @@ export class Eql extends Base {
   queries: Dictionary<string, Query>
 }
 
+export class Esql extends Base {
+  /**
+   * Per-feature usage counters, keyed by ES|QL source command or language
+   * feature (for example `where`, `sort`, `stats`, `lookup_join`). Each value
+   * counts how many queries used that feature.
+   */
+  features: Dictionary<string, long>
+  /**
+   * Query counters keyed by client type. The `rest` and `kibana` entries track
+   * the two client types, and the `_all` entry aggregates every client type.
+   */
+  queries: Dictionary<string, Query>
+  /**
+   * Per-function usage counters, keyed by ES|QL function name (for example
+   * `max`, `coalesce`, `to_long`). Each value counts how many queries used that
+   * function.
+   * @availability stack since=8.17.0
+   * @availability serverless
+   */
+  functions: Dictionary<string, long>
+}
+
 export class Flattened extends Base {
   field_count: integer
 }
