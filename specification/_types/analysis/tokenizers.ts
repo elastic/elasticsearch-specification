@@ -23,6 +23,7 @@ import { Stringified } from '@spec_utils/Stringified'
 import { IcuTokenizer } from './icu-plugin'
 import { KuromojiTokenizer } from './kuromoji-plugin'
 import { NoriTokenizer } from './nori-plugin'
+import { SmartcnSentenceTokenizer, SmartcnTokenizer } from './smartcn-plugin'
 
 export class TokenizerBase {
   version?: VersionString
@@ -170,3 +171,5 @@ export type TokenizerDefinition =
   | IcuTokenizer
   | KuromojiTokenizer
   | NoriTokenizer
+  | SmartcnTokenizer
+  | SmartcnSentenceTokenizer
