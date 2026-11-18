@@ -553,8 +553,6 @@ export class Esql extends Base {
    * Per-function usage counters, keyed by ES|QL function name (for example
    * `max`, `coalesce`, `to_long`). Each value counts how many queries used that
    * function.
-   * @availability stack since=8.17.0
-   * @availability serverless
    */
   functions: Dictionary<string, long>
 }

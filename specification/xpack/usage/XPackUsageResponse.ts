@@ -69,10 +69,6 @@ export class Response {
     data_tiers: DataTiers
     enrich?: Base
     eql: Eql
-    /**
-     * @availability stack since=8.11.0
-     * @availability serverless
-     */
     esql: Esql
     flattened?: Flattened
     graph: Base
