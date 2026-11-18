@@ -142820,81 +142820,91 @@
         "maxProperties": 1
       },
       "watcher._types.ScheduleContainer": {
-        "type": "object",
-        "properties": {
-          "timezone": {
-            "type": "string"
-          },
-          "cron": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.CronExpression"
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "timezone": {
+                "description": "The time zone to use for the schedule. Not supported for `interval` schedules.",
+                "type": "string"
               }
-            ]
+            }
           },
-          "daily": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.DailySchedule"
-              }
-            ]
-          },
-          "hourly": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.HourlySchedule"
-              }
-            ]
-          },
-          "interval": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/_types.Duration"
-              }
-            ]
-          },
-          "monthly": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.TimeOfMonth"
+          {
+            "type": "object",
+            "properties": {
+              "cron": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.CronExpression"
+                  }
+                ]
               },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/watcher._types.TimeOfMonth"
-                }
-              }
-            ]
-          },
-          "weekly": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.TimeOfWeek"
+              "daily": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.DailySchedule"
+                  }
+                ]
               },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/watcher._types.TimeOfWeek"
-                }
-              }
-            ]
-          },
-          "yearly": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/watcher._types.TimeOfYear"
+              "hourly": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.HourlySchedule"
+                  }
+                ]
               },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/watcher._types.TimeOfYear"
-                }
+              "interval": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Duration"
+                  }
+                ]
+              },
+              "monthly": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.TimeOfMonth"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/watcher._types.TimeOfMonth"
+                    }
+                  }
+                ]
+              },
+              "weekly": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.TimeOfWeek"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/watcher._types.TimeOfWeek"
+                    }
+                  }
+                ]
+              },
+              "yearly": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/watcher._types.TimeOfYear"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/watcher._types.TimeOfYear"
+                    }
+                  }
+                ]
               }
-            ]
+            },
+            "minProperties": 1,
+            "maxProperties": 1
           }
-        },
-        "minProperties": 1,
-        "maxProperties": 1
+        ]
       },
       "watcher._types.DailySchedule": {
         "type": "object",
