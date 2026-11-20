@@ -26,6 +26,7 @@ import {
   DataStreams,
   DataTiers,
   Eql,
+  Esql,
   Flattened,
   GpuVectorIndexing,
   HealthStatistics,
@@ -68,6 +69,7 @@ export class Response {
     data_tiers: DataTiers
     enrich?: Base
     eql: Eql
+    esql: Esql
     flattened?: Flattened
     graph: Base
     /**
