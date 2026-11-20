@@ -1,0 +1,85 @@
+name: Example coverage
+
+# Compiles the schema for the PR and for its base, then warns about public
+# endpoints that lose example coverage. Never fails the build.
+
+on:
+  pull_request:
+    branches:
+      - main
+      - '[0-9]+.[0-9]+'
+    paths:
+      - 'specification/**'
+      - 'docs/examples/languageExamples.json'
+      - 'compiler/**'
+      - '.github/validate-pr/example-coverage.js'
+      - '.github/workflows/example-coverage.yml'
+
+permissions:
+  contents: read
+  pull-requests: write # To create/update the PR comment
+
+jobs:
+  example-coverage:
+    name: Example coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Checkout base
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: '**/compiler/package-lock.json'
+
+      # The compiler resolves examples relative to its own checkout, so each
+      # side is compiled by its own copy.
+      - name: Compile schemas
+        run: |
+          npm ci --prefix compiler
+          npm ci --prefix base/compiler
+          npm run generate-schema --prefix compiler -- --spec ../specification/ --output "$RUNNER_TEMP/pr/"
+          npm run generate-schema --prefix base/compiler -- --spec ../specification/ --output "$RUNNER_TEMP/base/"
+
+      - name: Check example coverage
+        id: coverage
+        run: |
+          node .github/validate-pr/example-coverage.js \
+            "$RUNNER_TEMP/pr/schema/schema.json" \
+            "$RUNNER_TEMP/base/schema/schema.json" \
+            "$RUNNER_TEMP/example-coverage.md"
+
+      # Fork PRs get a read-only token: they still get annotations and the job summary.
+      - name: Find existing comment
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: peter-evans/find-comment@3eae4d37986fb5a8592848f6a574fdf654e61f9e # v3.1.0
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '<!-- example-coverage-report -->'
+
+      # Comment only when there's something to say, or to clear an earlier report.
+      - name: Create or update comment
+        if: >-
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          (steps.coverage.outputs.has_findings == 'true' || steps.find-comment.outputs.comment-id != '')
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: ${{ runner.temp }}/example-coverage.md
+          edit-mode: replace
