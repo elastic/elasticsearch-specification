@@ -51,7 +51,7 @@ function coverage (entries: Entry[]): Coverage {
   return analyze({ types, endpoints } as unknown as model.Model)
 }
 
-const messages = (pr: Coverage, base: Coverage): string[] => findings(pr, base).map(f => `${f.level}: ${f.message}`)
+const messages = (pr: Coverage, base?: Coverage): string[] => findings(pr, base).map(f => `${f.level}: ${f.message}`)
 
 test('existing gaps are not reported again', t => {
   const c = coverage([['a', 'public', [], 0]])
@@ -84,4 +84,40 @@ test('removed examples and lost languages are flagged', t => {
 test('annotations point at the spec file', t => {
   const [finding] = findings(coverage([['a', 'public', [], 1]]), coverage([]))
   t.is(annotation(finding), '::warning file=specification/a/Request.ts,line=5,title=Example coverage::a has no request examples')
+})
+
+test('without a baseline, missing languages are reported too', t => {
+  const pr = coverage([['a', 'public', [['A1', ['curl', 'Python']], ['A2', ['curl']]], 1]])
+  t.deepEqual(messages(pr), ['warning: `A2` (`a`) is missing its Python examples'])
+})
+
+// One public endpoint `a`, with the given parts of its endpoint, request and response.
+function single (endpoint: object, request: object, response: object): Coverage {
+  const ref = (kind: string): model.TypeName => ({ namespace: 'a', name: kind })
+  return analyze({
+    types: [
+      { kind: 'request', name: ref('Request'), specLocation: 'a/Request.ts#L1-L2', ...request },
+      { kind: 'response', name: ref('Response'), specLocation: 'a/Response.ts#L1-L2', ...response }
+    ],
+    endpoints: [{ name: 'a', availability: { stack: {} }, request: ref('Request'), response: ref('Response'), ...endpoint }]
+  } as unknown as model.Model)
+}
+
+test('an empty availability is not public, a missing one is', t => {
+  t.false(single({ availability: {} }, {}, {}).endpoints.get('a')?.public)
+  t.true(single({ availability: undefined }, {}, {}).endpoints.get('a')?.public)
+})
+
+test('examples only shown in private flavors do not count', t => {
+  const c = single(
+    { availability: { stack: { visibility: 'private' }, serverless: {} } },
+    { examples: { OnlyStack: { availability: { stack: {} } }, Everywhere: {} } },
+    {}
+  )
+  t.deepEqual([...(c.endpoints.get('a')?.requestExamples.keys() ?? [])], ['Everywhere'])
+})
+
+test('examples for other status codes count as response examples', t => {
+  const c = single({}, {}, { exceptions: [{ statusCodes: [400], examples: { Bad: {} } }] })
+  t.is(c.endpoints.get('a')?.responseExamples, 1)
 })

@@ -52,6 +52,16 @@ export interface Finding {
   message: string
 }
 
+// The flavors in which something shows up in the public docs. A missing
+// availability means unrestricted; an empty one means no flavor, as in
+// filter-by-availability.
+function publicFlavors (availability?: model.Availabilities): string[] {
+  if (availability == null) return ['stack', 'serverless']
+  return Object.entries(availability)
+    .filter(([, a]) => a.visibility == null || a.visibility === model.Visibility.public)
+    .map(([flavor]) => flavor)
+}
+
 export function analyze (schema: model.Model): Coverage {
   const types = new Map(schema.types.map(t => [`${t.name.namespace}:${t.name.name}`, t]))
   const typeOf = (ref: model.TypeName | null): model.Request | model.Response | undefined =>
@@ -60,32 +70,37 @@ export function analyze (schema: model.Model): Coverage {
   const languages = new Set<string>()
   for (const endpoint of schema.endpoints) {
     const request = typeOf(endpoint.request)
-    const response = typeOf(endpoint.response)
-    const flavors = Object.values(endpoint.availability ?? {}) as model.Availability[]
+    const response = typeOf(endpoint.response) as model.Response | undefined
+    const flavors = publicFlavors(endpoint.availability)
+    // Only examples shown in at least one of the endpoint's public flavors count.
+    const shown = (examples?: Record<string, model.Example>): Array<[string, model.Example]> =>
+      Object.entries(examples ?? {}).filter(([, ex]) => ex.availability == null || Object.keys(ex.availability).some(f => flavors.includes(f)))
     const requestExamples = new Map<string, string[]>()
-    for (const [name, example] of Object.entries(request?.examples ?? {})) {
+    for (const [name, example] of shown(request?.examples)) {
       const langs = (example.alternatives ?? []).map(a => a.language)
       langs.forEach(l => languages.add(l))
       requestExamples.set(name, langs)
     }
     endpoints.set(endpoint.name, {
-      // Public in at least one flavor, so it shows up in the docs.
-      public: flavors.length === 0 || flavors.some(f => f.visibility == null || f.visibility === model.Visibility.public),
+      public: flavors.length > 0,
       requestLocation: request?.specLocation,
       responseLocation: response?.specLocation,
       requestExamples,
-      responseExamples: Object.keys(response?.examples ?? {}).length
+      // Examples for other status codes live on the exceptions.
+      responseExamples: [response?.examples, ...(response?.exceptions ?? []).map(e => e.examples)]
+        .reduce((n, examples) => n + shown(examples).length, 0)
     })
   }
   return { endpoints, languages }
 }
 
-// Coverage problems in `pr` that `base` didn't already have.
-export function findings (pr: Coverage, base: Coverage): Finding[] {
+// Coverage problems in `pr` that `base` didn't already have. Without a
+// baseline, every gap is reported, including missing languages.
+export function findings (pr: Coverage, base?: Coverage): Finding[] {
   const out: Finding[] = []
   for (const [name, e] of pr.endpoints) {
     if (!e.public) continue
-    const before = base.endpoints.get(name)
+    const before = base?.endpoints.get(name)
     const knownGap = before?.public === true
     if (e.requestExamples.size === 0 && !(knownGap && before.requestExamples.size === 0)) {
       out.push({ level: 'warning', location: e.requestLocation, message: `\`${name}\` has no request examples` })
@@ -94,9 +109,11 @@ export function findings (pr: Coverage, base: Coverage): Finding[] {
       out.push({ level: 'notice', location: e.responseLocation, message: `\`${name}\` has no response examples` })
     }
     for (const [example, langs] of e.requestExamples) {
-      const lost = (before?.requestExamples.get(example) ?? []).filter(l => !langs.includes(l))
-      if (lost.length > 0) {
-        out.push({ level: 'warning', location: e.requestLocation, message: `\`${example}\` (\`${name}\`) lost its ${lost.join(', ')} examples` })
+      // With a baseline, new examples have no alternatives until they're generated after merge.
+      const expected = base == null ? [...pr.languages].sort() : before?.requestExamples.get(example) ?? []
+      const missing = expected.filter(l => !langs.includes(l))
+      if (missing.length > 0) {
+        out.push({ level: 'warning', location: e.requestLocation, message: `\`${example}\` (\`${name}\`) ${base == null ? 'is missing' : 'lost'} its ${missing.join(', ')} examples` })
       }
     }
   }
@@ -161,8 +178,9 @@ async function run (): Promise<void> {
   const schemaPath: string = argv.schema ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
   const pr = await load(schemaPath)
   // Without a baseline, every gap is reported: the full backlog.
-  const base: Coverage = argv.baseline != null ? await load(argv.baseline) : { endpoints: new Map(), languages: new Set() }
-  const found = findings(pr, base)
+  const baseline = argv.baseline != null ? await load(argv.baseline) : undefined
+  const found = findings(pr, baseline)
+  const base: Coverage = baseline ?? { endpoints: new Map(), languages: new Set() }
 
   if (process.env.GITHUB_ACTIONS === 'true') found.forEach(f => console.log(annotation(f)))
   if (argv.report != null) {

@@ -8,11 +8,14 @@ on:
     branches:
       - main
       - '[0-9]+.[0-9]+'
-    paths:
-      - 'specification/**'
-      - 'docs/examples/languageExamples.json'
-      - 'compiler/**'
-      - '.github/workflows/example-coverage.yml'
+  # No paths filter: a later push that no longer touches the spec must still
+  # clear an earlier report.
+
+# A newer push supersedes the running check, so an older run can't overwrite
+# its report or race it into a duplicate comment.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
