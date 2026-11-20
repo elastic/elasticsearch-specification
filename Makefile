@@ -97,7 +97,7 @@ overlay-api-explorer: ## Apply overlays to OpenAPI documents for API Explorer, k
 	rm output/openapi/elasticsearch-openapi-docs.ae-tmp*.json
 
 example-coverage: ## List the public endpoints missing request or response examples (run `make generate` first)
-	@node .github/validate-pr/example-coverage.js output/schema/schema.json
+	@npm run example-coverage --silent --prefix compiler
 
 generate-language-examples:
 	@npm update --prefix docs/examples @elastic/request-converter @elastic/request-converter-dotnet

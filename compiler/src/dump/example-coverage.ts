@@ -17,36 +17,60 @@
  * under the License.
  */
 
-// Reports request/response example coverage of the public endpoints in a
-// compiled schema.json. Given a baseline schema too, it only flags what got
-// worse, as GitHub annotations and a Markdown report.
+// Reports the request/response example coverage of the public endpoints in a
+// compiled schema. Given a baseline schema, it only reports what got worse.
 //
-// Usage: node example-coverage.js <schema.json> [<baseline-schema.json>] [<report.md>]
+// Usage: npm run example-coverage --prefix compiler -- [--schema <schema.json>] [--baseline <schema.json>] [--report <report.md>]
+// Inside GitHub Actions it also prints annotations and writes the job summary
+// and a `has_findings` step output.
 
 import { readFile, writeFile, appendFile } from 'fs/promises'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
+import { argv } from 'zx'
+import * as model from '../model/metamodel'
 
 export const MARKER = '<!-- example-coverage-report -->'
 const MAX_LISTED = 100 // keeps the PR comment under GitHub's size limit
 
-export function analyze (schema) {
+interface EndpointCoverage {
+  public: boolean
+  requestLocation?: string
+  responseLocation?: string
+  // example name -> languages of its alternatives
+  requestExamples: Map<string, string[]>
+  responseExamples: number
+}
+
+export interface Coverage {
+  endpoints: Map<string, EndpointCoverage>
+  languages: Set<string>
+}
+
+export interface Finding {
+  level: 'warning' | 'notice'
+  location?: string
+  message: string
+}
+
+export function analyze (schema: model.Model): Coverage {
   const types = new Map(schema.types.map(t => [`${t.name.namespace}:${t.name.name}`, t]))
-  const typeOf = ref => ref == null ? undefined : types.get(`${ref.namespace}:${ref.name}`)
-  const endpoints = new Map()
-  const languages = new Set()
+  const typeOf = (ref: model.TypeName | null): model.Request | model.Response | undefined =>
+    ref == null ? undefined : types.get(`${ref.namespace}:${ref.name}`) as model.Request | model.Response | undefined
+  const endpoints = new Map<string, EndpointCoverage>()
+  const languages = new Set<string>()
   for (const endpoint of schema.endpoints) {
     const request = typeOf(endpoint.request)
     const response = typeOf(endpoint.response)
-    const flavors = Object.values(endpoint.availability ?? {})
-    const requestExamples = new Map()
+    const flavors = Object.values(endpoint.availability ?? {}) as model.Availability[]
+    const requestExamples = new Map<string, string[]>()
     for (const [name, example] of Object.entries(request?.examples ?? {})) {
       const langs = (example.alternatives ?? []).map(a => a.language)
       langs.forEach(l => languages.add(l))
       requestExamples.set(name, langs)
     }
     endpoints.set(endpoint.name, {
-      // Public unless every flavor it's available in marks it private.
-      public: flavors.length === 0 || flavors.some(f => f.visibility !== 'private'),
+      // Public in at least one flavor, so it shows up in the docs.
+      public: flavors.length === 0 || flavors.some(f => f.visibility == null || f.visibility === model.Visibility.public),
       requestLocation: request?.specLocation,
       responseLocation: response?.specLocation,
       requestExamples,
@@ -56,21 +80,9 @@ export function analyze (schema) {
   return { endpoints, languages }
 }
 
-const pct = (n, d) => d === 0 ? 'n/a' : `${n}/${d} (${(100 * n / d).toFixed(1)}%)`
-
-function stats ({ endpoints }, languages) {
-  const pub = [...endpoints.values()].filter(e => e.public)
-  const examples = pub.flatMap(e => [...e.requestExamples.values()])
-  return {
-    request: pct(pub.filter(e => e.requestExamples.size > 0).length, pub.length),
-    response: pct(pub.filter(e => e.responseExamples > 0).length, pub.length),
-    languages: pct(examples.filter(langs => languages.every(l => langs.includes(l))).length, examples.length)
-  }
-}
-
 // Coverage problems in `pr` that `base` didn't already have.
-export function findings (pr, base) {
-  const out = []
+export function findings (pr: Coverage, base: Coverage): Finding[] {
+  const out: Finding[] = []
   for (const [name, e] of pr.endpoints) {
     if (!e.public) continue
     const before = base.endpoints.get(name)
@@ -91,13 +103,22 @@ export function findings (pr, base) {
   return out
 }
 
-function annotation ({ level, location, message }) {
-  const [file, lines] = (location ?? '').split('#L')
-  const props = file ? ` file=specification/${file},line=${parseInt(lines, 10) || 1},title=Example coverage` : ''
-  return `::${level}${props}::${message.replaceAll('`', '').replaceAll('%', '%25')}`
+function pct (n: number, d: number): string {
+  return d === 0 ? 'n/a' : `${n}/${d} (${(100 * n / d).toFixed(1)}%)`
 }
 
-function report (pr, base, found, languages, limit) {
+function stats ({ endpoints }: Coverage, languages: string[]): { request: string, response: string, languages: string } {
+  const pub = [...endpoints.values()].filter(e => e.public)
+  const examples = pub.flatMap(e => [...e.requestExamples.values()])
+  return {
+    request: pct(pub.filter(e => e.requestExamples.size > 0).length, pub.length),
+    response: pct(pub.filter(e => e.responseExamples > 0).length, pub.length),
+    languages: pct(examples.filter(langs => languages.every(l => langs.includes(l))).length, examples.length)
+  }
+}
+
+export function report (pr: Coverage, base: Coverage, found: Finding[], limit: number): string {
+  const languages = [...new Set([...pr.languages, ...base.languages])].sort()
   const prStats = stats(pr, languages)
   const baseStats = stats(base, languages)
   const lines = [
@@ -124,31 +145,42 @@ function report (pr, base, found, languages, limit) {
   return lines.join('\n') + '\n'
 }
 
-async function main () {
-  const [prPath, basePath, reportPath] = process.argv.slice(2)
-  if (prPath == null) {
-    console.error('Usage: node example-coverage.js <schema.json> [<baseline-schema.json>] [<report.md>]')
-    process.exit(1)
-  }
-  const load = async p => analyze(JSON.parse(await readFile(p, 'utf8')))
-  const pr = await load(prPath)
+// A GitHub Actions workflow command; `specLocation` is relative to specification/.
+export function annotation ({ level, location, message }: Finding): string {
+  const [file, lines] = (location ?? '').split('#L')
+  const line = parseInt(lines, 10)
+  const props = file !== '' ? ` file=specification/${file},line=${Number.isNaN(line) ? 1 : line},title=Example coverage` : ''
+  return `::${level}${props}::${message.replace(/`/g, '').replace(/%/g, '%25')}`
+}
+
+async function load (path: string): Promise<Coverage> {
+  return analyze(JSON.parse(await readFile(path, 'utf8')))
+}
+
+async function run (): Promise<void> {
+  const schemaPath: string = argv.schema ?? join(__dirname, '..', '..', '..', 'output', 'schema', 'schema.json')
+  const pr = await load(schemaPath)
   // Without a baseline, every gap is reported: the full backlog.
-  const base = basePath != null ? await load(basePath) : { endpoints: new Map(), languages: new Set() }
-  const languages = [...new Set([...pr.languages, ...base.languages])].sort()
+  const base: Coverage = argv.baseline != null ? await load(argv.baseline) : { endpoints: new Map(), languages: new Set() }
   const found = findings(pr, base)
 
   if (process.env.GITHUB_ACTIONS === 'true') found.forEach(f => console.log(annotation(f)))
-  if (reportPath != null) {
-    await writeFile(reportPath, report(pr, base, found, languages, MAX_LISTED))
+  if (argv.report != null) {
+    await writeFile(argv.report, report(pr, base, found, MAX_LISTED))
   } else {
-    process.stdout.write(report(pr, base, found, languages, Infinity))
+    process.stdout.write(report(pr, base, found, Infinity))
   }
-  if (process.env.GITHUB_STEP_SUMMARY) {
-    await appendFile(process.env.GITHUB_STEP_SUMMARY, report(pr, base, found, languages, Infinity))
+  if (process.env.GITHUB_STEP_SUMMARY != null) {
+    await appendFile(process.env.GITHUB_STEP_SUMMARY, report(pr, base, found, Infinity))
   }
-  if (process.env.GITHUB_OUTPUT) {
-    await appendFile(process.env.GITHUB_OUTPUT, `has_findings=${found.length > 0}\n`)
+  if (process.env.GITHUB_OUTPUT != null) {
+    await appendFile(process.env.GITHUB_OUTPUT, `has_findings=${String(found.length > 0)}\n`)
   }
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) await main()
+if (require.main === module) {
+  run().catch(reason => {
+    console.error(reason)
+    process.exit(1)
+  })
+}

@@ -12,7 +12,6 @@ on:
       - 'specification/**'
       - 'docs/examples/languageExamples.json'
       - 'compiler/**'
-      - '.github/validate-pr/example-coverage.js'
       - '.github/workflows/example-coverage.yml'
 
 permissions:
@@ -56,10 +55,10 @@ jobs:
       - name: Check example coverage
         id: coverage
         run: |
-          node .github/validate-pr/example-coverage.js \
-            "$RUNNER_TEMP/pr/schema/schema.json" \
-            "$RUNNER_TEMP/base/schema/schema.json" \
-            "$RUNNER_TEMP/example-coverage.md"
+          npm run example-coverage --silent --prefix compiler -- \
+            --schema "$RUNNER_TEMP/pr/schema/schema.json" \
+            --baseline "$RUNNER_TEMP/base/schema/schema.json" \
+            --report "$RUNNER_TEMP/example-coverage.md"
 
       # Fork PRs get a read-only token: they still get annotations and the job summary.
       - name: Find existing comment
