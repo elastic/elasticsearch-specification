@@ -314857,91 +314857,6 @@
     },
     {
       "kind": "interface",
-      "inherits": {
-        "type": {
-          "name": "Base",
-          "namespace": "xpack.usage"
-        }
-      },
-      "name": {
-        "name": "Esql",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "description": "Per-feature usage counters, keyed by ES|QL source command or language\nfeature (for example `where`, `sort`, `stats`, `lookup_join`). Each value\ncounts how many queries used that feature. Every known feature has an\nentry; unused features report 0.",
-          "name": "features",
-          "required": true,
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          }
-        },
-        {
-          "description": "Query counters keyed by client type, plus an `_all` entry that aggregates\nevery client type. Currently all queries are recorded under `rest`, so\n`kibana` is always 0; `_all` holds the total.",
-          "name": "queries",
-          "required": true,
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "EsqlQueries",
-                "namespace": "xpack.usage"
-              }
-            }
-          }
-        },
-        {
-          "description": "Per-function usage counters, keyed by ES|QL function name (for example\n`max`, `coalesce`, `to_long`). Each value counts how many queries used that\nfunction. Every registered function has an entry; unused functions report\n0.",
-          "name": "functions",
-          "required": true,
-          "type": {
-            "kind": "dictionary_of",
-            "key": {
-              "kind": "instance_of",
-              "type": {
-                "name": "string",
-                "namespace": "_builtins"
-              }
-            },
-            "singleKey": false,
-            "value": {
-              "kind": "instance_of",
-              "type": {
-                "name": "long",
-                "namespace": "_types"
-              }
-            }
-          }
-        }
-      ],
-      "specLocation": "xpack/usage/types.ts#L540-L561"
-    },
-    {
-      "kind": "interface",
       "name": {
         "name": "EsqlLoggingConfig",
         "namespace": "xpack.usage"
@@ -315000,40 +314915,6 @@
     {
       "kind": "interface",
       "name": {
-        "name": "EsqlQueries",
-        "namespace": "xpack.usage"
-      },
-      "properties": [
-        {
-          "description": "Number of queries run by this client type.",
-          "name": "total",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "description": "Number of queries from this client type that failed.",
-          "name": "failed",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "long",
-              "namespace": "_types"
-            }
-          }
-        }
-      ],
-      "specLocation": "xpack/usage/types.ts#L563-L568"
-    },
-    {
-      "kind": "interface",
-      "name": {
         "name": "FeatureToggle",
         "namespace": "xpack.usage"
       },
@@ -315077,7 +314958,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L570-L572"
+      "specLocation": "xpack/usage/types.ts#L540-L542"
     },
     {
       "kind": "interface",
@@ -315136,7 +315017,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L709-L721"
+      "specLocation": "xpack/usage/types.ts#L679-L691"
     },
     {
       "kind": "interface",
@@ -315192,7 +315073,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L741-L751"
+      "specLocation": "xpack/usage/types.ts#L711-L721"
     },
     {
       "kind": "interface",
@@ -315387,7 +315268,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L723-L739"
+      "specLocation": "xpack/usage/types.ts#L693-L709"
     },
     {
       "kind": "interface",
@@ -315516,7 +315397,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L574-L580"
+      "specLocation": "xpack/usage/types.ts#L544-L550"
     },
     {
       "kind": "interface",
@@ -315645,7 +315526,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L582-L589"
+      "specLocation": "xpack/usage/types.ts#L552-L559"
     },
     {
       "kind": "interface",
@@ -316287,7 +316168,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L591-L594"
+      "specLocation": "xpack/usage/types.ts#L561-L564"
     },
     {
       "kind": "interface",
@@ -316636,7 +316517,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L627-L636"
+      "specLocation": "xpack/usage/types.ts#L597-L606"
     },
     {
       "kind": "interface",
@@ -316887,17 +316768,6 @@
               "kind": "instance_of",
               "type": {
                 "name": "Eql",
-                "namespace": "xpack.usage"
-              }
-            }
-          },
-          {
-            "name": "esql",
-            "required": true,
-            "type": {
-              "kind": "instance_of",
-              "type": {
-                "name": "Esql",
                 "namespace": "xpack.usage"
               }
             }
@@ -317183,7 +317053,7 @@
         "name": "Response",
         "namespace": "xpack.usage"
       },
-      "specLocation": "xpack/usage/XPackUsageResponse.ts#L49-L114"
+      "specLocation": "xpack/usage/XPackUsageResponse.ts#L48-L112"
     },
     {
       "kind": "interface",
@@ -317461,7 +317331,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L638-L642"
+      "specLocation": "xpack/usage/types.ts#L608-L612"
     },
     {
       "kind": "interface",
@@ -317631,7 +317501,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L644-L657"
+      "specLocation": "xpack/usage/types.ts#L614-L627"
     },
     {
       "kind": "interface",
@@ -317973,7 +317843,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L659-L662"
+      "specLocation": "xpack/usage/types.ts#L629-L632"
     },
     {
       "kind": "interface",
@@ -318033,7 +317903,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L596-L599"
+      "specLocation": "xpack/usage/types.ts#L566-L569"
     },
     {
       "kind": "interface",
@@ -318065,7 +317935,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L601-L604"
+      "specLocation": "xpack/usage/types.ts#L571-L574"
     },
     {
       "kind": "interface",
@@ -318114,7 +317984,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L664-L668"
+      "specLocation": "xpack/usage/types.ts#L634-L638"
     },
     {
       "kind": "interface",
@@ -318155,7 +318025,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L684-L696"
+      "specLocation": "xpack/usage/types.ts#L654-L666"
     },
     {
       "kind": "interface",
@@ -318196,7 +318066,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L670-L682"
+      "specLocation": "xpack/usage/types.ts#L640-L652"
     },
     {
       "kind": "interface",
@@ -318245,7 +318115,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L698-L702"
+      "specLocation": "xpack/usage/types.ts#L668-L672"
     },
     {
       "kind": "interface",
@@ -318286,7 +318156,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L622-L625"
+      "specLocation": "xpack/usage/types.ts#L592-L595"
     },
     {
       "kind": "interface",
@@ -318318,7 +318188,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L606-L608"
+      "specLocation": "xpack/usage/types.ts#L576-L578"
     },
     {
       "kind": "interface",
@@ -318405,7 +318275,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L610-L615"
+      "specLocation": "xpack/usage/types.ts#L580-L585"
     },
     {
       "kind": "interface",
@@ -318437,7 +318307,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L617-L620"
+      "specLocation": "xpack/usage/types.ts#L587-L590"
     },
     {
       "kind": "interface",
@@ -318475,7 +318345,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L704-L707"
+      "specLocation": "xpack/usage/types.ts#L674-L677"
     },
     {
       "kind": "interface",
