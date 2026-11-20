@@ -9,6 +9,7 @@ validate-no-cache: ## Validate a given endpoint request or response without loca
 generate:	  ## Generate the output spec
 	@echo ">> generating the spec .."
 	@npm run generate-schema --prefix compiler -- --spec ../specification/ --output ../output/
+	@npm run example-coverage --silent --prefix compiler
 	@npm run start --prefix typescript-generator
 
 compile:	## Compile the specification
@@ -96,7 +97,7 @@ overlay-api-explorer: ## Apply overlays to OpenAPI documents for API Explorer, k
 	rm output/openapi/elasticsearch-serverless-openapi-docs.ae-tmp*.json
 	rm output/openapi/elasticsearch-openapi-docs.ae-tmp*.json
 
-example-coverage: ## List the public endpoints missing request or response examples (run `make generate` first)
+example-coverage: ## Write the example coverage report to output/example-coverage (run `make generate` first)
 	@npm run example-coverage --silent --prefix compiler
 
 generate-language-examples:

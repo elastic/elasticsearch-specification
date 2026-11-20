@@ -18,7 +18,7 @@
  */
 
 import test from 'ava'
-import { analyze, annotation, findings, Coverage } from '../../src/dump/example-coverage'
+import { analyze, annotation, cells, changedEndpoints, comparison, findings, fullReport, toJson, Coverage, LANGUAGES } from '../../src/dump/example-coverage'
 import * as model from '../../src/model/metamodel'
 
 // [endpoint name, visibility, request examples as [name, languages], response example count]
@@ -51,7 +51,7 @@ function coverage (entries: Entry[]): Coverage {
   return analyze({ types, endpoints } as unknown as model.Model)
 }
 
-const messages = (pr: Coverage, base?: Coverage): string[] => findings(pr, base).map(f => `${f.level}: ${f.message}`)
+const messages = (pr: Coverage, base: Coverage): string[] => findings(pr, base).map(f => `${f.level}: ${f.message}`)
 
 test('existing gaps are not reported again', t => {
   const c = coverage([['a', 'public', [], 0]])
@@ -86,9 +86,40 @@ test('annotations point at the spec file', t => {
   t.is(annotation(finding), '::warning file=specification/a/Request.ts,line=5,title=Example coverage::a has no request examples')
 })
 
-test('without a baseline, missing languages are reported too', t => {
-  const pr = coverage([['a', 'public', [['A1', ['curl', 'Python']], ['A2', ['curl']]], 1]])
-  t.deepEqual(messages(pr), ['warning: `A2` (`a`) is missing its Python examples'])
+test('a language counts once any request example has it', t => {
+  const c = coverage([['a', 'public', [['A1', ['curl']], ['A2', ['Python']]], 1]]).get('a')
+  t.deepEqual(cells(c as never), { Python: 1, JavaScript: 0, Ruby: 0, PHP: 0, Java: 0, 'C#': 0, curl: 1, Response: 1 })
+})
+
+test('the full report has a section per namespace with totals and gaps', t => {
+  const c = coverage([['cat.help', 'public', [], 0], ['cat.count', 'public', [['C1', LANGUAGES.filter(l => l !== 'C#')]], 1], ['search', 'public', [['S1', LANGUAGES]], 1], ['hidden', 'private', [], 0]])
+  const report = fullReport(c)
+  t.true(report.includes('**Total: 15/24 (62.5%)**'))
+  t.true(report.includes('| `cat.help` | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 0/8 |'))
+  t.true(report.includes('## _global'))
+  t.true(report.includes('Section total: 7/16'))
+  t.true(report.includes('- No request example: `cat.help`\n- Missing languages: `cat.count` (C#)\n- No response example: `cat.help`'))
+  t.false(report.includes('hidden'))
+  t.deepEqual(toJson(c), {
+    columns: [...LANGUAGES, 'Response'],
+    found: 15,
+    required: 24,
+    endpoints: {
+      'cat.count': { namespace: 'cat', cells: { Python: 1, JavaScript: 1, Ruby: 1, PHP: 1, Java: 1, 'C#': 0, curl: 1, Response: 1 }, requestExamples: { C1: LANGUAGES.filter(l => l !== 'C#') } },
+      'cat.help': { namespace: 'cat', cells: { Python: 0, JavaScript: 0, Ruby: 0, PHP: 0, Java: 0, 'C#': 0, curl: 0, Response: 0 }, requestExamples: {} },
+      search: { namespace: '_global', cells: { Python: 1, JavaScript: 1, Ruby: 1, PHP: 1, Java: 1, 'C#': 1, curl: 1, Response: 1 }, requestExamples: { S1: LANGUAGES } }
+    }
+  })
+})
+
+test('the comparison lists only new and changed endpoints', t => {
+  const base = coverage([['a', 'public', [['A1', ['curl']]], 1], ['b', 'public', [], 0]])
+  const pr = coverage([['a', 'public', [], 1], ['b', 'public', [], 0], ['c', 'public', [], 0]])
+  t.deepEqual(changedEndpoints(pr, base), ['a', 'c'])
+  const body = comparison(pr, base, findings(pr, base), 100)
+  t.true(body.includes('| `a` | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 0/1 | 1/1 → **0/1** | 1/1 | 1/8 |'))
+  t.true(body.includes('| `c` (new) |'))
+  t.true(comparison(base, base, [], 100).includes('No example coverage changes.'))
 })
 
 // One public endpoint `a`, with the given parts of its endpoint, request and response.
@@ -104,8 +135,8 @@ function single (endpoint: object, request: object, response: object): Coverage 
 }
 
 test('an empty availability is not public, a missing one is', t => {
-  t.false(single({ availability: {} }, {}, {}).endpoints.get('a')?.public)
-  t.true(single({ availability: undefined }, {}, {}).endpoints.get('a')?.public)
+  t.false(single({ availability: {} }, {}, {}).get('a')?.public)
+  t.true(single({ availability: undefined }, {}, {}).get('a')?.public)
 })
 
 test('examples only shown in private flavors do not count', t => {
@@ -114,10 +145,11 @@ test('examples only shown in private flavors do not count', t => {
     { examples: { OnlyStack: { availability: { stack: {} } }, Everywhere: {} } },
     {}
   )
-  t.deepEqual([...(c.endpoints.get('a')?.requestExamples.keys() ?? [])], ['Everywhere'])
+  t.deepEqual([...(c.get('a')?.requestExamples.keys() ?? [])], ['Everywhere'])
 })
 
-test('examples for other status codes count as response examples', t => {
+test('examples for other status codes count for findings, not for the Response cell', t => {
   const c = single({}, {}, { exceptions: [{ statusCodes: [400], examples: { Bad: {} } }] })
-  t.is(c.endpoints.get('a')?.responseExamples, 1)
+  t.is(c.get('a')?.responseExamples, 1)
+  t.is(cells(c.get('a') as never).Response, 0)
 })

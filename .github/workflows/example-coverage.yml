@@ -1,7 +1,8 @@
 name: Example coverage
 
-# Compiles the schema for the PR and for its base, then warns about public
-# endpoints that lose example coverage. Never fails the build.
+# Compiles the schema for the PR and for its base, then reports which public
+# endpoints change example coverage and warns about new gaps. Never fails the
+# build. The full report for each branch is in output/example-coverage.
 
 on:
   pull_request:
@@ -61,6 +62,7 @@ jobs:
           npm run example-coverage --silent --prefix compiler -- \
             --schema "$RUNNER_TEMP/pr/schema/schema.json" \
             --baseline "$RUNNER_TEMP/base/schema/schema.json" \
+            --output "$RUNNER_TEMP/report/" \
             --report "$RUNNER_TEMP/example-coverage.md"
 
       # Fork PRs get a read-only token: they still get annotations and the job summary.
@@ -77,7 +79,7 @@ jobs:
       - name: Create or update comment
         if: >-
           github.event.pull_request.head.repo.full_name == github.repository &&
-          (steps.coverage.outputs.has_findings == 'true' || steps.find-comment.outputs.comment-id != '')
+          (steps.coverage.outputs.has_changes == 'true' || steps.find-comment.outputs.comment-id != '')
         uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
