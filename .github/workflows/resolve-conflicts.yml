@@ -5,6 +5,10 @@ on:
 
 jobs:
   resolve:
+    if: |
+      (github.event.comment.user.login == 'github-actions[bot]' ||
+       github.event.comment.user.login == 'elastic-vault-github-plugin-prod[bot]') &&
+      contains(github.event.comment.body, 'To backport manually, run these commands')
     uses: elastic/clients-team-automations/.github/workflows/ai-backport-resolver.yml@main
     with:
       comment_body: ${{ github.event.comment.body }}
@@ -14,4 +18,5 @@ jobs:
       generated_paths: "output/"
       regenerate_command: "make setup && make compile && make generate && make transform-to-openapi"
     secrets:
-      LITELLM_API_KEY: ${{ secrets.LITELLM_API_KEY }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENROUTER_BASE_URL: ${{ secrets.OPENROUTER_BASE_URL }}
