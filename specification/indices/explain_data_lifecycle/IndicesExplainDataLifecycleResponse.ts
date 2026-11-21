@@ -63,8 +63,8 @@ class DataStreamLifecycleExplain {
   generation_time?: Duration
   error?: string
   /*
-   * @availability stack since=9.6.0 stability=stable
    * The status of the frozen transition.
+   * @availability stack since=9.6.0 stability=stable
    */
   frozen_transition_status?: string
   /**
@@ -78,9 +78,14 @@ class DataStreamLifecycleExplain {
    */
   tail_merge_date?: DateTime
   /*
-   * @availability stack since=9.6.0 stability=stable
    * @availability serverless
    * The reason if the index is not managed by the lifecycle.
+   * @availability stack since=9.6.0 stability=stable
    */
   unmanaged_reason?: string
+  /*
+   * If `true`, the index is managed by the minimum data stream lifecycle. Only present when `true`.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  minimum_lifecycle_enabled?: boolean
 }
