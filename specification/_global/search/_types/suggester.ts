@@ -71,10 +71,10 @@ export class CompletionSuggestOption<TDocument> {
   _id?: string
   _index?: IndexName
   _routing?: string
+  /** @codegen_name hit_score */
   _score?: double
   _source?: TDocument
   text: string
-  // eslint-disable-next-line es-spec-validator/no-similar-property-names -- _score comes with a hit and score without one, TODO: add a @codegen_name
   score?: double
 }
 

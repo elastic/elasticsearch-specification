@@ -24,9 +24,9 @@ import { Memory } from './types'
 
 export class Response {
   body: {
+    /** @codegen_name node_stats */
     _nodes: NodeStatistics
     cluster_name: Name
-    // eslint-disable-next-line es-spec-validator/no-similar-property-names -- the server writes _nodes and nodes, TODO: add a @codegen_name
     nodes: Dictionary<Id, Memory>
   }
 }
