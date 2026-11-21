@@ -20,6 +20,7 @@
 import { IndexName, Indices } from '@_types/common'
 import { LifecycleOperationMode } from '@_types/Lifecycle'
 import { integer, long } from '@_types/Numeric'
+import { EpochTime, UnitMillis } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export enum IndicatorHealthStatus {
@@ -164,7 +165,7 @@ export class DataStreamLifecycleDetails {
 }
 export class StagnatingBackingIndices {
   index_name: IndexName
-  first_occurrence_timestamp: long
+  first_occurrence_timestamp: EpochTime<UnitMillis>
   retry_count: integer
 }
 
@@ -275,7 +276,7 @@ export class DlmFrozenTransitionsIndicatorDetails {
    * The time, in milliseconds since the Unix epoch, when the master node generated the health snapshot.
    * Only present when the indicator status is `unknown`, meaning the health snapshot is stale.
    */
-  generated_at_millis?: long
+  generated_at_millis?: EpochTime<UnitMillis>
 }
 
 export enum DlmFrozenTransitionState {

@@ -23,7 +23,9 @@ import {
   DateTime,
   Duration,
   DurationValue,
-  UnitFloatMillis
+  EpochTime,
+  UnitFloatMillis,
+  UnitMillis
 } from '@_types/Time'
 import { AnalysisConfig, AnalysisLimits } from '@ml/_types/Analysis'
 import { Datafeed, DatafeedConfig } from '@ml/_types/Datafeed'
@@ -353,7 +355,7 @@ export class JobForecastStatistics {
 
 export class DataCounts {
   bucket_count: long
-  earliest_record_timestamp?: long
+  earliest_record_timestamp?: EpochTime<UnitMillis>
   empty_bucket_count: long
   input_bytes: long
   input_field_count: long
@@ -361,9 +363,9 @@ export class DataCounts {
   invalid_date_count: long
   job_id: Id
   last_data_time?: long
-  latest_empty_bucket_timestamp?: long
-  latest_record_timestamp?: long
-  latest_sparse_bucket_timestamp?: long
+  latest_empty_bucket_timestamp?: EpochTime<UnitMillis>
+  latest_record_timestamp?: EpochTime<UnitMillis>
+  latest_sparse_bucket_timestamp?: EpochTime<UnitMillis>
   latest_bucket_timestamp?: long
   log_time?: long
   missing_field_count: long

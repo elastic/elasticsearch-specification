@@ -19,7 +19,7 @@
 
 import { ByteSize, Id, VersionString } from '@_types/common'
 import { integer, long } from '@_types/Numeric'
-import { DateTime } from '@_types/Time'
+import { DateTime, EpochTime, UnitMillis } from '@_types/Time'
 import { DiscoveryNode } from '@ml/_types/DiscoveryNode'
 
 export class ModelSnapshot {
@@ -42,7 +42,7 @@ export class ModelSnapshot {
   /** A numerical character string that uniquely identifies the model snapshot. */
   snapshot_id: Id
   /** The creation timestamp for the snapshot. */
-  timestamp: long
+  timestamp: EpochTime<UnitMillis>
 }
 
 export class ModelSnapshotUpgrade {
@@ -78,7 +78,7 @@ export class ModelSizeStats {
   frequent_category_count: integer
   rare_category_count: integer
   total_category_count: integer
-  timestamp?: long
+  timestamp?: EpochTime<UnitMillis>
 }
 
 export enum CategorizationStatus {

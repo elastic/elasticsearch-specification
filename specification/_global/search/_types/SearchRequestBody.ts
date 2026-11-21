@@ -28,6 +28,7 @@ import { RetrieverContainer } from '@_types/Retriever'
 import { ScriptField } from '@_types/Scripting'
 import { SlicedScroll } from '@_types/SlicedScroll'
 import { Sort, SortResults } from '@_types/sort'
+import { Duration } from '@_types/Time'
 import { FieldCollapse } from '@global/search/_types/FieldCollapse'
 import { Highlight } from '@global/search/_types/highlighting'
 import { TrackHits } from '@global/search/_types/hits'
@@ -204,7 +205,7 @@ export class SearchRequestBody {
    * If no response is received before the timeout expires, the request fails and returns an error.
    * Defaults to no timeout.
    */
-  timeout?: string
+  timeout?: Duration
   /**
    * If `true`, calculate and return document scores, even if the scores are not used for sorting.
    * @server_default false

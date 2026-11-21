@@ -46,6 +46,7 @@ import {
   TranslogStats,
   WarmerStats
 } from '@_types/Stats'
+import { EpochTime, UnitMillis } from '@_types/Time'
 import { DenseVectorStats, SparseVectorStats } from '@cluster/stats/types'
 import { Dictionary } from '@spec_utils/Dictionary'
 import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
@@ -138,7 +139,7 @@ export class ShardFileSizeInfo {
 export class ShardLease {
   id: Id
   retaining_seq_no: SequenceNumber
-  timestamp: long
+  timestamp: EpochTime<UnitMillis>
   source: string
 }
 

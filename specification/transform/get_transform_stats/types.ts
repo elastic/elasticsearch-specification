@@ -100,7 +100,7 @@ export class CheckpointStats {
 }
 
 export class Checkpointing {
-  changes_last_detected_at?: long
+  changes_last_detected_at?: EpochTime<UnitMillis>
   changes_last_detected_at_string?: DateTime
   last: CheckpointStats
   next?: CheckpointStats

@@ -19,13 +19,14 @@
 
 import { NodeId, TaskId } from '@_types/common'
 import { long } from '@_types/Numeric'
+import { DurationValue, EpochTime, UnitMillis, UnitNanos } from '@_types/Time'
 import { Dictionary } from '@spec_utils/Dictionary'
 
 export class Body {
   id: long
   node: NodeId
-  start_time_millis: long
-  running_time_nanos: long
+  start_time_millis: EpochTime<UnitMillis>
+  running_time_nanos: DurationValue<UnitNanos>
   query: string
 }
 

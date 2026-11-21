@@ -100,7 +100,7 @@ export interface Request extends RequestBase {
      * If both a restart allocation delay and an index-level allocation delay are configured, the longer of the two is used.
      * @server_default 5m
      */
-    allocation_delay?: string
+    allocation_delay?: Duration
     /**
      * Only valid if type is replace.
      * Specifies the name of the node that is replacing the node being shut down.
