@@ -22,7 +22,6 @@ import {
   Fields,
   Id,
   IndexName,
-  Routing,
   SliceId,
   VersionNumber,
   VersionType
@@ -79,7 +78,7 @@ export class Operation {
    * Custom value used to route operations to a specific shard.
    * Not allowed when `index.slice.enabled` is `true` for the target index; use `_slice` instead.
    */
-  routing?: Routing
+  routing?: string
   /**
    * The slice the document belongs to, for a slice-enabled index (`index.slice.enabled` set to `true`).
    * It overrides the `_slice` set in the request path.
