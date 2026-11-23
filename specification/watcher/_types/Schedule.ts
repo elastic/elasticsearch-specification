@@ -81,6 +81,10 @@ export enum Month {
  * @variants container
  */
 export class ScheduleContainer {
+  /**
+   * The time zone to use for the schedule. Not supported for `interval` schedules.
+   * @variant container_property
+   */
   timezone?: string
   cron?: CronExpression
   daily?: DailySchedule
