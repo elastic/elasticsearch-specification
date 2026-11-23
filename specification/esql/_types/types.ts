@@ -197,6 +197,7 @@ export class ESQLDataset {
  * Per-query settings supplied through the request body.
  * This is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.
  * A `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.
+ * A setting with a map value can combine the values from several places instead of replacing them.
  * Only settings that are exposed as request-body parameters can be set here; other `SET`-only
  * settings (such as `time_series_reduce_per_index`) must be supplied in the query itself.
  * @doc_id esql-query-settings
