@@ -12110,6 +12110,13 @@ export interface EsqlEsqlColumnInfo {
   type: string
 }
 
+export type EsqlEsqlExemplars = boolean | EsqlEsqlExemplarsSettings
+
+export interface EsqlEsqlExemplarsSettings {
+  limit?: integer
+  include_timeseries?: boolean
+}
+
 export type EsqlEsqlFormat = 'csv' | 'json' | 'tsv' | 'txt' | 'yaml' | 'cbor' | 'smile' | 'arrow'
 
 export interface EsqlEsqlQuerySettings {
@@ -12117,6 +12124,10 @@ export interface EsqlEsqlQuerySettings {
   approximation?: EsqlEsqlApproximation
   column_metadata?: SpecUtilsStringified<boolean>
   project_routing?: ProjectRouting
+  unmapped_fields?: EsqlEsqlUnmappedFields
+  wildcards_match_views?: boolean
+  wildcards_match_datasets?: boolean
+  exemplars?: EsqlEsqlExemplars
 }
 
 export interface EsqlEsqlResult {
@@ -12142,6 +12153,8 @@ export interface EsqlEsqlShardInfo {
   skipped?: integer
   failed?: integer
 }
+
+export type EsqlEsqlUnmappedFields = 'DEFAULT' | 'NULLIFY' | 'LOAD' | 'LOAD_ALL'
 
 export interface EsqlIdPath {
   path: string

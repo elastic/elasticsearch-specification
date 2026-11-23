@@ -103411,12 +103411,12 @@
         ]
       },
       "esql._types.EsqlQuerySettings": {
-        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `unmapped_fields`) must be supplied in the query itself.",
+        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.\nA `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.\nA setting with a map value can combine the values from several places instead of replacing them.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `time_series_reduce_per_index`) must be supplied in the query itself.",
         "type": "object",
         "properties": {
           "time_zone": {
             "description": "The default timezone to be used in the query.\nIt defaults to UTC and overrides the `time_zone` request parameter.",
-            "x-state": "Generally available; Added in 9.4.0",
+            "x-state": "Generally available; Added in 9.5.0",
             "type": "string"
           },
           "approximation": {
@@ -103431,10 +103431,41 @@
           "column_metadata": {
             "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
             "default": false,
-            "x-state": "Experimental; Added in 9.5.0",
+            "x-state": "Technical preview; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            ]
+          },
+          "unmapped_fields": {
+            "description": "Determines how fields that are present in documents but not defined in the index mapping are treated.\nThis is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.\nThe values are case-insensitive.",
+            "default": "DEFAULT",
+            "x-state": "Generally available; Added in 9.7.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.EsqlUnmappedFields"
+              }
+            ]
+          },
+          "wildcards_match_views": {
+            "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "wildcards_match_datasets": {
+            "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Technical preview; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "exemplars": {
+            "description": "When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+            "x-state": "Technical preview; Added in 9.7.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.EsqlExemplars"
               }
             ]
           }
@@ -103462,6 +103493,40 @@
             "description": "The confidence level of the computed confidence intervals.\nA null value disables computing confidence intervals.",
             "default": 0.9,
             "type": "number"
+          }
+        }
+      },
+      "esql._types.EsqlUnmappedFields": {
+        "type": "string",
+        "enum": [
+          "DEFAULT",
+          "NULLIFY",
+          "LOAD",
+          "LOAD_ALL"
+        ]
+      },
+      "esql._types.EsqlExemplars": {
+        "description": "The `exemplars` query setting.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/esql._types.EsqlExemplarsSettings"
+          }
+        ]
+      },
+      "esql._types.EsqlExemplarsSettings": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "description": "The maximum number of exemplars to return.\nWithout it, the default limit of a regular query applies.",
+            "type": "number"
+          },
+          "include_timeseries": {
+            "description": "When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.",
+            "default": false,
+            "type": "boolean"
           }
         }
       },
