@@ -103436,6 +103436,18 @@
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
               }
             ]
+          },
+          "wildcards_match_views": {
+            "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Experimental; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "wildcards_match_datasets": {
+            "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Experimental; Added in 9.6.0",
+            "type": "boolean"
           }
         }
       },

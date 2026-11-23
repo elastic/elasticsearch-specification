@@ -12118,6 +12118,8 @@ export interface EsqlEsqlQuerySettings {
   approximation?: EsqlEsqlApproximation
   column_metadata?: SpecUtilsStringified<boolean>
   project_routing?: ProjectRouting
+  wildcards_match_views?: boolean
+  wildcards_match_datasets?: boolean
 }
 
 export interface EsqlEsqlResult {

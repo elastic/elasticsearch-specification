@@ -156036,7 +156036,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L235-L240",
+      "specLocation": "esql/_types/types.ts#L251-L256",
       "type": {
         "kind": "union_of",
         "items": [
@@ -156090,7 +156090,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L242-L254"
+      "specLocation": "esql/_types/types.ts#L258-L270"
     },
     {
       "kind": "interface",
@@ -156457,9 +156457,47 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "experimental"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_views",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "experimental"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_datasets",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L196-L233"
+      "specLocation": "esql/_types/types.ts#L196-L249"
     },
     {
       "kind": "interface",

@@ -141281,7 +141281,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L235-L240",
+      "specLocation": "esql/_types/types.ts#L251-L256",
       "type": {
         "items": [
           {
@@ -141335,7 +141335,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L242-L254"
+      "specLocation": "esql/_types/types.ts#L258-L270"
     },
     {
       "kind": "enum",
@@ -167598,7 +167598,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L196-L233"
+      "specLocation": "esql/_types/types.ts#L196-L249"
     },
     {
       "inherits": {
