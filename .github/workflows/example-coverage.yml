@@ -6,17 +6,13 @@ name: Example coverage
 
 on:
   pull_request:
+    # `edited` covers retargeting the PR to another base branch.
+    types: [opened, synchronize, reopened, edited]
     branches:
       - main
       - '[0-9]+.[0-9]+'
   # No paths filter: a later push that no longer touches the spec must still
   # clear an earlier report.
-
-# A newer push supersedes the running check, so an older run can't overwrite
-# its report or race it into a duplicate comment.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -26,6 +22,14 @@ jobs:
   example-coverage:
     name: Example coverage
     runs-on: ubuntu-latest
+    # Title and description edits don't change coverage.
+    if: github.event.action != 'edited' || github.event.changes.base != null
+    # A newer push supersedes the running check, so an older run can't overwrite
+    # its report or race it into a duplicate comment. Job-level, so a skipped
+    # edit doesn't cancel a running check.
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
 
     steps:
       - name: Checkout pull request
@@ -40,21 +44,32 @@ jobs:
           path: base
           persist-credentials: false
 
-      - name: Use Node.js 24
+      # The compiler resolves examples relative to its own checkout and requires
+      # the Node.js major in that checkout's .nvmrc, so each side is compiled by
+      # its own copy under its own Node.js version.
+      - name: Use the base Node.js version
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: 24
+          node-version-file: base/.nvmrc
           cache: npm
           cache-dependency-path: '**/compiler/package-lock.json'
 
-      # The compiler resolves examples relative to its own checkout, so each
-      # side is compiled by its own copy.
-      - name: Compile schemas
+      - name: Compile base schema
+        run: |
+          npm ci --prefix base/compiler
+          npm run generate-schema --prefix base/compiler -- --spec ../specification/ --output "$RUNNER_TEMP/base/"
+
+      - name: Use the pull request Node.js version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: '**/compiler/package-lock.json'
+
+      - name: Compile pull request schema
         run: |
           npm ci --prefix compiler
-          npm ci --prefix base/compiler
           npm run generate-schema --prefix compiler -- --spec ../specification/ --output "$RUNNER_TEMP/pr/"
-          npm run generate-schema --prefix base/compiler -- --spec ../specification/ --output "$RUNNER_TEMP/base/"
 
       - name: Check example coverage
         id: coverage
