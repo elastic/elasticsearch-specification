@@ -73,7 +73,7 @@ export interface Request extends RequestBase {
     allow_partial_results?: boolean
   }
   /**
-   * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone and `columnar` to format the answer.
+   * Use the `query` element to start a query. Use `time_zone` to specify an execution time zone, `settings` to supply other per-query settings, and `columnar` to format the answer.
    */
   body: {
     /**

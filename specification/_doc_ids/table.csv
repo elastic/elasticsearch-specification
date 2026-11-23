@@ -247,6 +247,7 @@ esql-query,https://www.elastic.co/docs/explore-analyze/query-filter/languages/es
 esql-query-params,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-rest-params,[use-doc-url],,About using the ES|QL rest API
 esql-returning-localized-results,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-locale-param,[use-doc-url],,About using the ES|QL rest API
 esql-timezones,https://www.elastic.co/docs/explore-analyze/query-filter/languages/esql-rest#esql-timezones,[use-doc-url],,About using the ES|QL rest API
+esql-query-settings,https://www.elastic.co/docs/reference/query-languages/esql/directives/set#esql-set-sources,[use-doc-url],,About setting ES|QL query settings
 esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-query,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-query,,About a specific running ES|QL
 esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-list-queries,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-list-queries,,More about running ES|QL queries
 esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-get-view,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-esql-get-view,,Get an ES|QL view

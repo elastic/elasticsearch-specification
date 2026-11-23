@@ -195,9 +195,11 @@ export class ESQLDataset {
 
 /**
  * Per-query settings supplied through the request body.
- * This is the request-body equivalent of the in-query `SET` command.
+ * This is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.
+ * A `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.
  * Only settings that are exposed as request-body parameters can be set here; other `SET`-only
- * settings (such as `unmapped_fields`) must be supplied in the query itself.
+ * settings (such as `time_series_reduce_per_index`) must be supplied in the query itself.
+ * @doc_id esql-query-settings
  */
 export class EsqlQuerySettings {
   /**
@@ -220,16 +222,82 @@ export class EsqlQuerySettings {
    * When enabled, column metadata is added to the query response as additional `_meta` properties.
    * Currently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.
    * @server_default false
-   * @availability stack since=9.5.0 stability=experimental
-   * @availability serverless stability=experimental
+   * @availability stack since=9.5.0 stability=tech_preview
+   * @availability serverless stability=tech_preview
    */
   column_metadata?: Stringified<boolean>
   /**
    * Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.
    * Excluded projects are not queried, which can reduce cost and latency.
-   * @availability serverless stability=experimental
+   * @availability serverless stability=stable visibility=feature_flag feature_flag=serverless.cross_project.enabled
    */
   project_routing?: ProjectRouting
+  /**
+   * Determines how fields that are present in documents but not defined in the index mapping are treated.
+   * `DEFAULT` fails a query that references a fully unmapped field.
+   * `NULLIFY` treats a referenced unmapped field as `null`.
+   * `LOAD` loads referenced unmapped fields from `_source` as `keyword`, and also loads partially mapped fields from `_source` in the indices where they are unmapped.
+   * `LOAD_ALL` does everything `LOAD` does, and also returns every unmapped field that the query does not name in a single `_unmapped_fields` column.
+   * `LOAD_ALL` is in technical preview.
+   * The values are case-insensitive.
+   * @server_default DEFAULT
+   * @availability stack since=9.7.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  unmapped_fields?: EsqlUnmappedFields
+  /**
+   * Whether a wildcard in `FROM` also matches views.
+   * When `false`, a wildcard resolves to indices, data streams, and aliases only, and a view is reached by its exact name.
+   * @server_default false
+   * @availability stack since=9.6.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  wildcards_match_views?: boolean
+  /**
+   * Whether a wildcard in `FROM` also matches datasets.
+   * When `false`, a wildcard resolves to indices, data streams, aliases, and views, and a dataset is reached by its exact name.
+   * @server_default false
+   * @availability stack since=9.6.0 stability=tech_preview
+   * @availability serverless stability=tech_preview
+   */
+  wildcards_match_datasets?: boolean
+  /**
+   * When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.
+   * It can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.
+   * @availability stack since=9.7.0 stability=tech_preview
+   * @availability serverless stability=tech_preview
+   */
+  exemplars?: EsqlExemplars
+}
+
+/**
+ * The `unmapped_fields` query setting.
+ */
+export enum EsqlUnmappedFields {
+  DEFAULT,
+  NULLIFY,
+  LOAD,
+  LOAD_ALL
+}
+
+/**
+ * The `exemplars` query setting.
+ * It can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.
+ * @codegen_names enabled, settings
+ */
+export type EsqlExemplars = boolean | EsqlExemplarsSettings
+
+export class EsqlExemplarsSettings {
+  /**
+   * The maximum number of exemplars to return.
+   * Without it, the default limit of a regular query applies.
+   */
+  limit?: integer
+  /**
+   * When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.
+   * @server_default false
+   */
+  include_timeseries?: boolean
 }
 
 /**
