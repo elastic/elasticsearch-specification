@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
+import { DurationString } from '@_types/Time'
 
 /**
  * Data stream failure store contains the configuration of the failure store for a given data stream.
@@ -62,7 +62,7 @@ export class FailureStoreLifecycle {
    * Any time after this duration the document could be deleted.
    * When empty, every document in this data stream will be stored indefinitely.
    */
-  data_retention?: Duration
+  data_retention?: DurationString
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
@@ -80,7 +80,7 @@ export class FailureStoreLifecycleTemplate {
    * Any time after this duration the document could be deleted.
    * When empty, every document in this data stream will be stored indefinitely.
    */
-  data_retention?: Duration | null
+  data_retention?: DurationString | null
   /**
    * If defined, it turns data stream lifecycle on/off (`true`/`false`) for this data stream. A data stream lifecycle
    * that's disabled (enabled: `false`) will have no effect on the data stream.
