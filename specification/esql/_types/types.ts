@@ -283,7 +283,7 @@ export enum EsqlUnmappedFields {
   LOAD,
   /**
    * Does everything `LOAD` does, and also returns all unmapped fields in a single `_unmapped_fields` column.
-   * @availability stack since=9.7.0 stability=tech_preview
+   * @availability stack stability=tech_preview
    * @availability serverless stability=tech_preview
    */
   LOAD_ALL
