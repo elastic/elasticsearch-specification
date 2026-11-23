@@ -17,9 +17,9 @@
  * under the License.
  */
 
-import { Duration } from '@_types/Time'
+import { DurationString } from '@_types/Time'
 
 export class GlobalRetention {
-  max_retention?: Duration
-  default_retention?: Duration
+  max_retention?: DurationString
+  default_retention?: DurationString
 }

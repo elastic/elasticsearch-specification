@@ -19,7 +19,7 @@
 
 import { ByteSize } from '@_types/common'
 import { long } from '@_types/Numeric'
-import { Duration } from '@_types/Time'
+import { Duration, DurationString } from '@_types/Time'
 import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 import { SamplingMethod } from './Downsample'
 
@@ -32,12 +32,12 @@ export class DataStreamLifecycle {
    * Any time after this duration the document could be deleted.
    * When empty, every document in this data stream will be stored indefinitely.
    */
-  data_retention?: Duration
+  data_retention?: DurationString
 
   /**
    * The least amount of time data should be kept by elasticsearch.
    */
-  effective_retention?: Duration
+  effective_retention?: DurationString
 
   /**
    * Configuration source that can influence the retention of a data stream.
@@ -64,7 +64,7 @@ export class DataStreamLifecycle {
    * @availability stack since=9.5.0 stability=stable
    * @doc_id dlm-searchable-snapshots
    */
-  frozen_after?: Duration
+  frozen_after?: DurationString
 }
 
 export enum RetentionSource {

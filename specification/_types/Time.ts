@@ -61,6 +61,15 @@ export type DateFormat = string
 export type Duration = string | -1 | 0
 
 /**
+ * A duration expressed as a string, such as `7d` or `30d`. Units can be `nanos`, `micros`, `ms` (milliseconds),
+ * `s` (seconds), `m` (minutes), `h` (hours) and `d` (days).
+ * Unlike `Duration`, it doesn't accept the JSON numbers `-1` and `0`.
+ * @doc_id time-value
+ * @ext_doc_id time-units
+ */
+export type DurationString = string
+
+/**
  * A date histogram interval. Similar to `Duration` with additional units: `w` (week), `M` (month), `q` (quarter) and
  * `y` (year)
  */
