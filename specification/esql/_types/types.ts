@@ -206,7 +206,7 @@ export class EsqlQuerySettings {
    * The default timezone to be used in the query.
    * It defaults to UTC and overrides the `time_zone` request parameter.
    * @doc_id esql-timezones
-   * @availability stack since=9.4.0 stability=stable
+   * @availability stack since=9.5.0 stability=stable
    * @availability serverless stability=stable
    */
   time_zone?: string
@@ -234,6 +234,7 @@ export class EsqlQuerySettings {
   project_routing?: ProjectRouting
   /**
    * Determines how fields that are present in documents but not defined in the index mapping are treated.
+   * This is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.
    * The values are case-insensitive.
    * @server_default DEFAULT
    * @availability stack since=9.7.0 stability=stable
