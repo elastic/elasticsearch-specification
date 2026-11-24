@@ -17,6 +17,8 @@ on:
 
 permissions:
   contents: read
+  copilot-requests: write
+  id-token: write
   issues: read
   pull-requests: read
 
@@ -25,10 +27,30 @@ timeout-minutes: 45
 
 engine:
   id: claude
-  model: "llm-gateway/claude-sonnet-4-6"
+  model: claude-opus-5-5
   env:
-    ANTHROPIC_BASE_URL: "https://elastic.litellm-prod.ai/"
-    ANTHROPIC_API_KEY: ${{ secrets.LITELLM_API_KEY }}
+    ANTHROPIC_BASE_URL: "https://llm.idea.elastichosting.ai/anthropic"
+    # The gateway reads only `Authorization: Bearer`, and the gh-aw firewall proxy sends the key in `x-api-key` by
+    # default. The proxy sends this value as it is in the header named below, so the value carries the Bearer scheme.
+    # gh-aw also checks the key in the activation job, which does not run the token step. The literal makes that
+    # check pass.
+    ANTHROPIC_API_KEY: Bearer ${{ steps.agent-router-auth.outputs.id_token || 'agent-router' }}
+    AWF_ANTHROPIC_AUTH_HEADER: Authorization
+    # The gateway serves exact model IDs only, so the small model of the CLI gets an ID that the gateway routes.
+    ANTHROPIC_DEFAULT_HAIKU_MODEL: claude-haiku-5-5
+
+steps:
+  # TODO: replace the two placeholders with the provider and the service account that IT provisions for
+  # elastic/centralized-it-infra#1927, then compile the lock file again. The step fails until then.
+  - name: Authenticate to Agent Router
+    id: agent-router-auth
+    uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+    with:
+      workload_identity_provider: "projects/<project-number>/locations/global/workloadIdentityPools/<pool>/providers/<provider>"
+      service_account: "<account>@<project>.iam.gserviceaccount.com"
+      token_format: id_token
+      id_token_audience: https://llm.idea.elastichosting.ai
+      id_token_include_email: true
 
 tools:
   github:
@@ -42,10 +64,22 @@ tools:
 network:
   allowed:
     - defaults
-    - elastic.litellm-prod.ai
+    - llm.idea.elastichosting.ai
 
 safe-outputs:
   staged: false
+  threat-detection:
+    # gh-aw gives the detection job no `id-token: write`, so that job cannot mint a gateway token. Detection runs on
+    # Copilot with the token of the run, which needs `copilot-requests: write`.
+    engine:
+      id: copilot
+      model: claude-sonnet-5
+      # gh-aw copies the env of the primary engine into detection. The empty values remove the gateway target and the
+      # fallback key from the detection job.
+      env:
+        ANTHROPIC_API_KEY: ""
+        ANTHROPIC_BASE_URL: ""
+        ANTHROPIC_DEFAULT_HAIKU_MODEL: ""
   create-issue:
     max: 10
 ---
