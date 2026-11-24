@@ -10,7 +10,7 @@ in `specification/`. `docs/behaviors.md` describes the behavior interfaces, and 
 the comments.
 
 Run `make setup` one time, then `make lint` after each change. The lint rules are in `validator/`, and
-`validator/README.md` has one line for each rule. Run `make contrib` before you open a pull request.
+`validator/README.md` has one line for each rule. Run `make contrib` before you open a pull request, but do not commit any of the files in the `output/` folder (CI regenerates and commits them automatically).
 
 ## Checks that need the Elasticsearch source
 
