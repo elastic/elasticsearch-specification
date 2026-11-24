@@ -73,30 +73,40 @@ minor branches that will eventually need backports:
 The workflow does not apply `backport X.Y` or `skip-backport` labels itself. Those labels are
 applied by the team to the follow-up pull request when the specification fix is opened.
 
-## Copilot BYOK Through LiteLLM
+## Model Access Through Agent Router
 
-The workflow uses the `copilot` gh-aw engine in bring-your-own-key mode. Requests are routed
-through Elastic's LiteLLM OpenAI-compatible endpoint:
+The workflow uses the `claude` gh-aw engine with the `claude-opus-5-5` model. Requests go to the Anthropic-compatible
+endpoint of Agent Router, the Elastic LLM gateway:
 
 ```yaml
 engine:
-  id: copilot
+  id: claude
+  model: claude-opus-5-5
   env:
-    COPILOT_PROVIDER_BASE_URL: "https://elastic.litellm-prod.ai/v1"
-    COPILOT_MODEL: "llm-gateway/claude-sonnet-4-6"
-    COPILOT_PROVIDER_API_KEY: "${{ secrets.LITELLM_API_KEY }}"
-    COPILOT_PROVIDER_TYPE: "openai"
+    ANTHROPIC_BASE_URL: "https://llm.idea.elastichosting.ai/anthropic"
+    ANTHROPIC_API_KEY: Bearer ${{ steps.agent-router-auth.outputs.id_token || 'agent-router' }}
+    AWF_ANTHROPIC_AUTH_HEADER: Authorization
+    ANTHROPIC_DEFAULT_HAIKU_MODEL: claude-haiku-5-5
 ```
 
-`COPILOT_PROVIDER_BASE_URL`, `COPILOT_PROVIDER_API_KEY`, and `COPILOT_PROVIDER_BEARER_TOKEN` are
-recognized by gh-aw as Copilot BYOK credential variables. They are allowed to reference secrets in
-strict mode and are isolated by the Agentic Workflow Firewall proxy instead of being exposed to the
-agent container. The required repository secret is `LITELLM_API_KEY`.
+Agent Router accepts a Google ID token of a registered service account and no API key, so the workflow needs no
+repository secret for the model. The first custom step of the agent job runs `google-github-actions/auth`. It exchanges
+the GitHub OIDC token of the job for an ID token of the service account, with the gateway origin as the audience. The
+workflow has `id-token: write` for this exchange. The token is valid for about one hour, and the workflow times out
+after 45 minutes.
 
-`COPILOT_PROVIDER_TYPE` is `openai` because the LiteLLM `/v1` endpoint exposes an OpenAI-compatible
-API. The selected model is still Claude Sonnet through the `llm-gateway/claude-sonnet-4-6` model
-name. Use `anthropic` only when routing to an Anthropic-compatible API shape rather than the
-OpenAI-compatible LiteLLM endpoint.
+Status: the workload identity provider and the service account in that step are placeholders. IT provisions the
+identity through the onboarding request `elastic/centralized-it-infra#1927`, which is in an internal repository. The
+step fails until the workflow source has the two values and the lock file is compiled again.
+
+The gateway reads the token from `Authorization: Bearer`, and the gh-aw firewall proxy sends the Anthropic key in
+`x-api-key` by default. `AWF_ANTHROPIC_AUTH_HEADER` names the header. The proxy sends the key value as it is, so the
+value starts with `Bearer `. gh-aw validates the key in the `activation` job, which does not run the token step, and
+the `|| 'agent-router'` literal makes that validation pass. The gateway serves exact model IDs, so
+`ANTHROPIC_DEFAULT_HAIKU_MODEL` gives the small model of the Claude Code CLI an ID that the gateway routes.
+
+Threat detection runs on the Copilot engine with the token of the run, which needs `copilot-requests: write`. gh-aw
+gives the detection job no `id-token: write`, so that job cannot get a gateway token.
 
 ## Running Locally
 
