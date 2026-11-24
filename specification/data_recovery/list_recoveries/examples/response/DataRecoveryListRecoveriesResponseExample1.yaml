@@ -14,6 +14,7 @@ value: |-
           "end_time": "2026-10-20T10:05:12.000Z"
         },
         "destination_mode": "rename",
+        "rename_strategy": { "prefix": "restored-" },
         "sources": [
           { "source": "orders", "type": "index", "destination": "restored-orders" }
         ],
