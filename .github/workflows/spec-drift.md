@@ -62,6 +62,21 @@ these issues and assigns the original Elasticsearch PR author when appropriate.
 - `since`: optional `YYYY-MM-DD`. When omitted, inspect PRs merged in the last seven days.
 - `max_prs`: optional maximum number of Elasticsearch PRs to inspect. Default: `50`.
 
+## Agent instructions
+
+Before you start the process below, read `AGENTS.md` at the root of this repository from the first line to the last.
+You MUST follow it for the whole run. It names the places in the Elasticsearch source that define the routes, the
+parameters, the request body and the response of an endpoint, and it gives the modeling rules for the definitions under
+`specification/`.
+
+- Use the checks of `AGENTS.md` against the Elasticsearch source when you classify an Elasticsearch PR and when you
+  compare it against the specification.
+- Use the modeling rules of `AGENTS.md` when you name the specification files and types that need a change.
+- `AGENTS.md` asks for `make setup`, `make lint` and `make contrib` around a change to the specification. This workflow
+  changes no file, so do not run them.
+
+If you cannot read `AGENTS.md`, do not open an issue. State in the run summary that the file was not readable.
+
 ## Process
 
 1. Determine the merge window.
