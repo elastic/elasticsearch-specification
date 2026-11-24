@@ -22,7 +22,7 @@ import { TypeMapping } from '@_types/mapping/TypeMapping'
 import { integer } from '@_types/Numeric'
 import { PipelineConfig } from '@ingest/_types/Pipeline'
 import { Dictionary } from '@spec_utils/Dictionary'
-import { FieldStat } from '../_types/Structure'
+import { FieldStat, FormatType } from '../_types/Structure'
 
 export class Response {
   body: {
@@ -36,9 +36,9 @@ export class Response {
      */
     has_byte_order_marker: boolean
     /**
-     * Valid values include `ndjson`, `xml`, `delimited`, and `semi_structured_text`.
+     * The high level structure of the text.
      */
-    format: string
+    format: FormatType
     /**
      * The most common values of each field, plus basic numeric statistics for the numeric `page_count` field.
      * This information may provide clues that the data needs to be cleaned or transformed prior to use by other Elastic Stack functionality.

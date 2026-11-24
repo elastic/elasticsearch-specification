@@ -29,6 +29,7 @@ import {
 } from '@_types/common'
 import { ErrorCause } from '@_types/Errors'
 import { integer, long } from '@_types/Numeric'
+import { Result } from '@_types/Result'
 import { Script } from '@_types/Scripting'
 import { ShardStatistics } from '@_types/Stats'
 import { SourceConfig } from '@global/search/_types/SourceFilter'
@@ -65,9 +66,8 @@ export class ResponseItem {
   _primary_term?: long
   /**
    * The result of the operation.
-   * Possible values are `created`, `updated`, `deleted`, `noop`, and `not_found`.
    */
-  result?: string
+  result?: Result
   /**
    * The sequence number assigned to the document for the operation.
    * Sequence numbers are used to ensure an older version of a document doesn't overwrite a newer version.

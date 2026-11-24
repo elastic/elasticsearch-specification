@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { GrokPattern, MediaType } from '@_types/common'
+import { EcsCompatibilityType } from '../_types/Structure'
 
 /**
  * Test a Grok pattern.
@@ -45,10 +46,9 @@ export interface Request extends RequestBase {
     /**
      * The mode of compatibility with ECS compliant Grok patterns.
      * Use this parameter to specify whether to use ECS Grok patterns instead of legacy ones when the structure finder creates a Grok pattern.
-     * Valid values are `disabled` and `v1`.
      * @server_default disabled
      */
-    ecs_compatibility?: string
+    ecs_compatibility?: EcsCompatibilityType
   }
   body: {
     /**

@@ -20,6 +20,7 @@
 import { RequestBase } from '@_types/Base'
 import { Id, MediaType } from '@_types/common'
 import { Duration } from '@_types/Time'
+import { InferenceInputType } from '@inference/_types/CommonTypes'
 import { TaskSettings } from '@inference/_types/Services'
 
 /**
@@ -60,18 +61,14 @@ export interface Request extends RequestBase {
      */
     input: string | string[]
     /**
-     * The input data type for the text embedding model. Possible values include:
-     * * `SEARCH`
-     * * `INGEST`
-     * * `CLASSIFICATION`
-     * * `CLUSTERING`
+     * The input data type for the text embedding model.
      * Not all services support all values. Unsupported values will trigger a validation exception.
      * Accepted values depend on the configured inference service, refer to the relevant service-specific documentation for more info.
      *
      * > info
      * > The `input_type` parameter specified on the root level of the request body will take precedence over the `input_type` parameter specified in `task_settings`.
      */
-    input_type?: string
+    input_type?: InferenceInputType
     /**
      * Task settings for the individual inference request. These settings are specific to the <task_type> you specified and override the task settings specified when initializing the service.
      */
