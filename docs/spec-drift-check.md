@@ -117,10 +117,6 @@ gh aw init --no-mcp
 gh aw compile spec-drift
 ```
 
-Use a gh-aw release that has a price for each model of the workflow. v1.2.2 has entries for `claude-opus-5-5` and
-`claude-haiku-5-5`, and v0.89.21 has no entry for `claude-opus-5-5`. Without an entry, the firewall proxy rejects each
-model request with HTTP 400, unless the frontmatter sets `models.default-ai-credits-pricing`.
-
 Use validation when changing the workflow source:
 
 ```sh
