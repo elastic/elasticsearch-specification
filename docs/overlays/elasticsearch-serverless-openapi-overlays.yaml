@@ -9,6 +9,8 @@ actions:
     update:
       title: Elasticsearch Serverless API
       description: >
+        Use the Elasticsearch Serverless API to ingest, search, and analyze data in serverless projects.
+
         ## Documentation source and versions
         
         This documentation is derived from the `main` branch of the [elasticsearch-specification](https://github.com/elastic/elasticsearch-specification) repository.
