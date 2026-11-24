@@ -38,7 +38,7 @@ checks this against the `urls` block, so the `urls` block must be correct first.
 methods, and no others. Parameters that all endpoints share, such as `error_trace`, `filter_path`, `human` and
 `pretty`, belong to `CommonQueryParameters`. Look at helper methods too: the handler can read `allow_no_indices`,
 `expand_wildcards` and `ignore_unavailable` through `IndicesOptions.fromRequest`, and `master_timeout` and `timeout`
-through a utility method.
+through a utility method. Even if many non string query parameters are also accepted as string, do not model this behavior. 
 
 **Parameters in two places.** Some values can be sent in the query string and in the body. Model the value in each
 place where the handler reads it. Do not copy a body property into `query_parameters` because a sibling endpoint has
