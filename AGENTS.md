@@ -180,7 +180,7 @@ sets `typed_keys`. They are the only users of `@variants typed_keys_quirk`. Do n
 
 **Descriptions.** Describe what the property does and state the constraints that the parser enforces: the range of a
 number, the maximum length of a list, the properties that cannot be used together. Do not describe a constraint that
-the source does not enforce.
+the source does not enforce. If the source provides zero comments on the property, trace the original PR that introduced the property and read the description.
 
 **Listed values.** When a description lists the values of a `string` property, check the source. If the list is
 complete, replace the `string` with an enum and remove the list from the description.
