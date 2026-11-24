@@ -56,7 +56,7 @@ exists in Serverless and if it is public. An endpoint behind a feature flag gets
 name of the flag.
 
 **Privileges.** Derive `@cluster_privileges` and `@index_privileges` from the name of the transport action that the
-handler calls and from the privileges that grant that action name. Do not copy them from a similar endpoint.
+handler calls and from the privileges that grant that action name. Do not copy them from a similar endpoint. If it's not clear from the transport action file, then look into the `xpack/core/security/authz/privilege` folder. 
 
 ### Properties
 
