@@ -1,0 +1,23 @@
+name: docs-preview-deploy
+
+on:
+  workflow_run:
+    workflows: [docs-preview-build]
+    types: [completed]
+
+permissions:
+  contents: read
+  deployments: write
+  id-token: write
+  pull-requests: write
+  actions: read
+
+jobs:
+  deploy:
+    # TODO: pin to @v1 once elastic/docs-actions ships pre-build-artifact.
+    uses: elastic/docs-actions/.github/workflows/docs-deploy.yml@pre-build-artifact
+    with:
+      path: docs/api-preview
+      path-pattern: '**'
+      pre-build-artifact: api-preview-specs
+      pre-build-artifact-path: docs/api-preview

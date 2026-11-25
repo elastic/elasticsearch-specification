@@ -1,0 +1,51 @@
+name: docs-preview-build
+
+# Builds the API Explorer specs from the pull request and renders them with docs-builder.
+# docs-preview-deploy.yml publishes the result and comments the preview link on the PR.
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  spec:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'elastic'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      # Same build and overlays as openapi-publish.yml, so the preview matches what merging publishes.
+      - name: Build OpenAPI docs specs
+        uses: ./.github/actions/build-openapi-docs
+        with:
+          overlay-target: overlay-api-explorer
+
+      - name: Collect API Explorer specs
+        run: |
+          mkdir -p api-preview
+          cp output/openapi/elasticsearch-openapi-docs-api-explorer.json api-preview/elasticsearch.json
+          cp output/openapi/elasticsearch-serverless-openapi-docs-api-explorer.json api-preview/elasticsearch-serverless.json
+
+      - name: Upload API Explorer specs
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: api-preview-specs
+          path: api-preview
+          retention-days: 1
+          if-no-files-found: error
+
+  build:
+    needs: spec
+    # TODO: pin to @v1 once elastic/docs-actions ships pre-build-artifact.
+    uses: elastic/docs-actions/.github/workflows/docs-build.yml@pre-build-artifact
+    with:
+      path-pattern: '**'
+      pre-build-artifact: api-preview-specs
+      pre-build-artifact-path: docs/api-preview
