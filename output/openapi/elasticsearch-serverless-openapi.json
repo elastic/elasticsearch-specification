@@ -51394,6 +51394,12 @@
                 "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
               },
+              "allow_rerank_failures": {
+                "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+                "default": false,
+                "x-state": "Generally available",
+                "type": "boolean"
+              },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
                 "x-state": "Generally available",
@@ -51433,7 +51439,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
             "default": 250.0,
             "type": "number"
           },
@@ -51466,10 +51472,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
+        }
       },
       "_types.RuleRetriever": {
         "allOf": [
