@@ -2294,7 +2294,9 @@ export class OpenAIServiceSettings {
   token_url?: string
   /**
    * The URL endpoint to use for the requests.
-   * It can be changed for testing purposes.
+   * You can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.
+   * Specify the full endpoint URL, including the path.
+   * For an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).
    * Default value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,
    * `https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.
    */
