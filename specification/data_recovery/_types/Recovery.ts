@@ -20,7 +20,7 @@
 import { Metadata } from '@_types/common'
 import { integer } from '@_types/Numeric'
 import { DateTime } from '@_types/Time'
-import { RecoveryMode } from '../start_recovery/types'
+import { RecoveryMode, RenameStrategy } from '../start_recovery/types'
 import { Point } from './Point'
 import { RecoveryRunStatus } from './RecoveryRunStatus'
 import { ResolvedRecoverySource } from './ResolvedRecoverySource'
@@ -52,6 +52,8 @@ export class Recovery {
   recovery_point: Point
   /** Whether the sources are recovered in place (`replace`) or under new names (`rename`). */
   destination_mode: RecoveryMode
+  /** The naming strategy supplied when the recovery was started, if recorded. */
+  rename_strategy?: RenameStrategy
   /** The sources that the requested source expressions resolved to, with the destinations that they are recovered to. */
   sources: ResolvedRecoverySource[]
   /** The custom metadata that was provided when the recovery was started. */
