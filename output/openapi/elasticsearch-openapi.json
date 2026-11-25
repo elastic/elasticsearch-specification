@@ -78132,6 +78132,12 @@
                 "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
               },
+              "allow_rerank_failures": {
+                "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+                "default": false,
+                "x-state": "Generally available; Added in 8.19.0",
+                "type": "boolean"
+              },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
                 "x-state": "Generally available; Added in 9.2.0",
@@ -78171,7 +78177,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
             "default": 250.0,
             "type": "number"
           },
@@ -78204,10 +78210,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
+        }
       },
       "_types.RuleRetriever": {
         "allOf": [
@@ -106200,6 +106203,11 @@
             "enum": [
               "false"
             ]
+          },
+          "unmanaged_reason": {
+            "description": "The reason why the index is not managed by index lifecycle management.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
           }
         },
         "required": [
@@ -106793,6 +106801,9 @@
           },
           "unmanaged_reason": {
             "type": "string"
+          },
+          "minimum_lifecycle_enabled": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -106946,6 +106957,11 @@
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
+          },
+          "minimum_lifecycle_enabled": {
+            "description": "If `true`, the data stream is managed by the minimum data stream lifecycle. Only present when `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           }
         },
         "required": [
@@ -107063,6 +107079,11 @@
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
+          },
+          "minimum_lifecycle_enabled": {
+            "description": "If `true`, the data stream is managed by the minimum data stream lifecycle, because it is a time series data stream\nwithout a configured lifecycle and the minimum lifecycle is enabled. Only present when `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           },
           "name": {
             "description": "Name of the data stream.",
@@ -144780,6 +144801,11 @@
               "data_streams_managed_by_dlm": {
                 "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
                 "type": "number"
+              },
+              "data_streams_managed_by_minimum_lifecycle": {
+                "description": "The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.\nNot reported when index lifecycle management is unavailable.",
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "number"
               }
             },
             "required": [
@@ -144788,7 +144814,6 @@
               "num_docs",
               "size_in_bytes",
               "data_streams_count",
-              "data_streams_managed_by_ilm",
               "data_streams_managed_by_dlm"
             ]
           }
@@ -144843,6 +144868,11 @@
                     "$ref": "#/components/schemas/xpack.usage.DataStreamLifecycleGlobalRetention"
                   }
                 ]
+              },
+              "minimum_lifecycle_count": {
+                "description": "The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.\nNot reported in serverless.",
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "number"
               }
             }
           }
