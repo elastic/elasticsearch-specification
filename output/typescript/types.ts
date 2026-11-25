@@ -25408,10 +25408,21 @@ export interface XpackUsageEqlFeaturesSequences {
   sequence_maxspan: uint
 }
 
+export interface XpackUsageEsql extends XpackUsageBase {
+  features: Record<string, long>
+  queries: Record<string, XpackUsageEsqlQueries>
+  functions: Record<string, long>
+}
+
 export interface XpackUsageEsqlLoggingConfig {
   enabled: boolean
   user: boolean
   thresholds?: Record<string, Duration>
+}
+
+export interface XpackUsageEsqlQueries {
+  total: long
+  failed: long
 }
 
 export interface XpackUsageFeatureToggle {
@@ -25622,6 +25633,7 @@ export interface XpackUsageResponse {
   data_tiers: XpackUsageDataTiers
   enrich?: XpackUsageBase
   eql: XpackUsageEql
+  esql: XpackUsageEsql
   flattened?: XpackUsageFlattened
   graph: XpackUsageBase
   gpu_vector_indexing?: XpackUsageGpuVectorIndexing
