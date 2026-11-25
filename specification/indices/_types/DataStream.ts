@@ -103,6 +103,12 @@ export class DataStream {
    */
   lifecycle?: DataStreamLifecycleWithRollover
   /**
+   * If `true`, the data stream is managed by the minimum data stream lifecycle, because it is a time series data stream
+   * without a configured lifecycle and the minimum lifecycle is enabled. Only present when `true`.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  minimum_lifecycle_enabled?: boolean
+  /**
    * Name of the data stream.
    */
   name: DataStreamName
