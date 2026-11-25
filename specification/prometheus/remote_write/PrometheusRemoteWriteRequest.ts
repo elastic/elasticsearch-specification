@@ -31,6 +31,7 @@ import { RequestBase } from '@_types/Base'
  * @availability serverless stability=tech_preview visibility=public
  * @doc_id prometheus-remote-write
  * @doc_tag prometheus
+ * @index_privileges create_doc, auto_configure
  */
 export interface Request extends RequestBase {
   urls: [
@@ -50,12 +51,12 @@ export interface Request extends RequestBase {
   path_parts: {
     /**
      * The data stream dataset. The value is sanitized rather than rejected.
-     * Defaults to `generic`.
+     * @server_default generic
      */
     dataset?: string
     /**
      * The data stream namespace. The value is sanitized rather than rejected.
-     * Defaults to `default`.
+     * @server_default default
      */
     namespace?: string
   }
