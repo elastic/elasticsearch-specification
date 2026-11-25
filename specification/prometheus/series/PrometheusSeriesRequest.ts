@@ -31,6 +31,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=tech_preview visibility=public
  * @doc_id prometheus-series
  * @doc_tag prometheus
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [

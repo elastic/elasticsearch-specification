@@ -24,7 +24,7 @@ import { integer } from '@_types/Numeric'
 /**
  * Get Prometheus label values.
  *
- * Get the sorted, deduplicated values of one label on the matching time series.
+ * Get the sorted deduplicated values of one label on the matching time series.
  * Label names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.
  * An unknown label returns an empty list.
  * The endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.
@@ -33,6 +33,7 @@ import { integer } from '@_types/Numeric'
  * @availability serverless stability=tech_preview visibility=public
  * @doc_id prometheus-label-values
  * @doc_tag prometheus
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
