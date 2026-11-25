@@ -363,6 +363,36 @@ export class Eql extends Base {
   queries: Dictionary<string, Query>
 }
 
+export class Esql extends Base {
+  /**
+   * Per-feature usage counters, keyed by ES|QL source command or language
+   * feature (for example `where`, `sort`, `stats`, `lookup_join`). Each value
+   * counts how many queries used that feature. Every known feature has an
+   * entry; unused features report 0.
+   */
+  features: Dictionary<string, long>
+  /**
+   * Query counters keyed by client type, plus an `_all` entry that aggregates
+   * every client type. Currently all queries are recorded under `rest`, so
+   * `kibana` is always 0; `_all` holds the total.
+   */
+  queries: Dictionary<string, EsqlQueries>
+  /**
+   * Per-function usage counters, keyed by ES|QL function name (for example
+   * `max`, `coalesce`, `to_long`). Each value counts how many queries used that
+   * function. Every registered function has an entry; unused functions report
+   * 0.
+   */
+  functions: Dictionary<string, long>
+}
+
+export class EsqlQueries {
+  /** Number of queries run by this client type. */
+  total: long
+  /** Number of queries from this client type that failed. */
+  failed: long
+}
+
 export class Flattened extends Base {
   field_count: integer
 }

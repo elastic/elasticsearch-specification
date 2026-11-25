@@ -25,6 +25,7 @@ import {
   DataStreams,
   DataTiers,
   Eql,
+  Esql,
   Flattened,
   FrozenIndices,
   HealthStatistics,
@@ -57,6 +58,7 @@ export class Response {
     data_tiers: DataTiers
     enrich?: Base
     eql: Eql
+    esql: Esql
     flattened?: Flattened
     frozen_indices: FrozenIndices
     graph: Base
