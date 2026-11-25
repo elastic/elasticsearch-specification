@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { QueryResult } from './types'
+import { QueryResult } from '@prometheus/_types/QueryResult'
 
 export class Response {
   body: {

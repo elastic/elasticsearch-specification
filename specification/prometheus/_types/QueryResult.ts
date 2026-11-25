@@ -17,6 +17,15 @@
  * under the License.
  */
 
-export class Response {
-  body: {}
+import { UserDefinedValue } from '@spec_utils/UserDefinedValue'
+
+export class QueryResult {
+  /**
+   * The type of the result: `vector` for an instant query, `matrix` for a range query.
+   */
+  resultType: string
+  /**
+   * The result series. Sample values are JSON strings, including `NaN`, `+Inf` and `-Inf`.
+   */
+  result: UserDefinedValue[]
 }

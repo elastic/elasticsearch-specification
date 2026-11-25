@@ -597,11 +597,8 @@ project-get-many-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serv
 project-get-routing,,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-project-routing-get,,About retrieving project routing
 prometheus-label-values,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Get Prometheus label values
 prometheus-labels,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Get Prometheus label names
-prometheus-metadata,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Get Prometheus metric metadata
 prometheus-query,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Run a PromQL instant query
-prometheus-query-exemplars,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Query Prometheus exemplars
 prometheus-query-range,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Run a PromQL range query
-prometheus-remote-write,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Ingest Prometheus remote write data
 prometheus-series,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Find Prometheus series
 prometheus-status-buildinfo,https://www.elastic.co/docs/api/doc/elasticsearch#TODO,[use-doc-url],,Get Prometheus build information
 put-analytics-collection,https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-search-application-put-behavioral-analytics,https://www.elastic.co/guide/en/elasticsearch/reference/8.19/put-analytics-collection.html,Creating an analytics collection

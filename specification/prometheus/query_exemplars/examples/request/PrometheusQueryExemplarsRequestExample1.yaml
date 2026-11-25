@@ -1,3 +1,0 @@
-method_request: GET /_prometheus/api/v1/query_exemplars?query=http_request_duration_seconds_bucket&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z
-summary: Exemplars
-description: Get the exemplars of `http_request_duration_seconds_bucket`.
