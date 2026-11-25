@@ -145963,7 +145963,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2337-L2339"
+      "specLocation": "inference/_types/CommonTypes.ts#L2339-L2341"
     },
     {
       "kind": "enum",
@@ -145982,7 +145982,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2305-L2309"
+      "specLocation": "inference/_types/CommonTypes.ts#L2307-L2311"
     },
     {
       "kind": "enum",
@@ -146004,7 +146004,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2330-L2335"
+      "specLocation": "inference/_types/CommonTypes.ts#L2332-L2337"
     },
     {
       "kind": "enum",
@@ -146017,7 +146017,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2383-L2385"
+      "specLocation": "inference/_types/CommonTypes.ts#L2385-L2387"
     },
     {
       "kind": "enum",
@@ -146036,7 +146036,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2387-L2391"
+      "specLocation": "inference/_types/CommonTypes.ts#L2389-L2393"
     },
     {
       "kind": "enum",
@@ -146058,7 +146058,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2376-L2381"
+      "specLocation": "inference/_types/CommonTypes.ts#L2378-L2383"
     },
     {
       "description": "Type representing the different types of reasoning details that can be included in the response from the model.\nCurrently supported only for `elastic` provider.",
@@ -146898,7 +146898,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
+      "specLocation": "inference/_types/CommonTypes.ts#L2469-L2471"
     },
     {
       "kind": "enum",
@@ -146914,7 +146914,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
+      "specLocation": "inference/_types/CommonTypes.ts#L2464-L2467"
     },
     {
       "kind": "enum",
@@ -146927,7 +146927,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
+      "specLocation": "inference/_types/CommonTypes.ts#L2518-L2520"
     },
     {
       "kind": "enum",
@@ -146949,7 +146949,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
+      "specLocation": "inference/_types/CommonTypes.ts#L2511-L2516"
     },
     {
       "codegenNames": [
@@ -178970,7 +178970,7 @@
           }
         },
         {
-          "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
+          "description": "The URL endpoint to use for the requests.\nYou can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.\nSpecify the full endpoint URL, including the path.\nFor an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
           "name": "url",
           "required": false,
           "type": {
@@ -178982,7 +178982,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2303"
+      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2305"
     },
     {
       "kind": "interface",
@@ -179027,7 +179027,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2311-L2328"
+      "specLocation": "inference/_types/CommonTypes.ts#L2313-L2330"
     },
     {
       "inherits": {
@@ -179149,7 +179149,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2341-L2374"
+      "specLocation": "inference/_types/CommonTypes.ts#L2343-L2376"
     },
     {
       "kind": "interface",
@@ -179183,7 +179183,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2393-L2402"
+      "specLocation": "inference/_types/CommonTypes.ts#L2395-L2404"
     },
     {
       "inherits": {
@@ -179287,7 +179287,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2404-L2434"
+      "specLocation": "inference/_types/CommonTypes.ts#L2406-L2436"
     },
     {
       "kind": "interface",
@@ -179347,7 +179347,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
+      "specLocation": "inference/_types/CommonTypes.ts#L2438-L2462"
     },
     {
       "inherits": {
@@ -179475,7 +179475,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
+      "specLocation": "inference/_types/CommonTypes.ts#L2473-L2509"
     },
     {
       "inherits": {
