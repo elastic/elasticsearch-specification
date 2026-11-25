@@ -196,6 +196,14 @@ export class TextSimilarityReranker extends RetrieverBase {
   /** The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text. */
   field: string
   /**
+   * Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.
+   * If `false`, a reranking failure fails the request.
+   * @server_default false
+   * @availability stack since=8.19.0 stability=stable
+   * @availability serverless stability=stable
+   */
+  allow_rerank_failures?: boolean
+  /**
    * Whether to rescore on only the best matching chunks.
    * @availability stack since=9.2.0 stability=stable
    * @availability serverless stability=stable
