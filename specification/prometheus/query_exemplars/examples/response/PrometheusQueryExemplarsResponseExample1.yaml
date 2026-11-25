@@ -1,0 +1,13 @@
+summary: A successful response
+description: A successful response from `GET /_prometheus/api/v1/query_exemplars`.
+# type: response
+# response_code: 200
+value:
+  status: success
+  data:
+    - seriesLabels:
+        { __name__: http_request_duration_seconds_bucket, job: api, le: '0.5' }
+      exemplars:
+        - labels: { trace_id: 4bf92f3577b34da6a3ce929d0e0e4736 }
+          value: '0.42'
+          timestamp: 1783634412.5
