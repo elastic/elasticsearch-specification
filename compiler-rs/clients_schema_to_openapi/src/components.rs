@@ -77,7 +77,12 @@ impl<'a> TypesAndComponents<'a> {
         let result = ReferenceOr::Reference {
             reference: format!("#/components/parameters/{}", key),
         };
-        self.components.parameters.insert(key, ReferenceOr::Item(param));
+        // Shared parameters are added again under the same key. A key taken by another
+        // name means two names were sanitized to the same key.
+        let name = param.parameter_data_ref().name.clone();
+        if let Some(ReferenceOr::Item(previous)) = self.components.parameters.insert(key, ReferenceOr::Item(param)) {
+            debug_assert_eq!(previous.parameter_data_ref().name, name, "parameter component key collision");
+        }
         result
     }
 
