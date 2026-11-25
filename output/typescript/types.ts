@@ -23763,6 +23763,17 @@ export interface XpackUsageEqlFeaturesSequences {
   sequence_maxspan: uint
 }
 
+export interface XpackUsageEsql extends XpackUsageBase {
+  features: Record<string, long>
+  queries: Record<string, XpackUsageEsqlQueries>
+  functions: Record<string, long>
+}
+
+export interface XpackUsageEsqlQueries {
+  total: long
+  failed: long
+}
+
 export interface XpackUsageFeatureToggle {
   enabled: boolean
 }
@@ -23949,6 +23960,7 @@ export interface XpackUsageResponse {
   data_tiers: XpackUsageDataTiers
   enrich?: XpackUsageBase
   eql: XpackUsageEql
+  esql: XpackUsageEsql
   flattened?: XpackUsageFlattened
   frozen_indices: XpackUsageFrozenIndices
   graph: XpackUsageBase
