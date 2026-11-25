@@ -107611,7 +107611,7 @@
       "properties": [
         {
           "name": "status",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107621,7 +107621,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L91-L94"
+      "specLocation": "_global/msearch/types.ts#L91-L93"
     },
     {
       "generics": [

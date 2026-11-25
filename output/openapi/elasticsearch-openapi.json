@@ -104254,7 +104254,10 @@
               "status": {
                 "type": "number"
               }
-            }
+            },
+            "required": [
+              "status"
+            ]
           }
         ]
       },
