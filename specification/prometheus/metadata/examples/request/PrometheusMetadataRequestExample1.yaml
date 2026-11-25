@@ -1,0 +1,3 @@
+method_request: GET /_prometheus/api/v1/metadata?metric=http_requests_total
+summary: Metric metadata
+description: Get the metadata of one metric.
