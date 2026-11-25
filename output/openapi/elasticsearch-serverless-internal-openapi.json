@@ -8719,7 +8719,7 @@
                   "DataRecoveryGetRecoveryResponseExample1": {
                     "summary": "A running recovery",
                     "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
-                    "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+                    "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"rename_strategy\": { \"prefix\": \"restored-\" },\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
                   },
                   "DataRecoveryGetRecoveryResponseExample2": {
                     "summary": "A failed recovery",
@@ -9186,7 +9186,7 @@
                   "DataRecoveryListRecoveriesResponseExample1": {
                     "summary": "A page of recoveries",
                     "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
-                    "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+                    "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"rename_strategy\": { \"prefix\": \"restored-\" },\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
                   }
                 }
               }
@@ -94561,6 +94561,14 @@
               }
             ]
           },
+          "rename_strategy": {
+            "description": "The naming strategy supplied when the recovery was started, if recorded.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/data_recovery.start_recovery.RenameStrategy"
+              }
+            ]
+          },
           "sources": {
             "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
             "type": "array",
@@ -94664,6 +94672,19 @@
           "replace",
           "rename"
         ]
+      },
+      "data_recovery.start_recovery.RenameStrategy": {
+        "type": "object",
+        "properties": {
+          "prefix": {
+            "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          },
+          "suffix": {
+            "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
+            "type": "string"
+          }
+        }
       },
       "data_recovery._types.ResolvedRecoverySource": {
         "type": "object",
@@ -94791,19 +94812,6 @@
           "end",
           "max_recovery_point_age_millis"
         ]
-      },
-      "data_recovery.start_recovery.RenameStrategy": {
-        "type": "object",
-        "properties": {
-          "prefix": {
-            "description": "Text to add at the start of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
-            "type": "string"
-          },
-          "suffix": {
-            "description": "Text to add at the end of the name of each recovered source.\nAt least one of `prefix` and `suffix` must be set to a non-empty value, and both can be set together.",
-            "type": "string"
-          }
-        }
       },
       "_types.ErrorResponseBase": {
         "description": "The response returned by Elasticsearch when request execution did not succeed.",

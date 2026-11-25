@@ -11708,6 +11708,7 @@ export interface DataRecoveryRecovery {
   status: DataRecoveryRecoveryRunStatus
   recovery_point: DataRecoveryPoint
   destination_mode: DataRecoveryStartRecoveryRecoveryMode
+  rename_strategy?: DataRecoveryStartRecoveryRenameStrategy
   sources: DataRecoveryResolvedRecoverySource[]
   metadata: Metadata
   started_at: DateTime
