@@ -35,3 +35,33 @@ jobs:
         uses: elastic/docs-actions/openapi/lint@v1
         with:
           spec-path: output/openapi/elasticsearch-serverless-openapi-docs-final.json
+
+      # API Explorer overlays start from the same docs specs, so the docs preview reuses this build.
+      # Same target openapi-publish.yml uses, so the preview matches what merging publishes.
+      - name: Build API Explorer specs
+        run: |
+          make overlay-api-explorer
+          mkdir -p api-preview
+          cp output/openapi/elasticsearch-openapi-docs-api-explorer.json api-preview/elasticsearch.json
+          cp output/openapi/elasticsearch-serverless-openapi-docs-api-explorer.json api-preview/elasticsearch-serverless.json
+
+      - name: Upload API Explorer specs
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: api-preview-specs
+          path: api-preview
+          retention-days: 1
+          if-no-files-found: error
+
+  # Renders docs/api-preview with the specs above. docs-preview-deploy.yml publishes it and comments the link.
+  docs-preview:
+    needs: build-and-lint
+    permissions:
+      contents: read
+      pull-requests: read
+    # TODO: pin to @v1 once elastic/docs-actions ships pre-build-artifact.
+    uses: elastic/docs-actions/.github/workflows/docs-build.yml@pre-build-artifact
+    with:
+      path-pattern: '**'
+      pre-build-artifact: api-preview-specs
+      pre-build-artifact-path: docs/api-preview

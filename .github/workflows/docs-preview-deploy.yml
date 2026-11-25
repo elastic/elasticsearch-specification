@@ -2,7 +2,7 @@ name: docs-preview-deploy
 
 on:
   workflow_run:
-    workflows: [docs-preview-build]
+    workflows: [openapi-lint]
     types: [completed]
 
 permissions:

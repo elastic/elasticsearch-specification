@@ -1,6 +1,6 @@
 # Docs preview of the API Explorer for pull requests.
 # CI builds the specs and writes elasticsearch.json and elasticsearch-serverless.json next to this
-# file (.github/workflows/docs-preview-build.yml). A local spec replaces only the unreleased version,
+# file (the docs-preview job in .github/workflows/openapi-lint.yml). A local spec replaces only the unreleased version,
 # so the PR renders under /api/<key>/next/ and released majors still load from the published index.
 project: 'Elasticsearch API preview'
 toc:
