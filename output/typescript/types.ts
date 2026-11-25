@@ -12783,6 +12783,7 @@ export interface IlmExplainLifecycleLifecycleExplainPhaseExecution {
 export interface IlmExplainLifecycleLifecycleExplainUnmanaged {
   index: IndexName
   managed: false
+  unmanaged_reason?: string
 }
 
 export interface IlmExplainLifecycleRequest extends RequestBase {
@@ -12934,6 +12935,7 @@ export interface IndicesDataStream {
   prefer_ilm: boolean
   indices: IndicesDataStreamIndex[]
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  minimum_lifecycle_enabled?: boolean
   name: DataStreamName
   replicated?: boolean
   rollover_on_write: boolean
@@ -13846,6 +13848,7 @@ export interface IndicesExplainDataLifecycleDataStreamLifecycleExplain {
   tail_merge_date_millis?: EpochTime<UnitMillis>
   tail_merge_date?: DateTime
   unmanaged_reason?: string
+  minimum_lifecycle_enabled?: boolean
 }
 
 export interface IndicesExplainDataLifecycleRequest extends RequestBase {
@@ -13983,6 +13986,7 @@ export type IndicesGetAliasNotFoundAliases = IndicesGetAliasNotFoundAliasesKeys
 export interface IndicesGetDataLifecycleDataStreamWithLifecycle {
   name: DataStreamName
   lifecycle?: IndicesDataStreamLifecycleWithRollover
+  minimum_lifecycle_enabled?: boolean
 }
 
 export interface IndicesGetDataLifecycleRequest extends RequestBase {
@@ -26184,6 +26188,7 @@ export interface XpackUsageDataStreamLifecycleUsage extends XpackUsageBase {
   effective_retention?: XpackUsageDataStreamLifecycleEffectiveRetentionStats
   frozen_after?: XpackUsageDataStreamLifecycleRetentionStats
   global_retention?: XpackUsageDataStreamLifecycleGlobalRetention
+  minimum_lifecycle_count?: long
 }
 
 export interface XpackUsageDataStreams extends XpackUsageBase {
@@ -26319,8 +26324,9 @@ export interface XpackUsageIndexModeUsage extends XpackUsageBase {
   num_docs: long
   size_in_bytes: long
   data_streams_count: long
-  data_streams_managed_by_ilm: long
+  data_streams_managed_by_ilm?: long
   data_streams_managed_by_dlm: long
+  data_streams_managed_by_minimum_lifecycle?: long
 }
 
 export interface XpackUsageInvocations {

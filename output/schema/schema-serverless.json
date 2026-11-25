@@ -141821,7 +141821,7 @@
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
-      "specLocation": "ilm/explain_lifecycle/types.ts#L75-L78",
+      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L83",
       "type": {
         "items": [
           {
@@ -142281,7 +142281,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L85"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L85-L90"
     },
     {
       "kind": "interface",
@@ -142959,7 +142959,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L73"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L78"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.",
@@ -169885,9 +169885,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L91"
     },
     {
       "kind": "interface",
@@ -170049,7 +170060,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L34"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L39"
     },
     {
       "kind": "interface",
@@ -170397,7 +170408,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L153"
+      "specLocation": "indices/_types/DataStream.ts#L55-L159"
     },
     {
       "kind": "interface",
@@ -170525,7 +170536,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L162-L187"
+      "specLocation": "indices/_types/DataStream.ts#L168-L193"
     },
     {
       "kind": "interface",
@@ -170547,7 +170558,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L155-L160"
+      "specLocation": "indices/_types/DataStream.ts#L161-L166"
     },
     {
       "kind": "interface",
@@ -171923,7 +171934,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L189-L193"
+      "specLocation": "indices/_types/DataStream.ts#L195-L199"
     },
     {
       "kind": "interface",

@@ -98136,6 +98136,9 @@
           },
           "unmanaged_reason": {
             "type": "string"
+          },
+          "minimum_lifecycle_enabled": {
+            "type": "boolean"
           }
         },
         "required": [

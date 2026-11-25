@@ -163552,7 +163552,7 @@
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
-      "specLocation": "ilm/explain_lifecycle/types.ts#L75-L78",
+      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L83",
       "type": {
         "kind": "union_of",
         "items": [
@@ -164038,7 +164038,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L85"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L85-L90"
     },
     {
       "kind": "interface",
@@ -164065,9 +164065,27 @@
             "kind": "literal_value",
             "value": false
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The reason why the index is not managed by index lifecycle management.",
+          "name": "unmanaged_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L73"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L78"
     },
     {
       "kind": "request",
@@ -165894,6 +165912,24 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If `true`, the data stream is managed by the minimum data stream lifecycle, because it is a time series data stream\nwithout a configured lifecycle and the minimum lifecycle is enabled. Only present when `true`.",
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Name of the data stream.",
           "name": "name",
           "required": true,
@@ -166020,7 +166056,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L153"
+      "specLocation": "indices/_types/DataStream.ts#L55-L159"
     },
     {
       "kind": "interface",
@@ -166198,7 +166234,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L162-L187"
+      "specLocation": "indices/_types/DataStream.ts#L168-L193"
     },
     {
       "kind": "interface",
@@ -166533,7 +166569,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L155-L160"
+      "specLocation": "indices/_types/DataStream.ts#L161-L166"
     },
     {
       "kind": "interface",
@@ -166576,7 +166612,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L189-L193"
+      "specLocation": "indices/_types/DataStream.ts#L195-L199"
     },
     {
       "kind": "interface",
@@ -175938,9 +175974,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L91"
     },
     {
       "kind": "request",
@@ -177563,9 +177610,27 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If `true`, the data stream is managed by the minimum data stream lifecycle. Only present when `true`.",
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L34"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L39"
     },
     {
       "kind": "request",
@@ -313891,7 +313956,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L514-L516"
+      "specLocation": "xpack/usage/types.ts#L520-L522"
     },
     {
       "kind": "interface",
@@ -314127,7 +314192,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L518-L521"
+      "specLocation": "xpack/usage/types.ts#L524-L527"
     },
     {
       "kind": "interface",
@@ -314187,7 +314252,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L188-L193"
+      "specLocation": "xpack/usage/types.ts#L194-L199"
     },
     {
       "kind": "interface",
@@ -314221,7 +314286,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L195-L204"
+      "specLocation": "xpack/usage/types.ts#L201-L210"
     },
     {
       "kind": "interface",
@@ -314268,7 +314333,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L206-L222"
+      "specLocation": "xpack/usage/types.ts#L212-L228"
     },
     {
       "kind": "interface",
@@ -314296,7 +314361,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L181-L186"
+      "specLocation": "xpack/usage/types.ts#L187-L192"
     },
     {
       "kind": "interface",
@@ -314343,7 +314408,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L163-L179"
+      "specLocation": "xpack/usage/types.ts#L169-L185"
     },
     {
       "kind": "interface",
@@ -314435,9 +314500,27 @@
               "namespace": "xpack.usage"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.\nNot reported in serverless.",
+          "name": "minimum_lifecycle_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L131-L161"
+      "specLocation": "xpack/usage/types.ts#L131-L167"
     },
     {
       "kind": "interface",
@@ -314595,7 +314678,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L224-L235"
+      "specLocation": "xpack/usage/types.ts#L230-L241"
     },
     {
       "kind": "interface",
@@ -314672,7 +314755,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L523-L533"
+      "specLocation": "xpack/usage/types.ts#L529-L539"
     },
     {
       "kind": "interface",
@@ -314742,7 +314825,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L535-L538"
+      "specLocation": "xpack/usage/types.ts#L541-L544"
     },
     {
       "kind": "interface",
@@ -314829,7 +314912,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L237-L245"
+      "specLocation": "xpack/usage/types.ts#L243-L251"
     },
     {
       "kind": "interface",
@@ -314894,7 +314977,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L247-L253"
+      "specLocation": "xpack/usage/types.ts#L253-L259"
     },
     {
       "kind": "interface",
@@ -314959,7 +315042,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L255-L261"
+      "specLocation": "xpack/usage/types.ts#L261-L267"
     },
     {
       "kind": "interface",
@@ -314991,7 +315074,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L263-L266"
+      "specLocation": "xpack/usage/types.ts#L269-L272"
     },
     {
       "kind": "interface",
@@ -315067,7 +315150,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L268-L275"
+      "specLocation": "xpack/usage/types.ts#L274-L281"
     },
     {
       "kind": "interface",
@@ -315152,7 +315235,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L540-L561"
+      "specLocation": "xpack/usage/types.ts#L546-L567"
     },
     {
       "kind": "interface",
@@ -315243,7 +315326,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L563-L568"
+      "specLocation": "xpack/usage/types.ts#L569-L574"
     },
     {
       "kind": "interface",
@@ -315291,7 +315374,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L570-L572"
+      "specLocation": "xpack/usage/types.ts#L576-L578"
     },
     {
       "kind": "interface",
@@ -315350,7 +315433,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L709-L721"
+      "specLocation": "xpack/usage/types.ts#L715-L727"
     },
     {
       "kind": "interface",
@@ -315406,7 +315489,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L741-L751"
+      "specLocation": "xpack/usage/types.ts#L753-L763"
     },
     {
       "kind": "interface",
@@ -315433,7 +315516,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L291-L293"
+      "specLocation": "xpack/usage/types.ts#L297-L299"
     },
     {
       "kind": "interface",
@@ -315468,7 +315551,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L313-L316"
+      "specLocation": "xpack/usage/types.ts#L319-L322"
     },
     {
       "kind": "interface",
@@ -315500,7 +315583,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L308-L311"
+      "specLocation": "xpack/usage/types.ts#L314-L317"
     },
     {
       "kind": "interface",
@@ -315579,7 +315662,7 @@
         {
           "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
           "name": "data_streams_managed_by_ilm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -315599,9 +315682,27 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.\nNot reported when index lifecycle management is unavailable.",
+          "name": "data_streams_managed_by_minimum_lifecycle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L723-L739"
+      "specLocation": "xpack/usage/types.ts#L729-L751"
     },
     {
       "kind": "interface",
@@ -315654,7 +315755,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L318-L321"
+      "specLocation": "xpack/usage/types.ts#L324-L327"
     },
     {
       "kind": "interface",
@@ -315730,7 +315831,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L574-L580"
+      "specLocation": "xpack/usage/types.ts#L580-L586"
     },
     {
       "kind": "interface",
@@ -315859,7 +315960,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L582-L589"
+      "specLocation": "xpack/usage/types.ts#L588-L595"
     },
     {
       "kind": "interface",
@@ -315880,7 +315981,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L406-L408"
+      "specLocation": "xpack/usage/types.ts#L412-L414"
     },
     {
       "kind": "interface",
@@ -315934,7 +316035,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L328-L333"
+      "specLocation": "xpack/usage/types.ts#L334-L339"
     },
     {
       "kind": "interface",
@@ -315977,7 +316078,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L335-L339"
+      "specLocation": "xpack/usage/types.ts#L341-L345"
     },
     {
       "kind": "interface",
@@ -315998,7 +316099,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L345-L347"
+      "specLocation": "xpack/usage/types.ts#L351-L353"
     },
     {
       "kind": "interface",
@@ -316019,7 +316120,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L341-L343"
+      "specLocation": "xpack/usage/types.ts#L347-L349"
     },
     {
       "kind": "interface",
@@ -316079,7 +316180,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L349-L357"
+      "specLocation": "xpack/usage/types.ts#L355-L363"
     },
     {
       "kind": "interface",
@@ -316133,7 +316234,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L378-L383"
+      "specLocation": "xpack/usage/types.ts#L384-L389"
     },
     {
       "kind": "interface",
@@ -316154,7 +316255,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L385-L387"
+      "specLocation": "xpack/usage/types.ts#L391-L393"
     },
     {
       "kind": "interface",
@@ -316208,7 +316309,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L359-L364"
+      "specLocation": "xpack/usage/types.ts#L365-L370"
     },
     {
       "kind": "interface",
@@ -316251,7 +316352,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L389-L393"
+      "specLocation": "xpack/usage/types.ts#L395-L399"
     },
     {
       "kind": "interface",
@@ -316322,7 +316423,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L366-L376"
+      "specLocation": "xpack/usage/types.ts#L372-L382"
     },
     {
       "kind": "interface",
@@ -316420,7 +316521,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L395-L404"
+      "specLocation": "xpack/usage/types.ts#L401-L410"
     },
     {
       "kind": "interface",
@@ -316452,7 +316553,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L323-L326"
+      "specLocation": "xpack/usage/types.ts#L329-L332"
     },
     {
       "kind": "interface",
@@ -316501,7 +316602,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L591-L594"
+      "specLocation": "xpack/usage/types.ts#L597-L600"
     },
     {
       "kind": "interface",
@@ -316545,7 +316646,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L295-L298"
+      "specLocation": "xpack/usage/types.ts#L301-L304"
     },
     {
       "kind": "interface",
@@ -316610,7 +316711,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L300-L306"
+      "specLocation": "xpack/usage/types.ts#L306-L312"
     },
     {
       "kind": "interface",
@@ -316664,7 +316765,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L410-L415"
+      "specLocation": "xpack/usage/types.ts#L416-L421"
     },
     {
       "kind": "interface",
@@ -316850,7 +316951,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L627-L636"
+      "specLocation": "xpack/usage/types.ts#L633-L642"
     },
     {
       "kind": "interface",
@@ -316871,7 +316972,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L417-L419"
+      "specLocation": "xpack/usage/types.ts#L423-L425"
     },
     {
       "kind": "request",
@@ -317429,7 +317530,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L421-L424"
+      "specLocation": "xpack/usage/types.ts#L427-L430"
     },
     {
       "kind": "interface",
@@ -317459,7 +317560,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L426-L428"
+      "specLocation": "xpack/usage/types.ts#L432-L434"
     },
     {
       "kind": "interface",
@@ -317626,7 +317727,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L430-L445"
+      "specLocation": "xpack/usage/types.ts#L436-L451"
     },
     {
       "kind": "interface",
@@ -317675,7 +317776,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L638-L642"
+      "specLocation": "xpack/usage/types.ts#L644-L648"
     },
     {
       "kind": "interface",
@@ -317845,7 +317946,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L644-L657"
+      "specLocation": "xpack/usage/types.ts#L650-L663"
     },
     {
       "kind": "interface",
@@ -317888,7 +317989,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L447-L451"
+      "specLocation": "xpack/usage/types.ts#L453-L457"
     },
     {
       "kind": "interface",
@@ -317909,7 +318010,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L459-L461"
+      "specLocation": "xpack/usage/types.ts#L465-L467"
     },
     {
       "kind": "interface",
@@ -318063,7 +318164,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L463-L500"
+      "specLocation": "xpack/usage/types.ts#L469-L506"
     },
     {
       "kind": "interface",
@@ -318106,7 +318207,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L502-L506"
+      "specLocation": "xpack/usage/types.ts#L508-L512"
     },
     {
       "kind": "interface",
@@ -318149,7 +318250,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L453-L457"
+      "specLocation": "xpack/usage/types.ts#L459-L463"
     },
     {
       "kind": "interface",
@@ -318187,7 +318288,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L659-L662"
+      "specLocation": "xpack/usage/types.ts#L665-L668"
     },
     {
       "kind": "interface",
@@ -318247,7 +318348,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L596-L599"
+      "specLocation": "xpack/usage/types.ts#L602-L605"
     },
     {
       "kind": "interface",
@@ -318279,7 +318380,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L601-L604"
+      "specLocation": "xpack/usage/types.ts#L607-L610"
     },
     {
       "kind": "interface",
@@ -318328,7 +318429,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L664-L668"
+      "specLocation": "xpack/usage/types.ts#L670-L674"
     },
     {
       "kind": "interface",
@@ -318369,7 +318470,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L684-L696"
+      "specLocation": "xpack/usage/types.ts#L690-L702"
     },
     {
       "kind": "interface",
@@ -318410,7 +318511,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L670-L682"
+      "specLocation": "xpack/usage/types.ts#L676-L688"
     },
     {
       "kind": "interface",
@@ -318459,7 +318560,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L698-L702"
+      "specLocation": "xpack/usage/types.ts#L704-L708"
     },
     {
       "kind": "interface",
@@ -318500,7 +318601,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L622-L625"
+      "specLocation": "xpack/usage/types.ts#L628-L631"
     },
     {
       "kind": "interface",
@@ -318532,7 +318633,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L606-L608"
+      "specLocation": "xpack/usage/types.ts#L612-L614"
     },
     {
       "kind": "interface",
@@ -318619,7 +318720,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L610-L615"
+      "specLocation": "xpack/usage/types.ts#L616-L621"
     },
     {
       "kind": "interface",
@@ -318651,7 +318752,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L617-L620"
+      "specLocation": "xpack/usage/types.ts#L623-L626"
     },
     {
       "kind": "interface",
@@ -318689,7 +318790,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L704-L707"
+      "specLocation": "xpack/usage/types.ts#L710-L713"
     },
     {
       "kind": "interface",
