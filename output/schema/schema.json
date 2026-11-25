@@ -59857,7 +59857,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L217-L222"
+      "specLocation": "_types/Retriever.ts#L225-L230"
     },
     {
       "kind": "type_alias",
@@ -60750,7 +60750,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L228-L245"
+      "specLocation": "_types/Retriever.ts#L236-L253"
     },
     {
       "kind": "enum",
@@ -60764,7 +60764,7 @@
         "name": "DiversifyRetrieverTypes",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L224-L226"
+      "specLocation": "_types/Retriever.ts#L232-L234"
     },
     {
       "kind": "interface",
@@ -67028,7 +67028,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L206-L215"
+      "specLocation": "_types/Retriever.ts#L214-L223"
     },
     {
       "kind": "type_alias",
@@ -69173,6 +69173,28 @@
               "stability": "stable"
             },
             "stack": {
+              "since": "8.19.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+          "name": "allow_rerank_failures",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
               "since": "9.2.0",
               "stability": "stable"
             }
@@ -69189,7 +69211,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L187-L204"
+      "specLocation": "_types/Retriever.ts#L187-L212"
     },
     {
       "kind": "enum",
@@ -93974,9 +93996,9 @@
       },
       "properties": [
         {
-          "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+          "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
           "name": "max_chunk_size",
-          "required": true,
+          "required": false,
           "serverDefault": 250,
           "type": {
             "kind": "instance_of",
@@ -94055,7 +94077,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L33"
+      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L39"
     },
     {
       "kind": "interface",

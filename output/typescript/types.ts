@@ -3525,6 +3525,7 @@ export interface TextSimilarityReranker extends RetrieverBase {
   inference_id?: string
   inference_text: string
   field: string
+  allow_rerank_failures?: boolean
   chunk_rescorer?: ChunkRescorer
 }
 
@@ -6197,7 +6198,7 @@ export interface MappingByteNumberProperty extends MappingNumberPropertyBase {
 }
 
 export interface MappingChunkRescorerChunkingSettings {
-  max_chunk_size: integer
+  max_chunk_size?: integer
   overlap?: integer
   sentence_overlap?: integer
   separator_group?: string
