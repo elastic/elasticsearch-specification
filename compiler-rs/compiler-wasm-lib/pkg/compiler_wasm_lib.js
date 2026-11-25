@@ -123,6 +123,21 @@ function takeFromExternrefTable0(idx) {
     return value;
 }
 /**
+ * @param {string[]} args
+ * @param {string | null} [cwd]
+ */
+module.exports.convert_schema_to_individual_rest_api_spec_files = function(args, cwd) {
+    const ptr0 = passArrayJsValueToWasm0(args, wasm.__wbindgen_malloc);
+    const len0 = WASM_VECTOR_LEN;
+    var ptr1 = isLikeNone(cwd) ? 0 : passStringToWasm0(cwd, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    var len1 = WASM_VECTOR_LEN;
+    const ret = wasm.convert_schema_to_individual_rest_api_spec_files(ptr0, len0, ptr1, len1);
+    if (ret[1]) {
+        throw takeFromExternrefTable0(ret[0]);
+    }
+};
+
+/**
  * Convert schema.json to OpenAPI. The `cwd` argument is the current directory to be used
  * if not the system-defined one, as is the case when running with `npm rum --prefix compiler`
  * @param {string[]} args
@@ -134,21 +149,6 @@ module.exports.convert_schema_to_openapi = function(args, cwd) {
     var ptr1 = isLikeNone(cwd) ? 0 : passStringToWasm0(cwd, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
     var len1 = WASM_VECTOR_LEN;
     const ret = wasm.convert_schema_to_openapi(ptr0, len0, ptr1, len1);
-    if (ret[1]) {
-        throw takeFromExternrefTable0(ret[0]);
-    }
-};
-
-/**
- * @param {string[]} args
- * @param {string | null} [cwd]
- */
-module.exports.convert_schema_to_individual_rest_api_spec_files = function(args, cwd) {
-    const ptr0 = passArrayJsValueToWasm0(args, wasm.__wbindgen_malloc);
-    const len0 = WASM_VECTOR_LEN;
-    var ptr1 = isLikeNone(cwd) ? 0 : passStringToWasm0(cwd, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    var len1 = WASM_VECTOR_LEN;
-    const ret = wasm.convert_schema_to_individual_rest_api_spec_files(ptr0, len0, ptr1, len1);
     if (ret[1]) {
         throw takeFromExternrefTable0(ret[0]);
     }

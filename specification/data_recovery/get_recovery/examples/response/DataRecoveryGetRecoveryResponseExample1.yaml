@@ -12,6 +12,7 @@ value: |-
       "end_time": "2026-10-20T10:05:12.000Z"
     },
     "destination_mode": "rename",
+    "rename_strategy": { "prefix": "restored-" },
     "sources": [
       { "source": "logs-app-default", "type": "data_stream", "destination": "restored-logs-app-default" },
       { "source": "orders", "type": "index", "destination": "restored-orders" }

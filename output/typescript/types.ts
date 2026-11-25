@@ -11708,6 +11708,7 @@ export interface DataRecoveryRecovery {
   status: DataRecoveryRecoveryRunStatus
   recovery_point: DataRecoveryPoint
   destination_mode: DataRecoveryStartRecoveryRecoveryMode
+  rename_strategy?: DataRecoveryStartRecoveryRenameStrategy
   sources: DataRecoveryResolvedRecoverySource[]
   metadata: Metadata
   started_at: DateTime
@@ -21666,6 +21667,30 @@ export interface ProjectTagsTagsKeys {
 }
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
+
+export interface PrometheusQueryExemplarsExemplar {
+  labels: Record<string, string>
+  value: string
+  timestamp: double
+}
+
+export interface PrometheusQueryExemplarsExemplarSeries {
+  seriesLabels: Record<string, string>
+  exemplars: PrometheusQueryExemplarsExemplar[]
+}
+
+export interface PrometheusQueryExemplarsRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  start: string
+  end: string
+  timeout?: string
+}
+
+export interface PrometheusQueryExemplarsResponse {
+  status: string
+  data: PrometheusQueryExemplarsExemplarSeries[]
+}
 
 export interface PrometheusStatusBuildinfoBuildInfo {
   application: string
