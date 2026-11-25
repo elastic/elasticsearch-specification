@@ -576,6 +576,23 @@ export class Esql extends Base {
    * bucket, the one its `took` time falls in.
    */
   took: EsqlTook
+  /**
+   * Per-setting usage counters broken down by the setting's effective value in
+   * each query, whether the query supplied it or used the default. Keyed by
+   * ES|QL query setting name. Each value maps a value category to a count.
+   */
+  resolved_settings: Dictionary<string, Dictionary<string, long>>
+  /**
+   * Like `settings`, but counts the settings set inside the definitions of the
+   * views a query uses. Counted separately from the query's own settings.
+   */
+  view_settings: Dictionary<string, long>
+  /**
+   * Like `resolved_settings`, but for the views a query uses: counts the
+   * effective value of each setting in the view definitions, whether a view set
+   * it or used the default. Counted separately from the query's own settings.
+   */
+  view_resolved_settings: Dictionary<string, Dictionary<string, long>>
 }
 
 export class EsqlQueries {
