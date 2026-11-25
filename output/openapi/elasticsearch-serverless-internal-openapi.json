@@ -53095,6 +53095,13 @@
                         }
                       ]
                     },
+                    "esql": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.Esql"
+                        }
+                      ]
+                    },
                     "flattened": {
                       "allOf": [
                         {
@@ -53223,6 +53230,7 @@
                     "ccr",
                     "data_tiers",
                     "eql",
+                    "esql",
                     "graph",
                     "ilm",
                     "logstash",
@@ -131111,6 +131119,61 @@
             "type": "number"
           }
         }
+      },
+      "xpack.usage.Esql": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "features": {
+                "description": "Per-feature usage counters, keyed by ES|QL source command or language\nfeature (for example `where`, `sort`, `stats`, `lookup_join`). Each value\ncounts how many queries used that feature. Every known feature has an\nentry; unused features report 0.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "queries": {
+                "description": "Query counters keyed by client type, plus an `_all` entry that aggregates\nevery client type. Currently all queries are recorded under `rest`, so\n`kibana` is always 0; `_all` holds the total.",
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/xpack.usage.EsqlQueries"
+                }
+              },
+              "functions": {
+                "description": "Per-function usage counters, keyed by ES|QL function name (for example\n`max`, `coalesce`, `to_long`). Each value counts how many queries used that\nfunction. Every registered function has an entry; unused functions report\n0.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "features",
+              "queries",
+              "functions"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.EsqlQueries": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "description": "Number of queries run by this client type.",
+            "type": "number"
+          },
+          "failed": {
+            "description": "Number of queries from this client type that failed.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "total",
+          "failed"
+        ]
       },
       "xpack.usage.Flattened": {
         "allOf": [
