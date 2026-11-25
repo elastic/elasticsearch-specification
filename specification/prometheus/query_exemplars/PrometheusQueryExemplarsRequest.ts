@@ -64,5 +64,10 @@ export interface Request extends RequestBase {
      * The end of the range, as an RFC 3339 timestamp or Unix time in seconds.
      */
     end: string
+    /**
+     * The evaluation timeout, as a number of seconds or a duration such as `30s`.
+     * It must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.
+     */
+    timeout?: string
   }
 }
