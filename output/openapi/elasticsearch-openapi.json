@@ -60022,6 +60022,13 @@
                         }
                       ]
                     },
+                    "esql": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/xpack.usage.Esql"
+                        }
+                      ]
+                    },
                     "flattened": {
                       "allOf": [
                         {
@@ -60192,6 +60199,7 @@
                     "ccr",
                     "data_tiers",
                     "eql",
+                    "esql",
                     "graph",
                     "ilm",
                     "logstash",
@@ -78107,6 +78115,12 @@
                 "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
               },
+              "allow_rerank_failures": {
+                "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+                "default": false,
+                "x-state": "Generally available; Added in 8.19.0",
+                "type": "boolean"
+              },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
                 "x-state": "Generally available; Added in 9.2.0",
@@ -78146,7 +78160,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
             "default": 250.0,
             "type": "number"
           },
@@ -78179,10 +78193,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
+        }
       },
       "_types.RuleRetriever": {
         "allOf": [
@@ -103411,12 +103422,12 @@
         ]
       },
       "esql._types.EsqlQuerySettings": {
-        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `unmapped_fields`) must be supplied in the query itself.",
+        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.\nA `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.\nA setting with a map value can combine the values from several places instead of replacing them.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `time_series_reduce_per_index`) must be supplied in the query itself.",
         "type": "object",
         "properties": {
           "time_zone": {
             "description": "The default timezone to be used in the query.\nIt defaults to UTC and overrides the `time_zone` request parameter.",
-            "x-state": "Generally available; Added in 9.4.0",
+            "x-state": "Generally available; Added in 9.5.0",
             "type": "string"
           },
           "approximation": {
@@ -103431,10 +103442,41 @@
           "column_metadata": {
             "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
             "default": false,
-            "x-state": "Experimental; Added in 9.5.0",
+            "x-state": "Technical preview; Added in 9.5.0",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
+              }
+            ]
+          },
+          "unmapped_fields": {
+            "description": "Determines how fields that are present in documents but not defined in the index mapping are treated.\nThis is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.\nThe values are case-insensitive.",
+            "default": "DEFAULT",
+            "x-state": "Generally available; Added in 9.7.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.EsqlUnmappedFields"
+              }
+            ]
+          },
+          "wildcards_match_views": {
+            "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "wildcards_match_datasets": {
+            "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Technical preview; Added in 9.6.0",
+            "type": "boolean"
+          },
+          "exemplars": {
+            "description": "When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+            "x-state": "Technical preview; Added in 9.7.0",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.EsqlExemplars"
               }
             ]
           }
@@ -103462,6 +103504,40 @@
             "description": "The confidence level of the computed confidence intervals.\nA null value disables computing confidence intervals.",
             "default": 0.9,
             "type": "number"
+          }
+        }
+      },
+      "esql._types.EsqlUnmappedFields": {
+        "type": "string",
+        "enum": [
+          "DEFAULT",
+          "NULLIFY",
+          "LOAD",
+          "LOAD_ALL"
+        ]
+      },
+      "esql._types.EsqlExemplars": {
+        "description": "The `exemplars` query setting.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/esql._types.EsqlExemplarsSettings"
+          }
+        ]
+      },
+      "esql._types.EsqlExemplarsSettings": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "description": "The maximum number of exemplars to return.\nWithout it, the default limit of a regular query applies.",
+            "type": "number"
+          },
+          "include_timeseries": {
+            "description": "When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.",
+            "default": false,
+            "type": "boolean"
           }
         }
       },
@@ -104178,7 +104254,10 @@
               "status": {
                 "type": "number"
               }
-            }
+            },
+            "required": [
+              "status"
+            ]
           }
         ]
       },
@@ -106179,6 +106258,11 @@
             "enum": [
               "false"
             ]
+          },
+          "unmanaged_reason": {
+            "description": "The reason why the index is not managed by index lifecycle management.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "string"
           }
         },
         "required": [
@@ -106772,6 +106856,9 @@
           },
           "unmanaged_reason": {
             "type": "string"
+          },
+          "minimum_lifecycle_enabled": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -106925,6 +107012,11 @@
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
+          },
+          "minimum_lifecycle_enabled": {
+            "description": "If `true`, the data stream is managed by the minimum data stream lifecycle. Only present when `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           }
         },
         "required": [
@@ -107042,6 +107134,11 @@
                 "$ref": "#/components/schemas/indices._types.DataStreamLifecycleWithRollover"
               }
             ]
+          },
+          "minimum_lifecycle_enabled": {
+            "description": "If `true`, the data stream is managed by the minimum data stream lifecycle, because it is a time series data stream\nwithout a configured lifecycle and the minimum lifecycle is enabled. Only present when `true`.",
+            "x-state": "Generally available; Added in 9.6.0",
+            "type": "boolean"
           },
           "name": {
             "description": "Name of the data stream.",
@@ -115856,7 +115953,7 @@
             "type": "string"
           },
           "url": {
-            "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
+            "description": "The URL endpoint to use for the requests.\nYou can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.\nSpecify the full endpoint URL, including the path.\nFor an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
             "type": "string"
           }
         },
@@ -144760,6 +144857,11 @@
               "data_streams_managed_by_dlm": {
                 "description": "The number of data streams in this index mode that are managed by data stream lifecycle.",
                 "type": "number"
+              },
+              "data_streams_managed_by_minimum_lifecycle": {
+                "description": "The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.\nNot reported when index lifecycle management is unavailable.",
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "number"
               }
             },
             "required": [
@@ -144768,7 +144870,6 @@
               "num_docs",
               "size_in_bytes",
               "data_streams_count",
-              "data_streams_managed_by_ilm",
               "data_streams_managed_by_dlm"
             ]
           }
@@ -144823,6 +144924,11 @@
                     "$ref": "#/components/schemas/xpack.usage.DataStreamLifecycleGlobalRetention"
                   }
                 ]
+              },
+              "minimum_lifecycle_count": {
+                "description": "The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.\nNot reported in serverless.",
+                "x-state": "Generally available; Added in 9.6.0",
+                "type": "number"
               }
             }
           }
@@ -145333,6 +145439,61 @@
             "type": "number"
           }
         }
+      },
+      "xpack.usage.Esql": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/xpack.usage.Base"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "features": {
+                "description": "Per-feature usage counters, keyed by ES|QL source command or language\nfeature (for example `where`, `sort`, `stats`, `lookup_join`). Each value\ncounts how many queries used that feature. Every known feature has an\nentry; unused features report 0.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "queries": {
+                "description": "Query counters keyed by client type, plus an `_all` entry that aggregates\nevery client type. Currently all queries are recorded under `rest`, so\n`kibana` is always 0; `_all` holds the total.",
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/xpack.usage.EsqlQueries"
+                }
+              },
+              "functions": {
+                "description": "Per-function usage counters, keyed by ES|QL function name (for example\n`max`, `coalesce`, `to_long`). Each value counts how many queries used that\nfunction. Every registered function has an entry; unused functions report\n0.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              }
+            },
+            "required": [
+              "features",
+              "queries",
+              "functions"
+            ]
+          }
+        ]
+      },
+      "xpack.usage.EsqlQueries": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "description": "Number of queries run by this client type.",
+            "type": "number"
+          },
+          "failed": {
+            "description": "Number of queries from this client type that failed.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "total",
+          "failed"
+        ]
       },
       "xpack.usage.Flattened": {
         "allOf": [

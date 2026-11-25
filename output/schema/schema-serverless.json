@@ -105074,6 +105074,28 @@
               "stability": "stable"
             },
             "stack": {
+              "since": "8.19.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+          "name": "allow_rerank_failures",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
               "since": "9.2.0",
               "stability": "stable"
             }
@@ -105090,7 +105112,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L187-L204"
+      "specLocation": "_types/Retriever.ts#L187-L212"
     },
     {
       "kind": "interface",
@@ -105124,7 +105146,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L217-L222"
+      "specLocation": "_types/Retriever.ts#L225-L230"
     },
     {
       "attachedBehaviors": [
@@ -105154,9 +105176,9 @@
       },
       "properties": [
         {
-          "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+          "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
           "name": "max_chunk_size",
-          "required": true,
+          "required": false,
           "serverDefault": 250,
           "type": {
             "kind": "instance_of",
@@ -105235,7 +105257,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L33"
+      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L39"
     },
     {
       "description": "A class that implements `OverloadOf` only needs to declare properties that differ from the parent.\nUnchanged properties are inherited automatically. For declared properties, you can change\nwhether a property is required or not as well as its type. Same for the descriptions and js doc tags,\nif not specified, the parent ones will be used.",
@@ -105418,7 +105440,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L206-L215"
+      "specLocation": "_types/Retriever.ts#L214-L223"
     },
     {
       "inherits": {
@@ -105828,7 +105850,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L228-L245"
+      "specLocation": "_types/Retriever.ts#L236-L253"
     },
     {
       "kind": "enum",
@@ -105842,7 +105864,7 @@
         "name": "DiversifyRetrieverTypes",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L224-L226"
+      "specLocation": "_types/Retriever.ts#L232-L234"
     },
     {
       "kind": "interface",
@@ -107589,7 +107611,7 @@
       "properties": [
         {
           "name": "status",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107599,7 +107621,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L91-L94"
+      "specLocation": "_global/msearch/types.ts#L91-L93"
     },
     {
       "generics": [
@@ -141420,7 +141442,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L235-L240",
+      "specLocation": "esql/_types/types.ts#L313-L318",
       "type": {
         "items": [
           {
@@ -141474,7 +141496,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L242-L254"
+      "specLocation": "esql/_types/types.ts#L320-L332"
     },
     {
       "kind": "enum",
@@ -141500,6 +141522,73 @@
         "namespace": "esql._types"
       },
       "specLocation": "esql/_types/EsqlResult.ts#L83-L89"
+    },
+    {
+      "codegenNames": [
+        "enabled",
+        "settings"
+      ],
+      "description": "The `exemplars` query setting.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+      "kind": "type_alias",
+      "name": {
+        "name": "EsqlExemplars",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/types.ts#L293-L298",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlExemplarsSettings",
+              "namespace": "esql._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EsqlExemplarsSettings",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The maximum number of exemplars to return.\nWithout it, the default limit of a regular query applies.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.",
+          "name": "include_timeseries",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L300-L311"
     },
     {
       "kind": "enum",
@@ -141534,6 +141623,40 @@
         "namespace": "esql._types"
       },
       "specLocation": "esql/_types/QueryParameters.ts#L20-L29"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "A query that references a fully unmapped field fails.",
+          "name": "DEFAULT"
+        },
+        {
+          "description": "A referenced unmapped field is treated as `null`.",
+          "name": "NULLIFY"
+        },
+        {
+          "description": "Referenced unmapped fields are loaded from `_source` as `keyword`.\nPartially mapped fields are also loaded from `_source` in the indices where they are unmapped.",
+          "name": "LOAD"
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Does everything `LOAD` does, and also returns all unmapped fields in a single `_unmapped_fields` column.",
+          "name": "LOAD_ALL"
+        }
+      ],
+      "name": {
+        "name": "EsqlUnmappedFields",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/types.ts#L272-L291"
     },
     {
       "kind": "type_alias",
@@ -141698,7 +141821,7 @@
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
-      "specLocation": "ilm/explain_lifecycle/types.ts#L75-L78",
+      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L83",
       "type": {
         "items": [
           {
@@ -142158,7 +142281,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L85"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L85-L90"
     },
     {
       "kind": "interface",
@@ -142836,7 +142959,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L73"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L78"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.",
@@ -145840,7 +145963,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2337-L2339"
+      "specLocation": "inference/_types/CommonTypes.ts#L2339-L2341"
     },
     {
       "kind": "enum",
@@ -145859,7 +145982,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2305-L2309"
+      "specLocation": "inference/_types/CommonTypes.ts#L2307-L2311"
     },
     {
       "kind": "enum",
@@ -145881,7 +146004,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2330-L2335"
+      "specLocation": "inference/_types/CommonTypes.ts#L2332-L2337"
     },
     {
       "kind": "enum",
@@ -145894,7 +146017,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2383-L2385"
+      "specLocation": "inference/_types/CommonTypes.ts#L2385-L2387"
     },
     {
       "kind": "enum",
@@ -145913,7 +146036,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2387-L2391"
+      "specLocation": "inference/_types/CommonTypes.ts#L2389-L2393"
     },
     {
       "kind": "enum",
@@ -145935,7 +146058,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2376-L2381"
+      "specLocation": "inference/_types/CommonTypes.ts#L2378-L2383"
     },
     {
       "description": "Type representing the different types of reasoning details that can be included in the response from the model.\nCurrently supported only for `elastic` provider.",
@@ -146775,7 +146898,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
+      "specLocation": "inference/_types/CommonTypes.ts#L2469-L2471"
     },
     {
       "kind": "enum",
@@ -146791,7 +146914,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
+      "specLocation": "inference/_types/CommonTypes.ts#L2464-L2467"
     },
     {
       "kind": "enum",
@@ -146804,7 +146927,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
+      "specLocation": "inference/_types/CommonTypes.ts#L2518-L2520"
     },
     {
       "kind": "enum",
@@ -146826,7 +146949,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
+      "specLocation": "inference/_types/CommonTypes.ts#L2511-L2516"
     },
     {
       "codegenNames": [
@@ -167687,7 +167810,9 @@
       }
     },
     {
-      "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `unmapped_fields`) must be supplied in the query itself.",
+      "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.\nA `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.\nA setting with a map value can combine the values from several places instead of replacing them.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `time_series_reduce_per_index`) must be supplied in the query itself.",
+      "docId": "esql-query-settings",
+      "docUrl": "https://www.elastic.co/docs/reference/query-languages/esql/directives/set#esql-set-sources",
       "kind": "interface",
       "name": {
         "name": "EsqlQuerySettings",
@@ -167700,7 +167825,7 @@
               "stability": "stable"
             },
             "stack": {
-              "since": "9.4.0",
+              "since": "9.5.0",
               "stability": "stable"
             }
           },
@@ -167741,11 +167866,11 @@
         {
           "availability": {
             "serverless": {
-              "stability": "experimental"
+              "stability": "tech_preview"
             },
             "stack": {
               "since": "9.5.0",
-              "stability": "experimental"
+              "stability": "tech_preview"
             }
           },
           "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
@@ -167772,22 +167897,92 @@
         {
           "availability": {
             "serverless": {
-              "stability": "experimental"
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.7.0",
+              "stability": "stable"
             }
           },
-          "description": "Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.\nExcluded projects are not queried, which can reduce cost and latency.",
-          "name": "project_routing",
+          "description": "Determines how fields that are present in documents but not defined in the index mapping are treated.\nThis is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.\nThe values are case-insensitive.",
+          "name": "unmapped_fields",
+          "required": false,
+          "serverDefault": "DEFAULT",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlUnmappedFields",
+              "namespace": "esql._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_views",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_datasets",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "since": "9.7.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+          "name": "exemplars",
           "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
-              "name": "ProjectRouting",
-              "namespace": "_types"
+              "name": "EsqlExemplars",
+              "namespace": "esql._types"
             }
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L196-L233"
+      "specLocation": "esql/_types/types.ts#L196-L270"
     },
     {
       "inherits": {
@@ -169690,9 +169885,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L91"
     },
     {
       "kind": "interface",
@@ -169854,7 +170060,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L34"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L39"
     },
     {
       "kind": "interface",
@@ -170202,7 +170408,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L153"
+      "specLocation": "indices/_types/DataStream.ts#L55-L159"
     },
     {
       "kind": "interface",
@@ -170330,7 +170536,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L162-L187"
+      "specLocation": "indices/_types/DataStream.ts#L168-L193"
     },
     {
       "kind": "interface",
@@ -170352,7 +170558,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L155-L160"
+      "specLocation": "indices/_types/DataStream.ts#L161-L166"
     },
     {
       "kind": "interface",
@@ -171728,7 +171934,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L189-L193"
+      "specLocation": "indices/_types/DataStream.ts#L195-L199"
     },
     {
       "kind": "interface",
@@ -178764,7 +178970,7 @@
           }
         },
         {
-          "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
+          "description": "The URL endpoint to use for the requests.\nYou can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.\nSpecify the full endpoint URL, including the path.\nFor an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
           "name": "url",
           "required": false,
           "type": {
@@ -178776,7 +178982,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2303"
+      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2305"
     },
     {
       "kind": "interface",
@@ -178821,7 +179027,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2311-L2328"
+      "specLocation": "inference/_types/CommonTypes.ts#L2313-L2330"
     },
     {
       "inherits": {
@@ -178943,7 +179149,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2341-L2374"
+      "specLocation": "inference/_types/CommonTypes.ts#L2343-L2376"
     },
     {
       "kind": "interface",
@@ -178977,7 +179183,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2393-L2402"
+      "specLocation": "inference/_types/CommonTypes.ts#L2395-L2404"
     },
     {
       "inherits": {
@@ -179081,7 +179287,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2404-L2434"
+      "specLocation": "inference/_types/CommonTypes.ts#L2406-L2436"
     },
     {
       "kind": "interface",
@@ -179141,7 +179347,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
+      "specLocation": "inference/_types/CommonTypes.ts#L2438-L2462"
     },
     {
       "inherits": {
@@ -179269,7 +179475,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
+      "specLocation": "inference/_types/CommonTypes.ts#L2473-L2509"
     },
     {
       "inherits": {

@@ -70,6 +70,11 @@ export class LifecycleExplainManaged {
 export class LifecycleExplainUnmanaged {
   index: IndexName
   managed: false
+  /**
+   * The reason why the index is not managed by index lifecycle management.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  unmanaged_reason?: string
 }
 
 /** @variants internal tag='managed' */

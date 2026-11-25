@@ -39946,7 +39946,7 @@
       "properties": [
         {
           "name": "status",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -39956,7 +39956,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L91-L94"
+      "specLocation": "_global/msearch/types.ts#L91-L93"
     },
     {
       "kind": "interface",
@@ -59857,7 +59857,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L217-L222"
+      "specLocation": "_types/Retriever.ts#L225-L230"
     },
     {
       "kind": "type_alias",
@@ -60750,7 +60750,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L228-L245"
+      "specLocation": "_types/Retriever.ts#L236-L253"
     },
     {
       "kind": "enum",
@@ -60764,7 +60764,7 @@
         "name": "DiversifyRetrieverTypes",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L224-L226"
+      "specLocation": "_types/Retriever.ts#L232-L234"
     },
     {
       "kind": "interface",
@@ -67028,7 +67028,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L206-L215"
+      "specLocation": "_types/Retriever.ts#L214-L223"
     },
     {
       "kind": "type_alias",
@@ -69173,6 +69173,28 @@
               "stability": "stable"
             },
             "stack": {
+              "since": "8.19.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+          "name": "allow_rerank_failures",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
               "since": "9.2.0",
               "stability": "stable"
             }
@@ -69189,7 +69211,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L187-L204"
+      "specLocation": "_types/Retriever.ts#L187-L212"
     },
     {
       "kind": "enum",
@@ -93974,9 +93996,9 @@
       },
       "properties": [
         {
-          "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+          "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
           "name": "max_chunk_size",
-          "required": true,
+          "required": false,
           "serverDefault": 250,
           "type": {
             "kind": "instance_of",
@@ -94055,7 +94077,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L33"
+      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L39"
     },
     {
       "kind": "interface",
@@ -156086,7 +156108,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L235-L240",
+      "specLocation": "esql/_types/types.ts#L313-L318",
       "type": {
         "kind": "union_of",
         "items": [
@@ -156140,7 +156162,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L242-L254"
+      "specLocation": "esql/_types/types.ts#L320-L332"
     },
     {
       "kind": "interface",
@@ -156375,6 +156397,73 @@
       "specLocation": "esql/_types/EsqlResult.ts#L60-L63"
     },
     {
+      "kind": "type_alias",
+      "codegenNames": [
+        "enabled",
+        "settings"
+      ],
+      "description": "The `exemplars` query setting.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+      "name": {
+        "name": "EsqlExemplars",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/types.ts#L293-L298",
+      "type": {
+        "kind": "union_of",
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlExemplarsSettings",
+              "namespace": "esql._types"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EsqlExemplarsSettings",
+        "namespace": "esql._types"
+      },
+      "properties": [
+        {
+          "description": "The maximum number of exemplars to return.\nWithout it, the default limit of a regular query applies.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.",
+          "name": "include_timeseries",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "esql/_types/types.ts#L300-L311"
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -156410,7 +156499,9 @@
     },
     {
       "kind": "interface",
-      "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `unmapped_fields`) must be supplied in the query itself.",
+      "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.\nA `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.\nA setting with a map value can combine the values from several places instead of replacing them.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `time_series_reduce_per_index`) must be supplied in the query itself.",
+      "docId": "esql-query-settings",
+      "docUrl": "https://www.elastic.co/docs/reference/query-languages/esql/directives/set#esql-set-sources",
       "name": {
         "name": "EsqlQuerySettings",
         "namespace": "esql._types"
@@ -156422,7 +156513,7 @@
               "stability": "stable"
             },
             "stack": {
-              "since": "9.4.0",
+              "since": "9.5.0",
               "stability": "stable"
             }
           },
@@ -156463,11 +156554,11 @@
         {
           "availability": {
             "serverless": {
-              "stability": "experimental"
+              "stability": "tech_preview"
             },
             "stack": {
               "since": "9.5.0",
-              "stability": "experimental"
+              "stability": "tech_preview"
             }
           },
           "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
@@ -156494,7 +156585,9 @@
         {
           "availability": {
             "serverless": {
-              "stability": "experimental"
+              "featureFlag": "serverless.cross_project.enabled",
+              "stability": "stable",
+              "visibility": "feature_flag"
             }
           },
           "description": "Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.\nExcluded projects are not queried, which can reduce cost and latency.",
@@ -156507,9 +156600,96 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.7.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Determines how fields that are present in documents but not defined in the index mapping are treated.\nThis is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.\nThe values are case-insensitive.",
+          "name": "unmapped_fields",
+          "required": false,
+          "serverDefault": "DEFAULT",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlUnmappedFields",
+              "namespace": "esql._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_views",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+          "name": "wildcards_match_datasets",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "since": "9.7.0",
+              "stability": "tech_preview"
+            }
+          },
+          "description": "When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+          "name": "exemplars",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlExemplars",
+              "namespace": "esql._types"
+            }
+          }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L196-L233"
+      "specLocation": "esql/_types/types.ts#L196-L270"
     },
     {
       "kind": "interface",
@@ -156736,6 +156916,40 @@
         }
       ],
       "specLocation": "esql/_types/EsqlResult.ts#L91-L96"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "description": "A query that references a fully unmapped field fails.",
+          "name": "DEFAULT"
+        },
+        {
+          "description": "A referenced unmapped field is treated as `null`.",
+          "name": "NULLIFY"
+        },
+        {
+          "description": "Referenced unmapped fields are loaded from `_source` as `keyword`.\nPartially mapped fields are also loaded from `_source` in the indices where they are unmapped.",
+          "name": "LOAD"
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "tech_preview"
+            },
+            "stack": {
+              "stability": "tech_preview"
+            }
+          },
+          "description": "Does everything `LOAD` does, and also returns all unmapped fields in a single `_unmapped_fields` column.",
+          "name": "LOAD_ALL"
+        }
+      ],
+      "name": {
+        "name": "EsqlUnmappedFields",
+        "namespace": "esql._types"
+      },
+      "specLocation": "esql/_types/types.ts#L272-L291"
     },
     {
       "kind": "interface",
@@ -163338,7 +163552,7 @@
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
-      "specLocation": "ilm/explain_lifecycle/types.ts#L75-L78",
+      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L83",
       "type": {
         "kind": "union_of",
         "items": [
@@ -163824,7 +164038,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L85"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L85-L90"
     },
     {
       "kind": "interface",
@@ -163851,9 +164065,27 @@
             "kind": "literal_value",
             "value": false
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The reason why the index is not managed by index lifecycle management.",
+          "name": "unmanaged_reason",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L73"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L78"
     },
     {
       "kind": "request",
@@ -165680,6 +165912,24 @@
           }
         },
         {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If `true`, the data stream is managed by the minimum data stream lifecycle, because it is a time series data stream\nwithout a configured lifecycle and the minimum lifecycle is enabled. Only present when `true`.",
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
           "description": "Name of the data stream.",
           "name": "name",
           "required": true,
@@ -165806,7 +166056,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L153"
+      "specLocation": "indices/_types/DataStream.ts#L55-L159"
     },
     {
       "kind": "interface",
@@ -165984,7 +166234,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L162-L187"
+      "specLocation": "indices/_types/DataStream.ts#L168-L193"
     },
     {
       "kind": "interface",
@@ -166319,7 +166569,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L155-L160"
+      "specLocation": "indices/_types/DataStream.ts#L161-L166"
     },
     {
       "kind": "interface",
@@ -166362,7 +166612,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L189-L193"
+      "specLocation": "indices/_types/DataStream.ts#L195-L199"
     },
     {
       "kind": "interface",
@@ -175724,9 +175974,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L86"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L91"
     },
     {
       "kind": "request",
@@ -177349,9 +177610,27 @@
               "namespace": "indices._types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If `true`, the data stream is managed by the minimum data stream lifecycle. Only present when `true`.",
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L34"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L39"
     },
     {
       "kind": "request",
@@ -198498,7 +198777,7 @@
           }
         },
         {
-          "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
+          "description": "The URL endpoint to use for the requests.\nYou can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.\nSpecify the full endpoint URL, including the path.\nFor an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
           "name": "url",
           "required": false,
           "type": {
@@ -198510,7 +198789,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2303"
+      "specLocation": "inference/_types/CommonTypes.ts#L2216-L2305"
     },
     {
       "kind": "enum",
@@ -198523,7 +198802,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2337-L2339"
+      "specLocation": "inference/_types/CommonTypes.ts#L2339-L2341"
     },
     {
       "kind": "enum",
@@ -198542,7 +198821,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2305-L2309"
+      "specLocation": "inference/_types/CommonTypes.ts#L2307-L2311"
     },
     {
       "kind": "interface",
@@ -198587,7 +198866,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2311-L2328"
+      "specLocation": "inference/_types/CommonTypes.ts#L2313-L2330"
     },
     {
       "kind": "enum",
@@ -198609,7 +198888,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2330-L2335"
+      "specLocation": "inference/_types/CommonTypes.ts#L2332-L2337"
     },
     {
       "kind": "interface",
@@ -198691,7 +198970,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2341-L2374"
+      "specLocation": "inference/_types/CommonTypes.ts#L2343-L2376"
     },
     {
       "kind": "enum",
@@ -198704,7 +198983,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2383-L2385"
+      "specLocation": "inference/_types/CommonTypes.ts#L2385-L2387"
     },
     {
       "kind": "enum",
@@ -198723,7 +199002,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2387-L2391"
+      "specLocation": "inference/_types/CommonTypes.ts#L2389-L2393"
     },
     {
       "kind": "interface",
@@ -198757,7 +199036,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2393-L2402"
+      "specLocation": "inference/_types/CommonTypes.ts#L2395-L2404"
     },
     {
       "kind": "enum",
@@ -198779,7 +199058,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2376-L2381"
+      "specLocation": "inference/_types/CommonTypes.ts#L2378-L2383"
     },
     {
       "kind": "interface",
@@ -200441,7 +200720,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2404-L2434"
+      "specLocation": "inference/_types/CommonTypes.ts#L2406-L2436"
     },
     {
       "kind": "enum",
@@ -200454,7 +200733,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
+      "specLocation": "inference/_types/CommonTypes.ts#L2469-L2471"
     },
     {
       "kind": "interface",
@@ -200514,7 +200793,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
+      "specLocation": "inference/_types/CommonTypes.ts#L2438-L2462"
     },
     {
       "kind": "enum",
@@ -200530,7 +200809,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
+      "specLocation": "inference/_types/CommonTypes.ts#L2464-L2467"
     },
     {
       "kind": "interface",
@@ -200618,7 +200897,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
+      "specLocation": "inference/_types/CommonTypes.ts#L2473-L2509"
     },
     {
       "kind": "enum",
@@ -200631,7 +200910,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
+      "specLocation": "inference/_types/CommonTypes.ts#L2518-L2520"
     },
     {
       "kind": "enum",
@@ -200653,7 +200932,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
+      "specLocation": "inference/_types/CommonTypes.ts#L2511-L2516"
     },
     {
       "kind": "request",
@@ -313677,7 +313956,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L514-L516"
+      "specLocation": "xpack/usage/types.ts#L520-L522"
     },
     {
       "kind": "interface",
@@ -313913,7 +314192,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L518-L521"
+      "specLocation": "xpack/usage/types.ts#L524-L527"
     },
     {
       "kind": "interface",
@@ -313973,7 +314252,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L188-L193"
+      "specLocation": "xpack/usage/types.ts#L194-L199"
     },
     {
       "kind": "interface",
@@ -314007,7 +314286,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L195-L204"
+      "specLocation": "xpack/usage/types.ts#L201-L210"
     },
     {
       "kind": "interface",
@@ -314054,7 +314333,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L206-L222"
+      "specLocation": "xpack/usage/types.ts#L212-L228"
     },
     {
       "kind": "interface",
@@ -314082,7 +314361,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L181-L186"
+      "specLocation": "xpack/usage/types.ts#L187-L192"
     },
     {
       "kind": "interface",
@@ -314129,7 +314408,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L163-L179"
+      "specLocation": "xpack/usage/types.ts#L169-L185"
     },
     {
       "kind": "interface",
@@ -314221,9 +314500,27 @@
               "namespace": "xpack.usage"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.\nNot reported in serverless.",
+          "name": "minimum_lifecycle_count",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L131-L161"
+      "specLocation": "xpack/usage/types.ts#L131-L167"
     },
     {
       "kind": "interface",
@@ -314381,7 +314678,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L224-L235"
+      "specLocation": "xpack/usage/types.ts#L230-L241"
     },
     {
       "kind": "interface",
@@ -314458,7 +314755,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L523-L533"
+      "specLocation": "xpack/usage/types.ts#L529-L539"
     },
     {
       "kind": "interface",
@@ -314528,7 +314825,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L535-L538"
+      "specLocation": "xpack/usage/types.ts#L541-L544"
     },
     {
       "kind": "interface",
@@ -314615,7 +314912,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L237-L245"
+      "specLocation": "xpack/usage/types.ts#L243-L251"
     },
     {
       "kind": "interface",
@@ -314680,7 +314977,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L247-L253"
+      "specLocation": "xpack/usage/types.ts#L253-L259"
     },
     {
       "kind": "interface",
@@ -314745,7 +315042,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L255-L261"
+      "specLocation": "xpack/usage/types.ts#L261-L267"
     },
     {
       "kind": "interface",
@@ -314777,7 +315074,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L263-L266"
+      "specLocation": "xpack/usage/types.ts#L269-L272"
     },
     {
       "kind": "interface",
@@ -314853,7 +315150,92 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L268-L275"
+      "specLocation": "xpack/usage/types.ts#L274-L281"
+    },
+    {
+      "kind": "interface",
+      "inherits": {
+        "type": {
+          "name": "Base",
+          "namespace": "xpack.usage"
+        }
+      },
+      "name": {
+        "name": "Esql",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "Per-feature usage counters, keyed by ES|QL source command or language\nfeature (for example `where`, `sort`, `stats`, `lookup_join`). Each value\ncounts how many queries used that feature. Every known feature has an\nentry; unused features report 0.",
+          "name": "features",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Query counters keyed by client type, plus an `_all` entry that aggregates\nevery client type. Currently all queries are recorded under `rest`, so\n`kibana` is always 0; `_all` holds the total.",
+          "name": "queries",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EsqlQueries",
+                "namespace": "xpack.usage"
+              }
+            }
+          }
+        },
+        {
+          "description": "Per-function usage counters, keyed by ES|QL function name (for example\n`max`, `coalesce`, `to_long`). Each value counts how many queries used that\nfunction. Every registered function has an entry; unused functions report\n0.",
+          "name": "functions",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L546-L567"
     },
     {
       "kind": "interface",
@@ -314915,6 +315297,40 @@
     {
       "kind": "interface",
       "name": {
+        "name": "EsqlQueries",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "Number of queries run by this client type.",
+          "name": "total",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Number of queries from this client type that failed.",
+          "name": "failed",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L569-L574"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "FeatureToggle",
         "namespace": "xpack.usage"
       },
@@ -314958,7 +315374,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L540-L542"
+      "specLocation": "xpack/usage/types.ts#L576-L578"
     },
     {
       "kind": "interface",
@@ -315017,7 +315433,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L679-L691"
+      "specLocation": "xpack/usage/types.ts#L715-L727"
     },
     {
       "kind": "interface",
@@ -315073,7 +315489,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L711-L721"
+      "specLocation": "xpack/usage/types.ts#L753-L763"
     },
     {
       "kind": "interface",
@@ -315100,7 +315516,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L291-L293"
+      "specLocation": "xpack/usage/types.ts#L297-L299"
     },
     {
       "kind": "interface",
@@ -315135,7 +315551,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L313-L316"
+      "specLocation": "xpack/usage/types.ts#L319-L322"
     },
     {
       "kind": "interface",
@@ -315167,7 +315583,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L308-L311"
+      "specLocation": "xpack/usage/types.ts#L314-L317"
     },
     {
       "kind": "interface",
@@ -315246,7 +315662,7 @@
         {
           "description": "The number of data streams in this index mode that are managed by index lifecycle management.",
           "name": "data_streams_managed_by_ilm",
-          "required": true,
+          "required": false,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -315266,9 +315682,27 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.\nNot reported when index lifecycle management is unavailable.",
+          "name": "data_streams_managed_by_minimum_lifecycle",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L693-L709"
+      "specLocation": "xpack/usage/types.ts#L729-L751"
     },
     {
       "kind": "interface",
@@ -315321,7 +315755,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L318-L321"
+      "specLocation": "xpack/usage/types.ts#L324-L327"
     },
     {
       "kind": "interface",
@@ -315397,7 +315831,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L544-L550"
+      "specLocation": "xpack/usage/types.ts#L580-L586"
     },
     {
       "kind": "interface",
@@ -315526,7 +315960,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L552-L559"
+      "specLocation": "xpack/usage/types.ts#L588-L595"
     },
     {
       "kind": "interface",
@@ -315547,7 +315981,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L406-L408"
+      "specLocation": "xpack/usage/types.ts#L412-L414"
     },
     {
       "kind": "interface",
@@ -315601,7 +316035,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L328-L333"
+      "specLocation": "xpack/usage/types.ts#L334-L339"
     },
     {
       "kind": "interface",
@@ -315644,7 +316078,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L335-L339"
+      "specLocation": "xpack/usage/types.ts#L341-L345"
     },
     {
       "kind": "interface",
@@ -315665,7 +316099,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L345-L347"
+      "specLocation": "xpack/usage/types.ts#L351-L353"
     },
     {
       "kind": "interface",
@@ -315686,7 +316120,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L341-L343"
+      "specLocation": "xpack/usage/types.ts#L347-L349"
     },
     {
       "kind": "interface",
@@ -315746,7 +316180,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L349-L357"
+      "specLocation": "xpack/usage/types.ts#L355-L363"
     },
     {
       "kind": "interface",
@@ -315800,7 +316234,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L378-L383"
+      "specLocation": "xpack/usage/types.ts#L384-L389"
     },
     {
       "kind": "interface",
@@ -315821,7 +316255,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L385-L387"
+      "specLocation": "xpack/usage/types.ts#L391-L393"
     },
     {
       "kind": "interface",
@@ -315875,7 +316309,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L359-L364"
+      "specLocation": "xpack/usage/types.ts#L365-L370"
     },
     {
       "kind": "interface",
@@ -315918,7 +316352,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L389-L393"
+      "specLocation": "xpack/usage/types.ts#L395-L399"
     },
     {
       "kind": "interface",
@@ -315989,7 +316423,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L366-L376"
+      "specLocation": "xpack/usage/types.ts#L372-L382"
     },
     {
       "kind": "interface",
@@ -316087,7 +316521,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L395-L404"
+      "specLocation": "xpack/usage/types.ts#L401-L410"
     },
     {
       "kind": "interface",
@@ -316119,7 +316553,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L323-L326"
+      "specLocation": "xpack/usage/types.ts#L329-L332"
     },
     {
       "kind": "interface",
@@ -316168,7 +316602,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L561-L564"
+      "specLocation": "xpack/usage/types.ts#L597-L600"
     },
     {
       "kind": "interface",
@@ -316212,7 +316646,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L295-L298"
+      "specLocation": "xpack/usage/types.ts#L301-L304"
     },
     {
       "kind": "interface",
@@ -316277,7 +316711,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L300-L306"
+      "specLocation": "xpack/usage/types.ts#L306-L312"
     },
     {
       "kind": "interface",
@@ -316331,7 +316765,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L410-L415"
+      "specLocation": "xpack/usage/types.ts#L416-L421"
     },
     {
       "kind": "interface",
@@ -316517,7 +316951,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L597-L606"
+      "specLocation": "xpack/usage/types.ts#L633-L642"
     },
     {
       "kind": "interface",
@@ -316538,7 +316972,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L417-L419"
+      "specLocation": "xpack/usage/types.ts#L423-L425"
     },
     {
       "kind": "request",
@@ -316768,6 +317202,17 @@
               "kind": "instance_of",
               "type": {
                 "name": "Eql",
+                "namespace": "xpack.usage"
+              }
+            }
+          },
+          {
+            "name": "esql",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Esql",
                 "namespace": "xpack.usage"
               }
             }
@@ -317053,7 +317498,7 @@
         "name": "Response",
         "namespace": "xpack.usage"
       },
-      "specLocation": "xpack/usage/XPackUsageResponse.ts#L48-L112"
+      "specLocation": "xpack/usage/XPackUsageResponse.ts#L49-L114"
     },
     {
       "kind": "interface",
@@ -317085,7 +317530,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L421-L424"
+      "specLocation": "xpack/usage/types.ts#L427-L430"
     },
     {
       "kind": "interface",
@@ -317115,7 +317560,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L426-L428"
+      "specLocation": "xpack/usage/types.ts#L432-L434"
     },
     {
       "kind": "interface",
@@ -317282,7 +317727,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L430-L445"
+      "specLocation": "xpack/usage/types.ts#L436-L451"
     },
     {
       "kind": "interface",
@@ -317331,7 +317776,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L608-L612"
+      "specLocation": "xpack/usage/types.ts#L644-L648"
     },
     {
       "kind": "interface",
@@ -317501,7 +317946,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L614-L627"
+      "specLocation": "xpack/usage/types.ts#L650-L663"
     },
     {
       "kind": "interface",
@@ -317544,7 +317989,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L447-L451"
+      "specLocation": "xpack/usage/types.ts#L453-L457"
     },
     {
       "kind": "interface",
@@ -317565,7 +318010,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L459-L461"
+      "specLocation": "xpack/usage/types.ts#L465-L467"
     },
     {
       "kind": "interface",
@@ -317719,7 +318164,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L463-L500"
+      "specLocation": "xpack/usage/types.ts#L469-L506"
     },
     {
       "kind": "interface",
@@ -317762,7 +318207,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L502-L506"
+      "specLocation": "xpack/usage/types.ts#L508-L512"
     },
     {
       "kind": "interface",
@@ -317805,7 +318250,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L453-L457"
+      "specLocation": "xpack/usage/types.ts#L459-L463"
     },
     {
       "kind": "interface",
@@ -317843,7 +318288,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L629-L632"
+      "specLocation": "xpack/usage/types.ts#L665-L668"
     },
     {
       "kind": "interface",
@@ -317903,7 +318348,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L566-L569"
+      "specLocation": "xpack/usage/types.ts#L602-L605"
     },
     {
       "kind": "interface",
@@ -317935,7 +318380,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L571-L574"
+      "specLocation": "xpack/usage/types.ts#L607-L610"
     },
     {
       "kind": "interface",
@@ -317984,7 +318429,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L634-L638"
+      "specLocation": "xpack/usage/types.ts#L670-L674"
     },
     {
       "kind": "interface",
@@ -318025,7 +318470,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L654-L666"
+      "specLocation": "xpack/usage/types.ts#L690-L702"
     },
     {
       "kind": "interface",
@@ -318066,7 +318511,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L640-L652"
+      "specLocation": "xpack/usage/types.ts#L676-L688"
     },
     {
       "kind": "interface",
@@ -318115,7 +318560,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L668-L672"
+      "specLocation": "xpack/usage/types.ts#L704-L708"
     },
     {
       "kind": "interface",
@@ -318156,7 +318601,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L592-L595"
+      "specLocation": "xpack/usage/types.ts#L628-L631"
     },
     {
       "kind": "interface",
@@ -318188,7 +318633,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L576-L578"
+      "specLocation": "xpack/usage/types.ts#L612-L614"
     },
     {
       "kind": "interface",
@@ -318275,7 +318720,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L580-L585"
+      "specLocation": "xpack/usage/types.ts#L616-L621"
     },
     {
       "kind": "interface",
@@ -318307,7 +318752,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L587-L590"
+      "specLocation": "xpack/usage/types.ts#L623-L626"
     },
     {
       "kind": "interface",
@@ -318345,7 +318790,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L674-L677"
+      "specLocation": "xpack/usage/types.ts#L710-L713"
     },
     {
       "kind": "interface",

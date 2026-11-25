@@ -54139,6 +54139,12 @@
                 "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
               },
+              "allow_rerank_failures": {
+                "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+                "default": false,
+                "x-state": "Generally available",
+                "type": "boolean"
+              },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
                 "x-state": "Generally available",
@@ -54178,7 +54184,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
             "default": 250.0,
             "type": "number"
           },
@@ -54211,10 +54217,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
+        }
       },
       "_types.RuleRetriever": {
         "allOf": [
@@ -71212,7 +71215,7 @@
         ]
       },
       "esql._types.EsqlQuerySettings": {
-        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `unmapped_fields`) must be supplied in the query itself.",
+        "description": "Per-query settings supplied through the request body.\nThis is the request-body equivalent of the in-query `SET` command, and each key is the name of the `SET` setting.\nA `SET` in the query overrides the same setting here, which overrides the cluster-wide default (`esql.query.settings.<setting_name>`) for that setting, if one is configured.\nA setting with a map value can combine the values from several places instead of replacing them.\nOnly settings that are exposed as request-body parameters can be set here; other `SET`-only\nsettings (such as `time_series_reduce_per_index`) must be supplied in the query itself.",
         "type": "object",
         "properties": {
           "time_zone": {
@@ -71232,19 +71235,41 @@
           "column_metadata": {
             "description": "When enabled, column metadata is added to the query response as additional `_meta` properties.\nCurrently, only `_meta.bucket` is added for columns corresponding to the `BUCKET` function, containing the bucket interval and unit for queries where it can be determined.",
             "default": false,
-            "x-state": "Experimental",
+            "x-state": "Technical preview",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_spec_utils.Stringifiedboolean"
               }
             ]
           },
-          "project_routing": {
-            "description": "Limits the scope of a cross-project search (CPS) to specific projects before query execution, based on a Lucene query expression evaluated against project tags.\nExcluded projects are not queried, which can reduce cost and latency.",
-            "x-state": "Experimental",
+          "unmapped_fields": {
+            "description": "Determines how fields that are present in documents but not defined in the index mapping are treated.\nThis is the request body equivalent of `SET unmapped_fields`, which is available in earlier versions.\nThe values are case-insensitive.",
+            "default": "DEFAULT",
+            "x-state": "Generally available",
             "allOf": [
               {
-                "$ref": "#/components/schemas/_types.ProjectRouting"
+                "$ref": "#/components/schemas/esql._types.EsqlUnmappedFields"
+              }
+            ]
+          },
+          "wildcards_match_views": {
+            "description": "Whether a wildcard in `FROM` also matches views.\nWhen `false`, a wildcard does not match a view, and a view is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Generally available",
+            "type": "boolean"
+          },
+          "wildcards_match_datasets": {
+            "description": "Whether a wildcard in `FROM` also matches datasets.\nWhen `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.\nOther abstractions that a wildcard matches are unaffected.",
+            "default": false,
+            "x-state": "Technical preview",
+            "type": "boolean"
+          },
+          "exemplars": {
+            "description": "When enabled, a `TS ... | STATS` or `PROMQL` query is not executed. Instead, exemplars considered relevant to the query are returned.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+            "x-state": "Technical preview",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/esql._types.EsqlExemplars"
               }
             ]
           }
@@ -71275,8 +71300,39 @@
           }
         }
       },
-      "_types.ProjectRouting": {
-        "type": "string"
+      "esql._types.EsqlUnmappedFields": {
+        "type": "string",
+        "enum": [
+          "DEFAULT",
+          "NULLIFY",
+          "LOAD",
+          "LOAD_ALL"
+        ]
+      },
+      "esql._types.EsqlExemplars": {
+        "description": "The `exemplars` query setting.\nIt can be a boolean that toggles exemplars with default settings, or a map that enables them with custom settings.",
+        "oneOf": [
+          {
+            "type": "boolean"
+          },
+          {
+            "$ref": "#/components/schemas/esql._types.EsqlExemplarsSettings"
+          }
+        ]
+      },
+      "esql._types.EsqlExemplarsSettings": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "description": "The maximum number of exemplars to return.\nWithout it, the default limit of a regular query applies.",
+            "type": "number"
+          },
+          "include_timeseries": {
+            "description": "When enabled, a `_timeseries` column is returned, holding the dimensions that identify the series each exemplar belongs to.",
+            "default": false,
+            "type": "boolean"
+          }
+        }
       },
       "esql._types.AsyncEsqlResult": {
         "allOf": [
@@ -72323,6 +72379,9 @@
           },
           "unmanaged_reason": {
             "type": "string"
+          },
+          "minimum_lifecycle_enabled": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -78755,7 +78814,7 @@
             "type": "string"
           },
           "url": {
-            "description": "The URL endpoint to use for the requests.\nIt can be changed for testing purposes.\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
+            "description": "The URL endpoint to use for the requests.\nYou can use this setting to point the endpoint at another server that follows the OpenAI API shape, such as a locally hosted LLM or an OpenAI-compatible gateway.\nSpecify the full endpoint URL, including the path.\nFor an example, refer to [Using OpenAI compatible models with the Inference API](https://www.elastic.co/docs/solutions/search/semantic-search/using-openai-compatible-models).\nDefault value is `https://api.openai.com/v1/embeddings` for a `text_embedding` or `embedding` task,\n`https://api.openai.com/v1/chat/completions` for a `completion` or `chat_completion` task.",
             "type": "string"
           }
         },
@@ -89298,6 +89357,9 @@
           }
         }
       },
+      "_types.ProjectRouting": {
+        "type": "string"
+      },
       "_global.msearch.MultiSearchResult": {
         "type": "object",
         "properties": {
@@ -89337,7 +89399,10 @@
               "status": {
                 "type": "number"
               }
-            }
+            },
+            "required": [
+              "status"
+            ]
           }
         ]
       },
