@@ -19429,6 +19429,53 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.7.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Query Prometheus exemplars.\n\nGet the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+      "docId": "prometheus-query-exemplars",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query_exemplars",
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query_exemplars"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query_exemplars"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.5.0",
           "stability": "tech_preview",
           "visibility": "public"
@@ -151963,6 +152010,18 @@
           }
         },
         {
+          "description": "The naming strategy supplied when the recovery was started, if recorded.",
+          "name": "rename_strategy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RenameStrategy",
+              "namespace": "data_recovery.start_recovery"
+            }
+          }
+        },
+        {
           "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
           "name": "sources",
           "required": true,
@@ -152053,7 +152112,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/_types/Recovery.ts#L46-L72"
+      "specLocation": "data_recovery/_types/Recovery.ts#L46-L74"
     },
     {
       "kind": "interface",
@@ -152268,7 +152327,7 @@
         "DataRecoveryGetRecoveryResponseExample1": {
           "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
           "summary": "A running recovery",
-          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"rename_strategy\": { \"prefix\": \"restored-\" },\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
         },
         "DataRecoveryGetRecoveryResponseExample2": {
           "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
@@ -152952,7 +153011,7 @@
         "DataRecoveryListRecoveriesResponseExample1": {
           "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
           "summary": "A page of recoveries",
-          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"rename_strategy\": { \"prefix\": \"restored-\" },\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
         }
       },
       "name": {
@@ -261527,6 +261586,249 @@
         }
       ],
       "specLocation": "project/tags/TagsResponse.ts#L23-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Exemplar",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "properties": [
+        {
+          "description": "The labels of the exemplar, such as `trace_id`.",
+          "name": "labels",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The exemplar value, as a string.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The exemplar timestamp, in Unix seconds.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/types.ts#L24-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExemplarSeries",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "properties": [
+        {
+          "description": "The labels of the series that the exemplars belong to.",
+          "name": "seriesLabels",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "exemplars",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Exemplar",
+                "namespace": "prometheus.query_exemplars"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/types.ts#L39-L45"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Query Prometheus exemplars.\n\nGet the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+      "examples": {
+        "PrometheusQueryExemplarsRequestExample1": {
+          "description": "Get the exemplars of `http_request_duration_seconds_bucket`.",
+          "method_request": "GET /_prometheus/api/v1/query_exemplars?query=http_request_duration_seconds_bucket&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z",
+          "summary": "Exemplars"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression that selects the series.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L73"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The exemplars, grouped by series.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ExemplarSeries",
+                  "namespace": "prometheus.query_exemplars"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryExemplarsResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query_exemplars`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"seriesLabels\": {\n        \"__name__\": \"http_request_duration_seconds_bucket\",\n        \"job\": \"api\",\n        \"le\": \"0.5\"\n      },\n      \"exemplars\": [\n        {\n          \"labels\": {\n            \"trace_id\": \"4bf92f3577b34da6a3ce929d0e0e4736\"\n          },\n          \"value\": \"0.42\",\n          \"timestamp\": 1783634412.5\n        }\n      ]\n    }\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsResponse.ts#L22-L33"
     },
     {
       "kind": "interface",
