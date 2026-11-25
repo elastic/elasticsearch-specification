@@ -44046,6 +44046,152 @@
         ]
       }
     },
+    "/_prometheus/api/v1/query_exemplars": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Query Prometheus exemplars",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "operationId": "prometheus-query-exemplars",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_exemplars-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.7.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Query Prometheus exemplars",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "operationId": "prometheus-query-exemplars-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_exemplars-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.7.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/query_exemplars": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Query Prometheus exemplars",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "operationId": "prometheus-query-exemplars-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_exemplars-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.7.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Query Prometheus exemplars",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "operationId": "prometheus-query-exemplars-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_exemplars-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_exemplars-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.7.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_prometheus/api/v1/status/buildinfo": {
       "get": {
         "tags": [
@@ -136304,6 +136450,53 @@
           "STOPPED"
         ]
       },
+      "prometheus.query_exemplars.ExemplarSeries": {
+        "type": "object",
+        "properties": {
+          "seriesLabels": {
+            "description": "The labels of the series that the exemplars belong to.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "exemplars": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/prometheus.query_exemplars.Exemplar"
+            }
+          }
+        },
+        "required": [
+          "seriesLabels",
+          "exemplars"
+        ]
+      },
+      "prometheus.query_exemplars.Exemplar": {
+        "type": "object",
+        "properties": {
+          "labels": {
+            "description": "The labels of the exemplar, such as `trace_id`.",
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "value": {
+            "description": "The exemplar value, as a string.",
+            "type": "string"
+          },
+          "timestamp": {
+            "description": "The exemplar timestamp, in Unix seconds.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "labels",
+          "value",
+          "timestamp"
+        ]
+      },
       "prometheus.status_buildinfo.BuildInfo": {
         "type": "object",
         "properties": {
@@ -154496,6 +154689,40 @@
           }
         }
       },
+      "prometheus.query_exemplars-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The exemplars, grouped by series.",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/prometheus.query_exemplars.ExemplarSeries"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusQueryExemplarsResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/query_exemplars`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"seriesLabels\": {\n        \"__name__\": \"http_request_duration_seconds_bucket\",\n        \"job\": \"api\",\n        \"le\": \"0.5\"\n      },\n      \"exemplars\": [\n        {\n          \"labels\": {\n            \"trace_id\": \"4bf92f3577b34da6a3ce929d0e0e4736\"\n          },\n          \"value\": \"0.42\",\n          \"timestamp\": 1783634412.5\n        }\n      ]\n    }\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
       "prometheus.status_buildinfo-200": {
         "description": "",
         "content": {
@@ -166485,6 +166712,60 @@
               "$ref": "#/components/schemas/_types.Duration"
             }
           ]
+        },
+        "style": "form"
+      },
+      "prometheus.query_exemplars-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.query_exemplars-query": {
+        "in": "query",
+        "name": "query",
+        "description": "The PromQL expression that selects the series.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_exemplars-start": {
+        "in": "query",
+        "name": "start",
+        "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_exemplars-end": {
+        "in": "query",
+        "name": "end",
+        "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_exemplars-timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
         },
         "style": "form"
       },
