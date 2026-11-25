@@ -29,6 +29,13 @@ use crate::utils::SchemaName;
 // and https://spec.openapis.org/oas/v3.1.1.html#fixed-fields-5
 pub const SEPARATOR: char = '-';
 
+/// Replaces the chars that aren't allowed in component keys with `_`.
+fn component_key(name: &str) -> String {
+    name.chars()
+        .map(|c| if c.is_ascii_alphanumeric() || matches!(c, '.' | '-' | '_') { c } else { '_' })
+        .collect()
+}
+
 pub struct TypesAndComponents<'a> {
     pub config: &'a Configuration,
     pub model: &'a clients_schema::IndexedModel,
@@ -59,18 +66,18 @@ impl<'a> TypesAndComponents<'a> {
 
     pub fn add_parameter(&mut self, endpoint: &str, param: Parameter, duplicate: bool) -> ReferenceOr<Parameter> {
         let suffix = if duplicate { "_" } else { "" };
-        let result = ReferenceOr::Reference {
-            reference: format!(
-                "#/components/parameters/{}{SEPARATOR}{}{}",
-                endpoint,
-                &param.parameter_data_ref().name,
-                suffix
-            ),
-        };
-        self.components.parameters.insert(
-            format!("{}{SEPARATOR}{}{}", endpoint, &param.parameter_data_ref().name, suffix),
-            ReferenceOr::Item(param),
+        // The parameter keeps its name on the wire, but the key can't contain chars
+        // such as the brackets of `match[]`.
+        let key = format!(
+            "{}{SEPARATOR}{}{}",
+            endpoint,
+            component_key(&param.parameter_data_ref().name),
+            suffix
         );
+        let result = ReferenceOr::Reference {
+            reference: format!("#/components/parameters/{}", key),
+        };
+        self.components.parameters.insert(key, ReferenceOr::Item(param));
         result
     }
 
