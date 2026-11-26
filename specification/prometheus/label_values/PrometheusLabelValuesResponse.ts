@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { ErrorBody } from '@prometheus/_types/ErrorBody'
+
 export class Response {
   body: {
     /**
@@ -32,4 +34,28 @@ export class Response {
      */
     warnings?: string[]
   }
+  exceptions: [
+    {
+      /**
+       * The request is not valid after the handler has started.
+       * A failure while reading parameters is the standard Elasticsearch `{ error, status }` body instead.
+       */
+      statusCodes: [400]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The caller is not allowed to run the query.
+       */
+      statusCodes: [403]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The query ran, but the response could not be written.
+       */
+      statusCodes: [500]
+      body: ErrorBody
+    }
+  ]
 }

@@ -25,6 +25,11 @@ import { IndexName, MediaType } from '@_types/common'
  *
  * Get the exemplars of the series selected by a PromQL expression over a time range.
  * The endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.
+ *
+ * GET requests send parameters in the query string.
+ * POST requests send the same parameters as an `application/x-www-form-urlencoded` body.
+ * Form-encoded POST requests are accepted only only on authenticated TLS connections.
+ * If you send the same parameter in both the query string and the form body, the API returns `400` with the standard Elasticsearch error body.
  * @rest_spec_name prometheus.query_exemplars
  * @availability stack since=9.7.0 stability=tech_preview visibility=public
  * @availability serverless stability=tech_preview visibility=public
@@ -48,6 +53,7 @@ export interface Request extends RequestBase {
      * An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.
      * If you omit it, the default expression `metrics-*` is used.
      * Only indices with `index.mode: time_series` are considered.
+     * An alias is accepted and index privileges are checked against that alias name.
      */
     index?: IndexName
   }
@@ -67,7 +73,12 @@ export interface Request extends RequestBase {
     end: string
     /**
      * The evaluation timeout, as a number of seconds or a duration such as `30s`.
-     * It must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.
+     * It must be positive: `0` is rejected with status code `400`.
+     * The default and the maximum are the `xpack.prometheus.query.timeout` cluster setting.
+     * A request can only lower that cap.
+     * Set the cluster setting to `-1` to remove the default and the maximum; a positive `timeout` is then uncapped.
+     * When the timeout elapses, the response is `503` with `errorType` `timeout`.
+     * @server_default 2m
      */
     timeout?: string
   }

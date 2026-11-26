@@ -55,6 +55,7 @@ export interface Request extends RequestBase {
      * An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.
      * If you omit it, the default expression `metrics-*` is used.
      * Only indices with `index.mode: time_series` are considered.
+     * An alias is accepted and index privileges are checked against that alias name.
      */
     index?: IndexName
   }
@@ -76,7 +77,10 @@ export interface Request extends RequestBase {
      */
     end?: string
     /**
-     * The maximum number of label values to return. `0` means no limit from the request.
+     * The maximum number of label values to return.
+     * `0` means no limit from the request.
+     * The cluster can still truncate the response with the `esql.query.result_truncation_max_size` setting.
+     * @server_default 0
      */
     limit?: integer
   }

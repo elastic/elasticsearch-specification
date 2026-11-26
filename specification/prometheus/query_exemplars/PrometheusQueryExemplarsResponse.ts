@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
+import { ErrorBody } from '@prometheus/_types/ErrorBody'
 import { ExemplarSeries } from './types'
 
 export class Response {
@@ -30,4 +32,42 @@ export class Response {
      */
     data: ExemplarSeries[]
   }
+  exceptions: [
+    {
+      /**
+       * The request or expression is not valid, including a non-positive `timeout`.
+       * A form parameter that is also in the query string is the standard Elasticsearch error body instead.
+       */
+      statusCodes: [400]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The caller is not allowed to run the query.
+       */
+      statusCodes: [403]
+      body: ErrorBody
+    },
+    {
+      /**
+       * Form-encoded POST is not accepted when security is disabled, HTTP TLS is not enabled on Elasticsearch, or the caller is anonymous.
+       */
+      statusCodes: [406]
+      body: ErrorResponseBase
+    },
+    {
+      /**
+       * The query ran, but the response could not be written.
+       */
+      statusCodes: [500]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The query timed out.
+       */
+      statusCodes: [503]
+      body: ErrorBody
+    }
+  ]
 }

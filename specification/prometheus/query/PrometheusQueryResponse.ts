@@ -17,6 +17,8 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
+import { ErrorBody } from '@prometheus/_types/ErrorBody'
 import { QueryResult } from '@prometheus/_types/QueryResult'
 
 export class Response {
@@ -31,4 +33,43 @@ export class Response {
      */
     warnings?: string[]
   }
+  exceptions: [
+    {
+      /**
+       * The request or expression is not valid, including a non-positive `timeout`.
+       * A form parameter that is also in the query string is the standard Elasticsearch error body instead.
+       */
+      statusCodes: [400]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The caller is not allowed to run the query.
+       */
+      statusCodes: [403]
+      body: ErrorBody
+    },
+    {
+      /**
+       * On Serverless and on Elasticsearch 9.5.0 and later, form-encoded POST requests are accepted only only on authenticated TLS connections.
+       * Otherwise the response is `406` with the standard Elasticsearch error body.
+       */
+      statusCodes: [406]
+      body: ErrorResponseBase
+    },
+    {
+      /**
+       * The query ran, but the response could not be written.
+       */
+      statusCodes: [500]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The query timed out.
+       */
+      statusCodes: [503]
+      body: ErrorBody
+    }
+  ]
 }

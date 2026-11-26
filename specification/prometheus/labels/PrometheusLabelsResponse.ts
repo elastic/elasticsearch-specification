@@ -17,6 +17,9 @@
  * under the License.
  */
 
+import { ErrorResponseBase } from '@_types/Base'
+import { ErrorBody } from '@prometheus/_types/ErrorBody'
+
 export class Response {
   body: {
     /**
@@ -32,4 +35,36 @@ export class Response {
      */
     warnings?: string[]
   }
+  exceptions: [
+    {
+      /**
+       * The request is not valid after the handler has started.
+       * A failure while reading parameters is the standard Elasticsearch `{ error, status }` body instead, including a form parameter that is also in the query string.
+       */
+      statusCodes: [400]
+      body: ErrorBody
+    },
+    {
+      /**
+       * The caller is not allowed to run the query.
+       */
+      statusCodes: [403]
+      body: ErrorBody
+    },
+    {
+      /**
+       * On Serverless and on Elasticsearch 9.5.0 and later, form-encoded POST requests are accepted only only on authenticated TLS connections.
+       * Otherwise the response is `406` with the standard Elasticsearch error body.
+       */
+      statusCodes: [406]
+      body: ErrorResponseBase
+    },
+    {
+      /**
+       * The query ran, but the response could not be written.
+       */
+      statusCodes: [500]
+      body: ErrorBody
+    }
+  ]
 }
