@@ -19,5 +19,6 @@ jobs:
     with:
       path: docs/api-preview
       path-pattern: '**'
+      continue-on-error: 'true'
       pre-build-artifact: api-preview-specs
       pre-build-artifact-path: docs/api-preview
