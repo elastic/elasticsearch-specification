@@ -146461,12 +146461,29 @@
                 "additionalProperties": {
                   "type": "number"
                 }
+              },
+              "settings": {
+                "description": "Per-setting usage counters, keyed by ES|QL query setting name (for example\n`time_zone`, `unmapped_fields`). Each value counts how many queries\nsupplied that setting, either in the request body or with `SET` in the\nquery. A setting supplied both ways is counted once.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "took": {
+                "description": "Histogram of query execution times. Each query is counted in exactly one\nbucket, the one its `took` time falls in.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/xpack.usage.EsqlTook"
+                  }
+                ]
               }
             },
             "required": [
               "features",
               "queries",
-              "functions"
+              "functions",
+              "settings",
+              "took"
             ]
           }
         ]
@@ -146486,6 +146503,63 @@
         "required": [
           "total",
           "failed"
+        ]
+      },
+      "xpack.usage.EsqlTook": {
+        "type": "object",
+        "properties": {
+          "lt_10ms": {
+            "description": "Queries that took less than 10 milliseconds.",
+            "type": "number"
+          },
+          "lt_100ms": {
+            "description": "Queries that took at least 10 milliseconds and less than 100 milliseconds.",
+            "type": "number"
+          },
+          "lt_1s": {
+            "description": "Queries that took at least 100 milliseconds and less than 1 second.",
+            "type": "number"
+          },
+          "lt_10s": {
+            "description": "Queries that took at least 1 second and less than 10 seconds.",
+            "type": "number"
+          },
+          "lt_1m": {
+            "description": "Queries that took at least 10 seconds and less than 1 minute.",
+            "type": "number"
+          },
+          "lt_10m": {
+            "description": "Queries that took at least 1 minute and less than 10 minutes.",
+            "type": "number"
+          },
+          "lt_1h": {
+            "description": "Queries that took at least 10 minutes and less than 1 hour.",
+            "type": "number"
+          },
+          "lt_10h": {
+            "description": "Queries that took at least 1 hour and less than 10 hours.",
+            "type": "number"
+          },
+          "lt_1d": {
+            "description": "Queries that took at least 10 hours and less than 1 day.",
+            "type": "number"
+          },
+          "gt_1d": {
+            "description": "Queries that took 1 day or more.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "lt_10ms",
+          "lt_100ms",
+          "lt_1s",
+          "lt_10s",
+          "lt_1m",
+          "lt_10m",
+          "lt_1h",
+          "lt_10h",
+          "lt_1d",
+          "gt_1d"
         ]
       },
       "xpack.usage.Flattened": {
