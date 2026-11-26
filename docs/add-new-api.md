@@ -20,10 +20,10 @@ specification endpoints, we are working to remove this limitation.
 ## How to add the definition of an endpoint
 
 Once you have added a new endpoint definition, the next step is to add its type definition.
-First, you should find the most appropriate place inside [`/specification`](../specification)
-where to put the new definition. The content of [`/specification`](../specification)
+First, you should find the most appropriate place inside [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification)
+where to put the new definition. The content of [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification)
 tries to mimic the Elasticsearch online documentation, so you can use that as inspiration.
-For example, the index document definition can be found in [`/specification/_global/index`](../specification/_global/index).
+For example, the index document definition can be found in [`/specification/_global/index`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/index).
 
 Once you have found the best place for the new definition, you should create a new file for it.
 The filename should be the same as the type definition you are writing, for example:
@@ -41,12 +41,12 @@ class Response {}
 The request and response files should only contain the main type definition: everything else, from subtypes to enums, should
 be placed in a separate file, usually called types.ts, at the same level in the hierarchy, for example:
 
-[`/specification/_global/bulk/types.ts`](../specification/_global/bulk/types.ts)
+[`/specification/_global/bulk/types.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/bulk/types.ts)
 
 
 or, if there are too many types, they can be organized in separate files in a `_types` folder:
 
-[`/specification/_global/search/_types`](../specification/_global/search/_types)
+[`/specification/_global/search/_types`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/search/_types)
 
 In general, try to use the fewest files possible, and check if a new type already exists before introducing it.
 
@@ -72,7 +72,7 @@ Furthermore, every request definition **must** contain these JS Doc tags:
   - `feature_flag`: the feature flag value, only valid if the `visibility` is set to `feature_flag`.
     This field is only available for `stack`.
 
-NOTE: The `@rest_spec_name` affects the CLI command name. Refer to the [Modeling Guide](docs/modeling-guide.md#additional-information) for more tips about these tags.
+NOTE: The `@rest_spec_name` affects the CLI command name. Refer to the [Modeling Guide](modeling-guide.md#additional-information) for more tips about these tags.
 
 Following, you can find a template valid for any request definition.
 
@@ -125,7 +125,7 @@ interface Request<Generic> extends RequestBase {
 }
 ```
 And the generic will be used somewhere inside the definition.
-There are cases where the generic might be the entire body, see [`IndexRequest`](../specification/_global/index/IndexRequest.ts).
+There are cases where the generic might be the entire body, see [`IndexRequest`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/index/IndexRequest.ts).
 
 ### Add the endpoint response definition
 

@@ -1,0 +1,14 @@
+project: 'Elasticsearch specification'
+toc:
+  - file: index.md
+  - file: specification-structure.md
+  - file: schema-structure.md
+  - file: modeling-guide.md
+  - file: style-guide.md
+  - file: doc-comments-guide.md
+  - file: behaviors.md
+  - file: add-new-api.md
+  - file: validation-example.md
+  - file: compiler.md
+  - file: spec-drift-check.md
+  - file: known-issues.md
