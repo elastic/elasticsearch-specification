@@ -155,8 +155,6 @@ export class MoreLikeThisQuery extends QueryBase {
    * @server_default 0
    */
   min_word_length?: integer
-
-  routing?: string
   /**
    * An array of stop words.
    * Any word in this set is ignored.
@@ -166,9 +164,6 @@ export class MoreLikeThisQuery extends QueryBase {
    * Used in combination with `like` to exclude documents that match a set of terms.
    */
   unlike?: Like | Like[]
-  version?: VersionNumber
-  /** @server_default 'internal' */
-  version_type?: VersionType
 }
 
 export class LikeDocument {

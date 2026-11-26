@@ -26,7 +26,7 @@ export class Groupings {
    * A date histogram group aggregates a date field into time-based buckets.
    * This group is mandatory; you currently cannot roll up documents without a timestamp and a `date_histogram` group.
    */
-  date_histogram?: DateHistogramGrouping
+  date_histogram: DateHistogramGrouping
   /**
    * The histogram group aggregates one or more numeric fields into numeric histogram intervals.
    */

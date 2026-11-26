@@ -71,5 +71,12 @@ export interface Request extends RequestBase {
      * @availability serverless stability=stable
      */
     include_defaults?: boolean
+    /**
+     * If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.
+     * @server_default false
+     * @availability stack since=9.6.0 stability=stable
+     * @availability serverless stability=stable
+     */
+    include_managed_fields?: boolean
   }
 }

@@ -11227,6 +11227,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -12685,6 +12688,9 @@
           },
           {
             "$ref": "#/components/parameters/indices.get_index_template-include_defaults"
+          },
+          {
+            "$ref": "#/components/parameters/indices.get_index_template-include_managed_fields"
           }
         ],
         "responses": {
@@ -28279,6 +28285,695 @@
         ]
       }
     },
+    "/_prometheus/api/v1/label/{name}/values": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label values",
+        "description": "Get the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-label-values",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-name"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.label_values-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/label/{name}/values": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label values",
+        "description": "Get the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-label-values-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-name"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.label_values-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.label_values-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/api/v1/labels": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label names",
+        "description": "Get the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-labels",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.labels-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.labels-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label names",
+        "description": "Get the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-labels-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.labels-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.labels-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/labels": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label names",
+        "description": "Get the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-labels-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.labels-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.labels-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus label names",
+        "description": "Get the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-labels-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.labels-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.labels-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.labels-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/api/v1/query": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL instant query",
+        "description": "Evaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-time"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL instant query",
+        "description": "Evaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-time"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/query": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL instant query",
+        "description": "Evaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-time"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL instant query",
+        "description": "Evaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-time"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/api/v1/query_range": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL range query",
+        "description": "Evaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-range",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-step"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_range-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL range query",
+        "description": "Evaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-range-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-step"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_range-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/query_range": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL range query",
+        "description": "Evaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-range-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-step"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_range-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Run a PromQL range query",
+        "description": "Evaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-query-range-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-query"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-step"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.query_range-timeout"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.query_range-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/api/v1/series": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Find Prometheus series",
+        "description": "Get the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-series",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.series-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.series-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Find Prometheus series",
+        "description": "Get the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-series-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.series-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.series-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/series": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Find Prometheus series",
+        "description": "Get the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-series-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.series-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.series-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Find Prometheus series",
+        "description": "Get the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-series-3",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.series-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-match__"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-start"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-end"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.series-limit"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.series-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_prometheus/api/v1/status/buildinfo": {
       "get": {
         "tags": [
@@ -36745,6 +37440,9 @@
             "$ref": "#/components/schemas/_types.aggregations.RateAggregate"
           },
           {
+            "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregate"
+          },
+          {
             "$ref": "#/components/schemas/_types.aggregations.CumulativeCardinalityAggregate"
           },
           {
@@ -40632,6 +41330,34 @@
           }
         ]
       },
+      "_types.aggregations.RoaringBitmapAggregate": {
+        "description": "Result of the `roaring_bitmap` aggregation.",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.aggregations.AggregateBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "The distinct values of the field, as a base64-encoded portable roaring bitmap.\nIt is `null` if the field is unmapped.",
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      },
       "_types.aggregations.CumulativeCardinalityAggregate": {
         "description": "Result of the `cumulative_cardinality` aggregation",
         "allOf": [
@@ -41556,6 +42282,12 @@
           "create_weight_count": {
             "type": "number"
           },
+          "into_bit_set": {
+            "type": "number"
+          },
+          "into_bit_set_count": {
+            "type": "number"
+          },
           "match": {
             "type": "number"
           },
@@ -41598,6 +42330,8 @@
           "count_weight_count",
           "create_weight",
           "create_weight_count",
+          "into_bit_set",
+          "into_bit_set_count",
           "match",
           "match_count",
           "next_doc",
@@ -43124,6 +43858,17 @@
                   }
                 ]
               },
+              "roaring_bitmap": {
+                "externalDocs": {
+                  "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation"
+                },
+                "description": "Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.\nThe result can be passed to the `bitmap_terms` query.\nIt can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.aggregations.RoaringBitmapAggregation"
+                  }
+                ]
+              },
               "reverse_nested": {
                 "externalDocs": {
                   "url": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation"
@@ -43370,6 +44115,17 @@
         "description": "An Elasticsearch Query DSL (Domain Specific Language) object that defines a query.",
         "type": "object",
         "properties": {
+          "bitmap_terms": {
+            "externalDocs": {
+              "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query"
+            },
+            "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.query_dsl.BitmapTermsQuery"
+              }
+            ]
+          },
           "bool": {
             "externalDocs": {
               "url": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bool-query"
@@ -44067,6 +44823,47 @@
         "minProperties": 1,
         "maxProperties": 1
       },
+      "_types.query_dsl.BitmapTermsQuery": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/_types.query_dsl.QueryBase"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "field": {
+                "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/_types.Field"
+                  }
+                ]
+              },
+              "value": {
+                "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "field",
+              "value"
+            ]
+          }
+        ]
+      },
+      "_types.query_dsl.QueryBase": {
+        "type": "object",
+        "properties": {
+          "boost": {
+            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+            "default": 1.0,
+            "type": "number"
+          },
+          "_name": {
+            "type": "string"
+          }
+        }
+      },
       "_types.query_dsl.BoolQuery": {
         "allOf": [
           {
@@ -44153,19 +44950,6 @@
             "type": "string"
           }
         ]
-      },
-      "_types.query_dsl.QueryBase": {
-        "type": "object",
-        "properties": {
-          "boost": {
-            "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
-            "default": 1.0,
-            "type": "number"
-          },
-          "_name": {
-            "type": "string"
-          }
-        }
       },
       "_types.query_dsl.BoostingQuery": {
         "allOf": [
@@ -47332,9 +48116,6 @@
                 "default": 0.0,
                 "type": "number"
               },
-              "routing": {
-                "type": "string"
-              },
               "stop_words": {
                 "description": "An array of stop words.\nAny word in this set is ignored.",
                 "allOf": [
@@ -47354,21 +48135,6 @@
                     "items": {
                       "$ref": "#/components/schemas/_types.query_dsl.Like"
                     }
-                  }
-                ]
-              },
-              "version": {
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionNumber"
-                  }
-                ]
-              },
-              "version_type": {
-                "default": "'internal'",
-                "allOf": [
-                  {
-                    "$ref": "#/components/schemas/_types.VersionType"
                   }
                 ]
               }
@@ -52540,6 +53306,26 @@
           "value_count"
         ]
       },
+      "_types.aggregations.RoaringBitmapAggregation": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "description": "The `integer` or `long` field from which to collect the distinct values.\nScripts are not supported, so the field must be mapped.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.Field"
+              }
+            ]
+          },
+          "missing": {
+            "description": "The value to use for documents that do not have a value for the field.\nIt must be non-negative and fit the `integer` or `long` type of the field.\nBy default, documents without a value are ignored.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "field"
+        ]
+      },
       "_types.aggregations.ReverseNestedAggregation": {
         "allOf": [
           {
@@ -54059,6 +54845,12 @@
                 "description": "The document field to be used for text similarity comparisons. This field should contain the text that will be evaluated against the inference_text.",
                 "type": "string"
               },
+              "allow_rerank_failures": {
+                "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+                "default": false,
+                "x-state": "Generally available",
+                "type": "boolean"
+              },
               "chunk_rescorer": {
                 "description": "Whether to rescore on only the best matching chunks.",
                 "x-state": "Generally available",
@@ -54098,7 +54890,7 @@
         "type": "object",
         "properties": {
           "max_chunk_size": {
-            "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+            "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
             "default": 250.0,
             "type": "number"
           },
@@ -54131,10 +54923,7 @@
             "default": "sentence",
             "type": "string"
           }
-        },
-        "required": [
-          "max_chunk_size"
-        ]
+        }
       },
       "_types.RuleRetriever": {
         "allOf": [
@@ -57425,7 +58214,7 @@
           "mdcc",
           "modelDeadCategoryCount",
           "model.failed_category_count",
-          "mdcc",
+          "mfcc",
           "modelFailedCategoryCount",
           "model.frequent_category_count",
           "mfcc",
@@ -67612,7 +68401,9 @@
               }
             ]
           }
-        }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
       },
       "_types.mapping.SparseVectorIndexOptions": {
         "type": "object",
@@ -68402,6 +69193,11 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "type": "boolean"
               }
             },
             "required": [
@@ -68426,6 +69222,11 @@
               },
               "null_value": {
                 "type": "number"
+              },
+              "index_terms": {
+                "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+                "default": false,
+                "type": "boolean"
               }
             },
             "required": [
@@ -72217,6 +73018,9 @@
           },
           "unmanaged_reason": {
             "type": "string"
+          },
+          "minimum_lifecycle_enabled": {
+            "type": "boolean"
           }
         },
         "required": [
@@ -72762,6 +73566,10 @@
                 "$ref": "#/components/schemas/indices._types.IndexTemplateSummaryWithRollover"
               }
             ]
+          },
+          "registry_installed": {
+            "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+            "type": "boolean"
           },
           "index_patterns": {
             "description": "Array of wildcard (`*`) expressions used to match the names of data streams and indices during creation.",
@@ -74016,51 +74824,67 @@
         ]
       },
       "inference._types.ContentObject": {
-        "description": "An object style representation of a single portion of a conversation.",
+        "description": "One part of a chat message.\nThe `type` field selects which property is present.\nNot all services and models support content types other than `text`.",
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "file": "#/components/schemas/inference._types.FileContentPart",
+            "image_url": "#/components/schemas/inference._types.ImageUrlContent",
+            "text": "#/components/schemas/inference._types.TextContent"
+          }
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/inference._types.TextContent"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.ImageUrlContent"
+          },
+          {
+            "$ref": "#/components/schemas/inference._types.FileContentPart"
+          }
+        ]
+      },
+      "inference._types.TextContent": {
         "type": "object",
         "properties": {
           "type": {
-            "description": "The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content\ntypes other than \"text\"",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.ContentType"
-              }
+            "type": "string",
+            "enum": [
+              "text"
             ]
           },
           "text": {
-            "description": "The text content. Only applicable for the `text` type",
+            "description": "The text content.",
             "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "text"
+        ]
+      },
+      "inference._types.ImageUrlContent": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "image_url"
+            ]
           },
           "image_url": {
-            "description": "The image content. Only applicable for the `image_url` type",
+            "description": "The image content.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/inference._types.ImageUrl"
-              }
-            ]
-          },
-          "file": {
-            "description": "The file content. Only applicable for the `file` type",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/inference._types.FileContent"
               }
             ]
           }
         },
         "required": [
           "type",
-          "text",
-          "image_url",
-          "file"
-        ]
-      },
-      "inference._types.ContentType": {
-        "type": "string",
-        "enum": [
-          "text",
-          "image_url",
-          "file"
+          "image_url"
         ]
       },
       "inference._types.ImageUrl": {
@@ -74089,6 +74913,29 @@
           "auto",
           "low",
           "high"
+        ]
+      },
+      "inference._types.FileContentPart": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "file"
+            ]
+          },
+          "file": {
+            "description": "The file content.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.FileContent"
+              }
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "file"
         ]
       },
       "inference._types.FileContent": {
@@ -75207,6 +76054,14 @@
                     "$ref": "#/components/schemas/inference._types.TaskType"
                   }
                 ]
+              },
+              "metadata": {
+                "description": "Metadata about the endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.",
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/inference._types.EndpointMetadata"
+                  }
+                ]
               }
             },
             "required": [
@@ -75214,6 +76069,241 @@
               "task_type"
             ]
           }
+        ]
+      },
+      "inference._types.EndpointMetadata": {
+        "description": "Metadata about an inference endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.\nThe internal fields that Elasticsearch uses to track the metadata are not part of the response.",
+        "type": "object",
+        "properties": {
+          "heuristics": {
+            "description": "Properties of the endpoint that help clients to determine which model to use.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataHeuristics"
+              }
+            ]
+          },
+          "display": {
+            "description": "Information to display for the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataDisplay"
+              }
+            ]
+          },
+          "model_identity": {
+            "description": "The identity of the model that the endpoint serves.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataModelIdentity"
+              }
+            ]
+          },
+          "regions": {
+            "description": "The regions in which the endpoint is available.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.EndpointMetadataRegion"
+            }
+          },
+          "denied_by_region_policy": {
+            "description": "If `true`, the region policy of the caller prohibits access to the endpoint.",
+            "type": "boolean"
+          },
+          "capabilities": {
+            "description": "The capabilities of the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataCapabilities"
+              }
+            ]
+          }
+        },
+        "required": [
+          "heuristics",
+          "display"
+        ]
+      },
+      "inference._types.EndpointMetadataHeuristics": {
+        "type": "object",
+        "properties": {
+          "properties": {
+            "description": "Tags that describe the properties of the model, for example `multilingual`, `english` or `multimodal`.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "description": "The release status of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataStatus"
+              }
+            ]
+          },
+          "release_date": {
+            "description": "The date on which the model was released, in `yyyy-MM-dd` format.",
+            "type": "string"
+          },
+          "end_of_life_date": {
+            "description": "The date on which the model reaches the end of its life, in `yyyy-MM-dd` format.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      },
+      "inference._types.EndpointMetadataStatus": {
+        "type": "string",
+        "enum": [
+          "beta",
+          "preview",
+          "ga",
+          "deprecated"
+        ]
+      },
+      "inference._types.EndpointMetadataDisplay": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name to display for the endpoint.",
+            "type": "string"
+          },
+          "model_creator": {
+            "description": "The creator of the model, for display purposes.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataModelIdentity": {
+        "type": "object",
+        "properties": {
+          "creator": {
+            "description": "The model creator or lab, for example `anthropic`, `openai` or `jina`.",
+            "type": "string"
+          },
+          "family": {
+            "description": "The model family within the creator, for example `claude`, `gpt` or `gemini`.",
+            "type": "string"
+          },
+          "tier": {
+            "description": "The performance or size tier within the family, for example `sonnet` or `mini`.\nIt is not set if the model has no tier variants.",
+            "type": "string"
+          },
+          "version": {
+            "description": "The version of the model.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataRegion": {
+        "type": "object",
+        "properties": {
+          "csp": {
+            "description": "The cloud service provider, for example `aws`, `gcp` or `azure`.",
+            "type": "string"
+          },
+          "region": {
+            "description": "The region of the cloud service provider, for example `us-east-1`.",
+            "type": "string"
+          },
+          "geo": {
+            "description": "The geographic area, for example `us` or `eu`.",
+            "type": "string"
+          },
+          "region_display_name": {
+            "description": "The human-readable name of the region.",
+            "type": "string"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataCapabilities": {
+        "type": "object",
+        "properties": {
+          "reasoning": {
+            "description": "The reasoning support of the endpoint.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataReasoningCapability"
+              }
+            ]
+          },
+          "context_window": {
+            "description": "The context window of the model.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataContextWindow"
+              }
+            ]
+          },
+          "templates": {
+            "description": "The prompt template support of the endpoint.\nIt is returned only for chat completion endpoints that require a template instead of caller-authored messages.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatesCapability"
+              }
+            ]
+          }
+        }
+      },
+      "inference._types.EndpointMetadataReasoningCapability": {
+        "type": "object",
+        "properties": {
+          "supported_effort_levels": {
+            "description": "The reasoning effort levels that the endpoint supports.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+            }
+          },
+          "default_effort_level": {
+            "description": "The reasoning effort level that the endpoint uses by default.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.ReasoningEffort"
+              }
+            ]
+          }
+        },
+        "required": [
+          "supported_effort_levels"
+        ]
+      },
+      "inference._types.EndpointMetadataContextWindow": {
+        "type": "object",
+        "properties": {
+          "max_input_tokens": {
+            "description": "The maximum number of input tokens that the model accepts.",
+            "type": "number"
+          },
+          "max_output_tokens": {
+            "description": "The maximum number of output tokens that the model generates.",
+            "type": "number"
+          }
+        }
+      },
+      "inference._types.EndpointMetadataTemplatesCapability": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "description": "Whether the endpoint requires chat completion requests to carry a prompt template.\nElasticsearch displays the policy so that clients can choose the request shape, but it doesn't enforce it.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/inference._types.EndpointMetadataTemplatePolicy"
+              }
+            ]
+          }
+        },
+        "required": [
+          "policy"
+        ]
+      },
+      "inference._types.EndpointMetadataTemplatePolicy": {
+        "type": "string",
+        "enum": [
+          "required"
         ]
       },
       "inference._types.InferenceEndpoint": {
@@ -87225,6 +88315,14 @@
               }
             ]
           },
+          "peak_inference_process_memory_rss_bytes": {
+            "description": "The peak native memory (resident set size) of the inference process on this node.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
           "error_count": {
             "description": "The number of errors when evaluating the trained model.",
             "type": "number"
@@ -87391,6 +88489,22 @@
           },
           "required_native_memory_bytes": {
             "description": "The amount of memory required to load the model in bytes.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.\nUnlike `required_native_memory_bytes`, which is an estimate, this is a measured value.\nIt is returned only after the native process has reported a measurement.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_types.ByteSize"
+              }
+            ]
+          },
+          "peak_runtime_native_memory_bytes": {
+            "description": "The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.\nIt is returned only after the native process has reported a measurement.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/_types.ByteSize"
@@ -88920,7 +90034,10 @@
               "status": {
                 "type": "number"
               }
-            }
+            },
+            "required": [
+              "status"
+            ]
           }
         ]
       },
@@ -89399,6 +90516,26 @@
           "_alias",
           "_type",
           "_organisation"
+        ]
+      },
+      "prometheus._types.QueryResult": {
+        "type": "object",
+        "properties": {
+          "resultType": {
+            "description": "The type of the result: `vector` for an instant query, `matrix` for a range query.",
+            "type": "string"
+          },
+          "result": {
+            "description": "The result series. Sample values are JSON strings, including `NaN`, `+Inf` and `-Inf`.",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "resultType",
+          "result"
         ]
       },
       "prometheus.status_buildinfo.BuildInfo": {
@@ -95141,6 +96278,214 @@
           }
         }
       },
+      "prometheus.label_values-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The sorted label values.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusLabelValuesResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/label/job/values`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"api\",\n    \"prometheus\"\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
+      "prometheus.labels-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The sorted label names.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusLabelsResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/labels`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"__name__\",\n    \"instance\",\n    \"job\"\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
+      "prometheus.query-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/prometheus._types.QueryResult"
+                    }
+                  ]
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusQueryResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/query`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"vector\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"__name__\": \"up\",\n          \"job\": \"prometheus\",\n          \"instance\": \"localhost:9090\"\n        },\n        \"value\": [\n          1783635000,\n          \"1\"\n        ]\n      }\n    ]\n  }\n}"
+              }
+            }
+          }
+        }
+      },
+      "prometheus.query_range-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/prometheus._types.QueryResult"
+                    }
+                  ]
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusQueryRangeResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/query_range`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"matrix\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"job\": \"api\",\n          \"instance\": \"api-1:8080\"\n        },\n        \"values\": [\n          [\n            1783634400,\n            \"0.5\"\n          ],\n          [\n            1783634415,\n            \"0.52\"\n          ],\n          [\n            1783634430,\n            \"0.51\"\n          ]\n        ]\n      }\n    ]\n  }\n}"
+              }
+            }
+          }
+        }
+      },
+      "prometheus.series-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The label sets of the matching series.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusSeriesResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/series`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"__name__\": \"up\",\n      \"job\": \"prometheus\",\n      \"instance\": \"localhost:9090\"\n    }\n  ]\n}"
+              }
+            }
+          }
+        }
+      },
       "prometheus.status_buildinfo-200": {
         "description": "",
         "content": {
@@ -98672,6 +100017,18 @@
         "x-state": "Generally available",
         "style": "form"
       },
+      "indices.get_index_template-include_managed_fields": {
+        "in": "query",
+        "name": "include_managed_fields",
+        "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
+        "deprecated": false,
+        "schema": {
+          "default": false,
+          "type": "boolean"
+        },
+        "x-state": "Generally available",
+        "style": "form"
+      },
       "indices.get_mapping-index": {
         "in": "path",
         "name": "index",
@@ -100870,6 +102227,307 @@
         "deprecated": false,
         "schema": {
           "$ref": "#/components/schemas/_types.VersionType"
+        },
+        "style": "form"
+      },
+      "prometheus.label_values-name": {
+        "in": "path",
+        "name": "name",
+        "description": "The name of the label.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "simple"
+      },
+      "prometheus.label_values-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.label_values-match__": {
+        "in": "query",
+        "name": "match[]",
+        "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+        "deprecated": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "style": "form"
+      },
+      "prometheus.label_values-start": {
+        "in": "query",
+        "name": "start",
+        "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.label_values-end": {
+        "in": "query",
+        "name": "end",
+        "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.label_values-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of label values to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.labels-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.labels-match__": {
+        "in": "query",
+        "name": "match[]",
+        "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+        "deprecated": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "style": "form"
+      },
+      "prometheus.labels-start": {
+        "in": "query",
+        "name": "start",
+        "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.labels-end": {
+        "in": "query",
+        "name": "end",
+        "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.labels-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of label names to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.query-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.query-query": {
+        "in": "query",
+        "name": "query",
+        "description": "The PromQL expression to evaluate.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query-time": {
+        "in": "query",
+        "name": "time",
+        "description": "The evaluation instant, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of series to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.query-timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.query_range-query": {
+        "in": "query",
+        "name": "query",
+        "description": "The PromQL expression to evaluate.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-start": {
+        "in": "query",
+        "name": "start",
+        "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-end": {
+        "in": "query",
+        "name": "end",
+        "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-step": {
+        "in": "query",
+        "name": "step",
+        "description": "The resolution between samples, as a number of seconds or a duration such as `30s` or `1h30m`.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of series to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.query_range-timeout": {
+        "in": "query",
+        "name": "timeout",
+        "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.series-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.series-match__": {
+        "in": "query",
+        "name": "match[]",
+        "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. At least one is required.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "style": "form"
+      },
+      "prometheus.series-start": {
+        "in": "query",
+        "name": "start",
+        "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.series-end": {
+        "in": "query",
+        "name": "end",
+        "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.series-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of series to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
         },
         "style": "form"
       },

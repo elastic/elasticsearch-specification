@@ -72,6 +72,7 @@ import {
   PercentileRanksAggregation,
   PercentilesAggregation,
   RateAggregation,
+  RoaringBitmapAggregation,
   ScriptedMetricAggregation,
   StatsAggregation,
   StringStatsAggregation,
@@ -445,6 +446,15 @@ export class AggregationContainer {
    * @ext_doc_id search-aggregations-metrics-rate-aggregation
    */
   rate?: RateAggregation
+  /**
+   * Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.
+   * The result can be passed to the `bitmap_terms` query.
+   * It can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.
+   * @availability stack since=9.6.0
+   * @availability serverless
+   * @ext_doc_id search-aggregations-metrics-roaring-bitmap-aggregation
+   */
+  roaring_bitmap?: RoaringBitmapAggregation
   /**
    * A special single bucket aggregation that enables aggregating on parent documents from nested documents.
    * Should only be defined inside a `nested` aggregation.

@@ -11945,6 +11945,264 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "docId": "prometheus-label-values",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.label_values",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/label/{name}/values"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/label/{name}/values"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "docId": "prometheus-labels",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.labels",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/labels"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/labels"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "docId": "prometheus-query",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "docId": "prometheus-query-range",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query_range",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query_range"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query_range"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "docId": "prometheus-series",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.series",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/series"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/series"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.5.0",
           "stability": "tech_preview",
           "visibility": "public"
@@ -11952,6 +12210,7 @@
       },
       "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
       "docId": "prometheus-status-buildinfo",
+      "docTag": "prometheus",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "prometheus.status_buildinfo",
@@ -35376,9 +35635,31 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
+              "since": "9.6.0",
+              "stability": "stable"
+            }
+          },
+          "description": "If true, the response includes internally managed fields, such as `registry_installed`, that are hidden by default.",
+          "name": "include_managed_fields",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L75"
+      "specLocation": "indices/get_index_template/IndicesGetIndexTemplateRequest.ts#L24-L82"
     },
     {
       "body": {
@@ -63477,6 +63758,827 @@
       "body": {
         "kind": "no_body"
       },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "examples": {
+        "PrometheusLabelValuesRequestExample1": {
+          "description": "Get the values of the `job` label.",
+          "method_request": "GET /_prometheus/api/v1/label/job/values",
+          "summary": "Label values"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "path": [
+        {
+          "description": "The name of the label.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label values to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesRequest.ts#L24-L83"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label values.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelValuesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/label/job/values`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"api\",\n    \"prometheus\"\n  ]\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesResponse.ts#L20-L35"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "examples": {
+        "PrometheusLabelsRequestExample1": {
+          "description": "Get the label names of the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/labels?match[]=up",
+          "summary": "Label names"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label names to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/labels/PrometheusLabelsRequest.ts#L24-L77"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label names.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelsResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/labels`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"__name__\",\n    \"instance\",\n    \"job\"\n  ]\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "specLocation": "prometheus/labels/PrometheusLabelsResponse.ts#L20-L35"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "examples": {
+        "PrometheusQueryRequestExample1": {
+          "description": "Evaluate `up` at one instant.",
+          "method_request": "GET /_prometheus/api/v1/query?query=up&time=2026-07-09T22:10:00Z",
+          "summary": "Instant query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The evaluation instant, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query/PrometheusQueryRequest.ts#L24-L77"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"vector\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"__name__\": \"up\",\n          \"job\": \"prometheus\",\n          \"instance\": \"localhost:9090\"\n        },\n        \"value\": [\n          1783635000,\n          \"1\"\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "specLocation": "prometheus/query/PrometheusQueryResponse.ts#L22-L34"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "examples": {
+        "PrometheusQueryRangeRequestExample1": {
+          "description": "Evaluate `rate(http_requests_total[5m])` every 15 seconds over one minute.",
+          "method_request": "GET /_prometheus/api/v1/query_range?query=rate(http_requests_total[5m])&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z&step=15s",
+          "summary": "Range query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The resolution between samples, as a number of seconds or a duration such as `30s` or `1h30m`.",
+          "name": "step",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeRequest.ts#L24-L83"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryRangeResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query_range`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"matrix\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"job\": \"api\",\n          \"instance\": \"api-1:8080\"\n        },\n        \"values\": [\n          [\n            1783634400,\n            \"0.5\"\n          ],\n          [\n            1783634415,\n            \"0.52\"\n          ],\n          [\n            1783634430,\n            \"0.51\"\n          ]\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeResponse.ts#L22-L34"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "examples": {
+        "PrometheusSeriesRequestExample1": {
+          "description": "Find the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/series?match[]=up",
+          "summary": "Series"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. At least one is required.",
+          "name": "match[]",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/series/PrometheusSeriesRequest.ts#L24-L77"
+    },
+    {
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The label sets of the matching series.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "kind": "dictionary_of",
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusSeriesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/series`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"__name__\": \"up\",\n      \"job\": \"prometheus\",\n      \"instance\": \"localhost:9090\"\n    }\n  ]\n}"
+        }
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "specLocation": "prometheus/series/PrometheusSeriesResponse.ts#L22-L37"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
       "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
       "examples": {
         "PrometheusStatusBuildinfoRequestExample1": {
@@ -63509,7 +64611,7 @@
         }
       ],
       "query": [],
-      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoRequest.ts#L23-L52"
+      "specLocation": "prometheus/status_buildinfo/PrometheusStatusBuildinfoRequest.ts#L23-L53"
     },
     {
       "body": {
@@ -83442,6 +84544,26 @@
           }
         },
         {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Returns the exact distinct values of an `integer` or `long` field across the matching documents, as a base64-encoded portable roaring bitmap.\nThe result can be passed to the `bitmap_terms` query.\nIt can't be placed inside an aggregation that produces more than one bucket, such as `terms` or `histogram`.",
+          "extDocId": "search-aggregations-metrics-roaring-bitmap-aggregation",
+          "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation",
+          "name": "roaring_bitmap",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RoaringBitmapAggregation",
+              "namespace": "_types.aggregations"
+            }
+          }
+        },
+        {
           "description": "A special single bucket aggregation that enables aggregating on parent documents from nested documents.\nShould only be defined inside a `nested` aggregation.",
           "extDocId": "search-aggregations-bucket-reverse-nested-aggregation",
           "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-bucket-reverse-nested-aggregation",
@@ -83716,7 +84838,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L110-L555",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L111-L565",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
@@ -83830,6 +84952,26 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Returns documents whose `integer` or `long` field value is contained in a roaring bitmap that is provided as a base64-encoded string.\nIt is the counterpart of the `terms` query for very large sets of numeric values.",
+          "extDocId": "query-dsl-bitmap-terms-query",
+          "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+          "name": "bitmap_terms",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "BitmapTermsQuery",
+              "namespace": "_types.query_dsl"
+            }
+          }
+        },
         {
           "description": "matches documents matching boolean combinations of other queries.",
           "extDocId": "query-dsl-bool-query",
@@ -84946,10 +86088,103 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L99-L446",
+      "specLocation": "_types/query_dsl/abstractions.ts#L100-L455",
       "variants": {
         "kind": "container",
         "nonExhaustive": true
+      }
+    },
+    {
+      "extDocId": "query-dsl-bitmap-terms-query",
+      "extDocUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-bitmap-terms-query",
+      "inherits": {
+        "type": {
+          "name": "QueryBase",
+          "namespace": "_types.query_dsl"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "BitmapTermsQuery",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "The name of the field to search against.\nIt must be an `integer` or a `long` field with `index` enabled.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The values to match, as a base64-encoded serialized roaring bitmap in little-endian byte order.\nThe type of the field determines the expected format: an `integer` field expects a 32-bit roaring bitmap, and a `long` field expects a 64-bit roaring bitmap in the portable format.\nThe bitmap can only contain non-negative values: from `0` to `2^31 - 1` for an `integer` field and from `0` to `2^63 - 1` for a `long` field.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/BitmapTermsQuery.ts#L23-L38"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryBase",
+        "namespace": "_types.query_dsl"
+      },
+      "properties": [
+        {
+          "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
+          "name": "boost",
+          "required": false,
+          "serverDefault": 1,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "float",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "codegenName": "query_name",
+          "name": "_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/query_dsl/abstractions.ts#L480-L491"
+    },
+    {
+      "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
+      "kind": "type_alias",
+      "name": {
+        "name": "Field",
+        "namespace": "_types"
+      },
+      "specLocation": "_types/common.ts#L139-L140",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "string",
+          "namespace": "_builtins"
+        }
       }
     },
     {
@@ -85093,41 +86328,6 @@
       "specLocation": "_types/query_dsl/compound.ts#L29-L56"
     },
     {
-      "kind": "interface",
-      "name": {
-        "name": "QueryBase",
-        "namespace": "_types.query_dsl"
-      },
-      "properties": [
-        {
-          "description": "Floating point number used to decrease or increase the relevance scores of the query.\nBoost values are relative to the default value of 1.0.\nA boost value between 0 and 1.0 decreases the relevance score.\nA value greater than 1.0 increases the relevance score.",
-          "name": "boost",
-          "required": false,
-          "serverDefault": 1,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "float",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "codegenName": "query_name",
-          "name": "_name",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L471-L482"
-    },
-    {
       "description": "The minimum number of terms that should match as integer, percentage or range",
       "docId": "query-dsl-minimum-should-match",
       "docUrl": "https://www.elastic.co/docs/reference/query-languages/query-dsl/query-dsl-minimum-should-match",
@@ -85222,22 +86422,6 @@
         "kind": "instance_of",
         "type": {
           "name": "number",
-          "namespace": "_builtins"
-        }
-      }
-    },
-    {
-      "description": "Path to field or array of paths. Some API's support wildcards in the path to select multiple fields.",
-      "kind": "type_alias",
-      "name": {
-        "name": "Field",
-        "namespace": "_types"
-      },
-      "specLocation": "_types/common.ts#L139-L140",
-      "type": {
-        "kind": "instance_of",
-        "type": {
-          "name": "string",
           "namespace": "_builtins"
         }
       }
@@ -85441,7 +86625,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L484-L518"
+      "specLocation": "_types/query_dsl/abstractions.ts#L493-L527"
     },
     {
       "kind": "enum",
@@ -85457,7 +86641,7 @@
         "name": "CombinedFieldsOperator",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L531-L534"
+      "specLocation": "_types/query_dsl/abstractions.ts#L540-L543"
     },
     {
       "kind": "enum",
@@ -85475,7 +86659,7 @@
         "name": "CombinedFieldsZeroTerms",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/abstractions.ts#L536-L545"
+      "specLocation": "_types/query_dsl/abstractions.ts#L545-L554"
     },
     {
       "extDocId": "query-dsl-constant-score-query",
@@ -85825,7 +87009,7 @@
         "name": "EmbeddingContentType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L720-L730"
+      "specLocation": "inference/_types/CommonTypes.ts#L723-L733"
     },
     {
       "kind": "enum",
@@ -85844,7 +87028,7 @@
         "name": "EmbeddingContentFormat",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L732-L741"
+      "specLocation": "inference/_types/CommonTypes.ts#L735-L744"
     },
     {
       "description": "A duration. Units can be `nanos`, `micros`, `ms` (milliseconds), `s` (seconds), `m` (minutes), `h` (hours) and\n`d` (days). Also accepts \"0\" without a unit and \"-1\" to indicate an unspecified value.",
@@ -88338,7 +89522,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L448-L465"
+      "specLocation": "_types/query_dsl/abstractions.ts#L457-L474"
     },
     {
       "kind": "enum",
@@ -88821,7 +90005,7 @@
         }
       ],
       "shortcutProperty": "field",
-      "specLocation": "_types/query_dsl/abstractions.ts#L547-L561"
+      "specLocation": "_types/query_dsl/abstractions.ts#L556-L570"
     },
     {
       "inherits": {
@@ -89631,7 +90815,7 @@
         "name": "Missing",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L557-L557",
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L567-L567",
       "type": {
         "items": [
           {
@@ -92346,17 +93530,6 @@
           }
         },
         {
-          "name": "routing",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
           "description": "An array of stop words.\nAny word in this set is ignored.",
           "name": "stop_words",
           "required": false,
@@ -92394,32 +93567,9 @@
             ],
             "kind": "union_of"
           }
-        },
-        {
-          "name": "version",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionNumber",
-              "namespace": "_types"
-            }
-          }
-        },
-        {
-          "name": "version_type",
-          "required": false,
-          "serverDefault": "'internal'",
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "VersionType",
-              "namespace": "_types"
-            }
-          }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L87-L172"
+      "specLocation": "_types/query_dsl/specialized.ts#L87-L167"
     },
     {
       "codegenNames": [
@@ -92434,7 +93584,7 @@
         "name": "Like",
         "namespace": "_types.query_dsl"
       },
-      "specLocation": "_types/query_dsl/specialized.ts#L198-L203",
+      "specLocation": "_types/query_dsl/specialized.ts#L193-L198",
       "type": {
         "items": [
           {
@@ -92566,7 +93716,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L174-L196"
+      "specLocation": "_types/query_dsl/specialized.ts#L169-L191"
     },
     {
       "kind": "enum",
@@ -93277,7 +94427,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L205-L245"
+      "specLocation": "_types/query_dsl/specialized.ts#L200-L240"
     },
     {
       "extDocId": "query-dsl-pinned-query",
@@ -93338,7 +94488,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L247-L267",
+      "specLocation": "_types/query_dsl/specialized.ts#L242-L262",
       "variants": {
         "kind": "container"
       }
@@ -93375,7 +94525,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L269-L278"
+      "specLocation": "_types/query_dsl/specialized.ts#L264-L273"
     },
     {
       "extDocId": "query-dsl-prefix-query",
@@ -94212,7 +95362,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L309-L335"
+      "specLocation": "_types/query_dsl/specialized.ts#L304-L330"
     },
     {
       "inherits": {
@@ -94240,7 +95390,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L291-L296"
+      "specLocation": "_types/query_dsl/specialized.ts#L286-L291"
     },
     {
       "kind": "interface",
@@ -94249,7 +95399,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L280-L280"
+      "specLocation": "_types/query_dsl/specialized.ts#L275-L275"
     },
     {
       "inherits": {
@@ -94277,7 +95427,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L284-L289"
+      "specLocation": "_types/query_dsl/specialized.ts#L279-L284"
     },
     {
       "inherits": {
@@ -94292,7 +95442,7 @@
         "namespace": "_types.query_dsl"
       },
       "properties": [],
-      "specLocation": "_types/query_dsl/specialized.ts#L282-L282"
+      "specLocation": "_types/query_dsl/specialized.ts#L277-L277"
     },
     {
       "inherits": {
@@ -94332,7 +95482,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L298-L307"
+      "specLocation": "_types/query_dsl/specialized.ts#L293-L302"
     },
     {
       "extDocId": "query-dsl-regexp-query",
@@ -94498,7 +95648,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L398-L406"
+      "specLocation": "_types/query_dsl/specialized.ts#L393-L401"
     },
     {
       "extDocId": "query-dsl-script-query",
@@ -94528,7 +95678,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L337-L346"
+      "specLocation": "_types/query_dsl/specialized.ts#L332-L341"
     },
     {
       "extDocId": "query-dsl-script-score-query",
@@ -94582,7 +95732,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L348-L365"
+      "specLocation": "_types/query_dsl/specialized.ts#L343-L360"
     },
     {
       "extDocId": "query-dsl-semantic-query",
@@ -94685,7 +95835,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L367-L381"
+      "specLocation": "_types/query_dsl/specialized.ts#L362-L376"
     },
     {
       "kind": "interface",
@@ -94731,7 +95881,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/specialized.ts#L383-L396"
+      "specLocation": "_types/query_dsl/specialized.ts#L378-L391"
     },
     {
       "extDocId": "query-dsl-simple-query-string-query",
@@ -96283,7 +97433,7 @@
           }
         }
       ],
-      "specLocation": "_types/query_dsl/abstractions.ts#L520-L529"
+      "specLocation": "_types/query_dsl/abstractions.ts#L529-L538"
     },
     {
       "inherits": {
@@ -97820,7 +98970,7 @@
         "name": "MissingOrder",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/AggregationContainer.ts#L558-L562"
+      "specLocation": "_types/aggregations/AggregationContainer.ts#L568-L572"
     },
     {
       "kind": "enum",
@@ -97860,7 +99010,7 @@
         "name": "ValueType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L468-L479"
+      "specLocation": "_types/aggregations/metric.ts#L482-L493"
     },
     {
       "inherits": {
@@ -99104,7 +100254,7 @@
         "name": "Buckets",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L362-L371",
+      "specLocation": "_types/aggregations/Aggregate.ts#L363-L372",
       "type": {
         "items": [
           {
@@ -101890,7 +103040,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L266-L277"
+      "specLocation": "_types/aggregations/metric.ts#L280-L291"
     },
     {
       "kind": "enum",
@@ -101908,7 +103058,41 @@
         "name": "RateMode",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L279-L288"
+      "specLocation": "_types/aggregations/metric.ts#L293-L302"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "RoaringBitmapAggregation",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The `integer` or `long` field from which to collect the distinct values.\nScripts are not supported, so the field must be mapped.",
+          "name": "field",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "Field",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The value to use for documents that do not have a value for the field.\nIt must be non-negative and fit the `integer` or `long` type of the field.\nBy default, documents without a value are ignored.",
+          "name": "missing",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/metric.ts#L266-L278"
     },
     {
       "inherits": {
@@ -102092,7 +103276,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L290-L316"
+      "specLocation": "_types/aggregations/metric.ts#L304-L330"
     },
     {
       "extDocId": "search-aggregations-pipeline-serialdiff-aggregation",
@@ -102747,7 +103931,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L318-L318"
+      "specLocation": "_types/aggregations/metric.ts#L332-L332"
     },
     {
       "inherits": {
@@ -102791,7 +103975,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L320-L326"
+      "specLocation": "_types/aggregations/metric.ts#L334-L340"
     },
     {
       "inherits": {
@@ -102806,7 +103990,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L328-L328"
+      "specLocation": "_types/aggregations/metric.ts#L342-L342"
     },
     {
       "extDocId": "search-aggregations-pipeline-sum-bucket-aggregation",
@@ -103280,7 +104464,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L373-L433"
+      "specLocation": "_types/aggregations/metric.ts#L387-L447"
     },
     {
       "inherits": {
@@ -103333,7 +104517,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L330-L344"
+      "specLocation": "_types/aggregations/metric.ts#L344-L358"
     },
     {
       "kind": "interface",
@@ -103378,7 +104562,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L346-L356"
+      "specLocation": "_types/aggregations/metric.ts#L360-L370"
     },
     {
       "kind": "enum",
@@ -103400,7 +104584,7 @@
         "name": "TTestType",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/metric.ts#L358-L371"
+      "specLocation": "_types/aggregations/metric.ts#L372-L385"
     },
     {
       "extDocId": "search-aggregations-metrics-top-metrics",
@@ -103470,7 +104654,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L435-L452"
+      "specLocation": "_types/aggregations/metric.ts#L449-L466"
     },
     {
       "kind": "interface",
@@ -103504,7 +104688,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L454-L464"
+      "specLocation": "_types/aggregations/metric.ts#L468-L478"
     },
     {
       "inherits": {
@@ -103519,7 +104703,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/metric.ts#L466-L466"
+      "specLocation": "_types/aggregations/metric.ts#L480-L480"
     },
     {
       "inherits": {
@@ -103609,7 +104793,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L481-L495"
+      "specLocation": "_types/aggregations/metric.ts#L495-L509"
     },
     {
       "kind": "interface",
@@ -103654,7 +104838,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/metric.ts#L497-L507"
+      "specLocation": "_types/aggregations/metric.ts#L511-L521"
     },
     {
       "extDocId": "search-aggregations-bucket-variablewidthhistogram-aggregation",
@@ -104861,6 +106045,28 @@
               "stability": "stable"
             },
             "stack": {
+              "since": "8.19.0",
+              "stability": "stable"
+            }
+          },
+          "description": "Whether to return the documents from the nested retriever as they are, without reranking them, if the reranking fails.\nIf `false`, a reranking failure fails the request.",
+          "name": "allow_rerank_failures",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {
+              "stability": "stable"
+            },
+            "stack": {
               "since": "9.2.0",
               "stability": "stable"
             }
@@ -104877,7 +106083,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L187-L204"
+      "specLocation": "_types/Retriever.ts#L187-L212"
     },
     {
       "kind": "interface",
@@ -104911,7 +106117,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L217-L222"
+      "specLocation": "_types/Retriever.ts#L225-L230"
     },
     {
       "attachedBehaviors": [
@@ -104941,9 +106147,9 @@
       },
       "properties": [
         {
-          "description": "The maximum size of a chunk in words.\nThis value cannot be lower than `20` (for `sentence` strategy) or `10` (for `word` strategy).\nThis value should not exceed the window size for the associated model.",
+          "description": "The maximum size of a chunk in words.\nIt is required for the `sentence`, `word` and `recursive` strategies, and not allowed for the `none` strategy.\nIf it is the only setting, the documents are chunked by sentence, without overlap.\nIf no chunking settings are given, the documents are chunked by sentence, without overlap, and the maximum size of a chunk is the window size of the reranking model.",
           "name": "max_chunk_size",
-          "required": true,
+          "required": false,
           "serverDefault": 250,
           "type": {
             "kind": "instance_of",
@@ -105022,7 +106228,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L33"
+      "specLocation": "_types/mapping/ChunkingSettings.ts#L29-L39"
     },
     {
       "description": "A class that implements `OverloadOf` only needs to declare properties that differ from the parent.\nUnchanged properties are inherited automatically. For declared properties, you can change\nwhether a property is required or not as well as its type. Same for the descriptions and js doc tags,\nif not specified, the parent ones will be used.",
@@ -105130,7 +106336,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L375-L434"
+      "specLocation": "inference/_types/Services.ts#L383-L442"
     },
     {
       "inherits": {
@@ -105205,7 +106411,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L206-L215"
+      "specLocation": "_types/Retriever.ts#L214-L223"
     },
     {
       "inherits": {
@@ -105615,7 +106821,7 @@
           }
         }
       ],
-      "specLocation": "_types/Retriever.ts#L228-L245"
+      "specLocation": "_types/Retriever.ts#L236-L253"
     },
     {
       "kind": "enum",
@@ -105629,7 +106835,7 @@
         "name": "DiversifyRetrieverTypes",
         "namespace": "_types"
       },
-      "specLocation": "_types/Retriever.ts#L224-L226"
+      "specLocation": "_types/Retriever.ts#L232-L234"
     },
     {
       "kind": "interface",
@@ -107376,7 +108582,7 @@
       "properties": [
         {
           "name": "status",
-          "required": false,
+          "required": true,
           "type": {
             "kind": "instance_of",
             "type": {
@@ -107386,7 +108592,7 @@
           }
         }
       ],
-      "specLocation": "_global/msearch/types.ts#L92-L95"
+      "specLocation": "_global/msearch/types.ts#L92-L94"
     },
     {
       "generics": [
@@ -108428,7 +109634,7 @@
         "name": "Aggregate",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L40-L130",
+      "specLocation": "_types/aggregations/Aggregate.ts#L40-L131",
       "type": {
         "items": [
           {
@@ -108924,6 +110130,13 @@
           {
             "kind": "instance_of",
             "type": {
+              "name": "RoaringBitmapAggregate",
+              "namespace": "_types.aggregations"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
               "name": "CumulativeCardinalityAggregate",
               "namespace": "_types.aggregations"
             }
@@ -108975,7 +110188,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L145-L148",
+      "specLocation": "_types/aggregations/Aggregate.ts#L146-L149",
       "variantName": "cardinality"
     },
     {
@@ -108997,7 +110210,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L141-L143"
+      "specLocation": "_types/aggregations/Aggregate.ts#L142-L144"
     },
     {
       "inherits": {
@@ -109012,7 +110225,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L173-L174",
+      "specLocation": "_types/aggregations/Aggregate.ts#L174-L175",
       "variantName": "hdr_percentiles"
     },
     {
@@ -109040,7 +110253,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L153-L155"
+      "specLocation": "_types/aggregations/Aggregate.ts#L154-L156"
     },
     {
       "codegenNames": [
@@ -109052,7 +110265,7 @@
         "name": "Percentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L157-L158",
+      "specLocation": "_types/aggregations/Aggregate.ts#L158-L159",
       "type": {
         "items": [
           {
@@ -109082,7 +110295,7 @@
         "name": "KeyedPercentiles",
         "namespace": "_types.aggregations"
       },
-      "specLocation": "_types/aggregations/Aggregate.ts#L165-L165",
+      "specLocation": "_types/aggregations/Aggregate.ts#L166-L166",
       "type": {
         "key": {
           "kind": "instance_of",
@@ -109174,7 +110387,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L167-L171"
+      "specLocation": "_types/aggregations/Aggregate.ts#L168-L172"
     },
     {
       "inherits": {
@@ -109189,7 +110402,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L176-L177",
+      "specLocation": "_types/aggregations/Aggregate.ts#L177-L178",
       "variantName": "hdr_percentile_ranks"
     },
     {
@@ -109205,7 +110418,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L179-L180",
+      "specLocation": "_types/aggregations/Aggregate.ts#L180-L181",
       "variantName": "tdigest_percentiles"
     },
     {
@@ -109221,7 +110434,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L182-L183",
+      "specLocation": "_types/aggregations/Aggregate.ts#L183-L184",
       "variantName": "tdigest_percentile_ranks"
     },
     {
@@ -109237,7 +110450,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L185-L186",
+      "specLocation": "_types/aggregations/Aggregate.ts#L186-L187",
       "variantName": "percentiles_bucket"
     },
     {
@@ -109253,7 +110466,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L201-L202",
+      "specLocation": "_types/aggregations/Aggregate.ts#L202-L203",
       "variantName": "median_absolute_deviation"
     },
     {
@@ -109305,7 +110518,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L190-L199"
+      "specLocation": "_types/aggregations/Aggregate.ts#L191-L200"
     },
     {
       "extDocId": "search-aggregations-metrics-min-aggregation",
@@ -109322,7 +110535,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L204-L208",
+      "specLocation": "_types/aggregations/Aggregate.ts#L205-L209",
       "variantName": "min"
     },
     {
@@ -109340,7 +110553,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L210-L214",
+      "specLocation": "_types/aggregations/Aggregate.ts#L211-L215",
       "variantName": "max"
     },
     {
@@ -109359,7 +110572,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L216-L221",
+      "specLocation": "_types/aggregations/Aggregate.ts#L217-L222",
       "variantName": "sum"
     },
     {
@@ -109377,7 +110590,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L223-L227",
+      "specLocation": "_types/aggregations/Aggregate.ts#L224-L228",
       "variantName": "avg"
     },
     {
@@ -109396,7 +110609,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L229-L234",
+      "specLocation": "_types/aggregations/Aggregate.ts#L230-L235",
       "variantName": "weighted_avg"
     },
     {
@@ -109415,7 +110628,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L236-L241",
+      "specLocation": "_types/aggregations/Aggregate.ts#L237-L242",
       "variantName": "value_count"
     },
     {
@@ -109431,7 +110644,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L243-L244",
+      "specLocation": "_types/aggregations/Aggregate.ts#L244-L245",
       "variantName": "simple_value"
     },
     {
@@ -109472,7 +110685,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L246-L253",
+      "specLocation": "_types/aggregations/Aggregate.ts#L247-L254",
       "variantName": "derivative"
     },
     {
@@ -109503,7 +110716,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L255-L258",
+      "specLocation": "_types/aggregations/Aggregate.ts#L256-L259",
       "variantName": "bucket_metric_value"
     },
     {
@@ -109542,7 +110755,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L388-L392",
+      "specLocation": "_types/aggregations/Aggregate.ts#L389-L393",
       "variantName": "change_point"
     },
     {
@@ -109641,7 +110854,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L398-L410",
+      "specLocation": "_types/aggregations/Aggregate.ts#L399-L411",
       "variants": {
         "kind": "container"
       }
@@ -109659,7 +110872,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L417-L417"
+      "specLocation": "_types/aggregations/Aggregate.ts#L418-L418"
     },
     {
       "kind": "interface",
@@ -109691,7 +110904,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L412-L415"
+      "specLocation": "_types/aggregations/Aggregate.ts#L413-L416"
     },
     {
       "inherits": {
@@ -109706,7 +110919,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L419-L419"
+      "specLocation": "_types/aggregations/Aggregate.ts#L420-L420"
     },
     {
       "kind": "interface",
@@ -109727,7 +110940,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L425-L427"
+      "specLocation": "_types/aggregations/Aggregate.ts#L426-L428"
     },
     {
       "kind": "interface",
@@ -109770,7 +110983,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L429-L433"
+      "specLocation": "_types/aggregations/Aggregate.ts#L430-L434"
     },
     {
       "inherits": {
@@ -109785,7 +110998,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L421-L421"
+      "specLocation": "_types/aggregations/Aggregate.ts#L422-L422"
     },
     {
       "kind": "interface",
@@ -109794,7 +111007,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L435-L435"
+      "specLocation": "_types/aggregations/Aggregate.ts#L436-L436"
     },
     {
       "inherits": {
@@ -109809,7 +111022,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L423-L423"
+      "specLocation": "_types/aggregations/Aggregate.ts#L424-L424"
     },
     {
       "kind": "interface",
@@ -109852,7 +111065,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L437-L441"
+      "specLocation": "_types/aggregations/Aggregate.ts#L438-L442"
     },
     {
       "attachedBehaviors": [
@@ -109882,7 +111095,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L394-L396"
+      "specLocation": "_types/aggregations/Aggregate.ts#L395-L397"
     },
     {
       "attachedBehaviors": [
@@ -109935,7 +111148,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L377-L386"
+      "specLocation": "_types/aggregations/Aggregate.ts#L378-L387"
     },
     {
       "description": "Statistics aggregation result. `min`, `max` and `avg` are missing if there were no values to process\n(`count` is zero).",
@@ -110089,7 +111302,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L262-L278",
+      "specLocation": "_types/aggregations/Aggregate.ts#L263-L279",
       "variantName": "stats"
     },
     {
@@ -110107,7 +111320,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L280-L284",
+      "specLocation": "_types/aggregations/Aggregate.ts#L281-L285",
       "variantName": "stats_bucket"
     },
     {
@@ -110364,7 +111577,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L304-L325",
+      "specLocation": "_types/aggregations/Aggregate.ts#L305-L326",
       "variantName": "extended_stats"
     },
     {
@@ -110513,7 +111726,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L286-L293"
+      "specLocation": "_types/aggregations/Aggregate.ts#L287-L294"
     },
     {
       "kind": "interface",
@@ -110589,7 +111802,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L295-L302"
+      "specLocation": "_types/aggregations/Aggregate.ts#L296-L303"
     },
     {
       "inherits": {
@@ -110604,7 +111817,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L327-L328",
+      "specLocation": "_types/aggregations/Aggregate.ts#L328-L329",
       "variantName": "extended_stats_bucket"
     },
     {
@@ -110632,7 +111845,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L330-L333",
+      "specLocation": "_types/aggregations/Aggregate.ts#L331-L334",
       "variantName": "cartesian_bounds"
     },
     {
@@ -110671,7 +111884,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L335-L339",
+      "specLocation": "_types/aggregations/Aggregate.ts#L336-L340",
       "variantName": "cartesian_centroid"
     },
     {
@@ -110733,7 +111946,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L343-L349",
+      "specLocation": "_types/aggregations/Aggregate.ts#L344-L350",
       "variantName": "geo_bounds"
     },
     {
@@ -110774,7 +111987,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L351-L358",
+      "specLocation": "_types/aggregations/Aggregate.ts#L352-L359",
       "variantName": "geo_centroid"
     },
     {
@@ -110801,7 +112014,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L443-L447",
+      "specLocation": "_types/aggregations/Aggregate.ts#L444-L448",
       "variantName": "histogram"
     },
     {
@@ -110844,7 +112057,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L373-L375"
+      "specLocation": "_types/aggregations/Aggregate.ts#L374-L376"
     },
     {
       "extDocId": "search-aggregations-bucket-datehistogram-aggregation",
@@ -110870,7 +112083,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L454-L458",
+      "specLocation": "_types/aggregations/Aggregate.ts#L455-L459",
       "variantName": "date_histogram"
     },
     {
@@ -110909,7 +112122,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L465-L472",
+      "specLocation": "_types/aggregations/Aggregate.ts#L466-L473",
       "variantName": "auto_date_histogram"
     },
     {
@@ -110934,7 +112147,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L474-L476",
+      "specLocation": "_types/aggregations/Aggregate.ts#L475-L477",
       "variantName": "variable_width_histogram"
     },
     {
@@ -110960,7 +112173,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L496-L501",
+      "specLocation": "_types/aggregations/Aggregate.ts#L497-L502",
       "variantName": "sterms"
     },
     {
@@ -111014,7 +112227,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L489-L494"
+      "specLocation": "_types/aggregations/Aggregate.ts#L490-L495"
     },
     {
       "description": "Result of a `terms` aggregation when the field is some kind of whole number like a integer, long, or a date.",
@@ -111039,7 +112252,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L511-L516",
+      "specLocation": "_types/aggregations/Aggregate.ts#L512-L517",
       "variantName": "lterms"
     },
     {
@@ -111065,7 +112278,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L523-L528",
+      "specLocation": "_types/aggregations/Aggregate.ts#L524-L529",
       "variantName": "dterms"
     },
     {
@@ -111091,7 +112304,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L535-L541",
+      "specLocation": "_types/aggregations/Aggregate.ts#L536-L542",
       "variantName": "umterms"
     },
     {
@@ -111117,7 +112330,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L543-L548",
+      "specLocation": "_types/aggregations/Aggregate.ts#L544-L549",
       "variantName": "lrareterms"
     },
     {
@@ -111143,7 +112356,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L555-L559",
+      "specLocation": "_types/aggregations/Aggregate.ts#L556-L560",
       "variantName": "srareterms"
     },
     {
@@ -111169,7 +112382,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L565-L571",
+      "specLocation": "_types/aggregations/Aggregate.ts#L566-L572",
       "variantName": "umrareterms"
     },
     {
@@ -111196,7 +112409,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L573-L578",
+      "specLocation": "_types/aggregations/Aggregate.ts#L574-L579",
       "variantName": "multi_terms"
     },
     {
@@ -111217,7 +112430,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L600-L604",
+      "specLocation": "_types/aggregations/Aggregate.ts#L601-L605",
       "variantName": "missing"
     },
     {
@@ -111277,7 +112490,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L588-L598"
+      "specLocation": "_types/aggregations/Aggregate.ts#L589-L599"
     },
     {
       "attachedBehaviors": [
@@ -111297,7 +112510,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L606-L610",
+      "specLocation": "_types/aggregations/Aggregate.ts#L607-L611",
       "variantName": "nested"
     },
     {
@@ -111318,7 +112531,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L612-L616",
+      "specLocation": "_types/aggregations/Aggregate.ts#L613-L617",
       "variantName": "reverse_nested"
     },
     {
@@ -111339,7 +112552,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L618-L622",
+      "specLocation": "_types/aggregations/Aggregate.ts#L619-L623",
       "variantName": "global"
     },
     {
@@ -111360,7 +112573,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L624-L628",
+      "specLocation": "_types/aggregations/Aggregate.ts#L625-L629",
       "variantName": "filter"
     },
     {
@@ -111381,7 +112594,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L962-L966",
+      "specLocation": "_types/aggregations/Aggregate.ts#L976-L980",
       "variantName": "children"
     },
     {
@@ -111402,7 +112615,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L968-L972",
+      "specLocation": "_types/aggregations/Aggregate.ts#L982-L986",
       "variantName": "parent"
     },
     {
@@ -111421,7 +112634,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L630-L631",
+      "specLocation": "_types/aggregations/Aggregate.ts#L631-L632",
       "variantName": "sampler"
     },
     {
@@ -111440,7 +112653,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L633-L634",
+      "specLocation": "_types/aggregations/Aggregate.ts#L634-L635",
       "variantName": "unmapped_sampler"
     },
     {
@@ -111465,7 +112678,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L638-L640",
+      "specLocation": "_types/aggregations/Aggregate.ts#L639-L641",
       "variantName": "geohash_grid"
     },
     {
@@ -111492,7 +112705,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L646-L651",
+      "specLocation": "_types/aggregations/Aggregate.ts#L647-L652",
       "variantName": "geotile_grid"
     },
     {
@@ -111517,7 +112730,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L657-L658",
+      "specLocation": "_types/aggregations/Aggregate.ts#L658-L659",
       "variantName": "geohex_grid"
     },
     {
@@ -111544,7 +112757,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L666-L670",
+      "specLocation": "_types/aggregations/Aggregate.ts#L667-L671",
       "variantName": "range"
     },
     {
@@ -111563,7 +112776,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L681-L687",
+      "specLocation": "_types/aggregations/Aggregate.ts#L682-L688",
       "variantName": "date_range"
     },
     {
@@ -111582,7 +112795,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L689-L694",
+      "specLocation": "_types/aggregations/Aggregate.ts#L690-L695",
       "variantName": "geo_distance"
     },
     {
@@ -111609,7 +112822,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L696-L701",
+      "specLocation": "_types/aggregations/Aggregate.ts#L697-L702",
       "variantName": "ip_range"
     },
     {
@@ -111636,7 +112849,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L783-L787",
+      "specLocation": "_types/aggregations/Aggregate.ts#L784-L788",
       "variantName": "ip_prefix"
     },
     {
@@ -111663,7 +112876,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L711-L715",
+      "specLocation": "_types/aggregations/Aggregate.ts#L712-L716",
       "variantName": "filters"
     },
     {
@@ -111690,7 +112903,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L721-L726",
+      "specLocation": "_types/aggregations/Aggregate.ts#L722-L727",
       "variantName": "adjacency_matrix"
     },
     {
@@ -111715,7 +112928,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L742-L744",
+      "specLocation": "_types/aggregations/Aggregate.ts#L743-L745",
       "variantName": "siglterms"
     },
     {
@@ -111771,7 +112984,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L732-L740"
+      "specLocation": "_types/aggregations/Aggregate.ts#L733-L741"
     },
     {
       "inherits": {
@@ -111795,7 +113008,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L756-L758",
+      "specLocation": "_types/aggregations/Aggregate.ts#L757-L759",
       "variantName": "sigsterms"
     },
     {
@@ -111821,7 +113034,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L764-L770",
+      "specLocation": "_types/aggregations/Aggregate.ts#L765-L771",
       "variantName": "umsigterms"
     },
     {
@@ -111858,7 +113071,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L772-L777",
+      "specLocation": "_types/aggregations/Aggregate.ts#L773-L778",
       "variantName": "composite"
     },
     {
@@ -111883,7 +113096,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L796-L797",
+      "specLocation": "_types/aggregations/Aggregate.ts#L797-L798",
       "variantName": "frequent_item_sets"
     },
     {
@@ -111908,7 +113121,7 @@
         "namespace": "_types.aggregations"
       },
       "properties": [],
-      "specLocation": "_types/aggregations/Aggregate.ts#L804-L805",
+      "specLocation": "_types/aggregations/Aggregate.ts#L805-L806",
       "variantName": "time_series"
     },
     {
@@ -111934,7 +113147,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L813-L819",
+      "specLocation": "_types/aggregations/Aggregate.ts#L814-L820",
       "variantName": "scripted_metric"
     },
     {
@@ -111969,7 +113182,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L821-L827",
+      "specLocation": "_types/aggregations/Aggregate.ts#L822-L828",
       "variantName": "top_hits"
     },
     {
@@ -112065,7 +113278,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L829-L844",
+      "specLocation": "_types/aggregations/Aggregate.ts#L830-L845",
       "variantName": "inference"
     },
     {
@@ -112112,7 +113325,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L852-L856"
+      "specLocation": "_types/aggregations/Aggregate.ts#L853-L857"
     },
     {
       "kind": "interface",
@@ -112144,7 +113357,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L858-L861"
+      "specLocation": "_types/aggregations/Aggregate.ts#L859-L862"
     },
     {
       "kind": "interface",
@@ -112187,7 +113400,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L846-L850"
+      "specLocation": "_types/aggregations/Aggregate.ts#L847-L851"
     },
     {
       "inherits": {
@@ -112373,7 +113586,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L867-L878",
+      "specLocation": "_types/aggregations/Aggregate.ts#L868-L879",
       "variantName": "string_stats"
     },
     {
@@ -112546,7 +113759,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L880-L899",
+      "specLocation": "_types/aggregations/Aggregate.ts#L881-L900",
       "variantName": "boxplot"
     },
     {
@@ -112577,7 +113790,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L901-L904",
+      "specLocation": "_types/aggregations/Aggregate.ts#L902-L905",
       "variantName": "top_metrics"
     },
     {
@@ -112648,7 +113861,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L906-L910"
+      "specLocation": "_types/aggregations/Aggregate.ts#L907-L911"
     },
     {
       "extDocId": "search-aggregations-metrics-ttest-aggregation",
@@ -112700,7 +113913,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L912-L919",
+      "specLocation": "_types/aggregations/Aggregate.ts#L913-L920",
       "variantName": "t_test"
     },
     {
@@ -112741,8 +113954,52 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L921-L928",
+      "specLocation": "_types/aggregations/Aggregate.ts#L922-L929",
       "variantName": "rate"
+    },
+    {
+      "description": "Result of the `roaring_bitmap` aggregation.",
+      "extDocId": "search-aggregations-metrics-roaring-bitmap-aggregation",
+      "extDocUrl": "https://www.elastic.co/docs/reference/aggregations/search-aggregations-metrics-roaring-bitmap-aggregation",
+      "inherits": {
+        "type": {
+          "name": "AggregateBase",
+          "namespace": "_types.aggregations"
+        }
+      },
+      "kind": "interface",
+      "name": {
+        "name": "RoaringBitmapAggregate",
+        "namespace": "_types.aggregations"
+      },
+      "properties": [
+        {
+          "description": "The distinct values of the field, as a base64-encoded portable roaring bitmap.\nIt is `null` if the field is unmapped.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "items": [
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              {
+                "kind": "instance_of",
+                "type": {
+                  "name": "null",
+                  "namespace": "_builtins"
+                }
+              }
+            ],
+            "kind": "union_of"
+          }
+        }
+      ],
+      "specLocation": "_types/aggregations/Aggregate.ts#L931-L942",
+      "variantName": "roaring_bitmap"
     },
     {
       "description": "Result of the `cumulative_cardinality` aggregation",
@@ -112781,7 +114038,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L930-L938",
+      "specLocation": "_types/aggregations/Aggregate.ts#L944-L952",
       "variantName": "simple_long_value"
     },
     {
@@ -112825,7 +114082,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L940-L947",
+      "specLocation": "_types/aggregations/Aggregate.ts#L954-L961",
       "variantName": "matrix_stats"
     },
     {
@@ -112946,7 +114203,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L949-L958"
+      "specLocation": "_types/aggregations/Aggregate.ts#L963-L972"
     },
     {
       "extDocId": "search-aggregations-metrics-geo-line",
@@ -112993,7 +114250,7 @@
           }
         }
       ],
-      "specLocation": "_types/aggregations/Aggregate.ts#L976-L986",
+      "specLocation": "_types/aggregations/Aggregate.ts#L990-L1000",
       "variantName": "geo_line"
     },
     {
@@ -114631,6 +115888,28 @@
           }
         },
         {
+          "name": "into_bit_set",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "name": "into_bit_set_count",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
           "name": "match",
           "required": true,
           "type": {
@@ -114741,7 +116020,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L302-L323"
+      "specLocation": "_global/search/_types/profile.ts#L302-L325"
     },
     {
       "kind": "interface",
@@ -114818,7 +116097,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L325-L331"
+      "specLocation": "_global/search/_types/profile.ts#L327-L333"
     },
     {
       "kind": "interface",
@@ -114906,7 +116185,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L333-L340"
+      "specLocation": "_global/search/_types/profile.ts#L335-L342"
     },
     {
       "kind": "interface",
@@ -115004,7 +116283,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L342-L351"
+      "specLocation": "_global/search/_types/profile.ts#L344-L353"
     },
     {
       "kind": "interface",
@@ -115039,7 +116318,7 @@
           }
         }
       ],
-      "specLocation": "_global/search/_types/profile.ts#L353-L356"
+      "specLocation": "_global/search/_types/profile.ts#L355-L358"
     },
     {
       "kind": "type_alias",
@@ -128330,7 +129609,7 @@
         "name": "DenseVectorIndexOptionsType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L230-L284"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L237-L291"
     },
     {
       "codegenNames": [
@@ -128521,7 +129800,7 @@
         "name": "IndexOptions",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L358-L363"
+      "specLocation": "_types/mapping/core.ts#L376-L381"
     },
     {
       "kind": "enum",
@@ -129669,7 +130948,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L402-L442"
+      "specLocation": "_types/mapping/core.ts#L420-L460"
     },
     {
       "kind": "enum",
@@ -129769,7 +131048,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L365-L368"
+      "specLocation": "_types/mapping/core.ts#L383-L386"
     },
     {
       "kind": "enum",
@@ -130147,7 +131426,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L331-L356"
+      "specLocation": "_types/mapping/core.ts#L349-L374"
     },
     {
       "inherits": {
@@ -130171,7 +131450,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L238-L240"
+      "specLocation": "_types/mapping/core.ts#L256-L258"
     },
     {
       "inherits": {
@@ -130206,7 +131485,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L242-L245"
+      "specLocation": "_types/mapping/core.ts#L260-L263"
     },
     {
       "inherits": {
@@ -130241,7 +131520,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L247-L250"
+      "specLocation": "_types/mapping/core.ts#L265-L268"
     },
     {
       "inherits": {
@@ -130376,7 +131655,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L312-L323"
+      "specLocation": "_types/mapping/core.ts#L330-L341"
     },
     {
       "inherits": {
@@ -130589,7 +131868,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L370-L387"
+      "specLocation": "_types/mapping/core.ts#L388-L405"
     },
     {
       "inherits": {
@@ -130613,7 +131892,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L389-L391"
+      "specLocation": "_types/mapping/core.ts#L407-L409"
     },
     {
       "inherits": {
@@ -130654,7 +131933,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L393-L400"
+      "specLocation": "_types/mapping/core.ts#L411-L418"
     },
     {
       "inherits": {
@@ -131133,7 +132412,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L228"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L134-L235"
     },
     {
       "kind": "interface",
@@ -131155,7 +132434,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/DenseVectorProperty.ts#L286-L294"
+      "specLocation": "_types/mapping/DenseVectorProperty.ts#L293-L301"
     },
     {
       "inherits": {
@@ -131511,7 +132790,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L252-L259"
+      "specLocation": "_types/mapping/core.ts#L270-L277"
     },
     {
       "kind": "enum",
@@ -131530,7 +132809,7 @@
         "name": "RankVectorElementType",
         "namespace": "_types.mapping"
       },
-      "specLocation": "_types/mapping/core.ts#L444-L448"
+      "specLocation": "_types/mapping/core.ts#L462-L466"
     },
     {
       "kind": "interface",
@@ -131656,7 +132935,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L273-L310"
+      "specLocation": "_types/mapping/core.ts#L291-L328"
     },
     {
       "kind": "interface",
@@ -131688,7 +132967,10 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L26"
+      "specLocation": "_types/mapping/SemanticTextIndexOptions.ts#L23-L29",
+      "variants": {
+        "kind": "container"
+      }
     },
     {
       "kind": "interface",
@@ -131900,7 +133182,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L261-L271"
+      "specLocation": "_types/mapping/core.ts#L279-L289"
     },
     {
       "inherits": {
@@ -132811,7 +134093,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L222-L225"
+      "specLocation": "_types/mapping/core.ts#L240-L243"
     },
     {
       "inherits": {
@@ -133072,9 +134354,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L207-L210"
+      "specLocation": "_types/mapping/core.ts#L207-L219"
     },
     {
       "inherits": {
@@ -133107,9 +134408,28 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "If `true`, the field's values are indexed in an inverted index instead of a BKD tree.\nThis speeds up queries that match a field against many values, such as `terms` queries, but wide range queries are typically slower than on a BKD tree.\nRequires `index` to be `true`.",
+          "name": "index_terms",
+          "required": false,
+          "serverDefault": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L212-L215"
+      "specLocation": "_types/mapping/core.ts#L221-L233"
     },
     {
       "inherits": {
@@ -133155,7 +134475,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L232-L236"
+      "specLocation": "_types/mapping/core.ts#L250-L254"
     },
     {
       "inherits": {
@@ -133190,7 +134510,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L217-L220"
+      "specLocation": "_types/mapping/core.ts#L235-L238"
     },
     {
       "inherits": {
@@ -133225,7 +134545,7 @@
           }
         }
       ],
-      "specLocation": "_types/mapping/core.ts#L227-L230"
+      "specLocation": "_types/mapping/core.ts#L245-L248"
     },
     {
       "inherits": {
@@ -134290,7 +135610,7 @@
         },
         {
           "aliases": [
-            "mdcc",
+            "mfcc",
             "modelFailedCategoryCount"
           ],
           "description": "The number of times that categorization wanted to create a new category but\ncouldn’t because the job had hit its model memory limit. This count does\nnot track which specific categories failed to be created. Therefore, you\ncannot use this value to determine the number of unique categories that\nwere missed.",
@@ -141062,7 +142382,7 @@
         "name": "EsqlApproximation",
         "namespace": "esql._types"
       },
-      "specLocation": "esql/_types/types.ts#L235-L240",
+      "specLocation": "esql/_types/types.ts#L251-L256",
       "type": {
         "items": [
           {
@@ -141116,7 +142436,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L242-L254"
+      "specLocation": "esql/_types/types.ts#L258-L270"
     },
     {
       "kind": "enum",
@@ -141340,7 +142660,7 @@
         "name": "LifecycleExplain",
         "namespace": "ilm.explain_lifecycle"
       },
-      "specLocation": "ilm/explain_lifecycle/types.ts#L75-L78",
+      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L83",
       "type": {
         "items": [
           {
@@ -141800,7 +143120,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L80-L85"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L85-L90"
     },
     {
       "kind": "interface",
@@ -142478,7 +143798,7 @@
           }
         }
       ],
-      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L73"
+      "specLocation": "ilm/explain_lifecycle/types.ts#L70-L78"
     },
     {
       "esQuirk": "This is a boolean that evolved into an enum. ES also accepts plain booleans for true and false.",
@@ -143678,7 +144998,7 @@
         "name": "AmazonSageMakerApi",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L811-L814"
+      "specLocation": "inference/_types/CommonTypes.ts#L814-L817"
     },
     {
       "kind": "enum",
@@ -143697,7 +145017,7 @@
         "name": "AmazonSageMakerElementType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L822-L826"
+      "specLocation": "inference/_types/CommonTypes.ts#L825-L829"
     },
     {
       "kind": "enum",
@@ -143710,7 +145030,7 @@
         "name": "AmazonSageMakerServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L877-L879"
+      "specLocation": "inference/_types/CommonTypes.ts#L880-L882"
     },
     {
       "kind": "enum",
@@ -143729,7 +145049,7 @@
         "name": "AmazonSageMakerSimilarity",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L816-L820"
+      "specLocation": "inference/_types/CommonTypes.ts#L819-L823"
     },
     {
       "kind": "enum",
@@ -143742,7 +145062,7 @@
         "name": "AnthropicServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L931-L933"
+      "specLocation": "inference/_types/CommonTypes.ts#L934-L936"
     },
     {
       "kind": "enum",
@@ -143758,7 +145078,7 @@
         "name": "AnthropicTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L926-L929"
+      "specLocation": "inference/_types/CommonTypes.ts#L929-L932"
     },
     {
       "kind": "enum",
@@ -143771,7 +145091,7 @@
         "name": "AzureAiStudioServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1021-L1023"
+      "specLocation": "inference/_types/CommonTypes.ts#L1024-L1026"
     },
     {
       "kind": "enum",
@@ -143790,7 +145110,7 @@
         "name": "AzureAiStudioTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1015-L1019"
+      "specLocation": "inference/_types/CommonTypes.ts#L1018-L1022"
     },
     {
       "kind": "enum",
@@ -143803,7 +145123,7 @@
         "name": "AzureOpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1139-L1141"
+      "specLocation": "inference/_types/CommonTypes.ts#L1142-L1144"
     },
     {
       "kind": "enum",
@@ -143822,7 +145142,7 @@
         "name": "AzureOpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1133-L1137"
+      "specLocation": "inference/_types/CommonTypes.ts#L1136-L1140"
     },
     {
       "kind": "enum",
@@ -143847,7 +145167,7 @@
         "name": "CohereEmbeddingType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1194-L1200"
+      "specLocation": "inference/_types/CommonTypes.ts#L1197-L1203"
     },
     {
       "kind": "enum",
@@ -143869,7 +145189,7 @@
         "name": "CohereInputType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1202-L1207"
+      "specLocation": "inference/_types/CommonTypes.ts#L1205-L1210"
     },
     {
       "kind": "enum",
@@ -143882,7 +145202,7 @@
         "name": "CohereServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1190-L1192"
+      "specLocation": "inference/_types/CommonTypes.ts#L1193-L1195"
     },
     {
       "kind": "enum",
@@ -143901,7 +145221,7 @@
         "name": "CohereSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1209-L1213"
+      "specLocation": "inference/_types/CommonTypes.ts#L1212-L1216"
     },
     {
       "kind": "enum",
@@ -143920,7 +145240,7 @@
         "name": "CohereTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1184-L1188"
+      "specLocation": "inference/_types/CommonTypes.ts#L1187-L1191"
     },
     {
       "kind": "enum",
@@ -143939,7 +145259,7 @@
         "name": "CohereTruncateType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1215-L1219"
+      "specLocation": "inference/_types/CommonTypes.ts#L1218-L1222"
     },
     {
       "codegenNames": [
@@ -144005,7 +145325,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L514-L526"
+      "specLocation": "inference/_types/CommonTypes.ts#L517-L529"
     },
     {
       "description": "The tool choice function.",
@@ -144028,26 +145348,223 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L503-L512"
+      "specLocation": "inference/_types/CommonTypes.ts#L506-L515"
+    },
+    {
+      "description": "One part of a chat message.\nThe `type` field selects which property is present.\nNot all services and models support content types other than `text`.",
+      "kind": "type_alias",
+      "name": {
+        "name": "ContentObject",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/CommonTypes.ts#L182-L188",
+      "type": {
+        "items": [
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "TextContent",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "ImageUrlContent",
+              "namespace": "inference._types"
+            }
+          },
+          {
+            "kind": "instance_of",
+            "type": {
+              "name": "FileContentPart",
+              "namespace": "inference._types"
+            }
+          }
+        ],
+        "kind": "union_of"
+      },
+      "variants": {
+        "kind": "internal_tag",
+        "tag": "type"
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "TextContent",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "text"
+          }
+        },
+        {
+          "description": "The text content.",
+          "name": "text",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/CommonTypes.ts#L190-L196"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ImageUrlContent",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "image_url"
+          }
+        },
+        {
+          "description": "The image content.",
+          "name": "image_url",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ImageUrl",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/CommonTypes.ts#L198-L204"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ImageUrl",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The base64 encoded image data as a data URI",
+          "name": "url",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "Specifies the detail level of the image",
+          "name": "detail",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ImageUrlDetail",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/CommonTypes.ts#L214-L223"
     },
     {
       "kind": "enum",
       "members": [
         {
-          "name": "text"
+          "name": "auto"
         },
         {
-          "name": "image_url"
+          "name": "low"
         },
         {
-          "name": "file"
+          "name": "high"
         }
       ],
       "name": {
-        "name": "ContentType",
+        "name": "ImageUrlDetail",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L205-L209"
+      "specLocation": "inference/_types/CommonTypes.ts#L225-L229"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FileContentPart",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "literal_value",
+            "value": "file"
+          }
+        },
+        {
+          "description": "The file content.",
+          "name": "file",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "FileContent",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/CommonTypes.ts#L206-L212"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "FileContent",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The base64 encoded file data",
+          "name": "file_data",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The name of the file",
+          "name": "filename",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/CommonTypes.ts#L231-L240"
     },
     {
       "kind": "enum",
@@ -144060,7 +145577,7 @@
         "name": "ContextualAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1542-L1544"
+      "specLocation": "inference/_types/CommonTypes.ts#L1545-L1547"
     },
     {
       "kind": "enum",
@@ -144082,7 +145599,7 @@
         "name": "CustomServiceInputType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1255-L1260"
+      "specLocation": "inference/_types/CommonTypes.ts#L1258-L1263"
     },
     {
       "kind": "type_alias",
@@ -144090,7 +145607,7 @@
         "name": "CustomServiceQueryParameter",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1262-L1262",
+      "specLocation": "inference/_types/CommonTypes.ts#L1265-L1265",
       "type": {
         "kind": "array_of",
         "value": {
@@ -144113,7 +145630,7 @@
         "name": "CustomServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1517-L1519"
+      "specLocation": "inference/_types/CommonTypes.ts#L1520-L1522"
     },
     {
       "kind": "type_alias",
@@ -144121,7 +145638,7 @@
         "name": "CustomTaskParameter",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1521-L1521",
+      "specLocation": "inference/_types/CommonTypes.ts#L1524-L1524",
       "type": {
         "items": [
           {
@@ -144183,7 +145700,7 @@
         "name": "CustomTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1510-L1515"
+      "specLocation": "inference/_types/CommonTypes.ts#L1513-L1518"
     },
     {
       "description": "The answer to a single question of a decision request.\nThe type of the answer matches the type of the question it answers.",
@@ -144463,7 +145980,7 @@
         "name": "DeepSeekServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1605-L1607"
+      "specLocation": "inference/_types/CommonTypes.ts#L1608-L1610"
     },
     {
       "description": "Dense Embedding results containing bytes are represented as Dense\nVectors of bytes.",
@@ -144514,7 +146031,7 @@
         "name": "ElasticsearchServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1681-L1683"
+      "specLocation": "inference/_types/CommonTypes.ts#L1684-L1686"
     },
     {
       "kind": "enum",
@@ -144533,7 +146050,7 @@
         "name": "ElasticsearchTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1675-L1679"
+      "specLocation": "inference/_types/CommonTypes.ts#L1678-L1682"
     },
     {
       "kind": "enum",
@@ -144546,7 +146063,7 @@
         "name": "ElserServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1717-L1719"
+      "specLocation": "inference/_types/CommonTypes.ts#L1720-L1722"
     },
     {
       "kind": "enum",
@@ -144559,7 +146076,7 @@
         "name": "ElserTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1713-L1715"
+      "specLocation": "inference/_types/CommonTypes.ts#L1716-L1718"
     },
     {
       "description": "Allows specifying multimodal inputs for the `embedding` task.",
@@ -144568,7 +146085,7 @@
         "name": "EmbeddingContentInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L672-L677",
+      "specLocation": "inference/_types/CommonTypes.ts#L675-L680",
       "type": {
         "items": [
           {
@@ -144613,7 +146130,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L679-L687"
+      "specLocation": "inference/_types/CommonTypes.ts#L682-L690"
     },
     {
       "description": "Allows specifying one or multiple items for the `embedding` task, which should result in a single embedding vector.\nSupport for multiple items is available in Elasticsearch 9.5.0 and later.",
@@ -144622,7 +146139,7 @@
         "name": "EmbeddingContentObjectGroup",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L689-L695",
+      "specLocation": "inference/_types/CommonTypes.ts#L692-L698",
       "type": {
         "items": [
           {
@@ -144691,7 +146208,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L697-L718"
+      "specLocation": "inference/_types/CommonTypes.ts#L700-L721"
     },
     {
       "codegenNames": [
@@ -144704,7 +146221,7 @@
         "name": "EmbeddingInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L660-L665",
+      "specLocation": "inference/_types/CommonTypes.ts#L663-L668",
       "type": {
         "items": [
           {
@@ -144732,7 +146249,7 @@
         "name": "EmbeddingStringInput",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L667-L670",
+      "specLocation": "inference/_types/CommonTypes.ts#L670-L673",
       "type": {
         "items": [
           {
@@ -144760,6 +146277,41 @@
       "kind": "enum",
       "members": [
         {
+          "name": "beta"
+        },
+        {
+          "name": "preview"
+        },
+        {
+          "name": "ga"
+        },
+        {
+          "name": "deprecated"
+        }
+      ],
+      "name": {
+        "name": "EndpointMetadataStatus",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/EndpointMetadata.ts#L63-L68"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
+          "name": "required"
+        }
+      ],
+      "name": {
+        "name": "EndpointMetadataTemplatePolicy",
+        "namespace": "inference._types"
+      },
+      "specLocation": "inference/_types/EndpointMetadata.ts#L179-L181"
+    },
+    {
+      "kind": "enum",
+      "members": [
+        {
           "name": "fireworksai"
         }
       ],
@@ -144767,7 +146319,7 @@
         "name": "FireworksAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2183-L2185"
+      "specLocation": "inference/_types/CommonTypes.ts#L2186-L2188"
     },
     {
       "kind": "enum",
@@ -144786,7 +146338,7 @@
         "name": "FireworksAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2187-L2191"
+      "specLocation": "inference/_types/CommonTypes.ts#L2190-L2194"
     },
     {
       "kind": "enum",
@@ -144805,7 +146357,7 @@
         "name": "FireworksAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2177-L2181"
+      "specLocation": "inference/_types/CommonTypes.ts#L2180-L2184"
     },
     {
       "kind": "enum",
@@ -144818,7 +146370,7 @@
         "name": "GoogleAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1744-L1746"
+      "specLocation": "inference/_types/CommonTypes.ts#L1747-L1749"
     },
     {
       "kind": "enum",
@@ -144834,7 +146386,7 @@
         "name": "GoogleAiStudioTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1739-L1742"
+      "specLocation": "inference/_types/CommonTypes.ts#L1742-L1745"
     },
     {
       "kind": "enum",
@@ -144862,7 +146414,7 @@
         "name": "GoogleModelGardenProvider",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1837-L1844"
+      "specLocation": "inference/_types/CommonTypes.ts#L1840-L1847"
     },
     {
       "kind": "enum",
@@ -144875,7 +146427,7 @@
         "name": "GoogleVertexAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1885-L1887"
+      "specLocation": "inference/_types/CommonTypes.ts#L1888-L1890"
     },
     {
       "kind": "enum",
@@ -144897,7 +146449,7 @@
         "name": "GoogleVertexAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1878-L1883"
+      "specLocation": "inference/_types/CommonTypes.ts#L1881-L1886"
     },
     {
       "kind": "enum",
@@ -144910,7 +146462,7 @@
         "name": "GroqServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1917-L1919"
+      "specLocation": "inference/_types/CommonTypes.ts#L1920-L1922"
     },
     {
       "kind": "enum",
@@ -144923,7 +146475,7 @@
         "name": "GroqTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1913-L1915"
+      "specLocation": "inference/_types/CommonTypes.ts#L1916-L1918"
     },
     {
       "kind": "enum",
@@ -144936,7 +146488,7 @@
         "name": "HuggingFaceServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1972-L1974"
+      "specLocation": "inference/_types/CommonTypes.ts#L1975-L1977"
     },
     {
       "kind": "enum",
@@ -144958,26 +146510,7 @@
         "name": "HuggingFaceTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L1965-L1970"
-    },
-    {
-      "kind": "enum",
-      "members": [
-        {
-          "name": "auto"
-        },
-        {
-          "name": "low"
-        },
-        {
-          "name": "high"
-        }
-      ],
-      "name": {
-        "name": "ImageUrlDetail",
-        "namespace": "inference._types"
-      },
-      "specLocation": "inference/_types/CommonTypes.ts#L222-L226"
+      "specLocation": "inference/_types/CommonTypes.ts#L1968-L1973"
     },
     {
       "kind": "enum",
@@ -144996,7 +146529,7 @@
         "name": "JinaAIElementType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2081-L2085"
+      "specLocation": "inference/_types/CommonTypes.ts#L2084-L2088"
     },
     {
       "kind": "enum",
@@ -145009,7 +146542,7 @@
         "name": "JinaAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2064-L2066"
+      "specLocation": "inference/_types/CommonTypes.ts#L2067-L2069"
     },
     {
       "kind": "enum",
@@ -145028,7 +146561,7 @@
         "name": "JinaAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2068-L2072"
+      "specLocation": "inference/_types/CommonTypes.ts#L2071-L2075"
     },
     {
       "kind": "enum",
@@ -145047,7 +146580,7 @@
         "name": "JinaAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2058-L2062"
+      "specLocation": "inference/_types/CommonTypes.ts#L2061-L2065"
     },
     {
       "kind": "enum",
@@ -145069,7 +146602,7 @@
         "name": "JinaAITextEmbeddingTask",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2074-L2079"
+      "specLocation": "inference/_types/CommonTypes.ts#L2077-L2082"
     },
     {
       "kind": "enum",
@@ -145082,7 +146615,7 @@
         "name": "LlamaServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2125-L2127"
+      "specLocation": "inference/_types/CommonTypes.ts#L2128-L2130"
     },
     {
       "kind": "enum",
@@ -145101,7 +146634,7 @@
         "name": "LlamaSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2129-L2133"
+      "specLocation": "inference/_types/CommonTypes.ts#L2132-L2136"
     },
     {
       "kind": "enum",
@@ -145120,7 +146653,7 @@
         "name": "LlamaTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2119-L2123"
+      "specLocation": "inference/_types/CommonTypes.ts#L2122-L2126"
     },
     {
       "codegenNames": [
@@ -145132,7 +146665,7 @@
         "name": "MessageContent",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L333-L336",
+      "specLocation": "inference/_types/CommonTypes.ts#L336-L339",
       "type": {
         "items": [
           {
@@ -145155,133 +146688,6 @@
         ],
         "kind": "union_of"
       }
-    },
-    {
-      "description": "An object style representation of a single portion of a conversation.",
-      "kind": "interface",
-      "name": {
-        "name": "ContentObject",
-        "namespace": "inference._types"
-      },
-      "properties": [
-        {
-          "description": "The type of content. Must be one of `text`, `image_url` or `file`. Not all services/models support content\ntypes other than \"text\"",
-          "name": "type",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ContentType",
-              "namespace": "inference._types"
-            }
-          }
-        },
-        {
-          "description": "The text content. Only applicable for the `text` type",
-          "name": "text",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The image content. Only applicable for the `image_url` type",
-          "name": "image_url",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ImageUrl",
-              "namespace": "inference._types"
-            }
-          }
-        },
-        {
-          "description": "The file content. Only applicable for the `file` type",
-          "name": "file",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "FileContent",
-              "namespace": "inference._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "inference/_types/CommonTypes.ts#L182-L203"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "ImageUrl",
-        "namespace": "inference._types"
-      },
-      "properties": [
-        {
-          "description": "The base64 encoded image data as a data URI",
-          "name": "url",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "Specifies the detail level of the image",
-          "name": "detail",
-          "required": false,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "ImageUrlDetail",
-              "namespace": "inference._types"
-            }
-          }
-        }
-      ],
-      "specLocation": "inference/_types/CommonTypes.ts#L211-L220"
-    },
-    {
-      "kind": "interface",
-      "name": {
-        "name": "FileContent",
-        "namespace": "inference._types"
-      },
-      "properties": [
-        {
-          "description": "The base64 encoded file data",
-          "name": "file_data",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        },
-        {
-          "description": "The name of the file",
-          "name": "filename",
-          "required": true,
-          "type": {
-            "kind": "instance_of",
-            "type": {
-              "name": "string",
-              "namespace": "_builtins"
-            }
-          }
-        }
-      ],
-      "specLocation": "inference/_types/CommonTypes.ts#L228-L237"
     },
     {
       "kind": "enum",
@@ -145396,7 +146802,7 @@
         "name": "OpenAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2333-L2335"
+      "specLocation": "inference/_types/CommonTypes.ts#L2336-L2338"
     },
     {
       "kind": "enum",
@@ -145415,7 +146821,7 @@
         "name": "OpenAISimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2301-L2305"
+      "specLocation": "inference/_types/CommonTypes.ts#L2304-L2308"
     },
     {
       "kind": "enum",
@@ -145437,7 +146843,7 @@
         "name": "OpenAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2326-L2331"
+      "specLocation": "inference/_types/CommonTypes.ts#L2329-L2334"
     },
     {
       "kind": "enum",
@@ -145450,7 +146856,7 @@
         "name": "OpenShiftAiServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2379-L2381"
+      "specLocation": "inference/_types/CommonTypes.ts#L2382-L2384"
     },
     {
       "kind": "enum",
@@ -145469,7 +146875,7 @@
         "name": "OpenShiftAiSimilarityType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2383-L2387"
+      "specLocation": "inference/_types/CommonTypes.ts#L2386-L2390"
     },
     {
       "kind": "enum",
@@ -145491,7 +146897,7 @@
         "name": "OpenShiftAiTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2372-L2377"
+      "specLocation": "inference/_types/CommonTypes.ts#L2375-L2380"
     },
     {
       "description": "Type representing the different types of reasoning details that can be included in the response from the model.\nCurrently supported only for `elastic` provider.",
@@ -145500,7 +146906,7 @@
         "name": "ReasoningDetail",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L433-L441",
+      "specLocation": "inference/_types/CommonTypes.ts#L436-L444",
       "type": {
         "items": [
           {
@@ -145567,7 +146973,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L462-L472"
+      "specLocation": "inference/_types/CommonTypes.ts#L465-L475"
     },
     {
       "description": "The base reasoning detail that includes common fields across different types of reasoning details.",
@@ -145614,7 +147020,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L443-L460"
+      "specLocation": "inference/_types/CommonTypes.ts#L446-L463"
     },
     {
       "description": "The reasoning summary detail includes a high-level summary of the model's reasoning process.",
@@ -145651,7 +147057,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L474-L484"
+      "specLocation": "inference/_types/CommonTypes.ts#L477-L487"
     },
     {
       "description": "The reasoning text detail includes plaintext reasoning with optional signature verification.",
@@ -145700,7 +147106,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L486-L501"
+      "specLocation": "inference/_types/CommonTypes.ts#L489-L504"
     },
     {
       "kind": "enum",
@@ -145728,7 +147134,7 @@
         "name": "ReasoningEffort",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L286-L293"
+      "specLocation": "inference/_types/CommonTypes.ts#L289-L296"
     },
     {
       "kind": "enum",
@@ -145747,7 +147153,7 @@
         "name": "ReasoningSummary",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L295-L299"
+      "specLocation": "inference/_types/CommonTypes.ts#L298-L302"
     },
     {
       "kind": "type_alias",
@@ -145755,7 +147161,7 @@
         "name": "ServiceSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L436-L436",
+      "specLocation": "inference/_types/Services.ts#L444-L444",
       "type": {
         "kind": "user_defined_value"
       }
@@ -145793,7 +147199,7 @@
         "name": "TaskSettings",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/Services.ts#L438-L438",
+      "specLocation": "inference/_types/Services.ts#L446-L446",
       "type": {
         "kind": "user_defined_value"
       }
@@ -146331,7 +147737,7 @@
         "name": "VoyageAIServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2464-L2466"
+      "specLocation": "inference/_types/CommonTypes.ts#L2467-L2469"
     },
     {
       "kind": "enum",
@@ -146347,7 +147753,7 @@
         "name": "VoyageAITaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2459-L2462"
+      "specLocation": "inference/_types/CommonTypes.ts#L2462-L2465"
     },
     {
       "kind": "enum",
@@ -146360,7 +147766,7 @@
         "name": "WatsonxServiceType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2513-L2515"
+      "specLocation": "inference/_types/CommonTypes.ts#L2516-L2518"
     },
     {
       "kind": "enum",
@@ -146382,7 +147788,7 @@
         "name": "WatsonxTaskType",
         "namespace": "inference._types"
       },
-      "specLocation": "inference/_types/CommonTypes.ts#L2506-L2511"
+      "specLocation": "inference/_types/CommonTypes.ts#L2509-L2514"
     },
     {
       "codegenNames": [
@@ -147572,7 +148978,7 @@
         "name": "DeploymentAllocationState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L334-L347"
+      "specLocation": "ml/_types/TrainedModel.ts#L356-L369"
     },
     {
       "kind": "enum",
@@ -147598,7 +149004,7 @@
         "name": "DeploymentAssignmentState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L349-L366"
+      "specLocation": "ml/_types/TrainedModel.ts#L371-L388"
     },
     {
       "kind": "type_alias",
@@ -148001,7 +149407,7 @@
         "name": "RoutingState",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L411-L432"
+      "specLocation": "ml/_types/TrainedModel.ts#L433-L454"
     },
     {
       "kind": "enum",
@@ -148082,7 +149488,7 @@
         "name": "TrainedModelType",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L318-L332"
+      "specLocation": "ml/_types/TrainedModel.ts#L340-L354"
     },
     {
       "kind": "enum",
@@ -148098,7 +149504,7 @@
         "name": "TrainingPriority",
         "namespace": "ml._types"
       },
-      "specLocation": "ml/_types/TrainedModel.ts#L368-L371"
+      "specLocation": "ml/_types/TrainedModel.ts#L390-L393"
     },
     {
       "kind": "enum",
@@ -153124,7 +154530,7 @@
         "name": "ScheduleTimeOfDay",
         "namespace": "watcher._types"
       },
-      "specLocation": "watcher/_types/Schedule.ts#L99-L104",
+      "specLocation": "watcher/_types/Schedule.ts#L103-L108",
       "type": {
         "items": [
           {
@@ -153181,7 +154587,7 @@
           }
         }
       ],
-      "specLocation": "watcher/_types/Schedule.ts#L106-L109"
+      "specLocation": "watcher/_types/Schedule.ts#L110-L113"
     },
     {
       "kind": "enum",
@@ -167344,7 +168750,7 @@
           }
         }
       ],
-      "specLocation": "esql/_types/types.ts#L196-L233"
+      "specLocation": "esql/_types/types.ts#L196-L249"
     },
     {
       "inherits": {
@@ -169247,9 +170653,20 @@
               "namespace": "_builtins"
             }
           }
+        },
+        {
+          "name": "minimum_lifecycle_enabled",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
         }
       ],
-      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L76"
+      "specLocation": "indices/explain_data_lifecycle/IndicesExplainDataLifecycleResponse.ts#L31-L91"
     },
     {
       "kind": "interface",
@@ -169411,7 +170828,7 @@
           }
         }
       ],
-      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L34"
+      "specLocation": "indices/get_data_lifecycle/IndicesGetDataLifecycleResponse.ts#L31-L39"
     },
     {
       "kind": "interface",
@@ -169759,7 +171176,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L55-L153"
+      "specLocation": "indices/_types/DataStream.ts#L55-L159"
     },
     {
       "kind": "interface",
@@ -169887,7 +171304,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L162-L187"
+      "specLocation": "indices/_types/DataStream.ts#L168-L193"
     },
     {
       "kind": "interface",
@@ -169909,7 +171326,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L155-L160"
+      "specLocation": "indices/_types/DataStream.ts#L161-L166"
     },
     {
       "kind": "interface",
@@ -170103,6 +171520,24 @@
             "type": {
               "name": "IndexTemplateSummaryWithRollover",
               "namespace": "indices._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "Marks an index template that was installed by one of the internal registries.\nThis field is returned only when the get index template API is called with `include_managed_fields` set to `true`.\nIt can't be set in a request: the create and simulate index template APIs reject it.",
+          "name": "registry_installed",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
             }
           }
         },
@@ -170321,7 +171756,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/IndexTemplate.ts#L161-L163"
+      "specLocation": "indices/_types/IndexTemplate.ts#L161-L171"
     },
     {
       "kind": "interface",
@@ -171267,7 +172702,7 @@
           }
         }
       ],
-      "specLocation": "indices/_types/DataStream.ts#L189-L193"
+      "specLocation": "indices/_types/DataStream.ts#L195-L199"
     },
     {
       "kind": "interface",
@@ -172512,7 +173947,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L338-L431"
+      "specLocation": "inference/_types/CommonTypes.ts#L341-L434"
     },
     {
       "description": "A tool call generated by the model.",
@@ -172559,7 +173994,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L315-L331"
+      "specLocation": "inference/_types/CommonTypes.ts#L318-L334"
     },
     {
       "description": "The function that the model called.",
@@ -172594,7 +174029,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L301-L313"
+      "specLocation": "inference/_types/CommonTypes.ts#L304-L316"
     },
     {
       "description": "The reasoning configuration to use for the completion request.\nCurrently supported only for `elastic` provider.",
@@ -172653,7 +174088,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L254-L284"
+      "specLocation": "inference/_types/CommonTypes.ts#L257-L287"
     },
     {
       "description": "A list of tools that the model can call.",
@@ -172688,7 +174123,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L551-L563"
+      "specLocation": "inference/_types/CommonTypes.ts#L554-L566"
     },
     {
       "description": "The completion tool function definition.",
@@ -172743,7 +174178,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L528-L549"
+      "specLocation": "inference/_types/CommonTypes.ts#L531-L552"
     },
     {
       "description": "Defines the completion result.",
@@ -173070,7 +174505,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L565-L658"
+      "specLocation": "inference/_types/CommonTypes.ts#L568-L661"
     },
     {
       "description": "EmbeddingInferenceResult is an aggregation of mutually exclusive embeddings variants",
@@ -173209,9 +174644,27 @@
               "namespace": "inference._types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.4.0"
+            }
+          },
+          "description": "Metadata about the endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.",
+          "name": "metadata",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadata",
+              "namespace": "inference._types"
+            }
+          }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L76-L88"
+      "specLocation": "inference/_types/Services.ts#L77-L96"
     },
     {
       "description": "Configuration options when storing the inference endpoint",
@@ -173270,7 +174723,473 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L52-L74"
+      "specLocation": "inference/_types/Services.ts#L53-L75"
+    },
+    {
+      "description": "Metadata about an inference endpoint, such as the model it serves, where it is available and what it supports.\nIt is returned for the endpoints of the Elastic Inference Service.\nThe internal fields that Elasticsearch uses to track the metadata are not part of the response.",
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadata",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Properties of the endpoint that help clients to determine which model to use.",
+          "name": "heuristics",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataHeuristics",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "Information to display for the endpoint.",
+          "name": "display",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataDisplay",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The identity of the model that the endpoint serves.",
+          "name": "model_identity",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataModelIdentity",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "The regions in which the endpoint is available.",
+          "name": "regions",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "EndpointMetadataRegion",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.5.0"
+            }
+          },
+          "description": "If `true`, the region policy of the caller prohibits access to the endpoint.",
+          "name": "denied_by_region_policy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "boolean",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The capabilities of the endpoint.",
+          "name": "capabilities",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataCapabilities",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L23-L61"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataHeuristics",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Tags that describe the properties of the model, for example `multilingual`, `english` or `multimodal`.",
+          "name": "properties",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The release status of the model.",
+          "name": "status",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataStatus",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The date on which the model was released, in `yyyy-MM-dd` format.",
+          "name": "release_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The date on which the model reaches the end of its life, in `yyyy-MM-dd` format.",
+          "name": "end_of_life_date",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L70-L87"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataDisplay",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The name to display for the endpoint.",
+          "name": "name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The creator of the model, for display purposes.",
+          "name": "model_creator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L89-L98"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataModelIdentity",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The model creator or lab, for example `anthropic`, `openai` or `jina`.",
+          "name": "creator",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The model family within the creator, for example `claude`, `gpt` or `gemini`.",
+          "name": "family",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The performance or size tier within the family, for example `sonnet` or `mini`.\nIt is not set if the model has no tier variants.",
+          "name": "tier",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The version of the model.",
+          "name": "version",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L100-L118"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataRegion",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The cloud service provider, for example `aws`, `gcp` or `azure`.",
+          "name": "csp",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The region of the cloud service provider, for example `us-east-1`.",
+          "name": "region",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The geographic area, for example `us` or `eu`.",
+          "name": "geo",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The human-readable name of the region.",
+          "name": "region_display_name",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L120-L139"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataCapabilities",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The reasoning support of the endpoint.",
+          "name": "reasoning",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataReasoningCapability",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The context window of the model.",
+          "name": "context_window",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataContextWindow",
+              "namespace": "inference._types"
+            }
+          }
+        },
+        {
+          "description": "The prompt template support of the endpoint.\nIt is returned only for chat completion endpoints that require a template instead of caller-authored messages.",
+          "name": "templates",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataTemplatesCapability",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L141-L155"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataReasoningCapability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The reasoning effort levels that the endpoint supports.",
+          "name": "supported_effort_levels",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "ReasoningEffort",
+                "namespace": "inference._types"
+              }
+            }
+          }
+        },
+        {
+          "description": "The reasoning effort level that the endpoint uses by default.",
+          "name": "default_effort_level",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ReasoningEffort",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L157-L166"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataContextWindow",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "The maximum number of input tokens that the model accepts.",
+          "name": "max_input_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of output tokens that the model generates.",
+          "name": "max_output_tokens",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L168-L177"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EndpointMetadataTemplatesCapability",
+        "namespace": "inference._types"
+      },
+      "properties": [
+        {
+          "description": "Whether the endpoint requires chat completion requests to carry a prompt template.\nElasticsearch displays the policy so that clients can choose the request shape, but it doesn't enforce it.",
+          "name": "policy",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EndpointMetadataTemplatePolicy",
+              "namespace": "inference._types"
+            }
+          }
+        }
+      ],
+      "specLocation": "inference/_types/EndpointMetadata.ts#L183-L189"
     },
     {
       "description": "The stored region policy document.",
@@ -174142,7 +176061,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L440-L471"
+      "specLocation": "inference/_types/Services.ts#L448-L479"
     },
     {
       "inherits": {
@@ -174182,7 +176101,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L90-L99"
+      "specLocation": "inference/_types/Services.ts#L98-L107"
     },
     {
       "kind": "interface",
@@ -174328,7 +176247,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L101-L110"
+      "specLocation": "inference/_types/Services.ts#L109-L118"
     },
     {
       "kind": "interface",
@@ -174515,7 +176434,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L112-L121"
+      "specLocation": "inference/_types/Services.ts#L120-L129"
     },
     {
       "kind": "interface",
@@ -174682,7 +176601,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L743-L809"
+      "specLocation": "inference/_types/CommonTypes.ts#L746-L812"
     },
     {
       "kind": "interface",
@@ -174762,7 +176681,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L828-L857"
+      "specLocation": "inference/_types/CommonTypes.ts#L831-L860"
     },
     {
       "inherits": {
@@ -174802,7 +176721,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L123-L132"
+      "specLocation": "inference/_types/Services.ts#L131-L140"
     },
     {
       "kind": "interface",
@@ -174849,7 +176768,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L881-L897"
+      "specLocation": "inference/_types/CommonTypes.ts#L884-L900"
     },
     {
       "kind": "interface",
@@ -174909,7 +176828,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L899-L924"
+      "specLocation": "inference/_types/CommonTypes.ts#L902-L927"
     },
     {
       "inherits": {
@@ -174949,7 +176868,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L134-L143"
+      "specLocation": "inference/_types/Services.ts#L142-L151"
     },
     {
       "kind": "interface",
@@ -175023,7 +176942,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L935-L975"
+      "specLocation": "inference/_types/CommonTypes.ts#L938-L978"
     },
     {
       "kind": "interface",
@@ -175117,7 +177036,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L977-L1013"
+      "specLocation": "inference/_types/CommonTypes.ts#L980-L1016"
     },
     {
       "inherits": {
@@ -175157,7 +177076,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L145-L154"
+      "specLocation": "inference/_types/Services.ts#L153-L162"
     },
     {
       "kind": "interface",
@@ -175308,7 +177227,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1025-L1112"
+      "specLocation": "inference/_types/CommonTypes.ts#L1028-L1115"
     },
     {
       "kind": "interface",
@@ -175353,7 +177272,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1114-L1131"
+      "specLocation": "inference/_types/CommonTypes.ts#L1117-L1134"
     },
     {
       "inherits": {
@@ -175393,7 +177312,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L156-L165"
+      "specLocation": "inference/_types/Services.ts#L164-L173"
     },
     {
       "kind": "interface",
@@ -175466,7 +177385,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1143-L1182"
+      "specLocation": "inference/_types/CommonTypes.ts#L1146-L1185"
     },
     {
       "kind": "interface",
@@ -175524,7 +177443,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1221-L1253"
+      "specLocation": "inference/_types/CommonTypes.ts#L1224-L1256"
     },
     {
       "inherits": {
@@ -175564,7 +177483,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L167-L176"
+      "specLocation": "inference/_types/Services.ts#L175-L184"
     },
     {
       "kind": "interface",
@@ -175612,7 +177531,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1546-L1567"
+      "specLocation": "inference/_types/CommonTypes.ts#L1549-L1570"
     },
     {
       "kind": "interface",
@@ -175646,7 +177565,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1569-L1581"
+      "specLocation": "inference/_types/CommonTypes.ts#L1572-L1584"
     },
     {
       "inherits": {
@@ -175686,7 +177605,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L178-L187"
+      "specLocation": "inference/_types/Services.ts#L186-L195"
     },
     {
       "kind": "interface",
@@ -175830,7 +177749,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1264-L1339"
+      "specLocation": "inference/_types/CommonTypes.ts#L1267-L1342"
     },
     {
       "kind": "interface",
@@ -175852,7 +177771,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1341-L1352"
+      "specLocation": "inference/_types/CommonTypes.ts#L1344-L1355"
     },
     {
       "kind": "interface",
@@ -175885,7 +177804,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1354-L1508"
+      "specLocation": "inference/_types/CommonTypes.ts#L1357-L1511"
     },
     {
       "kind": "interface",
@@ -175918,7 +177837,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1523-L1540"
+      "specLocation": "inference/_types/CommonTypes.ts#L1526-L1543"
     },
     {
       "inherits": {
@@ -175958,7 +177877,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L189-L198"
+      "specLocation": "inference/_types/Services.ts#L197-L206"
     },
     {
       "kind": "interface",
@@ -176006,7 +177925,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1583-L1603"
+      "specLocation": "inference/_types/CommonTypes.ts#L1586-L1606"
     },
     {
       "inherits": {
@@ -176046,7 +177965,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L199-L208"
+      "specLocation": "inference/_types/Services.ts#L207-L216"
     },
     {
       "kind": "interface",
@@ -176162,7 +178081,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1609-L1665"
+      "specLocation": "inference/_types/CommonTypes.ts#L1612-L1668"
     },
     {
       "kind": "interface",
@@ -176232,7 +178151,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1667-L1673"
+      "specLocation": "inference/_types/CommonTypes.ts#L1670-L1676"
     },
     {
       "inherits": {
@@ -176272,7 +178191,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L210-L219"
+      "specLocation": "inference/_types/Services.ts#L218-L227"
     },
     {
       "kind": "interface",
@@ -176318,7 +178237,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1685-L1711"
+      "specLocation": "inference/_types/CommonTypes.ts#L1688-L1714"
     },
     {
       "inherits": {
@@ -176358,7 +178277,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L221-L230"
+      "specLocation": "inference/_types/Services.ts#L229-L238"
     },
     {
       "kind": "interface",
@@ -176449,7 +178368,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2135-L2175"
+      "specLocation": "inference/_types/CommonTypes.ts#L2138-L2178"
     },
     {
       "kind": "interface",
@@ -176494,7 +178413,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2193-L2210"
+      "specLocation": "inference/_types/CommonTypes.ts#L2196-L2213"
     },
     {
       "inherits": {
@@ -176534,7 +178453,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L320-L329"
+      "specLocation": "inference/_types/Services.ts#L328-L337"
     },
     {
       "kind": "interface",
@@ -176582,7 +178501,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1721-L1737"
+      "specLocation": "inference/_types/CommonTypes.ts#L1724-L1740"
     },
     {
       "inherits": {
@@ -176622,7 +178541,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L232-L241"
+      "specLocation": "inference/_types/Services.ts#L240-L249"
     },
     {
       "kind": "interface",
@@ -176759,7 +178678,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1748-L1835"
+      "specLocation": "inference/_types/CommonTypes.ts#L1751-L1838"
     },
     {
       "kind": "interface",
@@ -176821,7 +178740,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1846-L1869"
+      "specLocation": "inference/_types/CommonTypes.ts#L1849-L1872"
     },
     {
       "kind": "interface",
@@ -176843,7 +178762,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1871-L1876"
+      "specLocation": "inference/_types/CommonTypes.ts#L1874-L1879"
     },
     {
       "inherits": {
@@ -176883,7 +178802,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L243-L252"
+      "specLocation": "inference/_types/Services.ts#L251-L260"
     },
     {
       "kind": "interface",
@@ -176933,7 +178852,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1889-L1911"
+      "specLocation": "inference/_types/CommonTypes.ts#L1892-L1914"
     },
     {
       "inherits": {
@@ -176973,7 +178892,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L254-L263"
+      "specLocation": "inference/_types/Services.ts#L262-L271"
     },
     {
       "kind": "interface",
@@ -177035,7 +178954,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1921-L1951"
+      "specLocation": "inference/_types/CommonTypes.ts#L1924-L1954"
     },
     {
       "kind": "interface",
@@ -177069,7 +178988,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1953-L1963"
+      "specLocation": "inference/_types/CommonTypes.ts#L1956-L1966"
     },
     {
       "inherits": {
@@ -177109,7 +179028,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L265-L274"
+      "specLocation": "inference/_types/Services.ts#L273-L282"
     },
     {
       "kind": "interface",
@@ -177211,7 +179130,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L1976-L2024"
+      "specLocation": "inference/_types/CommonTypes.ts#L1979-L2027"
     },
     {
       "kind": "interface",
@@ -177269,7 +179188,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2026-L2056"
+      "specLocation": "inference/_types/CommonTypes.ts#L2029-L2059"
     },
     {
       "inherits": {
@@ -177309,7 +179228,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L276-L285"
+      "specLocation": "inference/_types/Services.ts#L284-L293"
     },
     {
       "kind": "interface",
@@ -177381,7 +179300,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2087-L2117"
+      "specLocation": "inference/_types/CommonTypes.ts#L2090-L2120"
     },
     {
       "inherits": {
@@ -177421,7 +179340,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L287-L296"
+      "specLocation": "inference/_types/Services.ts#L295-L304"
     },
     {
       "kind": "interface",
@@ -177523,7 +179442,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L298-L307"
+      "specLocation": "inference/_types/Services.ts#L306-L315"
     },
     {
       "kind": "interface",
@@ -177679,7 +179598,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L309-L318"
+      "specLocation": "inference/_types/Services.ts#L317-L326"
     },
     {
       "kind": "interface",
@@ -177828,7 +179747,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2212-L2299"
+      "specLocation": "inference/_types/CommonTypes.ts#L2215-L2302"
     },
     {
       "kind": "interface",
@@ -177873,7 +179792,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2307-L2324"
+      "specLocation": "inference/_types/CommonTypes.ts#L2310-L2327"
     },
     {
       "inherits": {
@@ -177913,7 +179832,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L331-L340"
+      "specLocation": "inference/_types/Services.ts#L339-L348"
     },
     {
       "kind": "interface",
@@ -177995,7 +179914,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2337-L2370"
+      "specLocation": "inference/_types/CommonTypes.ts#L2340-L2373"
     },
     {
       "kind": "interface",
@@ -178029,7 +179948,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2389-L2398"
+      "specLocation": "inference/_types/CommonTypes.ts#L2392-L2401"
     },
     {
       "inherits": {
@@ -178069,7 +179988,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L342-L351"
+      "specLocation": "inference/_types/Services.ts#L350-L359"
     },
     {
       "kind": "interface",
@@ -178133,7 +180052,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2400-L2431"
+      "specLocation": "inference/_types/CommonTypes.ts#L2403-L2434"
     },
     {
       "kind": "interface",
@@ -178193,7 +180112,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2433-L2457"
+      "specLocation": "inference/_types/CommonTypes.ts#L2436-L2460"
     },
     {
       "inherits": {
@@ -178233,7 +180152,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L353-L362"
+      "specLocation": "inference/_types/Services.ts#L361-L370"
     },
     {
       "kind": "interface",
@@ -178321,7 +180240,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/CommonTypes.ts#L2468-L2504"
+      "specLocation": "inference/_types/CommonTypes.ts#L2471-L2507"
     },
     {
       "inherits": {
@@ -178361,7 +180280,7 @@
           }
         }
       ],
-      "specLocation": "inference/_types/Services.ts#L364-L373"
+      "specLocation": "inference/_types/Services.ts#L372-L381"
     },
     {
       "description": "Defines the response for a rerank request.",
@@ -191034,7 +192953,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L206-L243"
+      "specLocation": "ml/_types/TrainedModel.ts#L228-L265"
     },
     {
       "description": "Inference configuration provided when storing the model config",
@@ -192062,7 +193981,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L245-L248"
+      "specLocation": "ml/_types/TrainedModel.ts#L267-L270"
     },
     {
       "kind": "interface",
@@ -192139,7 +194058,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L250-L258"
+      "specLocation": "ml/_types/TrainedModel.ts#L272-L280"
     },
     {
       "kind": "interface",
@@ -192211,7 +194130,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L277-L291"
+      "specLocation": "ml/_types/TrainedModel.ts#L299-L313"
     },
     {
       "kind": "interface",
@@ -192263,7 +194182,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L293-L300"
+      "specLocation": "ml/_types/TrainedModel.ts#L315-L322"
     },
     {
       "kind": "interface",
@@ -192309,7 +194228,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L309-L316"
+      "specLocation": "ml/_types/TrainedModel.ts#L331-L338"
     },
     {
       "kind": "interface",
@@ -192346,7 +194265,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L302-L307"
+      "specLocation": "ml/_types/TrainedModel.ts#L324-L329"
     },
     {
       "kind": "interface",
@@ -192529,7 +194448,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L260-L275"
+      "specLocation": "ml/_types/TrainedModel.ts#L282-L297"
     },
     {
       "kind": "interface",
@@ -192563,7 +194482,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L502-L511"
+      "specLocation": "ml/_types/TrainedModel.ts#L524-L533"
     },
     {
       "kind": "interface",
@@ -192584,7 +194503,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L494-L496"
+      "specLocation": "ml/_types/TrainedModel.ts#L516-L518"
     },
     {
       "kind": "interface",
@@ -192605,7 +194524,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L498-L500"
+      "specLocation": "ml/_types/TrainedModel.ts#L520-L522"
     },
     {
       "kind": "interface",
@@ -193022,7 +194941,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L466-L473"
+      "specLocation": "ml/_types/TrainedModel.ts#L488-L495"
     },
     {
       "kind": "interface",
@@ -193095,6 +195014,24 @@
         },
         {
           "name": "average_inference_process_memory_rss_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The peak native memory (resident set size) of the inference process on this node.",
+          "name": "peak_inference_process_memory_rss_bytes",
           "required": false,
           "type": {
             "kind": "instance_of",
@@ -193287,7 +195224,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L157-L204"
+      "specLocation": "ml/_types/TrainedModel.ts#L172-L226"
     },
     {
       "kind": "interface",
@@ -193321,7 +195258,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L434-L444"
+      "specLocation": "ml/_types/TrainedModel.ts#L456-L466"
     },
     {
       "kind": "interface",
@@ -193434,9 +195371,45 @@
               "namespace": "_types"
             }
           }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The sum, across the nodes the deployment runs on, of the average memory of each node's inference process since it started.\nUnlike `required_native_memory_bytes`, which is an estimate, this is a measured value.\nIt is returned only after the native process has reported a measurement.",
+          "name": "runtime_native_memory_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "availability": {
+            "serverless": {},
+            "stack": {
+              "since": "9.6.0"
+            }
+          },
+          "description": "The sum, across the nodes the deployment runs on, of the peak native memory (resident set size) of each node's inference process since it started.\nIt is returned only after the native process has reported a measurement.",
+          "name": "peak_runtime_native_memory_bytes",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "ByteSize",
+              "namespace": "_types"
+            }
+          }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L150-L155"
+      "specLocation": "ml/_types/TrainedModel.ts#L150-L170"
     },
     {
       "kind": "interface",
@@ -195870,7 +197843,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L475-L492"
+      "specLocation": "ml/_types/TrainedModel.ts#L497-L514"
     },
     {
       "kind": "interface",
@@ -195928,7 +197901,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L446-L464"
+      "specLocation": "ml/_types/TrainedModel.ts#L468-L486"
     },
     {
       "kind": "interface",
@@ -196061,7 +198034,7 @@
           }
         }
       ],
-      "specLocation": "ml/_types/TrainedModel.ts#L373-L409"
+      "specLocation": "ml/_types/TrainedModel.ts#L395-L431"
     },
     {
       "kind": "interface",
@@ -196894,6 +198867,39 @@
         }
       ],
       "specLocation": "project/tags/TagsResponse.ts#L23-L31"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "QueryResult",
+        "namespace": "prometheus._types"
+      },
+      "properties": [
+        {
+          "description": "The type of the result: `vector` for an instant query, `matrix` for a range query.",
+          "name": "resultType",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The result series. Sample values are JSON strings, including `NaN`, `+Inf` and `-Inf`.",
+          "name": "result",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/_types/QueryResult.ts#L22-L31"
     },
     {
       "kind": "interface",

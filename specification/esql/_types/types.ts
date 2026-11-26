@@ -230,6 +230,22 @@ export class EsqlQuerySettings {
    * @availability serverless stability=experimental
    */
   project_routing?: ProjectRouting
+  /**
+   * Whether a wildcard in `FROM` also matches views.
+   * When `false`, a wildcard does not match a view, and a view is reached by its exact name.
+   * Other abstractions that a wildcard matches are unaffected.
+   * @server_default false
+   * @availability stack since=9.6.0 stability=experimental
+   */
+  wildcards_match_views?: boolean
+  /**
+   * Whether a wildcard in `FROM` also matches datasets.
+   * When `false`, a wildcard does not match a dataset, and a dataset is reached by its exact name.
+   * Other abstractions that a wildcard matches are unaffected.
+   * @server_default false
+   * @availability stack since=9.6.0 stability=experimental
+   */
+  wildcards_match_datasets?: boolean
 }
 
 /**

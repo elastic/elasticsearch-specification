@@ -301,7 +301,7 @@ export enum CatAnomalyDetectorColumn {
    * not track which specific categories failed to be created. Therefore, you
    * cannot use this value to determine the number of unique categories that
    * were missed.
-   * @aliases mdcc, modelFailedCategoryCount
+   * @aliases mfcc, modelFailedCategoryCount
    */
   'model.failed_category_count',
   /**

@@ -158,6 +158,12 @@ export class DataStreamLifecycleUsage extends Base {
    * Statistics about the cluster's global default and maximum retention settings.
    */
   global_retention?: DataStreamLifecycleGlobalRetention
+  /**
+   * The number of time series data streams without a configured lifecycle that are managed by the minimum lifecycle.
+   * Not reported in serverless.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  minimum_lifecycle_count?: long
 }
 
 /**
@@ -537,6 +543,36 @@ export class Eql extends Base {
   queries: Dictionary<string, Query>
 }
 
+export class Esql extends Base {
+  /**
+   * Per-feature usage counters, keyed by ES|QL source command or language
+   * feature (for example `where`, `sort`, `stats`, `lookup_join`). Each value
+   * counts how many queries used that feature. Every known feature has an
+   * entry; unused features report 0.
+   */
+  features: Dictionary<string, long>
+  /**
+   * Query counters keyed by client type, plus an `_all` entry that aggregates
+   * every client type. Currently all queries are recorded under `rest`, so
+   * `kibana` is always 0; `_all` holds the total.
+   */
+  queries: Dictionary<string, EsqlQueries>
+  /**
+   * Per-function usage counters, keyed by ES|QL function name (for example
+   * `max`, `coalesce`, `to_long`). Each value counts how many queries used that
+   * function. Every registered function has an entry; unused functions report
+   * 0.
+   */
+  functions: Dictionary<string, long>
+}
+
+export class EsqlQueries {
+  /** Number of queries run by this client type. */
+  total: long
+  /** Number of queries from this client type that failed. */
+  failed: long
+}
+
 export class Flattened extends Base {
   field_count: integer
 }
@@ -703,9 +739,15 @@ export class IndexModeUsage extends Base {
   /** The number of data streams in this index mode. */
   data_streams_count: long
   /** The number of data streams in this index mode that are managed by index lifecycle management. */
-  data_streams_managed_by_ilm: long
+  data_streams_managed_by_ilm?: long
   /** The number of data streams in this index mode that are managed by data stream lifecycle. */
   data_streams_managed_by_dlm: long
+  /**
+   * The number of data streams in this index mode that are managed by the minimum lifecycle. These are also included in `data_streams_managed_by_dlm`.
+   * Not reported when index lifecycle management is unavailable.
+   * @availability stack since=9.6.0 stability=stable
+   */
+  data_streams_managed_by_minimum_lifecycle?: long
 }
 
 /**
