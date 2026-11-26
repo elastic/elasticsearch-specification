@@ -28,11 +28,12 @@ concurrency:
   job-discriminator: ${{ github.event.pull_request.number || inputs.pr_number }}
 
 engine:
-  id: claude
-  model: "anthropic/claude-sonnet-5.5"
+  id: copilot
   env:
-    ANTHROPIC_BASE_URL: "https://openrouter.ai/api"
-    ANTHROPIC_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    COPILOT_PROVIDER_BASE_URL: "https://openrouter.ai/api/v1"
+    COPILOT_MODEL: "anthropic/claude-sonnet-5.5"
+    COPILOT_PROVIDER_API_KEY: "${{ secrets.OPENROUTER_API_KEY }}"
+    COPILOT_PROVIDER_TYPE: "openai"
 
 steps:
   - name: Clone Elasticsearch source
