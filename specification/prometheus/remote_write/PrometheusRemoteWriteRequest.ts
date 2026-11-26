@@ -19,6 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
+import { RemoteWriteMessage } from './types'
 
 /**
  * Ingest Prometheus remote write data.
@@ -26,7 +27,9 @@ import { MediaType } from '@_types/common'
  * Index Prometheus time series into metrics data streams.
  * The request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).
  * A message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.
- * The data goes to the `metrics-{dataset}.prometheus-{namespace}` data stream.
+ * Samples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.
+ * In 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.
+ * The `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.
  * @rest_spec_name prometheus.remote_write
  * @availability stack since=9.4.0 stability=tech_preview visibility=public
  * @availability serverless stability=tech_preview visibility=public
@@ -62,4 +65,10 @@ export interface Request extends RequestBase {
     namespace?: string
   }
   request_media_type: MediaType.Protobuf
+  response_media_type: MediaType.Text
+  /**
+   * The remote write message.
+   * @codegen_name message
+   */
+  body: RemoteWriteMessage
 }

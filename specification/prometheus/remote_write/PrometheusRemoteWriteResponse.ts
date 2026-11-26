@@ -17,6 +17,14 @@
  * under the License.
  */
 
+import { Void } from '@spec_utils/VoidValue'
+
 export class Response {
-  body: {}
+  /**
+   * A successful request returns `204 No Content`.
+   * Errors are returned as plain text rather than as a JSON error object:
+   * `400` for an invalid message or rejected samples, `413` for a message that exceeds the size limit,
+   * `415` for an unsupported `proto` parameter, and `429` when indexing is rejected and the client should retry.
+   */
+  body: Void
 }
