@@ -1,0 +1,3 @@
+method_request: GET /_prometheus/api/v1/query_range?query=rate(http_requests_total[5m])&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z&step=15s
+summary: Range query
+description: Evaluate `rate(http_requests_total[5m])` every 15 seconds over one minute.
