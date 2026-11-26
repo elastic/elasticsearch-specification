@@ -536,6 +536,50 @@ mod tests {
     }
 
     #[test]
+    fn parameter_component_keys_replace_disallowed_chars() {
+        let schema_json = r#"{
+          "endpoints": [{
+            "name": "test.op",
+            "description": "An endpoint",
+            "requestBodyRequired": false,
+            "availability": { "stack": { "visibility": "public", "stability": "stable" } },
+            "urls": [{ "path": "/_test", "methods": ["GET"] }, { "path": "/_test/{index}", "methods": ["GET"] }],
+            "request": { "name": "Request", "namespace": "test" },
+            "response": { "name": "Response", "namespace": "test" }
+          }],
+          "types": [{
+            "kind": "request",
+            "name": { "name": "Request", "namespace": "test" },
+            "path": [{
+              "name": "index", "required": false,
+              "type": { "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } }
+            }],
+            "query": [{
+              "name": "match[]", "required": false,
+              "type": { "kind": "instance_of", "type": { "name": "string", "namespace": "_builtins" } }
+            }],
+            "body": { "kind": "no_body" }
+          }, {
+            "kind": "response",
+            "name": { "name": "Response", "namespace": "test" },
+            "body": { "kind": "no_body" }
+          }]
+        }"#;
+        let model = IndexedModel::from_reader(schema_json.as_bytes()).unwrap();
+        // Parameters are shared components only when the endpoint has several paths
+        let result = convert_schema(model, default_config(), IndexMap::new()).unwrap();
+
+        let operation = result.openapi.paths.paths["/_test"].as_item().unwrap().get.as_ref().unwrap();
+        match &operation.parameters[0] {
+            ReferenceOr::Reference { reference } => assert_eq!(reference, "#/components/parameters/test.op-match__"),
+            ReferenceOr::Item(_) => panic!("expected a reference"),
+        }
+        let parameters = &result.openapi.components.as_ref().unwrap().parameters;
+        // The wire name keeps the brackets
+        assert_eq!(parameters["test.op-match__"].as_item().unwrap().parameter_data_ref().name, "match[]");
+    }
+
+    #[test]
     fn code_samples_keep_request_line_and_body() {
         let model = schema_with_examples(
             r#"[{ "path": "/_test", "methods": ["POST"] }]"#,
