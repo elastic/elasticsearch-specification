@@ -30,6 +30,7 @@ import { IndexName, MediaType } from '@_types/common'
  * @availability serverless stability=tech_preview visibility=public
  * @doc_id prometheus-query-exemplars
  * @doc_tag prometheus
+ * @index_privileges read
  */
 export interface Request extends RequestBase {
   urls: [
