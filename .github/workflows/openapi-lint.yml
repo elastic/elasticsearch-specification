@@ -59,8 +59,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: read
-    # TODO: pin to @v1 once elastic/docs-actions ships pre-build-artifact.
-    uses: elastic/docs-actions/.github/workflows/docs-build.yml@pre-build-artifact
+    # TODO: switch to @v1 once docs-actions 1.71.0 (pre-build-artifact) is released.
+    uses: elastic/docs-actions/.github/workflows/docs-build.yml@main
     with:
       path-pattern: '**'
       pre-build-artifact: api-preview-specs
