@@ -1,0 +1,14 @@
+summary: A successful response
+description: A successful response from `GET /_prometheus/api/v1/query_range`.
+# type: response
+# response_code: 200
+value:
+  status: success
+  data:
+    resultType: matrix
+    result:
+      - metric: { job: api, instance: 'api-1:8080' }
+        values:
+          - [1783634400, '0.5']
+          - [1783634415, '0.52']
+          - [1783634430, '0.51']

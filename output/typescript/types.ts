@@ -20938,6 +20938,84 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export interface PrometheusQueryResult {
+  resultType: string
+  result: any[]
+}
+
+export interface PrometheusLabelValuesRequest extends RequestBase {
+  name: string
+  index?: IndexName
+  match?: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusLabelValuesResponse {
+  status: string
+  data: string[]
+  warnings?: string[]
+}
+
+export interface PrometheusLabelsRequest extends RequestBase {
+  index?: IndexName
+  match?: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusLabelsResponse {
+  status: string
+  data: string[]
+  warnings?: string[]
+}
+
+export interface PrometheusQueryRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  time?: string
+  limit?: integer
+  timeout?: string
+}
+
+export interface PrometheusQueryResponse {
+  status: string
+  data: PrometheusQueryResult
+  warnings?: string[]
+}
+
+export interface PrometheusQueryRangeRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  start: string
+  end: string
+  step: string
+  limit?: integer
+  timeout?: string
+}
+
+export interface PrometheusQueryRangeResponse {
+  status: string
+  data: PrometheusQueryResult
+  warnings?: string[]
+}
+
+export interface PrometheusSeriesRequest extends RequestBase {
+  index?: IndexName
+  match: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusSeriesResponse {
+  status: string
+  data: Record<string, string>[]
+  warnings?: string[]
+}
+
 export interface PrometheusStatusBuildinfoBuildInfo {
   application: string
   version: VersionString
