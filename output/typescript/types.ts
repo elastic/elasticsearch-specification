@@ -11708,6 +11708,7 @@ export interface DataRecoveryRecovery {
   status: DataRecoveryRecoveryRunStatus
   recovery_point: DataRecoveryPoint
   destination_mode: DataRecoveryStartRecoveryRecoveryMode
+  rename_strategy?: DataRecoveryStartRecoveryRenameStrategy
   sources: DataRecoveryResolvedRecoverySource[]
   metadata: Metadata
   started_at: DateTime
@@ -21667,6 +21668,127 @@ export interface ProjectTagsTagsKeys {
 export type ProjectTagsTags = ProjectTagsTagsKeys
   & { [property: string]: string }
 
+export interface PrometheusQueryResult {
+  resultType: string
+  result: any[]
+}
+
+export interface PrometheusLabelValuesRequest extends RequestBase {
+  name: string
+  index?: IndexName
+  match?: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusLabelValuesResponse {
+  status: string
+  data: string[]
+  warnings?: string[]
+}
+
+export interface PrometheusLabelsRequest extends RequestBase {
+  index?: IndexName
+  match?: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusLabelsResponse {
+  status: string
+  data: string[]
+  warnings?: string[]
+}
+
+export interface PrometheusMetadataMetricMetadata {
+  type: string
+  help: string
+  unit: string
+}
+
+export interface PrometheusMetadataRequest extends RequestBase {
+  index?: IndexName
+  metric?: string
+  limit?: integer
+  limit_per_metric?: integer
+}
+
+export interface PrometheusMetadataResponse {
+  status: string
+  data: Record<string, PrometheusMetadataMetricMetadata[]>
+  warnings?: string[]
+}
+
+export interface PrometheusQueryRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  time?: string
+  limit?: integer
+  timeout?: string
+}
+
+export interface PrometheusQueryResponse {
+  status: string
+  data: PrometheusQueryResult
+  warnings?: string[]
+}
+
+export interface PrometheusQueryExemplarsExemplar {
+  labels: Record<string, string>
+  value: string
+  timestamp: double
+}
+
+export interface PrometheusQueryExemplarsExemplarSeries {
+  seriesLabels: Record<string, string>
+  exemplars: PrometheusQueryExemplarsExemplar[]
+}
+
+export interface PrometheusQueryExemplarsRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  start: string
+  end: string
+  timeout?: string
+}
+
+export interface PrometheusQueryExemplarsResponse {
+  status: string
+  data: PrometheusQueryExemplarsExemplarSeries[]
+}
+
+export interface PrometheusQueryRangeRequest extends RequestBase {
+  index?: IndexName
+  query: string
+  start: string
+  end: string
+  step: string
+  limit?: integer
+  timeout?: string
+}
+
+export interface PrometheusQueryRangeResponse {
+  status: string
+  data: PrometheusQueryResult
+  warnings?: string[]
+}
+
+export interface PrometheusSeriesRequest extends RequestBase {
+  index?: IndexName
+  match: string[]
+  start?: string
+  end?: string
+  limit?: integer
+}
+
+export interface PrometheusSeriesResponse {
+  status: string
+  data: Record<string, string>[]
+  warnings?: string[]
+}
+
 export interface PrometheusStatusBuildinfoBuildInfo {
   application: string
   version: VersionString
@@ -26270,6 +26392,8 @@ export interface XpackUsageEsql extends XpackUsageBase {
   features: Record<string, long>
   queries: Record<string, XpackUsageEsqlQueries>
   functions: Record<string, long>
+  settings: Record<string, long>
+  took: XpackUsageEsqlTook
 }
 
 export interface XpackUsageEsqlLoggingConfig {
@@ -26281,6 +26405,19 @@ export interface XpackUsageEsqlLoggingConfig {
 export interface XpackUsageEsqlQueries {
   total: long
   failed: long
+}
+
+export interface XpackUsageEsqlTook {
+  lt_10ms: long
+  lt_100ms: long
+  lt_1s: long
+  lt_10s: long
+  lt_1m: long
+  lt_10m: long
+  lt_1h: long
+  lt_10h: long
+  lt_1d: long
+  gt_1d: long
 }
 
 export interface XpackUsageFeatureToggle {

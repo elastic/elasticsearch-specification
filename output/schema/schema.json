@@ -19429,6 +19429,366 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "docId": "prometheus-label-values",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.label_values",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/label/{name}/values"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/label/{name}/values"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "docId": "prometheus-labels",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.labels",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/labels"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/labels"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.5.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus metric metadata.\n\nGet the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.",
+      "docId": "prometheus-metadata",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.metadata",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.metadata"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.metadata"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/metadata"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/metadata"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "docId": "prometheus-query",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.7.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Query Prometheus exemplars.\n\nGet the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+      "docId": "prometheus-query-exemplars",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query_exemplars",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query_exemplars"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query_exemplars"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "docId": "prometheus-query-range",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query_range",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query_range"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query_range"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "docId": "prometheus-series",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.series",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/series"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/series"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.5.0",
           "stability": "tech_preview",
           "visibility": "public"
@@ -151963,6 +152323,18 @@
           }
         },
         {
+          "description": "The naming strategy supplied when the recovery was started, if recorded.",
+          "name": "rename_strategy",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "RenameStrategy",
+              "namespace": "data_recovery.start_recovery"
+            }
+          }
+        },
+        {
           "description": "The sources that the requested source expressions resolved to, with the destinations that they are recovered to.",
           "name": "sources",
           "required": true,
@@ -152053,7 +152425,7 @@
           }
         }
       ],
-      "specLocation": "data_recovery/_types/Recovery.ts#L46-L72"
+      "specLocation": "data_recovery/_types/Recovery.ts#L46-L74"
     },
     {
       "kind": "interface",
@@ -152268,7 +152640,7 @@
         "DataRecoveryGetRecoveryResponseExample1": {
           "description": "A recovery that is still running. The `completed_at` field is omitted, and `percent_complete` is an estimate.\n",
           "summary": "A running recovery",
-          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
+          "value": "{\n  \"recovery_id\": \"rec-0f3a9c1e\",\n  \"status\": \"running\",\n  \"recovery_point\": {\n    \"start_time\": \"2026-10-20T10:00:00.000Z\",\n    \"end_time\": \"2026-10-20T10:05:12.000Z\"\n  },\n  \"destination_mode\": \"rename\",\n  \"rename_strategy\": { \"prefix\": \"restored-\" },\n  \"sources\": [\n    { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"restored-logs-app-default\" },\n    { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n  ],\n  \"metadata\": { \"ticket\": \"OPS-1234\" },\n  \"started_at\": \"2026-10-22T08:30:00.000Z\",\n  \"progress\": { \"percent_complete\": 42 },\n  \"failures\": [],\n  \"total_failure_count\": 0\n}"
         },
         "DataRecoveryGetRecoveryResponseExample2": {
           "description": "A recovery that stopped without recovering every source. The `failures` list says which sources failed and why.\n",
@@ -152952,7 +153324,7 @@
         "DataRecoveryListRecoveriesResponseExample1": {
           "description": "The most recent recoveries first. The `has_more` field is `true`, so more recoveries can be retrieved by paging from the last one.\n",
           "summary": "A page of recoveries",
-          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
+          "value": "{\n  \"recoveries\": [\n    {\n      \"recovery_id\": \"rec-0f3a9c1e\",\n      \"status\": \"running\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-20T10:00:00.000Z\",\n        \"end_time\": \"2026-10-20T10:05:12.000Z\"\n      },\n      \"destination_mode\": \"rename\",\n      \"rename_strategy\": { \"prefix\": \"restored-\" },\n      \"sources\": [\n        { \"source\": \"orders\", \"type\": \"index\", \"destination\": \"restored-orders\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-22T08:30:00.000Z\",\n      \"progress\": { \"percent_complete\": 42 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    },\n    {\n      \"recovery_id\": \"rec-3c9e51b0\",\n      \"status\": \"completed\",\n      \"recovery_point\": {\n        \"start_time\": \"2026-10-19T10:00:00.000Z\",\n        \"end_time\": \"2026-10-19T10:04:58.000Z\"\n      },\n      \"destination_mode\": \"replace\",\n      \"sources\": [\n        { \"source\": \"logs-app-default\", \"type\": \"data_stream\", \"destination\": \"logs-app-default\" }\n      ],\n      \"metadata\": {},\n      \"started_at\": \"2026-10-21T14:02:00.000Z\",\n      \"completed_at\": \"2026-10-21T14:09:40.000Z\",\n      \"progress\": { \"percent_complete\": 100 },\n      \"failures\": [],\n      \"total_failure_count\": 0\n    }\n  ],\n  \"has_more\": true\n}"
         }
       },
       "name": {
@@ -261531,6 +261903,1302 @@
     {
       "kind": "interface",
       "name": {
+        "name": "QueryResult",
+        "namespace": "prometheus._types"
+      },
+      "properties": [
+        {
+          "description": "The type of the result: `vector` for an instant query, `matrix` for a range query.",
+          "name": "resultType",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The result series. Sample values are JSON strings, including `NaN`, `+Inf` and `-Inf`.",
+          "name": "result",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/_types/QueryResult.ts#L22-L31"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "examples": {
+        "PrometheusLabelValuesRequestExample1": {
+          "description": "Get the values of the `job` label.",
+          "method_request": "GET /_prometheus/api/v1/label/job/values",
+          "summary": "Label values"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "path": [
+        {
+          "description": "The name of the label.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label values to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesRequest.ts#L24-L83"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label values.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelValuesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/label/job/values`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"api\",\n    \"prometheus\"\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesResponse.ts#L20-L35"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "examples": {
+        "PrometheusLabelsRequestExample1": {
+          "description": "Get the label names of the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/labels?match[]=up",
+          "summary": "Label names"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label names to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/labels/PrometheusLabelsRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label names.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelsResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/labels`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"__name__\",\n    \"instance\",\n    \"job\"\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "specLocation": "prometheus/labels/PrometheusLabelsResponse.ts#L20-L35"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MetricMetadata",
+        "namespace": "prometheus.metadata"
+      },
+      "properties": [
+        {
+          "description": "The metric type, such as `counter`, `gauge` or `histogram`.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The help text. It is always an empty string.",
+          "name": "help",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The metric unit, or an empty string if there is none.",
+          "name": "unit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/metadata/types.ts#L20-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus metric metadata.\n\nGet the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.",
+      "examples": {
+        "PrometheusMetadataRequestExample1": {
+          "description": "Get the metadata of one metric.",
+          "method_request": "GET /_prometheus/api/v1/metadata?metric=http_requests_total",
+          "summary": "Metric metadata"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.metadata"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Restricts the response to one metric name.",
+          "name": "metric",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of distinct metrics to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of metadata entries to return for each metric. `0` means no limit from the request.",
+          "name": "limit_per_metric",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/metadata/PrometheusMetadataRequest.ts#L24-L71"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The metadata entries, keyed by metric name.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "singleKey": false,
+              "value": {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "MetricMetadata",
+                    "namespace": "prometheus.metadata"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusMetadataResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/metadata`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"http_requests_total\": [\n      {\n        \"type\": \"counter\",\n        \"help\": \"\",\n        \"unit\": \"\"\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.metadata"
+      },
+      "specLocation": "prometheus/metadata/PrometheusMetadataResponse.ts#L23-L38"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "examples": {
+        "PrometheusQueryRequestExample1": {
+          "description": "Evaluate `up` at one instant.",
+          "method_request": "GET /_prometheus/api/v1/query?query=up&time=2026-07-09T22:10:00Z",
+          "summary": "Instant query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The evaluation instant, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query/PrometheusQueryRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"vector\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"__name__\": \"up\",\n          \"job\": \"prometheus\",\n          \"instance\": \"localhost:9090\"\n        },\n        \"value\": [\n          1783635000,\n          \"1\"\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "specLocation": "prometheus/query/PrometheusQueryResponse.ts#L22-L34"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "Exemplar",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "properties": [
+        {
+          "description": "The labels of the exemplar, such as `trace_id`.",
+          "name": "labels",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The exemplar value, as a string.",
+          "name": "value",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The exemplar timestamp, in Unix seconds.",
+          "name": "timestamp",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "double",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/types.ts#L24-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "ExemplarSeries",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "properties": [
+        {
+          "description": "The labels of the series that the exemplars belong to.",
+          "name": "seriesLabels",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "name": "exemplars",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "Exemplar",
+                "namespace": "prometheus.query_exemplars"
+              }
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/types.ts#L39-L45"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Query Prometheus exemplars.\n\nGet the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+      "examples": {
+        "PrometheusQueryExemplarsRequestExample1": {
+          "description": "Get the exemplars of `http_request_duration_seconds_bucket`.",
+          "method_request": "GET /_prometheus/api/v1/query_exemplars?query=http_request_duration_seconds_bucket&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z",
+          "summary": "Exemplars"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression that selects the series.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L74"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The exemplars, grouped by series.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "ExemplarSeries",
+                  "namespace": "prometheus.query_exemplars"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryExemplarsResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query_exemplars`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"seriesLabels\": {\n        \"__name__\": \"http_request_duration_seconds_bucket\",\n        \"job\": \"api\",\n        \"le\": \"0.5\"\n      },\n      \"exemplars\": [\n        {\n          \"labels\": {\n            \"trace_id\": \"4bf92f3577b34da6a3ce929d0e0e4736\"\n          },\n          \"value\": \"0.42\",\n          \"timestamp\": 1783634412.5\n        }\n      ]\n    }\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query_exemplars"
+      },
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsResponse.ts#L22-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "examples": {
+        "PrometheusQueryRangeRequestExample1": {
+          "description": "Evaluate `rate(http_requests_total[5m])` every 15 seconds over one minute.",
+          "method_request": "GET /_prometheus/api/v1/query_range?query=rate(http_requests_total[5m])&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z&step=15s",
+          "summary": "Range query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The resolution between samples, as a number of seconds or a duration such as `30s` or `1h30m`.",
+          "name": "step",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeRequest.ts#L24-L83"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryRangeResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query_range`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"matrix\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"job\": \"api\",\n          \"instance\": \"api-1:8080\"\n        },\n        \"values\": [\n          [\n            1783634400,\n            \"0.5\"\n          ],\n          [\n            1783634415,\n            \"0.52\"\n          ],\n          [\n            1783634430,\n            \"0.51\"\n          ]\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeResponse.ts#L22-L34"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "examples": {
+        "PrometheusSeriesRequestExample1": {
+          "description": "Find the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/series?match[]=up",
+          "summary": "Series"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. At least one is required.",
+          "name": "match[]",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/series/PrometheusSeriesRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The label sets of the matching series.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusSeriesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/series`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"__name__\": \"up\",\n      \"job\": \"prometheus\",\n      \"instance\": \"localhost:9090\"\n    }\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "specLocation": "prometheus/series/PrometheusSeriesResponse.ts#L22-L37"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "BuildInfo",
         "namespace": "prometheus.status_buildinfo"
       },
@@ -315233,9 +316901,44 @@
               }
             }
           }
+        },
+        {
+          "description": "Per-setting usage counters, keyed by ES|QL query setting name (for example\n`time_zone`, `unmapped_fields`). Each value counts how many queries\nsupplied that setting, either in the request body or with `SET` in the\nquery. A setting supplied both ways is counted once.",
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Histogram of query execution times. Each query is counted in exactly one\nbucket, the one its `took` time falls in.",
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlTook",
+              "namespace": "xpack.usage"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L546-L567"
+      "specLocation": "xpack/usage/types.ts#L546-L579"
     },
     {
       "kind": "interface",
@@ -315326,7 +317029,137 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L569-L574"
+      "specLocation": "xpack/usage/types.ts#L581-L586"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EsqlTook",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "Queries that took less than 10 milliseconds.",
+          "name": "lt_10ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 milliseconds and less than 100 milliseconds.",
+          "name": "lt_100ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 100 milliseconds and less than 1 second.",
+          "name": "lt_1s",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 second and less than 10 seconds.",
+          "name": "lt_10s",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 seconds and less than 1 minute.",
+          "name": "lt_1m",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 minute and less than 10 minutes.",
+          "name": "lt_10m",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 minutes and less than 1 hour.",
+          "name": "lt_1h",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 hour and less than 10 hours.",
+          "name": "lt_10h",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 hours and less than 1 day.",
+          "name": "lt_1d",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took 1 day or more.",
+          "name": "gt_1d",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L588-L609"
     },
     {
       "kind": "interface",
@@ -315374,7 +317207,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L576-L578"
+      "specLocation": "xpack/usage/types.ts#L611-L613"
     },
     {
       "kind": "interface",
@@ -315433,7 +317266,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L715-L727"
+      "specLocation": "xpack/usage/types.ts#L750-L762"
     },
     {
       "kind": "interface",
@@ -315489,7 +317322,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L753-L763"
+      "specLocation": "xpack/usage/types.ts#L788-L798"
     },
     {
       "kind": "interface",
@@ -315702,7 +317535,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L729-L751"
+      "specLocation": "xpack/usage/types.ts#L764-L786"
     },
     {
       "kind": "interface",
@@ -315831,7 +317664,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L580-L586"
+      "specLocation": "xpack/usage/types.ts#L615-L621"
     },
     {
       "kind": "interface",
@@ -315960,7 +317793,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L588-L595"
+      "specLocation": "xpack/usage/types.ts#L623-L630"
     },
     {
       "kind": "interface",
@@ -316602,7 +318435,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L597-L600"
+      "specLocation": "xpack/usage/types.ts#L632-L635"
     },
     {
       "kind": "interface",
@@ -316951,7 +318784,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L633-L642"
+      "specLocation": "xpack/usage/types.ts#L668-L677"
     },
     {
       "kind": "interface",
@@ -317776,7 +319609,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L644-L648"
+      "specLocation": "xpack/usage/types.ts#L679-L683"
     },
     {
       "kind": "interface",
@@ -317946,7 +319779,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L650-L663"
+      "specLocation": "xpack/usage/types.ts#L685-L698"
     },
     {
       "kind": "interface",
@@ -318288,7 +320121,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L665-L668"
+      "specLocation": "xpack/usage/types.ts#L700-L703"
     },
     {
       "kind": "interface",
@@ -318348,7 +320181,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L602-L605"
+      "specLocation": "xpack/usage/types.ts#L637-L640"
     },
     {
       "kind": "interface",
@@ -318380,7 +320213,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L607-L610"
+      "specLocation": "xpack/usage/types.ts#L642-L645"
     },
     {
       "kind": "interface",
@@ -318429,7 +320262,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L670-L674"
+      "specLocation": "xpack/usage/types.ts#L705-L709"
     },
     {
       "kind": "interface",
@@ -318470,7 +320303,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L690-L702"
+      "specLocation": "xpack/usage/types.ts#L725-L737"
     },
     {
       "kind": "interface",
@@ -318511,7 +320344,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L676-L688"
+      "specLocation": "xpack/usage/types.ts#L711-L723"
     },
     {
       "kind": "interface",
@@ -318560,7 +320393,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L704-L708"
+      "specLocation": "xpack/usage/types.ts#L739-L743"
     },
     {
       "kind": "interface",
@@ -318601,7 +320434,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L628-L631"
+      "specLocation": "xpack/usage/types.ts#L663-L666"
     },
     {
       "kind": "interface",
@@ -318633,7 +320466,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L612-L614"
+      "specLocation": "xpack/usage/types.ts#L647-L649"
     },
     {
       "kind": "interface",
@@ -318720,7 +320553,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L616-L621"
+      "specLocation": "xpack/usage/types.ts#L651-L656"
     },
     {
       "kind": "interface",
@@ -318752,7 +320585,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L623-L626"
+      "specLocation": "xpack/usage/types.ts#L658-L661"
     },
     {
       "kind": "interface",
@@ -318790,7 +320623,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L710-L713"
+      "specLocation": "xpack/usage/types.ts#L745-L748"
     },
     {
       "kind": "interface",
