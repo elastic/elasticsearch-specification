@@ -28,7 +28,7 @@ import { IndexName, MediaType } from '@_types/common'
  *
  * GET requests send parameters in the query string.
  * POST requests send the same parameters as an `application/x-www-form-urlencoded` body.
- * Form-encoded POST requests are accepted only only on authenticated TLS connections.
+ * Form-encoded POST requests are accepted only on authenticated TLS connections.
  * If you send the same parameter in both the query string and the form body, the API returns `400` with the standard Elasticsearch error body.
  * @rest_spec_name prometheus.query_exemplars
  * @availability stack since=9.7.0 stability=tech_preview visibility=public

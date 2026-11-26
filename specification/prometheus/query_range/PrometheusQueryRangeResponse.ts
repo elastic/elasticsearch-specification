@@ -52,7 +52,7 @@ export class Response {
     },
     {
       /**
-       * On Serverless and on Elasticsearch 9.5.0 and later, form-encoded POST requests are accepted only only on authenticated TLS connections.
+       * On Serverless and on Elasticsearch 9.5.0 and later, form-encoded POST requests are accepted only on authenticated TLS connections.
        * Otherwise the response is `406` with the standard Elasticsearch error body.
        */
       statusCodes: [406]
