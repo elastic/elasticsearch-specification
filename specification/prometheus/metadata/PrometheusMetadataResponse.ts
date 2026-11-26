@@ -17,8 +17,8 @@
  * under the License.
  */
 
-import { Dictionary } from '@spec_utils/Dictionary'
 import { ErrorBody } from '@prometheus/_types/ErrorBody'
+import { Dictionary } from '@spec_utils/Dictionary'
 import { MetricMetadata } from './types'
 
 export class Response {
