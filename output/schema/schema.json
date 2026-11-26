@@ -19429,6 +19429,160 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "docId": "prometheus-label-values",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.label_values",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/label/{name}/values"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/label/{name}/values"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "docId": "prometheus-labels",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.labels",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/labels"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/labels"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "docId": "prometheus-query",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.7.0",
           "stability": "tech_preview",
           "visibility": "public"
@@ -19440,6 +19594,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "prometheus.query_exemplars",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "prometheus.query_exemplars"
@@ -19466,6 +19625,110 @@
             "POST"
           ],
           "path": "/_prometheus/{index}/api/v1/query_exemplars"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "docId": "prometheus-query-range",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.query_range",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/query_range"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/query_range"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "docId": "prometheus-series",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.series",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/series"
+        },
+        {
+          "methods": [
+            "GET",
+            "POST"
+          ],
+          "path": "/_prometheus/{index}/api/v1/series"
         }
       ]
     },
@@ -261590,6 +261853,517 @@
     {
       "kind": "interface",
       "name": {
+        "name": "QueryResult",
+        "namespace": "prometheus._types"
+      },
+      "properties": [
+        {
+          "description": "The type of the result: `vector` for an instant query, `matrix` for a range query.",
+          "name": "resultType",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The result series. Sample values are JSON strings, including `NaN`, `+Inf` and `-Inf`.",
+          "name": "result",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "user_defined_value"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/_types/QueryResult.ts#L22-L31"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
+      "examples": {
+        "PrometheusLabelValuesRequestExample1": {
+          "description": "Get the values of the `job` label.",
+          "method_request": "GET /_prometheus/api/v1/label/job/values",
+          "summary": "Label values"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.label_values"
+      },
+      "path": [
+        {
+          "description": "The name of the label.",
+          "name": "name",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label values to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesRequest.ts#L24-L83"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label values.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelValuesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/label/job/values`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"api\",\n    \"prometheus\"\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.label_values"
+      },
+      "specLocation": "prometheus/label_values/PrometheusLabelValuesResponse.ts#L20-L35"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
+      "examples": {
+        "PrometheusLabelsRequestExample1": {
+          "description": "Get the label names of the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/labels?match[]=up",
+          "summary": "Label names"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.labels"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
+          "name": "match[]",
+          "required": false,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of label names to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/labels/PrometheusLabelsRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The sorted label names.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusLabelsResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/labels`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    \"__name__\",\n    \"instance\",\n    \"job\"\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.labels"
+      },
+      "specLocation": "prometheus/labels/PrometheusLabelsResponse.ts#L20-L35"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
+      "examples": {
+        "PrometheusQueryRequestExample1": {
+          "description": "Evaluate `up` at one instant.",
+          "method_request": "GET /_prometheus/api/v1/query?query=up&time=2026-07-09T22:10:00Z",
+          "summary": "Instant query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The evaluation instant, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "time",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query/PrometheusQueryRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"vector\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"__name__\": \"up\",\n          \"job\": \"prometheus\",\n          \"instance\": \"localhost:9090\"\n        },\n        \"value\": [\n          1783635000,\n          \"1\"\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query"
+      },
+      "specLocation": "prometheus/query/PrometheusQueryResponse.ts#L22-L34"
+    },
+    {
+      "kind": "interface",
+      "name": {
         "name": "Exemplar",
         "namespace": "prometheus.query_exemplars"
       },
@@ -261781,7 +262555,7 @@
           }
         }
       ],
-      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L73"
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L74"
     },
     {
       "kind": "response",
@@ -261829,6 +262603,349 @@
         "namespace": "prometheus.query_exemplars"
       },
       "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsResponse.ts#L22-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
+      "examples": {
+        "PrometheusQueryRangeRequestExample1": {
+          "description": "Evaluate `rate(http_requests_total[5m])` every 15 seconds over one minute.",
+          "method_request": "GET /_prometheus/api/v1/query_range?query=rate(http_requests_total[5m])&start=2026-07-09T22:00:00Z&end=2026-07-09T22:01:00Z&step=15s",
+          "summary": "Range query"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.query_range"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "The PromQL expression to evaluate.",
+          "name": "query",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The start of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "start",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the range, as an RFC 3339 timestamp or Unix time in seconds.",
+          "name": "end",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The resolution between samples, as a number of seconds or a duration such as `30s` or `1h30m`.",
+          "name": "step",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The evaluation timeout, as a number of seconds or a duration such as `30s`.\nIt must be positive and is capped by the `xpack.prometheus.query.timeout` cluster setting.",
+          "name": "timeout",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeRequest.ts#L24-L83"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "QueryResult",
+                "namespace": "prometheus._types"
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusQueryRangeResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/query_range`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"resultType\": \"matrix\",\n    \"result\": [\n      {\n        \"metric\": {\n          \"job\": \"api\",\n          \"instance\": \"api-1:8080\"\n        },\n        \"values\": [\n          [\n            1783634400,\n            \"0.5\"\n          ],\n          [\n            1783634415,\n            \"0.52\"\n          ],\n          [\n            1783634430,\n            \"0.51\"\n          ]\n        ]\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.query_range"
+      },
+      "specLocation": "prometheus/query_range/PrometheusQueryRangeResponse.ts#L22-L34"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
+      "examples": {
+        "PrometheusSeriesRequestExample1": {
+          "description": "Find the series that match `up`.",
+          "method_request": "GET /_prometheus/api/v1/series?match[]=up",
+          "summary": "Series"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.series"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "codegenName": "match",
+          "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. At least one is required.",
+          "name": "match[]",
+          "required": true,
+          "type": {
+            "kind": "array_of",
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          }
+        },
+        {
+          "description": "The start of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to 24 hours before `end`.",
+          "name": "start",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The end of the time range, as an RFC 3339 timestamp or Unix time in seconds.\nDefaults to the current time.",
+          "name": "end",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of series to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/series/PrometheusSeriesRequest.ts#L24-L77"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The label sets of the matching series.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "dictionary_of",
+                "key": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                },
+                "singleKey": false,
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "string",
+                    "namespace": "_builtins"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusSeriesResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/series`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": [\n    {\n      \"__name__\": \"up\",\n      \"job\": \"prometheus\",\n      \"instance\": \"localhost:9090\"\n    }\n  ]\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.series"
+      },
+      "specLocation": "prometheus/series/PrometheusSeriesResponse.ts#L22-L37"
     },
     {
       "kind": "interface",
