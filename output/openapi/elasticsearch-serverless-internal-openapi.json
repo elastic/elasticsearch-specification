@@ -38902,6 +38902,75 @@
         ]
       }
     },
+    "/_prometheus/api/v1/metadata": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus metric metadata",
+        "description": "Get the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-metadata",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-metric"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-limit_per_metric"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.metadata-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/{index}/api/v1/metadata": {
+      "get": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Get Prometheus metric metadata",
+        "description": "Get the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.\n\n## Required authorization\n\n* Index privileges: `read`\n",
+        "operationId": "prometheus-metadata-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-index"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-metric"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-limit"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.metadata-limit_per_metric"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.metadata-200"
+          }
+        },
+        "x-state": "Technical preview",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_prometheus/api/v1/query": {
       "get": {
         "tags": [
@@ -123470,6 +123539,28 @@
           "_organisation"
         ]
       },
+      "prometheus.metadata.MetricMetadata": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "The metric type, such as `counter`, `gauge` or `histogram`.",
+            "type": "string"
+          },
+          "help": {
+            "description": "The help text. It is always an empty string.",
+            "type": "string"
+          },
+          "unit": {
+            "description": "The metric unit, or an empty string if there is none.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "help",
+          "unit"
+        ]
+      },
       "prometheus._types.QueryResult": {
         "type": "object",
         "properties": {
@@ -136140,6 +136231,50 @@
           }
         }
       },
+      "prometheus.metadata-200": {
+        "description": "",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "description": "The status of the request: `success`.",
+                  "type": "string"
+                },
+                "data": {
+                  "description": "The metadata entries, keyed by metric name.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/prometheus.metadata.MetricMetadata"
+                    }
+                  }
+                },
+                "warnings": {
+                  "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "status",
+                "data"
+              ]
+            },
+            "examples": {
+              "PrometheusMetadataResponseExample1": {
+                "summary": "A successful response",
+                "description": "A successful response from `GET /_prometheus/api/v1/metadata`.",
+                "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"http_requests_total\": [\n      {\n        \"type\": \"counter\",\n        \"help\": \"\",\n        \"unit\": \"\"\n      }\n    ]\n  }\n}"
+              }
+            }
+          }
+        }
+      },
       "prometheus.query-200": {
         "description": "",
         "content": {
@@ -146740,6 +146875,47 @@
         "in": "query",
         "name": "limit",
         "description": "The maximum number of label names to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.metadata-index": {
+        "in": "path",
+        "name": "index",
+        "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "$ref": "#/components/schemas/_types.IndexName"
+        },
+        "style": "simple"
+      },
+      "prometheus.metadata-metric": {
+        "in": "query",
+        "name": "metric",
+        "description": "Restricts the response to one metric name.",
+        "deprecated": false,
+        "schema": {
+          "type": "string"
+        },
+        "style": "form"
+      },
+      "prometheus.metadata-limit": {
+        "in": "query",
+        "name": "limit",
+        "description": "The maximum number of distinct metrics to return. `0` means no limit from the request.",
+        "deprecated": false,
+        "schema": {
+          "type": "number"
+        },
+        "style": "form"
+      },
+      "prometheus.metadata-limit_per_metric": {
+        "in": "query",
+        "name": "limit_per_metric",
+        "description": "The maximum number of metadata entries to return for each metric. `0` means no limit from the request.",
         "deprecated": false,
         "schema": {
           "type": "number"
