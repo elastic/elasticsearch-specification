@@ -44052,7 +44052,7 @@
           "prometheus"
         ],
         "summary": "Query Prometheus exemplars",
-        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "prometheus-query-exemplars",
         "parameters": [
           {
@@ -44086,7 +44086,7 @@
           "prometheus"
         ],
         "summary": "Query Prometheus exemplars",
-        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "prometheus-query-exemplars-1",
         "parameters": [
           {
@@ -44122,7 +44122,7 @@
           "prometheus"
         ],
         "summary": "Query Prometheus exemplars",
-        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "prometheus-query-exemplars-2",
         "parameters": [
           {
@@ -44159,7 +44159,7 @@
           "prometheus"
         ],
         "summary": "Query Prometheus exemplars",
-        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.",
+        "description": "Get the exemplars of the series selected by a PromQL expression over a time range.\nThe endpoint mirrors the Prometheus `/api/v1/query_exemplars` endpoint.\n\n## Required authorization\n\n* Index privileges: `read`\n",
         "operationId": "prometheus-query-exemplars-3",
         "parameters": [
           {

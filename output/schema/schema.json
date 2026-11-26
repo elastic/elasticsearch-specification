@@ -19440,6 +19440,11 @@
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
       "name": "prometheus.query_exemplars",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
       "request": {
         "name": "Request",
         "namespace": "prometheus.query_exemplars"
@@ -261781,7 +261786,7 @@
           }
         }
       ],
-      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L73"
+      "specLocation": "prometheus/query_exemplars/PrometheusQueryExemplarsRequest.ts#L23-L74"
     },
     {
       "kind": "response",
