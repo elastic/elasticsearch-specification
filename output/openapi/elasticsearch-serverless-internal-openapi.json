@@ -38688,7 +38688,7 @@
             "$ref": "#/components/parameters/prometheus.label_values-name"
           },
           {
-            "$ref": "#/components/parameters/prometheus.label_values-match[]"
+            "$ref": "#/components/parameters/prometheus.label_values-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.label_values-start"
@@ -38730,7 +38730,7 @@
             "$ref": "#/components/parameters/prometheus.label_values-name"
           },
           {
-            "$ref": "#/components/parameters/prometheus.label_values-match[]"
+            "$ref": "#/components/parameters/prometheus.label_values-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.label_values-start"
@@ -38766,7 +38766,7 @@
         "operationId": "prometheus-labels",
         "parameters": [
           {
-            "$ref": "#/components/parameters/prometheus.labels-match[]"
+            "$ref": "#/components/parameters/prometheus.labels-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.labels-start"
@@ -38800,7 +38800,7 @@
         "operationId": "prometheus-labels-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/prometheus.labels-match[]"
+            "$ref": "#/components/parameters/prometheus.labels-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.labels-start"
@@ -38839,7 +38839,7 @@
             "$ref": "#/components/parameters/prometheus.labels-index"
           },
           {
-            "$ref": "#/components/parameters/prometheus.labels-match[]"
+            "$ref": "#/components/parameters/prometheus.labels-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.labels-start"
@@ -38876,7 +38876,7 @@
             "$ref": "#/components/parameters/prometheus.labels-index"
           },
           {
-            "$ref": "#/components/parameters/prometheus.labels-match[]"
+            "$ref": "#/components/parameters/prometheus.labels-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.labels-start"
@@ -39228,7 +39228,7 @@
         "operationId": "prometheus-series",
         "parameters": [
           {
-            "$ref": "#/components/parameters/prometheus.series-match[]"
+            "$ref": "#/components/parameters/prometheus.series-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.series-start"
@@ -39262,7 +39262,7 @@
         "operationId": "prometheus-series-1",
         "parameters": [
           {
-            "$ref": "#/components/parameters/prometheus.series-match[]"
+            "$ref": "#/components/parameters/prometheus.series-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.series-start"
@@ -39301,7 +39301,7 @@
             "$ref": "#/components/parameters/prometheus.series-index"
           },
           {
-            "$ref": "#/components/parameters/prometheus.series-match[]"
+            "$ref": "#/components/parameters/prometheus.series-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.series-start"
@@ -39338,7 +39338,7 @@
             "$ref": "#/components/parameters/prometheus.series-index"
           },
           {
-            "$ref": "#/components/parameters/prometheus.series-match[]"
+            "$ref": "#/components/parameters/prometheus.series-match__"
           },
           {
             "$ref": "#/components/parameters/prometheus.series-start"
@@ -146649,7 +146649,7 @@
         },
         "style": "simple"
       },
-      "prometheus.label_values-match[]": {
+      "prometheus.label_values-match__": {
         "in": "query",
         "name": "match[]",
         "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
@@ -146703,7 +146703,7 @@
         },
         "style": "simple"
       },
-      "prometheus.labels-match[]": {
+      "prometheus.labels-match__": {
         "in": "query",
         "name": "match[]",
         "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. If you omit all of them, every series in the time range is considered.",
@@ -146884,7 +146884,7 @@
         },
         "style": "simple"
       },
-      "prometheus.series-match[]": {
+      "prometheus.series-match__": {
         "in": "query",
         "name": "match[]",
         "description": "Repeated series selectors, for example `up{job=\"prometheus\"}`. At least one is required.",
