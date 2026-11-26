@@ -16,7 +16,7 @@ jobs:
   deploy:
     uses: elastic/docs-actions/.github/workflows/docs-deploy.yml@v1
     with:
-      path: docs/api-preview
+      path: docs
       path-pattern: '**'
       continue-on-error: 'true'
       pre-build-artifact: api-preview-specs
