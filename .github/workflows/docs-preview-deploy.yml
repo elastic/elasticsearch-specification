@@ -14,8 +14,7 @@ permissions:
 
 jobs:
   deploy:
-    # TODO: switch to @v1 once docs-actions 1.71.0 (pre-build-artifact) is released.
-    uses: elastic/docs-actions/.github/workflows/docs-deploy.yml@main
+    uses: elastic/docs-actions/.github/workflows/docs-deploy.yml@v1
     with:
       path: docs/api-preview
       path-pattern: '**'
