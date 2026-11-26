@@ -18874,6 +18874,56 @@
           "visibility": "public"
         },
         "stack": {
+          "since": "9.5.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
+      "description": "Get Prometheus metric metadata.\n\nGet the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.",
+      "docId": "prometheus-metadata",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.metadata",
+      "privileges": {
+        "index": [
+          "read"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.metadata"
+      },
+      "requestBodyRequired": false,
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.metadata"
+      },
+      "responseMediaType": [
+        "application/json"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/api/v1/metadata"
+        },
+        {
+          "methods": [
+            "GET"
+          ],
+          "path": "/_prometheus/{index}/api/v1/metadata"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
           "since": "9.4.0",
           "stability": "tech_preview",
           "visibility": "public"
@@ -253471,6 +253521,205 @@
         "namespace": "prometheus.labels"
       },
       "specLocation": "prometheus/labels/PrometheusLabelsResponse.ts#L20-L35"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "MetricMetadata",
+        "namespace": "prometheus.metadata"
+      },
+      "properties": [
+        {
+          "description": "The metric type, such as `counter`, `gauge` or `histogram`.",
+          "name": "type",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The help text. It is always an empty string.",
+          "name": "help",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The metric unit, or an empty string if there is none.",
+          "name": "unit",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/metadata/types.ts#L20-L33"
+    },
+    {
+      "kind": "request",
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
+        "kind": "no_body"
+      },
+      "description": "Get Prometheus metric metadata.\n\nGet the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.",
+      "examples": {
+        "PrometheusMetadataRequestExample1": {
+          "description": "Get the metadata of one metric.",
+          "method_request": "GET /_prometheus/api/v1/metadata?metric=http_requests_total",
+          "summary": "Metric metadata"
+        }
+      },
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.metadata"
+      },
+      "path": [
+        {
+          "description": "An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.\nIf you omit it, the default expression `metrics-*` is used.\nOnly indices with `index.mode: time_series` are considered.",
+          "name": "index",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "IndexName",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "query": [
+        {
+          "description": "Restricts the response to one metric name.",
+          "name": "metric",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of distinct metrics to return. `0` means no limit from the request.",
+          "name": "limit",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "The maximum number of metadata entries to return for each metric. `0` means no limit from the request.",
+          "name": "limit_per_metric",
+          "required": false,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "integer",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "prometheus/metadata/PrometheusMetadataRequest.ts#L24-L71"
+    },
+    {
+      "kind": "response",
+      "body": {
+        "kind": "properties",
+        "properties": [
+          {
+            "description": "The status of the request: `success`.",
+            "name": "status",
+            "required": true,
+            "type": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            }
+          },
+          {
+            "description": "The metadata entries, keyed by metric name.",
+            "name": "data",
+            "required": true,
+            "type": {
+              "kind": "dictionary_of",
+              "key": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              },
+              "singleKey": false,
+              "value": {
+                "kind": "array_of",
+                "value": {
+                  "kind": "instance_of",
+                  "type": {
+                    "name": "MetricMetadata",
+                    "namespace": "prometheus.metadata"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "description": "Warnings, such as a notice that the results were truncated because of `limit`.",
+            "name": "warnings",
+            "required": false,
+            "type": {
+              "kind": "array_of",
+              "value": {
+                "kind": "instance_of",
+                "type": {
+                  "name": "string",
+                  "namespace": "_builtins"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "examples": {
+        "PrometheusMetadataResponseExample1": {
+          "description": "A successful response from `GET /_prometheus/api/v1/metadata`.",
+          "summary": "A successful response",
+          "value": "{\n  \"status\": \"success\",\n  \"data\": {\n    \"http_requests_total\": [\n      {\n        \"type\": \"counter\",\n        \"help\": \"\",\n        \"unit\": \"\"\n      }\n    ]\n  }\n}"
+        }
+      },
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.metadata"
+      },
+      "specLocation": "prometheus/metadata/PrometheusMetadataResponse.ts#L23-L38"
     },
     {
       "kind": "request",

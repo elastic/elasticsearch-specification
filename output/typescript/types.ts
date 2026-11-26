@@ -20972,6 +20972,25 @@ export interface PrometheusLabelsResponse {
   warnings?: string[]
 }
 
+export interface PrometheusMetadataMetricMetadata {
+  type: string
+  help: string
+  unit: string
+}
+
+export interface PrometheusMetadataRequest extends RequestBase {
+  index?: IndexName
+  metric?: string
+  limit?: integer
+  limit_per_metric?: integer
+}
+
+export interface PrometheusMetadataResponse {
+  status: string
+  data: Record<string, PrometheusMetadataMetricMetadata[]>
+  warnings?: string[]
+}
+
 export interface PrometheusQueryRequest extends RequestBase {
   index?: IndexName
   query: string
