@@ -1,0 +1,3 @@
+method_request: GET /_prometheus/api/v1/label/job/values
+summary: Label values
+description: Get the values of the `job` label.

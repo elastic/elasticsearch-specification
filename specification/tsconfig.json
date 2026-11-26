@@ -45,6 +45,7 @@
       "@nodes/*": ["nodes/*"],
       "@profiling/*": ["profiling/*"],
       "@project/*": ["project/*"],
+      "@prometheus/*": ["prometheus/*"],
       "@query_ruleset/*": ["query_ruleset/*"],
       "@rollup/*": ["rollup/*"],
       "@searchable_snapshots/*": ["searchable_snapshots/*"],
