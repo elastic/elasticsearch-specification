@@ -20,4 +20,4 @@
 /**
  * A Prometheus remote write 1.0 `WriteRequest` protobuf message, usually snappy-compressed.
  */
-export type RemoteWriteMessage = ArrayBuffer
+export type PrometheusWriteMessage = ArrayBuffer

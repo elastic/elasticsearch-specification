@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { MediaType } from '@_types/common'
-import { RemoteWriteMessage } from './types'
+import { PrometheusWriteMessage } from './types'
 
 /**
  * Ingest Prometheus remote write data.
@@ -68,7 +68,7 @@ export interface Request extends RequestBase {
   response_media_type: MediaType.Text
   /**
    * The remote write message.
-   * @codegen_name message
+   * @codegen_name write_message
    */
-  body: RemoteWriteMessage
+  body: PrometheusWriteMessage
 }
