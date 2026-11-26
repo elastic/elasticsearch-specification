@@ -18,6 +18,7 @@
  */
 
 import { RequestBase } from '@_types/Base'
+import { MediaType } from '@_types/common'
 
 /**
  * Ingest Prometheus remote write data.
@@ -60,4 +61,5 @@ export interface Request extends RequestBase {
      */
     namespace?: string
   }
+  request_media_type: MediaType.Protobuf
 }
