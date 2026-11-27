@@ -251,6 +251,7 @@ export enum MediaType {
   Json = 'application/json',
   MapboxVectorTile = 'application/vnd.mapbox-vector-tile',
   Ndjson = 'application/x-ndjson',
+  Protobuf = 'application/x-protobuf',
   Smile = 'application/x-jackson-smile',
   Text = 'text/plain',
   Yaml = 'application/x-yaml'
