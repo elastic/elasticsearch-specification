@@ -12308,6 +12308,66 @@
           "visibility": "public"
         }
       },
+      "description": "Ingest Prometheus remote write data.\n\nIndex Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.",
+      "docId": "prometheus-remote-write",
+      "docTag": "prometheus",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "name": "prometheus.remote_write",
+      "privileges": {
+        "index": [
+          "create_doc",
+          "auto_configure"
+        ]
+      },
+      "request": {
+        "name": "Request",
+        "namespace": "prometheus.remote_write"
+      },
+      "requestBodyRequired": true,
+      "requestMediaType": [
+        "application/x-protobuf"
+      ],
+      "response": {
+        "name": "Response",
+        "namespace": "prometheus.remote_write"
+      },
+      "responseMediaType": [
+        "text/plain"
+      ],
+      "urls": [
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_prometheus/api/v1/write"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_prometheus/metrics/{dataset}/api/v1/write"
+        },
+        {
+          "methods": [
+            "POST"
+          ],
+          "path": "/_prometheus/metrics/{dataset}/{namespace}/api/v1/write"
+        }
+      ]
+    },
+    {
+      "availability": {
+        "serverless": {
+          "stability": "tech_preview",
+          "visibility": "public"
+        },
+        "stack": {
+          "since": "9.4.0",
+          "stability": "tech_preview",
+          "visibility": "public"
+        }
+      },
       "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
       "docId": "prometheus-series",
       "docTag": "prometheus",
@@ -64935,6 +64995,75 @@
         "CommonQueryParameters"
       ],
       "body": {
+        "codegenName": "write_message",
+        "kind": "value",
+        "value": {
+          "kind": "instance_of",
+          "type": {
+            "name": "PrometheusWriteMessage",
+            "namespace": "prometheus.remote_write"
+          }
+        }
+      },
+      "description": "Ingest Prometheus remote write data.\n\nIndex Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.",
+      "inherits": {
+        "type": {
+          "name": "RequestBase",
+          "namespace": "_types"
+        }
+      },
+      "kind": "request",
+      "name": {
+        "name": "Request",
+        "namespace": "prometheus.remote_write"
+      },
+      "path": [
+        {
+          "description": "The data stream dataset. The value is sanitized rather than rejected.",
+          "name": "dataset",
+          "required": false,
+          "serverDefault": "generic",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        },
+        {
+          "description": "The data stream namespace. The value is sanitized rather than rejected.",
+          "name": "namespace",
+          "required": false,
+          "serverDefault": "default",
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "string",
+              "namespace": "_builtins"
+            }
+          }
+        }
+      ],
+      "query": [],
+      "specLocation": "prometheus/remote_write/PrometheusRemoteWriteRequest.ts#L24-L74"
+    },
+    {
+      "body": {
+        "kind": "no_body"
+      },
+      "kind": "response",
+      "name": {
+        "name": "Response",
+        "namespace": "prometheus.remote_write"
+      },
+      "specLocation": "prometheus/remote_write/PrometheusRemoteWriteResponse.ts#L22-L30"
+    },
+    {
+      "attachedBehaviors": [
+        "CommonQueryParameters"
+      ],
+      "body": {
         "kind": "no_body"
       },
       "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
@@ -83571,7 +83700,7 @@
         "name": "SearchType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L301-L306"
+      "specLocation": "_types/common.ts#L302-L307"
     },
     {
       "kind": "interface",
@@ -108318,7 +108447,7 @@
         "name": "SuggestMode",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L308-L321"
+      "specLocation": "_types/common.ts#L309-L322"
     },
     {
       "kind": "interface",
@@ -119520,7 +119649,7 @@
         "name": "ClusterInfoTarget",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L424-L430"
+      "specLocation": "_types/common.ts#L425-L431"
     },
     {
       "kind": "type_alias",
@@ -119528,7 +119657,7 @@
         "name": "ClusterInfoTargets",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L432-L432",
+      "specLocation": "_types/common.ts#L433-L433",
       "type": {
         "items": [
           {
@@ -119648,7 +119777,7 @@
         "name": "CommonStatsFlag",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L434-L488"
+      "specLocation": "_types/common.ts#L435-L489"
     },
     {
       "kind": "type_alias",
@@ -119656,7 +119785,7 @@
         "name": "CommonStatsFlags",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L490-L490",
+      "specLocation": "_types/common.ts#L491-L491",
       "type": {
         "items": [
           {
@@ -119991,7 +120120,7 @@
         "name": "Level",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L269-L273"
+      "specLocation": "_types/common.ts#L270-L274"
     },
     {
       "kind": "enum",
@@ -120208,7 +120337,7 @@
         "name": "NodeStatsLevel",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L275-L279"
+      "specLocation": "_types/common.ts#L276-L280"
     },
     {
       "kind": "enum",
@@ -120251,7 +120380,7 @@
         "name": "OpType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L281-L290"
+      "specLocation": "_types/common.ts#L282-L291"
     },
     {
       "kind": "type_alias",
@@ -120343,7 +120472,7 @@
         "name": "Refresh",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L292-L299"
+      "specLocation": "_types/common.ts#L293-L300"
     },
     {
       "kind": "enum",
@@ -120545,7 +120674,7 @@
         "name": "Slices",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L407-L412",
+      "specLocation": "_types/common.ts#L408-L413",
       "type": {
         "items": [
           {
@@ -120578,7 +120707,7 @@
         "name": "SlicesCalculation",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L414-L422"
+      "specLocation": "_types/common.ts#L415-L423"
     },
     {
       "kind": "type_alias",
@@ -120626,7 +120755,7 @@
         "name": "ThreadSortOrder",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L336-L341"
+      "specLocation": "_types/common.ts#L337-L342"
     },
     {
       "kind": "enum",
@@ -120656,7 +120785,7 @@
         "name": "ThreadType",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L323-L334"
+      "specLocation": "_types/common.ts#L324-L335"
     },
     {
       "description": "Time of day, expressed as HH:MM:SS",
@@ -120850,7 +120979,7 @@
         "name": "WaitForActiveShardOptions",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L343-L347"
+      "specLocation": "_types/common.ts#L344-L348"
     },
     {
       "codegenNames": [
@@ -120909,7 +121038,7 @@
         "name": "WaitForEvents",
         "namespace": "_types"
       },
-      "specLocation": "_types/common.ts#L349-L356"
+      "specLocation": "_types/common.ts#L350-L357"
     },
     {
       "kind": "type_alias",
@@ -150468,6 +150597,22 @@
       }
     },
     {
+      "description": "A Prometheus remote write 1.0 `WriteRequest` protobuf message, usually snappy-compressed.",
+      "kind": "type_alias",
+      "name": {
+        "name": "PrometheusWriteMessage",
+        "namespace": "prometheus.remote_write"
+      },
+      "specLocation": "prometheus/remote_write/types.ts#L20-L23",
+      "type": {
+        "kind": "instance_of",
+        "type": {
+          "name": "binary",
+          "namespace": "_builtins"
+        }
+      }
+    },
+    {
       "kind": "enum",
       "members": [
         {
@@ -156772,7 +156917,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L358-L371"
+      "specLocation": "_types/common.ts#L359-L372"
     },
     {
       "description": "The final result of a completed reindex operation, as stored in the task result.\nThis is the serialized form of `BulkByScrollResponse`.",
@@ -191841,7 +191986,7 @@
           }
         }
       ],
-      "specLocation": "_types/common.ts#L373-L405"
+      "specLocation": "_types/common.ts#L374-L406"
     },
     {
       "kind": "interface",

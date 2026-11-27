@@ -1,0 +1,26 @@
+project: 'Elasticsearch specification'
+registry: internal
+toc:
+  - file: index.md
+  - file: specification-structure.md
+  - file: schema-structure.md
+  - file: modeling-guide.md
+  - file: style-guide.md
+  - file: doc-comments-guide.md
+  - file: behaviors.md
+  - file: add-new-api.md
+  - file: validation-example.md
+  - file: compiler.md
+  - file: spec-drift-check.md
+  - file: known-issues.md
+# Pull request previews of the API Explorer. openapi-lint.yml writes the specs to api-preview/ (gitignored).
+# A local spec replaces only the unreleased version, so a PR shows under /api/elasticsearch/next/.
+api:
+  elasticsearch:
+    - spec: api-preview/elasticsearch.json
+      product: elasticsearch
+      repository: elastic/elasticsearch-specification
+  elasticsearch-serverless:
+    - spec: api-preview/elasticsearch-serverless.json
+      product: serverless-elasticsearch
+      repository: elastic/elasticsearch-specification

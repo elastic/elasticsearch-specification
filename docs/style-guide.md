@@ -4,7 +4,7 @@ This document contains all conventions to follow when implementing or updating a
 
 ## Code style
 
-Following you can find the rules enforced inside [`/specification`](../specification):
+Following you can find the rules enforced inside [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification):
 
 ```json
 {
@@ -43,7 +43,7 @@ You can also group definitions if they are related and consumed by a single type
 
 To improved the developer experience, the specification make an extensive use
 of aliases and custom types, to describe what kind of value needs to be passed
-to an API. You can find some of this aliases in the top level [`_types`](../specification/_types) folder.
+to an API. You can find some of this aliases in the top level [`_types`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types) folder.
 
 Where applicable, try to reuse those definitions, or if you see a pattern that
 has not been defined yet, feel free to add a new alias or abstraction.
@@ -55,7 +55,7 @@ represented in the specification.
 
 ## Where to store files
 
-In [`/specification`](../specification), every folder represents the namespace,
+In [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification), every folder represents the namespace,
 while every subfolder represent the API name.  For top level APIs, you must use
 the `_global` namespace.
 

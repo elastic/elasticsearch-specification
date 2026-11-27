@@ -3,7 +3,7 @@
 This repository uses a GitHub Agentic Workflow to check whether recently merged
 Elasticsearch REST API changes are reflected in `elastic/elasticsearch-specification`.
 
-The workflow source is [`.github/workflows/spec-drift.md`](../.github/workflows/spec-drift.md).
+The workflow source is [`.github/workflows/spec-drift.md`](https://github.com/elastic/elasticsearch-specification/blob/main/.github/workflows/spec-drift.md).
 It is compiled by `gh aw compile` into a generated GitHub Actions lockfile.
 
 ## Goal
