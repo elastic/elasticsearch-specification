@@ -17,6 +17,12 @@
  * under the License.
  */
 
+/**
+ * A predefined list of stop words.
+ * Plugin filters accept their own lists, such as `_japanese_` for `ja_stop` and `_smartcn_` for `smartcn_stop`.
+ * Any other value is treated as a single custom stop word.
+ * @non_exhaustive
+ */
 export enum StopWordLanguage {
   _arabic_,
   _armenian_,
@@ -25,7 +31,6 @@ export enum StopWordLanguage {
   _brazilian_,
   _bulgarian_,
   _catalan_,
-  _cjk_,
   _czech_,
   _danish_,
   _dutch_,
@@ -60,7 +65,7 @@ export enum StopWordLanguage {
 /**
  * Language value, such as _arabic_ or _thai_. Defaults to _english_.
  * Each language value corresponds to a predefined list of stop words in Lucene. See Stop words by language for supported language values and their stop words.
- * Also accepts an array of stop words.
+ * Also accepts a single custom stop word, or an array of stop words that can include predefined lists.
  * @class_serializer StopWordsFormatter
  */
 // eslint-disable-next-line es-spec-validator/union-requires-codegen-names -- the names of the members are not decided, TODO: add @codegen_names
