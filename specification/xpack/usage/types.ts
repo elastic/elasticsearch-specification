@@ -564,6 +564,18 @@ export class Esql extends Base {
    * 0.
    */
   functions: Dictionary<string, long>
+  /**
+   * Per-setting usage counters, keyed by ES|QL query setting name (for example
+   * `time_zone`, `unmapped_fields`). Each value counts how many queries
+   * supplied that setting, either in the request body or with `SET` in the
+   * query. A setting supplied both ways is counted once.
+   */
+  settings: Dictionary<string, long>
+  /**
+   * Histogram of query execution times. Each query is counted in exactly one
+   * bucket, the one its `took` time falls in.
+   */
+  took: EsqlTook
 }
 
 export class EsqlQueries {
@@ -571,6 +583,29 @@ export class EsqlQueries {
   total: long
   /** Number of queries from this client type that failed. */
   failed: long
+}
+
+export class EsqlTook {
+  /** Queries that took less than 10 milliseconds. */
+  lt_10ms: long
+  /** Queries that took at least 10 milliseconds and less than 100 milliseconds. */
+  lt_100ms: long
+  /** Queries that took at least 100 milliseconds and less than 1 second. */
+  lt_1s: long
+  /** Queries that took at least 1 second and less than 10 seconds. */
+  lt_10s: long
+  /** Queries that took at least 10 seconds and less than 1 minute. */
+  lt_1m: long
+  /** Queries that took at least 1 minute and less than 10 minutes. */
+  lt_10m: long
+  /** Queries that took at least 10 minutes and less than 1 hour. */
+  lt_1h: long
+  /** Queries that took at least 1 hour and less than 10 hours. */
+  lt_10h: long
+  /** Queries that took at least 10 hours and less than 1 day. */
+  lt_1d: long
+  /** Queries that took 1 day or more. */
+  gt_1d: long
 }
 
 export class Flattened extends Base {
