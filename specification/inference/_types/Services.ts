@@ -75,6 +75,34 @@ export class InferenceEndpoint {
 }
 
 /**
+ * Configuration options when updating an inference endpoint.
+ * Only `task_settings`, secrets within `service_settings`, and `chunking_settings` can be updated.
+ * The `service` cannot be changed after the endpoint is created.
+ */
+export class InferenceEndpointUpdate {
+  /**
+   * The chunking configuration object.
+   * Applies only to the `embedding`, `sparse_embedding` and `text_embedding` task types.
+   * Not applicable to the `rerank`, `completion`, or `chat_completion` task types.
+   */
+  chunking_settings?: InferenceChunkingSettings
+  /**
+   * The service type.
+   * The service cannot be changed after the endpoint is created, so it is not required when updating an endpoint.
+   */
+  service?: string
+  /**
+   * Settings specific to the service.
+   * Only secrets, such as `api_key`, can be updated. Other settings, such as `model_id` or `url`, cannot be changed.
+   */
+  service_settings?: ServiceSettings
+  /**
+   * Task settings specific to the service and task type
+   */
+  task_settings?: TaskSettings
+}
+
+/**
  * Represents an inference endpoint as returned by the GET API
  */
 export class InferenceEndpointInfo extends InferenceEndpoint {
