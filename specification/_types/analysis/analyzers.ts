@@ -24,6 +24,7 @@ import { KuromojiAnalyzer } from './kuromoji-plugin'
 import { SnowballLanguage } from './languages'
 import { NoriDecompoundMode } from './nori-plugin'
 import { SmartcnAnalyzer } from './smartcn-plugin'
+import { PolishAnalyzer } from './stempel-plugin'
 import { StopWords } from './StopWords'
 
 export class CustomAnalyzer {
@@ -440,6 +441,7 @@ export type Analyzer =
   | StopAnalyzer
   | WhitespaceAnalyzer
   | IcuAnalyzer
+  | PolishAnalyzer
   | KuromojiAnalyzer
   | SmartcnAnalyzer
   | SnowballAnalyzer
