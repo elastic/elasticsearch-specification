@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import { StopWords } from '@_types/analysis/StopWords'
 import {
   Field,
   Id,
@@ -157,8 +156,9 @@ export class MoreLikeThisQuery extends QueryBase {
   /**
    * An array of stop words.
    * Any word in this set is ignored.
+   * Predefined stop word lists such as `_english_` aren't expanded.
    */
-  stop_words?: StopWords
+  stop_words?: string[]
   /**
    * Used in combination with `like` to exclude documents that match a set of terms.
    */
