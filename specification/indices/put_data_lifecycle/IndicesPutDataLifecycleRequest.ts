@@ -19,7 +19,7 @@
 
 import { RequestBase } from '@_types/Base'
 import { DataStreamNames, ExpandWildcards, MediaType } from '@_types/common'
-import { Duration } from '@_types/Time'
+import { Duration, DurationString } from '@_types/Time'
 import { DownsamplingRound } from '@indices/_types/DownsamplingRound'
 
 /**
@@ -80,7 +80,7 @@ export interface Request extends RequestBase {
      * Any time after this duration the document could be deleted.
      * When empty, every document in this data stream will be stored indefinitely.
      */
-    data_retention?: Duration
+    data_retention?: DurationString
     /**
      * The downsampling configuration to execute for the managed backing index after rollover.
      */
