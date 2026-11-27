@@ -17,6 +17,7 @@
  * under the License.
  */
 
+import { StopWords } from './StopWords'
 import { TokenFilterBase } from './token_filters'
 import { TokenizerBase } from './tokenizers'
 
@@ -52,12 +53,12 @@ export class SmartcnStopTokenFilter extends TokenFilterBase {
   type: 'smartcn_stop'
   /**
    * The stop words to remove.
-   * Accepts `_smartcn_` for the predefined Smart Chinese list, `_none_` for no stop words, or an array of stop words.
-   * The array can include `_smartcn_` to add the predefined list to custom stop words.
+   * This filter supports only the `_smartcn_` predefined list. Use `_none_` for no stop words, or an array of stop words
+   * that can include `_smartcn_` to add the predefined list to custom stop words.
    * Defaults to `_smartcn_`.
    * @server_default _smartcn_
    */
-  stopwords?: string | string[]
+  stopwords?: StopWords
   /**
    * The path to a file that contains a list of stop words to remove.
    * This path must be absolute or relative to the `config` location, and the file must be UTF-8 encoded. Each stop word in the file must be separated by a line break.
