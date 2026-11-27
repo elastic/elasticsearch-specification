@@ -44804,6 +44804,94 @@
         ]
       }
     },
+    "/_prometheus/api/v1/write": {
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Ingest Prometheus remote write data",
+        "description": "Index Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`auto_configure`\n",
+        "operationId": "prometheus-remote-write",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/prometheus.remote_write"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.remote_write-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.4.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/metrics/{dataset}/api/v1/write": {
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Ingest Prometheus remote write data",
+        "description": "Index Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`auto_configure`\n",
+        "operationId": "prometheus-remote-write-1",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.remote_write-dataset"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/prometheus.remote_write"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.remote_write-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.4.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
+    "/_prometheus/metrics/{dataset}/{namespace}/api/v1/write": {
+      "post": {
+        "tags": [
+          "prometheus"
+        ],
+        "summary": "Ingest Prometheus remote write data",
+        "description": "Index Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.\n\n## Required authorization\n\n* Index privileges: `create_doc`,`auto_configure`\n",
+        "operationId": "prometheus-remote-write-2",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/prometheus.remote_write-dataset"
+          },
+          {
+            "$ref": "#/components/parameters/prometheus.remote_write-namespace"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/prometheus.remote_write"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/prometheus.remote_write-200"
+          }
+        },
+        "x-state": "Technical preview; Added in 9.4.0",
+        "x-metaTags": [
+          {
+            "content": "Elasticsearch",
+            "name": "product_name"
+          }
+        ]
+      }
+    },
     "/_prometheus/api/v1/series": {
       "get": {
         "tags": [
@@ -137297,6 +137385,10 @@
           "timestamp"
         ]
       },
+      "prometheus.remote_write.PrometheusWriteMessage": {
+        "description": "A Prometheus remote write 1.0 `WriteRequest` protobuf message, usually snappy-compressed.",
+        "type": "object"
+      },
       "prometheus.status_buildinfo.BuildInfo": {
         "type": "object",
         "properties": {
@@ -155805,6 +155897,12 @@
           }
         }
       },
+      "prometheus.remote_write-200": {
+        "description": "",
+        "content": {
+          "application/json": {}
+        }
+      },
       "prometheus.series-200": {
         "description": "",
         "content": {
@@ -168182,6 +168280,30 @@
         },
         "style": "form"
       },
+      "prometheus.remote_write-dataset": {
+        "in": "path",
+        "name": "dataset",
+        "description": "The data stream dataset. The value is sanitized rather than rejected.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "default": "generic",
+          "type": "string"
+        },
+        "style": "simple"
+      },
+      "prometheus.remote_write-namespace": {
+        "in": "path",
+        "name": "namespace",
+        "description": "The data stream namespace. The value is sanitized rather than rejected.",
+        "required": true,
+        "deprecated": false,
+        "schema": {
+          "default": "default",
+          "type": "string"
+        },
+        "style": "simple"
+      },
       "prometheus.series-index": {
         "in": "path",
         "name": "index",
@@ -174333,6 +174455,16 @@
             }
           }
         }
+      },
+      "prometheus.remote_write": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/prometheus.remote_write.PrometheusWriteMessage"
+            }
+          }
+        },
+        "required": true
       },
       "put_script": {
         "content": {
