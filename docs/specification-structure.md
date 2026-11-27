@@ -1,6 +1,6 @@
 # Specification structure
 
-The [`/specification`](../specification) folders follows a set of rules to
+The [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification) folders follows a set of rules to
 keep the definition easy to access and contribute, while maintaining
 the generated schema consistent and useful for language generators.
 
@@ -10,7 +10,7 @@ the generated schema consistent and useful for language generators.
 
 Every type that should be shared among different files, must be placed
 inside a folder named `_types`. This special folder is present in the
-root of the [`/specification`](../specification) folder as well
+root of the [`/specification`](https://github.com/elastic/elasticsearch-specification/blob/main/specification) folder as well
 as inside the namespaces when necessary.
 
 You should decide if a type should go inside the top-level `_types`
@@ -31,7 +31,7 @@ end with `Request` or `Response`.
 
 Request and Response definitions should be placed by following the namespace/endpoint
 structure.  For example, the request and response definition for `indices.put_mapping`
-should go in [`/specification/indices/put_mapping`](../specification/indices/put_mapping).
+should go in [`/specification/indices/put_mapping`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/indices/put_mapping).
 There are no requirements on the file name, but the type should be
 called either `Request` or `Response`.
 
@@ -39,9 +39,9 @@ called either `Request` or `Response`.
 
 There are some APIs without namespace, `search` or `index` for example.
 Those APIs should be placed inside the `_global` folder.
-For example: [`/specification/_global/search`](../specification/_global/search).
+For example: [`/specification/_global/search`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_global/search).
 
 ### Specification helpers
 
 The specification has a set of custom types used to define complex structures
-or behaviors. Those types must be placed in [`/specification/_spec_utils`](../specification/_spec_utils).
+or behaviors. Those types must be placed in [`/specification/_spec_utils`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_spec_utils).

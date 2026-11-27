@@ -238,7 +238,7 @@ Elasticsearch uses a lot of dates, times and durations. There are various types 
 * for intervals: `Duration` for formatted values, `DurationValue<UnitMillis>`, `DurationValue<UnitSeconds>`, etc. for number values
 * for time of day: `TimeOfDay
 
-See [`specification/_types/Time.ts`](../specification/_types/Time.ts) for additional details.
+See [`specification/_types/Time.ts`](https://github.com/elastic/elasticsearch-specification/blob/main/specification/_types/Time.ts) for additional details.
 
 Since code generators may choose to use a platform builtin type to represent time-related data, make sure to choose the appropriate representation and **never** use a primitive value such as `string` or `long`.
 
@@ -762,7 +762,7 @@ class Request {
 }
 ```
 
-```csv
+```text
 foobar,/guide/en/example
 ```
 
@@ -783,7 +783,7 @@ export class QueryContainer {
 }
 ```
 
-```csv
+```text
 query-dsl,/guide/en/example
 ```
 

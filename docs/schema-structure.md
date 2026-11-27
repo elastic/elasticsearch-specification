@@ -15,7 +15,7 @@ and to the [modeling guide](modeling-guide.md) to learn how to model the differe
 > [!TIP]
 > To learn more about how to write docs specifically for our [API references](https://www.elastic.co/docs/api/), refer to the [Contribute to Elastic API docs](https://www.elastic.co/docs/extend/contribute/api-docs/).
 
-You can find the schema representing all APIs and types in the [output folder](output/schema/schema.json).
+You can find the schema representing all APIs and types in the [output folder](https://github.com/elastic/elasticsearch-specification/blob/main/output/schema/schema.json).
 The schema is structured as follows:
 
 ```jsonc
@@ -38,7 +38,7 @@ to model the various endpoints.
 
 ## Specification format
 
-The specification's specification can be found [here](../compiler/src/model/metamodel.ts).
+The specification's specification can be found [here](https://github.com/elastic/elasticsearch-specification/blob/main/compiler/src/model/metamodel.ts).
 
 ## Identify a type by name
 
