@@ -316450,9 +316450,44 @@
               }
             }
           }
+        },
+        {
+          "description": "Per-setting usage counters, keyed by ES|QL query setting name (for example\n`time_zone`, `unmapped_fields`). Each value counts how many queries\nsupplied that setting, either in the request body or with `SET` in the\nquery. A setting supplied both ways is counted once.",
+          "name": "settings",
+          "required": true,
+          "type": {
+            "kind": "dictionary_of",
+            "key": {
+              "kind": "instance_of",
+              "type": {
+                "name": "string",
+                "namespace": "_builtins"
+              }
+            },
+            "singleKey": false,
+            "value": {
+              "kind": "instance_of",
+              "type": {
+                "name": "long",
+                "namespace": "_types"
+              }
+            }
+          }
+        },
+        {
+          "description": "Histogram of query execution times. Each query is counted in exactly one\nbucket, the one its `took` time falls in.",
+          "name": "took",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "EsqlTook",
+              "namespace": "xpack.usage"
+            }
+          }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L546-L567"
+      "specLocation": "xpack/usage/types.ts#L546-L579"
     },
     {
       "kind": "interface",
@@ -316543,7 +316578,137 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L569-L574"
+      "specLocation": "xpack/usage/types.ts#L581-L586"
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "EsqlTook",
+        "namespace": "xpack.usage"
+      },
+      "properties": [
+        {
+          "description": "Queries that took less than 10 milliseconds.",
+          "name": "lt_10ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 milliseconds and less than 100 milliseconds.",
+          "name": "lt_100ms",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 100 milliseconds and less than 1 second.",
+          "name": "lt_1s",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 second and less than 10 seconds.",
+          "name": "lt_10s",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 seconds and less than 1 minute.",
+          "name": "lt_1m",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 minute and less than 10 minutes.",
+          "name": "lt_10m",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 minutes and less than 1 hour.",
+          "name": "lt_1h",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 1 hour and less than 10 hours.",
+          "name": "lt_10h",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took at least 10 hours and less than 1 day.",
+          "name": "lt_1d",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        },
+        {
+          "description": "Queries that took 1 day or more.",
+          "name": "gt_1d",
+          "required": true,
+          "type": {
+            "kind": "instance_of",
+            "type": {
+              "name": "long",
+              "namespace": "_types"
+            }
+          }
+        }
+      ],
+      "specLocation": "xpack/usage/types.ts#L588-L609"
     },
     {
       "kind": "interface",
@@ -316591,7 +316756,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L576-L578"
+      "specLocation": "xpack/usage/types.ts#L611-L613"
     },
     {
       "kind": "interface",
@@ -316650,7 +316815,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L715-L727"
+      "specLocation": "xpack/usage/types.ts#L750-L762"
     },
     {
       "kind": "interface",
@@ -316706,7 +316871,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L753-L763"
+      "specLocation": "xpack/usage/types.ts#L788-L798"
     },
     {
       "kind": "interface",
@@ -316919,7 +317084,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L729-L751"
+      "specLocation": "xpack/usage/types.ts#L764-L786"
     },
     {
       "kind": "interface",
@@ -317048,7 +317213,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L580-L586"
+      "specLocation": "xpack/usage/types.ts#L615-L621"
     },
     {
       "kind": "interface",
@@ -317177,7 +317342,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L588-L595"
+      "specLocation": "xpack/usage/types.ts#L623-L630"
     },
     {
       "kind": "interface",
@@ -317819,7 +317984,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L597-L600"
+      "specLocation": "xpack/usage/types.ts#L632-L635"
     },
     {
       "kind": "interface",
@@ -318168,7 +318333,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L633-L642"
+      "specLocation": "xpack/usage/types.ts#L668-L677"
     },
     {
       "kind": "interface",
@@ -318993,7 +319158,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L644-L648"
+      "specLocation": "xpack/usage/types.ts#L679-L683"
     },
     {
       "kind": "interface",
@@ -319163,7 +319328,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L650-L663"
+      "specLocation": "xpack/usage/types.ts#L685-L698"
     },
     {
       "kind": "interface",
@@ -319505,7 +319670,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L665-L668"
+      "specLocation": "xpack/usage/types.ts#L700-L703"
     },
     {
       "kind": "interface",
@@ -319565,7 +319730,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L602-L605"
+      "specLocation": "xpack/usage/types.ts#L637-L640"
     },
     {
       "kind": "interface",
@@ -319597,7 +319762,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L607-L610"
+      "specLocation": "xpack/usage/types.ts#L642-L645"
     },
     {
       "kind": "interface",
@@ -319646,7 +319811,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L670-L674"
+      "specLocation": "xpack/usage/types.ts#L705-L709"
     },
     {
       "kind": "interface",
@@ -319687,7 +319852,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L690-L702"
+      "specLocation": "xpack/usage/types.ts#L725-L737"
     },
     {
       "kind": "interface",
@@ -319728,7 +319893,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L676-L688"
+      "specLocation": "xpack/usage/types.ts#L711-L723"
     },
     {
       "kind": "interface",
@@ -319777,7 +319942,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L704-L708"
+      "specLocation": "xpack/usage/types.ts#L739-L743"
     },
     {
       "kind": "interface",
@@ -319818,7 +319983,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L628-L631"
+      "specLocation": "xpack/usage/types.ts#L663-L666"
     },
     {
       "kind": "interface",
@@ -319850,7 +320015,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L612-L614"
+      "specLocation": "xpack/usage/types.ts#L647-L649"
     },
     {
       "kind": "interface",
@@ -319937,7 +320102,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L616-L621"
+      "specLocation": "xpack/usage/types.ts#L651-L656"
     },
     {
       "kind": "interface",
@@ -319969,7 +320134,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L623-L626"
+      "specLocation": "xpack/usage/types.ts#L658-L661"
     },
     {
       "kind": "interface",
@@ -320007,7 +320172,7 @@
           }
         }
       ],
-      "specLocation": "xpack/usage/types.ts#L710-L713"
+      "specLocation": "xpack/usage/types.ts#L745-L748"
     },
     {
       "kind": "interface",

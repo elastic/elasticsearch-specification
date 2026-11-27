@@ -26359,6 +26359,8 @@ export interface XpackUsageEsql extends XpackUsageBase {
   features: Record<string, long>
   queries: Record<string, XpackUsageEsqlQueries>
   functions: Record<string, long>
+  settings: Record<string, long>
+  took: XpackUsageEsqlTook
 }
 
 export interface XpackUsageEsqlLoggingConfig {
@@ -26370,6 +26372,19 @@ export interface XpackUsageEsqlLoggingConfig {
 export interface XpackUsageEsqlQueries {
   total: long
   failed: long
+}
+
+export interface XpackUsageEsqlTook {
+  lt_10ms: long
+  lt_100ms: long
+  lt_1s: long
+  lt_10s: long
+  lt_1m: long
+  lt_10m: long
+  lt_1h: long
+  lt_10h: long
+  lt_1d: long
+  gt_1d: long
 }
 
 export interface XpackUsageFeatureToggle {
