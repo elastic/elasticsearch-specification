@@ -70,11 +70,19 @@ To generate the JSON representation that is used for documentation purposes, the
 # Generate the OpenAPI files
 $ make transform-to-openapi-for-docs
 
-# Apply fixes
+# Apply fixes for Bump.sh
 $ make overlay-docs
+
+# Or apply fixes for API Explorer, which keeps the schema detail Bump.sh cannot render
+$ make overlay-api-explorer
 
 # The generated output can be found in ./output/openapi/
 ```
+
+Overlays that only exist because Bump.sh cannot render some schema detail, such as removing a long `oneOf` or `enum`,
+go in `docs/overlays/elasticsearch-shared-bump-overlays.yaml` or `docs/overlays/elasticsearch-openapi-bump-overlays.yaml`.
+Every other overlay, such as tags, titles, descriptions and security schemes, goes in the other overlay files, which
+both builds apply.
 
 ## Specification Viewer
 
