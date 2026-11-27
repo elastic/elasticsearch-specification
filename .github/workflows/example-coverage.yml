@@ -1,0 +1,104 @@
+name: Example coverage
+
+# Compiles the schema for the PR and for its base, then reports which public
+# endpoints change example coverage and warns about new gaps. Never fails the
+# build. The full report for each branch is in output/example-coverage.
+
+on:
+  pull_request:
+    # `edited` covers retargeting the PR to another base branch.
+    types: [opened, synchronize, reopened, edited]
+    branches:
+      - main
+      - '[0-9]+.[0-9]+'
+  # No paths filter: a later push that no longer touches the spec must still
+  # clear an earlier report.
+
+permissions:
+  contents: read
+  pull-requests: write # To create/update the PR comment
+
+jobs:
+  example-coverage:
+    name: Example coverage
+    runs-on: ubuntu-latest
+    # Title and description edits don't change coverage.
+    if: github.event.action != 'edited' || github.event.changes.base != null
+    # A newer push supersedes the running check, so an older run can't overwrite
+    # its report or race it into a duplicate comment. Job-level, so a skipped
+    # edit doesn't cancel a running check.
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Checkout base
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+          persist-credentials: false
+
+      # The compiler resolves examples relative to its own checkout and requires
+      # the Node.js major in that checkout's .nvmrc, so each side is compiled by
+      # its own copy under its own Node.js version.
+      - name: Use the base Node.js version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: base/.nvmrc
+          cache: npm
+          cache-dependency-path: '**/compiler/package-lock.json'
+
+      - name: Compile base schema
+        run: |
+          npm ci --prefix base/compiler
+          npm run generate-schema --prefix base/compiler -- --spec ../specification/ --output "$RUNNER_TEMP/base/"
+
+      - name: Use the pull request Node.js version
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: '**/compiler/package-lock.json'
+
+      - name: Compile pull request schema
+        run: |
+          npm ci --prefix compiler
+          npm run generate-schema --prefix compiler -- --spec ../specification/ --output "$RUNNER_TEMP/pr/"
+
+      - name: Check example coverage
+        id: coverage
+        run: |
+          npm run example-coverage --silent --prefix compiler -- \
+            --schema "$RUNNER_TEMP/pr/schema/schema.json" \
+            --baseline "$RUNNER_TEMP/base/schema/schema.json" \
+            --output "$RUNNER_TEMP/report/" \
+            --report "$RUNNER_TEMP/example-coverage.md"
+
+      # Fork PRs get a read-only token: they still get annotations and the job summary.
+      - name: Find existing comment
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: peter-evans/find-comment@b30e6a3c0ed37e7c023ccd3f1db5c6c0b0c23aad # v4.0.0
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '<!-- example-coverage-report -->'
+
+      # Comment only when there's something to say, or to clear an earlier report.
+      - name: Create or update comment
+        if: >-
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          (steps.coverage.outputs.has_changes == 'true' || steps.find-comment.outputs.comment-id != '')
+        uses: peter-evans/create-or-update-comment@e8674b075228eee787fea43ef493e45ece1004c9 # v5.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: ${{ runner.temp }}/example-coverage.md
+          edit-mode: replace
