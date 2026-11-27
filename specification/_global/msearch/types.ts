@@ -214,6 +214,5 @@ export type ResponseItem<TDocument> =
   | ErrorResponseBase
 
 export class MultiSearchItem<TDocument> extends SearchResponse<TDocument> {
-  // Not returned in MultiSearchTemplateResponse
-  status?: integer
+  status: integer
 }
