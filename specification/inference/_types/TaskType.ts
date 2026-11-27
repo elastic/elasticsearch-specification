@@ -168,6 +168,13 @@ export enum TaskTypeOpenShiftAi {
   rerank
 }
 
+export enum TaskTypeTencentCloud {
+  chat_completion,
+  completion,
+  rerank,
+  text_embedding
+}
+
 export enum TaskTypeVoyageAI {
   text_embedding,
   rerank
