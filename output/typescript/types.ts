@@ -20631,6 +20631,16 @@ export interface PrometheusQueryRangeResponse {
   warnings?: string[]
 }
 
+export type PrometheusRemoteWritePrometheusWriteMessage = ArrayBuffer
+
+export interface PrometheusRemoteWriteRequest extends RequestBase {
+  dataset?: string
+  namespace?: string
+  body?: PrometheusRemoteWritePrometheusWriteMessage
+}
+
+export type PrometheusRemoteWriteResponse = boolean
+
 export interface PrometheusSeriesRequest extends RequestBase {
   index?: IndexName
   match: string[]
