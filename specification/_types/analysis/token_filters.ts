@@ -40,6 +40,7 @@ import {
   SmartcnStopTokenFilter,
   SmartcnWordTokenFilter
 } from './smartcn-plugin'
+import { PolishStemTokenFilter, PolishStopTokenFilter } from './stempel-plugin'
 import { StopWords } from './StopWords'
 
 export class TokenFilterBase {
@@ -698,6 +699,8 @@ export type TokenFilterDefinition =
   | IcuNormalizationTokenFilter
   | IcuTransformTokenFilter
   | PhoneticTokenFilter
+  | PolishStemTokenFilter
+  | PolishStopTokenFilter
   | DictionaryDecompounderTokenFilter
   | SmartcnStopTokenFilter
   | SmartcnWordTokenFilter
