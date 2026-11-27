@@ -1,0 +1,21 @@
+name: elastic-internal-docs
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: ~
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    permissions:
+      id-token: write
+      deployments: write
+      contents: read
+      pull-requests: write
+    uses: elastic/docs-actions/.github/workflows/codex-preview.yml@v1
+    with:
+      path-pattern: 'docs/**'

@@ -1,4 +1,5 @@
 project: 'Elasticsearch specification'
+registry: internal
 toc:
   - file: index.md
   - file: specification-structure.md
