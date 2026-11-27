@@ -146568,6 +146568,33 @@
                     "$ref": "#/components/schemas/xpack.usage.EsqlTook"
                   }
                 ]
+              },
+              "resolved_settings": {
+                "description": "Per-setting usage counters broken down by the setting's effective value in\neach query, whether the query supplied it or used the default. Keyed by\nES|QL query setting name. Each value maps a value category to a count.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  }
+                }
+              },
+              "view_settings": {
+                "description": "Like `settings`, but counts the settings set inside the definitions of the\nviews a query uses. Counted separately from the query's own settings.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number"
+                }
+              },
+              "view_resolved_settings": {
+                "description": "Like `resolved_settings`, but for the views a query uses: counts the\neffective value of each setting in the view definitions, whether a view set\nit or used the default. Counted separately from the query's own settings.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  }
+                }
               }
             },
             "required": [
@@ -146575,7 +146602,10 @@
               "queries",
               "functions",
               "settings",
-              "took"
+              "took",
+              "resolved_settings",
+              "view_settings",
+              "view_resolved_settings"
             ]
           }
         ]

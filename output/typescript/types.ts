@@ -26404,6 +26404,9 @@ export interface XpackUsageEsql extends XpackUsageBase {
   functions: Record<string, long>
   settings: Record<string, long>
   took: XpackUsageEsqlTook
+  resolved_settings: Record<string, Record<string, long>>
+  view_settings: Record<string, long>
+  view_resolved_settings: Record<string, Record<string, long>>
 }
 
 export interface XpackUsageEsqlLoggingConfig {

@@ -12003,8 +12003,8 @@
       "description": "Get Prometheus label values.\n\nGet the sorted deduplicated values of one label on the matching time series.\nLabel names can use the OpenMetrics `U__` encoding for characters that are not valid in Prometheus label names.\nAn unknown label returns an empty list.\nThe endpoint mirrors the Prometheus `/api/v1/label/{name}/values` endpoint.",
       "docId": "prometheus-label-values",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-label-values",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-label-values",
       "name": "prometheus.label_values",
       "privileges": {
         "index": [
@@ -12053,8 +12053,8 @@
       "description": "Get Prometheus label names.\n\nGet the sorted names of the labels present on the matching time series.\nThe endpoint mirrors the Prometheus `/api/v1/labels` endpoint.",
       "docId": "prometheus-labels",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-labels",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-labels",
       "name": "prometheus.labels",
       "privileges": {
         "index": [
@@ -12105,8 +12105,8 @@
       "description": "Get Prometheus metric metadata.\n\nGet the type and unit of the metrics in time series data streams, over a fixed 24-hour lookback.\nThe `help` field is always an empty string.\nThe endpoint mirrors the Prometheus `/api/v1/metadata` endpoint, without `match[]`, `start` and `end`.",
       "docId": "prometheus-metadata",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-metadata",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-metadata",
       "name": "prometheus.metadata",
       "privileges": {
         "index": [
@@ -12155,8 +12155,8 @@
       "description": "Run a PromQL instant query.\n\nEvaluate a PromQL expression at a single instant and return vector data.\nThe endpoint mirrors the Prometheus `/api/v1/query` endpoint.\nPOST requests carry the parameters as an `application/x-www-form-urlencoded` body and are accepted only on authenticated TLS connections.",
       "docId": "prometheus-query",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-query",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-query",
       "name": "prometheus.query",
       "privileges": {
         "index": [
@@ -12208,7 +12208,7 @@
       "docId": "prometheus-query-exemplars",
       "docTag": "prometheus",
       "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-query-exemplars",
       "name": "prometheus.query_exemplars",
       "privileges": {
         "index": [
@@ -12259,8 +12259,8 @@
       "description": "Run a PromQL range query.\n\nEvaluate a PromQL expression over a time range and return matrix data.\nThe endpoint mirrors the Prometheus `/api/v1/query_range` endpoint.",
       "docId": "prometheus-query-range",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-query-range",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-query-range",
       "name": "prometheus.query_range",
       "privileges": {
         "index": [
@@ -12311,8 +12311,8 @@
       "description": "Ingest Prometheus remote write data.\n\nIndex Prometheus time series into metrics data streams.\nThe request body is a Prometheus remote write 1.0 message: a protobuf `WriteRequest` sent with the content type `application/x-protobuf`, usually snappy-compressed (`Content-Encoding: snappy`).\nA message that declares another `proto` parameter in its content type is rejected with `415 Unsupported Media Type`, so that Prometheus can fall back to remote write 1.0.\nSamples go to the `metrics-{dataset}.prometheus-{namespace}` data stream.\nIn 9.6 and later, exemplars go to the `exemplars-{dataset}.prometheus-{namespace}` data stream.\nThe `data_stream_dataset` and `data_stream_namespace` labels of a time series override the dataset and namespace from the path.",
       "docId": "prometheus-remote-write",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/elasticsearch/operation/operation-prometheus-remote-write",
+      "docUrlServerless": "https://www.elastic.co/docs/api/elasticsearch-serverless/operation/operation-prometheus-remote-write",
       "name": "prometheus.remote_write",
       "privileges": {
         "index": [
@@ -12371,8 +12371,8 @@
       "description": "Find Prometheus series.\n\nGet the time series that match the given selectors.\nThe endpoint mirrors the Prometheus `/api/v1/series` endpoint.",
       "docId": "prometheus-series",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-series",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-series",
       "name": "prometheus.series",
       "privileges": {
         "index": [
@@ -12423,8 +12423,8 @@
       "description": "Get Prometheus build information.\n\nGet Elasticsearch build information in the format of the Prometheus `/api/v1/status/buildinfo` endpoint.\nPrometheus-compatible clients, such as Grafana, call this endpoint to identify the backend and the features it supports.",
       "docId": "prometheus-status-buildinfo",
       "docTag": "prometheus",
-      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
-      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch#TODO",
+      "docUrl": "https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-prometheus-status-buildinfo",
+      "docUrlServerless": "https://www.elastic.co/docs/api/doc/elasticsearch-serverless/operation/operation-prometheus-status-buildinfo",
       "name": "prometheus.status_buildinfo",
       "request": {
         "name": "Request",
