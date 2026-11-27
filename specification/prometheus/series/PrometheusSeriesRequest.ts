@@ -26,6 +26,11 @@ import { integer } from '@_types/Numeric'
  *
  * Get the time series that match the given selectors.
  * The endpoint mirrors the Prometheus `/api/v1/series` endpoint.
+ *
+ * GET requests send parameters in the query string.
+ * On Serverless and on Elasticsearch 9.5.0 and later, POST requests send the same parameters as an `application/x-www-form-urlencoded` body.
+ * Form-encoded POST requests are accepted only on authenticated TLS connections.
+ * If you send the same parameter in both the query string and the form body, the API returns `400` with the standard Elasticsearch error body.
  * @rest_spec_name prometheus.series
  * @availability stack since=9.4.0 stability=tech_preview visibility=public
  * @availability serverless stability=tech_preview visibility=public
@@ -49,6 +54,7 @@ export interface Request extends RequestBase {
      * An index expression that restricts which indices are considered, for example `metrics-generic.prometheus-*`.
      * If you omit it, the default expression `metrics-*` is used.
      * Only indices with `index.mode: time_series` are considered.
+     * An alias is accepted and index privileges are checked against that alias name.
      */
     index?: IndexName
   }
@@ -70,7 +76,10 @@ export interface Request extends RequestBase {
      */
     end?: string
     /**
-     * The maximum number of series to return. `0` means no limit from the request.
+     * The maximum number of series to return.
+     * `0` means no limit from the request.
+     * The cluster can still truncate the response with the `esql.query.result_truncation_max_size` setting.
+     * @server_default 0
      */
     limit?: integer
   }
